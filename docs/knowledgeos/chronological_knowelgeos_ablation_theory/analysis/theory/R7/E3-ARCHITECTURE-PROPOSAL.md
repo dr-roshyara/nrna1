@@ -1,4 +1,6 @@
-# R7 · E3 architecture proposal — PROPOSED for E3b review; draft r1.1
+# R7 · E3 architecture proposal — PROPOSED for E3b review; draft r1.2
+
+**Status (r1.2):** PROPOSED, draft r1.2, 2026-10-13. r1.2 is the Act 1 relabel recording (F-LOG-0295, route R-1, tagged in place): `R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 §I.2a rows 1–19 applied, each changed site tagged "[relabelled by Act 1, F-LOG-0295; r1.1: "…"]", and the §I.1a definition and non-claims recorded under §2.1. Label and vocabulary swaps only: no assertion added, no status word changed; every ⚠E3b output stays **not accepted** pending a separate re-assessment act (Act 2). **The r1.2 recording is not yet reviewed** (a fresh review follows, F-LOG-0295 "Next"). E4 (R8) and E5 are **not** authorized. The r1.1 status line below is kept as history.
 
 **Status:** PROPOSED, draft r1.1, 2026-10-12. Review history: r0, round 1 (fresh independent review): PASS_WITH_LIMITATIONS, no blocker; M1–M7 material, m1–m10 minor; r1 applies them. r1, round 2 (fresh independent review): **round 2 PWL, nothing blocking; r1.1 wording fixes not re-reviewed** (W1–W9, §12). Per F-LOG-0282 (4), presentable for a separate act on E3b. It is produced under F-LOG-0282 (E3 AUTHORIZED). It is a **proposal for human review**. It decides nothing, accepts nothing and authorizes nothing. F-LOG-0282: "The output is an architecture **proposal** for human review, with results under S, S′ and S″, none privileged." E3b, E4 (R8) and E5 are **not** authorized.
 
@@ -37,81 +39,102 @@ Every claim carries exactly one tag. In tables, the tag is in the "class" column
 
 ---
 
-## 2. Candidate bounded contexts from CB1 and CB23 ⚠E3b
+## 2. Candidate module cut [relabelled by Act 1, F-LOG-0295; r1.1: "bounded contexts"] from CB1 and CB23 ⚠E3b
 
 ### 2.1 What is proposed
 
 | id | provisional name | class | content | source |
 |---|---|---|---|---|
-| **E3-BC1** ⚠E3b | records context (provisional name, not canonical) | [H] | a candidate bounded context derived from the adopted element CB1 | E2b §A1.2 (CB1 adopted "by concept membership and trace"); T3 §1a heading "bounded-context-like partitions" |
-| **E3-BC23** ⚠E3b | norm-and-work context (provisional name, not canonical) | [H] | a candidate bounded context derived from the adopted element CB23 | as above |
-| (no id) | — | [A] | **CB4 is not a context.** "CB4 stays an explicit open slot (F-LOG-0263); it is not a side, and it is not an element" | F-LOG-0275 Act I (1); VP10 (iii) |
-| (no id) | — | [D] | No third context is proposed. Only two adopted elements are boundaries (CB1, CB23); P-a, P-b and P-d "are not adopted" | F-LOG-0275 Act I (1) |
+| **E3-M1** [relabelled by Act 1, F-LOG-0295; r1.1: "**E3-BC1**"] ⚠E3b | records module [relabelled by Act 1, F-LOG-0295; r1.1: "records context"] (provisional name, not canonical) | [H] | a candidate module (one side of the CB1 / CB23 cut) [relabelled by Act 1, F-LOG-0295; r1.1: "bounded context"] derived from the adopted element CB1 | E2b §A1.2 (CB1 adopted "by concept membership and trace"); T3 §1a heading "bounded-context-like partitions" |
+| **E3-M23** [relabelled by Act 1, F-LOG-0295; r1.1: "**E3-BC23**"] ⚠E3b | norm-and-work module [relabelled by Act 1, F-LOG-0295; r1.1: "norm-and-work context"] (provisional name, not canonical) | [H] | a candidate module (the other side of that cut) [relabelled by Act 1, F-LOG-0295; r1.1: "bounded context"] derived from the adopted element CB23 | as above |
+| (no id) | — | [A] | **CB4 is not a module [relabelled by Act 1, F-LOG-0295; r1.1: "not a context"].** "CB4 stays an explicit open slot (F-LOG-0263); it is not a side, and it is not an element" | F-LOG-0275 Act I (1); VP10 (iii) |
+| (no id) | — | [D] | No third module [relabelled by Act 1, F-LOG-0295; r1.1: "No third context"] is proposed. Only two adopted elements are module sides [relabelled by Act 1, F-LOG-0295; r1.1: "are boundaries"] (CB1, CB23); P-a, P-b and P-d "are not adopted" | F-LOG-0275 Act I (1) |
 
-### 2.2 What each context would own
+**[Act 1, F-LOG-0295] What "candidate module cut" means in this record.** Recorded by Act 1 (F-LOG-0295, route R-1) from `R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 §I.1a, adapted: the pointers to II.3 / II.6 are dropped, and "audit" and section references are expanded. It adds nothing beyond this membership definition and these non-claims.
 
-**Concepts** ([A], F-LOG-0275 Act I (1)): E3-BC1 holds CB1's "C13–C18, C23, C24, C27" (9). E3-BC23 holds CB23's "C2–C12, C19–C21" (14). C1 spans both (§2.4). C22, C25, C26 and C28 are on no side (stated exceptions, E2b §A1.2).
+*Act 1 definition (membership only).* A **module** is one side of the CB1 / CB23 cut, [H], ⚠E3b. The cut is a partition of the 23 placed concepts other than C1, of the one adopted model. The audit puts it this way: "Both sides are fragments of one formal model, a single history tuple h (Def 1.7)" (RESEARCH-AUDIT-1 r1.1 Q2 (i)).
+- it is defined by the adopted CB1 / CB23 T1 ids (F-LOG-0275 Act I (1));
+- C1 spans both sides (VP12 (i));
+- C22, C25, C26 and C28 are on no side (E2b §A1.2).
 
-**Adopted elements, placed by concept membership** ([D] ⚠E3b; derivation: an element lies in a context iff all of its T1 ids (T3 r1.5 §2 "T1 ids" column) are members of that context's concept set; it straddles if its ids fall on both sides; it is on no side if its ids are all stated exceptions on no side; placement is by membership only and therefore **the same under S, S′ and S″**). **[r1, M3] Supplementary rule [E]:** a model-wide element (one whose T1 ids are "all C-rows") is placed in no context. It is an analyst rule, not derived from any source; without it MW1 would count as straddling (counts 6 / 12 / 4 / 3). It is listed in §10.2. **[r1, m5] Disclosure:** "straddling" here is a membership statement. For the participant and CG1, it coincides with the **S** count (C1 counted on both sides); under S′ the count differs; under S″ it depends on the row choice (§3.3, §10.2 #1; §8.2). Stating it is not a selection of S:
+Act 1 asserts nothing else. In particular it asserts nothing about crossings or co-reading; those are structural statements, left to a separate re-assessment act (Act 2).
 
-| context | elements wholly inside | class |
+*Non-claims (part of the Act 1 definition):*
+- **no separate language or model** (audit Q2 (i): "**Not supported.**");
+- **no ownership or responsibility** (audit Q2 (ii): "**Not supported.**"); nothing is enforceable from records (R23);
+- **no context-map pattern** and no typed relationship (audit Q2 (iii): "**Not supported.**"; §2.3 [O]);
+- **no bounded-context status** for either module;
+- no internal-cohesion claim for either module;
+- no optimality of P-c;
+- no domain coupling, runtime dependency, deployment, team or transaction meaning;
+- no selection among S, S′ and S″.
+
+Every relabelled output keeps its ⚠E3b flag; none is accepted by Act 1. Standing qualifier (verbatim): "one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable"
+
+### 2.2 What each module would hold [relabelled by Act 1, F-LOG-0295; r1.1: "What each context would own"]
+
+**Concepts** ([A], F-LOG-0275 Act I (1)): E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] holds CB1's "C13–C18, C23, C24, C27" (9). E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] holds CB23's "C2–C12, C19–C21" (14). C1 spans both (§2.4). C22, C25, C26 and C28 are on no side (stated exceptions, E2b §A1.2).
+
+**Adopted elements, placed by concept membership** ([D] ⚠E3b; derivation: an element lies in a module [relabelled by Act 1, F-LOG-0295; r1.1: "lies in a context"] iff all of its T1 ids (T3 r1.5 §2 "T1 ids" column) are members of that module's [relabelled by Act 1, F-LOG-0295; r1.1: "that context's"] concept set; it straddles if its ids fall on both sides; it is on no side if its ids are all stated exceptions on no side; placement is by membership only and therefore **the same under S, S′ and S″**). **[r1, M3] Supplementary rule [E]:** a model-wide element (one whose T1 ids are "all C-rows") is placed in no module [relabelled by Act 1, F-LOG-0295; r1.1: "in no context"]. It is an analyst rule, not derived from any source; without it MW1 would count as straddling (counts 6 / 12 / 4 / 3). It is listed in §10.2. **[r1, m5] Disclosure:** "straddling" here is a membership statement. For the participant and CG1, it coincides with the **S** count (C1 counted on both sides); under S′ the count differs; under S″ it depends on the row choice (§3.3, §10.2 #1; §8.2). Stating it is not a selection of S:
+
+| module [relabelled by Act 1, F-LOG-0295; r1.1: "context"] | elements wholly inside | class |
 |---|---|---|
-| E3-BC1 | CG4 (C13–C18), CG6 (C24), CV4 (C18, C27), CV7 (C23), CV-text (C15), CE6 (C13, C14) | [D] ⚠E3b |
-| E3-BC23 | CG2 (C3, C5–C7), CG3 (C8–C12), CG5 (C19, C20), CV1 (C4), CV2 (C5), CV5 (C10), CV6 (C21), CE1 (C8, C11), CE2 (C9, C11), CE3 (C12), CE4 (C7), CE5 (C19, C20) | [D] ⚠E3b |
+| E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] | CG4 (C13–C18), CG6 (C24), CV4 (C18, C27), CV7 (C23), CV-text (C15), CE6 (C13, C14) | [D] ⚠E3b |
+| E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | CG2 (C3, C5–C7), CG3 (C8–C12), CG5 (C19, C20), CV1 (C4), CV2 (C5), CV5 (C10), CV6 (C21), CE1 (C8, C11), CE2 (C9, C11), CE3 (C12), CE4 (C7), CE5 (C19, C20) | [D] ⚠E3b |
 | straddling | the participant (C1); CG1 (C1, C2); CV3 (C22 with C11, C12, C14, C20) | [A] for the participant ("spans CB1 and CB23", E2b §A1.2a) and CV3 ("CV3, under which it appears, straddles the cut", E2b §A1.2). **[r1, m5] CG1: [D]** ⚠E3b, from C1 spanning ([A] E2b §A1.2a) and C2 ∈ CB23 ([A] Act I (1)). E2b itself says only "CG1 may straddle the P-c cut" (§A1.2); this proposal does not upgrade that wording to an adopted fact |
-| no context | CV8 (C25), CV9 (C28), CS1 (C26); MW1 (all C-rows) | ⚠E3b. [A] for CV8, CV9, CS1: they "stay adopted and ungrouped" and "Under P-c they are on no side (T3 r1.7 exceptions)" (E2b §A1.2). **[r1, M3] [E] for MW1**, by the supplementary rule above |
+| no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"] | CV8 (C25), CV9 (C28), CS1 (C26); MW1 (all C-rows) | ⚠E3b. [A] for CV8, CV9, CS1: they "stay adopted and ungrouped" and "Under P-c they are on no side (T3 r1.7 exceptions)" (E2b §A1.2). **[r1, M3] [E] for MW1**, by the supplementary rule above |
 
-Check [D]: 6 + 12 + 3 + 4 = 25 baseline elements placed; CB1 and CB23 are the contexts themselves. 25 + 2 = 27 (E2b §A1.2).
+Check [D]: 6 + 12 + 3 + 4 = 25 baseline elements placed; CB1 and CB23 are the modules themselves [relabelled by Act 1, F-LOG-0295; r1.1: "the contexts themselves"]. 25 + 2 = 27 (E2b §A1.2).
 
-**Constraint rows (T-A).** E2b §A1.3 reports the hosts per reading "as a report of T3 [E], not ratified". The proposal lists them per reading and selects none. ([A] that the report exists and says this. **[r1, m9]** [D] ⚠E3b, **conditional on the [H] E3-BC1 / E3-BC23**: if the sides are read as contexts, a context "would carry" the rows the report hosts internally to its side. The bridge from host column to context is only as strong as that [H].)
+**Constraint rows (T-A).** E2b §A1.3 reports the hosts per reading "as a report of T3 [E], not ratified". The proposal lists them per reading and selects none. ([A] that the report exists and says this. **[r1, m9]** [D] ⚠E3b, **conditional on the [H] E3-M1 / E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1 / E3-BC23"]**: if the sides are read as modules, a module [relabelled by Act 1, F-LOG-0295; r1.1: "read as contexts, a context"] "would carry" the rows the report hosts internally to its side. The bridge from host column to module [relabelled by Act 1, F-LOG-0295; r1.1: "host column to context"] is only as strong as that [H].)
 
 | row set | S | S′ / S″ | class |
 |---|---|---|---|
-| internal to E3-BC1 | R7 | R7, **R8** | [D] ⚠E3b, from E2b §A1.3 |
-| internal to E3-BC23 | R1, R4, R11, R17, R18, R20 (6) | R1, R4, **R5, R6, R10**, R11, R17, R18, **R19**, R20 (10) | [D] ⚠E3b, from E2b §A1.3 |
+| internal to E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] | R7 | R7, **R8** | [D] ⚠E3b, from E2b §A1.3 |
+| internal to E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | R1, R4, R11, R17, R18, R20 (6) | R1, R4, **R5, R6, R10**, R11, R17, R18, **R19**, R20 (10) | [D] ⚠E3b, from E2b §A1.3 |
 | shared by both (crossing the cut) | R2, R3, **R5, R6**, R8, R9, **R10**, R14, R15, R16, **R19**, R21, R22 (13) | R2, R3, R9, R14, R15, R16, R21, R22 (8) | [D] ⚠E3b, from E2b §A1.3 |
-| crossing, hosted at MW1 (no context) / CV4 (inside E3-BC1; R24 crosses) (placement: this §2.2) | R12, R13, R23 / R24 | R12, R13, R23 / R24 | [D] ⚠E3b, from E2b §A1.3 |
+| crossing, hosted at MW1 (no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]) / CV4 (inside E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"]; R24 crosses) (placement: this §2.2) | R12, R13, R23 / R24 | R12, R13, R23 / R24 | [D] ⚠E3b, from E2b §A1.3 |
 
-**Status of these rows** ([A], F-LOG-0275 Act II): "No grouping is enforceable from records (R23). R1–R24 remain candidate model constraints, not domain invariants." A context "carrying" a row means only that the row's statement reads items placed in that context. It does **not** mean the context checks or enforces it ([A] R23 per F-LOG-0275 Act II; and [A] that T2 r1.4 §0 states (T2 candidate, not adopted): "A model invariant over any of these unobserved coordinates cannot be enforced or checked from records").
+**Status of these rows** ([A], F-LOG-0275 Act II): "No grouping is enforceable from records (R23). R1–R24 remain candidate model constraints, not domain invariants." A module [relabelled by Act 1, F-LOG-0295; r1.1: "A context"] "carrying" a row means only that the row's statement reads items placed in that module [relabelled by Act 1, F-LOG-0295; r1.1: "that context"]. It does **not** mean the module checks [relabelled by Act 1, F-LOG-0295; r1.1: "the context checks"] or enforces it ([A] R23 per F-LOG-0275 Act II; and [A] that T2 r1.4 §0 states (T2 candidate, not adopted): "A model invariant over any of these unobserved coordinates cannot be enforced or checked from records").
 
-**T-B rows** stay inactive and are not owned as structure (§6).
+**T-B rows** stay inactive and are not held as structure [relabelled by Act 1, F-LOG-0295; r1.1: "not owned as structure"] (§6).
 
-### 2.3 The relationship between E3-BC1 and E3-BC23 ⚠E3b
+### 2.3 Cross-module rows between E3-M1 and E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "The relationship between E3-BC1 and E3-BC23"] ⚠E3b
 
 **[r1, M1] Rebuilt from the E2b §A1.3 crossing report (recorded, not ratified) only.** The T3 relations table is not used.
 
 - [A] E2b does not adopt the relations table. E2b §A1.2, verbatim: "Also not adopted as constraints: the P-c "Relations between boundaries" table and the 83-row K-c crossing table; they are carried as T3 [E] analysis." Under B1 ("derive … from the adopted bounded model only") it is therefore not a source of E3-REL content.
-- [H] ⚠E3b **E3-REL** (provisional name, not canonical) is **the set of T-A rows that E2b §A1.3 reports as "hosted on both CB1 and CB23"**, per reading, and nothing else:
+- [H] ⚠E3b **E3-REL, cross-module rows** [relabelled by Act 1, F-LOG-0295; r1.1: "**E3-REL**"] (provisional name, not canonical) is **the set of T-A rows that E2b §A1.3 reports as "hosted on both CB1 and CB23"**, per reading, and nothing else:
   - S: R2, R3, R5, R6, R8, R9, R10, R14, R15, R16, R19, R21, R22 (13);
   - S′ / S″: R2, R3, R9, R14, R15, R16, R21, R22 (8).
   The rows reported as crossing but hosted at MW1 (R12, R13, R23) or CV4 (R24) are not part of E3-REL. [A] The report is "recorded as a report of T3 [E], not ratified" (E2b §A1.3), so E3-REL rests on an unratified report.
-- [O] **Whether E3-REL is a "relation" at all.** A crossing records which items a row's statement reads. That T3 r1.7 §1a (g) says a crossing is "not a boundary relation" is [A] that T3 states it (T3 [E], not adopted). E3-REL is therefore offered only as "the rows the two contexts share", not as a typed relationship. This applies equally to the S-only rows (R5, R6, R8, R10, R19) and to the rows shared under every reading.
+- [O] **Whether E3-REL is a "relation" at all.** A crossing records which items a row's statement reads. That T3 r1.7 §1a (g) says a crossing is "not a boundary relation" is [A] that T3 states it (T3 [E], not adopted). E3-REL is therefore offered only as "the rows the two modules share [relabelled by Act 1, F-LOG-0295; r1.1: "two contexts share"]", not as a typed relationship. This applies equally to the S-only rows (R5, R6, R8, R10, R19) and to the rows shared under every reading.
 - [D] Checkability, from what T2 r1.4 states in its "coordinates / checkable" column (T2 candidate, not adopted): no row of E3-REL is fully checkable from records; R22 is checkable only in its record-id part. The constraint rows R2, R3, R5, R6, R8, R9, R10, R19 are over unobserved coordinates. R14, R15 and R16 are guard rows, the absence of a constraint ("Nothing to check"; "The absence of an order is not a check"). R21 is over an observed coordinate (c), but "The constraint is on interpretation". R22's record identifiers are observed, while its "actor, act and work-event identifiers are **unobserved**".
 - **[O] DDD context-map pattern: not supported by the sources.** No source names an upstream / downstream direction, a shared kernel, a customer–supplier relation, a conformist, an anti-corruption layer, a published language or a partnership between the sides. R9 types a reference from records into acts and work events ("Ref ⊆ R × (E ∪ W)"), but R3 ties an act's decision time to a record's recording time under constitution ("If con(a) = ρ then d(a) = r(ρ)"). Both directions therefore appear in constraint text (as T2 r1.4 states it; T2 candidate, not adopted), and neither is called a dependency. No pattern is proposed.
 
-### 2.4 The participant (VP12 (i)) spanning both ⚠E3b
+### 2.4 The participant (VP12 (i)) spanning both modules [relabelled by Act 1, F-LOG-0295; r1.1: "spanning both"] ⚠E3b
 
 | point | class | content |
 |---|---|---|
 | E3-PP placement | [A] | "It is R4's single actor set 𝒜 (Def 1.2) and **spans CB1 and CB23**. "No additional role-separation assumption is introduced by this act"" (E2b §A1.2a, quoting F-LOG-0268) |
-| proposal | [H] ⚠E3b | **E3-PP:** the participant is a concept shared by E3-BC1 and E3-BC23, owned by neither alone. Within E3-BC23 it is read as norm-maker α and executor α_W; within E3-BC1 as keeper k (T3 r1.7 §1a participant row: "spanning CB23 (norm-maker α, executor α_W) and CB1 (keeper k)"). These are readings of one actor set, **not roles**: no role concept is introduced (VP4 open; ARB §E3: VP4 "stated as unsupported unless decided under E2"). **[r1, m6]** The α / α_W / k readings carry the B14 caveat: they introduce no role, and they do not decide VP4 by implication ("VP12 (ii) risks deciding VP4 by implication", E3-PREREQ §6 item 12). **No shared-kernel pattern (or any other context-map pattern) is proposed for E3-PP** (§2.3 [O]) |
+| proposal | [H] ⚠E3b | **E3-PP:** the participant is a concept shared by E3-M1 and E3-M23, held by neither [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1 and E3-BC23, owned by neither"] alone. Within E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "Within E3-BC23"] it is read as norm-maker α and executor α_W; within E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "within E3-BC1"] as keeper k (T3 r1.7 §1a participant row: "spanning CB23 (norm-maker α, executor α_W) and CB1 (keeper k)"). These are readings of one actor set, **not roles**: no role concept is introduced (VP4 open; ARB §E3: VP4 "stated as unsupported unless decided under E2"). **[r1, m6]** The α / α_W / k readings carry the B14 caveat: they introduce no role, and they do not decide VP4 by implication ("VP12 (ii) risks deciding VP4 by implication", E3-PREREQ §6 item 12). **No shared-kernel pattern (or any other context-map pattern) is proposed for E3-PP** (§2.3 [O]) |
 | how it counts | [A] | "The Human ARB selects no spanning-participant counting rule at this stage" (F-LOG-0271). Results under S, S′ and S″ are in §8 |
 | S″ | [A] / [E] | S″ is a counting reading only (B14 [E]); it introduces no keeper, norm-maker or executor role and decides no VP4 |
 | identity | [D] | the participant's identity is unobserved (T3 r1.5 §2 participant row: "[C] identity unobserved"; R22: actor identifiers "**unobserved**") |
-| ownership | [O] | which context, if any, would be responsible for actor identity is not supported by the sources. VP12 (i) says "spanning", and no source assigns ownership of a spanning concept |
+| ownership | [O] | which module, if any [relabelled by Act 1, F-LOG-0295; r1.1: "which context, if any"], would be responsible for actor identity is not supported by the sources. VP12 (i) says "spanning", and no source assigns ownership of a spanning concept |
 
 ### 2.5 Per-reading host differences, and the H-D asymmetry under S ⚠E3b
 
 | point | S | S′ | S″ (counting only) | class |
 |---|---|---|---|---|
-| T-A rows that move | R5, R6, R10, R19 shared; R8 shared | R5, R6, R10, R19 in E3-BC23; R8 in E3-BC1 | as S′ | [D] from E2b §A1.3 |
+| T-A rows that move | R5, R6, R10, R19 shared; R8 shared | R5, R6, R10, R19 in E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"]; R8 in E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] | as S′ | [D] from E2b §A1.3 |
 | inactive T-B slots that move (not structure; §6) | R25, R38 cross | R25, R38 internal to CB23 | as S′ | [D] from E2b §A1.4 |
 | H-D asymmetry at 𝐑₀ | "**H-D-asymmetric**: change clauses asymmetric (D-chg crosses, B-chg does not); record clauses symmetric" | "**symmetric**" | as S′ | [A] that T3 r1.7 §1a (d) records this [E]; carried by E2b §A1.9a |
 | under R-i / R-i′ | asymmetric in change and record clauses | asymmetric in the record clauses only (as F-LOG-0265) | as S′ | [A] as above |
 | F-LOG-0265 premise "neutral under 𝐑₀" | does not hold (T3 r1.7 [E]) | holds (T3 r1.7 [E]) | holds (T3 r1.7 [E]) | [A] E2b Act I (4): "T3 r1.7 records [E] that it holds under S′ and S″ and not under S" |
 | cost of the reading | the 𝐑₀ change-clause asymmetry; four T-A frame-typing rows cross | "S′ is in tension with "spanning CB23 and CB1"" (E2b §A1.9a) | S″ "may conflict with" F-LOG-0268's "No additional role-separation assumption is introduced by this act" (E2b §A1.9a) | [A] |
 
-**Status of the asymmetry** ([A], F-LOG-0271, verbatim): "The H-D asymmetry associated with P-c remains documented, unresolved, and unaccepted." **This proposal documents it and does not accept it.** It is not used to choose, rank or shape any context. F-LOG-0265's premise is not withdrawn (B3).
+**Status of the asymmetry** ([A], F-LOG-0271, verbatim): "The H-D asymmetry associated with P-c remains documented, unresolved, and unaccepted." **This proposal documents it and does not accept it.** It is not used to choose, rank or shape any module [relabelled by Act 1, F-LOG-0295; r1.1: "any context"]. F-LOG-0265's premise is not withdrawn (B3).
 
 [A] Tier scope (E2b §A1.9a): among the constraint tiers, the asymmetry lies only in the inactive T-B slots R25 (𝐑₀) and R38 (R-j), "these are the VP1a options whose neutrality the cut is meant to preserve". Neither slot is used in any structure here (§6).
 
@@ -131,16 +154,16 @@ Check [D]: 6 + 12 + 3 + 4 = 25 baseline elements placed; CB1 and CB23 are the co
 
 ### 3.2 Per-grouping table
 
-"Inside" = T-A rows the T3 §1b "T-A carried" column lists for the grouping and that cross no grouping ([D]: a filter applied to T3 §1b text, T3 [E], not adopted; the T2 ids themselves are in the adopted T3 r1.5 §2 rows). "Labelled crossing" = among the ten rows of F-LOG-0269 ([A]), with the groupings that T3 §1b names ([A] that T3 states them; T3 [E], not adopted). "Unlabelled guard crossing" = guard rows that cross groupings, question returned (C-γ). Context placement is by membership (§2.2) and is the same under every reading, except where noted. **[r1, m2]** R11 is listed only in the "unlabelled / open" column, never as "inside".
+"Inside" = T-A rows the T3 §1b "T-A carried" column lists for the grouping and that cross no grouping ([D]: a filter applied to T3 §1b text, T3 [E], not adopted; the T2 ids themselves are in the adopted T3 r1.5 §2 rows). "Labelled crossing" = among the ten rows of F-LOG-0269 ([A]), with the groupings that T3 §1b names ([A] that T3 states them; T3 [E], not adopted). "Unlabelled guard crossing" = guard rows that cross groupings, question returned (C-γ). Module placement [relabelled by Act 1, F-LOG-0295; r1.1: "Context placement"] is by membership (§2.2) and is the same under every reading, except where noted. **[r1, m2]** R11 is listed only in the "unlabelled / open" column, never as "inside".
 
-| id | provisional name | members (T1) | inside (T-A) | labelled crossing (interim) | unlabelled guard crossing (C-γ returned) | context (membership; same under S, S′, S″ unless noted) | class |
+| id | provisional name | members (T1) | inside (T-A) | labelled crossing (interim) | unlabelled guard crossing (C-γ returned) | module (membership [relabelled by Act 1, F-LOG-0295; r1.1: "context (membership"]; same under S, S′, S″ unless noted) | class |
 |---|---|---|---|---|---|---|---|
-| **E3-AG1** | participant-with-capability cluster (provisional name, not canonical) | C1, C2 | R10 | R5 (CG3, CG1, CG2), R6 (CG5, CG2, CG1), R8 (CG4, CG1), R19 (CG1, CG3), R22 (CG4, CG1) | none named | **straddles** E3-BC1 / E3-BC23 through C1 ⚠E3b ([D], §2.2). Counting: §3.3 | members: [A] (T3 r1.5 §2 T1 ids, adopted trace). Inside: [D]. Labelled rows: [A] F-LOG-0269; groupings they cross: [A] that T3 §1b states them (T3 [E], not adopted). Context: [D] ⚠E3b. Aggregate reading: [H] |
-| **E3-AG2** | governed-target-with-norm-state cluster (provisional name, not canonical) | C3, C5, C6, C7 | R20 | R1 (CG2, CG3), R5, R6, R18 (CG2, CG5) | R17 (CG2, CG3, CG5) [D]; R21 (CG2, CG3, CG4): post-pin T3 [E] context; **R11 (CG2, CG3): open**, post-pin T3 [E] context | E3-BC23 ⚠E3b | as above |
-| **E3-AG3** | issue-act-with-adoptions cluster (provisional name, not canonical) | C8, C9, C10, C11, C12 | R4 | R1, R2 (CG3, CG4), R3 (CG3, CG4), R5, R9 (CG4 into CG3, CG5), R19 | R14 (CG3, CG4) [D]; R15 (CG3, CG4, CG5, CG6) [D]; R16 (CG3, CG4, CG5) [D]; R17 [D]; R21: post-pin T3 [E] context; R11 open | E3-BC23 ⚠E3b | as above |
-| **E3-AG4** | record cluster (provisional name, not canonical) | C13–C18 | R7 | R2, R3, R8, R9, R22 | R14, R15, R16 [D]; R21: post-pin T3 [E] context | E3-BC1 ⚠E3b | as above |
-| **E3-AG5** | work-event cluster (provisional name, not canonical) | C19, C20 | none | R6, R9, R18 | R15, R16, R17 [D] | E3-BC23 ⚠E3b | as above |
-| **E3-AG6** | execution-trace cluster (provisional name, not canonical) | C24 | none | none | R15 [D] | E3-BC1 ⚠E3b | as above |
+| **E3-AG1** | participant-with-capability cluster (provisional name, not canonical) | C1, C2 | R10 | R5 (CG3, CG1, CG2), R6 (CG5, CG2, CG1), R8 (CG4, CG1), R19 (CG1, CG3), R22 (CG4, CG1) | none named | **straddles** E3-M1 / E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1 / E3-BC23"] through C1 ⚠E3b ([D], §2.2). Counting: §3.3 | members: [A] (T3 r1.5 §2 T1 ids, adopted trace). Inside: [D]. Labelled rows: [A] F-LOG-0269; groupings they cross: [A] that T3 §1b states them (T3 [E], not adopted). Module: [relabelled by Act 1, F-LOG-0295; r1.1: "Context:"] [D] ⚠E3b. Aggregate reading: [H] |
+| **E3-AG2** | governed-target-with-norm-state cluster (provisional name, not canonical) | C3, C5, C6, C7 | R20 | R1 (CG2, CG3), R5, R6, R18 (CG2, CG5) | R17 (CG2, CG3, CG5) [D]; R21 (CG2, CG3, CG4): post-pin T3 [E] context; **R11 (CG2, CG3): open**, post-pin T3 [E] context | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b | as above |
+| **E3-AG3** | issue-act-with-adoptions cluster (provisional name, not canonical) | C8, C9, C10, C11, C12 | R4 | R1, R2 (CG3, CG4), R3 (CG3, CG4), R5, R9 (CG4 into CG3, CG5), R19 | R14 (CG3, CG4) [D]; R15 (CG3, CG4, CG5, CG6) [D]; R16 (CG3, CG4, CG5) [D]; R17 [D]; R21: post-pin T3 [E] context; R11 open | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b | as above |
+| **E3-AG4** | record cluster (provisional name, not canonical) | C13–C18 | R7 | R2, R3, R8, R9, R22 | R14, R15, R16 [D]; R21: post-pin T3 [E] context | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b | as above |
+| **E3-AG5** | work-event cluster (provisional name, not canonical) | C19, C20 | none | R6, R9, R18 | R15, R16, R17 [D] | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b | as above |
+| **E3-AG6** | execution-trace cluster (provisional name, not canonical) | C24 | none | none | R15 [D] | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b | as above |
 
 **Note on the guard-row groupings.** [A] that T3 r1.8 states the groupings for R21 (§1b: "c in CG4 / CV-text against σ in CG2 and f in CG3") and for R11 (§6 item 1: "σ in CG2 against acts E in CG3"). Both are **post-pin T3 [E] context** (the R21 entry was added to §1b under F-LOG-0273, after the r1.5 / r1.7 pins), not trace. [D] For R14–R17 T3 gives no grouping list. The cells are derived by placing each coordinate the T2 r1.4 statement names at its T1 concept's grouping (T3 r1.5 §2 T1 ids): f → C12, d → C11 (CG3); r → C14, Ref → C17, records → C13 (CG4); t(w) → C20, work events → C19 (CG5); norm value → C6 (CG2); acts → C8, C9 (CG3). **[r1, m3] Method exception for R15 → CG6:** R15's statement names no CG6 coordinate. The CG6 entry comes instead from the T3 r1.5 §2 CG6 row (and T3 §1b CG6 row), which lists R15 as CG6's only T-A row ("R15 (T-A, guard)"; §1b: "R15 (recording order is not decision order or start time; guard)"), and from T2 R15's "rests on" column, which includes C24. It is therefore not derived by the coordinate method above.
 
@@ -174,18 +197,18 @@ The cells below extend rule 2a, which is defined for T2 statements, to a groupin
 
 ### 4.1 Q4: CV1–CV9 and CV-text
 
-| id | adopted element (T3 §1c label, quoted) | [H] proposed reading | what the sources support ([A] / [D]) | open ([O]) | context (membership) |
+| id | adopted element (T3 §1c label, quoted) | [H] proposed reading | what the sources support ([A] / [D]) | open ([O]) | module (membership) [relabelled by Act 1, F-LOG-0295; r1.1: "context (membership)"] |
 |---|---|---|---|---|---|
-| E3-VO1 | CV1 "deontic value with a permitting subset" | value-object candidate | [A] typing only (R5, R18); "**P ≠ V is a parameter** (A6), VP13" | VP13 unset; equality semantics | E3-BC23 ⚠E3b |
-| E3-VO2 | CV2 "norm as target ↦ value" | value-object candidate | [A] R1, R5; OQ3 (richer content is an extension; VP7 unsupported) | content beyond target ↦ value (VP7) | E3-BC23 ⚠E3b |
+| E3-VO1 | CV1 "deontic value with a permitting subset" | value-object candidate | [A] typing only (R5, R18); "**P ≠ V is a parameter** (A6), VP13" | VP13 unset; equality semantics | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-VO2 | CV2 "norm as target ↦ value" | value-object candidate | [A] R1, R5; OQ3 (richer content is an extension; VP7 unsupported) | content beyond target ↦ value (VP7) | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
 | E3-VO3 | CV3 "three governance times kept distinct (r, d, f), work start outside them" | [H] **weak**: a grouping of distinct time attributes, not one value | [A] carried rows R3, R14, R15. R14 (no equation) and R15 (no order) are guard / non-constraint rows; R3 is a constraint that holds only under constitution, whose antecedent con is unobserved; [A] it straddles the cut (E2b §A1.2) | whether a set of two guard rows and one conditional constraint can be a value object | straddles ⚠E3b |
-| E3-VO4 | CV4 "report-vs-constitution mode of a record–act pair, **unknown-capable** (reports / is / undetermined)" | value-object candidate with a mandatory "undetermined" value | [A] R2, R9, R24; "mode is not fixable from O" (R24); R39 is an inactive slot (VP2) | VP2 undecided; whether "undetermined" is a value or an absence | E3-BC1 ⚠E3b |
-| E3-VO5 | CV5 "prepared / adopted status (derived)" | derived value candidate | [A] R19 "Adoption status is derived (definitional)"; R27, R28 inactive (VP1b) | what status implies for force (VP1b, inactive) | E3-BC23 ⚠E3b |
-| E3-VO6 | CV6 "conformance / violation (derived)" | derived value candidate | [A] R18 "Violation (definitional)"; R32–R34 inactive (VP1c) | VP1c; VP13 | E3-BC23 ⚠E3b |
-| E3-VO7 | CV7 "not-evidenced-in-capture marker (absence ≠ non-occurrence)" | marker candidate | [A] R16 guard (no completeness); X18 excluded; R83 inactive with its condition | whether a marker of absence is a value | E3-BC1 ⚠E3b |
+| E3-VO4 | CV4 "report-vs-constitution mode of a record–act pair, **unknown-capable** (reports / is / undetermined)" | value-object candidate with a mandatory "undetermined" value | [A] R2, R9, R24; "mode is not fixable from O" (R24); R39 is an inactive slot (VP2) | VP2 undecided; whether "undetermined" is a value or an absence | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b |
+| E3-VO5 | CV5 "prepared / adopted status (derived)" | derived value candidate | [A] R19 "Adoption status is derived (definitional)"; R27, R28 inactive (VP1b) | what status implies for force (VP1b, inactive) | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-VO6 | CV6 "conformance / violation (derived)" | derived value candidate | [A] R18 "Violation (definitional)"; R32–R34 inactive (VP1c) | VP1c; VP13 | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-VO7 | CV7 "not-evidenced-in-capture marker (absence ≠ non-occurrence)" | marker candidate | [A] R16 guard (no completeness); X18 excluded; R83 inactive with its condition | whether a marker of absence is a value | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b |
 | E3-VO8 | CV8 "record independence for a target (predicate)" | [H] predicate, not a stored value | [A] no T-A row; "[C] NOT_DETERMINABLE" (T3 r1.5 §2); R62 excluded | any value-object reading | none ⚠E3b ([A] E2b §A1.2: ungrouped; on no side under P-c) |
 | E3-VO9 | CV9 "limitation kind: structural non-identifiability vs instrument unreliability" | **no mapping proposed** | [A] "meta-level, not a record attribute" (T3 §1c) | **CV9 / §3b tension, unresolved** (§10): "CV9's adoption may already engage the T3 §3b row "epistemic-status / evidential-limitation information in the model", which E2b §2d lists as excluded" (E3-PREREQ r4.1 §6 item 1, as quoted in package r1.1 §4) | none ⚠E3b ([A] E2b §A1.2: ungrouped; on no side under P-c) |
-| E3-VO-text | CV-text "record text as content (incl. self-asserted force / status)" | value-object candidate (text as content) | [A] R21 "Texts are texts"; observed (c, partially); "content only, never σ, f or con" | — beyond the T3 description | E3-BC1 ⚠E3b |
+| E3-VO-text | CV-text "record text as content (incl. self-asserted force / status)" | value-object candidate (text as content) | [A] R21 "Texts are texts"; observed (c, partially); "content only, never σ, f or con" | — beyond the T3 description | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b |
 
 [A] Inactive slots on CV4 (R39), CV5 (R27, R28) and CV6 (R32–R34) stay inactive (B4); no value reading uses them.
 
@@ -193,16 +216,16 @@ The cells below extend rule 2a, which is defined for T2 statements, to a groupin
 
 [A] that T3 §1d states (T3 [E], not adopted): "**No order among them is held** beyond d = r under constitution (R3), and that antecedent is unobserved (R15; Rem 1.9a). **No occurrence is said to produce or cause another** (VP1a; X1; Rem 0.1)." [A] that T3 §3b states (T3 [E]; E2b §2d carries the §3b rows as excluded): "an order or sequence among occurrences" is an extension needing "new evidence or human design decision (N3 applies)". [A] F-LOG-0256: the theory does not establish "event order or causal relationships as empirical facts".
 
-**[H] Proposal:** each CE is a candidate domain event **only in the sense of a dated happening** of the adopted model. **[O] No ordering, causation, production, publication, subscription or handling is proposed or supported.** No event flows between contexts are proposed.
+**[H] Proposal:** each CE is a candidate domain event **only in the sense of a dated happening** of the adopted model. **[O] No ordering, causation, production, publication, subscription or handling is proposed or supported.** No event flows between modules [relabelled by Act 1, F-LOG-0295; r1.1: "between contexts"] are proposed.
 
-| id | adopted element (T3 §1d label) | carried T-A row(s) and their cut status (S / S′, S″) | observability ([A] that T3 §1d states it; T3 [E]) | open ([O]) | context (membership) |
+| id | adopted element (T3 §1d label) | carried T-A row(s) and their cut status (S / S′, S″) | observability ([A] that T3 §1d states it; T3 [E]) | open ([O]) | module (membership) [relabelled by Act 1, F-LOG-0295; r1.1: "context (membership)"] |
 |---|---|---|---|---|---|
-| E3-EV1 | CE1 "issue occurrence (at decision time d)" | R5: crosses / internal CB23 [D] ⚠E3b | unobs | VP3 act identifiability (evidence gap); VP8 act kinds (unsupported) | E3-BC23 ⚠E3b |
-| E3-EV2 | CE2 "adoption occurrence (at d; object is an issue act)" | R4: internal CB23; R19: crosses / internal CB23 [D] ⚠E3b | unobs | VP3 | E3-BC23 ⚠E3b |
-| E3-EV3 | CE3 "entry into force (time f, or never)" | R1 internal CB23; R14 crosses (all readings) [D] ⚠E3b | unobs | — | E3-BC23 ⚠E3b |
-| E3-EV4 | CE4 "norm-state change point" | R20 internal CB23 [D] ⚠E3b. [A] "**Chg-constraint slot empty**" (VP1a, inactive) | unobs | VP1a (inactive; never decided here) | E3-BC23 ⚠E3b |
-| E3-EV5 | CE5 "work start" | R6: crosses / internal CB23 [D] ⚠E3b | unobs | VP16 link to CG6 (evidence gap) | E3-BC23 ⚠E3b |
-| E3-EV6 | CE6 "recording" | R7 internal CB1 (all readings) [D] ⚠E3b | "**obs** (r, partially; A07)" | — | E3-BC1 ⚠E3b |
+| E3-EV1 | CE1 "issue occurrence (at decision time d)" | R5: crosses / internal CB23 [D] ⚠E3b | unobs | VP3 act identifiability (evidence gap); VP8 act kinds (unsupported) | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-EV2 | CE2 "adoption occurrence (at d; object is an issue act)" | R4: internal CB23; R19: crosses / internal CB23 [D] ⚠E3b | unobs | VP3 | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-EV3 | CE3 "entry into force (time f, or never)" | R1 internal CB23; R14 crosses (all readings) [D] ⚠E3b | unobs | — | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-EV4 | CE4 "norm-state change point" | R20 internal CB23 [D] ⚠E3b. [A] "**Chg-constraint slot empty**" (VP1a, inactive) | unobs | VP1a (inactive; never decided here) | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-EV5 | CE5 "work start" | R6: crosses / internal CB23 [D] ⚠E3b | unobs | VP16 link to CG6 (evidence gap) | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] ⚠E3b |
+| E3-EV6 | CE6 "recording" | R7 internal CB1 (all readings) [D] ⚠E3b | "**obs** (r, partially; A07)" | — | E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] ⚠E3b |
 
 [D] From what T3 §1d states (T3 [E]): only E3-EV6 is over an observed coordinate. Every other event candidate is over unobserved coordinates, so no source can show that it occurred (R23).
 
@@ -210,8 +233,8 @@ The cells below extend rule 2a, which is defined for T2 statements, to a groupin
 
 | id | what the sources support | proposal | class |
 |---|---|---|---|
-| E3-CS1 | [A] that T3 §1e states (T3 [E], not adopted): CS1 is a "norm-state attestation channel (**unrealized slot**; no instrument shown; E-A5 / Protocol C not authorized)", with constraints "T-D (meta) only: R66 … R82". [A] ungrouped, on no side under P-c (E2b §A1.2) | **No DDD mapping.** E3-CS1 records only that CS1 is in no context ⚠E3b and no aggregate | [A] as stated; "no context" ⚠E3b (§2.2); [O] any mapping: not supported, and E-A5 is not authorized |
-| E3-MW1 | [A] T1 ids "all C-rows" (adopted T3 r1.5 §2 row). [A] that T3 states (T3 [E], not adopted): MW1 is "model-wide: checkability boundary and clause implications" (§1e); "R23 is the observability criterion" (§1e); "MW1 implications R12, R13 attach to no single element" (§6 item 7; T3 [E], not adopted (pre-pin §6 text)) | **No DDD mapping as a context or aggregate.** [H] E3-MW1 is carried as a model-wide constraint set that every context and aggregate candidate is subject to: R23 bounds what any of them could check. R12 and R13 are implications whose antecedents "are **not asserted**" (T3 §1e, T3 [E]) | **[r1, M3] [E] ⚠E3b** that MW1 is in no context (supplementary rule, §2.2; §10.2); [H] the "applies to all" reading; [O] any further mapping |
+| E3-CS1 | [A] that T3 §1e states (T3 [E], not adopted): CS1 is a "norm-state attestation channel (**unrealized slot**; no instrument shown; E-A5 / Protocol C not authorized)", with constraints "T-D (meta) only: R66 … R82". [A] ungrouped, on no side under P-c (E2b §A1.2) | **No DDD mapping.** E3-CS1 records only that CS1 is in no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"] ⚠E3b and no aggregate | [A] as stated; "no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]" ⚠E3b (§2.2); [O] any mapping: not supported, and E-A5 is not authorized |
+| E3-MW1 | [A] T1 ids "all C-rows" (adopted T3 r1.5 §2 row). [A] that T3 states (T3 [E], not adopted): MW1 is "model-wide: checkability boundary and clause implications" (§1e); "R23 is the observability criterion" (§1e); "MW1 implications R12, R13 attach to no single element" (§6 item 7; T3 [E], not adopted (pre-pin §6 text)) | **No DDD mapping as a module or aggregate [relabelled by Act 1, F-LOG-0295; r1.1: "as a context or aggregate"].** [H] E3-MW1 is carried as a model-wide constraint set that every module and aggregate [relabelled by Act 1, F-LOG-0295; r1.1: "every context and aggregate"] candidate is subject to: R23 bounds what any of them could check. R12 and R13 are implications whose antecedents "are **not asserted**" (T3 §1e, T3 [E]) | **[r1, M3] [E] ⚠E3b** that MW1 is in no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"] (supplementary rule, §2.2; §10.2); [H] the "applies to all" reading; [O] any further mapping |
 
 ---
 
@@ -221,7 +244,7 @@ The cells below extend rule 2a, which is defined for T2 statements, to a groupin
 
 **[H] Proposal E3-XG:** the ten rows are carried as **conceptual cross-grouping constraints** between the aggregate candidates. They are not enforced by any aggregate, not checked from records, and carry no transaction semantics.
 
-| row | T2 r1.4 working label (quoted, short) | groupings crossed ([A] that T3 §1b states; T3 [E]) | crosses the context cut? S | S′ | S″ | checkable from records ([A] that T2 r1.4 states; T2 candidate) |
+| row | T2 r1.4 working label (quoted, short) | groupings crossed ([A] that T3 §1b states; T3 [E]) | crosses the module cut [relabelled by Act 1, F-LOG-0295; r1.1: "context cut"]? S | S′ | S″ | checkable from records ([A] that T2 r1.4 states; T2 candidate) |
 |---|---|---|---|---|---|---|
 | R1 | "F1 (entry into force)" | CG2 ↔ CG3 | no, internal CB23 | no | no | "Not checkable or enforceable from records" |
 | R2 | "F2, reference part" | CG3 ↔ CG4 | **yes** | **yes** | **yes** | "Not checkable" |
@@ -236,7 +259,7 @@ The cells below extend rule 2a, which is defined for T2 statements, to a groupin
 
 Class: row ids [A] (F-LOG-0269); groupings crossed: [A] that T3 §1b states them (T3 [E], not adopted); cut status [D] ⚠E3b from E2b §A1.3; checkability: [A] that T2 r1.4 states it (T2 candidate, not adopted).
 
-**Counts [D] ⚠E3b:** of the ten rows, 8 also cross the context cut under S (all but R1, R18); 4 under S′ and S″ (R2, R3, R9, R22). R8 is internal to E3-BC1 under S′ / S″ although it crosses CG4 ↔ CG1.
+**Counts [D] ⚠E3b:** of the ten rows, 8 also cross the module cut [relabelled by Act 1, F-LOG-0295; r1.1: "context cut"] under S (all but R1, R18); 4 under S′ and S″ (R2, R3, R9, R22). R8 is internal to E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] under S′ / S″ although it crosses CG4 ↔ CG1.
 
 **Not labelled, carried open:**
 - [A] Guard rows that cross groupings: R14, R15, R16, R17, R21. "Whether guard rows that cross groupings are cross-grouping constraints is returned for analysis" (C-γ). They are **not** members of E3-XG.
@@ -249,7 +272,7 @@ Class: row ids [A] (F-LOG-0269); groupings crossed: [A] that T3 §1b states them
 
 [A] "All T-B rows (R25–R39, R79, R80, R83) remain **inactive** policy slots; R83 keeps its condition" (F-LOG-0261). R83's condition: "the non-occurrence inference (X18, R49) is never applied to the observed capture" (F-LOG-0254).
 
-**They are listed here only as non-active extension points. No context, aggregate, value-object or event candidate above uses, contains or is shaped by any of them.** The "slot attaches to" column records where T3 lists the slot. It is not a structural placement.
+**They are listed here only as non-active extension points. No module, [relabelled by Act 1, F-LOG-0295; r1.1: "No context,"] aggregate, value-object or event candidate above uses, contains or is shaped by any of them.** The "slot attaches to" column records where T3 lists the slot. It is not a structural placement.
 
 | rows | slot attaches to (T3 r1.5 §2 / §1) | VP (undecided; inactive) | cut status S | S′ / S″ | class |
 |---|---|---|---|---|---|
@@ -278,31 +301,31 @@ Class: row ids [A] (F-LOG-0269); groupings crossed: [A] that T3 §1b states them
 
 | E3 element | E2b element(s) | T3 r1.5 §2: T2 ids (tier) | T1 ids | R4 / FROZEN R3 ids | at risk? |
 |---|---|---|---|---|---|
-| E3-AG1 (membership, inside / crossing rows) | CG1 | R10, R22 (T-A) | C1, C2 | Def 1.2, 1.4–1.6, 1.7a; Obs O5, O8, O9; Lem 1.12; G07, H19 | no. **Its context column (straddle) ⚠E3b** |
-| E3-AG2 | CG2 | R11, R20, R1 (T-A); R25, R26, R30, R31, R37, R38 (T-B slot) | C3, C5, C6, C7 | Def 1.1, 1.3, 1.10; Obs O4; Rem 0.1; Rem 9.8; A01, A10, B07, D04, F06, H14, D16 | no; context column ⚠E3b |
-| E3-AG3 | CG3 | R1, R2, R3, R4, R5, R14, R15, R19 (T-A); R27, R28 (T-B slot) | C8–C12 | Def 1.4, 1.8, 1.9, 1.10; Obs O2, O3; Lem 3.7; A05–A08, B11, F07, F08, F17, G05, H04, H12 | no; context column ⚠E3b |
-| E3-AG4 | CG4 | R2, R3, R7, R8, R9, R21, R22 (T-A); R39 (T-B slot) | C13–C18 | Def 1.6, 1.8, 1.11; Rem 1.11a; Obs O1, O6, O7; A02, A03, A05–A07, F02, F13, F14, F17, G01, B11 | no; context column ⚠E3b |
-| E3-AG5 | CG5 | R6, R15, R18 (T-A) | C19, C20 | Def 1.5, 1.9; Obs O8; B06, A03, G05 | no; context column ⚠E3b |
-| E3-AG6 | CG6 | R15 (T-A, guard) | C24 | Obs O8; B06, A11, A15, G03 | no; context column ⚠E3b |
+| E3-AG1 (membership, inside / crossing rows) | CG1 | R10, R22 (T-A) | C1, C2 | Def 1.2, 1.4–1.6, 1.7a; Obs O5, O8, O9; Lem 1.12; G07, H19 | no. **Its module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] (straddle) ⚠E3b** |
+| E3-AG2 | CG2 | R11, R20, R1 (T-A); R25, R26, R30, R31, R37, R38 (T-B slot) | C3, C5, C6, C7 | Def 1.1, 1.3, 1.10; Obs O4; Rem 0.1; Rem 9.8; A01, A10, B07, D04, F06, H14, D16 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b |
+| E3-AG3 | CG3 | R1, R2, R3, R4, R5, R14, R15, R19 (T-A); R27, R28 (T-B slot) | C8–C12 | Def 1.4, 1.8, 1.9, 1.10; Obs O2, O3; Lem 3.7; A05–A08, B11, F07, F08, F17, G05, H04, H12 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b |
+| E3-AG4 | CG4 | R2, R3, R7, R8, R9, R21, R22 (T-A); R39 (T-B slot) | C13–C18 | Def 1.6, 1.8, 1.11; Rem 1.11a; Obs O1, O6, O7; A02, A03, A05–A07, F02, F13, F14, F17, G01, B11 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b |
+| E3-AG5 | CG5 | R6, R15, R18 (T-A) | C19, C20 | Def 1.5, 1.9; Obs O8; B06, A03, G05 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b |
+| E3-AG6 | CG6 | R15 (T-A, guard) | C24 | Obs O8; B06, A11, A15, G03 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b |
 | E3-XG | CG1–CG5 (the groupings the ten rows cross) | R1, R2, R3, R5, R6, R8, R9, R18, R19, R22 (T-A), as in the CG rows above | as the CG rows | as the CG rows | no. **Its cut-status column ⚠E3b** |
-| E3-VO1 … E3-VO9, E3-VO-text | CV1 … CV9, CV-text | per T3 r1.5 §2 (O3 r1.2 §2a, verbatim) | C4; C5; C22 (C11, C12, C14, C20); C18, C27; C10; C21; C23; C25; C28; C15 | per T3 r1.5 §2 | no; context column ⚠E3b (including the "no context" claims for E3-VO8 and E3-VO9) |
-| E3-EV1 … E3-EV6 | CE1 … CE6 | R5; R4, R19; R1, R14; R20; R6; R7 (T-A), plus the T-B slots of T3 r1.5 §2 | C8, C11; C9, C11; C12; C7; C19, C20; C13, C14 | per T3 r1.5 §2 | no; context and cut columns ⚠E3b |
-| E3-CS1 | CS1 | R66–R69, R82 (T-D meta) | C26 | Def 4.4; Props 4.5, 4.6; Rem 4.5b, 4.6a; Lem 4.7; Cor 4.3; F01–F03 | no; **its "no context" claim ⚠E3b** |
-| E3-MW1 | MW1 | R23, R12, R13 (T-A meta / implications) | all C-rows | Lem 1.12; Lem 3.3, 3.5, 3.6; Prop 3.4; Def 3.2; G06, H07 | no; **its "no context" claim ⚠E3b** ([E] rule, §2.2) |
-| E3-PP (identity, typing rows) | participant | R5, R6, R8 (typing of α, α_W, k), R22 (actor ids) (T-A) | C1 | Def 1.2, 1.4–1.6, 1.7a; Obs O8, O9; Lem 1.12; A05, A06 (role names in texts only) | **placement "spans E3-BC1 and E3-BC23" ⚠E3b** |
+| E3-VO1 … E3-VO9, E3-VO-text | CV1 … CV9, CV-text | per T3 r1.5 §2 (O3 r1.2 §2a, verbatim) | C4; C5; C22 (C11, C12, C14, C20); C18, C27; C10; C21; C23; C25; C28; C15 | per T3 r1.5 §2 | no; module column [relabelled by Act 1, F-LOG-0295; r1.1: "context column"] ⚠E3b (including the "no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]" claims for E3-VO8 and E3-VO9) |
+| E3-EV1 … E3-EV6 | CE1 … CE6 | R5; R4, R19; R1, R14; R20; R6; R7 (T-A), plus the T-B slots of T3 r1.5 §2 | C8, C11; C9, C11; C12; C7; C19, C20; C13, C14 | per T3 r1.5 §2 | no; module and cut columns [relabelled by Act 1, F-LOG-0295; r1.1: "context and cut columns"] ⚠E3b |
+| E3-CS1 | CS1 | R66–R69, R82 (T-D meta) | C26 | Def 4.4; Props 4.5, 4.6; Rem 4.5b, 4.6a; Lem 4.7; Cor 4.3; F01–F03 | no; **its "no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]" claim ⚠E3b** |
+| E3-MW1 | MW1 | R23, R12, R13 (T-A meta / implications) | all C-rows | Lem 1.12; Lem 3.3, 3.5, 3.6; Prop 3.4; Def 3.2; G06, H07 | no; **its "no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]" claim ⚠E3b** ([E] rule, §2.2) |
+| E3-PP (identity, typing rows) | participant | R5, R6, R8 (typing of α, α_W, k), R22 (actor ids) (T-A) | C1 | Def 1.2, 1.4–1.6, 1.7a; Obs O8, O9; Lem 1.12; A05, A06 (role names in texts only) | **placement "spans both modules (E3-M1 and E3-M23) [relabelled by Act 1, F-LOG-0295; r1.1: "spans E3-BC1 and E3-BC23"]" ⚠E3b** |
 
 ### 7.2 Elements derived from CB1 / CB23 (all ⚠E3b): readings (a) and (b) of A2
 
 | E3 element | E2b element | **reading (a): restricted trace** (T3 r1.7 §2; T1 ids and R4 / R3 ids not keyed to hosting; F-LOG-0275 Act I (1)) | **reading (b): what is missing** (cells not adopted; would need (d′) **and** an E2b amendment, two separate acts, not authorized) |
 |---|---|---|---|
-| **E3-BC1** ⚠E3b | CB1 | T1: C13–C18, C23, C24, C27. R4 / R3: "Def 1.6, 1.8, 1.11; Rem 1.11a; Obs O1, O6, O7, O9; Lem 1.12; Lem 5.2; Cor 5.3; A02, A03, A05–A07, A11, A15, B06, B09 (caveat), B11, F02, F11, F13, F14, F17, G01, G03, G04, H11 (as r1.5)". **T2 link: none adopted.** Hosts only from the E2b §A1.3 / §A1.4 per-reading report ("a report of T3 [E], not ratified"). **Exception under (a):** the S-reading results for R5, R6, R10, R19, R25 and R38 stay exposed: "the CB1 cell carries no R4 ids for R5, R6, R10, R19, R25 and R38, although these rows cross under S" (E2b §A1.2 G6) | the §2 "T2 ids" cell; the evidence-class, inherited-assumptions, reading-sensitivity and open-questions cells; the hosting-keyed clause "for the shared guards R14, R15: Def 1.9; G05, H04, H12 (as CB23)"; the R4 ids for R5, R6, R10, R19, R25 and R38 under S. The existing r1.7 cells are stale (they "encode the superseded r1.6 placement (C1 on CB23)", E2b §A1.2). The amendment would have to adopt the reading-dependent cells per reading, selecting none (O3 r1.2 §6 A2 (b)) |
-| **E3-BC23** ⚠E3b | CB23 | T1: C2–C12, C19, C20, C21. R4 / R3: "Def 1.1–1.5, 1.8–1.10; Rem 0.1; Rem 1.9a; Rem 3.1a; Rem 4.10; Obs O2–O5, O8; Lem 3.7; Rem 9.7, 9.8; A01, A03, A05–A08, A10, B06, B07, D04, E01 (recorded bearing), F06–F08, F17, G05, G07, H04, H10, H12, H14, H19 (union of r1.5 CB2 and CB3)". T2 link: as E3-BC1. Exception under (a): as E3-BC1 for the S-reading rows | as E3-BC1, with the hosting-keyed clause "for the shared rows R8, R9, R16, R21, R22, as CB1" (reading-dependent: R8 is internal to CB1 under S′ / S″) |
-| **E3-REL** ⚠E3b (§2.3, rebuilt in r1, M1) | CB1, CB23 | T1 and R4 / R3 as the two rows above. **Its content (the shared T-A rows) has no T2 link in the restricted trace;** it comes only from the E2b §A1.3 per-reading report, adopted into E2b's text as "a report of T3 [E], not ratified". **[O] Whether that report counts as part of "their §2 rows" under (a) is not supported by any source. E3-REL is therefore not claimed as meeting the criterion under (a).** (The T3 relations table is no longer used: E2b §A1.2 does not adopt it.) | **not met:** the T2 ids and reading-sensitivity cells, per reading, plus the cells listed for E3-BC1 / E3-BC23 |
-| **E3-PP placement** ⚠E3b (§2.4) | participant + CB1 + CB23 | participant: full T3 r1.5 §2 row (§7.1). "Spans": E2b §A1.2a ([A]). CB side: as above | **not met:** as E3-BC1 / E3-BC23 |
-| **context columns** of every §7.1 element ⚠E3b | CB1, CB23 + the element | membership: T1 ids of the element (T3 r1.5 §2) against CB1 / CB23 T1 ids. Under (a) the restricted trace counts as "their §2 rows", so the context columns **meet** the criterion under (a) | **[r1, M2] not met.** The CB1 / CB23 T1 ids are adopted by Act I (1) whatever A2 says, but adoption is not the criterion. Under (b) the criterion needs the whole CB1 / CB23 §2 rows, whose other cells are not adopted. Every context column therefore stays unmet under (b) until (d′) and the E2b amendment are made |
+| **E3-M1** [relabelled by Act 1, F-LOG-0295; r1.1: "**E3-BC1**"] ⚠E3b | CB1 | T1: C13–C18, C23, C24, C27. R4 / R3: "Def 1.6, 1.8, 1.11; Rem 1.11a; Obs O1, O6, O7, O9; Lem 1.12; Lem 5.2; Cor 5.3; A02, A03, A05–A07, A11, A15, B06, B09 (caveat), B11, F02, F11, F13, F14, F17, G01, G03, G04, H11 (as r1.5)". **T2 link: none adopted.** Hosts only from the E2b §A1.3 / §A1.4 per-reading report ("a report of T3 [E], not ratified"). **Exception under (a):** the S-reading results for R5, R6, R10, R19, R25 and R38 stay exposed: "the CB1 cell carries no R4 ids for R5, R6, R10, R19, R25 and R38, although these rows cross under S" (E2b §A1.2 G6) | the §2 "T2 ids" cell; the evidence-class, inherited-assumptions, reading-sensitivity and open-questions cells; the hosting-keyed clause "for the shared guards R14, R15: Def 1.9; G05, H04, H12 (as CB23)"; the R4 ids for R5, R6, R10, R19, R25 and R38 under S. The existing r1.7 cells are stale (they "encode the superseded r1.6 placement (C1 on CB23)", E2b §A1.2). The amendment would have to adopt the reading-dependent cells per reading, selecting none (O3 r1.2 §6 A2 (b)) |
+| **E3-M23** [relabelled by Act 1, F-LOG-0295; r1.1: "**E3-BC23**"] ⚠E3b | CB23 | T1: C2–C12, C19, C20, C21. R4 / R3: "Def 1.1–1.5, 1.8–1.10; Rem 0.1; Rem 1.9a; Rem 3.1a; Rem 4.10; Obs O2–O5, O8; Lem 3.7; Rem 9.7, 9.8; A01, A03, A05–A08, A10, B06, B07, D04, E01 (recorded bearing), F06–F08, F17, G05, G07, H04, H10, H12, H14, H19 (union of r1.5 CB2 and CB3)". T2 link: as E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "as E3-BC1"]. Exception under (a): as E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "as E3-BC1"] for the S-reading rows | as E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "as E3-BC1"], with the hosting-keyed clause "for the shared rows R8, R9, R16, R21, R22, as CB1" (reading-dependent: R8 is internal to CB1 under S′ / S″) |
+| **E3-REL** ⚠E3b (§2.3, rebuilt in r1, M1) | CB1, CB23 | T1 and R4 / R3 as the two rows above. **Its content (the shared T-A rows) has no T2 link in the restricted trace;** it comes only from the E2b §A1.3 per-reading report, adopted into E2b's text as "a report of T3 [E], not ratified". **[O] Whether that report counts as part of "their §2 rows" under (a) is not supported by any source. E3-REL is therefore not claimed as meeting the criterion under (a).** (The T3 relations table is no longer used: E2b §A1.2 does not adopt it.) | **not met:** the T2 ids and reading-sensitivity cells, per reading, plus the cells listed for E3-M1 / E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1 / E3-BC23"] |
+| **E3-PP placement** ⚠E3b (§2.4) | participant + CB1 + CB23 | participant: full T3 r1.5 §2 row (§7.1). "Spans": E2b §A1.2a ([A]). CB side: as above | **not met:** as E3-M1 / E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1 / E3-BC23"] |
+| **module columns** [relabelled by Act 1, F-LOG-0295; r1.1: "**context columns**"] of every §7.1 element ⚠E3b | CB1, CB23 + the element | membership: T1 ids of the element (T3 r1.5 §2) against CB1 / CB23 T1 ids. Under (a) the restricted trace counts as "their §2 rows", so the module columns [relabelled by Act 1, F-LOG-0295; r1.1: "the context columns"] **meet** the criterion under (a) | **[r1, M2] not met.** The CB1 / CB23 T1 ids are adopted by Act I (1) whatever A2 says, but adoption is not the criterion. Under (b) the criterion needs the whole CB1 / CB23 §2 rows, whose other cells are not adopted. Every module column [relabelled by Act 1, F-LOG-0295; r1.1: "Every context column"] therefore stays unmet under (b) until (d′) and the E2b amendment are made |
 | **cut-status columns** (§2.2, §4, §5, §6) ⚠E3b | CB1, CB23 + the rows | E2b §A1.3 / §A1.4 per-reading report only (not ratified). **[O]** as for E3-REL: not claimed as meeting the criterion under (a) | **not met:** the T2 ids and reading-sensitivity cells, per reading |
 
-**A2′ (carried; [A] that O3 r1.2 §6 states (O3 proposal [E], not adopted)):** "The F-LOG-0248 chain (concept → R4 / R3 → inherited assumptions → reading sensitivity) **cannot be completed** for outputs derived from CB1 / CB23." Under reading (a) the chain for every ⚠E3b row stops after the R4 / R3 link. **[D] Under reading (a), the ARB §E3 trace criterion is met for E3-BC1, E3-BC23, the E3-PP placement and the context columns, with the S-reading exception. It is not claimed for E3-REL or the cut-status columns, whose status under (a) is [O] (they rest on the unratified E2b §A1.3 / §A1.4 report). Under reading (b), it is not met for any ⚠E3b output.**
+**A2′ (carried; [A] that O3 r1.2 §6 states (O3 proposal [E], not adopted)):** "The F-LOG-0248 chain (concept → R4 / R3 → inherited assumptions → reading sensitivity) **cannot be completed** for outputs derived from CB1 / CB23." Under reading (a) the chain for every ⚠E3b row stops after the R4 / R3 link. **[D] Under reading (a), the ARB §E3 trace criterion is met for E3-M1, E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1, E3-BC23"], the E3-PP placement and the module columns [relabelled by Act 1, F-LOG-0295; r1.1: "context columns"], with the S-reading exception. It is not claimed for E3-REL or the cut-status columns, whose status under (a) is [O] (they rest on the unratified E2b §A1.3 / §A1.4 report). Under reading (b), it is not met for any ⚠E3b output.**
 
 ---
 
@@ -313,21 +336,21 @@ Class: row ids [A] (F-LOG-0269); groupings crossed: [A] that T3 §1b states them
 [E] The proposal uses **per-reading annotations around a reading-invariant core.** It does not build any element by intersection or by union.
 - **The core** holds what is identical under S, S′ and S″: element placement by concept membership (§2.2), the six aggregate candidates and their members (§3.2), the ten labelled rows and the groupings they cross (§5), the value-object and event candidates (§4), and the inactive slots (§6). **[r1, m5]** One core statement coincides with a reading: calling the participant and CG1 "straddling" (a membership statement) matches the **S** count. Under S′ the count differs; under S″ it depends on the row choice (§3.3, §10.2 #1). Both are shown beside it (§8.2), and the membership statement selects no reading.
 - **The annotations** hold every result that differs. All three readings are shown in every such cell (§8.2).
-- **Disclosure of what the core equals [D].** The rows that cross the cut under every reading are the intersection of the crossing sets. It equals S′ / S″ (36 of 83; T-A 12). The rows internal to a context under every reading are the intersection of the internal sets. It equals S (CB1 {R7}; CB23 six T-A rows). **Read alone, the core therefore reproduces S′ / S″ on crossings and S on internal rows.** For that reason no crossing or ownership result is stated from the core alone; the five reading-dependent T-A rows (R5, R6, R8, R10, R19) are always shown with all three readings. The union of the crossing sets equals S (46; T-A 17) (O3 r1.2 §3b note: "intersection … coincides with S′ / S″ … union … coincides with S"). Neither is used.
+- **Disclosure of what the core equals [D].** The rows that cross the cut under every reading are the intersection of the crossing sets. It equals S′ / S″ (36 of 83; T-A 12). The rows internal to a module [relabelled by Act 1, F-LOG-0295; r1.1: "internal to a context"] under every reading are the intersection of the internal sets. It equals S (CB1 {R7}; CB23 six T-A rows). **Read alone, the core therefore reproduces S′ / S″ on crossings and S on internal rows.** For that reason no crossing or placement result [relabelled by Act 1, F-LOG-0295; r1.1: "crossing or ownership result"] is stated from the core alone; the five reading-dependent T-A rows (R5, R6, R8, R10, R19) are always shown with all three readings. The union of the crossing sets equals S (46; T-A 17) (O3 r1.2 §3b note: "intersection … coincides with S′ / S″ … union … coincides with S"). Neither is used.
 - **Order.** S, S′, S″ appear in source order, which is not a ranking ([A] that T3 r1.7 rule 2a states (T3 [E], not adopted; E2b §A1.10): S is "reported first … **not because T1, T2 or R4 support it over the alternatives.**"). No reading is privileged.
 
 ### 8.2 Elements whose placement or crossing differs (all ⚠E3b)
 
 | element / result | S | S′ | S″ (counting only) | class |
 |---|---|---|---|---|
-| E3-PP (participant) count | both contexts | neither context | per statement: E3-BC23 as actor of an act, actor of a work event or Cap holder; E3-BC1 as keeper; unlocated → no side | [A] E2b §A1.9a; and [A] that T3 r1.7 rule 2a states it (T3 [E], not adopted; E2b §A1.10) |
-| E3-AG1 (CG1) count | straddles [H] | E3-BC23 (via C2) [H] | [E]: E3-BC23 (via C2, R10) if read through CG1's own rows; **straddles** (via R8, keeper on CB1) if read through every C1-touching row; no row choice selected | §3.3 |
-| R5 (on E3-AG1, AG2, AG3; E3-VO1, VO2; E3-EV1) | shared | internal E3-BC23 | internal E3-BC23 | [D] E2b §A1.3 |
-| R6 (on E3-AG1, AG2, AG5; E3-EV5) | shared | internal E3-BC23 | internal E3-BC23 | [D] |
-| R8 (on E3-AG1, AG4) | shared | internal E3-BC1 | internal E3-BC1 | [D] |
-| R10 (on E3-AG1) | shared | internal E3-BC23 | internal E3-BC23 | [D] |
-| R19 (on E3-AG1, AG3; E3-VO5; E3-EV2) | shared | internal E3-BC23 | internal E3-BC23 | [D] |
-| T-A ownership: E3-BC1 internal / E3-BC23 internal / shared / at MW1, CV4 | 1 / 6 / 13 / 4 | 2 / 10 / 8 / 4 | as S′ | [D] |
+| E3-PP (participant) count | both modules [relabelled by Act 1, F-LOG-0295; r1.1: "both contexts"] | neither module [relabelled by Act 1, F-LOG-0295; r1.1: "neither context"] | per statement: E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] as actor of an act, actor of a work event or Cap holder; E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] as keeper; unlocated → no side | [A] E2b §A1.9a; and [A] that T3 r1.7 rule 2a states it (T3 [E], not adopted; E2b §A1.10) |
+| E3-AG1 (CG1) count | straddles [H] | E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] (via C2) [H] | [E]: E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] (via C2, R10) if read through CG1's own rows; **straddles** (via R8, keeper on CB1) if read through every C1-touching row; no row choice selected | §3.3 |
+| R5 (on E3-AG1, AG2, AG3; E3-VO1, VO2; E3-EV1) | shared | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | [D] E2b §A1.3 |
+| R6 (on E3-AG1, AG2, AG5; E3-EV5) | shared | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | [D] |
+| R8 (on E3-AG1, AG4) | shared | internal E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] | internal E3-M1 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC1"] | [D] |
+| R10 (on E3-AG1) | shared | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | [D] |
+| R19 (on E3-AG1, AG3; E3-VO5; E3-EV2) | shared | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | internal E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "E3-BC23"] | [D] |
+| T-A placement: E3-M1 internal / E3-M23 internal [relabelled by Act 1, F-LOG-0295; r1.1: "T-A ownership: E3-BC1 internal / E3-BC23 internal"] / shared / at MW1, CV4 | 1 / 6 / 13 / 4 | 2 / 10 / 8 / 4 | as S′ | [D] |
 | E3-XG rows also crossing the cut | 8 | 4 | 4 | [D] (§5) |
 | E3-REL content (shared T-A rows only; whether this is a "relation" is [O], §2.3) | R2, R3, R5, R6, R8, R9, R10, R14, R15, R16, R19, R21, R22 (13) | R2, R3, R9, R14, R15, R16, R21, R22 (8) | as S′ | [H] built on [D] from E2b §A1.3 (§2.3) |
 | inactive T-B R25, R38 (§6; not structure) | cross | internal CB23 | internal CB23 | [D] E2b §A1.4 |
@@ -427,20 +450,20 @@ Class: row ids [A] (F-LOG-0269); groupings crossed: [A] that T3 §1b states them
 ### 10.2 New open questions raised by this derivation ([O])
 
 1. Whether rule 2a (defined for T2 statements) may be applied to groupings at all (§3.3). The CG1 S and S′ cells are [H]. **[r1, M7]** For S″ there is a further **row-choice question**: through which rows is a grouping read? Reading CG1 through its own carried rows (R10, R22) gives "CB23"; reading it through every row that touches C1 (R5, R6, R8, R10, R19, R22) gives "straddles", via R8 (keeper, CB1). The S″ cell is therefore [E], and neither choice is selected.
-2. Any DDD context-map pattern between E3-BC1 and E3-BC23 (§2.3).
-3. Which context, if any, would own actor identity (§2.4).
+2. Any DDD context-map pattern between E3-M1 and E3-M23 [relabelled by Act 1, F-LOG-0295; r1.1: "between E3-BC1 and E3-BC23"] (§2.3).
+3. Which module, if any, would be responsible for actor identity [relabelled by Act 1, F-LOG-0295; r1.1: "Which context, if any, would own actor identity"] (§2.4).
 4. Any value-object property for CV1–CV9 and CV-text, and whether CV3, CV7 and CV8 are values at all (§4.1).
 5. Any event semantics beyond "dated happening" for CE1–CE6 (§4.2).
 6. Whether the implication / meta rows (R12, R13, R23, R24) bear on any aggregate boundary (§3.2).
 7. Aggregate identity, root, lifecycle or command: none supplied (§3.1).
-8. **[r1, M3]** The supplementary placement rule for model-wide elements ("placed in no context", §2.2) is an analyst rule [E]. The alternative (MW1 straddling; counts 6 / 12 / 4 / 3) is equally consistent with the membership rule.
+8. **[r1, M3]** The supplementary placement rule for model-wide elements ("placed in no module [relabelled by Act 1, F-LOG-0295; r1.1: "no context"]", §2.2) is an analyst rule [E]. The alternative (MW1 straddling; counts 6 / 12 / 4 / 3) is equally consistent with the membership rule.
 9. **[r1, M1]** Whether the E2b §A1.3 / §A1.4 per-reading report counts as part of "their §2 rows" under A2 (a) (§7.2: E3-REL and the cut-status columns).
 
 ### 10.3 Limitations that travel with this proposal
 
 - **ARB r4.4 §B items 1–8**, with the item 4 note ("**[r4.2] superseded for the policy layer by F-LOG-0254**"; the invariant exclusion stands) and item 8 stale: "7 items are now decided or recorded (VP1d-H, VP15, VP5, VP10, VP14, VP12, VP11), and 13 VPs are open" (E2b §A1.8).
 - **Λ1–Λ7** (brief r3 §1): 1 "Cross-family validation was waived, not satisfied." 2 "H-D and H-B are neither falsified nor validated." 3 "Non-identifiability is bounded to the authorized corpus and depends on H5, whose condition was waived. The waiver stays visible." 4 "D1's strong form is reading-relative." 5 "The weak form holds only in the O-form, with the R-j (ii)-O exception. R-a is untested." 6 "The evidence covers only the finite universes U and U_P2, and one corpus." 7 "Every reviewer and every successful independent run is Claude-family."
-- **F-LOG-0256 (human-preserved):** "one corpus and finite test universes; within-family validation, cross-family waived; the shared Claude interpretation untested; H-D and H-B non-identifiable; the theory does not establish aggregate or consistency boundaries, event order or causal relationships as empirical facts". [D] Every context, aggregate and event candidate here is a design hypothesis, not an empirical finding.
+- **F-LOG-0256 (human-preserved):** "one corpus and finite test universes; within-family validation, cross-family waived; the shared Claude interpretation untested; H-D and H-B non-identifiable; the theory does not establish aggregate or consistency boundaries, event order or causal relationships as empirical facts". [D] Every module, [relabelled by Act 1, F-LOG-0295; r1.1: "Every context,"] aggregate and event candidate here is a design hypothesis, not an empirical finding.
 - **D4, D5, D6** carried (E2b §A1.9).
 - **Unratified analyst items** (E2b §6, §A1.10), including the K-c criterion and the per-reading host lists on which every cut-status column here rests.
 - **ARB §E3 unresolved risks:** "one-corpus primitives (VP5); low reversibility of VP15; R23 (nothing enforceable from records)".
@@ -477,6 +500,7 @@ Each text is for a **separate** act. None authorizes E4 (R8) or E5.
 | r0 | initial derivation under F-LOG-0282 (A2 = (c); scope incl. Q4–Q6, no ports; one reading-neutral proposal). Round 1 fresh review: PASS_WITH_LIMITATIONS, no blocker; M1–M7 material, m1–m10 minor |
 | r1 | applies M1–M7 and m1–m10 (first table below). Round 2 fresh review: PASS_WITH_LIMITATIONS, nothing blocking, nothing material; minor W1–W9 |
 | r1.1 | applies W1–W9 (second table below). Not re-reviewed |
+| r1.2 | Act 1 relabel recording (F-LOG-0295; route R-1, tagged in place): `R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 §I.2a rows 1–19 applied at 124 tagged sites, each tagged "[relabelled by Act 1, F-LOG-0295; r1.1: …]" with the r1.1 text; §I.2a exclusions held (post-pin T3 [E] context; context-map; quotations of sources; §9; §11–§12); §I.1a definition and non-claims recorded as a note under §2.1; title and a new status line (r1.1 status line kept as history). No assertion added, no status word changed; ⚠E3b outputs stay not accepted. No Part II / II.6 (N1–N12) item applied. Not re-reviewed |
 
 **r0 → r1** (round 1: PASS_WITH_LIMITATIONS; the fixes are not yet re-reviewed)
 

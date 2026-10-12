@@ -4046,3 +4046,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 
 - **Next:** a worker applies the I.2a label swaps (rows 1–19) to E3 r1.1, producing r1.2 tagged in place. It writes the §I.1a definition and non-claims as a note under §2.1 and adds a §12 change row. A strip-the-tags check must give back r1.1. A fresh review follows. Then Act 2, the re-assessment.
 - **Not authorized:** no ⚠E3b output is accepted, and E4 and E5 are not authorized.
+
+
+## F-LOG-0296 — **Executor (2026-10-13): Act 1 applied. E3 r1.2 relabelled** (candidate module cut E3-M1 / E3-M23; route R-1)
+- **Applied:** `R7/E3-ARCHITECTURE-PROPOSAL.md` r1.1 → r1.2.
+  - §I.2a rows 1–19 were applied at 124 tagged sites, and each tag carries its r1.1 text.
+  - An Act 1 note (the membership definition plus the non-claims) was added under §2.1, and a §12 r1.2 row was added.
+  - Nothing from Part II or N1–N12 was applied, and §7.2 still reads "not met".
+- **Fresh independent review: PASS.**
+  - An independent strip-the-tags check gives back r1.1 byte for byte.
+  - Every row matches §I.2a. All 18 unchanged lines are covered by the exclusions, and no in-scope site was missed.
+  - Tables are intact and the standing qualifier is verbatim.
+  - Minor findings: the note was adapted rather than copied verbatim (provenance line added by the main analyst, not re-reviewed); tags mark where a swap ends but not where it starts (git holds r1.1); the §2.4 "ownership" label stays per row 13; §9/§11 keep the old ids by exclusion; some tags sit inside quotation marks.
+- **Status:** the ⚠E3b outputs are still not accepted. **Next:** Act 2, the re-assessment (proposal r1.2, Part II). E4 and E5 are not authorized.
