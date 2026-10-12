@@ -4109,3 +4109,29 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - a worker applies the §II.6 Act 2 recording (N1–N12) to E3, r1.2 → r1.3, by route R-1, followed by a fresh review;
   - then the E4/R8 canonicalization package, which needs its own authorization (F-LOG-0285).
 - **Not authorized:** E4 and E5.
+
+
+## F-LOG-0298 — **Executor (2026-10-13): Act 2 applied, E3 r1.3 — E3b COMPLETE**
+- **Applied:** `R7/E3-ARCHITECTURE-PROPOSAL.md`, r1.2 → r1.3.
+  - Items N1–N12 of §II.6: 100 in-line edits and 4 blocks.
+  - 78 ⚠E3b flags removed cell by cell; no flag remains on an accepted output.
+  - §7.2 and §9.1 "not met" marked as superseded.
+  - R24 annotated with both readings (13/8 and 14/9; MW1/CV4 4/4 and 3/3).
+  - §13 quotes the F-LOG-0297 act verbatim, with (R-none) recorded as a human ruling.
+- **Fresh independent review: PASS_WITH_LIMITATIONS.**
+  - Reversing the recording gives back r1.2 byte for byte.
+  - The recording matches the act, and the invariants hold.
+- **Fixes applied by the main analyst inside the recording's own blocks (not re-reviewed):**
+  - The status line now discloses that E3b also rests on F-LOG-0284 (A2 = (b)), and that the §1 legend, §7.2 (a), §9.2 V1, the §10.1 A2 row and the §11 drafts are r1.1-era history.
+  - An editorial note in §13 maps the act's r1.1 line numbers to r1.3, and notes that the per-cell line-330 clause had nothing to act on.
+  - A quoted N11 string was restored at 3 sites.
+- **State:**
+  - The bounded architecture proposal is accepted in full (one corpus, no reading selected, limitations attached), with provisional names.
+  - E3b is closed.
+  - Still open:
+    - D12 (R24);
+    - (g) and (h);
+    - C-γ, R11, CV9/§3b, H13, A1, A5;
+    - audit Q6 tests 1–2 (C9, recommended before further host-list-citing work).
+  - E4/R8 and E5 are not authorized.
+- **Next:** the E4/R8 canonicalization package (F-LOG-0285), each step by its own act. Running audit Q6 test 1 (freeze the encoding) first is recommended, per C9.

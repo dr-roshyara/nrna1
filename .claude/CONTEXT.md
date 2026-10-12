@@ -1,5 +1,9 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-13, F-Series) — E3b COMPLETE (F-LOG-0285–0298)
+- (d′) T3 r1.9; E2b Amendment 2 (r1.3: CB1/CB23 rows adopted per reading, R-a); RESEARCH-AUDIT-1 (P-c robust low-crossing cut; not bounded contexts); contexts relabelled as candidate module cut M1/M23 (E3 r1.2); Act 2 accepted all ⚠E3b outputs (E3 r1.3).
+- **Next:** audit Q6 test 1 (freeze encoding, per C9) → E4/R8 canonicalization package (own act) → E5 (codebase/owning context decision). Open: D12, (g), (h), C-γ, R11, CV9/§3b, H13, A1, A5.
+
 ## 📍 UPDATE (2026-10-12, F-Series) — E3b ACCEPTED, A2 = (b) (F-LOG-0279–0284)
 - O3 prep authorized (0280) → O3 proposal (0281) → E3 authorized (0282) → E3 architecture proposal r1.1 (0283) → E3b accepted with A2 (b) (0284): aggregates/VO/event candidates accepted (bounded, provisional names); CB1/CB23-derived contexts, E3-REL, participant placement NOT accepted pending (d′) T3 sync + E2b Amendment 2.
 - **Next (human):** (i) (d′) + E2b Amendment 2 to complete contexts, or (ii) authorize E4/R8 canonicalization proposal for the accepted part. E4/E5 not authorized.
