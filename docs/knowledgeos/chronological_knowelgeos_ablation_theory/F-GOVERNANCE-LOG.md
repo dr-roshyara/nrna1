@@ -3803,3 +3803,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Next options for the human:**
   - (i) Complete the context part: a (d′) sync act, then an E2b Amendment 2 act, then re-assess the ⚠E3b outputs.
   - (ii) Prepare an E4/R8 canonicalization proposal for the accepted part only. This needs its own authorization.
+
+
+## F-LOG-0285 — **Human direction (Human ARB, 2026-10-12): sequencing after E3b is "Both, contexts first"**
+- **Selected:** asked "Next step after E3b?", the human chose: **"Both, contexts first"**. Complete (d′) and E2b Amendment 2 first, then a single E4/R8 package for the whole accepted architecture.
+- **Scope:** this sets the order of work. It is **not an authorization**. Each step still needs its own act:
+  - the (d′) T3 sync;
+  - E2b Amendment 2;
+  - any reassessment of the ⚠E3b outputs;
+  - E4/R8 authorization.
+- **Recorded late:** this entry was logged when the review of the (d′) proposal pointed out it was missing (finding 2).
