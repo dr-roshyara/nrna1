@@ -75,7 +75,7 @@
   - closed election → "voting is closed";
   - apply O-5;
   - update the stale 410 test.
-- [ ] **C6 — S8:** end-to-end lifecycle test.
+- [x] **C6 — S8:** end-to-end lifecycle test. *(2026-10-13, evidence `docs/publicdigit/election/evidence/2026-10-13-pbdigit274-s8-lifecycle-flow/`)*
 - [ ] **C7 — S9:**
   - vote success / failure contract (**G7**);
   - count tests;
