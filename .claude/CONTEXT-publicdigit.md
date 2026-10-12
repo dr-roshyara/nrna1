@@ -9,6 +9,19 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-11, **PBDIGIT-274 voter-slug lifecycle: plan approved, slice S1 implemented (database-free)**; additive, the blocks below are unchanged)
+
+| | |
+|---|---|
+| 🎯 **Active ticket** | **`PBDIGIT-274`**: fixed slug lifetime from `created_at`, replacement by a new row, election-specific issuance. **Blocks the deployment of `PBDIGIT-273`** |
+| 📄 **Plan** | `docs/plans/20261011-2302-voter-slug-lifecycle-plan.md` (rev 10 + R11-1, frozen; **approved G2** by the Human PO / ARB). Decisions in its section 2.1a; O-9 = (a), O-10 = (B). **O-5 still open (before S7)** |
+| ✅ **S1 done (database-free)** | `VoterSlugLifetime` (single rule, strict config, 503 on misconfiguration) · guard order V-5a → V-4 → V-5b · `VoterSlugRouteLookup` (no model events, only `'tenant'` scope removed); the binding no longer answers 410. 72 tests / 424 assertions, exit 0. Evidence `docs/publicdigit/election/evidence/2026-10-11-voter-slug-lifecycle-s1/`. **In HEAD:** committed as `a78d7c2f2`, removed from HEAD by the unrelated `118193320`, restored byte-identical in recovery commit `4d83dffc0` (no history rewrite, no push, no database operation) |
+| ⛔ **Gated** | S2–S9; migration approval (G3); the isolated test database (G4 / G5, **never `nrna_test`**); G6, G7, G8 |
+| 📝 **Follow-ups recorded** | stale 410 expectation in `ConstitutionalVotingProtectionTest` (S7); the binding's `slug_prefix` log site (O-7 classification) |
+| ▶️ **Next authorised action** | **None.** Waiting for: a focused review of the S2 migration design, then G3 (migration approval) and G4 (isolated database named by the PO); G5–G8 not executed. **PBDIGIT-274 stays IN PROGRESS** |
+
+---
+
 ## 📍 UPDATE (2026-10-11, **Voting: `VerifyVoterSlug` guard, `PBDIGIT-273`, IN REVIEW**; additive, the blocks below are unchanged)
 
 | | |

@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `OPEN` · next increment after `PBDIGIT-273`; **plan and authorisation still required** (EP-01) |
+| **Status** | `IN PROGRESS` · plan approved by the Human PO / ARB on 2026-10-11 (`docs/plans/20261011-2302-voter-slug-lifecycle-plan.md`, rev 10 + R11-1; decisions in its section 2.1a). **Slice S1 implemented (database-free tests passing).** The S1 code and tests were committed as `a78d7c2f2`, removed from HEAD by the unrelated `118193320`, restored byte-identical in recovery commit `4d83dffc0` (no history rewrite, no push, no database operation). **S1 done ≠ PBDIGIT-274 done.** Slices S2–S9, the migration (G3), the isolated database (G4 / G5), G6, G7 and G8 remain gated. The test-database rule below is unchanged: isolated database only |
 | **Blocks** | deployment of `PBDIGIT-273` |
 
 ## Decisions already made (Human PO, 2026-10-11)
@@ -13,6 +13,14 @@
 - **One active slug per `(election_id, user_id)`.** The replacement model is accepted in principle. The schema change that supports it is **PROPOSED, not approved for execution** (see "Proposed migration").
 - **Replacement happens only at the authenticated voting entries** (`/vote`, `elections.start`), after the existing eligibility checks. Protected steps only reject. A still-valid slug is returned unchanged.
 - **Election-specific issuance:** only a voter valid for that organisation and election may receive a slug, using the existing entitlement source (`ElectionMembership` / `VotingEntitlementQuery`), never legacy flags.
+- **The voter's experience on expiry (Human PO, 2026-10-11, in session):**
+  - every voting step compares the session's creation time with now; at 30 minutes or more the step is refused;
+  - the voter is sent to **the election's start page**, with the message "Your voting session has expired, please start again";
+  - the **organisation page** is the fallback, used only when the election start page can't be determined.
+
+  Today an expired voter lands on the general dashboard (the `VotingException` renderer in `bootstrap/app.php`), so this changes.
+- **A fresh session on "start again" is a new record** (option B, reconfirmed 2026-10-11 against the simpler "reset the same record" option). The old session is archived (soft-deleted) and a new one gets a new link, a new creation time and its own 30 minutes. This needs the migration below (approval pending) and an isolated test database.
+- **Why both are needed:** without a new creation time at "start again", the voter would loop between the start page and the refused step, because the current `start()` reuses the old record with its old creation time.
 
 ## Test-database rule (corrected 2026-10-11 by the Principal Reviewer; adopted by the Human PO)
 - **Database-free unit tests** may run without connecting to a database.
@@ -78,3 +86,7 @@ public function down(): void
 - whether `demo_voter_slugs`, which has no unique `(election_id, user_id)` today, gets the same rule;
 - whether existing data holds any `(election_id, user_id)` pair twice (impossible under the current index; verify on the isolated database);
 - the transaction and lock boundaries for concurrent entries (the index is the final guard; the service should also lock).
+
+## Added acceptance (2026-10-11, from the redirect decision)
+11. An expired session on any voting step sends a web request to the election's start page (the organisation page if the election can't be determined) with the expiry message, not to the dashboard. JSON requests keep the 403 `ExpiredVoterSlugException`.
+12. "Start again" from that page creates a new session record (new link, new creation time, its own 30 minutes). The voter can then complete the steps without being sent back.

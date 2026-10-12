@@ -1,5 +1,12 @@
 # 01: `VerifyVoterSlug`, the server-side voter-slug guard
 
+> **Updated by PBDIGIT-274 S1 (2026-10-11). See [02](02_lifetime_rule_and_route_lookup.md).**
+> - The guard order is now V-5a soft-deleted → **V-4 expired** (status `expired` included) → V-5b inactive, instead of the single V-5 row below.
+> - Expiry uses the shared `VoterSlugLifetime` rule, with an invalid duration → 503.
+> - The `{vslug}` binding **no longer** uses `isPast()` / 410 or `withoutGlobalScopes()`. It runs `VoterSlugRouteLookup` (no model events, only the `'tenant'` scope removed, SoftDeletes kept).
+>
+> The text below is the PBDIGIT-273 record.
+
 **Story:** `PBDIGIT-273` · **Plan:** `docs/plans/20261011-1318-verifyvoterslug-hardening-plan.md` · **Evidence:** `docs/publicdigit/election/evidence/2026-10-11-verifyvoterslug/` · **Status:** implemented with database-free tests green; request-path tests written, not run; committed 2026-10-11 (`6d3b9e1e0`), not pushed; **merge to main and deploy only with `PBDIGIT-274`**.
 
 ## Purpose

@@ -1,0 +1,46 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.591, Memory: 22.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_the_lookup_fires_no_model_events_so_the_retrieved_hook_cannot_write
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:77
+
+2) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_the_dispatcher_is_restored_after_success_and_after_an_exception
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:89
+
+3) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_unrelated_model_events_fire_normally_after_the_lookup
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:107
+
+4) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_only_the_tenant_scope_is_removed_and_soft_deletes_stay_applied
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:116
+
+5) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_the_route_binding_uses_the_lookup_and_no_longer_evaluates_expiry
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:136
+
+6) Tests\Unit\Services\Voting\VoterSlugRouteLookupTest::test_the_route_binding_answers_404_when_the_lookup_finds_nothing
+Error: Class "App\Services\Voting\VoterSlugRouteLookup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugRouteLookupTest.php:159
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6, Deprecations: 3.

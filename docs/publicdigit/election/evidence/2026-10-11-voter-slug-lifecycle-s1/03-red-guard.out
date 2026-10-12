@@ -1,0 +1,34 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+DDDDDDDDDDFFDFDDDDDDDDDDDDDDDDDDDD                                34 / 34 (100%)
+
+Time: 00:01.684, Memory: 26.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_with_expired_status_is_rejected_even_when_still_marked_active
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got App\Exceptions\Voting\InvalidVoterSlugException
+Failed asserting that an instance of class App\Exceptions\Voting\InvalidVoterSlugException is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:247
+
+2) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_marked_expired_and_inactive_by_the_retrieved_hook_is_reported_expired_not_invalid
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got App\Exceptions\Voting\InvalidVoterSlugException
+Failed asserting that an instance of class App\Exceptions\Voting\InvalidVoterSlugException is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:258
+
+3) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_misconfigured_lifetime_fails_closed_before_any_slug_check_with_a_safe_critical_log
+expected App\Exceptions\Voting\VoterSlugLifetimeMisconfigured, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\VoterSlugLifetimeMisconfigured.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:279
+
+FAILURES!
+Tests: 34, Assertions: 331, Failures: 3, Deprecations: 3.

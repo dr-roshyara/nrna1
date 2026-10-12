@@ -1,0 +1,173 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE                                  32 / 32 (100%)
+
+Time: 00:01.375, Memory: 24.00 MB
+
+There were 32 errors:
+
+1) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_valid_configured_minutes_are_accepted with data set "int 30" (30, 30)
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:66
+
+2) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_valid_configured_minutes_are_accepted with data set "digit string "30"" ('30', 30)
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:66
+
+3) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_valid_configured_minutes_are_accepted with data set "int 1" (1, 1)
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:66
+
+4) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_valid_configured_minutes_are_accepted with data set "string "120"" ('120', 120)
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:66
+
+5) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "missing (null)" (null, 'missing')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+6) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "empty string" ('', 'missing')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+7) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "zero" (0, 'non_positive')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+8) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "string zero" ('0', 'non_positive')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+9) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "negative" (-5, 'non_positive')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+10) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "string negative" ('-5', 'non_positive')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+11) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "malformed abc" ('abc', 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+12) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "partial 20min" ('20min', 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+13) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "decimal string 5.9" ('5.9', 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+14) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "float 5.9" (5.9, 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+15) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "boolean" (true, 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+16) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "array" ([30], 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+17) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "leading zero 030" ('030', 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+18) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_invalid_configured_minutes_fail_closed_with_a_reason_code with data set "whitespace " 30"" (' 30', 'not_integer')
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:94
+
+19) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_end_is_the_earlier_of_expires_at_and_created_at_plus_minutes
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:107
+
+20) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_one_second_before_either_bound_is_not_expired
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:119
+
+21) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_exactly_at_either_bound_is_expired
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:127
+
+22) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_after_either_bound_is_expired
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:135
+
+23) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_missing_timestamps_count_as_expired
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:143
+
+24) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_the_configured_minutes_drive_the_cap
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:152
+
+25) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_a_non_utc_clock_is_compared_as_the_same_instant
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:161
+
+26) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_a_fresh_active_unvoted_slug_is_reusable
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:172
+
+27) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "soft-deleted" (['2026-10-11 11:59:00'])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+28) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "inactive" ([false])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+29) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "voted" ([true])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+30) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "status expired" (['expired'])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+31) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "expired by expires_at" (['2026-10-11 12:00:00'])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+32) Tests\Unit\Services\Voting\VoterSlugLifetimeTest::test_slugs_the_issuer_must_not_reuse with data set "expired by cap" (['2026-10-11 11:30:00', '2026-10-11 13:00:00'])
+Error: Class "App\Services\Voting\VoterSlugLifetime" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/VoterSlugLifetimeTest.php:193
+
+ERRORS!
+Tests: 32, Assertions: 0, Errors: 32, Deprecations: 3.
