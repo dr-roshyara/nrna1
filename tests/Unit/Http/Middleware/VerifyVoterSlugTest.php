@@ -9,9 +9,7 @@ use App\Exceptions\Voting\ElectionNotFoundException;
 use App\Exceptions\Voting\ExpiredVoterSlugException;
 use App\Exceptions\Voting\InvalidVoterSlugException;
 use App\Exceptions\Voting\OrganisationMismatchException;
-use App\Exceptions\Voting\SlugOwnershipException;
 use App\Exceptions\Voting\VoterSlugLifetimeMisconfigured;
-use App\Exceptions\Voting\VotingException;
 use App\Http\Middleware\VerifyVoterSlug;
 use App\Models\DemoVoterSlug;
 use App\Models\Election;
@@ -213,7 +211,10 @@ final class VerifyVoterSlugTest extends BaseTestCase
 
         $result = $this->verify($this->request($this->slug()));
 
-        $this->assertRejectedWith(SlugOwnershipException::class, $result);
+        // Decision-driven change (PBDIGIT-274 S7, PO O-5 = "plain not found", 2026-10-13): the same 404 as an
+        // unknown link (RouteServiceProvider binding), instead of SlugOwnershipException.
+        $this->assertRejectedWith(\Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class, $result);
+        $this->assertSame('Voting link not found.', $result['exception']->getMessage());
     }
 
     // ---------------------------------------------------------------- V-5 revoked / inactive
@@ -446,8 +447,9 @@ final class VerifyVoterSlugTest extends BaseTestCase
 
         $result = $this->verify($this->request($this->slug()));
 
-        $this->assertInstanceOf(VotingException::class, $result['exception']);
-        $this->assertStringNotContainsString(self::RAW_SLUG, json_encode($result['exception']->getContext()), 'exception context is logged by the renderer');
+        // Since S7 (O-5) a foreign link ends in the plain 404; its message must not carry the raw link either.
+        $this->assertInstanceOf(\Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class, $result['exception']);
+        $this->assertStringNotContainsString(self::RAW_SLUG, $result['exception']->getMessage());
         Log::shouldNotHaveReceived('emergency');
         foreach (['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert'] as $level) {
             Log::shouldNotHaveReceived($level, [\Mockery::on(fn () => true), \Mockery::on(fn ($context) => str_contains((string) json_encode($context), self::RAW_SLUG))]);

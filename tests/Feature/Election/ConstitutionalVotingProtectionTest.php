@@ -265,8 +265,9 @@ class ConstitutionalVotingProtectionTest extends TestCase
         $response = $this->actingAs($user)
             ->get(route('slug.code.create', ['vslug' => $slug->slug]));
 
-        // The {vslug} binding answers 410 for a slug past its deadline; VerifyVoterSlug rejects it too.
-        $this->assertSame(410, $response->status(), 'an expired slug must not reach CodeController');
+        // PBDIGIT-274 S7: the binding admits the slug, VerifyVoterSlug rejects it as expired, and a web request of
+        // the owner is sent back to the election's page to start again (the stale 410 expectation predated S1).
+        $response->assertRedirect(route('elections.show', $election->slug));
     }
 
     // ============================================================

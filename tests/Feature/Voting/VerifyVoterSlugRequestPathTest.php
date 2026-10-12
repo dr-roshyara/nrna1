@@ -84,8 +84,10 @@ class VerifyVoterSlugRequestPathTest extends TestCase
     {
         $other = User::factory()->forOrganisation($this->org)->create();
 
+        // Decision-driven change (PBDIGIT-274 S7, PO O-5 = "plain not found", 2026-10-13): the same 404 as an
+        // unknown link, revealing nothing about the link's owner.
         $this->actingAs($other)->codeCreate($this->slugFor($this->voter))
-            ->assertStatus(403)->assertJson(['code' => SlugOwnershipException::class]);
+            ->assertStatus(404)->assertJsonMissing(['code' => SlugOwnershipException::class]);
     }
 
     public function test_a_revoked_slug_is_rejected_even_though_lookups_bypass_global_scopes(): void
