@@ -1918,3 +1918,18 @@ The two `sha256sum` listings must be identical.
 | Still open | P1-1…P1-6 (H5), P2-1…P2-7, P3-1…P3-8, X-5, X-6 and the dedicated P3 re-review question; G-LOG-0117 Decision D stays OPEN for those items |
 | Not changed | the frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`) is unchanged; α takes effect only through a new pre-registration version, its independent review, freeze and a human act, all before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 launch outside G-LOG-0117's conditions; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0119 — Human act: H5 claim = either-or (P1-1 = 1a∨1b)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "X-2 recorded: D — Either kind of pattern is sufficient" |
+| Label mapping (recorder's note) | In package v3.3 §7, X-2 is the DERIVED family-size note, not a decision item. The human's wording matches **P1-1 option 1a∨1b** ("excess exact single-premise implications **or** excess pairs with Loevinger H ≥ h₀, not which"; v3.3 l.87, l.182), which is the fourth listed option (D). Recorded on that reading; the human may correct it |
+| Decided | **P1-1 = 1a∨1b**: H5 is supported if either kind of pattern is in excess of Model 0 (frozen curveball null) |
+| Follows by compatibility (DERIVED, not a separate choice) | **P1-2 = (b-combine)**, `minp(exact, loev)`, one test. v3.3 l.97: 1a∨1b → (b-combine) only; every other pairing is incoherent |
+| Family consequence (DERIVED, X-2) | H5 stays **one** test; P1 adds nothing to the family (worst case 5 before P2-7 and P3-6) |
+| Interpretation limit (FACT, v3.3; sheet v3) | A rejection does **not** identify which pattern produced it. *DERIVED:* a rejection alone does not establish a coherent implication theory; any reading beyond "some excess structure exists" needs the exploratory breakdown, labelled as such |
+| Known design facts (v3.3 l.96) | code change needed; power within 0.11 of the loev-only test only at e₀ = 10 (C-3); size ≤ 0.014 at α = 0.05; specificity untested |
+| Now open for H5 | P1-3 h₀ (0.7 / 0.8 / other); P1-4 frozen parameters (s₀, e₀, D and dimension list, B = 999); P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing; undefined under (b-combine) until then); P1-6 artefact check (if yes, an artefact model is designed before freezing, X-6). P2-7 may still move H5 to exploratory, in which case P1-2…P1-6 no longer bear on a confirmatory claim |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
