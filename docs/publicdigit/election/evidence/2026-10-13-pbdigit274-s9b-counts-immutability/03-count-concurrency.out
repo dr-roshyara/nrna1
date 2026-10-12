@@ -1,0 +1,17 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9B-CONCURRENCY X1={"role":"cast","name":"X1","consumed":1} X2={"role":"cast","name":"X2","consumed":0} Y={"role":"cast","name":"Y","consumed":1} before={"c":0,"s":0} after={"c":2,"s":2}
+D                                                                   1 / 1 (100%)
+
+Time: 00:03.235, Memory: 22.00 MB
+
+Count Invariant Real Concurrency (Tests\Isolated\Pbdigit274\Database\CountInvariantRealConcurrency)
+ ✔ P1 concurrent casts
+
+OK, but there were issues!
+Tests: 1, Assertions: 12, Deprecations: 3.

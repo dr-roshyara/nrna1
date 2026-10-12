@@ -1,0 +1,25 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9A-EVIDENCE baseline db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE step5_failure db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9A-EVIDENCE receipt_failure db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":0} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_audit_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_current_step_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE commit_failure_email_sent=1 db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 65 / 80 ( 81%)
+DDDDDDDDDDDDDDD                                                   80 / 80 (100%)
+
+Time: 00:49.906, Memory: 34.00 MB
+
+OK, but there were issues!
+Tests: 80, Assertions: 404, Deprecations: 3.

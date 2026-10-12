@@ -1,0 +1,50 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9A-EVIDENCE baseline db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE step5_failure db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9A-EVIDENCE receipt_failure db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":0} txlevel=0 lock_free=yes errors=[]
+F
+S9A-EVIDENCE post_commit_audit_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+F
+S9A-EVIDENCE post_commit_current_step_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+F
+S9A-EVIDENCE commit_failure_email_sent=1 db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D                                                              6 / 6 (100%)
+
+Time: 00:08.005, Memory: 28.00 MB
+
+Cast Success Contract (Tests\Isolated\Pbdigit274\Database\CastSuccessContract)
+ ✔ A normal cast reports success and everything committed
+ ✔ Failure in step5 record never reports success
+ ✘ Failure in receipt code never reports success
+   │
+   │ L-16: no success when the receipt code fails
+   │ Failed asserting that true is false.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/CastSuccessContractTest.php:263
+   │
+ ✘ Post commit audit failure never reports retry
+   │
+   │ L-17a: a committed vote must not be answered with "please try again"
+   │ Failed asserting that true is false.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/CastSuccessContractTest.php:290
+   │
+ ✘ Post commit current step failure never reports retry
+   │
+   │ L-17b: a committed vote must not be answered with "please try again"
+   │ Failed asserting that true is false.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/CastSuccessContractTest.php:309
+   │
+ ✔ Confirmation email vs commit failure
+
+FAILURES!
+Tests: 6, Assertions: 48, Failures: 3, Deprecations: 3.

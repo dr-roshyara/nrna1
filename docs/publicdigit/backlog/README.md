@@ -155,6 +155,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-276`](PBDIGIT-276-voter-slug-defects-and-log-hygiene.md) | **The exception renderer logs the raw voter slug** (`bootstrap/app.php:219` logs the URL containing the slug; security, verified in code) | — | `OPEN` · not authorised |
 | [`PBDIGIT-277`](PBDIGIT-277-voter-slug-correctness-defects.md) | **Voter-slug correctness defects** (`vote_completed` column doesn't exist; `VoterSlug::isExpired()` missing but called; demo-type check mismatch; recovery slugs for demo elections) | — | `OPEN` · not authorised |
 | [`PBDIGIT-278`](PBDIGIT-278-voter-slug-documentation-test-and-ops-hygiene.md) | **Voter-slug documentation, test and operations hygiene** (stale route comment, broken test route, factory gaps, unscheduled cleanup command; one claim refuted) | — | `OPEN` · not authorised |
+| [`PBDIGIT-279`](PBDIGIT-279-receipt-code-failure-absorbed.md) | **A failed receipt-code write is absorbed; the vote counts without a receipt** (savepoint in `firstOrCreate`; voter sees success; from 274 S9a, F-A) | — | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

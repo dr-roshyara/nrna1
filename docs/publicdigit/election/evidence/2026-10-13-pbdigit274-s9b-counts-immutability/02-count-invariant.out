@@ -1,0 +1,20 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9B-COUNTS before={"v":0,"c":0,"s":0} after={"v":2,"c":2,"s":2} delta={"v":2,"c":2,"s":2} successes=2 steps=["A cast: success","B cast after replacement: success","C forced failure: refused","A double submission: refused"]
+D
+S9B-BASELINE elections=1 mismatched=0 (reported, never corrected; O-6b = i)
+D                                                                  2 / 2 (100%)
+
+Time: 00:05.170, Memory: 24.00 MB
+
+Count Invariant (Tests\Isolated\Pbdigit274\Database\CountInvariant)
+ ✔ Isolated p1 casts keep deltas equal
+ ✔ Baseline read only
+
+OK, but there were issues!
+Tests: 2, Assertions: 14, Deprecations: 3.

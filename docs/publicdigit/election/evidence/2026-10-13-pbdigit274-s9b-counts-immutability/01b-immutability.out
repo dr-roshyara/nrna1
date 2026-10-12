@@ -1,0 +1,21 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDD                                                             7 / 7 (100%)
+
+Time: 00:02.357, Memory: 30.00 MB
+
+Voted Slug Immutability (Tests\Isolated\Pbdigit274\Database\VotedSlugImmutability)
+ ✔ Starting to vote again changes nothing and issues no link
+ ✔ Voter start and restart for a voted voter change nothing
+ ✔ Admin regeneration for a voted voter changes nothing
+ ✔ Recovery command for a voted voter changes nothing
+ ✔ Cleanup never hard deletes any real slug
+ ✔ Retrieved hook never changes has voted
+ ✔ Revote refused
+
+OK, but there were issues!
+Tests: 7, Assertions: 28, Deprecations: 3.

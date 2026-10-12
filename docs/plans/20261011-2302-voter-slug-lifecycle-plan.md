@@ -117,6 +117,8 @@
 - **O-14 = (a):** the step-1 demo-session bypass is an accepted residual risk owned by the Human PO, tracked in **PBDIGIT-275**. The tests document it and don't claim closure.
 - **O-15 = (a):** accept the pre-commit "vote confirmed" email for 274; L-18 characterises it; a **follow-up story** moves the email after commit.
 
+- **S9a findings (Human PO, 2026-10-13):** **F-B** (L-17 violated: "please try again" after a committed vote) → **repair in 274** (the post-commit block gets its own catch; the voter sees success). **F-A** (a failed receipt write is absorbed by a savepoint; the vote counts without a receipt; L-16 holds as worded, and the section 9 hypothesis is refuted for this write) → **accepted, pinned by a characterisation test, follow-up PBDIGIT-279**. **S9c:** the section 12.2 inventory found 58 live sites → **redact live sites only**; the 20 dead-code sites go to PBDIGIT-278.
+
 **Still open:** none. O-5 was decided as (b) on 2026-10-13. *(O-9 = (a) and O-10 = (B) were decided later on 2026-10-11; see the status block at the top.)* **Plan approval (G2) itself is a separate explicit act.**
 
 ### 2.2 Decision register (the options as presented; O-6, O-6b, O-7, O-11, O-12, O-13, O-14 and O-15 are now decided, see section 2.1a). Recommendations (from the Principal Reviewer and Claude) are **not** decisions.

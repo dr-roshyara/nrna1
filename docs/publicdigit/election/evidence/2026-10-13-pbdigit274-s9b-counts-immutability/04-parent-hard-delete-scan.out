@@ -1,0 +1,12 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.110, Memory: 12.00 MB
+
+Voter Slug Parent Hard Delete Scan (Tests\Architecture\VoterSlugParentHardDeleteScan)
+ ✔ No application forcedelete of slug parents
+
+OK (1 test, 3 assertions)
