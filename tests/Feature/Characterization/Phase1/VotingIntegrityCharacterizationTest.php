@@ -103,9 +103,11 @@ class VotingIntegrityCharacterizationTest extends TestCase
 
     public function test_a_one_voter_slug_per_voter_and_election_makes_the_slug_lock_effectively_per_voter(): void
     {
-        // voter_slugs has unique(election_id, user_id): a voter cannot hold a second slug for
-        // the same election, so the cache lock key voter_slug_transition:{slug} is in effect
-        // one lock per voter and election. (Hypothesis "lock is per slug, not per voter" refuted.)
+        // A voter cannot hold a second CURRENT slug for the same election (since PBDIGIT-274 S2 the rule is a
+        // partial unique index over rows with deleted_at IS NULL; before it, a unique constraint over all rows).
+        // So at any moment the cache lock key voter_slug_transition:{slug} is one lock per current slug.
+        // It is NOT one lock per voter over time: a replaced (soft-deleted) slug and its successor have
+        // different keys. Cast serialisation therefore relies on the codes-row lock (plan section 5), not this.
         [$voter] = $this->voterReadyToCast();
 
         $this->expectException(\Illuminate\Database\UniqueConstraintViolationException::class);
