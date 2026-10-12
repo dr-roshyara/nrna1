@@ -3710,3 +3710,37 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **(3) Output shape.**
   - **(4) Stop round.**
 - **Status:** awaiting the Human ARB act on E3 (Authorize, Return or Reject). E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0282 — **Human act (Human ARB, 2026-10-12): E3 AUTHORIZED** (bounded architecture derivation, producing a proposal; **not E3b, E4 or E5**)
+**The act** (`R7/O3-PROPOSAL.md` r1.2 §9, Authorize, verbatim). The human's selections are filled in:
+- **(1) A2 = (c), carried open**; the E3b sub-choice does not apply;
+- **(2) scope:** also Q4–Q6, ports not included;
+- **(3)** one reading-neutral proposal;
+- **(4)** stop rule: FAIL at round 3 → human.
+
+> "I, Human ARB, authorize E3: a bounded architecture derivation from the adopted bounded model (`R7/E2b-ADOPTION-TEXT.md` r1.2) under the scope, exclusions and acceptance criteria of `R7/ARB-DECISION-PACKAGE.md` r4.4 §E3, and under the binding conditions B1–B14 of `R7/O3-PREPARATION-AUTHORIZATION-PACKAGE.md` r1.1 §3. **The package r1.1 §3 text governs.** The compressed restatement in `R7/O3-PROPOSAL.md` r1.2 §4, and that proposal's analyst advice [E], do not. The output is an architecture **proposal** for human review, with results under S, S′ and S″, none privileged.
+>
+> (1) **A2, mandatory; select one:**
+> (c) A2 is carried open. E3 reports traces under readings (a) and (b), and flags every output derived from CB1 / CB23 as at risk for E3b.
+>
+> [Sub-choice not applicable: it applies only if (a) or (b) is selected.]
+>
+> (2) Scope: also Q4–Q6 of the proposal. Ports (Q7): not included.
+>
+> (3) Output shape: one reading-neutral proposal, still showing per-reading results and disclosing any intersection- or union-based construction.
+>
+> (4) Review regime: fresh independent `kos-theory-reviewer` subagents, one new reviewer per round. Stop rule: a FAIL at round 3 → human; otherwise PASS / PASS_WITH_LIMITATIONS with nothing blocking → present for a separate act on E3b.
+>
+> It decides no variation point, selects no spanning rule, accepts no asymmetry, and does not withdraw F-LOG-0265's premise. It resolves no open item ((d′), the C-γ guard-row question, R11, the CV9 / §3b tension, H13) except as clause (1) states. It amends no adopted or governed record, authorizes no evidence collection (including V2, V5, V6, E-A5), and adopts no canonical terms. It is decided without reference to any VP1a–d outcome (N1). **It does not authorize E3b, E4 (R8) or E5.**"
+
+- **Effect:**
+  - E3 may derive a bounded architecture **proposal** from E2b r1.2, under ARB §E3 and B1–B14 (package r1.1 §3 governs).
+  - Scope: boundaries, participant placement and groupings, plus Q4–Q6 (the value and event questions). No ports.
+  - Output: one reading-neutral proposal that still shows S/S′/S″ results and discloses any intersection- or union-based construction.
+  - A2 is carried open. Traces are reported under readings (a) and (b), and every output derived from CB1/CB23 is flagged as at risk for E3b.
+- **Not authorized:**
+  - E3b, E4 (R8), E5;
+  - VP decisions; selecting a spanning rule; accepting the asymmetry;
+  - amending records; evidence collection; canonical terms.
+- **Next:** a worker derives the E3 architecture proposal with full provenance. Fresh reviewers check it, one per round; a FAIL at round 3 goes to the human. The reviewed proposal is then presented for a separate act on E3b.
