@@ -1960,3 +1960,16 @@ The two `sha256sum` listings must be identical.
 | Now open for H5 | P1-4 remainder; P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing); P1-6 artefact check |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0122 — Human act: H5 permutations B = 999 (P1-4, partial); s₀ and D held for verification
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P1-4: B = 999 — accepted. e₀ = 10 — previously accepted. s₀ — still requires verification against the reviewed design. D and the dimension list — still require verification against the reviewed specification." |
+| Decided | **B = 999** null draws for the H5 (b-combine) test (same as frozen `prereg_v1.run(B=999)`, l.145, and every study result) |
+| Restated, not re-decided | e₀ = 10 (G-LOG-0121) |
+| s₀ — verification (recorder; FACT from reviewed study, DERIVED where marked) | Study grid s₀ ∈ {3, 10, 30}; moved no power figure by more than 0.05 (H5-DESIGN-v1.1 l.91; review F-9). The study's v1 text named "s₀ = 10 (inert)"; v1.1 relabels all such values descriptive and post hoc, not a recommendation (l.139). *DERIVED:* `loev` requires E = n_a(n − n_b)/n ≥ e₀ (`h5_design_v1.py` l.10-11), hence n_a ≥ e₀ · n/(n − n_b) ≥ e₀ = 10, so any s₀ ≤ 10 is redundant with e₀ = 10 and only s₀ > 10 (e.g. 30) can bind. The exact disjunct keeps the frozen support ≥ 3 (`prereg_v1.py` l.13, l.96). Tie-break defect F-7: correct study selection is `loev_h0.7_s30_e10` (v1.1 l.99). **Not decided** |
+| D and the dimension list — verification (recorder; FACT) | The frozen code does **not** fix a list: `dims` = all keys appearing in any object's `absences` (`prereg_v1.py` l.170; `structures_v0.py` l.89), i.e. data-derived. The absence keys come from the 12 completeness dimensions in `scripts/derive_families.py` l.39-52 (purpose_rationale, informal_meaning, formal_definition, type_signature, invariants, dependencies, assumptions, semantics, examples, warnings, experiments, open_questions); `absences` dimensions = "the DIMENSION set" (`canary-diag/FIELD-INVENTORY.md` row 30); 12 dimensions also in `R7-v2.4-CONTRACT-AMENDMENT-PROPOSAL.md` l.75; the pilot had D = 12 (H5 review). The study simulated **D = 10** only; power and size at D = 12 (132 vs 90 ordered pairs) are **not studied** (H5-DESIGN-v1.1 l.132). **Not decided** |
+| Open for P1-4 | s₀ value; whether to freeze D as the explicit 12-dimension list (vs the frozen data-derived rule); whether D = 12 needs a pre-freeze power/size check |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
