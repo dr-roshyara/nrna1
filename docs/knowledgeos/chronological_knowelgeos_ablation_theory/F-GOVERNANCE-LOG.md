@@ -3813,3 +3813,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - any reassessment of the ⚠E3b outputs;
   - E4/R8 authorization.
 - **Recorded late:** this entry was logged when the review of the (d′) proposal pointed out it was missing (finding 2).
+
+
+## F-LOG-0286 — **Executor (2026-10-12): (d′) T3 sync proposal READY** (`R7/T3-DPRIME-SYNC-PROPOSAL.md` r1.1). This is step 1 of the F-LOG-0284/0285 path. Nothing applied
+- **Proposal:** T3 r1.8 → r1.9. It syncs the 10 stale CB1/CB23 cells (§1a and §2). Every reading-dependent cell is stated per reading: S, and S′/S″, which agree on all 83 rows. No reading is selected.
+- **Host lists:** they match T3 §1a (c) and E2b §A1.3/§A1.4 row for row.
+- **The 16 other cells:** not designated stale by the record. OQ10 and the observability cells stay open.
+- **Reviews** (fresh `kos-theory-reviewer`):
+  - r0: PASS_WITH_LIMITATIONS. 2 material findings: a false general R4 claim, and a human choice that was not logged (now logged as F-LOG-0285). 7 minor. All fixed.
+  - r1 verification: PASS_WITH_LIMITATIONS. 1 material finding: a replacement generalization that the sources contradict. 4 minor. All fixed in r1.1, not re-reviewed.
+- **Mechanics:** the patch was applied to a scratch copy several times. Only lines 1, 3, 48, 49, 403, 404 and one §7 row change. Nothing is deleted except the disclosed title token.
+- **Choice in the act — sub-choice (ii):** whether to list R25/R38's R4 ids under S.
+  - Against listing: the absences in the existing cells.
+  - For listing: the literal wording of G6, §A1.11 and E3 §7.2 (b), and the r1.5 counter-instances Rem 3.1a and Rem 9.8. The convention is mixed, and no rule is stated.
+- **Deferred (not stale; act (2) must handle):** the pre-existing gaps in CB1's R4 cell, a non-exhaustive list.
+- **Status:** awaiting the Human ARB act on (d′). E2b is not amended, the ⚠E3b outputs are not accepted, and E4 and E5 are not authorized.
