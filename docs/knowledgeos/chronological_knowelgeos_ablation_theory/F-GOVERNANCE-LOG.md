@@ -3996,3 +3996,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   1. Prepare a proposal relabelling E3-BC1/BC23 as a candidate module cut over one model (audit S6).
   2. Then re-assess the outputs on that basis.
 - **Scope:** this direction is **not an authorization**. The relabel needs its own act, and the re-assessment needs its own act. E4 and E5 are not authorized.
+
+
+## F-LOG-0294 — **Executor (2026-10-13): module-cut re-framing and re-assessment proposal READY** (`R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2). Written under the F-LOG-0293 direction. It contains two acts, presented in sequence
+- **Review history** (fresh `kos-theory-reviewer` each round):
+  - r0: PASS_WITH_LIMITATIONS, 7 material findings: dropped caveats; the "module" definition overclaimed; Act 1 was not labels-only; R24 was silently selected; "none" was treated as met; incoherent tick boxes; no recording of the result in E3.
+  - r1: PASS_WITH_LIMITATIONS, 1 material finding: Act 1 imported assertions by reference.
+  - r1.1 targeted review: PASS_WITH_LIMITATIONS; the fix holds.
+  - r1.2: six wording fixes, not re-reviewed.
+- **Act 1 (labels only):**
+  - E3-BC1 and E3-BC23 become a candidate module cut, E3-M1 and E3-M23, with neutral names. A module is defined by membership only: one side of the CB1/CB23 cut, [H], ⚠E3b.
+  - Explicit non-claims: no separate language, no ownership, no context-map pattern, no bounded-context status.
+  - E2b needs no change.
+  - Recording route, R-1 or R-2, with no default.
+- **Act 2 (re-assessment):**
+  - Re-checked against T3 r1.9 and E2b r1.3: memberships, hosts and counts are unchanged; the trace content changed.
+  - The trace criterion under reading (b) is met with disclosed limitations, except two open points:
+    - (i) whether an explicit "none" for R25/R38 suffices: the (R-none) ruling, with no default;
+    - (iii) R24 shown both ways, 13/8 and 14/9; D12 is not resolved.
+  - Per-output ticks with stated dependencies. Option (α) or (β) for E3-REL and the cut-status columns; the lean toward (α) is slight and labelled [E].
+  - Recording item N1–N12 supersedes E3's "not met" text.
+- **Status:** awaiting Act 1. None of this authorizes E4 or E5.
