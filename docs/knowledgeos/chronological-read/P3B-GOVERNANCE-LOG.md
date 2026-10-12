@@ -2084,3 +2084,17 @@ The two `sha256sum` listings must be identical.
 | Now moot for confirmatory use (DERIVED) | P2-4 (a DAG-supporting H3 test); the H3 chain-validity caveat of G-LOG-0129 m2 (it applies only to an exploratory H3 p-value). P2-5 (descriptive acyclic reading, optionally P0(acyclic) grading) remains available as the exploratory H3 report, undecided |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0131 — Human act: H2 kept confirmatory, reworded to the forward-share claim (P2-7, P2-6)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P2-7: keep H2 confirmatory, narrowed (option A)" |
+| Basis | package v3.3 §7 P2-6 (l.124, l.193) and P2-7 (l.125, l.194); option A as put to the human: keep H2 confirmatory, narrowed to "contradictions run forward in time more often than chance" |
+| Decided | **P2-7: H2 stays in the confirmatory family. P2-6: reword** H2 to the forward-share claim, so that the claim equals the tested estimand (package l.124: "reword to the forward-share claim — the claim equals the tested estimand; cost: wording amendment of ledger :15 (no code change)") |
+| Moved out of the confirmatory claim | the "acyclic" half of H2, never testable by the frozen instrument; it may be reported descriptively (exploratory), undecided |
+| Final confirmatory family (DERIVED, recorder) | **{H1, H2, H4}** under R3 (fixed), plus 1 if a P3 test is placed in the family (P3-6). H2 m_min at α/3 = 26 / 58 / 232 for π = .8 / .7 / .6 (FAMILY-SIZE-COST-v1 l.19-23); α/4 = 27 / 63 / 250 |
+| Unchanged test (FACT) | one-sided sign test on dated contradiction relations; UNTESTABLE below 5 relations (`prereg_v1.py` l.179); a rejection licenses forward share > ½ beyond Model 0 (at π ≈ .6 about 40 % backward, package l.121) |
+| Still open for H2 | P2-3 outcome vocabulary and pre-registered effect π (REJ / NR-P / NR-U / UNT / VAC, or "no": every non-rejection reads OPEN) |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
