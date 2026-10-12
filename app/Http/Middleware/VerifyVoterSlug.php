@@ -15,7 +15,6 @@ use App\Exceptions\Voting\ElectionNotFoundException;
 use App\Exceptions\Voting\ExpiredVoterSlugException;
 use App\Exceptions\Voting\InvalidVoterSlugException;
 use App\Exceptions\Voting\OrganisationMismatchException;
-use App\Exceptions\Voting\SlugOwnershipException;
 use App\Exceptions\Voting\VoterSlugLifetimeMisconfigured;
 use App\Exceptions\Voting\VotingException;
 use App\Services\Voting\VoterSlugLifetime;
@@ -61,9 +60,11 @@ class VerifyVoterSlug
 
         $context = ['slug_id' => $voterSlug->id, 'demo_route' => $isDemoRoute];
 
-        // V-3
+        // V-3 (PBDIGIT-274 S7, O-5 = b): someone else's link answers exactly like an unknown link (the same
+        // 404 as the {vslug} binding), so it reveals nothing; the reason is logged internally (ids only).
         if ((string) $voterSlug->user_id !== (string) auth()->id()) {
-            $this->reject(new SlugOwnershipException('This voting session does not belong to you', $context));
+            Log::warning('[VerifyVoterSlug] voting link of another voter', $context + ['reason' => 'not_owner']);
+            abort(404, 'Voting link not found.');
         }
 
         // V-5a
@@ -73,7 +74,11 @@ class VerifyVoterSlug
 
         // V-4 (before V-5b: the retrieved hook marks an expired slug inactive and status 'expired' together)
         if ($voterSlug->status === 'expired' || $lifetime->isExpired($voterSlug, now())) {
-            $this->reject(new ExpiredVoterSlugException('This voting session has expired', $context));
+            // The election and organisation ids let the renderer send the OWNER to the election's start page.
+            $this->reject(new ExpiredVoterSlugException('This voting session has expired', $context + [
+                'election_id' => $voterSlug->election_id,
+                'organisation_id' => $voterSlug->organisation_id,
+            ]));
         }
 
         // V-5b

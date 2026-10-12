@@ -210,6 +210,49 @@ return Application::configure(basePath: dirname(__DIR__))
         | Voting Exceptions → user-friendly redirects
         |--------------------------------------------------------------------------
         */
+        // PBDIGIT-274 S7: an expired voting session (owner only: the guard raises it after the ownership check)
+        // goes back to the election's start page to start again; a closed election (O-2) goes to the same page
+        // with "closed" and no restart. The organisation page is the fallback when the election cannot be
+        // determined. Web only; JSON falls through to the handler below (403). No URL is logged (no raw link).
+        $votingSessionRedirect = function (\App\Exceptions\Voting\VotingException $e, string $message) {
+            $context = $e->getContext();
+            \Illuminate\Support\Facades\Log::info('Voting session redirect', [
+                'exception' => get_class($e),
+                'user_id' => auth()->id(),
+                'slug_id' => $context['slug_id'] ?? null,
+                'election_id' => $context['election_id'] ?? null,
+            ]);
+
+            $election = isset($context['election_id'])
+                ? \App\Models\Election::withoutGlobalScope('tenant')->find($context['election_id'])
+                : null;
+            if ($election && $election->slug) {
+                return redirect()->route('elections.show', $election->slug)->with('error', $message);
+            }
+            $organisation = isset($context['organisation_id'])
+                ? \App\Models\Organisation::withoutGlobalScopes()->find($context['organisation_id'])
+                : null;
+            if ($organisation && $organisation->slug) {
+                return redirect()->route('organisations.show', $organisation->slug)->with('error', $message);
+            }
+
+            return redirect()->route('dashboard')->with('error', $message);
+        };
+        $exceptions->renderable(function (\App\Exceptions\Voting\ExpiredVoterSlugException $e, Request $request) use ($votingSessionRedirect) {
+            if ($request->wantsJson() || $request->isJson()) {
+                return null;
+            }
+
+            return $votingSessionRedirect($e, 'Your voting session has expired, please start again.');
+        });
+        $exceptions->renderable(function (\App\Exceptions\Voting\ElectionVotingClosedException $e, Request $request) use ($votingSessionRedirect) {
+            if ($request->wantsJson() || $request->isJson()) {
+                return null;
+            }
+
+            return $votingSessionRedirect($e, $e->getUserMessage());
+        });
+
         $exceptions->renderable(function (\App\Exceptions\Voting\VotingException $e, Request $request) {
             \Illuminate\Support\Facades\Log::error('Voting exception', [
                 'exception' => get_class($e),

@@ -61,9 +61,11 @@ class ValidateVoterSlugWindow
                     'election_end' => $voterSlug->election->end_date,
                 ]);
 
-                throw new ExpiredVoterSlugException('This election has ended', [
+                // PBDIGIT-274 S7 (O-2): a closed election is not an expired session; no restart is offered.
+                throw new \App\Exceptions\Voting\ElectionVotingClosedException('This election has ended', [
                     'slug_id' => $voterSlug->id,
                     'election_id' => $voterSlug->election_id,
+                    'organisation_id' => $voterSlug->organisation_id,
                     'election_end' => $voterSlug->election->end_date,
                 ]);
             }
