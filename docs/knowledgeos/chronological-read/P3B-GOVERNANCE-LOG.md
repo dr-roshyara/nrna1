@@ -1906,3 +1906,15 @@ The two `sha256sum` listings must be identical.
 | Execution (Decision C) | **DEFERRED.** Run-3 does not launch until the quiet-period conditions hold and the preflight prints `PREFLIGHT-OK`. This approval does not override a failed preflight. Once the real launch log exists, any refusal ends the attempt; another attempt needs r6 and a new G2 |
 | Scientific design (Decision D) | **OPEN.** H5 and P1–P3 are unresolved; the frozen scientific design is unchanged by this act |
 | Not authorized | G3; G4; G5; production changes; corpus reads; any retry of run-3 after the real launch has started |
+
+## G-LOG-0118 — Human act: X-1 decided, α = 0.05 (P1–P3 package v3.3 §7)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "X-1 is decided: α = 0.05. We will use α = 0.05 as the significance level for the S-Series confirmatory research." |
+| Basis | `P1-P3-PREREG-DECISION-PACKAGE-v3.3.md` §7 X-1 (sha `f8a757d118b69260…`) and `P1-P3-DECISION-SHEET-v3.md` (sha `5d8e2a7a86e7292d…`), W `s-series/s5-r7-v29-repair` at `42b52de10` |
+| Decided | α = 0.05 is the familywise significance level of the confirmatory family. Holm correction still applies within the family; no hypothesis receives an unadjusted 5 % allowance |
+| Consequence (human's own statement) | The completed design studies keep their α = 0.05 basis, subject to the other decisions. Which claims are confirmatory, hence the final family size and some power figures, remains open |
+| Still open | P1-1…P1-6 (H5), P2-1…P2-7, P3-1…P3-8, X-5, X-6 and the dedicated P3 re-review question; G-LOG-0117 Decision D stays OPEN for those items |
+| Not changed | the frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`) is unchanged; α takes effect only through a new pre-registration version, its independent review, freeze and a human act, all before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 launch outside G-LOG-0117's conditions; G3–G5; corpus reads; early theory recovery |
