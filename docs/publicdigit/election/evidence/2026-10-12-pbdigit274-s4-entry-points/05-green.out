@@ -1,0 +1,33 @@
+head=9206c488a58f5b894044931c5dc1faeafa7f0a87
+date=2026-10-12T23:48:58+02:00
+note: run 04 showed GET /vote answered 200 from another route (the election routes are registered under a prefix); the test now uses route('vote.direct')
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDEE                                                            8 / 8 (100%)
+
+Time: 00:03.272, Memory: 28.00 MB
+
+There were 2 errors:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_issues_through_the_issuer_and_reuses_while_valid
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [vote.direct] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:186
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_after_expiry_gives_a_new_link
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [vote.direct] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:197
+
+ERRORS!
+Tests: 8, Assertions: 29, Errors: 2, Deprecations: 3.
+exit=2

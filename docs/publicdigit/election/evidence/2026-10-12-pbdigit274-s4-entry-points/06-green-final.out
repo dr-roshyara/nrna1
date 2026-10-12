@@ -1,0 +1,31 @@
+head=9206c488a58f5b894044931c5dc1faeafa7f0a87
+date=2026-10-12T23:49:52+02:00
+note: the /vote tests were removed (vote.direct is shadowed by web.php:494-496) and the route edit reverted
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDD                                                              6 / 6 (100%)
+
+Time: 00:03.490, Memory: 26.00 MB
+
+OK, but there were issues!
+Tests: 6, Assertions: 27, Deprecations: 3.
+exit=0
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDDDDDDDDDDDD                                                18 / 18 (100%)
+
+Time: 00:05.030, Memory: 30.00 MB
+
+OK, but there were issues!
+Tests: 18, Assertions: 77, Deprecations: 3.
+exit=0

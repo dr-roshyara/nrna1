@@ -1,0 +1,37 @@
+head=9206c488a58f5b894044931c5dc1faeafa7f0a87
+date=2026-10-12T23:48:10+02:00
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDEF                                                            8 / 8 (100%)
+
+Time: 00:04.828, Memory: 30.00 MB
+
+There was 1 error:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_issues_through_the_issuer_and_reuses_while_valid
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:188
+
+--
+
+There was 1 failure:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_after_expiry_gives_a_new_link
+Failed asserting that null is not identical to null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:203
+
+ERRORS!
+Tests: 8, Assertions: 30, Errors: 1, Failures: 1, Deprecations: 3.
+exit=2

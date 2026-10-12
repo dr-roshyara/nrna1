@@ -1,0 +1,64 @@
+head=9206c488a58f5b894044931c5dc1faeafa7f0a87
+date=2026-10-12T23:45:54+02:00
+note: run 01 failed for the wrong reason (fixture election not in the voting state); fixture corrected, this is the real RED
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFEFDDEF                                                            8 / 8 (100%)
+
+Time: 00:02.094, Memory: 30.00 MB
+
+There were 2 errors:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_starting_again_while_valid_reuses_the_same_link
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:132
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_issues_through_the_issuer_and_reuses_while_valid
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:180
+
+--
+
+There were 4 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_the_fixture_is_open_for_voting_and_the_voter_is_entitled
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:113
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_first_start_issues_one_link_and_enters_the_voting_flow
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:122
+
+3) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_starting_again_after_expiry_gives_a_new_link_instead_of_a_lockout
+a new link
+Failed asserting that null is not identical to null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:145
+
+4) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_after_expiry_gives_a_new_link
+Failed asserting that null is not identical to null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:195
+
+ERRORS!
+Tests: 8, Assertions: 18, Errors: 2, Failures: 4, Deprecations: 3.
+exit=2

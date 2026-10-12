@@ -1,0 +1,83 @@
+head=9206c488a58f5b894044931c5dc1faeafa7f0a87
+date=2026-10-12T23:47:14+02:00
+note: runs 01 and 02 failed for the wrong reason (fixture election not open for voting: needs voting_locked, an open window and an approved candidacy); fixture corrected; this is the real RED
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDFFFFEF                                                            8 / 8 (100%)
+
+Time: 00:02.413, Memory: 30.00 MB
+
+There was 1 error:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_issues_through_the_issuer_and_reuses_while_valid
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:186
+
+--
+
+There were 5 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_starting_again_while_valid_reuses_the_same_link
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'http://localhost/v/fVyMwDJMQfcr1BjRuoheFgucTFPZPTWU/code/create'
++'http://localhost/v/WoNGftl9PxU40FOEum8xPbe1BlC9wo9i/code/create'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:325
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:138
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_starting_again_after_expiry_gives_a_new_link_instead_of_a_lockout
+the old link is kept as history
+Failed asserting that actual size 1 matches expected size 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:154
+
+3) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_a_voter_marked_as_voted_on_the_code_row_gets_no_link
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'http://localhost/elections/pbd274-election-6acd5563cb6c9'
++'http://localhost/v/C3zrmNdEgMPHcgvLmel1FY7jfCTWVg03/code/create'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:325
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:167
+
+4) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_an_inactive_voter_is_refused_as_before
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'http://localhost/elections/pbd274-election-6acd556411043'
++'http://localhost/v/oZaKDShgfTe7PgP5WcCOHuzKBuUVfa4f/code/create'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:325
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:176
+
+5) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_vote_direct_after_expiry_gives_a_new_link
+Failed asserting that null is not identical to null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:201
+
+ERRORS!
+Tests: 8, Assertions: 24, Errors: 1, Failures: 5, Deprecations: 3.
+exit=2
