@@ -1,0 +1,27 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDDDDDDDDDD                                                   15 / 15 (100%)
+
+Time: 00:00.988, Memory: 20.00 MB
+
+Duration Reader Regression (Tests\Unit\Services\Voting\DurationReaderRegression)
+ ✔ Valid value unchanged R4 real code window
+ ✔ Valid value unchanged R5 demo code window
+ ✔ Valid value unchanged R7 code verification
+ ✔ Valid value unchanged R8 real submission window
+ ✔ Valid value unchanged R8 demo submission window
+ ✔ Valid value unchanged R8 demo code models
+ ✔ Invalid value fails closed R4 real code window
+ ✔ Invalid value fails closed R5 demo code window
+ ✔ Invalid value fails closed R7 code verification
+ ✔ Invalid value fails closed R8 real submission window
+ ✔ Invalid value fails closed R8 demo submission window
+ ✔ Invalid value fails closed R8 demo code models
+ ✔ R3 default expiry follows the configured value
+ ✔ Invalid value fails closed R3 default expiry
+ ✔ The configuration no longer truncates the environment value
+
+OK, but there were issues!
+Tests: 15, Assertions: 58, Deprecations: 3.

@@ -24,7 +24,7 @@
   - **Currently blocking.**
 - [x] **A1b:** authorise **S2 step 1b** *(authorised 2026-10-12)* (section B0: the review corrections; database-free, test-first). Can be done before A1.
 - [ ] **A2:** authorise the **database part of S2** (after A1 and B0).
-- [ ] **A3 — O-5:** another voter opening someone else's link sees the ownership error or a plain "not found". Needed before S7.
+- [x] **A3 — O-5:** another voter opening someone else's link sees the ownership error or a plain "not found". Needed before S7. *(Decided 2026-10-13: plain "not found".)*
 - [ ] **A4:** authorise S3 … S9, one slice at a time.
 - [ ] **A5 — release:** name a release owner; confirm the section 11.1 operational controls (maintenance mode, access freeze, process checks, detection snapshot); then approve G8.
 
@@ -46,7 +46,7 @@
   - **I1:** on plain PostgreSQL the `current_database()` check proves existence and credentials, not isolation. That is why H1 matters.
   - **I4:** the second check covers only `RefreshDatabase`. Database tests must not use `DatabaseMigrations`, `DatabaseTruncation` or a direct `migrate:fresh`.
 
-## B. S2, database part (Claude, after A1 + A2 + B0)
+## B. S2, database part (Claude, after A1 + A2 + B0): ✅ done (migration `7ded36437`; B2–B5 below were completed with it and are not ticked one by one)
 - [x] **B1 — G5 identity proof** *(passed 2026-10-12)* (after `APPROVED_NAME` is set to the G4 name): a run through `phpunit.pbdigit274.xml` that records `current_database()` and `SELECT version()`, plus a deliberate wrong-name run that aborts. This also proves the in-test check inside a booted app.
 - [ ] **B2 — RED tests** in `tests/Isolated/Pbdigit274/Database/`:
   - section 11 tests 1–5 (directly and through the Migrator);
@@ -66,11 +66,11 @@
   - commit after approval.
 
 ## C. Later slices (each needs its own authorisation)
-- [ ] **C1 — S3, issuer:** issue / reuse / replace links; locks on the `codes` row; the real two-process concurrency test (**G6**).
-- [ ] **C2 — S4, entry points:** `/vote`, `elections.start`, recovery paths; fix the `ArgumentCountError`.
-- [ ] **C3 — S5:** no in-place lifetime extensions; cleanup never hard-deletes real links.
-- [ ] **C4 — S6:** one source for the voting time; remove the `(int)` cast. Characterisation tests for the other readers first.
-- [ ] **C5 — S7:**
+- [x] **C1 — S3, issuer:** issue / reuse / replace links; locks on the `codes` row; the real two-process concurrency test (**G6**). *(`0cb7c1111`; the G6 pause seam `dd9725197`)*
+- [x] **C2 — S4, entry points:** `/vote`, `elections.start`, recovery paths; fix the `ArgumentCountError`. *(`ac84ca4dc`, `4beb3cfbb`)*
+- [x] **C3 — S5:** no in-place lifetime extensions; cleanup never hard-deletes real links. *(`e2bd4cc8a`)*
+- [x] **C4 — S6:** one source for the voting time; remove the `(int)` cast. Characterisation tests for the other readers first. *(2026-10-13, evidence `docs/publicdigit/election/evidence/2026-10-13-pbdigit274-s6-duration-readers/`)*
+- [x] **C5 — S7:** *(`0aaadb31c`, `2ef37274d`)*
   - expired link → the election's start page (organisation page as fallback);
   - closed election → "voting is closed";
   - apply O-5;

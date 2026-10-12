@@ -1,0 +1,79 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDFFFFFFFFF                                                   15 / 15 (100%)
+
+Time: 00:00.870, Memory: 20.00 MB
+
+Duration Reader Regression (Tests\Unit\Services\Voting\DurationReaderRegression)
+ ✔ Valid value unchanged R4 real code window
+ ✔ Valid value unchanged R5 demo code window
+ ✔ Valid value unchanged R7 code verification
+ ✔ Valid value unchanged R8 real submission window
+ ✔ Valid value unchanged R8 demo submission window
+ ✔ Valid value unchanged R8 demo code models
+ ✘ Invalid value fails closed R4 real code window
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:184
+   │
+ ✘ Invalid value fails closed R5 demo code window
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:190
+   │
+ ✘ Invalid value fails closed R7 code verification
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:196
+   │
+ ✘ Invalid value fails closed R8 real submission window
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:205
+   │
+ ✘ Invalid value fails closed R8 demo submission window
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:218
+   │
+ ✘ Invalid value fails closed R8 demo code models
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:224
+   │
+ ✘ R3 default expiry follows the configured value
+   │
+   │ Failed asserting that false is true.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:234
+   │
+ ✘ Invalid value fails closed R3 default expiry
+   │
+   │ expected VoterSlugLifetimeMisconfigured
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:120
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:241
+   │
+ ✘ The configuration no longer truncates the environment value
+   │
+   │ Failed asserting that 20 is identical to '20min'.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/DurationReaderRegressionTest.php:254
+   │
+
+FAILURES!
+Tests: 15, Assertions: 39, Failures: 9, Deprecations: 3.
