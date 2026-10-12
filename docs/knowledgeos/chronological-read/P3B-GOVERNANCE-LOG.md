@@ -2098,3 +2098,16 @@ The two `sha256sum` listings must be identical.
 | Still open for H2 | P2-3 outcome vocabulary and pre-registered effect π (REJ / NR-P / NR-U / UNT / VAC, or "no": every non-rejection reads OPEN) |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0132 — Human act: H1 source-vs-agent rule D0, H1 only (P3-1)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P3-1: D0, H1 only" |
+| Basis | package v3.3 §7 P3-1 (l.144-151, l.195); P3 source-vs-agent study v1.3 and its reviews (PASS_WITH_LIMITATIONS); cost basis X-5 (l.175): D1–D3 add ≈ f × 394 batches, D2 needing f ≈ ≥ .5 in most cells (≈ 197 batches, ≈ 50 %) |
+| Decided | **D0:** H1 stays confirmatory with its frozen statistic and null; no replicate or control runs. A rejection licenses only "serial dependence present; source/agent unresolved" (package l.147); a non-rejection reads "unresolved", never "agent artefact" (l.144). Cost: wording amendment; 0 extra runs |
+| Moot (DERIVED, recorder) | P3-2…P3-8 (all conditional on D1–D3); P3-6 (no P3 test, so the confirmatory family stays **{H1, H2, H4}** under R3); X-5 (package l.175: "Moot under D0" unless a P3-7(b) pilot is chosen, and P3-7 applies only under D1–D3) |
+| Consequence for X-6 (DERIVED, package l.176) | no pre-freeze prerequisite is now chosen (no 1c study; H5 and its P1-6 are exploratory; P2-4 moot with H3 exploratory; no P3-7(b)/(d); no D4), so a joint amendment waits for nothing. X-6 remains the human's decision, including whether the earlier re-checks count as the dedicated P3 re-review |
+| Known limitation kept | H1 can reject under pure agent habit (V1–V5 untestable synthetically); under D0 this is carried as the "source/agent unresolved" reading, not resolved |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
