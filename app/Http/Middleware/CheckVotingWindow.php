@@ -72,7 +72,7 @@ class CheckVotingWindow
 
         // Check if the voting window has expired
         // Note: Carbon::parse($past)->diffInMinutes(now()) gives positive minutes elapsed
-        $votingMinutes = (int) ($code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
+        $votingMinutes = (int) ($code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes());
         $minutesElapsed = \Carbon\Carbon::parse($code->code_to_open_voting_form_used_at)->diffInMinutes(now());
         $isExpired = $minutesElapsed > $votingMinutes;
 

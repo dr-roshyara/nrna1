@@ -170,7 +170,7 @@ trait CodeVerificationTrait
         }
 
         // Get voting window duration in minutes
-        $windowMinutes = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+        $windowMinutes = $code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes();
 
         // Calculate elapsed time
         $elapsedMinutes = \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)

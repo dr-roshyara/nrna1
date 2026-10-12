@@ -190,9 +190,8 @@ class DemoVoterSlug extends Model
         static::creating(function ($slug) {
             // Ensure expires_at is set
             if (!$slug->expires_at) {
-                $slug->expires_at = now()->addMinutes(
-                    config('voting.slug_expiration_minutes', 30)
-                );
+                // PBDIGIT-274 S6: the configured voting time (was the undefined key voting.slug_expiration_minutes)
+                $slug->expires_at = now()->addMinutes(\App\Services\Voting\VotingDuration::minutes());
             }
 
             // Ensure is_active is set

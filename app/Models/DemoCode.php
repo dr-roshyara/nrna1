@@ -131,7 +131,7 @@ class DemoCode extends Model
         if (!$this->code_to_open_voting_form_sent_at) {
             return false;
         }
-        return \Carbon\Carbon::parse($this->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > ($this->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
+        return \Carbon\Carbon::parse($this->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > ($this->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes());
     }
 
     /**

@@ -920,7 +920,7 @@ public function second_submission(Request $request)
         return redirect()->route($route, $routeParams)
             ->with([
                 'totalDuration' => $totalDuration,
-                'code_expires_in' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
+                'code_expires_in' => $code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes(),
                 'success' => 'Vote submitted successfully. Please check your email for verification code.'
             ]);
 
@@ -960,7 +960,7 @@ private function validateVotingEligibility($auth_user, $code)
     
     if (!$code->is_code_to_open_voting_form_usable && $code->vote_submitted) {
         // Check if we're in the valid submission window
-        $submission_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+        $submission_window = $code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes();
         $elapsed = \Carbon\Carbon::parse($code->code_to_open_voting_form_used_at)->diffInMinutes(now());
         
         if ($elapsed > $submission_window) {
@@ -1047,7 +1047,7 @@ private function validateVoteIntegrity($vote_data, $auth_user)
  */
 private function prepareSessionData($vote_data, $auth_user, $totalDuration, $code)
 {
-    $code_expires_in = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+    $code_expires_in = $code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes();
     
     return [
         'user_id' => $auth_user->id,
@@ -1083,13 +1083,15 @@ private function generateVoteHash($vote_data)
  */
 public function send_second_voting_code(&$code, $auth_user)
 {
+    // Read before the try: a misconfigured duration must fail closed (503), not be swallowed below (PBDIGIT-274 S6)
+    $voting_window = $code->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes();
+
     try {
         $code_to_open_voting_form_used_at = Carbon::parse($code->code_to_open_voting_form_used_at);
         $current = Carbon::now();
         $totalDuration = $code_to_open_voting_form_used_at->diffInMinutes($current);
-        
+
         // Check if we're within the valid voting window
-        $voting_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
         if ($totalDuration >= $voting_window) {
             return [
                 'error' => 'Voting window expired',

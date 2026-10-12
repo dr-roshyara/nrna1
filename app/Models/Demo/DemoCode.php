@@ -133,7 +133,7 @@ class DemoCode extends Code
         }
 
         // Use voting_time_in_minutes from record if set, otherwise use config
-        $votingWindow = $this->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+        $votingWindow = $this->voting_time_in_minutes ?? \App\Services\Voting\VotingDuration::minutes();
         $elapsedMinutes = \Carbon\Carbon::parse($this->code_to_open_voting_form_sent_at)->diffInMinutes(now());
 
         return $elapsedMinutes > $votingWindow;

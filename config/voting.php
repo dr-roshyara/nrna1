@@ -31,5 +31,7 @@ return [
     | Set via: VOTING_TIME_IN_MINUTES=30 in .env
     |
     */
-    'time_in_minutes' => (int) env('VOTING_TIME_IN_MINUTES', 30),
+    // No (int) cast (PBDIGIT-274 S6, O-10 = B): the raw value reaches the strict rule, so '20min' or '5.9' fail
+    // closed instead of being truncated. Read it through App\Services\Voting\VotingDuration::minutes().
+    'time_in_minutes' => env('VOTING_TIME_IN_MINUTES', 30),
 ];

@@ -46,7 +46,8 @@ class CodeController extends Controller
     {
         $this->clientIP = \Request::getClientIp(true);
         $this->maxUseClientIP = config('app.max_use_clientIP') ?? 7;
-        $this->votingTimeInMinutes = (int) config('voting.time_in_minutes', 30); // Configurable voting window (matches voter slug expiry)
+        // Configurable voting window (matches voter slug expiry); strict, fails closed (PBDIGIT-274 S6, O-10 = B)
+        $this->votingTimeInMinutes = \App\Services\Voting\VotingDuration::minutes();
     }
 
     /**
@@ -507,13 +508,13 @@ class CodeController extends Controller
                 'success' => true,
                 'step' => 2,
                 'user_name' => $user->name,
-                'voting_time_minutes' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
+                'voting_time_minutes' => $code->voting_time_in_minutes ?? $this->votingTimeInMinutes,
             ]);
         }
 
         return Inertia::render('Code/Agreement', [
             'user_name' => $user->name,
-            'voting_time_minutes' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
+            'voting_time_minutes' => $code->voting_time_in_minutes ?? $this->votingTimeInMinutes,
             'agreement_text_nepali' => 'म यो अनलाइन मतदान प्रणालीमा स्वेच्छाले भाग लिइरहेको छु र मेरो मत गोप्य राखिनेछ भन्ने कुरामा सहमत छु।',
             'agreement_text_english' => 'I voluntarily participate in this online voting system and agree that my vote will remain secret and secure.',
             'slug' => $voterSlug ? $voterSlug->slug : null,
