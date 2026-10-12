@@ -145,14 +145,20 @@ class LegacyVotingFlagsBoundaryTest extends TestCase
         $this->requireIdentityVerification();
         $officer = User::factory()->create(['email_verified_at' => now(), 'organisation_id' => $this->org->id]);
         $officer->forceFill(['is_committee_member' => true]);   // committee.member reads the in-memory actor
-        $slugsBefore = VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->get(['id', 'slug', 'is_active'])->toArray();
+        $idsBefore = VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->pluck('id')->sort()->values()->all();
 
+        // PBDIGIT-274 S4: recovery is per election and goes through VoterSlugIssuer.
         $this->actingAs($officer)->withSession(['current_organisation_id' => $this->org->id])
-            ->post(route('admin.voting.security.recovery', ['user' => $this->voter->id]));
+            ->post(route('admin.voting.security.recovery', ['user' => $this->voter->id, 'election' => $this->election->id]));
 
-        $this->assertSame($slugsBefore,
-            VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->get(['id', 'slug', 'is_active'])->toArray(),
-            'recovery must neither mint a credential for, nor disturb the credentials of, a voter who is not entitled');
+        $this->assertSame($idsBefore,
+            VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->pluck('id')->sort()->values()->all(),
+            'recovery must not mint a credential for a voter who is not entitled');
+        // Decision-driven change (PO 2026-10-13, plan O-3 "refuse and retire"): the existing credential is retired,
+        // i.e. soft-deleted and deactivated, kept as history. Previously this test expected it untouched.
+        $current = VoterSlug::withoutGlobalScopes()->findOrFail($this->slug->id);
+        $this->assertNotNull($current->deleted_at, 'the not-entitled voter\'s current link is retired (O-3)');
+        $this->assertFalse((bool) $current->is_active);
         $this->assertSame(VotingEntitlementReason::NotAdmitted, $this->standing());
     }
 

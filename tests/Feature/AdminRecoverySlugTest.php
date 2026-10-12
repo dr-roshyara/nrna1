@@ -2,130 +2,138 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
+use App\Models\Election;
+use App\Models\ElectionMembership;
+use App\Models\Organisation;
 use App\Models\User;
 use App\Models\VoterSlug;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Tests\Support\ElectionScenarioFactory;
+use Tests\TestCase;
 
+/**
+ * Admin recovery, per election, through VoterSlugIssuer (PBDIGIT-274 S4; PO decision 2026-10-13). Rewritten
+ * from the old contract (no election, legacy user flags, step_meta, deactivating all links), which PBDIGIT-215
+ * describes as defective and which could no longer pass (the legacy columns are gone).
+ *
+ * The same behaviour is tested on the isolated database in
+ * tests/Isolated/Pbdigit274/Database/VoterSlugRecoveryPathsTest.php. This file runs in the default suite.
+ */
 class AdminRecoverySlugTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function committee_member_can_generate_recovery_slug_for_voter()
+    private Organisation $org;
+    private Election $election;
+    private User $admin;
+    private User $voter;
+
+    protected function setUp(): void
     {
-        // Skip middleware for testing
-        $this->withoutMiddleware();
+        parent::setUp();
+        $this->withoutMiddleware();   // committee.member is not the subject here
 
-        // Create a committee member
-        $admin = User::factory()->create([
-            'name' => 'Election Committee Member',
-            'email' => 'committee@example.com',
+        Election::resetPlatformOrgCache();
+        $this->org = Organisation::factory()->create(['type' => 'tenant', 'uses_full_membership' => false]);
+        $this->election = ElectionScenarioFactory::votingActive($this->org);
+        $this->admin = User::factory()->create(['name' => 'Election Committee Member']);
+        $this->voter = User::factory()->create(['email_verified_at' => now(), 'organisation_id' => $this->org->id]);
+        ElectionMembership::create([
+            'user_id' => $this->voter->id, 'organisation_id' => $this->org->id,
+            'election_id' => $this->election->id, 'role' => 'voter', 'status' => 'active',
+        ]);
+    }
+
+    private function recover(?string $electionId = null)
+    {
+        return $this->actingAs($this->admin)->post(
+            route('admin.voting.security.recovery', ['user' => $this->voter->id, 'election' => $electionId ?? $this->election->id]),
+            ['reason' => 'Voter link expired, requested assistance'],
+        );
+    }
+
+    private function slugRow(array $attributes = []): string
+    {
+        $id = (string) Str::uuid();
+        DB::table('voter_slugs')->insert($attributes + [
+            'id' => $id, 'organisation_id' => $this->org->id, 'election_id' => $this->election->id,
+            'user_id' => $this->voter->id, 'slug' => Str::random(32), 'is_active' => true, 'has_voted' => false,
+            'status' => 'active', 'current_step' => 2, 'created_at' => now(), 'updated_at' => now(),
+            'expires_at' => now()->addMinutes(30),
         ]);
 
-        // Create a voter with an expired slug
-        $voter = User::factory()->create([
-            'is_voter' => true,
-            'can_vote' => true,
-            'has_voted' => false,
-            'name' => 'Test Voter',
-        ]);
+        return $id;
+    }
 
-        // Create an expired slug
-        $expiredSlug = VoterSlug::create([
-            'user_id' => $voter->id,
-            'slug' => 'expired-test-slug',
-            'expires_at' => now()->subMinutes(10), // Expired 10 minutes ago
-            'is_active' => true,
-            'current_step' => 2, // Was in the middle of voting
-        ]);
-
-        // Admin generates recovery slug
-        $response = $this->actingAs($admin)
-            ->post("/admin/voting-security/recovery/{$voter->id}", [
-                'reason' => 'Voter slug expired, requested assistance'
-            ]);
-
-        $response->assertStatus(302);
-
-        // Debug: Check what session data we have
-        if (!$response->assertSessionHas('success', false)) {
-            // Check if there's an error instead
-            if ($response->getSession()->has('error')) {
-                $this->fail('Got error instead of success: ' . $response->getSession()->get('error'));
-            } else {
-                $this->fail('No session data found. Session keys: ' . implode(', ', array_keys($response->getSession()->all())));
-            }
-        }
-
-        $response->assertSessionHas('recovery_url');
-
-        // Should have created a new active slug
-        $newSlug = VoterSlug::where('user_id', $voter->id)
-            ->where('is_active', true)
-            ->first();
-
-        $this->assertNotNull($newSlug);
-        $this->assertNotEquals($expiredSlug->slug, $newSlug->slug);
-        $this->assertTrue($newSlug->expires_at > now());
-
-        // Should have recovery metadata
-        $this->assertTrue($newSlug->step_meta['recovery_slug'] ?? false);
-        $this->assertTrue($newSlug->step_meta['admin_generated'] ?? false);
-        $this->assertEquals('Election Committee Member', $newSlug->step_meta['admin_name'] ?? '');
-
-        // Old slug should be deactivated
-        $expiredSlug->refresh();
-        $this->assertFalse($expiredSlug->is_active);
+    private function currentSlug(): ?string
+    {
+        return DB::table('voter_slugs')->where('user_id', $this->voter->id)->where('election_id', $this->election->id)
+            ->whereNull('deleted_at')->value('slug');
     }
 
     /** @test */
-    public function cannot_generate_recovery_slug_for_completed_voter()
+    public function an_expired_link_is_replaced_and_kept_as_history(): void
     {
-        $this->withoutMiddleware();
+        $old = $this->slugRow(['created_at' => now()->subMinutes(40), 'expires_at' => now()->subMinutes(10)]);
 
-        $admin = User::factory()->create();
-        $voter = User::factory()->create([
-            'is_voter' => true,
-            'can_vote' => true,
-            'has_voted' => true, // Already completed voting
-        ]);
-
-        $response = $this->actingAs($admin)
-            ->post("/admin/voting-security/recovery/{$voter->id}", [
-                'reason' => 'Test recovery attempt'
-            ]);
+        $response = $this->recover();
 
         $response->assertStatus(302);
-        $response->assertSessionHas('error');
-        $this->assertStringContains('already completed voting', session('error'));
-
-        // Should not create any new slugs
-        $this->assertEquals(0, VoterSlug::where('user_id', $voter->id)->count());
+        $response->assertSessionHas('success');
+        $new = $this->currentSlug();
+        $this->assertNotNull($new);
+        $response->assertSessionHas('recovery_url', route('slug.code.create', ['vslug' => $new]));
+        $this->assertNotNull(DB::table('voter_slugs')->where('id', $old)->value('deleted_at'), 'old link kept as history');
+        $this->assertSame(2, VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->count());
     }
 
     /** @test */
-    public function cannot_generate_recovery_slug_for_ineligible_voter()
+    public function a_valid_link_is_returned_unchanged(): void
     {
-        $this->withoutMiddleware();
+        $id = $this->slugRow();
+        $slug = DB::table('voter_slugs')->where('id', $id)->value('slug');
 
-        $admin = User::factory()->create();
-        $voter = User::factory()->create([
-            'is_voter' => false, // Not a registered voter
-            'can_vote' => false,
-            'has_voted' => false,
+        $response = $this->recover();
+
+        $response->assertSessionHas('recovery_url', route('slug.code.create', ['vslug' => $slug]));
+        $this->assertSame(1, VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->count());
+    }
+
+    /** @test */
+    public function no_link_after_voting(): void
+    {
+        DB::table('codes')->insert([
+            'id' => (string) Str::uuid(), 'organisation_id' => $this->org->id, 'election_id' => $this->election->id,
+            'user_id' => $this->voter->id, 'code1' => '123456', 'has_voted' => true, 'created_at' => now(), 'updated_at' => now(),
         ]);
 
-        $response = $this->actingAs($admin)
-            ->post("/admin/voting-security/recovery/{$voter->id}", [
-                'reason' => 'Test recovery attempt'
-            ]);
+        $response = $this->recover();
 
-        $response->assertStatus(302);
         $response->assertSessionHas('error');
-        $this->assertStringContains('not eligible to vote', session('error'));
+        $this->assertStringContainsString('already voted', session('error'));
+        $this->assertSame(0, VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->count());
+    }
 
-        // Should not create any new slugs
-        $this->assertEquals(0, VoterSlug::where('user_id', $voter->id)->count());
+    /** @test */
+    public function no_link_without_entitlement(): void
+    {
+        ElectionMembership::withoutGlobalScopes()->where('user_id', $this->voter->id)->delete();
+
+        $response = $this->recover();
+
+        $response->assertSessionHas('error');
+        $this->assertStringContainsString('not entitled', session('error'));
+        $this->assertSame(0, VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->count());
+    }
+
+    /** @test */
+    public function an_unknown_election_is_refused(): void
+    {
+        $response = $this->recover((string) Str::uuid());
+
+        $response->assertSessionHas('error');
+        $this->assertSame(0, VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->count());
     }
 }
