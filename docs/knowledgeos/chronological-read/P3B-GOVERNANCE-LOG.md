@@ -2137,3 +2137,22 @@ The two `sha256sum` listings must be identical.
 | Items for the drafter to put to the human at review (recorder) | exploratory details still undecided: P2-5 (H3 descriptive reading); H5 D and exact dimension list (12-name list VERIFIED by review, approval pending); NR-P evaluation at α/3 or at H2's realized Holm step (G-LOG-0133) |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`) stays as is; the amendment is a new file |
 | Not authorized | the freeze itself (separate human act after independent review); run-3 outside G-LOG-0117; G3–G5; corpus reads; any change of O1 |
+
+## G-LOG-0135 — Human act: the eight remaining amendment details for prereg_v2 (freeze stays a separate act)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12, as one bounded amendment decision (recommendation table and safeguards supplied by the human; recorded in substance) |
+| Basis | `research/PREREG-v2-DRAFT-REVIEW.md` PENDING-HUMAN items 1–8 (W `0427a2e8d`); prereg_v2 draft review PASS WITH REQUIRED CORRECTIONS → RESOLVED WITH NOTES |
+| 1 NR-P threshold | **α/3**, fixed in advance (≥ 58 dated relations at B = 999) |
+| 2 VAC for H2 | **No.** VAC stays defined for H3 only; insufficient H2 data is UNTESTABLE under H2's own rule |
+| 3 H3 descriptive reading (P2-5) | **acyclic yes/no only**; no graded measure; the no-edge case reported explicitly as vacuous |
+| 4 Exploratory family | **BH at q = 0.05**, explicitly labelled exploratory |
+| 5 H5 dimension list | **the 12 verified names approved** (D = 12), provided the independent reviewer confirms the code-level mapping |
+| 6 H5 rows | **non-hub rows only**, matching the frozen S5 claim scope (s5-plan v2.3 l.40-43); eligibility rule tested explicitly |
+| 7 Random streams | **separate streams** for H1, H2, H4 and the exploratory analyses; record that confirmatory p-values may differ from v1's sampling sequence while each test remains valid; tests must show exploratory draws cannot shift confirmatory draws and that streams are deterministic |
+| 8 H2 acyclicity | **reported descriptively** (acyclic yes/no), clearly separated from H2's confirmatory forward-share claim |
+| Required safeguards (human) | the reviewer verifies: confirmatory family exactly {H1, H2, H4}, Holm at α = 0.05, fixed family R3; UNT → p = 1, decided solely from that hypothesis's own data; H2 confirmatory wording forward-share only, acyclicity descriptive; NR-P minimum-sample rule and boundary cases tested; H3/H5 exploratory and unable to affect confirmatory sampling or decisions; deterministic separate streams; frozen `prereg_v1.py` unchanged; amendment not frozen or pushed. The B = 99 smoke-test change (not re-reviewed) is included in the review |
+| Sequence authorized | record → apply to `prereg_v2.py` and tests → independent review → repair → fresh re-review → orchestrator verification → present for the human's **separate freeze act** |
+| Scientific limit (human) | passing this amendment establishes a measurement protocol, not a robust KnowledgeOS theory; theory recovery follows S5/S5a/S5b under O1 (G-LOG-0125) |
+| Not authorized | the freeze; run-3 outside G-LOG-0117; corpus reads; G3–G5; using ETR engineering to route around O1 |
