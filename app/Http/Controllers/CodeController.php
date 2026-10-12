@@ -173,19 +173,8 @@ class CodeController extends Controller
                 'vote_submitted'                     => false,
             ]);
 
-            // Extend voter slug expiry so the user gets a fresh 30-minute window
-            if ($voterSlug) {
-                $voterSlug->update([
-                    'expires_at'  => now()->addMinutes($this->votingTimeInMinutes),
-                    'is_active'   => true,
-                    'can_vote_now' => true,
-                    'status'      => 'active',
-                ]);
-                Log::info('✅ Voter slug window extended after code regeneration', [
-                    'voter_slug_id' => $voterSlug->id,
-                    'new_expires_at' => now()->addMinutes($this->votingTimeInMinutes),
-                ]);
-            }
+            // PBDIGIT-274 S5: the voter slug is NOT extended or reactivated here. Its lifetime is fixed from
+            // created_at; an expired link is replaced through VoterSlugIssuer at the voting entry points.
 
             // Send new code notification
             try {

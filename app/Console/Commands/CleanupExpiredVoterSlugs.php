@@ -79,27 +79,15 @@ class CleanupExpiredVoterSlugs extends Command
      */
     private function cleanupVoterSlugs(Carbon $cutoffTime, bool $verbose): int
     {
-        // Only delete soft-deleted expired slugs
-        $slugsToDelete = VoterSlug::onlyTrashed()
-            ->where('expires_at', '<', $cutoffTime)
-            ->withoutGlobalScopes()
-            ->count();
-
-        if ($slugsToDelete > 0) {
-            if ($verbose) {
-                $this->line("   • Found {$slugsToDelete} soft-deleted real voter slugs to permanently remove");
-            }
-
-            $deleted = VoterSlug::onlyTrashed()
+        // PBDIGIT-274 S5: real voter slugs are NEVER hard-deleted. A soft-deleted real slug is the history of a
+        // replaced voting link (and may be the one a vote was cast with); deleting it would also cascade to its
+        // steps. Retention / erasure is a separate policy (plan O-12). This method only reports what is kept.
+        if ($verbose) {
+            $kept = VoterSlug::onlyTrashed()
                 ->where('expires_at', '<', $cutoffTime)
                 ->withoutGlobalScopes()
-                ->forceDelete();
-
-            if ($verbose) {
-                $this->line("   • Permanently deleted {$deleted} real voter slugs");
-            }
-
-            return $deleted;
+                ->count();
+            $this->line("   • Real voter slugs: none deleted ({$kept} soft-deleted rows kept as history)");
         }
 
         return 0;

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
+use App\Exceptions\Voting\VoterSlugIssuanceConflict;
 use App\Services\VoterSlugService;
+use App\Services\Voting\VoterSlugIssuance;
+use App\Services\Voting\VoterSlugIssuer;
 use App\Services\DemoElectionResolver;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -123,10 +126,26 @@ class ElectionController extends Controller
         ]);
 
         try {
-            // Generate voter slug for the user using injected service
-            // ✅ FIX: For demo elections, force fresh slug; for real elections, reuse if active
-            $forceNew = ($election->type === 'demo');
-            $slug = $this->slugService->getOrCreateSlug(auth()->user(), $election, $forceNew);
+            if (trim((string) $election->type) === 'real') {
+                // PBDIGIT-274 S5: real elections through VoterSlugIssuer (a valid link reused unchanged; an expired
+                // one replaced by a new row, history kept). The legacy service rewrote rows in place and
+                // hard-deleted expired links.
+                try {
+                    $issuance = VoterSlugIssuer::fresh()->issue(auth()->user(), $election);
+                } catch (VoterSlugIssuanceConflict $e) {
+                    return redirect()->route('election.select')->with('error', $e->getUserMessage());
+                }
+                if ($issuance->outcome === VoterSlugIssuance::ALREADY_VOTED) {
+                    return redirect()->route('election.select')->with('info', 'You have already voted in this election.');
+                }
+                if (! $issuance->hasLink()) {
+                    return redirect()->route('election.select')->with('error', 'You are not eligible to vote in this election at this time.');
+                }
+                $slug = $issuance->slug;
+            } else {
+                // Demo: legacy path unchanged (decision D1): a fresh slug each time.
+                $slug = $this->slugService->getOrCreateSlug(auth()->user(), $election, true);
+            }
 
             // For API requests
             if ($request->wantsJson()) {

@@ -127,17 +127,12 @@ class VoterSlugService
     }
 
     /**
-     * Extend slug expiry by 30 minutes (sliding window)
+     * @deprecated PBDIGIT-274 S5: voter-slug lifetimes are fixed from created_at and are never extended in
+     *             place. Kept for callers' compatibility; always returns false and writes nothing.
      */
     public function extendSlugExpiry(VoterSlug $slug): bool
     {
-        if (!$slug->is_active) {
-            return false;
-        }
-
-        return $slug->update([
-            'expires_at' => now()->addMinutes(30)
-        ]);
+        return false;
     }
 
 
@@ -179,11 +174,7 @@ class VoterSlugService
                 ->first();
 
             if ($existingSlug) {
-                // Extend the expiry by 30 minutes (sliding window)
-                $existingSlug->update([
-                    'expires_at' => now()->addMinutes(30)
-                ]);
-
+                // PBDIGIT-274 S5: returned unchanged; no sliding window (lifetime fixed from created_at).
                 return $existingSlug;
             }
 
@@ -261,6 +252,13 @@ class VoterSlugService
      */
     public function getOrCreateSlug(User $user, Election $election, bool $forceNew = false): VoterSlug|DemoVoterSlug
     {
+        // PBDIGIT-274 S5: real elections get their link from VoterSlugIssuer only (fixed lifetime, history kept).
+        // This legacy path rewrites rows in place and hard-deletes (cleanupExpiredSlugs, forceNew), so it is
+        // limited to demo elections (decision D1). Refused before any query.
+        if (trim((string) $election->type) === 'real') {
+            throw new \LogicException('Real-election voter links come from VoterSlugIssuer, not VoterSlugService::getOrCreateSlug().');
+        }
+
         // 🔧 CRITICAL DEBUG: Check election type detection
         Log::info('🔍 [getOrCreateSlug] Election type check:', [
             'election_id' => $election->id,
