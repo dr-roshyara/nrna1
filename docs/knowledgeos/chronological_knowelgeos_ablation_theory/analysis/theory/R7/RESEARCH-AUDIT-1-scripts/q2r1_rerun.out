@@ -1,0 +1,66 @@
+
+##### A0 audit r0 (App. A)
+--- rows TA
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               12  18.7  0.0024 0.387 0.30 0.528 0.0081  0.098  0.0000
+P-a records|acts+sigma|work         15  20.3  0.0011 0.882 0.08 1.587 0.0040  0.091  0.0005
+P-b records|acts|sigma+work         16  21.0  0.0006 0.516 0.00 1.269 0.0000  0.125  0.0000
+P-d observed|unobserved             12  13.3  0.4296 0.800 0.84 0.919 0.8150  0.018  0.0315
+sort: acts {2,8-12}|rest            16  16.3  0.5228 0.381 0.01 0.597 0.0400  0.029  0.0205
+sort: work {19-21}|rest             10  11.3  0.4524 0.588 0.07 0.689 0.0685  0.011  0.0380
+sort: norm {3-7}|rest               10  15.0  0.0673 0.385 0.00 0.496 0.0019  0.048  0.0040
+   cohesion CB1 0.33 (random-9 mean 0.35, P(rand>=) 0.604); CB23 0.81 (random-14 mean 0.59, P(rand>=) 0.0000)
+--- rows TA+TB
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               17  32.0  0.0000 0.415 0.39 0.527 0.0027  0.100  0.0005
+P-a records|acts+sigma|work         24  34.8  0.0003 0.727 0.02 1.516 0.0001  0.124  0.0000
+P-b records|acts|sigma+work         27  35.9  0.0005 0.659 0.15 1.383 0.0000  0.139  0.0000
+P-d observed|unobserved             17  22.9  0.2125 0.850 0.85 0.949 0.7715  0.009  0.0600
+sort: acts {2,8-12}|rest            26  28.0  0.3713 0.388 0.01 0.596 0.0219  0.036  0.0175
+sort: work {19-21}|rest             17  19.2  0.4304 0.515 0.01 0.622 0.0101  0.038  0.0035
+sort: norm {3-7}|rest               17  25.8  0.0815 0.333 0.00 0.454 0.0000  0.067  0.0015
+   cohesion CB1 0.34 (random-9 mean 0.35, P(rand>=) 0.512); CB23 0.86 (random-14 mean 0.58, P(rand>=) 0.0000)
+
+##### A1 audit corrected
+--- rows TA
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               12  19.5  0.0009 0.364 0.48 0.477 0.0150  0.064  0.0030
+P-a records|acts+sigma|work         15  20.9  0.0005 0.750 0.07 1.379 0.0075  0.059  0.0020
+P-b records|acts|sigma+work         16  21.5  0.0004 0.485 0.03 1.089 0.0001  0.095  0.0000
+P-d observed|unobserved             13  14.5  0.4101 0.765 0.89 0.871 0.8652  0.019  0.0210
+sort: acts {2,8-12}|rest            16  17.3  0.3593 0.291 0.00 0.481 0.0077  0.027  0.0165
+sort: work {19-21}|rest             11  12.5  0.4269 0.550 0.08 0.642 0.0806  0.008  0.0425
+sort: norm {3-7}|rest               11  16.1  0.0795 0.355 0.01 0.457 0.0030  0.039  0.0030
+   cohesion CB1 0.26 (random-9 mean 0.35, P(rand>=) 0.935); CB23 0.80 (random-14 mean 0.59, P(rand>=) 0.0000)
+--- rows TA+TB
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               17  34.7  0.0000 0.395 0.49 0.487 0.0043  0.066  0.0070
+P-a records|acts+sigma|work         26  37.0  0.0003 0.684 0.02 1.466 0.0026  0.069  0.0040
+P-b records|acts|sigma+work         27  37.9  0.0000 0.628 0.33 1.216 0.0000  0.133  0.0000
+P-d observed|unobserved             18  25.5  0.1529 0.818 0.87 0.906 0.7954  0.011  0.0410
+sort: acts {2,8-12}|rest            26  30.7  0.2206 0.306 0.00 0.488 0.0021  0.049  0.0050
+sort: work {19-21}|rest             20  21.7  0.4475 0.526 0.03 0.632 0.0286  0.014  0.0165
+sort: norm {3-7}|rest               20  28.5  0.1072 0.323 0.00 0.443 0.0000  0.058  0.0010
+   cohesion CB1 0.26 (random-9 mean 0.35, P(rand>=) 0.873); CB23 0.85 (random-14 mean 0.59, P(rand>=) 0.0000)
+
+##### RV reviewer
+--- rows TA
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               12  19.9  0.0001 0.333 0.17 0.452 0.0005  0.082  0.0005
+P-a records|acts+sigma|work         15  21.3  0.0000 0.750 0.04 1.352 0.0001  0.079  0.0005
+P-b records|acts|sigma+work         16  21.8  0.0000 0.444 0.00 1.078 0.0000  0.110  0.0000
+P-d observed|unobserved             13  14.8  0.3573 0.684 0.69 0.794 0.6185  0.020  0.0185
+sort: acts {2,8-12}|rest            16  17.7  0.3069 0.320 0.00 0.504 0.0047  0.027  0.0145
+sort: work {19-21}|rest             11  12.7  0.3771 0.550 0.05 0.644 0.0480  0.010  0.0280
+sort: norm {3-7}|rest               11  16.4  0.0483 0.355 0.00 0.459 0.0001  0.057  0.0005
+   cohesion CB1 0.32 (random-9 mean 0.35, P(rand>=) 0.680); CB23 0.77 (random-14 mean 0.59, P(rand>=) 0.0015)
+--- rows TA+TB
+cut                              cross  null  p(x<=)  cond  pct  ncut      p      Q  p(Q>=)
+P-c records|norm+work               17  33.6  0.0000 0.362 0.24 0.462 0.0003  0.090  0.0010
+P-a records|acts+sigma|work         25  36.0  0.0000 0.694 0.02 1.413 0.0000  0.104  0.0000
+P-b records|acts|sigma+work         27  36.9  0.0000 0.574 0.11 1.217 0.0000  0.132  0.0000
+P-d observed|unobserved             18  24.7  0.1583 0.750 0.71 0.843 0.5904  0.012  0.0370
+sort: acts {2,8-12}|rest            26  29.7  0.2454 0.342 0.00 0.527 0.0053  0.035  0.0135
+sort: work {19-21}|rest             19  21.0  0.4275 0.528 0.02 0.633 0.0165  0.025  0.0070
+sort: norm {3-7}|rest               19  27.6  0.0719 0.328 0.00 0.447 0.0001  0.068  0.0005
+   cohesion CB1 0.33 (random-9 mean 0.35, P(rand>=) 0.572); CB23 0.83 (random-14 mean 0.59, P(rand>=) 0.0010)

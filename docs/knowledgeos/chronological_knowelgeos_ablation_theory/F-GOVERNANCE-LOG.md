@@ -3956,3 +3956,36 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - Line 399 is extended, not superseded.
 - **State:** the CB1/CB23 cells are adopted per reading, and the host lists are ratified (R-a). Open: (g), (h), and the ⚠E3b re-assessment, which needs its own act.
 - **Next:** research audit RESEARCH-AUDIT-1 (running), then the ⚠E3b re-assessment.
+
+
+## F-LOG-0292 — **Analysis (2026-10-13): RESEARCH-AUDIT-1 completed.** A substantive validity audit of the theory. It decides nothing
+- **Requested by the human** ("continue with most optimal way"; master prompt: test whether the theory holds rather than add paperwork).
+- **Artifact:** `R7/RESEARCH-AUDIT-1.md` r1.1, with reproduction scripts in `R7/RESEARCH-AUDIT-1-scripts/`.
+- **Review history:**
+  - r0 got an adversarial review that independently re-encoded all 83 T2 rows. Verdict: PASS_WITH_LIMITATIONS. 3 conclusions were wrong or overstated.
+  - r1 corrected these and re-ran Q2 under 3 encodings. The re-review reproduced every number (PASS_WITH_LIMITATIONS).
+  - r1.1 applied 8 calibration fixes, not re-reviewed.
+- **Findings (analysis; within-family, Λ7):**
+  - **Q1, the H-D asymmetry under P-c:** it depends on the counting rule. It is carried by D-chg reading {α, Cap}, which is a content difference. Calling it an "artifact" is a judgment (medium confidence).
+    - The R-i/R-i′ record-clause asymmetry is real under every convention.
+    - "Neutral under 𝐑₀" can be restated at coordinate level only if actor coordinates are not counted, which is equivalent to S′. That cannot retire the spanning-rule question.
+  - **Q2, P-c as a cut:** P-c is a robust low-crossing cut on T-A+T-B rows. It is the unique or near-unique minimum among 817,190 9│14 cuts on every encoding, and it holds against equal-volume nulls.
+    - Specificity to the records side holds on raw crossings only. On normalized measures the acts, norm and work sort cuts also beat their nulls, and on conductance they score better than P-c.
+    - Structure: a cohesive norm-and-work core (CB23, far above chance) with a records periphery (CB1 cohesion not distinguishable from chance).
+    - **The DDD bounded-context criteria are not supported** (no distinct language, ownership or relationship evidence). The cut is better described as a candidate module cut.
+    - P-d is not equally supported.
+  - **Q3, weakest load-bearing claims:** adequacy of the R4 primitives; act identifiability; the consistency notion (a design decision); the ratified host lists (an unratified method, sensitive to encoding); the choice of P-c; the shared participant.
+  - **Q4, simplifications (none adopted):**
+    - S′ and S″ are identical (definitional);
+    - most structure is reading-invariant;
+    - CG6 has no constraint content (C24 has no R4 coordinate);
+    - proposal-worthy: S3 (count over T-A/T-B), S4 (one VP1 slot list), S6 (relabel as a candidate module cut);
+    - conditional: S5 (17 elements, only if spanning status, observability tags and the §1d guard are preserved);
+    - S1 only as restated (equivalent to S′);
+    - S2: the S″→S′ collapse is fine; S vs S′ stays a human choice.
+  - **Q5:** VP14 = P-c and VP12 (i) are expensive to reverse. VP10-for-O3 and the C-γ return are cheap.
+  - **Q6, next tests:**
+    - freeze the encoding after a further independent re-encoding;
+    - build a clause-by-coordinate table;
+    - a non-Claude test of act identifiability, or V6 (needs authorization).
+- **Status:** analysis only. Any correction (S1–S6, context framing) needs a proposal and a human act.
