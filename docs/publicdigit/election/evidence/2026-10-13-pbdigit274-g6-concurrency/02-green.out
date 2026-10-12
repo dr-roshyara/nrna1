@@ -1,0 +1,17 @@
+head=79da40b48dc8a0ca3b7c5b5bf8169d35b4809e29
+date=2026-10-13T00:30:25+02:00
+note: GREEN, after adding the afterLocks() pause point (D3)
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDD                                                                4 / 4 (100%)
+
+Time: 00:08.292, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 4, Assertions: 56, Deprecations: 3.
+exit=0

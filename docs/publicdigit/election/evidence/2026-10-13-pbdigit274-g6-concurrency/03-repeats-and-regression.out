@@ -1,0 +1,22 @@
+date=2026-10-13T00:30:49+02:00
+$ [repeat 1] . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+OK, but there were issues!
+Tests: 4, Assertions: 56, Deprecations: 3.
+exit=0
+$ [repeat 2] . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+OK, but there were issues!
+Tests: 4, Assertions: 56, Deprecations: 3.
+exit=0
+$ [repeat 3] . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+OK, but there were issues!
+Tests: 4, Assertions: 56, Deprecations: 3.
+exit=0
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php
+OK, but there were issues!
+Tests: 18, Assertions: 77, Deprecations: 3.
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+OK, but there were issues!
+Tests: 6, Assertions: 27, Deprecations: 3.

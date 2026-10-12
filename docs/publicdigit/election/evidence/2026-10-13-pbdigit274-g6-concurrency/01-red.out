@@ -1,0 +1,31 @@
+head=79da40b48dc8a0ca3b7c5b5bf8169d35b4809e29
+date=2026-10-13T00:29:21+02:00
+note: RED, before the afterLocks() pause point exists in the issuer
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DFDF                                                                4 / 4 (100%)
+
+Time: 00:43.871, Memory: 24.00 MB
+
+There were 2 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerRealConcurrencyTest::test_expired_row_two_processes_end_with_one_replacement
+timed out waiting until A holds the row lock and waits
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php:117
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php:204
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerRealConcurrencyTest::test_issuer_first_then_cast_ends_in_the_accepted_o13_state
+timed out waiting until the issuer holds the code and slug rows
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php:117
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php:250
+
+FAILURES!
+Tests: 4, Assertions: 28, Failures: 2, Deprecations: 3.
+exit=1
