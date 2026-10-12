@@ -1985,3 +1985,17 @@ The two `sha256sum` listings must be identical.
 | Still open for P1-4 | s₀ (any s₀ ≤ 10 is redundant with e₀ = 10; G-LOG-0122); whether to commission a pre-freeze synthetic re-run of the H5 study at D = 12 (the study simulated D = 10 only; power and size at 132 ordered pairs not studied) |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the D = 12 re-run (not yet commissioned); the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0124 — Human act: H5 s₀ = 10 (P1-4); D and the exact dimension list held open for verification
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P1-4: s₀ = 10 — accepted. e₀ = 10 — accepted. B = 999 — accepted. D and the exact dimension list — still open and require verification." |
+| Basis | independent read-only statistical review of s₀ (fresh-context subagent, 2026-10-12; no files changed), recommending s₀ = 10; key figures re-checked by the orchestrator against `h5-design-v1/H5-DESIGN-v1.json` (max rejection-rate spread across s₀ ∈ {3, 10, 30} for `loev_h0.8_*_e10` and `minp_exact+loev_h0.8_*_e10` = 0 at α 0.05 / 0.01 / 0.05/6; s₀ = 30 lowers mean planted-pair count in RARE k = 4 cells 29–33, e.g. 3.82 → 3.75 at ε = 5 %) |
+| Decided | **s₀ = 10**. *DERIVED (G-LOG-0122; review):* at e₀ = 10, E ≥ e₀ implies n_a ≥ 10, so s₀ = 10 adds no restriction and the study's s₀-insensitivity holds for any n, D and prevalences; size is unaffected by s₀ (eligibility depends only on column sums) |
+| Reaffirmed | e₀ = 10 (G-LOG-0121); B = 999 (G-LOG-0122) |
+| D and dimension list | **open, verification required** (human's statement). Recorder's reading, reconciling with G-LOG-0123: the approach "freeze an explicit list" (G-LOG-0123) stands; the **value of D and the list's exact content** are not yet confirmed and are not to be treated as fixed until verified. The 12 names in G-LOG-0123 are the recorder's candidate from `scripts/derive_families.py` l.39-52, not a verified frozen list. The human may correct this reading |
+| Limitations (review) | synthetic, D = 10 simulated; R = 100 per power cell, B = 499 for power; size degenerate (T* ≈ 0); RARE at n = 500 not simulated (irrelevant at s₀ = 10) |
+| Still open for H5 | D and exact dimension list (verification); D = 12 synthetic re-run (not commissioned); P1-5 effect size; P1-6 artefact check |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the D = 12 re-run; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
