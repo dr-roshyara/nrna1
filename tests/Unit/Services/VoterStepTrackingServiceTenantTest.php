@@ -97,6 +97,81 @@ final class VoterStepTrackingServiceTenantTest extends BaseTestCase
         $this->assertSame(0, $this->queries);
     }
 
+    /**
+     * Runs a reader on a service that records the query its pinned lookup (stepQuery) built. The reader then
+     * tries to execute it and fails on the dead socket (no real database is reachable); the recorded builder,
+     * including the reader's own where / order clauses, is what the test inspects. If the reader bypasses
+     * stepQuery, nothing is recorded and the test fails.
+     */
+    private function capturedLookup(callable $read, VoterSlug|DemoVoterSlug $slug): Builder
+    {
+        $service = new class () extends VoterStepTrackingService {
+            public ?Builder $captured = null;
+
+            public function stepQuery($voterSlug, Election $election): Builder
+            {
+                return $this->captured = parent::stepQuery($voterSlug, $election);
+            }
+        };
+        try {
+            $read($service, $slug, $this->election());
+        } catch (\Illuminate\Database\QueryException|\PDOException) {
+            // expected: execution is refused by the dead socket
+        }
+        $this->assertNotNull($service->captured, 'the reader must use the pinned lookup (stepQuery)');
+
+        return $service->captured;
+    }
+
+    public static function readers(): array
+    {
+        return [
+            'getHighestCompletedStep' => [fn ($s, $slug, $e) => $s->getHighestCompletedStep($slug, $e)],
+            'hasCompletedStep'        => [fn ($s, $slug, $e) => $s->hasCompletedStep($slug, $e, 3)],
+            'getCompletedSteps'       => [fn ($s, $slug, $e) => $s->getCompletedSteps($slug, $e)],
+            'getNextStep'             => [fn ($s, $slug, $e) => $s->getNextStep($slug, $e)],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('readers')]
+    public function test_every_step_reader_is_pinned_to_the_slugs_organisation(callable $read): void
+    {
+        TenantContext::set(self::ORG_A);
+        $query = $this->capturedLookup($read, $this->slugOf(VoterSlug::class, self::ORG_B));
+
+        $this->assertStringContainsString('"voter_slug_steps"."organisation_id" = ?', $query->toSql());
+        $this->assertSame(1, substr_count($query->toSql(), 'organisation_id'));
+        $this->assertContains(self::ORG_B, $query->getBindings());
+        $this->assertNotContains(self::ORG_A, $query->getBindings(), 'the ambient tenant must not decide which steps a voter has');
+    }
+
+    public function test_demo_step_readers_use_the_demo_table_with_the_same_pinning(): void
+    {
+        TenantContext::set(self::ORG_A);
+        $query = $this->capturedLookup(fn ($s, $slug, $e) => $s->getHighestCompletedStep($slug, $e), $this->slugOf(DemoVoterSlug::class, self::ORG_B));
+
+        $this->assertStringContainsString('"demo_voter_slug_steps"."organisation_id" = ?', $query->toSql());
+        $this->assertContains(self::ORG_B, $query->getBindings());
+        $this->assertNotContains(self::ORG_A, $query->getBindings());
+    }
+
+    public function test_has_completed_step_keeps_its_step_bound(): void
+    {
+        TenantContext::set(self::ORG_A);
+        $query = $this->capturedLookup(fn ($s, $slug, $e) => $s->hasCompletedStep($slug, $e, 3), $this->slugOf(VoterSlug::class, self::ORG_A));
+
+        $this->assertStringContainsString('"step" <= ?', $query->toSql());
+        $this->assertContains(3, $query->getBindings());
+    }
+
+    public function test_completed_steps_stay_ordered_by_step(): void
+    {
+        TenantContext::set(self::ORG_A);
+        $query = $this->capturedLookup(fn ($s, $slug, $e) => $s->getCompletedSteps($slug, $e), $this->slugOf(VoterSlug::class, self::ORG_A));
+
+        $this->assertMatchesRegularExpression('/order by "step" asc/i', $query->toSql());
+    }
+
     public function test_complete_step_checks_for_an_existing_step_through_the_pinned_lookup(): void
     {
         $service = new class () extends VoterStepTrackingService {
