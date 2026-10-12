@@ -7,6 +7,7 @@ use App\Models\DemoVoterSlug;
 use App\Models\VoterSlugStep;
 use App\Models\DemoVoterSlugStep;
 use App\Models\Election;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -44,10 +45,9 @@ class VoterStepTrackingService
             'foreign_key_column' => $slugForeignKey,
         ]);
 
-        // Check if step already completed
-        // ✅ FIXED: Use correct foreign key column name
-        $existingStep = $StepModel::where($slugForeignKey, $voterSlug->id)
-            ->where('election_id', $election->id)
+        // Check if step already completed: pinned to the slug's organisation (PBDIGIT-274), so a different
+        // ambient tenant context cannot hide an existing step and cause a duplicate record.
+        $existingStep = $this->stepQuery($voterSlug, $election)
             ->where('step', $step)
             ->first();
 
@@ -83,6 +83,26 @@ class VoterStepTrackingService
         ]);
 
         return $voterSlugStep;
+    }
+
+    /**
+     * The steps of one voter slug in one election, pinned to the slug's own organisation_id.
+     *
+     * The ambient tenant scope (TenantContext / session) is replaced by the slug's organisation, which is
+     * authoritative for its steps: only the 'tenant' global scope is removed, and exactly one explicit
+     * organisation filter takes its place. No broad cross-tenant access.
+     *
+     * @param VoterSlug|DemoVoterSlug $voterSlug
+     */
+    public function stepQuery($voterSlug, Election $election): Builder
+    {
+        $StepModel = $voterSlug instanceof DemoVoterSlug ? DemoVoterSlugStep::class : VoterSlugStep::class;
+        $table = (new $StepModel())->getTable();
+
+        return $StepModel::withoutGlobalScope('tenant')
+            ->where($table.'.organisation_id', $voterSlug->organisation_id)
+            ->where('voter_slug_id', $voterSlug->id)
+            ->where('election_id', $election->id);
     }
 
     /**
