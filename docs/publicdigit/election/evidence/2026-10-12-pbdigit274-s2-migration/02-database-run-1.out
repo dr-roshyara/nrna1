@@ -1,0 +1,211 @@
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml --display-deprecations
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDDDDDDDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:13.284, Memory: 30.00 MB
+
+20 tests triggered 3 PHP deprecations:
+
+1) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:61
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_duplicate_slug_string_names_the_slug_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:49
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_second_current_slug_names_the_active_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:61
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_a_recorded_step_carries_its_slugs_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:68
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_characterisation_a_step_written_under_another_tenant_keeps_the_slug_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:95
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_organisation_a_cannot_read_organisation_b_steps_and_vice_versa
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:76
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_the_same_step_is_never_stored_twice_across_tenant_contexts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:110
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_direct
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:232
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_through_the_migrator
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:269
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_second_current_row_is_rejected_naming_the_new_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:113
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_soft_deleted_row_and_a_new_current_row_coexist
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:105
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_replaced_slugs_exist_and_changes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:171
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_the_partial_index_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:187
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_without_history_restores_the_old_rule_and_up_recreates_the_identical_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:143
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_restoring_an_old_row_while_a_current_row_exists_is_rejected
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:131
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_several_soft_deleted_rows_for_one_pair_are_allowed
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:122
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_the_migration_has_run_and_left_only_the_partial_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:99
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_has_other_columns
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:211
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:195
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_rule_is_a_plain_index_not_a_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:201
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_target_name_is_taken
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:221
+
+2) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:81
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_duplicate_slug_string_names_the_slug_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:49
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_second_current_slug_names_the_active_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:61
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_a_recorded_step_carries_its_slugs_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:68
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_characterisation_a_step_written_under_another_tenant_keeps_the_slug_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:95
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_organisation_a_cannot_read_organisation_b_steps_and_vice_versa
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:76
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_the_same_step_is_never_stored_twice_across_tenant_contexts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:110
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_direct
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:232
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_through_the_migrator
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:269
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_second_current_row_is_rejected_naming_the_new_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:113
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_soft_deleted_row_and_a_new_current_row_coexist
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:105
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_replaced_slugs_exist_and_changes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:171
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_the_partial_index_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:187
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_without_history_restores_the_old_rule_and_up_recreates_the_identical_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:143
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_restoring_an_old_row_while_a_current_row_exists_is_rejected
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:131
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_several_soft_deleted_rows_for_one_pair_are_allowed
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:122
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_the_migration_has_run_and_left_only_the_partial_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:99
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_has_other_columns
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:211
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:195
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_rule_is_a_plain_index_not_a_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:201
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_target_name_is_taken
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:221
+
+3) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/database.php:66
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_duplicate_slug_string_names_the_slug_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:49
+
+* Tests\Isolated\Pbdigit274\Database\PgUniqueViolationShapeTest::test_a_second_current_slug_names_the_active_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/PgUniqueViolationShapeTest.php:61
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_a_recorded_step_carries_its_slugs_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:68
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_characterisation_a_step_written_under_another_tenant_keeps_the_slug_organisation
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:95
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_organisation_a_cannot_read_organisation_b_steps_and_vice_versa
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:76
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugStepTenantIsolationTest::test_the_same_step_is_never_stored_twice_across_tenant_contexts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php:110
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_direct
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:232
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_failure_after_the_drop_rolls_everything_back_through_the_migrator
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:269
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_second_current_row_is_rejected_naming_the_new_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:113
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_a_soft_deleted_row_and_a_new_current_row_coexist
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:105
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_replaced_slugs_exist_and_changes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:171
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_refuses_when_the_partial_index_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:187
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_down_without_history_restores_the_old_rule_and_up_recreates_the_identical_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:143
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_restoring_an_old_row_while_a_current_row_exists_is_rejected
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:131
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_several_soft_deleted_rows_for_one_pair_are_allowed
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:122
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_the_migration_has_run_and_left_only_the_partial_index
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:99
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_has_other_columns
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:211
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_constraint_is_missing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:195
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_old_rule_is_a_plain_index_not_a_constraint
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:201
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugsActiveIndexMigrationTest::test_up_refuses_when_the_target_name_is_taken
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugsActiveIndexMigrationTest.php:221
+
+OK, but there were issues!
+Tests: 20, Assertions: 62, Deprecations: 3.
+exit=0

@@ -1,0 +1,32 @@
+$ psql (read-only) in pbdigit274_isolated_test after the run
+     current_database     |     current_user      
+--------------------------+-----------------------
+ pbdigit274_isolated_test | pbdigit274_test_owner
+(1 row)
+
+                                  migration                                  | batch 
+-----------------------------------------------------------------------------+-------
+ 2026_10_12_000001_replace_voter_slugs_pair_unique_with_active_partial_index |     1
+(1 row)
+
+ failing_scratch_recorded 
+--------------------------
+                        0
+(1 row)
+
+                                                                    new_index                                                                    
+-------------------------------------------------------------------------------------------------------------------------------------------------
+ CREATE UNIQUE INDEX voter_slugs_active_election_user_unique ON public.voter_slugs USING btree (election_id, user_id) WHERE (deleted_at IS NULL)
+(1 row)
+
+ old_constraint 
+----------------
+              0
+(1 row)
+
+ voter_slug_rows 
+-----------------
+               0
+(1 row)
+
+exit=0
