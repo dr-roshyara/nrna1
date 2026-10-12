@@ -19,3 +19,11 @@
 | **Out of scope** | `forCast()` redesign, CAS, VE-01, IP-policy consolidation (2B / Q3), tenancy, whitelist defects, middleware |
 
 **Traceability:** PBDIGIT-239 (blueprint `ca9629b99`, RED `430d28742`, Stage A `0578091f8`, Stage B `d90131361`) · ADR_20261005_0950 §3.0 (`VotingSecurityDecision` role), I3 · `ContextBoundaryFitnessTest` (passes after Stage A / B).
+
+---
+
+**Re-verification 2026-10-11 (Adjudication readiness review, read-only; additive):** [`2026-10-11-adjudication-readiness-review-and-d03-scope.md`](../reviews/2026-10-11-adjudication-readiness-review-and-d03-scope.md) §0, §1, §3.
+- **The D.0.3a gate is present** in `VoteController::store` (`:1508-1551`).
+- **`ConstitutionalLegitimacyDecision`** sits in the Election application layer. It decides voter trust at vote time, and it is **not** Adjudication's legitimacy of a contested outcome (EPIC-003:95, EPIC-004A:19).
+- **The plan's claim "50/50 verification tests passing"** for D.0.3a can't be traced to any test file. The unit tests (`D0_3a_ConstitutionalEnforcementTest`) don't exercise the controller.
+- **Still open:** whether to keep the class, fold it in or delete it (reality audit L-2 / P0-D).

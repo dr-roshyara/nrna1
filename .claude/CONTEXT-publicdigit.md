@@ -22,6 +22,17 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 ---
 
+## 📍 UPDATE (2026-10-11, **Adjudication: readiness review and current-state snapshot**, read-only; additive, the blocks below are unchanged)
+
+| | |
+|---|---|
+| 🔬 **State** | built and covered by tests, **not running end to end in production**. Snapshot: `docs/publicdigit/reviews/2026-10-11-adjudication-context-current-state.md`; review and plan: `…-adjudication-readiness-review-and-d03-scope.md`. No test was run; nothing decided |
+| ⚠️ **Correction** | **D.0.3 is the voting-security track (`PBDIGIT-45` / `240`), not an Adjudication prerequisite.** `VOTING_CONSTITUTIONAL_MODE` defaults to `true` and currently has no effect |
+| ⛔ **Blocking order** | ARB Q1–Q7 (tenant context, `PBDIGIT-211`) → `178` (R-91) → `177` + Governance contract `191` → `174` → `182` |
+| ▶️ **Next action** | PO scope decision **P-0** (the Adjudication chain or the D.0.3 track), then the ARB ruling on Q1–Q7. Then: IDs for the drafts T-3 / T-5; an isolated test database. **No implementation authorised** |
+
+---
+
 ## 📍 UPDATE (2026-10-11, **Voting: `VerifyVoterSlug` guard, `PBDIGIT-273`, IN REVIEW**; additive, the blocks below are unchanged)
 
 | | |

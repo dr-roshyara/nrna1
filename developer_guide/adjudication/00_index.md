@@ -4,6 +4,8 @@
 
 Adjudication owns the **`Determination`** aggregate — the binding ruling on a contested outcome (`Draft → Issued → Final`). It is the sole aggregate written when a determination is issued (Challenge is read-only then, ADR-T14); it publishes the **`DeterminationIssued`** integration event (restricted; consumed cross-context by Election). It carries **no voter↔vote linkage** (ADR-T11): evidence is referenced by hash, the contested outcome by reference.
 
+> **Current state (2026-10-11):** built and covered by tests, but **not running end to end in production**. There's no challenge entry point, the process manager's decision intake isn't wired, authority isn't checked against Governance, issuance isn't atomic from the manager (R-91), and the scheduled relay has no tenant (T-1 / T-4, waiting on the ARB ruling). Snapshot: [`docs/publicdigit/reviews/2026-10-11-adjudication-context-current-state.md`](../../docs/publicdigit/reviews/2026-10-11-adjudication-context-current-state.md).
+
 ## Guides (per step)
 | Guide | Covers |
 |-------|--------|

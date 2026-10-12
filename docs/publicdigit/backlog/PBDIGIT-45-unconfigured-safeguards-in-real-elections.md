@@ -115,3 +115,19 @@ if ($times_use_cleintIP >= $max_use_clientIP)   // helpers.php:113
 ---
 
 **Traceability:** `PBDIGIT-39` Defect B (the evidence) · `ADR_20260806_1520_Demo_And_Production_Policy_Contexts` §6 (explicitly leaves this open) · `config/app.php:149` · `app/Helpers/helpers.php:92-113` · `app/Http/Controllers/VoteController.php:3079-3110` · `app/Http/Controllers/ElectionVotingController.php:211-226` · `app/Services/Constitutional/DivergenceObserver.php:145,165` · `PBDIGIT-35` (same "no authoritative mechanism" shape) · `PBDIGIT-30` (the business-decision-record pattern this follows)
+
+---
+
+**Re-verification 2026-10-11 (Adjudication readiness review, read-only; additive):** [`2026-10-11-adjudication-readiness-review-and-d03-scope.md`](../reviews/2026-10-11-adjudication-readiness-review-and-d03-scope.md) §1, §3.
+- **The ADR is still PROPOSED:** `ADR_20260806_1620_Constitutional_Rule_Ownership_Migration`.
+- **`VOTING_CONSTITUTIONAL_MODE`:**
+  - it defaults to **true** (`config/voting_security.php:108`), and `ValidateVotingIp.php:29` is the only code that reads it;
+  - it has **no practical effect**: `users.voting_ip` doesn't exist, so the mismatch branch never runs (static reasoning);
+  - the config comment (`:104`) is stale.
+- **D.0.3 (D.0.3a–e)** belongs to this voting-security track, **not to Adjudication**.
+- **Preconditions recorded in the review before any change of the flag:**
+  1. acceptance of this ADR;
+  2. a decision on L-2 / P0-D (`ConstitutionalLegitimacyDecision`);
+  3. the `voting_ip` data actually existing;
+  4. run evidence for the D.0.3a gate through `VoteController` on an isolated database.
+- **Changing the flag to `false` is the documented rollback.**

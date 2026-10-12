@@ -84,3 +84,16 @@
 The new per-job tests (no tenant, two tenants), and the existing `tests/Unit/Models/ElectionMembershipTest.php` flush tests passing unchanged.
 
 **Traceability:** `app/Traits/BelongsToTenant.php:41-63` · `app/Models/Member.php:17` · `app/Contexts/Membership/Infrastructure/Jobs/{GenerateAnnualMembershipFees.php:34, MarkOverdueMembers.php:50, SendRenewalReminder.php:32-41}` · `app/Console/Commands/FlushExpiringVoterCaches.php:35` · `routes/console.php:40-52` · migration `2026_03_05_000001:49` · `PBDIGIT-74` §10.7.
+
+---
+
+**Re-verification 2026-10-11 (Adjudication readiness review, read-only; additive, the record above is unchanged):** [`2026-10-11-adjudication-readiness-review-and-d03-scope.md`](../reviews/2026-10-11-adjudication-readiness-review-and-d03-scope.md) §1, §2 (I-10).
+- **Still open in code:**
+  - **T-1:** no `TenantContext` call anywhere in the relay or inbox path (`ProcessOutboxEvents`, `OutboxEventProcessor`, `Shared/Infrastructure/Inbox/*`);
+  - no commit to the loop code, `TenantContext`, `app/Console` or `routes/console.php` since 2026-10-09.
+- **ARB request still PENDING** (`2026-10-09-arb-decision-request-tenant-context-non-request-execution.md:4`). No ruling is recorded anywhere.
+- **The RT results** (3 fail, 1 pass, 1 incomplete) are **historical**; they were not re-run.
+- **T-3 and T-5 are still drafts without IDs,** both statically confirmed:
+  - T-3: `DeterminationLacksElectionScope` and `CannotApplyDeterminationToUnknownElection` extend plain `DomainException`;
+  - T-5: `outbox_processing_errors` has no migration.
+- **Next:** the ARB ruling on Q1–Q7, then the test-first 211 plan (review §4).

@@ -306,6 +306,13 @@ Every remaining PublicDigit delivery TODO from the engineering backlog, the ARB 
 | `PBDIGIT-207` | 99 write-path feature tests assert only a success status, so they cannot detect a lost business outcome | closure audit §6.3 | 🔴 OPEN — verification |
 | `PBDIGIT-208` | 1,345 failing tests in 213 files belong to no story: the legacy test estate outside the greenfield core | closure audit §7 (full run) | 🔴 OPEN — verification, classify first |
 
+> **Adjudication re-verification, 2026-10-11** (read-only; the frozen rows above are unchanged): [`reviews/2026-10-11-adjudication-readiness-review-and-d03-scope.md`](../reviews/2026-10-11-adjudication-readiness-review-and-d03-scope.md).
+> - **Confirmed still open in code:** `PBDIGIT-174`, `175`, `177`, `178` (R-91: `CoordinatorIssuanceRequest` gets the bare coordinator), `181` (T-2: challenge content not persisted), `182`, `196`, `197`, `198`, `205`, `206`.
+> - **`PBDIGIT-191` (the Governance authority contract)** is still unopened: Adjudication imports nothing from Governance, and `IssuedByAuthority` only checks the value isn't empty.
+> - **No code changed** in the Adjudication, Contestation or Election folders since `216552aa7` (2026-08-19).
+> - **Next:** PO scope decision P-0, then the ARB ruling on Q1–Q7 (`PBDIGIT-211`). The drafts T-3 and T-5 still await IDs.
+> - **D.0.3** belongs to the voting-security track (`PBDIGIT-45`, `240`), not to Adjudication.
+
 ---
 
 ## 🚧 [PBDIGIT-00](PBDIGIT-00-verify-the-journey-end-to-end.md) — Verify the journey end-to-end *(gates every epic above)*
