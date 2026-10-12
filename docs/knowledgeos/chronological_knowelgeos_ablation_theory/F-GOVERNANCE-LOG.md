@@ -3744,3 +3744,35 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - VP decisions; selecting a spanning rule; accepting the asymmetry;
   - amending records; evidence collection; canonical terms.
 - **Next:** a worker derives the E3 architecture proposal with full provenance. Fresh reviewers check it, one per round; a FAIL at round 3 goes to the human. The reviewed proposal is then presented for a separate act on E3b.
+
+
+## F-LOG-0283 — **Executor (2026-10-12): E3 DERIVED. Architecture proposal READY for E3b** (`R7/E3-ARCHITECTURE-PROPOSAL.md` r1.1)
+- **Derived under F-LOG-0282:**
+  - A2 carried open;
+  - scope covers boundaries, participant and groupings, plus Q4–Q6; no ports;
+  - one reading-neutral proposal.
+- **Review under the F-LOG-0282 regime** (one fresh `kos-theory-reviewer` per round):
+  - **Round 1** (r0): PASS_WITH_LIMITATIONS, 7 material and 10 minor findings, fixed in r1.
+  - **Round 2** (r1): PASS_WITH_LIMITATIONS, **nothing blocking and nothing material**, so the proposal is presented. r1.1 applies 9 wording fixes, **not re-reviewed**.
+- **Content** (all names provisional, none canonical):
+  - **Candidate contexts:** E3-BC1 (records, from CB1) and E3-BC23 (norm and work, from CB23). Both are [H] and flagged ⚠E3b.
+  - **Placement of the 25 baseline elements:** 6 / 12 / 3 straddling / 4 in no context. MW1 is placed by an [E] rule; the alternative placement 6/12/4/3 is disclosed.
+  - **E3-PP:** one shared actor set. No shared-kernel pattern and no role concepts.
+  - **E3-REL:** derived only from the E2b §A1.3 crossing report (recorded, not ratified). It has 13 rows under S and 8 under S′/S″. Whether it is a "relation" at all is open [O].
+  - **Candidate aggregate boundaries E3-AG1 to AG6** (from CG1–CG6): consistency is conceptual only. No transactions, no invariants, nothing enforceable (R23).
+  - **Q4–Q6:** CV and CE elements are [H] candidates. All their properties are [O]. CV9 is not mapped.
+  - **Policy slots:** all 18 T-B slots stay inactive.
+- **Reading dependence:**
+  - The T-A rows that move between readings are R5, R6, R8, R10 and R19.
+  - The neutral core is the material common to all readings, plus per-reading annotations. How it was constructed is disclosed.
+  - The asymmetry is documented, not accepted.
+- **Acceptance self-assessment:**
+  - B1–B14, V1–V11 and the exclusions are met.
+  - **The trace criterion is met only in part.** The 25 baseline elements trace fully. Under A2 reading (a), the CB1/CB23 outputs trace with an S exception, and E3-REL and the cut-status columns remain [O]. Under reading (b), none of the CB1/CB23 outputs trace.
+- **Sources insufficient on:**
+  - any context-map pattern;
+  - who owns actor identity;
+  - aggregate identity, roots and lifecycle;
+  - the properties of the value-object and event candidates;
+  - the counting row choice for CG1 under S″.
+- **Status:** awaiting a Human ARB act on E3b (Accept with a mandatory A2 choice, Return, or Reject). E4 (R8) and E5 are not authorized.
