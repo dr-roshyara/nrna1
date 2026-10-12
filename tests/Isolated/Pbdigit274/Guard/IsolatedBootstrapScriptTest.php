@@ -11,8 +11,8 @@ use PHPUnit\Framework\TestCase;
  *
  * Database-free: every case is refused before a connection is attempted. Credentials point at a
  * non-existent Unix-socket directory, so even a connection attempt could not reach a network or a server.
- * Since step 1b nothing is approved before G4 (DatabaseIdentityGuard::APPROVED_NAME is empty), so the
- * script-level `connection_failed` case is unreachable by design; it stays covered by the unit test.
+ * Since G4 (2026-10-12) APPROVED_NAME is 'pbdigit274_isolated_test': every other name is refused before a
+ * connection is attempted, and the approved name reaches the identity check, which fails closed here.
  * The child gets only the variables listed here, never this process's environment or .env.
  */
 class IsolatedBootstrapScriptTest extends TestCase
@@ -76,6 +76,18 @@ class IsolatedBootstrapScriptTest extends TestCase
         $this->assertNotSame(0, $exit);
         $this->assertStringContainsString("[{$reason}]", $stderr);
         $this->assertStringNotContainsString('[connection_failed]', $stderr);
+        $this->assertStringNotContainsString('confirmed', $stderr);
+        $this->assertStringNotContainsString('pw-must-never-be-printed', $stdout.$stderr);
+    }
+
+    public function test_the_approved_name_still_has_to_pass_the_identity_check(): void
+    {
+        // The approved name gets past the name checks; the unreachable socket host must still stop the run
+        // at the identity check, never print "confirmed", never print the password.
+        [$exit, $stdout, $stderr] = $this->runBootstrap(['PBDIGIT274_TEST_DB' => 'pbdigit274_isolated_test'] + self::CREDENTIALS);
+
+        $this->assertNotSame(0, $exit);
+        $this->assertStringContainsString('[connection_failed]', $stderr);
         $this->assertStringNotContainsString('confirmed', $stderr);
         $this->assertStringNotContainsString('pw-must-never-be-printed', $stdout.$stderr);
     }

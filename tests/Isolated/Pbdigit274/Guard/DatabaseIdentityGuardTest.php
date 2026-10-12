@@ -32,12 +32,18 @@ class DatabaseIdentityGuardTest extends TestCase
         $this->fail("expected IsolatedDatabaseRefused({$reason})");
     }
 
-    // ── H1: nothing is approved before G4 ─────────────────────────────────
+    // ── H1: exactly the G4-approved database ──────────────────────────────
 
-    public function test_no_database_is_approved_before_g4(): void
+    public function test_the_approved_database_is_the_g4_name(): void
     {
-        // Changing this constant is the reviewable act that follows the PO's G4 approval.
-        $this->assertSame('', DatabaseIdentityGuard::APPROVED_NAME);
+        // Set after the Human PO's G4 approval (2026-10-12), evidence
+        // docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g4-isolation-fix/.
+        $this->assertSame('pbdigit274_isolated_test', DatabaseIdentityGuard::APPROVED_NAME);
+    }
+
+    public function test_the_g4_name_passes_with_the_committed_approval(): void
+    {
+        $this->assertSame('pbdigit274_isolated_test', DatabaseIdentityGuard::approvedName('pbdigit274_isolated_test'));
     }
 
     public static function wellFormedButUnapprovedNames(): array
@@ -46,13 +52,61 @@ class DatabaseIdentityGuardTest extends TestCase
             'repository default for pgsql_geo' => ['publicdigit'],
             'another documented name'          => ['nrna'],
             'a plausible isolated name'        => ['pbd_isolated_274'],
+            'approved name, other case'        => ['PBDIGIT274_isolated_test'],
+            'approved name with a suffix'      => ['pbdigit274_isolated_test_x'],
+            'approved name, prefix only'       => ['pbdigit274_isolated'],
         ];
     }
 
     #[DataProvider('wellFormedButUnapprovedNames')]
-    public function test_every_name_is_refused_while_nothing_is_approved(string $raw): void
+    public function test_every_other_name_is_refused(string $raw): void
     {
         $this->assertRefused('not_approved', fn () => DatabaseIdentityGuard::approvedName($raw));
+    }
+
+    public function test_nothing_is_approved_when_the_approval_is_empty(): void
+    {
+        $this->assertRefused('not_approved', fn () => DatabaseIdentityGuard::approvedName('pbdigit274_isolated_test', ''));
+    }
+
+    public static function stillRefusedDespiteTheApproval(): array
+    {
+        return [
+            'shared test db'  => ['nrna_test', 'forbidden'],
+            'shared, upper'   => ['NRNA_TEST', 'forbidden'],
+            'reserved null'   => ['null', 'reserved'],
+            'reserved EMPTY'  => ['EMPTY', 'reserved'],
+            'empty'           => ['', 'empty'],
+            'missing'         => [false, 'missing'],
+            'malformed'       => ['pbdigit274-isolated-test', 'malformed'],
+            'padded approved' => [' pbdigit274_isolated_test', 'malformed'],
+        ];
+    }
+
+    #[DataProvider('stillRefusedDespiteTheApproval')]
+    public function test_the_approval_does_not_relax_the_name_rules(mixed $raw, string $reason): void
+    {
+        $this->assertRefused($reason, fn () => DatabaseIdentityGuard::approvedName($raw));
+    }
+
+    public function test_the_approval_does_not_bypass_the_identity_check(): void
+    {
+        $approved = DatabaseIdentityGuard::APPROVED_NAME;
+        $this->assertRefused('mismatch', fn () => DatabaseIdentityGuard::verifyIdentity($approved, fn () => 'nrna_test'));
+        $this->assertRefused('connection_failed', fn () => DatabaseIdentityGuard::verifyIdentity($approved, fn () => throw new \PDOException('x')));
+    }
+
+    public function test_the_approval_does_not_bypass_the_connection_check(): void
+    {
+        $approved = DatabaseIdentityGuard::APPROVED_NAME;
+        $pg = ['driver' => 'pgsql', 'url' => null, 'database' => $approved];
+        $confined = ['pgsql' => $pg, 'pgsql_audit' => $pg, 'pgsql_geo' => $pg];
+
+        DatabaseIdentityGuard::assertConnectionsConfined($confined, $approved, 'pgsql');
+        $this->assertRefused('not_confined', fn () => DatabaseIdentityGuard::assertConnectionsConfined(
+            $confined + ['testing' => ['driver' => 'pgsql', 'database' => 'nrna_test']], $approved, 'pgsql'));
+        $this->assertRefused('not_confined', fn () => DatabaseIdentityGuard::assertConnectionsConfined(
+            array_replace($confined, ['pgsql_geo' => ['database' => 'publicdigit'] + $pg]), $approved, 'pgsql'));
     }
 
     public function test_only_the_exact_approved_name_passes(): void

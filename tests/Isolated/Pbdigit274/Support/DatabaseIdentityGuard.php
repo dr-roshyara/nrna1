@@ -16,11 +16,12 @@ use Throwable;
 final class DatabaseIdentityGuard
 {
     /**
-     * The one database the Human PO approved under G4. EMPTY until then, so every name is refused.
-     * Setting it is a separate, reviewable change made only after the PO names the database; never guess it
-     * from repository defaults or the environment.
+     * The one database the Human PO approved under G4 (2026-10-12; evidence
+     * docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g4-isolation-fix/). Every other name is refused.
+     * Changing it is a separate, reviewable change made only on a new G4 approval; never guess it from
+     * repository defaults or the environment. An empty value refuses every name.
      */
-    public const APPROVED_NAME = '';
+    public const APPROVED_NAME = 'pbdigit274_isolated_test';
 
     public const ENV_NAME = 'PBDIGIT274_TEST_DB';
 
