@@ -49,8 +49,17 @@ final class VoterSlugIssuanceEntryPointsTest extends IsolatedCommittedDatabaseTe
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHours(2),
         ]);
-        $post = \App\Models\Post::factory()->create(['election_id' => $this->election->id]);
-        \App\Models\Candidacy::factory()->create(['post_id' => $post->id, 'status' => 'approved']);
+        // Inserted directly: PostFactory and CandidacyFactory eagerly create their own election, post and user in
+        // definition() even when ids are passed, which left untracked rows behind on every run.
+        $postId = (string) Str::uuid();
+        DB::table('posts')->insert([
+            'id' => $postId, 'organisation_id' => $this->org->id, 'election_id' => $this->election->id,
+            'name' => 'PBDIGIT-274 post', 'required_number' => 1, 'created_at' => now(), 'updated_at' => now(),
+        ]);
+        DB::table('candidacies')->insert([
+            'id' => (string) Str::uuid(), 'organisation_id' => $this->org->id, 'post_id' => $postId,
+            'status' => 'approved', 'created_at' => now(), 'updated_at' => now(),
+        ]);
         $this->voter = $this->entitledVoter();
     }
 
@@ -176,6 +185,61 @@ final class VoterSlugIssuanceEntryPointsTest extends IsolatedCommittedDatabaseTe
         $this->assertSame(1, $changed);
 
         $this->start()->assertRedirect(route('elections.show', $this->election->slug));
+        $this->assertSame([], $this->rows());
+    }
+
+    // ── GET /voter/start and POST /voter/restart (VoterSlugController), real election in the session ──
+
+    private function voterStart()
+    {
+        return $this->actingAs($this->voter)->withSession(['selected_election_id' => $this->election->id])->get(route('voter.start'));
+    }
+
+    private function voterRestart()
+    {
+        return $this->actingAs($this->voter)->withSession(['selected_election_id' => $this->election->id])->post(route('voter.restart'));
+    }
+
+    public function test_voter_start_issues_then_reuses_and_replaces_after_expiry(): void
+    {
+        $this->voterStart()->assertRedirect(route('slug.code.create', ['vslug' => $first = $this->currentSlug()]));
+        $this->assertNotNull($first);
+        $before = $this->rows();
+
+        $this->voterStart()->assertRedirect(route('slug.code.create', ['vslug' => $first]));
+        $this->assertSame($before, $this->rows(), 'no deactivation before deciding, no rewrite');
+
+        $this->expireCurrentLink();
+        $this->voterStart();
+        $this->assertNotSame($first, $this->currentSlug());
+        $this->assertCount(2, $this->rows());
+    }
+
+    public function test_voter_restart_keeps_a_valid_link_and_replaces_an_expired_one(): void
+    {
+        $this->voterStart();
+        $first = $this->currentSlug();
+        $before = $this->rows();
+
+        $this->voterRestart()->assertRedirect(route('slug.code.create', ['vslug' => $first]));
+        $this->assertSame($before, $this->rows(), 'no replacement while the link is valid (acceptance 7)');
+
+        $this->expireCurrentLink();
+        $this->voterRestart();
+        $this->assertNotSame($first, $this->currentSlug());
+        $this->assertCount(2, $this->rows());
+        $this->assertNotNull($this->rows()[0]['deleted_at'], 'the old link is kept as history');
+    }
+
+    public function test_voter_start_gives_no_link_after_voting(): void
+    {
+        DB::table('codes')->insert([
+            'id' => (string) Str::uuid(), 'organisation_id' => $this->org->id, 'election_id' => $this->election->id,
+            'user_id' => $this->voter->id, 'code1' => '654321', 'has_voted' => true,
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+
+        $this->voterStart()->assertRedirect(route('election.dashboard'));
         $this->assertSame([], $this->rows());
     }
 
