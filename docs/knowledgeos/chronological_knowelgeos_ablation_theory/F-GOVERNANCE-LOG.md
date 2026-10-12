@@ -4059,3 +4059,53 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - Tables are intact and the standing qualifier is verbatim.
   - Minor findings: the note was adapted rather than copied verbatim (provenance line added by the main analyst, not re-reviewed); tags mark where a swap ends but not where it starts (git holds r1.1); the §2.4 "ownership" label stays per row 13; §9/§11 keep the old ids by exclusion; some tags sit inside quotation marks.
 - **Status:** the ⚠E3b outputs are still not accepted. **Next:** Act 2, the re-assessment (proposal r1.2, Part II). E4 and E5 are not authorized.
+
+
+## F-LOG-0297 — **Human act (Human ARB, 2026-10-13): Act 2 ACCEPTED. E3b COMPLETE for every ⚠E3b output.** Selections: (R-none) (a), (α), neutral names
+**The act** (`R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 §II.5 Accept, verbatim). The human's selections are filled in, all boxes are ticked, and r[n] = r1.2:
+> "I, Human ARB, having approved the relabel (Act 1, F-LOG-0295), rule and accept as follows, on the basis of `R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 Part II.
+>
+> **(R-none):** (a) selected.
+> for E3b, the explicit R4 'none' for R25 and R38 under S (F-LOG-0287) is ruled sufficient, **as a human ruling, not a finding**;
+>
+> **Accepted ⚠E3b outputs** of `R7/E3-ARCHITECTURE-PROPOSAL.md` r1.2, as a **bounded architecture proposal, one corpus**, with results under S, S′ and S″, none selected, and with the limitations of Part II §II.4.
+>
+> **Dependencies:** E3-M1 and E3-M23 form one box. Each later box requires it. The cut-status box may stay unticked on its own.
+> - [x] **E3-M1 and E3-M23 (together).** A candidate module cut over one model, as defined in Part I §I.1a; not bounded contexts.
+>   - The structural description of §II.3 is recorded as [E]: a low-crossing cut on T-A + T-B, including 18 inactive T-B slots, and on raw crossings only; E3-M23 cohesive far above chance; E3-M1's cohesion not distinguishable from chance.
+> - **Names (N-a):** keep 'records module' / 'norm-and-work module'.
+> - [x] **E3-REL, cross-module rows**, together with the identical shared-row cut-status cells (E3 line 72; line 330, the "shared" cells (13 / 8) only; line 332): 13 / 8 per the ratified §A1.3 list; 14 / 9 under the other D12 reading; D12 not resolved; relation status [O].
+> - [x] the E3-PP placement, 'spans both modules'.
+> - [x] the module columns.
+> - [x] the cut-status columns (all other cut-status cells).
+>
+> All five boxes are ticked; no output stays pending.
+>
+> **Recording:** the Act 2 recording in E3 is made as set out in §II.6, followed by a fresh review of the recording.
+>
+> This completes E3b for the selected outputs. It does not:
+> - select a reading or spanning rule, or resolve D12;
+> - accept the asymmetry, or withdraw F-LOG-0265's premise;
+> - decide any variation point;
+> - resolve any open item ((g), (h), C-γ, R11, the CV9 / §3b tension, H13, A1, A5) other than by the (R-none) ruling for E3b;
+> - ratify any method (K-c and rules 1–5 and 2a stay unratified [E]);
+> - make any candidate constraint an invariant, or add transaction semantics;
+> - adopt any canonical term;
+> - amend any adopted record other than E3 as recorded;
+> - authorize any evidence collection or implementation.
+>
+> It is decided without reference to any VP1a–d outcome (N1). The standing qualifier travels with it, verbatim: 'one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable'. **It does not authorize E4 (R8) or E5.**"
+
+- **Effect:**
+  - **(R-none) (a):** for E3b, the explicit "none" for R25 and R38 under S is ruled sufficient. This is a human ruling, not a finding.
+  - **(α):** E3-REL and the cut-status columns are accepted with limitations. They rely on the reopen condition in E2b §A2.7, which is tied to K-c, rule 2a and the encoding.
+  - **Names:** the neutral names "records module" and "norm-and-work module" are kept.
+  - **Result: E3b is complete.** The bounded architecture proposal is accepted in full: aggregates CG1–CG6; value and event candidates; the candidate module cut M1 and M23; cross-module rows; participant placement; module and cut-status columns. It is one corpus, with no reading selected, and the limitations of §II.4 apply.
+- **Disclosed in the record:**
+  - audit C9 recommended running Q6 tests 1 and 2 before any further amendment that cites host lists, and those tests are still open;
+  - D12 (R24) is not resolved;
+  - the R4 adequacy and act-identifiability claims stay the weakest load-bearing claims.
+- **Next:**
+  - a worker applies the §II.6 Act 2 recording (N1–N12) to E3, r1.2 → r1.3, by route R-1, followed by a fresh review;
+  - then the E4/R8 canonicalization package, which needs its own authorization (F-LOG-0285).
+- **Not authorized:** E4 and E5.
