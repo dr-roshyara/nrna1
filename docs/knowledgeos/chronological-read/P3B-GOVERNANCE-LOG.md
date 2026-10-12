@@ -2178,3 +2178,14 @@ The two `sha256sum` listings must be identical.
 | Review basis | four independent reviews with re-checks (record above); last review PASS, no change to code or tests after it |
 | Rule from now on | any change to prereg_v2 or its tests needs a new version, independent review and a new human act, before any S5 data |
 | Not authorized | run-3 outside G-LOG-0117 (quiet period, PREFLIGHT-OK); G3; G4; G5; corpus reads; any H-19 unseal; any change to O1 (G-LOG-0125) |
+
+## G-LOG-0138 — Human act: draft a bounded theory-track protocol (option B); O1 stays in force until a separate act
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-13: "B, draft the bounded theory-track protocol" |
+| Options put to the human | A keep O1 (G-LOG-0125); B a bounded theory track now: chronological reading of the discovery population only, extracting candidate laws / invariants / transition rules with provenance, formalising and attacking them, S5 kept as independent corroboration; needs a written protocol, independent review, a firewall and a separate authorization act |
+| Decided | **draft** the bounded theory-track protocol and submit it to independent review |
+| Still in force | D-ETR-1 = O1 (G-LOG-0125) and OMQ-14 (per-label reading scope, G-LOG-0017) until the human approves the reviewed protocol by a separate act; no corpus read is authorized by this entry |
+| Constraints for the draft (from the record) | frozen prereg_v2 (G-LOG-0137) and the H-19 addendum v1.5 unchanged; hold-out sealed (discovery population only; ContentResolver seal check); firewall for the ETR package §3 contamination channels (G3 contract text and PENDING S5 clauses, S5 error audit θ_E and H-06 reviewers); the shared reader `p3b_read_source.py` and production ledgers untouched; separate checkout outside PROD's `.git` for any new tooling; pause during the run-3 quiet period |
+| Not authorized | corpus reads; tooling implementation; run-3 outside G-LOG-0117; G3–G5; any H-19 unseal |
