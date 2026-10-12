@@ -2071,3 +2071,16 @@ The two `sha256sum` listings must be identical.
 | m6 | G-LOG-0125 "Execution conditions" and G-LOG-0128 "Family" rows are recorder DERIVED statements, not the human's words |
 | INFO | G-LOG-0125 cites package caveats at l.43-46; they are at l.44-46 |
 | Not changed | all human decisions; frozen `prereg_v1.py` |
+
+## G-LOG-0130 — Human act: H3 moved to the exploratory family (P2-7)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P2-7: move H3 to exploratory" |
+| Basis | package v3.3 §7 P2-7 (l.125, l.194) and P2-4 (H3 statistic); reviewed fact: the frozen H3 test is upper-tailed on 2- and 3-cycles, so it can only give evidence **against** "the dependency graph is a DAG" and never support it; it is UNTESTABLE below 10 internal edges (`prereg_v1.py` l.154); pass 0 was vacuous (RESEARCH-LEDGER) |
+| Decided | **H3 leaves the confirmatory family.** H2 placement remains open |
+| Consequences (FACT, package l.125) | no confirmatory claim for H3 (descriptive or BH reading only); Holm family shrinks; cost: wording + `run()` change; P2-1…P2-6 apply only to hypotheses kept confirmatory |
+| Family (DERIVED, recorder) | confirmatory {H1, H2, H4} = 3, plus 1 if a P3 test is placed in the family (P3-6), less if H2 moves. Under R3 (G-LOG-0128) the family is fixed. H2 m_min at Holm first step α/3 = **26 / 58 / 232** (π = .8 / .7 / .6), α/4 = 27 / 63 / 250 (`family-size-cost-v1/FAMILY-SIZE-COST-v1.md` l.14, l.19-23) |
+| Now moot for confirmatory use (DERIVED) | P2-4 (a DAG-supporting H3 test); the H3 chain-validity caveat of G-LOG-0129 m2 (it applies only to an exploratory H3 p-value). P2-5 (descriptive acyclic reading, optionally P0(acyclic) grading) remains available as the exploratory H3 report, undecided |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
