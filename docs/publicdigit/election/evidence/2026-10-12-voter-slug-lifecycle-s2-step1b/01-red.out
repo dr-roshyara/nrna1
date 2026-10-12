@@ -1,0 +1,282 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EFFFF.EEEEEEEEEEEEEEEEEEEEEEEEEE.........EE.FF...FFFFE.....FF.... 65 / 69 ( 94%)
+FFF.                                                              69 / 69 (100%)
+
+Time: 00:02.324, Memory: 12.00 MB
+
+There were 30 errors:
+
+1) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_no_database_is_approved_before_g4
+Error: Undefined constant Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::APPROVED_NAME
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:40
+
+2) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_missing_name_is_refused with data set "getenv false" (false)
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:80
+
+3) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_missing_name_is_refused with data set "null" (null)
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:80
+
+4) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "empty" ('')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:91
+
+5) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "spaces" ('   ')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:91
+
+6) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "tab and newline" ('	\n')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:91
+
+7) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "null" ('null')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+8) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "NULL" ('NULL')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+9) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "Null" ('Null')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+10) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "true" ('true')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+11) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "TRUE" ('TRUE')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+12) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "false" ('false')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+13) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "False" ('False')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+14) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "empty" ('empty')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+15) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_words_laravel_reinterprets_are_refused with data set "EMPTY" ('EMPTY')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:108
+
+16) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "exact" ('nrna_test')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:119
+
+17) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "upper" ('NRNA_TEST')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:119
+
+18) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "mixed" ('Nrna_Test')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:119
+
+19) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "leading space" (' pbd_isolated')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+20) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "trailing space" ('pbd_isolated ')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+21) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "hyphen" ('pbd-isolated')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+22) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "leading digit" ('1pbd')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+23) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "quote" ('pbd"x')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+24) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "semicolon" ('pbd;drop')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+25) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "longer than 63" ('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa...aaaaaa')
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+26) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "not a string" (42)
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:139
+
+27) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_well_formed_name_is_returned_unchanged
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::wellFormedName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:144
+
+28) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_apply_environment_writes_server_env_and_putenv
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::applyEnvironment()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:232
+
+29) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_apply_environment_writes_empty_values_too
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::applyEnvironment()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:247
+
+30) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_unconfined_postgres_connections_are_removed_and_others_kept
+Error: Call to undefined method Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard::withoutUnconfinedPostgresConnections()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:342
+
+--
+
+There were 15 failures:
+
+1) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_every_name_is_refused_while_nothing_is_approved with data set "repository default for pgsql_geo" ('publicdigit')
+expected IsolatedDatabaseRefused(not_approved)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:55
+
+2) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_every_name_is_refused_while_nothing_is_approved with data set "another documented name" ('nrna')
+expected IsolatedDatabaseRefused(not_approved)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:55
+
+3) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_every_name_is_refused_while_nothing_is_approved with data set "a plausible isolated name" ('pbd_isolated_274')
+expected IsolatedDatabaseRefused(not_approved)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:55
+
+4) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_only_the_exact_approved_name_passes
+expected IsolatedDatabaseRefused(not_approved)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:61
+
+5) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_app_config_cache_override_is_refused with data set "a path" ('/tmp/elsewhere/config.php')
+expected IsolatedDatabaseRefused(config_cached)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:280
+
+6) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_app_config_cache_override_is_refused with data set "empty but set" ('')
+expected IsolatedDatabaseRefused(config_cached)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:280
+
+7) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_url_override_on_any_connection_is_refused
+expected IsolatedDatabaseRefused(not_confined)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:317
+
+8) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_extra_postgres_connection_to_the_shared_database_is_refused
+expected IsolatedDatabaseRefused(not_confined)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:324
+
+9) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_extra_postgres_connection_to_any_unapproved_database_is_refused
+expected IsolatedDatabaseRefused(not_confined)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:330
+
+10) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_non_postgres_connection_naming_a_forbidden_database_is_refused
+expected IsolatedDatabaseRefused(not_confined)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:336
+
+11) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "reserved word null" (['null', '/nonexistent-pbdigit274-socket-dir', 'iso_user', 'pw-must-never-be-printed'], 'reserved')
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [connection_failed] Could not read current_database() (PDOException).\n
+' [ASCII](length: 115) contains "[reserved]" [ASCII](length: 10).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+12) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "reserved word TRUE" (['TRUE', '/nonexistent-pbdigit274-socket-dir', 'iso_user', 'pw-must-never-be-printed'], 'reserved')
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [connection_failed] Could not read current_database() (PDOException).\n
+' [ASCII](length: 115) contains "[reserved]" [ASCII](length: 10).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+13) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "config cache override" (['pbd_isolated', '/tmp/x.php', '/nonexistent-pbdigit274-socket-dir', 'iso_user', 'pw-must-never-be-printed'], 'config_cached')
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [connection_failed] Could not read current_database() (PDOException).\n
+' [ASCII](length: 115) contains "[config_cached]" [ASCII](length: 15).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+14) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "well formed, not approved" (['pbd_isolated', '/nonexistent-pbdigit274-socket-dir', 'iso_user', 'pw-must-never-be-printed'], 'not_approved')
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [connection_failed] Could not read current_database() (PDOException).\n
+' [ASCII](length: 115) contains "[not_approved]" [ASCII](length: 14).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+15) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "repository default name" (['publicdigit', '/nonexistent-pbdigit274-socket-dir', 'iso_user', 'pw-must-never-be-printed'], 'not_approved')
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [connection_failed] Could not read current_database() (PDOException).\n
+' [ASCII](length: 115) contains "[not_approved]" [ASCII](length: 14).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+ERRORS!
+Tests: 69, Assertions: 115, Errors: 30, Failures: 15.

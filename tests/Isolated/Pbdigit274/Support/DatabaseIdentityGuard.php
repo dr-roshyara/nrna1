@@ -6,7 +6,8 @@ use PDO;
 use Throwable;
 
 /**
- * Identity guard for the isolated PBDIGIT-274 test database (plan section 11.0, S2-3; gates G4 / G5).
+ * Identity guard for the isolated PBDIGIT-274 test database (plan section 11.0, S2-3; gates G4 / G5;
+ * step 1b: independent review findings H1, M1, M2, L1, L4).
  *
  * Plain PHP, no Laravel: tests/bootstrap-isolated-database.php uses it before the framework exists, and
  * IsolatedDatabaseTestCase uses it again before the database refresh. Every failure is an
@@ -14,10 +15,20 @@ use Throwable;
  */
 final class DatabaseIdentityGuard
 {
+    /**
+     * The one database the Human PO approved under G4. EMPTY until then, so every name is refused.
+     * Setting it is a separate, reviewable change made only after the PO names the database; never guess it
+     * from repository defaults or the environment.
+     */
+    public const APPROVED_NAME = '';
+
     public const ENV_NAME = 'PBDIGIT274_TEST_DB';
 
     /** Never usable for this work, compared case-insensitively. */
     public const FORBIDDEN_NAMES = ['nrna_test'];
+
+    /** Words Laravel's env() turns into true / false / '' / null (Illuminate\Support\Env::get). */
+    public const RESERVED_WORDS = ['true', 'false', 'empty', 'null'];
 
     /** Every PostgreSQL connection in config/database.php whose target comes from the environment. */
     public const CONFINED_CONNECTIONS = ['pgsql', 'pgsql_audit', 'pgsql_geo'];
@@ -28,7 +39,8 @@ final class DatabaseIdentityGuard
     /** A plain PostgreSQL identifier; anything else is refused, never corrected. */
     private const NAME_PATTERN = '/^[A-Za-z_][A-Za-z0-9_]{0,62}$/';
 
-    public static function approvedName(mixed $raw): string
+    /** Syntax only: present, not blank, a plain identifier, not a reserved word, not a forbidden database. */
+    public static function wellFormedName(mixed $raw): string
     {
         if ($raw === null || $raw === false) {
             throw new IsolatedDatabaseRefused('missing', self::ENV_NAME.' is not set.');
@@ -39,6 +51,9 @@ final class DatabaseIdentityGuard
         if (!is_string($raw) || preg_match(self::NAME_PATTERN, $raw) !== 1) {
             throw new IsolatedDatabaseRefused('malformed', self::ENV_NAME.' must be a plain PostgreSQL identifier (letters, digits, underscore; at most 63).');
         }
+        if (in_array(strtolower($raw), self::RESERVED_WORDS, true)) {
+            throw new IsolatedDatabaseRefused('reserved', "'{$raw}' is a word Laravel's env() reinterprets; it is never a database name here.");
+        }
         if (in_array(strtolower($raw), self::FORBIDDEN_NAMES, true)) {
             throw new IsolatedDatabaseRefused('forbidden', "'{$raw}' is a shared database and is never used for this work.");
         }
@@ -46,9 +61,29 @@ final class DatabaseIdentityGuard
         return $raw;
     }
 
-    /** A cached Laravel configuration would ignore every environment variable this guard sets. */
-    public static function refuseIfConfigCached(string $configCachePath): void
+    /** Well formed AND exactly the approved name. With nothing approved (before G4) every name is refused. */
+    public static function approvedName(mixed $raw, string $approvedName = self::APPROVED_NAME): string
     {
+        $name = self::wellFormedName($raw);
+        if ($approvedName === '') {
+            throw new IsolatedDatabaseRefused('not_approved', 'No database is approved yet (gate G4); every name is refused.');
+        }
+        if ($name !== $approvedName) {
+            throw new IsolatedDatabaseRefused('not_approved', "'{$name}' is not the approved database.");
+        }
+
+        return $name;
+    }
+
+    /**
+     * A cached Laravel configuration would ignore every environment variable this guard sets: refuse the
+     * default cache file, and any APP_CONFIG_CACHE override (set at all, even empty).
+     */
+    public static function refuseIfConfigCached(string $configCachePath, array $env): void
+    {
+        if (array_key_exists('APP_CONFIG_CACHE', $env)) {
+            throw new IsolatedDatabaseRefused('config_cached', 'APP_CONFIG_CACHE is set; run without a config-cache override.');
+        }
         if (file_exists($configCachePath)) {
             throw new IsolatedDatabaseRefused('config_cached', 'Laravel configuration is cached; run without a config cache.');
         }
@@ -122,7 +157,37 @@ final class DatabaseIdentityGuard
         return $env;
     }
 
-    /** Configuration-level check (no connection): the default and every confined connection target the approved database. */
+    /** Writes the variables where Laravel's environment repository reads them: $_SERVER, $_ENV and putenv. */
+    public static function applyEnvironment(array $variables): void
+    {
+        foreach ($variables as $key => $value) {
+            $_SERVER[$key] = $value;
+            $_ENV[$key] = $value;
+            putenv("{$key}={$value}");
+        }
+    }
+
+    /**
+     * Drops every PostgreSQL connection that is not confined (e.g. the hard-coded `testing` → nrna_test), so
+     * a test can't reach it: using a dropped connection fails with "not configured". Others are kept.
+     */
+    public static function withoutUnconfinedPostgresConnections(array $connections): array
+    {
+        return array_filter(
+            $connections,
+            fn ($config, $name) => !is_array($config) || ($config['driver'] ?? null) !== 'pgsql'
+                || in_array($name, self::CONFINED_CONNECTIONS, true),
+            ARRAY_FILTER_USE_BOTH,
+        );
+    }
+
+    /**
+     * Configuration-level check over EVERY configured connection (no connection is opened):
+     * - the default is a confined connection, and each confined connection targets the approved database;
+     * - no connection carries a URL override;
+     * - no PostgreSQL connection targets anything but the approved database;
+     * - no connection of any driver names a forbidden database.
+     */
     public static function assertConnectionsConfined(array $connections, string $approved, string $default): void
     {
         if (!in_array($default, self::CONFINED_CONNECTIONS, true)) {
@@ -130,9 +195,23 @@ final class DatabaseIdentityGuard
         }
         foreach (self::CONFINED_CONNECTIONS as $name) {
             $config = $connections[$name] ?? null;
-            if (!is_array($config) || ($config['driver'] ?? null) !== 'pgsql'
-                || !empty($config['url']) || ($config['database'] ?? null) !== $approved) {
+            if (!is_array($config) || ($config['driver'] ?? null) !== 'pgsql' || ($config['database'] ?? null) !== $approved) {
                 throw new IsolatedDatabaseRefused('not_confined', "Connection '{$name}' does not target '{$approved}'.");
+            }
+        }
+        foreach ($connections as $name => $config) {
+            if (!is_array($config)) {
+                continue;
+            }
+            $database = $config['database'] ?? null;
+            if (!empty($config['url'])) {
+                throw new IsolatedDatabaseRefused('not_confined', "Connection '{$name}' has a URL override.");
+            }
+            if (($config['driver'] ?? null) === 'pgsql' && $database !== $approved) {
+                throw new IsolatedDatabaseRefused('not_confined', "PostgreSQL connection '{$name}' does not target '{$approved}'.");
+            }
+            if (is_string($database) && in_array(strtolower($database), self::FORBIDDEN_NAMES, true)) {
+                throw new IsolatedDatabaseRefused('not_confined', "Connection '{$name}' names a forbidden database.");
             }
         }
     }

@@ -6,15 +6,24 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PBDIGIT-274 S2 step 1: the real bootstrap script, run as a child process with a controlled environment.
+ * PBDIGIT-274 S2 steps 1 and 1b: the real bootstrap script, run as a child process with a controlled
+ * environment.
  *
- * Database-free: every case is refused before a connection is attempted, except the connection-failure case,
- * whose host is a non-existent Unix-socket directory (no network, no PostgreSQL server is contacted).
+ * Database-free: every case is refused before a connection is attempted. Credentials point at a
+ * non-existent Unix-socket directory, so even a connection attempt could not reach a network or a server.
+ * Since step 1b nothing is approved before G4 (DatabaseIdentityGuard::APPROVED_NAME is empty), so the
+ * script-level `connection_failed` case is unreachable by design; it stays covered by the unit test.
  * The child gets only the variables listed here, never this process's environment or .env.
  */
 class IsolatedBootstrapScriptTest extends TestCase
 {
     private const SCRIPT = __DIR__.'/../../../bootstrap-isolated-database.php';
+
+    private const CREDENTIALS = [
+        'PBDIGIT274_DB_HOST'     => '/nonexistent-pbdigit274-socket-dir',
+        'PBDIGIT274_DB_USERNAME' => 'iso_user',
+        'PBDIGIT274_DB_PASSWORD' => 'pw-must-never-be-printed',
+    ];
 
     /** @return array{int, string, string} exit code, stdout, stderr */
     private function runBootstrap(array $env): array
@@ -37,45 +46,37 @@ class IsolatedBootstrapScriptTest extends TestCase
         return [proc_close($process), $stdout, $stderr];
     }
 
-    private const CREDENTIALS = [
-        'PBDIGIT274_DB_HOST'     => '/nonexistent-pbdigit274-socket-dir',
-        'PBDIGIT274_DB_USERNAME' => 'iso_user',
-        'PBDIGIT274_DB_PASSWORD' => 'pw-must-never-be-printed',
-    ];
-
     public static function refusedBeforeAnyConnection(): array
     {
+        $creds = self::CREDENTIALS;
+
         return [
-            'name missing'     => [[], 'missing'],
-            'name empty'       => [['PBDIGIT274_TEST_DB' => ''], 'empty'],
-            'name whitespace'  => [['PBDIGIT274_TEST_DB' => '   '], 'empty'],
-            'shared test db'   => [['PBDIGIT274_TEST_DB' => 'nrna_test'], 'forbidden'],
-            'shared, upper'    => [['PBDIGIT274_TEST_DB' => 'NRNA_TEST'], 'forbidden'],
-            'malformed'        => [['PBDIGIT274_TEST_DB' => 'pbd-isolated'], 'malformed'],
-            'no credentials'   => [['PBDIGIT274_TEST_DB' => 'pbd_isolated'], 'credentials_missing'],
+            'name missing'          => [$creds, 'missing'],
+            'name empty'            => [['PBDIGIT274_TEST_DB' => ''] + $creds, 'empty'],
+            'name whitespace'       => [['PBDIGIT274_TEST_DB' => '   '] + $creds, 'empty'],
+            'reserved word null'    => [['PBDIGIT274_TEST_DB' => 'null'] + $creds, 'reserved'],
+            'reserved word TRUE'    => [['PBDIGIT274_TEST_DB' => 'TRUE'] + $creds, 'reserved'],
+            'shared test db'        => [['PBDIGIT274_TEST_DB' => 'nrna_test'] + $creds, 'forbidden'],
+            'shared, upper'         => [['PBDIGIT274_TEST_DB' => 'NRNA_TEST'] + $creds, 'forbidden'],
+            'malformed'             => [['PBDIGIT274_TEST_DB' => 'pbd-isolated'] + $creds, 'malformed'],
+            'no credentials'        => [['PBDIGIT274_TEST_DB' => 'pbd_isolated'], 'credentials_missing'],
+            'config cache override' => [['PBDIGIT274_TEST_DB' => 'pbd_isolated', 'APP_CONFIG_CACHE' => '/tmp/x.php'] + $creds, 'config_cached'],
+            'well formed, not approved' => [['PBDIGIT274_TEST_DB' => 'pbd_isolated'] + $creds, 'not_approved'],
+            'repository default name'   => [['PBDIGIT274_TEST_DB' => 'publicdigit'] + $creds, 'not_approved'],
         ];
     }
 
     #[DataProvider('refusedBeforeAnyConnection')]
     public function test_unsafe_configuration_aborts_before_any_connection(array $env, string $reason): void
     {
-        // Credentials are present for every case but the last, so a refusal reason other than
-        // connection_failed proves the guard stopped before it tried to connect.
-        $env += $reason === 'credentials_missing' ? [] : self::CREDENTIALS;
-
+        // Credentials are present in every case but one, so any reason other than connection_failed proves
+        // the guard stopped before it tried to connect.
         [$exit, $stdout, $stderr] = $this->runBootstrap($env);
 
         $this->assertNotSame(0, $exit);
         $this->assertStringContainsString("[{$reason}]", $stderr);
-        $this->assertStringNotContainsString('pw-must-never-be-printed', $stdout.$stderr);
-    }
-
-    public function test_an_unreachable_database_aborts_without_printing_the_password(): void
-    {
-        [$exit, $stdout, $stderr] = $this->runBootstrap(['PBDIGIT274_TEST_DB' => 'pbd_isolated'] + self::CREDENTIALS);
-
-        $this->assertNotSame(0, $exit);
-        $this->assertStringContainsString('[connection_failed]', $stderr);
+        $this->assertStringNotContainsString('[connection_failed]', $stderr);
+        $this->assertStringNotContainsString('confirmed', $stderr);
         $this->assertStringNotContainsString('pw-must-never-be-printed', $stdout.$stderr);
     }
 

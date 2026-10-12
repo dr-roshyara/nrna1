@@ -17,7 +17,7 @@
 - **G6:** the real two-process, two-connection concurrency test **executed and passed**. A simulation never satisfies it.
 - **G7:** the cast success / failure contract (section 9) **executed and passed**.
 - **G8:** the release order: **the migration (G3) runs before any 274 code is deployed.** Otherwise the new issuer's replacements hit the old `voter_slugs_election_id_user_id_unique` [F `create_uuid_voter_slugs_table.php:38`], get classified as "unknown constraint", and every expired voter receives `VoterSlugIssuanceConflict`.
-- **S1** (database-free) needed its own explicit authorisation: granted 2026-10-11, done. **S2** needs its own explicit authorisation: not granted.
+- **S1** (database-free) needed its own explicit authorisation: granted 2026-10-11, done. **S2 step 1 and step 1b** (database-free identity guard) were authorised separately on 2026-10-12. **The database part of S2** needs its own explicit authorisation: not granted.
 
 **Evidence labels:**
 - **[F]** a fact established by **read-only code inspection** on 2026-10-11 (file:line). It is **not** runtime evidence;
@@ -693,3 +693,12 @@ Status: **R** = resolved at plan level (it still needs execution evidence, as li
     - the real `current_database()` lookup;
     - a wrong-database abort against a real server;
     - the in-test second check inside a booted app.
+- **2026-10-12, S2 step 1b (authorised by the Human PO: the review corrections, database-free; no connection, no migration; committed with the PO's separate approval).** Findings of the independent read-only review of step 1:
+  - **H1:** `APPROVED_NAME` constant, **empty until G4**, so every name is refused as `not_approved`.
+  - **M1:** `null` / `true` / `false` / `empty` refused (`reserved`).
+  - **M2:** `APP_CONFIG_CACHE` refused.
+  - **L1:** the in-test check covers every configured connection; unconfined PostgreSQL connections (e.g. `testing` → `nrna_test`) are removed first.
+  - **L4:** the environment-writing step is now `applyEnvironment()`, with executable tests; `config_cached` is tested at script level.
+  - **Runs:** RED 69 tests / 45 failing → GREEN 69 tests / 167 assertions, exit 0. The dedicated config refuses a missing name and `nrna_test`.
+  - **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1b/`.
+  - **By design:** the script-level `connection_failed` case is unreachable until G4 (unit-tested with a stand-in).

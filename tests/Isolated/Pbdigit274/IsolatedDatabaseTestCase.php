@@ -28,6 +28,10 @@ abstract class IsolatedDatabaseTestCase extends BaseTestCase
 
     public function refreshDatabase(): void
     {
+        // Step 1b (L1): unconfined PostgreSQL connections (e.g. the hard-coded `testing` → nrna_test) are
+        // removed, then EVERY remaining connection is checked before the live identity is asked.
+        config(['database.connections' => DatabaseIdentityGuard::withoutUnconfinedPostgresConnections(config('database.connections'))]);
+
         DatabaseIdentityGuard::confirmBeforeRefresh(
             config('database.connections'),
             DatabaseIdentityGuard::approvedName(getenv(DatabaseIdentityGuard::ENV_NAME)),
