@@ -2124,3 +2124,16 @@ The two `sha256sum` listings must be identical.
 | Not decided | NR-P for H1/H4 (not studied); "adopt modified" |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0134 — Human act: one joint amendment; existing re-checks count as the P3 re-review (X-6)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "X-6: one joint amendment; existing re-checks count as P3 re-review." |
+| Basis | package v3.3 §6 X-6 (l.176) and §7 X-6 form line; P3 study v1–v1.3 reviews and the package-v2 / decision-readiness re-checks (v1.3 PASS) |
+| Decided | (1) **One joint amendment** for all P1–P3 decisions (G-LOG-0118–0133): one new pre-registration version, one independent review, one human freeze act, before any S5 data. (2) The package-v2 review and the decision-readiness review and re-check **count as the dedicated P3 re-review** |
+| Pre-freeze prerequisites (DERIVED, G-LOG-0132) | none chosen; the joint amendment waits for no study |
+| Content of the amendment (DERIVED, recorder; summary of decided items) | α = 0.05; confirmatory family **{H1, H2, H4}**, Holm, fixed family R3 (UNT enters with p = 1; each p individually valid; UNT decided from the hypothesis's own data); H1 frozen statistic, D0 wording "serial dependence present; source/agent unresolved"; H2 frozen sign test, reworded to the forward-share claim, vocabulary REJ / NR-P / NR-U / UNT / VAC with π = 0.7 (NR-P needs m ≥ 58 at α/3); H4 frozen; exploratory family H3 and H5 (BH or descriptive), with H5 per G-LOG-0119–0124 as exploratory specification |
+| Items for the drafter to put to the human at review (recorder) | exploratory details still undecided: P2-5 (H3 descriptive reading); H5 D and exact dimension list (12-name list VERIFIED by review, approval pending); NR-P evaluation at α/3 or at H2's realized Holm step (G-LOG-0133) |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`) stays as is; the amendment is a new file |
+| Not authorized | the freeze itself (separate human act after independent review); run-3 outside G-LOG-0117; G3–G5; corpus reads; any change of O1 |
