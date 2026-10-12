@@ -114,16 +114,7 @@ class VoterStepTrackingService
      */
     public function getHighestCompletedStep($voterSlug, Election $election): int
     {
-        // Determine which model to use based on slug type
-        $isDemo = $voterSlug instanceof DemoVoterSlug;
-        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
-
-        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
-        $slugForeignKey = 'voter_slug_id';
-
-        $highest = $StepModel::where($slugForeignKey, $voterSlug->id)
-            ->where('election_id', $election->id)
-            ->max('step');
+        $highest = $this->stepQuery($voterSlug, $election)->max('step');
 
         return $highest ?? 0;
     }
@@ -159,15 +150,7 @@ class VoterStepTrackingService
      */
     public function hasCompletedStep($voterSlug, Election $election, int $step): bool
     {
-        // Determine which model to use based on slug type
-        $isDemo = $voterSlug instanceof DemoVoterSlug;
-        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
-
-        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
-        $slugForeignKey = 'voter_slug_id';
-
-        return $StepModel::where($slugForeignKey, $voterSlug->id)
-            ->where('election_id', $election->id)
+        return $this->stepQuery($voterSlug, $election)
             ->where('step', '<=', $step)
             ->exists();
     }
@@ -185,18 +168,11 @@ class VoterStepTrackingService
         $isDemo = $voterSlug instanceof DemoVoterSlug;
         $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
 
-        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
-        $slugForeignKey = 'voter_slug_id';
-
-        $query = $StepModel::where($slugForeignKey, $voterSlug->id)
-            ->where('election_id', $election->id)
-            ->orderBy('step', 'asc');
+        $query = $this->stepQuery($voterSlug, $election)->orderBy('step', 'asc');
 
         // Use ordered() scope if available (VoterSlugStep has it, DemoVoterSlugStep also has it)
         if (method_exists($StepModel, 'ordered')) {
-            $query = $StepModel::where($slugForeignKey, $voterSlug->id)
-                ->where('election_id', $election->id)
-                ->ordered();
+            $query = $this->stepQuery($voterSlug, $election)->ordered();
         }
 
         return $query->get();
