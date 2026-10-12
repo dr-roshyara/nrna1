@@ -1946,3 +1946,17 @@ The two `sha256sum` listings must be identical.
 | Now open for H5 | P1-4 frozen parameters (s₀, e₀, D and dimension list, B = 999); P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing); P1-6 artefact check (if yes, an artefact model is designed before freezing). P2-7 may still move H5 to exploratory |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0121 — Human act: H5 minimum excess e₀ = 10 (P1-4, partial)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P1-4 recorded: e₀ = 10" |
+| Basis | package v3.3 §7 P1-4 (l.100, l.185; sha `f8a757d118b69260…`) |
+| Decided | **e₀ = 10**: the minimum excess count E for a pair to qualify in the strong-dependence disjunct of the (b-combine) test |
+| Not decided (P1-4 remainder) | s₀ (minimum support); D and the dimension list; B = 999 yes/no. P1-4 stays partly open |
+| Supporting facts (v3.3 C-3, l.96) | the (b-combine) power figure "within 0.11 of loev" holds only at e₀ = 10 (at e₀ = 5 the gap reaches 0.37) |
+| Limits (FACT, v3.3 l.100; C-1) | 10 sits at a post-hoc grid edge; it excludes rare ⇒ near-ceiling pairs, the pilot's own pattern; it is a count, so its stringency changes with n. In the CEIL profile, power at k = 1 with h₀ 0.8, e₀ 10 is 0.23 at ε = 1 % and 0.00 at ε = 2 % |
+| Now open for H5 | P1-4 remainder; P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing); P1-6 artefact check |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
