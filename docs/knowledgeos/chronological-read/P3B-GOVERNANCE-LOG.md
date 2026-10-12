@@ -2040,3 +2040,18 @@ The two `sha256sum` listings must be identical.
 | Prevention (recorder's practice, not a new rule) | reviewer briefs name `P3B-DISCOVERY-SEARCH.jsonl` and every `*.jsonl` data file as forbidden (applied from the protocol v0 review onward) |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); OMQ-14 and D-ETR-1 = O1 (G-LOG-0125) |
 | Not authorized | any data or corpus read; any P1–P3 choice; G3–G5 |
+
+## G-LOG-0128 — Human act: untestable outcomes, rule R3 (fixed family) (P2-1)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P2-1: R3, fixed family" |
+| Basis | package v3.3 §7 P2-1 (l.119-120, l.188; sha `f8a757d118b69260…`); P2 testability study and review (PASS_WITH_LIMITATIONS) |
+| Decided | **R3:** Holm over the fixed confirmatory family; a hypothesis that is UNTESTABLE on the S5 data enters with p = 1 and reads UNT/OPEN, never non-rejection evidence |
+| Family | fixed at the confirmatory members after P2-7 and P3-6: currently {H1, H2, H3, H4} (H5 exploratory, G-LOG-0126); +1 if a P3 test is placed in the family; fewer if H2/H3 move to exploratory |
+| Supporting facts (package l.119) | studied for a fixed family of 5: FWER .034, "only marginal validity; robust to dependent inclusion"; −0.01 to −0.04 power for the others; small code change |
+| DERIVED (recorder) | Holm controls FWER under arbitrary dependence, and p = 1 is a valid p-value, so R3 needs no independence premise across inclusion events (package X-4); the size-4 family was not simulated, but this guarantee does not depend on the family size. P2-2 (π for m_min) and the random-family Holm-level question no longer apply. The existing untestability guards stay as frozen (H2: < 5 dated relations; H3: < 10 internal edges, `prereg_v1.py` l.165-180) unless changed in the amendment |
+| Implementation note (for the amendment) | the frozen `run()` applies Holm over tested hypotheses only (`prereg_v1.py` l.181-184, i.e. R1); the amendment must pass UNT hypotheses into Holm with p = 1, with a test |
+| Not decided | combined rules (e.g. R3 + floor m ≥ 7; not studied) |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
