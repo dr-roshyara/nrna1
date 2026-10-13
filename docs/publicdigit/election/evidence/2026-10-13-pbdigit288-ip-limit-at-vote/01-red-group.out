@@ -1,0 +1,57 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_an_ipv4_address_is_its_own_group
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:19
+
+2) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_ipv6_addresses_in_one_64_network_share_a_group
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:25
+
+3) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_ipv6_addresses_in_different_64_networks_do_not_share_a_group
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:31
+
+4) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_ipv6_spellings_of_one_network_share_a_group
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:36
+
+5) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_the_ipv6_prefix_is_configurable
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:41
+
+6) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_an_out_of_range_prefix_falls_back_to_64
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:48
+
+7) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_an_unreadable_address_is_its_own_group_and_never_throws
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:54
+
+8) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_same_group_tells_whether_two_addresses_count_together
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:60
+
+9) Tests\Unit\Domain\Election\Security\IpVoteGroupTest::test_ipv4_mapped_ipv6_is_not_folded_into_ipv4
+Error: Class "App\Domain\Election\Security\IpVoteGroup" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/IpVoteGroupTest.php:70
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

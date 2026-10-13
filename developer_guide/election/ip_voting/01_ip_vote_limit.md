@@ -42,7 +42,7 @@ public static function limitFor(Election $election, string $ip): ?int
 | a positive whole number (`1`, `25`) | exactly that (1 stays 1) |
 | `0`, negative, `2.5`, `abc`, `10x`, `' 5'`, `07`, `true` | **invalid**: ignored (10), with `Log::warning('max_use_ip_address_invalid', ['reason' => …, 'type' => …])`, never the value |
 
-**Counting** (`votesFrom()`): completed votes from this IP in this election, from `codes.client_ip` with `has_voted = true`. Today `client_ip` is the IP at **code entry**. Per the PO decision of 2026-10-13 it moves to the IP **at the vote** (`PBDIGIT-288`).
+**Counting** (`votesFrom()`): completed votes from this IP in this election, from `codes.client_ip` with `has_voted = true`. Since `PBDIGIT-288` (guide 03) the vote records the IP **at the vote** there, and IPv6 counts per /64.
 
 ## How to use it
 ```php
@@ -75,6 +75,6 @@ if ($election && ($refusal = IpVoteLimit::refusal($election, (string) $clientIp)
 - **Don't read `config('app.max_use_clientIP')` directly anywhere.** Go through `IpVoteLimit`.
 - **`elections.ip_restriction_max_per_ip` defaults to 4 and is NOT NULL.** It only matters while the restriction is enabled.
 - **`voter_slugs.step_1_ip` is never written for real elections.** Don't count on it.
-- **Not yet checked at the vote itself,** and several voters on one IP mid-flow at the same time can exceed the limit (`PBDIGIT-288`, next step).
+- **The vote itself** is covered by `castRefusal()` under a per-network lock (guide 03). Don't call `refusal()` there: without the lock, simultaneous votes can exceed the limit.
 
 **Traceability:** `PBDIGIT-278` item 8: code `7b3d15583`; tests `348c314fc`; evidence `210496eb8` (`docs/publicdigit/election/evidence/2026-10-13-pbdigit278-item8-ip-limit/`).

@@ -36,3 +36,12 @@
 - **The counted IP is the IP at the vote** (not the code-entry IP). The check and a per-election, per-IP lock happen at the vote.
 - **IPv6 is grouped by /64** for counting (configurable prefix); IPv4 stays per address.
 - **Order:** plan step 2 (items 1–3), then step 3 (item 5), then the rest.
+
+## Progress (2026-10-13)
+- **Items 1–4 implemented (plan step 2), not yet committed:**
+  - `IpVoteLimit::castRefusal()` at the vote under a PostgreSQL advisory lock per election and IP group;
+  - `codes.client_ip` = the IP at the vote;
+  - IPv6 counted per /64 (`IpVoteGroup`, configurable).
+- **Evidence:** `docs/publicdigit/election/evidence/2026-10-13-pbdigit288-ip-limit-at-vote/`; guide `developer_guide/election/ip_voting/03_ip_limit_at_the_vote.md`.
+- **Still open:** items 5–9. Next is item 5 (plan step 3).
+- **Unchanged by this step:** the constitutional limit still counts by exact address (`PBDIGIT-286`).

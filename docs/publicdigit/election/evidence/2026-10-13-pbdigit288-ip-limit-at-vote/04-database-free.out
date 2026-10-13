@@ -1,0 +1,9 @@
+== tests/Unit/Domain/Election/Security/IpVoteGroupTest.php
+
+OK (10 tests, 25 assertions)
+== tests/Unit/Services/Voting/IpVoteLimitTest.php
+OK, but there were issues!
+Tests: 18, Assertions: 56, Deprecations: 3, PHPUnit Deprecations: 1.
+== tests/Unit/Models/ElectionIpWhitelistTest.php
+OK, but there were issues!
+Tests: 33, Assertions: 77, Deprecations: 3, PHPUnit Deprecations: 3.

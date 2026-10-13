@@ -1,0 +1,60 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FDFFFEED                                                            8 / 8 (100%)
+
+Time: 00:05.428, Memory: 30.00 MB
+
+There were 2 errors:
+
+1) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_a_vote_waits_for_another_vote_from_the_same_network_and_gives_up_safely
+Error: Undefined constant App\Services\Voting\IpVoteLimit::LOCK_NAMESPACE
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:241
+
+2) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_the_lock_key_is_per_election_and_per_network
+Error: Call to undefined method App\Services\Voting\IpVoteLimit::lockKey()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:262
+
+--
+
+There were 4 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_the_limit_is_checked_at_the_vote_and_refuses_with_a_readable_reason
+limit reached at the vote: refused
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:186
+
+2) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_the_ip_at_the_vote_is_recorded_on_the_code_row
+the IP at the vote, not the code-entry IP
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.20'
++'203.0.113.20'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:207
+
+3) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_a_voter_who_changed_network_is_judged_by_the_ip_at_the_vote
+judged by the vote IP: refused
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:215
+
+4) Tests\Isolated\Pbdigit274\Database\IpVoteLimitAtCastTest::test_ipv6_votes_from_one_64_network_count_together
+same /64: refused
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitAtCastTest.php:228
+
+ERRORS!
+Tests: 8, Assertions: 16, Errors: 2, Failures: 4, Deprecations: 3.

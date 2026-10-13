@@ -1,0 +1,12 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDD                                                            8 / 8 (100%)
+
+Time: 00:08.275, Memory: 30.00 MB
+
+OK, but there were issues!
+Tests: 8, Assertions: 34, Deprecations: 3.
