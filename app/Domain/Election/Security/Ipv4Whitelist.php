@@ -42,6 +42,21 @@ final class Ipv4Whitelist
         return false;
     }
 
+    /**
+     * Whether an entry is one this matcher can read: an exact IPv4 address or an IPv4 CIDR range with a prefix of
+     * 0–32 (PBDIGIT-285: server-side validation of the election's whitelist uses the same parser as matching).
+     */
+    public static function isValidEntry(string $entry): bool
+    {
+        $entry = trim($entry);
+        if (! str_contains($entry, '/')) {
+            return self::toLong($entry) !== null;
+        }
+        [$network, $bits] = explode('/', $entry, 2);
+
+        return ctype_digit($bits) && (int) $bits <= 32 && self::toLong($network) !== null;
+    }
+
     private static function entryMatches(string $entry, int $address): bool
     {
         if (! str_contains($entry, '/')) {

@@ -25,7 +25,13 @@ class UpdateElectionSettingsRequest extends FormRequest
             'ip_restriction_enabled'    => ['boolean'],
             'ip_restriction_max_per_ip' => ['integer', 'min:1', 'max:50'],
             'ip_whitelist'              => ['nullable', 'array'],
-            'ip_whitelist.*'            => ['string'],
+            // PBDIGIT-285: validated with the matcher's own parser (IPv4 address or IPv4 CIDR /0–32), so an entry
+            // the matcher cannot read is refused here instead of being stored.
+            'ip_whitelist.*'            => ['string', function (string $attribute, mixed $value, \Closure $fail) {
+                if (! is_string($value) || ! \App\Domain\Election\Security\Ipv4Whitelist::isValidEntry($value)) {
+                    $fail('Each whitelist entry must be an IPv4 address (e.g. 203.0.113.7) or an IPv4 range (e.g. 10.0.0.0/8).');
+                }
+            }],
             'no_vote_option_enabled'    => ['boolean'],
             'no_vote_option_label'      => ['string', 'max:100'],
             'selection_constraint_type' => ['required', 'in:any,exact,range,minimum,maximum'],

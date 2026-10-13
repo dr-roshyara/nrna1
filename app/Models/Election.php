@@ -893,33 +893,18 @@ class Election extends Model
         };
     }
 
+    /**
+     * PBDIGIT-285: the one whitelist matcher, shared with the trust policy (Ipv4Whitelist; IPv4 only, PO 2026-10-05).
+     * An entry or address it cannot read matches nothing. The former ipInRange() used ip2long(), whose `false` for
+     * IPv6 / malformed input made an IPv6 or malformed entry match EVERY IPv6 client.
+     */
     public function isIpWhitelisted(string $ip): bool
     {
         if (empty($this->ip_whitelist)) {
             return false;
         }
 
-        foreach ($this->ip_whitelist as $range) {
-            if ($this->ipInRange($ip, trim($range))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function ipInRange(string $ip, string $range): bool
-    {
-        if (!str_contains($range, '/')) {
-            return $ip === $range;
-        }
-
-        [$subnet, $bits] = explode('/', $range);
-        $ip     = ip2long($ip);
-        $subnet = ip2long($subnet);
-        $mask   = -1 << (32 - (int) $bits);
-
-        return ($ip & $mask) === ($subnet & $mask);
+        return \App\Domain\Election\Security\Ipv4Whitelist::fromEntries($this->ip_whitelist)->contains($ip);
     }
 
     // ── State Machine Methods ─────────────────────────────────────────────────
