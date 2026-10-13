@@ -161,7 +161,8 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 - [ ] 22. ML assistance only on adjudicated data, against baselines
 - [ ] 23. Independent corroboration (H-19, by governance) + challenge review
 - [ ] 24. 👤 Final verdict
-- [ ] 25. Final readable report: **ROBUST THEORY FOUND** or **NO COHERENT THEORY FOUND**
+- [ ] 25. Final readable report: **ROBUST THEORY FOUND** or **NO COHERENT THEORY FOUND** (or **OPEN — INSUFFICIENT EVIDENCE**, if V-1 is adopted)
+- [ ] **VERDICT CRITERIA (G-LOG-0140: drafting + review only; NOT adopted):** proposal v1.5 `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-s5-g1/docs/knowledgeos/chronological-read/audit-p3b/verdict-criteria/VERDICT-CRITERIA-PROPOSAL-v1.5.md` (sha256 `8f0a9d2f7d210465…`; W commit `a3f6d71c8`; review record `VERDICT-CRITERIA-REVIEW.md`, 6 rounds, last PASS-WITH-MINOR-FIX, fixes applied). **Next: 👤 V-1 (adopt the three outcomes incl. OPEN — INSUFFICIENT EVIDENCE)**, then V-2…V-11, all before any S5 data; studies for V-5/V-8/V-9/V-10(b)/V-11 each need their own act (V-11 also a new pre-registration version).
 
 **Separate repository hygiene (no research dependency):**
 - [ ] 👤 R-5: clean up the 5 misrouted READ-LOG files in the ansible repo (copies in `~/knowledgeos-witness-archive/OB0012.A1/misrouted-reader-logs/`)
