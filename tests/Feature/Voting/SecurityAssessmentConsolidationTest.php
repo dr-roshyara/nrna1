@@ -95,13 +95,14 @@ class SecurityAssessmentConsolidationTest extends TestCase
                 string $sessionId,
                 ?string $registeredIpHash = null,
                 ?int $votesFromThisIp = null,
+                ?bool $ipBindingSatisfied = null,   // PBDIGIT-247 added this to the parent; without it the file fails to load
             ): TrustEvaluationEnvelope {
                 $this->calls++;
                 $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 40);
                 $this->directCallers[] = $trace[1]['class'] ?? null;
                 $this->stacks[] = array_values(array_filter(array_map(fn (array $f) => $f['class'] ?? null, $trace)));
 
-                $envelope = parent::evaluate($election, $user, $rawIp, $rawFingerprint, $sessionId, $registeredIpHash, $votesFromThisIp);
+                $envelope = parent::evaluate($election, $user, $rawIp, $rawFingerprint, $sessionId, $registeredIpHash, $votesFromThisIp, $ipBindingSatisfied);
                 if ($this->forced === null) {
                     return $envelope;
                 }
