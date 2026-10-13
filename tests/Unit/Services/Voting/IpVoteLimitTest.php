@@ -147,4 +147,27 @@ final class IpVoteLimitTest extends BaseTestCase
     {
         $this->assertSame('The maximum of 1 vote(s) from your network has been reached.', IpVoteLimit::refusalMessage(1));
     }
+
+    // ── PBDIGIT-288 item 5: where the applied limit comes from (for the audit entry) ─────────────────────
+
+    public function test_the_limit_source_mirrors_the_limit_rule(): void
+    {
+        config(['app.max_use_clientIP' => null]);
+        $this->assertSame('default', IpVoteLimit::limitSource($this->election(), '198.51.100.7'));
+        $this->assertSame('default', IpVoteLimit::limitSource($this->election(['ip_restriction_max_per_ip' => 4]), '198.51.100.7'),
+            'a disabled election restriction is not the source');
+
+        config(['app.max_use_clientIP' => '3']);
+        $this->assertSame('env', IpVoteLimit::limitSource($this->election(), '198.51.100.7'));
+        $this->assertSame('election', IpVoteLimit::limitSource($this->election(['ip_restriction_enabled' => true, 'ip_restriction_max_per_ip' => 2]), '198.51.100.7'));
+        $this->assertSame('whitelist', IpVoteLimit::limitSource($this->election(['ip_whitelist' => json_encode(['203.0.113.0/24'])]), '203.0.113.5'));
+    }
+
+    public function test_an_invalid_configured_value_is_reported_as_the_default_source(): void
+    {
+        Log::spy();
+        config(['app.max_use_clientIP' => 'abc']);
+
+        $this->assertSame('default', IpVoteLimit::limitSource($this->election(), '198.51.100.7'));
+    }
 }
