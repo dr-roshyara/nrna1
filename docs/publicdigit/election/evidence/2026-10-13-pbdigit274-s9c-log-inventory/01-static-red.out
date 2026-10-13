@@ -1,0 +1,111 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.051, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\NoRawVoterSlugInLogsTest::test_no_log_call_in_the_voting_link_files_carries_a_raw_link
+87 raw-link log site(s)
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'bootstrap/app.php:257 request URL / path',
++    1 => 'bootstrap/app.php:262 'url' entry from the request',
++    2 => 'app/Http/Controllers/Demo/DemoCodeController.php:58 request URL / path',
++    3 => 'app/Http/Controllers/Demo/DemoCodeController.php:77 voter-slug value',
++    4 => 'app/Http/Controllers/Demo/DemoCodeController.php:178 voter-slug value',
++    5 => 'app/Http/Controllers/Demo/DemoCodeController.php:276 voter-slug value',
++    6 => 'app/Http/Controllers/Demo/DemoCodeController.php:286 voter-slug value',
++    7 => 'app/Http/Controllers/Demo/DemoCodeController.php:286 voting-URL variable',
++    8 => 'app/Http/Controllers/Demo/DemoCodeController.php:295 redirect target',
++    9 => 'app/Http/Controllers/Demo/DemoCodeController.php:316 voter-slug value',
++    10 => 'app/Http/Controllers/Demo/DemoCodeController.php:416 route('vslug')',
++    11 => 'app/Http/Controllers/Demo/DemoCodeController.php:416 route parameters',
++    12 => 'app/Http/Controllers/Demo/DemoCodeController.php:416 request URL / path',
++    13 => 'app/Http/Controllers/Demo/DemoCodeController.php:429 voter-slug value',
++    14 => 'app/Http/Controllers/Demo/DemoCodeController.php:437 voter-slug value',
++    15 => 'app/Http/Controllers/Demo/DemoCodeController.php:501 voter-slug value',
++    16 => 'app/Http/Controllers/Demo/DemoCodeController.php:511 voter-slug value',
++    17 => 'app/Http/Controllers/Demo/DemoCodeController.php:511 voting-URL variable',
++    18 => 'app/Http/Controllers/Demo/DemoCodeController.php:567 request URL / path',
++    19 => 'app/Http/Controllers/Demo/DemoCodeController.php:60 'url' entry from the request',
++    20 => 'app/Http/Controllers/Demo/DemoCodeController.php:420 'url' entry from the request',
++    21 => 'app/Http/Controllers/Demo/DemoCodeController.php:570 'url' entry from the request',
++    22 => 'app/Http/Controllers/Demo/DemoVoteController.php:591 request URL / path',
++    23 => 'app/Http/Controllers/Demo/DemoVoteController.php:776 redirect target',
++    24 => 'app/Http/Controllers/Demo/DemoVoteController.php:1802 voter-slug value',
++    25 => 'app/Http/Controllers/Demo/DemoVoteController.php:1817 voter-slug value',
++    26 => 'app/Http/Controllers/Demo/DemoVoteController.php:1829 voter-slug value',
++    27 => 'app/Http/Controllers/Demo/DemoVoteController.php:1840 voter-slug value',
++    28 => 'app/Http/Controllers/Demo/DemoVoteController.php:1840 slug route URL',
++    29 => 'app/Http/Controllers/Demo/DemoVoteController.php:1840 vslug key',
++    30 => 'app/Http/Controllers/Demo/DemoVoteController.php:2128 voter-slug value',
++    31 => 'app/Http/Controllers/Demo/DemoVoteController.php:3703 voter-slug value',
++    32 => 'app/Http/Controllers/Demo/DemoVoteController.php:3714 voter-slug value',
++    33 => 'app/Http/Controllers/Demo/DemoVoteController.php:3714 redirect target',
++    34 => 'app/Http/Controllers/Demo/DemoVoteController.php:3714 vslug key',
++    35 => 'app/Http/Controllers/Demo/DemoVoteController.php:3721 voter-slug value',
++    36 => 'app/Http/Controllers/Demo/DemoVoteController.php:3721 redirect target',
++    37 => 'app/Http/Controllers/Demo/DemoVoteController.php:3721 vslug key',
++    38 => 'app/Http/Controllers/Demo/DemoVoteController.php:3731 redirect target',
++    39 => 'app/Http/Controllers/Demo/DemoVoteController.php:3737 redirect target',
++    40 => 'app/Http/Controllers/Demo/DemoVoteController.php:592 'url' entry from the request',
++    41 => 'app/Http/Controllers/Election/ElectionManagementController.php:423 voter-slug value',
++    42 => 'app/Http/Controllers/Election/ElectionManagementController.php:477 voter-slug value',
++    43 => 'app/Http/Controllers/Election/ElectionManagementController.php:645 voter-slug value',
++    44 => 'app/Http/Controllers/VoterSlugController.php:48 request URL / path',
++    45 => 'app/Http/Controllers/VoterSlugController.php:63 voter-slug value',
++    46 => 'app/Http/Controllers/VoterSlugController.php:77 voter-slug value',
++    47 => 'app/Http/Controllers/VoterSlugController.php:85 voter-slug value',
++    48 => 'app/Http/Controllers/VoterSlugController.php:161 voter-slug value',
++    49 => 'app/Http/Controllers/VoterSlugController.php:202 voter-slug value',
++    50 => 'app/Http/Controllers/VoterSlugController.php:212 voter-slug value',
++    51 => 'app/Http/Controllers/VoterSlugController.php:269 voter-slug value',
++    52 => 'app/Http/Controllers/VoterSlugController.php:329 voter-slug value',
++    53 => 'app/Http/Controllers/CodeController.php:66 voter-slug value',
++    54 => 'app/Http/Controllers/CodeController.php:95 voter-slug value',
++    55 => 'app/Http/Controllers/CodeController.php:106 voter-slug value',
++    56 => 'app/Http/Controllers/CodeController.php:248 voter-slug value',
++    57 => 'app/Http/Controllers/CodeController.php:374 voter-slug value',
++    58 => 'app/Http/Controllers/CodeController.php:392 voter-slug value',
++    59 => 'app/Http/Controllers/CodeController.php:392 voting-URL variable',
++    60 => 'app/Http/Controllers/CodeController.php:401 redirect target',
++    61 => 'app/Http/Controllers/CodeController.php:427 voter-slug value',
++    62 => 'app/Http/Controllers/CodeController.php:533 request URL / path',
++    63 => 'app/Http/Controllers/CodeController.php:549 voter-slug value',
++    64 => 'app/Http/Controllers/CodeController.php:621 voter-slug value',
++    65 => 'app/Http/Controllers/CodeController.php:535 'url' entry from the request',
++    66 => 'app/Http/Controllers/VoteController.php:486 request URL / path',
++    67 => 'app/Http/Controllers/VoteController.php:706 redirect target',
++    68 => 'app/Http/Controllers/VoteController.php:1957 voter-slug value',
++    69 => 'app/Http/Controllers/VoteController.php:3416 redirect target',
++    70 => 'app/Http/Controllers/VoteController.php:3420 redirect target',
++    71 => 'app/Http/Controllers/VoteController.php:487 'url' entry from the request',
++    72 => 'app/Http/Middleware/EnsureVoterStepOrder.php:87 voter-slug value',
++    73 => 'app/Http/Middleware/ValidateVotingIp.php:176 request URL / path',
++    74 => 'app/Http/Middleware/ValidateVotingIp.php:199 request URL / path',
++    75 => 'app/Http/Middleware/ValidateVotingIp.php:232 request URL / path',
++    76 => 'app/Http/Middleware/ValidateVotingIp.php:181 'url' entry from the request',
++    77 => 'app/Http/Middleware/ValidateVotingIp.php:205 'url' entry from the request',
++    78 => 'app/Http/Middleware/ValidateVotingIp.php:234 'url' entry from the request',
++    79 => 'app/Http/Middleware/ValidateVotingIp.php:255 'url' entry from the request',
++    80 => 'app/Http/Middleware/EnsureRealVoteOrganisation.php:40 request URL / path',
++    81 => 'app/Http/Middleware/EnsureRealVoteOrganisation.php:111 request URL / path',
++    82 => 'app/Http/Middleware/EnsureRealVoteOrganisation.php:42 'url' entry from the request',
++    83 => 'app/Http/Middleware/EnsureRealVoteOrganisation.php:117 'url' entry from the request',
++    84 => 'app/Traits/EnsuresVoterMembership.php:45 request URL / path',
++    85 => 'app/Traits/EnsuresVoterMembership.php:49 'url' entry from the request',
++    86 => 'app/Http/Middleware/CheckVotingWindow.php:117 voting-URL variable',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/NoRawVoterSlugInLogsTest.php:82
+
+FAILURES!
+Tests: 1, Assertions: 13, Failures: 1.

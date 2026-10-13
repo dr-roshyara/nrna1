@@ -48,3 +48,63 @@
 - Organisation and election slugs (installer jobs, `OrganisationController`, `DashboardResolver`).
 - Id-only contexts (`VerifyVoterSlug`, `VoterStepTrackingService`, `VoterProgressService`, the binding's 10-character prefix on lookup failure).
 - UI props that must carry the slug.
+
+---
+
+## Implementation (2026-10-13, Human PO: "start S9c"; decision: redact live sites only)
+
+**Rule applied at every site:**
+- the slug value becomes the slug's database id (`slug_id` / `voter_slug_id`);
+- a request URL, path or full URL becomes the route name;
+- a redirect target URL becomes the route name, or is dropped;
+- route parameters, `route('vslug')` and voting-URL variables are removed.
+
+Each site was read, then edited deliberately (no bulk replace). In `CodeController`, two lines with identical text (218 and 519) are Inertia page props that must carry the link to build links; they are unchanged.
+
+**Files changed:**
+- **Bootstrap and controllers:**
+  - `bootstrap/app.php` (renderer `url` → `route`);
+  - `CodeController` (11 sites);
+  - `VoteController` (5: `url`, `target_url`, `slug` in the post-commit block, and two non-slug redirect logs);
+  - `VoterSlugController` (9);
+  - `Election/ElectionManagementController` (3, incl. `session('last_created_voter_slug')`, which holds the link and was missed by the scan);
+  - `Demo/DemoCodeController` (13);
+  - `Demo/DemoVoteController` (12, incl. the dead line 1817 in a live file).
+- **Middleware and traits:**
+  - `Middleware/EnsureVoterStepOrder`;
+  - `Middleware/ValidateVotingIp` (4; the `$divergence` array also feeds the `DivergenceTelemetryStore` file);
+  - `Middleware/EnsureRealVoteOrganisation` (2);
+  - `Middleware/CheckVotingWindow`;
+  - `Traits/EnsuresVoterMembership`.
+
+## Tests
+- **`tests/Architecture/NoRawVoterSlugInLogsTest.php`** (static, database-free). In the 12 files, no log call (balanced parentheses, multi-line, `Log::channel()` included) may carry any of:
+  - a voter-slug value, `route('vslug')` or route parameters;
+  - `url()` / `fullUrl()` / `path()` / `getRequestUri()`, or `getTargetUrl()`;
+  - a `$…Url` variable, a `route('slug.…')` URL or a `'vslug' =>` key.
+
+  It also bans a `'url' => $request->url()`-style entry anywhere in those files.
+- **`tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php`.** Every `MessageLogged` record is captured (all channels) while the real paths run:
+  - **a whole real voter journey over HTTP:** start → code entry → code → agreement → ballot → verification → cast, ending in a committed vote;
+  - **the voting-exception renderer** (JSON and web);
+  - **a voter refused at code entry;**
+  - **the demo start and demo code entry.**
+
+  The raw link must occur in no message and no serialised context, nor in the JSON error body.
+
+## Runs
+| # | File | Result |
+|---|---|---|
+| 01 | `01-static-red.out` | static guard against the code before S9c: **87 hits** (RED) |
+| 02 | `02-dynamic-red.out` | behaviour tests before S9c: **4 / 4 RED**. The link was in 14 of 247 records (real flow), 2 of 13 (renderer), 1 of 22 (refused), 3 of 38 (demo). No link appears in this output (checked) |
+| 03 | `03-static-green.out` | static guard after S9c: **OK** |
+| 04 | `04-dynamic-green.out` | behaviour tests after S9c: **4 / 32**, with the flow trail `start=302 code.create=200 code.store=302 agreement=200 agreement.submit=302 vote.create=200 vote.submit=302 vote.verify=200 vote.store=302` |
+| 05 | `05-isolated-all.out` | the whole isolated PBDIGIT-274 suite: **94 / 490** |
+| 06 | `06-database-free.out` | `tests/Unit/Services/Voting`, `VerifyVoterSlugTest` and both architecture tests (`CACHE_STORE=array`, PBDIGIT-278 item 5): **107 / 549** |
+
+## Found while implementing (PBDIGIT-278, not fixed here)
+- **Item 8:** `MAX_USE_IP_ADDRESS` has no default, so `0 >= null` refuses every real voter at verification, and the refusal renders the missing view `components.error_message`. The behaviour test sets the limit to 7, as `tests/Feature/Characterization/Phase1/CastFixtures.php` does.
+- **Item 9:** the 20 dead-code sites.
+- **Item 10:** `session_id` and a demo `voting_code` in logs (not voting links).
+- **Renderer status:** the renderer answers an organisation mismatch with HTTP 500 on JSON (known; PBDIGIT-275).
+- **PBDIGIT-276:** T1 is its item 1. **It stays OPEN** until the PO records the outcome at 274's closure (plan section 2.1a).

@@ -1,0 +1,90 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFFF                                                                4 / 4 (100%)
+
+Time: 00:02.600, Memory: 28.00 MB
+
+Raw Slug Logging (Tests\Isolated\Pbdigit274\Database\RawSlugLogging)
+ ✘ A real voter walking the whole flow leaves no raw link in the logs
+   │
+   │ real voting flow: raw voting link in 14 of 247 log record(s)
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => '#19 emergency: 🔴 [CREATE] ENTERED create() method',
+   │ +    1 => '#21 info: 🟣 [CREATE] Code create page accessed',
+   │ +    2 => '#22 emergency: 🔴 [CREATE] Checking redirect condition',
+   │ +    3 => '#38 info: Code verification started',
+   │ +    4 => '#52 info: Code verification successful',
+   │ +    5 => '#53 info: 🟡 [STORE] About to return redirect',
+   │ +    6 => '#54 info: ✅ [STORE] Returning redirect response',
+   │ +    7 => '#76 info: Agreement page accessed',
+   │ +    8 => '#98 info: 🔴 [CRITICAL] submitAgreement() method called',
+   │ +    9 => '#99 info: Agreement submission started',
+   │ +    10 => '#108 info: Agreement accepted successfully',
+   │ +    11 => '#156 info: === FIRST_SUBMISSION START ===',
+   │ +    12 => '#172 info: verify_first_submission returned',
+   │ +    13 => '#246 info: Advanced VoterSlug step after vote verification',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:134
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:178
+   │
+ ✘ The voting exception renderer logs no raw link
+   │
+   │ voting exception renderer: raw voting link in 2 of 13 log record(s)
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => '#8 error: Voting exception',
+   │ +    1 => '#12 error: Voting exception',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:134
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:198
+   │
+ ✘ A voter refused at code entry leaves no raw link in the logs
+   │
+   │ refused voter: raw voting link in 1 of 22 log record(s)
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => '#19 emergency: 🔴 [CREATE] ENTERED create() method',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:134
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:212
+   │
+ ✘ The demo start and demo code entry leave no raw link in the logs
+   │
+   │ demo start and demo code entry: raw voting link in 3 of 38 log record(s)
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => '#12 info: ✅ Voter slug created for specific election',
+   │ +    1 => '#26 info: 🔥🔥🔥 DEMO CREATE METHOD HIT - Controller Reached!',
+   │ +    2 => '#28 info: 🎮 [DEMO-CREATE] Code create page accessed',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:134
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/RawSlugLoggingTest.php:228
+   │
+
+FAILURES!
+Tests: 4, Assertions: 32, Failures: 4, Deprecations: 3.

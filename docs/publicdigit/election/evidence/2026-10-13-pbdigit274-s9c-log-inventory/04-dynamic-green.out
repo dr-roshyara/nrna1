@@ -1,0 +1,26 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9C-FLOW start=302→slug.code.create code.create=200 code.store=302→slug.code.agreement agreement=200 agreement.submit=302→slug.vote.create vote.create=200 vote.submit=302→slug.vote.verify vote.verify=200 vote.store=302→vote.verify_to_show records=247
+D
+S9C-RENDERER json=500 web=302 records=13
+D
+S9C-REFUSED status=302 records=22
+D
+S9C-DEMO start=302 code.create=200 records=38
+D                                                                4 / 4 (100%)
+
+Time: 00:04.679, Memory: 28.00 MB
+
+Raw Slug Logging (Tests\Isolated\Pbdigit274\Database\RawSlugLogging)
+ ✔ A real voter walking the whole flow leaves no raw link in the logs
+ ✔ The voting exception renderer logs no raw link
+ ✔ A voter refused at code entry leaves no raw link in the logs
+ ✔ The demo start and demo code entry leave no raw link in the logs
+
+OK, but there were issues!
+Tests: 4, Assertions: 32, Deprecations: 3.

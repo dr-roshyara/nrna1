@@ -77,9 +77,10 @@
   - update the stale 410 test.
 - [x] **C6 — S8:** end-to-end lifecycle test. *(2026-10-13, evidence `docs/publicdigit/election/evidence/2026-10-13-pbdigit274-s8-lifecycle-flow/`)*
 - [ ] **C7 — S9:**
-  - vote success / failure contract (**G7**);
-  - count tests;
-  - remove raw voting links from logs, sites T1–T11, incl. the error renderer's URL and the binding's slug prefix (decision O-7).
+  - [x] vote success / failure contract (**G7**). *S9a: `083e4e785`, `39cad17d9`; F-B repaired, F-A accepted → PBDIGIT-279*
+  - [x] count tests. *S9b: `cd259e82c`*
+  - [x] remove raw voting links from logs, sites T1–T11 plus every section 12.2 find, incl. the error renderer's URL (decision O-7). *S9c, 2026-10-13. The binding's 10-character `slug_prefix` (logged only when no link matches) was reviewed and left: it is a prefix of a non-existent link. Dead-code sites → PBDIGIT-278 item 9*
+  - [ ] default-suite regression (plan section 13 list). **Blocked:** it needs a test database other than `nrna_test`.
 
 ## D. Backlog items to create when PBDIGIT-274 closes
 - [ ] **D1:** guard the console commands that write votes; decide the delegated-voting route.
