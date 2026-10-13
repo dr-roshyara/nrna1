@@ -21,7 +21,8 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 |---|---|---|---|
 | 01 | [The per-IP vote limit (`IpVoteLimit`)](01_ip_vote_limit.md) | `PBDIGIT-278` item 8 | committed `7b3d15583` (code), `348c314fc` (tests) |
 | 02 | [The IP whitelist matcher (`Ipv4Whitelist`)](02_ip_whitelist.md) | `PBDIGIT-285` | committed `e3ea8b0b5` (code), `2a92285ae` (tests) |
-| 03 | [The limit at the vote: lock, voting IP, IPv6 /64](03_ip_limit_at_the_vote.md) | `PBDIGIT-288` items 1–4 | implemented and tested; **not yet committed** |
+| 03 | [The limit at the vote: lock, voting IP, IPv6 /64](03_ip_limit_at_the_vote.md) | `PBDIGIT-288` items 1–4 | committed `6aeece4d4` (code), `197505f8d` (tests) |
+| 04 | [Every IP refusal in the election audit](04_ip_refusal_audit.md) | `PBDIGIT-288` item 5 | implemented and tested; **not yet committed** |
 
 ## How the client IP is obtained
 - **In code:** `$request->ip()` / `Request::getClientIp()`. The `true` argument some call sites pass is ignored by Symfony.
@@ -33,7 +34,7 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 |---|---|
 | `PBDIGIT-286` | the constitutional limit is hidden and effectively 3 (`attested` hard-coded false), and the admin switch doesn't control it. Needs a PO decision |
 | `PBDIGIT-287` | trust only the reverse proxy |
-| `PBDIGIT-288` | items 1–4 done (guide 03). Open: audit at every refusal (next, plan step 3); IP retention and keyed hashing; settings-page wording; the off-by-one between the two limits; dead IP code |
+| `PBDIGIT-288` | items 1–5 done (guides 03, 04). Open: IP retention and keyed hashing; settings-page wording; the off-by-one between the two limits; dead IP code |
 | `PBDIGIT-284` | parked: the vote hash and an audit entry can link a vote to its voter (not an IP issue, but found in the same review) |
 
 ## Running the tests

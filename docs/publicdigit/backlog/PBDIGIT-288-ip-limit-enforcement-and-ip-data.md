@@ -45,3 +45,4 @@
 - **Evidence:** `docs/publicdigit/election/evidence/2026-10-13-pbdigit288-ip-limit-at-vote/`; guide `developer_guide/election/ip_voting/03_ip_limit_at_the_vote.md`.
 - **Still open:** items 5–9. Next is item 5 (plan step 3).
 - **Unchanged by this step:** the constitutional limit still counts by exact address (`PBDIGIT-286`).
+- **Item 5 implemented (plan step 3), not yet committed.** `IpVoteLimit::recordRefusal()` writes one `ip_blocked` audit entry at start, code entry, verification and the vote, recording `reason`, `step`, `max` (the limit that applied) and `limit_source`. Evidence: `docs/publicdigit/election/evidence/2026-10-13-pbdigit288-ip-refusal-audit/`; guide `04_ip_refusal_audit.md`.

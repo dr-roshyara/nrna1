@@ -1,0 +1,58 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFFFFD                                                              6 / 6 (100%)
+
+Time: 00:04.782, Memory: 30.00 MB
+
+There were 5 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\IpRefusalAuditTest::test_a_refusal_at_start_records_the_limit_that_applied_not_the_disabled_election_setting
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     'reason' => 'limit_exceeded',
+-    'step' => 'start',
+-    'max' => 10,
+-    'limit_source' => 'default',
++    'max' => 4,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:194
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:206
+
+2) Tests\Isolated\Pbdigit274\Database\IpRefusalAuditTest::test_a_refusal_at_code_entry_is_audited
+exactly one ip_blocked entry for the code_entry refusal
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:218
+
+3) Tests\Isolated\Pbdigit274\Database\IpRefusalAuditTest::test_a_refusal_at_verification_is_audited
+exactly one ip_blocked entry for the verification refusal
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:231
+
+4) Tests\Isolated\Pbdigit274\Database\IpRefusalAuditTest::test_a_refusal_at_the_vote_is_audited_with_the_election_setting_as_source
+exactly one ip_blocked entry for the vote refusal
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:242
+
+5) Tests\Isolated\Pbdigit274\Database\IpRefusalAuditTest::test_a_busy_network_at_the_vote_is_audited_as_network_busy
+exactly one ip_blocked entry for the vote refusal
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:191
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpRefusalAuditTest.php:261
+
+FAILURES!
+Tests: 6, Assertions: 25, Failures: 5, Deprecations: 3.

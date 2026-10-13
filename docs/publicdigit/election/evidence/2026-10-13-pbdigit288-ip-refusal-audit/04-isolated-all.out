@@ -1,0 +1,74 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9A-EVIDENCE baseline db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE step5_failure db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9A-EVIDENCE receipt_failure db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":0} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_audit_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_current_step_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE commit_failure_email_sent=1 db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9B-CONCURRENCY X1={"role":"cast","name":"X1","consumed":1} X2={"role":"cast","name":"X2","consumed":0} Y={"role":"cast","name":"Y","consumed":1} before={"c":0,"s":0} after={"c":2,"s":2}
+D
+S9B-COUNTS before={"v":0,"c":0,"s":0} after={"v":2,"c":2,"s":2} delta={"v":2,"c":2,"s":2} successes=2 steps=["A cast: success","B cast after replacement: success","C forced failure: refused","A double submission: refused"]
+D
+S9B-BASELINE elections=1 mismatched=0 (reported, never corrected; O-6b = i)
+DDDDDDDDDDDDDDDDDDDDDDDDDDD
+S9C-FLOW start=302→slug.code.create code.create=200 code.store=302→slug.code.agreement agreement=200 agreement.submit=302→slug.vote.create vote.create=200 vote.submit=302→slug.vote.verify vote.verify=200 vote.store=302→vote.verify_to_show records=247
+D
+S9C-RENDERER json=500 web=302 records=13
+D
+S9C-REFUSED status=302 records=22
+D
+S9C-DEMO start=302 code.create=200 records=38
+DDDFFDDDDDDDDDDDDDDDDDDDD  63 / 118 ( 53%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD         118 / 118 (100%)
+
+Time: 00:59.939, Memory: 36.00 MB
+
+There were 2 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoteAnonymityLinkageTest::test_the_vote_hash_cannot_be_recomputed_from_the_voters_code_row
+3 of 3 votes linked to their voter through vote_hash
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'a2f93991-bff2-4540-a66a-869aac4c3ac3',
++    1 => 'a2f93992-a52a-469e-8242-9dfbbd584ca9',
++    2 => 'a2f93993-6433-44cf-9486-205c9b5d824f',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoteAnonymityLinkageTest.php:146
+
+2) Tests\Isolated\Pbdigit274\Database\VoteAnonymityLinkageTest::test_no_audit_entry_carries_a_value_that_links_a_user_to_a_vote
+6 audit entries link a user to a vote
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'vote_confirmed',
++    1 => 'vote_confirmed',
++    2 => 'vote_confirmed',
++    3 => 'vote_confirmed',
++    4 => 'vote_confirmed',
++    5 => 'vote_confirmed',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoteAnonymityLinkageTest.php:167
+
+FAILURES!
+Tests: 118, Assertions: 654, Failures: 2, Deprecations: 3.
