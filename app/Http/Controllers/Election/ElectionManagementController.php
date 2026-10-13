@@ -422,7 +422,7 @@ class ElectionManagementController extends Controller
 
             Log::info('✅ Voter slug created', [
                 'user_id' => $authUser->id,
-                'voter_slug' => $slug->slug,
+                'voter_slug_id' => $slug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'election_id' => $slug->election_id,
             ]);
 
@@ -474,9 +474,9 @@ class ElectionManagementController extends Controller
             session(['last_created_voter_slug' => $slug->slug]);
             session()->save(); // Force save again
 
+            // PBDIGIT-274 S9c: the id only; the slug and the session copy are the voting link itself.
             Log::info('📍 Redirecting to demo code entry', [
-                'slug' => $slug->slug,
-                'session_slug' => session('last_created_voter_slug'),
+                'slug_id' => $slug->id,
             ]);
 
             // Redirect to DEMO voting flow with voter slug (NOT election slug)
@@ -645,7 +645,7 @@ class ElectionManagementController extends Controller
             Log::info('✅ Voter slug created for specific election', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
-                'voter_slug' => $slug->slug,
+                'voter_slug_id' => $slug->id, // the id, never the link (PBDIGIT-274 S9c)
             ]);
 
             return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])

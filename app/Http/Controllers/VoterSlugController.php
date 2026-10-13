@@ -48,7 +48,7 @@ class VoterSlugController extends Controller
         Log::info('=== VOTER START CALLED ===', [
             'user_id' => $user->id,
             'timestamp' => now(),
-            'request_url' => $request->fullUrl(),
+            'route' => $request->route()?->getName(), // no URL in logs (PBDIGIT-274 S9c)
         ]);
 
         // Check if user already has an active slug first
@@ -62,7 +62,7 @@ class VoterSlugController extends Controller
             if ($existingSlug->expires_at->isPast()) {
                 Log::warning('Found existing slug but it has expired, deactivating', [
                     'user_id' => $user->id,
-                    'slug' => $existingSlug->slug,
+                    'slug_id' => $existingSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                     'expires_at' => $existingSlug->expires_at,
                     'current_time' => now(),
                 ]);
@@ -76,7 +76,7 @@ class VoterSlugController extends Controller
                 if ($existingSlug->vote_completed) {
                     Log::info('User has completed vote, redirecting to verify page', [
                         'user_id' => $user->id,
-                        'slug' => $existingSlug->slug,
+                        'slug_id' => $existingSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                     ]);
                     return redirect()->route('vote.verify_to_show');
                 }
@@ -84,7 +84,7 @@ class VoterSlugController extends Controller
                 // Vote not completed - redirect to appropriate step
                 Log::info('Redirecting user to existing active slug', [
                     'user_id' => $user->id,
-                    'slug' => $existingSlug->slug,
+                    'slug_id' => $existingSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                     'current_step' => $existingSlug->current_step,
                 ]);
 
@@ -160,7 +160,7 @@ class VoterSlugController extends Controller
 
         Log::info('New voting slug generated from dashboard', [
             'user_id' => $user->id,
-            'slug' => $slug->slug,
+            'slug_id' => $slug->id, // the id, never the link (PBDIGIT-274 S9c)
             'expires_at' => $slug->expires_at,
             'ip_address' => $request->ip(),
         ]);
@@ -201,7 +201,7 @@ class VoterSlugController extends Controller
             if ($existingSlug->vote_completed) {
                 Log::warning('Restart attempt on completed vote denied', [
                     'user_id' => $user->id,
-                    'slug' => $existingSlug->slug,
+                    'slug_id' => $existingSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                 ]);
 
                 return redirect()->route('vote.verify_to_show')
@@ -211,7 +211,7 @@ class VoterSlugController extends Controller
             // Vote not completed - deactivate current session
             Log::info('Deactivating current slug for restart', [
                 'user_id' => $user->id,
-                'old_slug' => $existingSlug->slug,
+                'old_slug_id' => $existingSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'was_at_step' => $existingSlug->current_step,
             ]);
 
@@ -268,7 +268,7 @@ class VoterSlugController extends Controller
 
             Log::info('New voting session created for restart', [
                 'user_id' => $user->id,
-                'new_slug' => $newSlug->slug,
+                'new_slug_id' => $newSlug->id, // the id, never the link (PBDIGIT-274 S9c)
             ]);
 
             return redirect()->route('slug.code.create', ['vslug' => $newSlug->slug])
@@ -328,7 +328,7 @@ class VoterSlugController extends Controller
         if (!$slug->vote_completed && $slug->current_step >= 3 && $slug->current_step <= 4) {
             Log::info('Allowing voter to restart voting session', [
                 'user_id' => Auth::id(),
-                'slug' => $slug->slug,
+                'slug_id' => $slug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'current_step' => $slug->current_step,
                 'vote_completed' => $slug->vote_completed,
                 'reason' => 'Vote not yet completed - allowing restart from step 3'

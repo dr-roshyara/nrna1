@@ -178,7 +178,7 @@ class ValidateVotingIp
             'user_name' => $user->name,
             'voting_ip' => $user->voting_ip,
             'current_ip' => $ip,
-            'url' => $request->url(),
+            'route' => $request->route()?->getName(), // never the URL: it carries the voting link (PBDIGIT-274 S9c)
             'timestamp' => now(),
         ]);
     }
@@ -202,7 +202,7 @@ class ValidateVotingIp
             'user_email' => $user->email,
             'registered_ip' => $registeredIp,
             'current_ip' => $currentIp,
-            'url' => $request->url(),
+            'route' => $request->route()?->getName(), // never the URL (PBDIGIT-274 S9c)
             'user_agent' => $request->userAgent(),
             'timestamp' => now(),
             'action_taken' => config('voting_security.ip_mismatch_action', 'block'),
@@ -231,7 +231,7 @@ class ValidateVotingIp
 
         Log::info('IP check bypassed', array_merge([
             'reason' => $reason,
-            'url' => $request->url(),
+            'route' => $request->route()?->getName(), // never the URL (PBDIGIT-274 S9c)
             'timestamp' => now(),
         ], $context));
     }
@@ -252,8 +252,7 @@ class ValidateVotingIp
             'user_id' => $user->id,
             'registered_ip' => $registeredIp,
             'current_ip' => $currentIp,
-            'url' => $request->url(),
-            'route' => $request->route()?->getName(),
+            'route' => $request->route()?->getName(), // no URL: it carries the voting link; also written to the telemetry file (PBDIGIT-274 S9c)
             'user_agent' => $request->userAgent(),
             'timestamp' => now()->toIso8601String(),
         ];

@@ -57,7 +57,7 @@ class DemoCodeController extends Controller
     {
         Log::info('🔥🔥🔥 DEMO CREATE METHOD HIT - Controller Reached!', [
             'user_id' => auth()->id(),
-            'url' => request()->fullUrl(),
+            'route' => request()->route()?->getName(), // never the URL: it carries the voting link (PBDIGIT-274 S9c)
             'middleware_passed' => true,
         ]);
 
@@ -79,7 +79,7 @@ class DemoCodeController extends Controller
             'election_id' => $election->id,
             'election_type' => $election->type,
             'organisation_id' => $election->organisation_id,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'is_slug_request' => $voterSlug !== null,
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
@@ -179,7 +179,7 @@ class DemoCodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'input' => $request->only('voting_code'),
             'is_ajax' => $request->wantsJson(),
         ]);
@@ -275,7 +275,7 @@ class DemoCodeController extends Controller
 
         Log::info('🎮 [DEMO-CODE] Code verification successful', [
             'user_id' => $user->id,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Redirect to agreement page
@@ -283,10 +283,9 @@ class DemoCodeController extends Controller
             ? route('slug.demo-code.agreement', ['vslug' => $voterSlug->slug])
             : route('demo-code.agreement');
 
+        // PBDIGIT-274 S9c: route name and slug id only; the agreement URL carries the voting link.
         Log::info('🟡 [DEMO-STORE] About to return redirect', [
-            'agreementUrl' => $agreementUrl,
-            'voterSlug' => $voterSlug ? $voterSlug->slug : 'null',
-            'is_response_object' => is_object(redirect($agreementUrl)),
+            'slug_id' => $voterSlug?->id,
         ]);
 
         // Always return Redirect for form submissions (Inertia will follow it)
@@ -294,7 +293,6 @@ class DemoCodeController extends Controller
 
         Log::info('✅ [DEMO-STORE] Returning redirect response', [
             'response_status_code' => $redirectResponse->getStatusCode(),
-            'response_location' => $redirectResponse->getTargetUrl(),
         ]);
 
         return $redirectResponse;
@@ -317,7 +315,7 @@ class DemoCodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Verify user has completed code verification for this election
@@ -414,10 +412,8 @@ class DemoCodeController extends Controller
     {
         // 🔴 CRITICAL DEBUG - Capture slug context at entry
         \Log::info('🔴 [CRITICAL] submitAgreement ENTRY', [
+            // PBDIGIT-274 S9c: no route parameters, vslug or URL; they are (or carry) the voting link.
             'route_name' => $request->route()->getName(),
-            'route_params' => $request->route()->parameters(),
-            'vslug_from_route' => $request->route('vslug'),
-            'url' => $request->url(),
             'method' => $request->method(),
             'session_id' => session()->getId(),
         ]);
@@ -430,15 +426,14 @@ class DemoCodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'has_voter_slug' => $voterSlug ? 'yes' : 'no',
-            'voter_slug_slug' => $voterSlug ? $voterSlug->slug : null,
-            'voter_slug_id' => $voterSlug ? $voterSlug->id : null,
+            'voter_slug_id' => $voterSlug ? $voterSlug->id : null, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         Log::info('🎮 [DEMO-CODE] Agreement submission started', [
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Validate agreement
@@ -500,7 +495,7 @@ class DemoCodeController extends Controller
 
         Log::info('🎮 [DEMO-CODE] Agreement accepted successfully', [
             'user_id' => $user->id,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Redirect to voting page
@@ -510,9 +505,8 @@ class DemoCodeController extends Controller
 
         \Log::info('🟢 [CRITICAL] submitAgreement REDIRECT DECISION', [
             'has_voter_slug' => $voterSlug ? 'yes' : 'no',
-            'voter_slug_slug' => $voterSlug ? $voterSlug->slug : null,
+            'voter_slug_id' => $voterSlug?->id, // the id and route name; never the link or its URL (PBDIGIT-274 S9c)
             'route_used' => $voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create',
-            'voteUrl' => $voteUrl,
             'request_is_json' => $request->expectsJson(),
         ]);
 
@@ -567,7 +561,7 @@ class DemoCodeController extends Controller
             \Log::critical('[DemoCodeController] Election not set by middleware', [
                 'user_id' => $user->id,
                 'voter_slug_id' => $voterSlug?->id,
-                'path' => $request->path(),
+                'route' => $request->route()?->getName(), // never the path: it carries the voting link (PBDIGIT-274 S9c)
             ]);
             throw new \Exception('Election context missing - middleware did not set election');
         }

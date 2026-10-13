@@ -88,7 +88,7 @@ class EnsureVoterStepOrder
                 'target_step' => $targetStep,
                 'next_allowed_step' => $nextAllowedStep,
                 'redirecting_to' => $nextRoute,
-                'vslug_slug' => $vslug->slug,
+                'vslug_id' => $vslug->id, // the id, never the link (PBDIGIT-274 S9c)
             ]);
 
             return redirect()->route($nextRoute, ['vslug' => $vslug->slug])

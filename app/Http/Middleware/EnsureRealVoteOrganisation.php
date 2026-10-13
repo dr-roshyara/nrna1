@@ -38,8 +38,7 @@ class EnsureRealVoteOrganisation
 
         if (!$election) {
             \Log::channel('voting_security')->error('PHASE 4: No election in middleware chain', [
-                'route' => $request->route()->getName(),
-                'url' => $request->url(),
+                'route' => $request->route()->getName(), // no URL: it carries the voting link (PBDIGIT-274 S9c)
                 'timestamp' => now(),
             ]);
 
@@ -113,8 +112,7 @@ class EnsureRealVoteOrganisation
             'user_organisation_id' => $user->organisation_id,
             'election_id' => $election->id,
             'election_organisation_id' => $election->organisation_id,
-            'route' => $request->route()->getName(),
-            'url' => $request->url(),
+            'route' => $request->route()->getName(), // no URL: it carries the voting link (PBDIGIT-274 S9c)
             'ip' => $request->ip(),
             'timestamp' => now(),
             'blocked_at' => 'middleware_layer',

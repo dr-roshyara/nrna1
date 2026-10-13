@@ -484,7 +484,7 @@ public function first_submission(Request $request)
     }
 
     \Log::info('=== FIRST_SUBMISSION START ===', [
-        'url' => $request->url(),
+        'route' => $request->route()?->getName(), // never the URL: it carries the voting link (PBDIGIT-274 S9c)
         'method' => $request->method(),
         'user_id' => $auth_user ? $auth_user->id : null,
         'election_id' => $election->id,
@@ -705,7 +705,7 @@ public function first_submission(Request $request)
 
     \Log::info('verify_first_submission returned', [
         'type' => get_class($verify_result),
-        'target_url' => method_exists($verify_result, 'getTargetUrl') ? $verify_result->getTargetUrl() : 'N/A'
+        'status' => method_exists($verify_result, 'getStatusCode') ? $verify_result->getStatusCode() : null, // no target URL (PBDIGIT-274 S9c)
     ]);
 
     // verify_first_submission always returns a RedirectResponse (either for errors or success)
@@ -1955,7 +1955,7 @@ private function trackSovereigntyDivergence(
             $vslug->save();
 
             \Log::info('Advanced VoterSlug step after vote verification', [
-                'slug' => $vslug->slug,
+                'slug_id' => $vslug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'new_step' => $vslug->current_step,
                 'user_id' => $auth_user->id
             ]);
@@ -3413,11 +3413,11 @@ public function verify_final_vote(Request $request)
             if ($isDemoElection) {
                 // Demo election without slug - use demo verification route
                 $redirect = redirect()->route('demo-vote.verify');
-                \Log::info('Returning demo redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('Returning demo redirect', ['route' => 'demo-vote.verify']);
             } else {
                 // Real election without slug - use regular verification route
                 $redirect = redirect()->route('vote.verify');
-                \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('Returning regular redirect', ['route' => 'vote.verify']);
             }
             return $redirect;
         }

@@ -46,7 +46,7 @@ trait EnsuresVoterMembership
                 'user_id'     => $user->id,
                 'election_id' => $election->id,
                 'use_cache'   => $useCache,
-                'url'         => request()->fullUrl(),
+                'route'       => request()->route()?->getName(), // never the URL: it carries the voting link (PBDIGIT-274 S9c)
                 'ip'          => request()->ip(),
             ]);
 

@@ -589,7 +589,7 @@ public function first_submission(Request $request)
     $election = $this->getElection($request);
 
     \Log::info('=== FIRST_SUBMISSION START ===', [
-        'url' => $request->url(),
+        'route' => $request->route()?->getName(), // never the URL: it carries the voting link (PBDIGIT-274 S9c)
         'method' => $request->method(),
         'user_id' => $auth_user ? $auth_user->id : null,
         'election_id' => $election->id,
@@ -775,7 +775,7 @@ public function first_submission(Request $request)
 
     \Log::info('verify_first_submission returned', [
         'type' => get_class($verify_result),
-        'target_url' => method_exists($verify_result, 'getTargetUrl') ? $verify_result->getTargetUrl() : 'N/A'
+        'status' => method_exists($verify_result, 'getStatusCode') ? $verify_result->getStatusCode() : null, // no target URL (PBDIGIT-274 S9c)
     ]);
 
     // verify_first_submission always returns a RedirectResponse (either for errors or success)
@@ -1800,7 +1800,7 @@ private function has_valid_selections($selections)
             $voterSlug->save();
 
             \Log::info('✅ Voter slug marked as voted and invalid', [
-                'slug' => $voterSlug->slug,
+                'slug_id' => $voterSlug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'has_voted' => true,
                 'is_active' => false,
                 'status' => 'voted',
@@ -1815,7 +1815,7 @@ private function has_valid_selections($selections)
             $vslug->save();
 
             \Log::info('Advanced VoterSlug step after vote verification', [
-                'slug' => $vslug->slug,
+                'slug_id' => $vslug->id, // the id, never the link (PBDIGIT-274 S9c)
                 'new_step' => $vslug->current_step,
                 'user_id' => $auth_user->id
             ]);
@@ -1828,7 +1828,7 @@ private function has_valid_selections($selections)
 
             \Log::info('🎯 DEMO VOTE SUBMISSION - Redirect decision', [
                 'has_voter_slug' => $voterSlug ? 'yes' : 'no',
-                'slug' => $voterSlug ? $voterSlug->slug : null,
+                'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
                 'vote_id' => $this->out_code,
                 'has_demo_vote' => $demoVote ? 'yes' : 'no',
                 'demo_vote_voting_code' => $demoVote ? $demoVote->voting_code : null,
@@ -1838,8 +1838,7 @@ private function has_valid_selections($selections)
             if ($voterSlug) {
                 // Use slug-based route
                 \Log::info('✅ SUCCESS - Redirecting to slug.demo-vote.verify_to_show', [
-                    'vslug' => $voterSlug->slug,
-                    'url' => route('slug.demo-vote.verify_to_show', ['vslug' => $voterSlug->slug])
+                    'slug_id' => $voterSlug->id, // the id, never the link or its URL (PBDIGIT-274 S9c)
                 ]);
                 return redirect()->route('slug.demo-vote.verify_to_show', ['vslug' => $voterSlug->slug])
                     ->with([
@@ -2128,7 +2127,7 @@ public function demo_verify_to_show()
     Log::info('🎯 demo_verify_to_show - ENTRY', [
         'user_id' => $auth_user?->id,
         'election_id' => $election?->id,
-        'voter_slug' => $voterSlug?->slug
+        'voter_slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
     ]);
 
     $has_voted = false;
@@ -3702,7 +3701,7 @@ public function verify_final_vote(Request $request)
 
         \Log::debug('✅ verify_first_submission - ALL CHECKS PASSED', [
             'has_voter_slug' => $voterSlug !== null,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'is_demo_election' => $isDemoElection
         ]);
 
@@ -3712,15 +3711,13 @@ public function verify_final_vote(Request $request)
                 // Demo election with slug - use demo verification route
                 $redirect = redirect()->route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]);
                 \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to slug.demo-vote.verify', [
-                    'url' => $redirect->getTargetUrl(),
-                    'vslug' => $voterSlug->slug
+                    'slug_id' => $voterSlug->id, // the id, never the link or its URL (PBDIGIT-274 S9c)
                 ]);
             } else {
                 // Real election with slug - use regular verification route
                 $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
                 \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to slug.vote.verify', [
-                    'url' => $redirect->getTargetUrl(),
-                    'vslug' => $voterSlug->slug
+                    'slug_id' => $voterSlug->id, // the id, never the link or its URL (PBDIGIT-274 S9c)
                 ]);
             }
             return $redirect;
@@ -3728,15 +3725,11 @@ public function verify_final_vote(Request $request)
             if ($isDemoElection) {
                 // Demo election without slug - use demo verification route
                 $redirect = redirect()->route('demo-vote.verify');
-                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to demo-vote.verify', [
-                    'url' => $redirect->getTargetUrl()
-                ]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to demo-vote.verify');
             } else {
                 // Real election without slug - use regular verification route
                 $redirect = redirect()->route('vote.verify');
-                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to vote.verify', [
-                    'url' => $redirect->getTargetUrl()
-                ]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to vote.verify');
             }
             return $redirect;
         }

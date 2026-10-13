@@ -259,7 +259,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 'message'   => $e->getMessage(),
                 'user_id'   => auth()->id(),
                 'ip'        => $request->ip(),
-                'url'       => $request->url(),
+                // PBDIGIT-274 S9c (O-7): the route name, never the URL (a voting URL carries the voter's link)
+                'route'     => $request->route()?->getName(),
                 'context'   => $e->getContext(),
             ]);
 

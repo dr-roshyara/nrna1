@@ -117,7 +117,7 @@ class CheckVotingWindow
         Log::info('🔄 [CheckVotingWindow] Redirecting expired user to code create', [
             'user_id'    => auth()->id(),
             'route_name' => $routeName,
-            'redirect'   => $codeCreateUrl,
+            'redirect'   => 'slug.demo-code.create', // the route name, never the URL with the link (PBDIGIT-274 S9c)
         ]);
 
         return redirect($codeCreateUrl)

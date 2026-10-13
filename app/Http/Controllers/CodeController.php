@@ -67,7 +67,7 @@ class CodeController extends Controller
             'user_id' => $user->id ?? 'null',
             'election_id' => $election->id ?? 'null',
             'has_voter_slug' => $voterSlug !== null,
-            'voter_slug_value' => $voterSlug ? $voterSlug->slug : 'null',
+            'voter_slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Bind organisation context so BelongsToTenant scope resolves correctly
@@ -96,7 +96,7 @@ class CodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'is_slug_request' => $voterSlug !== null,
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
@@ -107,7 +107,7 @@ class CodeController extends Controller
             'existing_code_exists' => $existingCode !== null,
             'can_vote_now' => $existingCode ? $existingCode->can_vote_now : 'no_code',
             'has_voter_slug' => $voterSlug !== null,
-            'voter_slug_value' => $voterSlug ? $voterSlug->slug : 'null',
+            'voter_slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'should_redirect' => $existingCode && $existingCode->can_vote_now === true && !$voterSlug,
         ]);
 
@@ -249,7 +249,7 @@ class CodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
             'is_ajax' => $request->wantsJson(),
         ]);
 
@@ -373,7 +373,7 @@ class CodeController extends Controller
 
         Log::info('Code verification successful', [
             'user_id' => $user->id,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         app(\App\Services\ElectionAuditService::class)->logVoterAction(
@@ -389,18 +389,17 @@ class CodeController extends Controller
             ? route('slug.code.agreement', ['vslug' => $voterSlug->slug])
             : route('code.agreement');
 
+        // PBDIGIT-274 S9c: route name and slug id only; the agreement URL carries the voting link.
         Log::info('🟡 [STORE] About to return redirect', [
-            'agreementUrl' => $agreementUrl,
-            'voterSlug' => $voterSlug ? $voterSlug->slug : 'null',
-            'is_response_object' => is_object(redirect($agreementUrl)),
+            'redirect_route' => $voterSlug ? 'slug.code.agreement' : 'code.agreement',
+            'slug_id' => $voterSlug?->id,
         ]);
 
         // Always return Redirect for form submissions (Inertia will follow it)
         $redirectResponse = redirect($agreementUrl)->with('success', 'Code verified successfully!');
 
         Log::info('✅ [STORE] Returning redirect response', [
-            'response_status_code' => $redirectResponse->getStatusCode(),
-            'response_location' => $redirectResponse->getTargetUrl(),
+            'response_status_code' => $redirectResponse->getStatusCode(), // no location: it carries the voting link (PBDIGIT-274 S9c)
         ]);
 
         return $redirectResponse;
@@ -428,7 +427,7 @@ class CodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Verify user has completed code verification for this election
@@ -531,8 +530,7 @@ class CodeController extends Controller
     public function submitAgreement(Request $request)
     {
         Log::info('🔴 [CRITICAL] submitAgreement() method called', [
-            'route' => $request->route()->getName(),
-            'url' => $request->url(),
+            'route' => $request->route()->getName(), // no URL: it carries the voting link (PBDIGIT-274 S9c)
             'method' => $request->method(),
             'all_params' => $request->all(),
         ]);
@@ -550,7 +548,7 @@ class CodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         // Validate agreement
@@ -620,7 +618,7 @@ class CodeController extends Controller
 
         Log::info('Agreement accepted successfully', [
             'user_id' => $user->id,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'slug_id' => $voterSlug?->id, // the id, never the link (PBDIGIT-274 S9c)
         ]);
 
         app(\App\Services\ElectionAuditService::class)->logVoterAction(
