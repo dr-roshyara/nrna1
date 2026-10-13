@@ -30,7 +30,8 @@ use Tests\TestCase;
  */
 class VotingEntitlementUnificationTest extends TestCase
 {
-    use RefreshDatabase;
+    // No class-level `use RefreshDatabase;`: repeating it re-enables a wrapping test transaction, inside which
+    // VoterSlugIssuer (deliberately) refuses to run. Tests\TestCase already resets the database (PBDIGIT-274).
 
     private Organisation $orgA;
     private Organisation $orgB;

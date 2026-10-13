@@ -251,11 +251,15 @@ class AtomicParticipationConsumptionTest extends TestCase
         $this->recordQueries();
         $this->captureLogs();
 
-        $this->actingAs($voter)
+        $response = $this->actingAs($voter)
             ->withSession(['current_organisation_id' => $this->org->id, $code->session_name => $this->ballotSessionData()])
             ->post(route('slug.vote.store', ['vslug' => $slug->slug]), ['voting_code' => 'DEMO1234']);
 
-        $this->assertNotEmpty($this->logsMentioning('Vote final submission started'), 'precondition: the demo request reached store()');
+        // Decision-driven change (PBDIGIT-273 guard V-6; Human PO 2026-10-13: an election-type mismatch is a 403):
+        // a real link for a demo election no longer reaches store() at all; it is refused before. Previously this
+        // test required the request to reach store(). The consumption assertions below are unchanged.
+        $response->assertForbidden();
+        $this->assertSame([], $this->logsMentioning('Vote final submission started'), 'refused before store()');
         $this->assertSame([], $this->conditionalConsumptions('codes'), 'no conditional consumption on codes for a demo election');
         $this->assertSame([], $this->conditionalConsumptions('demo_codes'), 'no conditional consumption on demo_codes (Q4)');
     }

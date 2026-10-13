@@ -23,7 +23,8 @@ use Tests\TestCase;
  */
 class AdminRecoverySlugTest extends TestCase
 {
-    use RefreshDatabase;
+    // No class-level `use RefreshDatabase;`: repeating it re-enables a wrapping test transaction, inside which
+    // VoterSlugIssuer (deliberately) refuses to run. Tests\TestCase already resets the database (PBDIGIT-274).
 
     private Organisation $org;
     private Election $election;
@@ -33,12 +34,14 @@ class AdminRecoverySlugTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->withoutMiddleware();   // committee.member is not the subject here
+        // Only committee.member is skipped (not the subject here). withoutMiddleware() with no argument also removed
+        // SubstituteBindings: `User $user` then came from the container and the voter id landed in `$election`.
+        $this->withoutMiddleware(\App\Http\Middleware\EnsureCommitteeMember::class);
 
         Election::resetPlatformOrgCache();
         $this->org = Organisation::factory()->create(['type' => 'tenant', 'uses_full_membership' => false]);
         $this->election = ElectionScenarioFactory::votingActive($this->org);
-        $this->admin = User::factory()->create(['name' => 'Election Committee Member']);
+        $this->admin = User::factory()->create(['name' => 'Election Committee Member', 'email_verified_at' => now()]);
         $this->voter = User::factory()->create(['email_verified_at' => now(), 'organisation_id' => $this->org->id]);
         ElectionMembership::create([
             'user_id' => $this->voter->id, 'organisation_id' => $this->org->id,

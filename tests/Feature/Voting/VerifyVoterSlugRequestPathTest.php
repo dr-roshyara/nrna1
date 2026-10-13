@@ -93,10 +93,12 @@ class VerifyVoterSlugRequestPathTest extends TestCase
     public function test_a_revoked_slug_is_rejected_even_though_lookups_bypass_global_scopes(): void
     {
         $slug = $this->slugFor($this->voter);
-        $slug->delete(); // soft delete; the binding's withoutGlobalScopes() still resolves it
+        $slug->delete(); // soft delete
 
+        // Decision-driven change (PBDIGIT-274 S1, plan invariant L-13): the {vslug} lookup itself answers a replaced
+        // or revoked link like an unknown one, the plain 404 "Voting link not found.", before VerifyVoterSlug runs.
         $this->actingAs($this->voter)->codeCreate($slug)
-            ->assertStatus(404)->assertJson(['code' => InvalidVoterSlugException::class]);
+            ->assertStatus(404)->assertJson(['message' => 'Voting link not found.']);
     }
 
     public function test_a_slug_whose_election_belongs_to_another_organisation_is_rejected(): void

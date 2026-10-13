@@ -29,7 +29,8 @@ use Tests\TestCase;
  */
 class LegacyVotingFlagsBoundaryTest extends TestCase
 {
-    use RefreshDatabase;
+    // No class-level `use RefreshDatabase;`: repeating it re-enables a wrapping test transaction, inside which
+    // VoterSlugIssuer (deliberately) refuses to run. Tests\TestCase already resets the database (PBDIGIT-274).
 
     private Organisation $org;
     private User $voter;
@@ -149,7 +150,8 @@ class LegacyVotingFlagsBoundaryTest extends TestCase
 
         // PBDIGIT-274 S4: recovery is per election and goes through VoterSlugIssuer.
         $this->actingAs($officer)->withSession(['current_organisation_id' => $this->org->id])
-            ->post(route('admin.voting.security.recovery', ['user' => $this->voter->id, 'election' => $this->election->id]));
+            ->post(route('admin.voting.security.recovery', ['user' => $this->voter->id, 'election' => $this->election->id]),
+                ['reason' => 'lost link']);   // required by the action; without it validation fails before the issuer runs
 
         $this->assertSame($idsBefore,
             VoterSlug::withoutGlobalScopes()->where('user_id', $this->voter->id)->pluck('id')->sort()->values()->all(),
