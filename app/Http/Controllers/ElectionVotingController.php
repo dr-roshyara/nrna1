@@ -147,18 +147,8 @@ class ElectionVotingController extends Controller
         // IP restriction check (replaces bare abort() with friendly redirect)
         $ipBlock = $this->resolveIpBlock($election, $request->ip());
         if ($ipBlock['blocked']) {
-            // Log IP block event BEFORE redirect
-            app(ElectionAuditService::class)->log(
-                election: $election,
-                event: 'ip_blocked',
-                user: $user,
-                category: 'voters',
-                ip: $request->ip(),
-                metadata: [
-                    'reason' => 'limit_exceeded',
-                    'max' => $election->ip_restriction_max_per_ip,
-                ]
-            );
+            // The admins' record, with the limit that applied (PBDIGIT-288 item 5)
+            \App\Services\Voting\IpVoteLimit::recordRefusal($election, $user, 'start', (string) $request->ip());
 
             return redirect()->route('elections.show', $slug)
                 ->with('error', $ipBlock['message']);

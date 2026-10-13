@@ -1816,6 +1816,8 @@ private function trackSovereigntyDivergence(
                     ]);
 
                     $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
+                    \App\Services\Voting\IpVoteLimit::recordRefusal($election, $auth_user, 'vote', $castIp,
+                        $ipRefusal === \App\Services\Voting\IpVoteLimit::BUSY_MESSAGE ? 'network_busy' : 'limit_exceeded');
 
                     return back()->withErrors(['vote' => $ipRefusal]);
                 }
@@ -3239,6 +3241,7 @@ public function verify_final_vote(Request $request)
         // The one shared per-IP rule (PBDIGIT-278 item 8): the same limit and count as start and code entry.
         $election = \App\Models\Election::withoutGlobalScopes()->find($electionId);
         if ($election && ($refusal = \App\Services\Voting\IpVoteLimit::refusal($election, (string) $clientIP))) {
+            \App\Services\Voting\IpVoteLimit::recordRefusal($election, $auth_user, 'verification', (string) $clientIP);
             $_error['error_message'] = $refusal;
             return $_error;
         }

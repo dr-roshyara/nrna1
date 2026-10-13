@@ -5,6 +5,8 @@ namespace App\Services\Voting;
 use App\Domain\Election\Security\IpVoteGroup;
 use App\Models\Code;
 use App\Models\Election;
+use App\Models\User;
+use App\Services\ElectionAuditService;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -34,23 +36,12 @@ final class IpVoteLimit
 
     public static function globalLimit(mixed $raw): int
     {
-        if ($raw === null || $raw === '') {
-            return self::DEFAULT_LIMIT;
+        [$value, $invalidReason] = self::parseGlobal($raw);
+        if ($invalidReason !== null) {
+            return self::invalid($invalidReason, $raw);
         }
 
-        $value = match (true) {
-            is_int($raw) => $raw,
-            is_string($raw) && preg_match('/^-?[1-9][0-9]*$|^0$/', $raw) === 1 => (int) $raw,
-            default => null,
-        };
-        if ($value === null) {
-            return self::invalid('not_integer', $raw);
-        }
-        if ($value <= 0) {
-            return self::invalid('non_positive', $raw);
-        }
-
-        return $value;
+        return $value ?? self::DEFAULT_LIMIT;
     }
 
     public static function configuredGlobalLimit(): int
@@ -171,6 +162,69 @@ final class IpVoteLimit
     public static function refusalMessage(int $limit): string
     {
         return "The maximum of {$limit} vote(s) from your network has been reached.";
+    }
+
+    /**
+     * Where the limit for this IP comes from (PBDIGIT-288 item 5): 'whitelist' (no limit), 'election' (the enabled
+     * election restriction), 'env' (a valid MAX_USE_IP_ADDRESS) or 'default' (10). Mirrors limitFor().
+     */
+    public static function limitSource(Election $election, string $ip): string
+    {
+        if (self::limitFor($election, $ip) === null) {
+            return 'whitelist';
+        }
+        $electionMax = $election->ip_restriction_max_per_ip;
+        if ($election->isIpRestricted() && is_numeric($electionMax) && (int) $electionMax > 0) {
+            return 'election';
+        }
+        [$value, $invalidReason] = self::parseGlobal(config('app.max_use_clientIP'));
+
+        return $value !== null && $invalidReason === null ? 'env' : 'default';
+    }
+
+    /**
+     * The admins' record of a refusal (PBDIGIT-288 item 5): one `ip_blocked` audit entry at every refusal site, with
+     * the limit that applied and its source. $reason is 'limit_exceeded' or 'network_busy'; $step is 'start',
+     * 'code_entry', 'verification' or 'vote'. The IP is passed to the audit service as before (its retention is
+     * PBDIGIT-288 item 6); it is never put into the metadata.
+     */
+    public static function recordRefusal(Election $election, ?User $user, string $step, string $ip, string $reason = 'limit_exceeded'): void
+    {
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'ip_blocked',
+            user: $user,
+            category: 'voters',
+            ip: $ip,
+            metadata: [
+                'reason' => $reason,
+                'step' => $step,
+                'max' => self::limitFor($election, $ip),
+                'limit_source' => self::limitSource($election, $ip),
+            ]
+        );
+    }
+
+    /** @return array{0: ?int, 1: ?string} [the value or null when not set, the invalid reason or null] */
+    private static function parseGlobal(mixed $raw): array
+    {
+        if ($raw === null || $raw === '') {
+            return [null, null];
+        }
+
+        $value = match (true) {
+            is_int($raw) => $raw,
+            is_string($raw) && preg_match('/^-?[1-9][0-9]*$|^0$/', $raw) === 1 => (int) $raw,
+            default => null,
+        };
+        if ($value === null) {
+            return [null, 'not_integer'];
+        }
+        if ($value <= 0) {
+            return [null, 'non_positive'];
+        }
+
+        return [$value, null];
     }
 
     private static function invalid(string $reason, mixed $raw): int

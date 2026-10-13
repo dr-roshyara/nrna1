@@ -921,6 +921,8 @@ class CodeController extends Controller
         // Per-IP vote limit, scoped to this election (PBDIGIT-278 item 8: the one shared rule, IpVoteLimit)
         $election = Election::withoutGlobalScopes()->find($code->election_id);
         if ($election && ($refusal = \App\Services\Voting\IpVoteLimit::refusal($election, (string) $this->clientIP))) {
+            \App\Services\Voting\IpVoteLimit::recordRefusal($election, $user, 'code_entry', (string) $this->clientIP);
+
             return ['success' => false, 'message' => $refusal];
         }
 
