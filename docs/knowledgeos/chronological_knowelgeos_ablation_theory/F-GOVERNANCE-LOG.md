@@ -4155,3 +4155,9 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **RESEARCH-AUDIT-1:** its A.3 statement is false, because the R52/R62 differences cancel in the totals. The Z6 residuals are incomplete. Neither changes any figure.
 - **Acts:** none is required, because no adopted or ratified item changes. Freezing FZ is **not** offered as a standalone act, because it would amount to ratifying the K-c rules by the back door.
 - **Decision raised for the human, before E4:** E3-REL and the host lists, which are accepted and ratified, rest on unratified K-c conventions. One of them alone moves E3-REL.
+
+
+## F-LOG-0300 — **Human direction (Human ARB, 2026-10-13): "Settle conventions first"**
+- **Selected:** asked how to handle the unratified K-c counting conventions before E4/R8, the human chose "Settle conventions first (Recommended)". This means: prepare a K-c convention proposal, giving the options and consequences for each convention, have it reviewed, then take a human act. E4 follows on a settled basis.
+- **Conventions in scope:** guard rows; the class rule; reading "Adopted" through; named clauses; absent clauses (the R80 readings); and any others the analysis finds.
+- **Scope:** this is direction only, not authorization. Settling the conventions needs its own act. E4 and E5 are not authorized.
