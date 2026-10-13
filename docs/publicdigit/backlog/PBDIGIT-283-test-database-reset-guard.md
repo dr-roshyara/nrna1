@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IMPLEMENTED` · tests green · **not committed** (awaiting PO) |
+| **Status** | `IMPLEMENTED` · tests green · committed `772d06a5d` (guard) and `fcde1b76b` (record) · a default-suite run on `nrna_test` is still pending |
 | **Severity** | high: data loss on the development database (the PO decided no restore) |
 
 ## Defect
