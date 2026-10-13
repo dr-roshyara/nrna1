@@ -177,18 +177,18 @@ class SecurityPolicySurfaceCharacterizationTest extends TestCase
         return [$response, $code];
     }
 
-    public function test_c4_characterizes_current_defect_step_4_refuses_the_voter_when_max_use_ip_address_is_unset(): void
+    /**
+     * Decision-driven change (PBDIGIT-278 item 8, Human PO 2026-10-13). This test used to pin the defect "step 4
+     * refuses every voter when MAX_USE_IP_ADDRESS is unset" (0 >= null), followed by a system error from the
+     * missing refusal view. Now an unset value means the default limit 10 (IpVoteLimit), so a fresh voter passes.
+     */
+    public function test_c4_step_4_does_not_refuse_a_fresh_voter_when_max_use_ip_address_is_unset(): void
     {
         $this->captureLogs();
-        [$response, $code] = $this->getStep4(null);   // MAX_USE_IP_ADDRESS unset → config null → 0 >= null is true
+        [$response] = $this->getStep4(null);   // MAX_USE_IP_ADDRESS unset → default limit 10
 
-        // The IP rule in vote_post_check() fires for a fresh voter …
-        $this->assertCount(1, array_filter($this->logged, fn (array $e) => $e['message'] === 'Security: IP rate limit exceeded (election-scoped)'));
-        // … and, as observed 2026-10-05, rendering its refusal fails, so verify()'s catch-all answers with a
-        // generic system error and sends the voter to the dashboard (characterized as observed, not as intended).
-        $response->assertRedirect(route('dashboard'));
-        $response->assertSessionHasErrors('system');
-        $this->assertNothingConsumed($code);
+        $this->assertCount(0, array_filter($this->logged, fn (array $e) => $e['message'] === 'IP vote limit reached'));
+        $response->assertSessionDoesntHaveErrors(['system', 'verification']);
     }
 
     public function test_c4_contrast_with_the_env_set_step_4_does_not_refuse_on_the_ip_rule(): void
@@ -208,17 +208,21 @@ class SecurityPolicySurfaceCharacterizationTest extends TestCase
             ->post(route('elections.start', $this->election->slug));
     }
 
-    public function test_c5_characterizes_current_defect_production_never_writes_step_1_ip_so_the_start_check_does_not_fire(): void
+    /**
+     * Decision-driven change (PBDIGIT-278 item 8, Human PO 2026-10-13). This test used to pin the defect "production
+     * never writes step_1_ip, so the start check never fires". The start check now counts the populated source,
+     * codes.client_ip (IpVoteLimit, the same count as code entry and verification), so it fires after one real vote.
+     */
+    public function test_c5_the_start_check_counts_production_votes_and_fires_after_one_vote_from_the_network(): void
     {
         $this->setElectionColumns(['ip_restriction_enabled' => true, 'ip_restriction_max_per_ip' => 1]);
         [$voter, $slug, $code] = $this->voterReadyToCast();
         $this->cast($voter, $slug, $code)->assertSessionHasNoErrors();   // a real production cast from REQUEST_IP
         $this->assertTrue((bool) $code->fresh()->has_voted, 'precondition: one vote cast from this network');
 
-        $this->assertNull($slug->fresh()->step_1_ip, 'the production voting path did not write step_1_ip');
+        $this->assertNull($slug->fresh()->step_1_ip, 'still a fact: the production voting path does not write step_1_ip');
 
-        $this->startAsNewVoter()->assertSessionMissing('error', 'The maximum of 1 vote(s) from your network has been reached.');
-        $this->assertSame(0, DB::table('election_audit_logs')->where('action', 'ip_blocked')->count(), 'no ip_blocked audit');
+        $this->startAsNewVoter()->assertSessionHas('error', 'The maximum of 1 vote(s) from your network has been reached.');
     }
 
     public function test_c5_contrast_the_start_check_fires_only_with_manufactured_step_1_ip(): void
