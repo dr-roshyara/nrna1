@@ -4223,3 +4223,20 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
     - choice (b), whether Rq3 spans row types.
 - **Not affected:** no K-c convention is ratified; C-γ stays returned; D12 and the spanning rule (F-LOG-0271) stay open; E4 and E5 are not authorized.
 - **Shared sources:** this analysis shares R4/T1/T2 and the analyst with audit test 2. The two are not cited as corroborating each other.
+
+
+## F-LOG-0304 — **Executor (2026-10-13): RESEARCH-AUDIT-1 Q6 test 2 READY** (`R7/AUDIT-Q6-TEST2-CLAUSE-COORDINATE-TABLE.md` r1.1). Analysis only; nothing decided
+- **Review history** (fresh independent reviewer each round, all Claude-family):
+  - **r0: FAIL.** One finding came from reading a stale copy (§5.2 placeholder). The others were substantive: a false "every yes is a 1" claim, a gap in the Lem 5 proof, a missing parameter caveat, the ‡ notation, scoping and disclosure. The reviewer re-ran all 22 enumeration passes (4,190,640 histories each) and matched §5.2.
+  - **r1: PASS_WITH_LIMITATIONS.** The new proofs were confirmed: Lem 3 (𝒜), Lem 5's typing argument, and W3 at N = 0. The quotes were verbatim.
+  - **The r1.1 wording fixes are not re-reviewed.**
+- **Findings:**
+  - **Lemma 2 holds unless the actor is counted on the record side (under A-1).** S′ and S″ satisfy that condition; S does not. No change, status or conformance clause reads a record coordinate under any reading. Excluding k makes no difference (Cor 1.1).
+  - **Under S, H-D reads α:**
+    - D-chg reads it in every reading except R-e, in the dependence sense when N ≥ 1 and |V| ≥ 2.
+    - D-st reads it once Adopted is expanded, for every parameter choice.
+    - H-B reads α only under the rejected R-k.
+  - **The record clauses read Ref only.** At coordinate level, the H-D/H-B record asymmetry holds only under R-i and R-i′, under every spanning convention. At row level, KC-MKC §5.5 finds it disappears under M and U; that is a scoping, not corroboration.
+  - **Conflict with literal wording.** Cor 1.1 conflicts with the literal wording "only if … (S′)" in RESEARCH-AUDIT-1 C6 (App. C) and F-LOG-0292. An alternative reading is recorded, under which only that wording is affected. Neither document is amended. A correction, if any, needs its own recording.
+- **Not affected:** no spanning rule is selected (F-LOG-0271 stands); S1, F-LOG-0265 and the R-i/R-i′ items stay open; E4 and E5 are not authorized.
+- **Shared sources:** this test shares its sources and analyst with KC-MKC-REASSESSMENT. It is not independent evidence for or against it.

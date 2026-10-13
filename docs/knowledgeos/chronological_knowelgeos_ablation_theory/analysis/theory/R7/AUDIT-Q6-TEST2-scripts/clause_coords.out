@@ -1,0 +1,109 @@
+# clause_coords.py output, 2026-10-13. Produced as four parallel invocations of 'python3 -B clause_coords.py <tests>' (one exhaustive pass per test; ~9 min per pass):
+#  g1: 'REC:P5' 'REC:Sprime' 'REC:S(+A,alpha,alphaW)' 'ACT-VALUED(A,alpha,alphaW,k)'
+#  g2: Cap alpha d v prep f   g3: alphaW t r c k Ref   g4: con sigma A R E-block W-block
+
+## g1
+done REC:P5 histories 4190640 groups 53872
+done REC:Sprime histories 4190640 groups 159264
+done REC:S(+A,alpha,alphaW) histories 4190640 groups 9408
+done ACT-VALUED(A,alpha,alphaW,k) histories 4190640 groups 317888
+dependence (1 = truth varies with X, all other coordinates fixed)
+D-chg             REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+D-chg^e (R-e)     REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+D-chg^j (R-j)     REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+D-st              REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+D-st+ (R-d)       REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+D-rec             REC:P5=1 REC:Sprime=1 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=0
+B-chg             REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+B-chg^g (R-g)     REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+B-chg^g+ (R-g+)   REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+B-chg^k-st (R-k)  REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+B-chg^k-cap (R-k) REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=1
+B-conf            REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+B-conf^b (R-b)    REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+B-recW            REC:P5=1 REC:Sprime=1 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=0
+B-rec             REC:P5=1 REC:Sprime=1 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=0
+B-rec^h (R-h)     REC:P5=1 REC:Sprime=1 REC:S(+A,alpha,alphaW)=1 ACT-VALUED(A,alpha,alphaW,k)=0
+E!=0 (R-i)        REC:P5=0 REC:Sprime=0 REC:S(+A,alpha,alphaW)=0 ACT-VALUED(A,alpha,alphaW,k)=0
+clauses depending on REC:P5 : ['D-rec', 'B-recW', 'B-rec', 'B-rec^h (R-h)']
+clauses depending on REC:Sprime : ['D-rec', 'B-recW', 'B-rec', 'B-rec^h (R-h)']
+clauses depending on REC:S(+A,alpha,alphaW) : ['D-chg', 'D-chg^j (R-j)', 'D-st', 'D-st+ (R-d)', 'D-rec', 'B-chg^k-st (R-k)', 'B-chg^k-cap (R-k)', 'B-recW', 'B-rec', 'B-rec^h (R-h)']
+clauses depending on ACT-VALUED(A,alpha,alphaW,k) : ['D-chg', 'D-chg^j (R-j)', 'D-st', 'D-st+ (R-d)', 'B-chg^k-st (R-k)', 'B-chg^k-cap (R-k)']
+
+## g2
+done Cap histories 4190640 groups 276816
+done alpha histories 4190640 groups 1205680
+done d histories 4190640 groups 1600432
+done v histories 4190640 groups 3144304
+done prep histories 4190640 groups 2097968
+done f histories 4190640 groups 2097968
+dependence (1 = truth varies with X, all other coordinates fixed)
+D-chg             Cap=1 alpha=1 d=0 v=0 prep=0 f=1
+D-chg^e (R-e)     Cap=0 alpha=0 d=0 v=0 prep=0 f=1
+D-chg^j (R-j)     Cap=1 alpha=1 d=0 v=0 prep=0 f=1
+D-st              Cap=1 alpha=1 d=1 v=0 prep=1 f=1
+D-st+ (R-d)       Cap=1 alpha=1 d=1 v=0 prep=1 f=1
+D-rec             Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-chg             Cap=0 alpha=0 d=0 v=0 prep=0 f=1
+B-chg^g (R-g)     Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-chg^g+ (R-g+)   Cap=0 alpha=0 d=0 v=0 prep=0 f=1
+B-chg^k-st (R-k)  Cap=1 alpha=1 d=0 v=0 prep=1 f=1
+B-chg^k-cap (R-k) Cap=1 alpha=1 d=0 v=0 prep=0 f=1
+B-conf            Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-conf^b (R-b)    Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-recW            Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-rec             Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+B-rec^h (R-h)     Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+E!=0 (R-i)        Cap=0 alpha=0 d=0 v=0 prep=0 f=0
+
+## g3
+done alphaW histories 4190640 groups 2365744
+done t histories 4190640 groups 2334112
+done r histories 4190640 groups 2835472
+done c histories 4190640 groups 2122256
+done k histories 4190640 groups 2160816
+done Ref histories 4190640 groups 935216
+dependence (1 = truth varies with X, all other coordinates fixed)
+D-chg             alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+D-chg^e (R-e)     alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+D-chg^j (R-j)     alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+D-st              alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+D-st+ (R-d)       alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+D-rec             alphaW=0 t=0 r=0 c=0 k=0 Ref=1
+B-chg             alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-chg^g (R-g)     alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-chg^g+ (R-g+)   alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-chg^k-st (R-k)  alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-chg^k-cap (R-k) alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-conf            alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-conf^b (R-b)    alphaW=0 t=1 r=0 c=0 k=0 Ref=0
+B-recW            alphaW=0 t=0 r=0 c=0 k=0 Ref=1
+B-rec             alphaW=0 t=0 r=0 c=0 k=0 Ref=1
+B-rec^h (R-h)     alphaW=0 t=0 r=0 c=0 k=0 Ref=1
+E!=0 (R-i)        alphaW=0 t=0 r=0 c=0 k=0 Ref=0
+
+## g4
+done con histories 4190640 groups 2764208
+done sigma histories 4190640 groups 1570828
+done A histories 4190640 groups 4111168
+done R histories 4190640 groups 4190640
+done E-block histories 4190640 groups 44720
+done W-block histories 4190640 groups 944080
+dependence (1 = truth varies with X, all other coordinates fixed)
+D-chg             con=0 sigma=1 A=0 R=0 E-block=1 W-block=0
+D-chg^e (R-e)     con=0 sigma=1 A=0 R=0 E-block=1 W-block=0
+D-chg^j (R-j)     con=0 sigma=1 A=0 R=0 E-block=1 W-block=0
+D-st              con=0 sigma=0 A=0 R=0 E-block=1 W-block=0
+D-st+ (R-d)       con=0 sigma=0 A=0 R=0 E-block=1 W-block=0
+D-rec             con=0 sigma=0 A=0 R=0 E-block=0 W-block=0
+B-chg             con=0 sigma=1 A=0 R=0 E-block=1 W-block=1
+B-chg^g (R-g)     con=0 sigma=1 A=0 R=0 E-block=0 W-block=1
+B-chg^g+ (R-g+)   con=0 sigma=1 A=0 R=0 E-block=1 W-block=1
+B-chg^k-st (R-k)  con=0 sigma=1 A=0 R=0 E-block=1 W-block=1
+B-chg^k-cap (R-k) con=0 sigma=1 A=0 R=0 E-block=1 W-block=1
+B-conf            con=0 sigma=1 A=0 R=0 E-block=0 W-block=1
+B-conf^b (R-b)    con=0 sigma=1 A=0 R=0 E-block=0 W-block=1
+B-recW            con=0 sigma=0 A=0 R=0 E-block=0 W-block=0
+B-rec             con=0 sigma=0 A=0 R=0 E-block=0 W-block=0
+B-rec^h (R-h)     con=0 sigma=0 A=0 R=0 E-block=1 W-block=0
+E!=0 (R-i)        con=0 sigma=0 A=0 R=0 E-block=1 W-block=0
