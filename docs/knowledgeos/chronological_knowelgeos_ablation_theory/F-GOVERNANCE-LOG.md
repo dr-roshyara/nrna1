@@ -4190,3 +4190,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Observation for the human:** under S, P-c is not the minimal cut. Its P(≤) is 88/817,190 ≈ 1.1×10⁻⁴. This qualifies F-LOG-0292/0299 under S only.
 - **Follow-on acts:** KC-2 (E2b host lists and §A2.2 note), KC-3 (E3-REL and cut-status), KC-4 (T3 rule text), KC-5 (asymmetry records, including RESEARCH-AUDIT-1 F2 and F-LOG-0292). Each needs its own act.
 - **Not affected:** no spanning rule is selected; D12 stays open; C6 stays open; E4 and E5 are not authorized.
+
+
+## F-LOG-0302 — **Human direction (Human ARB, 2026-10-13): KC-1 NOT made. Reassess M, K and C; T3 as written is the minimal-amendment baseline; the criterion is provisional**
+- **Context:** the human selected "T3 as written", "K-c only; C-γ stays returned" and the criterion "single principle". The analyst flagged that T3 keeps two mixed-principle stipulations (A1, A3), which contradicts the "single principle" criterion. The human answered, verbatim:
+  > "Do not select T3, M, or K solely to reconcile the criterion label. The earlier choice of "single principle" was a research criterion, not a ratification of any specific convention. Reassess M, K, and C against the formal requirements, source evidence, consistency across all cases, and consequences for E3-REL. Keep T3 as written as the minimal-amendment baseline. Record the criterion as provisional until the comparison is independently reviewed. Do not silently resolve C-γ or authorize E4/E5 through this act."
+- **Recorded:**
+  - **No K-c convention is ratified.** KC-1 is not made.
+  - **T3 as written** is held as the minimal-amendment baseline. It is a reference point, not a ratification.
+  - **"Single principle"** is a provisional research criterion, pending an independently reviewed comparison.
+  - **C-γ** stays returned and is not resolved.
+  - **E4 and E5** are not authorized.
+- **Next:** a comparative reassessment of M, K and C, judged on four things: the formal requirements, source evidence, consistency across all cases, and the consequences for E3-REL. A fresh independent review follows. The result then goes back to the human.
