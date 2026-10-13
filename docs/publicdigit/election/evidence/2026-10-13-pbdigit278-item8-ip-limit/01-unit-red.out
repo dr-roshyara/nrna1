@@ -1,0 +1,102 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEEEEE                                                18 / 18 (100%)
+
+Time: 00:00.950, Memory: 20.00 MB
+
+There were 18 errors:
+
+1) Tests\Unit\Services\Voting\IpVoteLimitTest::test_no_setting_means_the_default_limit_of_ten
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:60
+
+2) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_explicit_limit_is_used_exactly_including_one
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:67
+
+3) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "zero" ('0', 'non_positive')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+4) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "zero int" (0, 'non_positive')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+5) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "negative" ('-3', 'non_positive')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+6) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "fractional" ('2.5', 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+7) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "float" (2.5, 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+8) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "non-numeric" ('abc', 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+9) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "trailing junk" ('10x', 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+10) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "padded" (' 5', 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+11) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "leading zero" ('07', 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+12) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_invalid_value_is_ignored_with_a_warning_never_used_as_a_limit with data set "boolean" (true, 'not_integer')
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:93
+
+13) Tests\Unit\Services\Voting\IpVoteLimitTest::test_the_configured_value_is_read_from_config
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:105
+
+14) Tests\Unit\Services\Voting\IpVoteLimitTest::test_without_an_election_restriction_the_global_limit_applies
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:115
+
+15) Tests\Unit\Services\Voting\IpVoteLimitTest::test_an_enabled_election_restriction_wins_over_the_global_limit
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:125
+
+16) Tests\Unit\Services\Voting\IpVoteLimitTest::test_a_disabled_or_invalid_election_restriction_falls_back_to_the_global_limit
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:132
+
+17) Tests\Unit\Services\Voting\IpVoteLimitTest::test_a_whitelisted_ip_has_no_limit
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:142
+
+18) Tests\Unit\Services\Voting\IpVoteLimitTest::test_the_refusal_message_is_readable_and_names_the_limit
+Error: Class "App\Services\Voting\IpVoteLimit" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Services/Voting/IpVoteLimitTest.php:148
+
+ERRORS!
+Tests: 18, Assertions: 18, Errors: 18, Deprecations: 3, PHPUnit Deprecations: 1.

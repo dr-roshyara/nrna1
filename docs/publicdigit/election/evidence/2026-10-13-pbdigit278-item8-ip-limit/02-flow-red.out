@@ -1,0 +1,65 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFFFF                                                               5 / 5 (100%)
+
+Time: 00:05.640, Memory: 28.00 MB
+
+Ip Vote Limit Flow (Tests\Isolated\Pbdigit274\Database\IpVoteLimitFlow)
+ ✘ Default limit ten lets a voter below it through start code and verification
+   │
+   │ Expected response status code [200] but received 302.
+   │ Failed asserting that 302 is identical to 200.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:160
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:141
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:178
+   │
+ ✘ Default limit ten refuses at start when reached and issues no link
+   │
+   │ Failed asserting that two strings are equal.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -'http://localhost/elections/pbd278-ip-election-6ace382dc45d8'
+   │ +'http://localhost/v/[slug]/code/create'
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:325
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:191
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:190
+   │
+ ✘ Explicit limit one refuses at code entry with a readable reason
+   │
+   │ Failed asserting that 'Too many votes from this IP address.' [ASCII](length: 36) contains "The maximum of 1 vote(s) from your network has been reached." [ASCII](length: 60).
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:208
+   │
+ ✘ Explicit limit one refuses at verification with a readable reason not a system error
+   │
+   │ Failed asserting that 'System error during verification. Please try again or contact support.' [ASCII](length: 70) contains "The maximum of 1 vote(s) from your network has been reached." [ASCII](length: 60).
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:227
+   │
+ ✘ The election restriction wins over the global limit
+   │
+   │ Failed asserting that two strings are equal.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -'http://localhost/elections/pbd278-ip-election-6ace383112ce7'
+   │ +'http://localhost/v/[slug]/code/create'
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:325
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:191
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/IpVoteLimitFlowTest.php:247
+   │
+
+FAILURES!
+Tests: 5, Assertions: 26, Failures: 5, Deprecations: 3.

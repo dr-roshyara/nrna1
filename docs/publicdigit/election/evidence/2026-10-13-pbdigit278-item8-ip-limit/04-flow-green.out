@@ -1,0 +1,20 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDD                                                              6 / 6 (100%)
+
+Time: 00:05.732, Memory: 30.00 MB
+
+Ip Vote Limit Flow (Tests\Isolated\Pbdigit274\Database\IpVoteLimitFlow)
+ ✔ Below both limits a voter passes start code and verification
+ ✔ The constitutional trust limit stays separate and can be stricter at code entry
+ ✔ Default limit ten refuses at start when reached and issues no link
+ ✔ Explicit limit one refuses at code entry with a readable reason
+ ✔ Explicit limit one refuses at verification with a readable reason not a system error
+ ✔ The election restriction wins over the global limit
+
+OK, but there were issues!
+Tests: 6, Assertions: 47, Deprecations: 3.

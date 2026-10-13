@@ -1,0 +1,10 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDDDDDDDDDDDDD                                                18 / 18 (100%)
+
+Time: 00:00.965, Memory: 20.00 MB
+
+OK, but there were issues!
+Tests: 18, Assertions: 56, Deprecations: 3, PHPUnit Deprecations: 1.
