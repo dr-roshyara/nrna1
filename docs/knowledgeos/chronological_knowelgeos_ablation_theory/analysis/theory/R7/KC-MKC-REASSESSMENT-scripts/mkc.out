@@ -1,0 +1,308 @@
+== 1. counts, E3-REL, host diffs vs ratified lists, clause table ==
+
+## T3 (baseline)
+  crossings T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: IDENTICAL
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': IDENTICAL
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (24, 10, 78)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+
+## M
+  crossings T-A/T-A+T-B/all: {'S': [17, 26, 46], "S'": [12, 19, 36], "S''": [12, 19, 36]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: ['R79: X (ratified: CB23)', 'R80: X (ratified: none)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': ['R79: X (ratified: CB23)', 'R80: X (ratified: none)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 147, 417)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 2)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 2)
+
+## K
+  crossings T-A/T-A+T-B/all: {'S': [17, 26, 53], "S'": [12, 17, 39], "S''": [12, 17, 39]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': IDENTICAL
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 64, 304)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+
+## K-VC8
+  crossings T-A/T-A+T-B/all: {'S': [17, 26, 53], "S'": [12, 17, 39], "S''": [12, 17, 39]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R80: CB23 (ratified: none)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': ['R80: CB23 (ratified: none)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 64, 304)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+
+## C (K1c)
+  crossings T-A/T-A+T-B/all: {'S': [13, 22, 49], "S'": [8, 13, 35], "S''": [8, 13, 35]}
+  S' == S'' on all rows: True
+  E3-REL S: 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 4 ['R2', 'R3', 'R9', 'R22']
+  host diffs S': ['R21: CB1 (ratified: X)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (22, 46, 234)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)
+
+## C-SH
+  crossings T-A/T-A+T-B/all: {'S': [13, 22, 49], "S'": [8, 13, 35], "S''": [8, 13, 35]}
+  S' == S'' on all rows: True
+  E3-REL S: 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 4 ['R2', 'R3', 'R9', 'R22']
+  host diffs S': ['R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (22, 80, 204)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)
+
+## C-R15ref
+  crossings T-A/T-A+T-B/all: {'S': [14, 23, 50], "S'": [9, 14, 36], "S''": [9, 14, 36]}
+  S' == S'' on all rows: True
+  E3-REL S: 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 5 ['R2', 'R3', 'R9', 'R15', 'R22']
+  host diffs S': ['R21: CB1 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (23, 53, 283)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)
+
+## C-R15ref-R14
+  crossings T-A/T-A+T-B/all: {'S': [15, 24, 51], "S'": [10, 15, 37], "S''": [10, 15, 37]}
+  S' == S'' on all rows: True
+  E3-REL S: 11 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R19', 'R22']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 6 ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']
+  host diffs S': ['R21: CB1 (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (24, 116, 409)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (15, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (15, 0, 1)
+
+## U [E] (uniform subject formula)
+  crossings T-A/T-A+T-B/all: {'S': [17, 28, 55], "S'": [12, 19, 41], "S''": [12, 19, 41]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R79: X (ratified: CB23)', 'R80: X (ratified: none)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': ['R79: X (ratified: CB23)', 'R80: X (ratified: none)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (28, 469, 1246)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 1)
+
+## C-Sigma [E]
+  crossings T-A/T-A+T-B/all: {'S': [14, 23, 50], "S'": [9, 14, 36], "S''": [9, 14, 36]}
+  S' == S'' on all rows: True
+  E3-REL S: 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 5 ['R2', 'R3', 'R9', 'R15', 'R22']
+  host diffs S': ['R21: CB1 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)']
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (23, 34, 155)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)
+
+## K-T [E]
+  crossings T-A/T-A+T-B/all: {'S': [17, 26, 53], "S'": [12, 17, 39], "S''": [12, 17, 39]}
+  S' == S'' on all rows: True
+  E3-REL S: 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)']
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  E3-REL S': 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  host diffs S': IDENTICAL
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 64, 304)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)
+
+== 2. row-by-row verdicts where any main principle differs from T3 (S / S') ==
+  S R14 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S R15 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'CB23', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R16 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S R17 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'CB23', 'K-T [E]': 'CB23', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'CB23', 'C-Sigma [E]': 'none'}
+  S R21 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'CB1', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'CB1'}
+  S R27 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R28 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R79 {'T3 (baseline)': 'CB23', 'M': 'X', 'K': 'CB23', 'K-T [E]': 'CB23', 'C (K1c)': 'CB23', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'CB23'}
+  S R80 {'T3 (baseline)': 'none', 'M': 'X', 'K': 'none', 'K-T [E]': 'none', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S R45 {'T3 (baseline)': 'X', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R52 {'T3 (baseline)': 'X', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R56 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R60 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R61 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R62 {'T3 (baseline)': 'CB1', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S R75 {'T3 (baseline)': 'none', 'M': 'none', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R14 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S' R15 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'CB23', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R16 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S' R17 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'CB23', 'K-T [E]': 'CB23', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'CB23', 'C-Sigma [E]': 'none'}
+  S' R21 {'T3 (baseline)': 'X', 'M': 'X', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'CB1', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'CB1'}
+  S' R79 {'T3 (baseline)': 'CB23', 'M': 'X', 'K': 'CB23', 'K-T [E]': 'CB23', 'C (K1c)': 'CB23', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'CB23'}
+  S' R80 {'T3 (baseline)': 'none', 'M': 'X', 'K': 'none', 'K-T [E]': 'none', 'C (K1c)': 'none', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'none'}
+  S' R45 {'T3 (baseline)': 'X', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R52 {'T3 (baseline)': 'X', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R62 {'T3 (baseline)': 'CB1', 'M': 'CB1', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R71 {'T3 (baseline)': 'CB23', 'M': 'CB23', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+  S' R75 {'T3 (baseline)': 'none', 'M': 'none', 'K': 'X', 'K-T [E]': 'X', 'C (K1c)': 'X', 'U [E] (uniform subject formula)': 'X', 'C-Sigma [E]': 'X'}
+
+== 3. counterexample pairs ==
+  CE-def-1 R27 (Adopted named) vs R27-unfolded (Def 1.10), under T3 / M
+     A [8, 10, 12] None -> S CB23, S' CB23 | B [2, 8, 9, 10, 11, 12] N -> S X, S' CB23 | 9|14 cuts with different S' verdict: 181730 of 817190
+  CE-def-2 R34 "some w conforms" (M: own) vs R34-unfolded "some w has sigma(t(w))(tau(w)) in P", under M
+     A [19, 21] None -> S CB23, S' CB23 | B [3, 4, 6, 19, 20, 21] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 385220 of 817190
+  CE-def-3 R33 conforms own (T3 rule-2 text) vs R32 (T2: "formally identical to B-conf")
+     A [4, 19, 20, 21] None -> S CB23, S' CB23 | B [3, 4, 6, 19, 20, 21] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 79016 of 817190
+  CE-meta-1 R14 under C (K1c) vs R14' "some history of H has an act with f(a)!=d(a) and one with a constituted record, f(a)!=r(rho)"
+     A [] None -> S none, S' none | B [8, 9, 11, 12, 13, 14, 18] None -> S X, S' X | 9|14 cuts with different S' verdict: 805630 of 817190
+  CE-meta-2 R16 under C (K1c) vs R16' "some history of H has an act or work event referenced by no record"
+     A [] None -> S none, S' none | B [8, 9, 13, 17, 19] None -> S X, S' X | 9|14 cuts with different S' verdict: 765510 of 817190
+  CE-meta-3 R17 under C (K1c) vs R17' "some history of H has a work event whose occurrence is not fixed by sigma"
+     A [] None -> S none, S' none | B [4, 6, 19, 20] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 713184 of 817190
+  CE-slot-1 R79 under M/U vs R79' "R-i: the third conjunct of H-B is E != empty"
+     A [8, 9, 13, 17] None -> S X, S' X | B [8, 9] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 306204 of 817190
+  CE-slot-2 R80 under M/U vs R80' "R-i': the third conjunct of H-B is T; E != empty holds jointly"
+     A [8, 9, 13, 17] None -> S X, S' X | B [8, 9] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 306204 of 817190
+  CE-slot-3 R26 under M/U (gloss "with no Cap condition" read) vs R26 formula only
+     A [2, 3, 5, 6, 7, 8, 12] None -> S CB23, S' CB23 | B [3, 5, 6, 7, 8, 12] None -> S CB23, S' CB23 | 9|14 cuts with different S' verdict: 13430 of 817190
+  CE-form-1 same logical form N(Gamma,psi), psi a record-reference requirement: R16 (Gamma = H axioms) vs R80 (Gamma = H-B under R-i' clauses), T3 / K
+     A [8, 9, 13, 17, 19, 23] None -> S X, S' X | B [] None -> S none, S' none | 9|14 cuts with different S' verdict: 792200 of 817190
+
+== 3b. guard row vs its paired T-C row (T2 "Its guard is"; R15/R42 via X5; R16/R41 via X25): S' verdicts, cuts differing ==
+  T3 (baseline): P-c agree 7/7 (all), 6/6 (review list), 5/5 (T2-stated only) | R14/R43 X/X (0); R16/R49 X/X (26690); R16/R41 X/X (0); R17/R48 CB23/CB23 (208420); R21/R46 X/X (203490); R15/R42 X/X (398650); R11/R47 CB23/CB23 (195160)
+  M: P-c agree 7/7 (all), 6/6 (review list), 5/5 (T2-stated only) | R14/R43 X/X (0); R16/R49 X/X (26690); R16/R41 X/X (0); R17/R48 CB23/CB23 (208420); R21/R46 X/X (203490); R15/R42 X/X (358530); R11/R47 CB23/CB23 (195160)
+  K: P-c agree 7/7 (all), 6/6 (review list), 5/5 (T2-stated only) | R14/R43 X/X (0); R16/R49 X/X (26690); R16/R41 X/X (0); R17/R48 CB23/CB23 (208420); R21/R46 X/X (203490); R15/R42 X/X (398650); R11/R47 CB23/CB23 (195160)
+  K-T [E]: P-c agree 7/7 (all), 6/6 (review list), 5/5 (T2-stated only) | R14/R43 X/X (0); R16/R49 X/X (26690); R16/R41 X/X (0); R17/R48 CB23/CB23 (208420); R21/R46 X/X (203490); R15/R42 X/X (398650); R11/R47 CB23/CB23 (195160)
+  C (K1c): P-c agree 1/7 (all), 0/6 (review list), 1/5 (T2-stated only) | R14/R43 none/X (610470); R16/R49 none/X (765510); R16/R41 none/X (792200); R17/R48 none/CB23 (610470); R21/R46 CB1/X (406980); R15/R42 CB23/X (406980); R11/R47 CB23/CB23 (310080)
+  U [E] (uniform subject formula): P-c agree 7/7 (all), 6/6 (review list), 5/5 (T2-stated only) | R14/R43 X/X (0); R16/R49 X/X (26690); R16/R41 X/X (0); R17/R48 CB23/CB23 (208420); R21/R46 X/X (203490); R15/R42 X/X (398650); R11/R47 CB23/CB23 (195160)
+  C-Sigma [E]: P-c agree 2/7 (all), 1/6 (review list), 1/5 (T2-stated only) | R14/R43 none/X (610470); R16/R49 none/X (765510); R16/R41 none/X (792200); R17/R48 none/CB23 (610470); R21/R46 CB1/X (406980); R15/R42 X/X (398650); R11/R47 CB23/CB23 (208590)
+
+== 3a2. K-T: encoding rows differing from K: [] | identical verdicts on all 83 rows under S, S', S'': True
+
+== 3e. requirement checks per principle (computed parts) ==
+  T3 (baseline): Rq2a R27 S CB23 vs unfolded X, cuts 181730; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('CB23', 'none') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['X', 'X', 'X', 'X'] | Rq7c R14,R16,R17 ['X', 'X', 'CB23']
+  M: Rq2a R27 S CB23 vs unfolded X, cuts 181730; R34 vs R32 cuts 385220 | Rq5 R79,R80 S' ('X', 'X') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['X', 'X', 'X', 'X'] | Rq7c R14,R16,R17 ['X', 'X', 'CB23']
+  K: Rq2a R27 S X vs unfolded X, cuts 0; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('CB23', 'none') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['X', 'X', 'X', 'X'] | Rq7c R14,R16,R17 ['X', 'X', 'CB23']
+  K-T [E]: Rq2a R27 S X vs unfolded X, cuts 0; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('CB23', 'none') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['X', 'X', 'X', 'X'] | Rq7c R14,R16,R17 ['X', 'X', 'CB23']
+  C (K1c): Rq2a R27 S X vs unfolded X, cuts 0; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('CB23', 'none') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['none', 'CB23', 'none', 'CB1'] | Rq7c R14,R16,R17 ['none', 'none', 'none']
+  U [E] (uniform subject formula): Rq2a R27 S X vs unfolded X, cuts 0; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('X', 'X') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['X', 'X', 'X', 'X'] | Rq7c R14,R16,R17 ['X', 'X', 'CB23']
+  C-Sigma [E]: Rq2a R27 S X vs unfolded X, cuts 0; R34 vs R32 cuts 0 | Rq5 R79,R80 S' ('CB23', 'none') (witnesses CB23) | Rq7h R14,R15,R16,R21 ['none', 'X', 'none', 'CB1'] | Rq7c R14,R16,R17 ['none', 'none', 'none']
+
+== 3c. C-Sigma: rows differing from C (K1c) and from C-R15ref ==
+  vs C (K1c): ['R11', 'R15']  vs C-R15ref: ['R11'] [('R11', [3, 4, 6], [3, 4, 5, 6, 8, 12], (181730, 817190))]
+
+== 3d. C-Sigma logical-form classification, all 83 rows ==
+  R1   CB23  CB23  H + SG ("says nothing about sigma at other times")
+  R2   X     X     H
+  R3   X     X     H
+  R4   CB23  CB23  H
+  R5   X     CB23  H
+  R6   X     CB23  H
+  R7   CB1   CB1   H
+  R8   X     CB1   H
+  R9   X     X     H + SG ("con may be undefined everywhere")
+  R10  X     CB23  H
+  R11  CB23  CB23  H (typing; F1 restatement) + SG ("no frame axiom derives sigma from E")
+  R12  X     X     PI (implication over classes; class rule) + SG ("R4 asserts nowhere ...")
+  R13  X     X     PI (clause implications) + SG ("neither converse holds")
+  R14  none  none  SG ("never equates"; "may coincide in some histories")
+  R15  X     X     SG ("no order") + EXC ("except d = r under constitution (R3)") + H (t(w) typing)
+  R16  none  none  SG ("does not require"; "absence ... not non-occurrence")
+  R17  none  none  SG ("does not require")
+  R18  CB23  CB23  H
+  R19  X     CB23  H
+  R20  CB23  CB23  H
+  R21  CB1   CB1   SG ("no axiom ties"; "not declared disjoint") + H ("a self-assertion is a value of c")
+  R22  X     X     H
+  R23  X     X     PI (forall h, h' : non-dependence)
+  R24  X     X     PI (forall-exists: ambiguity, Def 5.1)
+  R25  X     CB23  SLOT (clause text; contrasts and glosses are SG)
+  R26  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R27  X     CB23  SLOT (clause text; contrasts and glosses are SG)
+  R28  X     CB23  SLOT (clause text; contrasts and glosses are SG)
+  R29  X     X     SLOT (clause text; contrasts and glosses are SG)
+  R30  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R31  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R32  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R33  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R34  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R35  X     X     SLOT (clause text; contrasts and glosses are SG)
+  R36  X     X     SLOT (clause text; contrasts and glosses are SG)
+  R37  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R38  X     CB23  SLOT (clause text; contrasts and glosses are SG)
+  R39  X     X     SLOT (clause text; contrasts and glosses are SG)
+  R79  CB23  CB23  SLOT (clause text; contrasts and glosses are SG)
+  R80  none  none  SLOT (empty clause; "acts exist" joint: VC8 choice)
+  R83  X     X     SLOT (clause text; contrasts and glosses are SG)
+  R40  X     X     PROH (formula as stated)
+  R41  X     X     PROH (formula as stated)
+  R42  X     X     PROH (formula as stated)
+  R43  X     X     PROH (formula as stated)
+  R44  X     X     PROH (formula as stated)
+  R45  X     X     PROH (formula as stated)
+  R46  X     X     PROH (formula as stated)
+  R47  CB23  CB23  PROH (formula as stated)
+  R48  CB23  CB23  PROH (formula as stated)
+  R49  X     X     PROH (formula as stated)
+  R50  CB23  CB23  PROH (formula as stated)
+  R51  X     X     PROH (formula as stated)
+  R52  X     X     PROH (formula as stated)
+  R53  none  none  PROH (formula as stated)
+  R54  CB23  CB23  PROH (formula as stated)
+  R55  CB23  CB23  PROH (formula as stated)
+  R56  X     CB23  PROH (formula as stated)
+  R57  none  none  PROH (formula as stated)
+  R58  CB23  CB23  PROH (formula as stated)
+  R59  CB1   CB1   PROH (formula as stated)
+  R60  X     CB23  PROH (formula as stated)
+  R61  X     CB23  PROH (formula as stated)
+  R62  X     X     PROH (formula as stated)
+  R63  X     CB23  PROH (formula as stated)
+  R81  CB23  CB23  PROH (formula as stated)
+  R64  CB23  CB23  Q (formula asked about)
+  R65  CB23  CB23  Q (formula asked about)
+  R66  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+  R67  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+  R68  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+  R69  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+  R70  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+  R71  X     X     Q (formula asked about)
+  R72  X     X     Q (formula asked about)
+  R73  CB23  CB23  Q (formula asked about)
+  R74  none  none  Q (formula asked about)
+  R75  X     X     Q (formula asked about)
+  R76  X     CB23  Q (formula asked about)
+  R77  X     X     Q (formula asked about)
+  R78  X     X     Q (formula asked about)
+  R82  X     X     PI (meta: necessary / sufficient condition, or image equality P16)
+
+== 4. Theorem 1 premise check: ratified T-A categories are not constant ==
+  S {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24'], 'CB23': ['R1', 'R4', 'R11', 'R17', 'R18', 'R20']}
+  S' {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R17', 'R18', 'R19', 'R20']}

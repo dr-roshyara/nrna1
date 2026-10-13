@@ -4202,3 +4202,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **C-γ** stays returned and is not resolved.
   - **E4 and E5** are not authorized.
 - **Next:** a comparative reassessment of M, K and C, judged on four things: the formal requirements, source evidence, consistency across all cases, and the consequences for E3-REL. A fresh independent review follows. The result then goes back to the human.
+
+
+## F-LOG-0303 — **Executor (2026-10-13): M/K/C comparative reassessment READY** (`R7/KC-MKC-REASSESSMENT.md` r1.2). Prepared under F-LOG-0302. Analysis only; nothing decided
+- **Review history** (a fresh independent reviewer each round):
+  - **r0:** PASS_WITH_LIMITATIONS, with 5 material findings. r1 corrected them: Theorem 2 is made conditional, and "C-Σ formally best" is withdrawn.
+  - **r1:** PASS_WITH_LIMITATIONS, applied as H1–H9.
+  - **r1.1:** PASS_WITH_LIMITATIONS, applied as J1–J7. Every number reproduced.
+  - **The r1.2 fixes are not re-reviewed.** They are wording plus one enumeration that moves no row and changes no mark. The analyst reproduced `mkc.out` and `adhoc.out` byte-identically.
+- **Findings:**
+  - Theorem 1: every principle reads statements "as stated". Invariance modulo a class is incompatible with the ratified uses.
+  - Theorem 2 is conditional on choices (a)–(e). No principle satisfies every requirement.
+  - Rq1 grades: T3 ✗, M ✓, K ✗, K-T ~, C ✗, U ~, C-Σ ✗.
+  - **K-T's encoding equals K's by construction.** Its results are K's relabelled. Its Rq1 ~ rests on excluding the reading "R21 without c" [E], which is disclosed.
+  - E3-REL: 13/8 for T3, M, K, K-T and U; 10/5 for C-Σ; 9/4 to 11/6 for C.
+  - Guard / T-C pairing (Rq9) is not a second support; it restates Rq7h on guard rows.
+  - **"Single principle" does not select a unique principle** and stays provisional.
+  - The open questions that separate the options:
+    - the guard-row purpose (hosting relevance vs constraint coupling), which is entangled with C-γ;
+    - choice (b), whether Rq3 spans row types.
+- **Not affected:** no K-c convention is ratified; C-γ stays returned; D12 and the spanning rule (F-LOG-0271) stay open; E4 and E5 are not authorized.
+- **Shared sources:** this analysis shares R4/T1/T2 and the analyst with audit test 2. The two are not cited as corroborating each other.

@@ -1,0 +1,141 @@
+[T3] A1 guard enumeration (rule 1) vs absent/contrast clauses not read (rules 2, 5): guards read nothing instead
+   rows: R11 R14-R17 R21
+   moves: S ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none'] | S' ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+   E3-REL 9/4 (base E3-REL 13/8)
+[T3] A1, other direction: absent/contrast clauses read as guards are
+   rows: R26 R30 R68 R79 R80
+   moves: S ['R79:CB23->X', 'R80:none->X'] | S' ['R79:CB23->X', 'R80:none->X']
+   E3-REL 13/8 (base E3-REL 13/8)
+[T3] A3 Ref/con read their acts, Cap does not read its actor: Cap read through its typing
+   rows: R56 R60 R61 R76
+   moves: S ['R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X'] | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[T3] A3 other direction: relational clause off
+   rows: R45 R52
+   moves: S ['R45:X->CB1', 'R52:X->CB1'] | S' ['R45:X->CB1', 'R52:X->CB1']
+   E3-REL 13/8 (base E3-REL 13/8)
+[T3] R83 condition ("never applied") read while R79 contrast is not: R83 condition not read (VC6)
+   rows: R83 (R41)
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[T3] rule 1 "including the clauses it names" vs R25 gloss "with D-st, R27" not read: read it
+   rows: R25
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[T3] K10 text "conformance -> C21, C4" (own) vs FZ read-through
+   rows: R33 R34
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[M] R33 "formally identical to B-conf" read as naming B-conf (else own placement)
+   rows: R33
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[M] "R-A3" (an R3 item, no R4 text) in R39 / R45: not expanded
+   rows: R39 R45
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[M] polarity-blind reading of B-chg's own Def 3.1 text "(no capability or status condition)" in rows naming B-chg
+   rows: R13 R31 R61 R71 R73
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[K] guard role from T2 tier label "guard form": label removed (rows read as assertions, C parse)
+   rows: R11 R14-R17 R21
+   moves: S ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] | S' ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+   E3-REL 9/4 (base E3-REL 13/8)
+[K] R80 role: "acts exist" (VC8) instead of empty clause
+   rows: R80
+   moves: S ['R80:none->CB23'] | S' ['R80:none->CB23']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K] R80 role: guard-form denial instead of empty clause
+   rows: R80
+   moves: S ['R80:none->X'] | S' ['R80:none->X']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K] R26 R30 R68 R79 classed as delimiting contrasts, not prohibitions: read as prohibitions
+   rows: R26 R30 R68 R79
+   moves: S ['R79:CB23->X'] | S' ['R79:CB23->X']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] tier (T2 label T-A vs T-B) decides frame statement vs slot: R80 treated as a frame non-entailment
+   rows: R80
+   moves: S ['R80:none->X'] | S' ['R80:none->X']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] R80 role: "acts exist" (VC8)
+   rows: R80
+   moves: S ['R80:none->CB23'] | S' ['R80:none->CB23']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] R79 contrast vs subject of a non-entailment
+   rows: R79
+   moves: S ['R79:CB23->X'] | S' ['R79:CB23->X']
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] A-i: R15 exception "except d = r under constitution (R3)" not part of the subject (con, acts dropped)
+   rows: R15
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] A-i: R21 "is a value of c" typing part not read (subject "c tied to sigma or f" only)
+   rows: R21
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] A-i: R11 F1 restatement not read (typing + subject "sigma derived from E" only)
+   rows: R11
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[K-T] A-i: R16 NOT-EVIDENCED clause not read as C23
+   rows: R16
+   moves: S none | S' none
+   E3-REL 13/8 (base E3-REL 13/8)
+[C] guard parse: SH instead of K1c
+   rows: R11 R14-R17 R21
+   moves: S ['R11:CB23->none', 'R15:CB23->none', 'R21:CB1->none'] | S' ['R11:CB23->none', 'R15:CB23->none', 'R21:CB1->none']
+   E3-REL 9/4 (base E3-REL 9/4)
+[C] guard parse: R15 reads R3 by C's own row-reference rule
+   rows: R15
+   moves: S ['R15:CB23->X'] | S' ['R15:CB23->X']
+   E3-REL 10/5 (base E3-REL 9/4)
+[C] guard parse: also R14 "may coincide" read
+   rows: R14 R15
+   moves: S ['R14:none->X', 'R15:CB23->X'] | S' ['R14:none->X', 'R15:CB23->X']
+   E3-REL 11/6 (base E3-REL 9/4)
+[C] R80 "acts exist" (VC8)
+   rows: R80
+   moves: S ['R80:none->CB23'] | S' ['R80:none->CB23']
+   E3-REL 9/4 (base E3-REL 9/4)
+[C] class-level statements (R23 R24 R66-R70 R82) "assert no formula about a history": read nothing
+   rows: R23 R24 R66-R70 R82
+   moves: S ['R23:X->none', 'R24:X->none', 'R66:X->none', 'R67:X->none', 'R68:X->none', 'R69:X->none', 'R70:X->none', 'R82:X->none'] | S' ['R23:X->none', 'R24:X->none', 'R66:X->none', 'R67:X->none', 'R68:X->none', 'R69:X->none', 'R70:X->none', 'R82:X->none']
+   E3-REL 9/4 (base E3-REL 9/4)
+[U] R80 "acts exist" joint statement not read (only the denied record clause)
+   rows: R80
+   moves: S ['R80:X->CB1'] | S' ['R80:X->CB1']
+   E3-REL 13/8 (base E3-REL 13/8)
+[C-Sigma] exceptive import of R15 "except d = r under constitution" not asserted
+   rows: R15
+   moves: S ['R15:X->CB23'] | S' ['R15:X->CB23']
+   E3-REL 9/4 (base E3-REL 10/5)
+[C-Sigma] R21 "is a value of c" read as typing (C15) vs as a Sigma_1 contrast (nothing)
+   rows: R21
+   moves: S ['R21:CB1->none'] | S' ['R21:CB1->none']
+   E3-REL 10/5 (base E3-REL 10/5)
+[C-Sigma] R11 typing and F1 restatement read vs nothing (typing vacuous in a typed signature)
+   rows: R11
+   moves: S ['R11:CB23->none'] | S' ['R11:CB23->none']
+   E3-REL 10/5 (base E3-REL 10/5)
+[C-Sigma] R11 F1 restatement not read (typing only, as C K1c)
+   rows: R11
+   moves: S none | S' none
+   E3-REL 10/5 (base E3-REL 10/5)
+[C-Sigma] R16 "absence is NOT-EVIDENCED-IN-CAPTURE" read as a C23 classification
+   rows: R16
+   moves: S ['R16:none->CB1'] | S' ['R16:none->CB1']
+   E3-REL 10/5 (base E3-REL 10/5)
+[C-Sigma] R80 "acts exist" (VC8)
+   rows: R80
+   moves: S ['R80:none->CB23'] | S' ['R80:none->CB23']
+   E3-REL 10/5 (base E3-REL 10/5)
+
+choice points per principle (listed / moving any row / moving a T-A or T-B row):
+  T3: 7 / 4 / 2
+  M: 3 / 0 / 0
+  K: 4 / 4 / 4
+  K-T: 7 / 3 / 3
+  C: 5 / 5 / 5
+  U: 1 / 1 / 1
+  C-Sigma: 6 / 5 / 5
