@@ -252,6 +252,22 @@ return Application::configure(basePath: dirname(__DIR__))
 
             return $votingSessionRedirect($e, $e->getUserMessage());
         });
+        // A real link for a demo election (or the reverse) on the wrong route: refused with 403, as the controllers
+        // answered before PBDIGIT-273 (Human PO 2026-10-13). JSON falls through to the generic renderer (403).
+        $exceptions->renderable(function (\App\Exceptions\Voting\ElectionMismatchException $e, Request $request) {
+            if ($request->wantsJson() || $request->isJson()) {
+                return null;
+            }
+            \Illuminate\Support\Facades\Log::warning('Voting exception', [
+                'exception' => get_class($e),
+                'user_id'   => auth()->id(),
+                'route'     => $request->route()?->getName(),
+                'context'   => $e->getContext(),
+            ]);
+
+            return app(\Illuminate\Contracts\Debug\ExceptionHandler::class)
+                ->render($request, new \Symfony\Component\HttpKernel\Exception\HttpException(403, $e->getUserMessage()));
+        });
 
         $exceptions->renderable(function (\App\Exceptions\Voting\VotingException $e, Request $request) {
             \Illuminate\Support\Facades\Log::error('Voting exception', [
