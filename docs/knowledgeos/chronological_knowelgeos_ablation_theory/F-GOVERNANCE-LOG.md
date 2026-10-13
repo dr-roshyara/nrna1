@@ -4135,3 +4135,23 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
     - audit Q6 tests 1–2 (C9, recommended before further host-list-citing work).
   - E4/R8 and E5 are not authorized.
 - **Next:** the E4/R8 canonicalization package (F-LOG-0285), each step by its own act. Running audit Q6 test 1 (freeze the encoding) first is recommended, per C9.
+
+
+## F-LOG-0299 — **Analysis (2026-10-13): audit Q6 test 1 completed.** Blind re-encoding plus a frozen-encoding candidate. Decides nothing
+- **Artifact:** `R7/AUDIT-Q6-TEST1-FROZEN-ENCODING.md` r1 and `R7/AUDIT-Q6-TEST1-scripts/blind_enc.py`.
+- **Review:** r0 got a fresh review, PASS_WITH_LIMITATIONS: every number reproduced, but the interpretation overclaimed. r1 applies all nine findings. r1 was not re-reviewed.
+- **Findings (analysis; within-family, Λ7):**
+  - **Under FZ the ratified host lists hold row for row, but this is close to a tautology.** FZ re-applies the K-c rules that produced the lists. It shows the rules apply consistently. It does not show the lists are correct readings of T2.
+  - **The independent check is weak.** The only independent evidence is the blind encoding BL, which was blind by instruction only and cannot be verified. Against the 42 T-A + T-B rows, BL agrees 38/42 under S (κ 0.81) and 40/42 under S′/S″ (κ 0.91). E3-REL is identical. That is agreement between two Claude-family encoders, not validity.
+  - **The lists depend on unratified K-c conventions, more widely than disclosed so far.**
+    - Class rule: affects R12.
+    - Adopted not read through: affects R27/R28 under S.
+    - Named clauses not read through: affects R38.
+    - Absent clause reads nothing: affects R80; the "acts exist" reading would also change R80's host cell.
+    - **Guard-row convention, shared by all four encoders:** if guard rows read nothing, R11, R14–R17 and R21 move, and **E3-REL drops from 13/8 to 9/4.**
+    - Within E2b, F11 treats denials asymmetrically.
+  - **P-c's crossing result is robust only in a weaker form.** No 9│14 cut has strictly fewer crossings under FZ and its variants (exact P = 1/817,190). Being the unique minimum depends on the value mapping: under BL, 6 cuts score lower.
+  - **D12 (R24) cannot be settled by encoding.**
+  - **RESEARCH-AUDIT-1:** its A.3 statement is false, because the R52/R62 differences cancel in the totals. The Z6 residuals are incomplete. Neither changes any figure.
+- **Acts:** none is required, because no adopted or ratified item changes. Freezing FZ is **not** offered as a standalone act, because it would amount to ratifying the K-c rules by the back door.
+- **Decision raised for the human, before E4:** E3-REL and the host lists, which are accepted and ratified, rest on unratified K-c conventions. One of them alone moves E3-REL.
