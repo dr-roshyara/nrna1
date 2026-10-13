@@ -2,17 +2,43 @@
 
 namespace Tests;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Organisation;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
+use Tests\Support\TestDatabaseSafety;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use RefreshDatabase;
+
+    /**
+     * SAFETY (incident 2026-10-13): before any database-resetting trait runs, confirm that the ACTUAL database is a
+     * test database. On PostgreSQL, RefreshDatabase runs migrate:fresh (no transaction, see below), which drops
+     * every table. A run with `--no-configuration` once skipped phpunit.xml's pinning and wiped `publicdigit`.
+     *
+     * Hooked here, not in refreshDatabase(): 471 test classes repeat `use RefreshDatabase;`, which would put the
+     * trait's own refreshDatabase() back on the subclass and skip an override. No test redefines setUpTraits().
+     */
+    protected function setUpTraits()
+    {
+        $uses = array_flip(class_uses_recursive(static::class));
+        if (isset($uses[RefreshDatabase::class]) || isset($uses[DatabaseMigrations::class]) || isset($uses[DatabaseTruncation::class])) {
+            $connection = $this->app['db']->connection();
+            $driver = $connection->getDriverName();
+            TestDatabaseSafety::assertResettable(
+                $driver,
+                $driver === 'pgsql' ? $connection->selectOne('SELECT current_database() AS name')->name : $connection->getDatabaseName(),
+            );
+        }
+
+        return parent::setUpTraits();
+    }
 
     /**
      * Override beginDatabaseTransaction to handle PostgreSQL's stricter transaction handling.
@@ -53,19 +79,12 @@ abstract class TestCase extends BaseTestCase
         // See: tests/Architecture/Election/TenantContextIsolationTest.php
         \App\Services\TenantContext::clear();
 
-        // PROTECTION: RefreshDatabase trait (enabled below) ensures ALL database changes
-        // are wrapped in a transaction and rolled back after each test.
-        // This means the actual database being used is IRRELEVANT — all changes are reverted.
-        //
-        // SAFETY GUARANTEE:
-        // ✓ All tests use RefreshDatabase trait (line 15)
-        // ✓ Each test runs in its own transaction
-        // ✓ Transaction is rolled back after test completes
-        // ✓ ZERO data corruption possible, even if wrong database is targeted
-        //
-        // BEST PRACTICE:
-        // Still configure .env.testing with DB_DATABASE=nrna_test for clarity
-        // and to log intent. This is documentation, not a hard requirement.
+        // WARNING (corrected 2026-10-13): on PostgreSQL there is NO per-test transaction
+        // (beginDatabaseTransaction() above returns early). RefreshDatabase runs migrate:fresh, which DROPS EVERY
+        // TABLE of the connected database, and test data is committed. The database used is therefore critical:
+        // only a test database may be used. setUpTraits() enforces this via Tests\Support\TestDatabaseSafety.
+        // (The earlier comment here claimed "ZERO data corruption possible, even if wrong database is targeted";
+        // that was false and a run against the development database wiped it.)
 
         // Create platform organisation with same search keys as OrganisationSeeder and UserFactory
         // This prevents duplicate slug errors in tests.
