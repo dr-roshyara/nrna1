@@ -1806,11 +1806,26 @@ private function trackSovereigntyDivergence(
             //    direct-return path, inside the cast transaction; writes has_voted only.
             //    Zero rows: participation already consumed — refuse, no vote. ──
             if ($election->type === 'real') {
+                // PBDIGIT-288 items 1–3: the per-IP vote limit at the vote, under this network's lock (held until
+                // the cast commits or rolls back), counting the IP at the vote, which the consumption records.
+                $castIp = (string) $request->ip();
+                if ($ipRefusal = \App\Services\Voting\IpVoteLimit::castRefusal($election, $castIp)) {
+                    Log::channel('voting_audit')->warning('Final cast refused: IP vote limit', [
+                        'user_id' => $auth_user->id,
+                        'election_id' => $election->id,
+                    ]);
+
+                    $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
+
+                    return back()->withErrors(['vote' => $ipRefusal]);
+                }
+
                 $consumed = DB::table('codes')
                     ->where('id', $freshCode->id)
                     ->where('has_voted', false)
                     ->update([
                         'has_voted' => true,
+                        'client_ip' => $castIp,
                     ]);
 
                 if ($consumed !== 1) {
