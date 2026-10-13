@@ -1690,13 +1690,14 @@ private function has_valid_selections($selections)
         if (!empty($pre_check["error_message"])) {
             $lock->release();
             DB::rollBack();
-            \Log::error('Vote post-check failed in store()', [
+            \Log::warning('Vote post-check refused in store()', [
                 'user_id' => $auth_user->id,
-                'error' => $pre_check["error_message"]
+                'reason' => $pre_check["error_message"]
             ]);
 
+            // PBDIGIT-278 item 8: the voter sees the actual (plain-text) reason, not a generic failure.
             return redirect()->route('dashboard')
-                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+                ->withErrors(['verification' => $pre_check["error_message"]]);
         }
 
         if (!empty($pre_check["return_to"])) {
@@ -2326,13 +2327,14 @@ public function verify(Request $request)
         // Perform comprehensive post-submission checks
         $_error = $this->vote_post_check($auth_user, $code, $vote_data);
         if ($_error["error_message"] != "") {
-            Log::error('Vote verification post-check failed', [
+            Log::warning('Vote verification post-check refused', [
                 'user_id' => $auth_user->id,
-                'error' => $_error["error_message"]
+                'reason' => $_error["error_message"]
             ]);
-            
+
+            // PBDIGIT-278 item 8: the voter sees the actual (plain-text) reason, not a generic failure.
             return redirect()->route('dashboard')
-                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+                ->withErrors(['verification' => $_error["error_message"]]);
         }
         
         if ($_error["return_to"] != "") {
@@ -3386,13 +3388,12 @@ public function verify_final_vote(Request $request)
         "error_message" => "",
     ];
 
+    // PBDIGIT-278 item 8: plain, readable reasons. The view components.error_message never existed, so each of
+    // these refusals used to end as a system error.
+
     // 1. Code is missing or invalid
     if ($code === null) {
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'Either your code is wrong or you have not voted properly. Send the screenshot to administrator!',
-            'link' => route('dashboard'),
-            'link_text' => 'Click here to go to the main Dashboard',
-        ])->render();
+        $_error['error_message'] = 'Either your code is wrong or you have not voted properly. Please contact the election administrator.';
         return $_error;
     }
 
@@ -3414,21 +3415,13 @@ public function verify_final_vote(Request $request)
 
     // 4. User already voted
     if ($code->has_voted) {
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'You have already voted and your vote is already saved! See below',
-            'link' => route('vote.verify_to_show'),
-            'link_text' => 'Click here to see your vote',
-        ])->render();
+        $_error['error_message'] = 'You have already voted and your vote is already saved.';
         return $_error;
     }
 
     // 5. Vote is missing (should never happen if code is valid and hasn't voted)
     if ($vote === null) {
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'We could not find your vote. Please contact the administrator. You can also start to vote again.',
-            'link' => route('code.create'),
-            'link_text' => 'Click here to vote',
-        ])->render();
+        $_error['error_message'] = 'We could not find your vote. Please start voting again, or contact the administrator.';
         return $_error;
     }
      

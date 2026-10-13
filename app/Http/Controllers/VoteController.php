@@ -2463,13 +2463,14 @@ public function verify(Request $request)
         // Perform comprehensive post-submission checks
         $_error = $this->vote_post_check($auth_user, $code, $vote_data, $voterSlug);
         if ($_error["error_message"] != "") {
-            Log::error('Vote verification post-check failed', [
+            Log::warning('Vote verification post-check refused', [
                 'user_id' => $auth_user->id,
-                'error' => $_error["error_message"]
+                'reason' => $_error["error_message"]
             ]);
-            
+
+            // PBDIGIT-278 item 8: the voter sees the actual (plain-text) reason, not a generic failure.
             return redirect()->route('dashboard')
-                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+                ->withErrors(['verification' => $_error["error_message"]]);
         }
         
         if ($_error["return_to"] != "") {
@@ -3194,13 +3195,12 @@ public function verify_final_vote(Request $request)
         "error_message" => "",
     ];
 
+    // PBDIGIT-278 item 8: every refusal below is a plain, readable reason that verify() shows to the voter. The view
+    // components.error_message they rendered never existed, so each refusal used to end as "System error".
+
     // 1. Code is missing or invalid
     if ($code === null) {
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'Either your code is wrong or you have not voted properly. Send the screenshot to administrator!',
-            'link' => route('dashboard'),
-            'link_text' => 'Click here to go to the main Dashboard',
-        ])->render();
+        $_error['error_message'] = 'Either your code is wrong or you have not voted properly. Please contact the election administrator.';
         return $_error;
     }
 
@@ -3215,37 +3215,21 @@ public function verify_final_vote(Request $request)
     // $election is not a parameter here, so the previous
     // `isset($election) && $election->type === 'demo'` could never be true.
     $clientIP         = \Request::getClientIp(true);
-    $max_use_clientIP = config('app.max_use_clientIP');
     $electionId       = $code ? $code->election_id : null;
     $isDemoElection   = $code instanceof \App\Models\DemoCode;
 
     if ($isDemoElection) {
         // No IP restriction in demo. Fall through to the remaining checks.
     } elseif ($electionId) {
-        $codeModel   = \App\Models\Code::withoutGlobalScopes();
-
-        $votesFromIP = $codeModel
-            ->where('client_ip', $clientIP)
-            ->where('election_id', $electionId)
-            ->where('has_voted', true)
-            ->count();
-
-        if ($votesFromIP >= $max_use_clientIP) {
-            Log::warning('Security: IP rate limit exceeded (election-scoped)', [
-                'ip'          => $clientIP,
-                'election_id' => $electionId,
-                'count'       => $votesFromIP,
-            ]);
-            $_error['error_message'] = view('components.error_message', [
-                'message'   => 'Too many votes from this IP address in this election.',
-                'link'      => route('dashboard'),
-                'link_text' => 'Go to Dashboard',
-            ])->render();
+        // The one shared per-IP rule (PBDIGIT-278 item 8): the same limit and count as start and code entry.
+        $election = \App\Models\Election::withoutGlobalScopes()->find($electionId);
+        if ($election && ($refusal = \App\Services\Voting\IpVoteLimit::refusal($election, (string) $clientIP))) {
+            $_error['error_message'] = $refusal;
             return $_error;
         }
     } else {
-        // Fallback: global check when election_id not available
-        $_message = check_ip_address($clientIP, $max_use_clientIP);
+        // Fallback: global check when election_id not available (limit from the shared reader, never null)
+        $_message = check_ip_address($clientIP, \App\Services\Voting\IpVoteLimit::configuredGlobalLimit());
         if (!empty($_message['error_message'])) {
             $_error['error_message'] = $_message['error_message'];
             return $_error;
@@ -3262,24 +3246,14 @@ public function verify_final_vote(Request $request)
 
     // 4. User already voted
     if ($code->has_voted) {
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'You have already voted and your vote is already saved! See below',
-            'link' => route('vote.verify_to_show'),
-            'link_text' => 'Click here to see your vote',
-        ])->render();
+        $_error['error_message'] = 'You have already voted and your vote is already saved.';
         return $_error;
     }
 
-    // 5. Vote is missing (should never happen if code is valid and hasn't voted)
+    // 5. Vote is missing (should never happen if code is valid and hasn't voted). No restart link in the text:
+    // it would carry the voting link into the log (PBDIGIT-274 O-7).
     if ($vote === null) {
-        $restartLink = $voterSlug
-            ? route('slug.code.create', ['vslug' => $voterSlug->slug])
-            : route('vote.create');
-        $_error['error_message'] = view('components.error_message', [
-            'message' => 'We could not find your vote. Please contact the administrator. You can also start to vote again.',
-            'link' => $restartLink,
-            'link_text' => 'Click here to vote',
-        ])->render();
+        $_error['error_message'] = 'We could not find your vote. Please start voting again from the election page, or contact the administrator.';
         return $_error;
     }
      

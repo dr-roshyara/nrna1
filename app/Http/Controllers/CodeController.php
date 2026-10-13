@@ -39,13 +39,13 @@ class CodeController extends Controller
     use \App\Traits\EnsuresVoterMembership;
 
     private $clientIP;
-    private $maxUseClientIP;
     private $votingTimeInMinutes;
 
     public function __construct()
     {
         $this->clientIP = \Request::getClientIp(true);
-        $this->maxUseClientIP = config('app.max_use_clientIP') ?? 7;
+        // The per-IP vote limit is read by App\Services\Voting\IpVoteLimit (PBDIGIT-278 item 8); the former
+        // `config('app.max_use_clientIP') ?? 7` here was a second, different default.
         // Configurable voting window (matches voter slug expiry); strict, fails closed (PBDIGIT-274 S6, O-10 = B)
         $this->votingTimeInMinutes = \App\Services\Voting\VotingDuration::minutes();
     }
@@ -918,15 +918,10 @@ class CodeController extends Controller
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
-        // Check IP rate limiting (scoped to current election only)
-        $votesFromIP = Code::withoutGlobalScopes()
-            ->where('client_ip', $this->clientIP)
-            ->where('election_id', $code->election_id)
-            ->where('has_voted', 1)
-            ->count();
-        if ($votesFromIP >= $this->maxUseClientIP) {
-            Log::warning('Security: IP rate limit exceeded', ['ip' => $this->clientIP, 'election_id' => $code->election_id, 'count' => $votesFromIP]);
-            return ['success' => false, 'message' => 'Too many votes from this IP address.'];
+        // Per-IP vote limit, scoped to this election (PBDIGIT-278 item 8: the one shared rule, IpVoteLimit)
+        $election = Election::withoutGlobalScopes()->find($code->election_id);
+        if ($election && ($refusal = \App\Services\Voting\IpVoteLimit::refusal($election, (string) $this->clientIP))) {
+            return ['success' => false, 'message' => $refusal];
         }
 
         return ['success' => true, 'message' => 'Code verified successfully.'];

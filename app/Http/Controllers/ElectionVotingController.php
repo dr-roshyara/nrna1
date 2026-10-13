@@ -12,7 +12,6 @@ use App\Services\ElectionAuditService;
 use App\Services\Voting\VoterSlugIssuance;
 use App\Services\Voting\VoterSlugIssuer;
 use Carbon\Carbon;
-use App\Models\VoterSlug;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -214,32 +213,19 @@ class ElectionVotingController extends Controller
     }
 
     /**
-     * Evaluate IP restriction status.
-     *
-     * Three-layer precedence:
-     * 1. Whitelist (always bypasses all layers)
-     * 2. Layer 3: Per-election IP restriction (ip_restriction_enabled)
-     * 3. Layer 2: Global fallback (config('app.max_use_clientIP'))
+     * Evaluate IP restriction status through the one shared rule (PBDIGIT-278 item 8, IpVoteLimit): whitelist → no
+     * limit; an enabled election restriction wins; else MAX_USE_IP_ADDRESS; else 10. The count is completed votes
+     * from this IP in this election (codes.client_ip); before, it read voter_slugs.step_1_ip, which nothing writes
+     * for real elections, so the limit was never enforced here.
      */
     private function resolveIpBlock(Election $election, string $ip): array
     {
-        // Whitelist always bypasses ALL layers (Layer 3 AND Layer 2)
-        if ($election->ip_whitelist && $election->isIpWhitelisted($ip)) {
+        $max = \App\Services\Voting\IpVoteLimit::limitFor($election, $ip);
+        if ($max === null) {
             return ['blocked' => false, 'message' => null];
         }
 
-        // Layer 3: Per-election setting (takes precedence when enabled)
-        if ($election->isIpRestricted()) {
-            return $this->evaluateIpCount($election, $ip, $election->ip_restriction_max_per_ip);
-        }
-
-        // Layer 2: Global platform fallback (config('app.max_use_clientIP'))
-        $globalMax = (int) config('app.max_use_clientIP', 0);
-        if ($globalMax > 0) {
-            return $this->evaluateIpCount($election, $ip, $globalMax);
-        }
-
-        return ['blocked' => false, 'message' => null];
+        return $this->evaluateIpCount($election, $ip, $max);
     }
 
     /**
@@ -247,15 +233,12 @@ class ElectionVotingController extends Controller
      */
     private function evaluateIpCount(Election $election, string $ip, int $max): array
     {
-        $votedCount = VoterSlug::where('election_id', $election->id)
-            ->where('step_1_ip', $ip)
-            ->where('has_voted', true)
-            ->count();
+        $votedCount = \App\Services\Voting\IpVoteLimit::votesFrom($election, $ip);
 
         if ($votedCount >= $max) {
             return [
                 'blocked'        => true,
-                'message'        => "The maximum of {$max} vote(s) from your network has been reached.",
+                'message'        => \App\Services\Voting\IpVoteLimit::refusalMessage($max),
                 'remainingVotes' => 0,
             ];
         }
