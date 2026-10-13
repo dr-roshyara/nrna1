@@ -7,6 +7,11 @@
 - **Later the same day:** round-7 final independent review of v1.5 → NEEDS-REVISION (M-1: NCTF had no proof standard or reproduction; N-1: K-other had no registration deadline; 9 minor). Human authorized one repair + one focused re-review. **v1.6** (W `c0b431da5`, sha256 `22f58237…9e1c`) fixes M-1 and most minors, adds V-12 (meaning of "S5 data" and the G-LOG-0140 exposure). Round-8 re-review → **NEEDS-REVISION**: NF-1 MATERIAL (the new close of registration is tied to when the verdict computation runs, not to a fixed event; can be triggered early or delayed), NF-2…NF-6 minor. Record: `VERDICT-CRITERIA-REVIEW.md` rounds 7–8.
 - **Next action (human):** authorize (or not) a v1.7 repair of NF-1…NF-6 plus a focused re-review. V-1 is not ready to decide until then. Pointers: `.claude/S-SERIES-TODO.md`.
 
+## 📍 UPDATE (2026-10-13, F-Series) — KC-1 decision matrix READY; awaiting human KC-1 (F-LOG-0299–0305)
+- Audit Q6 test 1 (0299) showed the ratified host lists depend on unratified K-c conventions. Human: settle conventions first (0300). KC proposal r1.1 (0301). KC-1 was NOT made: reassess M, K and C; T3 is the minimal-amendment baseline; "single principle" stays provisional (0302).
+- KC-MKC reassessment r1.2 (0303). Audit Q6 test 2 r1.1 (0304): Lemma 2 holds unless the actor is counted on the record side (under A-1). **Decision matrix `R7/KC-1-DECISION-MATRIX.md` r1.1 (0305)**: the guard-row purpose is the option-level choice that moves E3-REL. Hosting group 13/8; coupling group 9/4 to 11/6, which needs a new acceptance. Each analysis has had independent reviews (PWL); its last fixes are not re-reviewed.
+- **Next (human):** KC-1, then KC-2 to KC-5 as the option requires, then E4/R8 and E5, each by its own act. Open: C-γ, D12, spanning rule, C6 (§5), K15–K19, R11, (g), (h), H13, A1, A5.
+
 ## 📍 UPDATE (2026-10-13, F-Series) — E3b COMPLETE (F-LOG-0285–0298)
 - (d′) T3 r1.9; E2b Amendment 2 (r1.3: CB1/CB23 rows adopted per reading, R-a); RESEARCH-AUDIT-1 (P-c robust low-crossing cut; not bounded contexts); contexts relabelled as candidate module cut M1/M23 (E3 r1.2); Act 2 accepted all ⚠E3b outputs (E3 r1.3).
 - **Next:** audit Q6 test 1 (freeze encoding, per C9) → E4/R8 canonicalization package (own act) → E5 (codebase/owning context decision). Open: D12, (g), (h), C-γ, R11, CV9/§3b, H13, A1, A5.
