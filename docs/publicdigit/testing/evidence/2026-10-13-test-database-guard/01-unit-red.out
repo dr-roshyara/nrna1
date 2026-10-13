@@ -1,0 +1,67 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEE                                                       11 / 11 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There were 11 errors:
+
+1) Tests\Unit\Testing\TestDatabaseSafetyTest::test_the_test_databases_may_be_reset
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:19
+
+2) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "the development database" ('pgsql', 'publicdigit')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+3) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "another application database" ('pgsql', 'publicdigit_db')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+4) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "a name that only starts like a test database" ('pgsql', 'nrna_test_copy')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+5) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "the postgres system database" ('pgsql', 'postgres')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+6) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "an unknown database" ('pgsql', null)
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+7) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "an empty name" ('pgsql', '')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+8) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "another driver" ('sqlite', 'nrna_test')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+9) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "a sqlite file" ('sqlite', '/tmp/app.sqlite')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+10) Tests\Unit\Testing\TestDatabaseSafetyTest::test_any_other_database_is_refused_before_it_is_touched with data set "mysql" ('mysql', 'nrna_test')
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:43
+
+11) Tests\Unit\Testing\TestDatabaseSafetyTest::test_the_refusal_names_the_database_and_the_safe_way_to_run
+Error: Class "Tests\Support\TestDatabaseSafety" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Testing/TestDatabaseSafetyTest.php:54
+
+ERRORS!
+Tests: 11, Assertions: 0, Errors: 11, PHPUnit Deprecations: 1.

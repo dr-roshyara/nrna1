@@ -1,0 +1,67 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.616, Memory: 18.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_generate_fingerprint_returns_sha256_hash
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+2) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_same_device_produces_same_fingerprint
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+3) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_different_devices_produce_different_fingerprints
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+4) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_generate_anonymized_metadata_returns_array
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+5) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_anonymized_metadata_contains_no_pii
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+6) Tests\Unit\Services\Voting\DeviceFingerprintServiceTest::test_generate_fingerprint_returns_null_on_error
+RuntimeException: Refusing to reset database "<scratch>/guard/probe.sqlite" (driver sqlite): tests may only reset nrna_test or pbdigit274_isolated_test. Nothing was changed. Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration for tests that extend Tests\TestCase.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6, Deprecations: 3.
+probe file: 0 bytes

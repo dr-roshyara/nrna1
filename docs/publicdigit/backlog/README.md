@@ -159,6 +159,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-280`](PBDIGIT-280-console-vote-writers-and-delegated-voting.md) | **Console commands that write votes have no environment guard; delegated-voting route undecided** (7 commands, P4; `POST /deligatevotes` statically broken, P3; from 274 plan section 8) | — | `OPEN` · not authorised |
 | [`PBDIGIT-281`](PBDIGIT-281-voter-slug-history-retention-policy.md) | **Retention and erasure policy for voting-link history** (history now never hard-deleted; parent hard deletes cascade; from 274 O-12) | — | `OPEN` · needs a business / legal decision |
 | [`PBDIGIT-282`](PBDIGIT-282-vote-confirmed-email-after-commit.md) | **Send the "vote confirmed" email only after the vote is saved** (sent inside the transaction; reproduced by a test; from 274 O-15) | — | `OPEN` · not authorised |
+| [`PBDIGIT-283`](PBDIGIT-283-test-database-reset-guard.md) | **Tests may reset only a test database** (`Tests\TestCase` ran `migrate:fresh` on whatever was connected; two `--no-configuration` runs wiped `publicdigit` on 2026-10-13; guard + architecture test) | — | `IMPLEMENTED` · not committed |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

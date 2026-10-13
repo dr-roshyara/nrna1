@@ -1,0 +1,39 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+
+S9A-EVIDENCE baseline db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE step5_failure db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9A-EVIDENCE receipt_failure db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":0} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_audit_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE post_commit_current_step_failure level_at_failure=[0] db=pbdigit274_isolated_test status=302 location=http://localhost/vote/verify_to_show flash=["success"] committed={"votes":1,"code_has_voted":true,"slug_has_voted":true,"receipts":1} txlevel=0 lock_free=yes errors=[]
+D
+S9A-EVIDENCE commit_failure_email_sent=1 db=pbdigit274_isolated_test status=302 location=http://localhost flash=["errors"] committed={"votes":0,"code_has_voted":false,"slug_has_voted":false,"receipts":0} txlevel=0 lock_free=yes errors=["An error occurred while processing your vote. Please try again."]
+D
+S9B-CONCURRENCY X1={"role":"cast","name":"X1","consumed":1} X2={"role":"cast","name":"X2","consumed":0} Y={"role":"cast","name":"Y","consumed":1} before={"c":0,"s":0} after={"c":2,"s":2}
+D
+S9B-COUNTS before={"v":0,"c":0,"s":0} after={"v":2,"c":2,"s":2} delta={"v":2,"c":2,"s":2} successes=2 steps=["A cast: success","B cast after replacement: success","C forced failure: refused","A double submission: refused"]
+D
+S9B-BASELINE elections=1 mismatched=0 (reported, never corrected; O-6b = i)
+DDDDDDD
+S9C-FLOW start=302→slug.code.create code.create=200 code.store=302→slug.code.agreement agreement=200 agreement.submit=302→slug.vote.create vote.create=200 vote.submit=302→slug.vote.verify vote.verify=200 vote.store=302→vote.verify_to_show records=247
+D
+S9C-RENDERER json=500 web=302 records=13
+D
+S9C-REFUSED status=302 records=22
+D
+S9C-DEMO start=302 code.create=200 records=38
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 65 / 94 ( 69%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDD                                     94 / 94 (100%)
+
+Time: 00:40.465, Memory: 34.00 MB
+
+OK, but there were issues!
+Tests: 94, Assertions: 490, Deprecations: 3.

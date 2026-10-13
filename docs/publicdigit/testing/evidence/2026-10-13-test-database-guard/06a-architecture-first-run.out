@@ -1,0 +1,26 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.380, Memory: 14.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\DatabaseResetIsGuardedTest::test_every_database_resetting_test_inherits_a_guarded_base
+a database-resetting test bypasses the database guard
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'Tests\Unit\Application\Election\Security\IpEvidenceDeterminismTest',
++    1 => 'Tests\Unit\Application\Election\Security\IpEvidenceTopologyEquivalenceTest',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/DatabaseResetIsGuardedTest.php:56
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.

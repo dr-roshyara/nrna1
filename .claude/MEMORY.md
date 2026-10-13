@@ -1158,3 +1158,8 @@ Evidence → Reconstruction → Hypothesis → Derivation → Validation → Can
 - **Keep separate:** method artefacts vs structure; verifier soundness vs reconstruction correctness (θ_E) vs disagreement (θ_D); observation vs hypothesis vs theorem.
 - **ML proposes; mathematics formalizes; statistics evaluates; logic attacks; researchers decide.**
 - **The corpus supplies observations and hypotheses; the researcher supplies formalization, falsification, statistical testing, computational attack, independent reconstruction and corroboration.** Optimize to discover *whether* a theory survives, never to obtain one. S5 is the measurement instrument, not the goal. Reproducibility ≠ agreement ≠ truth.
+
+## Test database safety (incident 2026-10-13, PBDIGIT-283) — durable
+- **`Tests\TestCase` on PostgreSQL has NO per-test transaction: `RefreshDatabase` runs `migrate:fresh` (drops every table) on whatever database is connected.** On 2026-10-13 two `phpunit --no-configuration` runs that included a `Tests\TestCase` test wiped the development database `publicdigit` (the app's `.env` database; there is no `nrna` database).
+- **Guard:** `tests/Support/TestDatabaseSafety` + `Tests\TestCase::setUpTraits()` refuse to reset anything but `nrna_test` or `pbdigit274_isolated_test`; `tests/Architecture/DatabaseResetIsGuardedTest` keeps every resetting test behind a guarded base.
+- **Rule for assistants:** run database tests only through `phpunit.xml` or `phpunit.pbdigit274.xml`. Use `--no-configuration` only for files individually verified to extend plain `PHPUnit\Framework\TestCase` (or a dead-socket `BaseTestCase`) — never for a folder.
