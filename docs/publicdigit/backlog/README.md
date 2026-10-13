@@ -156,6 +156,9 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-277`](PBDIGIT-277-voter-slug-correctness-defects.md) | **Voter-slug correctness defects** (`vote_completed` column doesn't exist; `VoterSlug::isExpired()` missing but called; demo-type check mismatch; recovery slugs for demo elections) | — | `OPEN` · not authorised |
 | [`PBDIGIT-278`](PBDIGIT-278-voter-slug-documentation-test-and-ops-hygiene.md) | **Voter-slug documentation, test and operations hygiene** (stale route comment, broken test route, factory gaps, unscheduled cleanup command; one claim refuted) | — | `OPEN` · not authorised |
 | [`PBDIGIT-279`](PBDIGIT-279-receipt-code-failure-absorbed.md) | **A failed receipt-code write is absorbed; the vote counts without a receipt** (savepoint in `firstOrCreate`; voter sees success; from 274 S9a, F-A) | — | `OPEN` · not authorised |
+| [`PBDIGIT-280`](PBDIGIT-280-console-vote-writers-and-delegated-voting.md) | **Console commands that write votes have no environment guard; delegated-voting route undecided** (7 commands, P4; `POST /deligatevotes` statically broken, P3; from 274 plan section 8) | — | `OPEN` · not authorised |
+| [`PBDIGIT-281`](PBDIGIT-281-voter-slug-history-retention-policy.md) | **Retention and erasure policy for voting-link history** (history now never hard-deleted; parent hard deletes cascade; from 274 O-12) | — | `OPEN` · needs a business / legal decision |
+| [`PBDIGIT-282`](PBDIGIT-282-vote-confirmed-email-after-commit.md) | **Send the "vote confirmed" email only after the vote is saved** (sent inside the transaction; reproduced by a test; from 274 O-15) | — | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

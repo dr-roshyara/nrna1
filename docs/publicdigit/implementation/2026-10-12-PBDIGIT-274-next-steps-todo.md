@@ -83,10 +83,10 @@
   - [ ] default-suite regression (plan section 13 list). **Blocked:** it needs a test database other than `nrna_test`.
 
 ## D. Backlog items to create when PBDIGIT-274 closes
-- [ ] **D1:** guard the console commands that write votes; decide the delegated-voting route.
-- [ ] **D2:** retention / erasure policy for voter-slug history.
-- [ ] **D3:** send the "vote confirmed" email only after the vote is saved (O-15).
-- [ ] **D4:** record on `PBDIGIT-276` whether item 1 (renderer URL) is covered by 274.
+- [x] **D1:** guard the console commands that write votes; decide the delegated-voting route. → `PBDIGIT-280` (2026-10-13)
+- [x] **D2:** retention / erasure policy for voter-slug history. → `PBDIGIT-281` (2026-10-13)
+- [x] **D3:** send the "vote confirmed" email only after the vote is saved (O-15). → `PBDIGIT-282` (2026-10-13)
+- [x] **D4:** record on `PBDIGIT-276` whether item 1 (renderer URL) is covered by 274. → coverage note added 2026-10-13: acceptance items 1–2 covered, item 3 (ADR-T11 check) not done. **The status change is the PO's**
 
 ## E. Release
 - [ ] **E1:** **`PBDIGIT-273` is never deployed alone.** Order: the migration first, then the 273 + 274 code together, following plan section 11.1.
