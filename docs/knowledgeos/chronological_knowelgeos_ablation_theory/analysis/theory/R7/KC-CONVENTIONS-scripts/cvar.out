@@ -1,0 +1,6 @@
+C S E3-REL 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+C S1 E3-REL 4 ['R2', 'R3', 'R9', 'R22']
+C+R15 reads R3 (row ref, C rule) S E3-REL 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']
+C+R15 reads R3 (row ref, C rule) S1 E3-REL 5 ['R2', 'R3', 'R9', 'R15', 'R22']
+C+R15+R14 "may coincide" S E3-REL 11 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R19', 'R22']
+C+R15+R14 "may coincide" S1 E3-REL 6 ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']

@@ -1,0 +1,361 @@
+== single-convention alternatives from FZ: rows moved (all 83), counts, E3-REL, rank ==
+
+## K1 guard rows read nothing (SH)
+  counts T-A/T-A+T-B/all: {'S': [13, 20, 42], "S'": [8, 13, 32], "S''": [8, 13, 32]}
+  S   moved: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+  S'  moved: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+  S'' moved: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+  host diffs S: ['R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)'] | E3-REL 9
+  host diffs S': ['R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)'] | E3-REL 4
+  rank S   TA+TB (20, 13, 50)  TA (13, 594, 4077)
+  rank S'  TA+TB (13, 0, 1)  TA (8, 0, 41)
+  rank S'' TA+TB (13, 0, 1)  TA (8, 0, 30)
+
+## K1c guard rows read object-level content only
+  counts T-A/T-A+T-B/all: {'S': [13, 20, 42], "S'": [8, 13, 32], "S''": [8, 13, 32]}
+  S   moved: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'  moved: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'' moved: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 9
+  host diffs S': ['R21: CB1 (ratified: X)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 4
+  rank S   TA+TB (20, 5, 48)  TA (13, 308, 1722)
+  rank S'  TA+TB (13, 0, 1)  TA (8, 0, 32)
+  rank S'' TA+TB (13, 0, 1)  TA (8, 0, 22)
+
+## K2 class rule off (SD)
+  counts T-A/T-A+T-B/all: {'S': [16, 23, 42], "S'": [11, 16, 31], "S''": [11, 16, 31]}
+  S   moved: ['R12:X->CB23', 'R51:X->none', 'R67:X->CB23', 'R69:X->CB23']
+  S'  moved: ['R12:X->CB23', 'R51:X->none', 'R67:X->CB23', 'R68:X->CB23', 'R69:X->CB23']
+  S'' moved: ['R12:X->CB23', 'R51:X->none', 'R67:X->CB23', 'R68:X->CB23', 'R69:X->CB23']
+  host diffs S: ['R12: CB23 (ratified: X)'] | E3-REL 13
+  host diffs S': ['R12: CB23 (ratified: X)'] | E3-REL 8
+  rank S   TA+TB (23, 13, 93)  TA (16, 1161, 3957)
+  rank S'  TA+TB (16, 0, 1)  TA (11, 2, 82)
+  rank S'' TA+TB (16, 0, 1)  TA (11, 1, 63)
+
+## K3 Adopted read through (SA)
+  counts T-A/T-A+T-B/all: {'S': [17, 26, 49], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: ['R27:CB23->X', 'R28:CB23->X', 'R61:CB23->X']
+  S'  moved: none
+  S'' moved: none
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)'] | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (26, 64, 304)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K3b independent read through (SC)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 47], "S'": [12, 17, 37], "S''": [12, 17, 37]}
+  S   moved: ['R62:CB1->X']
+  S'  moved: ['R62:CB1->X']
+  S'' moved: ['R62:CB1->X']
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K4 named clauses not read through (SI)
+  counts T-A/T-A+T-B/all: {'S': [17, 23, 44], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: ['R38:X->CB23', 'R71:X->CB23']
+  S'  moved: none
+  S'' moved: none
+  host diffs S: ['R38: CB23 (ratified: X)'] | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (23, 10, 74)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 2)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K4b row references read through
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 47], "S'": [12, 17, 38], "S''": [12, 17, 38]}
+  S   moved: ['R75:none->X']
+  S'  moved: ['R71:CB23->X', 'R75:none->X']
+  S'' moved: ['R71:CB23->X', 'R75:none->X']
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K5a R80 negated clause read (SF)
+  counts T-A/T-A+T-B/all: {'S': [17, 25, 47], "S'": [12, 18, 37], "S''": [12, 18, 37]}
+  S   moved: ['R80:none->X']
+  S'  moved: ['R80:none->X']
+  S'' moved: ['R80:none->X']
+  host diffs S: ['R80: X (ratified: none)'] | E3-REL 13
+  host diffs S': ['R80: X (ratified: none)'] | E3-REL 8
+  rank S   TA+TB (25, 48, 152)  TA (17, 557, 2337)
+  rank S'  TA+TB (18, 0, 2)  TA (12, 1, 31)
+  rank S'' TA+TB (18, 0, 1)  TA (12, 0, 21)
+
+## K5b R80 "acts exist" read (VC8)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: ['R80:none->CB23']
+  S'  moved: ['R80:none->CB23']
+  S'' moved: ['R80:none->CB23']
+  host diffs S: ['R80: CB23 (ratified: none)'] | E3-REL 13
+  host diffs S': ['R80: CB23 (ratified: none)'] | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K5c contrast/negated clauses read (R26,R30,R79,R68)
+  counts T-A/T-A+T-B/all: {'S': [17, 25, 47], "S'": [12, 18, 37], "S''": [12, 18, 37]}
+  S   moved: ['R79:CB23->X']
+  S'  moved: ['R79:CB23->X']
+  S'' moved: ['R79:CB23->X']
+  host diffs S: ['R79: X (ratified: CB23)'] | E3-REL 13
+  host diffs S': ['R79: X (ratified: CB23)'] | E3-REL 8
+  rank S   TA+TB (25, 17, 95)  TA (17, 557, 2337)
+  rank S'  TA+TB (18, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (18, 0, 1)  TA (12, 0, 21)
+
+## K6 Cap named alone names an actor (SB)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 49], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: ['R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X']
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K6b roles/offices do not name an actor
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 44], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: ['R63:X->CB23', 'R76:X->CB23']
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K7 relational clause off (SE)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 44], "S'": [12, 17, 34], "S''": [12, 17, 34]}
+  S   moved: ['R45:X->CB1', 'R52:X->CB1']
+  S'  moved: ['R45:X->CB1', 'R52:X->CB1']
+  S'' moved: ['R45:X->CB1', 'R52:X->CB1']
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 10, 78)  TA (17, 557, 2345)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K8 generic act -> C8 only
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: none
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 53, 131)  TA (17, 902, 3487)
+  rank S'  TA+TB (17, 1, 4)  TA (12, 5, 57)
+  rank S'' TA+TB (17, 1, 2)  TA (12, 0, 33)
+
+## K9 value mapping v->C4, prep->C8
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: none
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 36, 90)  TA (17, 645, 2604)
+  rank S'  TA+TB (17, 1, 4)  TA (12, 14, 69)
+  rank S'' TA+TB (17, 1, 2)  TA (12, 0, 24)
+
+## K10 conforms own placement (R33,R34)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: none
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 14, 92)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+## K13 statement scope: R41/R83 without C23 (VC6)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S   moved: none
+  S'  moved: none
+  S'' moved: none
+  host diffs S: IDENTICAL | E3-REL 13
+  host diffs S': IDENTICAL | E3-REL 8
+  rank S   TA+TB (24, 26, 83)  TA (17, 557, 2337)
+  rank S'  TA+TB (17, 0, 2)  TA (12, 1, 31)
+  rank S'' TA+TB (17, 0, 1)  TA (12, 0, 21)
+
+
+== convention sets ==
+
+## T3/FZ (status quo)
+  counts T-A/T-A+T-B/all: {'S': [17, 24, 46], "S'": [12, 17, 36], "S''": [12, 17, 36]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R38', 'R63', 'R71', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: none
+  S'  moved vs FZ: none
+  host diffs S: IDENTICAL | E3-REL 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24', 'R25', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R17', 'R18', 'R20', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R80']}
+  host diffs S': IDENTICAL | E3-REL 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R17', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (24, 10, 78)  TA (17, 557, 2337)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 0, 21)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## M (mention)
+  counts T-A/T-A+T-B/all: {'S': [17, 26, 46], "S'": [12, 19, 36], "S''": [12, 19, 36]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R38', 'R63', 'R71', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R79:CB23->X', 'R80:none->X', 'R45:X->CB1', 'R52:X->CB1']
+  S'  moved vs FZ: ['R79:CB23->X', 'R80:none->X', 'R45:X->CB1', 'R52:X->CB1']
+  host diffs S: ['R79: X (ratified: CB23)', 'R80: X (ratified: none)'] | E3-REL 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24', 'R25', 'R29', 'R35', 'R36', 'R38', 'R39', 'R79', 'R80', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R17', 'R18', 'R20', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37'], 'none': []}
+  host diffs S': ['R79: X (ratified: CB23)', 'R80: X (ratified: none)'] | E3-REL 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R79', 'R80', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R17', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38'], 'none': []}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 147, 417)  TA (17, 557, 2345)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 2)  TA (12, 1, 31)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (19, 0, 2)  TA (12, 0, 21)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## C (content)
+  counts T-A/T-A+T-B/all: {'S': [13, 22, 49], "S'": [8, 13, 35], "S''": [8, 13, 35]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+     lists S: {'CB1': ['R7', 'R21'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R19', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R15', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R14', 'R16', 'R17', 'R80']}
+  host diffs S': ['R21: CB1 (ratified: X)', 'R15: CB23 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 4 ['R2', 'R3', 'R9', 'R22']
+     lists S': {'CB1': ['R7', 'R8', 'R21'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R15', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R14', 'R16', 'R17', 'R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (22, 46, 234)  TA (13, 308, 1722)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 32)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 22)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## K (contribution)
+  counts T-A/T-A+T-B/all: {'S': [17, 26, 53], "S'": [12, 17, 39], "S''": [12, 17, 39]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R27:CB23->X', 'R28:CB23->X', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)'] | E3-REL 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R17', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R80']}
+  host diffs S': IDENTICAL | E3-REL 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R17', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 64, 304)  TA (17, 557, 2337)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 0, 21)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## K-VC8 (contribution; R80 "acts exist")
+  counts T-A/T-A+T-B/all: {'S': [17, 26, 53], "S'": [12, 17, 39], "S''": [12, 17, 39]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R27:CB23->X', 'R28:CB23->X', 'R80:none->CB23', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R80:none->CB23', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R80: CB23 (ratified: none)'] | E3-REL 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R17', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79', 'R80'], 'none': []}
+  host diffs S': ['R80: CB23 (ratified: none)'] | E3-REL 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R17', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79', 'R80'], 'none': []}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (26, 64, 304)  TA (17, 557, 2337)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 1, 31)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (17, 0, 1)  TA (12, 0, 21)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## C-SH (content; guards all empty)
+  counts T-A/T-A+T-B/all: {'S': [13, 22, 49], "S'": [8, 13, 35], "S''": [8, 13, 35]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none', 'R27:CB23->X', 'R28:CB23->X', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)'] | E3-REL 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R19', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R80']}
+  host diffs S': ['R11: none (ratified: CB23)', 'R14: none (ratified: X)', 'R15: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)', 'R21: none (ratified: X)'] | E3-REL 4 ['R2', 'R3', 'R9', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (22, 80, 204)  TA (13, 594, 4077)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 41)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 30)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## C-VC8 (content; R80 "acts exist")
+  counts T-A/T-A+T-B/all: {'S': [13, 22, 49], "S'": [8, 13, 35], "S''": [8, 13, 35]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X', 'R80:none->CB23', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R80:none->CB23', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R15: CB23 (ratified: X)', 'R80: CB23 (ratified: none)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']
+     lists S: {'CB1': ['R7', 'R21'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R19', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R15', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79', 'R80'], 'none': ['R14', 'R16', 'R17']}
+  host diffs S': ['R21: CB1 (ratified: X)', 'R15: CB23 (ratified: X)', 'R80: CB23 (ratified: none)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 4 ['R2', 'R3', 'R9', 'R22']
+     lists S': {'CB1': ['R7', 'R8', 'R21'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R15', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79', 'R80'], 'none': ['R14', 'R16', 'R17']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (22, 46, 234)  TA (13, 308, 1722)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 32)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (13, 0, 1)  TA (8, 0, 22)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'CB23', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## C-R15ref (R15 reads R3 via its row reference)
+  counts T-A/T-A+T-B/all: {'S': [14, 23, 50], "S'": [9, 14, 36], "S''": [9, 14, 36]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']
+     lists S: {'CB1': ['R7', 'R21'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R15', 'R19', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R14', 'R16', 'R17', 'R80']}
+  host diffs S': ['R21: CB1 (ratified: X)', 'R14: none (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 5 ['R2', 'R3', 'R9', 'R15', 'R22']
+     lists S': {'CB1': ['R7', 'R8', 'R21'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R15', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R14', 'R16', 'R17', 'R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (23, 53, 283)  TA (14, 780, 2747)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)  TA (9, 6, 116)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (14, 0, 1)  TA (9, 6, 99)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## C-R15ref-R14 (also R14 "may coincide")
+  counts T-A/T-A+T-B/all: {'S': [15, 24, 51], "S'": [10, 15, 37], "S''": [10, 15, 37]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R27', 'R28', 'R38', 'R56', 'R60', 'R61', 'R63', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X', 'R56:CB23->X', 'R60:CB23->X', 'R61:CB23->X', 'R62:CB1->X', 'R75:none->X']
+  S'  moved vs FZ: ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R62:CB1->X', 'R71:CB23->X', 'R75:none->X']
+  host diffs S: ['R21: CB1 (ratified: X)', 'R27: X (ratified: CB23)', 'R28: X (ratified: CB23)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 11 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R19', 'R22']
+     lists S: {'CB1': ['R7', 'R21'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R12', 'R13', 'R14', 'R15', 'R19', 'R22', 'R23', 'R24', 'R25', 'R27', 'R28', 'R29', 'R35', 'R36', 'R38', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R18', 'R20', 'R26', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R79'], 'none': ['R16', 'R17', 'R80']}
+  host diffs S': ['R21: CB1 (ratified: X)', 'R16: none (ratified: X)', 'R17: none (ratified: CB23)'] | E3-REL 6 ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']
+     lists S': {'CB1': ['R7', 'R8', 'R21'], 'X': ['R2', 'R3', 'R9', 'R12', 'R13', 'R14', 'R15', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38', 'R79'], 'none': ['R16', 'R17', 'R80']}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (24, 116, 409)  TA (15, 1763, 4793)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (15, 0, 1)  TA (10, 47, 283)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (15, 0, 1)  TA (10, 41, 229)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'X', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'X', 'R-e R26': 'CB23', 'R-d R28': 'X'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'CB23', "R-i' R80": 'none', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True
+
+## M0 (surface, no expansion)
+  counts T-A/T-A+T-B/all: {'S': [16, 24, 40], "S'": [11, 18, 31], "S''": [11, 18, 31]}
+  S vs S' rows: ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R63', 'R68', 'R76']
+  S' == S'' on all rows: True
+  S   moved vs FZ: ['R12:X->CB23', 'R38:X->CB23', 'R79:CB23->X', 'R80:none->X', 'R45:X->CB1', 'R51:X->none', 'R52:X->CB1', 'R67:X->CB23', 'R69:X->CB23', 'R71:X->CB23']
+  S'  moved vs FZ: ['R12:X->CB23', 'R79:CB23->X', 'R80:none->X', 'R45:X->CB1', 'R51:X->none', 'R52:X->CB1', 'R67:X->CB23', 'R68:X->CB23', 'R69:X->CB23']
+  host diffs S: ['R79: X (ratified: CB23)', 'R80: X (ratified: none)', 'R12: CB23 (ratified: X)', 'R38: CB23 (ratified: X)'] | E3-REL 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22']
+     lists S: {'CB1': ['R7'], 'X': ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R13', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22', 'R23', 'R24', 'R25', 'R29', 'R35', 'R36', 'R39', 'R79', 'R80', 'R83'], 'CB23': ['R1', 'R4', 'R11', 'R12', 'R17', 'R18', 'R20', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38'], 'none': []}
+  host diffs S': ['R79: X (ratified: CB23)', 'R80: X (ratified: none)', 'R12: CB23 (ratified: X)'] | E3-REL 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+     lists S': {'CB1': ['R7', 'R8'], 'X': ['R2', 'R3', 'R9', 'R13', 'R14', 'R15', 'R16', 'R21', 'R22', 'R23', 'R24', 'R29', 'R35', 'R36', 'R39', 'R79', 'R80', 'R83'], 'CB23': ['R1', 'R4', 'R5', 'R6', 'R10', 'R11', 'R12', 'R17', 'R18', 'R19', 'R20', 'R25', 'R26', 'R27', 'R28', 'R30', 'R31', 'R32', 'R33', 'R34', 'R37', 'R38'], 'none': []}
+  rank S   TA+TB (P-c, strictly fewer, equal incl P-c) (24, 177, 529)  TA (16, 1161, 3965)
+  rank S'  TA+TB (P-c, strictly fewer, equal incl P-c) (18, 0, 3)  TA (11, 2, 82)
+  rank S'' TA+TB (P-c, strictly fewer, equal incl P-c) (18, 0, 2)  TA (11, 1, 63)
+  clauses S: {'D-chg R25': 'X', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  clauses S': {'D-chg R25': 'CB23', 'D-st R27': 'CB23', 'D-rec R29': 'X', 'B-chg R30': 'CB23', 'B-conf R32': 'CB23', 'B-conf pol R33': 'CB23', 'B-recW R35': 'X', 'B-rec R36': 'X', 'R-i R79': 'X', "R-i' R80": 'X', 'R-h R83': 'X', 'R-j R38': 'CB23', 'R-e R26': 'CB23', 'R-d R28': 'CB23'}
+  R24 crosses (S,S1): True True

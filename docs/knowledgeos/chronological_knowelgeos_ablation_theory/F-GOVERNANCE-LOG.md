@@ -4161,3 +4161,32 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Selected:** asked how to handle the unratified K-c counting conventions before E4/R8, the human chose "Settle conventions first (Recommended)". This means: prepare a K-c convention proposal, giving the options and consequences for each convention, have it reviewed, then take a human act. E4 follows on a settled basis.
 - **Conventions in scope:** guard rows; the class rule; reading "Adopted" through; named clauses; absent clauses (the R80 readings); and any others the analysis finds.
 - **Scope:** this is direction only, not authorization. Settling the conventions needs its own act. E4 and E5 are not authorized.
+
+
+## F-LOG-0301 — **Executor (2026-10-13): K-c conventions proposal READY** (`R7/KC-CONVENTIONS-PROPOSAL.md` r1.1). Prepared under F-LOG-0300. Nothing decided
+- **Review history** (fresh `kos-theory-reviewer` each round):
+  - **r0: PASS_WITH_LIMITATIONS**, with 7 material findings:
+    - K relabels the F11 stipulation rather than removing it;
+    - C's E3-REL figure is a range, not a single value;
+    - the recommendation was tilted;
+    - C-γ is entangled;
+    - M contradicts RESEARCH-AUDIT-1 F2;
+    - the L6/C6 claim was overstated;
+    - A2 was misattributed.
+  - **r1: PASS_WITH_LIMITATIONS**, with 4 medium findings: C-γ depends on the parse; the C-γ box; the act boxes are not independent; M was not treated fairly.
+  - **r1.1 applies all of these; it has not been re-reviewed.**
+  - Every number reproduces from `R7/KC-CONVENTIONS-scripts/`.
+- **Content:**
+  - **Inventory:** 19 counting conventions, K1–K19. K14 is the spanning rule, held open under F-LOG-0271.
+  - **Principles:** M (mention), C (content), K (contribution). T3 mixes M and C at two clear points, A1 (denials) and A3 (typing), plus one ambiguous point, A2′ (Chg).
+- **Options for KC-1:**
+  - **T3 as written:** stipulations, zero amendments.
+  - **K:** conditional on T2's guard labels and the empty-clause reading of R80. E3-REL is 13/8. Under S, R27 and R28 cross.
+  - **C:** guard rows read nothing. E3-REL is 9/4 to 11/6 depending on the parse.
+  - **M:** removes the R-i/R-i′ record asymmetry, which contradicts RESEARCH-AUDIT-1 F2 (that claim is now scoped).
+  - **P:** a per-convention selection.
+- **No single recommendation.** The analyst gives a per-criterion table and leaves the meta-question to the human: single principle, minimal amendment, fidelity to T2, fidelity to T3's text, or output preservation. Output preservation is offered as a candidate criterion only.
+- **C-γ is entangled with the guard-row purpose.** KC-1 offers an explicit yes/no box for it. Using that box widens F-LOG-0300's scope.
+- **Observation for the human:** under S, P-c is not the minimal cut. Its P(≤) is 88/817,190 ≈ 1.1×10⁻⁴. This qualifies F-LOG-0292/0299 under S only.
+- **Follow-on acts:** KC-2 (E2b host lists and §A2.2 note), KC-3 (E3-REL and cut-status), KC-4 (T3 rule text), KC-5 (asymmetry records, including RESEARCH-AUDIT-1 F2 and F-LOG-0292). Each needs its own act.
+- **Not affected:** no spanning rule is selected; D12 stays open; C6 stays open; E4 and E5 are not authorized.

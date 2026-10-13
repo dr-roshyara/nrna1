@@ -1,0 +1,8 @@
+R14 R43 guard FZ X paired T-C X
+R16 R49 guard FZ X paired T-C X
+R17 R48 guard FZ CB23 paired T-C CB23
+R11 R47 guard FZ CB23 paired T-C CB23
+R21 R46 guard FZ X paired T-C X
+R15 R42 guard FZ X paired T-C X
+T3 S rank TA+TB 24 10 78
+K S rank TA+TB 26 64 304
