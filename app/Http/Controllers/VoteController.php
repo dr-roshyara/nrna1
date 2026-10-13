@@ -3231,7 +3231,7 @@ public function verify_final_vote(Request $request)
     // Demo-ness comes from the submitted code, not from an $election variable:
     // $election is not a parameter here, so the previous
     // `isset($election) && $election->type === 'demo'` could never be true.
-    $clientIP         = \Request::getClientIp(true);
+    $clientIP         = \Request::getClientIp();
     $electionId       = $code ? $code->election_id : null;
     $isDemoElection   = $code instanceof \App\Models\DemoCode;
 

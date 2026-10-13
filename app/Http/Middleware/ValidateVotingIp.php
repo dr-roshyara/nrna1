@@ -127,18 +127,11 @@ class ValidateVotingIp
     }
 
     /**
-     * Get client IP address (with proxy support)
+     * Get client IP address. Which proxies may set it is decided once, by App\Http\Middleware\TrustProxies
+     * (TRUSTED_PROXIES, PBDIGIT-287).
      */
     protected function getClientIp(Request $request): string
     {
-        $trustProxies = config('voting_security.trust_proxies', false);
-
-        if ($trustProxies) {
-            // Trust proxy headers
-            return $request->ip();
-        }
-
-        // Direct connection - use remote address
         return $request->ip();
     }
 

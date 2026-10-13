@@ -28,7 +28,8 @@ return Application::configure(basePath: dirname(__DIR__))
         | Global & Web Middleware
         |--------------------------------------------------------------------------
         */
-        $middleware->trustProxies(at: '*');
+        // PBDIGIT-287: trust only the configured reverse proxy (TRUSTED_PROXIES), never every sender.
+        $middleware->replace(\Illuminate\Http\Middleware\TrustProxies::class, \App\Http\Middleware\TrustProxies::class);
 
         // ✅ CRITICAL FIX: Append custom global middleware (runs on all routes)
         $middleware->append([

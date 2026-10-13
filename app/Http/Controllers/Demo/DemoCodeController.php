@@ -40,7 +40,7 @@ class DemoCodeController extends Controller
 
     public function __construct()
     {
-        $this->clientIP = \Request::getClientIp(true);
+        $this->clientIP = \Request::getClientIp();
         $this->maxUseClientIP = config('app.max_use_clientIP', 7);
         $this->votingTimeInMinutes = \App\Services\Voting\VotingDuration::minutes(); // strict, fails closed (PBDIGIT-274 S6)
     }

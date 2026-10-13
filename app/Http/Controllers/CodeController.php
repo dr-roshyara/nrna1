@@ -43,7 +43,7 @@ class CodeController extends Controller
 
     public function __construct()
     {
-        $this->clientIP = \Request::getClientIp(true);
+        $this->clientIP = \Request::getClientIp();
         // The per-IP vote limit is read by App\Services\Voting\IpVoteLimit (PBDIGIT-278 item 8); the former
         // `config('app.max_use_clientIP') ?? 7` here was a second, different default.
         // Configurable voting window (matches voter slug expiry); strict, fails closed (PBDIGIT-274 S6, O-10 = B)

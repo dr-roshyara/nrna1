@@ -76,16 +76,8 @@ return [
         'contact_support' => 'If you believe this is an error, please contact the election committee.',
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Trusted Proxies Configuration
-    |--------------------------------------------------------------------------
-    |
-    | If using load balancers or reverse proxies, the system needs to know
-    | to trust the X-Forwarded-For header
-    |
-    */
-    'trust_proxies' => env('VOTING_TRUST_PROXIES', false),
+    // Trusted proxies: config/trustedproxy.php (TRUSTED_PROXIES, PBDIGIT-287). The former voting-specific switch
+    // never had an effect and is removed.
 
     /*
     |--------------------------------------------------------------------------
