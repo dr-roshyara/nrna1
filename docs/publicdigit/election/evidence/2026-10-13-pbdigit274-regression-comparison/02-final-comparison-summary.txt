@@ -1,0 +1,10 @@
+tests: baseline=7724 head=7884
+regression     11
+still_failing  1924
+fixed          6
+pass_both      5729
+skip_any       50
+only_base      4
+only_head      164
+baseline states: {"pass":5741,"error":1545,"fail":388,"skip":50}
+head states:     {"pass":5899,"error":1542,"fail":393,"skip":50}
