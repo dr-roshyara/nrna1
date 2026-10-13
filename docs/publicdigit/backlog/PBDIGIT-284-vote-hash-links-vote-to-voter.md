@@ -31,3 +31,15 @@
 
 ## Related
 `PBDIGIT-276` item 3 (ADR-T11 check of log contents) · `PBDIGIT-288` (IP data minimisation).
+
+## Progress (2026-10-13): RED proven, decisions taken, then PARKED by the Human PO
+- **RED test:** `tests/Isolated/Pbdigit274/Database/VoteAnonymityLinkageTest.php`, kept **uncommitted** while parked, because it fails by design until the fix.
+  - **vote_hash: 3 of 3 votes** linked to their voter, from `codes` rows plus `votes.cast_at` alone.
+  - **A second linkage found:** the `vote_confirmed` audit entries carry `sha256(vote_id . user_id . election_id)` next to `user_id` (`VoteController.php` ≈1931, `log()` and `logVoterAction()`). **6 audit entries** link a user to a vote.
+  - Evidence: `docs/publicdigit/election/evidence/2026-10-13-pbdigit284-vote-anonymity/01-red.out`.
+- **Decisions (Human PO, 2026-10-13):**
+  1. `vote_hash` becomes a **random** 256-bit value (nothing verifies it; receipts use the keyed `receipt_hash`).
+  2. **Remove** the vote-derived hash from the `vote_confirmed` audit entries (keep the event).
+  3. **Existing data:** fix forward, plus a one-off migration (re-randomise existing `vote_hash`, redact `receipt_hash` from audit files), **run only with a separate approval**.
+  4. **Demo gets the same fix** (`VoteStorageTrait`).
+- **Parked:** "a known loophole; we concentrate now on implementing everything related to IP address." Resume with GREEN on the decisions above.

@@ -31,3 +31,8 @@
 
 ## Related
 `PBDIGIT-284` · `PBDIGIT-285` · `PBDIGIT-286` · `PBDIGIT-287` · `PBDIGIT-281` (retention) · `PBDIGIT-278` items 9–10.
+
+## Decisions (Human PO, 2026-10-13)
+- **The counted IP is the IP at the vote** (not the code-entry IP). The check and a per-election, per-IP lock happen at the vote.
+- **IPv6 is grouped by /64** for counting (configurable prefix); IPv4 stays per address.
+- **Order:** plan step 2 (items 1–3), then step 3 (item 5), then the rest.

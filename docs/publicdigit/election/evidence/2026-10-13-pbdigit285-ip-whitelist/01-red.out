@@ -1,0 +1,125 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FFFDEFDDDDDFFFDEFDDDDDEEEEEEEEEEE                                 33 / 33 (100%)
+
+Time: 00:01.422, Memory: 20.00 MB
+
+There were 13 errors:
+
+1) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_whitelist_matches_only_what_it_lists with data set "prefix out of range" (['203.0.113.0/40'], '198.51.100.7', false)
+ArithmeticError: Bit shift by negative number
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Models/Election.php:920
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Models/Election.php:903
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:79
+
+2) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_election_and_the_trust_policy_use_the_same_matcher with data set "prefix out of range" (['203.0.113.0/40'], '198.51.100.7', false)
+ArithmeticError: Bit shift by negative number
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Models/Election.php:920
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Models/Election.php:903
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:85
+
+3) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv4 address" ('203.0.113.7', true)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+4) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv4 range" ('10.0.0.0/8', true)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+5) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv4 /32" ('198.51.100.7/32', true)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+6) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv4 /0" ('0.0.0.0/0', true)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+7) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv6 address" ('2001:db8::1', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+8) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "IPv6 range" ('2001:db8::/32', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+9) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "garbage" ('abc', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+10) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "garbage range" ('garbage/24', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+11) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "prefix too long" ('10.0.0.0/33', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+12) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "empty prefix" ('10.0.0.0/', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+13) Tests\Unit\Models\ElectionIpWhitelistTest::test_entries_are_validated_on_the_server with data set "non-digit prefix" ('10.0.0.0/8a', false)
+Error: Call to undefined method App\Domain\Election\Security\Ipv4Whitelist::isValidEntry()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:107
+
+--
+
+There were 8 failures:
+
+1) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_whitelist_matches_only_what_it_lists with data set "IPv6 range vs unrelated IPv6 client" (['2001:db8::/32'], '2a00:1450:4001::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:79
+
+2) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_whitelist_matches_only_what_it_lists with data set "IPv6 range vs IPv6 client inside it (IPv4-only scope)" (['2001:db8::/32'], '2001:db8::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:79
+
+3) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_whitelist_matches_only_what_it_lists with data set "malformed range vs IPv6 client" (['garbage/24'], '2a00:1450:4001::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:79
+
+4) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_whitelist_matches_only_what_it_lists with data set "empty prefix" (['203.0.113.0/'], '198.51.100.7', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:79
+
+5) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_election_and_the_trust_policy_use_the_same_matcher with data set "IPv6 range vs unrelated IPv6 client" (['2001:db8::/32'], '2a00:1450:4001::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:85
+
+6) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_election_and_the_trust_policy_use_the_same_matcher with data set "IPv6 range vs IPv6 client inside it (IPv4-only scope)" (['2001:db8::/32'], '2001:db8::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:85
+
+7) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_election_and_the_trust_policy_use_the_same_matcher with data set "malformed range vs IPv6 client" (['garbage/24'], '2a00:1450:4001::1', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:85
+
+8) Tests\Unit\Models\ElectionIpWhitelistTest::test_the_election_and_the_trust_policy_use_the_same_matcher with data set "empty prefix" (['203.0.113.0/'], '198.51.100.7', false)
+Failed asserting that true is identical to false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Models/ElectionIpWhitelistTest.php:85
+
+ERRORS!
+Tests: 33, Assertions: 53, Errors: 13, Failures: 8, Deprecations: 3, PHPUnit Deprecations: 3.

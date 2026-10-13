@@ -1,0 +1,49 @@
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FF                                                                  2 / 2 (100%)
+
+Time: 00:05.838, Memory: 24.00 MB
+
+Vote Anonymity Linkage (Tests\Isolated\Pbdigit274\Database\VoteAnonymityLinkage)
+ ✘ The vote hash cannot be recomputed from the voters code row
+   │
+   │ 3 of 3 votes linked to their voter through vote_hash
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => 'a2f9103c-5054-4782-8667-4fbf13d96106',
+   │ +    1 => 'a2f9103d-7eb0-40c6-9156-c8e1e72c70ef',
+   │ +    2 => 'a2f9103e-aeba-48d0-88f4-bc3f19896888',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoteAnonymityLinkageTest.php:146
+   │
+ ✘ No audit entry carries a value that links a user to a vote
+   │
+   │ 6 audit entries link a user to a vote
+   │ Failed asserting that two arrays are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -Array &0 []
+   │ +Array &0 [
+   │ +    0 => 'vote_confirmed',
+   │ +    1 => 'vote_confirmed',
+   │ +    2 => 'vote_confirmed',
+   │ +    3 => 'vote_confirmed',
+   │ +    4 => 'vote_confirmed',
+   │ +    5 => 'vote_confirmed',
+   │ +]
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoteAnonymityLinkageTest.php:167
+   │
+
+FAILURES!
+Tests: 2, Assertions: 18, Failures: 2, Deprecations: 3.

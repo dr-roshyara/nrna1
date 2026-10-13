@@ -24,3 +24,6 @@
 
 ## Related
 `PBDIGIT-285` · `PBDIGIT-286` · `PBDIGIT-288`.
+
+## Decision (Human PO, 2026-10-13)
+- **Production topology: a single reverse proxy** in front of PHP. Trust only that proxy's address(es), from configuration; never `'*'`.

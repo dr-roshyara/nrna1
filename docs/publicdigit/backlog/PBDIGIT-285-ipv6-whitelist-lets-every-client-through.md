@@ -28,3 +28,7 @@
 
 ## Related
 `PBDIGIT-286` (one visible IP limit) · `PBDIGIT-278` item 8 (`IpVoteLimit`).
+
+## Progress (2026-10-13)
+- **Implemented:** one matcher (`Ipv4Whitelist`) for both limits; IPv4 only; an unreadable entry or address matches nothing; server-side validation of entries. RED 21 of 33 → GREEN 33 / 77; 0 regressions in 121 related tests. Evidence: `docs/publicdigit/election/evidence/2026-10-13-pbdigit285-ip-whitelist/`.
+- **IPv6 counting by /64:** decided by the PO (2026-10-13); implemented under PBDIGIT-288.
