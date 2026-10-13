@@ -4240,3 +4240,23 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **Conflict with literal wording.** Cor 1.1 conflicts with the literal wording "only if … (S′)" in RESEARCH-AUDIT-1 C6 (App. C) and F-LOG-0292. An alternative reading is recorded, under which only that wording is affected. Neither document is amended. A correction, if any, needs its own recording.
 - **Not affected:** no spanning rule is selected (F-LOG-0271 stands); S1, F-LOG-0265 and the R-i/R-i′ items stay open; E4 and E5 are not authorized.
 - **Shared sources:** this test shares its sources and analyst with KC-MKC-REASSESSMENT. It is not independent evidence for or against it.
+
+
+## F-LOG-0305 — **Executor (2026-10-13): KC-1 integrated decision matrix READY for the human** (`R7/KC-1-DECISION-MATRIX.md` r1.1). Analysis only; nothing decided
+- **What it is:** a single matrix integrating KC r1.1, KC-MKC r1.2 and T2C r1.1, with no new computation. It covers the options T3, M, K, K-T, C, C-Σ and U, against five criteria: formal correctness, source fidelity, consistency across the 83 rows, E3-REL consequences, and unresolved ambiguity / open boxes.
+- **Review history:**
+  - r0: PASS_WITH_LIMITATIONS (8 material findings).
+  - r1: PASS_WITH_LIMITATIONS (2 material findings). Neutrality toward M and U, and the act boxes, were fixed in r1.1.
+  - **The r1.1 fixes are not re-reviewed.**
+- **Findings:**
+  - Among the options compared, the **guard-row purpose** (hosting relevance vs constraint coupling) is the option-level choice that moves E3-REL:
+    - **hosting group** (T3, M, K, K-T, U): 13/8, and F-LOG-0297 stands;
+    - **coupling group** (C, C-Σ): 9/4 to 11/6, and a new acceptance is needed.
+  - Other things also move E3-REL: the D12 reading, C's parse, and K18.
+  - The sources conflict on the purpose question, and it is entangled with C-γ.
+  - Within each group the evidence gives trade-offs, not a ranking. Every deciding question is a stipulation: Rq1, Rq2a, Rq5, choice (b), and C's parse.
+  - "Single principle" does not select a unique option and stays provisional.
+  - P-c's standing depends on the K8/K9/K13 boxes.
+- **Analyst recommendation [E]:** frame KC-1 as a ruling on the guard-row purpose, applied to K-c only, with C-γ returned unless the human expressly includes it. Then choose within the resulting group.
+- **Not affected:** no K-c convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6 (§5) and K15–K19 stay open; E4 and E5 are not authorized.
+- **Next:** human decision on KC-1.
