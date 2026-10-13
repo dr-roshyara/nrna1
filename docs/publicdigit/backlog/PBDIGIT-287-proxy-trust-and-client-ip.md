@@ -27,3 +27,9 @@
 
 ## Decision (Human PO, 2026-10-13)
 - **Production topology: a single reverse proxy** in front of PHP. Trust only that proxy's address(es), from configuration; never `'*'`.
+
+## Progress (2026-10-13)
+- **Implemented, not yet committed:** trusted proxies from `TRUSTED_PROXIES` (`config/trustedproxy.php`) through the app's `TrustProxies` middleware. Wildcards are refused; only `X-Forwarded-*` headers are read. The dead `VOTING_TRUST_PROXIES` setting and `getClientIp(true)` are removed.
+- **Acceptance:** items 2–4 met. Item 1 (document the production topology) is met by the PO decision (a single reverse proxy); the proxy's address itself must be set in `.env` at deployment.
+- **Evidence:** `docs/publicdigit/election/evidence/2026-10-13-pbdigit287-trusted-proxy/`; guide `developer_guide/election/ip_voting/05_trusted_proxy.md`.
+- **Left to the owner:** `.env.example` still lists `VOTING_TRUST_PROXIES` and lacks `TRUSTED_PROXIES`. It was not edited, because `.env.*` files are not read in this session.

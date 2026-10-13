@@ -1,0 +1,83 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FDDFDFDFFFF                                                       11 / 11 (100%)
+
+Time: 00:00.813, Memory: 20.00 MB
+
+There were 7 failures:
+
+1) Tests\Unit\Http\TrustedProxyTest::test_without_a_configured_proxy_a_spoofed_forwarded_for_is_ignored
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:73
+
+2) Tests\Unit\Http\TrustedProxyTest::test_from_any_other_address_a_spoofed_forwarded_for_is_ignored
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:94
+
+3) Tests\Unit\Http\TrustedProxyTest::test_proxies_may_be_listed_as_addresses_or_ranges
+outside both
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:111
+
+4) Tests\Unit\Http\TrustedProxyTest::test_a_wildcard_is_refused_with_a_warning_and_trusts_no_proxy with data set "star" ('*')
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:139
+
+5) Tests\Unit\Http\TrustedProxyTest::test_a_wildcard_is_refused_with_a_warning_and_trusts_no_proxy with data set "double star" ('**')
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:139
+
+6) Tests\Unit\Http\TrustedProxyTest::test_a_wildcard_is_refused_with_a_warning_and_trusts_no_proxy with data set "star in a list" ('10.0.0.5, *')
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:139
+
+7) Tests\Unit\Http\TrustedProxyTest::test_a_wildcard_is_refused_with_a_warning_and_trusts_no_proxy with data set "REMOTE_ADDR (Laravel: trust whoever connects)" ('REMOTE_ADDR')
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'198.51.100.9'
++'1.2.3.4'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/TrustedProxyTest.php:139
+
+FAILURES!
+Tests: 11, Assertions: 37, Failures: 7, Deprecations: 3.

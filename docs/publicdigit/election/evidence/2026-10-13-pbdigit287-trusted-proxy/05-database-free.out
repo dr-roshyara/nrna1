@@ -1,0 +1,12 @@
+== tests/Unit/Http/TrustedProxyTest.php
+Tests: 11, Assertions: 49, Deprecations: 3.
+== tests/Architecture/ClientIpHasOneSourceTest.php
+OK (2 tests, 2 assertions)
+== tests/Architecture/DatabaseResetIsGuardedTest.php
+OK (1 test, 5 assertions)
+== tests/Unit/Services/Voting/IpVoteLimitTest.php
+Tests: 20, Assertions: 64, Deprecations: 3, PHPUnit Deprecations: 1.
+== tests/Unit/Domain/Election/Security/IpVoteGroupTest.php
+OK (10 tests, 25 assertions)
+== tests/Unit/Models/ElectionIpWhitelistTest.php
+Tests: 33, Assertions: 77, Deprecations: 3, PHPUnit Deprecations: 3.

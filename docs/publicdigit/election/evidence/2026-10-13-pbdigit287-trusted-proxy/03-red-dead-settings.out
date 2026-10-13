@@ -1,0 +1,41 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FF                                                                  2 / 2 (100%)
+
+Time: 00:00.156, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Architecture\ClientIpHasOneSourceTest::test_no_code_reads_the_dead_voting_trust_proxies_setting
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Http/Middleware/ValidateVotingIp.php:134',
++    1 => 'config/voting_security.php:88',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ClientIpHasOneSourceTest.php:44
+
+2) Tests\Architecture\ClientIpHasOneSourceTest::test_no_code_passes_an_argument_to_get_client_ip
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Http/Controllers/Demo/DemoCodeController.php:43',
++    1 => 'app/Http/Controllers/CodeController.php:46',
++    2 => 'app/Http/Controllers/VoteController.php:3234',
++    3 => 'app/Http/Middleware/ValidateVotingIp.php:53',
++    4 => 'app/Http/Middleware/ValidateVotingIp.php:132',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ClientIpHasOneSourceTest.php:49
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 2.
