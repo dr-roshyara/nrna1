@@ -62,14 +62,14 @@ Each gate is separate. **Satisfying one doesn't satisfy another.**
 |---|---|---|---|
 | **G-PLAN** | this plan (EP-01) | the Principal's written approval of r3 | everything |
 | **O-3** | production PostgreSQL isolation verified (READ COMMITTED) | operations report | G-ADR-A |
-| **G-ADR-A** | freeze protocol (record §4.1) incl. H6, H7, the D11 write rule, the trigger evaluation | approved ADR file | P1, P2 |
-| **G-ADR-B** | frozen record, capture, policy source (H1), fixtures (F1), hash (H4, A-1), reconciliation (AUD-1), backfill design | approved ADR file | P3, P4, R |
-| **G-ADR-C** | lock before the single assessment, lock scope, tenant-context handling for the D6 count | approved ADR file | P6 (count change), P8 |
+| **G-ADR-A** | freeze protocol (record §4.1) incl. H6, H7, the D11 write rule, the trigger evaluation. **Status: BLOCKED until O-3** (A-2 and the ADR-A-T rule decided inside it on 2026-10-14) | approved ADR file | P1, P2 |
+| **G-ADR-B** | frozen record, capture, policy source (H1), fixtures (F1), hash (H4, A-1), reconciliation (AUD-1), backfill design. **Status: APPROVED CONDITIONALLY 2026-10-14** (record §3.4) | approved ADR file ✅ (conditions in record §3.4) | P3, P4, R: **still also need G-MIG, G-ISO** |
+| **G-ADR-C** | lock before the single assessment, lock scope, tenant-context handling for the D6 count. **Status: APPROVED CONDITIONALLY 2026-10-14** (record §3.4) | approved ADR file ✅ (mandatory proofs, ADR-C §6) | P6 (count change), P8: **still also need G-ISO** and phase authorisation |
 | **G-AUD2** | decision-record entry: the narrow E2-D4 exception | entry approved | P7 |
-| **G-MIG** | frozen-record migration **and** the backfill design (record §4.8) | the Principal's approval of the migration file and backfill design | P3, R |
+| **G-MIG** | frozen-record migration **and** the backfill design (record §4.8), **plus the trigger migration if ADR-A-T requires it** (decision rule, record §3.4) | the Principal's approval of the migration file and backfill design | P3, R |
 | **G-ISO** | tests on `pbdigit274_isolated_test` with the identity guard | the Principal's authorization | every isolated-database step |
 | **G-AUTH-T** | any use of `nrna_test` | separate authorization | the `nrna_test` tests in §6 |
-| **G-REL** | deployment | record §5 pre-flight evidence | phase R and release |
+| **G-REL** | deployment | record §5 pre-flight evidence (**any-election** empty-end-time block passed); a statement that **PBDIGIT-289** is fixed or accepted as a documented known risk, with the scheduled-transition behaviour reviewed (ADR-B §3.6b); critical-alert routing | phase R and release |
 
 **Never permitted:** `nrna` or any shared database.
 
@@ -139,16 +139,18 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 | Fixture mistaken for protocol proof | AC-5/AC-6 test the real opening paths |
 | The production isolation level isn't READ COMMITTED | O-3 before G-ADR-A |
 | Dynamic or manual writes bypass the fitness test | ADR-A trigger option |
-| Stored `none`/`ip_strict` on an opened election | backfill reports it; ADR-A/B decide (record §8 A-2) |
+| Stored `none`/`ip_strict` on an opened election | A-2 (refuse opening) and A-2b (historical, conditional) approved 2026-10-14; the backfill reports every case |
+| The scheduled transition locks voting without a voting window (PBDIGIT-289) | known interaction, not this ticket's scope; the empty-end-time pre-flight blocks it at release; G-REL states fixed or accepted risk |
 | `election_id` serialisation in the hash | ADR-B (record §8 A-1) |
 | The same-session advisory re-acquire is unproven | P8 test before any claim |
-| The synchronous email lengthens the lock hold | BL-EMAIL (separate) |
+| The synchronous email lengthens the lock hold | BL-EMAIL, recorded as an extension of backlog PBDIGIT-282 (`7eb57cf15`) |
 | A file audit entry is lost after commit | reconciliation (T-6) |
 
 ## 9. Task checklist
 - [x] G-PLAN (2026-10-14, at `914b773aa`)
 - [ ] O-3 (operations)
-- [ ] ADR-A, ADR-B, ADR-C, AUD-2 entry → G-ADR-*, G-AUD2 (**drafted** 2026-10-14 under P0; awaiting approval)
+- [x] G-ADR-B (approved conditionally 2026-10-14) · [x] G-ADR-C (approved conditionally 2026-10-14)
+- [ ] G-ADR-A (blocked until O-3) · [ ] ADR-A-T operations confirmation · [ ] G-AUD2 (§9 wording pending)
 - [ ] G-MIG (migration + backfill design)
 - [ ] G-ISO; G-AUTH-T (optional)
 - [ ] P1 … P9 (each with evidence and a developer-guide step)
@@ -164,7 +166,15 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - **G-PLAN approved** (P0 only); A-1 confirmed (UUID as a JSON string).
   - **P0:** ADR-A, ADR-B and ADR-C drafted in `docs/publicdigit/adr/ADR_20261014_1138_*`; the AUD-2 entry drafted in record §9.
   - A-2 proposed in ADR-A §3.5 and ADR-B §3.3, §3.6.
-- **No code.** Awaiting approval of the ADRs and the AUD-2 entry.
+- **2026-10-14, recorded** (record §3.4):
+  - A-2 approved;
+  - A-2b approved with conditions;
+  - the empty-end-time rule approved (any election);
+  - G-ADR-B and G-ADR-C approved conditionally;
+  - the ADR-A-T decision rule approved (condition not satisfied);
+  - G-AUD2 pending;
+  - G-ADR-A blocked (O-3).
+- **No code.**
 
 ## 11. Open questions
 **Human Arbiter policy decisions:** none open (record §3.2).
@@ -182,7 +192,7 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 ## 13. Next actions
 1. ~~The Principal reviews plan r3 → G-PLAN~~ (done 2026-10-14).
 2. Operations: O-3.
-3. ~~Draft ADR-A, ADR-B, ADR-C and the AUD-2 entry (P0)~~ (drafted 2026-10-14). **The Principal reviews them** → G-ADR-A, G-ADR-B, G-ADR-C, G-AUD2 (including the A-2 resolutions).
-4. Then G-ISO (and G-MIG for P3) before P1 starts.
+3. ~~Draft ADR-A, ADR-B, ADR-C and the AUD-2 entry (P0)~~ (drafted 2026-10-14). G-ADR-B and G-ADR-C approved conditionally. **Open:** G-ADR-A (after O-3), the ADR-A-T operations confirmation, G-AUD2.
+4. **P1 starts only when all of these hold:** O-3 reviewed · G-ADR-A approved · G-ISO authorised · the Principal's explicit P1 authorisation. **Before G-ISO:** the test-database safety review (PBDIGIT-283) is re-confirmed.
 
 **Traceability:** PBDIGIT-286 · R1–R5 + R1-P · Human Arbiter decisions 2026-10-14 · decision record r3 · HEAD `0d7316dfd`.

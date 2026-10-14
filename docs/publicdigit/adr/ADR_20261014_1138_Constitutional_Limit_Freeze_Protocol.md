@@ -1,6 +1,9 @@
 # ADR-A: Constitutional limit (System B) freeze protocol
 
 **Status: 📝 PROPOSED r2. ⛔ Approval BLOCKED until O-3 evidence is supplied** (operations confirmation of the production PostgreSQL isolation level; §8 item 1). The Principal can't approve G-ADR-A before then.
+- **Decided inside this ADR on 2026-10-14** (the ADR itself remains unapproved):
+  - **A-2** approved (§3.5);
+  - the **ADR-A-T decision rule** approved (§3.3; its operational condition isn't yet satisfied).
 - **Drafted under:** P0 of the PBDIGIT-286 plan (G-PLAN approved 2026-10-14).
 - **r2** (Principal review, 2026-10-14):
   - the trigger becomes an explicit separate decision **ADR-A-T** (§3.3, §8), not implied by approving this ADR;
@@ -26,6 +29,7 @@
 - **Two opening paths:**
   - **Explicit:** `ElectionManagementController::openVoting` → `Election::transitionTo` (`:1664`): cache lock `election_transition:{id}` + `DB::transaction`. Side effect `applySideEffectsForOpenVoting` (`:1897`) does a raw `DB::table('elections')` update (`:1930`) with no condition on the flag.
   - **Scheduled:** `ProcessElectionAutoTransitions` → `Election::enforceVotingLock` (`:1609`): model `update`, no cache lock, no transaction.
+  - **The scheduled path doesn't check the voting window:** `processNominationToVotingTransition` (`ProcessElectionAutoTransitions.php:80-118`) locks voting **without** the `voting_window_defined` precondition that guards the explicit path (`ConstitutionalTransitionGuard.php:226`). This is a **known interaction with backlog PBDIGIT-289**, not PBDIGIT-286 scope. Its release consequence is in ADR-B §3.6b.
 - **An election can reach VotingActive straight from SetupNomination** (the explicit path sets `nomination_completed`).
 - **The settings save** (`ElectionSettingsController::update`, `:73-134`):
   - authorization `UpdateElectionSettingsRequest::authorize()` → `manageSettings` (active chief/deputy);
@@ -92,6 +96,14 @@
 
   **Approving this ADR does not decide ADR-A-T;** both answers are compatible with §3.1–3.2.
 
+  **ADR-A-T decision rule: APPROVED by the Principal on 2026-10-14.**
+  - **Deferral only with confirmed controls:** the trigger is **deferred only if operations confirms** the controls over direct production database writes:
+    - which roles can write `elections`;
+    - that only the application and the migration runner do so;
+    - how ad-hoc SQL is controlled and audited.
+  - **Otherwise required:** the trigger is **required** and must be part of the migration design (G-MIG).
+  - **Not yet satisfied:** the operational condition is **NOT satisfied**; no confirmation has been received.
+
 ### 3.4 What stays unchanged
 - `Election::SECURITY_POLICY_FIELDS` and the `isLocked()` lock: System A and the other security settings keep their current rules.
 - `settingsFrozen` (all settings frozen while VotingActive).
@@ -107,11 +119,11 @@
 | **Not yet opened, stored `none`** | **Opening voting is refused** until System B is configured. The explicit path's guard and the scheduled path refuse with "The constitutional limit must be configured before voting can open." **A System B save in the panel writes `ip_count`**, which clears it. | D11 makes System B mandatory; opening with `none` would remove it for the whole voting period. Refusing is explicit and fail-safe; silently rewriting the value at opening would be a hidden change. |
 | **Already opened** (stored before deployment) | **ADR-B §3.6a:** the backfilled record preserves the historical value as evidence, only for elections whose voting closed before deployment (null-safe pre-flight, ADR-B §3.6b). **Preserving it is not an approval of `none`;** no newly opened election can carry `none`. Pending decision **A-2b**. | — |
 
-**Alternatives for "not yet opened, stored `none`":**
+**Alternatives for "not yet opened, stored `none`"** (not chosen):
 - (ii) normalise to `ip_count` at opening, with an audit entry: silent from the committee's view;
 - (iii) honour `none`: contradicts D11.
 
-The **approval requested** is for row 2 = refuse opening.
+**A-2: APPROVED by the Principal on 2026-10-14: row 2 = refuse opening.** It applies to **both** opening paths: the explicit `open_voting` transition and the scheduled `enforceVotingLock`. It becomes effective with ADR-A, which itself stays blocked until O-3.
 
 ### 3.6 Transactional failure behaviour (r2)
 
@@ -160,9 +172,9 @@ The **approval requested** is for row 2 = refuse opening.
 
 ## 8 · Open questions / approval conditions
 1. **O-3 (operations), blocking:** confirm the production PostgreSQL default isolation level is READ COMMITTED (or stricter). If it is SERIALIZABLE, the protocol stays correct, but serialisation failures must be retried; this ADR would then need a retry clause (r3). **No approval of this ADR before O-3.**
-2. **ADR-A-T (Principal decision, separate):** trigger **deferred** (recommended) or **required now** (§3.3).
-3. **A-2, §3.5 row 2:** approve "refuse opening while `none` is stored", or choose (ii) or (iii).
-4. **A-2b** (historical `none` in backfilled records) is decided in ADR-B §3.6a.
+2. **ADR-A-T:** decision rule APPROVED 2026-10-14 (§3.3). Deferred only with the operations confirmation of write controls; otherwise required. **The confirmation is outstanding.**
+3. **A-2, §3.5 row 2:** APPROVED 2026-10-14 (refuse opening while `none` is stored, both opening paths).
+4. **A-2b:** APPROVED WITH CONDITIONS 2026-10-14 in ADR-B §3.6a.
 
 ## 9 · Recommendation
 **After O-3:** approve option (a) with the A-2 resolution of §3.5 and the failure behaviour of §3.6. **Decide ADR-A-T separately.**

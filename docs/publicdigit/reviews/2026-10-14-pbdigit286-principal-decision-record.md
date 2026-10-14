@@ -10,11 +10,19 @@
 - **Approved:** R1–R5, R1-P provenance, and the Human Arbiter policy decisions in §3.2.
 - **G-PLAN approved** (Principal, 2026-10-14, plan r3 at `914b773aa`; P0 only).
 - **A-1 confirmed** (§8).
-- **Drafted under P0, not approved:** ADR-A, ADR-B, ADR-C (§6) and the AUD-2 entry (§9).
+- **Recorded 2026-10-14 (§3.4):**
+  - A-2 approved;
+  - A-2b approved with conditions;
+  - the empty-end-time release rule approved (any election);
+  - **G-ADR-B approved conditionally**;
+  - **G-ADR-C approved conditionally**;
+  - the **ADR-A-T decision rule** approved (its operational condition is **not** satisfied).
 - **Not approved:**
-  - **ADR-A**, **ADR-B**, **ADR-C**;
+  - **ADR-A / G-ADR-A** (blocked until O-3);
+  - the **AUD-2 entry** (G-AUD2 pending, §9);
   - **G-MIG** (migration and backfill), **G-ISO**, **G-AUTH-T**, **G-REL**;
-  - the operations verification **O-3**.
+  - **P1**.
+- **Blocked:** the operations verification **O-3**.
 - **These decisions are not implementation authorization.** PBDIGIT-286 stays `OPEN`.
 
 **Companions:**
@@ -181,6 +189,25 @@ An approved policy decision **does not** approve the ADR, migration, test or rel
 
 Only IPv6 networks change with D6: addresses in one /64 count together.
 
+### 3.4 Principal decisions on the ADR review (recorded 2026-10-14)
+Recorded at the Principal's explicit instruction. **None of these is implementation authorization.**
+
+| ID | Decision | Status | Where recorded |
+|---|---|---|---|
+| **A-2** | Refuse to open a not-yet-opened election while its System B strategy is `none`; applies to both opening paths (explicit `open_voting`, scheduled `enforceVotingLock`) | **APPROVED** | ADR-A §3.5 |
+| **A-2b** | Preserve historical `none`/`ip_strict` **only** for elections **demonstrably closed before deployment**, and **only** when all documented safety conditions (1–3) hold; not an approval of `none` | **APPROVED WITH CONDITIONS** | ADR-B §3.6a |
+| **Empty-end-time release rule** | Block activation for **any** election with `voting_locked = true AND (voting_ends_at IS NULL OR voting_ends_at > now())`; individual sign-off. **No narrowing to real elections** without evidence E-D1 to E-D5 **and** a separate Principal decision | **APPROVED** | ADR-B §3.6b; §5 item 1 |
+| **G-ADR-B** | Frozen-policy-record design, subject to A-2, A-2b and the empty-end-time rule; every fail-closed and release requirement intact | **APPROVED CONDITIONALLY** | ADR-B status |
+| **G-ADR-C** | Lock before the single assessment. **All** concurrency proofs and failure-handling requirements mandatory; the narrow `lockNetworkForCast` entry point (no wider refactor); a failed refusal-record write logged **critically and alertably** while the voter still gets the busy response | **APPROVED CONDITIONALLY** | ADR-C status, §3.1a, §8 |
+| **ADR-A-T** | Defer the database trigger **only if** operations confirms the documented controls over direct production database writes; otherwise required and included in the migration design | **DECISION RULE APPROVED**. Condition **not satisfied** | ADR-A §3.3 |
+| **G-AUD2** | Exact text in §9 | **PENDING**: separate confirmation needed | §9 |
+| **G-ADR-A** | ADR-A | **BLOCKED** until O-3 | ADR-A status |
+
+**Known interaction with PBDIGIT-289** (recorded, not PBDIGIT-286 scope):
+- **The gap:** the scheduled job can set `voting_locked` without a voting window (`ProcessElectionAutoTransitions.php:80-118`).
+- **At release:** the empty-end-time pre-flight must pass.
+- **G-REL must state** whether PBDIGIT-289 is fixed or accepted as a documented known risk, with the scheduled-transition behaviour reviewed (ADR-B §3.6b).
+
 ## 4. Design to be specified in the ADRs (`PENDING ADR`)
 
 ### 4.1 Freeze protocol: ADR-A
@@ -277,9 +304,9 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 | Gate | Status | Evidence required |
 |---|---|---|
 | **G-PLAN** | **APPROVED** (2026-10-14, plan r3 at `914b773aa`) | Principal approval; authorises P0 only |
-| **ADR-A** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Freeze_Protocol.md` | approval + O-3 result; A-2 configuration side (ADR-A §3.5) |
-| **ADR-B** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Policy_Frozen_Record.md` | approval; A-1 applied; A-2 capture/backfill side (ADR-B §3.3, §3.6) |
-| **ADR-C** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Cast_Concurrency.md` | approval |
+| **ADR-A** | **BLOCKED**: `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Freeze_Protocol.md` (A-2 and the ADR-A-T rule decided inside it; the ADR itself unapproved) | O-3 result, then approval; ADR-A-T operations confirmation |
+| **ADR-B** | **APPROVED CONDITIONALLY** 2026-10-14: `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Policy_Frozen_Record.md` | conditions in §3.4; implementation still needs G-MIG, G-ISO, G-REL |
+| **ADR-C** | **APPROVED CONDITIONALLY** 2026-10-14: `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Cast_Concurrency.md` | mandatory proofs §6; implementation still needs G-ISO and P8 authorisation |
 | **AUD-2 decision-record entry** | `PENDING`: **draft text** in §9 | approval, then the annotation is applied to the E2-D4 record |
 | **G-MIG** | `PENDING OPERATIONAL AUTHORIZATION` | migration file + backfill design (§4.8) |
 | **G-ISO** | `PENDING OPERATIONAL AUTHORIZATION` | authorization for `pbdigit274_isolated_test` with the identity guard |
@@ -298,13 +325,13 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 
 ## 8. Open ambiguities (for the ADRs; not decided here)
 - **A-1. `election_id` in the hash: RESOLVED** (Principal, 2026-10-14). `election_id` is a UUID string and is serialised as a **JSON string** in the canonical JSON. ADR-B §3.2 specifies the exact representation (lowercase hyphenated UUID) and the single builder used by capture, backfill, fixtures and verification.
-- **A-2. Elections already storing `none` or `ip_strict`: proposed in the drafted ADRs, not yet approved.**
+- **A-2. Elections already storing `none` or `ip_strict`: RESOLVED 2026-10-14** (A-2 approved; A-2b approved with conditions; §3.4).
   - **ADR-A §3.5:** `ip_strict` is valid (same meaning as `ip_count`); a stored `none` **blocks opening** until System B is configured.
-  - **ADR-B §3.3, §3.6a:** capture stores the value as stored. The backfill **preserves historical** `none`/`ip_strict` only for elections closed before deployment, under explicit safety conditions. **This is not an approval of `none`** (pending decision **A-2b**).
-- **Further pending decisions from the ADR review (r2, 2026-10-14):**
-  - **ADR-A-T:** database trigger deferred or required (ADR-A §3.3);
-  - **ADR-C §8 item 3:** the refusal-record failure handling on the busy path;
-  - **null `voting_ends_at`** blocks activation (ADR-B §3.6b; §5 item 1).
+  - **ADR-B §3.3, §3.6a:** capture stores the value as stored. The backfill **preserves historical** `none`/`ip_strict` only for elections demonstrably closed before deployment, under all safety conditions. **This is not an approval of `none`** (A-2b approved with conditions).
+- **Decisions from the ADR review (r2), recorded 2026-10-14 (§3.4):**
+  - **ADR-A-T:** decision rule approved; the operations condition is **not** satisfied;
+  - **ADR-C §8 item 3:** decided (critical, alertable log; the voter still gets the busy response);
+  - **empty `voting_ends_at`:** blocks activation for any election (ADR-B §3.6b; §5 item 1).
 
 ## 9. Draft AUD-2 decision-record entry (pending G-AUD2; not applied)
 **On approval,** this row is appended under the E2-D4 row (after the PBDIGIT-247 annotation) in `docs/publicdigit/reviews/2026-10-05-phase4-final-cast-hardening-po-decision-record.md` §2c, following the precedent of 2026-10-06:

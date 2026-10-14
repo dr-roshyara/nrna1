@@ -1,6 +1,13 @@
 # ADR-B: Frozen constitutional-policy record, policy source, hash, fixtures and backfill
 
-**Status: 📝 PROPOSED r2, awaiting Principal approval (G-ADR-B).** r2: the explicit historical-`none` exception (§3.6a) and the null-safe release pre-flight (§3.6b), after the Principal review of 2026-10-14.
+**Status: ✅ APPROVED CONDITIONALLY (G-ADR-B) by the Principal on 2026-10-14, as r2.**
+- **Conditions:**
+  - A-2 (ADR-A §3.5, approved);
+  - **A-2b** approved with conditions (§3.6a);
+  - the **empty-end-time block** for **any election** (§3.6b, approved);
+  - every fail-closed rule (§3.4) and every release requirement (§3.6, §3.6b) stays intact.
+- **Approves the design only.** The migration and backfill still need **G-MIG**, tests need **G-ISO**, release needs **G-REL**. **No implementation authorised.**
+- **Earlier status:** PROPOSED r2, awaiting Principal approval. r2: the explicit historical-`none` exception (§3.6a) and the null-safe release pre-flight (§3.6b), after the Principal review of 2026-10-14.
 - **Drafted under:** P0 of the PBDIGIT-286 plan (G-PLAN approved 2026-10-14).
 - **The migration and the backfill additionally require G-MIG.**
 - **Authorises nothing:** no code, tests, migrations, backfill or database access until G-ADR-B, G-MIG **and** G-ISO.
@@ -143,7 +150,7 @@ An Artisan command, `elections:backfill-constitutional-policies` (indicative):
 3. **Every one is reported** by the backfill: ID and stored strategy, listed in the release evidence.
 4. **Not covered:** direct database edits that reopen such an election. They are outside every application guarantee, as in ADR-A §3.3.
 
-**Pending Principal decision A-2b** (narrower than A-2 as a whole): approve "preserve historical `none`/`ip_strict` in backfilled records of elections that closed before deployment, under conditions 1–3".
+**A-2b: APPROVED WITH CONDITIONS by the Principal on 2026-10-14.** Historical `none`/`ip_strict` values are preserved in backfilled records **only** for elections **demonstrably closed before deployment**, and **only** when **all** conditions 1–3 hold. **This is not an approval of `none` as a policy;** no newly opened election may carry it (A-2).
 - **Alternative (b):** block activation while any opened election stores `none`, and decide each case individually.
 - **Alternative (c):** record `ip_count` instead. **Rejected:** it would rewrite a closed election's constitutional history.
 
@@ -157,6 +164,25 @@ An Artisan command, `elections:backfill-constitutional-policies` (indicative):
 - **Null end time:** any opened election with a null `voting_ends_at` **blocks activation**. Operations must provide, per election: ID, type, lifecycle state, `voting_locked_at`, the time of the last completed vote, and the evidence that no vote can be cast. **Activation proceeds only after the Principal signs off each such election individually.** The backfill lists them; it never infers an end time.
 - **Invariant check after the backfill:** every **real** election with `voting_locked = true` has exactly one record. A mismatch **blocks activation**.
 - **Order:** pre-flight (null-safe) → backfill dry run reviewed → backfill applied → invariant check → activation (decision record §5).
+
+**Empty-end-time release rule: APPROVED by the Principal on 2026-10-14, any election.**
+- The condition above applies to **every election type**, demo included.
+- Leaving demo elections out of the backfill is **no** reason to narrow it.
+- **Narrowing to real elections needs** all of E-D1 to E-D5 below **and a separate Principal decision**:
+
+| # | Evidence required before any narrowing | Source |
+|---|---|---|
+| E-D1 | demo voting writes only to demo tables (`demo_codes`, `demo_votes`), never to `codes` or `votes` | code review (read-only) |
+| E-D2 | demo elections are excluded from both IP controls and System B's gate along every cast and code-entry path | code review |
+| E-D3 | no path converts a demo election into a real one or back (otherwise an opened real election could lack a frozen record) | code review + operations |
+| E-D4 | an inventory of production demo elections matching the condition | operations |
+| E-D5 | demo and real elections in one organisation share no security settings or counters | code review |
+
+**Known interaction with PBDIGIT-289** (not PBDIGIT-286 scope; nothing here fixes it):
+- **The gap:** the scheduled job `ProcessElectionAutoTransitions::processNominationToVotingTransition` (`:80-118`) can set `voting_locked` **without a voting window** (no `voting_window_defined` check) [V].
+- **At deployment:** the pre-flight above catches such elections, and **it must pass**.
+- **After deployment:** the job could create one again. It would take no votes and would capture a record from the live values (backlog `PBDIGIT-289`).
+- **G-REL must state** either that **PBDIGIT-289 is fixed**, or that it is **accepted as a documented known risk**. In either case, operations reviews production `allow_auto_transition` usage and the scheduled-transition behaviour.
 
 ### 3.7 Test fixtures (H2 = F1)
 - **What:** `ElectionFactory::inVotingState()` gets an `afterCreating` callback. **Only for `type = real`**, it inserts a record with `captured_by = test_fixture`, using the shared builder (§3.2).
@@ -200,8 +226,8 @@ An Artisan command, `elections:backfill-constitutional-policies` (indicative):
 - **No new link** between voters and votes.
 
 ## 8 · Open questions / approval conditions
-1. **A-2b (§3.6a):** approve "preserve historical `none`/`ip_strict` in backfilled records of elections closed before deployment, under conditions 1–3", or choose alternative (b).
-1a. **Null end times (§3.6b):** approve "an opened election with a null `voting_ends_at` blocks activation until individually signed off by the Principal".
+1. **A-2b (§3.6a):** APPROVED WITH CONDITIONS, 2026-10-14.
+1a. **Empty end times (§3.6b):** APPROVED, 2026-10-14. Blocks activation for any election; individual sign-off; narrowing only after E-D1 to E-D5 plus a separate decision.
 2. **Table and command names** are indicative. Approve or rename.
 3. **Alert routing** for the `critical` integrity log is operational [U]. Operations confirm a destination before G-REL.
 4. **G-MIG:** the migration file and this backfill design are approved separately.

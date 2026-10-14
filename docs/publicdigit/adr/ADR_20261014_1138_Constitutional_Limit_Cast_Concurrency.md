@@ -1,6 +1,13 @@
 # ADR-C: Network lock before the single constitutional assessment at the vote
 
-**Status: 📝 PROPOSED r2, awaiting Principal approval (G-ADR-C).** r2: lock-timeout failure sequence (§3.1a) after the Principal review of 2026-10-14.
+**Status: ✅ APPROVED CONDITIONALLY (G-ADR-C) by the Principal on 2026-10-14, as r2.**
+- **Conditions, all mandatory:**
+  - the full §6 proof list, including the same-session re-acquire **before any safety claim**;
+  - the §3.1a busy sequence (no vote and no assessment-generated security event on a timeout);
+  - **§8.3:** a failed refusal-record write is **logged critically and alertable**, while the voter still gets the busy response.
+- **Lock entry point:** the narrow public `IpVoteLimit::lockNetworkForCast()` (§8.1), subject to the proof requirements; no wider refactor.
+- **Approves the design only.** Tests need **G-ISO**; P8 needs its own authorisation. **No implementation authorised.**
+- **Earlier status:** PROPOSED r2, awaiting Principal approval. r2: lock-timeout failure sequence (§3.1a) after the Principal review of 2026-10-14.
 - **Drafted under:** P0 of the PBDIGIT-286 plan (G-PLAN approved 2026-10-14).
 - **Authorises nothing:** no code, tests or database access until G-ADR-C **and** G-ISO.
 
@@ -83,7 +90,7 @@
 - **No vote can result.**
 - **The admin-facing record is lost for that attempt:** a file-store failure, logged by the outer catch.
 
-**Proposed requirement (implementation detail pending approval):** step 4 is wrapped so that a file-write failure is logged (`voting_audit`, critical) **and** the voter still receives the busy refusal. No reconciliation source exists for it, since nothing about the attempt is persisted in the database. **Approval of this wrapping is part of this ADR (§8 item 3).**
+**Requirement (decided 2026-10-14, §8 item 3):** step 4 is wrapped so that a file-write failure is logged **critically** (`voting_audit`) and is **alertable**, **and** the voter still receives the busy response. Alert routing is an operational item under G-REL. No reconciliation source exists for it, since nothing about the attempt is persisted in the database.
 
 ### 3.2 Lock scope = count scope (D6)
 - **What System B counts** after P6: completed votes through `IpVoteLimit::votesFrom($election, $ip)`, the same IP group as the lock key. Every vote the count includes is therefore serialised by the lock. The lock is never narrower than the count.
@@ -131,7 +138,7 @@
    - (c) **exactly one** `ip_blocked` audit entry with `reason: network_busy`, `step: vote`;
    - (d) the voter receives the busy message.
 
-   **Second case:** with the audit-file write forced to fail, the voter still receives the busy refusal and a critical `voting_audit` entry exists (if §8 item 3 is approved).
+   **Second case (mandatory, §8 item 3):** with the audit-file write forced to fail, the voter still receives the busy response and a critical `voting_audit` entry exists.
 2. **Same-session re-acquire:** in one transaction, taking the lock twice succeeds immediately, and the lock is released at commit. **No concurrency claim before this passes.**
 3. **Serialisation:** with System B stricter (for example N = 2, Unverified → 1), a held lock shows that the waiting vote counts after the first commit and is refused at the boundary (D7 `>=`).
 4. **Whitelisted** network: no lock is taken.
@@ -146,9 +153,9 @@
 - **No link** between voters and votes.
 
 ## 8 · Open questions / approval conditions
-1. **Make `lockNetwork` public** as `lockNetworkForCast` (the System A service already owns the lock): approve, or require a separate small lock class.
-2. **The concurrency proof list (§6)** is the acceptance condition for P8. **No safety claim** about the same-session re-acquire before §6 item 2 passes.
-3. **§3.1a step 4 wrapping:** a refusal-record file failure is logged critically, and the voter still gets the busy refusal. Approve, or accept today's behaviour (the generic failure message).
+1. **Lock entry point:** DECIDED 2026-10-14. The narrow public `lockNetworkForCast` (no separate lock class, no wider refactor).
+2. **The concurrency proof list (§6)** is the mandatory acceptance condition for P8. **No safety claim** about the same-session re-acquire before §6 item 2 passes.
+3. **§3.1a step 4 wrapping:** DECIDED 2026-10-14. A refusal-record write failure is logged **critically and alertably**; the voter still gets the busy response.
 
 ## 9 · Recommendation
 **Approve option (3) as specified**, with the §6 proof list as P8's acceptance.
