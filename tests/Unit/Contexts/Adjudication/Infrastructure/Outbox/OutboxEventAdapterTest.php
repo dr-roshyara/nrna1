@@ -15,10 +15,11 @@ use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Contexts\Adjudication\Domain\Events\DeterminationIssued;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Services\TenantContext;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
+use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * S7 — OutboxEventAdapter: null tenant cast silently produces empty string.
@@ -45,11 +46,11 @@ class OutboxEventAdapterTest extends TestCase
     {
         parent::setUpBeforeClass();
 
-        // tests/Unit/Contexts/Adjudication/Infrastructure/Outbox/ → 6 levels → project root
-        $basePath = dirname(__DIR__, 6);
-        /** @var Application $app */
-        $app = require $basePath . '/bootstrap/app.php';
-        $app->make(Kernel::class)->bootstrap();
+        // PBDIGIT-283 R4: boot through Tests\CreatesApplication as a database-free test (marker + pre-provider check).
+        // Any database access then fails at a non-existent socket instead of reaching a real database (PBDIGIT-291).
+        $app = (new class implements DatabaseFreeTest {
+            use CreatesApplication;
+        })->createApplication();
 
         static::$app = $app;
     }

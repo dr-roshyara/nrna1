@@ -171,8 +171,9 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 - [x] G-PLAN-283 · [x] D-283-1 to D-283-4 · [x] C-1 to C-3 incorporated (2026-10-14) · [ ] G-RUN-DF (not authorised)
 - [x] G-RUN-DF (authorised 2026-10-14, C-1 command only) · [x] **R1** (accepted 2026-10-14; guide `developer_guide/testing/01_database_free_tests.md`)
 - [x] **R2** (committed `6d394e6e1`; guide `developer_guide/testing/02_default_suite_pinning.md`)
-- [x] **R3** (committed 2026-10-14; guide `developer_guide/testing/03_pre_provider_hook.md`)
-- [ ] R4 · R5 (each with evidence and a developer-guide step under `developer_guide/testing/`)
+- [x] **R3** (committed `17167dec3`; guide `developer_guide/testing/03_pre_provider_hook.md`)
+- [x] **R4** (accepted by the Principal 2026-10-14, committed; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
+- [ ] R5 (each with evidence and a developer-guide step under `developer_guide/testing/`)
 - [ ] G-RUN-NEG, G-RUN-POS → R6
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
@@ -199,9 +200,17 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - `PreProviderHookTest`: RED 7 unsafe configurations booted at dead sockets → GREEN 8 tests (refused with `db` unbound, `AppServiceProvider` not loaded); `TestDatabaseSafetyTest` +2 pure cases (13 tests);
   - regression all green with the hook active;
   - **finding:** R1's `DatabaseFreeEnvironmentTest::test_enter_refuses_a_cached_configuration_and_restores_first` calls `fail()` inside a `catch (RuntimeException)` and its asserted text ("cached") is in the `fail()` message, so it can't detect a missing refusal. **Fixed with R3 on the Principal's instruction** (capture, assert outside the `try`; 12 tests, 134 assertions);
-  - committed with R3.
+  - committed with R3 (`17167dec3`).
+- **2026-10-14, R4 (G-RUN-DF, C-1 command):**
+  - `tests/Architecture/LaravelBootIsGuardedTest.php`: only `CreatesApplication` (and the guarded isolated worker) requires `bootstrap/app.php`; every Laravel test case uses the trait's `createApplication()` and has a cover;
+  - RED: four plain PHPUnit tests booted Laravel themselves (`VotingEligibilityMiddlewareRegressionTest`, `ConstitutionalTransitionGuardSystemRoleBypassTest`, `TrustPolicyEvaluatorNetworkRestrictionTest`, `OutboxEventAdapterTest`). The outbox one attempts a real INSERT. **Plan deviation, approved by the Principal (option A):** all four boot through `CreatesApplication` as database-free tests;
+  - review hardening: the regex detector missed `$this->app =`, `static::$app =`, `include` and split-literal paths (old pattern run over 12 snippets: 4 of 8 executable forms missed). Replaced by a tokenizer detector with 12 snippet cases; check 5 added (anonymous `CreatesApplication` sites must be marked; one deliberate unmarked fixture, `PreProviderHookTest`);
+  - GREEN 17 tests (12 snippets + 5 checks); the four tests green; regression green;
+  - backlog `PBDIGIT-291` (the outbox test's weak assertion);
+  - **accepted by the Principal** after a final source review: no blocking defect. Limits recorded in guide 04 (variable-only paths not detected; check 5 needs `use CreatesApplication;` first in the anonymous body; checks 3–4 read the first class per file). The database-free runs don't prove outbox persistence (PBDIGIT-291) or real-suite safety (R6);
+  - committed.
 
 ## 11. Next actions
-1. **R4 (coverage architecture test)** needs a start authorisation; it runs under G-RUN-DF. G-RUN-NEG and G-RUN-POS stay unauthorised.
+1. **R5 (no reach into audit or geo)** needs a start authorisation; it runs under G-RUN-DF. G-RUN-NEG and G-RUN-POS stay unauthorised.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

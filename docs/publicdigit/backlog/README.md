@@ -167,6 +167,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-288`](PBDIGIT-288-ip-limit-enforcement-and-ip-data.md) | **IP limit enforcement gaps, visibility and IP data minimisation** (no IP check at cast, per-voter lock only, code-entry IP counted, IPv6 per address, audit, retention, dead code) | — | `OPEN` · not authorised |
 | [`PBDIGIT-289`](PBDIGIT-289-opened-election-without-end-time-reopens-settings.md) | **An opened election without a voting end time falls back to SetupNomination, and its security settings become editable again** (`isVotingOpen` false on an empty end; `isLocked()` false; from the PBDIGIT-286 review) | — | `OPEN` · not authorised |
 | [`PBDIGIT-290`](PBDIGIT-290-committee-handler-binding-queries-on-resolution.md) | **Resolving the committee-creation handler queries the database, so constructing its controller does too** (`AppServiceProvider` binding reads `governance_level_definitions`; `gatherMiddleware()` reaches it; from PBDIGIT-283 R1) | — | `OPEN` · not authorised |
+| [`PBDIGIT-291`](PBDIGIT-291-outbox-adapter-test-weak-assertion.md) | **An outbox adapter test passes on any database failure, so it proves little** (`OutboxEventAdapterTest` set-tenant case swallows every `Throwable`; from PBDIGIT-283 R4) | — | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

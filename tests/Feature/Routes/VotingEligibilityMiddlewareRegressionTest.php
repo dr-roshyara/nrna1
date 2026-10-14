@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\Routes;
 
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Route;
 use PHPUnit\Framework\TestCase;
+use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * S4 regression guard — vote.eligibility middleware on Step 1 routes.
@@ -29,10 +30,10 @@ class VotingEligibilityMiddlewareRegressionTest extends TestCase
     {
         parent::setUpBeforeClass();
 
-        $basePath = dirname(__DIR__, 3);
-        /** @var Application $app */
-        $app = require $basePath . '/bootstrap/app.php';
-        $app->make(Kernel::class)->bootstrap();
+        // PBDIGIT-283 R4: boot through Tests\CreatesApplication as a database-free test (marker + pre-provider check).
+        $app = (new class implements DatabaseFreeTest {
+            use CreatesApplication;
+        })->createApplication();
 
         static::$app = $app;
     }

@@ -5,10 +5,11 @@ namespace Tests\Unit\Application\Election\Security;
 use App\Application\Election\Security\TrustPolicyEvaluator;
 use App\Domain\Election\Security\NetworkTrustEvidence;
 use App\Models\Election;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * S8 — TrustPolicyEvaluator: null-coalescing operator precedence bug.
@@ -49,11 +50,10 @@ class TrustPolicyEvaluatorNetworkRestrictionTest extends TestCase
     {
         parent::setUpBeforeClass();
 
-        // tests/Unit/Application/Election/Security/ → 5 levels → project root
-        $basePath = dirname(__DIR__, 5);
-        /** @var Application $app */
-        $app = require $basePath . '/bootstrap/app.php';
-        $app->make(Kernel::class)->bootstrap();
+        // PBDIGIT-283 R4: boot through Tests\CreatesApplication as a database-free test (marker + pre-provider check).
+        $app = (new class implements DatabaseFreeTest {
+            use CreatesApplication;
+        })->createApplication();
 
         static::$app = $app;
     }

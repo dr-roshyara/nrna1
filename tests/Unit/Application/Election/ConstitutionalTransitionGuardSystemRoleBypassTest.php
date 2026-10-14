@@ -8,10 +8,11 @@ use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use App\Exceptions\InvalidTransitionException;
 use App\Models\Election;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Framework\TestCase;
+use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * S5 — ConstitutionalTransitionGuard: system-role bypass (S5 regression guard).
@@ -37,11 +38,10 @@ class ConstitutionalTransitionGuardSystemRoleBypassTest extends TestCase
     {
         parent::setUpBeforeClass();
 
-        // tests/Unit/Application/Election/ → 4 levels up → tests/ → 1 more → project root
-        $basePath = dirname(__DIR__, 4);
-        /** @var Application $app */
-        $app = require $basePath . '/bootstrap/app.php';
-        $app->make(Kernel::class)->bootstrap();
+        // PBDIGIT-283 R4: boot through Tests\CreatesApplication as a database-free test (marker + pre-provider check).
+        $app = (new class implements DatabaseFreeTest {
+            use CreatesApplication;
+        })->createApplication();
 
         static::$app = $app;
     }
