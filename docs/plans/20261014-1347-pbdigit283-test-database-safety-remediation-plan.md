@@ -170,7 +170,8 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 ## 9. Task checklist
 - [x] G-PLAN-283 · [x] D-283-1 to D-283-4 · [x] C-1 to C-3 incorporated (2026-10-14) · [ ] G-RUN-DF (not authorised)
 - [x] G-RUN-DF (authorised 2026-10-14, C-1 command only) · [x] **R1** (accepted 2026-10-14; guide `developer_guide/testing/01_database_free_tests.md`)
-- [ ] R2 · R3 · R4 · R5 (each with evidence and a developer-guide step under `developer_guide/testing/`)
+- [x] **R2** (implemented 2026-10-14, awaiting review; guide `developer_guide/testing/02_default_suite_pinning.md`)
+- [ ] R3 · R4 · R5 (each with evidence and a developer-guide step under `developer_guide/testing/`)
 - [ ] G-RUN-NEG, G-RUN-POS → R6
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
@@ -186,10 +187,15 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - R1(b2) marker in `createApplication()`, outer-net fail-safe: RED interface missing (nothing booted) → GREEN 3 + 1;
   - all 12 tests marked. **Finding:** `VerifyVoterSlugTest` read a database through `gatherMiddleware()` on all routes. Fixed in the test (only `{vslug}` routes, Principal option (a)); production cause → backlog `PBDIGIT-290`;
   - regression: 12 marked + guard 71 + `TestDatabaseSafetyTest` 11 + `DatabaseResetIsGuardedTest` 1, all green;
-  - **R1 accepted by the Principal.** Uncommitted. No database reached; no Artisan, migration or reset.
+  - **R1 accepted by the Principal;** committed `164f74066`. No database reached; no Artisan, migration or reset.
+- **2026-10-14, R2 (G-RUN-DF, C-1 command):**
+  - `DefaultSuitePinningTest`: RED 3 failures → GREEN 3 tests, 50 assertions;
+  - pins `DATABASE_URL` (empty) and `DB_AUDIT_*`/`DB_PGSQL_GEO_*` (host, port, database `nrna_test`, username; no passwords) in the bootstrap and both XML files, each mirroring its own `DB_*`;
+  - regression: all green;
+  - uncommitted, awaiting review. No database reached.
 
 ## 11. Next actions
-1. Commit R1 (code, tests, guide, `PBDIGIT-290`) when the Principal asks.
-2. **R2 (pinning)** needs the Principal's start authorisation; it runs under G-RUN-DF. G-RUN-NEG and G-RUN-POS stay unauthorised.
+1. The Principal reviews R2; commit when asked.
+2. **R3 (pre-provider hook)** needs a start authorisation; it runs under G-RUN-DF. G-RUN-NEG and G-RUN-POS stay unauthorised.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

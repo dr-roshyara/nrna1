@@ -28,6 +28,17 @@
         <server name="DB_DATABASE" value="nrna_test"/>
         <server name="DB_USERNAME" value="postgres"/>
         <server name="DB_PASSWORD" value="postgres"/>
+        <!-- PBDIGIT-283 R2 (D-283-1): every other PostgreSQL target on the test database too (this file's bootstrap
+             is only the autoloader, so these entries are its only pinning). DATABASE_URL is set and empty. -->
+        <server name="DATABASE_URL" value=""/>
+        <server name="DB_AUDIT_HOST" value="localhost"/>
+        <server name="DB_AUDIT_PORT" value="5432"/>
+        <server name="DB_AUDIT_DATABASE" value="nrna_test"/>
+        <server name="DB_AUDIT_USERNAME" value="postgres"/>
+        <server name="DB_PGSQL_GEO_HOST" value="localhost"/>
+        <server name="DB_PGSQL_GEO_PORT" value="5432"/>
+        <server name="DB_PGSQL_GEO_DATABASE" value="nrna_test"/>
+        <server name="DB_PGSQL_GEO_USERNAME" value="postgres"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>

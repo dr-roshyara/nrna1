@@ -69,6 +69,19 @@
         <server name="DB_PORT" value="5432"/>
         <server name="DB_DATABASE" value="nrna_test"/>
         <server name="DB_USERNAME" value="publicdigit_user"/>
+        <!-- PBDIGIT-283 R2 (D-283-1): every other PostgreSQL target on the test database too. pgsql_audit and
+             pgsql_geo read their own variables (the geo default is `publicdigit`); DATABASE_URL overrides a
+             connection's target, so it is set and empty. Targeting only, no passwords. Mirrors
+             tests/bootstrap-test-database.php. -->
+        <server name="DATABASE_URL" value=""/>
+        <server name="DB_AUDIT_HOST" value="127.0.0.1"/>
+        <server name="DB_AUDIT_PORT" value="5432"/>
+        <server name="DB_AUDIT_DATABASE" value="nrna_test"/>
+        <server name="DB_AUDIT_USERNAME" value="publicdigit_user"/>
+        <server name="DB_PGSQL_GEO_HOST" value="127.0.0.1"/>
+        <server name="DB_PGSQL_GEO_PORT" value="5432"/>
+        <server name="DB_PGSQL_GEO_DATABASE" value="nrna_test"/>
+        <server name="DB_PGSQL_GEO_USERNAME" value="publicdigit_user"/>
         <!-- PBDIGIT-00: DB_PASSWORD is deliberately NOT set here. It resolves from the
              environment (.env / .env.testing / the shell). Two reasons: a plaintext
              database password must not live in a tracked file, and a <server> entry
