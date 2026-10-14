@@ -23,7 +23,8 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 | 02 | [The IP whitelist matcher (`Ipv4Whitelist`)](02_ip_whitelist.md) | `PBDIGIT-285` | committed `e3ea8b0b5` (code), `2a92285ae` (tests) |
 | 03 | [The limit at the vote: lock, voting IP, IPv6 /64](03_ip_limit_at_the_vote.md) | `PBDIGIT-288` items 1–4 | committed `6aeece4d4` (code), `197505f8d` (tests) |
 | 04 | [Every IP refusal in the election audit](04_ip_refusal_audit.md) | `PBDIGIT-288` item 5 | committed `8dd041fc8` (code), `7cb27176d` (tests) |
-| 05 | [Trusted proxy: where the client IP comes from](05_trusted_proxy.md) | `PBDIGIT-287` | implemented and tested; **not yet committed** |
+| 05 | [Trusted proxy: where the client IP comes from](05_trusted_proxy.md) | `PBDIGIT-287` | committed `bb06acb4d` (code), `f16eb8ba7` (tests) |
+| 06 | [The constitutional per-IP limit (System B) as it works today](06_constitutional_limit.md) | `PBDIGIT-286` (OPEN) | **current behaviour only**; PBDIGIT-286 changes are planned, not implemented |
 
 ## How the client IP is obtained
 - **In code:** `$request->ip()` / `Request::getClientIp()` (no argument).
@@ -33,7 +34,7 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 ## Open work (backlog)
 | Item | What |
 |---|---|
-| `PBDIGIT-286` | the constitutional limit is hidden and effectively 3 (`attested` hard-coded false), and the admin switch doesn't control it. Needs a PO decision |
+| `PBDIGIT-286` | the constitutional limit is hidden and effectively 3 (`attested` hard-coded false), and the admin switch doesn't control it (guide 06). Decision record and DRAFT plan committed (`e3d186434`); 16 decisions and the gates are open |
 | `PBDIGIT-288` | items 1–5 done (guides 03, 04). Open: IP retention and keyed hashing; settings-page wording; the off-by-one between the two limits; dead IP code |
 | `PBDIGIT-284` | parked: the vote hash and an audit entry can link a vote to its voter (not an IP issue, but found in the same review) |
 
