@@ -194,7 +194,11 @@ Recorded at the Principal's explicit instruction. **None of these is implementat
 
 | ID | Decision | Status | Where recorded |
 |---|---|---|---|
-| **A-2** | Refuse to open a not-yet-opened election while its System B strategy is `none`; applies to both opening paths (explicit `open_voting`, scheduled `enforceVotingLock`) | **APPROVED** | ADR-A §3.5 |
+| **A-2** | Refuse to open a not-yet-opened election while its System B strategy is `none`; applies to the explicit `open_voting` transition and the scheduled **auto-opening** (`ProcessElectionAutoTransitions.php:112`). The after-end lock follows G-A1. | **APPROVED** | ADR-A §3.5 |
+| **G-A1** | The scheduled **lock after an ended, never-opened window** (`ProcessElectionAutoTransitions.php:124-139`) is **not** refused by A-2; it proceeds and **reports** a stored `none` | **APPROVED** (P1 readiness review) | ADR-A §3.2, §3.5 |
+| **G-A2** | The conditional System B update **doesn't** touch `settings_version`; the controller's existing absolute assignment (`ElectionSettingsController.php:239`) stays the only writer (H7: exactly +1) | **APPROVED** | ADR-A §3.1, I-A5 |
+| **G-A3** | P1 makes **both** opening paths conditional and transactional; P3 only **adds the capture** to them | **APPROVED** | plan §6 |
+| **G-A4** | T-1 (H6) and T-2 (H7) move from P1 to **P2** (controller behaviour); P1 stays at model and database level | **APPROVED** | plan §6 |
 | **A-2b** | Preserve historical `none`/`ip_strict` **only** for elections **demonstrably closed before deployment**, and **only** when all documented safety conditions (1–3) hold; not an approval of `none` | **APPROVED WITH CONDITIONS** | ADR-B §3.6a |
 | **Empty-end-time release rule** | Block activation for **any** election with `voting_locked = true AND (voting_ends_at IS NULL OR voting_ends_at > now())`; individual sign-off. **No narrowing to real elections** without evidence E-D1 to E-D5 **and** a separate Principal decision | **APPROVED** | ADR-B §3.6b; §5 item 1 |
 | **G-ADR-B** | Frozen-policy-record design, subject to A-2, A-2b and the empty-end-time rule; every fail-closed and release requirement intact | **APPROVED CONDITIONALLY** | ADR-B status |
@@ -212,10 +216,10 @@ Recorded at the Principal's explicit instruction. **None of these is implementat
 
 ### 4.1 Freeze protocol: ADR-A
 **State protection.** System B fields are written **only** by one dedicated method, and **only when N or the strategy differs from the stored value** (**H6**). Unchanged values never trigger it, so later saves of other settings, for example after voting closes, aren't blocked. The method issues:
-`UPDATE elections SET max_votes_per_ip = ?, network_binding_strategy = 'ip_count', settings_version = settings_version + 1 WHERE id = ? AND voting_locked = false`
+`UPDATE elections SET max_votes_per_ip = ?, network_binding_strategy = 'ip_count' WHERE id = ? AND voting_locked = false` (no `settings_version` change, G-A2)
 - **0 rows:** the whole settings request is refused and nothing is written. The request is handled in one transaction.
 - **D11:** the method never writes `none`.
-- **H7:** `settings_version` is bumped **exactly once** per request. When System B changed, the conditional update increments it and the general update (`buildUpdateData`, `ElectionSettingsController.php:239`) doesn't increment again.
+- **H7:** `settings_version` is bumped **exactly once** per request, by the controller's existing absolute assignment (`buildUpdateData`, `ElectionSettingsController.php:239`), the only writer. The conditional System B update doesn't touch it (G-A2, approved 2026-10-14).
 
 **Concurrency protection.** Both opening paths become conditional, transactional updates (`… SET voting_locked = true … WHERE id = ? AND voting_locked = false`). Only the 1-row winner captures (§4.3).
 - Under READ COMMITTED, a conditional update that waits on the row lock re-checks `voting_locked` after the other transaction commits.

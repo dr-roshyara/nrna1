@@ -56,23 +56,24 @@
   UPDATE elections
      SET max_votes_per_ip = :n,
          network_binding_strategy = 'ip_count',
-         settings_version = settings_version + 1,
          updated_at = now()
    WHERE id = :id AND voting_locked = false
   ```
+  **G-A2 (approved 2026-10-14):** the conditional update **doesn't** touch `settings_version`. See H7 below.
 - **Return value:** `true` when 1 row changed. `false` (0 rows) means voting has opened.
 - **D11:** the strategy is always written as `ip_count`. The method has no strategy parameter, so `none` can't be written through it.
 - **H6, write only on change:** the settings controller calls the method **only** when the submitted N differs from the stored N, or when the stored strategy isn't `ip_count` (see A-2, §3.5). A request whose System B values equal the stored ones never calls it. So after voting opens, and after it closes, saving other settings is unaffected.
 - **0 rows:** the **whole** settings request is refused with a `SecurityPolicyLocked`-style error ("The constitutional limit can't be changed after voting has opened."), and nothing is written.
 - **One transaction:** the settings request runs in a single `DB::transaction` (new), so a 0-row refusal rolls back any other field already written in the same request.
-- **H7, exactly one bump per request:**
-  - when System B changes, its conditional update increments `settings_version`, and `buildUpdateData` must **not** increment again;
-  - otherwise `buildUpdateData` increments as today.
+- **H7, exactly one bump per request (G-A2, approved 2026-10-14):**
+  - the controller's existing **absolute** assignment `settings_version = validated + 1` (`buildUpdateData`, `ElectionSettingsController.php:239`) stays the **only** writer of `settings_version`;
+  - it runs on every accepted settings request, in the same transaction as the System B write, so the net result is exactly +1 whether or not System B changed;
+  - the conditional System B update doesn't touch the version.
 - **The optimistic check** (`checkOptimisticLock`) stays.
 
 ### 3.2 Both opening paths become conditional (concurrency protection)
 - **Explicit path:** `applySideEffectsForOpenVoting`'s update (`Election.php:1930`) adds `AND voting_locked = false`. It already runs inside `transitionTo`'s transaction.
-- **Scheduled path:** `enforceVotingLock` is wrapped in `DB::transaction` and uses the same conditional update.
+- **Scheduled path:** `enforceVotingLock` is wrapped in `DB::transaction` and uses the same conditional update. **It serves two call sites** (G-A1): the **auto-opening** (`ProcessElectionAutoTransitions.php:112`) and the **lock after an ended window that was never opened** (`:136`). The conditional update applies to both.
 - **The winner:** only the transaction whose update changed **1 row** continues with the policy capture (ADR-B §3.3). 0 rows means another path already opened voting: nothing is captured, and no error is raised to the scheduler; the explicit path's transition guard refuses the duplicate anyway.
 
 **Why this serialises (READ COMMITTED):** both the System B write and the opening update are single `UPDATE … WHERE … voting_locked = false` statements on the same row. The second statement waits for the first transaction's row lock, then re-evaluates its `WHERE` against the committed row.
@@ -116,14 +117,14 @@
 | Case | Proposed behaviour | Reason |
 |---|---|---|
 | **Not yet opened, stored `ip_strict`** | Valid. The live policy treats it as `ip_count` (`TrustPolicyEvaluator.php:145`). The next System B write (§3.1) stores `ip_count`. | Same enforcement meaning; no silent change. |
-| **Not yet opened, stored `none`** | **Opening voting is refused** until System B is configured. The explicit path's guard and the scheduled path refuse with "The constitutional limit must be configured before voting can open." **A System B save in the panel writes `ip_count`**, which clears it. | D11 makes System B mandatory; opening with `none` would remove it for the whole voting period. Refusing is explicit and fail-safe; silently rewriting the value at opening would be a hidden change. |
+| **Not yet opened, stored `none`** | **Opening voting is refused** until System B is configured. The explicit path's guard and the scheduled **auto-opening** path (`:112`) refuse with "The constitutional limit must be configured before voting can open." **The lock after an ended, never-opened window (`:136`) is NOT refused** (G-A1): it proceeds and **reports** the stored `none` (`voting_audit` warning), because refusing would leave an ended election unlocked indefinitely and no voting took place. **A System B save in the panel writes `ip_count`**, which clears it. | D11 makes System B mandatory; opening with `none` would remove it for the whole voting period. Refusing is explicit and fail-safe; silently rewriting the value at opening would be a hidden change. |
 | **Already opened** (stored before deployment) | **ADR-B §3.6a:** the backfilled record preserves the historical value as evidence, only for elections whose voting closed before deployment (null-safe pre-flight, ADR-B §3.6b). **Preserving it is not an approval of `none`;** no newly opened election can carry `none`. Pending decision **A-2b**. | — |
 
 **Alternatives for "not yet opened, stored `none`"** (not chosen):
 - (ii) normalise to `ip_count` at opening, with an audit entry: silent from the committee's view;
 - (iii) honour `none`: contradicts D11.
 
-**A-2: APPROVED by the Principal on 2026-10-14: row 2 = refuse opening.** It applies to **both** opening paths: the explicit `open_voting` transition and the scheduled `enforceVotingLock`. It becomes effective with ADR-A, which itself stays blocked until O-3.
+**A-2: APPROVED by the Principal on 2026-10-14: row 2 = refuse opening.** It applies to the explicit `open_voting` transition and the scheduled **auto-opening** (`ProcessElectionAutoTransitions.php:112`). **G-A1 (approved 2026-10-14):** the after-end lock (`:136`) is not refused; it reports the stored `none`. It becomes effective with ADR-A, which itself stays blocked until O-3.
 
 ### 3.6 Transactional failure behaviour (r2)
 
@@ -150,7 +151,7 @@
 - **I-A2:** a System B write and an opening on the same election are serialised; the captured value is the last committed value before opening.
 - **I-A3:** the configuration path never writes `none` (D11).
 - **I-A4:** a settings request whose System B values are unchanged never touches System B (H6).
-- **I-A5:** each settings request increments `settings_version` exactly once (H7).
+- **I-A5:** each settings request increments `settings_version` exactly once (H7), with the controller's absolute assignment as the only writer (G-A2).
 - **I-A6:** System A and every other security setting behave exactly as before.
 
 ## 6 · Consequences
