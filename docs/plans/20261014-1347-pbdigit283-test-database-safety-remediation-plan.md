@@ -1,6 +1,6 @@
 # PBDIGIT-283 test-database safety remediation: implementation plan
 
-**Status: r2 APPROVED (G-PLAN-283) by the Principal, 2026-10-14, with D-283-1 to D-283-4 (G-DEC-283) and corrections C-1 to C-3.** The approval authorises no execution: no code, no tests (including database-free ones), no Artisan, no database access. G-RUN-DF, G-RUN-NEG and G-RUN-POS each need their own explicit authorisation (§4).
+**Status: CLOSED. PBDIGIT-283 `DONE`, closure approved by the Principal 2026-10-14** (`docs/publicdigit/reviews/2026-10-14-pbdigit283-closure-record.md`). Earlier status: **r2 APPROVED (G-PLAN-283) by the Principal, 2026-10-14, with D-283-1 to D-283-4 (G-DEC-283) and corrections C-1 to C-3.** The approval authorises no execution: no code, no tests (including database-free ones), no Artisan, no database access. G-RUN-DF, G-RUN-NEG and G-RUN-POS each need their own explicit authorisation (§4).
 
 **Revisions:**
 - r1 `b71137e62`;
@@ -176,7 +176,7 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 - [x] **R5** (committed `ac66fd940`; guide `developer_guide/testing/05_no_reach_into_audit_or_geo.md`)
 - [x] G-RUN-NEG authorised (2026-10-14) · [x] R6 negative **prepared** (Option A) · [x] R6 negative **executed and accepted** (run 2, `4ce631f39`, 2026-10-14)
 - [x] G-RUN-POS **stage 1** authorised (with an explicit permission for `migrate:fresh` on `nrna_test`), run and accepted 2026-10-14 · [x] **stage 2** (Unit) run and accepted 2026-10-14 · [x] **stage 3** (Feature re-run with `memory_limit=1G` + Architecture) run and accepted 2026-10-14
-- [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
+- [x] PBDIGIT-283 extension closed (2026-10-14) → PBDIGIT-286 G-ISO may be considered (separate authorisation)
 
 ## 10. Progress
 - **2026-10-14:**
@@ -246,8 +246,10 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - **in all runs: 0 PBDIGIT-283 refusals, 0 reset refusals, 0 dead-socket / "not configured" errors;** no failing class among the test files changed since `772d06a5d`; secrets scans clean;
   - **accepted by the Principal.** **Criterion 5 met** in the sense "PBDIGIT-283 neither refuses nor misdirects the default suites"; the suites aren't green.
 
+- **2026-10-14, closure:** closure record `docs/publicdigit/reviews/2026-10-14-pbdigit283-closure-record.md` (criteria 1–6 with evidence; deviations D-1..D-6; follow-ups `PBDIGIT-290`..`293`) **approved by the Principal. PBDIGIT-283 `DONE`.**
+
 ## 11. Next actions
-1. **Closure proposal for PBDIGIT-283** (criteria 1–6 with evidence; deviations: Option A, the incomplete first Feature run) for the Principal's decision.
+1. **Done:** closure approved 2026-10-14.
 2. **Backlog items for the unrelated failures** (stage 2 Unit, stage 3 Feature/Architecture, grouped by cause) and for the PHP `memory_limit` (the Feature suite peaks at 144.5 MB), if the Principal wants them.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

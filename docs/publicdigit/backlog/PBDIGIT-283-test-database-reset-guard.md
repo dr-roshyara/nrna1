@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | Guard: `IMPLEMENTED` · tests green · committed `772d06a5d` (guard) and `fcde1b76b` (record) · a default-suite run on `nrna_test` is still pending. **Remediation extension (2026-10-14): `OPEN` · not authorised** (see the last section). **Blocks PBDIGIT-286 G-ISO.** |
+| **Status** | **`DONE` (2026-10-14), closure approved by the Principal:** `docs/publicdigit/reviews/2026-10-14-pbdigit283-closure-record.md`. Guard `772d06a5d` (record `fcde1b76b`); remediation extension R1–R6 (plan `docs/plans/20261014-1347-pbdigit283-test-database-safety-remediation-plan.md`). Deviations D-1..D-6 and follow-ups `PBDIGIT-290`..`PBDIGIT-293` in the closure record. **PBDIGIT-286 G-ISO may now be considered** (separate authorisation). |
 | **Severity** | high: data loss on the development database (the PO decided no restore) |
 
 ## Defect
@@ -25,7 +25,7 @@
 - [x] The exact incident command is refused, and the target is untouched (end-to-end, scratch SQLite: RED 5 tables → GREEN 0 bytes).
 - [x] Legitimate runs still work (isolated configuration: pass; whole isolated suite 94 / 490).
 - [x] Every database-resetting test class inherits a guarded base (architecture test).
-- [ ] **The default suite** (`phpunit.xml`, `nrna_test`) runs with the guard. Not run here: `nrna_test` is off limits for this session's work. The guard allows `nrna_test` by design, but no default-suite run has confirmed it.
+- [x] **The default suite** (`phpunit.xml`, `nrna_test`) runs with the guard: R6 positive stages 1–3, 2026-10-14 (`b6b7d67fa`, `fd573dd40`, `764d9ea2f`), with no legitimate test refused.
 
 ## Follow-ups (not in scope)
 - **Two plain-PHPUnit tests carry an inert `RefreshDatabase`:** `IpEvidenceDeterminismTest`, `IpEvidenceTopologyEquivalenceTest`. Remove the trait.
@@ -52,11 +52,13 @@
 - **U-4:** whether any migration or reset can reach the audit or geo databases.
 
 **Acceptance criteria:**
-- [ ] **1. Every connection pinned:** every connection a test can use (default, `pgsql_audit`, `pgsql_geo`) is pinned to an approved test database, or verified by the guard.
-- [ ] **2. Fail-closed bootstrap:** the safety check runs **before any database query or destructive setup** (at bootstrap or application creation, not after boot). It refuses unless `APP_ENV=testing` **and** every connection's configured database is approved; otherwise nothing is touched.
-- [ ] **3. Enforced coverage:** an architecture test requires every test that boots Laravel without a guarded base to neutralise or pin its connections explicitly.
-- [ ] **4. Negative evidence** (**separate authorisation** to run): a `--no-configuration` run of a `Tests\TestCase` test is refused before any query, with nothing changed.
-- [ ] **5. Positive evidence** (**separate authorisation** to run): the default suite runs against the approved test database (closes U-3).
-- [ ] **6. No reach into audit or geo:** verification (code review plus a guarded check) that no migration or reset can affect non-test audit or geography databases (closes U-4).
+- [x] **1. Every connection pinned** (R2 `6d394e6e1`, R3 `17167dec3`; `DB_URL` gap → `PBDIGIT-293`): every connection a test can use (default, `pgsql_audit`, `pgsql_geo`) is pinned to an approved test database, or verified by the guard.
+- [x] **2. Fail-closed bootstrap** (R3 `17167dec3`): the safety check runs **before any database query or destructive setup** (at bootstrap or application creation, not after boot). It refuses unless `APP_ENV=testing` **and** every connection's configured database is approved; otherwise nothing is touched.
+- [x] **3. Enforced coverage** (R1 `164f74066`, R4 `b7138fafa`): an architecture test requires every test that boots Laravel without a guarded base to neutralise or pin its connections explicitly.
+- [x] **4. Negative evidence** (G-RUN-NEG run 2, `812538b62`) (**separate authorisation** to run): a `--no-configuration` run of a `Tests\TestCase` test is refused before any query, with nothing changed.
+- [x] **5. Positive evidence** (G-RUN-POS stages 1–3; no PBDIGIT-283 refusal or misdirection; the suites aren't green, D-4) (**separate authorisation** to run): the default suite runs against the approved test database (closes U-3).
+- [x] **6. No reach into audit or geo** (R5 `ac66fd940`): verification (code review plus a guarded check) that no migration or reset can affect non-test audit or geography databases (closes U-4).
 
 **Until this extension is done:** no PHPUnit, Artisan migration/reset or database operation for PBDIGIT-286. PBDIGIT-286's **G-ISO** stays closed (plan `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` §13).
+
+**2026-10-14: extension done.** Closure approved; G-ISO may be considered under its own authorisation.
