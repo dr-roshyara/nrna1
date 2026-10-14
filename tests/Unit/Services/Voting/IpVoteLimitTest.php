@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-278 item 8 (database-free): one reading of the per-IP vote limit.
@@ -19,7 +20,7 @@ use Tests\CreatesApplication;
  * never the value. Per election: a whitelisted IP has no limit; an enabled election restriction with a valid
  * maximum wins over the global limit. `pgsql` points at a non-existent socket; no query may run.
  */
-final class IpVoteLimitTest extends BaseTestCase
+final class IpVoteLimitTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

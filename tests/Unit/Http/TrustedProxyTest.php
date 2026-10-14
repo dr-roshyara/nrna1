@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-287 (Human PO 2026-10-13: production runs behind a single reverse proxy; trust only that proxy, from
@@ -23,7 +24,7 @@ use Tests\CreatesApplication;
  * Over the real HTTP kernel (global middleware) on a test-only route. `pgsql` points at a non-existent socket; no
  * query may run.
  */
-final class TrustedProxyTest extends BaseTestCase
+final class TrustedProxyTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

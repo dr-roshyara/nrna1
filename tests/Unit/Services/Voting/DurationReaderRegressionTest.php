@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S6 (database-free; plan section 6, O-10 = B): every reader of voting.time_in_minutes uses the one strict
@@ -31,7 +32,7 @@ use Tests\CreatesApplication;
  * The configured value is 20 (not the default 30) so that a reader ignoring the configuration is visible. Elapsed
  * time is 25 minutes: expired under 20, not expired under 30. `pgsql` points at a non-existent socket.
  */
-final class DurationReaderRegressionTest extends BaseTestCase
+final class DurationReaderRegressionTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-285 (database-free): an election's IP whitelist never exempts an address it does not list.
@@ -21,7 +22,7 @@ use Tests\CreatesApplication;
  * read matches nothing. Entries are validated server-side with the same parser.
  * `pgsql` points at a non-existent socket; no query may run.
  */
-final class ElectionIpWhitelistTest extends BaseTestCase
+final class ElectionIpWhitelistTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

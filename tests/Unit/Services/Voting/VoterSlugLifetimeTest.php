@@ -13,12 +13,13 @@ use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S1: the single voter-slug lifetime rule (plan .claude/plans/distributed-snuggling-swan.md,
  * L-1 … L-3; decisions O-9 = (a), O-10 = (B)). Database-free: models are built in memory and never saved.
  */
-final class VoterSlugLifetimeTest extends BaseTestCase
+final class VoterSlugLifetimeTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

@@ -20,6 +20,7 @@ use LogicException;
 use PDOException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S3: the database-free parts of the voter-slug issuer (plan section 5): classification of
@@ -27,7 +28,7 @@ use Tests\CreatesApplication;
  * `pgsql` points at a non-existent socket and every test asserts that no query ran. The database behaviour is
  * tested in tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php.
  */
-final class VoterSlugIssuerTest extends BaseTestCase
+final class VoterSlugIssuerTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

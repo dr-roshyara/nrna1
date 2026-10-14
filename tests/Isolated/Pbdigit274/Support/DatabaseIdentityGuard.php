@@ -3,6 +3,7 @@
 namespace Tests\Isolated\Pbdigit274\Support;
 
 use PDO;
+use Tests\Support\DatabaseTargetRules;
 use Throwable;
 
 /**
@@ -28,33 +29,25 @@ final class DatabaseIdentityGuard
     /** Never usable for this work, compared case-insensitively. */
     public const FORBIDDEN_NAMES = ['nrna_test'];
 
-    /** Words Laravel's env() turns into true / false / '' / null (Illuminate\Support\Env::get). */
-    public const RESERVED_WORDS = ['true', 'false', 'empty', 'null'];
-
-    /** Every PostgreSQL connection in config/database.php whose target comes from the environment. */
-    public const CONFINED_CONNECTIONS = ['pgsql', 'pgsql_audit', 'pgsql_geo'];
+    /** Every PostgreSQL connection in config/database.php whose target comes from the environment (shared rules). */
+    public const CONFINED_CONNECTIONS = DatabaseTargetRules::CONNECTIONS;
 
     /** Environment prefixes of those connections (config/database.php). */
     private const PREFIXES = ['DB_', 'DB_AUDIT_', 'DB_PGSQL_GEO_'];
 
-    /** A plain PostgreSQL identifier; anything else is refused, never corrected. */
-    private const NAME_PATTERN = '/^[A-Za-z_][A-Za-z0-9_]{0,62}$/';
-
-    /** Syntax only: present, not blank, a plain identifier, not a reserved word, not a forbidden database. */
+    /**
+     * Syntax only: present, not blank, a plain identifier, not a reserved word (the shared rules,
+     * DatabaseTargetRules::identifierProblem, PBDIGIT-283), then this suite's own forbidden list.
+     */
     public static function wellFormedName(mixed $raw): string
     {
-        if ($raw === null || $raw === false) {
-            throw new IsolatedDatabaseRefused('missing', self::ENV_NAME.' is not set.');
-        }
-        if (is_string($raw) && trim($raw) === '') {
-            throw new IsolatedDatabaseRefused('empty', self::ENV_NAME.' is empty.');
-        }
-        if (!is_string($raw) || preg_match(self::NAME_PATTERN, $raw) !== 1) {
-            throw new IsolatedDatabaseRefused('malformed', self::ENV_NAME.' must be a plain PostgreSQL identifier (letters, digits, underscore; at most 63).');
-        }
-        if (in_array(strtolower($raw), self::RESERVED_WORDS, true)) {
-            throw new IsolatedDatabaseRefused('reserved', "'{$raw}' is a word Laravel's env() reinterprets; it is never a database name here.");
-        }
+        match (DatabaseTargetRules::identifierProblem($raw)) {
+            'missing' => throw new IsolatedDatabaseRefused('missing', self::ENV_NAME.' is not set.'),
+            'empty' => throw new IsolatedDatabaseRefused('empty', self::ENV_NAME.' is empty.'),
+            'malformed' => throw new IsolatedDatabaseRefused('malformed', self::ENV_NAME.' must be a plain PostgreSQL identifier (letters, digits, underscore; at most 63).'),
+            'reserved' => throw new IsolatedDatabaseRefused('reserved', "'{$raw}' is a word Laravel's env() reinterprets; it is never a database name here."),
+            null => null,
+        };
         if (in_array(strtolower($raw), self::FORBIDDEN_NAMES, true)) {
             throw new IsolatedDatabaseRefused('forbidden', "'{$raw}' is a shared database and is never used for this work.");
         }
@@ -82,12 +75,12 @@ final class DatabaseIdentityGuard
      */
     public static function refuseIfConfigCached(string $configCachePath, array $env): void
     {
-        if (array_key_exists('APP_CONFIG_CACHE', $env)) {
-            throw new IsolatedDatabaseRefused('config_cached', 'APP_CONFIG_CACHE is set; run without a config-cache override.');
+        if (DatabaseTargetRules::configCacheProblem($configCachePath, $env) === null) {
+            return;
         }
-        if (file_exists($configCachePath)) {
-            throw new IsolatedDatabaseRefused('config_cached', 'Laravel configuration is cached; run without a config cache.');
-        }
+        throw new IsolatedDatabaseRefused('config_cached', array_key_exists('APP_CONFIG_CACHE', $env)
+            ? 'APP_CONFIG_CACHE is set; run without a config-cache override.'
+            : 'Laravel configuration is cached; run without a config cache.');
     }
 
     /**

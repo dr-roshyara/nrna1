@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S1 (plan section 7, L-13): the {vslug} route lookup runs WITHOUT model events, so the VoterSlug
@@ -21,7 +22,7 @@ use Tests\CreatesApplication;
  * (SoftDeletes stays); the binding no longer evaluates expiry. Database-free: models are hydrated in memory
  * and SQL is only compiled, never executed; a final assertion proves no query ran.
  */
-final class VoterSlugRouteLookupTest extends BaseTestCase
+final class VoterSlugRouteLookupTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

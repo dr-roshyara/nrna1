@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use ReplaceVoterSlugsPairUniqueWithActivePartialIndex;
 use RuntimeException;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S2: database-free checks of the voter_slugs migration (plan 11 / 11.0). Its behaviour on real
@@ -17,7 +18,7 @@ use Tests\CreatesApplication;
  *
  * Every connection used here points at a dead host, and each test asserts that no query ran.
  */
-final class VoterSlugsActiveIndexMigrationTest extends BaseTestCase
+final class VoterSlugsActiveIndexMigrationTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

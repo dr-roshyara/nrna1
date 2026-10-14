@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * Tenant isolation of voter-slug step records (VoterSlugStep, DemoVoterSlugStep via BelongsToTenant),
@@ -22,7 +23,7 @@ use Tests\CreatesApplication;
  * The database-backed proof is tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php
  * (runs only on the isolated test database, after G5 is authorised).
  */
-final class VoterSlugStepTenantScopeTest extends BaseTestCase
+final class VoterSlugStepTenantScopeTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

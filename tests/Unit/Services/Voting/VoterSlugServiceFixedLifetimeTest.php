@@ -12,12 +12,13 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use LogicException;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-274 S5 (database-free): the legacy VoterSlugService no longer handles real elections and never extends
  * a link in place. `pgsql` points at a non-existent socket; every test asserts that no query ran.
  */
-final class VoterSlugServiceFixedLifetimeTest extends BaseTestCase
+final class VoterSlugServiceFixedLifetimeTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 

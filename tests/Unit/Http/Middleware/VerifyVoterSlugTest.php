@@ -24,6 +24,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * PBDIGIT-273: the VerifyVoterSlug verification contract V-1 … V-6 (plan
@@ -34,7 +35,7 @@ use Tests\CreatesApplication;
  * extend Tests\TestCase, whose setUp writes the platform organisation. Request-path behaviour is covered
  * separately (tests/Feature/Voting/VerifyVoterSlugRequestPathTest.php).
  */
-final class VerifyVoterSlugTest extends BaseTestCase
+final class VerifyVoterSlugTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 
@@ -462,10 +463,12 @@ final class VerifyVoterSlugTest extends BaseTestCase
     {
         // The {vslug} binding (RouteServiceProvider) picks the model by "demo" in the route name; this middleware
         // uses the explicit `election.demo` route middleware. Both must classify every verified slug route alike.
+        // Only {vslug} routes are gathered: gatherMiddleware() constructs the route's controller, and some other
+        // controllers' dependencies query the database when resolved (PBDIGIT-283; backlog PBDIGIT-290).
         $checked = 0;
-        foreach (app('router')->getRoutes() as $route) {
+        foreach ($this->slugRoutes() as $route) {
             $middleware = $route->gatherMiddleware();
-            if (!str_contains($route->uri(), '{vslug}') || !in_array('voter.slug.verify', $middleware, true)) {
+            if (!in_array('voter.slug.verify', $middleware, true)) {
                 continue;
             }
             $checked++;

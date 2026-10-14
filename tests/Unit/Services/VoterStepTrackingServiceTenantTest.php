@@ -14,6 +14,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 use Tests\CreatesApplication;
+use Tests\Support\DatabaseFreeTest;
 
 /**
  * Invariant: recording the same step for the same voter slug must not create a duplicate just because the
@@ -24,7 +25,7 @@ use Tests\CreatesApplication;
  * test asserts that no query ran. The real-database proof is
  * tests/Isolated/Pbdigit274/Database/VoterSlugStepTenantIsolationTest.php (after G5).
  */
-final class VoterStepTrackingServiceTenantTest extends BaseTestCase
+final class VoterStepTrackingServiceTenantTest extends BaseTestCase implements DatabaseFreeTest
 {
     use CreatesApplication;
 
