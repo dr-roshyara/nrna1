@@ -1,6 +1,6 @@
 # PBDIGIT-286 constitutional IP limit: implementation plan
 
-**Status: DRAFT r3, awaiting EP-01 approval (G-PLAN).** This plan authorises nothing. The Human Arbiter's policy decisions of 2026-10-14 are **approved** (record §3.2), but that approves **no** ADR, migration, backfill, database access, test run or deployment. Each has its own gate (§4).
+**Status: r3, APPROVED (G-PLAN) by the Principal on 2026-10-14 at `914b773aa`. The approval authorises P0 only** (drafting ADR-A, ADR-B, ADR-C and the AUD-2 entry). The Human Arbiter's policy decisions of 2026-10-14 are **approved** (record §3.2), but that approves **no** ADR, migration, backfill, database access, test run or deployment. Each has its own gate (§4).
 
 **Revisions:**
 - r2: C-1 to C-8.
@@ -146,9 +146,9 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 | A file audit entry is lost after commit | reconciliation (T-6) |
 
 ## 9. Task checklist
-- [ ] G-PLAN
+- [x] G-PLAN (2026-10-14, at `914b773aa`)
 - [ ] O-3 (operations)
-- [ ] ADR-A, ADR-B, ADR-C, AUD-2 entry → G-ADR-*, G-AUD2
+- [ ] ADR-A, ADR-B, ADR-C, AUD-2 entry → G-ADR-*, G-AUD2 (**drafted** 2026-10-14 under P0; awaiting approval)
 - [ ] G-MIG (migration + backfill design)
 - [ ] G-ISO; G-AUTH-T (optional)
 - [ ] P1 … P9 (each with evidence and a developer-guide step)
@@ -160,7 +160,11 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - r1 drafted;
   - r2: C-1 to C-8;
   - r3: H1–H7, O-2, O-3, and the Human Arbiter decisions recorded.
-- **No code.** Awaiting G-PLAN.
+- **2026-10-14:**
+  - **G-PLAN approved** (P0 only); A-1 confirmed (UUID as a JSON string).
+  - **P0:** ADR-A, ADR-B and ADR-C drafted in `docs/publicdigit/adr/ADR_20261014_1138_*`; the AUD-2 entry drafted in record §9.
+  - A-2 proposed in ADR-A §3.5 and ADR-B §3.3, §3.6.
+- **No code.** Awaiting approval of the ADRs and the AUD-2 entry.
 
 ## 11. Open questions
 **Human Arbiter policy decisions:** none open (record §3.2).
@@ -176,8 +180,9 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 - **Stop** if O-3 shows an isolation level other than READ COMMITTED.
 
 ## 13. Next actions
-1. The Principal reviews plan r3 → G-PLAN.
+1. ~~The Principal reviews plan r3 → G-PLAN~~ (done 2026-10-14).
 2. Operations: O-3.
-3. On G-PLAN: draft ADR-A, ADR-B, ADR-C and the AUD-2 entry (P0) for approval.
+3. ~~Draft ADR-A, ADR-B, ADR-C and the AUD-2 entry (P0)~~ (drafted 2026-10-14). **The Principal reviews them** → G-ADR-A, G-ADR-B, G-ADR-C, G-AUD2 (including the A-2 resolutions).
+4. Then G-ISO (and G-MIG for P3) before P1 starts.
 
 **Traceability:** PBDIGIT-286 · R1–R5 + R1-P · Human Arbiter decisions 2026-10-14 · decision record r3 · HEAD `0d7316dfd`.

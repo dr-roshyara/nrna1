@@ -8,8 +8,11 @@
 
 **Status:**
 - **Approved:** R1–R5, R1-P provenance, and the Human Arbiter policy decisions in §3.2.
+- **G-PLAN approved** (Principal, 2026-10-14, plan r3 at `914b773aa`; P0 only).
+- **A-1 confirmed** (§8).
+- **Drafted under P0, not approved:** ADR-A, ADR-B, ADR-C (§6) and the AUD-2 entry (§9).
 - **Not approved:**
-  - **G-PLAN**, **ADR-A**, **ADR-B**, **ADR-C**;
+  - **ADR-A**, **ADR-B**, **ADR-C**;
   - **G-MIG** (migration and backfill), **G-ISO**, **G-AUTH-T**, **G-REL**;
   - the operations verification **O-3**.
 - **These decisions are not implementation authorization.** PBDIGIT-286 stays `OPEN`.
@@ -243,7 +246,7 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 - **Record generation:** values from the live columns at backfill time, marked `captured_by = backfill`, with the same hash builder.
 - **Idempotent:** an existing record is skipped and reported, never rewritten.
 - **Dry run:** lists what would be written without writing.
-- **Reporting inconsistencies:** for example `none`/`ip_strict` stored (see §8 A-2), a null `voting_ends_at`, or a missing snapshot. They are reported, not silently changed.
+- **Reporting inconsistencies:** for example `none`/`ip_strict` stored (see §8 A-2), a null `voting_ends_at` (**blocks activation**, ADR-B r2 §3.6b), or a missing snapshot. They are reported, not silently changed.
 - **Fail safe:** each election in its own transaction; a failure stops activation (G-REL).
 - **Recovery:** the backfilled rows are identifiable (`captured_by = backfill`) and can be removed before activation. After activation they are authoritative and are not removed.
 - **Not executed in this task.**
@@ -260,7 +263,7 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 
 ## 5. Rollout: D10 = W, D10-B = (i) (approved), G-REL pending
 **Release pre-flight**, all required, evidence recorded:
-1. **No election** with `voting_locked = true AND voting_ends_at > now()`. This covers voting, suspended-during-voting and extended windows; suspension doesn't touch the voting flags [V].
+1. **No election** with `voting_locked = true AND (voting_ends_at IS NULL OR voting_ends_at > now())`. This covers voting, suspended-during-voting and extended windows; suspension doesn't touch the voting flags [V]. **Null-safe since 2026-10-14 (ADR-B r2 §3.6b):** the earlier condition missed null end times, and `hasVotingEnded()` treats null as "not ended". An opened election with a null `voting_ends_at` **blocks activation** until the Principal signs it off individually, with operations evidence per election.
 2. **The scheduled opening job is paused.**
 3. **Maintenance mode is on,** so manual `open_voting` can't run during the deployment. **Pausing the job alone is not sufficient.**
 4. **The approved backfill (§4.8) has run** and been verified (dry run reviewed, then executed, then the invariant checked) **before** code that requires frozen records is activated.
@@ -273,11 +276,11 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 ## 6. Remaining gates and checklist
 | Gate | Status | Evidence required |
 |---|---|---|
-| **G-PLAN** | `PENDING` | your approval of plan DRAFT r3 |
-| **ADR-A** | `PENDING ADR` | ADR file: §4.1 + H6, H7, D11 write rule, trigger evaluation; O-3 result |
-| **ADR-B** | `PENDING ADR` | ADR file: §4.3–4.8, H1, H2 (F1), H4 serialisation incl. A-1, AUD-1 reconciliation |
-| **ADR-C** | `PENDING ADR` | ADR file: §4.9 incl. D6 tenant-context handling |
-| **AUD-2 decision-record entry** | `PENDING` | E2-D4 exception entry |
+| **G-PLAN** | **APPROVED** (2026-10-14, plan r3 at `914b773aa`) | Principal approval; authorises P0 only |
+| **ADR-A** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Freeze_Protocol.md` | approval + O-3 result; A-2 configuration side (ADR-A §3.5) |
+| **ADR-B** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Policy_Frozen_Record.md` | approval; A-1 applied; A-2 capture/backfill side (ADR-B §3.3, §3.6) |
+| **ADR-C** | `PENDING ADR`: **drafted** `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Cast_Concurrency.md` | approval |
+| **AUD-2 decision-record entry** | `PENDING`: **draft text** in §9 | approval, then the annotation is applied to the E2-D4 record |
 | **G-MIG** | `PENDING OPERATIONAL AUTHORIZATION` | migration file + backfill design (§4.8) |
 | **G-ISO** | `PENDING OPERATIONAL AUTHORIZATION` | authorization for `pbdigit274_isolated_test` with the identity guard |
 | **G-AUTH-T** | `PENDING OPERATIONAL AUTHORIZATION` | separate authorization for `nrna_test` |
@@ -294,7 +297,20 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 4. **Operational authorizations pending:** G-PLAN, G-MIG, G-ISO, G-AUTH-T, O-3, G-REL.
 
 ## 8. Open ambiguities (for the ADRs; not decided here)
-- **A-1. `election_id` in the hash:** the approved wording calls it an integer, but election IDs are **UUID strings** [V] (`Election.php:40-43`). This record serialises it as a JSON string. **ADR-B must confirm the representation**, and the Human Arbiter should confirm the correction.
-- **A-2. Elections already storing `none` or `ip_strict`:** D11 forbids configuring `none`, and existing enforcement behaviour stays unchanged without an ADR. The backfill (§4.8) reports any such election and doesn't change it. Whether an opened election with a stored `none` keeps System B off is for **ADR-A/ADR-B** to decide. None is expected, since no write path exists [V/I]; direct database edits are not excluded.
+- **A-1. `election_id` in the hash: RESOLVED** (Principal, 2026-10-14). `election_id` is a UUID string and is serialised as a **JSON string** in the canonical JSON. ADR-B §3.2 specifies the exact representation (lowercase hyphenated UUID) and the single builder used by capture, backfill, fixtures and verification.
+- **A-2. Elections already storing `none` or `ip_strict`: proposed in the drafted ADRs, not yet approved.**
+  - **ADR-A §3.5:** `ip_strict` is valid (same meaning as `ip_count`); a stored `none` **blocks opening** until System B is configured.
+  - **ADR-B §3.3, §3.6a:** capture stores the value as stored. The backfill **preserves historical** `none`/`ip_strict` only for elections closed before deployment, under explicit safety conditions. **This is not an approval of `none`** (pending decision **A-2b**).
+- **Further pending decisions from the ADR review (r2, 2026-10-14):**
+  - **ADR-A-T:** database trigger deferred or required (ADR-A §3.3);
+  - **ADR-C §8 item 3:** the refusal-record failure handling on the busy path;
+  - **null `voting_ends_at`** blocks activation (ADR-B §3.6b; §5 item 1).
+
+## 9. Draft AUD-2 decision-record entry (pending G-AUD2; not applied)
+**On approval,** this row is appended under the E2-D4 row (after the PBDIGIT-247 annotation) in `docs/publicdigit/reviews/2026-10-05-phase4-final-cast-hardening-po-decision-record.md` §2c, following the precedent of 2026-10-06:
+
+> | ↳ *Annotation 2026-10-14 (PBDIGIT-286, Human Arbiter AUD-2)* | **Narrow supersession for one further reason:** a System B (constitutional network limit) refusal is reported as `SecurityVerdict::NetworkLimitReached` → `EntryAuthorizationReason` / `CastDecisionReason::NetworkLimitReached`. The voter is told that the maximum number of votes from their network has been reached for this election and to contact the election committee. **No numeric threshold, trust level or IP is shown.** It is a denial like `Denied`; it is never recorded next to ballot data (I8 unaffected). Every other security detail stays in the chain's own logging. Decision record: `docs/publicdigit/reviews/2026-10-14-pbdigit286-principal-decision-record.md` §3.2 AUD-2; plan `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` P7. |
+
+**Proposed voter wording** (code entry and the vote): *"The maximum number of votes from your network has been reached for this election. Please contact the election committee."*
 
 **Traceability:** PBDIGIT-286 · R1–R5 + R1-P · Human Arbiter decisions 2026-10-14 · consistency corrections C-1 to C-8 · findings H1–H7, O-2, O-3 · HEAD `0d7316dfd`.
