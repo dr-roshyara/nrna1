@@ -9,6 +9,33 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-14, **IP protections delivered (PBDIGIT-278 item 8, 285, 288 items 1–5, 287); PBDIGIT-286 policy decisions approved, plan DRAFT r3, no code**; additive, the blocks below are unchanged)
+
+| | |
+|---|---|
+| 🎯 **Active ticket** | **`PBDIGIT-286`** (the constitutional IP limit). **Planning only:** decision record **r3** and plan **DRAFT r3** committed (`914b773aa`); current-state snapshot `202496531`; guide 06, current behaviour (`7eab0a444`). **No code** |
+| ✅ **Done (2026-10-13)** | **PBDIGIT-278 item 8** `7b3d15583`: one per-IP vote limit, default 10. **This supersedes the 2026-10-13 block's "unset → every voter refused" risk.** **PBDIGIT-285** `e3ea8b0b5`: one IPv4 whitelist matcher. **PBDIGIT-288 items 1–5** `6aeece4d4`, `8dd041fc8`: limit at the vote under a per-network lock, IP at the vote, IPv6 /64, audit at every refusal. **PBDIGIT-287** `bb06acb4d`: `TRUSTED_PROXIES` only. Guides: `developer_guide/election/ip_voting/00–05` |
+| 📌 **Principal / Human Arbiter (2026-10-14)** | R1–R5 confirmed. **All PBDIGIT-286 policy decisions approved** (record §3.2), among them: freeze when voting opens; N ∈ [1, 50]; System B mandatory; D3 = A; `>=`; /64; frozen record (S2) + backfill of every opened election; lock before the single assessment; deployment window + maintenance mode; `NetworkLimitReached` without a number; chief/deputy only; R1-P. Plan approval, ADRs, migrations and test authorizations are **separate gates**. Strict TDD first |
+| ⛔ **Open** | **PBDIGIT-286 gates:** G-PLAN · ADR-A, ADR-B, ADR-C · AUD-2 entry · G-MIG (migration + backfill design) · G-ISO · G-AUTH-T · G-REL · **O-3** (operations: production isolation level, before ADR-A). **Open points for the ADRs:** A-1 (`election_id` is a UUID string; the approved hash wording says integer), A-2 (stored `none`/`ip_strict`). **BL-EMAIL** backlog item approved in principle, not created (separate task). **PBDIGIT-288** items 6, 7, 9 (8 now decided under 286 D7). **PBDIGIT-284** parked. **Ops:** `.env.example` (`VOTING_TRUST_PROXIES` out, `TRUSTED_PROXIES` in, by the owner); **set `TRUSTED_PROXIES` in production before voting opens** |
+| 🧾 **P0 (2026-10-14)** | **G-PLAN approved (P0 only); A-1 confirmed** (UUID as a JSON string). **ADR-A, ADR-B, ADR-C r2 drafted** + AUD-2 entry draft, committed `d01c99e81`. **None approved.** ADR-A is blocked until **O-3** |
+| ▶️ **Next authorised action** | **None.** The Principal decides: O-3 → G-ADR-A, ADR-A-T, A-2, A-2b, the empty-end-time rule, G-ADR-B, G-ADR-C, G-AUD2; then G-ISO, G-MIG. **P1 needs explicit authorisation** |
+| 📚 **Read first** | `docs/publicdigit/reviews/2026-10-14-pbdigit286-principal-decision-record.md` · `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · `developer_guide/election/ip_voting/00_index.md` · sessions `2026-10-13.md` (IP section), `2026-10-14.md` |
+
+---
+
+## 📍 UPDATE (2026-10-13, **PBDIGIT-274 voter-slug lifecycle: S2–S9 implemented and committed; release (G8) and closure pending**; additive, supersedes the "Next authorised action" of the 2026-10-11 block below)
+
+| | |
+|---|---|
+| 🎯 **Active ticket** | **`PBDIGIT-274`**, implementation complete on the isolated database. **Still blocks the deployment of `PBDIGIT-273`** until G8 |
+| ✅ **Done** | **Gates:** G2–G7 met. **Slices** (separate commits, not pushed): S2 migration `7ded36437` · S3 issuer `0cb7c1111` · G6 `f3447a931` · S4 `ac84ca4dc` / `4beb3cfbb` · S5 `e2bd4cc8a` · S7 `0aaadb31c` · S6 `ac2a4736c` · S8 `46bcdb9f7` · S9a `083e4e785` · S9b `cd259e82c` · S9c `712fa9250`. **Developer guides 05–14:** `abdb3b4db`. **Whole isolated suite:** 94 / 490 green |
+| 📌 **PO decisions (2026-10-13)** | O-5 = (b) plain 404 · F-B (false "try again" after commit) repaired · F-A (receipt absorbed) accepted → `PBDIGIT-279` · S9c: live log sites only, dead code → `PBDIGIT-278` item 9 |
+| ⛔ **Open** | **Default-suite regression:** blocked, needs a test database other than `nrna_test`; four updated default-suite tests not run. **G8:** release owner; the S2 migration on `nrna` (runbook, plan section 11.1); the baseline query; **confirm `MAX_USE_IP_ADDRESS` is set in production** (`PBDIGIT-278` item 8: unset, every real voter is refused at verification). **Closure:** `PBDIGIT-276` outcome; backlog D1–D4 |
+| ▶️ **Next authorised action** | **None.** Waiting for the PO on the default-suite regression and G8 |
+| 📚 **Read first** | plan `docs/plans/20261011-2302-voter-slug-lifecycle-plan.md` · to-do `docs/publicdigit/implementation/2026-10-12-PBDIGIT-274-next-steps-todo.md` · guides `developer_guide/election/voter_slug/00_index.md` · session `.claude/sessions/2026-10-13.md` |
+
+---
+
 ## 📍 UPDATE (2026-10-11, **PBDIGIT-274 voter-slug lifecycle: plan approved, slice S1 implemented (database-free)**; additive, the blocks below are unchanged)
 
 | | |
@@ -63,7 +90,18 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 ---
 
-**Updated:** 2026-10-05 *(additive — the **Q3 security policy surface** block is the newest)*
+## 📍 UPDATE (2026-10-09, **Adjudication / correction loop: remediation gate; T-1 runtime-confirmed, T-4 cross-tenant write found; ARB ruling pending**: election session)
+
+| | |
+|---|---|
+| 🎯 **Active ticket** | **`PBDIGIT-211`**: tenant context for non-request execution (scope clarified 2026-10-09 to the outbox / inbox relay and consumers; AC-R1…R4) |
+| 🔬 **Evidence** | Isolated run on **`nrna_test_adjudication`** (`nrna_test` untouched): `tests/Feature/Contexts/Shared/Messaging/RelayTenantContextTest.php`, **5 tests: 3 fail, 1 pass, 1 incomplete (RED characterisation, not a passing suite)**. **T-1** confirmed (relay → `Tenant context not set`). **T-4** cross-tenant write under an ambient tenant (A's event processed under B, marked completed; not reachable in today's cron invocation). **T-5** `outbox_processing_errors` has no migration |
+| 📄 **Records** | `docs/publicdigit/reviews/2026-10-09-adjudication-programme-status-recovery.md` · `…-adjudication-remediation-gate.md` (§10 execution record) · `…-arb-decision-request-tenant-context-non-request-execution.md` (Q1–Q7 + PO proposed direction §7, **not a ruling**) · discovery / blueprint `…-election-review-committee-discovery.md`, `…-election-adjudication-blueprint.md` |
+| ⛔ **Blocking dependency** | **ARB ruling Q1–Q7** (incl. mismatch and soft-deleted-organisation semantics) → then PO authorisation of the 211 fix |
+| 🗂️ **Backlog** | T-2 → annotated on `PBDIGIT-181` · **T-3, T-5 drafted, IDs await PO approval** (gate report §10.8; T-5 prioritised) |
+| 🔒 **Binding order (unchanged)** | `178 → 177 → 174 → 182`; no issuance-path caller before 178 |
+| 🧾 **Decision gate** | Ready for human review: `…-adjudication-remediation-gate.md` §11 (ARB table Q1–Q7, PO table rows 1–5, DoD-warning disposition) |
+| ▶️ **Next authorised action** | **None.** Waiting for: the ARB ruling; PO approval of the T-3 / T-5 items; commit authorisation (211 addendum, RT test, review documents; `PBDIGIT-256` reviewed separately) |
 
 ---
 
@@ -82,6 +120,29 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 🧩 **Correction slice C-1 (2026-10-10)** | **Implemented; acceptance correction done; independent review: ACCEPT WITH EXPLICIT CONDITIONS; conditions recorded; formal acceptance PENDING (G3: PR, then Human PO / ARB)** (`PBDIGIT-268`). Evidence: acceptance review `docs/publicdigit/reviews/2026-10-10-membership-c1-acceptance-review.md` §11–§12 · independent review `…-c1-correction-independent-review.md` · kit `docs/publicdigit/membership/architecture/models/c1_sensitivity/` · guides 04, 05. C-AMEND-1 adopted (contract §14.5 C-3 / C-4 entry criteria; register row 5; CQ-3 OPEN). Runner hardening `PBDIGIT-269` (OPEN, not authorised). F-1 → C-4. Persistence unverified; wider Membership suite has errors outside C-1. Still forbidden without separate authorisation: C-2, C-3, C-4, runner code, adapter, cutover, live writes |
 | ❓ **Waiting** | Principal Reviewer: accept 1b; authorise 264; ratify D-1 … D-5(b) (consent basis, no pending member, End kinds, interim authority, effectiveAt range); approve the participation research contract |
 | ▶️ **Next** | `PBDIGIT-264` → Slice 2 (command wiring, no entry point) → Slice 3 (cutover R10) → Slice 4 (HTTP). **Nothing starts without authorisation** |
+
+---
+
+## 📍 UPDATE (2026-10-08, **Membership architecture RATIFIED, frozen for implementation**)
+
+| | |
+|---|---|
+| ✅ **Ratified** | Principal Reviewer act, 2026-10-08: Architecture D + B′, D1, fact / correction algebra, CFC+, temporal model, concurrency requirement. Record: `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratification-act.md` (recorder's notes N-1…N-6) |
+| 🧊 **Frozen policy** | BD-I5 = no overlap per (p,o) · BD-REV = trim (correction of an annulled fact: inert; of a voided fact: refused) · BD-SYNC = transactional |
+| ❓ **Still open** | BD-REV-ER (absorbing correction; recommended: refuse) and the other policy-only BD / LQ / DS items (verdict §E) |
+| ▶️ **Next** | **EP-01 Membership Implementation Design**: Readiness → plan → **PO approval** → then slices. Not started |
+
+---
+
+## 📍 UPDATE (2026-10-06, **IP evidence + IP Binding delivered: PBDIGIT-222, 250, 247**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-222** `284c9fdea` | Capture IP = separate evidence (`voter_ip_verifications`); "Voter's IP Verification" setting (`ip_verification_enabled`, not security policy); `voter_verification_mode` legacy |
+| ✅ **PBDIGIT-250** `655c2a17c` | Read-only voter list shows identity / IP **states only** (`App\ReadModels\VoterVerificationStates`) |
+| ✅ **PBDIGIT-247** `6bbdb9145` | IP Binding: captured AND matching, fail closed, at forEntry / forCast; `ip_binding_enabled` locked; `SecurityVerdict::IpBindingDenied` (E2-D4 narrow supersession); `capture_voter_ip` window |
+| ⚠️ **Dev DB** | The PO applies migration `2026_10_06_000003` (and `000001` / `000002` if still pending) |
+| ❓ **Next** | **PBDIGIT-251**: Voter Management is 403 from SetupNomination, so the verification / re-capture buttons are unreachable during voting (contact data must stay unchangeable). RED first, after authorisation |
 
 ---
 
