@@ -9,6 +9,7 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | Extends `Tests\TestCase` (resets the database) | the actual `current_database()` must be in `TestDatabaseSafety::RESETTABLE` before any reset (after boot) | `tests/TestCase.php`, `tests/Support/TestDatabaseSafety.php` |
 | PBDIGIT-274 isolated suite | identity guard before boot and before refresh; only `pbdigit274_isolated_test` | `tests/bootstrap-isolated-database.php`, `DatabaseIdentityGuard` |
 | Boots Laravel but must never touch a database | the `DatabaseFreeTest` marker: every target at a dead socket **before** boot (guide 01) | `tests/CreatesApplication.php`, `tests/Support/DatabaseFreeEnvironment.php` |
+| Every test booting Laravel through `CreatesApplication` | the loaded configuration is checked before any provider is registered; unsafe → refused (guide 03) | `tests/CreatesApplication.php`, `TestDatabaseSafety::refuseUnsafeConfiguration` |
 | Plain PHPUnit (no Laravel) | nothing to protect: no boot, no `.env` | — |
 | Any run through `phpunit.xml` / `phpunit-pgsql.xml` | every PostgreSQL target (`DB_*`, `DB_AUDIT_*`, `DB_PGSQL_GEO_*`) pinned to `nrna_test`; `DATABASE_URL` set and empty (guide 02) | `tests/bootstrap-test-database.php`, both XML files |
 
@@ -21,10 +22,11 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | # | Guide | Story | Status |
 |---|---|---|---|
 | 01 | [Database-free tests: shared target rules and the `DatabaseFreeTest` marker](01_database_free_tests.md) | `PBDIGIT-283` R1 | accepted 2026-10-14; committed `164f74066` |
-| 02 | [Default-suite pinning of every PostgreSQL target](02_default_suite_pinning.md) | `PBDIGIT-283` R2 | implemented 2026-10-14; awaiting review; not committed |
+| 02 | [Default-suite pinning of every PostgreSQL target](02_default_suite_pinning.md) | `PBDIGIT-283` R2 | committed `6d394e6e1` |
+| 03 | [The pre-provider hook](03_pre_provider_hook.md) | `PBDIGIT-283` R3 | committed 2026-10-14 |
 
 ## Open work
 | Item | What |
 |---|---|
-| `PBDIGIT-283` R3–R6 | the pre-provider hook; coverage and audit/geo architecture tests; negative and positive evidence |
+| `PBDIGIT-283` R4–R6 | coverage and audit/geo architecture tests; negative and positive evidence |
 | `PBDIGIT-290` | the committee-creation handler binding queries the database when resolved (found by R1) |

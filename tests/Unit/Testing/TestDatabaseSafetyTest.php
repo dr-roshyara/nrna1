@@ -58,4 +58,45 @@ final class TestDatabaseSafetyTest extends TestCase
             $this->assertStringContainsString('phpunit.xml', $e->getMessage());
         }
     }
+
+    // ── PBDIGIT-283 R3: the loaded configuration, checked before any provider ──
+
+    /** @return array<string, array> the connections of a safe configuration */
+    private function safeConnections(): array
+    {
+        return [
+            'pgsql'       => ['driver' => 'pgsql', 'url' => '', 'database' => 'nrna_test'],
+            'pgsql_audit' => ['driver' => 'pgsql', 'database' => 'nrna_test'],
+            'pgsql_geo'   => ['driver' => 'pgsql', 'database' => TestDatabaseSafety::RESETTABLE[1]],
+        ];
+    }
+
+    private function missingCache(): string
+    {
+        return sys_get_temp_dir().'/pbd283-no-such-cache-'.bin2hex(random_bytes(4)).'.php';
+    }
+
+    public function test_a_safe_loaded_configuration_passes(): void
+    {
+        TestDatabaseSafety::refuseUnsafeConfiguration('testing', 'pgsql', $this->safeConnections(), $this->missingCache(), []);
+
+        $this->addToAssertionCount(1);
+    }
+
+    public function test_an_unsafe_loaded_configuration_is_refused_with_every_problem(): void
+    {
+        $connections = $this->safeConnections();
+        $connections['pgsql_geo']['database'] = 'publicdigit';
+        $connections['mysql'] = ['driver' => 'mysql', 'url' => 'mysql://u:s3cr3t@db.example/x'];
+
+        try {
+            TestDatabaseSafety::refuseUnsafeConfiguration('local', 'pgsql', $connections, $this->missingCache(), ['APP_CONFIG_CACHE' => '']);
+            $this->fail('expected a refusal');
+        } catch (RuntimeException $e) {
+            foreach (['PBDIGIT-283', "'pgsql_geo'", "'mysql'", 'APP_ENV', 'cached'] as $named) {
+                $this->assertStringContainsString($named, $e->getMessage());
+            }
+            $this->assertStringNotContainsString('s3cr3t', $e->getMessage());
+        }
+    }
 }

@@ -3,8 +3,10 @@
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Foundation\Bootstrap\LoadConfiguration;
 use Tests\Support\DatabaseFreeEnvironment;
 use Tests\Support\DatabaseFreeTest;
+use Tests\Support\TestDatabaseSafety;
 
 trait CreatesApplication
 {
@@ -25,6 +27,18 @@ trait CreatesApplication
 
         try {
             $app = require __DIR__.'/../bootstrap/app.php';
+
+            // PBDIGIT-283 R3 (D-283-2): check the LOADED configuration before any service provider is registered
+            // (LoadConfiguration runs before RegisterProviders), for every test, whatever started the run.
+            $app->afterBootstrapping(LoadConfiguration::class, static function ($app): void {
+                TestDatabaseSafety::refuseUnsafeConfiguration(
+                    $app->environment(),
+                    (string) $app['config']->get('database.default'),
+                    (array) $app['config']->get('database.connections', []),
+                    $app->getCachedConfigPath(),
+                    getenv(),
+                );
+            });
 
             $app->make(Kernel::class)->bootstrap();
         } finally {

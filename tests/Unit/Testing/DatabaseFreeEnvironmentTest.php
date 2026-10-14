@@ -211,14 +211,18 @@ final class DatabaseFreeEnvironmentTest extends TestCase
         $before = $this->liveTargets();
         $file = tempnam(sys_get_temp_dir(), 'pbd283cfg');
 
+        // PHPUnit's own failures extend RuntimeException: capture the refusal, assert outside the try (PBDIGIT-283 R3).
+        $refusal = null;
         try {
-            DatabaseFreeEnvironment::enter($file);
-            $this->fail('expected a refusal: a cached configuration ignores every variable');
+            DatabaseFreeEnvironment::restore(DatabaseFreeEnvironment::enter($file));   // restore only if not refused
         } catch (\RuntimeException $e) {
-            $this->assertStringContainsString('cached', $e->getMessage());
+            $refusal = $e;
         } finally {
             unlink($file);
         }
+
+        $this->assertNotNull($refusal, 'expected a refusal: a cached configuration ignores every variable');
+        $this->assertStringContainsString('The configuration is cached', $refusal->getMessage());
         $this->assertSame($before, $this->liveTargets());
     }
 

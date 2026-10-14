@@ -34,4 +34,24 @@ final class TestDatabaseSafety
             implode(' or ', self::RESETTABLE),
         ));
     }
+
+    /**
+     * PBDIGIT-283 R3 (D-283-2): the LOADED configuration, checked by the hook in Tests\CreatesApplication after
+     * LoadConfiguration and before any provider is registered. Uses the shared rules with this suite's approved
+     * set, and refuses a cached configuration. Every problem is reported; no URL is echoed.
+     */
+    public static function refuseUnsafeConfiguration(string $appEnv, string $default, array $connections, string $cachedConfigPath, array $env): void
+    {
+        $problems = DatabaseTargetRules::targetProblems($appEnv, $default, $connections, self::RESETTABLE);
+        if (DatabaseTargetRules::configCacheProblem($cachedConfigPath, $env) !== null) {
+            $problems[] = 'The configuration is cached (bootstrap/cache/config.php or APP_CONFIG_CACHE); run without a config cache.';
+        }
+        if ($problems === []) {
+            return;
+        }
+
+        throw new RuntimeException('PBDIGIT-283: refusing to boot Laravel for a test before any service provider is registered; '
+            .'nothing was connected. '.implode(' ', $problems).' Run through phpunit.xml, or mark a database-free test with '
+            .'Tests\Support\DatabaseFreeTest.');
+    }
 }
