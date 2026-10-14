@@ -174,7 +174,7 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 - [x] **R3** (committed `17167dec3`; guide `developer_guide/testing/03_pre_provider_hook.md`)
 - [x] **R4** (accepted by the Principal 2026-10-14, committed `b7138fafa`; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
 - [x] **R5** (committed `ac66fd940`; guide `developer_guide/testing/05_no_reach_into_audit_or_geo.md`)
-- [x] G-RUN-NEG authorised (2026-10-14) · [x] R6 negative **prepared** (Option A) · [ ] R6 negative **executed** (held for the Principal's review of script + command)
+- [x] G-RUN-NEG authorised (2026-10-14) · [x] R6 negative **prepared** (Option A) · [x] R6 negative **executed and accepted** (run 2, `4ce631f39`, 2026-10-14)
 - [ ] G-RUN-POS (not authorised; would wipe `nrna_test` via `migrate:fresh`, needs an explicit override of the standing rule) → R6 positive
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
@@ -221,10 +221,15 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - artifacts: `tests/Evidence/Pbdigit283/{negative-evidence.php, preflight.php, ResetCanaryTest.php}`, `tests/Support/NegativeEvidence.php` (pure rules), `NegativeEvidenceTest` (RED 34 → GREEN 34/53); `LaravelBootIsGuardedTest` allows `preflight.php` with a check that it loads only environment + configuration (18 tests);
   - **not executed** at preparation; reviewed and committed `eb18ccfa9`. Guide `developer_guide/testing/06_negative_evidence.md`.
 - **2026-10-14, R6 negative run 1 (G-RUN-NEG):** **aborted before the canary** (exit 1). The loaded connection set included `mariadb`, merged by Laravel 11 from its framework defaults (the application doesn't use MariaDB). The canary never ran; no connection was attempted. Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-negative/run-1-aborted-before-canary.txt`.
-- **Correction (Principal-authorised, test first):** `mariadb` added to the known loaded set with strict checks (dead socket, closed port, dead Unix socket, no URL); `DB_URL=''` in the child environment; Option A unchanged. `NegativeEvidenceTest` RED 2 → GREEN 39. **`DB_URL` gap in R1/R2 → backlog `PBDIGIT-293`** (R3 fails closed; no R1/R2 change here).
+- **Correction (Principal-authorised, test first):** `mariadb` added to the known loaded set with strict checks (dead socket, closed port, dead Unix socket, no URL); `DB_URL=''` in the child environment; Option A unchanged. `NegativeEvidenceTest` RED 2 → GREEN 39. **`DB_URL` gap in R1/R2 → backlog `PBDIGIT-293`** (R3 fails closed; no R1/R2 change here). Committed `4ce631f39`.
+- **2026-10-14, R6 negative run 2 (G-RUN-NEG), EVIDENCE, accepted by the Principal:**
+  - harness exit 0 at `4ce631f39`; pre-run check OK (8 loaded connections, every environment-controlled one at the dead socket and port 1, `testing` = exact Option A, not cached, db manager not bound);
+  - the canary (`--no-configuration`) was refused by R3 for `pgsql`/`pgsql_audit`/`pgsql_geo` → `publicdigit` from the `bootstrapped: LoadConfiguration` event, before `RegisterProviders`;
+  - no `SQLSTATE` or connection error; the canary body wasn't reached;
+  - evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-negative/run-2.txt`. **Criterion 4 met.**
+  - Limits: "no connection attempted" rests on the absence of driver errors plus the unreachable endpoints (not instrumented); Option A stays a recorded deviation until `PBDIGIT-292`.
 
 ## 11. Next actions
-1. **Commit the correction, then re-run G-RUN-NEG** (`php tests/Evidence/Pbdigit283/negative-evidence.php`) as run 2; the Principal inspects and accepts the evidence.
-2. **R6 positive** needs G-RUN-POS plus an explicit override for wiping `nrna_test`; not authorised.
+1. **R6 positive (criterion 5):** G-RUN-POS plus an explicit override of the standing rule (it wipes `nrna_test` via `migrate:fresh`); not authorised. PBDIGIT-283 isn't closed until it's done.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

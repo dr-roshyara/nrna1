@@ -1,0 +1,49 @@
+commit: 4ce631f399a5fcd57e9cfb3add6ef11ec19fa0aa
+command: php tests/Evidence/Pbdigit283/negative-evidence.php
+started: 2026-10-14T16:52:28+02:00
+---
+PBDIGIT-283 R6 negative: pre-run check OK. Effective connections (no passwords):
+  sqlite       driver=sqlite host=- port=- database=publicdigit
+  mysql        driver=mysql host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  mariadb      driver=mariadb host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  pgsql        driver=pgsql host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  sqlsrv       driver=sqlsrv host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  pgsql_audit  driver=pgsql host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  pgsql_geo    driver=pgsql host=/nonexistent-283-negative-evidence-socket-dir port=1 database=publicdigit
+  testing      driver=pgsql host=127.0.0.1 port=5432 database=nrna_test  [Option A exception, PBDIGIT-292]
+  default=pgsql env=testing cached=false db-manager-bound=false
+
+PBDIGIT-283 R6 negative: running /usr/bin/php vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Evidence/Pbdigit283/ResetCanaryTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.195, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Evidence\Pbdigit283\ResetCanaryTest::test_the_canary_body_is_never_reached
+RuntimeException: PBDIGIT-283: refusing to boot Laravel for a test before any service provider is registered; nothing was connected. Connection 'pgsql' targets 'publicdigit', which is not approved. Connection 'pgsql_audit' targets 'publicdigit', which is not approved. Connection 'pgsql_geo' targets 'publicdigit', which is not approved. Run through phpunit.xml, or mark a database-free test with Tests\Support\DatabaseFreeTest.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/TestDatabaseSafety.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/CreatesApplication.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php:459
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php:287
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php:267
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:344
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:474
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/CreatesApplication.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:87
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1, Deprecations: 3.
+
+canary exit code: 2
+PBDIGIT-283 R6 negative: EVIDENCE. The R3 check refused the unsafe configuration before any provider; no connection was attempted.
+--- harness exit code: 0
+finished: 2026-10-14T16:52:29+02:00

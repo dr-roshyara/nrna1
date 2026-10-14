@@ -83,7 +83,11 @@ php tests/Evidence/Pbdigit283/negative-evidence.php
 ## Run history
 - **Run 1** (`eb18ccfa9`): **aborted before the canary** (exit 1). The loaded set had `mariadb`, which the first design didn't expect, and `DB_URL` wasn't set. The fail-safe worked; it's not evidence of refusal.
 - **Correction** (test first): `NegativeEvidenceTest` RED 2 failures → GREEN 39 tests. `mariadb` added to the known loaded set with strict checks; `DB_URL=''`. Option A unchanged.
-- **Run 2:** after the correction commit; see the evidence folder.
+- **Run 2** (`4ce631f39`): **EVIDENCE, accepted by the Principal 2026-10-14.**
+  - Harness exit 0; pre-run check OK (8 loaded connections; Option A exact).
+  - Canary refused by R3 for `publicdigit` from the `bootstrapped: LoadConfiguration` event, before `RegisterProviders`.
+  - No `SQLSTATE` or connection error; the canary body wasn't reached.
+  - Output: `run-2.txt`.
 
 ## Limits
 - **The harness, preflight and canary have never run.** Their behaviour beyond the pure rules is unproven until G-RUN-NEG executes.
