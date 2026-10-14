@@ -175,7 +175,7 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 - [x] **R4** (accepted by the Principal 2026-10-14, committed `b7138fafa`; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
 - [x] **R5** (committed `ac66fd940`; guide `developer_guide/testing/05_no_reach_into_audit_or_geo.md`)
 - [x] G-RUN-NEG authorised (2026-10-14) · [x] R6 negative **prepared** (Option A) · [x] R6 negative **executed and accepted** (run 2, `4ce631f39`, 2026-10-14)
-- [x] G-RUN-POS **stage 1** authorised (with an explicit permission for `migrate:fresh` on `nrna_test`), run and accepted 2026-10-14 · [x] **stage 2** (Unit) run and accepted 2026-10-14 · [ ] stage 3 (Feature + Architecture), not authorised
+- [x] G-RUN-POS **stage 1** authorised (with an explicit permission for `migrate:fresh` on `nrna_test`), run and accepted 2026-10-14 · [x] **stage 2** (Unit) run and accepted 2026-10-14 · [x] **stage 3** (Feature re-run with `memory_limit=1G` + Architecture) run and accepted 2026-10-14
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
 ## 10. Progress
@@ -240,8 +240,14 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - failures grouped as schema/test-data drift, accumulated data (no transaction isolation on PostgreSQL), code/test drift, PHPUnit 11 error-handler risky notices (baseline unknown);
   - **accepted by the Principal** as "PBDIGIT-283 neither refuses nor misdirects the Unit suite". Not evidence that the suite is green.
 
+- **2026-10-14, R6 positive stage 3 (G-RUN-POS):**
+  - **Feature:** the first run aborted at 2,928 / 3,482 (84%) on PHP's default 128M `memory_limit` (exit 255; kept as `stage-3-feature.txt`). The authorised re-run `php -d memory_limit=1G vendor/bin/phpunit --configuration phpunit.xml --testsuite Feature` completed 3,482 / 3,482, exit 2, peak 144.5 MB: 1,026 errors, 301 failures, 649 risky;
+  - **Architecture:** 246 tests, 5 unrelated failures (one caused by the Principal's uncommitted `VoterSlugStep.php` deletion); `LaravelBootIsGuardedTest`, `NoReachIntoAuditOrGeoTest`, `DatabaseResetIsGuardedTest` passed;
+  - **in all runs: 0 PBDIGIT-283 refusals, 0 reset refusals, 0 dead-socket / "not configured" errors;** no failing class among the test files changed since `772d06a5d`; secrets scans clean;
+  - **accepted by the Principal.** **Criterion 5 met** in the sense "PBDIGIT-283 neither refuses nor misdirects the default suites"; the suites aren't green.
+
 ## 11. Next actions
-1. **R6 positive stage 3** (`--testsuite Feature`, `--testsuite Architecture`) needs separate authorisation; criterion 5 isn't fully met until then, and PBDIGIT-283 isn't closed.
-2. **The ~546 unrelated Unit failures** (stage 2 triage) → backlog items grouped by cause, if the Principal wants them.
+1. **Closure proposal for PBDIGIT-283** (criteria 1–6 with evidence; deviations: Option A, the incomplete first Feature run) for the Principal's decision.
+2. **Backlog items for the unrelated failures** (stage 2 Unit, stage 3 Feature/Architecture, grouped by cause) and for the PHP `memory_limit` (the Feature suite peaks at 144.5 MB), if the Principal wants them.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

@@ -1,0 +1,58 @@
+commit: fd573dd401ee7c9d8f542f70c65ec61b9e9bcb4d
+command: vendor/bin/phpunit --configuration phpunit.xml --testsuite Architecture
+authorisation: G-RUN-POS stage 3; migrate:fresh on nrna_test explicitly permitted by the Principal (2026-10-14)
+started: 2026-10-14T18:38:46+02:00
+---
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+....................DFDDDDDDDDDDDDDDDDDDDDDDFDDDDDDDD..........  63 / 246 ( 25%)
+...........................FDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD.. 126 / 246 ( 51%)
+..................................D............................ 189 / 246 ( 76%)
+......DF...............................DDDFD....S........       246 / 246 (100%)
+
+Time: 00:20.260, Memory: 60.00 MB
+
+There were 5 failures:
+
+1) Tests\Architecture\Election\ElectionLifecycleStateConsistencyTest::test_lifecycle_engine_computes_voting_active_state_when_voting_window_is_open
+Lifecycle engine computes voting_active when voting window is currently open
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'voting_active'
++'ready_for_voting'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Election/ElectionLifecycleStateConsistencyTest.php:83
+
+2) Tests\Architecture\ElectionStateMachineConsistencyTest::test_engine_uses_election_clock_service_for_voting_window
+Engine should use ElectionClockService logic and derive VotingActive state
+Failed asserting that two values of enumeration App\Domain\Election\Enum\ElectionLifecycleState are equal, ReadyForVoting does not match expected VotingActive.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ElectionStateMachineConsistencyTest.php:175
+
+3) Tests\Architecture\GovernanceRuntime\ConstitutionalBoundaryTest::test_code_creation_is_preparatory_allowed_during_setup
+Code creation should not redirect — it is a preparatory operation
+Failed asserting that 302 is not equal to 302.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/GovernanceRuntime/ConstitutionalBoundaryTest.php:86
+
+4) Tests\Architecture\MembershipDecisionCreationTest::test_the_named_exclusion_still_holds_only_an_unparsable_file
+Failed asserting that an array has the key 'app/Http/Middleware/VoterSlugStep.php'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:135
+
+5) Tests\Architecture\Phase_C25_SovereigntyLeakagePreventionTest::no_new_denial_reason_hardcoding
+Hardcoded denial reason in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Http/Controllers/ElectionController.php: 'not eligible'
+Governance vocabulary: Should use resolver denial_reason
+All denial reasons must come from ElectionCapabilityResolver.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Phase_C25_SovereigntyLeakagePreventionTest.php:171
+
+FAILURES!
+Tests: 246, Assertions: 852, Failures: 5, Deprecations: 9, PHPUnit Deprecations: 5, Skipped: 1.
+--- exit code: 1
+finished: 2026-10-14T18:39:07+02:00
