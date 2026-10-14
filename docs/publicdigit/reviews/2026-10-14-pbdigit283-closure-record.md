@@ -57,7 +57,10 @@
 ## 5. Evidence limits (not claimed)
 - **"No connection attempted"** in the negative run rests on the absence of driver errors plus unreachable endpoints; nothing instrumented the run.
 - **The architecture checks read source.** Paths built only at runtime (variable-only bootstrap paths, runtime-added connections) aren't detected (guides 04, 05).
-- **`pgsql_audit`'s actual `current_database()`** wasn't printed in the positive runs; its target follows from the R2 pin and the R3 confinement.
+- **No connection's `current_database()` was printed** in the positive runs:
+  - **default connection (`pgsql`):** checked silently by `TestDatabaseSafety::assertResettable` before every reset (it must be in `nrna_test` / `pbdigit274_isolated_test`; 0 refusals);
+  - **`pgsql_audit` and `pgsql_geo`:** the target follows from the R2 pin (`nrna_test`) and the R3 confinement to the approved set; additionally, the 3 audit foreign-key violations in stage 2 show `pgsql_audit` reached the freshly migrated schema;
+  - **so the identity `nrna_test` is inferred,** not observed (forensic review 2026-10-14).
 - **No baseline full-suite run predates PBDIGIT-283,** so the pre-existing state of the unrelated failures isn't established.
 
 ## 6. Follow-ups (separate backlog; not part of this closure)
@@ -81,3 +84,11 @@
 - **A commit only when asked.**
 
 **Traceability:** commits `3fd58af8c` (extension) · `b71137e62`, `ba07ee8cd`, `bda1192cd` (plan) · `164f74066`, `6d394e6e1`, `17167dec3`, `b7138fafa`, `ac66fd940` (R1–R5) · `eb18ccfa9`, `4ce631f39`, `812538b62` (R6 negative) · `b6b7d67fa`, `fd573dd40`, `764d9ea2f` (R6 positive).
+
+## 9. Forensic review of the positive evidence (2026-10-14)
+A read-only review of the committed logs (no runs) found:
+- **No safety class appears in any error trace;** 0 PBDIGIT-283 refusals and 0 reset refusals (expected: they refuse only unapproved targets).
+- **0 connection, authentication, unknown-host or missing-database errors.**
+- **SQL errors name only `pgsql` and `pgsql_audit`;** no database name other than `nrna_test`. The 6 `publicdigit` hits are `https://publicdigit.com` URLs in a page's JSON-LD.
+- **The 1,026 errors / 301 failures** of the Feature re-run are application and test failures against the current schema and code (PBDIGIT-294..298).
+- **Verdict: PASS for database-test safety,** with the database-identity limit above. Suite health is a separate FAIL, outside the acceptance criteria. Limit wording corrected (option A, the Principal).

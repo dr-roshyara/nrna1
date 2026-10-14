@@ -25,7 +25,10 @@
 
 ## Limits
 - **Only one test file.** It doesn't show that the full suites run without refusals or PBDIGIT-283 regressions (stages 2–3).
-- **No query printed `current_database()` for `pgsql_audit`.** Its target follows from the R2 pin (`nrna_test`) and the R3 confinement to the approved set.
+- **No connection's `current_database()` was printed** in the positive runs:
+  - **default connection (`pgsql`):** checked silently by `TestDatabaseSafety::assertResettable` before every reset (it must be in `nrna_test` / `pbdigit274_isolated_test`; 0 refusals);
+  - **`pgsql_audit` and `pgsql_geo`:** the target follows from the R2 pin (`nrna_test`) and the R3 confinement to the approved set; additionally, the 3 audit foreign-key violations in stage 2 show `pgsql_audit` reached the freshly migrated schema;
+  - **so the identity `nrna_test` is inferred,** not observed (forensic review 2026-10-14).
 
 ## Stage 2: triage summary (unrelated to PBDIGIT-283 as far as the output shows)
 Problems grouped by the first line of the message (top groups):
