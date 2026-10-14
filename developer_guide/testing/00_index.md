@@ -24,11 +24,12 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | 01 | [Database-free tests: shared target rules and the `DatabaseFreeTest` marker](01_database_free_tests.md) | `PBDIGIT-283` R1 | accepted 2026-10-14; committed `164f74066` |
 | 02 | [Default-suite pinning of every PostgreSQL target](02_default_suite_pinning.md) | `PBDIGIT-283` R2 | committed `6d394e6e1` |
 | 03 | [The pre-provider hook](03_pre_provider_hook.md) | `PBDIGIT-283` R3 | committed `17167dec3` |
-| 04 | [Every Laravel boot goes through `CreatesApplication` and has a cover](04_laravel_boot_coverage.md) | `PBDIGIT-283` R4 | accepted 2026-10-14; committed |
+| 04 | [Every Laravel boot goes through `CreatesApplication` and has a cover](04_laravel_boot_coverage.md) | `PBDIGIT-283` R4 | accepted 2026-10-14; committed `b7138fafa` |
+| 05 | [No test reset reaches the audit or geo database](05_no_reach_into_audit_or_geo.md) | `PBDIGIT-283` R5 | implemented 2026-10-14; awaiting review; not committed |
 
 ## Open work
 | Item | What |
 |---|---|
-| `PBDIGIT-283` R5–R6 | the audit/geo architecture test; negative and positive evidence |
+| `PBDIGIT-283` R6 | negative and positive evidence |
 | `PBDIGIT-290` | the committee-creation handler binding queries the database when resolved (found by R1) |
 | `PBDIGIT-291` | an outbox adapter test passes on any database failure (found by R4) |

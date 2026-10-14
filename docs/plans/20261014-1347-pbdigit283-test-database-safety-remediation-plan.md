@@ -168,12 +168,12 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 | Running tests at all after the incident | every run separately gated (§4); R1–R5 use no reachable database |
 
 ## 9. Task checklist
-- [x] G-PLAN-283 · [x] D-283-1 to D-283-4 · [x] C-1 to C-3 incorporated (2026-10-14) · [ ] G-RUN-DF (not authorised)
+- [x] G-PLAN-283 · [x] D-283-1 to D-283-4 · [x] C-1 to C-3 incorporated (2026-10-14)
 - [x] G-RUN-DF (authorised 2026-10-14, C-1 command only) · [x] **R1** (accepted 2026-10-14; guide `developer_guide/testing/01_database_free_tests.md`)
 - [x] **R2** (committed `6d394e6e1`; guide `developer_guide/testing/02_default_suite_pinning.md`)
 - [x] **R3** (committed `17167dec3`; guide `developer_guide/testing/03_pre_provider_hook.md`)
-- [x] **R4** (accepted by the Principal 2026-10-14, committed; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
-- [ ] R5 (each with evidence and a developer-guide step under `developer_guide/testing/`)
+- [x] **R4** (accepted by the Principal 2026-10-14, committed `b7138fafa`; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
+- [x] **R5** (implemented 2026-10-14, awaiting review; guide `developer_guide/testing/05_no_reach_into_audit_or_geo.md`)
 - [ ] G-RUN-NEG, G-RUN-POS → R6
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
@@ -208,9 +208,15 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - GREEN 17 tests (12 snippets + 5 checks); the four tests green; regression green;
   - backlog `PBDIGIT-291` (the outbox test's weak assertion);
   - **accepted by the Principal** after a final source review: no blocking defect. Limits recorded in guide 04 (variable-only paths not detected; check 5 needs `use CreatesApplication;` first in the anonymous body; checks 3–4 read the first class per file). The database-free runs don't prove outbox persistence (PBDIGIT-291) or real-suite safety (R6);
-  - committed.
+  - committed `b7138fafa`.
+- **2026-10-14, R5 (G-RUN-DF, C-1 command):**
+  - `tests/Support/ConnectionReferences.php` + `tests/Architecture/NoReachIntoAuditOrGeoTest.php`: no migration in any loaded path (229 files; backups not loaded) names a connection or overrides `getConnection()`; every `loadMigrationsFrom()` points into a scanned root; every configured connection named by `app/` is confined by R3;
+  - review note (guide 05): `migrate:fresh` → `db:wipe` drops the default connection only; no test widens it; `ElectionSecurityEvent` → `pgsql_audit` (pinned/confined); `landlord`/`tenant` are named in `app/` but not configured;
+  - RED 12 errors (helper missing); the properties already held, so R5 pins them. GREEN 12/43; regression green;
+  - uncommitted, awaiting review.
 
 ## 11. Next actions
-1. **R5 (no reach into audit or geo)** needs a start authorisation; it runs under G-RUN-DF. G-RUN-NEG and G-RUN-POS stay unauthorised.
+1. The Principal reviews R5; commit when asked.
+2. **R6 (evidence)** needs G-RUN-NEG and G-RUN-POS, both not authorised.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.
