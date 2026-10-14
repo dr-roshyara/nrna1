@@ -57,7 +57,7 @@
 | `max_votes_per_ip` | integer, not null | as captured |
 | `network_binding_strategy` | string(30), not null | as captured (A-2: never rewritten) |
 | `policy_hash` | char(64), not null | lowercase hex SHA-256 (§3.2) |
-| `captured_by` | string(20), not null | `opening` · `scheduled` · `backfill` · `test_fixture` |
+| `captured_by` | string(24), not null | `opening` (explicit `open_voting`) · `scheduled` (scheduled auto-opening) · `scheduled_after_end` (lock after an ended, never-opened window; G-A1) · `backfill` · `test_fixture` |
 | `captured_actor_id` | uuid, nullable | the officer for `opening`; null otherwise |
 | `captured_at` | timestamptz, not null | — |
 
@@ -84,7 +84,12 @@
 ### 3.3 Capture when voting opens (atomic)
 - **Who captures:** only the transaction whose conditional opening update changed **1 row** (ADR-A §3.2), in **both** opening paths.
 - **Where:** in the same transaction, next to the existing side effects in `Election` (`applySideEffectsForOpenVoting`, `enforceVotingLock`). No new service.
-- **How:** it reads the locked row's `max_votes_per_ip` and `network_binding_strategy`, builds the hash, and inserts the record (`captured_by` = `opening` or `scheduled`).
+- **How:** it reads the locked row's `max_votes_per_ip` and `network_binding_strategy`, builds the hash, and inserts the record. `captured_by` depends on the path:
+  - `opening` for the explicit `open_voting`;
+  - `scheduled` for the scheduled auto-opening;
+  - **`scheduled_after_end`** for the lock after an ended, never-opened window (G-A1, approved 2026-10-14).
+
+  The last records **that voting never opened**. A stored `none` is captured **as stored** there (ADR-A §3.5 G-A1), and no vote can follow, since the window has ended.
 - **Real elections only.** Demo elections don't capture (H1).
 - **Failure** (insert error, unique violation, hash error): the transaction rolls back and **voting doesn't open**.
   - **Explicit path:** error to the officer.

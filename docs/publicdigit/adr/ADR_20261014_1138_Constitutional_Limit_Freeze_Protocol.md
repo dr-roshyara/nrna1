@@ -124,7 +124,10 @@
 - (ii) normalise to `ip_count` at opening, with an audit entry: silent from the committee's view;
 - (iii) honour `none`: contradicts D11.
 
-**A-2: APPROVED by the Principal on 2026-10-14: row 2 = refuse opening.** It applies to the explicit `open_voting` transition and the scheduled **auto-opening** (`ProcessElectionAutoTransitions.php:112`). **G-A1 (approved 2026-10-14):** the after-end lock (`:136`) is not refused; it reports the stored `none`. It becomes effective with ADR-A, which itself stays blocked until O-3.
+**A-2: APPROVED by the Principal on 2026-10-14: row 2 = refuse opening.** It becomes effective with ADR-A, which itself stays blocked until O-3.
+
+**G-A1 clarification (approved 2026-10-14):**
+> *A-2 governs **opening voting**: the explicit `open_voting` transition and the scheduled auto-opening (`ProcessElectionAutoTransitions::processNominationToVotingTransition`, `:80-118`). Locking an election **after its voting window has ended without voting ever having opened** (`ProcessElectionAutoTransitions::enforceVotingLock`, `:124-139`) is a **different lifecycle action**. It is **not** refused for a stored `none`; it proceeds, reports the stored value (a `voting_audit` warning), and its frozen record (ADR-B §3.3) is captured with `captured_by = scheduled_after_end`.*
 
 ### 3.6 Transactional failure behaviour (r2)
 
