@@ -23,8 +23,12 @@ final class NegativeEvidence
     /** The incident's database: the canary is configured for it, so the R3 check must refuse. */
     public const UNSAFE_DATABASE = 'publicdigit';
 
-    /** config/database.php's connections on 2026-10-14; anything else stops the run. */
-    public const KNOWN_CONNECTIONS = ['sqlite', 'mysql', 'pgsql', 'pgsql_audit', 'pgsql_geo', 'sqlsrv', 'testing'];
+    /**
+     * The LOADED connections on 2026-10-14: config/database.php's seven, plus `mariadb`, which LoadConfiguration merges
+     * in from vendor/laravel/framework/config/database.php (environment-controlled: DB_HOST, DB_PORT, DB_SOCKET,
+     * DB_URL). Anything else stops the run.
+     */
+    public const KNOWN_CONNECTIONS = ['sqlite', 'mysql', 'mariadb', 'pgsql', 'pgsql_audit', 'pgsql_geo', 'sqlsrv', 'testing'];
 
     /**
      * Option A (Principal, 2026-10-14): the ONE hard-coded connection that environment variables can't neutralise,
@@ -43,7 +47,8 @@ final class NegativeEvidence
     /** @return array<string, string> every variable that selects a database target, unsafe database behind dead endpoints */
     public static function variables(): array
     {
-        $vars = ['APP_ENV' => 'testing', 'DB_CONNECTION' => 'pgsql', 'DATABASE_URL' => ''];
+        // DB_URL: Laravel 11's own URL variable, read by the framework-merged connections (`mariadb`); PBDIGIT-293.
+        $vars = ['APP_ENV' => 'testing', 'DB_CONNECTION' => 'pgsql', 'DATABASE_URL' => '', 'DB_URL' => ''];
         foreach (['DB_', 'DB_AUDIT_', 'DB_PGSQL_GEO_'] as $prefix) {
             $vars[$prefix.'HOST'] = self::SOCKET;
             $vars[$prefix.'PORT'] = self::CLOSED_PORT;
@@ -109,7 +114,7 @@ final class NegativeEvidence
                 $problems[] = "connection '{$name}' has a URL";
             }
         }
-        foreach (['pgsql', 'pgsql_audit', 'pgsql_geo', 'mysql', 'sqlsrv'] as $name) {
+        foreach (['pgsql', 'pgsql_audit', 'pgsql_geo', 'mysql', 'mariadb', 'sqlsrv'] as $name) {
             $config = $connections[$name] ?? [];
             if (($config['host'] ?? null) !== self::SOCKET || (string) ($config['port'] ?? '') !== self::CLOSED_PORT) {
                 $problems[] = "connection '{$name}' is not at the dead socket and closed port";
@@ -117,6 +122,9 @@ final class NegativeEvidence
         }
         if (($connections['mysql']['write']['host'] ?? null) !== self::SOCKET || ($connections['mysql']['unix_socket'] ?? null) !== self::SOCKET) {
             $problems[] = "connection 'mysql' write host or unix socket is not the dead socket";
+        }
+        if (($connections['mariadb']['unix_socket'] ?? null) !== self::SOCKET) {
+            $problems[] = "connection 'mariadb' unix socket is not the dead socket";
         }
         if (($connections['sqlite']['driver'] ?? null) !== 'sqlite') {
             $problems[] = "connection 'sqlite' is not sqlite";

@@ -1,0 +1,2 @@
+PBDIGIT-283 R6 negative: ABORTED before the canary: the configured connections are not exactly: sqlite, mysql, pgsql, pgsql_audit, pgsql_geo, sqlsrv, testing
+harness exit code: 1

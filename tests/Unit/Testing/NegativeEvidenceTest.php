@@ -25,6 +25,7 @@ final class NegativeEvidenceTest extends TestCase
         $this->assertSame('testing', $env['APP_ENV']);
         $this->assertSame('pgsql', $env['DB_CONNECTION']);
         $this->assertSame('', $env['DATABASE_URL']);
+        $this->assertSame('', $env['DB_URL'], "Laravel 11's own URL variable, read by the framework-merged connections");
         foreach (['DB_', 'DB_AUDIT_', 'DB_PGSQL_GEO_'] as $prefix) {
             $this->assertSame(NegativeEvidence::SOCKET, $env[$prefix.'HOST'], $prefix);
             $this->assertSame(NegativeEvidence::CLOSED_PORT, $env[$prefix.'PORT'], $prefix);
@@ -62,6 +63,8 @@ final class NegativeEvidenceTest extends TestCase
                 'pgsql_audit' => array_diff_key($env('pgsql', 'publicdigit'), ['url' => 1]),
                 'pgsql_geo'   => array_diff_key($env('pgsql', 'publicdigit'), ['url' => 1]),
                 'sqlsrv'      => $env('sqlsrv', 'publicdigit'),
+                // merged from vendor/laravel/framework/config/database.php by LoadConfiguration (environment-controlled)
+                'mariadb'     => $env('mariadb', 'publicdigit') + ['unix_socket' => $socket],
                 'testing'     => ['driver' => 'pgsql', 'host' => '127.0.0.1', 'port' => 5432, 'database' => 'nrna_test', 'username' => 'nrna'],
             ],
         ];
@@ -91,6 +94,10 @@ final class NegativeEvidenceTest extends TestCase
             'mysql write host'               => [['connections' => ['mysql' => ['write' => ['host' => '127.0.0.1']]]]],
             'mysql unix socket'              => [['connections' => ['mysql' => ['unix_socket' => '']]]],
             'sqlsrv host'                    => [['connections' => ['sqlsrv' => ['host' => 'localhost']]]],
+            'mariadb host'                   => [['connections' => ['mariadb' => ['host' => '127.0.0.1']]]],
+            'mariadb port open'              => [['connections' => ['mariadb' => ['port' => '3306']]]],
+            'mariadb unix socket'            => [['connections' => ['mariadb' => ['unix_socket' => '']]]],
+            'mariadb url (DB_URL)'           => [['connections' => ['mariadb' => ['url' => 'mariadb://x@h/publicdigit']]]],
             'url on a connection'            => [['connections' => ['pgsql' => ['url' => 'pgsql://x@h/publicdigit']]]],
             'url on the exception'           => [['connections' => ['testing' => ['url' => 'pgsql://x@h/nrna_test']]]],
             'exception: other host'          => [['connections' => ['testing' => ['host' => '10.0.0.1']]]],
@@ -113,6 +120,15 @@ final class NegativeEvidenceTest extends TestCase
     {
         $report = $this->report();
         unset($report['connections']['testing']);
+
+        $this->assertNotSame([], NegativeEvidence::preflightProblems($report));
+    }
+
+    public function test_a_missing_framework_merged_connection_stops_the_run(): void
+    {
+        // The loaded set must be exactly the reviewed one; Laravel adds `mariadb` from its defaults (no MariaDB in use).
+        $report = $this->report();
+        unset($report['connections']['mariadb']);
 
         $this->assertNotSame([], NegativeEvidence::preflightProblems($report));
     }

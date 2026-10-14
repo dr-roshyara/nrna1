@@ -2,7 +2,9 @@
 
 **Story:** `PBDIGIT-283` remediation, step R6 (negative) · **Plan:** `docs/plans/20261014-1347-pbdigit283-test-database-safety-remediation-plan.md` §6 R6 (D-283-4, F6; **Option A**)
 
-**Status: PREPARED, NOT EXECUTED.** The harness and canary exist and the pure rules are tested. **The evidence run hasn't happened**; it waits for the Principal's review of the script and command. Nothing below claims a result of that run.
+**Status: PREPARED (`eb18ccfa9`), CORRECTED after run 1 aborted before the canary; run 2 after the correction commit.** Results are recorded only in the evidence folder `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-negative/`.
+
+**Earlier status, superseded: PREPARED, NOT EXECUTED.** The harness and canary exist and the pure rules are tested. **The evidence run hasn't happened**; it waits for the Principal's review of the script and command. Nothing below claims a result of that run.
 
 **Files:**
 - `tests/Evidence/Pbdigit283/negative-evidence.php`: the harness;
@@ -20,7 +22,7 @@ Criterion 4: show that a run shaped like the 2026-10-13 incident is refused **be
 
 1. **No configuration cache.** The harness refuses to start if `bootstrap/cache/config.php` exists or `APP_CONFIG_CACHE` is set.
 2. **The child environment is built from scratch.** Only `PATH` and `HOME` are inherited (`NegativeEvidence::childEnvironment()`). Every target variable is set:
-   - `APP_ENV=testing`, `DB_CONNECTION=pgsql`, `DATABASE_URL=''`;
+   - `APP_ENV=testing`, `DB_CONNECTION=pgsql`, `DATABASE_URL=''`, **`DB_URL=''`** (Laravel 11's URL variable, read by the merged `mariadb` entry; `PBDIGIT-293`);
    - `DB_`, `DB_AUDIT_`, `DB_PGSQL_GEO_` + `HOST` → `/nonexistent-283-negative-evidence-socket-dir`; `PORT` → `1` (closed); `DATABASE` → **`publicdigit`** (the incident's database, so R3 must refuse); `USERNAME` → `nobody`; `PASSWORD` → empty;
    - `DB_READ_HOST`, `DB_WRITE_HOST`, `DB_SOCKET` → the dead socket.
 
@@ -29,9 +31,9 @@ Criterion 4: show that a run shaped like the 2026-10-13 incident is refused **be
    - **What `preflight.php` does:** `require bootstrap/app.php`, then `bootstrapWith([LoadEnvironmentVariables::class, LoadConfiguration::class])`. No provider is registered, so no database manager exists. It prints the effective database configuration as JSON, **with every password removed**.
    - **What `NegativeEvidence::preflightProblems()` requires:**
      - not cached; `APP_ENV=testing`; default `pgsql`; `db` **not bound**; the SQLite target file **doesn't exist** (Laravel's SQLite connector refuses a missing file and never creates it);
-     - the connection set is **exactly** `sqlite mysql pgsql pgsql_audit pgsql_geo sqlsrv testing`;
+     - the **loaded** connection set is **exactly** `sqlite mysql mariadb pgsql pgsql_audit pgsql_geo sqlsrv testing`. `mariadb` is added by Laravel 11 from its framework defaults (`LoadConfiguration` merges `database.connections`); the application doesn't use MariaDB, and the entry is checked like any environment-controlled connection;
      - no `url` on any connection, and no password anywhere in the report;
-     - `pgsql`, `pgsql_audit`, `pgsql_geo`, `mysql`, `sqlsrv` are at the dead socket with port `1`, and MySQL's write host and `unix_socket` too;
+     - `pgsql`, `pgsql_audit`, `pgsql_geo`, `mysql`, `mariadb`, `sqlsrv` are at the dead socket with port `1`, and MySQL's write host and `unix_socket` and MariaDB's `unix_socket` too;
      - the default database is `publicdigit`;
      - **Option A:** `testing` matches exactly (see below).
    - **Any problem aborts with exit 1;** the canary never starts.
@@ -77,6 +79,11 @@ php tests/Evidence/Pbdigit283/negative-evidence.php
 - **`LaravelBootIsGuardedTest`:** RED, it caught `preflight.php` as a new boot site. GREEN 18 tests after the allow-list entry plus the check "only `LoadEnvironmentVariables` + `LoadConfiguration`; no `Kernel`, `->bootstrap()`, `->boot()`, provider registration".
 - **Regression:** `DatabaseResetIsGuardedTest` 1, `NoReachIntoAuditOrGeoTest` 12, `tests/Unit/Testing` 106, all green.
 - **`php -l`** on every new file.
+
+## Run history
+- **Run 1** (`eb18ccfa9`): **aborted before the canary** (exit 1). The loaded set had `mariadb`, which the first design didn't expect, and `DB_URL` wasn't set. The fail-safe worked; it's not evidence of refusal.
+- **Correction** (test first): `NegativeEvidenceTest` RED 2 failures → GREEN 39 tests. `mariadb` added to the known loaded set with strict checks; `DB_URL=''`. Option A unchanged.
+- **Run 2:** after the correction commit; see the evidence folder.
 
 ## Limits
 - **The harness, preflight and canary have never run.** Their behaviour beyond the pure rules is unproven until G-RUN-NEG executes.

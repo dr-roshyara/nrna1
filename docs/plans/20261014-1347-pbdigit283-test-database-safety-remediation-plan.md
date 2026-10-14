@@ -219,10 +219,12 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - G-RUN-NEG authorised; preparation found that `config/database.php:140-150` hard-codes a `testing` connection (`127.0.0.1:5432/nrna_test`, user `nrna`, plaintext password in a tracked file) that no environment variable can neutralise, so §6 R6(3) "abort if any host is reachable" could never pass;
   - **Option A (Principal):** a recorded deviation from §6 R6(3). Exactly that connection is accepted (driver, host, port, database and username compared; password never read; no URL; not default). Every other rule stays strict (default, environment-controlled targets, URLs, unknown connections, the `publicdigit` canary). Security follow-up **`PBDIGIT-292`**;
   - artifacts: `tests/Evidence/Pbdigit283/{negative-evidence.php, preflight.php, ResetCanaryTest.php}`, `tests/Support/NegativeEvidence.php` (pure rules), `NegativeEvidenceTest` (RED 34 → GREEN 34/53); `LaravelBootIsGuardedTest` allows `preflight.php` with a check that it loads only environment + configuration (18 tests);
-  - **not executed:** the harness, preflight and canary have never run; waiting for the Principal's review. Guide `developer_guide/testing/06_negative_evidence.md`.
+  - **not executed** at preparation; reviewed and committed `eb18ccfa9`. Guide `developer_guide/testing/06_negative_evidence.md`.
+- **2026-10-14, R6 negative run 1 (G-RUN-NEG):** **aborted before the canary** (exit 1). The loaded connection set included `mariadb`, merged by Laravel 11 from its framework defaults (the application doesn't use MariaDB). The canary never ran; no connection was attempted. Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-negative/run-1-aborted-before-canary.txt`.
+- **Correction (Principal-authorised, test first):** `mariadb` added to the known loaded set with strict checks (dead socket, closed port, dead Unix socket, no URL); `DB_URL=''` in the child environment; Option A unchanged. `NegativeEvidenceTest` RED 2 → GREEN 39. **`DB_URL` gap in R1/R2 → backlog `PBDIGIT-293`** (R3 fails closed; no R1/R2 change here).
 
 ## 11. Next actions
-1. **The Principal reviews the R6 negative harness, canary and command;** only then is `php tests/Evidence/Pbdigit283/negative-evidence.php` run (G-RUN-NEG).
+1. **Commit the correction, then re-run G-RUN-NEG** (`php tests/Evidence/Pbdigit283/negative-evidence.php`) as run 2; the Principal inspects and accepts the evidence.
 2. **R6 positive** needs G-RUN-POS plus an explicit override for wiping `nrna_test`; not authorised.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

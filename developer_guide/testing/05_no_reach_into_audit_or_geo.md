@@ -43,6 +43,7 @@ vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php <path>
   - a connection name built at runtime (e.g. from a variable or config value) isn't detected;
   - a mention inside a string literal may count (safe direction).
 - **Configured connections are read textually** from `config/database.php` (entries with a `'driver'` key). A connection added at runtime (`config(['database.connections.x' => …])`) isn't seen. None exists in `app/` today.
+- **Framework-merged connections aren't seen** (found by R6 run 1). Laravel 11's `LoadConfiguration` adds the framework's default `mariadb` connection to the loaded set, and this reader only reads `config/database.php`. No application code names `mariadb` (the application doesn't use MariaDB), so check 4 still holds. Follow-up `PBDIGIT-293`.
 - **`landlord`/`tenant` stay unchecked while unconfigured.** If they're ever configured, check 4 fails, by design.
 - **No database was exercised.** That runs against `nrna_test` is safe is R6 (G-RUN-POS).
 

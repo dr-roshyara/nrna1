@@ -169,6 +169,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-290`](PBDIGIT-290-committee-handler-binding-queries-on-resolution.md) | **Resolving the committee-creation handler queries the database, so constructing its controller does too** (`AppServiceProvider` binding reads `governance_level_definitions`; `gatherMiddleware()` reaches it; from PBDIGIT-283 R1) | — | `OPEN` · not authorised |
 | [`PBDIGIT-291`](PBDIGIT-291-outbox-adapter-test-weak-assertion.md) | **An outbox adapter test passes on any database failure, so it proves little** (`OutboxEventAdapterTest` set-tenant case swallows every `Throwable`; from PBDIGIT-283 R4) | — | `OPEN` · not authorised |
 | [`PBDIGIT-292`](PBDIGIT-292-hard-coded-testing-connection-and-tracked-password.md) | **A hard-coded `testing` database connection carries a plaintext password in a tracked file** (`config/database.php:140-150`; credential review, rotation if warranted, removal; from PBDIGIT-283 R6) | — | `OPEN` · not authorised · **security** |
+| [`PBDIGIT-293`](PBDIGIT-293-db-url-not-neutralised-or-pinned.md) | **`DB_URL` (Laravel 11's URL variable) is neither neutralised nor pinned by the test-database safety layers** (read by the framework-merged `mariadb` entry; R3 fails closed; from the first PBDIGIT-283 R6 negative run) | — | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
