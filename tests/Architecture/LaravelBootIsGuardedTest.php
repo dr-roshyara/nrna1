@@ -28,9 +28,12 @@ final class LaravelBootIsGuardedTest extends TestCase
     /**
      * Files allowed to require bootstrap/app.php, each with the reason it is safe.
      * g6-worker.php is a separate worker process: it requires the isolated identity guard first (asserted below).
+     * preflight.php (PBDIGIT-283 R6 negative evidence) loads only the environment and the configuration, never a
+     * provider, so no database manager can exist (asserted below).
      */
     private const BOOT_SITES = [
         'tests/CreatesApplication.php',
+        'tests/Evidence/Pbdigit283/preflight.php',
         'tests/Isolated/Pbdigit274/Concurrency/g6-worker.php',
     ];
 
@@ -119,6 +122,19 @@ final class LaravelBootIsGuardedTest extends TestCase
         $this->assertNotFalse($guard, 'the worker must require the isolated identity guard');
         $this->assertNotFalse($boot);
         $this->assertLessThan($boot, $guard, 'the identity guard must run before Laravel boots');
+    }
+
+    public function test_the_negative_evidence_preflight_loads_only_environment_and_configuration(): void
+    {
+        $source = \Tests\Support\ConnectionReferences::withoutComments(
+            (string) file_get_contents(self::root().'/tests/Evidence/Pbdigit283/preflight.php'),
+        );
+
+        $this->assertStringContainsString('->bootstrapWith([LoadEnvironmentVariables::class, LoadConfiguration::class]);', $source);
+        $this->assertSame(1, substr_count($source, 'bootstrapWith('), 'exactly one bootstrap call');
+        foreach (['Kernel', '->bootstrap()', '->boot()', 'RegisterProviders', 'BootProviders', '->register('] as $forbidden) {
+            $this->assertStringNotContainsString($forbidden, $source, "the preflight must not register or boot providers ({$forbidden})");
+        }
     }
 
     /** @return list<class-string<LaravelTestCase>> every Laravel test case declared under tests/ */

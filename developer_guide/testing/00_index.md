@@ -25,7 +25,8 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | 02 | [Default-suite pinning of every PostgreSQL target](02_default_suite_pinning.md) | `PBDIGIT-283` R2 | committed `6d394e6e1` |
 | 03 | [The pre-provider hook](03_pre_provider_hook.md) | `PBDIGIT-283` R3 | committed `17167dec3` |
 | 04 | [Every Laravel boot goes through `CreatesApplication` and has a cover](04_laravel_boot_coverage.md) | `PBDIGIT-283` R4 | accepted 2026-10-14; committed `b7138fafa` |
-| 05 | [No test reset reaches the audit or geo database](05_no_reach_into_audit_or_geo.md) | `PBDIGIT-283` R5 | implemented 2026-10-14; awaiting review; not committed |
+| 05 | [No test reset reaches the audit or geo database](05_no_reach_into_audit_or_geo.md) | `PBDIGIT-283` R5 | committed `ac66fd940` |
+| 06 | [Negative evidence: the incident's shape is refused](06_negative_evidence.md) | `PBDIGIT-283` R6 (G-RUN-NEG) | **prepared, not executed**; awaiting review; not committed |
 
 ## Open work
 | Item | What |
@@ -33,3 +34,4 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | `PBDIGIT-283` R6 | negative and positive evidence |
 | `PBDIGIT-290` | the committee-creation handler binding queries the database when resolved (found by R1) |
 | `PBDIGIT-291` | an outbox adapter test passes on any database failure (found by R4) |
+| `PBDIGIT-292` | **security:** a hard-coded `testing` connection with a tracked plaintext password (found by R6; Option A exception) |
