@@ -1,0 +1,18 @@
+commit: 812538b62f1eabb3cd4ee6338bad41013629cf54
+command: vendor/bin/phpunit --configuration phpunit.xml tests/Feature/AuditEventTransactionIsolationTest.php
+authorisation: G-RUN-POS stage 1 only; migrate:fresh on nrna_test explicitly permitted by the Principal (2026-10-14)
+started: 2026-10-14T17:05:39+02:00
+---
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+DDD                                                                 3 / 3 (100%)
+
+Time: 00:09.257, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 3, Assertions: 6, Deprecations: 3.
+--- exit code: 0
+finished: 2026-10-14T17:05:49+02:00

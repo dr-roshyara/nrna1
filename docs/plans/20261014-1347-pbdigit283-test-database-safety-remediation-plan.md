@@ -175,7 +175,7 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
 - [x] **R4** (accepted by the Principal 2026-10-14, committed `b7138fafa`; guide `developer_guide/testing/04_laravel_boot_coverage.md`; scope extended by the Principal: 4 tests migrated, option A)
 - [x] **R5** (committed `ac66fd940`; guide `developer_guide/testing/05_no_reach_into_audit_or_geo.md`)
 - [x] G-RUN-NEG authorised (2026-10-14) · [x] R6 negative **prepared** (Option A) · [x] R6 negative **executed and accepted** (run 2, `4ce631f39`, 2026-10-14)
-- [ ] G-RUN-POS (not authorised; would wipe `nrna_test` via `migrate:fresh`, needs an explicit override of the standing rule) → R6 positive
+- [x] G-RUN-POS **stage 1** authorised (with an explicit permission for `migrate:fresh` on `nrna_test`), run and accepted 2026-10-14 · [ ] stages 2–3 (Unit; Feature + Architecture), not authorised
 - [ ] PBDIGIT-283 extension closed → PBDIGIT-286 G-ISO may be considered
 
 ## 10. Progress
@@ -229,7 +229,12 @@ The full isolated suite needs PBDIGIT-286's G-ISO-type authorisation, so it's li
   - evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-negative/run-2.txt`. **Criterion 4 met.**
   - Limits: "no connection attempted" rests on the absence of driver errors plus the unreachable endpoints (not instrumented); Option A stays a recorded deviation until `PBDIGIT-292`.
 
+- **2026-10-14, R6 positive stage 1 (G-RUN-POS):**
+  - `vendor/bin/phpunit --configuration phpunit.xml tests/Feature/AuditEventTransactionIsolationTest.php` at `812538b62`: OK, 3 tests, 6 assertions, exit 0;
+  - R3 let the pinned configuration through; `TestDatabaseSafety` allowed the actual default database; `migrate:fresh` ran on `nrna_test`; `pgsql_audit` reachable and isolated;
+  - **accepted by the Principal.** Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-positive/`. Limit: one file only; `pgsql_audit`'s `current_database()` not printed.
+
 ## 11. Next actions
-1. **R6 positive (criterion 5):** G-RUN-POS plus an explicit override of the standing rule (it wipes `nrna_test` via `migrate:fresh`); not authorised. PBDIGIT-283 isn't closed until it's done.
+1. **R6 positive stages 2–3** (`--testsuite Unit`; `--testsuite Feature`, `--testsuite Architecture`) need separate authorisation; criterion 5 isn't met until then, and PBDIGIT-283 isn't closed.
 
 **Traceability:** PBDIGIT-283 remediation extension (`3fd58af8c`) · PBDIGIT-286 database-safety review (session `.claude/sessions/2026-10-14.md`) · corrections F1–F7 (Principal, 2026-10-14) · approval of r2 + D-283-1..4 + C-1..C-3 (Principal, 2026-10-14) · r2 baseline `ba07ee8cd`.

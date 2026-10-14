@@ -27,6 +27,7 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | 04 | [Every Laravel boot goes through `CreatesApplication` and has a cover](04_laravel_boot_coverage.md) | `PBDIGIT-283` R4 | accepted 2026-10-14; committed `b7138fafa` |
 | 05 | [No test reset reaches the audit or geo database](05_no_reach_into_audit_or_geo.md) | `PBDIGIT-283` R5 | committed `ac66fd940` |
 | 06 | [Negative evidence: the incident's shape is refused](06_negative_evidence.md) | `PBDIGIT-283` R6 (G-RUN-NEG) | prepared `eb18ccfa9`; run 1 aborted before the canary (merged `mariadb`); corrected `4ce631f39`; **run 2 evidence accepted 2026-10-14** |
+| — | R6 positive (G-RUN-POS) | `PBDIGIT-283` R6 | **stage 1 accepted 2026-10-14** (one database test via `phpunit.xml` on `nrna_test`); stages 2–3 not authorised. Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-positive/` |
 
 ## Open work
 | Item | What |
