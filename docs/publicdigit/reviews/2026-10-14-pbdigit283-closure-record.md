@@ -68,7 +68,7 @@
 | `PBDIGIT-292` | **Security:** the hard-coded `testing` connection with a tracked plaintext password (credential review, rotation if warranted, removal; removes D-1) |
 | `PBDIGIT-293` | `DB_URL` not covered by R1/R2 (D-3) |
 | Original follow-ups | Inert `RefreshDatabase` in `IpEvidenceDeterminismTest`, `IpEvidenceTopologyEquivalenceTest`; "never widen `RESETTABLE` to a pattern". Still open |
-| **Proposed, not yet created** | Backlog items for the unrelated suite failures (grouped by cause) and for PHP `memory_limit` in the test configuration (D-4, D-5), if the Principal wants them |
+| `PBDIGIT-294`..`298` (created 2026-10-14 after the closure) | The unrelated suite failures grouped by cause: schema/test-data drift (294), no per-test isolation on PostgreSQL (295), tests out of step with code (296), error-handler risky notices (297), PHP `memory_limit` (298). D-4, D-5 |
 
 ## 7. Effect on other work
 - **`PBDIGIT-286` G-ISO:** "stays closed until this extension is done" (backlog line 62; PBDIGIT-286 plan §13). **With this closure approved, G-ISO may be considered.** It isn't opened by this record; it needs its own authorisation, and PBDIGIT-286 still waits on O-3 → G-ADR-A.
