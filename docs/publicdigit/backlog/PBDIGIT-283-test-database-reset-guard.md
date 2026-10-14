@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IMPLEMENTED` · tests green · committed `772d06a5d` (guard) and `fcde1b76b` (record) · a default-suite run on `nrna_test` is still pending |
+| **Status** | Guard: `IMPLEMENTED` · tests green · committed `772d06a5d` (guard) and `fcde1b76b` (record) · a default-suite run on `nrna_test` is still pending. **Remediation extension (2026-10-14): `OPEN` · not authorised** (see the last section). **Blocks PBDIGIT-286 G-ISO.** |
 | **Severity** | high: data loss on the development database (the PO decided no restore) |
 
 ## Defect
@@ -30,3 +30,33 @@
 ## Follow-ups (not in scope)
 - **Two plain-PHPUnit tests carry an inert `RefreshDatabase`:** `IpEvidenceDeterminismTest`, `IpEvidenceTopologyEquivalenceTest`. Remove the trait.
 - **If a new test database is introduced**, add it to `TestDatabaseSafety::RESETTABLE` deliberately; never widen the rule to a pattern.
+
+## Remediation extension (added 2026-10-14; from the PBDIGIT-286 database-safety review; recommendation, not authorised)
+**Origin:** a read-only review during PBDIGIT-286. No test was run, no database was accessed, and `.env` wasn't read. Session `.claude/sessions/2026-10-14.md`.
+
+**Most likely mechanism of the 2026-10-13 wipe** (high confidence for the mechanism; not reproduced):
+- `--no-configuration --bootstrap vendor/autoload.php` skipped both pins to the test database: `phpunit.xml` `<server DB_DATABASE=nrna_test>` and `tests/bootstrap-test-database.php`.
+- Laravel then used the `.env` database.
+- `Tests\TestCase` always applies `RefreshDatabase` (`tests/TestCase.php:18`), which on PostgreSQL runs `migrate:fresh` (`:49-55`) on the **default** connection.
+
+**Findings in source:**
+- **The guard checks only the default connection, and only after Laravel has booted** (`tests/TestCase.php:28-40`, `TestDatabaseSafety::assertResettable`).
+- **`pgsql_audit` and `pgsql_geo` aren't pinned in the default suite.** `tests/bootstrap-test-database.php` and `phpunit.xml` set only `DB_*`, and `pgsql_audit` resolves to `env('DB_AUDIT_DATABASE', env('DB_DATABASE'))` (`config/database.php:101-105`). `ElectionSecurityEvent` writes through `pgsql_audit`.
+- **The isolated suite pins all three prefixes** (`DB_`, `DB_AUDIT_`, `DB_PGSQL_GEO_`; `tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:38`).
+- **Tests that boot Laravel without a guarded base** (for example the dead-socket unit tests) are safe only by convention.
+
+**Unknowns:**
+- **U-1:** where `pgsql_audit`/`pgsql_geo` point during default-suite runs (depends on `.env`);
+- **U-2:** enforced coverage of tests that boot Laravel without a guarded base;
+- **U-3:** the default-suite run with the guard (the open item above);
+- **U-4:** whether any migration or reset can reach the audit or geo databases.
+
+**Acceptance criteria:**
+- [ ] **1. Every connection pinned:** every connection a test can use (default, `pgsql_audit`, `pgsql_geo`) is pinned to an approved test database, or verified by the guard.
+- [ ] **2. Fail-closed bootstrap:** the safety check runs **before any database query or destructive setup** (at bootstrap or application creation, not after boot). It refuses unless `APP_ENV=testing` **and** every connection's configured database is approved; otherwise nothing is touched.
+- [ ] **3. Enforced coverage:** an architecture test requires every test that boots Laravel without a guarded base to neutralise or pin its connections explicitly.
+- [ ] **4. Negative evidence** (**separate authorisation** to run): a `--no-configuration` run of a `Tests\TestCase` test is refused before any query, with nothing changed.
+- [ ] **5. Positive evidence** (**separate authorisation** to run): the default suite runs against the approved test database (closes U-3).
+- [ ] **6. No reach into audit or geo:** verification (code review plus a guarded check) that no migration or reset can affect non-test audit or geography databases (closes U-4).
+
+**Until this extension is done:** no PHPUnit, Artisan migration/reset or database operation for PBDIGIT-286. PBDIGIT-286's **G-ISO** stays closed (plan `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` §13).
