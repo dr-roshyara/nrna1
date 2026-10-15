@@ -1,6 +1,6 @@
 # 08: No vote beyond the limit: the System B boundary (PBDIGIT-286 P6)
 
-**Story:** `PBDIGIT-286` phase P6 (AC-11; decisions D7, D7a) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** boundary step (D7, D7a) and count step (D6) implemented and tested 2026-10-15; **uncommitted, not accepted**.
+**Story:** `PBDIGIT-286` phase P6 (AC-11; decisions D7, D7a) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** boundary step (D7, D7a) and count step (D6) implemented and tested 2026-10-15; committed `2f998b8ae` (not pushed); **not accepted**; not released.
 
 **Code:**
 - `app/Domain/Election/Security/NetworkTrustEvidence.php`: `exceedsLimit()` uses `>=`
@@ -104,5 +104,25 @@ vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit
   - `IpVoteLimitFlowTest` 6/47, `IpVoteLimitAtCastTest` 8/34, `VoterAttestationEvidenceTest` 8/12;
   - all exit 0, guard confirmed.
 - **Raw output:** evidence `04b`–`12`.
+
+### Gap closure (2026-10-15, Principal authorisations C, A, B′, T1, T2)
+- **Mutation proof (`23`–`26`):** three faults in the P5 adapter were each caught by their target test:
+  - M1: a swallowed read failure;
+  - M2: no `status` filter;
+  - M3: no `election_id` filter.
+
+  The adapter was restored after each, with sha256 `9e6bd98e…18ee`, and the restored adapter passes 9/23 (database-free) and 8/12 (isolated).
+- **`VotingSecurityVerdictAdapterTest` (`14`):** its oracle uses `votesFrom` (D6). `a02` = 2 votes → Allowed, `a02b` = 3 votes → Denied (D7, N = 6, Unverified L = 3).
+- **The plan's `nrna_test` P6 tests, run on the isolated database instead (`15`–`22`):** 7 of 8 files pass.
+- **`SecurityEventRecorderTest`:** 3 of 5 fail because no event row is written.
+  - **Probable cause (code reading, not runtime-confirmed):** PBDIGIT-42. The recorder's insert omits NOT NULL, no-default columns, and the recorder swallows the error (ADR_20260806_1340 §7).
+  - **Separate from the IP limit:** no IP-limit decision depends on the event row.
+- **Unreadable IP (`28`):** a value that isn't an IP address counts only by exact match. The same value counts; a different unreadable value doesn't. 1 test, 2 assertions.
+- **Database-free regression (`27`):** 30 files, exit 0.
+
+**Limitations:**
+- not run: the full isolated suite, and anything on `nrna_test`;
+- production enforcement not verified (the commit is not pushed, the deployment route is unknown);
+- not accepted by the Principal.
 
 **Traceability:** `PBDIGIT-286` P6, 2026-10-15; decision record §3.2 D6, D7, D7a; ADR-C §3.2; plan AC-10, AC-11. Not done: P7, P8, G-REL; the `nrna_test` tests (G-AUTH-T).

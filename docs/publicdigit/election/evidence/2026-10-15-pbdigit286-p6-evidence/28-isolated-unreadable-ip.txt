@@ -1,0 +1,14 @@
+# 2026-10-15T21:21:53Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml --filter test_an_unreadable_ip_counts_only_by_exact_value tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+D                                                                   1 / 1 (100%)
+
+Time: 00:06.334, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 1, Assertions: 2, Deprecations: 3.
+exit=0

@@ -144,6 +144,19 @@ final class SystemBNetworkCountTest extends IsolatedDatabaseTestCase
         $this->assertNotSame(SecurityVerdict::Allowed, $this->assess($voter, '203.0.113.5'), 'another tenant context: counted');
     }
 
+    public function test_an_unreadable_ip_counts_only_by_exact_value(): void
+    {
+        // IpVoteLimit::votesFrom: a value that isn't an IP address is matched exactly (no grouping).
+        $this->limitOfOneVote();
+        $voter = $this->voter();
+
+        $this->codeFrom('other-unreadable');
+        $this->assertSame(SecurityVerdict::Allowed, $this->assess($voter, 'not-an-ip'), 'another unreadable value does not count');
+
+        $this->codeFrom('not-an-ip');
+        $this->assertNotSame(SecurityVerdict::Allowed, $this->assess($voter, 'not-an-ip'), 'the same unreadable value counts');
+    }
+
     public function test_votes_of_another_election_and_unfinished_codes_do_not_count(): void
     {
         $this->limitOfOneVote();

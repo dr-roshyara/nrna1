@@ -21,7 +21,7 @@ Every isolated file shows `current_database() = 'pbdigit274_isolated_test' confi
 
 | File | What | Result |
 |---|---|---|
-| `04a-…-first-draft-observation-error.txt` | first RED attempt, before the fix | **Not valid RED:** 4 errors from the test reading a security event that isn't reliably there (allowed events are sampled ~10% and written on their own connection) + 1 failure "Unverified, at L = 3" (the real defect). The test was changed to observe the decision; the assertions were unchanged |
+| `04a-…-first-draft-observation-error.txt` | first RED attempt, before the fix | **Not valid RED:** 4 errors from the test reading a security event that isn't reliably there (allowed events are sampled ~10% and written on their own connection; and until PBDIGIT-42 the event INSERT itself fails, see `21`) + 1 failure "Unverified, at L = 3" (the real defect). The test was changed to observe the decision; the assertions were unchanged |
 | `04b-isolated-d6-red.txt` | `SystemBNetworkCountTest`, before the fix | **RED 4 failures, all the D6 defect:** same /64 not counted; IPv4-mapped spelling not counted; with no tenant context even an exact-IP vote isn't counted; grouped boundary never reached. Every "must not count" check passed |
 | `05-isolated-d6-green.txt` | same, after the fix | **GREEN** 5 tests, 14 assertions, exit 0 |
 | `06a-…-demo-fixture-not-reached.txt` | `VerificationStoreFailureTest`, first run | control, code entry, real vote passed. Demo: the test's own precondition failed (store never asked): the fixture's demo election wasn't visible through `ElectionMiddleware`'s tenant-scoped `Election::find`. Fixture fixed (organisation + session); assertions unchanged |
@@ -67,7 +67,12 @@ The plan's `nrna_test` P6 tests and the gap 1 mutation proof ran on the isolated
 | `21-…SecurityEventRecorderTest` | **5 tests, 3 failures, exit 1:** no `election_security_events` row written (`test_deny_result_always_recorded`, `…recorded_at_timestamp`, `…policy_evaluation_sequence`) |
 | `22-…CastDecisionEnforcementTest` | 6/34, exit 0 |
 
-**`SecurityEventRecorderTest`: not a P5/P6 defect, cause unconfirmed.**
+**`SecurityEventRecorderTest`: not a P5/P6 defect; probable cause PBDIGIT-42 (code reading, not runtime-confirmed).**
+- **Probable cause:** on a freshly migrated schema the recorder's INSERT leaves NOT NULL, no-default columns empty:
+  - `overlay_influence_chain` and `final_constitutional_outcome` (create migration `2026_05_26_000001…:23,25`);
+  - `constitutional_outcome` (ensure migration `2026_05_27_120001…:29`).
+
+  The recorder swallows the error, so no row appears. This is the known state recorded in ADR_20260806_1340 §7, pending **PBDIGIT-42** (OPEN).
 - **Why not P5/P6:** the test calls `SecurityEventRecorder` directly with a hand-built context. No P5/P6 code is on its path, and the recorder, the event model, `config/database.php`, the test and `tests/TestCase.php` have no working-tree changes (recorder and model last changed `2ef38297a`, 2026-08-06).
 - **Safety:** the event model writes on `pgsql_audit`. The isolated bootstrap confines `DB_AUDIT_*` too (`DatabaseIdentityGuard::PREFIXES`), so the target was `pbdigit274_isolated_test`.
 - **Why the cause is unknown:** the recorder swallows its error (by design, ADR Audit_Event_Transaction_Boundary) and logs a warning. Reading that warning from `storage/logs` was **denied by the permission classifier**; not retried.
@@ -86,3 +91,13 @@ The plan's `nrna_test` P6 tests and the gap 1 mutation proof ran on the isolated
 **Final database-free regression (`27`):** 30 files (architecture, admission authorisation, the IP set, boot guard), all exit 0.
 
 **Production code is unchanged since the isolated P6 runs `05`–`11`**, which are not repeated.
+
+## Unreadable-IP proof (Authorisations T1, T2, Principal, 2026-10-15)
+- **Pre-run checks passed;** guard confirmed.
+
+| File | Run | Result |
+|---|---|---|
+| `28-isolated-unreadable-ip.txt` | `--filter test_an_unreadable_ip_counts_only_by_exact_value tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php` | 1 test, 2 assertions, exit 0: a different unreadable value doesn't count; the same value counts |
+
+- **Not a RED/GREEN cycle:** this verifies `votesFrom`'s exact-match fallback, which was already implemented.
+- **Committed state:** P5 + P6 are in `2f998b8ae` (not pushed). The test added here and these documentation updates are uncommitted.

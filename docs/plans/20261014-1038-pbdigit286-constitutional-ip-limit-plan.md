@@ -208,7 +208,7 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - **Runs:** RED 12 failures across 4 files → GREEN, plus database-free regression (24 files, exit 0). Evidence `docs/publicdigit/election/evidence/2026-10-15-pbdigit286-p6-evidence/`; guide 08.
   - **Open in P6:** the D6 count step (`IpVoteLimit::votesFrom`, ADR-C §3.2), which needs **G-ISO for P6**.
   - **Not run:** the evaluator tests, `IpVoteLimitFlowTest`, the caller-level failure tests (G-ISO for P6), and the `nrna_test` tests (G-AUTH-T).
-  - **Status:** uncommitted, not accepted.
+  - **Status (then):** uncommitted, not accepted. Committed later in `2f998b8ae` (see below).
 
 - **2026-10-15, P6 D6 + caller evidence** (G-ISO for P6 items 1–4, authorised by the Principal; `pbdigit274_isolated_test` only, guard confirmed on every run):
   - **D6:** `TrustLegitimacySecurityVerdict::assess` counts through `IpVoteLimit::votesFrom` (ADR-C §3.2). Root cause confirmed: the old query was tenant-scoped (0 with no tenant context) and exact-IP.
@@ -216,7 +216,13 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - **Gap 4 closed:** `VerificationStoreFailureTest` 4/25. Code entry refuses generically; the real vote stores nothing and doesn't consume participation; the demo vote rolls back. A demo fixture fix is recorded (`06a`/`06b`).
   - **Gaps 2 and 6 closed:** `TrustPolicyEvaluatorTest` 5/9, `TrustPolicyEvaluatorD4Test` 3/7, `IpVoteLimitFlowTest` 6/47.
   - **Regression:** `IpVoteLimitAtCastTest` 8/34, `VoterAttestationEvidenceTest` 8/12; database-free architecture + IP set 28 files, exit 0.
-  - **Still open:** gap 1 (mutation proof); gap 3 and the `nrna_test` P6 tests (G-AUTH-T); P7, P8, G-REL; ARB acceptance.
+  - **Still open (then):** gap 1 (mutation proof); gap 3 and the `nrna_test` P6 tests (G-AUTH-T); P7, P8, G-REL; ARB acceptance.
+
+- **2026-10-15, P5 + P6 committed `2f998b8ae` (not pushed); gaps closed:**
+  - mutation proof M1–M3, each restored with a matching hash;
+  - the plan's `nrna_test` P6 tests run on the isolated database instead: 7 of 8 pass; `SecurityEventRecorderTest` fails, probably PBDIGIT-42 (code reading, not runtime-confirmed);
+  - the unreadable-IP test passes (evidence `28`).
+  - **Status:** awaiting the Principal's formal P5/P6 acceptance. Limitations: the full isolated suite and `nrna_test` not run; production enforcement unverified. Release not approved.
 
 ## 11. Open questions
 **Human Arbiter policy decisions:** none open (record §3.2).

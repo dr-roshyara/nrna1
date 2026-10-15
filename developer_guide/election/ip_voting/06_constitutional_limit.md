@@ -2,9 +2,9 @@
 
 **Story:** `PBDIGIT-286` (OPEN). **This guide describes the current, committed behaviour.** The planned changes are in the decision record and the plan; when they are implemented, this guide is updated in plan phase P9.
 
-> **P5 (uncommitted, awaiting review):** the working tree derives the trust level from real verification evidence, so §3's "every voter is Unverified" no longer holds there. See [guide 07](07_trust_level_from_verification.md). With P5 but before P6 an attested network completes 7 votes at N = 6 (L + 1 under `>`); the approved 6 / 3 needs P6 (`>=`).
+> **P5 (committed `2f998b8ae`, not pushed, not accepted):** the code derives the trust level from real verification evidence, so §3's "every voter is Unverified" no longer holds there. See [guide 07](07_trust_level_from_verification.md). With P5 but before P6 an attested network completes 7 votes at N = 6 (L + 1 under `>`); the approved 6 / 3 needs P6 (`>=`).
 
-> **P6 boundary (uncommitted, 2026-10-15, [guide 08](08_p6_boundary.md)):** the working tree refuses at `>=` (D7) and the interpreter keeps a minimum of 1 (D7a), so §4's "4 votes at N = 6" becomes 3 Unverified / 6 Attested there. The count (§2) is also replaced there (D6): `IpVoteLimit::votesFrom`, IPv6 /64, this election, no tenant scope.
+> **P6 (committed `2f998b8ae`, not pushed, not accepted; [guide 08](08_p6_boundary.md)):** the code refuses at `>=` (D7) and the interpreter keeps a minimum of 1 (D7a), so §4's "4 votes at N = 6" becomes 3 Unverified / 6 Attested there. The count (§2) is also replaced there (D6): `IpVoteLimit::votesFrom`, IPv6 /64, this election, no tenant scope.
 
 **Code:**
 - `app/Application/Election/Security/TrustPolicyEvaluator.php`

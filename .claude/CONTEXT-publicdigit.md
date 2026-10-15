@@ -9,11 +9,20 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-15): **PBDIGIT-286 P5 + P6 committed `2f998b8ae` (not pushed); awaiting Principal acceptance**
+- **Done:** trust level from verification evidence (P5); refusal at `>=`, minimum 1, count via `IpVoteLimit::votesFrom` (P6). Evidence `docs/publicdigit/election/evidence/2026-10-15-pbdigit286-p6-evidence/`; guides 07, 08.
+- **Not done:**
+  - not accepted, not released;
+  - production enforcement unverified;
+  - full isolated suite and `nrna_test` not run;
+  - `SecurityEventRecorderTest` fails (probably PBDIGIT-42, separate).
+- **Open:** P1–P4 (O-3 → G-ADR-A; G-MIG), P7 (G-AUD2, PBDIGIT-42), P8, P9, G-REL.
+
 ## 📍 UPDATE (2026-10-14, **IP protections delivered (PBDIGIT-278 item 8, 285, 288 items 1–5, 287); PBDIGIT-286 policy decisions approved, plan DRAFT r3, no code**; additive, the blocks below are unchanged)
 
 | | |
 |---|---|
-| 🎯 **Active ticket** | **`PBDIGIT-286`** (the constitutional IP limit). **Planning only:** decision record **r3** and plan **DRAFT r3** committed (`914b773aa`); current-state snapshot `202496531`; guide 06, current behaviour (`7eab0a444`). **No code** |
+| 🎯 **Active ticket** | **Historical (2026-10-14):** **`PBDIGIT-286`** (the constitutional IP limit). **Planning only:** decision record **r3** and plan **DRAFT r3** committed (`914b773aa`); current-state snapshot `202496531`; guide 06, current behaviour (`7eab0a444`). **No code** |
 | ✅ **Done (2026-10-13)** | **PBDIGIT-278 item 8** `7b3d15583`: one per-IP vote limit, default 10. **This supersedes the 2026-10-13 block's "unset → every voter refused" risk.** **PBDIGIT-285** `e3ea8b0b5`: one IPv4 whitelist matcher. **PBDIGIT-288 items 1–5** `6aeece4d4`, `8dd041fc8`: limit at the vote under a per-network lock, IP at the vote, IPv6 /64, audit at every refusal. **PBDIGIT-287** `bb06acb4d`: `TRUSTED_PROXIES` only. Guides: `developer_guide/election/ip_voting/00–05` |
 | 📌 **Principal / Human Arbiter (2026-10-14)** | R1–R5 confirmed. **All PBDIGIT-286 policy decisions approved** (record §3.2), among them: freeze when voting opens; N ∈ [1, 50]; System B mandatory; D3 = A; `>=`; /64; frozen record (S2) + backfill of every opened election; lock before the single assessment; deployment window + maintenance mode; `NetworkLimitReached` without a number; chief/deputy only; R1-P. Plan approval, ADRs, migrations and test authorizations are **separate gates**. Strict TDD first |
 | ⛔ **Open** | **Current (2026-10-15):** G-PLAN approved (P0 only); G-ADR-B and G-ADR-C approved conditionally; **G-ISO authorised for P5 only** (2026-10-14 18:54 UTC); still open: G-ADR-A, AUD-2 entry, G-MIG, G-ISO for other phases, G-AUTH-T, G-REL, O-3. *Historical list (before those decisions):* **PBDIGIT-286 gates:** G-PLAN · ADR-A, ADR-B, ADR-C · AUD-2 entry · G-MIG (migration + backfill design) · G-ISO · G-AUTH-T · G-REL · **O-3** (operations: production isolation level, before ADR-A). **Open points for the ADRs:** A-1 (`election_id` is a UUID string; the approved hash wording says integer), A-2 (stored `none`/`ip_strict`). **BL-EMAIL** backlog item approved in principle, not created (separate task). **PBDIGIT-288** items 6, 7, 9 (8 now decided under 286 D7). **PBDIGIT-284** parked. **Ops:** `.env.example` (`VOTING_TRUST_PROXIES` out, `TRUSTED_PROXIES` in, by the owner); **set `TRUSTED_PROXIES` in production before voting opens** |

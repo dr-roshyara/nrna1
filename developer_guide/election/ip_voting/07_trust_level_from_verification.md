@@ -1,6 +1,6 @@
 # 07: The trust level comes from real verification evidence (PBDIGIT-286 P5)
 
-**Story:** `PBDIGIT-286` phase P5 (AC-10; decisions D3, D3a, D3-E, D3-P, D4) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** implemented 2026-10-14, **awaiting the Principal's review; not committed**
+**Story:** `PBDIGIT-286` phase P5 (AC-10; decisions D3, D3a, D3-E, D3-P, D4) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** implemented 2026-10-14; committed `2f998b8ae` (not pushed); **not accepted** (awaiting the Principal's decision); not released
 
 **Code:**
 - `app/Application/Election/Security/VoterAttestationEvidence.php`: the trust-only read port (new)
@@ -12,7 +12,7 @@
 - `tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php` (database-free, fake port)
 - `tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php` (isolated database, G-ISO)
 
-> **Release dependency: P5 must not be released without P6.** P5 raises an attested voter's effective limit L from ⌊N/2⌋ to N, but the refusal is still `votesFromThisIp > L` (`NetworkTrustEvidence::exceedsLimit`), so a network completes **L + 1** votes. With P5 alone, an attested network completes **7** at N = 6, one more than the approved 6 (decision record §3.3). **Update 2026-10-15:** the P6 boundary step (`>=`, D7; [guide 08](08_p6_boundary.md)) is now in the working tree, uncommitted and not accepted, so the working tree completes **6 / 3**. P6's count step (D6) is still open; the rule "P5 not released without P6" now means without **all** of P6, accepted.
+> **Release dependency: P5 must not be released without P6.** P5 raises an attested voter's effective limit L from ⌊N/2⌋ to N, but the refusal is still `votesFromThisIp > L` (`NetworkTrustEvidence::exceedsLimit`), so a network completes **L + 1** votes. With P5 alone, an attested network completes **7** at N = 6, one more than the approved 6 (decision record §3.3). **Update 2026-10-15:** P6 (D7 `>=`, D7a, and the D6 count; [guide 08](08_p6_boundary.md)) is committed with P5 in `2f998b8ae`, not accepted, so the code completes **6 / 3**. The rule "P5 not released without P6" now means: not without P6 **accepted**.
 
 ## Purpose
 - **Before P5,** `TrustPolicyEvaluator::buildAttestationRecord()` hard-coded `attested = false`, so every voter was **Unverified**. The effective limit was `max(1, ⌊N/2⌋)` (3 at the default N = 6) and, because of `>`, a network could complete **4** votes, even for officer-verified voters.
