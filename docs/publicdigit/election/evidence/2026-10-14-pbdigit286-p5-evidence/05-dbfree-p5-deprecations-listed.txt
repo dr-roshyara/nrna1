@@ -1,0 +1,104 @@
+command: vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php --display-deprecations tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php
+kind: database-free; re-run only to list the 3 deprecations
+started: 2026-10-14T22:43:12+02:00
+---
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDDD                                                            8 / 8 (100%)
+
+Time: 00:00.711, Memory: 20.00 MB
+
+8 tests triggered 3 PHP deprecations:
+
+1) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:61
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_active_verification_evidence_makes_the_voter_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:95
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_an_evidence_store_failure_is_never_read_as_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:124
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_missing_or_revoked_evidence_leaves_the_voter_unverified_without_a_denial
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:104
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_registrar_and_revocation_are_never_set_from_the_evidence
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:116
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_container_wires_the_database_adapter
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:159
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_database_adapter_does_not_swallow_a_read_failure
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:164
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_effective_limit_per_reachable_level_follows_d4
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:148
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_without_a_voter_or_an_election_no_evidence_is_read_and_the_level_is_unverified
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:138
+
+2) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:81
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_active_verification_evidence_makes_the_voter_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:95
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_an_evidence_store_failure_is_never_read_as_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:124
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_missing_or_revoked_evidence_leaves_the_voter_unverified_without_a_denial
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:104
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_registrar_and_revocation_are_never_set_from_the_evidence
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:116
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_container_wires_the_database_adapter
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:159
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_database_adapter_does_not_swallow_a_read_failure
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:164
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_effective_limit_per_reachable_level_follows_d4
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:148
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_without_a_voter_or_an_election_no_evidence_is_read_and_the_level_is_unverified
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:138
+
+3) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/database.php:66
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_active_verification_evidence_makes_the_voter_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:95
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_an_evidence_store_failure_is_never_read_as_attested
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:124
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_missing_or_revoked_evidence_leaves_the_voter_unverified_without_a_denial
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:104
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_registrar_and_revocation_are_never_set_from_the_evidence
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:116
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_container_wires_the_database_adapter
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:159
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_database_adapter_does_not_swallow_a_read_failure
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:164
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_effective_limit_per_reachable_level_follows_d4
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:148
+
+* Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_without_a_voter_or_an_election_no_evidence_is_read_and_the_level_is_unverified
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:138
+
+OK, but there were issues!
+Tests: 8, Assertions: 18, Deprecations: 3.
+--- exit code: 0

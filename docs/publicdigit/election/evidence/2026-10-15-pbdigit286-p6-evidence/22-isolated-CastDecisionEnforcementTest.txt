@@ -1,0 +1,14 @@
+# 2026-10-15T20:59:37Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Feature/Voting/CastDecisionEnforcementTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDD                                                              6 / 6 (100%)
+
+Time: 00:12.306, Memory: 30.00 MB
+
+OK, but there were issues!
+Tests: 6, Assertions: 34, Deprecations: 3.
+exit=0

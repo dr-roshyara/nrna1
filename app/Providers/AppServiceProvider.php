@@ -320,7 +320,14 @@ class AppServiceProvider extends ServiceProvider
                 eventRecorder: $app->make(\App\Application\Election\Security\SecurityEventRecorder::class),
                 privacyPolicy: $app->make(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class),
                 assembler: $app->make(\App\Application\Election\Security\TrustSnapshotAssembler::class),
+                attestationEvidence: $app->make(\App\Application\Election\Security\VoterAttestationEvidence::class),
             )
+        );
+
+        // PBDIGIT-286 P5 (D3-P): trust-only read port for verification evidence (System B trust level)
+        $this->app->bind(
+            \App\Application\Election\Security\VoterAttestationEvidence::class,
+            \App\Infrastructure\Election\Security\DatabaseVoterAttestationEvidence::class
         );
 
         // Election Capability System: Resolver orchestrates policies for advisory capability projection

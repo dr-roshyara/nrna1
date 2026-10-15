@@ -11,10 +11,10 @@ use App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery;
 use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
 use App\Domain\Election\Security\LegitimacyOutcome;
 use App\Domain\Election\Security\TrustEvidencePrivacyPolicy;
-use App\Models\Code;
 use App\Models\Election;
 use App\Models\User;
 use App\Models\VoterIpVerification;
+use App\Services\Voting\IpVoteLimit;
 use App\Application\Election\Security\Policies\NetworkBindingPolicy;
 
 /**
@@ -63,12 +63,10 @@ final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
             $registeredIpHash = $privacyPolicy->hashIp($auth_user->voting_ip, $election->id);
         }
 
-        // Participation from the current IP in this election (election-scoped, tenant-scoped density).
-        $currentIp = $context->clientIp;
-        $votesFromThisIp = Code::where('election_id', $election->id)
-            ->where('client_ip', $currentIp)
-            ->where('has_voted', true)
-            ->count();
+        // PBDIGIT-286 D6 (ADR-C §3.2): completed votes from this IP's group in this election, with System A's grouping
+        // (IPv4 address with both spellings, IPv6 /64) and no tenant scope, so a missing or other tenant context
+        // can't under-count. The current voter's code isn't voted yet, so it isn't counted.
+        $votesFromThisIp = IpVoteLimit::votesFrom($election, $context->clientIp);
 
         $trustEnvelope = $this->trustEvaluator->evaluate(
             election: $election,

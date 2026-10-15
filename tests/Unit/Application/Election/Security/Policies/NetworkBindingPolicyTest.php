@@ -118,6 +118,25 @@ class NetworkBindingPolicyTest extends TestCase
 
     public function test_reports_no_concern_when_attested_within_full_limit(): void
     {
+        // PBDIGIT-286 D7: one below L = 10 is admitted (votesFromThisIp counts completed votes only).
+        $policy = new NetworkBindingPolicy();
+        $ctx = $this->makeCtxWithAttestationTrustLevel(
+            new NetworkTrustEvidence(
+                currentIpHash: 'hash', registeredIpHash: 'hash', whitelist: null,
+                maxVotesPerIp: 10, votesFromThisIp: 9,
+                restrictionEnabled: true, bindingStrategy: 'ip_count',
+            ),
+            TrustLevel::Attested
+        );
+
+        $finding = $policy->evaluate($ctx);
+
+        $this->assertFalse($finding->hasConstitutionalConcern());
+    }
+
+    public function test_reports_concern_when_attested_reaches_full_limit(): void
+    {
+        // PBDIGIT-286 D7 (`>=`): with L = 10 completed votes, the next voter is refused. Before P6 this was admitted.
         $policy = new NetworkBindingPolicy();
         $ctx = $this->makeCtxWithAttestationTrustLevel(
             new NetworkTrustEvidence(
@@ -130,10 +149,28 @@ class NetworkBindingPolicyTest extends TestCase
 
         $finding = $policy->evaluate($ctx);
 
-        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertTrue($finding->hasConstitutionalConcern());
+        $this->assertEquals('network_limit_exceeded', $finding->constitutionalBasis);
     }
 
     public function test_reports_no_concern_when_registrar_attested_within_2x_limit(): void
+    {
+        $policy = new NetworkBindingPolicy();
+        $ctx = $this->makeCtxWithAttestationTrustLevel(
+            new NetworkTrustEvidence(
+                currentIpHash: 'hash', registeredIpHash: 'hash', whitelist: null,
+                maxVotesPerIp: 10, votesFromThisIp: 19,
+                restrictionEnabled: true, bindingStrategy: 'ip_count',
+            ),
+            TrustLevel::RegistrarAttested
+        );
+
+        $finding = $policy->evaluate($ctx);
+
+        $this->assertFalse($finding->hasConstitutionalConcern());
+    }
+
+    public function test_reports_concern_when_registrar_attested_reaches_2x_limit(): void
     {
         $policy = new NetworkBindingPolicy();
         $ctx = $this->makeCtxWithAttestationTrustLevel(
@@ -147,7 +184,7 @@ class NetworkBindingPolicyTest extends TestCase
 
         $finding = $policy->evaluate($ctx);
 
-        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertTrue($finding->hasConstitutionalConcern());
     }
 
     public function test_reports_concern_when_registrar_attested_exceeds_2x_limit(): void

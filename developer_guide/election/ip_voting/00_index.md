@@ -24,7 +24,9 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 | 03 | [The limit at the vote: lock, voting IP, IPv6 /64](03_ip_limit_at_the_vote.md) | `PBDIGIT-288` items 1–4 | committed `6aeece4d4` (code), `197505f8d` (tests) |
 | 04 | [Every IP refusal in the election audit](04_ip_refusal_audit.md) | `PBDIGIT-288` item 5 | committed `8dd041fc8` (code), `7cb27176d` (tests) |
 | 05 | [Trusted proxy: where the client IP comes from](05_trusted_proxy.md) | `PBDIGIT-287` | committed `bb06acb4d` (code), `f16eb8ba7` (tests) |
-| 06 | [The constitutional per-IP limit (System B) as it works today](06_constitutional_limit.md) | `PBDIGIT-286` (OPEN) | **current behaviour only**; PBDIGIT-286 changes are planned, not implemented |
+| 06 | [The constitutional per-IP limit (System B) as it works today](06_constitutional_limit.md) | `PBDIGIT-286` (OPEN) | **committed behaviour**; P5 (guide 07) is in the working tree, the other phases are planned |
+| 07 | [The trust level comes from real verification evidence](07_trust_level_from_verification.md) | `PBDIGIT-286` P5 | implemented 2026-10-14; first-review findings addressed; second review PASS WITH FINDINGS; **not accepted**, not committed; **must not be released without P6** |
+| 08 | [No vote beyond the limit: the System B boundary](08_p6_boundary.md) | `PBDIGIT-286` P6 | D7, D7a and D6 (count via `IpVoteLimit::votesFrom`) implemented 2026-10-15; database-free and isolated tests green, including caller fail-closed tests; **uncommitted, not accepted** |
 
 ## How the client IP is obtained
 - **In code:** `$request->ip()` / `Request::getClientIp()` (no argument).
@@ -34,7 +36,7 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 ## Open work (backlog)
 | Item | What |
 |---|---|
-| `PBDIGIT-286` | the constitutional limit is hidden and effectively 3 (`attested` hard-coded false), and the admin switch doesn't control it (guide 06). Decision record and DRAFT plan committed (`e3d186434`); 16 decisions and the gates are open |
+| `PBDIGIT-286` | the constitutional limit is hidden and effectively 3 (`attested` hard-coded false in the committed code; P5 in the working tree, guide 07), and the admin switch doesn't control it (guide 06). Decision record r3 and plan r3 committed; G-PLAN approved 2026-10-14 (P0 only); the Human Arbiter policy decisions are approved (record §3.2). **Still open:** O-3, G-ADR-A, G-MIG, G-AUD2, G-AUTH-T, G-REL, P1–P4, P6–P9. G-ISO is authorised for P5 only. P5 (guide 07) is implemented, uncommitted and not accepted |
 | `PBDIGIT-288` | items 1–5 done (guides 03, 04). Open: IP retention and keyed hashing; settings-page wording; the off-by-one between the two limits; dead IP code |
 | `PBDIGIT-284` | parked: the vote hash and an audit entry can link a vote to its voter (not an IP issue, but found in the same review) |
 

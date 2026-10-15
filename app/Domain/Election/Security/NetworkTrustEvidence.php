@@ -28,8 +28,10 @@ readonly class NetworkTrustEvidence
 
     public function exceedsLimit(TrustLevel $trustLevel): bool
     {
+        // PBDIGIT-286 D7: votesFromThisIp counts completed votes from this network (the current voter not yet
+        // included), so the next voter is refused once L completed votes exist. `>` admitted an (L + 1)th vote.
         $effectiveLimit = $this->effectiveLimit($trustLevel);
-        return $this->votesFromThisIp > $effectiveLimit;
+        return $this->votesFromThisIp >= $effectiveLimit;
     }
 
     public function satisfiesNetworkAttestation(): bool

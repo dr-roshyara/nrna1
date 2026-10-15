@@ -1,0 +1,22 @@
+# 2026-10-15T20:35:37Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VerificationStoreFailureTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDF                                                                4 / 4 (100%)
+
+Time: 00:03.640, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Isolated\Pbdigit274\Database\VerificationStoreFailureTest::test_the_demo_vote_rolls_back_and_nothing_is_stored_when_the_store_fails
+the verification store was asked (the evaluation runs first in the transaction)
+Failed asserting that 0 is greater than 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VerificationStoreFailureTest.php:254
+
+FAILURES!
+Tests: 4, Assertions: 20, Failures: 1, Deprecations: 3.
+exit=1

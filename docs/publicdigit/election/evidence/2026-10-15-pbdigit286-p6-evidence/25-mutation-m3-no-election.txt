@@ -1,0 +1,23 @@
+# 2026-10-15T21:01:45Z MUTATION M3 (election_id filter removed); mutated sha256 7afd70cf68813bd9…
+# . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml --filter test_evidence_of_another_election_or_another_voter_does_not_count tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:08.068, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterAttestationEvidenceTest::test_evidence_of_another_election_or_another_voter_does_not_count
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php:128
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1, Deprecations: 3.
+exit=1
+restored sha256: 9e6bd98e721b224e26ff0d40449b4706d38d1afd125474446e9c0717aa1118ee

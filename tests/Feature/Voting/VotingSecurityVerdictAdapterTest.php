@@ -39,9 +39,8 @@ use Tests\TestCase;
  *
  * ORACLE = a faithful test-side copy of the production path at HEAD (verified line by line) — no cleanup, no change:
  *   evidence   VoteController.php 1486–1491  registered-IP hash from $auth_user->voting_ip (column missing → null)
- *              VoteController.php 1495–1499  density: \App\Models\Code::where(election_id)->where(client_ip)
- *                                            ->where(has_voted, true)->count() — TENANT-SCOPED (BelongsToTenant:
- *                                            TenantContext ?? session('current_organisation_id'))
+ *              density (PBDIGIT-286 D6, ADR-C §3.2, decided change): IpVoteLimit::votesFrom($election, $ip) —
+ *                                            this election, IPv4 address / IPv6 /64, no tenant scope
  *   evaluate   VoteController.php 1504–1512  TrustPolicyEvaluator::evaluate() (injected; container singleton)
  *   decide     VoteController.php 1516–1518  ConstitutionalLegitimacyDecision::decide() (injected; stateless)
  *   mapping    VoteController.php 1985–1993  securityVerdictOf(), used at 1679 for CastAttempt::$security
@@ -128,11 +127,7 @@ class VotingSecurityVerdictAdapterTest extends TestCase
             $registeredIpHash = $privacyPolicy->hashIp($auth_user->voting_ip, $election->id);
         }
 
-        $currentIp = $context->clientIp;
-        $votesFromThisIp = Code::where('election_id', $election->id)
-            ->where('client_ip', $currentIp)
-            ->where('has_voted', true)
-            ->count();
+        $votesFromThisIp = \App\Services\Voting\IpVoteLimit::votesFrom($election, $context->clientIp); // PBDIGIT-286 D6
 
         $trustEnvelope = app(TrustPolicyEvaluator::class)->evaluate(
             election: $election,
@@ -188,10 +183,10 @@ class VotingSecurityVerdictAdapterTest extends TestCase
         return app(VotingSecurityVerdictQuery::class)->verdictFor($context);
     }
 
-    /** Tenant-scoped density exactly as the oracle counts it — for explicit preconditions. */
+    /** Density exactly as the oracle counts it (D6) — for explicit preconditions. */
     private function densityOf(Election $election, string $ip): int
     {
-        return Code::where('election_id', $election->id)->where('client_ip', $ip)->where('has_voted', true)->count();
+        return \App\Services\Voting\IpVoteLimit::votesFrom($election, $ip);
     }
 
     private function assertEquivalent(SecurityVerdict $expected, User $user, Election $election, string $case): void
@@ -211,12 +206,20 @@ class VotingSecurityVerdictAdapterTest extends TestCase
         $this->assertEquivalent(SecurityVerdict::Allowed, $this->voter(), $this->election, 'a01');
     }
 
-    public function test_a02_participation_at_the_effective_unverified_limit_is_still_allowed(): void
+    public function test_a02_participation_one_below_the_effective_unverified_limit_is_allowed(): void
     {
-        // max_votes_per_ip 6 → effective limit 3 for unverified voters (NetworkTrustEvidence); denial only when votes > 3.
+        // max_votes_per_ip 6 → effective limit 3 for unverified voters; PBDIGIT-286 D7: refused once 3 votes exist.
+        $this->votedFrom(self::IP, 2);
+        $this->assertSame(2, $this->densityOf($this->election, self::IP));
+        $this->assertEquivalent(SecurityVerdict::Allowed, $this->voter(), $this->election, 'a02');
+    }
+
+    public function test_a02b_participation_at_the_effective_unverified_limit_is_denied(): void
+    {
+        // PBDIGIT-286 D7 (`>=`): with L = 3 completed votes the next voter is refused (before P6: allowed, L + 1).
         $this->votedFrom(self::IP, 3);
         $this->assertSame(3, $this->densityOf($this->election, self::IP));
-        $this->assertEquivalent(SecurityVerdict::Allowed, $this->voter(), $this->election, 'a02');
+        $this->assertEquivalent(SecurityVerdict::Denied, $this->voter(), $this->election, 'a02b');
     }
 
     public function test_a03_participation_above_the_effective_limit_is_denied(): void

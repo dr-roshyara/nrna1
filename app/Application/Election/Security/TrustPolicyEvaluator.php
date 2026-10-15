@@ -27,6 +27,9 @@ class TrustPolicyEvaluator
         private SecurityEventRecorder               $eventRecorder,
         private TrustEvidencePrivacyPolicy         $privacyPolicy,
         private TrustSnapshotAssembler             $assembler,
+        // PBDIGIT-286 P5 (D3-P): the voter's verification evidence. Without a source, every voter is Unverified
+        // (the stricter System B limit), as before P5.
+        private ?VoterAttestationEvidence          $attestationEvidence = null,
     ) {}
 
     public function evaluate(
@@ -175,8 +178,11 @@ class TrustPolicyEvaluator
     private function buildAttestationRecord(?Election $election, ?User $user): VerificationAttestationRecord
     {
         $required = $election ? ($election->voter_verification_required ?? false) : false;
-        $attested = false; // populated by controller from VoterVerification record
-        $registrarId = null; // populated by controller from VoterVerification
+        // PBDIGIT-286 P5 (D3, D3a, D3-E): active verification evidence of any method makes the voter Attested.
+        // Missing or revoked evidence leaves them Unverified; a read failure propagates (fail closed).
+        $attested = $election !== null && $user !== null && $this->attestationEvidence !== null
+            && $this->attestationEvidence->hasActiveAttestation((string) $election->id, (string) $user->id);
+        $registrarId = null; // D3-E: never set; RegistrarAttested is not reachable from the evidence
 
         return new VerificationAttestationRecord(
             required: $required,

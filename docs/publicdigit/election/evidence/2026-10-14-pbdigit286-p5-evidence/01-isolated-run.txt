@@ -1,0 +1,19 @@
+commit (HEAD, working tree has the uncommitted P5 changes): efcdfc8f6458aca9a6057c86e74fe599dd3c43f5
+command: . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php
+authorisation: G-ISO + P5 (Principal, 2026-10-14); target pbdigit274_isolated_test verified before the run
+started: 2026-10-14T21:01:00+02:00
+---
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDD                                                             7 / 7 (100%)
+
+Time: 00:10.076, Memory: 28.00 MB
+
+OK, but there were issues!
+Tests: 7, Assertions: 8, Deprecations: 3.
+--- exit code: 0
+finished: 2026-10-14T21:01:10+02:00

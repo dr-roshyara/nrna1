@@ -1,0 +1,26 @@
+# 2026-10-15T21:01:06Z MUTATION M1 (catch \Throwable → return false); mutated sha256 8155b5d64dcde1f6…
+# vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php --filter test_the_database_adapter_does_not_swallow_a_read_failure tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.427, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_the_database_adapter_does_not_swallow_a_read_failure
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'propagated'
++'returned false'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:207
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1, Deprecations: 3.
+exit=1
+restored sha256: 9e6bd98e721b224e26ff0d40449b4706d38d1afd125474446e9c0717aa1118ee

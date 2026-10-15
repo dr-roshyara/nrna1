@@ -1,0 +1,54 @@
+# 2026-10-15T20:33:36Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+EEEEF                                                               5 / 5 (100%)
+
+Time: 00:10.436, Memory: 28.00 MB
+
+There were 4 errors:
+
+1) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_ipv6_votes_count_together_within_the_64
+Illuminate\Database\Eloquent\ModelNotFoundException: No query results for model [App\Models\ElectionSecurityEvent].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:665
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:116
+
+2) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_ipv4_counts_per_address_with_both_spellings
+Illuminate\Database\Eloquent\ModelNotFoundException: No query results for model [App\Models\ElectionSecurityEvent].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:665
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:125
+
+3) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_the_count_does_not_depend_on_the_tenant_context
+Illuminate\Database\Eloquent\ModelNotFoundException: No query results for model [App\Models\ElectionSecurityEvent].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:665
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:134
+
+4) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_votes_of_another_election_and_unfinished_codes_do_not_count
+Illuminate\Database\Eloquent\ModelNotFoundException: No query results for model [App\Models\ElectionSecurityEvent].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:665
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:147
+
+--
+
+There was 1 failure:
+
+1) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_the_limit_applies_to_the_grouped_count_per_trust_level
+Unverified, at L = 3
+Failed asserting that two variables don't reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:165
+
+ERRORS!
+Tests: 5, Assertions: 3, Errors: 4, Failures: 1, Deprecations: 3.
+exit=2

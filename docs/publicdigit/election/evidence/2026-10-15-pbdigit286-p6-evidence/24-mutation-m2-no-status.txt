@@ -1,0 +1,30 @@
+# 2026-10-15T21:01:23Z MUTATION M2 (status filter removed); mutated sha256 ed785772f8d120ee…
+# . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml --filter '/test_a_revoked_row_does_not_count|test_a_row_with_an_unknown_status_does_not_count/' tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FF                                                                  2 / 2 (100%)
+
+Time: 00:07.983, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterAttestationEvidenceTest::test_a_revoked_row_does_not_count
+D3-E
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php:101
+
+2) Tests\Isolated\Pbdigit274\Database\VoterAttestationEvidenceTest::test_a_row_with_an_unknown_status_does_not_count
+status 'pending'
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterAttestationEvidenceTest.php:112
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 2, Deprecations: 3.
+exit=1
+restored sha256: 9e6bd98e721b224e26ff0d40449b4706d38d1afd125474446e9c0717aa1118ee

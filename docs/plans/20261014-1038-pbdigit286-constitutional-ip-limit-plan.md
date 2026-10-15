@@ -67,7 +67,7 @@ Each gate is separate. **Satisfying one doesn't satisfy another.**
 | **G-ADR-C** | lock before the single assessment, lock scope, tenant-context handling for the D6 count. **Status: APPROVED CONDITIONALLY 2026-10-14** (record §3.4) | approved ADR file ✅ (mandatory proofs, ADR-C §6) | P6 (count change), P8: **still also need G-ISO** and phase authorisation |
 | **G-AUD2** | decision-record entry: the narrow E2-D4 exception | entry approved | P7 |
 | **G-MIG** | frozen-record migration **and** the backfill design (record §4.8), **plus the trigger migration if ADR-A-T requires it** (decision rule, record §3.4) | the Principal's approval of the migration file and backfill design | P3, R |
-| **G-ISO** | tests on `pbdigit274_isolated_test` with the identity guard | the Principal's authorization | every isolated-database step |
+| **G-ISO** | tests on `pbdigit274_isolated_test` with the identity guard. **Status: AUTHORISED for P5 only** (Principal, 2026-10-14 18:54 UTC; §10). Every other phase needs its own authorisation | the Principal's authorization | every isolated-database step |
 | **G-AUTH-T** | any use of `nrna_test` | separate authorization | the `nrna_test` tests in §6 |
 | **G-REL** | deployment | record §5 pre-flight evidence (**any-election** empty-end-time block passed); a statement that **PBDIGIT-289** is fixed or accepted as a documented known risk, with the scheduled-transition behaviour reviewed (ADR-B §3.6b); critical-alert routing | phase R and release |
 
@@ -146,6 +146,7 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 | The same-session advisory re-acquire is unproven | P8 test before any claim |
 | The synchronous email lengthens the lock hold | BL-EMAIL, recorded as an extension of backlog PBDIGIT-282 (`7eb57cf15`) |
 | A file audit entry is lost after commit | reconciliation (T-6) |
+| **P5 released without P6** (P5 review F1, 2026-10-14). P5 raises an attested voter's L to N while the refusal is still `votesFromThisIp > L` (`NetworkTrustEvidence::exceedsLimit`), so an attested network completes **N + 1** (7 at N = 6, against the approved 6); unverified stays at 4 (approved 3) | **P5 and P6 are released together.** P5 may be committed but must not reach a deployable branch or a release before P6 (D7 `>=`, under its own approval and the G-ADR-C proofs). G-REL checks it |
 
 ## 9. Task checklist
 - [x] G-PLAN (2026-10-14, at `914b773aa`)
@@ -153,7 +154,7 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 - [x] G-ADR-B (approved conditionally 2026-10-14) · [x] G-ADR-C (approved conditionally 2026-10-14)
 - [ ] G-ADR-A (blocked until O-3) · [ ] ADR-A-T operations confirmation · [ ] G-AUD2 (§9 wording pending)
 - [ ] G-MIG (migration + backfill design)
-- [ ] G-ISO; G-AUTH-T (optional)
+- [x] G-ISO **for P5 only** (Principal, 2026-10-14 18:54 UTC) · [ ] G-ISO for any other phase · [ ] G-AUTH-T (optional)
 - [ ] P1 … P9 (each with evidence and a developer-guide step)
 - [ ] R: backfill, pre-flight → G-REL
 - [ ] BL-EMAIL backlog item (separate task)
@@ -177,6 +178,46 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - G-ADR-A blocked (O-3).
 - **No code.**
 
+- **2026-10-14, G-ISO + P5 (authorised by the Principal; nothing else):**
+  - trust-only read port `VoterAttestationEvidence` + adapter `DatabaseVoterAttestationEvidence` (same predicate as admission; admission code unchanged, D3-P); `TrustPolicyEvaluator::buildAttestationRecord()` asks it (`registrarId`, `revoked` never set, D3-E); binding in `AppServiceProvider`;
+  - database-free `TrustPolicyAttestationEvidenceTest`: RED 6 errors + 1 failure → GREEN 7/17;
+  - isolated `VoterAttestationEvidenceTest` (G-ISO, guard confirmed `pbdigit274_isolated_test`): 7/8, exit 0; individual, bulk and legacy active → Attested; revoked/missing → Unverified; end to end through the evaluator;
+  - **finding:** `elections.voter_verification_required` doesn't exist, so real attestation changes only the trust level (System B limit), not the verification finding;
+  - **not run:** the admission suite (default suite on `nrna_test`, not authorised; admission code has no diff). Evidence `docs/publicdigit/election/evidence/2026-10-14-pbdigit286-p5-evidence/`; guide `developer_guide/election/ip_voting/07`. **Uncommitted, awaiting review.**
+  - **Chronology:** the Principal authorised "G-ISO and the P5 Evidence phase only" at 2026-10-14 18:54 UTC; the isolated run was 19:01–19:01:10 UTC (21:01 local, evidence `01`). The authorisation does not approve O-3, G-ADR-A, G-MIG, G-AUD2, G-REL or any later phase.
+- **2026-10-14, independent review of P5:** PASS WITH FINDINGS (F1–F8). **Corrections at the Principal's instruction:**
+  - **F1:** P5 must not be released without P6 (§8 risk). Today's `>` lets a network complete L + 1: with P5, 7 attested / 4 unverified at N = 6; after P6 (`>=`), 6 / 3. **P6 is not implemented and the comparison is unchanged.**
+  - **F2:** numbers corrected in guide 07 and the database-free test's docblock.
+  - **F4:** database-free test that the real adapter throws on a read failure (dead socket); isolated case that statuses other than exactly `active` don't count. The predicate stays `status = 'active'`.
+  - **F5:** raw database-free output saved (evidence `02`–`05`); the 3 deprecations recorded.
+  - **F6:** G-ISO (P5 only) recorded here (§4, §9) and in the decision record.
+  - **F7:** guide 06 and the index point to guide 07.
+  - **Runs:** database-free P5 test 8/18, exit 0; regression `TrustPolicyEvaluatorNetworkRestrictionTest` 5/8, exit 0; `LaravelBootIsGuardedTest` 18/30, exit 0. isolated F4 run 8/12, 3 deprecations, exit 0, guard confirmed `pbdigit274_isolated_test` (evidence `06`; a first attempt was denied by the tool's permission classifier and executed nothing). **Not run:** `TrustPolicyEvaluatorTest` and `TrustPolicyEvaluatorD4Test` (they extend `Tests\TestCase`, not database-free); the admission suite and the `nrna_test` feature tests (G-AUTH-T).
+
+- **2026-10-15, second independent review of P5:** PASS WITH FINDINGS. Documentation findings N1, N2, N5, N6 and F7 corrected (session log 2026-10-15). **P5 is not accepted.** Open for the Principal:
+  - the P5+P6 release control (today a process gate only);
+  - N7: the verification read runs on every evaluation, including demo and unrestricted elections;
+  - F3;
+  - the evidence gaps (README "Not run").
+  - The P5/P6 counts above are System B only; System A can refuse earlier.
+
+- **2026-10-15, P6 boundary step** (the Principal's instruction "finish the IP vote-limit architecture"; database-free only):
+  - **D7:** `NetworkTrustEvidence::exceedsLimit` now uses `>=`. Verified first: `votesFromThisIp` counts completed votes without the current voter (`TrustLegitimacySecurityVerdict.php:68-71`).
+  - **D7a:** `NetworkThresholdInterpreter` Initial = `max(1, ⌊N/2⌋)`; it has no production caller.
+  - **Tests:** AC-11 boundaries (one below / at / one above, N = 1, 6, 50, Unverified and Attested), and P5 with P6 through `NetworkBindingPolicy`.
+  - **Runs:** RED 12 failures across 4 files → GREEN, plus database-free regression (24 files, exit 0). Evidence `docs/publicdigit/election/evidence/2026-10-15-pbdigit286-p6-evidence/`; guide 08.
+  - **Open in P6:** the D6 count step (`IpVoteLimit::votesFrom`, ADR-C §3.2), which needs **G-ISO for P6**.
+  - **Not run:** the evaluator tests, `IpVoteLimitFlowTest`, the caller-level failure tests (G-ISO for P6), and the `nrna_test` tests (G-AUTH-T).
+  - **Status:** uncommitted, not accepted.
+
+- **2026-10-15, P6 D6 + caller evidence** (G-ISO for P6 items 1–4, authorised by the Principal; `pbdigit274_isolated_test` only, guard confirmed on every run):
+  - **D6:** `TrustLegitimacySecurityVerdict::assess` counts through `IpVoteLimit::votesFrom` (ADR-C §3.2). Root cause confirmed: the old query was tenant-scoped (0 with no tenant context) and exact-IP.
+  - **D6 run:** RED 4 failures, all the defect (`04b`) → GREEN 5/14 (`05`). A first RED attempt (`04a`) was invalid: the test observed the security event, which is sampled. It now observes the decision; the assertions were unchanged.
+  - **Gap 4 closed:** `VerificationStoreFailureTest` 4/25. Code entry refuses generically; the real vote stores nothing and doesn't consume participation; the demo vote rolls back. A demo fixture fix is recorded (`06a`/`06b`).
+  - **Gaps 2 and 6 closed:** `TrustPolicyEvaluatorTest` 5/9, `TrustPolicyEvaluatorD4Test` 3/7, `IpVoteLimitFlowTest` 6/47.
+  - **Regression:** `IpVoteLimitAtCastTest` 8/34, `VoterAttestationEvidenceTest` 8/12; database-free architecture + IP set 28 files, exit 0.
+  - **Still open:** gap 1 (mutation proof); gap 3 and the `nrna_test` P6 tests (G-AUTH-T); P7, P8, G-REL; ARB acceptance.
+
 ## 11. Open questions
 **Human Arbiter policy decisions:** none open (record §3.2).
 
@@ -194,6 +235,6 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
 1. ~~The Principal reviews plan r3 → G-PLAN~~ (done 2026-10-14).
 2. Operations: O-3.
 3. ~~Draft ADR-A, ADR-B, ADR-C and the AUD-2 entry (P0)~~ (drafted 2026-10-14). G-ADR-B and G-ADR-C approved conditionally. **Open:** G-ADR-A (after O-3), the ADR-A-T operations confirmation, G-AUD2.
-4. **P1 starts only when all of these hold:** O-3 reviewed · G-ADR-A approved · G-ISO authorised · the Principal's explicit P1 authorisation. **Before G-ISO:** the test-database safety review (PBDIGIT-283) is re-confirmed.
+4. **P1 starts only when all of these hold:** O-3 reviewed · G-ADR-A approved · G-ISO authorised for P1 (the 2026-10-14 authorisation covers P5 only) · the Principal's explicit P1 authorisation. **Before G-ISO:** the test-database safety review (PBDIGIT-283) is re-confirmed.
 
 **Traceability:** PBDIGIT-286 · R1–R5 + R1-P · Human Arbiter decisions 2026-10-14 · decision record r3 · HEAD `0d7316dfd`.

@@ -1,0 +1,311 @@
+2026-10-15T20:37:38Z
+### tests/Architecture/BulkIdentityVerificationArchitectureTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...                                                                 3 / 3 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (3 tests, 8 assertions)
+exit=0
+### tests/Architecture/IdentityVerificationArchitectureTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....                                                               5 / 5 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (5 tests, 19 assertions)
+exit=0
+### tests/Architecture/VoterAdmissionDomainPurityTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.012, Memory: 12.00 MB
+
+OK (2 tests, 2 assertions)
+exit=0
+### tests/Architecture/VotingEntitlementSinglePointTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...                                                                 3 / 3 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (3 tests, 9 assertions)
+exit=0
+### tests/Architecture/LaravelBootIsGuardedTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............D..                                                18 / 18 (100%)
+
+Time: 00:01.057, Memory: 20.00 MB
+
+OK, but there were issues!
+Tests: 18, Assertions: 30, Deprecations: 3.
+exit=0
+### tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.................                                                 17 / 17 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+OK (17 tests, 36 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Policies/NetworkBindingPolicyTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........                                                           9 / 9 (100%)
+
+Time: 00:00.015, Memory: 12.00 MB
+
+OK (9 tests, 14 assertions)
+exit=0
+### tests/Unit/Domain/Election/Constitution/NetworkThresholdInterpreterTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........                                                           9 / 9 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (9 tests, 18 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Simplified/NetworkBindingPolicyTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......                                                             7 / 7 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (7 tests, 22 assertions)
+exit=0
+### tests/Replay/ReplayDeterminismContractTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........                                                        10 / 10 (100%)
+
+Time: 00:00.016, Memory: 12.00 MB
+
+OK (10 tests, 56 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/OverlayAggregatorConstitutionalTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....                                                                4 / 4 (100%)
+
+Time: 00:00.014, Memory: 12.00 MB
+
+OK (4 tests, 14 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/OverlayAggregatorTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...                                                                 3 / 3 (100%)
+
+Time: 00:00.048, Memory: 12.00 MB
+
+OK (3 tests, 7 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Policies/DeviceBindingPolicyTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....                                                                4 / 4 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (4 tests, 8 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Policies/PolicyPurityTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...........                                                       11 / 11 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (11 tests, 36 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Policies/VerificationAttestationPolicyTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......                                                             7 / 7 (100%)
+
+Time: 00:00.014, Memory: 12.00 MB
+
+OK (7 tests, 14 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/PolicySequenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....                                                               5 / 5 (100%)
+
+Time: 00:00.015, Memory: 12.00 MB
+
+OK (5 tests, 11 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Simplified/ConstitutionalEvidenceSnapshotTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....                                                                4 / 4 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (4 tests, 9 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Simplified/PolicyPurityTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......                                                              6 / 6 (100%)
+
+Time: 00:00.016, Memory: 12.00 MB
+
+OK (6 tests, 38 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Simplified/SimplifiedPolicySequenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........                                                        10 / 10 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (10 tests, 45 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/Simplified/SimplifiedTrustChainIntegrationTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....                                                                4 / 4 (100%)
+
+Time: 00:00.015, Memory: 12.00 MB
+
+OK (4 tests, 12 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/SovereigntyBoundaryTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........                                                        10 / 10 (100%)
+
+Time: 00:00.019, Memory: 12.00 MB
+
+OK (10 tests, 42 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/TrustCapabilityContextTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....                                                               5 / 5 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (5 tests, 8 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/TrustSnapshotAssemblerTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....                                                                4 / 4 (100%)
+
+Time: 00:00.045, Memory: 12.00 MB
+
+OK (4 tests, 9 assertions)
+exit=0
+### tests/Unit/Domain/Election/Security/D1DomainObjectsTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............                                                   15 / 15 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (15 tests, 39 assertions)
+exit=0
+### tests/Unit/Domain/Election/Security/D4OverlayGovernanceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............                                                   15 / 15 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+OK (15 tests, 38 assertions)
+exit=0
+### tests/Unit/Domain/Election/Security/VerificationAttestationRecordTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........                                                        10 / 10 (100%)
+
+Time: 00:00.013, Memory: 12.00 MB
+
+OK (10 tests, 10 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/TrustPolicyEvaluatorNetworkRestrictionTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....                                                               5 / 5 (100%)
+
+Time: 00:00.378, Memory: 16.00 MB
+
+OK (5 tests, 8 assertions)
+exit=0
+### tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDDDD                                                           9 / 9 (100%)
+
+Time: 00:00.679, Memory: 20.00 MB
+
+OK, but there were issues!
+Tests: 9, Assertions: 23, Deprecations: 3.
+exit=0

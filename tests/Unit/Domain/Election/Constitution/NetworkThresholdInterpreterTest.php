@@ -62,14 +62,16 @@ class NetworkThresholdInterpreterTest extends TestCase
 
     public function test_zero_max_votes(): void
     {
-        $this->assertSame(0, NetworkThresholdInterpreter::interpret(0, EvidenceClassification::Initial));
+        // N = 0 is outside the approved range [1, 50]; Initial keeps its minimum of 1 (PBDIGIT-286 D7a).
+        $this->assertSame(1, NetworkThresholdInterpreter::interpret(0, EvidenceClassification::Initial));
         $this->assertSame(0, NetworkThresholdInterpreter::interpret(0, EvidenceClassification::Attested));
         $this->assertSame(0, NetworkThresholdInterpreter::interpret(0, EvidenceClassification::RegistrarConfirmed));
     }
 
     public function test_single_max_vote(): void
     {
-        $this->assertSame(0, NetworkThresholdInterpreter::interpret(1, EvidenceClassification::Initial)); // floor(1/2) = 0
+        // PBDIGIT-286 D7a: floor rounding with a minimum of 1, aligned with NetworkTrustEvidence (max(1, ⌊N/2⌋)).
+        $this->assertSame(1, NetworkThresholdInterpreter::interpret(1, EvidenceClassification::Initial));
         $this->assertSame(1, NetworkThresholdInterpreter::interpret(1, EvidenceClassification::Attested));
     }
 

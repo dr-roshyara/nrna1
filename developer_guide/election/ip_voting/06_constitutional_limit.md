@@ -1,6 +1,10 @@
 # 06: The constitutional per-IP limit (System B) as it works today
 
-**Story:** `PBDIGIT-286` (OPEN). **This guide describes the current, committed behaviour.** No PBDIGIT-286 change is implemented. The planned changes are in the decision record and the DRAFT plan; when they are implemented, this guide is updated in plan phase P9.
+**Story:** `PBDIGIT-286` (OPEN). **This guide describes the current, committed behaviour.** The planned changes are in the decision record and the plan; when they are implemented, this guide is updated in plan phase P9.
+
+> **P5 (uncommitted, awaiting review):** the working tree derives the trust level from real verification evidence, so §3's "every voter is Unverified" no longer holds there. See [guide 07](07_trust_level_from_verification.md). With P5 but before P6 an attested network completes 7 votes at N = 6 (L + 1 under `>`); the approved 6 / 3 needs P6 (`>=`).
+
+> **P6 boundary (uncommitted, 2026-10-15, [guide 08](08_p6_boundary.md)):** the working tree refuses at `>=` (D7) and the interpreter keeps a minimum of 1 (D7a), so §4's "4 votes at N = 6" becomes 3 Unverified / 6 Attested there. The count (§2) is also replaced there (D6): `IpVoteLimit::votesFrom`, IPv6 /64, this election, no tenant scope.
 
 **Code:**
 - `app/Application/Election/Security/TrustPolicyEvaluator.php`
@@ -50,7 +54,7 @@ return match ($trustLevel) {
     TrustLevel::Unverified => max(1, intdiv($this->maxVotesPerIp, 2)),
 };
 ```
-**Today every voter is Unverified**, because the evaluator never reads the verification records:
+**In the committed code every voter is Unverified**, because the evaluator never reads the verification records (P5 changes this in the working tree; guide 07):
 ```php
 $attested = false; // populated by controller from VoterVerification record
 $registrarId = null; // populated by controller from VoterVerification

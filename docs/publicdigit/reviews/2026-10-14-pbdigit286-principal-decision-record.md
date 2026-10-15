@@ -22,6 +22,10 @@
   - the **AUD-2 entry** (G-AUD2 pending, §9);
   - **G-MIG** (migration and backfill), **G-ISO**, **G-AUTH-T**, **G-REL**;
   - **P1**.
+- **Authorised later the same day (status annotation added after the run at the Principal's instruction, P5 review F6; the "Not approved" list above is the decision-time text, kept unchanged; it was briefly rewritten in place and restored from `HEAD` on 2026-10-15, second review N2):**
+  - **G-ISO and the P5 Evidence phase only** (Principal, 2026-10-14 18:54 UTC). Conditions: target exclusively `pbdigit274_isolated_test` with the identity guard verified before each run; never `nrna_test`, the development database or MariaDB; only G-ISO/P5 tests; no P1–P4 or P6–P8. It does **not** approve O-3, G-ADR-A, G-MIG, G-AUD2, G-REL or any later phase.
+  - **Evidence of the authorised run:** `docs/publicdigit/election/evidence/2026-10-14-pbdigit286-p5-evidence/01-isolated-run.txt` (19:01 UTC; guard confirmed `pbdigit274_isolated_test`; 7 tests, 8 assertions, 3 deprecations, exit 0).
+  - **P5 is not accepted** and must not be released without P6 (plan §8, review F1).
 - **Blocked:** the operations verification **O-3**.
 - **These decisions are not implementation authorization.** PBDIGIT-286 stays `OPEN`.
 
@@ -316,7 +320,7 @@ The canonical JSON is described in §3.2 H4. ADR-B fixes:
 | **ADR-C** | **APPROVED CONDITIONALLY** 2026-10-14: `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Limit_Cast_Concurrency.md` | mandatory proofs §6; implementation still needs G-ISO and P8 authorisation |
 | **AUD-2 decision-record entry** | `PENDING`: **draft text** in §9 | approval, then the annotation is applied to the E2-D4 record |
 | **G-MIG** | `PENDING OPERATIONAL AUTHORIZATION` | migration file + backfill design (§4.8) |
-| **G-ISO** | `PENDING OPERATIONAL AUTHORIZATION` | authorization for `pbdigit274_isolated_test` with the identity guard |
+| **G-ISO** | **AUTHORISED for P5 only** (Principal, 2026-10-14 18:54 UTC; see Status). `PENDING OPERATIONAL AUTHORIZATION` for every other phase | authorization for `pbdigit274_isolated_test` with the identity guard |
 | **G-AUTH-T** | `PENDING OPERATIONAL AUTHORIZATION` | separate authorization for `nrna_test` |
 | **O-3** | `PENDING OPERATIONAL AUTHORIZATION` | operations confirm the production isolation level before ADR-A |
 | **G-REL** | `PENDING OPERATIONAL AUTHORIZATION` | §5 pre-flight evidence |

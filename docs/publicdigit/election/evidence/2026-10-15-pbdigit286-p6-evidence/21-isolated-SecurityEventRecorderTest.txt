@@ -1,0 +1,36 @@
+# 2026-10-15T20:59:28Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Unit/Application/Election/Security/SecurityEventRecorderTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FDDFF                                                               5 / 5 (100%)
+
+Time: 00:09.296, Memory: 28.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Application\Election\Security\SecurityEventRecorderTest::test_deny_result_always_recorded
+Failed asserting that a row in the table [election_security_events] matches the attributes {
+    "election_id": "a2fd8855-16d3-46f8-9b0d-ca81e2308ee2"
+}.
+
+The table is empty.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithDatabase.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/SecurityEventRecorderTest.php:77
+
+2) Tests\Unit\Application\Election\Security\SecurityEventRecorderTest::test_recorded_event_has_recorded_at_timestamp
+Failed asserting that null is not null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/SecurityEventRecorderTest.php:140
+
+3) Tests\Unit\Application\Election\Security\SecurityEventRecorderTest::test_event_preserves_policy_evaluation_sequence
+Failed asserting that null is not null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/SecurityEventRecorderTest.php:162
+
+FAILURES!
+Tests: 5, Assertions: 6, Failures: 3, Deprecations: 3.
+exit=1

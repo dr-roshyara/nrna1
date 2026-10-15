@@ -67,7 +67,7 @@ class SecurityPolicySurfaceCharacterizationTest extends TestCase
         $this->election = $this->election->fresh();
     }
 
-    /** $n other voters whose codes have voted from $ip in this election (tenant-scoped, like production). */
+    /** $n other voters whose codes have voted from $ip in this election (counted as production does, D6). */
     private function votedFrom(string $ip, int $n): void
     {
         foreach (range(1, $n) as $i) {

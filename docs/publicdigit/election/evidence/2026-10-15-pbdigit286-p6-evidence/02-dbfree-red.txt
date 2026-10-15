@@ -1,0 +1,123 @@
+### tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....FFFFFFF......                                                 17 / 17 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 7 failures:
+
+1) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_unverified_at_exactly_the_limit_is_refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:86
+
+2) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=1 Attested" (1, App\Domain\Election\Security\TrustLevel Enum (Attested, 'attested'), 1)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+3) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=1 Unverified" (1, App\Domain\Election\Security\TrustLevel Enum (Unverified, 'unverified'), 1)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+4) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=6 Attested" (6, App\Domain\Election\Security\TrustLevel Enum (Attested, 'attested'), 6)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+5) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=6 Unverified" (6, App\Domain\Election\Security\TrustLevel Enum (Unverified, 'unverified'), 3)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+6) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=50 Attested" (50, App\Domain\Election\Security\TrustLevel Enum (Attested, 'attested'), 50)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+7) Tests\Unit\Domain\Election\Security\NetworkTrustEvidenceTest::test_the_next_voter_is_refused_once_l_completed_votes_exist with data set "N=50 Unverified" (50, App\Domain\Election\Security\TrustLevel Enum (Unverified, 'unverified'), 25)
+at L: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Security/NetworkTrustEvidenceTest.php:113
+
+FAILURES!
+Tests: 17, Assertions: 24, Failures: 7.
+exit=1
+### tests/Unit/Application/Election/Security/Policies/NetworkBindingPolicyTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....F.F..                                                           9 / 9 (100%)
+
+Time: 00:00.025, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Application\Election\Security\Policies\NetworkBindingPolicyTest::test_reports_concern_when_attested_reaches_full_limit
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/Policies/NetworkBindingPolicyTest.php:152
+
+2) Tests\Unit\Application\Election\Security\Policies\NetworkBindingPolicyTest::test_reports_concern_when_registrar_attested_reaches_2x_limit
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/Policies/NetworkBindingPolicyTest.php:187
+
+FAILURES!
+Tests: 9, Assertions: 13, Failures: 2.
+exit=1
+### tests/Unit/Domain/Election/Constitution/NetworkThresholdInterpreterTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......FF.                                                           9 / 9 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Domain\Election\Constitution\NetworkThresholdInterpreterTest::test_zero_max_votes
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Constitution/NetworkThresholdInterpreterTest.php:66
+
+2) Tests\Unit\Domain\Election\Constitution\NetworkThresholdInterpreterTest::test_single_max_vote
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Domain/Election/Constitution/NetworkThresholdInterpreterTest.php:74
+
+FAILURES!
+Tests: 9, Assertions: 15, Failures: 2.
+exit=1
+### tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+DDDDDDFDD                                                           9 / 9 (100%)
+
+Time: 00:00.656, Memory: 20.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Application\Election\Security\TrustPolicyAttestationEvidenceTest::test_verification_evidence_changes_the_system_b_decision
+Unverified, at L = 3: refused
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Application/Election/Security/TrustPolicyAttestationEvidenceTest.php:185
+
+FAILURES!
+Tests: 9, Assertions: 20, Failures: 1, Deprecations: 3.
+exit=1

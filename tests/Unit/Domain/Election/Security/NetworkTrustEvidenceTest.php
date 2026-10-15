@@ -4,6 +4,7 @@ namespace Tests\Unit\Domain\Election\Security;
 
 use App\Domain\Election\Security\NetworkTrustEvidence;
 use App\Domain\Election\Security\TrustLevel;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class NetworkTrustEvidenceTest extends TestCase
@@ -68,8 +69,10 @@ class NetworkTrustEvidenceTest extends TestCase
         $this->assertTrue($evidence->exceedsLimit(TrustLevel::Unverified));
     }
 
-    public function test_not_exceeds_limit_unverified_trust_level(): void
+    public function test_unverified_at_exactly_the_limit_is_refused(): void
     {
+        // PBDIGIT-286 D7 (`>=`): votesFromThisIp counts completed votes, not the current voter's. Once L completed
+        // votes exist, the next voter is refused (until P6 this asserted false and a network completed L + 1).
         $evidence = new NetworkTrustEvidence(
             currentIpHash: 'hash123',
             registeredIpHash: null,
@@ -80,7 +83,36 @@ class NetworkTrustEvidenceTest extends TestCase
             bindingStrategy: 'ip_count',
         );
 
-        $this->assertFalse($evidence->exceedsLimit(TrustLevel::Unverified));
+        $this->assertTrue($evidence->exceedsLimit(TrustLevel::Unverified));
+    }
+
+    /**
+     * PBDIGIT-286 AC-11 / D7 / D4: one below, at and one above the effective limit L, for N = 1, 6 and 50 and both
+     * reachable trust levels. L = N (Attested), max(1, ⌊N/2⌋) (Unverified).
+     *
+     * @return iterable<string, array{int, TrustLevel, int}>
+     */
+    public static function boundaries(): iterable
+    {
+        foreach ([1, 6, 50] as $n) {
+            yield "N=$n Attested" => [$n, TrustLevel::Attested, $n];
+            yield "N=$n Unverified" => [$n, TrustLevel::Unverified, max(1, intdiv($n, 2))];
+        }
+    }
+
+    #[DataProvider('boundaries')]
+    public function test_the_next_voter_is_refused_once_l_completed_votes_exist(int $n, TrustLevel $level, int $limit): void
+    {
+        $evidence = fn (int $votes) => new NetworkTrustEvidence(
+            currentIpHash: 'hash123', registeredIpHash: null, whitelist: null,
+            maxVotesPerIp: $n, votesFromThisIp: $votes,
+            restrictionEnabled: true, bindingStrategy: 'ip_count',
+        );
+
+        $this->assertFalse($evidence($limit - 1)->exceedsLimit($level), 'one below L: admitted');
+        $this->assertTrue($evidence($limit)->exceedsLimit($level), 'at L: refused');
+        $this->assertTrue($evidence($limit + 1)->exceedsLimit($level), 'one above L: refused');
+        $this->assertSame(0, $evidence($limit)->remainingVotes($level), 'at L nothing remains, consistent with the refusal');
     }
 
     public function test_exceeds_limit_attested_trust_level(): void

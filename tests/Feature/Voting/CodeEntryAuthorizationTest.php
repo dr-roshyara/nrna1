@@ -36,9 +36,8 @@ use Tests\TestCase;
  * SecurityVerdict and does not manufacture one (E2 is not an internal step of forEntry()). Consequently an E1
  * entitlement denial may still cause an E2 evaluation and its security telemetry.
  *
- * Decision (a) is a TRANSITIONAL DEPENDENCY, not a new invariant: the verdict's density count is tenant-scoped
- * today (VoteController::store() has the same dependency). Stage B preserves it; no explicit election-scoped
- * query is introduced. These tests observe the tenant in force WHEN the security authority is invoked — they do
+ * Decision (a) was a TRANSITIONAL DEPENDENCY: the verdict's density count was tenant-scoped. PBDIGIT-286 D6
+ * replaced it with the election-scoped IpVoteLimit::votesFrom (no tenant scope). These tests observe the tenant in force WHEN the security authority is invoked — they do
  * not prove which component (controller or middleware) established it.
  *
  * What is observed: the security authority's invocations (recording double), code creation / verification /
@@ -331,7 +330,7 @@ class CodeEntryAuthorizationTest extends TestCase
     {
         // Proves: the EXISTING Trust → Legitimacy security rule is temporally relocated to entry (review amendment 3)
         // — the same policy and threshold that already refuse at the final cast (elections.max_votes_per_ip 6, halved
-        // to 3 for unverified voters; denial when votes from the IP > 3) now also refuse at entry.
+        // to 3 for unverified voters; PBDIGIT-286 D7: denial once 3 votes from the IP exist) now also refuse at entry.
         // Does NOT prove the security policy itself is correct — policy equivalence with today's inline path is
         // characterized by VotingSecurityVerdictAdapterTest. Real adapter, no double.
         foreach (range(1, 4) as $i) {

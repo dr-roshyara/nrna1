@@ -1,0 +1,40 @@
+# 2026-10-15T20:34:44Z . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFFDF                                                               5 / 5 (100%)
+
+Time: 00:09.457, Memory: 28.00 MB
+
+There were 4 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_ipv6_votes_count_together_within_the_64
+the same /64 counts
+Failed asserting that two variables don't reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:119
+
+2) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_ipv4_counts_per_address_with_both_spellings
+the mapped spelling counts
+Failed asserting that two variables don't reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:131
+
+3) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_the_count_does_not_depend_on_the_tenant_context
+no tenant context: counted
+Failed asserting that two variables don't reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:141
+
+4) Tests\Isolated\Pbdigit274\Database\SystemBNetworkCountTest::test_the_limit_applies_to_the_grouped_count_per_trust_level
+Unverified, at L = 3
+Failed asserting that two variables don't reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/SystemBNetworkCountTest.php:173
+
+FAILURES!
+Tests: 5, Assertions: 9, Failures: 4, Deprecations: 3.
+exit=1
