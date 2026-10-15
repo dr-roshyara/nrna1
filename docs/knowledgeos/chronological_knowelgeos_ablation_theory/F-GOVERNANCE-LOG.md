@@ -4260,3 +4260,21 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Analyst recommendation [E]:** frame KC-1 as a ruling on the guard-row purpose, applied to K-c only, with C-γ returned unless the human expressly includes it. Then choose within the resulting group.
 - **Not affected:** no K-c convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6 (§5) and K15–K19 stay open; E4 and E5 are not authorized.
 - **Next:** human decision on KC-1.
+
+
+## F-LOG-0306 — **Executor (2026-10-16): guard-row purpose analysis READY** (`R7/KC-GUARD-PURPOSE-ANALYSIS.md` r1.1). Analysis only; nothing decided
+- **Commissioned under:** the human's 2026-10-15 instruction (pasted advisory text the human directed be followed): examine and verify hosting vs coupling, and "do not choose hosting simply because it preserves the existing 13/8 result, or coupling simply because it produces a different result". This entry records that instruction; it is not a ratification.
+- **Review history:**
+  - **r0: FAIL.** A narrowed claim survived. r0 overclaimed that D1 was "settled" and that the conflict was "not genuine".
+  - **r1: PASS_WITH_LIMITATIONS.**
+  - **The r1.1 fixes are not re-reviewed.** They add qualifications and citations only. All 64 quotes are verified verbatim by script, and the analyst reproduced the check.
+- **Finding (narrowed):**
+  - Given D1 as written (O2 not taken), the option-level decision is **the K1 value at R11, R14–R17 and R21**. "Guard-row purpose" coincides with K1 column for column, by construction, and is not an independent decision variable.
+  - The conflict is real but relocated, in two places:
+    - **inside T3:** rule 1's guard clause against T3's general handling of denials;
+    - **a coupling-proxy rationale** (VP14 criterion 4; RESEARCH-AUDIT-1), which holds only on a notion of coupling beyond reading (E-5).
+  - The ratified VP11 text defers the guard rows' constraint label. It does not withhold crossing.
+  - D1 ("a crossing records what is read") is uniform across the unratified source texts. Ratifying or revising it remains open to KC-1 (O2).
+- **Matrix:** a dated note was added to `KC-1-DECISION-MATRIX.md`. No figure changed. The two groups and the E3-REL figures stand.
+- **Not affected:** C-γ stays returned (KC:69 engaged); nothing is ratified; D12 and the spanning rule stay open; E4 and E5 are not authorized.
+- **Next:** human KC-1.

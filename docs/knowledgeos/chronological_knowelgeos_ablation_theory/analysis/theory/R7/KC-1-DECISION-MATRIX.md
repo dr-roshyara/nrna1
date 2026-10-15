@@ -12,6 +12,8 @@
 
 MKC and T2C share sources and an analyst. **They are not cited as corroborating each other.**
 
+**Later note (2026-10-16; no matrix figure changed).** `KC-GUARD-PURPOSE-ANALYSIS.md` r1.1 (reviewed: r0 FAIL, narrowed claim survives; r1 PWL) finds that, given D1 as written, the "guard-row purpose" row restates the **K1 value at R11, R14–R17 and R21**, and is not an independent decision variable. The coupling-proxy rationale remains a legitimate reason for the K1 choice. The two groups and every E3-REL figure here stand. Read "guard-row purpose" below as "K1 at the guard rows".
+
 ---
 
 ## 1. Options
