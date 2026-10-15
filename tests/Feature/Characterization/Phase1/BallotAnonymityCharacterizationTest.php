@@ -128,9 +128,13 @@ class BallotAnonymityCharacterizationTest extends TestCase
         $this->assertSame($sorted, $ids, 'KNOWN GAP A4: lexical id order equals cast order (time-ordered UUIDs)');
 
         foreach ($ids as $id) {
-            // Str::orderedUuid → Ramsey CombGenerator + TimestampFirstCombCodec: the first 12 hex
-            // digits are unix_seconds * 100000 + 10-µs fraction.
-            $decoded = hexdec(substr(str_replace('-', '', $id), 0, 12)) / 100000;
+            // The first 12 hex digits carry the creation time in both id formats:
+            // - UUIDv7 (HasUuids since Laravel 12; version digit 7): unix milliseconds.
+            // - Str::orderedUuid (Laravel 11; Ramsey CombGenerator + TimestampFirstCombCodec):
+            //   unix_seconds * 100000 + 10-µs fraction.
+            $hex     = str_replace('-', '', $id);
+            $divisor = $hex[12] === '7' ? 1000 : 100000;
+            $decoded = hexdec(substr($hex, 0, 12)) / $divisor;
             $this->assertGreaterThanOrEqual($before - 1, $decoded, 'KNOWN GAP A4: creation time recovered from the vote id');
             $this->assertLessThanOrEqual($after + 1, $decoded, 'KNOWN GAP A4: creation time recovered from the vote id');
         }

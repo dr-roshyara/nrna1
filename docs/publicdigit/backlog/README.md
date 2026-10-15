@@ -175,6 +175,10 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-296`](PBDIGIT-296-tests-out-of-step-with-code.md) | **Tests call classes, methods and routes that the code no longer has** (missing classes 86, `HasMany::attach()` 103, Type/ArgumentCount errors 164, HTTP 302 vs 422/201; from PBDIGIT-283 R6 positive) | — | `OPEN` · not authorised |
 | [`PBDIGIT-297`](PBDIGIT-297-phpunit-error-handler-risky-notices.md) | **About 1,800 tests are marked "risky" for changing PHP's error handlers** (PHPUnit 11 / Laravel `HandleExceptions`; baseline unknown; from PBDIGIT-283 R6 positive) | — | `OPEN` · not authorised |
 | [`PBDIGIT-298`](PBDIGIT-298-php-memory-limit-for-test-suites.md) | **The Feature suite runs out of memory under PHP's default 128 MB limit** (peak 144.5 MB; `phpunit.xml` sets no `memory_limit`; from PBDIGIT-283 R6 positive) | — | `OPEN` · not authorised |
+| [`PBDIGIT-299`](PBDIGIT-299-svg-logo-audit-after-laravel-12.md) | **Audit stored SVG logos and images now that Laravel 12 rejects SVG uploads** (3 endpoints list `svg`; PO accepted the rejection as security tightening; from the Laravel 12 upgrade ADR) | — | `OPEN` · not authorised |
+| [`PBDIGIT-300`](PBDIGIT-300-vote-ids-encode-creation-time.md) | **Vote and result ids encode their creation time** (anonymity gap A4; UUIDv7 ms on Laravel 12, `orderedUuid` on 11; characterization K7; priority raised by the PO) | — | `OPEN` · not authorised |
+| [`PBDIGIT-301`](PBDIGIT-301-remaining-composer-security-advisories.md) | **12 Composer security advisories remain** (php-jwt, phpseclib, phpunit, psysh, symfony/yaml; 65 → 12 after the Laravel 12 upgrade) | — | `OPEN` · not authorised |
+| [`PBDIGIT-302`](PBDIGIT-302-mail-transport-tls-policy.md) | **Mail transport TLS policy and the misleading `verify_peer` block** (STARTTLS opportunistic on 587; port 465 used for SES; check symfony/mailer 7.4) | — | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
