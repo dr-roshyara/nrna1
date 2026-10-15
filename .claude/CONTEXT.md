@@ -16,6 +16,7 @@
 ## 📍 UPDATE (2026-10-13, F-Series) — KC-1 decision matrix READY; awaiting human KC-1 (F-LOG-0299–0305)
 - Audit Q6 test 1 (0299) showed the ratified host lists depend on unratified K-c conventions. Human: settle conventions first (0300). KC proposal r1.1 (0301). KC-1 was NOT made: reassess M, K and C; T3 is the minimal-amendment baseline; "single principle" stays provisional (0302).
 - KC-MKC reassessment r1.2 (0303). Audit Q6 test 2 r1.1 (0304): Lemma 2 holds unless the actor is counted on the record side (under A-1). **Decision matrix `R7/KC-1-DECISION-MATRIX.md` r1.1 (0305)**: the guard-row purpose is the option-level choice that moves E3-REL. Hosting group 13/8; coupling group 9/4 to 11/6, which needs a new acceptance. Each analysis has had independent reviews (PWL); its last fixes are not re-reviewed.
+- **2026-10-16 (F-LOG-0306):** the guard-row purpose analysis r1.1 finds that, given D1 as written, KC-1's option-level choice is **the K1 value at R11, R14–R17 and R21**; "purpose" restates it. The groups and E3-REL figures are unchanged.
 - **Next (human):** KC-1, then KC-2 to KC-5 as the option requires, then E4/R8 and E5, each by its own act. Open: C-γ, D12, spanning rule, C6 (§5), K15–K19, R11, (g), (h), H13, A1, A5.
 
 ## 📍 UPDATE (2026-10-13, F-Series) — E3b COMPLETE (F-LOG-0285–0298)
