@@ -36,6 +36,10 @@
 #
 # Run (report mode): vendor/bin/deptrac analyse --config-file=deptrac.yaml
 deptrac:
+  # Collect `use` statements as well: deptrac >= 2 dropped them from the default
+  # types (class, function), which silently reduced coverage (970 -> 589 allowed).
+  analyser:
+    types: [class, use, function]
   paths:
     - ./app/Contexts/Contestation
     - ./app/Contexts/Adjudication
