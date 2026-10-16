@@ -5,7 +5,7 @@ namespace Tests\Unit\Domain\Election\Security;
 use App\Domain\Election\Security\OverlaySignalCategory;
 use PHPUnit\Framework\TestCase;
 
-class OverlayInfluenceTest extends TestCase
+class OverlaySignalCategoryTest extends TestCase
 {
     public function test_continue_unchanged_has_correct_string_value(): void
     {
