@@ -93,7 +93,7 @@
 @else
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Organisation",
   "name": "{{ config('meta.organisation.name') }}",
   "url": "{{ config('meta.organisation.url') }}"
