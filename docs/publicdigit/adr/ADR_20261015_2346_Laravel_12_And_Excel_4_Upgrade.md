@@ -3,6 +3,12 @@
 **Status: ✅ ACCEPTED by the PO on 2026-10-16 (EP-02),** on the evidence in §5.
 - **Earlier status:** PROPOSED. Drafted during the approved upgrade plan (EP-01 approval by the PO on 2026-10-15).
 - **Accepts the upgrade on the branch only.** Production deployment needs its own authorisation and runbook. Precondition: PHP ≥ 8.3 on every runtime; never deploy during an open election window.
+- **Post-acceptance note (2026-10-16): production outage.** Laravel 12 reached production before a runbook existed. Seven pending migrations were also run there.
+  - **Symptom:** every page returned HTTP 500 (`ParseError` in `resources/views/meta/meta-info.blade.php`).
+  - **Cause:** Laravel 12 added a `@context` Blade directive. The literal `"@context": "https://schema.org"` in the JSON-LD block compiled as an unclosed directive.
+  - **Fix:** `@@context` (commit `b975096ad`; hot-fixed on the server, then `view:clear` and a PHP-FPM reload). The site was restored the same day.
+  - **Why §5 missed it:** no test renders that view through Blade, and the verification protocol did not compile views.
+  - **Check added for future upgrades:** compile every Blade view with the new framework and lint the output. All 63 compilable views pass under Laravel 12; 6 unused Jetstream leftovers cannot compile because their components are missing.
 
 **Created:** 2026-10-15 · **Branch:** `feature/laravel-12-upgrade` · **Ticket:** none; no PBDIGIT story covers this upgrade (maintenance) · **Placement derived:** `doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0), `adr/`.
 
