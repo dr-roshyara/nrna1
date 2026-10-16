@@ -1,0 +1,11 @@
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Domain/Organisational
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Application/Organisational
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Infrastructure/Organisational
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Infrastructure/Organisational/DateOrdinalTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Domain/Organisational/C1ExhaustiveDifferentialTest.php tests/Unit/Contexts/Membership/Domain/Organisational/G6CorrectionOracleGoldenTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipDecisionCreationTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipLedgerIsolationTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipSemanticKernelPurityTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipSlice1aBoundaryTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipSlice1bPersistenceBoundaryTest.php
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipStorableValidTimeCoverageTest.php

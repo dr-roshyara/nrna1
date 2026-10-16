@@ -1,0 +1,1 @@
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/MembershipDecisionCreationTest.php
