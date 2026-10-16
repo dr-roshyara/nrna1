@@ -29,8 +29,8 @@ final class MembershipDecisionCreationTest extends TestCase
     private const PROVENANCE_DECODER = 'app/Contexts/Membership/Infrastructure/Organisational/ProvenanceJson.php';
     private const NS = 'App\\Contexts\\Membership\\Domain\\Organisational';
     private const PLANTED = 'app/Services/Planted.php';
-    /** Known unparsable, unrelated file (PBDIGIT-272; Human PO / ARB, 2026-10-11). PHP cannot load it either. */
-    private const UNPARSABLE_KNOWN = ['app/Http/Middleware/VoterSlugStep.php'];
+    /** Known unparsable, unrelated files. Empty since PBDIGIT-272 deleted app/Http/Middleware/VoterSlugStep.php. */
+    private const UNPARSABLE_KNOWN = [];
 
     /** @return list<string> */
     private static function scan(array $sources): array
@@ -125,21 +125,5 @@ final class MembershipDecisionCreationTest extends TestCase
 
         $this->assertNotEmpty($sources);
         $this->assertSame([], self::scan($sources));
-    }
-
-    public function test_the_named_exclusion_still_holds_only_an_unparsable_file(): void
-    {
-        // Expires with PBDIGIT-272: once the file parses, this fails and the exclusion must be removed.
-        $sources = MembershipSourceScan::sources(dirname(__DIR__, 2), ['app/Http/Middleware'], []);
-        foreach (self::UNPARSABLE_KNOWN as $path) {
-            $this->assertArrayHasKey($path, $sources);
-            try {
-                self::scan([$path => $sources[$path]]);
-                $parsed = true;
-            } catch (\RuntimeException) {
-                $parsed = false;
-            }
-            $this->assertFalse($parsed, "$path parses now: remove it from UNPARSABLE_KNOWN (PBDIGIT-272)");
-        }
     }
 }
