@@ -2,7 +2,14 @@
 
 **Kind:** session-state, the single S-Series working list (placement: `php scripts/doc-placement.php --scope=session-state` → `.claude/`).
 
-**Status:** current as of 2026-10-01. **Authoritative status statement:**
+**Status update 2026-10-16 (supersedes the 2026-10-01 statement below where they differ):**
+- **Measurement.** The canary repair went through G1 and G1.5 (G-LOG-0110, G-LOG-0111). Rehearsal runs 1 and 2 FAILED (G-LOG-0113, G-LOG-0116). **Run-3 is approved at G2 but not launched** (G-LOG-0117): it is waiting for the quiet period and `PREFLIGHT-OK`. G3–G5 are not authorized. Still **0 of 1,975 labels** measured.
+- **Scientific design.** prereg_v2 is FROZEN (G-LOG-0137). Early theory recovery: O1 (G-LOG-0125). The theory-track protocol v1 is a DRAFT (G-LOG-0139); T-0 and T-1 are pending.
+- **Verdict criteria.** v1.8 (B-core) passed its full adversarial review with minor fixes, all applied. It is **not yet adoptable**: the N-a/C-4 decision is pending. The decision package (v2) was reviewed NEEDS-REVISION (N1); see REVIEW round 12. V-1…V-13 are open and must all be settled before any S5 data.
+- **The only reachable outcome today:** `OPEN — INSUFFICIENT EVIDENCE` (`STAGE`, `CRITERIA`, `SCORING-UNAVAILABLE`).
+- **Next work by lane:** "REMAINING WORK BY LANE" below; the full analysis is in `audit-p3b/20261016_S-SERIES-SYSTEM-ARCHITECTURE-C4-AND-STATUS.md`. Per ARCH RA-12, this list is a view recomputed from state, not an authority.
+
+**Status (historical, as of 2026-10-01). Authoritative status statement at that date:**
 - **Design and machinery.** The scientific measurement design is complete and frozen (Freeze 1, Freeze 2), and the execution/governance machinery has been shown to work.
 - **The canary defect.** The first live canary (G-LOG-0108) exposed a defect in the agent-readable measurement contract. The diagnosis has survived several adversarial reviews of the documents and code; these are reviews, not independent replications.
 - **The repair package** was challenged twice (reviews D and E) and needs revision. A complete field inventory shows the defect is wider than the canary's failures revealed.
@@ -136,7 +143,54 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
   - Provably unreachable: 107 of 340 strings (31.5%); 140 (41.2%) with the escaped stage-2 ids. 86.5% is an upper bound only.
   - Agent errors: 46 lenient / 42 strict, touching 7 / 5 of 11 runs.
 
-**CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; supersedes B1–B3 and the older critical paths below; 👤 = human gate):**
+**REMAINING WORK BY LANE (recomputed 2026-10-16 from the governance state; supersedes the 2026-10-01 critical path below; 👤 = human gate; nothing here is authorized by this list):**
+
+*Lane V — verdict criteria (must be finished before any S5 data; on the critical path ahead of S5 authorization, not ahead of run-3):*
+- [x] V-a v1.8 B-core drafted and fully reviewed (PASS-WITH-MINOR-FIX, fixes applied; REVIEW round 11; W `9a220f613`)
+- [ ] V-a2 👤 **N-a/C-4**: option (a), one binding, pre-assigned, blind audit per ruling before any verdict computation (a new mechanism, its own act, then a v1.9 with a full review), or option (b), accept as a limitation with mandatory disclosure. Decision package: `audit-p3b/verdict-criteria/VERDICT-CRITERIA-DECISION-PACKAGE-NA-C4-2026-10-16.md` (v2; round-12 review NEEDS-REVISION: N1, the audit timing relative to the verdict computation, is unresolved; drafting stopped). **First sub-decision:** do audits happen inside the pass before E_close (two agreeing blind rulings per pair; the existing freeze and ordering rules apply) or after it (a new ordering duty)?
+- [ ] V-a3 👤 Q-c: who makes J1 rulings and who does J5 audits (human / model / mixed), disclosed in every outcome's wording
+- [ ] V-b 👤 name every carried v1.8 §22.3 item as a final, pre-data limitation; rule on C-1/B-7 (adoption timing with Holm-coupled inputs); rule on N-b if V-2 (i) is chosen
+- [ ] V-c 👤 V-12 (extent of "S5 data"; whether the search counts as "access"), V-13 ((α) or (β); how O1 is read)
+- [ ] V-d 👤 V-1 (can be put now), then V-2…V-11, one at a time
+- [ ] V-e 👤 the studies, each by its own act: V-5 θ_D adequacy, V-8 R2 precision, V-9 generation sensitivity, V-10 (b), V-11 (a new prereg version)
+- [ ] V-f 👤 adoption act for the criteria (version + sha256)
+
+*Lane M — measurement:*
+- [ ] M1 👤 run-3 launch conditions (quiet period: every session on PROD and its worktrees stopped, F-Series included; `PREFLIGHT-OK`; G-LOG-0117)
+- [ ] M2 run-3 (non-counting, OB9100-r3) → independent evaluation → evidence commit
+- [ ] M3 👤 G3: G-01 allowed mention; the 48 PENDING annex clauses; the three reader strings; the R1 prompt block; the r5 environment for production; engineering and F-Series checkouts moved out of PROD's `.git`
+- [ ] M4 👤 contract text sha + code commit → production rebind
+- [ ] M5 👤 disclosed attempt re-registration + counted canary (OB0012 attempt 3, OB0114 attempt 2) → evaluate
+- [ ] M6 👤 full S5 authorization (needs M5 **and** Lane V adopted)
+- [ ] M7 S5: 396 batches / 1,975 labels → VERIFIED → §21 AUDITED → H-06 ACCEPTED
+- [ ] M8 EP-01 statistical analysis (θ_D, θ_A, E-3); pre-registered probability audit before the P4 hand-off
+
+*Lane T — theory track and early theory recovery (optional; O1 in force):*
+- [ ] T-a 👤 T-0 (adopt the protocol, carve-out form) and the T-1 route (a act / b P3b amendment / c keep O1)
+- [ ] T-b if a route is chosen: protocol v1.1 (notes A–E), then T-5…T-7
+- [ ] T-c ETR-ENG: EP-01 plan → 👤 approval → tooling outside PROD's `.git` (paused during the run-3 quiet period)
+
+*Lane R — reconstruction and recovery (after S5 data):*
+- [ ] R1 S5a/S5b; 66 hubs ESCALATED; H-02; P3b terminal predicate (§23) → reconciliation → P4 hand-off
+- [ ] R2 research dataset G = (V, E, τ, ρ, p) + observation-process model (C1)
+- [ ] R3 Track B pass 1: confirmatory H1, H2, H4 (Holm); exploratory H3, H5 (BH)
+- [ ] R4 👤 recovery charter (after S5b per O1/G-LOG-0028, or as V-13 rules) → recovery pass → **E_close** (hashed candidate manifest + GL record)
+- [ ] R5 formalization (simplest adequate structure) + counterexample search + competing models incl. Model 0
+- [ ] R6 verdict computation under the adopted criteria → independent reproduction (R5/N6). The verdict engine (architecture doc §6, slices VE-0…VE-6) needs adopted criteria, an EP-01 plan and 👤 approval
+
+*Lane H — hold-out and final verdict:*
+- [ ] H1 👤 the ADD §6 ruling after the seal breach (scoreable or not); S5c only by a separate act
+- [ ] H2 if authorized: S5c scoring against the FROZEN candidates (one unseal, no changes after)
+- [ ] H3 👤 J4: adopt or reject the computed outcome → the final readable report (ROBUST / NCTF / OPEN with codes)
+- [ ] H4 👤 only after an adopted ROBUST verdict: canonicalization (Layer 5) → theory specification → product architecture (derivation method in the architecture doc §7)
+
+*Lane G — governance and hygiene:*
+- [ ] G1 hash-chain the governance log
+- [ ] G2 👤 R-5: the 5 misrouted READ-LOG files in the ansible repo
+- [ ] G3 👤 push decision for local commits (nothing pushed)
+- [ ] G4 RI-1 stays DEFERRED; reopen only on its G-LOG-0089 conditions
+
+**CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; HISTORICAL, superseded by the lanes above; it superseded B1–B3 and the older critical paths below; 👤 = human gate):**
 - [x] 1. Independent check of the field inventory (review F: RELIABLE-WITH-CORRECTIONS; 48/19/10/8)
 - [x] 2. Package v3 `8e095b780` (fork P/H/R, rec. H) → review G (ACCEPT-WITH-FIXES, 13 MATERIAL) → **package v4** (G fixes + §3a binding engineering constraints)
 - [ ] 3. Independent adversarial review of v4 → revise until accepted
