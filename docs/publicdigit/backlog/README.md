@@ -179,6 +179,8 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-300`](PBDIGIT-300-vote-ids-encode-creation-time.md) | **Vote and result ids encode their creation time** (anonymity gap A4; UUIDv7 ms on Laravel 12, `orderedUuid` on 11; characterization K7; priority raised by the PO) | — | `OPEN` · not authorised |
 | [`PBDIGIT-301`](PBDIGIT-301-remaining-composer-security-advisories.md) | **12 Composer security advisories remain** (php-jwt, phpseclib, phpunit, psysh, symfony/yaml; 65 → 12 after the Laravel 12 upgrade) | — | `OPEN` · not authorised |
 | [`PBDIGIT-302`](PBDIGIT-302-mail-transport-tls-policy.md) | **Mail transport TLS policy and the misleading `verify_peer` block** (STARTTLS opportunistic on 587; port 465 used for SES; check symfony/mailer 7.4) | — | `OPEN` · not authorised |
+| [`PBDIGIT-303`](PBDIGIT-303-stale-middleware-order-integration-test.md) | **Integration test expects `TenantContext` in the `web` group**, contrary to the deliberate route-middleware design (`bootstrap/app.php:39`); `tests/Integration` is in no default suite | — | `OPEN` · not authorised |
+| [`PBDIGIT-304`](PBDIGIT-304-psr4-autoload-cleanup.md) | **PSR-4 autoload cleanup**: 11 classes skipped by Composer (3 stale duplicates, 2 dead classes, 1 misplaced model, 5 test namespace/class issues) | — | `IN PROGRESS` · plan approved 2026-10-16 |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
