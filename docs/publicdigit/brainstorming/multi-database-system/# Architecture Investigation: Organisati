@@ -1,0 +1,1570 @@
+# Architecture Investigation: Organisation-per-Database + Organisation-specific Hostnames
+
+## Role
+
+Act as a **Senior DDD Architect, Principal Software Architect, Database Architect and Domain-Driven Transformer**.
+
+You are investigating the repository:
+
+```text
+/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1
+```
+
+A second repository exists as an architectural reference:
+
+```text
+/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/election
+```
+
+You MUST inspect both repositories, but `election` is only a **reference implementation to reverse-engineer**. Do NOT assume that its implementation is correct and do NOT copy its architecture blindly.
+
+---
+
+# 1. Objective
+
+Investigate what must be changed in `nrna1` to evolve it into the following target architecture:
+
+```text
+                    PUBLICDIGIT PLATFORM
+                           │
+                           ▼
+                 Central / Platform DB
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+              ▼            ▼            ▼
+          NRNA tenant   NC tenant    CPN-UML tenant
+              DB           DB            DB
+              │            │             │
+              ▼            ▼             ▼
+nrna.publicdigit.com  nc.publicdigit.com  cpnuml.publicdigit.com
+```
+
+Additional organisations may include:
+
+```text
+nrnagermany.publicdigit.com
+<other-org>.publicdigit.com
+```
+
+The architectural rule is:
+
+> **One organisation = one tenant = one organisation-specific hostname = one physical PostgreSQL database.**
+
+Examples:
+
+```text
+nrna.publicdigit.com
+    → NRNA organisation
+    → NRNA tenant database
+
+nc.publicdigit.com
+    → NC organisation
+    → NC tenant database
+
+cpnuml.publicdigit.com
+    → CPN-UML organisation
+    → CPN-UML tenant database
+
+nrnagermany.publicdigit.com
+    → NRNA Germany organisation
+    → NRNA Germany tenant database
+```
+
+The investigation must determine the **minimum safe architectural change** required to achieve this.
+
+Do NOT implement anything yet.
+
+---
+
+# 2. Critical architectural principle
+
+Do NOT treat the hostname as the database name.
+
+Instead, the desired resolution is:
+
+```text
+HTTP Host
+    │
+    ▼
+Organisation / Tenant Registry
+    │
+    ├── organisation_id
+    ├── slug
+    ├── hostname
+    ├── status
+    └── database configuration/reference
+    │
+    ▼
+TenantContext
+    │
+    ▼
+TenantDatabaseResolver
+    │
+    ▼
+Tenant PostgreSQL connection
+```
+
+For example:
+
+```text
+nrna.publicdigit.com
+        │
+        ▼
+Organisation: NRNA
+        │
+        ▼
+Tenant DB configuration
+        │
+        ▼
+NRNA PostgreSQL database
+```
+
+The hostname is therefore a **tenant identity/routing key**, not a physical database identifier.
+
+---
+
+# 3. First task: completely reverse-engineer nrna1
+
+Before proposing changes, inspect the repository systematically.
+
+Determine:
+
+## Application
+
+- Laravel version
+- PHP version
+- database technology
+- authentication mechanism
+- session mechanism
+- queue mechanism
+- cache
+- filesystem
+- broadcasting/events
+- scheduled jobs
+- console commands
+- API architecture
+- Inertia/Vue/frontend architecture
+- middleware architecture
+- service providers
+- configuration structure
+
+## Domain
+
+Identify:
+
+- Organisation
+- User
+- Membership
+- Role
+- Permission
+- Election
+- Voter
+- Vote
+- Committee
+- Governance
+- Audit
+- Notification
+- other important domain concepts
+
+Map:
+
+```text
+Bounded Context
+    ↓
+Aggregate
+    ↓
+Entity
+    ↓
+Value Object
+    ↓
+Repository
+    ↓
+Persistence
+```
+
+Do not assume all existing Laravel models are domain aggregates.
+
+---
+
+# 4. Determine the existing organisation boundary
+
+Investigate exactly how `nrna1` currently determines the organisation.
+
+Search for:
+
+```text
+organisation_id
+organisation
+tenant
+TenantContext
+current_organisation_id
+session
+middleware
+hostname
+host
+domain
+subdomain
+slug
+route
+binding
+```
+
+Determine:
+
+1. How is the current organisation selected?
+2. Is it derived from URL?
+3. Is it stored in session?
+4. Is it stored on the user?
+5. Is it stored in middleware?
+6. Is there already a TenantContext?
+7. Is there already a tenant resolver?
+8. Is organisation selection trusted?
+9. Can a user switch organisations?
+10. Can one user belong to multiple organisations?
+11. Are there organisation-less routes?
+12. Are there background processes where organisation context does not exist?
+
+Produce an explicit current-state sequence diagram.
+
+---
+
+# 5. Investigate hostname-based tenant resolution
+
+Determine what would be required to support:
+
+```text
+{organisation}.publicdigit.com
+```
+
+Examples:
+
+```text
+nrna.publicdigit.com
+nc.publicdigit.com
+cpnuml.publicdigit.com
+nrnagermany.publicdigit.com
+```
+
+Investigate:
+
+- existing route definitions
+- wildcard/subdomain routing
+- host-based middleware
+- URL generation
+- redirects
+- authentication routes
+- password reset URLs
+- email links
+- verification URLs
+- invitation URLs
+- election links
+- voting links
+- API URLs
+- asset URLs
+- frontend routing
+- CORS
+- Sanctum
+- CSRF
+- trusted proxies
+- local development domains
+- test domains
+- production reverse proxy/load balancer assumptions
+
+Determine whether hostname resolution can be introduced **without rewriting existing application routes**.
+
+Prefer:
+
+```text
+Request
+  ↓
+ResolveOrganisationFromHost
+  ↓
+TenantContext
+  ↓
+existing application
+```
+
+rather than changing every controller.
+
+---
+
+# 6. Investigate the current database model
+
+Build a complete database classification.
+
+For every table, classify it as one of:
+
+```text
+CENTRAL
+TENANT
+PROJECTION
+UNKNOWN
+```
+
+## CENTRAL
+
+Potential examples:
+
+```text
+users
+organisations
+user_organisation_roles
+authentication
+sessions
+platform administration
+tenant registry
+domain/hostname registry
+```
+
+## TENANT
+
+Potential examples:
+
+```text
+elections
+voters
+votes
+memberships
+committees
+organisation governance
+tenant-local audit
+tenant-local outbox
+tenant-local inbox
+```
+
+## PROJECTION
+
+Potential examples:
+
+```text
+cross-organisation read models
+election directory
+organisation directory
+public lookup indexes
+routing indexes
+```
+
+Do NOT decide classification purely from table names.
+
+For every table explain:
+
+- business ownership
+- organisation dependency
+- foreign keys
+- consumers
+- writers
+- readers
+- cross-organisation usage
+- whether it needs to exist before tenant resolution
+- whether it belongs physically in central DB or tenant DB
+
+Create a table:
+
+| Table | Current DB | Organisation ownership | Target | Reason | Migration risk |
+|---|---|---|---|---|---|
+
+The classification must cover **all application tables**, not only obvious tenant tables.
+
+---
+
+# 7. Investigate organisation_id
+
+Determine whether `organisation_id` should remain after moving to one database per organisation.
+
+Do NOT automatically remove it.
+
+Evaluate whether it should initially remain as:
+
+> defence-in-depth tenant identity validation.
+
+For example:
+
+```text
+nrna.publicdigit.com
+        ↓
+NRNA tenant DB
+        ↓
+organisation_id = NRNA
+```
+
+The application can then verify:
+
+```text
+Resolved organisation == tenant database organisation
+```
+
+This provides protection against accidentally connecting the wrong database.
+
+Determine:
+
+- which tables should retain organisation_id
+- which can eventually remove it
+- which must retain it because they are projections
+- whether removing it would create unnecessary migration risk
+
+---
+
+# 8. Investigate central identity
+
+Pay particular attention to:
+
+```text
+users
+user_organisation_roles
+roles
+permissions
+authentication
+password reset
+email verification
+Socialite
+Sanctum
+sessions
+```
+
+Determine whether users should remain globally central.
+
+Preferred target hypothesis:
+
+```text
+CENTRAL DB
+
+users
+organisations
+user_organisation_roles
+roles
+permissions
+authentication
+```
+
+while:
+
+```text
+TENANT DB
+
+organisation-owned business data
+```
+
+Investigate whether the existing application can support:
+
+```text
+one global user
+        +
+membership in multiple organisations
+        +
+different tenant database per organisation
+```
+
+without duplicating authentication.
+
+Do NOT create tenant-local authentication unless the repository proves that it is necessary.
+
+---
+
+# 9. Investigate tenant identity projection
+
+Determine whether tenant databases need a local representation of:
+
+```text
+User
+Organisation
+Membership
+Role
+```
+
+because of existing foreign keys or joins.
+
+For every tenant table referencing:
+
+```text
+users
+organisations
+user_organisation_roles
+```
+
+determine whether it requires:
+
+1. central reference
+2. local read-only projection
+3. schema redesign
+4. application-level lookup
+5. another solution
+
+Pay special attention to PostgreSQL foreign keys.
+
+A physical database boundary means a normal FK cannot cross:
+
+```text
+central_db → tenant_db
+```
+
+Therefore explicitly identify every cross-database FK/relationship that must change.
+
+---
+
+# 10. Investigate existing raw SQL and Eloquent behaviour
+
+Search for:
+
+```text
+DB::
+DB::table()
+DB::connection()
+DB::transaction()
+->on()
+->from()
+joins
+raw()
+whereRaw()
+selectRaw()
+insert()
+upsert()
+updateOrCreate()
+```
+
+Determine:
+
+- which operations are tenant operations
+- which are central operations
+- which are ambiguous
+- which assume one physical database
+- which joins cross organisation/global tables
+
+Particularly investigate whether changing:
+
+```text
+default DB connection
+```
+
+from central/shared to tenant would break existing code.
+
+Determine whether the architecture should use:
+
+```text
+default connection = tenant
+central models explicitly use central
+```
+
+or the reverse.
+
+Do not decide from theory alone.
+
+Measure the actual repository.
+
+---
+
+# 11. Investigate transactions
+
+This is critical.
+
+Find every significant:
+
+```php
+DB::transaction(...)
+```
+
+Determine whether a transaction currently contains:
+
+```text
+User + Organisation
+```
+
+or:
+
+```text
+Organisation + Election
+```
+
+or:
+
+```text
+User + Membership + Election
+```
+
+or other cross-boundary writes.
+
+A transaction cannot provide atomicity across two PostgreSQL databases without distributed transaction infrastructure.
+
+Therefore classify all cross-boundary transactions as:
+
+```text
+SAFE
+REQUIRES REDESIGN
+REQUIRES OUTBOX
+REQUIRES SAGA
+REQUIRES CENTRAL-FIRST
+```
+
+Recommend the smallest practical solution.
+
+---
+
+# 12. Investigate queues and background processing
+
+Search:
+
+```text
+Jobs
+ShouldQueue
+dispatch()
+Bus
+Queue
+Schedule
+Console commands
+Listeners
+Events
+Notifications
+```
+
+Determine how organisation context survives:
+
+```text
+HTTP request
+    ↓
+dispatch job
+    ↓
+queue
+    ↓
+worker
+```
+
+The target should support:
+
+```text
+TenantContext
+    ↓
+job payload/context
+    ↓
+worker
+    ↓
+restore tenant
+    ↓
+tenant DB connection
+```
+
+Investigate:
+
+- synchronous queues
+- asynchronous queues
+- scheduled commands
+- workers
+- failed jobs
+- retries
+- event listeners
+- notifications
+- outbox/inbox
+
+Identify every process that currently depends implicitly on session or HTTP state.
+
+---
+
+# 13. Investigate cache
+
+Determine whether cache keys are organisation-aware.
+
+Look for:
+
+```text
+Cache::
+cache()
+remember()
+rememberForever()
+Redis
+```
+
+Identify keys such as:
+
+```text
+users
+permissions
+elections
+members
+settings
+```
+
+Determine whether the target requires:
+
+```text
+tenant:{organisation_id}:...
+```
+
+or whether central/tenant physical separation already provides enough isolation.
+
+---
+
+# 14. Investigate file storage
+
+Determine whether files are organisation-specific.
+
+Search for:
+
+```text
+Storage::
+storage_path()
+uploads
+documents
+images
+logos
+```
+
+Determine whether target storage should become:
+
+```text
+organisations/{organisation}/...
+```
+
+or equivalent.
+
+Database isolation does not automatically provide file isolation.
+
+---
+
+# 15. Investigate authentication and organisation selection
+
+Determine the desired login model.
+
+Preferred target hypothesis:
+
+```text
+User logs in centrally
+        ↓
+System knows organisation from hostname
+        ↓
+Membership is checked
+        ↓
+Tenant DB is selected
+```
+
+Example:
+
+```text
+https://nrna.publicdigit.com/login
+
+User
+ ↓
+central authentication
+ ↓
+membership check for NRNA
+ ↓
+NRNA tenant DB
+```
+
+Investigate whether:
+
+```text
+https://nrna.publicdigit.com
+```
+
+and:
+
+```text
+https://nc.publicdigit.com
+```
+
+can authenticate the same central user against different organisation memberships.
+
+Also investigate:
+
+- logout
+- password reset
+- email verification
+- OAuth/Socialite
+- Sanctum
+- session cookies
+- cookie domain
+- subdomain isolation
+
+---
+
+# 16. Investigate public/org-less URLs
+
+Find URLs that currently do not contain an organisation.
+
+Examples may include:
+
+```text
+/vote/...
+/election/...
+/verify/...
+/login/...
+```
+
+Determine how these can be resolved through a central routing directory.
+
+Preferred concept:
+
+```text
+public identifier
+      ↓
+central routing directory
+      ↓
+organisation
+      ↓
+tenant DB
+```
+
+For example:
+
+```text
+https://publicdigit.com/vote/{token}
+                 ↓
+        routing directory
+                 ↓
+              NRNA
+                 ↓
+            NRNA DB
+```
+
+Do not require every existing URL to be rewritten if a central lookup can preserve compatibility.
+
+---
+
+# 17. Investigate the election repository
+
+Now inspect:
+
+```text
+/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/election
+```
+
+Specifically investigate:
+
+- how tenant DBs are configured
+- tenant resolution
+- organisation registry
+- provisioning
+- migrations
+- hostname/domain handling
+- tenant context
+- jobs
+- authentication
+- cross-database relationships
+- testing
+
+BUT explicitly identify bad or risky patterns.
+
+Do NOT assume `election` is the desired architecture.
+
+Create:
+
+# `election → nrna1 Architectural Delta`
+
+with:
+
+| Capability | election | nrna1 | Target | Reuse? |
+|---|---|---|---|---|
+
+For every reusable concept explain why it is reusable.
+
+For every implementation that should NOT be copied explain why.
+
+---
+
+# 18. Investigate deployment and infrastructure
+
+Determine what must change outside Laravel.
+
+Investigate:
+
+```text
+DNS
+wildcard DNS
+*.publicdigit.com
+TLS certificates
+reverse proxy
+Nginx/Apache
+load balancer
+Docker
+Kubernetes
+environment variables
+PostgreSQL
+database credentials
+backup
+monitoring
+logging
+```
+
+Determine the infrastructure required for:
+
+```text
+*.publicdigit.com
+```
+
+and multiple PostgreSQL databases.
+
+The target should ideally require:
+
+```text
+*.publicdigit.com → same application
+```
+
+with Laravel selecting the tenant DB.
+
+Do not propose one application deployment per organisation unless the repository proves it necessary.
+
+---
+
+# 19. Investigate database provisioning
+
+Design the target lifecycle:
+
+```text
+Create Organisation
+       ↓
+Create tenant database
+       ↓
+Run tenant migrations
+       ↓
+Create tenant identity projection
+       ↓
+Register hostname
+       ↓
+Activate tenant
+```
+
+Determine:
+
+- who can create an organisation
+- when DB is created
+- how credentials are generated
+- how migrations are run
+- how failures are handled
+- whether provisioning is synchronous or asynchronous
+- how retries work
+- whether provisioning is idempotent
+- how a failed organisation creation is recovered
+
+Do not implement.
+
+Produce a proposed lifecycle.
+
+---
+
+# 20. Investigate migration from the current shared DB
+
+The existing shared database must eventually be transformed into:
+
+```text
+CENTRAL DB
++
+NRNA DB
++
+NC DB
++
+CPN-UML DB
++
+NRNA Germany DB
++
+...
+```
+
+Determine:
+
+1. What becomes the central DB?
+2. Which existing rows move into each tenant DB?
+3. How are null organisation_id rows handled?
+4. How are orphan records handled?
+5. How are foreign keys handled?
+6. How are sequences handled?
+7. How are UUIDs handled?
+8. How are attachments handled?
+9. How are historical audit records handled?
+10. How are jobs/outbox records handled?
+11. How do we verify migration completeness?
+
+Design a migration strategy with:
+
+```text
+extract
+validate
+copy
+verify
+freeze
+cutover
+reconcile
+activate
+```
+
+Do not recommend a big-bang migration unless absolutely necessary.
+
+Prefer organisation-by-organisation migration.
+
+---
+
+# 21. Security analysis
+
+Investigate tenant isolation as a security boundary.
+
+Identify:
+
+- tenant spoofing
+- host header manipulation
+- X-Tenant-Id headers
+- session-based tenant switching
+- missing membership checks
+- incorrect database resolution
+- fail-open behaviour
+- cross-tenant queries
+- cross-tenant cache
+- cross-tenant files
+- admin bypass
+- CLI bypass
+- job context leakage
+- worker connection leakage
+
+The target must satisfy:
+
+> No tenant context → no tenant DB access.
+
+And:
+
+> Hostname organisation and authenticated membership must agree.
+
+Also investigate whether PostgreSQL-level permissions should eventually provide an additional isolation layer.
+
+---
+
+# 22. Testing strategy
+
+Design tests for:
+
+## Tenant resolution
+
+```text
+nrna.publicdigit.com → NRNA
+nc.publicdigit.com → NC
+```
+
+## Isolation
+
+```text
+NRNA request cannot read NC data
+NC request cannot read NRNA data
+```
+
+## Database resolution
+
+```text
+NRNA → nrna_db
+NC → nc_db
+```
+
+## Fail closed
+
+```text
+unknown hostname → reject
+inactive organisation → reject
+no tenant context → reject
+invalid tenant → reject
+```
+
+## Authentication
+
+```text
+global user + NRNA membership → NRNA
+global user + NC membership → NC
+no membership → reject
+```
+
+## Jobs
+
+```text
+NRNA job → NRNA DB
+NC job → NC DB
+```
+
+## CLI
+
+Tenant-specific commands must require explicit tenant selection.
+
+## Migration
+
+Verify:
+
+```text
+source rows = destination rows
+FK integrity
+organisation consistency
+no cross-tenant leakage
+```
+
+## Architecture fitness
+
+Create tests that prevent future code from accidentally using:
+
+```text
+wrong connection
+cross-tenant query
+unresolved tenant
+```
+
+---
+
+# 23. Determine minimal-change architecture
+
+This is one of the most important tasks.
+
+Do NOT propose rewriting the application.
+
+Determine:
+
+```text
+KEEP
+CHANGE
+ADD
+REMOVE
+```
+
+For example:
+
+### KEEP
+
+Potentially:
+
+- routes
+- URLs
+- Inertia/Vue
+- domain services
+- policies
+- election workflows
+- organisation-specific behaviour
+- existing UUIDs
+- existing organisation model
+- existing business rules
+
+### CHANGE
+
+Potentially:
+
+- organisation resolution
+- TenantContext
+- DB connection selection
+- central/tenant model classification
+- cross-database relationships
+- queue context
+- authentication/session configuration
+
+### ADD
+
+Potentially:
+
+```text
+OrganisationDatabase
+TenantDomain
+TenantDatabaseResolver
+TenantContext
+TenantRunner
+Tenant provisioning
+Tenant migration commands
+Tenant routing directory
+Tenant identity projection
+```
+
+### REMOVE
+
+Only if proven necessary:
+
+- obsolete tenancy implementations
+- unsafe tenant headers
+- duplicate tenant mechanisms
+- shared-database assumptions
+
+---
+
+# 24. Produce a concrete architecture
+
+Create the following diagrams:
+
+## A. Target architecture
+
+```text
+Internet
+   ↓
+*.publicdigit.com
+   ↓
+Reverse Proxy
+   ↓
+Laravel
+   ↓
+Host Resolver
+   ↓
+Organisation Registry
+   ↓
+TenantContext
+   ↓
+Tenant DB Resolver
+   ↓
+Organisation DB
+```
+
+## B. Central vs Tenant data
+
+Show clearly:
+
+```text
+CENTRAL DB
+        │
+        ├── identity
+        ├── organisations
+        ├── membership
+        ├── routing
+        └── platform data
+
+TENANT DB
+        │
+        ├── elections
+        ├── voters
+        ├── votes
+        ├── governance
+        └── organisation business data
+```
+
+## C. Authentication flow
+
+## D. Normal tenant request
+
+## E. Queue/job flow
+
+## F. Organisation provisioning flow
+
+## G. Migration/cutover flow
+
+Use Mermaid where appropriate.
+
+---
+
+# 25. Explicitly answer these questions
+
+The final report MUST answer:
+
+### Q1
+
+Can `nrna1` support:
+
+```text
+nrna.publicdigit.com
+nc.publicdigit.com
+cpnuml.publicdigit.com
+nrnagermany.publicdigit.com
+```
+
+without creating separate Laravel applications?
+
+### Q2
+
+Can the existing organisation-specific domain behaviour remain?
+
+### Q3
+
+Can existing routes remain largely unchanged?
+
+### Q4
+
+Can the existing domain model remain largely unchanged?
+
+### Q5
+
+What must happen to `organisation_id`?
+
+### Q6
+
+What must happen to `users`?
+
+### Q7
+
+What must happen to `user_organisation_roles`?
+
+### Q8
+
+What must happen to authentication?
+
+### Q9
+
+What must happen to sessions?
+
+### Q10
+
+What must happen to queues/jobs?
+
+### Q11
+
+What happens to cross-organisation queries?
+
+### Q12
+
+What happens to cross-database transactions?
+
+### Q13
+
+What happens to raw SQL?
+
+### Q14
+
+What happens to PostgreSQL foreign keys?
+
+### Q15
+
+What happens to migrations?
+
+### Q16
+
+How is a new organisation provisioned?
+
+### Q17
+
+How is a hostname registered?
+
+### Q18
+
+How is a tenant database discovered?
+
+### Q19
+
+How is wrong-tenant access prevented?
+
+### Q20
+
+What is the minimum production change required?
+
+---
+
+# 26. Compare architectural options
+
+Evaluate at least:
+
+### Option A
+Shared database + organisation_id
+
+### Option B
+Database per organisation
+
+### Option C
+Schema per organisation
+
+### Option D
+Database per organisation + central identity
+
+### Option E
+Separate application deployment per organisation
+
+Score each for:
+
+- isolation
+- security
+- DDD alignment
+- operational complexity
+- migration complexity
+- scalability
+- maintainability
+- testing
+- cost
+- compatibility with current nrna1
+- compatibility with `*.publicdigit.com`
+
+Give a recommendation.
+
+---
+
+# 27. Do NOT implement
+
+This is an architecture investigation only.
+
+Do NOT:
+
+- modify source code
+- modify migrations
+- modify `.env`
+- install packages
+- change composer dependencies
+- run destructive commands
+- create databases
+- change DNS
+- modify infrastructure
+- migrate data
+- modify existing documentation outside the requested report directory
+
+All repositories are READ-ONLY during this investigation.
+
+---
+
+# 28. Output location
+
+Write the complete investigation report to:
+
+```text
+/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/publicdigit/brainstorming/multi-database-system
+```
+
+Before writing anything:
+
+- inspect the directory
+- treat all existing files there as READ-ONLY
+- do not overwrite existing files
+- create new uniquely named report files if necessary
+
+The report directory is a brainstorming/architecture workspace.
+
+Do not treat the report as an approved ADR.
+
+---
+
+# 29. Required report structure
+
+Create:
+
+```text
+01-executive-summary.md
+02-current-nrna1-architecture.md
+03-election-reference-assessment.md
+04-hostname-tenant-resolution.md
+05-central-vs-tenant-data-classification.md
+06-database-and-transaction-analysis.md
+07-authentication-and-identity.md
+08-queues-events-and-background-processing.md
+09-security-and-isolation.md
+10-migration-and-cutover-strategy.md
+11-target-architecture.md
+12-minimal-change-plan.md
+13-testing-strategy.md
+14-election-to-nrna1-architectural-delta.md
+15-open-questions-and-decisions.md
+16-final-recommendation.md
+```
+
+Also create:
+
+```text
+README.md
+```
+
+that explains:
+
+- what was investigated
+- repositories inspected
+- what is source evidence
+- what is architectural inference
+- what remains undecided
+- that no implementation was performed
+
+---
+
+# 30. Most important final conclusion
+
+The report must ultimately determine whether this architecture is feasible:
+
+```text
+                    PublicDigit Platform
+                           │
+                    Central PostgreSQL
+                           │
+            ┌──────────────┼──────────────┐
+            │              │              │
+            ▼              ▼              ▼
+        NRNA DB         NC DB         CPN-UML DB
+            │              │              │
+            ▼              ▼              ▼
+nrna.publicdigit.com  nc.publicdigit.com  cpnuml.publicdigit.com
+```
+
+while preserving as much as possible of:
+
+```text
+existing nrna1
+    ├── domain
+    ├── application services
+    ├── routes
+    ├── UI
+    ├── organisation concepts
+    ├── authentication
+    ├── business rules
+    └── election workflows
+```
+
+The architectural objective is:
+
+> **Change the persistence/isolation boundary, not unnecessarily rewrite the business application.**
+
+The final report must explicitly state:
+
+1. what can remain unchanged;
+2. what must change;
+3. what must be added;
+4. what must be removed;
+5. what the riskiest assumptions are;
+6. what should be implemented first;
+7. what should NOT be implemented yet;
+8. what decisions require human/business approval.
+
+---
+
+# 31. Recommended first implementation candidate
+
+At the end, identify the smallest reversible Proof of Concept that would validate the architecture **without moving production data**.
+
+Prefer something similar to:
+
+```text
+Host
+ ↓
+Organisation resolver
+ ↓
+TenantContext
+ ↓
+Tenant DB resolver
+ ↓
+test tenant database
+```
+
+with:
+
+```text
+nrna.test.publicdigit.com → NRNA test DB
+nc.test.publicdigit.com   → NC test DB
+```
+
+The PoC should prove:
+
+- hostname → organisation
+- organisation → TenantContext
+- TenantContext → DB connection
+- tenant A cannot access tenant B
+- no tenant context fails closed
+- global identity remains central
+- existing domain/application code can continue operating
+
+Do not implement this PoC during the investigation.
+
+Only describe it as the recommended first implementation step.
+
+---
+
+# Final principle
+
+Think as a **DDD architect**, not as a Laravel package integrator.
+
+The question is not:
+
+> "How do we install a tenancy package?"
+
+The question is:
+
+> "What is the correct organisational boundary of PublicDigit, and how can the existing nrna1 domain be moved from logical isolation (`organisation_id`) to physical isolation (one PostgreSQL database per organisation) with the smallest safe architectural change?"
+
+Use evidence from both repositories.
+
+Separate:
+
+```text
+FACT
+INFERENCE
+RECOMMENDATION
+DECISION REQUIRED
+```
+
+Do not hide uncertainty.
+
+Do not over-engineer.
+
+Do not copy `election` merely because it already contains multi-database code.
+
+The final recommendation should be suitable as the basis for a later ADR and implementation plan.

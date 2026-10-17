@@ -101,3 +101,10 @@ The plan's `nrna_test` P6 tests and the gap 1 mutation proof ran on the isolated
 
 - **Not a RED/GREEN cycle:** this verifies `votesFrom`'s exact-match fallback, which was already implemented.
 - **Committed state:** P5 + P6 are in `2f998b8ae` (not pushed). The test added here and these documentation updates are uncommitted.
+
+## Closure review (2026-10-15, after the Principal's P5/P6 acceptance)
+| File | Run | Result |
+|---|---|---|
+| `29-dbfree-closure-at-153ad7bf6.txt` | at HEAD `153ad7bf6`, `--no-configuration --bootstrap vendor/autoload.php`, one file at a time: architecture (5), admission authorisation (2), `IpVoteGroupTest`, `IpVoteLimitTest`, the 23-file IP set | **32 files, exit 0** |
+
+No isolated or `nrna_test` run in this review: no current authorisation, and no production code has changed since `05`–`28`.

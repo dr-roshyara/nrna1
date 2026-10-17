@@ -2216,3 +2216,16 @@ The two `sha256sum` listings must be identical.
 | Disclosed deviation (this task, before this entry) | a repository search for the verdict terms by the orchestrator did not exclude `_batch_input*`; it printed truncated first ≤ 260 characters of 5 lines from `chronological-read/_batch_input_r2/s5/rev7/` (S5 batch-input JSON: batch ids, field names, alias strings; no S-ids). Nothing from it is used in the proposal. Recorded for the human; no further action taken |
 | State unchanged | O1 (G-LOG-0125) and OMQ-14 (G-LOG-0017) in force; H-19 sealed and S5c prohibited (P3B-ESC-0001, l.848); prereg_v2 frozen (G-LOG-0137); T-1/T-0 (G-LOG-0139) pending |
 | Not authorized | adopting any criterion; corpus reads; S5 or any research run; run-3 outside G-LOG-0117; G3–G5; any H-19 unseal or S5c scoring; changes to frozen artifacts; changes to `p3b_read_source.py` or production ledgers; theory-track tooling |
+
+# G-LOG-0141:
+1. Permission. The Professor (Session B) may read documents in docs/knowledgeos/brainstorming/, read-only, with priority on phase_measure_theory, mathematical_ideas_that_can_be_implemented and kernel.
+2. Protecting the hold-out. 33 files and 45 concepts are sealed away as a hold-out, used later to test whether a theory predicts material it has never seen. A small script would check every file before I open it and hide any sealed one. I'd only see "allowed" files and a count of hidden ones, never which files are sealed.
+3. Logging. Every file I read is logged with its fingerprint (hash), time and purpose.
+4. What my findings count as. Research observations and hypotheses only. They are never proof, and they never replace the formal measurement stage (S5).
+5. What it means for me. Having read the corpus, I can no longer play neutral roles later: measurement, auditing, linkage judging, or writing hold-out predictions.
+6. Scope of the change. O1 changes for the Professor only. All other sessions stay under "no early corpus reads".
+7. What stays forbidden: measurement data, ledgers, sealed lists, hold-out files, Run-3, studies and commits.
+Professor should write in folder /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowledgeos-s-series-theory
+
+# Extension (2026-10-17): 
+scope = all discovery-population files of 02-FILES.jsonl and chronological-read/20-FAMILIES/, same filter and logging.

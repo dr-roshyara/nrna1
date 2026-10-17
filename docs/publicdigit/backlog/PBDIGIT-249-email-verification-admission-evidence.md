@@ -13,6 +13,7 @@
 | **Requirement** | New `AdmissionRequirement::EMAIL_VERIFICATION`; optional unless the election's admission policy requires it. **Email verified ≠ identity verified** |
 | **Challenge (first implementation)** | Voter-initiated · random token stored **hashed** · bound to election + voter + email address · single-use · expires after **60 minutes** · a newer challenge supersedes the older one · used / expired / superseded → fail closed · raw tokens never logged. No officer-issued challenges and no complex resend policy yet |
 | **Admission semantics** | ALL-of is unchanged: `[]` none · `[IDENTITY]` · `[EMAIL]` · `[IDENTITY, EMAIL]` both. Implementing email never makes it required; the Admission Policy is authoritative |
+| **Action (PO 2026-10-06)** | A **Verify Email** button in the row actions, **to the right of the identity action** (Verify Identity / Cancel Verification). It starts the email challenge for that voter's address. Available as an evidence operation whatever the policy (C4 semantics). It is built with this story's GREEN, because without the challenge backend the button would do nothing |
 | **Column** | The Voter Management **Email Verification** column, shown only while the policy requires `EMAIL_VERIFICATION` (COL-D1) |
 | **RED to finalise** | challenge generated / sent; valid accepted; invalid / expired / replayed / superseded rejected; evidence created; no identity equivalence; admission effect only when required; election / organisation isolation; address change ends the evidence (proposal §E — confirm) |
 

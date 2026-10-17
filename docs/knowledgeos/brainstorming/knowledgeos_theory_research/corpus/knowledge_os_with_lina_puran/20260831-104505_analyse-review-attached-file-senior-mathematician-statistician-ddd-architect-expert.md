@@ -20,6 +20,7 @@ can you tellme  as senior architet where to start  to build the whole theory and
  and  finally write in sort as bullet points how far we are to achieve our goal and mention the rest of the todos in short in bullet points.
 
 # #################################################################
+
 Role: Senior Researcher, Mathematician, Statistician, Domain-Driven Design (DDD) Architect, and Expert in Computer Logic and Machine Learning.
 
 Task Objective:
@@ -60,8 +61,31 @@ At the end of your response, provide a brief, high-level summary with:
  
 
 # ###########################################################
+# ##########################################################
+
+
         Continue to work for next step as senior researcher and mathematician, statistician and ddd architect and expert of computer logic and theory of logic.  While computation,   technique of computer logic and machine learning techniques may also help us . So you also need to use your expertise in machine learning techiniques.  Keep optimizing the final goal, architecture and todos.
         A researcher responsibility is to  observe the current corpus as brainstorming material and derive a robost theory.
 
 
 if we take all these as metaphore and philosophical idea , how can we define knowelge in reality  logically , mathematically , statistically . work for next step as senior researcher and mathematician, statistician and ddd architect and expert of computer logic and theory of logic. The thing is now to find out how knowlege is expressed in words , how truth and wrong is explained . how knowlege is extracted from reading the texts and then be able to make decision .
+
+#
+     What todo now : 
+     Read the attached file and analyse as senior  DDD architect and principle reviewer . Continue to work for next step as senior DDD architect, requirement engineer, researcher and mathematician, statistician and ddd architect and expert of computer logic and theory of logic.  While computation,   technique of computer logic and machine learning techniques may also help us . So you also need to use your expertise in machine learning techiniques.  Keep optimizing the final goal, architecture and todos.         A researcher responsibility is to  observe the current corpus as brainstorming material and derive a robost membershiop theory with practical implementation.  write prompt instructions for claude for next step.
+     - consider the roles of claude, chatgpt , and human arb 
+     - consider to instruct claude first plan and then implement after the finalising the architecture 
+
+     At the end write how far we are to achieve our membership implementation goal and what are the rest of the todos. write the todos in bullet points. 
+
+#
+
+# election  committee wahl beobachter . 
+     what we are doing : 
+     we are developing a digitalization platform for organsation and political parties. So   read the attached file and analyse as principle reviewer and DDD architect. 
+      what to do now :   
+     Continue to work for next step as senior DDD architect, requirement engineer, researcher and mathematician, statistician and ddd architect and expert of computer logic and theory of logic.  While computation,   technique of computer logic and machine learning techniques may also help us . So you also need to use your expertise in machine learning techiniques.  Keep optimizing the final goal, architecture and todos.         A researcher responsibility is to  observe the current corpus as brainstorming material and derive a robost architecture with practical implementation.Election is out of scope now and We focus on the DDD architecture for  cross functional relationship among the membership, member, committee, roles, permission, geographical committee, discussion forum. 
+
+     At the end write how far we are to achieve our  implementation goal and what are the rest of the todos. write the todos in bullet points. 
+
+

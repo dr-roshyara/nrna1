@@ -1,0 +1,489 @@
+Yes. In fact, I would **expand the architecture**, but I would *not* model every verification method as a separate hard-coded “gate.”
+
+The stronger DDD model is:
+
+> **Admission Policy → Requirements → Evidence → Entitlement**
+
+That gives Publicdigit a flexible architecture for identity, email, phone, IP, organizational approval, etc., without creating a new workflow for every verification method.
+
+### Recommended architecture
+
+```text
+                    Election
+                       │
+                       ▼
+             VoterAdmissionPolicy
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+   Identity        Contact       Network/
+   Requirement     Requirement    Environment
+          │            │            │
+          ▼            ▼            ▼
+   ┌────────────┐ ┌────────────┐ ┌────────────┐
+   │Identity    │ │Email       │ │IP Address  │
+   │Verification│ │Verification│ │Verification│
+   └────────────┘ └────────────┘ └────────────┘
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+               Admission Evidence
+                       │
+                       ▼
+              Admission Decision
+                       │
+                       ▼
+             Voting Entitlement
+```
+
+But there is an important distinction:
+
+### 1. Identity verification
+
+This is the strongest example of an **admission requirement**.
+
+```text
+Officer verifies:
+    "This person is the person registered as voter X."
+
+Evidence:
+    officer
+    timestamp
+    election
+    voter
+    verification method
+    optional notes
+```
+
+Your existing `VoterVerification` can evolve into this concept.
+
+---
+
+### 2. Email verification
+
+This is different.
+
+It proves:
+
+> "The voter controls this email address."
+
+It does **not necessarily prove identity**.
+
+So I would model:
+
+```text
+AdmissionRequirement
+    └── EmailOwnershipVerification
+```
+
+Evidence could contain:
+
+```text
+EmailVerificationEvidence
+    email
+    verificationToken
+    verifiedAt
+    method = EMAIL_LINK
+```
+
+For example:
+
+```text
+Registration
+      ↓
+Email verification link
+      ↓
+[email ownership confirmed]
+      ↓
+Admission requirement satisfied
+```
+
+Whether email verification is sufficient for voting depends on the election's policy.
+
+---
+
+### 3. Telephone verification
+
+Same principle:
+
+> It proves control of a telephone number, not necessarily the person's identity.
+
+For example:
+
+```text
+PhoneOwnershipVerification
+    method:
+       SMS_OTP
+       WhatsApp_OTP
+       Voice_OTP
+```
+
+So WhatsApp should **not** become a special domain gate.
+
+Instead:
+
+```text
+ContactVerification
+        │
+        ├── EMAIL
+        ├── SMS
+        ├── WHATSAPP
+        └── VOICE
+```
+
+The infrastructure adapter handles WhatsApp.
+
+The domain only cares about the evidence:
+
+```text
+PhoneOwnershipVerified
+```
+
+This is an important DDD boundary.
+
+---
+
+### 4. IP verification
+
+I would actually be careful calling this **verification**.
+
+An IP address proves approximately:
+
+> "This request originated from IP X."
+
+It does **not prove that the voter is the person they claim to be.**
+
+So I would put it into a different category:
+
+```text
+VotingSecurityRequirement
+        └── NetworkOriginConstraint
+```
+
+For example:
+
+```text
+AllowedNetwork:
+    203.0.113.0/24
+```
+
+or:
+
+```text
+AllowedIP:
+    203.0.113.42
+```
+
+Then:
+
+```text
+Voter Admission
+        +
+Network Security
+        ↓
+Voting Entitlement
+```
+
+This prevents us from mixing **identity evidence** with **environment/security controls**.
+
+---
+
+# The architecture I would propose for Publicdigit
+
+I would now define **four verification/evidence families**.
+
+```text
+                     VOTER ADMISSION
+                           │
+          ┌────────────────┼─────────────────┐
+          │                │                 │
+          ▼                ▼                 ▼
+      IDENTITY          CONTACT          ORGANIZATIONAL
+      EVIDENCE          EVIDENCE             EVIDENCE
+          │                │                 │
+    ┌─────┴─────┐     ┌────┴────┐       ┌───┴────┐
+    │           │     │         │       │        │
+ Officer      eID   Email     Phone   Officer  Import
+    │                   │       │
+    │                ┌──┴──┐ ┌──┴──┐
+    │                Link  OTP SMS WhatsApp
+    │
+    ▼
+IdentityAttested
+```
+
+And separately:
+
+```text
+                  VOTING SECURITY
+                       │
+          ┌────────────┼─────────────┐
+          ▼            ▼             ▼
+       IP Rule     Device Rule    Session Rule
+```
+
+And finally:
+
+```text
+                    VOTING ENTITLEMENT
+                           ▲
+                           │
+             ┌─────────────┴──────────────┐
+             │                            │
+      Admission satisfied          Security satisfied
+             │                            │
+             └─────────────┬──────────────┘
+                           │
+                           ▼
+                   CAN VOTE = TRUE
+```
+
+This is considerably stronger than putting everything into `ElectionMembership.status`.
+
+---
+
+# The really important part: policy composition
+
+The election should be able to define something like:
+
+### Election A — simple association election
+
+```json
+{
+  "admission": {
+    "requires": [
+      "OFFICER_IDENTITY_VERIFICATION"
+    ]
+  }
+}
+```
+
+### Election B — email-based election
+
+```json
+{
+  "admission": {
+    "requires": [
+      "EMAIL_OWNERSHIP_VERIFICATION"
+    ]
+  }
+}
+```
+
+### Election C — stronger election
+
+```json
+{
+  "admission": {
+    "requires": [
+      "OFFICER_IDENTITY_VERIFICATION",
+      "EMAIL_OWNERSHIP_VERIFICATION"
+    ]
+  }
+}
+```
+
+### Election D — officer + telephone
+
+```json
+{
+  "admission": {
+    "requires": [
+      "OFFICER_IDENTITY_VERIFICATION",
+      "PHONE_OWNERSHIP_VERIFICATION"
+    ]
+  }
+}
+```
+
+But we should also support **OR** semantics eventually.
+
+For example:
+
+```text
+Identity verified
+        OR
+eID verified
+        OR
+official organizational approval
+```
+
+So the long-term model should be closer to a **policy expression**, rather than simply an array.
+
+---
+
+# Suspension fits beautifully into this architecture
+
+This also solves the requirement you just introduced.
+
+Suppose:
+
+```text
+Admission Policy
+
+REQUIRED:
+    OfficerIdentityVerification
+```
+
+Voter:
+
+```text
+Registered
+   ↓
+Identity verified
+   ↓
+ADMITTED
+   ↓
+CAN VOTE
+```
+
+Now suspension:
+
+```text
+SUSPEND
+   ↓
+Voter remains registered
+   ↓
+Voting entitlement = FALSE
+   ↓
+RevalidationRequired
+```
+
+Then:
+
+```text
+Reverification
+   ↓
+New admission evidence
+   ↓
+Revalidation satisfied
+   ↓
+ADMITTED again
+   ↓
+CAN VOTE
+```
+
+Notice something important:
+
+**Suspension is not another verification method.**
+
+It is a **state transition that invalidates the current admission condition**.
+
+That distinction will make the architecture much cleaner.
+
+---
+
+# I would therefore rename some concepts
+
+Instead of:
+
+```text
+Gate 1
+Gate 2
+Gate 3
+Gate 4
+```
+
+I recommend:
+
+```text
+Admission Requirement
+Admission Evidence
+Admission Decision
+Revalidation Requirement
+Voting Security Constraint
+Voting Entitlement
+```
+
+Then specific requirements can be:
+
+```text
+OfficerIdentityVerification
+EmailOwnershipVerification
+PhoneOwnershipVerification
+ElectronicIdentityVerification
+OrganizationalApproval
+```
+
+And security constraints:
+
+```text
+IPNetworkConstraint
+DeviceConstraint
+SessionConstraint
+```
+
+And evidence:
+
+```text
+IdentityAttested
+EmailOwnershipConfirmed
+PhoneOwnershipConfirmed
+OrganizationalApprovalRecorded
+```
+
+---
+
+# This gives Publicdigit a very powerful future architecture
+
+Eventually you could have:
+
+```text
+                    Election
+                       │
+                       ▼
+              Admission Policy
+                       │
+       ┌───────────────┼────────────────┐
+       ▼               ▼                ▼
+    Identity         Contact        Organization
+       │               │                │
+   Officer/eID     Email/Phone      Membership/
+                                   Officer approval
+       │               │                │
+       └───────────────┼────────────────┘
+                       ▼
+                Admission Decision
+                       │
+                       ▼
+              Revalidation Rules
+                       │
+                       ▼
+              Voting Entitlement
+                       │
+                       ▼
+              Security Constraints
+                       │
+                       ▼
+                  CAN VOTE
+```
+
+This is much more than a simple voter verification feature. It becomes a **Voter Admission & Entitlement architecture**.
+
+And importantly, it lets you add future mechanisms such as **German eID, organizational SSO, bank-ID-like identity providers, video identification, QR-based invitation, postal activation codes, etc.** without redesigning the voting domain.
+
+### One architectural warning
+
+I would **not implement all of these now**.
+
+For the current Election-Only slice, I would implement only:
+
+1. `OfficerIdentityVerification`
+2. `RevalidationRequired` after suspension
+3. `VotingEntitlement` as the single decision point
+
+But I would design the domain interfaces so that:
+
+```text
+AdmissionRequirement
+        ↓
+AdmissionEvidence
+        ↓
+AdmissionDecision
+```
+
+can later accommodate email, phone, eID, etc.
+
+That gives us **architectural extensibility without speculative implementation**.
+
+If we continue with this direction, the next useful artifact is a **Publicdigit Voter Admission Model v0.1** with the aggregates, value objects, policies, evidence types, state transitions, and a decision table for `REGISTERED → VERIFIED → ADMITTED → SUSPENDED → REVALIDATION → READMITTED → CAN VOTE`.

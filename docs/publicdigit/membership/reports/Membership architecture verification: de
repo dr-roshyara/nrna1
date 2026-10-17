@@ -1,0 +1,596 @@
+Membership architecture verification: decision closure and backlog readiness
+
+Session 1 (architecture and requirements), read-only.
+- I wrote no files, ran no tests or runtime checks, created no backlog items and allocated no IDs.
+- Baseline: HEAD is still f54037f96. The highest backlog ID is still PBDIGIT-304. The backlog index is clean except for two modified PBDIGIT-249 and PBDIGIT-286 files, which belong to another session.
+- I authored the three documents being verified, so this is a self-check. It is not independent approval.
+
+Evidence labels:
+
+┌───────┬───────────────────────────────────────────────────────────┐
+│ Label │                          Meaning                          │
+├───────┼───────────────────────────────────────────────────────────┤
+│ V     │ verified at HEAD in this session                          │
+├───────┼───────────────────────────────────────────────────────────┤
+│ R     │ reported by another session or a subagent; not re-checked │
+├───────┼───────────────────────────────────────────────────────────┤
+│ I     │ inferred; assumptions stated                              │
+├───────┼───────────────────────────────────────────────────────────┤
+│ P     │ proposed                                                  │
+├───────┼───────────────────────────────────────────────────────────┤
+│ U     │ unknown                                                   │
+└───────┴───────────────────────────────────────────────────────────┘
+
+---
+
+1. Executive assessment
+
+Verified:
+- A1 is current evidence for the database-free Membership scope at 83a059f98, plus one delta test at 9582de324. No Membership code has changed since.
+- The two recorded citation errors are confirmed against the original sources.
+- No Membership ledger handler or port is bound in the container (grep of app/, config/, bootstrap/, routes/ outside the ledger folders is empty).
+
+New discrepancies found in my own documents (§2, X-1 to X-3):
+- Diagrams 7 and 10.1 show the command flow in the wrong order. The code checks the idempotency key first, then authority, then loads the member (DecideAndAppend.php::run).
+- Diagram 10.3 is wrong about conflicts. DecideAndAppend retries a version conflict itself, up to MAX_ATTEMPTS = 3, and only then refuses with ConcurrentModification. The diagram says the caller reloads.
+
+Still uncertain:
+- whether the ledger tables exist in production (OQ-01);
+- every runtime behaviour;
+- Mermaid syntax;
+- whatever the truncated commission asked for in its Phase 7.
+
+Safest next step: the Principal Reviewer reviews the A1 evidence and the four acceptance packages (§7). It needs no infrastructure, no new evidence and no business decision.
+
+---
+
+2. Source verification matrix
+
+These are the material claims from the three documents.
+
+┌──────┬──────────────────────────────────┬────────────────────────────────────────────────────┬───────────┬─────────────────────────────────────────────┬─────────────────────────────────────┬─────────────┐
+│  ID  │         Claim (document)         │                      Evidence                      │ Current?  │        Discrepancy / missing source         │               Action                │    Owner    │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ HEAD f54037f96; Membership code  │ V: git rev-parse; git diff 9582de324 HEAD over     │           │                                             │                                     │             │
+│ C-01 │ unchanged since 9582de324 (rev1  │ Membership paths is empty                          │ yes       │ —                                           │ —                                   │ —           │
+│      │ §1.1)                            │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ A1: 27 files at 83a059f98, 11    │ V: evidence README + commit f54037f96. The outputs │ yes, for  │ the --no-scripts deviation was disclosed;   │ keep the disclosure in every        │             │
+│ C-02 │ runs, all exit 0; delta 33 tests │  themselves were not re-hashed this session        │ its scope │ its effect is not demonstrated              │ acceptance package                  │ PR, PO      │
+│      │  (rev1 §1.3)                     │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-03 │ "no Organisational binding"      │ it was R (from a subagent) when written; V now     │ yes       │ the label was premature                     │ propose relabelling as "V at        │ Session 1   │
+│      │ (rev1 §1.2), labelled VERIFIED   │ (grep empty)                                       │           │                                             │ f54037f96"                          │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ OQ-01: the ledger migration      │ V: seven migration files are dated ≥ 2026-10-04    │           │ unverified hypothesis.                      │                                     │             │
+│ C-04 │ probably ran in production (rev1 │ and the session log says "7 migrations run         │ unknown   │ database/migrations/landlord/ was not       │ Operations to confirm               │ Ops, PO     │
+│      │  §1.2)                           │ manually". I: that they are the same seven, and    │           │ considered                                  │                                     │             │
+│      │                                  │ that production was current up to 2026-10-03       │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ Citation error (a): P-02 cited   │                                                    │           │                                             │ correct the 2244 review by an       │             │
+│ C-05 │ "CC:233"; the text is at CC:224  │ V: grep -n "may proceed" returns line 224          │ yes       │ preserved as recorded                       │ authorised documentation change     │ PO          │
+│      │ (rev1 §2)                        │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ Citation error (b): "TG-1 is     │ V: PBDIGIT-267 TG-1 covers the existing seq and    │           │                                             │                                     │             │
+│ C-06 │ exactly the fromLog validation"  │ recordedAt checks; V-1 asks for new ones           │ yes       │ preserved                                   │ as C-05                             │ PO          │
+│      │ overstates it (rev1 §2)          │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ S2-C APPROVED, Z1, Q-E1 option   │                                                    │           │                                             │                                     │             │
+│ C-07 │ A, AUD-1 in Slice 12, D-6/R10    │ V: Slice 2 plan :97, :317, :327-328, :333          │ yes       │ —                                           │ —                                   │ —           │
+│      │ gate (rev1 P-03, BR-8, BR-22)    │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ D-2 refers to the application;   │                                                    │           │                                             │                                     │             │
+│ C-08 │ the 1a port is                   │ V: closure record :291; 1a contract :37            │ yes       │ —                                           │ —                                   │ —           │
+│      │ create-then-decide (rev1 P-04)   │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ EP-01 put the outbox in 1b       │                                                    │           │                                             │                                     │             │
+│ C-09 │ (:557) and REUSE (Shared) (:371, │ V                                                  │ yes       │ —                                           │ —                                   │ —           │
+│      │  :411); 1b excludes triggers     │                                                    │           │                                             │                                     │             │
+│      │ (B-6 :19)                        │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ OutboxService writes to          │                                                    │           │                                             │                                     │             │
+│ C-10 │ outbox_events and has no caller  │ V: file contents; grep shows no other caller       │ yes       │ the Membership grep did not cover tests/    │ —                                   │ —           │
+│      │ (rev1 P-05)                      │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-11 │ ARB-MEM-01 (verbatim) and        │ V: ARB record :11-12                               │ yes       │ —                                           │ —                                   │ —           │
+│      │ ARB-SEC-01 (tests only)          │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-12 │ Committee code is split across   │ V: directory listing                               │ yes       │ —                                           │ —                                   │ —           │
+│      │ three folders (rev1 §3)          │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-13 │ CUT-3 writer counts              │ R                                                  │ —         │ still unverified                            │ MEM-CUT0 re-derives them            │ implementer │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ DV-1 (CC :740), CQ-3/CQ-9 owners │                                                    │           │                                             │                                     │             │
+│ C-14 │  (CC :735-736), D-COR-3 owner =  │ V                                                  │ yes       │ —                                           │ —                                   │ —           │
+│      │ PO (CC :213)                     │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-15 │ "closure :203" (wiring before    │ R (from a subagent)                                │ —         │ not re-read                                 │ re-read before citing               │ Session 1   │
+│      │ R10 creates two truths)          │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ C-16 │ BQ-P owners: Governance for      │ R                                                  │ —         │ partly seen (cutover gate :285)             │ re-read :285-289                    │ Session 1   │
+│      │ P1–P3/P8, Finance for P10/P11    │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ Diagram 7: authority check → key │ V contradicts it: run() calls answerFromKey first, │           │                                             │                                     │             │
+│ X-1  │  check → load                    │  then the authority check, then $load(), then      │ —         │ diagram wrong                               │ propose corrected diagram           │ Session 1   │
+│      │                                  │ $decide; on a refusal it re-checks the key         │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-2  │ Diagram 10.1: authority check    │ same evidence                                      │ —         │ diagram wrong                               │ same                                │ Session 1   │
+│      │ before appliedCommand            │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ Diagram 10.3: "caller reloads,   │ V contradicts it: ConcurrencyConflict → null       │           │                                             │                                     │             │
+│ X-3  │ re-decides"                      │ triggers an internal retry, MAX_ATTEMPTS = 3, then │ —         │ diagram wrong                               │ same                                │ Session 1   │
+│      │                                  │  ConcurrentModification                            │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-4  │ Diagram 4: production runs       │ the ADR and session log say Laravel 12 is in       │ I         │ over-precise                                │ relabel as "Laravel 12 (version on  │ Session 1   │
+│      │ "Laravel 12.70"                  │ production; 12.70 is the local lock version        │           │                                             │ server unverified)"                 │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-5  │ Diagram 5: edge Legacy           │ not sourced                                        │ I         │ unsupported edge                            │ mark it INFERRED or remove it       │ Session 1   │
+│      │ Membership → Geography           │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-6  │ Diagram 6: knownAt(tau)          │ V: Member.php:37, :78                              │ yes       │ already corrected once in the file          │ —                                   │ —           │
+│      │ ResolvedMember, fromLog          │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ Diagram 3: the interim adapter   │ V for the End-denial rule reference (seen          │           │                                             │ re-read                             │             │
+│ X-7  │ allows owner/admin to Admit and  │ earlier); the owner/admin list is R (subagent)     │ —         │ —                                           │ InterimRoleAuthority.php:26-53      │ Session 1   │
+│      │ denies every End                 │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-8  │ Story drafts: "highest ID 304"   │ V now                                              │ yes       │ —                                           │ re-check at allocation time         │ PO          │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│ X-9  │ Diagrams: "not                   │ V (no renderer was run)                            │ —         │ —                                           │ D5 below                            │ PO          │
+│      │ machine-validated"               │                                                    │           │                                             │                                     │             │
+├──────┼──────────────────────────────────┼────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┼─────────────────────────────────────┼─────────────┤
+│      │ The commission was truncated in  │                                                    │           │ unknown requirements may be missing, e.g.   │                                     │             │
+│ X-10 │ Phase 7                          │ V (the pasted text ends mid-list)                  │ —         │ further story fields, estimation, ordering  │ PO to resend the remainder          │ PO          │
+│      │                                  │                                                    │           │ rules, other increments                     │                                     │             │
+└──────┴──────────────────────────────────┴────────────────────────────────────────────────────┴───────────┴─────────────────────────────────────────────┴─────────────────────────────────────┴─────────────┘
+
+---
+
+3. Decision register (proposed, session output only)
+
+D1: OQ-01, which migrations ran in production
+
+- Owner: Operations + PO.
+- Question: which migrations ran in production on 2026-10-16, in what order, and with what result?
+- Evidence required: a migrations table extract or migrate:status output from production (run by Operations, not this session), plus the database engine and version. Include landlord/ migrations and whether org_membership_* exist and are empty.
+
+Outcomes:
+
+┌───────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│        Outcome        │                                                                                     Consequence                                                                                     │
+├───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ (a) org_membership_*  │ The schema is released. Every change becomes a forward migration with rollback: F-4b, the end_kind CHECK, COR-4's target column. D-COR-4's "rename while unreleased" no longer      │
+│ exist                 │ holds. CUT-10's premise ("dev, then prod") was violated, so a record and possibly a retroactive gate review are needed. Empty tables mean no data risk today (I).                   │
+├───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ (b) not run           │ Plans stand. Add a guard so the next production migration batch can't release them by accident.                                                                                     │
+├───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ (c) partial or failed │ Recovery plan before any Membership schema story.                                                                                                                                   │
+└───────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+- Dependent work: MEM-COR4, MEM-2B, PBDIGIT-264 F-4b, CUT-10.
+- Closure: the extract is attached to an Operations record and the PO records the outcome.
+
+D2: DEC-SEC-DB, isolated test database and security gate
+
+- Owners: ARB (gate), PO (assignment), Infrastructure (provisioning).
+- Question: which isolated database and role serve Membership Part 2 and the PBDIGIT-266 characterisation? Is ARB-SEC-01's isolation gate satisfied?
+- Options:
+  - (a) a dedicated nrna_test_membership with a restricted role, as the Part 2 plan specifies;
+  - (b) reuse of pbdigit274_isolated_test only under a new, explicit authorisation. Its current approval covers PBDIGIT-274 and PBDIGIT-286 P5 only, so it is not authorised for Membership now.
+- Evidence: the provisioning evidence (PV) — identity marker comment, OID, role, proof the role has no CONNECT on nrna_test (I-1), server and port. The pre-connect guard must reuse the PBDIGIT-283 DatabaseTargetRules.
+- Dependent work: PBDIGIT-264 Part 2, ACC-260, MEM-2B, MEM-COR4, the PBDIGIT-266 characterisation, every database-dependent fix story.
+- Closure: PV reviewed by the Principal Reviewer, then the ARB records the gate as passed and the PO assigns the database.
+
+D3: acceptance verdicts (packages in §7.1)
+
+- Owners: Principal Reviewer (recommendation), then Human PO/ARB (verdict).
+- Closure: a decision record per item, citing A1 (with its scope and the --no-scripts disclosure) and the residual risks.
+
+D4: backlog creation
+
+- Owner: PO. Proposal in §4.
+- Closure: the PO approves each item. IDs are allocated at that time after re-checking the highest ID, and index rows are added by an authorised session.
+
+D5: verifying diagrams and obtaining runtime evidence
+
+- Owner: PO (authorisation).
+- Mermaid: the safest procedure is an offline render with a pinned @mermaid-js/mermaid-cli version in a scratch copy, outside the repository, with no network beyond the package fetch. Output: a render log per diagram. It needs authorisation for the package install and execution. Fix X-1 to X-5 before rendering.
+- Runtime evidence: each item (route table, binding order, session persistence on error responses, production cache driver) needs its own authorisation. route:list runs Artisan against configuration only, in an isolated copy; the HTTP behaviours belong to the PBDIGIT-266 characterisation under D2.
+- Closure: render logs plus authorised runtime outputs stored as evidence.
+
+D6: the developer-guide warning (imports → developer_guide/imports/)
+
+- What triggered it (V): app/Imports/OrganisationUserImport.php, changed today in 70519a069 (Laravel-Excel 4 Import marker, part of the Laravel 12 upgrade). The hook maps app/<seg> to the area <seg> (.claude/scripts/dev-guide-reminder.sh:12-17) and has no alias for Imports. developer_guide/imports/ does not exist.
+- The change is documented (V): developer_guide/framework_upgrade/01_laravel_12_upgrade.md references OrganisationUserImport. The import feature's own guides are under developer_guide/organisation_creation/membership/EXCEL_IMPORT_*.md.
+- Assessment: this is an area-mapping false positive, not a Definition of Done gap. It is not Membership-ledger work.
+- Proposal: add an alias imports → framework_upgrade (or organisation_creation) to the hook. That is a tooling change for the PO to authorise. Do not create developer_guide/imports/ to silence it.
+
+Other open decisions (from rev1 §6, owners re-verified)
+
+┌───────┬─────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────┬──────────┐
+│  ID   │                                            Question                                             │    Owner     │  Blocks  │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-02 │ BD-REV-ER: may a correction erase a whole period?                                               │ PO           │ MEM-COR2 │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-03 │ D-COR-3: which attributes may Correct change?                                                   │ PO           │ MEM-COR2 │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-04 │ must the application boundary refuse a decision date later than today (organisation time zone)? │ Human PO/ARB │ MEM-HTTP │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-05 │ how to order facts with equal recordedAt (a change request if KnownAt is redefined)             │ PR → ARB     │ MEM-COR4 │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-06 │ D-COR-4: target column naming                                                                   │ PR, after D1 │ MEM-COR4 │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-07 │ how stored end kinds are enforced in the database                                               │ PR → PO/ARB  │ MEM-2B   │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-08 │ how Membership publishes events (PUB)                                                           │ ARB          │ MEM-PUB  │
+├───────┼─────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────┼──────────┤
+│ OQ-10 │ which security conditions ACC-260 requires                                                      │ ARB          │ MEM-2B   │
+└───────┴─────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────┴──────────┘
+
+Package G (not to be invented by a developer):
+
+┌──────────────────────────────────────────────────────┬─────────────────────────┐
+│                         Item                         │          Owner          │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ GOV-END (who may end a membership)                   │ Governance + PO         │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ CQ-3, including the meaning of "reason"              │ PO + Legal + Governance │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ CQ-9 / D-COR-5 (B)                                   │ PO + Legal              │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ DS-4                                                 │ Governance              │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ LQ-1, D-3-L                                          │ PO + Legal              │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ Committee composition authority (SEC-R3)             │ Governance + PO         │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ Committee-seat review and self-approval ban (SEC-R5) │ Governance + PO         │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ Suspend and archive authority                        │ Governance + PO         │
+├──────────────────────────────────────────────────────┼─────────────────────────┤
+│ Application eligibility per type                     │ Governance + PO         │
+└──────────────────────────────────────────────────────┴─────────────────────────┘
+
+---
+
+4. Backlog audit
+
+Classes:
+1. ready for independent review
+2. blocked by a decision
+3. blocked by evidence or infrastructure
+4. technically underspecified
+5. dependent on another story
+6. not ready for authorisation
+
+┌──────────────────────────┬──────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────┐
+│          Draft           │      Class       │       Traces to        │                                             Issues found                                             │        Proposal (D4)        │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-EV-A2                │ 1                │ CC §15.7(7); C-05/C-06 │ —                                                                                                    │ extend PBDIGIT-268 (docs)   │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-EV-A1b               │ 1                │ G3 gap G-5             │ the file-selection rule must be stated precisely; --no-scripts must be in the authorisation          │ new item                    │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-K1                   │ 2 + 5            │ BR-9a, CC §3.1         │ (4): refusal name and guard position undecided; whether Void's own provenance is restricted is       │ new, after ACC-268 and a    │
+│                          │                  │                        │ undecided (ratified §2 restricts targets, not the Void itself)                                       │ contract amendment          │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-R                    │ 1 (4 for its     │ Slice 2 plan §4.5–4.7  │ "dynamic forms remain undetected" must stay an explicit limitation                                   │ new (absorbs the 271        │
+│                          │ limits)          │                        │                                                                                                      │ follow-up)                  │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-CUT0                 │ 1 (4)            │ CUT-0, cutover gate    │ the set of detected write forms (Eloquent writes, query-builder writes, relation deletes) needs a    │ new                         │
+│                          │                  │ :291                   │ precise specification; static detection cannot be complete                                           │                             │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ PBDIGIT-264 Part 2       │ 3                │ Part 2 plan            │ add the PBDIGIT-283 guard reuse and the D1 outcome                                                   │ extend 264                  │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ PBDIGIT-266              │ 3                │ ARB-SEC-01             │ add the S-1…S-11 table and mark which items are R                                                    │ extend 266                  │
+│ characterisation         │                  │                        │                                                                                                      │                             │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ FIX-S1 (tenant header)   │ 2 + 3            │ SEC-R1                 │ platform scope: Election routes are affected, so the Election owner must be informed                 │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ FIX-S2 (fee waiver)      │ 3 + 5 (otherwise │ SEC-R2 (existing       │ reproducing it depends on the binding order (I)                                                      │ new                         │
+│                          │  ready)          │ sibling rule, V)       │                                                                                                      │                             │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ FIX-S3 (committee API)   │ 2                │ SEC-R3 (undefined)     │ —                                                                                                    │ new, after Package G        │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ FIX-S4 (dashboard cache) │ 3 + 5            │ SEC-R4                 │ the choice of fix (exclude per-user data from the cache, or key the cache by user) is technical, not │ new                         │
+│                          │                  │                        │  a business rule                                                                                     │                             │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ FIX-S5 (committee review │ 2                │ SEC-R5 (undefined)     │ T5 "exactly one active association" encodes an integrity expectation that the Committee owner must   │ new, one story              │
+│  + apply)                │                  │                        │ confirm. The coupling of the save repair with authorisation must stay mandatory                      │                             │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-2B                   │ 2 + 3 + 5        │ AC-11…AC-13            │ the forward-migration wording depends on D1                                                          │ new (split from 271), PO    │
+│                          │                  │                        │                                                                                                      │ choice                      │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-COR2                 │ 2 + 5            │ BR-10, BR-11           │ extending the oracle to Correct is a significant piece of work and is unscheduled                    │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-COR4                 │ 2 + 3 + 5        │ BR-26, C-AMEND-1 C-4   │ (4): "defined integrity failure" needs a named port outcome or exception contract (a PR decision)    │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-COR3A                │ 2 + 5            │ BR-24, CC C-3          │ —                                                                                                    │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-PUB                  │ 2                │ BR-16, EP-01           │ the shared relay's tenant-context defects (PBDIGIT-211) are an unassessed dependency                 │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-COR3B                │ 5                │ BR-16                  │ —                                                                                                    │ new                         │
+├──────────────────────────┼──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────┤
+│ MEM-HTTP, MEM-Q,         │ 6                │ —                      │ placeholders only                                                                                    │ not proposed for creation   │
+│ MEM-CUT1…10              │                  │                        │                                                                                                      │ now                         │
+└──────────────────────────┴──────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────┘
+
+Checks:
+- Overlaps: MEM-R with PBDIGIT-271's follow-ups (absorbed by design); MEM-K1 with PBDIGIT-268, so it is kept separate to avoid reopening an accepted scope.
+- Circularity: none after the COR-3a/3b split.
+- Assumptions about production schema state: MEM-2B, MEM-COR4 and 264 F-4b, all made conditional on D1.
+- Unresolved business rules encoded as if decided: none found. FIX-S3 and FIX-S5 state the rule as undefined. One phrase in FIX-S5 needs owner confirmation: "authorised reviewer" in T5.
+- Missing requirements: the truncated Phase 7 may hold more (X-10); Package G items have no stories yet (correct as is); A1b's precise file-selection rule.
+
+---
+
+5. Requirements traceability matrix
+
+Each chain runs: source requirement → domain rule → architecture element → story → acceptance criterion → test or evidence → reviewer → decision.
+
+┌─────────────────────────────┬──────────────────────────────────┬───────────────────────────────┬──────────────┬───────────────────────┬───────────────────┬────────────────┬─────────────────────────────┐
+│           Source            │               Rule               │            Element            │    Story     │       Criterion       │  Test / evidence  │  Reviewer →    │         Broken link         │
+│                             │                                  │                               │              │                       │                   │    decision    │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ ratified §5, §7             │ INV-M, INV-EP, INV-9             │ Member + G*                   │ 258 / 268    │ Slice 0 AC; K-G1 /    │ A1                │ PR → PO/ARB    │ verdict missing             │
+│                             │                                  │                               │              │ K-R3                  │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ D-1 … D-5, S2-C             │ basis, closed end kinds, dates   │ Member guards                 │ 271          │ AC-1…AC-10            │ A1                │ PR → PO/ARB    │ PR review missing           │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ CC §3.1                     │ Annul carries decision           │ decideAnnul                   │ MEM-K1       │ refuse rule/attested  │ planned unit test │ PR → PO/ARB    │ no criterion in C-1;        │
+│                             │ provenance                       │                               │              │ Annul                 │                   │                │ refusal name undecided      │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ C-AMEND-1 C-4               │ every accepted fact storable     │ adapter + schema              │ MEM-COR4     │ round-trip; defined   │ PostgreSQL tests  │ PR → PO/ARB    │ database, D1, OQ-05/06      │
+│                             │                                  │                               │              │ failure               │ (planned)         │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ ratified §6                 │ expected-version concurrency     │ DecideAndAppend + adapter     │ 264 Part 2   │ 1b T1–T13             │ PostgreSQL suite  │ PR → PO/ARB    │ database                    │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ EP-01 :371/:411             │ publish per consumer via the     │ OutboxService (unused)        │ MEM-PUB      │ outbox row iff fact   │ planned           │ ARB            │ no consumer slice named     │
+│                             │ shared outbox                    │                               │              │ committed             │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ D-4, GOV-END                │ End authority                    │ InterimRoleAuthority          │ MEM-2B       │ AC-13                 │ planned           │ Governance →   │ GOV-END                     │
+│                             │                                  │                               │              │                       │                   │ PO/ARB         │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ ARB-MEM-01                  │ verified correction before live  │ COR-1…4                       │ gate         │ all accepted          │ —                 │ ARB            │ COR-2…4 not started         │
+│                             │ writes and cutover               │                               │              │                       │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ cutover gate :291           │ reproducible writer inventory    │ fitness test                  │ MEM-CUT0     │ an unknown writer     │ planned           │ PR → PO        │ —                           │
+│                             │                                  │                               │              │ fails                 │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ ARB-SEC-01                  │ tests only                       │ feature tests                 │ 266          │ each item confirmed   │ planned           │ ARB            │ database                    │
+│                             │                                  │                               │              │ or refuted            │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ SEC-R2 (V sibling rule)     │ fee action stays inside the      │ MembershipFeeController       │ FIX-S2       │ 404, fee unchanged    │ planned           │ PR → PO/ARB    │ database                    │
+│                             │ member's organisation            │                               │              │                       │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ SEC-R4                      │ per-user data stays private      │ dashboard cache               │ FIX-S4       │ U2 never sees U1      │ planned           │ PR → PO/ARB    │ database                    │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ SEC-R1, R3, R5              │ undefined                        │ middleware; committee API and │ FIX-S1/S3/S5 │ as drafted            │ planned           │ ARB /          │ rule missing                │
+│                             │                                  │  review                       │              │                       │                   │ Governance     │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ D-6 / R10, BD-CONSENT,      │ live use and HTTP                │ boundary                      │ MEM-HTTP     │ —                     │ —                 │ PO             │ no story (placeholder)      │
+│ BD-REC0, LQ-1, D-3-L        │                                  │                               │              │                       │                   │                │                             │
+├─────────────────────────────┼──────────────────────────────────┼───────────────────────────────┼──────────────┼───────────────────────┼───────────────────┼────────────────┼─────────────────────────────┤
+│ CUT-1…CUT-10                │ cutover                          │ —                             │ placeholders │ —                     │ —                 │ PO / Ops       │ no stories                  │
+└─────────────────────────────┴──────────────────────────────────┴───────────────────────────────┴──────────────┴───────────────────────┴───────────────────┴────────────────┴─────────────────────────────┘
+
+Requirements with no implementation or verification path yet: OQ-04 (boundary date), V-12 (audit of refused authority checks), the audit of decision dates (AUD-1), committee placement (EP-Q2), PBDIGIT-265.
+
+---
+
+6. Dependency graph (Mermaid source, not validated)
+
+mermaid
+flowchart TB
+    classDef verified fill:#dcfce7,stroke:#166534
+    classDef decision fill:#fef9c3,stroke:#a16207
+    classDef infra fill:#fde68a,stroke:#92400e
+    classDef review fill:#e0e7ff,stroke:#3730a3
+    classDef blocked fill:#fee2e2,stroke:#b91c1c
+    classDef proposed fill:#ffffff,stroke:#0369a1,stroke-dasharray: 5 5
+
+    A1["A1 evidence at 83a059f98<br/>VERIFIED (f54037f96)"]:::verified
+    PRR["Principal Reviewer review<br/>258 / 259 / 268 / 271"]:::review
+    ACC["D3 verdicts ACC-258/259/268/271<br/>Human PO / ARB"]:::decision
+    A2["A2 PR source + DEC-G6"]:::decision
+    D1["D1 OQ-01 production migrations<br/>Ops + PO"]:::decision
+    D2["D2 DEC-SEC-DB<br/>ARB + PO + Infra"]:::decision
+    PDB["P-DB + I-1 + PV"]:::infra
+    PG2["264 Part 2 PG suite"]:::blocked
+    F264["264 F-5, F-4b, F-2"]:::blocked
+    ACC260["ACC-260 + DV-1 + OQ-10"]:::decision
+    G["Package G: GOV-END, CQ-3 + reason,<br/>CQ-9, DS-4, LQ-1, D-3-L, SEC-R3, SEC-R5"]:::decision
+    D4["D4 backlog creation, PO"]:::decision
+    K1["MEM-K1 (PROPOSED)"]:::proposed
+    R["MEM-R (PROPOSED)"]:::proposed
+    CUT0["MEM-CUT0 (PROPOSED)"]:::proposed
+    A1b["MEM-EV-A1b (PROPOSED)"]:::proposed
+    CHAR["266 characterisation<br/>tests only"]:::blocked
+    FIX["FIX-S1..S5<br/>separate authorisation"]:::blocked
+    B2["MEM-2B"]:::blocked
+    COR2["MEM-COR2"]:::blocked
+    COR4["MEM-COR4"]:::blocked
+    COR3A["MEM-COR3A"]:::blocked
+    PUB["MEM-PUB"]:::blocked
+    COR3B["MEM-COR3B"]:::blocked
+    HTTP["MEM-HTTP (placeholder)"]:::blocked
+    CUT["Cutover: CUT-0..10, ARB-MEM-01"]:::blocked
+    OQ0203["OQ-02, OQ-03 (PO)"]:::decision
+    OQ0506["OQ-05, OQ-06"]:::decision
+    OQ07["OQ-07"]:::decision
+    OQ08["OQ-08 PUB (ARB)"]:::decision
+    OQ04["OQ-04, D-6/R10, BD-CONSENT, BD-REC0"]:::decision
+
+    A1 -->|verified| PRR
+    A2 -->|proposed| PRR
+    PRR --> ACC
+    D4 -->|proposed| K1
+    D4 --> R
+    D4 --> CUT0
+    D4 --> A1b
+    ACC -->|source CC 14.5| K1
+    ACC --> COR2
+    OQ0203 --> COR2
+    D2 --> PDB --> PG2 --> F264 --> ACC260
+    D2 --> CHAR -->|ARB-SEC-01| FIX
+    G --> FIX
+    ACC260 -->|Slice 2 plan :65| B2
+    G --> B2
+    OQ07 --> B2
+    D1 -->|unresolved| B2
+    D1 -->|unresolved| COR4
+    ACC260 --> COR4
+    OQ0506 --> COR4
+    COR4 -->|proposed: V-4| COR3A
+    G --> COR3A
+    OQ08 --> PUB --> COR3B
+    COR3A --> COR3B
+    B2 --> HTTP
+    FIX --> HTTP
+    OQ04 --> HTTP
+    COR4 --> CUT
+    COR3A --> CUT
+    HTTP --> CUT
+    CUT0 --> CUT
+
+---
+
+7. Reviewer packages
+
+7.1 For the Principal Reviewer (recommendations only)
+
+Common evidence for all four items: A1 at 83a059f98 covers the database-free scope only. Disclose that composer install --no-scripts was used without prior approval, with an undemonstrated but expected-nil effect. A1 does not cover PostgreSQL, HTTP, real data, mutation testing or the wider suites.
+
+┌─────────┬───────────────────────────────────────┬──────────────────────────────────────┬─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
+│  Item   │         Submission readiness          │      Independent review status       │                       Residual risks                        │                Questions for the PR                 │
+├─────────┼───────────────────────────────────────┼──────────────────────────────────────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ 258     │ ready: A1 Domain plus the             │ Slice 0 review exists (2026-10-09);  │ oracle and metamorphic evidence REPORTED; PBDIGIT-267 test  │ Q1: is A1 sufficient for the Slice 0 acceptance     │
+│ Slice 0 │ kernel-purity architecture test;      │ G3 dispositions proposes ACCEPT      │ gaps TG-1…5                                                 │ criteria, or is TG-1…5 a condition?                 │
+│         │ condition D-1 satisfied (ARB-MEM-03)  │                                      │                                                             │                                                     │
+├─────────┼───────────────────────────────────────┼──────────────────────────────────────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ 259     │ ready: A1 Application (61 tests,      │                                      │ the 1a contract was amended after review (F-3 K-1, R-1a-6); │                                                     │
+│ Slice   │ contract suite on the test double)    │ S1-1/S1-3 CONFIRMED (2026-10-10)     │  PostgreSQL parity belongs to 1b                            │ Q2: should acceptance cite the amended 1a contract? │
+│ 1a      │                                       │                                      │                                                             │                                                     │
+├─────────┼───────────────────────────────────────┼──────────────────────────────────────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ 268     │                                       │ prior recommendation: ACCEPT WITH    │ D-COR-2 oracle gap; equal recordedAt (OQ-05); mutation      │ Q3: does the 2026-10-10 recommendation stand on A1? │
+│ COR-1   │ ready, after A2                       │ EXPLICIT RESIDUAL RISKS (untracked,  │ results developer-only; PBDIGIT-269; persistence (COR-4);   │  Q4: is V-2 a condition of acceptance or a          │
+│         │                                       │ misnamed source)                     │ V-2, a confirmed contract defect with no criterion          │ follow-up (MEM-K1)? Q5: DEC-G6 advice               │
+├─────────┼───────────────────────────────────────┼──────────────────────────────────────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ 271     │                                       │ hardening review not done; the       │ AC-9 covers the Organisational folders only; V-9, V-10,     │ Q6: review the H1/H2 hardening. Q7: should V-9      │
+│ Slice   │ ready                                 │ architect review exists only as a    │ V-11 carried to 2b; OQ-04; V-12                             │ (trusted tenant and actor) be a 2b entry criterion? │
+│ 2a      │                                       │ summary in plan §15                  │                                                             │  Q8: should 2b be split into a new story?           │
+└─────────┴───────────────────────────────────────┴──────────────────────────────────────┴─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
+
+Further questions for the PR: Q9 OQ-05 (ties); Q10 OQ-06 (after D1); Q11 the COR-4 failure-outcome contract; Q12 the PV review under D2.
+
+7.2 For the PO and ARB (decisions), grouped by owner
+
+┌───────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│             Owner             │                                                                                  Decisions                                                                                  │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Human PO/ARB                  │ D3 verdicts (after the PR); DEC-G6; OQ-04; OQ-07; CR-01 only if raised                                                                                                      │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ PO                            │ D4 backlog creation (re-check the highest ID); A2 documentation change; correcting C-05/C-06 and X-1…X-5; OQ-02, OQ-03; naming and order adoption; resending the truncated  │
+│                               │ Phase 7 text; D5 and D6 authorisations                                                                                                                                      │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ ARB                           │ D2 gate; OQ-08 PUB; OQ-10; DEC-TENANT-HDR (S-1)                                                                                                                             │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Operations + PO               │ D1 (OQ-01)                                                                                                                                                                  │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Infrastructure                │ P-DB, I-1, PV                                                                                                                                                               │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Governance (+ PO, Legal per   │ Package G                                                                                                                                                                   │
+│ item)                         │                                                                                                                                                                             │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Election owner                │ informed of S-1 (platform middleware on Election routes); PBDIGIT-265                                                                                                       │
+└───────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+---
+
+8. Ordered next-step plan
+
+Only work that bypasses no gate:
+
+1. Principal Reviewer: review the four packages in §7.1. This needs only the existing evidence.
+2. Operations: provide the D1 production migration extract. This is read-only on their side, and they own it.
+3. ARB, PO and Infrastructure: decide D2 and start provisioning.
+4. PO: decide D4 for the stories ready for independent review (MEM-EV-A2, MEM-EV-A1b, MEM-R, MEM-CUT0) and authorise A2.
+5. Session 1, once the PO authorises documentation changes: correct diagram errors X-1…X-5 and relabel C-03, without rewriting history.
+6. Human PO/ARB: D3 verdicts after step 1.
+7. Governance, PO and Legal: begin Package G in parallel.
+
+---
+
+9. Stop list
+
+These must not begin until the named decision, evidence and authorisation exist.
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                Prohibited                                                │                                              Until                                               │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ any PostgreSQL run, migration, schema change or database-dependent test                                  │ D2 closed                                                                                        │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ any Membership schema change (F-4b, end_kind CHECK, COR-4)                                               │ D2 and D1 closed                                                                                 │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ PBDIGIT-266 security characterisation                                                                    │ D2 closed and ARB-SEC-01 confirmed                                                               │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ any security fix                                                                                         │ separate fix authorisation after characterisation; S-1, S-3 and S-5 additionally need their rule │
+│                                                                                                          │  (Package G / DEC-TENANT-HDR)                                                                    │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ repairing the S-5 save on its own                                                                        │ never; it ships only with authorisation, organisation membership and the self-approval rule      │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ MEM-K1, MEM-COR2                                                                                         │ ACC-268 (plus OQ-02/03 for COR2)                                                                 │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ MEM-2B                                                                                                   │ ACC-260, GOV-END, OQ-07                                                                          │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ wiring COR-3a                                                                                            │ COR-4 accepted                                                                                   │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ any event emission                                                                                       │ OQ-08                                                                                            │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ HTTP/UI or live Admit/End                                                                                │ D-6/R10, Package G, OQ-04, BD-CONSENT, BD-REC0, affected security fixes                          │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ migration or cutover                                                                                     │ ARB-MEM-01, ACC-260, DV-1, CUT-0…CUT-10, PBDIGIT-265                                             │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ creating backlog items or allocating IDs                                                                 │ D4                                                                                               │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ a developer inventing rules on committee authority, self-approval, organisation membership, ending,      │ never                                                                                            │
+│ suspension, archiving or eligibility                                                                     │                                                                                                  │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+---
+
+10. Recommendation
+
+- The single next action that can safely proceed now: the Principal Reviewer reviews the 258/259/268/271 packages on the existing A1 evidence. Everything it needs is already committed.
+- Questions by owner:
+
+┌──────────────────────┬─────────────────────────────────────────────────────┐
+│        Owner         │                      Question                       │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ Operations           │ which migrations ran in production (D1)?            │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ Principal Reviewer   │ Q1–Q12                                              │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ PO/ARB               │ the D3 verdicts, OQ-04, OQ-07, D4, D2, OQ-08, OQ-10 │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ Infrastructure       │ P-DB, I-1, PV                                       │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ Governance (+ Legal) │ Package G                                           │
+└──────────────────────┴─────────────────────────────────────────────────────┘
+
+- Drafts ready for independent review: MEM-EV-A2, MEM-EV-A1b, MEM-R, MEM-CUT0. FIX-S2 and FIX-S4 are ready in content but blocked by the database. Everything else is blocked by a decision, infrastructure or another story.
+- Evidence still missing:
+  - production migration status;
+  - every PostgreSQL result;
+  - every HTTP and runtime behaviour;
+  - Mermaid rendering;
+  - the wider suite (A1b);
+  - an independent mutation run;
+  - the full commission text.
+- Still prohibited: everything in §9, plus writing to the repository in this session.
+
+Three of my own diagrams (X-1 to X-3) misstate the command flow. I've recorded them here rather than editing the files; correcting them needs your authorisation for a documentation change.
+Stop says: Developer Guide (Definition of Done): implementation code changed today in area(s) with NO matching developer_guide/ update: imports.
+  -> Write or update the step guide under: developer_guide/imports/
+  (area-aware; an unrelated tracks guide no longer silences this. Non-blocking; see .claude/CLAUDE.md · modified files: .claude/runtime/2026-10-16-files.log)
+
+✻ Churned for 2m 46s · done 11:10 PM

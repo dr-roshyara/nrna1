@@ -26,6 +26,8 @@
 ## 1 · Decision
 
 > ### `UC-4 / GREEN-5 gate assumption`
+>
+> ## ✅ **DECIDED 2026-09-30 — OPTION A, classified as a HOLD RELEASE. See §4.** Implementation authorization GRANTED for the UC-4/GREEN-5 slice only, under twelve STOP conditions. **`BND-1`, `BND-3`, Act C, Act D and absence semantics remain untouched.**
 
 ---
 
@@ -100,18 +102,39 @@ If UC-4's implementation proves that absence of `AcceptanceGateDecision` is **re
 ### ⬜ DECISION BLOCK A — **BLANK**
 
 ```text
-[ ] SELECTED — Option A
+[X] SELECTED — Option A                        PO/ARB (ARB Chief), 2026-09-30
 
-PO/ARB, in your own words:
+PO/ARB decision, recorded as supplied:
 
+  "Decision: A — YES. UC-4 (ReportPeriodExpiry) may treat an established
+   AcceptanceGateDecision as an explicit command precondition for the
+   authorized UC-4 implementation slice.
 
+   This decision is classified as: RELEASE OF THE EXISTING
+   EM-IMPL-002 / GREEN-5 IMPLEMENTATION HOLD.
 
+   It is NOT an amendment to ADR-1."
 
-Required amendment sentence (§4.1) — include verbatim if A is selected:
-"The Rule-8 sequence is amended only to permit the UC-4 slice to proceed
- under the recorded 'established gate exists' precondition."
+CLASSIFICATION (§11 M-1 / §4.1): HOLD RELEASE — not an amendment.
+  ⇒ §4.1's amendment sentence is therefore NOT included, per its own terms
+    ("include verbatim if A is selected" applied only to the amendment
+    reading; the PO/ARB classified this act as a hold release).
+  ⇒ Consistent with architecture-hold.md:34 ("-> only then GREEN-5
+    authorization") — the hold anticipated a further authorization act,
+    and this is that act.
 
-Signed / date:
+EXPLICITLY NOT DECIDED by this act (PO/ARB's own enumeration):
+  ADR-1 §6(a)/(b)/(c) not amended · BND-1 unresolved · BND-3 unresolved ·
+  the meaning of an ABSENT AcceptanceGateDecision NOT defined · no Unknown,
+  sentinel, fallback or exception-based absence semantics · no new domain
+  contract for absence semantics · Act C NOT authorized · Act D NOT
+  authorized · no change to the established domain model · no
+  implementation outside the existing UC-4 / GREEN-5 scope.
+
+IMPLEMENTATION AUTHORIZATION: GRANTED for the UC-4 / GREEN-5 slice only,
+  subject to the twelve recorded STOP conditions.
+
+Signed / date: PO/ARB (ARB Chief) — 2026-09-30
 ```
 
 ---

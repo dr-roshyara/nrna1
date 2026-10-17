@@ -61,7 +61,7 @@ Each gate is separate. **Satisfying one doesn't satisfy another.**
 | Gate | What it approves | Required evidence | Blocked until satisfied |
 |---|---|---|---|
 | **G-PLAN** | this plan (EP-01) | the Principal's written approval of r3 | everything |
-| **O-3** | production PostgreSQL isolation verified (READ COMMITTED) | operations report | G-ADR-A |
+| **O-3** | production PostgreSQL isolation verified (READ COMMITTED). **Status (2026-10-15): BLOCKED — awaiting Operations evidence** (request prepared; see §10) | operations report | G-ADR-A |
 | **G-ADR-A** | freeze protocol (record §4.1) incl. H6, H7, the D11 write rule, the trigger evaluation. **Status: BLOCKED until O-3** (A-2 and the ADR-A-T rule decided inside it on 2026-10-14) | approved ADR file | P1, P2 |
 | **G-ADR-B** | frozen record, capture, policy source (H1), fixtures (F1), hash (H4, A-1), reconciliation (AUD-1), backfill design. **Status: APPROVED CONDITIONALLY 2026-10-14** (record §3.4) | approved ADR file ✅ (conditions in record §3.4) | P3, P4, R: **still also need G-MIG, G-ISO** |
 | **G-ADR-C** | lock before the single assessment, lock scope, tenant-context handling for the D6 count. **Status: APPROVED CONDITIONALLY 2026-10-14** (record §3.4) | approved ADR file ✅ (mandatory proofs, ADR-C §6) | P6 (count change), P8: **still also need G-ISO** and phase authorisation |
@@ -222,7 +222,25 @@ Every coding step runs **RED → GREEN → REFACTOR → REGRESSION → REVIEW**,
   - mutation proof M1–M3, each restored with a matching hash;
   - the plan's `nrna_test` P6 tests run on the isolated database instead: 7 of 8 pass; `SecurityEventRecorderTest` fails, probably PBDIGIT-42 (code reading, not runtime-confirmed);
   - the unreadable-IP test passes (evidence `28`).
-  - **Status:** awaiting the Principal's formal P5/P6 acceptance. Limitations: the full isolated suite and `nrna_test` not run; production enforcement unverified. Release not approved.
+  - **Status (then):** awaiting the Principal's formal P5/P6 acceptance.
+
+- **2026-10-15, P5/P6 ACCEPTED by the Principal** ("accept P5/P6 as a bounded implementation milestone, retain the production-release hold"):
+  - recorded in the decision record's status annotation, with the residual risks;
+  - **production release on hold**;
+  - next: O-3 (operations request sent via the Principal) → G-ADR-A → P1/P2.
+
+- **2026-10-15, closure review of the IP work:**
+  - **Implementation and tests:** every repository-verifiable P5/P6 item is closed. Database-free re-run at `153ad7bf6`: 32 files, exit 0 (evidence `29`).
+  - **O-3: BLOCKED — awaiting Operations evidence.** Missing, from production, run as the application's role:
+    - the effective `transaction_isolation` (decisive);
+    - `default_transaction_isolation` and its source;
+    - per-role and per-database overrides;
+    - pooler mode;
+    - the PostgreSQL version;
+    - the date, environment and who ran it.
+  - **ADR-A-T is also missing evidence:** the write grants on `elections`, confirmation that only the application and the migration runner write it, and how ad-hoc SQL is controlled.
+  - **G-ADR-A:** stays PROPOSED r2.
+  - **Release:** on hold. Limitations: the full isolated suite and `nrna_test` not run; production enforcement unverified. Release not approved.
 
 ## 11. Open questions
 **Human Arbiter policy decisions:** none open (record §3.2).

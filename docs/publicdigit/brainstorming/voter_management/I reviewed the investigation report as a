@@ -1,0 +1,1094 @@
+I reviewed the investigation report as a **Senior DDD Architect + Requirements Engineer + online-election domain reviewer**. The report is strong, and I agree with its central finding, but I would make one important architectural refinement:
+
+> **Do not model “gates” primarily as voter statuses. Model them as admission requirements defined by the election, with independently verifiable gate evidence.**
+
+The current system has a genuine domain gap: Election-Only import creates an `ElectionMembership` with `status=active`, and therefore registration, admission and voting entitlement are effectively the same thing. Eingefügter Text
+
+## 1. Where Publicdigit is today
+
+The current model is essentially:
+
+```text
+CSV Import
+    │
+    ▼
+ElectionMembership
+role = voter
+status = active
+    │
+    ▼
+VotingActive
+    │
+    ▼
+CAN VOTE
+```
+
+The existing Verify operation is **not a gate** today. It creates/updates a `VoterVerification` record, but the voting path does not use that record to determine eligibility. Therefore an imported but never-verified voter can vote. Eingefügter Text
+
+This is the fundamental problem.
+
+### The domain is missing a concept
+
+You currently have:
+
+```text
+Registration
+     =
+Admission
+     =
+Exercisability
+```
+
+But these should be three different concepts:
+
+```text
+REGISTRATION
+"Who is registered as a voter?"
+
+        ↓
+
+ADMISSION
+"Has the voter passed the election's required gates?"
+
+        ↓
+
+EXERCISABILITY
+"Can this voter exercise the voting right NOW?"
+```
+
+The investigation correctly identifies that `ElectionMembership.status` currently conflates these dimensions. Eingefügter Text
+
+That is the architectural problem I would solve.
+
+---
+
+# 2. The target architecture I recommend
+
+I would use this model:
+
+```text
+                         ┌─────────────────────┐
+                         │      ELECTION       │
+                         │                     │
+                         │  Voter Admission    │
+                         │     Policy          │
+                         └──────────┬──────────┘
+                                    │
+                         defines required gates
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   VOTER REGISTRY    │
+                         │                     │
+                         │ ElectionMembership  │
+                         │                     │
+                         │ "registered voter"  │
+                         └──────────┬──────────┘
+                                    │
+                              must satisfy
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   ADMISSION GATES  │
+                         │                     │
+                         │ Identity verified   │
+                         │ Manual approval     │
+                         │ ...                 │
+                         └──────────┬──────────┘
+                                    │
+                              all required
+                                  gates
+                                  PASS
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ VOTING ENTITLEMENT  │
+                         │                     │
+                         │    CanCastVote      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                                  VOTE
+```
+
+This gives us a very important DDD separation:
+
+> **ElectionMembership tells us that the person is registered.  
+> Admission evidence tells us that the person has passed the required gates.  
+> VotingEntitlement determines whether the person can actually vote.**
+
+---
+
+# 3. I would NOT create a generic Gate table yet
+
+I agree with the investigation's rejection of immediately introducing:
+
+```text
+VoterGate
+---------
+type
+status
+verified_by
+verified_at
+...
+```
+
+That would be premature.
+
+The current domain has essentially one concrete admission gate:
+
+```text
+Officer Verification
+```
+
+The report correctly observes that `VoterVerification` already represents the evidence for that gate. Eingefügter Text
+
+So I would start with:
+
+```text
+Election
+   │
+   └── voterAdmissionRequirement
+            │
+            ├── NONE
+            │
+            └── OFFICER_VERIFICATION
+```
+
+and:
+
+```text
+VoterVerification
+    = evidence that the officer-verification gate passed
+```
+
+No generic workflow engine.
+
+No generic gate framework.
+
+No `VoterGate` table.
+
+**Yet.**
+
+---
+
+# 4. But I would design for multiple gates from day one
+
+This is where I would slightly extend the report's recommendation.
+
+We should **not implement a generic gate engine**, but we should design the domain language so that adding Gate 2 later does not require redesigning everything.
+
+Conceptually:
+
+```text
+Election
+   │
+   ▼
+VoterAdmissionPolicy
+   │
+   ├── IdentityVerification
+   │
+   ├── ChiefApproval
+   │
+   └── Future Gate
+```
+
+But the first implementation could simply support:
+
+```text
+VoterAdmissionRequirement
+
+NONE
+OFFICER_VERIFICATION
+```
+
+Later:
+
+```text
+NONE
+OFFICER_VERIFICATION
+CHIEF_APPROVAL
+OFFICER_VERIFICATION_AND_CHIEF_APPROVAL
+```
+
+However, I would **not** necessarily encode combinations as enum values.
+
+Once we have a second genuinely approved gate, we should revisit the model.
+
+---
+
+# 5. The crucial concept: AND semantics
+
+For online elections, I would define the admission rule explicitly.
+
+Suppose the Constitution/policy says:
+
+```text
+Identity verification = REQUIRED
+Chief approval        = REQUIRED
+```
+
+Then:
+
+```text
+Gate 1 = PASS
+Gate 2 = PASS
+
+        ↓
+
+ADMITTED
+```
+
+But:
+
+```text
+Gate 1 = PASS
+Gate 2 = FAIL
+
+        ↓
+
+NOT ADMITTED
+```
+
+So conceptually:
+
+```text
+Admission =
+    ALL(required gates).passed
+```
+
+This is much cleaner than:
+
+```text
+status = active
+```
+
+---
+
+# 6. Admission should be DERIVED, not another status
+
+This is probably the most important architectural decision.
+
+I would **not** do this:
+
+```text
+ElectionMembership.status
+
+REGISTERED
+PENDING_VERIFICATION
+VERIFIED
+APPROVED
+ACTIVE
+SUSPENDED
+REMOVED
+```
+
+That creates a combinatorial explosion.
+
+Imagine later:
+
+```text
+verification
+approval
+suspension
+withdrawal
+expiration
+voted
+```
+
+You could end up with dozens of possible states.
+
+Instead:
+
+```text
+ElectionMembership
+    = registration
+```
+
+and independently:
+
+```text
+VoterVerification
+    = verification evidence
+```
+
+and:
+
+```text
+Suspension
+    = exercisability restriction
+```
+
+Then:
+
+```text
+CanCastVote =
+    Registered
+    AND
+    Admitted
+    AND
+    NotSuspended
+    AND
+    ElectionOpen
+```
+
+This is much more DDD-friendly.
+
+The investigation reaches essentially the same conclusion when it recommends deriving admission rather than storing a second admission flag. Eingefügter Text
+
+---
+
+# 7. I would introduce a domain concept: `VotingEntitlement`
+
+This is the part I would emphasize more strongly than the report.
+
+Currently the real voting entitlement is hidden inside:
+
+```text
+User::isVoterInElection()
+```
+
+and:
+
+```text
+EnsuresVoterMembership
+```
+
+The investigation correctly identifies these as the existing enforcement choke points. Eingefügter Text
+
+Architecturally, however, the business concept is bigger than "is this user a member?"
+
+It is:
+
+> **Does this person currently possess the right to cast a ballot in this election?**
+
+That deserves a named domain concept.
+
+For example:
+
+```text
+VotingEntitlement
+```
+
+or:
+
+```text
+ElectionVotingEntitlement
+```
+
+Then:
+
+```text
+VotingEntitlement.canCastVote(
+    election,
+    voter
+)
+```
+
+evaluates:
+
+```text
+ElectionMembership
+        │
+        ├── registered?
+        │
+        └── active?
+                │
+                ▼
+        AdmissionPolicy
+                │
+                ├── Gate 1
+                ├── Gate 2
+                └── ...
+                │
+                ▼
+        Exercisability
+                │
+                ▼
+        ElectionLifecycle
+                │
+                ▼
+            CAN VOTE
+```
+
+That gives us a **single domain boundary for the most important security invariant**.
+
+---
+
+# 8. Separate Admission from Exercisability
+
+This distinction is particularly important for an online election.
+
+Suppose:
+
+```text
+Alice
+✓ imported
+✓ verified
+✓ approved
+✓ eligible
+```
+
+She is **admitted**.
+
+But the election is currently:
+
+```text
+SETUP_ADMINISTRATION
+```
+
+Therefore:
+
+```text
+Alice = admitted
+Alice = cannot vote NOW
+```
+
+Later:
+
+```text
+VotingActive
+```
+
+then:
+
+```text
+Alice = admitted
+Alice = exercisable
+```
+
+So:
+
+```text
+ADMISSION
+    ≠
+EXERCISABILITY
+```
+
+This will prevent many future architectural problems.
+
+---
+
+# 9. The complete target lifecycle
+
+I would model the Election-Only lifecycle like this:
+
+```text
+                    IMPORT
+                      │
+                      ▼
+             ┌─────────────────┐
+             │   REGISTERED    │
+             │                 │
+             │ ElectionMember- │
+             │ ship exists     │
+             └────────┬────────┘
+                      │
+              Admission Policy
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+       no gates              gates required
+          │                       │
+          │                 ┌─────▼─────┐
+          │                 │   Gates   │
+          │                 │           │
+          │                 │ G1: Verify│
+          │                 │ G2: ...   │
+          │                 └─────┬─────┘
+          │                       │
+          │                 ALL PASS?
+          │                       │
+          └──────────────┬────────┘
+                         ▼
+                  ┌─────────────┐
+                  │   ADMITTED  │
+                  └──────┬──────┘
+                         │
+                  Election VotingActive?
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │ EXERCISABLE │
+                  └──────┬──────┘
+                         │
+                         ▼
+                       VOTE
+```
+
+This is the domain model I would build around.
+
+---
+
+# 10. What exactly is the first gate?
+
+There is an important requirements question here.
+
+The current UI says **Verify**.
+
+But the domain question is:
+
+> What does "Verify" actually prove?
+
+The existing implementation records:
+
+- verifying officer
+- verification timestamp
+- IP
+- device fingerprint
+- notes
+
+and emits an identity-attestation event. Eingefügter Text
+
+Therefore I would define the first gate explicitly as:
+
+### `OfficerIdentityVerification`
+
+rather than simply:
+
+### `Verified`
+
+because "verified" is too ambiguous.
+
+For example:
+
+```text
+Gate:
+    OfficerIdentityVerification
+
+Meaning:
+    An authorised election officer has attested that
+    this person satisfies the election's identity/admission
+    verification requirement.
+```
+
+That gives us proper domain language.
+
+---
+
+# 11. Do NOT confuse this with IP/device binding
+
+This is another critical point.
+
+The current system has:
+
+```text
+voter_verification_mode
+```
+
+with:
+
+```text
+none
+ip_only
+fingerprint_only
+both
+```
+
+The investigation correctly says this is a **different dimension**. Eingefügter Text
+
+I strongly agree.
+
+These are two different questions:
+
+### Admission gate
+
+> Has an authorised officer verified this voter?
+
+### Voting security binding
+
+> From which IP/device may this voter cast the ballot?
+
+Therefore:
+
+```text
+Admission
+    └── OfficerIdentityVerification
+
+Voting Security
+    └── IP binding
+    └── Device binding
+```
+
+Do not combine them.
+
+---
+
+# 12. Constitution vs Election Policy
+
+Here I would be careful because your repository already has an architectural ruling.
+
+The investigation found that the existing ruling says voter-participation rules should remain outside `ElectionConstitution::RULES` unless a new ADR changes that decision. Eingefügter Text
+
+Therefore I would **not yet call the new object `ElectionConstitution.voterGates`**.
+
+Instead:
+
+```text
+Election
+   │
+   ├── Constitution
+   │
+   ├── VoterSourceStrategy
+   │
+   └── VoterAdmissionPolicy
+```
+
+Conceptually:
+
+```text
+ElectionConstitution
+    = constitutional election rules
+
+VoterAdmissionPolicy
+    = who must pass which admission requirements
+
+VotingEntitlement
+    = whether the voter may exercise the right now
+```
+
+This is a cleaner bounded-context separation.
+
+---
+
+# 13. My proposed aggregate responsibility
+
+I would make `Election` the owner of the **admission policy**.
+
+Not the organisation.
+
+Not the voter.
+
+Not the global configuration.
+
+Because the requirement is:
+
+> "For this election, what must an imported voter satisfy?"
+
+Therefore:
+
+```text
+Election
+ └── VoterAdmissionPolicy
+```
+
+is appropriate.
+
+But the **evidence** belongs to the voter/election relationship:
+
+```text
+Election
+   │
+   └── ElectionMembership
+            │
+            └── VoterVerification
+```
+
+This produces:
+
+```text
+RULE
+Election → VoterAdmissionPolicy
+
+EVIDENCE
+Election + Voter → VoterVerification
+
+DECISION
+Election + Voter → VotingEntitlement
+```
+
+That is a very clean DDD separation.
+
+---
+
+# 14. I would make the policy immutable at the right moment
+
+The investigation recommends creation-time fixation. I agree with the principle, but I would make the lifecycle explicit.
+
+### Election creation
+
+```text
+Draft
+   ↓
+Administration
+```
+
+Admission policy can be selected.
+
+### Administration
+
+Potentially:
+
+```text
+Admission Policy
+    can be configured
+```
+
+but changing it should create an explicit protocol/audit event and show impact.
+
+### Election becomes locked
+
+Once the election enters the legally/operationally relevant phase:
+
+```text
+Admission Policy
+       ↓
+IMMUTABLE
+```
+
+The exact transition should be decided by the election lifecycle—not merely by a database column.
+
+---
+
+# 15. Existing voters when the gate is introduced
+
+This is a very important requirements issue.
+
+Suppose:
+
+```text
+5 voters imported
+```
+
+and then the election administrator selects:
+
+```text
+Officer verification required
+```
+
+What happens?
+
+I agree with the investigation:
+
+```text
+5 registered
+0 admitted
+```
+
+until verification.
+
+Otherwise:
+
+```text
+import before rule
+      =
+implicit verification
+```
+
+which defeats the purpose.
+
+But I would make this an explicit product decision because it has operational consequences.
+
+The report identifies exactly this issue for `onf-2`: switching the requirement on would leave all five existing voters unadmitted until verified. Eingefügter Text
+
+---
+
+# 16. Gate evidence should be protocol-grade
+
+For an online election, this is more important than in an ordinary CRUD application.
+
+We should be able to answer later:
+
+> Who admitted this voter, when, under which election rule, and based on what evidence?
+
+Therefore:
+
+```text
+VoterVerification
+-----------------
+election_id
+voter_id
+verified_by
+verified_at
+status
+evidence
+```
+
+And protocol:
+
+```text
+VOTER_ADMISSION_VERIFIED
+VOTER_ADMISSION_REVOKED
+```
+
+with:
+
+```text
+subject_voter_id
+acting_officer_id
+election_id
+timestamp
+```
+
+The investigation already identifies a weakness: the current audit records the officer but not the subject voter. Eingefügter Text
+
+That should be corrected when this becomes an actual admission gate.
+
+---
+
+# 17. The security invariant
+
+Ultimately everything should reduce to one authoritative rule:
+
+```text
+CanCastVote(voter, election)
+```
+
+must return `true` only if:
+
+```text
+1. Election exists
+2. Voter belongs to this election
+3. Voter has voter role
+4. Membership is not removed
+5. Membership is exercisable
+6. All required admission gates have passed
+7. Election is currently votable
+8. Existing ballot-security rules pass
+9. Voter has not already voted
+```
+
+Importantly:
+
+```text
+UI
+ ──┐
+API ├──→ VotingEntitlement
+CLI ┤
+Job ┘
+```
+
+All roads must eventually hit the same entitlement decision.
+
+The current system already has a useful enforcement choke point, which is why the investigation's proposed minimal implementation is attractive. Eingefügter Text
+
+---
+
+# 18. How I would evolve to multiple gates
+
+I would use **progressive domain evolution**.
+
+### Version 1 — Now
+
+```text
+VoterAdmissionPolicy
+
+NONE
+OFFICER_VERIFICATION
+```
+
+Evidence:
+
+```text
+VoterVerification
+```
+
+### Version 2 — if business approves another gate
+
+Suppose we introduce:
+
+```text
+ChiefApproval
+```
+
+Then we might have:
+
+```text
+VoterAdmissionPolicy
+    requiredGates:
+        IdentityVerification
+        ChiefApproval
+```
+
+with two domain concepts:
+
+```text
+VoterVerification
+ChiefVoterApproval
+```
+
+and:
+
+```text
+AdmissionDecision =
+    Verification.passed
+    AND
+    Approval.passed
+```
+
+### Version 3 — only when genuinely needed
+
+If Publicdigit eventually has 4–5 different election-specific gates, then introduce:
+
+```text
+VoterAdmissionGate
+```
+
+as a first-class abstraction.
+
+**Don't build Version 3 today.**
+
+This is the key DDD principle here:
+
+> **Design for domain evolution, but don't implement speculative abstractions.**
+
+---
+
+# 19. One thing I would change in the proposed report
+
+The report says:
+
+> "Only at three or more ratified gates would Option D be justified."
+
+I wouldn't use a numerical threshold.
+
+The decision should instead be:
+
+> **Does the domain require gates with independent lifecycle, evidence, authorization and protocol semantics?**
+
+If tomorrow we have exactly two gates but they have very different lifecycle/evidence requirements, a gate abstraction could already be justified.
+
+Conversely, even three simple gates might still be better represented by explicit domain policies.
+
+So I would replace the numerical rule with:
+
+```text
+Introduce VoterAdmissionGate abstraction when:
+    - gates have independently evolving lifecycle/evidence,
+    - gates are dynamically configured,
+    - different actors perform different gates,
+    - gate composition becomes a real business concept,
+    - or repeated gate-specific logic appears.
+```
+
+---
+
+# 20. The architecture I would approve
+
+My target architecture would therefore be:
+
+```text
+                         ┌──────────────────────────┐
+                         │         ELECTION         │
+                         │                          │
+                         │  VoterAdmissionPolicy    │
+                         │  VoterSourceStrategy     │
+                         │  ElectionLifecycle       │
+                         └────────────┬─────────────┘
+                                      │
+                                      │ policy
+                                      ▼
+                    ┌─────────────────────────────────┐
+                    │       ELECTION MEMBERSHIP       │
+                    │                                 │
+                    │ registration / entitlement      │
+                    └───────────────┬─────────────────┘
+                                    │
+                                    │ voter
+                                    ▼
+                    ┌─────────────────────────────────┐
+                    │       ADMISSION EVIDENCE        │
+                    │                                 │
+                    │ VoterVerification               │
+                    │ ChiefApproval (future)          │
+                    │ Other gates (future)            │
+                    └───────────────┬─────────────────┘
+                                    │
+                              all required
+                                  gates
+                                    │
+                                    ▼
+                    ┌─────────────────────────────────┐
+                    │      VOTING ENTITLEMENT         │
+                    │                                 │
+                    │      CanCastVote()              │
+                    └───────────────┬─────────────────┘
+                                    │
+                         ┌──────────┴───────────┐
+                         │                      │
+                    Election open         Security rules
+                         │                      │
+                         └──────────┬───────────┘
+                                    ▼
+                                  BALLOT
+```
+
+### And the domain vocabulary becomes:
+
+| Concept | Meaning |
+|---|---|
+| **Voter Registration** | Person is registered for this election |
+| **Voter Admission** | Person has passed required gates |
+| **Admission Requirement** | What this election requires before admission |
+| **Admission Evidence** | Evidence that a gate was passed |
+| **Voting Entitlement** | Current right to cast a ballot |
+| **Exercisability** | Whether that right can be exercised now |
+| **Election Constitution** | Constitutional election rules |
+| **Voter Admission Policy** | Election-specific admission requirements |
+
+---
+
+# 21. My recommendation for Publicdigit
+
+I would approve this architecture:
+
+### **Phase 1 — Establish the domain boundary**
+
+```text
+Import
+    ≠
+Admission
+    ≠
+Voting Entitlement
+```
+
+### **Phase 2 — Introduce**
+
+```text
+Election.voterAdmissionRequirement
+```
+
+initially:
+
+```text
+NONE
+OFFICER_VERIFICATION
+```
+
+### **Phase 3 — Reuse**
+
+```text
+VoterVerification
+```
+
+as the evidence for the first gate.
+
+### **Phase 4 — Introduce**
+
+```text
+VotingEntitlement
+```
+
+as the authoritative domain decision.
+
+### **Phase 5 — Enforce it**
+
+at the backend voting boundary.
+
+### **Phase 6 — Only later**
+
+introduce a generic `VoterAdmissionGate` abstraction if the domain actually demands it.
+
+---
+
+## The most important conceptual result
+
+I would put this sentence into the Publicdigit architecture documentation:
+
+> **Importing a voter registers an election-specific voting entitlement candidate; it does not necessarily grant the right to exercise the vote. Admission is determined by the election's voter-admission policy and its required gate evidence. Voting entitlement is the final domain decision that combines registration, admission, exercisability and the election lifecycle.**
+
+That gives us a much stronger foundation than simply adding a "verified" flag.
+
+And it resolves the central flaw found in the current implementation: **today `active` effectively means registered + admitted + allowed to vote, while the existing Verify operation is merely recorded and has no effect on eligibility.** Eingefügter Text
+
+The next architectural artifact I would create is therefore **“Publicdigit Voter Admission & Eligibility Domain Model v0.1”**—with the aggregate boundaries, invariants, lifecycle/state model, admission-gate model, constitution/policy boundary, and sequence diagrams—**before writing the implementation ADR**.

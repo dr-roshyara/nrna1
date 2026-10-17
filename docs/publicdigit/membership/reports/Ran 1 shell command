@@ -1,0 +1,1133 @@
+  Ran 1 shell command
+
+● 2 background agents launched (↓ to manage)
+Trace application-review authorisation path
+Trace other Membership route authorisation
+
+I'm checking the security routes with two independent read-only reviews. Meanwhile, I'm checking the baseline and the C-1/Slice 2a evidence myself.
+
+  Ran 7 shell commands
+
+Baseline and evidence checks are done. Now I'm reading the correction-storage entry criteria and Slice 2b's acceptance criteria, while the two security reviews finish.
+
+  Ran 2 shell commands
+
+I've checked the baseline and the evidence; only the two security reviews are still running. Confirmed so far:
+
+- HEAD has moved on. It is now f98a4d8fc, newer than the baf4f1920 in Session 2's report. The commits since ebdfee484 change no Membership kernel code or Membership tests, and none of them is Membership work. The only Membership file touched is the duplicate TermPeriod, deleted under PBDIGIT-304 and byte-identical to the class that remains. The kernel at HEAD is the same as at 834a4f65c.
+- The Principal Reviewer's source file for the C-1 recommendation isn't in git. The record cites 202610101901_implementation.md, but the file is actually named 20261010_1901_implementation.md and is untracked.
+- The G-6 outputs can't be found anywhere under /tmp.
+- One of Session 2's claims is wrong. It said the "0 mismatches" result is only inferred. In fact the test asserts both the empty mismatch list and the 15,530 count (C1ExhaustiveDifferentialTest.php:63-64).
+- UNPARSABLE_KNOWN = [] does not weaken the decision-creation check. The real-tree scan now covers all of app/. Only the expiry test becomes empty (it asserts nothing, so PHPUnit will flag it as risky).
+Stop says: Developer Guide (Definition of Done): implementation code changed today in area(s) with NO matching developer_guide/ update: imports.
+  -> Write or update the step guide under: developer_guide/imports/
+  (area-aware; an unrelated tracks guide no longer silences this. Non-blocking; see .claude/CLAUDE.md · modified files: .claude/runtime/2026-10-16-files.log)
+
+✻ Waiting for 2 background agents to finish
+
+› Message from @general-purpose (ctrl+o to expand)
+
+  Ran 1 shell command
+
+● Agent "Trace application-review authorisation path" finished · 3m 55s
+
+  Ran 1 shell command
+
+The application-review security trace is back, and I've checked its main points in the code. One correction to Session 2's report: the route reviews committee applications, not organisation membership applications. The organisation flow does check owner/admin, at MembershipApplicationController.php:175. Waiting for the second security review (import, export, committee members, cache).
+Stop says: Developer Guide (Definition of Done): implementation code changed today in area(s) with NO matching developer_guide/ update: imports.
+  -> Write or update the step guide under: developer_guide/imports/
+  (area-aware; an unrelated tracks guide no longer silences this. Non-blocking; see .claude/CLAUDE.md · modified files: .claude/runtime/2026-10-16-files.log)
+
+✻ Waiting for 1 background agent to finish
+
+────────────────────────────────────────────────────────────────────────────────────────────────── 1 new message ───────────────────────────────────────────────────────────────────────────────────────────────────
+
+› Message from @general-purpose (ctrl+o to expand)
+
+  Ran 1 shell command
+
+● Agent "Trace other Membership route authorisation" finished · 6m 31s
+
+  Ran 1 shell command
+
+● Membership Architecture Verification and Completion Plan: Session 1
+
+  Author: Session 1, the architecture and requirements reviewer, working read-only.
+  - I ran no tests, no php/artisan/composer, no database query and no HTTP request. I did not edit, stage or commit anything.
+  - Where I delegated a review, I re-read its decisive code lines myself; §11 lists which.
+  - Nothing here is a decision or an acceptance; every verdict belongs to the owner I name.
+
+  How each claim is labelled:
+  - VERIFIED: I read it in the current code or files.
+  - HISTORICAL: it comes from an earlier commit or from a working-tree snapshot.
+  - REPORTED: someone else stated it; I did not re-check it.
+  - INFERRED: my reasoning; the assumptions are stated.
+  - OPEN: needs a decision, evidence or clarification.
+  - BLOCKED: cannot start until a named prerequisite is met.
+  - ACCEPTED: formally accepted, with the record named.
+
+  Names I use, to avoid three overlapping "C-n" series:
+  - COR-1…COR-4: the correction slices (C-1 to C-4 in the correction contract).
+  - CUT-1…CUT-10: the cutover gate, cutover-gate document :147-156.
+  - GOV-END: "who may end a membership", called G-1 in the Slice 2 plan.
+
+  Note on my earlier turn. Before this commission arrived, I wrote a plan file, …/cross_domain_brainstorming/20261016_2219_membership_architecture_verification_and_completion_plan.md, and appended an entry to .claude/sessions/2026-10-16.md. This report supersedes that file; one thing it got wrong is the baseline (it names ebdfee484). I have not touched either since. Whether to keep, correct or remove them is your call.
+
+  ---
+
+  1. Executive assessment
+
+  Both kernel increments conform; neither is accepted. I checked every criterion against its contract and found no blocking defect:
+  - COR-1 (PBDIGIT-268): criteria K-A1 to K-X2.
+  - Slice 2a (PBDIGIT-271): criteria AC-1 to AC-10.
+
+  The evidence is historical, and part of it is not in the repository:
+  - No test has run against the committed code as it stands at HEAD.
+  - The Slice 2a runs were made on an uncommitted working tree.
+  - The Principal Reviewer's G3 recommendation cites a file that git does not track.
+
+  The real security risk is not where Session 2 put it. Session 2 ranked the committee-application review route highest. That route currently crashes (500) before saving anything, so its missing checks are latent. Four other findings are live in code today:
+  - S-1: the X-Tenant-Id header lets any logged-in user write any organisation into their session.
+  - S-2: the fee-waiver action has no check that the member belongs to the organisation.
+  - S-3: any role in an organisation can add or remove committee members through the API.
+  - S-4: the membership dashboard cache shows one member's personal data to other members.
+
+  Membership cannot go live yet. These are still missing:
+  - PostgreSQL verification on an isolated database;
+  - storage for corrections (COR-4);
+  - a decision on who may end a membership (GOV-END);
+  - the authorisation rules for committee and member operations;
+  - a way to publish events;
+  - the cutover gates CUT-1…CUT-10.
+
+  ---
+
+  2. Verified baseline and how fresh the evidence is
+
+  ┌─────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────┐
+  │          Item           │                                                                 Finding                                                                 │                 Label                  │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │ Branch and HEAD         │ election-flow-updated, HEAD f98a4d8fc. Session 2 reported baf4f1920; one KnowledgeOS docs commit (f98a4d8fc) has landed since.          │ VERIFIED. Session 2's HEAD is out of   │
+  │                         │                                                                                                                                         │ date; no Membership effect             │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │                         │ 3b4331ba3 deletes the duplicate app/Contexts/Membership/Domain/ValueObjects/TermPeriod.php. The commit message calls it identical to    │                                        │
+  │ Commits since ebdfee484 │ Domain/Committee/ValueObjects/TermPeriod.php, and it could not be autoloaded (PSR-4). 061efb1d1, a28b63c38, 278838199 and baf4f1920     │ VERIFIED                               │
+  │                         │ touch no Membership ledger code                                                                                                         │                                        │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │ Membership ledger code  │ git diff 834a4f65c HEAD over Membership/{Domain,Application,Infrastructure}/Organisational, tests/Unit/Contexts/Membership and          │ VERIFIED                               │
+  │ since Slice 2a          │ tests/Architecture: no change                                                                                                           │                                        │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │ Kernel since the C-1    │                                                                                                                                         │ VERIFIED. The C-1 run E-RUN            │
+  │ evidence (5765b9fa3)    │ Member.php and other kernel files changed in 834a4f65c (Slice 2a: the basis guard, decision date, finite dates)                         │ (ce8bf3109) is HISTORICAL for today's  │
+  │                         │                                                                                                                                         │ code                                   │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │                         │ docs/publicdigit/membership/evidence/2026-10-11-slice2a-hardening/env.txt: HEAD bf605092c, "the Slice 2a and hardening changes are in   │ HISTORICAL. It ran on an uncommitted   │
+  │ Slice 2a evidence       │ the working tree" (README:13); php-parser v5.4.0; PHPUnit 11.5.6                                                                        │ tree; no source hashes were recorded,  │
+  │                         │                                                                                                                                         │ so I cannot prove it equals 834a4f65c  │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │                         │                                                                                                                                         │ VERIFIED. The scanner behind the R7/R8 │
+  │ Dependencies at HEAD    │ php-parser v5.9.0 (composer.lock), PHPUnit 11.5.6, Laravel 12 since 2bd6240a5                                                           │  tests runs on a different library     │
+  │                         │                                                                                                                                         │ version than was tested                │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │ Working tree, other     │ Unstaged: tests/Architecture/MembershipDecisionCreationTest.php sets UNPARSABLE_KNOWN = []; app/Http/Middleware/VoterSlugStep.php is    │ VERIFIED. Not part of any baseline     │
+  │ sessions                │ deleted. Also unrelated documentation, composer.json/composer.lock (deptrac) and IP-work files                                          │                                        │
+  ├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+  │ VoterSlugStep.php       │ PBDIGIT-272 is CLOSED as a duplicate of PBDIGIT-70. PBDIGIT-70 still records the file as "still unparseable"; no story records the      │ VERIFIED. OPEN: who owns and commits   │
+  │ ownership               │ deletion. The file is a misfiled Markdown document, not live middleware (the 2026-10-11 provenance investigation)                       │ the deletion                           │
+  └─────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────┘
+
+  Baseline for review: commit f98a4d8fc, which equals 834a4f65c for all Membership ledger code. Any test evidence used for acceptance must come from a clean checkout of that commit, not from the shared working tree.
+
+  ---
+
+  3. Requirements and invariant traceability
+
+  The chain traced for each requirement is: business need → approved rule → invariant → code → persistence → security boundary → acceptance criterion → evidence → who accepts.
+
+  Sources:
+  - the ratified architecture (docs/publicdigit/reviews/2026-10-08-membership-architecture-ratified.md, R) and its ratification act (ACT);
+  - decisions D-1…D-5 (…-slice1b-acceptance-review-and-slice2-decision-closure.md, "Decision record");
+  - the correction contract (…-correction-slice-semantic-contract-draft.md, CC).
+
+  Req: One Membership per person and organisation; aggregate D1
+  Rule (source, status): R §1, §7: RATIFIED
+  Code (VERIFIED): Member.php; PostgresMemberRepository
+  Persistence: PK includes organisation_id; unique holder
+  Security boundary: none wired
+  Acceptance criterion: Slice 0 / 1a AC
+  Evidence: HISTORICAL
+  Acceptance authority: PO/ARB: verdict blank
+  Gap: —
+  ────────────────────────────────────────
+  Req: Episode contiguous (INV-EP); periods disjoint (INV-9)
+  Rule (source, status): R §5: RATIFIED
+  Code (VERIFIED): InvariantSet.php:172-188; Member.php:184-192
+  Persistence: not enforced in the database (G* is a domain rule)
+  Security boundary: —
+  Acceptance criterion: K-G1, K-R3
+  Evidence: HISTORICAL
+  Acceptance authority: PO/ARB
+  Gap: —
+  ────────────────────────────────────────
+  Req: Append-only; KnownAt stable (INV-6/14)
+  Rule (source, status): R §5: RATIFIED
+  Code (VERIFIED): Member.php:25-35, 78-83
+  Persistence: no append-only trigger
+  Security boundary: —
+  Acceptance criterion: K-H1
+  Evidence: HISTORICAL
+  Acceptance authority: —
+  Gap: ties allowed (adapter max(clock,last), :183), so the meaning of a tie is undefined; there is no database guarantee of append-only (proposal B-11 M-11)
+  ────────────────────────────────────────
+  Req: Exactly one admission basis
+  Rule (source, status): D-1: DECIDED (LQ-1 open)
+  Code (VERIFIED): Member.php:101-103
+  Persistence: provenance stored as JSON
+  Security boundary: —
+  Acceptance criterion: AC-1
+  Evidence: HISTORICAL
+  Acceptance authority: PO/ARB
+  Gap: —
+  ────────────────────────────────────────
+  Req: No pending Member
+  Rule (source, status): D-2: DECIDED
+  Code (VERIFIED): contradicted in effect: AdmitMemberHandler.php:60-72 creates the Membership before the decision
+  Persistence: an empty org_memberships row (INFERRED)
+  Security boundary: —
+  Acceptance criterion: none
+  Evidence: —
+  Acceptance authority: —
+  Gap: gap V-8
+  ────────────────────────────────────────
+  Req: Closed list of ending kinds; legacy only with attested history
+  Rule (source, status): D-3: DECIDED
+  Code (VERIFIED): EndKind.php; Member.php:131-133
+  Persistence: no CHECK on end_kind; no check on load
+  Security boundary: —
+  Acceptance criterion: AC-2, AC-3
+  Evidence: HISTORICAL
+  Acceptance authority: PO/ARB
+  Gap: V-11
+  ────────────────────────────────────────
+  Req: Authority evidence; interim Admit authority
+  Rule (source, status): D-4: DECIDED; GOV-END OPEN
+  Code (VERIFIED): InterimRoleAuthority.php:26-53 (not bound in the container)
+  Persistence: inside provenance
+  Security boundary: actor and tenant come from the command
+  Acceptance criterion: AC-5, AC-13
+  Evidence: HISTORICAL
+  Acceptance authority: —
+  Gap: V-9; GOV-END
+  ────────────────────────────────────────
+  Req: Backdating allowed, no future dating
+  Rule (source, status): D-5(b): DECIDED
+  Code (VERIFIED): Member.php:104, 134, compared only with the caller-supplied decision date
+  Persistence: the decision date is not stored
+  Security boundary: no trusted clock
+  Acceptance criterion: AC-4
+  Evidence: HISTORICAL
+  Acceptance authority: —
+  Gap: V-7
+  ────────────────────────────────────────
+  Req: Correction algebra (Annul, Void)
+  Rule (source, status): R §2, §9; ACT N-3; D-COR-5(A): RATIFIED/DECIDED
+  Code (VERIFIED): Member.php:142-181; Resolution.php:63-79
+  Persistence: cannot be stored: kind CHECK 2026_10_09_100000…:64-67; encode() calls effectiveAt() on the Fact interface (PostgresMemberRepository.php:223), so it would raise a raw \Error
+  Security boundary: —
+  Acceptance criterion: K-A1…K-X2
+  Evidence: HISTORICAL
+  Acceptance authority: PO/ARB (G3): blank
+  Gap: COR-4; V-1
+  ────────────────────────────────────────
+  Req: Correct; BD-REV-ER
+  Rule (source, status): ACT N-3/N-4: BD-REV-ER OPEN
+  Code (VERIFIED): none
+  Persistence: none
+  Security boundary: —
+  Acceptance criterion: CC §14.5
+  Evidence: —
+  Acceptance authority: —
+  Gap: COR-2 blocked
+  ────────────────────────────────────────
+  Req: Concurrency and transactional enforcement
+  Rule (source, status): R §6, §10: RATIFIED
+  Code (VERIFIED): version compare-and-set, PostgresMemberRepository.php:159
+  Persistence: tested on PostgreSQL? never on an isolated database
+  Security boundary: —
+  Acceptance criterion: 1b T1–T13
+  Evidence: none
+  Acceptance authority: ACC-260 is DEFERRED
+  Gap: Part 2
+  ────────────────────────────────────────
+  Req: No voting entitlement; Election-Only organisations never read the ledger
+  Rule (source, status): R §8; CUT-9
+  Code (VERIFIED): MembershipLedgerIsolationTest (a literal text scan)
+  Persistence: —
+  Security boundary: —
+  Acceptance criterion: AC-6
+  Evidence: HISTORICAL
+  Acceptance authority: —
+  Gap: the scan's limits (V-10)
+  Gap: the scan's limits (V-10)
+  ────────────────────────────────────────
+  Req: Events to Election and Finance
+  Rule (source, status): R §8: RATIFIED
+  Code (VERIFIED): none (no outbox, no event classes)
+  Persistence: —
+  Security boundary: —
+  Acceptance criterion: —
+  Evidence: —
+  Acceptance authority: —
+  Gap: gap G-A1
+  ────────────────────────────────────────
+  Req: Correction before cutover
+  Rule (source, status): ARB-MEM-01: DECIDED
+  Code (VERIFIED): —
+  Persistence: —
+  Security boundary: —
+  Acceptance criterion: —
+  Evidence: —
+  Acceptance authority: —
+  Gap: COR-2…COR-4 not started
+
+  ---
+
+  4. Independent assessment of C-1 (PBDIGIT-268)
+
+  4.1 Evidence matrix
+
+  ┌────────────────────┬─────────────────────┬──────────────────────────────────────────────────────────────────────┬─────────────────────────────────┬───────────────────────────┬───────────────────────────┐
+  │   Criterion or     │   Architectural     │                         Evidence and version                         │           Assessment            │            Gap            │      Required action      │
+  │      concern       │     requirement     │                                                                      │                                 │                           │                           │
+  ├────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────┼─────────────────────────────────┼───────────────────────────┼───────────────────────────┤
+  │ K-A1…K-A5, K-V1,   │ CC §14.3 :493-499   │ code Member.php:142-181; tests AnnulVoidTest (names VERIFIED); runs  │ Conforms by reading             │ not run on the committed  │ A1 run (§9)               │
+  │ K-V2               │                     │ HISTORICAL (E-RUN ce8bf3109; 2a regression on an uncommitted tree)   │                                 │ code                      │                           │
+  ├────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────┼─────────────────────────────────┼───────────────────────────┼───────────────────────────┤
+  Criterion or concern: K-R1, K-R2, K-R3, K-G1
+  Architectural requirement: restoration; G* (R:30)
+  Evidence and version: Resolution.php:63-79; T8, T10
+  Assessment: Conforms. Annul(Void) refusal and Void(Annul) restoration match ACT N-3 and R:30
+  Gap: —
+  Required action: —
+  ────────────────────────────────────────
+  Criterion or concern: K-H1 (KnownAt stable)
+  Architectural requirement: INV-14
+  Evidence and version: C1PropertyTest; ties never generated (:180)
+  Assessment: Conforms within bounds
+  Gap: equal recordedAt values reachable in production (adapter :183)
+  Required action: decision V-5 before COR-4
+  ────────────────────────────────────────
+  Criterion or concern: K-E1 (event data carried)
+  Architectural requirement: emission belongs to COR-3 (CC :505)
+  Evidence and version: no event class exists
+  Assessment: Conforms
+  Gap: event publication (G-A1)
+  Required action: —
+  ────────────────────────────────────────
+  Criterion or concern: K-X2 (exhaustive differential)
+  Architectural requirement: 15,530 decisions
+  Evidence and version: C1ExhaustiveDifferentialTest.php:63-64 asserts both the empty mismatch list and the count
+  Assessment: Conforms within bounds
+  Gap: —
+  Required action: Session 2 is wrong here: zero mismatches is asserted, not inferred
+  ────────────────────────────────────────
+  Criterion or concern: DoD 1: RED first
+  Architectural requirement: CC §15.7
+  Evidence and version: git order: no RED phase for K-R*, K-G1, K-H1 and the correction tests
+  Assessment: Partial; deviation accepted (H-2)
+  Gap: —
+  Required action: none
+  ────────────────────────────────────────
+  Criterion or concern: DoD 5: mutation testing
+  Architectural requirement: —
+  Evidence and version: MSI 92 % reported by the developer only
+  Assessment: Unverified independently
+  Gap: G-7
+  Required action: optional rerun of Infection
+  ────────────────────────────────────────
+  Criterion or concern: DoD 7: Principal Reviewer decision
+  Architectural requirement: G3 dispositions §1
+  Evidence and version: recommendation "ACCEPT WITH EXPLICIT RESIDUAL RISKS". The cited source 202610101901_implementation.md does not exist; the real file is
+  docs/publicdigit/membership/architecture/brainstorming/20261010_1901_implementation.md, which is untracked (content VERIFIED, lines 13-17)
+  Assessment: The recommendation is genuine but not preserved
+  Gap: the record points at an unversioned, misnamed file
+  Required action: preserve the file and correct the reference (needs PO authorisation for a docs change)
+  ────────────────────────────────────────
+  Criterion or concern: G-5: wider-suite errors
+  Architectural requirement: —
+  Evidence and version: REPORTED: Domain 27 / 265, Application 29 / 81, outside the C-1 files
+  Assessment: Not a C-1 defect; no owner
+  Gap: Membership health unknown
+  Required action: include in A1 as a characterisation run, separate from acceptance
+  ────────────────────────────────────────
+  Criterion or concern: G-6: missing outputs
+  Architectural requirement: —
+  Evidence and version: /tmp searched (depth 7): no g3-rerun directory
+  Assessment: Outputs lost; only hashes remain in the G3 document
+  Gap: not reproducible
+  Required action: A1 replaces them, or the PO accepts the hashes as the reference (decision DEC-G6)
+  ────────────────────────────────────────
+  Criterion or concern: Persistence
+  Architectural requirement: C-AMEND-1 C-4
+  Evidence and version: cannot be stored (§3)
+  Assessment: Deferred to COR-4, as the contract allows
+  Gap: —
+  Required action: COR-4
+  ────────────────────────────────────────
+  Criterion or concern: Not covered by any K-criterion
+  Architectural requirement: CC §3.1: "the resulting Annul carries provenance(decision, …)"
+  Evidence and version: decideAnnul checks the target's provenance, not the Annul's own (Member.php:142-165)
+  Assessment: A contract sentence with no acceptance criterion behind it
+  Gap: an attested Annul would be accepted and could never be appealed
+  Required action: condition for COR-3 (finding V-2)
+  ────────────────────────────────────────
+  Criterion or concern: Loading from storage
+  Architectural requirement: invariants hold however the Member is produced (R §5)
+  Evidence and version: Member::fromLog (:37) checks only seq order and recordedAt order
+  Assessment: a stored Annul(Void) would resolve and revive the voided fact
+  Gap: INV-TGT and INV-N3 are not checked on load (V-1)
+  Required action: COR-4 entry criterion
+  ────────────────────────────────────────
+  Criterion or concern: Creation-path guard
+  Architectural requirement: R7
+  Evidence and version: MembershipDecisionCreationTest does not list new Annul / new VoidFact; the Annul constructor allows decidedAt = null
+  Assessment: protection exists at source level only
+  Gap: V-3
+  Required action: harden before COR-3
+
+  4.2 Options for the G3 decision (Human PO/ARB; I choose none)
+
+  ┌───────────────────┬───────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────────┐
+  │      Option       │             What it requires              │                                     Consequences                                      │                    Dependencies                    │
+  ├───────────────────┼───────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ Accept with       │ The current reviewer recommendation, plus │ Opens COR-2 (once BD-REV-ER is decided) and COR-4 planning. The accepted object would │ Best taken after A1; without A1 it rests on        │
+  │ explicit residual │  recorded conditions V-1…V-5, plus how    │  be code not run in committed form. Carried risks: the D-COR-2 oracle gap, ties,      │ HISTORICAL evidence only                           │
+  │  risks            │ G-6 is treated                            │ mutation score reported by the developer only, E-WIDE, persistence                    │                                                    │
+  ├───────────────────┼───────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ Defer pending     │ (a) A1 at f98a4d8fc; (b) the Principal    │                                                                                       │ A1 needs authorisation for an isolated working     │
+  │ Defer pending     │ (a) A1 at f98a4d8fc; (b) the Principal    │                                                                                       │ A1 needs authorisation for an isolated working     │
+  │ named evidence    │ Reviewer's source preserved; (c) a DEC-G6 │ Small, bounded delay. Takes no database risk                                          │ copy (git archive), a network composer install,    │
+  │                   │  ruling                                   │                                                                                       │ and storing outputs as evidence                    │
+  ├───────────────────┼───────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ Reject            │ A substantiated defect against K-A1…K-X2  │ Not supported by the evidence: V-1…V-5 are enforcement or follow-on obligations, not  │ —                                                  │
+  │                   │                                           │ failed criteria                                                                       │                                                    │
+  └───────────────────┴───────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────┘
+
+  4.3 Is a fresh database-free run necessary?
+
+  Yes. It is the only way the accepted code becomes the tested code. The C-1 kernel was modified after its own evidence (834a4f65c). The only run since was on an uncommitted tree, with php-parser 5.4.0 and no source hashes.
+
+  What the run would prove:
+  - the committed kernel and tests at f98a4d8fc pass K-A1…K-X2 and AC-1…AC-10 under today's dependencies, including the 15,530-decision differential and the G6 golden hash;
+  - the architecture guards still pass with php-parser 5.9.0;
+  - the result is reproducible against a commit.
+
+  What it would not prove:
+  - anything about PostgreSQL, stored correctness or real-database concurrency;
+  - HTTP authorisation;
+  - correctness on real data;
+  - the mutation score (unless Infection is rerun);
+  - the health of the wider suites (unless characterised separately).
+
+  It also would not, and must not, include the uncommitted UNPARSABLE_KNOWN change.
+
+  ---
+
+  5. Slice 2a (PBDIGIT-271) assessment and Principal Reviewer pack
+
+  5.1 Criteria
+
+  Authority: Slice 2 plan docs/plans/20261011-0010-membership-slice2-command-rules-plan.md §10.
+
+  ┌───────────────────────────┬────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────────┐
+  │            AC             │       Classification       │                          Evidence (code VERIFIED; runs HISTORICAL)                           │            Defect or evidence weakness             │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │                           │                            │ Member.php:101-103; AdmissionBasisTest. A blank declarationRef throws in                     │                                                    │
+  │ AC-1 basis guard          │ Satisfied with limitation  │ Provenance.php:25-28 instead of being refused; "the command is declaration-only" holds by    │ evidence weakness                                  │
+  │                           │                            │ code structure plus R8                                                                       │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-2 closed end kinds     │ Satisfied                  │ EndKind.php:12-35; command closure                                                           │ —                                                  │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-3 legacy only with     │ Satisfied                  │ Member.php:131-133                                                                           │ —                                                  │
+  │ attested history          │                            │                                                                                              │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-4 future dating,       │ Satisfied with an explicit │                                                                                              │ an architectural gap (V-7) for Slice 2b, not a 2a  │
+  │ required date             │  limitation                │ the check is relative to the caller-supplied date (Member.php:104, 134)                      │ defect: the plan defined "future" this way (D-5(a) │
+  │                           │                            │                                                                                              │  Z1)                                               │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │                           │                            │ InterimRoleAuthority.php:41 denies every End with interim:unresolved:G-1; no test of the     │                                                    │
+  │ AC-5 authority            │ Satisfied with limitation  │ handler together with the adapter; denied-check evidence is discarded                        │ evidence weakness; V-12                            │
+  │                           │                            │ (DecideAndAppend.php:48-49)                                                                  │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-6 ledger isolation     │ Satisfied with limitation  │ literal scan (split strings and other Membership sub-namespaces are invisible)               │ evidence weakness (V-10)                           │
+  │ (R5)                      │                            │                                                                                              │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-7 creation path /      │                            │ parser scan of app/ only; allowlist is a union per file; dynamic names, reflection, eval and │ evidence weakness (V-10); confirms Session 2's     │
+  │ provenance origin (R7,    │ Satisfied with limitation  │  class_alias not covered (the scanner's docblock says so); database/ seeders and factories   │ point                                              │
+  │ R8)                       │                            │ not scanned                                                                                  │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-8 idempotency          │ Satisfied                  │ DecideAndAppend.php untouched                                                                │ —                                                  │
+  │ unchanged                 │                            │                                                                                              │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-9 C-1 differential and │ Insufficiently evidenced   │ HISTORICAL run on an uncommitted tree with php-parser 5.4.0. "Domain/Application suites      │ evidence-quality gap, closed by A1                 │
+  │  green suites             │ for the current commit     │ green" covered only the Organisational directories, not the wider suites (E-WIDE)            │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-10 scope, docs, no     │ Satisfied                  │ production changes limited to the 9 Organisational files. One traceability slip: 14f89d18e   │ —                                                  │
+  │ database                  │                            │ also carried a PBDIGIT-264 status sync, already disclosed                                    │                                                    │
+  ├───────────────────────────┼────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────┤
+  │ AC-11…AC-13               │ BLOCKED                    │ PostgreSQL hold; GOV-END                                                                     │ —                                                  │
+  └───────────────────────────┴────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────┘
+
+  Session 2's claims, checked:
+
+  - Correct: the "49 architecture tests" are a sum across six files (README:24: 5+4+3+1+2+34).
+  - Correct: the historical runs used a working tree, not a commit (README:13).
+  - Correct: the independent architect review exists only as a summary in plan §15. No standalone record was found.
+  - Correct (VERIFIED), with nuance: GOV-END, DS-4, LQ-1 and D-3-L do not block 2a. Plan §14 says GOV-END "doesn't block 2a, … but it does block 2b"; §10 makes AC-11…13 "on PostgreSQL … after the hold is lifted". DS-4 blocks Slice 9. LQ-1 and D-3-L block live HTTP, not 2b's code.
+  - Partly correct: UNPARSABLE_KNOWN = [] does not weaken detection.
+    - The real-tree scan (test_accepted_decisions_…, :122-128) then covers all of app/ with no exclusion.
+    - Only test_the_named_exclusion_still_holds_only_an_unparsable_file (:130-145) becomes vacuous, looping over an empty list, so PHPUnit reports it as risky.
+    - If the two changes are committed separately, it fails loudly either way:
+      - the test change alone means a parse failure in the real-tree scan;
+      - the deletion alone means assertArrayHasKey fails.
+    - The committed HEAD is internally consistent: the file is present and excluded.
+    - Its comment still credits PBDIGIT-272 instead of PBDIGIT-70.
+
+  5.2 Can the Slice 2a review start now?
+
+  ┌─────────────────────────────────────────┬───────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │                Condition                │             Mandatory under the plan?             │                                              Session 1 position                                              │
+  ├─────────────────────────────────────────┼───────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 1. Regression run on a committed tree,  │ Not literally in the plan. AC-9 requires green    │ Precondition for formal acceptance (recommended as mandatory). The Principal Reviewer can review the code    │
+  │ commands recorded                       │ suites but does not name a commit                 │ and plan now, in parallel                                                                                    │
+  ├─────────────────────────────────────────┼───────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 2. UNPARSABLE_KNOWN / VoterSlugStep.php │ No                                                │ Not a precondition for 2a, provided A1 runs on committed f98a4d8fc. The owning session must resolve it,      │
+  │  drift                                  │                                                   │ including the vacuous test and the 272 → 70 comment, before committing                                       │
+  ├─────────────────────────────────────────┼───────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 3. Preservation of review records       │ No                                                │ Recommended: preserve the architect-review summary, or record that plan §15 is the record. For G3 (not 2a),  │
+  │                                         │                                                   │ preserving the Principal Reviewer's source is needed for traceability                                        │
+  └─────────────────────────────────────────┴───────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  5.3 Principal Reviewer pack for Slice 2a (contents)
+
+  1. Scope: 834a4f65c, 14f89d18e, 5797ded2f. Production files: the 9 Organisational files.
+  2. The §5.1 table, with code locations.
+  3. Deviations: H-2-like immediate passes in steps 2 and 9; errors rather than assertion failures in steps 3, 5 and 6 (plan §15); hardening H1, H1-b and H2.
+  4. Evidence: HISTORICAL manifests in …/evidence/2026-10-11-slice2a{,-hardening}/ with SHA256SUMS, plus the A1 outputs once authorised.
+  5. Conditions proposed for acceptance (to carry into Slice 2b): V-7, V-8, V-9, V-10, V-11, V-12, plus the decode-failure test and the end_kind CHECK (the plan §15 follow-ups).
+  6. Open decisions: GOV-END, DS-4, LQ-1, D-3-L.
+  7. Explicit statement: recommendation ≠ acceptance; Human PO/ARB decides.
+
+  ---
+
+  6. PBDIGIT-266 security assessment
+
+  Every code line below that drives the severity, I re-read myself: S-1, S-2, S-4, and the review route's middleware and save. Runtime behaviour is INFERRED; nothing was executed.
+
+  6.1 Route findings
+
+  #: S-1
+  Route (method, URI): any route in the tenant group, e.g. GET /elections/{slug}/management (electionRoutes.php:263); a debug route at :732
+  Controller / handler: TenantContext middleware :50-55
+  Authentication: auth, verified
+  Authorisation (source): none on the header path. The membership check at :73 runs only without the header
+  Organisation isolation: the header value is written to the session; BelongsToTenant (:46) trusts the session everywhere
+  Data: session current_organisation_id
+  Misuse supported by evidence: any verified user sets their session to organisation B. Later scoped bindings and queries use B
+  Class / confidence: missing enforcement, VERIFIED (session write). What follows downstream is a conditional risk. HIGH
+  Authority rule needed: the header is a test or API escape hatch; who may select an organisation (owner: platform security / ARB)
+  Test first (actor → expected): user with no role in B sends X-Tenant-Id: B → 403, and the session does not contain B
+  ────────────────────────────────────────
+  #: S-2
+  Route (method, URI): POST /organisations/{org:slug}/members/{member}/fees/{fee}/waive (organisations.php:208)
+  Controller / handler: MembershipFeeController::waive :140-155
+  Authentication: auth (group)
+  Authorisation (source): owner/admin of the URL organisation (:142, :157-160)
+  Organisation isolation: no $member->organisation_id === $organisation->id check, unlike the four sibling actions (:26, :42, :82, :108); MembershipFee has no tenant scope
+  Data: sets fee status = waived
+  Misuse supported by evidence: admin of A, with the session set to B (by S-1 or a legitimate visit), waives B's fee through A's URL
+  Class / confidence: conditional cross-tenant write: the code is VERIFIED; the binding order is INFERRED (bootstrap/app.php:128-132). HIGH
+  Authority rule needed: none new: mirror the siblings
+  Test first (actor → expected): admin of A, B's member and fee → 404, fee unchanged
+  ────────────────────────────────────────
+  #: S-2
+  Route (method, URI): POST /organisations/{org:slug}/members/{member}/fees/{fee}/waive (organisations.php:208)
+  Controller / handler: MembershipFeeController::waive :140-155
+  Authentication: auth (group)
+  Authorisation (source): owner/admin of the URL organisation (:142, :157-160)
+  Organisation isolation: no $member->organisation_id === $organisation->id check, unlike the four sibling actions (:26, :42, :82, :108); MembershipFee has no tenant scope
+  Data: sets fee status = waived
+  Misuse supported by evidence: admin of A, with the session set to B (by S-1 or a legitimate visit), waives B's fee through A's URL
+  Class / confidence: conditional cross-tenant write: the code is VERIFIED; the binding order is INFERRED (bootstrap/app.php:128-132). HIGH
+  Authority rule needed: none new: mirror the siblings
+  Test first (actor → expected): admin of A, B's member and fee → 404, fee unchanged
+  ────────────────────────────────────────
+  #: S-3
+  Route (method, URI): GET/POST/DELETE /api/v1/governance/committees/{id}/members[/{memberId}] (api_v1.php:49-56)
+  Controller / handler: Api\Governance\CommitteeMemberController
+  Authentication: auth, verified, tenant.api
+  Authorisation (source): tenant.api checks only that the user belongs to the organisation; no role check (REPORTED: :54-241)
+  Organisation isolation: scoped to the header organisation
+  Data: committee membership
+  Misuse supported by evidence: any participant, including the voter role, changes who sits on a committee through the live UI
+  Class / confidence: missing enforcement. Medium-high
+  Authority rule needed: UNDEFINED for this path; the web path uses manageCommittee (owner/admin)
+  Test first (actor → expected): voter of A → 403
+  ────────────────────────────────────────
+  #: S-4
+  Route (method, URI): GET /membership dashboard
+  Controller / handler: MembershipDashboardController :28-32, :93-99
+  Authentication: yes
+  Authorisation (source): —
+  Organisation isolation: cache key membership_dashboard_{orgId}_{role}, and the member payload includes getMemberData() built from auth()->id() (:142-164)
+  Data: personal membership data
+  Misuse supported by evidence: the second member within 300 s sees the first member's status, fees and applications
+  Class / confidence: confirmed leak within one organisation, VERIFIED. Medium-high
+  Authority rule needed: none (privacy)
+  Test first (actor → expected): member U1 then member U2 → U2 must not see U1's data
+  ────────────────────────────────────────
+  #: S-5
+  Route (method, URI): POST /organisations/{organisation}/committee/membership/review (committeeRoutes.php:80)
+  Controller / handler: Contexts\…\Desktop\CommitteeMembershipApplicationController::review → ReviewMembershipApplicationHandler → MembershipApplication::approve/reject
+  Authentication: auth, verified (:26); the FormRequest checks only email verification
+  Authorisation (source): none: no role, no organisation membership, no self-approval check
+  Organisation isolation: the lookup requires the URL organisation and the session organisation (scope)
+  Data: committee applications and committee_associations
+  Misuse supported by evidence: latent: the save uses ::create with the existing id (EloquentCommitteeMembershipApplicationRepository.php:19-31), so a duplicate primary key gives a 500 (INFERRED). The existing
+  test CommitteeMembershipApplicationTest.php:144-166 codifies self-approval by a plain user
+  Class / confidence: missing enforcement (high confidence) in a route that currently fails closed. HIGH once repaired
+  Authority rule needed: UNDEFINED: who reviews committee applications; ban on self-approval
+  Authority rule needed: UNDEFINED: who reviews committee applications; ban on self-approval
+  Test first (actor → expected): T1–T9 in §6.3
+  | S-6 | POST …/committee/membership/apply (committeeRoutes.php:78) | apply → ApplyForCommitteeMembershipHandler | auth, verified | no check that the applicant belongs to the organisation; eligibility only for RESIDENCE; MANUAL/EXCEPTION skip it; the committee need not exist | URL organisation | applications | an outsider files applications; together with S-5, self-admission once repaired | missing enforcement plus an undefined rule. Medium | eligibility per application type | non-member → 403 |
+  | S-7 | member export GET …/members/export (organisations.php:188); participants and participant export (:183-184); member bulk import (web.php:510-519); geo-unit creation (organisations.php:397-403) | various | ensure.organisation (any role, EnsureOrganisationMember.php:119-150) | no role check (REPORTED); index requires viewApplications, export does not | URL organisation | personal data; bulk-created members with status and fee columns | any participant exports personal data or imports members | missing enforcement and undefined rules. Medium | who may export, import and create units | voter → 403 |
+  | S-8 | member geography show / nearbyCommittees (committeeRoutes.php:70-75) | MemberGeographyController | auth, verified + manageCommittee | owner/admin | the bound $member is scoped by the session organisation, not the URL | a member's geography | an admin of A reads a B member once the session is B | conditional cross-tenant read (INFERRED). Medium | — | admin of A, B member → 404 |
+  | S-9 | owner user import (web.php:523-532) | OrganisationUserImportService :318-326, :379-382 | owner | owner | — | attaches any existing platform user by email; marks new accounts verified | consent-less attachment | undefined rule. Medium | consent for attachment | product decision first |
+  | S-10 | suspend/archive (organisations.php:200-201); members.store (:189); web committee assign (committeeRoutes.php:58); governance-api.php | — | — | manageMembers and create Member are undefined, so always 403; assign throws a TypeError (a user id passed as a MemberId); governance-api returns 400 for missing tenant context | — | — | — | broken, fails closed (V/I). Availability gap | suspension and archive authority are UNDEFINED | characterise first |
+  | S-11 | governance-api.php registered twice; RouteServiceProvider and withRouting may both load web.php; debug routes | — | — | — | — | — | middleware ambiguity | OPEN (needs route:list) | — | runtime inspection, needs authorisation |
+
+  Corrections to Session 2:
+  1. The review route concerns committee applications. Organisation membership approval (organisations.php:132) does call authorizeForOrg(…, 'approveApplication') (MembershipApplicationController.php:175).
+  2. That route currently fails closed (500). Its risk is latent, and the existing test means a repair could ship the vulnerability.
+  3. S-1, S-2 and S-4 outrank it.
+
+  6.2 Why reviewer authority matters
+
+  Admission to a committee, like admission to membership, is a governance decision. If the person who applies can also approve, the separation between applicant and competent organ disappears. That undermines:
+  - the legitimacy of committee composition, which feeds positions, permissions and the forum;
+  - auditability: reviewed_by is never even stored.
+
+  Scoping authority to the organisation prevents an outsider, or a member of another organisation, from shaping the governance bodies of an organisation they do not belong to. The ratified rule "Membership stores evidence; Governance owns authority" (R §8) applies in the same way to committee bodies. The rule itself is currently undefined, so it must be decided, not inferred.
+
+  6.3 Smallest test-first remediation (proposed stories; no code written)
+
+  All of these are feature tests, so all need the isolated test database (ARB-SEC-01). PBDIGIT-283 is DONE, so the gate can be re-evaluated (decision DEC-SEC-DB).
+
+  ┌──────────────┬───────────────────────────────────────────────────────────────┬─────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────┐
+  │   Proposed   │                             Scope                             │  Business decision needed?  │                                       Test first (RED)                                        │
+  ├──────────────┼───────────────────────────────────────────────────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ SEC-A (S-2)  │ add the member-to-organisation check, as in the sibling       │ No (consistency with        │ admin of A + B's fee → 404, fee unchanged                                                     │
+  │              │ actions                                                       │ existing rules)             │                                                                                               │
+  ├──────────────┼───────────────────────────────────────────────────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ SEC-B (S-4)  │ stop caching personal data under a shared role key            │ No                          │ the U1/U2 test                                                                                │
+  ├──────────────┼───────────────────────────────────────────────────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+  │              │                                                               │ Yes (ARB/security:          │                                                                                               │
+  │ SEC-C (S-1)  │ restrict the header path                                      │ test-only, or a membership  │ non-member header → 403, session unchanged                                                    │
+  │              │                                                               │ check)                      │                                                                                               │
+  ├──────────────┼───────────────────────────────────────────────────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ SEC-D (S-5 + │ reviewer authority, ban on self-approval, membership check on │ Yes (Governance + PO: who   │ T1 unauthenticated → 401; T2 verified non-member → 403; T3 applicant approves own → 403/422;  │
+  │  S-6)        │  apply; fixed together with the INSERT-only save; the         │ reviews; eligibility per    │ T4 plain member → 403; T5 owner/admin → 200 with reviewed_by and exactly one association; T6  │
+  │              │ self-approval test replaced                                   │ type)                       │ other organisation's application → 404; T7 unknown id → 404 not 500                           │
+  ├──────────────┼───────────────────────────────────────────────────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ SEC-E (S-3,  │ role rules for committee API, exports, import, geo units,     │ Yes                         │ per route: voter → 403                                                                        │
+  │ S-7, S-8)    │ geography                                                     │                             │                                                                                               │
+  └──────────────┴───────────────────────────────────────────────────────────────┴─────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  Do not repair the S-5 save on its own. Doing so turns a latent defect into a live one.
+
+  ---
+
+  7. Correction persistence, PostgreSQL and Slice 2b
+
+  7.1 Dependency chain (verified against the sources)
+
+  G3 (COR-1 accepted) ─┐
+  PBDIGIT-264 Part 2 ──┼─► COR-4 persistence ─┐
+  D-COR-4, V-5 ────────┘                      ├─► COR-3 commands (CQ-3, G-AUTH-1, G-A1) ─► cutover allowed only after COR-1…COR-4 (ARB-MEM-01)
+  BD-REV-ER ─► COR-2 Correct ─────────────────┘
+  Part 2 accepted + GOV-END + authorisation ─► Slice 2b (AC-11…13) ─► HTTP/UI ─► CUT-1…CUT-10
+
+  - Part 2 entry, Part 2 plan docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md:66:
+    - the isolated database (P-DB) is provisioned;
+    - the provisioning evidence (PV) is accepted;
+    - I-1 is decided;
+    - Part 2 is approved;
+    - the order at :328ff is followed (D-2 → P-DB + I-1 → PV → … → F-5 → F-4 → F-2).
+  - Slice 1b re-entry: the G3 dispositions §4 criteria 1–4.
+  - COR-4 entry:
+    - CC §14.5 at :527: schema with the reference column (D-COR-4); a same-Member composite FK on the target; encode/decode round trips; tenant scoping; PostgreSQL race tests; after 264;
+    - C-AMEND-1 at :538-541: F-1 (no effectiveAt() on a fact without valid time); "verified" only on an isolated database.
+    - CC §14.5 at :527: schema with the reference column (D-COR-4); a same-Member composite FK on the target; encode/decode round trips; tenant scoping; PostgreSQL race tests; after 264;
+    - C-AMEND-1 at :538-541: F-1 (no effectiveAt() on a fact without valid time); "verified" only on an isolated database.
+  - Slice 2b: plan §10 (AC-11…13 on PostgreSQL / booted Laravel after the hold) and §14 (GOV-END blocks 2b).
+
+  7.2 What correction persistence must guarantee
+
+  From the authoritative sources:
+  From the authoritative sources:
+  - every fact kind the kernel accepts survives save → reload with identical resolution;
+  - the target lies in the same Member;
+  - tenant scoping;
+  - concurrency (re-decide on conflict);
+  - isolated-database evidence.
+
+  Proposed by Session 1 (each needs an owner's decision):
+  - survival across a process restart: reload through a new repository instance and connection;
+  - structural validation on load (V-1, V-11), so stored data cannot bypass INV-TGT, INV-N3 or legacy-only-with-attested;
+  - a defined port outcome instead of a raw \Error for anything that cannot be stored;
+  - tie semantics (V-5);
+  - append-only enforced in the database (B-11 M-11) or explicitly left to code.
+
+  Not settled: whether COR-4 is split so that Annul/Void storage comes before Correct (COR-2). The table is unreleased, so additive migrations are possible. This is decision DEC-COR4-SPLIT (Principal Reviewer → PO).
+
+  Database-free kernel tests are not evidence of PostgreSQL correctness. Slice 2b and cutover stay BLOCKED.
+
+  ---
+
+  8. Decision register
+
+  ┌────────────────┬────────────────┬─────────────────────────────┬───────────────────────────┬─────────────────────────────────┬──────────────────────┬───────────────┬────────────┬──────────────┬──────────┐
+  │       ID       │     Source     │          Question           │          Options          │   Recommendation (rationale)    │  Risk / consequence  │    Decider    │ Dependent  │  Evidence    │  Status  │
+  │                │                │                             │                           │                                 │                      │               │   tasks    │   required   │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │ G3             │                                 │                          │ defer until A1 and the        │ accepting code not  │              │           │ A1 outputs;  │          │
+  │ G3             │ dispositions   │ accept COR-1?                   │ accept with risks /      │ preserved source, then accept │ run in committed    │ Human PO/ARB │ COR-2,    │ preserved    │ OPEN     │
+  │                │ §1             │                                 │ defer / reject           │  with V-1…V-5 (the accepted   │ form                │              │ COR-4     │ source       │          │
+  │                │                │                                 │                          │ code becomes the tested code) │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │ G3             │                                 │ A1 replaces them /       │                               │ non-reproducible    │              │           │              │          │
+  │ DEC-G6         │ dispositions   │ treatment of the lost outputs   │ accept the hashes        │ A1 replaces them              │ evidence            │ PO/ARB       │ G3        │ —            │ OPEN     │
+  │                │ G-6            │                                 │                          │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │ Slice 2 plan   │                                 │                          │ Principal Reviewer review     │                     │              │           │              │          │
+  │ ACC-271        │ §10            │ accept Slice 2a?                │ accept / defer           │ now; acceptance after A1,     │ as G3               │ PR → PO/ARB  │ Slice 2b  │ A1           │ OPEN     │
+  │                │                │                                 │                          │ with V-7…V-12 carried to 2b   │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │ G3             │                                 │                          │                               │                     │              │           │              │          │
+  │ ACC-258/259    │ dispositions   │ Slice 0 / 1a                    │ accept / defer           │ accept after A1               │ —                   │ PO/ARB       │ —         │ A1           │ OPEN     │
+  │                │ §2-3           │                                 │                          │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │                │                                 │ statute / platform       │                               │                     │              │           │              │          │
+  │ GOV-END        │ Slice 2 plan   │ who may end a membership        │ default /                │ one Governance package with   │ no ending can go    │ Governance   │ Slice 2b  │ decision     │ OPEN     │
+  │                │ §4.4, §12      │                                 │ per-organisation         │ CQ-3, CQ-9, DS-4              │ live                │ owner        │ AC-13     │ record       │          │
+  │                │                │                                 │ configuration            │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ DS-4, LQ-1,    │ Slice 2 plan   │ interim replacement criterion;  │                          │                               │ live HTTP without a │ Governance;  │ Slice 9;  │              │          │
+  │ D-3-L          │ §12; D-1, D-3  │ admission bases; ending         │ —                        │ —                             │  legal basis        │ Legal        │ HTTP      │ —            │ OPEN     │
+  │                │                │ procedures                      │                          │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ CQ-3, CQ-9     │ CC :207-208    │ who may Annul/Void/Correct;     │ —                        │ include in the Governance     │ COR-3 blocked       │ PO + Legal + │ COR-3     │ —            │ OPEN     │
+  │                │                │ appeal body; "reason"           │                          │ package                       │                     │  Governance  │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ BD-REV-ER      │ ACT N-4        │ may a correction erase a whole  │ allow / refuse           │ refuse (prevents an implicit  │ —                   │ PO           │ COR-2     │ —            │ OPEN     │
+  │                │                │ period?                         │                          │ set-aside)                    │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ DEC-COR4-SPLIT │ CC §14.5       │ store Annul/Void before COR-2?  │ split / wait             │ split (puts ARB-MEM-01 on the │ two migrations      │ PR → PO      │ COR-4     │ —            │ PROPOSED │
+  │                │                │                                 │                          │  critical path earlier)       │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ V-5            │ INV-14         │ KnownAt ties                    │ seq-based / strictly     │ seq-based                     │ —                   │ PR           │ COR-4     │ —            │ PROPOSED │
+  │                │                │                                 │ increasing recordedAt    │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │                │                │                                 │ trusted clock in the     │                               │                     │              │           │              │          │
+  │ V-7            │ D-5(b)         │ trusted reference for "future"  │ organisation's time zone │ trusted clock                 │ future-dated facts  │ PR + PO      │ Slice 2b  │ —            │ PROPOSED │
+  │                │                │                                 │  / declared date + audit │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ V-8            │ D-2            │ create the aggregate with its   │ atomic / reservation     │ atomic                        │ phantom memberships │ PR → PO/ARB  │ Slice 2b  │ —            │ PROPOSED │
+  │                │                │ first admission?                │                          │                               │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ V-11           │ D-3            │ legacy-only-with-attested in    │ JSON CHECK / domain +    │ domain + load check; a CHECK  │ —                   │ PR → PO/ARB  │ Slice 2b  │ —            │ PROPOSED │
+  │                │                │ the database                    │ load check               │ only for the closed list      │                     │              │           │              │          │
+  ├────────────────┼────────────────┼─────────────────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────┼──────────────┼───────────┼──────────────┼──────────┤
+  │ G-A1           │ R §8           │ event publication               │ own outbox / shared      │ own transactional outbox,     │ contracts cannot be │ ARB          │ COR-      │              │          │
+  │                │                │                                 │ outbox after PBDIGIT-211 │ unless 211 is fixed first     │  met                │              │           │              │          │
+  └────────────────┴────────────────┴────────────────────────
+  Risk / consequence: —
+  Decider: PR
+  Dependent tasks: COR-4
+  Evidence required: —
+  Status: PROPOSED
+  ────────────────────────────────────────
+  ID: V-7
+  Source: D-5(b)
+  Question: trusted reference for "future"
+  Options: trusted clock in the organisation's time zone / declared date + audit
+  Recommendation (rationale): trusted clock
+  Risk / consequence: future-dated facts
+  Decider: PR + PO
+  Dependent tasks: Slice 2b
+  Evidence required: —
+  Status: PROPOSED
+  ────────────────────────────────────────
+  ID: V-8
+  Source: D-2
+  Question: create the aggregate with its first admission?
+  Options: atomic / reservation
+  Recommendation (rationale): atomic
+  Risk / consequence: phantom memberships
+  Decider: PR → PO/ARB
+  Dependent tasks: Slice 2b
+  Evidence required: —
+  Status: PROPOSED
+  ────────────────────────────────────────
+  ID: V-11
+  Source: D-3
+  Question: legacy-only-with-attested in the database
+  Options: JSON CHECK / domain + load check
+  Recommendation (rationale): domain + load check; a CHECK only for the closed list
+  Risk / consequence: —
+  Decider: PR → PO/ARB
+  Dependent tasks: Slice 2b
+  Evidence required: —
+  Status: PROPOSED
+  ────────────────────────────────────────
+  ID: G-A1
+  Source: R §8
+  Question: event publication
+  Options: own outbox / shared outbox after PBDIGIT-211
+  Recommendation (rationale): own transactional outbox, unless 211 is fixed first
+  Risk / consequence: contracts cannot be met
+  Decider: ARB
+  Dependent tasks: COR-3 emission; Slices 10–11
+  Evidence required: —
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: DEC-SEC-DB
+  Source: ARB-SEC-01
+  Question: test database for 266 and Part 2
+  Options: dedicated / re-use pbdigit274_isolated_test under a new authorisation
+  Recommendation (rationale): dedicated database, re-using the PBDIGIT-283 rules (no second guard)
+  Risk / consequence: security defects stay unverified
+  Decider: ARB + PO + Infrastructure
+  Dependent tasks: SEC-A…E, Part 2
+  Evidence required: provisioning evidence
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: DEC-SEC-RULES
+  Source: §6
+  Question: who reviews committee applications; self-approval; eligibility per type; who exports, imports, manages committees, suspends, archives
+  Options: owner/admin / committee chair / reviewer role
+  Recommendation (rationale): mirror owner/admin as an interim rule, forbid self-approval
+  Risk / consequence: security defects stay unverified
+  Decider: ARB + PO + Infrastructure
+  Dependent tasks: SEC-A…E, Part 2
+  Evidence required: provisioning evidence
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: DEC-SEC-RULES
+  Source: §6
+  Question: who reviews committee applications; self-approval; eligibility per type; who exports, imports, manages committees, suspends, archives
+  Options: owner/admin / committee chair / reviewer role
+  Recommendation (rationale): mirror owner/admin as an interim rule, forbid self-approval
+  Risk / consequence: governance legitimacy
+  Decider: Governance + PO
+  Dependent tasks: SEC-C…E; S-10
+  Evidence required: —
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: DEC-TENANT-HDR
+  Source: S-1
+  Question: X-Tenant-Id
+  Options: test-only / membership check
+  Options: test-only / membership check
+  Recommendation (rationale): test-only
+  Risk / consequence: platform-wide cross-tenant risk
+  Decider: ARB (platform security)
+  Dependent tasks: SEC-C
+  Evidence required: —
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: PBDIGIT-265
+  Source: CUT-6
+  Question: Membership/Election eligibility predicate
+  Options: —
+  Recommendation (rationale): —
+  Risk / consequence: cutover blocker
+  Decider: Election + Membership
+  Dependent tasks: Slice 10
+  Evidence required: —
+  Status: OPEN
+  ────────────────────────────────────────
+  ID: E-12 / DR-07
+  Source: Round 2 report
+  Question: does a committee seat need membership; who owns Committee writes
+  Options: check-once / cascade / derived
+  Recommendation (rationale): derived (a cascade conflicts with COR-1 annulment)
+  Risk / consequence: inconsistent committee rosters
+  Decider: Membership + Committee owners
+  Dependent tasks: Slice 10+
+  Evidence required: —
+  Status: OPEN
+  | BQ-P | CUT-7 | policy for conflicting legacy records | latest wins / fixed precedence / agree-or-queue | agree-or-queue, with attested provenance and the queue measured in a dry run | silent wrong winners | PO + Membership owner | Slice 13 | dry-run report | OPEN |
+
+  ---
+
+  9. Dependency-ordered plan for Session 2
+
+  All task IDs are proposed. No task is currently authorised for implementation. Every row needs explicit PO/ARB authorisation.
+
+  Stage A: baseline and evidence integrity
+
+  Task: A1
+  Objective: tested code = committed code
+  Requirement: AC-9; G3 DoD
+  Prerequisites: authorisation
+  Owner: implementer
+  Allowed actions: git archive f98a4d8fc into the scratchpad; composer install; vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php <path> over the Membership Organisational Domain, Application
+  and Infrastructure suites, the 6 Membership architecture classes, C-1 + G6, and DateOrdinal
+  Deliverable, acceptance criteria, evidence: every suite exits 0; 15,530 decisions with 0 mismatches; G6 hash unchanged. Evidence: command, commit, PHP/PHPUnit/php-parser versions, exit code, output SHA-256
+  Exit gate: A2
+  Risks: dependency drift surfaces failures, which would be reported, not fixed
+  ────────────────────────────────────────
+  Task: A1b
+  Objective: Membership health
+  Requirement: G-5
+  Prerequisites: A1
+  Owner: implementer
+  Allowed actions: same, over the wider tests/Unit/Contexts/Membership
+  Deliverable, acceptance criteria, evidence: characterisation list of errors with owners
+  Exit gate: input to the decision register
+  Risks: none
+  ────────────────────────────────────────
+  Task: A2
+  Objective: preserve the evidence of record
+  Requirement: G3 DoD 7
+  Prerequisites: PO authorises the documentation change
+  Owner: implementer
+  Allowed actions: add or reference the Principal Reviewer source; record DEC-G6
+  Deliverable, acceptance criteria, evidence: the citation resolves to a tracked file
+  Exit gate: Stage B
+  Risks: —
+  ────────────────────────────────────────
+  Task: A3
+  Objective: resolve the drift
+  Requirement: —
+  Prerequisites: owning session
+  Owner: other session
+  Owner: other session
+  Allowed actions: its own commit
+  Deliverable, acceptance criteria, evidence: VoterSlugStep deletion under PBDIGIT-70; the exclusion test removed or made meaningful; comment fixed
+  Exit gate: none for 2a
+  Risks: evidence contamination
+
+  Stage B: review readiness
+
+  ┌──────┬──────────────────────────────────┬───────────────┬────────────────┬───────────────────────────┬────────────────────────────────────┐
+  │ Task │            Objective             │ Prerequisites │     Owner      │        Deliverable        │             Exit gate              │
+  ├──────┼──────────────────────────────────┼───────────────┼────────────────┼───────────────────────────┼────────────────────────────────────┤
+  │ B1   │ G3 decision brief                │ A1, A2        │ Session 1      │ §4 tables updated with A1 │ PO/ARB records G3                  │
+  ├──────┼──────────────────────────────────┼───────────────┼────────────────┼───────────────────────────┼────────────────────────────────────┤
+  │ B2   │ Slice 2a Principal Reviewer pack │ A1            │ Session 1 → PR │ §5.3                      │ PR recommendation → PO/ARB verdict │
+  ├──────┼──────────────────────────────────┼───────────────┼────────────────┼───────────────────────────┼────────────────────────────────────┤
+  │ B3   │ Slice 0 / 1a verdicts            │ A1            │ PO/ARB         │ —                         │ recorded                           │
+  └──────┴──────────────────────────────────┴───────────────┴────────────────┴───────────────────────────┴────────────────────────────────────┘
+
+  Stage C: security
+
+  ┌──────┬─────────────────────────────┬─────────────────────────┬──────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────────────┬─────────────────────────┐
+  │ Task │          Objective          │      Prerequisites      │      Owner       │                      Allowed actions                      │        Acceptance criteria        │        Exit gate        │
+  ├──────┼─────────────────────────────┼─────────────────────────┼──────────────────┼───────────────────────────────────────────────────────────┼───────────────────────────────────┼─────────────────────────┤
+  │ C0   │ test database               │ DEC-SEC-DB              │ ARB,             │ provisioning                                              │ identity marker, role, no access  │ C1                      │
+  │      │                             │                         │ Infrastructure   │                                                           │ to nrna_test                      │                         │
+  ├──────┼─────────────────────────────┼─────────────────────────┼──────────────────┼───────────────────────────────────────────────────────────┼───────────────────────────────────┼─────────────────────────┤
+  │ C1   │ RED characterisation of     │ C0, authorisation       │ implementer      │ write and run feature tests only                          │ each finding confirmed or         │ C2                      │
+  │      │ S-1…S-8                     │                         │                  │                                                           │ refuted; outputs stored           │                         │
+  ├──────┼─────────────────────────────┼─────────────────────────┼──────────────────┼───────────────────────────────────────────────────────────┼───────────────────────────────────┼─────────────────────────┤
+  │ C2   │ SEC-A, SEC-B (no business   │ C1                      │ implementer      │ code change, test-first                                   │ §6.3 tests green; no regressions  │ Session 1 conformance   │
+  │      │ decision)                   │                         │                  │                                                           │                                   │ review → PO             │
+  ├──────┼─────────────────────────────┼─────────────────────────┼──────────────────┼───────────────────────────────────────────────────────────┼───────────────────────────────────┼─────────────────────────┤
+  │ C3   │ SEC-C, SEC-D, SEC-E         │ DEC-TENANT-HDR,         │ implementer      │ as C2; SEC-D fixes the save and the authorisation         │ T1–T9                             │ PO/ARB                  │
+  │      │                             │ DEC-SEC-RULES           │                  │ together; the codifying test is replaced                  │                                   │                         │
+  └──────┴─────────────────────────────┴─────────────────────────┴──────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────────────┴─────────────────────────┘
+
+  Stage D: PostgreSQL and correction persistence
+
+  ┌──────┬────────────────────┬─────────────────────────────────────┬─────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────┐
+  │ Task │     Objective      │            Prerequisites            │    Owner    │                                           Acceptance criteria                                            │    Exit gate    │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │      │                    │ P-DB, I-1, PV accepted, Part 2      │             │                                                                                                          │ 1b re-entry     │
+  │ D1   │ Part 2             │ approved; the plan reconciled with  │ implementer │ fail-closed proof; E4-L; ~40 PostgreSQL tests; nrna_test unchanged before and after                      │ criteria →      │
+  │      │                    │ PBDIGIT-283                         │             │                                                                                                          │ ACC-260         │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │ D2   │ 264 F-5 → F-4b →   │ D1                                  │ implementer │ per PBDIGIT-264                                                                                          │ PO              │
+  │      │ F-2                │                                     │             │                                                                                                          │                 │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │ D3   │ kernel hardening   │ G3, V-8 decision                    │ implementer │ Given a stored Annul(Void), when it is loaded, then a defined integrity failure. Given an attested       │ Session 1       │
+  │      │ V-1, V-2, V-3, V-8 │                                     │             │ Annul, then refused. Given a refused Admit for a new person, then no Membership exists                   │ review → PO     │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │ D4   │ COR-4 (or COR-4a)  │ D1, D2, D-COR-4, V-5,               │ implementer │ every kernel-acceptable fact round-trips through a fresh process; target FK; tie rule; defined failure   │ PO/ARB          │
+  │      │                    │ DEC-COR4-SPLIT                      │             │ outcomes                                                                                                 │                 │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │      │                    │ BD-REV-ER; CQ-3, G-AUTH-1, G-A1;    │             │                                                                                                          │                 │
+  │ D5   │ COR-2, then COR-3  │ COR-3 not wired before D4 is        │ implementer │ CC §14.5; C-AMEND-1 C-3 items 1–5                                                                        │ PO/ARB          │
+  │      │                    │ accepted                            │             │                                                                                                          │                 │
+  ├──────┼────────────────────┼─────────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────┤
+  │      │                    │ D1 accepted; GOV-END; V-7, V-9,     │             │ AC-11…AC-13. Given an officer of A, when the command names B or another actor, then it is built for A    │                 │
+  │ D6   │ Slice 2b           │ V-11 decided                        │ implementer │ and that officer only. Given today's date in the organisation's time zone, an effective date after it is │ PO/ARB          │
+  │      │                    │                                     │             │  refused. An unknown stored end_kind is rejected by the database                                         │                 │
+  └──────┴────────────────────┴─────────────────────────────────────┴─────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────┘
+
+  Stage E: governance and cross-context
+
+  ┌──────┬───────────────────────────────────────────────────┬─────────────────────────┐
+  │ Task │                      Content                      │          Owner          │
+  ├──────┼───────────────────────────────────────────────────┼─────────────────────────┤
+  │ E1   │ the Governance package: GOV-END, CQ-3, CQ-9, DS-4 │ Governance + Legal + PO │
+  ├──────┼───────────────────────────────────────────────────┼─────────────────────────┤
+  │ E2   │ the Membership/Election contract and PBDIGIT-265  │ Election + Membership   │
+  ├──────┼───────────────────────────────────────────────────┼─────────────────────────┤
+  │ E3   │ E-12 / DR-07, through the Membership query port   │ Membership + Committee  │
+  ├──────┼───────────────────────────────────────────────────┼─────────────────────────┤
+  │ E4   │ G-A1 event publication                            │ ARB                     │
+  └──────┴───────────────────────────────────────────────────┴─────────────────────────┘
+
+  No other context is changed without its owner's authorisation.
+
+  Stage F: integration and cutover (BLOCKED until every mandatory gate passes)
+
+  ┌────────────────────────────────────────────────┬──────────────────────────────────────────────────┬───────────────────────┐
+  │                      Gate                      │                     Evidence                     │         Owner         │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-1 source-of-truth flag                     │ tested both ways                                 │ Membership            │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-2 column-ownership map                     │ signed map; no projection writes Finance columns │ Membership + Finance  │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-3 every legacy writer rerouted             │ per-path test                                    │ Membership            │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-4 database write guard incl. mass updates  │ trigger test                                     │ Membership            │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-5 reverse projection                       │ rebuild = incremental                            │ Membership            │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-6 reader predicate inventory (PBDIGIT-265) │ Election sign-off                                │ Membership + Election │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-7 migration dry run, parity, BQ-P          │ parity 100 % or signed exceptions                │ Membership + PO       │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-8 write freeze and rehearsed rollback      │ rehearsal log                                    │ Ops + PO              │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-9 Election-Only untouched                  │ fitness test                                     │ Election              │
+  ├────────────────────────────────────────────────┼──────────────────────────────────────────────────┼───────────────────────┤
+  │ CUT-10 environment, production engine          │ operator record                                  │ Ops                   │
+  └────────────────────────────────────────────────┴──────────────────────────────────────────────────┴───────────────────────┘
+
+  Additional final-package items (PROPOSED):
+  - ARB-MEM-01 met (COR-1…COR-4 accepted);
+  - Stage C closed;
+  - PBDIGIT-270 and PBDIGIT-292 credentials closed;
+  - monitoring of refused commands and integrity failures.
+
+  ---
+
+  10. Required human approvals and stop conditions
+
+  Approvals, in order:
+  1. A1 run (including the composer install network step and storing the evidence).
+  2. A2 documentation preservation.
+  3. DEC-SEC-DB.
+  4. C1 tests.
+  5. The G3 / ACC-271 / ACC-258/259 verdicts.
+  6. The Governance package (E1).
+  7. P-DB, I-1 and Part 2.
+  8. BD-REV-ER, V-5, V-7, V-8, V-11, D-COR-4, DEC-COR4-SPLIT.
+  9. DEC-TENANT-HDR, DEC-SEC-RULES.
+  10. Each implementation slice separately.
+
+  Stop conditions for Session 2:
+  - Stop if a test fails at A1. Report it; do not fix it.
+  - Stop on any database whose identity does not match.
+  - Stop if a fix would need a business rule that is not recorded.
+  - Stop if the working tree contains changes the task doesn't own.
+  - Stop if the S-5 save fix is attempted without its authorisation fix.
+  - Stop if COR-3 would be wired before COR-4 is accepted.
+  - Stop if Slice 2b is reached without D1 and GOV-END.
+  - Stop if cutover is reached without CUT-1…CUT-10 and ARB-MEM-01.
+
+  ---
+
+  11. Limitations and checks not performed
+
+  - Nothing was executed. Pass/fail states, PHPUnit's "risky" behaviour, HTTP status codes, binding order (X3), whether the session is saved on error responses, the active duplicate route, the production cache driver and CORS origins, Octane, and route registration order are all OPEN or INFERRED.
+  - Delegated findings that I re-read myself:
+    - S-1: TenantContext.php:48-56;
+    - S-2: MembershipFeeController.php:140-160;
+    - S-4: the dashboard controller :28-32, :93-99, :142-164;
+    - S-5: the middleware at committeeRoutes.php:26-28, 78-81, the INSERT-only save at the repository :19-31, and the controller import at :10;
+    - Slice 2a: V-7 at Member.php:86-138 and V-8 at AdmitMemberHandler.php:60-72;
+    - C-1: V-1 at Member.php:25-40, V-2 at :142-165, V-4 at the repository :218-226 and Fact.php.
+  - REPORTED from the delegated reviews, not re-read: S-3, S-6 to S-11, and the stale-test details.
+  - Not inspected: production data (so how often any of this occurs is unknown); the Infection rerun; the content of every brainstorming file.
+
+  ---
+
+  Where we are: the architecture is ratified and the first two kernel increments conform to their contracts. Nothing is accepted. The evidence must be re-established on the committed code. Four live security findings (S-1, S-2, S-3, S-4) need the isolated test database. Persistence, authority, event publication and cutover are not started.
+
+  TODO
+  - You: authorise A1. It is the cheap
+5. The G3 / ACC-271 / ACC-258/259 verdicts.
+6. The Governance package (E1).
+7. P-DB, I-1 and Part 2.
+8. BD-REV-ER, V-5, V-7, V-8, V-11, D-COR-4, DEC-COR4-SPLIT.
+9. DEC-TENANT-HDR, DEC-SEC-RULES.
+10. Each implementation slice separately.
+
+Stop conditions for Session 2:
+- Stop if a test fails at A1. Report it; do not fix it.
+- Stop on any database whose identity does not match.
+- Stop if a fix would need a business rule that is not recorded.
+- Stop if the working tree contains changes the task doesn't own.
+- Stop if the S-5 save fix is attempted without its authorisation fix.
+- Stop if COR-3 would be wired before COR-4 is accepted.
+- Stop if Slice 2b is reached without D1 and GOV-END.
+- Stop if cutover is reached without CUT-1…CUT-10 and ARB-MEM-01.
+
+---
+
+11. Limitations and checks not performed
+
+- Nothing was executed. Pass/fail states, PHPUnit's "risky" behaviour, HTTP status codes, binding order (X3), whether the session is saved on error responses, the active duplicate route, the production cache driver and CORS origins, Octane, and route registration order are all OPEN or INFERRED.
+- Delegated findings that I re-read myself:
+  - S-1: TenantContext.php:48-56;
+  - S-2: MembershipFeeController.php:140-160;
+  - S-4: the dashboard controller :28-32, :93-99, :142-164;
+  - S-5: the middleware at committeeRoutes.php:26-28, 78-81, the INSERT-only save at the repository :19-31, and the controller import at :10;
+  - Slice 2a: V-7 at Member.php:86-138 and V-8 at AdmitMemberHandler.php:60-72;
+  - C-1: V-1 at Member.php:25-40, V-2 at :142-165, V-4 at the repository :218-226 and Fact.php.
+- REPORTED from the delegated reviews, not re-read: S-3, S-6 to S-11, and the stale-test details.
+- Not inspected: production data (so how often any of this occurs is unknown); the Infection rerun; the content of every brainstorming file.
+
+---
+
+Where we are: the architecture is ratified and the first two kernel increments conform to their contracts. Nothing is accepted. The evidence must be re-established on the committed code. Four live security findings (S-1, S-2, S-3, S-4) need the isolated test database. Persistence, authority, event publication and cutover are not started.
+
+TODO
+- You: authorise A1. It is the cheapest step, has no database risk, and every acceptance decision depends on it.
+- PO/ARB: decide on the test database (DEC-SEC-DB); then the C1 security characterisation tests; SEC-A and SEC-B need no business rule.
+- PO: decide what happens to my earlier plan file and session-log entry (see the note at the top).
+- Governance owner: the GOV-END + CQ-3 + CQ-9 + DS-4 package, plus the committee review authority rule.
+- Owning session: commit or withdraw the VoterSlugStep deletion together with the exclusion test, under PBDIGIT-70.
+- Session 2: waits for authorisation, then takes tasks from §9 and reports anything that doesn't match.
+
+I've stopped here and am waiting for your direction.
+Stop says: Developer Guide (Definition of Done): implementation code changed today in area(s) with NO matching developer_guide/ update: imports.
+  -> Write or update the step guide under: developer_guide/imports/
+  (area-aware; an unrelated tracks guide no longer silences this. Non-blocking; see .claude/CLAUDE.md · modified files: .claude/runtime/2026-10-16-files.log)
+
+✻ Sautéed for 11m 0s · done 10:33 PM
+  ────────────────────────────────────────
+  ID: BQ-P
+  └──────────────┴────────────────┴─────────────────┴────────
+  │             │ §4.4           │                  │                    │                                                   │                          │          │             │                  │        │
+  └─────────────┴────────────────┴──────────────────┴────────
+  ────────────────────────────────────────
+  #: S-6
+  Route (method, URI): POST …/committee/membership/apply (committeeRoutes.php:78)
+  Controller / handler: apply → `ApplyForCommitteeMembershipH
+  └─────────────────────┴───────────────────────┴──────────────────────────────────────────────────────────────────┴───────────────────────────────────────┴────────────────────────────────┴────────────────┘

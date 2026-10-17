@@ -8,6 +8,7 @@
 | **Prepared by** | `claude-code-session:42e0287e-e0e2-4638-8165-cd5d5862c578` (self-declared). **Independence caveat:** the same process wrote the two documents under audit. Every claim here was re-derived from the repository, and §16 and the corrections F-1…F-3 list what this process corrected in its own earlier work. **A fresh process would be stronger evidence.** |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0); `reviews/` |
 | **Runtime probes** | Scratch probe tests were kept **outside the repository** (in the session scratch directory). They were run with `php artisan test --env=testing` against `nrna_test`, in a transaction (`RefreshDatabase`). **No file under `app/`, `tests/`, `routes/`, `config/` or `database/` was modified.** No dependency was installed, and `composer install` was not run. |
+| ⚠️ **Correction (2026-10-01, `2026-10-01-backlog-completion-review.md` §8.5)** | The row above says the probes ran *"in a transaction (`RefreshDatabase`)"*. **That is false for probe classes inheriting `tests/TestCase.php`, which skips the transaction on PostgreSQL:** their rows remained in the **test** database `nrna_test`. The development database was never targeted. |
 
 ## 0. Human decision recorded (2026-10-01)
 

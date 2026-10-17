@@ -1,0 +1,264 @@
+Membership: decision paper for Q1, Q2, Q3, Q6 and G-5
+
+  This is Session 1's recommendation, not an approval. I made no repository changes. Every key claim below was re-checked against the sources this session; the evidence is in the appendix.
+
+  1. Executive summary
+
+  Recommended path, in order:
+
+  1. Q3 first: keep the Principal Reviewer's original recommendation in an official, traceable place.
+  2. Q2: close the "lost test outputs" gap honestly. The 10 October outputs are gone, their fingerprints stay as history, and the 16 October run (A1) is the evidence for today's code.
+  3. Q1: formally accept the C-1 correction rules with listed residual risks. One of those risks becomes a precondition for building the correction commands. This differs from your starting hypothesis (defer). My check found the V-2 gap is not reachable through any code path today, and the contract itself defers that area to a later slice. Deferral is still a valid choice if you want zero known gaps at acceptance; §2 explains both.
+  4. Q6: commission a dedicated Membership test database, with its own restricted account and proof of identity. Then the ARB re-checks the security gate.
+  5. G-5: name one engineer for a read-only, findings-only health check of the wider Membership test suite.
+
+  Nothing here authorises implementation.
+
+  ---
+
+  2. Business decision paper
+
+  Q1: Accept the C-1 correction rules (PBDIGIT-268)?
+
+  The issue in business terms. C-1 is the engine rule set that lets the organisation set aside a wrong membership decision (Annul) or mark a record as never true (Void). It is built and tested, and the reviewer has recommended acceptance with known limitations. After that recommendation, one gap was found (V-2): the engine checks that the decision being set aside was a proper decision, but it doesn't check that the setting-aside itself is recorded as a proper decision.
+
+  Recommendation: accept with explicit residual risks. Attach one condition: V-2 must be fixed before any correction command or database loader can create Annul records.
+
+  Why:
+  - The gap cannot be reached today. The only code in the application that can create non-decision records is the database loader, and an automated architecture test enforces that. There is also no correction command and no database storage for Annul yet.
+  - The contract itself defers this area. It says the authority and "reason" parts of an Annul record stay open until the correction-command slice. It also says application and persistence criteria belong to that later slice, not to C-1.
+  - No C-1 acceptance criterion is failed. Every K-criterion is met on current evidence.
+
+  So this is a recorded residual risk with a hard precondition, not a contract breach that blocks acceptance.
+
+  Counterargument. The contract's description of the resulting Annul record does say it carries a decision provenance. A strict reading treats any departure as non-compliance. If you want no known deviation at acceptance, choose defer: authorise the small fix (MEM-K1) first and accept afterwards. That costs one small slice and its review.
+
+  ┌─────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │             If you…             │                                                               Consequence                                                               │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ accept with risks (recommended) │ correction design work (COR-2) can be planned. V-2 must be fixed before correction commands or storage. The risk list is formally owned │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ defer                           │ nothing downstream starts until MEM-K1 is authorised, done and reviewed. The cleanest record                                            │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ reject                          │ not supported: no failed acceptance criterion                                                                                           │
+  └─────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  Risks you would accept by accepting C-1:
+  - the test oracle doesn't cover one refusal rule (D-COR-2);
+  - simultaneous record times are not exercised;
+  - the mutation score was produced by the developer only;
+  - the test-runner weaknesses tracked in PBDIGIT-269;
+  - correction storage is not built yet;
+  - V-2, as the condition above;
+  - the disclosed --no-scripts deviation in A1.
+
+  Prerequisite (recommended, not a source-mandated gate): Q3 first, so the verdict cites a traceable reviewer source.
+
+  Closes when: the PO/ARB enters the verdict, conditions and evidence in the G3 decision record.
+
+  Decides: Human PO/ARB.
+
+  Q2: The lost test outputs (gap G-6)
+
+  The issue in business terms. The 10 October test outputs behind C-1 were kept in a temporary folder and are gone; only their fingerprints (hashes) remain. On 16 October a new run on the committed code (A1) passed and was saved properly.
+
+  Recommendation: close G-6 by recording three facts:
+  1. the original outputs are unrecoverable;
+  2. their fingerprints stay as the historical reference, which is one of the two options the source itself offered;
+  3. A1 is the evidence for the current code.
+
+  Do not describe A1 as reproducing the lost outputs. It ran on later code, a different framework version and a stricter run mode.
+
+  Why: this is honest, and it lets the Q1 decision rest on evidence that exists and has been checked.
+
+  ┌──────────────────────┬───────────────────────────────────────────────────────────┐
+  │       If you…        │                        Consequence                        │
+  ├──────────────────────┼───────────────────────────────────────────────────────────┤
+  │ close as recommended │ C-1 can be decided on A1                                  │
+  ├──────────────────────┼───────────────────────────────────────────────────────────┤
+  │ keep G-6 open        │ a gap that can never close sits on the record permanently │
+  └──────────────────────┴───────────────────────────────────────────────────────────┘
+
+  Closes when: the disposition is written into the G3 gap table.
+
+  Decides: Human PO/ARB.
+
+  Q3: Keep the reviewer's original recommendation on record
+
+  The issue in business terms. The reviewer's C-1 recommendation sits in a personal working file that the repository doesn't track, and the official record cites it under the wrong name. If the file is lost, the basis of the decision is lost.
+
+  Recommendation: store it in the official reviews area under its correct name and correct the citation. First, three checks must pass:
+  - privacy and content: my quick scan found no emails, credentials or personal paths, but a person must confirm. Pasted-text artefacts (&#x20;, a reference to an attachment that isn't included) should be either noted or cleaned;
+  - document placement: the placement script must be run by an authorised session;
+  - labelling: a banner stating "reviewer recommendation, not an acceptance".
+
+  Alternative: annotate the record with the real filename and a fingerprint, without storing the file. This is weaker, because the file can still disappear.
+
+  Closes when: the citation points to a tracked file.
+
+  Decides: PO. The documentation change itself is carried out by an authorised session.
+
+  Q6: A safe test database for Membership
+
+  The issue in business terms. Membership's database layer and the security investigation (PBDIGIT-266) can only be tested on a database that is provably separate from shared and production data. None exists for Membership. The database approved for the voter-slug and IP-limit work does not cover Membership.
+
+  Recommendation: a dedicated nrna_test_membership:
+  - with its own restricted account that cannot reach the shared nrna_test;
+  - with a permanent identity label on the database;
+  - with a safety check before connecting that reuses the existing test-safety rules (PBDIGIT-283), rather than building a second guard.
+
+  Approval sequence, from the existing plan:
+  1. Name who sends the request to Infrastructure, and to whom (D-2).
+  2. Infrastructure creates the database and account and removes the shared-database access (I-1).
+  3. Infrastructure supplies the provisioning evidence: identity label, database ID, account name, proof of no shared access, server details.
+  4. The Principal Reviewer reviews that evidence.
+  5. The Human PO/ARB accepts it.
+  6. The ARB re-checks the security gate (ARB-SEC-01). It failed on 2026-10-09 only because no such database existed.
+  7. Database test runs are then authorised separately (P2-6).
+
+  Counterargument. Reusing the existing isolated database would be faster. But it needs its own written approval, and it mixes two workstreams' data and timing.
+
+  ┌─────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ If you… │                                              Consequence                                               │
+  ├─────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ approve │ the main critical-path blocker for the database layer, the security tests and Slice 2b starts to clear │
+  ├─────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ defer   │ everything database-related stays blocked, including the security investigation of four live risks     │
+  └─────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  Closes when: an ARB gate record exists citing the reviewed evidence.
+
+  Decides: ARB, PO and Infrastructure.
+
+  G-5: Health of the wider Membership tests
+
+  The issue in business terms. Tests outside the newly built Membership core reportedly have errors: 27 and 29, according to the 10 October record. Nobody owns them, so nobody knows whether they reflect real defects or stale tests.
+
+  Recommendation: name one engineer for a findings-only run:
+  - database-free files only;
+  - an isolated copy of a named commit;
+  - the exact commands written down in advance;
+  - the --no-scripts installation flag approved in advance this time;
+  - no fixes;
+  - output: a report classifying each failure.
+
+  Any fix is proposed afterwards as its own story.
+
+  Closes when: the report is stored and the PO has assigned a follow-up owner.
+
+  Decides: PO.
+
+  ---
+
+  3. Evidence appendix (all re-checked this session)
+
+  ┌─────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │            Item             │                                                                                   Evidence                                                                                    │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ C-1 criteria and scope      │ correction contract §14.3 (K-A1…K-X2). §14.5 states that application, concurrency, persistence and tenant-scoping criteria belong to C-3/C-4, not C-1                         │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ What the contract says      │ §3.1 "Resulting fact Annul{…provenance(decision, authority, reason)…}"; preconditions mark "authority evidence (CQ-3) [OPEN]"                                                 │
+  │ about the Annul record      │                                                                                                                                                                               │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ C-AMEND-1                   │ C-3 items 1–5: the meaning of "reason" and its authority evidence stay OPEN under CQ-3 and must be decided before C-3; the kernel Provenance has no "reason"                  │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ V-2 not reachable today     │ Provenance::rule(/attested( are called only in ProvenanceJson.php:57-58 (grep of app/). The provenance-origin check in MembershipDecisionCreationTest enforces this. No Annul │
+  │                             │  handler exists. The repository cannot store Annul (migration kind CHECK; PostgresMemberRepository.php:223)                                                                   │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ V-2 itself                  │ Member::decideAnnul (Member.php:142-165) checks the target's provenance, not its own                                                                                          │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Reviewer recommendation     │ docs/publicdigit/membership/architecture/brainstorming/20261010_1901_implementation.md:13-17 (untracked). G3 record cites 202610101901_implementation.md                      │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ G-6 options in the source   │ G3 dispositions gap G-6: "authorise copying … or accept the hashes as the reference". Original outputs not found                                                              │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ A1                          │ docs/publicdigit/membership/evidence/2026-10-16-a1-evidence-refresh/. sha256sum -c passes (main folder and delta); 11 exit files contain 0; commands match the approved       │
+  │                             │ scope; --no-scripts disclosed                                                                                                                                                 │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ARB-SEC-01                  │ ARB record :12: tests only, after isolated-database readiness; gate FAIL on 2026-10-09                                                                                        │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Database sequence           │ Part 2 plan :66, :309-310 (D-2 OPEN, P2-6 NOT AUTHORISED), :330-331 (the order above)                                                                                         │
+  ├─────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ G-5                         │ G3 gaps table: "engineering, then a PO owner — a separately authorised read-only triage"                                                                                      │
+  └─────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  Mandatory gates versus recommendations:
+  - Mandatory:
+    - the database sequence and ARB-SEC-01;
+    - the correction capability verified before live writes and cutover (ARB-MEM-01);
+    - Slice 2b requires its PostgreSQL verification and G-1;
+    - security fixes need separate authorisation.
+  - Recommended only:
+    - Q3 before Q1;
+    - the C-1 verdict before correction storage (C-4);
+    - fixing V-2 before correction commands (that gate exists only if you adopt the Q1 condition).
+
+  ---
+
+  4. Risks needing explicit acceptance or resolution
+
+  ┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+  │                                                     Risk                                                      │                       Treatment needed                       │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ V-2 (Annul's own provenance unchecked)                                                                        │ accept as a conditioned residual risk (Q1), or resolve first │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ C-1's other residual risks (oracle gap, simultaneous times, developer-only mutation score, runner weaknesses) │ accept with Q1                                               │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ --no-scripts deviation in A1                                                                                  │ acknowledge (Q1 / Q2)                                        │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Ledger tables possibly already in production (OQ-01)                                                          │ Operations to confirm; affects every future schema change    │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Four live security risks unverifiable without the database (Q6)                                               │ resolve via Q6, then the security characterisation           │
+  ├───────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Wider-suite errors of unknown cause                                                                           │ resolve via G-5                                              │
+  └───────────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+└───────────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+5. Blocked activities and what unblocks them
+
+┌────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                  Blocked                                   │                                              Unblocked by                                              │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ correction design (COR-2)                                                  │ Q1 accepted, plus BD-REV-ER and D-COR-3                                                                │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ MEM-K1 (the V-2 fix)                                                       │ Q1 (either path), plus backlog creation and authorisation                                              │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ PostgreSQL verification, Slice 1b acceptance, Slice 2b, correction storage │ Q6 complete, then separate authorisation. Slice 2b also needs G-1; storage also needs the OQ-01 answer │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ security characterisation (PBDIGIT-266)                                    │ Q6 plus the ARB-SEC-01 re-check                                                                        │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ security fixes                                                             │ characterisation, then separate fix authorisation. Some also need Governance rules                     │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ wider-suite fixes                                                          │ the G-5 findings report                                                                                │
+├────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ live use and cutover                                                       │ ARB-MEM-01, D-6/R10, the cutover gates                                                                 │
+└────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+---
+
+6. Decision sheet
+
+┌─────┬────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────┬────────────────────┬───────────┬──────────┐
+│  #  │                                                Decision                                                │               Recommended option                │ Approve / Reject / │ Rationale │  Name,   │
+│     │                                                                                                        │                                                 │        Defer       │           │   date   │
+├─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┼────────────────────┼───────────┼──────────┤
+│ Q3  │ Keep the reviewer's C-1 recommendation in the official record (after privacy, placement and labelling  │ Store it officially and correct the citation    │ ☐ ☐ ☐              │           │          │
+│     │ checks)                                                                                                │                                                 │                    │           │          │
+├─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┼────────────────────┼───────────┼──────────┤
+│ Q2  │ Treat the lost 10 October outputs as unrecoverable; keep their fingerprints as history; use the 16     │ Close as recorded                               │ ☐ ☐ ☐              │           │          │
+│     │ October run for today's code                                                                           │                                                 │                    │           │          │
+├─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┼────────────────────┼───────────┼──────────┤
+│ Q1  │ Accept the C-1 correction rules with listed risks; V-2 must be fixed before correction commands or     │ Accept with conditions (alternative: defer      │ ☐ ☐ ☐              │           │          │
+│     │ storage                                                                                                │ until V-2 is fixed)                             │                    │           │          │
+├─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┼────────────────────┼───────────┼──────────┤
+│ Q6  │ Commission a dedicated, access-restricted Membership test database with proof of identity; then the    │ Approve the request, and name who sends it      │ ☐ ☐ ☐              │           │          │
+│     │ security gate is re-checked                                                                            │ (D-2)                                           │                    │           │          │
+├─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┼────────────────────┼───────────┼──────────┤
+│ G-5 │ Name one engineer for a findings-only health check of the wider Membership tests (database-free, no    │ Approve and name the engineer                   │ ☐ ☐ ☐              │           │          │
+│     │ fixes, install flag approved in advance)                                                               │                                                 │                    │           │          │
+└─────┴────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────┴────────────────────┴───────────┴──────────┘
+
+Approving any row records a decision. It does not by itself authorise any implementation work.
+Stop says: Developer Guide (Definition of Done): implementation code changed today in area(s) with NO matching developer_guide/ update: imports.
+  -> Write or update the step guide under: developer_guide/imports/
+  (area-aware; an unrelated tracks guide no longer silences this. Non-blocking; see .claude/CLAUDE.md · modified files: .claude/runtime/2026-10-16-files.log)

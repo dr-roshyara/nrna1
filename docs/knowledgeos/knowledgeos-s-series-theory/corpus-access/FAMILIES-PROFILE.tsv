@@ -1,0 +1,2458 @@
+family	scope	rows	lifecycle	completeness_present	first_birth	links_out
+200-step-longitudinal-verification-programme	METHODOLOGICAL	55	DORMANT	7		0
+KnowledgeOS	OBJECT	14	DORMANT	6	2026-08-03	0
+_UNLABELED-OBJECT-SCOPE	?	0	?	0		0
+_UNRESOLVED-OBJECTS	?	0	?	0		0
+_batch_manifest_p3a	?	0	?	0		0
+_methodological	?	0	?	0		0
+_theory-level	?	0	?	0		0
+a1-a5-estimand-typing-and-a5-primary-corrected-wording	OBJECT	1	ACTIVE	1		0
+a3x-register-contradiction-catalogue	OBJECT	30	CONTESTED	6		0
+a6-corpus-commit-rule-crossing-af-f-32	OBJECT	2	DORMANT	2		0
+a6-llm-safety-sentence-and-determination-events	OBJECT	1	DORMANT	3	1787984412	0
+a_t-attribution-renaming	OBJECT	2	ACTIVE	3		0
+abduction-explanation-vs-determination-distinction	OBJECT	3	ACTIVE	4		0
+abhava-structured-absence-model	THEORY-LEVEL	10	DORMANT	7	2026-08-22	0
+abk-1-annotated-bilattice-kernel-candidate	OBJECT	16	ACTIVE	8	1788371193	5
+absence-claim-schema	OBJECT	2	DORMANT	3		0
+absence-vs-evidence-of-absence-formalization	OBJECT	1	ACTIVE	1		0
+ac-contradiction-register	THEORY-LEVEL	1	CONTESTED	0		0
+accuracy-arguments-scoring-rules	OBJECT	1	ACTIVE	1		0
+acknowledgment-innovation-candidate-first-genuine-new-primitive	OBJECT	9	DORMANT	5		0
+acknowledgment-true-absence-finding	OBJECT	1	ACTIVE	0	2026-09-06	0
+action-disposition-model	OBJECT	2	DORMANT	4	1787958372	1
+action-disposition-rationale-refrain-defer-escalate	OBJECT	1	DORMANT	3		0
+action-formal-model	OBJECT	7	DORMANT	5		0
+action-intervention-control-risk-algebra	OBJECT	61	DORMANT	10		0
+action-metaphor-and-determination-decision-authorization-action	OBJECT	1	ACTIVE	1		0
+action-rationale-and-why-act-factfinding	OBJECT	57	ACTIVE	9		0
+actionable-information-not-knowledge	THEORY-LEVEL	1	ACTIVE	1		0
+activate-commissioned-fresh-session-ast019	OBJECT	6	DORMANT	7		0
+actor-projection-of-system-history	THEORY-LEVEL	4	DORMANT	3	1787993956	0
+actor-state-concept	OBJECT	7	DORMANT	4		0
+actor-vs-authority-distinction	OBJECT	4	DORMANT	4		0
+adaptive-inference-fabric-egaif	THEORY-LEVEL	14	DORMANT	8		0
+admissibility-law-duplicate-contradiction	OBJECT	1	CONTESTED	0		0
+admissible-as-nearest-true-root	OBJECT	1	ACTIVE	1		0
+adr-aip-01	`OBJECT`	1	DORMANT	0	2026-08-17	0
+adr-aip-03	`OBJECT`	2	DORMANT	0	2026-08-17	0
+adr-aip-04	OBJECT	27	DORMANT	8		0
+adversarial-end-to-end-simulation	OBJECT	31	DORMANT	7	1787847851	0
+adversarial-epistemology-integrity-trust-manipulation-algebra	OBJECT	157	DORMANT	11		0
+agent-architecture-conformance-model	THEORY-LEVEL	69	DORMANT	9		0
+agent-autonomy-class-model	THEORY-LEVEL	3	DORMANT	2	1787914094	0
+agent-memory-vs-knowledgeos-lens	OBJECT	22	DORMANT	6	1787524387	0
+agent-reasoning-accountability	OBJECT	2	DORMANT	2		0
+aggoun-elliott-measure-theory-filtering-lens	THEORY-LEVEL	50	DORMANT	10		0
+aggregate-boundary-criterion	METHODOLOGICAL	3	CONTESTED	3		0
+aggregate-boundary-ownership-principle	METHODOLOGICAL	1	DORMANT	1	1787996733	0
+aggregate-derivation-criteria	METHODOLOGICAL	16	DORMANT	5		0
+aggregate-derivation-program	METHODOLOGICAL	3	DORMANT	4		0
+aggregate-protects-invariant-ddd-principle	METHODOLOGICAL	1	DORMANT	1		0
+aggregate-root-guardian-model	THEORY-LEVEL	2	DORMANT	2		0
+aggregate-sizing-symmetry-trap	METHODOLOGICAL	4	DORMANT	5		0
+aggregate-support-formula	OBJECT	6	DORMANT	4	1788115143	0
+aggregation-policy-object	OBJECT	2	DORMANT	5	1787562662	0
+agm-belief-revision-postulates-candidate	`METHODOLOGICAL`	1	ACTIVE	0	1788366711	0
+ah6-candidate-set-architecture	THEORY-LEVEL	3	DORMANT	2		0
+ai-agents-epistemic-governance-chapter	OBJECT	11	DORMANT	5	1787934533	0
+ai-efficiency-kernel-hypothesis	THEORY-LEVEL	12	DORMANT	8		0
+ai-generated-content-provenance	THEORY-LEVEL	1	ACTIVE	1	1788671057	0
+ai-provenance-distinguishability-invariant	`THEORY-LEVEL`	3	DORMANT	3	1787985665	0
+aip-current-architecture-reconstruction-stage3	OBJECT	9	CONTESTED	5		0
+aip-evidence-tier-reality-class-scheme	`METHODOLOGICAL`	2	DORMANT	2	2026-08-21	0
+aip-platform	THEORY-LEVEL	11	DORMANT	4		0
+aip-registry-component-map	OBJECT	1	DORMANT	1		0
+analytical-lineage-object	OBJECT	2	DORMANT	3		0
+answer-generation-claim-level-provenance-and-unsupported-claims	THEORY-LEVEL	1	ACTIVE	2	1788671427	0
+anti-reasoner-circularity-constraint	OBJECT	3	DORMANT	2	1787950994	0
+approx-x-equivalence-relation-proof-and-32-projections-precision	OBJECT	3	DORMANT	2		0
+ar-replay-differentiator-requires-history	OBJECT	2	DORMANT	3		0
+archaeology-chapter-unresolved-register	OBJECT	2	DORMANT	2		0
+archaeology-method-three-eras-five-regimes	OBJECT	21	DORMANT	6		0
+archetype-set	OBJECT	1	DORMANT	1	2026-08-03	0
+architectural-decision-record-tuple	OBJECT	1	ACTIVE	1	1788670245	0
+architectural-failure-modes-catalog	THEORY-LEVEL	1	ACTIVE	1		0
+architectural-hypothesis-representation-plus-mechanics	THEORY-LEVEL	1	ACTIVE	1		0
+architectural-minimality-and-microservices-not-a-theorem	THEORY-LEVEL	1	ACTIVE	2		0
+architectural-underdetermination	`OBJECT`	1	DORMANT	2	2026-08-30	0
+architecture-adequacy-and-distinction-principle	`THEORY-LEVEL`	1	ACTIVE	2	1788670245	0
+architecture-assurance-graph	OBJECT	45	CONTESTED	6		0
+architecture-baseline-001	OBJECT	39	DORMANT	7		0
+architecture-claims-require-evidence-part18	THEORY-LEVEL	1	ACTIVE	1		0
+architecture-closure-theorem	`THEORY-LEVEL`	54	DORMANT	6	1787912850	0
+architecture-conformance-engineering-model	THEORY-LEVEL	68	DORMANT	7		0
+architecture-constitution-xviii-c1-c20	THEORY-LEVEL	1	ACTIVE	1		0
+architecture-drift-classification-model	THEORY-LEVEL	72	DORMANT	7		0
+architecture-drift-formalization	OBJECT	1	DORMANT	4		0
+architecture-evolution-and-revision-not-falsity	THEORY-LEVEL	1	ACTIVE	2		0
+architecture-final-principle-correct-knowledgeos	THEORY-LEVEL	1	ACTIVE	1		0
+architecture-fitness-functions-and-generic-record-antipattern	THEORY-LEVEL	1	ACTIVE	2		0
+architecture-health-dashboard	OBJECT	6	DORMANT	3		0
+architecture-lemma-and-theorems-part18	THEORY-LEVEL	1	ACTIVE	1		0
+architecture-patterns-python-technical-pattern-lens	THEORY-LEVEL	17	DORMANT	6		0
+architecture-synthesis-map-proposal	OBJECT	1	DORMANT	0	1787950980	0
+argument-field-reconciliation-proposal	OBJECT	4	ACTIVE	3		0
+argument-standing-integration-decision	OBJECT	4	ACTIVE	3		0
+artifact38-layered-model-second-irreducible-transformation-phi	THEORY-LEVEL	7	CONTESTED	5	2026-08-25	0
+assertion-confidence-probability-question	OBJECT	2	DORMANT	4	1788115143	0
+assertion-identity-hash-mutable-evidence-contradiction	OBJECT	3	CONTESTED	2		0
+assertion-identity-versioning-principle	OBJECT	2	DORMANT	2		0
+assertion-responsibility-candidate	OBJECT	4	ACTIVE	3	1788366686	0
+assertion-single-temporal-field-gap	OBJECT	1	CONTESTED	2		0
+assertion-status-object	OBJECT	1	DORMANT	2		0
+assessment-interpretability-invariant	`THEORY-LEVEL`	1	DORMANT	1	1787987178	0
+assessment-observation-evidence-recommendation-decision-non-collapse	THEORY-LEVEL	1	DORMANT	1		0
+assessor-standing-c4	OBJECT	2	DORMANT	1		0
+assumption-ledger	OBJECT	2	DORMANT	5	1787533380	1
+assumption-object	OBJECT	11	DORMANT	8		0
+assurance-claim-aggregate-boundary	OBJECT	5	DORMANT	2		0
+assurance-composition-tree	OBJECT	5	DORMANT	5		0
+assurance-concept-refutation-and-split	THEORY-LEVEL	15	CONTESTED	5		0
+assurance-event-vocabulary	OBJECT	4	DORMANT	1	2026-08-16	0
+assurance-model	OBJECT	11	DORMANT	4	2026-08-16	0
+assurance-refuted-definability	OBJECT	1	DORMANT	2		0
+ast019-repair-001-episode	`OBJECT`	29	DORMANT	5	2026-08-24	0
+atharva-veda-ddd-architecture-and-zero-study-2026-09	THEORY-LEVEL	18	ACTIVE	5	1788482934	0
+atharva-veda-purification-contamination-lens-2026-09	METHODOLOGICAL	4	ACTIVE	3	1788530378	0
+atomic-knowledge-unit-kt-observation-hypothesis	THEORY-LEVEL	19	ACTIVE	6	1788285036	0
+atomic-knowledge-unit	OBJECT	1	DORMANT	2		0
+atomic-vs-process-invariant-distinction	METHODOLOGICAL	1	DORMANT	2		0
+attribution-declared-not-attested	THEORY-LEVEL	10	CONTESTED	5		0
+audi-epistemic-grounding-model	METHODOLOGICAL	0	DORMANT	0		1
+audi-jtb-caution-and-ground-justification-non-collapse	THEORY-LEVEL	8	ACTIVE	5		0
+audit-vs-lineage-distinction	THEORY-LEVEL	2	DORMANT	2	1787996733	0
+authoritative-observational-inferred-state-layers	OBJECT	4	ACTIVE	5		0
+authority-claims-audit-zero-locatable	GOVERNANCE (node-level); the single row itself is scoped OBJECT	1	ACTIVE	2		0
+authority-exogeneity-stipulation	THEORY-LEVEL	10	DORMANT	4		0
+authority-gate-binding-question	OBJECT	2	DORMANT	5		0
+authority-identity-role-permission-program	THEORY-LEVEL	8	DORMANT	4		0
+authority-knowledge-gap	THEORY-LEVEL	4	DORMANT	4		0
+authority-overload	OBJECT	1	DORMANT	3		0
+authority-permission-vs-trust-rank-collision	OBJECT	1	DORMANT	1		0
+authority-scoped-temporal-delegation-model	THEORY-LEVEL	9	DORMANT	3	1787993896	0
+authority-temporal-validity-gap	OBJECT	8	DORMANT	6		0
+authority-trust-source-reliability-knowledge-commitment	OBJECT	44	DORMANT	8	1787839762	0
+authority-vs-authorization-conflation	OBJECT	0	DORMANT	0		1
+autoepistemic-stable-expansion-formalism	OBJECT	1	ACTIVE	1	1788367334	1
+avacchedaka-context-bounded-identity	OBJECT	2	DORMANT	4		0
+avidya-detection-mechanism	OBJECT	3	DORMANT	2		0
+b-prime-relocation-decision	CROSS-OBJECT	13	DORMANT	6		0
+basic-action-theory-structure	OBJECT	7	ACTIVE	9	1788368211	0
+basing-relation-candidate	OBJECT	5	ACTIVE	5	1788367547	2
+bc7-domain-model	OBJECT	18	DORMANT	4		0
+bc7-governed-session-orchestration	OBJECT	26	ACTIVE	6		0
+belief-revision-theory-compatibility-analysis	THEORY-LEVEL	16	CONTESTED	6		0
+belief-state-object	OBJECT	14	DORMANT	7		0
+beyond-measure-quantum-epistemology-lens	OBJECT	6	DORMANT	7		0
+bidirectional-theory-consistency-checks	METHODOLOGICAL	2	DORMANT	2		0
+birkenbihl-three-way-comparison-and-corrections	METHODOLOGICAL	1	ACTIVE	1		0
+birkenbihl-zoom-in-out-connections	METHODOLOGICAL	1	ACTIVE	1		0
+bitemporal-bitemporal-modeling	`THEORY-LEVEL`	1	DORMANT	2	1787987296	0
+book-acceptance-gn41	OBJECT	7	DORMANT	4		0
+book-acceptance-review-packet-gn37	`OBJECT`	7	DORMANT	1	2026-08-28	0
+book-architecture-amendment-ed2	OBJECT	20	DORMANT	3	2026-08-28	0
+book-correction-gn40	OBJECT	4	DORMANT	1	2026-08-28	0
+book-edition-2-actual-production	THEORY-LEVEL	12	DORMANT	4		0
+book-edition-2-commissioning-plan	THEORY-LEVEL	18	DORMANT	6		0
+book-editorial-blocker-register-b01-b10	OBJECT	6	CONTESTED	0		0
+book-evidence-reading-contract	`OBJECT`	9	DORMANT	3	1787934584	0
+book-extraction-register-no-kernel-origin-finding	`METHODOLOGICAL`	2	DORMANT	2	2026-08-26	0
+book-extraction-register	METHODOLOGICAL	11	CONTESTED	5		0
+book-extraction-session-handover-protocol	METHODOLOGICAL	4	DORMANT	4	1787574390	0
+book-full-depth-assessment-audit	THEORY-LEVEL	8	DORMANT	3		0
+book-independent-review-gn38	`OBJECT`	10	CONTESTED	1	2026-08-28	0
+book-provenance-index	OBJECT	2	DORMANT	1	2026-08-28	0
+book-readiness-audit-part-iv-entry-contract	OBJECT	3	DORMANT	1	2026-08-30	0
+book-session-bounded-continuation-mandate	OBJECT	3	DORMANT	1		0
+book-session-verify-session-separation	METHODOLOGICAL	4	DORMANT	3	1787993206	0
+book-structure-crosswalk-six-part-proposal	OBJECT	3	DORMANT	4	2026-08-31	0
+book-theory-synchronization-gate	`OBJECT`	26	CONTESTED	8	2026-08-30	0
+boring-kernel-purpose-vs-extent-dissolution	OBJECT	1	DORMANT	4	1787950296	1
+boundary-vs-trigger-distinction	THEORY-LEVEL	3	DORMANT	2		0
+bounded-context-data-ownership-and-api-boundaries	CROSS-OBJECT	1	ACTIVE	1		0
+bounded-context-derivation-program	`METHODOLOGICAL`	12	DORMANT	9	1787996733	0
+bounded-context-map	THEORY-LEVEL	13	DORMANT	5		0
+bounded-context-translation-semantic-mapping-interoperability-algebra	OBJECT	72	CONTESTED	9		0
+bounded-context	OBJECT	8	DORMANT	6		0
+bounded-nonomniscient-reasoning-candidate	CROSS-OBJECT	5	ACTIVE	4	1788367900	0
+brachman-levesque-knowledge-representation-lens	`THEORY-LEVEL`	13	DORMANT	7	1787674050	0
+brainstorming-corpus-eras	METHODOLOGICAL	8	DORMANT	4	2026-08-28	0
+brainstorming-phase-closure-recommendation	METHODOLOGICAL	7	DORMANT	4		0
+brandom-making-it-explicit-inferentialist-lens	THEORY-LEVEL	25	DORMANT	8		0
+business-translator-capability	OBJECT	4	DORMANT	5		0
+c-15-retraction-knowledge-space-projection-hypothesis	OBJECT	16	DORMANT	7	1787671133	0
+c10-d5-establishment-criteria	OBJECT	6	DORMANT	6		0
+c10-e2-receipt-completeness-model	OBJECT	17	DORMANT	8		0
+c10-establishment-criteria	OBJECT	6	DORMANT	5		0
+calibration-separate-gated-executable	METHODOLOGICAL	1	ACTIVE	0		0
+calvino-multiple-perspectives-lens	METHODOLOGICAL	1	ACTIVE	1	1788759908	0
+candidate-aggregate-boundaries-lifecycle	`OBJECT`	14	DORMANT	7	1787985044	0
+candidate-algebraic-properties-and-multi-system-matrix	OBJECT	1	ACTIVE	1		0
+candidate-architectural-flow-pipeline	THEORY-LEVEL	1	ACTIVE	1		0
+candidate-artifact-lifecycle-agent-edge	OBJECT	5	DORMANT	5	1787959050	0
+candidate-bounded-context-ownership-model	OBJECT	2	DORMANT	3	1787994645	0
+candidate-communication-algebra-operations	OBJECT	1	ACTIVE	0	1788760187	0
+candidate-evidence-algebra-comparison	OBJECT	18	DORMANT	6		0
+candidate-interaction-algebra-courtship	OBJECT	1	ACTIVE	1		0
+candidate-multiplicity-selection-validation-model	THEORY-LEVEL	51	ACTIVE	6		0
+candidate-theory-specification-20-components	METHODOLOGICAL	1	DORMANT	1	1787993206	0
+candidate-theory-status-vocabulary	METHODOLOGICAL	1	DORMANT	2		0
+candidate-two-axis-conflation	OBJECT	1	DORMANT	2		0
+candidate-zero-space-concept	OBJECT	1	ACTIVE	1		0
+canon-illegal-vs-is-transformation-semantics-gap	OBJECT	1	DORMANT	1		0
+canonical-architecture-v0.2	THEORY-LEVEL	3	DORMANT	4		0
+canonical-construct-registry-25-item-lane-audit	OBJECT	2	DORMANT	3		0
+canonical-construction-decision-register-d0-d4-d5	OBJECT	39	CONTESTED	8		0
+canonical-dependency-graph-29node-five-closures-second-order	OBJECT	6	DORMANT	4	2026-08-30	0
+canonical-k-derived-DtARSigmaEL-band-invariant	OBJECT	18	DORMANT	5		0
+canonical-k-six-model-space-A-F	OBJECT	4	DORMANT	2		0
+canonical-knowledge-state-model-K-AR	THEORY-LEVEL	66	CONTESTED	9		0
+canonical-policy-model	THEORY-LEVEL	78	CONTESTED	9	2026-08-30	0
+canonical-theory-baseline-classification	METHODOLOGICAL	10	DORMANT	3	2026-08-30	0
+canonical-theory-triangulation-table	THEORY-LEVEL	32	CONTESTED	6		0
+canonical-transformation-model-T	THEORY-LEVEL	26	CONTESTED	8		0
+canonical-ubiquitous-language-glossary	THEORY-LEVEL	7	DORMANT	4		0
+canonical-vocabulary-freeze-v0-1	`THEORY-LEVEL`	27	CONTESTED	6	1787994552	0
+canonical-vs-derived-data-and-source-artifacts	OBJECT	1	ACTIVE	1		0
+capability-c10-knowledge-distribution	OBJECT	55	DORMANT	9		0
+capability-c14-policy-enforcement	OBJECT	14	CONTESTED	6		0
+capability-c19-communication-composition	OBJECT	7	DORMANT	5	2026-08-18	0
+capability-c5-separation-attestation	OBJECT	24	DORMANT	7		0
+capability-decomposition-representation-relative	THEORY-LEVEL	1	ACTIVE	1		0
+capability-existence-vs-category-distinction	METHODOLOGICAL	4	DORMANT	3		0
+capability-first-principle	METHODOLOGICAL	1	DORMANT	1		0
+capability-identity-invariant	THEORY-LEVEL	1	DORMANT	1		0
+capability-map-v2	OBJECT	1	DORMANT	1	2026-08-17	2
+capability-vs-environment-responsibility-cybernetics	METHODOLOGICAL	1	ACTIVE	0		0
+capability	OBJECT	42	CONTESTED	9		0
+carrier-options-v1-2026-09	`METHODOLOGICAL`	15	ACTIVE	4	2026-09-07	0
+catuskoti-multivalued-epistemic-logic-lens	THEORY-LEVEL	10	DORMANT	8	1787583395	0
+causal-cascade-mediation-model	OBJECT	7	DORMANT	7		0
+causal-claim-immutable-versioning	OBJECT	4	DORMANT	5		0
+causal-counterfactual-rootcause-algebra	OBJECT	47	DORMANT	9	1787903047	0
+causal-dependency-counterfactual-reasoning	OBJECT	36	DORMANT	8		0
+causal-identification-gate	OBJECT	9	DORMANT	8	1787533380	2
+causal-reasoning-assurance-layer	`OBJECT`	125	DORMANT	11	1787534795	0
+causality-vs-correlation-program	THEORY-LEVEL	7	DORMANT	5		0
+causation-vs-correlation-event-identity	OBJECT	4	DORMANT	3	1787996645	0
+cavell-acknowledgment-lens	OBJECT	14	DORMANT	7	1787525667	0
+census-method-defect-pattern	THEORY-LEVEL	16	DORMANT	3		0
+chain-of-thought-boundary	THEORY-LEVEL	1	ACTIVE	1		0
+chakra-manifestation-pipeline	THEORY-LEVEL	12	DORMANT	7		0
+challenge-distinct-category-and-actionable-vs-epistemic-closure	OBJECT	1	ACTIVE	2		0
+chalmers-conceptual-distinction-lens	THEORY-LEVEL	32	DORMANT	8		0
+chalmers-research-extraction-protocol-rerun	THEORY-LEVEL	9	CONTESTED	5		0
+champion-challenger-model-promotion-lifecycle	OBJECT	4	DORMANT	4		0
+channel-relation-independence-concept	OBJECT	0	DORMANT	0		0
+charioteer-lord-collision-oq7	OBJECT	9	DORMANT	6		0
+checkpoint-0080-0094-repair-audit-protocol	METHODOLOGICAL	7	ACTIVE	1		0
+checkpoint-plan-complete-status-snapshot	THEORY-LEVEL	8	DORMANT	4	2026-08-29	0
+chinese-philosophical-lens-family	METHODOLOGICAL	8	DORMANT	5		0
+chinese-tarka-audi-kernel-falsification-lens	`OBJECT`	13	DORMANT	5	1787523068	0
+circular-reasoning-and-dependency-closure	THEORY-LEVEL	1	ACTIVE	2		0
+citation-count-not-validation-correction	METHODOLOGICAL	1	DORMANT	2		0
+claim-maturity-ladder	`OBJECT`	2	DORMANT	3	1787533380	0
+claim-provenance-chain	OBJECT	4	DORMANT	1		0
+claim-type-evidence-sufficiency	THEORY-LEVEL	6	DORMANT	3		0
+claim-undefined-term	OBJECT	2	DORMANT	2		0
+clarification-operation	OBJECT	4	DORMANT	5	1787775312	0
+closed-gate-input-set-constraint	CROSS-OBJECT	2	DORMANT	0	2026-08-16	0
+closed-vs-open-world-assumption-kos	OBJECT	1	DORMANT	2		0
+cognitive-worlds-provenance-bundles	OBJECT	2	DORMANT	1		0
+coherence-formalization	OBJECT	11	DORMANT	5	2026-08-26	0
+coherence-proof-program	THEORY-LEVEL	1	DORMANT	1		0
+coherence-test-25-counterexamples	THEORY-LEVEL	13	DORMANT	5		0
+collective-choice-aggregation-model	THEORY-LEVEL	84	DORMANT	9		0
+command-execution-outcome-distinction	`THEORY-LEVEL`	6	DORMANT	3	1787994056	0
+commentary-lineage-knowledge-evolution	METHODOLOGICAL	4	DORMANT	1		0
+communication-as-evidence-generation-hypothesis	THEORY-LEVEL	1	ACTIVE	0		0
+commutativity-vs-independence-conflation-corrected	METHODOLOGICAL	1	ACTIVE	1	1788760187	0
+comparative-confidence-ordering	OBJECT	1	ACTIVE	2		0
+comparative-lens-landscape-table	METHODOLOGICAL	1	ACTIVE	2		0
+comparison-challenge-operations	OBJECT	6	DORMANT	7		0
+compensation-not-erasure-invariant	THEORY-LEVEL	2	DORMANT	2		0
+complete-operational-state-xt	`OBJECT`	3	DORMANT	4	1787776253	0
+complete-system-state-formalization	THEORY-LEVEL	8	DORMANT	4		0
+complex-number-knowledge-state-model	OBJECT	18	DORMANT	6		0
+complexity-scalability-economics-model	`THEORY-LEVEL`	78	DORMANT	8	1787912402	0
+composition-root-di-principle	METHODOLOGICAL	6	CONTESTED	4		0
+composition-workflow-program	THEORY-LEVEL	1	DORMANT	1		0
+compositional-correctness-and-proof-boundaries	OBJECT	34	DORMANT	8	1787906462	0
+computability-audit-step266	THEORY-LEVEL	23	CONTESTED	6	1788112490	0
+computability-decidability-limits-model	THEORY-LEVEL	78	DORMANT	9		0
+computability-verification-plan	METHODOLOGICAL	4	DORMANT	4	1788012309	0
+computational-realizability-principle	`THEORY-LEVEL`	19	DORMANT	9	1787815266	0
+concept-burden-of-proof	METHODOLOGICAL	1	DORMANT	0		0
+concept-drift-taxonomy	OBJECT	14	DORMANT	6	1787906243	0
+concrete-software-test-cases-for-protocol	`OBJECT`	1	ACTIVE	2	1788760328	0
+concurrency-idempotency-ordering-part19	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+concurrency-idempotency-replay-model	OBJECT	93	DORMANT	10		0
+concurrency-interleaving-calculus	OBJECT	13	DORMANT	7	1787910004	1
+conditional-evidence-combination-landscape	THEORY-LEVEL	20	DORMANT	9		0
+confidence-requires-interpretation-principle	THEORY-LEVEL	2	DORMANT	2		0
+confirmation-measures-five	OBJECT	1	ACTIVE	3		0
+confirmation-theory-adequacy-conditions	OBJECT	2	ACTIVE	3	2026-09-01	0
+conflict-and-relation-persistence	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+conflict-formalization	OBJECT	12	DORMANT	8		0
+conflict-record-kernel-member	OBJECT	0	DORMANT	0		1
+conflict-taxonomy-vs-contradiction	THEORY-LEVEL	10	DORMANT	7	2026-08-26	0
+conformance-classes-c1-c4	OBJECT	2	DORMANT	5		0
+conformance-pass-3c-boundary-vs-formal	OBJECT	46	DORMANT	6		0
+congruence-necessary-not-sufficient-invariant-expressibility-gap	OBJECT	12	DORMANT	3	2026-08-30	0
+congruence-unconstructed-not-undecidable	THEORY-LEVEL	1	DORMANT	3		0
+conservation-function-principle	THEORY-LEVEL	8	DORMANT	4	1787993956	0
+consistency-boundary-taxonomy	THEORY-LEVEL	3	DORMANT	2		0
+consistency-operator-vs-contradiction-distinction	CROSS-OBJECT	4	ACTIVE	5		0
+constitution-status-contradiction-three-records	OBJECT	5	CONTESTED	3	2026-08-31	0
+constitutional-dsl-and-intent-vocabulary	OBJECT	6	DORMANT	6		0
+constitutional-invariant-map-v1	OBJECT	5	DORMANT	3	1787354587	3
+constitutional-kernel-narrow-scope	THEORY-LEVEL	6	DORMANT	4		0
+constitutional-turn-book-chapter	OBJECT	8	DORMANT	3	2026-08-22	0
+constraint-satisfaction-and-optimization-reasoning	THEORY-LEVEL	1	ACTIVE	2		0
+construction-evidence-validation-role-separation	OBJECT	1	DORMANT	2	1787952688	0
+containment-zero-neutralization-without-erasure-2026-09	OBJECT	17	ACTIVE	5	1788486426	0
+contested-as-process-not-status	OBJECT	1	DORMANT	2		0
+context-as-first-class-concern	THEORY-LEVEL	2	DORMANT	4		0
+context-contract-algebra-step207-208	THEORY-LEVEL	25	CONTESTED	9		0
+context-contract-algebra	OBJECT	18	DORMANT	6		0
+context-dependent-semantic-significance	THEORY-LEVEL	4	DORMANT	3		0
+context-dimension-cross-and-intra-document-instability	OBJECT	3	ACTIVE	3		0
+context-map-v2	OBJECT	3	DORMANT	3		0
+context-tuple	OBJECT	0	DORMANT	0		1
+context-untyped-gap	OBJECT	1	DORMANT	2		0
+contr-blocks-delta-adoption-finding	CROSS-OBJECT	3	ACTIVE	3		0
+contract-and-version-persistence	OBJECT	1	ACTIVE	1		0
+contractual-validity-vs-real-outcome-distinction	THEORY-LEVEL	1	DORMANT	2	1787985665	0
+contradiction-registry-17-entries-classified	OBJECT	2	DORMANT	1		0
+convergence-not-equal-determination	THEORY-LEVEL	1	ACTIVE	1		0
+convergence-theorem-four-conditions-critique	METHODOLOGICAL	1	ACTIVE	1		0
+convergence-theorem-proposed-and-rejected	OBJECT	1	ACTIVE	1		0
+core-supporting-lens-classification	METHODOLOGICAL	1	DORMANT	1		0
+corpus-artifact-status-pipeline	METHODOLOGICAL	3	DORMANT	3	1787667320	0
+corpus-circularity-post-step-258-contamination	OBJECT	3	DORMANT	2		0
+corpus-four-equality-relations-step246	OBJECT	29	DORMANT	8	2026-08-28	0
+corpus-inventory-current-report	CROSS-OBJECT	6	DORMANT	2	2026-08-30	1
+corpus-richer-than-model-recurring-pattern	THEORY-LEVEL	4	DORMANT	3		0
+corpus-search-rule-multiplicity-not-gap-methodology-2026-09	METHODOLOGICAL	5	ACTIVE	3		0
+correction-vs-change-distinction	OBJECT	1	DORMANT	1		0
+correspondence-not-implies-type-not-implies-primitive-promotion-chain	METHODOLOGICAL	2	DORMANT	1	2026-08-31	0
+correspondence-not-type-not-primitive-promotion-rule	METHODOLOGICAL	11	ACTIVE	3		0
+cost-optimization-governance-assurance-proposal	OBJECT	4	DORMANT	5		0
+courtship-reciprocal-feedback-loop	`OBJECT`	1	ACTIVE	1	1788760328	0
+cover-thomas-sufficiency-distortion-formalization	THEORY-LEVEL	13	ACTIVE	5		0
+cr1-contr-explosion-falsified	THEORY-LEVEL	1	ACTIVE	0		0
+cr2-ordering-falsified-fr001-withdrawn	OBJECT	1	ACTIVE	0		0
+cr3-delta-reclassified-derivation	OBJECT	1	ACTIVE	1	2026-09-06	0
+cr4-equiv-sem-falsified-editorial	OBJECT	2	ACTIVE	1	2026-09-06	0
+cr5-qualify-survives-narrower	`OBJECT`	1	ACTIVE	2	2026-09-06	0
+critical-path-ordering-a-through-h	GOVERNANCE	1	ACTIVE	1		0
+critical-thinking-epistemic-state-extraction	THEORY-LEVEL	11	DORMANT	6		0
+critical-thinking-inquiry-lens	OBJECT	37	DORMANT	7	1787523005	0
+cross-aggregate-and-cross-context-consistency-part18	CROSS-OBJECT	1	ACTIVE	1	1788670245	0
+cross-context-consistency-contradiction-reconciliation-authority-algebra	OBJECT	67	DORMANT	9		0
+cross-contextual-validation-single-proposal-multi-field	OBJECT	6	ACTIVE	5		0
+cross-lane-predicate-convergence-exposes-gap	THEORY-LEVEL	1	ACTIVE	2	2026-09-02	0
+cross-validation-matrix-multi-proposal-multi-field	OBJECT	7	ACTIVE	5		0
+cue-vs-signal-ddd-distinction	OBJECT	1	ACTIVE	1		0
+cybernetic-epistemic-lexicon-mapping	METHODOLOGICAL	1	ACTIVE	1		0
+cybernetic-error-not-equal-zero	THEORY-LEVEL	1	ACTIVE	2	1788759986	0
+cybernetics-as-kernel-discovery-lens-not-axiom-source	METHODOLOGICAL	1	ACTIVE	1		0
+cybernetics-as-one-of-seven-discovery-lenses-with-trap	METHODOLOGICAL	1	ACTIVE	1		0
+d-t-recognised-dimension-set-gap	OBJECT	2	DORMANT	3	2026-08-30	0
+d0-contradiction-invisible-to-zero-readings	OBJECT	8	ACTIVE	4	2026-09-02	0
+d1a-d1b-d1c-replacement-for-d1	OBJECT	1	ACTIVE	0		0
+d285-4-transformation-taxonomy-executed	OBJECT	5	DORMANT	3		0
+d285-5-narrowed-to-quotient-relative-claim	OBJECT	10	DORMANT	5		0
+d285-5-non-injectivity-weakened-to-quotient-modulo-claim	OBJECT	5	DORMANT	1		0
+d285-5-quotient-scoped-non-injectivity-property	OBJECT	4	DORMANT	5		0
+d285-frozen-seven-stage-typing-protocol	METHODOLOGICAL	3	DORMANT	2		0
+d285-hypothesis-queue-h1-h5	OBJECT	2	DORMANT	0		0
+d285-kernel-candidate-matrix-k1-k7	OBJECT	7	DORMANT	4		0
+d285x-seven-part-test-template	METHODOLOGICAL	5	DORMANT	2		0
+d288-decision-procedure-closure-mandate	METHODOLOGICAL	22	ACTIVE	8	1788198776	0
+d288-scope-not-executed-three-of-four-normative	METHODOLOGICAL	4	DORMANT	2	2026-08-31	0
+dangerous-ai-collapse-chain	THEORY-LEVEL	1	DORMANT	2		0
+database-is-not-knowledge-state	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+davidson-interpretation-not-admission-lens	THEORY-LEVEL	21	DORMANT	9	1787525893	0
+davidson-radical-interpretation-holism-and-kernel-minimality-experiment	THEORY-LEVEL	17	ACTIVE	6		0
+davidson-truth-interpretation-epistemic-accountability-lens	THEORY-LEVEL	21	DORMANT	9		0
+ddd-falsification-scenario-program	METHODOLOGICAL	3	DORMANT	4		0
+ddd-ubiquitous-language-and-bc-translation-contract	THEORY-LEVEL	1	ACTIVE	1		0
+de-dicto-de-re-distinction	OBJECT	1	ACTIVE	3		0
+debate-intent-vada-jalpa-vitanda	OBJECT	5	DORMANT	4		0
+deception-honesty-and-signal-not-truth	`THEORY-LEVEL`	1	ACTIVE	2	1788760187	0
+decision-as-distinct-aggregate	OBJECT	3	DORMANT	1		0
+decision-authority	`OBJECT`	20	DORMANT	6	1787394725	0
+decision-authorization-action-triple	OBJECT	24	DORMANT	8		0
+decision-basis-object	OBJECT	5	DORMANT	3	1787994747	0
+decision-certainty-vs-epistemic-certainty	`THEORY-LEVEL`	4	DORMANT	3	1787994149	0
+decision-contract-admissibility-model	OBJECT	10	DORMANT	6		0
+decision-contract-admissibility	`OBJECT`	11	CONTESTED	7	1787953869	0
+decision-distinguishable-from-proposition-invariant	THEORY-LEVEL	1	DORMANT	1		0
+decision-docket	OBJECT	2	DORMANT	0	2026-08-03	0
+decision-experiment-object	OBJECT	4	DORMANT	3		0
+decision-model	OBJECT	54	CONTESTED	9	2026-06-25	0
+decision-not-belief-action-not-determination-courtship	THEORY-LEVEL	1	ACTIVE	2		0
+decision-power-model-lens	OBJECT	36	DORMANT	7		0
+decision-procedure-seven-level-completeness-test	METHODOLOGICAL	2	DORMANT	1		0
+decision-readiness-stop-condition-model	OBJECT	18	DORMANT	7	1787763396	0
+decision-reproducibility-and-hindsight-safeguard	OBJECT	17	DORMANT	7	1787906243	0
+decision-state-presentation-projection-model	OBJECT	21	DORMANT	8		0
+decision-sufficiency-boundary	OBJECT	3	DORMANT	7	1787763396	0
+decision-theory-action-selection-sarathi	OBJECT	45	DORMANT	8	1787839012	0
+decision-theory-eu-variants	OBJECT	1	ACTIVE	3		0
+decision-theory-value-of-information-algebra	OBJECT	43	DORMANT	10		0
+decision-validity-vector-three-dimensional	THEORY-LEVEL	3	DORMANT	4		0
+decision4-composition-vs-phenotype-decomposition	OBJECT	1	ACTIVE	1		0
+dedup-removed-out-of-kernel-scope	`OBJECT`	1	ACTIVE	0	2026-09-06	0
+deeper-algebraic-operations-to-test	THEORY-LEVEL	1	ACTIVE	0		0
+deepseek-cross-system-kernel-candidates	OBJECT	4	DORMANT	2	1787349230	0
+deepseek-tractatus-review-claim-status-lens	THEORY-LEVEL	19	DORMANT	6		0
+defeasible-inductive-abductive-reasoning	THEORY-LEVEL	1	ACTIVE	2		0
+deferred-architecture-register-mechanism	OBJECT	2	DORMANT	2		0
+defined-not-canonically-consolidated-reconciliation-programme	THEORY-LEVEL	10	ACTIVE	4		0
+del-review-and-correction-against-separation-rule	THEORY-LEVEL	11	CONTESTED	5		0
+del-theory-compatibility-analysis	THEORY-LEVEL	9	CONTESTED	4		0
+delta-categories-d1-d5	OBJECT	1	DORMANT	2	1787958733	0
+delta-commit-semantics-gap	OBJECT	1	CONTESTED	2		0
+dempster-shafer-theory	OBJECT	1	ACTIVE	3	2026-09-01	0
+deontic-governance-candidate	METHODOLOGICAL	1	ACTIVE	0		0
+dependency-artifacts-used	OBJECT	1	ACTIVE	1	2026-09-06	0
+dependent-type-knowledge-kernel	OBJECT	1	DORMANT	3	2026-08-22	0
+derivability-status-dimension	OBJECT	4	ACTIVE	5		0
+derived-knowledge-provenance-tuple	OBJECT	1	ACTIVE	3		0
+description-logic-handbook-extraction	METHODOLOGICAL	7	ACTIVE	6	1788365276	0
+description-logic-subsumption-classification-candidate	OBJECT	2	ACTIVE	4	1788364577	0
+descriptive-normative-distinction	THEORY-LEVEL	4	DORMANT	4	1787994552	0
+descriptive-normative-layer-distinction	THEORY-LEVEL	2	ACTIVE	3		0
+design-property-not-empirical-result-rule	METHODOLOGICAL	1	ACTIVE	2		0
+det-r-evalreq-sat-family-birth-census	OBJECT	61	ACTIVE	7	2026-09-10	0
+determination-as-mathematical-object	THEORY-LEVEL	71	CONTESTED	11		0
+determination-band-transition-loss-ds1-ds2	`OBJECT`	8	DORMANT	2	2026-08-30	0
+determination-lineage-invariant	THEORY-LEVEL	11	DORMANT	8		0
+determination-system-relativity-principle	THEORY-LEVEL	2	ACTIVE	4		0
+determination-tuple-with-lineage	OBJECT	5	DORMANT	3		0
+determine-ancestor-not-collider-audit	METHODOLOGICAL	1	ACTIVE	1		0
+deterministic-assurance-track2-program	OBJECT	6	CONTESTED	3		0
+deterministic-assurance-track2	OBJECT	14	DORMANT	8		0
+dhatu-extraction-pipeline-research-design	`OBJECT`	10	DORMANT	7	1787577774	0
+digitalization-robot-concept	OBJECT	8	CONTESTED	6		0
+dimension-discovery-capability	OBJECT	18	ACTIVE	8		0
+dimension-discovery-uncertainty	THEORY-LEVEL	94	DORMANT	10		0
+dimension-independence-invariant	THEORY-LEVEL	30	DORMANT	7	2026-08-21	0
+dimension-purity-principle	THEORY-LEVEL	10	DORMANT	7		0
+dimension-semantic-axis-model	OBJECT	21	DORMANT	8	2026-08-26	0
+discovery-derivability-kernel-membership-separation	METHODOLOGICAL	1	ACTIVE	1	1788760094	0
+discovery-derivation-architecture-ratification-implementation-stage-separation-principle	METHODOLOGICAL	1	DORMANT	1	2026-08-31	0
+discrepancy-resolved-as-design-difference	METHODOLOGICAL	1	ACTIVE	1		0
+distance-formalization	OBJECT	22	DORMANT	9	2026-08-26	0
+distinct-noninterchangeable-communication-states	`OBJECT`	1	ACTIVE	1	1788760328	0
+distinction-preservation-formalism	OBJECT	3	ACTIVE	5		0
+distributed-epistemic-consistency-causal-ordering-algebra	OBJECT	46	DORMANT	10		0
+distributed-epistemic-process-candidate	OBJECT	4	ACTIVE	5	1788367547	0
+distributed-knowledge-graph-and-five-tracks	OBJECT	1	ACTIVE	1		0
+distributed-knowledge-merge-convergence-algebra	`OBJECT`	45	DORMANT	10	1787902813	0
+distributed-vs-epistemic-consistency-part18	THEORY-LEVEL	1	ACTIVE	1	1788670245	0
+distribution-fourier-mathematical-lens-for-knowledgeos	THEORY-LEVEL	9	DORMANT	8	1787950522	0
+dl-complexity-results-table	OBJECT	1	ACTIVE	1		0
+dl-concrete-domains-and-epistemic-operators	OBJECT	1	ACTIVE	2		0
+dl-default-reasoning-rule	OBJECT	1	ACTIVE	2	1788365276	0
+dl-non-standard-inferences-lcs-msc-matching-unification	OBJECT	2	ACTIVE	3	1788365276	0
+dl-role-constructors-undecidability	OBJECT	1	ACTIVE	2	1788365276	0
+dl-tableau-algorithm-clash-detection	OBJECT	1	ACTIVE	2		0
+domain-event-taxonomy-and-acl-part18	THEORY-LEVEL	1	ACTIVE	1		0
+domain-events-bc7	`OBJECT`	1	DORMANT	1	2026-08-17	0
+domain-services-rule-policy-repository-part18	THEORY-LEVEL	1	ACTIVE	2	1788670245	0
+domain-vs-database-model-and-verification-levels-part18	THEORY-LEVEL	1	ACTIVE	1	1788670245	0
+dp-n-capability-anchor	OBJECT	1	DORMANT	0	2026-08-03	0
+dretske-channel-information-knowledge-formalization	THEORY-LEVEL	9	ACTIVE	5	1788286806	0
+dretske-discriminate-semantic-selection-phi-decomposition	`THEORY-LEVEL`	11	ACTIVE	4	1788289612	0
+dretske-information-flow-knowledge-lens	THEORY-LEVEL	11	DORMANT	6		0
+drift-detection-capability	OBJECT	20	DORMANT	4		0
+dutch-book-argument	OBJECT	1	ACTIVE	3	2026-09-01	0
+dynamic-causal-system-model	OBJECT	9	DORMANT	8	1787906203	0
+e-v-omega-symbol-overload	THEORY-LEVEL	7	CONTESTED	5	2026-08-28	0
+e1-e7-equality-investigation-full-deliverable	OBJECT	6	DORMANT	3	2026-08-31	1
+e20-calibration-reclassification-not-applicable	OBJECT	4	DORMANT	2		0
+ec-req-eval-sat-det-derivation-chain-2026-09-10	THEORY-LEVEL	20	ACTIVE	4	1789040225	0
+economics-resource-constraints-optimization-model	THEORY-LEVEL	86	DORMANT	8		0
+effect-floor-a5-vs-delta-loss-split	OBJECT	1	ACTIVE	1		0
+effective-hypothesis-complexity-neff	`THEORY-LEVEL`	48	ACTIVE	7	1788350085	0
+eight-foundational-theorems-t1-t8	`OBJECT`	1	DORMANT	0	2026-08-31	0
+eight-load-bearing-open-questions	`THEORY-LEVEL`	3	ACTIVE	1	1788758289	0
+eight-separate-closure-senses-verdict	THEORY-LEVEL	2	DORMANT	3		0
+ekp-bridge-instantiation	CROSS-OBJECT	7	DORMANT	7	1788115577	0
+ekp-eks-01-knowledge-distribution-failure	OBJECT	1	DORMANT	2		0
+ekp-eks-02-policy-enforcement-gap	OBJECT	2	DORMANT	2		0
+ekp-eks-03-evidence-chain-path-coupling	OBJECT	3	DORMANT	4		0
+ekp-vocabulary-governance-gap	CROSS-OBJECT	2	DORMANT	4		0
+eks-08-invariant-family	`THEORY-LEVEL`	7	DORMANT	5	2026-08-22	0
+eks-48-sat-semantic-closure-construction-governance	METHODOLOGICAL	9	ACTIVE	2		0
+eks-current-architecture-baseline	OBJECT	16	CONTESTED	7	1787337186	0
+eks-kernel-extraction-mapping	METHODOLOGICAL	8	DORMANT	5		0
+eks-root-era-double-ancestry	METHODOLOGICAL	10	DORMANT	4	2026-08-28	2
+eleven-experiments-cross-synthesis	METHODOLOGICAL	15	ACTIVE	5		0
+emergent-eliminability-indispensability-natural-laboratory	OBJECT	1	ACTIVE	0	1788760415	0
+emotions-concentration-as-epistemic-states	OBJECT	3	ACTIVE	3	1788344625	0
+empirical-bridge-theory-implementation-correspondence	THEORY-LEVEL	19	DORMANT	6	1788112740	0
+empirical-kernel-test-report	CROSS-OBJECT	13	CONTESTED	3	2026-08-30	0
+engineering-with-knowledgeos-chapter	OBJECT	9	DORMANT	3	1787934533	0
+entities-vs-value-objects-candidates-part18	OBJECT	1	ACTIVE	0		0
+ep01-eks-pks-aip-landscape-study	OBJECT	6	DORMANT	3		0
+epistemic-acceptance-commitment	`OBJECT`	32	DORMANT	7	1787836760	0
+epistemic-accessibility-candidate-relation	OBJECT	2	ACTIVE	4		0
+epistemic-agent-knower-invariant	OBJECT	12	DORMANT	4		0
+epistemic-algebra-type-closure-composition-algebra	THEORY-LEVEL	64	DORMANT	10		0
+epistemic-anchor-redundancy-model	OBJECT	9	DORMANT	6	1787906443	0
+epistemic-architecture-invariant-catalog-17	`THEORY-LEVEL`	5	DORMANT	6	1787958733	0
+epistemic-avidya-detection	OBJECT	3	DORMANT	2	1787389730	0
+epistemic-bounded-context-map-v1	OBJECT	6	DORMANT	5	2026-08-24	0
+epistemic-calibration-meta-validation-knowledge-system-health-algebra	OBJECT	79	DORMANT	9	1787905584	0
+epistemic-calibration-reality-alignment-validation-algebra	`OBJECT`	61	DORMANT	9	1787905209	0
+epistemic-claim-classification-six-categories	METHODOLOGICAL	1	ACTIVE	1	1788285036	0
+epistemic-closure-event-orgasm-metaphor	OBJECT	4	ACTIVE	6		0
+epistemic-closure-event	OBJECT	32	ACTIVE	6	1788344609	0
+epistemic-conflict-belief-revision-reconciliation-algebra	OBJECT	58	DORMANT	10		0
+epistemic-contract-EC-and-eta-totality	OBJECT	18	CONTESTED	8		0
+epistemic-contract-derivation-algebra	OBJECT	40	DORMANT	8		0
+epistemic-control-eighth-pillar-hypothesis	THEORY-LEVEL	6	DORMANT	7		0
+epistemic-control-system-lens	OBJECT	6	DORMANT	4		0
+epistemic-decision-execution-lag-metrics	THEORY-LEVEL	1	DORMANT	1		0
+epistemic-entropy-volatility-metrics	OBJECT	2	DORMANT	3		0
+epistemic-exploration-safety-policy	OBJECT	3	DORMANT	5	1787906443	0
+epistemic-field-vs-kernel-distinction	THEORY-LEVEL	20	ACTIVE	6	1788346483	0
+epistemic-governance-operational-triad	THEORY-LEVEL	10	DORMANT	5		0
+epistemic-grading-system-final-rule	OBJECT	22	DORMANT	8		0
+epistemic-hypergraph-model	OBJECT	3	DORMANT	4		0
+epistemic-intermediate-representation	OBJECT	0	DORMANT	0		1
+epistemic-iteration-non-closure	THEORY-LEVEL	4	ACTIVE	5		0
+epistemic-kernel-target-diagram	OBJECT	2	DORMANT	5		0
+epistemic-lineage-concept	`OBJECT`	1	DORMANT	0	1787775312	0
+epistemic-lineage-monotonic-invariant	THEORY-LEVEL	3	DORMANT	3		0
+epistemic-lineage-object	OBJECT	4	DORMANT	5	1787562662	0
+epistemic-lineage-provenance-candidate	OBJECT	3	ACTIVE	3		0
+epistemic-logic-formalization	OBJECT	8	DORMANT	4		0
+epistemic-non-transparency-principle	THEORY-LEVEL	8	ACTIVE	5		0
+epistemic-operating-system-research	OBJECT	23	DORMANT	7		0
+epistemic-plurality-multi-agent-field	OBJECT	8	ACTIVE	5		0
+epistemic-precision-concept	OBJECT	2	DORMANT	3	1787567335	0
+epistemic-probability-space-knowledge-2026-09	THEORY-LEVEL	6	ACTIVE	4		0
+epistemic-process-reliability-candidate	OBJECT	6	ACTIVE	5	1788367547	0
+epistemic-purification-operator-algebra	`OBJECT`, `THEORY-LEVEL`	40	ACTIVE	12	2026-08-31	0
+epistemic-qualification-conditions	THEORY-LEVEL	13	DORMANT	6		0
+epistemic-readiness-principle	OBJECT	10	DORMANT	7		0
+epistemic-representation-invariance-theorem	THEORY-LEVEL	28	DORMANT	9		0
+epistemic-resource-allocation-attention-scheduling-portfolio-optimization-algebra	OBJECT	74	DORMANT	9		0
+epistemic-revision-error-taxonomy-algebra	OBJECT	25	DORMANT	10		0
+epistemic-sarathi-see-guide-decide	OBJECT	3	DORMANT	8		0
+epistemic-self-confirmation-loop	`OBJECT`	14	DORMANT	7	1787906443	0
+epistemic-state-transition-object	`OBJECT`	9	ACTIVE	6	1787566715	0
+epistemic-status-partial-order	THEORY-LEVEL	3	DORMANT	4	1787987178	0
+epistemic-status-vocabulary-thm-cor-prp-conj-2026-09	METHODOLOGICAL	11	ACTIVE	3	2026-09-04	0
+epistemic-strength-governance-status-two-dimensional-state	THEORY-LEVEL	4	DORMANT	4		0
+epistemic-sufficiency-Q-ratification-loss	OBJECT	3	DORMANT	0		0
+epistemic-sufficiency-decision-preconditions-assurance-composition-algebra	OBJECT	64	DORMANT	9	1787906069	0
+epistemic-sufficiency-readiness-knowledge-boundary	`OBJECT`	39	DORMANT	8	1787840745	0
+epistemic-transformation-algebra	THEORY-LEVEL	8	ACTIVE	4		0
+epistemic-tuple-object	OBJECT	6	DORMANT	5		0
+epistemic-value-anthology-lens-2026-09	OBJECT	38	ACTIVE	8		0
+epistemic-vs-governance-status-orthogonality	OBJECT	1	DORMANT	1	1788115757	0
+epistemic-vs-practical-decision-separation	THEORY-LEVEL	3	DORMANT	5	1787565021	0
+epistemology-gap-driven-research-corpus-plan	METHODOLOGICAL	11	ACTIVE	3		0
+equality-relations-as-relations-not-decision-procedures	`THEORY-LEVEL`	7	DORMANT	1	1788203655	0
+equality-underspecified-not-absent-primitive-verdict	THEORY-LEVEL	2	DORMANT	1		0
+equilibrium-criterion-free-variable-schema	OBJECT	7	DORMANT	2	2026-08-23	0
+equiv-approx-congruence-cycle-root-reason	THEORY-LEVEL	1	ACTIVE	1		0
+equiv-approx-congruence-typed-hierarchy	THEORY-LEVEL	1	ACTIVE	1		0
+established-inv-001-004-catalog	THEORY-LEVEL	0	DORMANT	0		5
+evaluation-masking-phenomenon	METHODOLOGICAL	3	ACTIVE	3		0
+evaluation-pipeline-representation-reasoning-entailment-evaluation-determination-decision	THEORY-LEVEL	9	ACTIVE	7	1788364577	0
+event-driven-domain-loop	THEORY-LEVEL	10	DORMANT	5		0
+event-state-distinction	THEORY-LEVEL	3	DORMANT	4		0
+event-taxonomy-technical-observational-epistemic-governance-operational	THEORY-LEVEL	4	DORMANT	4		0
+event-time-processing-time-causal-order-distinction	THEORY-LEVEL	3	DORMANT	4		0
+evidence-acquisition-domain	OBJECT	19	DORMANT	8		0
+evidence-aggregation-algebra	OBJECT	30	DORMANT	8		0
+evidence-aggregation-axioms	OBJECT	24	DORMANT	6		0
+evidence-aggregation-heterogeneous-algebra	OBJECT	47	DORMANT	11		0
+evidence-algebra-closure-series-2026-08-27	THEORY-LEVEL	4	DORMANT	4		0
+evidence-algebra-invariants	OBJECT	31	CONTESTED	8		0
+evidence-assessment-algebra-steps-001-008	THEORY-LEVEL	59	CONTESTED	10		0
+evidence-assessment-algebra	OBJECT	20	DORMANT	8		0
+evidence-assessment-assertion-pipeline	OBJECT	34	DORMANT	8		0
+evidence-back-edge	OBJECT	2	DORMANT	3		0
+evidence-based-architecture-reconstruction-methodology	METHODOLOGICAL	84	DORMANT	8		0
+evidence-classes-e1-e5	OBJECT	2	DORMANT	4	1787958733	0
+evidence-combination-dependence-connection	OBJECT	1	ACTIVE	1	1788760187	0
+evidence-contribution-semantic-domain	OBJECT	25	DORMANT	8	1787833413	0
+evidence-convergence-pattern	OBJECT	1	DORMANT	1		0
+evidence-dependence-information-value	OBJECT	39	DORMANT	8	1787848195	2
+evidence-equals-knowledge-thesis	THEORY-LEVEL	3	ACTIVE	2		0
+evidence-formalization-and-transition	OBJECT	4	DORMANT	4		0
+evidence-gated-hybrid-temporal-inference-hypothesis	THEORY-LEVEL	6	DORMANT	5		0
+evidence-graph-model	OBJECT	2	DORMANT	2		0
+evidence-identity-equivalence-dependency-calculus	OBJECT	20	DORMANT	10		0
+evidence-independence-correlation-invariant	THEORY-LEVEL	5	CONTESTED	4		0
+evidence-inquiry-object	OBJECT	4	DORMANT	4		0
+evidence-integrity-provenance-authenticity-algebra	OBJECT	49	DORMANT	10		0
+evidence-knowledge-decision-model-separation-hypothesis	THEORY-LEVEL	10	DORMANT	7		0
+evidence-need-object	OBJECT	2	DORMANT	5	1787535259	0
+evidence-record-reference-bundle-triad	OBJECT	2	CONTESTED	2		0
+evidence-relevance-connection-gap	THEORY-LEVEL	2	DORMANT	5		0
+evidence-sameness-four-relations	OBJECT	22	DORMANT	8	1787832559	2
+evidence-selection-independence-and-retrieval-bias	`THEORY-LEVEL`	1	ACTIVE	2	1788671427	0
+evidence-support-standing-context-decomposition	`OBJECT`	2	ACTIVE	5	1788366686	0
+evidence-trajectory-object	OBJECT	1	DORMANT	2		0
+evidence-value-concept	OBJECT	2	DORMANT	5		0
+evidence	OBJECT	17	DORMANT	6		0
+evidential-bridge-requirement-four-constraint-family	METHODOLOGICAL	2	DORMANT	5	1787952278	0
+executable-adequacy-bridge-concept	`THEORY-LEVEL`	8	ACTIVE	5	1788371193	0
+executable-history-semantics	OBJECT	5	ACTIVE	5	1788366049	0
+executable-knowledge-principle	OBJECT	2	DORMANT	1		0
+executable-knowledge-state-model	`OBJECT`	29	DORMANT	7	1787847505	0
+executable-kos-kernel	OBJECT	3	DORMANT	4		0
+executable-reference-model-adversarial-simulation-design	OBJECT	45	DORMANT	7		0
+executed-test-222-repairs	CROSS-OBJECT	8	DORMANT	1		0
+execution-asset	OBJECT	7	DORMANT	4		0
+existential-vs-identified-instance-knowledge	OBJECT	1	ACTIVE	2	1788367900	0
+exp01-evidence-aggregation-operators	OBJECT	6	DORMANT	4	1787953786	0
+expect-no-winner-as-legitimate-result	METHODOLOGICAL	1	ACTIVE	1		0
+experiment-g-rewritten-protocol-and-sequencing-correction	METHODOLOGICAL	5	ACTIVE	3		0
+explicit-belief-b-operator-four-valued	OBJECT	5	CONTESTED	6		0
+explicit-implicit-knowledge-distinction	THEORY-LEVEL	9	ACTIVE	7		0
+expressiveness-tractability-tradeoff-principle	THEORY-LEVEL	6	ACTIVE	4		0
+ext-biocomm-lens-2026-09	`OBJECT`	31	ACTIVE	8	2026-09-05	0
+extended-66-world-robustness-computation	OBJECT	2	ACTIVE	1	1788680410	0
+external-convergence-does-not-establish-kernel-necessity	METHODOLOGICAL	1	ACTIVE	1	1788760094	0
+external-positioning-matrix	OBJECT	3	DORMANT	2		0
+external-research-non-blind-acceptance-caveat	METHODOLOGICAL	2	DORMANT	1		0
+f1-f5-domain-capability-map	OBJECT	16	DORMANT	6		0
+f4-handover-verdict-md058-md059-2026-09	OBJECT	119	CONTESTED	7	1788961044	0
+fact-epistemic-value-pair-model	OBJECT	23	DORMANT	10		0
+fagin-halpern-moses-vardi-epistemic-logic-lens	OBJECT	67	ACTIVE	10		0
+falsifiable-architecture-scenario-test	METHODOLOGICAL	1	DORMANT	0		0
+falsification-pass-under-authority	OBJECT	32	CONTESTED	8		0
+falsification-scorecard-30-claims	THEORY-LEVEL	2	DORMANT	3		0
+feedback-loop-addendum-236-240-report	CROSS-OBJECT	10	DORMANT	2		0
+feedback-loop-stability-model	OBJECT	7	DORMANT	9	1787906203	3
+feedback-shown-derivable-not-primitive	OBJECT	1	ACTIVE	1		0
+fifth-factor-accessibility-fde-extension-hypothesis	CROSS-OBJECT	2	ACTIVE	2	1788366686	0
+final-operating-model-kos-operating-model-001	THEORY-LEVEL	15	DORMANT	6		0
+final-theory-gap-register	THEORY-LEVEL	34	DORMANT	8		0
+fitchs-paradox-unknowability-argument	THEORY-LEVEL	1	ACTIVE	3		0
+five-architectural-maturity-states	`OBJECT`	2	DORMANT	4	1787958688	0
+five-blocker-triage-table	OBJECT	1	ACTIVE	1		0
+five-gap-taxonomy	OBJECT	10	DORMANT	6		0
+five-layers-architecture-chapter	OBJECT	5	DORMANT	6		0
+five-levels-of-mind-knowledge-pipeline	OBJECT	1	DORMANT	1		0
+five-responsibility-model	THEORY-LEVEL	4	DORMANT	3		0
+floridi-philosophy-of-information-lens	THEORY-LEVEL	23	DORMANT	7	1787653672	0
+fold-mechanism	OBJECT	10	DORMANT	5		0
+forbidden-collapse-catalog	THEORY-LEVEL	7	DORMANT	4	1787355336	0
+formal-boundary-zero-decomposition	CROSS-OBJECT	0	DORMANT	0		1
+formal-communication-zero-definition	OBJECT	1	ACTIVE	1	1788760328	0
+formal-composition-closure-core-invariants	OBJECT	48	DORMANT	9	1787840611	2
+formal-epistemic-type-system-audit-algebra	THEORY-LEVEL	55	DORMANT	9		0
+formal-inference-derivation-verification-algebra	OBJECT	50	DORMANT	9	1787904503	0
+formal-lord-action-selection-algebra	OBJECT	54	DORMANT	9		0
+formal-mathematical-lens-candidates	METHODOLOGICAL	17	DORMANT	7	1787350901	0
+formal-provenance-lineage-audit-graph	OBJECT	8	DORMANT	5		0
+formal-relation-matrix-program	THEORY-LEVEL	1	DORMANT	1		0
+formal-sarathi-decision-algebra	OBJECT	50	DORMANT	10		0
+formal-specification-refinement-model	THEORY-LEVEL	84	DORMANT	10		0
+formal-state-transition-system-K	THEORY-LEVEL	8	DORMANT	5		0
+formal-verification-pipeline-and-fitness-functions-part21	THEORY-LEVEL	1	ACTIVE	1		0
+formal-verification-strategy-model	OBJECT	10	DORMANT	7		0
+formal-zero-algebra	OBJECT	95	CONTESTED	12		0
+formalization-review-gate-mathematical-audit-plan	THEORY-LEVEL	22	DORMANT	7	1787905305	0
+forward-backward-chaining-and-rule-firing	THEORY-LEVEL	1	ACTIVE	1		0
+foundational-dependency-closure	THEORY-LEVEL	11	DORMANT	4	2026-08-30	2
+foundational-ontology-dependency-graph	THEORY-LEVEL	6	DORMANT	6		0
+four-arb-governance-lenses	THEORY-LEVEL	27	DORMANT	9		0
+four-column-mapping-contract-preserved-rejected	METHODOLOGICAL	1	ACTIVE	1		0
+four-dimensional-assurance-correctness	`THEORY-LEVEL`	2	DORMANT	2	1787994056	0
+four-distinct-responsibilities-research-vocabulary	THEORY-LEVEL	1	ACTIVE	1		0
+four-graphs-temporal-epistemic-governance-causal	THEORY-LEVEL	9	ACTIVE	4		0
+four-layer-pipeline-and-b-does-not-imply-kos	METHODOLOGICAL	1	ACTIVE	2		0
+four-layer-reality-epistemic-governance-operational-architecture	THEORY-LEVEL	3	DORMANT	3		0
+four-level-architecture-hierarchy	THEORY-LEVEL	4	DORMANT	2		0
+four-level-zero-hierarchy-not-mutually-determining	THEORY-LEVEL	1	ACTIVE	1		0
+four-session-role-model	METHODOLOGICAL	7	CONTESTED	4		0
+four-types-of-truth	THEORY-LEVEL	2	DORMANT	3		0
+four-valued-transition-validity-model	THEORY-LEVEL	2	DORMANT	3	1787996645	0
+four-way-gap-classification-discovery-formal-architectural-blocker	`METHODOLOGICAL`	3	DORMANT	2	1788198012	0
+four-zeros-distinction	`OBJECT`	2	ACTIVE	3	1788344785	0
+fr-004-determination-relational-not-intrinsic-candidate-2026-09	THEORY-LEVEL	2	ACTIVE	1		0
+fr-formal-representation-reasoning-theory-section	THEORY-LEVEL	6	ACTIVE	3		0
+fr004-contract-relativity-and-seventh-instance-test	THEORY-LEVEL	1	ACTIVE	0		0
+fraser-hmm-latent-state-operator-hypothesis	THEORY-LEVEL	12	DORMANT	8	1787578976	0
+freedman-statistical-models-source	OBJECT	2	DORMANT	2		0
+freeze-retire-decisions	OBJECT (node-level); the single row itself is scoped THEORY-LEVEL	1	DORMANT	1		0
+frozen-results-register-mechanism	METHODOLOGICAL	28	ACTIVE	6		0
+g-00-gap-register-reconciliation-2026-09-10	METHODOLOGICAL	30	CONTESTED	6		0
+g-11-omega-269-291-reconstruction	OBJECT	20	CONTESTED	6		0
+g-12-theorystate-reconstruction-026-268-interval	THEORY-LEVEL	35	ACTIVE	6	2026-09-10	0
+g-19-commission-vs-execution-lifecycle-audit	OBJECT	18	CONTESTED	5		0
+g-22-omega-sense-inventory-231-267	OBJECT	35	CONTESTED	6		0
+g68-third-vocabulary-pseudo-implementation-disjointness	OBJECT	7	CONTESTED	5		0
+g69-gd07-conditionally-accepted-unexecuted-instrument	OBJECT	2	DORMANT	1	2026-08-31	0
+ganesha-wisdom-transformation-loop	OBJECT	18	DORMANT	6		0
+gap-closure-strategy-nine-spec-roadmap	METHODOLOGICAL	4	ACTIVE	4		0
+gap-discovery-corpus-file-index-00A	METHODOLOGICAL	2	DORMANT	1	2026-08-31	0
+gap-discovery-corpus-inventory-2023-scan	CROSS-OBJECT	7	DORMANT	3		0
+gap-discovery-exec-methodology	OBJECT	8	DORMANT	2	2026-08-30	0
+gap-formalization	OBJECT	11	DORMANT	9		0
+gap-theory-v1-delta-set-definition	THEORY-LEVEL	18	CONTESTED	4		0
+gap-update-2026-09-02-new-artifact-inventory	METHODOLOGICAL	7	ACTIVE	6		0
+gap-update-2026-09-06-multiplicity-conflict-records-reaudit	METHODOLOGICAL	16	ACTIVE	3		0
+gap-update-new-gaps-2026-09-02	OBJECT	6	ACTIVE	5	2026-09-01	0
+gap-update-scope-error-correction	METHODOLOGICAL	1	ACTIVE	0		0
+gap-update-scope-error-corrections-2026-09-02	METHODOLOGICAL	6	ACTIVE	2		0
+gap-update-second-correction-multiplicity	GOVERNANCE	1	ACTIVE	0		0
+gardenfors-knowledge-in-flux-lens	THEORY-LEVEL	26	DORMANT	9		0
+gelfond-kahl-knowledge-representation-lens	THEORY-LEVEL	19	DORMANT	7	1787670608	0
+general-multi-lens-b-a-s-kos-methodology	GOVERNANCE	1	ACTIVE	1		0
+generate-preserve-transform-operation-classes	`OBJECT`	1	ACTIVE	1	1788367547	0
+generates-pks-hypothesis	OBJECT	2	DORMANT	0	2026-08-03	0
+gita-18-chapter-full-correspondence-synthesis	OBJECT	7	DORMANT	2		0
+gita-18-chapter-lens-model-full-synthesis	OBJECT	1	ACTIVE	1		0
+gita-1822-sharpens-basis-relative-failure	METHODOLOGICAL	1	ACTIVE	1		0
+gita-1863-names-undetermined-act	`METHODOLOGICAL`	1	ACTIVE	1	1788680694	0
+gita-242-names-part20-retrieval-boundary	METHODOLOGICAL	1	ACTIVE	1	1788680694	0
+gita-action-not-result-invariant	`OBJECT`	11	ACTIVE	5	2026-08-31	0
+gita-alignment-review-1-182	THEORY-LEVEL	1	DORMANT	2		0
+gita-artifact36-two-overstatements-corrected	OBJECT	8	ACTIVE	4	1788256324	0
+gita-atman-invariant-identity-hypothesis	OBJECT	2	DORMANT	2		0
+gita-audit-untested-assumption-study	OBJECT	14	ACTIVE	5		0
+gita-bhakti-epistemic-trust-model	OBJECT	2	DORMANT	2		0
+gita-bridge-confounding-attribution-study	OBJECT	13	ACTIVE	5		0
+gita-buddhi-jnana-vijnana-two-dimensional-knowledge	THEORY-LEVEL	9	ACTIVE	6	1788290893	0
+gita-candidate-carrier-missingness-defect-A6-Q1	`OBJECT`	7	ACTIVE	2	2026-09-01	0
+gita-candidate-register-and-nine-cycle-verdict	METHODOLOGICAL	1	ACTIVE	1		0
+gita-candidates-independent-verification-package-2026-09	OBJECT	53	CONTESTED	9		0
+gita-canonicalization-classification-taxonomy-285	METHODOLOGICAL	2	DORMANT	2		0
+gita-ch1-failure-modes-and-track-final-tally	OBJECT	6	ACTIVE	2		0
+gita-ch16-controlled-comparison-claim-strength-invariant	THEORY-LEVEL	6	ACTIVE	4		0
+gita-chapter1-crisis-detection-theory	OBJECT	8	CONTESTED	2		0
+gita-chapter2-atma-identity-foundation-theory	OBJECT	6	CONTESTED	2		0
+gita-chapter3-karma-yoga-action-theory	OBJECT	9	CONTESTED	3	2026-08-31	0
+gita-chapter3-twenty-invariants-freeze	`OBJECT`	1	DORMANT	2	1787950592	0
+gita-chapter3-validation-exercise	THEORY-LEVEL	15	DORMANT	7		0
+gita-chapter4-actor-role-model	THEORY-LEVEL	12	ACTIVE	8		0
+gita-chapter4-jnana-yoga-epistemology-theory	OBJECT	8	CONTESTED	2	2026-08-31	0
+gita-chapter4-mathematical-derivation	OBJECT	17	DORMANT	8		0
+gita-chapter4-validation-exercise	THEORY-LEVEL	34	DORMANT	5		0
+gita-chapter5-non-attachment-instrument-theory	OBJECT	8	CONTESTED	3	2026-08-31	0
+gita-controlled-refinement-research-prompt-and-theory-ledger	OBJECT	12	ACTIVE	3	1788224142	0
+gita-cycle9-corpus-classification	METHODOLOGICAL	1	ACTIVE	1	1788680694	0
+gita-daivi-asuri-integrity-character-model	OBJECT	9	CONTESTED	3		0
+gita-declared-vs-effective-reads-study	OBJECT	6	ACTIVE	3		0
+gita-deontic-primitives-separability-hypothesis	OBJECT	1	DORMANT	0	2026-08-31	0
+gita-dimension-value-structure-three-transformations	OBJECT	5	ACTIVE	4	1788222429	0
+gita-discrimination-vs-transformation-refinement	OBJECT	11	ACTIVE	4	1788222845	0
+gita-eight-primitives-lens-only-position	OBJECT	6	ACTIVE	3		0
+gita-eight-primitives-state-vocabulary-not-equal-fields	OBJECT	6	ACTIVE	3		0
+gita-epistemic-stage-chain-hypothesis	OBJECT	2	DORMANT	0		0
+gita-evolving-infinite-dimensional-knowledge-space	OBJECT	20	ACTIVE	5	1788223943	0
+gita-field-knower-kshetra-kshetrajna-ontology	OBJECT	13	DORMANT	5		0
+gita-five-glyph-collisions-M-world-model-kernel	OBJECT	1	ACTIVE	1		0
+gita-formal-kernel-model-under-285-287-discipline	OBJECT	13	ACTIVE	4		0
+gita-guna-mode-conditioned-state-machine-hypothesis	OBJECT, THEORY-LEVEL	23	ACTIVE	10		0
+gita-hpa-observation-first-self-assessment	OBJECT	4	ACTIVE	1		0
+gita-hypothesis-architecture-consequence-pipeline	METHODOLOGICAL	3	DORMANT	0		0
+gita-independence-test-two-arguments	METHODOLOGICAL	3	ACTIVE	1		0
+gita-independent-kernel-convergence-A-B	OBJECT	9	ACTIVE	5	1788254123	0
+gita-inherited-gates-and-four-way-status-split	OBJECT	6	ACTIVE	3		0
+gita-inverted-tree-purushottama-akshara-kshar	`OBJECT`	2	DORMANT	1	2026-08-31	0
+gita-is-source-code-not-analogy-thesis	THEORY-LEVEL	3	CONTESTED	1		0
+gita-karma-two-primitives-defect-GK-Q4	OBJECT	7	CONTESTED	3	2026-09-01	0
+gita-kernel-c4-c1-c2-boundary-discipline	OBJECT	6	ACTIVE	3	1788223247	0
+gita-kernel-candidate-tier-scheme-T0-T4	THEORY-LEVEL	19	ACTIVE	7		0
+gita-kernel-convergence-blocker-set-equiv-g1-delta	THEORY-LEVEL	6	ACTIVE	3	2026-09-01	0
+gita-kernel-operator-contract-and-typing-discipline	OBJECT	15	ACTIVE	6		0
+gita-kernel-premature-synthesis-correction-and-research-reframe	OBJECT	9	ACTIVE	5		0
+gita-kernel-reconstruction-typecheck-audit-23	THEORY-LEVEL	5	CONTESTED	5	2026-09-01	0
+gita-kernel-simulation-deployment-example-coherence-test	`OBJECT`, `THEORY-LEVEL`	9	ACTIVE	8	2026-08-31	0
+gita-knowledge-calculus-computational-breakthrough-path	OBJECT	12	ACTIVE	5		0
+gita-knowledge-space-inside-probability-space	OBJECT	10	ACTIVE	3		0
+gita-kos-translation-register-gk01-gk19	OBJECT	6	DORMANT	2		0
+gita-kos-translation-register-v0.1-gk01-gk19	THEORY-LEVEL	8	DORMANT	4		0
+gita-lane-absorption-not-adjudication-G103	OBJECT	7	CONTESTED	3		0
+gita-lens-cyclical-audit-2026-09	METHODOLOGICAL	8	CONTESTED	4	2026-09-04	0
+gita-lens-final-scorecard-five-of-seven-corrected	THEORY-LEVEL	9	DORMANT	2		0
+gita-lens-interpretive-trace-discipline	METHODOLOGICAL	4	ACTIVE	3	1787994432	0
+gita-lord-zero-lens-fact-knowledge-artifact-critique	THEORY-LEVEL	17	ACTIVE	6		0
+gita-material-write-only-as-research-history-verdict	METHODOLOGICAL	2	DORMANT	1	2026-08-31	0
+gita-moksha-liberation-complete-transition-system	OBJECT	12	CONTESTED	4	2026-08-31	0
+gita-no-philosophical-derivation-constraint	METHODOLOGICAL	18	CONTESTED	3		0
+gita-numbering-collision-report-287-289-290	`OBJECT`	6	ACTIVE	3	2026-08-31	0
+gita-operations-programme-unschedulable-G106	OBJECT	6	CONTESTED	3	2026-09-01	0
+gita-operator-contract-monotonicity-per-operator-M-Q7	OBJECT	6	ACTIVE	3		0
+gita-outcome-independent-validity	OBJECT	3	ACTIVE	2	2026-08-31	0
+gita-pareto-order-dimension-value-audit	THEORY-LEVEL	8	ACTIVE	8		0
+gita-philosophy-mathematical-statistical-matching-M-Q-series	OBJECT	11	ACTIVE	5	2026-09-01	0
+gita-post-hoc-conjecture-own-basis-preferred	METHODOLOGICAL	1	ACTIVE	0	1788680694	0
+gita-probability-space-sharpened-G22-Q1	OBJECT	6	ACTIVE	5		0
+gita-refined-kernel-model-false-unknown-unqualified-triad	THEORY-LEVEL	8	ACTIVE	6		0
+gita-reframe-recovery-registry-broken-intake-finding	OBJECT, THEORY-LEVEL	6	CONTESTED	5	2026-09-01	0
+gita-representation-reduction-preservation-study	OBJECT	2	ACTIVE	2		0
+gita-restricted-jnana-definition-13-7-11	OBJECT	3	ACTIVE	5	1788290645	0
+gita-review-14-invariants-and-negative-identity	THEORY-LEVEL	2	DORMANT	4		0
+gita-review-architecture-not-invented-from-gita	THEORY-LEVEL	1	DORMANT	1		0
+gita-review-chapter4-corrections	THEORY-LEVEL	15	CONTESTED	4		0
+gita-review-krishna-not-a-component-and-agent-memory-subset	THEORY-LEVEL	1	DORMANT	3		0
+gita-review-methodological-discipline-rule	METHODOLOGICAL	1	DORMANT	2		0
+gita-review-per-chapter-verdicts	THEORY-LEVEL	1	DORMANT	2		0
+gita-review-three-layer-separation	THEORY-LEVEL	1	DORMANT	3		0
+gita-reviewer-rejects-hpa-observation-overreach	OBJECT	13	CONTESTED	5		0
+gita-second-knower-level-universal-kos-image	OBJECT	0	DORMANT	0		1
+gita-shraddha-threefold-faith-quality-model	OBJECT	6	CONTESTED	2		0
+gita-simulation-audit-evidence-classification-negative-knowledge	THEORY-LEVEL	4	ACTIVE	3	2026-09-01	1
+gita-supreme-knowledge-atma-krishna-formalization	OBJECT	5	DORMANT	3	2026-08-31	0
+gita-three-level-translation-discipline	METHODOLOGICAL	4	ACTIVE	1	1788221872	0
+gita-three-model-convergence-protocol-and-kernel-split-G108	OBJECT	8	ACTIVE	4		0
+gita-three-models-C1-C2-M-plus-gita-lens-G	OBJECT	5	ACTIVE	2		0
+gita-three-modes-sigma-sattva-rajas-tamas	OBJECT	4	DORMANT	1		0
+gita-three-operational-planes-OE-OK-OW	OBJECT	8	ACTIVE	3		0
+gita-topological-lens-knowledge-space	OBJECT	16	ACTIVE	5		0
+gita-track-closure-guna-fork-determination-recovery	THEORY-LEVEL	5	CONTESTED	7		0
+gita-transformation-theta-operators-family	OBJECT	4	DORMANT	1		0
+gita-transformation-theta-total-typecheck-audit	THEORY-LEVEL	6	CONTESTED	7		0
+gita-tripiti-relationship-lens	OBJECT	9	DORMANT	5	1787355336	0
+gita-twenty-missing-concepts-observation-first-pass	OBJECT	15	ACTIVE	4		0
+gita-two-syntheses-step-number-collision-G101	OBJECT	6	ACTIVE	2	2026-09-01	0
+gita-tyaga-sannyasa-zero-algebra-corroboration-study	`OBJECT`	4	ACTIVE	3	2026-09-02	0
+gita-undefined-concepts-inventory-three-spaces	OBJECT	10	ACTIVE	4	1788248550	0
+gita-vibhuti-ontology-completeness-axiom	OBJECT	2	DORMANT	1	2026-08-31	1
+gita-vs-k9-closure-independent-overlap-check	OBJECT	1	ACTIVE	1		0
+gita-weaker-than-mimamsa-for-invariant-reg	METHODOLOGICAL	1	ACTIVE	0		0
+gk-id-numbering-collision-two-registers	OBJECT	10	CONTESTED	4		0
+gleick-information-lens	METHODOLOGICAL	1	ACTIVE	1		0
+global-invariant-algebra-step209-210	THEORY-LEVEL	47	CONTESTED	9		0
+glyph-register-v3-collision-inventory-2026-09	`METHODOLOGICAL`	18	CONTESTED	5	2026-09-07	0
+gn-75-lane-vocabulary-disjointness-measurement	OBJECT	2	DORMANT	2		0
+gn-95-authoritative-act-intake-register	METHODOLOGICAL	12	CONTESTED	8	2026-08-24	0
+gn-ledger-full-record	METHODOLOGICAL	39	CONTESTED	4	2026-08-28	0
+gn42-book-explains-does-not-decide-architecture	METHODOLOGICAL	2	DORMANT	4		0
+gn43-mathematical-verification-extension-protocol	METHODOLOGICAL	3	DORMANT	3	1787952761	0
+gn45-bounded-correction-mechanism	METHODOLOGICAL	1	DORMANT	1	2026-08-28	0
+gn46-mathematical-verification-report	`OBJECT`	20	DORMANT	7	2026-08-29	0
+gn77-rival-nine-capability-basis	OBJECT	1	ACTIVE	2		0
+goal-g-and-idealstate-definitions	OBJECT	2	DORMANT	4		0
+goals-decisions-actions-utility-risk-outcomes	OBJECT	38	DORMANT	8		0
+godel-formal-system-tuple-candidate	OBJECT	3	ACTIVE	5		0
+godel-numbering-mechanism	OBJECT	12	CONTESTED	4	1787392710	0
+godel-second-theorem-assurance-ladder	THEORY-LEVEL	1	ACTIVE	2		0
+gof-design-pattern-implementation-catalog-2026-09	OBJECT	38	ACTIVE	5		0
+gof-design-patterns-as-falsification-lens-2026-09	OBJECT	29	ACTIVE	9	1788782353	0
+gof-variation-analysis-architectural-lens	OBJECT	31	ACTIVE	9	1788784098	1
+goswami-rao-measure-theoretic-knowledge-space-architecture	THEORY-LEVEL	22	ACTIVE	5		0
+gov-state-durability-adr	OBJECT	15	DORMANT	6		0
+gov-state-durability-decision	OBJECT	4	CONTESTED	1	2026-08-21	0
+governance-communication-candidate	OBJECT	2	DORMANT	3	1787063516	0
+governance-conflict-algebra-025f	THEORY-LEVEL	1	DORMANT	4		0
+governance-conflict-resolution-algebra	OBJECT	41	DORMANT	8		0
+governance-conformance-model	THEORY-LEVEL	91	DORMANT	7		0
+governance-recording-disclosed-capacity	METHODOLOGICAL	4	DORMANT	3		0
+governance-usage-report	`OBJECT`	2	DORMANT	2	2026-08-03	0
+governance-viewpoint-hypothesis	OBJECT	2	DORMANT	2	2026-08-03	0
+governed-engineering-fact	THEORY-LEVEL	2	DORMANT	2		0
+grant-record	OBJECT	15	DORMANT	7		0
+granularity-and-target-q4-strengthened	OBJECT	1	ACTIVE	0		0
+graph-alone-insufficient-ten-questions	THEORY-LEVEL	1	ACTIVE	2		0
+graph-as-projection-principle	OBJECT	1	DORMANT	4		0
+graph-state-transformation-three-layer-feedback-pipeline	THEORY-LEVEL	1	ACTIVE	2		0
+graph-vs-statistical-independence-distinction	OBJECT	1	DORMANT	2	1788115757	0
+guarantee-framing-rejected	THEORY-LEVEL	1	ACTIVE	2		0
+h-kos-context-001-semantic-frame-preservation	OBJECT	4	DORMANT	1		0
+h-kos-context-002-avacchedaka	OBJECT	9	DORMANT	4	2026-08-22	0
+h-kos-contradiction-001-conflict-preservation	OBJECT	3	DORMANT	1		0
+h-kos-dialogue-001-structured-opposition	OBJECT	5	DORMANT	2	2026-08-22	0
+h-kos-evidenceauthenticity-001	OBJECT	3	DORMANT	1		0
+h-kos-failure-001-failed-reasoning-preservation	OBJECT	4	DORMANT	2		0
+h-kos-fallacy-001-invalid-reasoning-detection	`OBJECT`	5	DORMANT	2	2026-08-22	0
+h-kos-hypothesis-series	THEORY-LEVEL	10	CONTESTED	5		0
+h-kos-intent-001-purpose-of-reasoning	OBJECT	4	DORMANT	1		0
+h-kos-lifecycle-reasoning-001	OBJECT	4	DORMANT	1	2026-08-22	0
+h-kos-noninterference-001	OBJECT	5	DORMANT	2		0
+h-kos-reasoning-provenance-001	OBJECT	3	DORMANT	1		0
+h-kos-reasoning-separation-001-generate-vs-evaluate	OBJECT	5	DORMANT	2	2026-08-22	0
+h-kos-relation-001-epistemic-relations-first-class	OBJECT	6	ACTIVE	3		0
+h-kos-relationship-001-tripuji	OBJECT	3	DORMANT	1		0
+h-kos-uncertainty-001-structured-doubt	OBJECT	7	DORMANT	4		0
+h-kos-vyapti-001-inference-warranting-relation	OBJECT	4	DORMANT	2		0
+h-zero-001-unknown-valid-state	OBJECT	6	DORMANT	3		0
+h3-well-posed-but-still-untested	OBJECT	1	ACTIVE	1		0
+hallucination-as-semantic-inflation	THEORY-LEVEL	1	ACTIVE	2		0
+handbook-of-kr-epistemic-change-theory-section	THEORY-LEVEL	6	ACTIVE	4		0
+hash-vs-semantic-identity	OBJECT	1	DORMANT	3		0
+hetvabhasa-fallacy-invariants	OBJECT	5	DORMANT	3	2026-08-22	0
+hetvabhasa-fallacy-taxonomy	OBJECT	11	DORMANT	6		0
+hidden-semi-markov-epistemic-layer	OBJECT	11	CONTESTED	6	1787568329	0
+hilbert-space-representation-experiment	METHODOLOGICAL	43	CONTESTED	8		0
+historical-continuity-vs-accessible-memory	THEORY-LEVEL	22	DORMANT	9		0
+historical-experimental-knowledge-extraction-handover	METHODOLOGICAL	35	DORMANT	5		0
+history-preservation-vs-event-sourcing-part18	THEORY-LEVEL	1	ACTIVE	1		0
+history-structural-semantic-observational-equality-hierarchy-test	OBJECT	1	DORMANT	1	2026-08-31	0
+history-trajectory-non-implication-invariant	THEORY-LEVEL	1	DORMANT	2		0
+history-vs-current-state-and-event-sourcing-part19	OBJECT	1	ACTIVE	2		0
+hofstadter-geb-levels-strange-loop-lens	THEORY-LEVEL	30	DORMANT	9	1787581846	0
+hofstadter-recursive-self-representation-lens	METHODOLOGICAL (node-level); the single row itself is scoped OBJECT	1	ACTIVE	1		0
+hpa-bayesian-epistemology-titelbaum-knowledgeos-mapping	OBJECT	12	ACTIVE	4		0
+hpa-bayesian-epistemology-vol2-titelbaum-knowledgeos-mapping	THEORY-LEVEL	2	ACTIVE	3		0
+hpa-buddhi-discrimination-second-pass	OBJECT	35	CONTESTED	9	2026-08-31	0
+hpa-composite-action-operation-decomposition-hypothesis	OBJECT	2	ACTIVE	1		0
+hpa-final-architecture-ratification-gn31	THEORY-LEVEL	2	DORMANT	1		0
+hpa-gita-chapter1-kernel-pathological-failure-mode-theory	OBJECT, THEORY-LEVEL	11	ACTIVE	9		0
+hpa-gita-chapter11-viswarupa-bounded-perspective-theory	OBJECT, THEORY-LEVEL	9	ACTIVE	8	2026-08-31	1
+hpa-gita-chapter12-mind-buddhi-orientation-stability	THEORY-LEVEL	7	ACTIVE	7		0
+hpa-gita-chapter14-guna-conditioning-regime-theory	THEORY-LEVEL	8	ACTIVE	7		0
+hpa-gita-chapter15-tree-topology-memory-lifecycle-theory	THEORY-LEVEL	7	ACTIVE	6	2026-08-31	2
+hpa-gita-chapter15-variant-zero-buddhi-purification-loop	THEORY-LEVEL	6	CONTESTED	6	2026-08-31	0
+hpa-gita-chapter16-combined-quality-control-pathology-model	`THEORY-LEVEL`	7	ACTIVE	7	2026-08-31	0
+hpa-gita-chapter16-daivi-asuri-kernel-quality-model	THEORY-LEVEL	8	ACTIVE	7		0
+hpa-gita-chapter17-quality-of-transformation-model	THEORY-LEVEL	6	ACTIVE	7		0
+hpa-gita-chapter18-synthesis-determination-mode-model	THEORY-LEVEL	8	ACTIVE	8		0
+hpa-gita-chapter2-branching-gating-purification-model	THEORY-LEVEL	6	ACTIVE	6		0
+hpa-gita-chapter2-epistemic-debugging-challenge-operator	THEORY-LEVEL	5	ACTIVE	7		0
+hpa-gita-chapter2-kernel-level-refinement-reframe-operator	THEORY-LEVEL	6	ACTIVE	7		0
+hpa-gita-chapter3-manas-buddhi-hierarchy-distortion-model	THEORY-LEVEL	8	ACTIVE	10		0
+hpa-gita-chapter4-doubt-jnana-transformation-operator	THEORY-LEVEL	6	ACTIVE	6		0
+hpa-gita-chapter5-reread-kernel-operational-discipline	THEORY-LEVEL	7	ACTIVE	7		0
+hpa-gita-chapters10-14-manifestation-vibhuti-model	THEORY-LEVEL	6	ACTIVE	7		0
+hpa-gita-chapters11-14-horizon-model	THEORY-LEVEL	8	ACTIVE	8	2026-08-31	0
+hpa-gita-chapters12-13-14-triple-model-field-condition-orientation	THEORY-LEVEL	7	ACTIVE	6		0
+hpa-gita-chapters13-14-composed-field-condition-model	THEORY-LEVEL	6	ACTIVE	6	2026-08-31	0
+hpa-gita-epistemic-drift-continuity-stability-hypotheses	CROSS-OBJECT	7	ACTIVE	4	1788212761	0
+hpa-gita-jnana-vijnana-realization-hypothesis	CROSS-OBJECT	8	ACTIVE	5		0
+hpa-gita-mind-kernel-analogy-manas-buddhi-ahankara	CROSS-OBJECT	16	ACTIVE	5		0
+hpa-gita-persistence-memory-time-destination-hypotheses	CROSS-OBJECT	3	ACTIVE	1		0
+hpa-review-gate-protocol	METHODOLOGICAL	4	DORMANT	2		0
+hpa-self-attested-completion-pattern-gita-lane	METHODOLOGICAL	24	CONTESTED	3		0
+human-act	OBJECT	10	DORMANT	5	2026-08-17	0
+human-ai-collaboration-layer-lens	THEORY-LEVEL	19	DORMANT	5	1787532752	0
+human-ai-organization-responsibility-model	THEORY-LEVEL	85	DORMANT	7	1787912723	0
+human-decision-dossier-d0-d1-d2-d3prime	OBJECT	10	DORMANT	3		0
+human-normative-decisions-operation-set-authority-determination	OBJECT	22	DORMANT	4		0
+humanactref-untyped-referent-governance-question	`OBJECT`	4	DORMANT	2	2026-08-31	0
+hypothesis-space-transition-relation-not-just-cardinality	METHODOLOGICAL	1	ACTIVE	0		0
+i-j-good-weight-of-evidence-framework	THEORY-LEVEL	43	ACTIVE	6		0
+i-zero-lens-gita-candidates-artifact	OBJECT	6	ACTIVE	2		0
+ideal-state-comparison-model	`THEORY-LEVEL`	188	CONTESTED	10	1787695719	0
+ideal-state-formalization	OBJECT	16	DORMANT	8	2026-08-26	0
+ideal-vs-actual-state-distance-hypothesis	THEORY-LEVEL	15	ACTIVE	6		0
+identity-catalogue-four-of-six-absent	THEORY-LEVEL	3	DORMANT	4	1788116595	0
+identity-context-dependence-bounded-contexts	THEORY-LEVEL	7	DORMANT	4		0
+identity-continuity-program	THEORY-LEVEL	1	DORMANT	1	1787987444	0
+identity-continuity-similarity-triad	THEORY-LEVEL	9	DORMANT	5		0
+identity-entity-resolution-equivalence-reference-integrity-algebra	OBJECT	71	DORMANT	8	1787905757	0
+identity-entity-resolution-knowledge-atma-refinement-algebra	OBJECT	46	DORMANT	10	1787904457	0
+identity-entity-resolution-semantic-equivalence	OBJECT	45	DORMANT	8		0
+identity-lineage-provenance-causality-traceability	OBJECT	36	DORMANT	8	1787840280	0
+identity-merge-governed-transition	OBJECT	4	DORMANT	5	1787993058	0
+identity-name-state-representation-distinction	THEORY-LEVEL	6	DORMANT	5	1787993058	0
+identity-object-status-table-state-operation-authority-event	CROSS-OBJECT	1	DORMANT	2		0
+identity-persistence-and-duplicate-detection	`THEORY-LEVEL`	1	ACTIVE	2	1788671057	0
+identity-vs-continuity-persistence-condition	OBJECT	1	DORMANT	4	1787950296	0
+iii10-findings-vs-invariants-table	OBJECT	1	DORMANT	3		0
+iii10-five-governing-distinctions	OBJECT	1	DORMANT	3	1787984412	0
+iii10-i9-nine-vs-four-way-wording-defect	`OBJECT`	1	DORMANT	2	1787984412	0
+iii10-repair-genealogies	OBJECT	1	DORMANT	2		0
+iii10-ten-attack-stress-test	OBJECT	1	DORMANT	2	1787984412	0
+iii2-claims-inventory-and-lord-token-correction	OBJECT	1	DORMANT	2		0
+iii2-worked-example-and-three-regime-genesis	OBJECT	2	DORMANT	5		0
+iii6-lived-governance-case-ast019	`OBJECT`	1	DORMANT	2	1787984412	0
+iii6-three-journey-worked-example	OBJECT	2	DORMANT	4		0
+implementation-specification-source-map	OBJECT	4	DORMANT	4	2026-08-31	0
+independence-factor-formula	OBJECT	3	DORMANT	6	1788115143	0
+independence-labeling-discipline	METHODOLOGICAL	1	ACTIVE	1		0
+independent-evidence-combination-rule	OBJECT	31	DORMANT	9		0
+independent-gap-discovery-final-verdict	OBJECT	4	ACTIVE	2		0
+independent-k9-verification-script-and-mismatch	`OBJECT`	2	ACTIVE	1	1788680352	0
+independent-reconstruction-dependency-cycle	OBJECT	10	DORMANT	3		0
+inference-after-retrieval-and-ai-dual-role	THEORY-LEVEL	1	ACTIVE	1		0
+inference-decision-separation-principle	THEORY-LEVEL	4	DORMANT	5		0
+inference-derivation-typed-multi-method	OBJECT	38	DORMANT	7	1787837870	0
+inference-object	OBJECT	9	DORMANT	5		0
+inference-problem-domain-object	OBJECT	12	DORMANT	6	1787573964	0
+inference-reasoning-proof-determination-separation	THEORY-LEVEL	2	ACTIVE	3		0
+information-acquisition-value-of-information-active-learning-algebra	OBJECT	68	CONTESTED	8		0
+information-effect-delta-classification	OBJECT	1	ACTIVE	2	1788367547	0
+information-gain-value-of-evidence	OBJECT	29	DORMANT	7		0
+information-sufficiency-compression-model	THEORY-LEVEL	85	DORMANT	9		0
+information-theory-compatibility-analysis	THEORY-LEVEL	9	CONTESTED	7		0
+information-theory-formal-bounds-lens	THEORY-LEVEL	21	DORMANT	6		0
+inquiry-context-doubt-to-settlement	OBJECT	6	DORMANT	4		0
+inquiry-first-class-object-and-smallest-adequate-answer	`THEORY-LEVEL`	12	ACTIVE	5	1788290181	0
+inquiry-focus-boundary-not-equal-knowledge-boundary	THEORY-LEVEL	1	ACTIVE	2		0
+inquiry-question-layer-refinement	OBJECT	11	DORMANT	8		0
+inquiry-reframing-and-factfinding-completion	`OBJECT`	13	ACTIVE	8	1788780282	0
+inquiry-stopping-policy	OBJECT	1	DORMANT	2		0
+inspiration-not-specification-principle	GOVERNANCE	1	ACTIVE	1	1788759887	0
+inspirational-metaphor-corpus-not-canon	GOVERNANCE	1	ACTIVE	0		0
+insufficient-missing-sigma-value	OBJECT	5	DORMANT	2		0
+inv-001-evidence-ne-authority	OBJECT	3	DORMANT	1	2026-08-22	7
+inv-002-observation-ne-decision	`OBJECT`	3	DORMANT	1	2026-08-22	0
+inv-003-assessment-ne-authority	OBJECT	4	DORMANT	2		0
+inv-004-projection-ne-source	OBJECT	4	DORMANT	2		0
+inv-attr-1	`THEORY-LEVEL`	20	DORMANT	8	2026-08-19	0
+inv-attr-2	THEORY-LEVEL	31	DORMANT	7	2026-08-18	0
+inv-kos-001-dimension-independence	OBJECT	5	DORMANT	2		0
+inv-kos-002-semantic-continuity	OBJECT	3	DORMANT	1	2026-08-22	0
+inv-kos-agent-001-epistemic-agency	OBJECT	4	DORMANT	2		0
+inv-kos-candidate-series	`THEORY-LEVEL`	9	DORMANT	4	1787355336	0
+inv-kos-decision-001-decision-relationship	OBJECT	3	DORMANT	1		0
+inv-kos-inference-001-observation-ne-inference	OBJECT	3	DORMANT	1		0
+inv-kos-justification-001	OBJECT	3	DORMANT	1		0
+inv-kos-pramana-001-means-of-acquisition	OBJECT	6	DORMANT	2		0
+inv-kos-revisability-001-revision-ne-deletion	OBJECT	5	DORMANT	2		0
+invariant-catalog	THEORY-LEVEL	14	DORMANT	6		0
+invariant-category-hierarchy	THEORY-LEVEL	2	DORMANT	2		0
+invariant-consolidation-satisfiability-plan	METHODOLOGICAL	28	CONTESTED	7	1788012395	0
+invariant-keystone-upstream-ceiling	OBJECT	1	ACTIVE	1	2026-09-02	0
+invariant-schema-level-ceiling-admissible-and-delta-commit	THEORY-LEVEL	2	DORMANT	1		0
+invariant-universe-not-one-mathematical-object	THEORY-LEVEL	1	DORMANT	2		0
+invariants-conservation-program	THEORY-LEVEL	1	DORMANT	1		0
+investigation-state-object	OBJECT	1	DORMANT	1	1787775312	0
+investigation-terminal-states	OBJECT	2	DORMANT	2	1787763396	0
+j-boundary-separation-experiment-h	OBJECT	5	ACTIVE	2		0
+jnana-to-knowing-not-knowledge-correction	OBJECT	8	DORMANT	1		0
+joint-satisfiability-report-and-adjudication	OBJECT	16	CONTESTED	4		0
+justification-cycle-acyclicity-invariant	THEORY-LEVEL	2	DORMANT	3		0
+k-as-representation-not-ontology-argument	THEORY-LEVEL	1	DORMANT	2		0
+k-attack-right-shape-wrong-relation-verdict	OBJECT	5	ACTIVE	2	2026-08-30	2
+k-canonical-decision-governance-boundary	THEORY-LEVEL	16	DORMANT	6	2026-08-31	0
+k-definition-census-classification	THEORY-LEVEL	3	CONTESTED	4		0
+k-equality-membership-underdetermination	OBJECT	7	DORMANT	4		0
+k-instantiated-in-ekp-empirical	OBJECT	3	DORMANT	2		0
+k-min-capability-basis-apparatus	OBJECT	2	ACTIVE	1		0
+k-new-01-15-invariant-set	THEORY-LEVEL	7	DORMANT	6	1787565723	0
+k-projection-definable-not-computable-result	OBJECT	5	DORMANT	2		0
+k-projection-equality-typed-lossy-semantic-result	`OBJECT`	6	DORMANT	3	2026-08-31	0
+k-sufficiency-conditional-on-unstated-operation-set	OBJECT	3	DORMANT	3		0
+k-t-vs-k-core-terminology-distinction	METHODOLOGICAL	3	DORMANT	1		0
+k-typed-facet-vocabulary-i	OBJECT	5	ACTIVE	4	1788341031	0
+k4-capability-by-capability-analysis	OBJECT	1	CONTESTED	1	2026-09-06	0
+k4-k9-executive-finding-incomparable	OBJECT	1	ACTIVE	1		0
+k4-origin-audit-stipulated	OBJECT	1	ACTIVE	1		0
+k4-vs-k9-correspondence-incomparable	OBJECT	1	ACTIVE	1		0
+k4-vs-k9-graph-and-mapping	`OBJECT`	1	ACTIVE	2	1788679865	0
+k9-66-world-range-widens-and-invariantreg-strongest	OBJECT	2	ACTIVE	1		0
+k9-closure-computation-script	OBJECT	1	ACTIVE	1	1788679865	0
+k9-consequences-for-nine-survivor-classification	OBJECT	1	ACTIVE	0		0
+k9-degeneracy-confirmed-hard-way	OBJECT	1	ACTIVE	0		0
+k9-guardrail-and-headline-negative	OBJECT	1	ACTIVE	2	2026-09-06	0
+k9-incomparable-bases-result	OBJECT	1	ACTIVE	1		0
+k9-modelling-act-and-defect-limitations	OBJECT	1	ACTIVE	1		0
+k9-ocore-not-robust-to-c1-reading	OBJECT	1	ACTIVE	2		0
+k9-published-numbers-fully-reproduced	OBJECT	1	ACTIVE	0		0
+k9-qualification-degeneracy-source	OBJECT	1	ACTIVE	1		0
+k9-receives-independent-verification	OBJECT	1	ACTIVE	0		0
+k9-recommendation-governance-not-computation	GOVERNANCE	1	ACTIVE	0		0
+k9-reconstruction-derived-reading	OBJECT	1	ACTIVE	2		0
+k9-section-e-four-of-eight-fail	OBJECT	1	ACTIVE	1	2026-09-06	0
+k9-three-axis-robustness-and-triply-robust-set	OBJECT	1	ACTIVE	1		0
+k9-verification-mismatch-and-ocore-fragility	OBJECT	1	ACTIVE	1		0
+k9-verification-provenance-confirmed	OBJECT	1	ACTIVE	0		0
+k9-verification-settled-and-untouched	OBJECT	2	ACTIVE	1		0
+kallenberg-measure-theoretic-refoundation	THEORY-LEVEL	15	ACTIVE	6	1788288693	0
+kernel-38-document-full-read-commission	METHODOLOGICAL	1	DORMANT	0	1787950879	0
+kernel-anti-reasoner-critique-method	METHODOLOGICAL	4	DORMANT	4		0
+kernel-audit-230-232-report	CROSS-OBJECT	14	CONTESTED	3		0
+kernel-boundary-filter	METHODOLOGICAL	1	DORMANT	1		0
+kernel-candidate-comparison-abk1-selected	OBJECT	29	CONTESTED	7		0
+kernel-closure-boundary-vs-minimality-2026-09	THEORY-LEVEL	17	CONTESTED	5		0
+kernel-core-vs-external-regime-boundary	THEORY-LEVEL	1	DORMANT	0		0
+kernel-core-vs-knowledgeos-services-architecture-split	OBJECT	1	DORMANT	1		0
+kernel-corpus-census	METHODOLOGICAL	32	CONTESTED	6	1787667320	0
+kernel-corpus-dependency-map	METHODOLOGICAL	2	CONTESTED	2		0
+kernel-cost-vs-invariant-justification-tension	THEORY-LEVEL	0	DORMANT	0		1
+kernel-critical-path-second-cycle	OBJECT	1	ACTIVE	1		0
+kernel-ddd-conflation-critique	METHODOLOGICAL	20	ACTIVE	6		0
+kernel-eight-capacities-k1-k8	OBJECT	4	DORMANT	3		0
+kernel-era-lens-programme	METHODOLOGICAL	11	DORMANT	5		0
+kernel-inclusion-principle-and-context-projection	OBJECT	3	DORMANT	4		0
+kernel-minimum-substrate-hypothesis-v1	THEORY-LEVEL	20	DORMANT	6		0
+kernel-not-selectable-verdict	THEORY-LEVEL	14	ACTIVE	5		0
+kernel-reconciliation-230-236-report	CROSS-OBJECT	13	CONTESTED	2		0
+kernel-reduction-ablation-experiment-protocol	METHODOLOGICAL	19	ACTIVE	8	1788294071	0
+kernel-reduction-experiment-KR-2026-09-01-executed-results	THEORY-LEVEL	229	ACTIVE	10	2026-09-01	0
+kernel-removal-membership-test	METHODOLOGICAL	2	DORMANT	2		0
+kernel-responsibility-removal-test	METHODOLOGICAL	0	DORMANT	0		2
+kernel-review-session-findings	METHODOLOGICAL	264	CONTESTED	11		0
+kernel-vs-reasoning-engine-boundary	THEORY-LEVEL	2	DORMANT	2	1787357274	0
+kernel-word-four-way-collision	THEORY-LEVEL	24	CONTESTED	4		0
+kmin-stipulated-not-derived	OBJECT	2	ACTIVE	2		0
+knower-formal-definition-and-three-load-bearing-sites	OBJECT	1	DORMANT	3		0
+knower-not-equal-state-h285-1-hypothesis	OBJECT	6	CONTESTED	2		0
+knower-space-gap	OBJECT	1	DORMANT	3	2026-08-30	0
+knowledge-admission-ladder	OBJECT	23	DORMANT	8	1787936967	0
+knowledge-agent-act-context-separation	THEORY-LEVEL	4	DORMANT	1		0
+knowledge-algebra-literature-prior-art-survey-2026-09	CROSS-OBJECT	19	ACTIVE	6		0
+knowledge-artifact-concept	OBJECT	3	DORMANT	3	1787994552	0
+knowledge-as-discrimination-capacity	`THEORY-LEVEL`	3	DORMANT	5	1787674108	0
+knowledge-as-generative-state-transition	THEORY-LEVEL	10	ACTIVE	5	1788344609	0
+knowledge-as-temporal-state-trajectory	`THEORY-LEVEL`	9	DORMANT	6	1787580397	0
+knowledge-atma-identity-concept	OBJECT	58	ACTIVE	11		0
+knowledge-atom-formalization	OBJECT	3	DORMANT	3		0
+knowledge-claim-determination-aggregates	OBJECT	15	DORMANT	10	1787958789	0
+knowledge-claim-root-object-question	OBJECT	0	DORMANT	0		1
+knowledge-concept-extraction-001-k-registers	THEORY-LEVEL	11	CONTESTED	5		0
+knowledge-consistency-constraint-satisfiability-algebra	OBJECT	59	DORMANT	11		0
+knowledge-dimension-vs-sentence-distinction	OBJECT	4	ACTIVE	4	1788285036	0
+knowledge-dimensional-projection-focus-surface-zero-2026-09	THEORY-LEVEL	20	ACTIVE	6		0
+knowledge-distribution-problem	THEORY-LEVEL	3	DORMANT	4		0
+knowledge-drift-model	OBJECT	2	DORMANT	1		0
+knowledge-error-state-lattice	OBJECT	5	DORMANT	6	2026-08-22	0
+knowledge-extraction-inverse-problem-hypothesis	THEORY-LEVEL	5	DORMANT	8	1787816304	0
+knowledge-first-primitivism-thesis	THEORY-LEVEL	5	ACTIVE	4		0
+knowledge-flow	OBJECT	50	CONTESTED	9	2026-08-03	0
+knowledge-gate-model	THEORY-LEVEL	3	DORMANT	2		0
+knowledge-graph-as-zoom-substrate-hypothesis	THEORY-LEVEL	1	ACTIVE	0		0
+knowledge-graph-epistemic-computation-three-layer	THEORY-LEVEL	1	ACTIVE	1		0
+knowledge-graph-not-equal-knowledge-state	THEORY-LEVEL	1	ACTIVE	2		0
+knowledge-graph-zoom-zero-triad	THEORY-LEVEL	1	ACTIVE	1		0
+knowledge-identity-atma-algebra	`OBJECT`	55	DORMANT	9	1787902620	0
+knowledge-layered-definition	THEORY-LEVEL	4	DORMANT	5	2026-08-26	0
+knowledge-lint-coverage-gap	OBJECT	4	DORMANT	3	1788115577	0
+knowledge-maturity-state-machine	OBJECT	4	DORMANT	5		0
+knowledge-measure-theory-v0-1	THEORY-LEVEL	33	CONTESTED	10	1787674238	0
+knowledge-measurement-vector-model	THEORY-LEVEL	13	DORMANT	6	1787671281	4
+knowledge-not-objective-truth-invariant	THEORY-LEVEL	1	DORMANT	1	1787987178	0
+knowledge-placement-derivation	METHODOLOGICAL	7	DORMANT	3		0
+knowledge-qualification-problem-phi-vs-qualify-layer-distinction	OBJECT	2	DORMANT	2	2026-08-31	0
+knowledge-quantity-vs-quality-distinction	OBJECT	1	ACTIVE	1		0
+knowledge-reconstruction-ledger	METHODOLOGICAL	14	CONTESTED	6		0
+knowledge-relation-algebra	OBJECT	3	DORMANT	3		0
+knowledge-relations-dimensions-ddd-bounded-emptiness-2026-09	THEORY-LEVEL	9	ACTIVE	3		0
+knowledge-samskara-debt	OBJECT	1	DORMANT	2		0
+knowledge-scope-object	OBJECT	1	DORMANT	4		0
+knowledge-space-context-map	OBJECT	0	DORMANT	0		1
+knowledge-space-kernel-research-roadmap	METHODOLOGICAL	123	DORMANT	10		0
+knowledge-space-measurable-epistemic-configuration-definition	`THEORY-LEVEL`	23	ACTIVE	5	2026-09-01	0
+knowledge-space	OBJECT	37	DORMANT	7		0
+knowledge-stability-property	OBJECT	3	DORMANT	5		0
+knowledge-standing-vs-assurance-distinction	THEORY-LEVEL	1	ACTIVE	0		0
+knowledge-state-candidate-family-fa-fg	OBJECT	2	DORMANT	3		0
+knowledge-state-closure-algebra	OBJECT	50	DORMANT	10		0
+knowledge-state-dimension-model	OBJECT	2	DORMANT	3		0
+knowledge-state-eight-primitives-chapter	OBJECT	5	DORMANT	9		0
+knowledge-state-equality-relation-family	THEORY-LEVEL	35	CONTESTED	10		0
+knowledge-state-formalization	OBJECT	41	CONTESTED	12	1788115638	0
+knowledge-state-model-audit-231-report	CROSS-OBJECT	8	CONTESTED	3		0
+knowledge-state-revision-conflict-retraction	OBJECT	33	DORMANT	7	1787847436	0
+knowledge-state-transition-algebra	OBJECT	31	DORMANT	8		0
+knowledge-state-transition-central-equation	THEORY-LEVEL	3	ACTIVE	3	1787987444	0
+knowledge-sunya-relational-emptiness-ddd-boundary-2026-09	`THEORY-LEVEL`	17	ACTIVE	6	1788485793	0
+knowledge-theory-integrated-research-model-29-sections	THEORY-LEVEL	10	ACTIVE	5		0
+knowledge-transfer-phase1-measure-theory-doc	OBJECT	21	DORMANT	6		0
+knowledge-vector-measurement-framework	THEORY-LEVEL	37	DORMANT	10		0
+knowledgeos-70-capability-catalogue-beyond-rag	THEORY-LEVEL	12	ACTIVE	4		0
+knowledgeos-abcdefghij-todo-register	METHODOLOGICAL	49	ACTIVE	6	2026-09-02	0
+knowledgeos-actual-component-inventory-methodology	METHODOLOGICAL	75	ACTIVE	8		0
+knowledgeos-actual-graph-extraction-methodology	METHODOLOGICAL	56	DORMANT	7		0
+knowledgeos-actual-system-boundary-model	THEORY-LEVEL	54	DORMANT	8	1787913320	3
+knowledgeos-agent-onboarding-guide	METHODOLOGICAL	10	DORMANT	2		0
+knowledgeos-architectural-inventory-methodology	THEORY-LEVEL	72	DORMANT	7		0
+knowledgeos-architecture-baseline-v0.1	OBJECT	14	DORMANT	9	1787958372	2
+knowledgeos-architecture-constitution-v01	THEORY-LEVEL	86	DORMANT	8		0
+knowledgeos-architecture-review-set	OBJECT	6	DORMANT	1		0
+knowledgeos-bounded-context-map-v1	OBJECT	10	CONTESTED	6		0
+knowledgeos-brain-of-computer-research-programme	METHODOLOGICAL	2	DORMANT	4		0
+knowledgeos-business-translation-removability-preservation-realization	CROSS-OBJECT	21	ACTIVE	5		0
+knowledgeos-c4-architecture-diagrams	THEORY-LEVEL	13	CONTESTED	3		0
+knowledgeos-c4-diagrams-2026-08-28	OBJECT	4	DORMANT	3		0
+knowledgeos-causal-inference-and-dynamical-system	THEORY-LEVEL	1	DORMANT	3		0
+knowledgeos-character-definition	THEORY-LEVEL	34	DORMANT	8		0
+knowledgeos-commercial-ip-strategy	THEORY-LEVEL	8	DORMANT	5	2026-08-19	0
+knowledgeos-complete-model-synthesis	THEORY-LEVEL	3	DORMANT	5	2026-08-26	0
+knowledgeos-conformance-matrix-model	THEORY-LEVEL	67	DORMANT	8	1787913236	0
+knowledgeos-constitution-implementation-conformance-test-model	THEORY-LEVEL	63	DORMANT	9		0
+knowledgeos-constitution-v1	OBJECT	2	DORMANT	3	1787395731	0
+knowledgeos-context-package-model	OBJECT	2	DORMANT	1		0
+knowledgeos-control-loop-evidence-test-model	THEORY-LEVEL	68	DORMANT	6		0
+knowledgeos-ddd-architecture-v3	THEORY-LEVEL	5	DORMANT	4	2026-08-19	0
+knowledgeos-epistemic-architecture-investigation	OBJECT	12	DORMANT	7	2026-08-21	0
+knowledgeos-evidence-execution-protocol	THEORY-LEVEL	26	DORMANT	5		0
+knowledgeos-evidence-measure-and-independence	THEORY-LEVEL	1	DORMANT	4		0
+knowledgeos-final-definition	THEORY-LEVEL	4	DORMANT	2		0
+knowledgeos-four-layer-architecture-and-type-constraints	THEORY-LEVEL	1	DORMANT	4	1787962246	0
+knowledgeos-fundamental-model-five-candidates	`THEORY-LEVEL`	1	DORMANT	1	2026-08-31	0
+knowledgeos-gap-theory-v1-0	THEORY-LEVEL	28	ACTIVE	6	2026-09-02	0
+knowledgeos-governance-engineering-closure-loop-model	THEORY-LEVEL	72	DORMANT	8		0
+knowledgeos-information-model	THEORY-LEVEL	22	DORMANT	4		0
+knowledgeos-information-theory-and-hallucination-bound	THEORY-LEVEL	1	DORMANT	5	1787962246	0
+knowledgeos-information-transformation-theory-consolidated-draft-2026-09	THEORY-LEVEL	31	CONTESTED	6		0
+knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis	THEORY-LEVEL	77	DORMANT	9		0
+knowledgeos-kernel-candidate-concepts	THEORY-LEVEL	1	ACTIVE	1	1788670245	0
+knowledgeos-kernel-concept	THEORY-LEVEL	385	CONTESTED	12		0
+knowledgeos-knowledge-state-KS-and-reconstruction-theorem	THEORY-LEVEL	1	DORMANT	4		0
+knowledgeos-math-status-table-and-step186-redirected	`METHODOLOGICAL`	1	DORMANT	1	1787962246	0
+knowledgeos-mathematical-object-K	THEORY-LEVEL	1	DORMANT	4		0
+knowledgeos-mathematical-state-transition-model	`THEORY-LEVEL`	8	DORMANT	6	1787753435	0
+knowledgeos-model-mathematical-review-gaps	THEORY-LEVEL	3	DORMANT	3		0
+knowledgeos-multi-lens-synthesis-dossier	THEORY-LEVEL	28	DORMANT	7		0
+knowledgeos-named-code-is-unrelated	OBJECT	1	DORMANT	3		0
+knowledgeos-ontology-discovery-multi-agent-review	THEORY-LEVEL	90	DORMANT	8	1787646942	0
+knowledgeos-operating-model	THEORY-LEVEL	16	DORMANT	3		0
+knowledgeos-platform	THEORY-LEVEL	103	CONTESTED	9		0
+knowledgeos-probability-and-dempster-shafer-layer	THEORY-LEVEL	1	DORMANT	4	1787962246	0
+knowledgeos-ratification-package-declaration	METHODOLOGICAL	5	ACTIVE	4		0
+knowledgeos-reference-architecture-v1	OBJECT	5	DORMANT	2		0
+knowledgeos-remaining-steps-roadmap	METHODOLOGICAL	11	DORMANT	2		0
+knowledgeos-research-ledger-2026-09-artifact-status-matrix	METHODOLOGICAL	7	ACTIVE	3		0
+knowledgeos-reviews-root	OBJECT	3	DORMANT	3		0
+knowledgeos-semantic-core-evidence-test-model	THEORY-LEVEL	61	DORMANT	7	1787913664	2
+knowledgeos-semantic-core-model	THEORY-LEVEL	62	DORMANT	8		0
+knowledgeos-semantic-graph-model	THEORY-LEVEL	72	DORMANT	6	1787913723	0
+knowledgeos-semantic-ownership-reconstruction-model	`THEORY-LEVEL`	70	DORMANT	7	2025	0
+knowledgeos-statistical-technique-catalog	OBJECT	27	DORMANT	8	1787534528	0
+knowledgeos-theory-formal-mathematical-register-2026-09	THEORY-LEVEL	25	ACTIVE	5		0
+knowledgeos-theory-integrated-formal-v1-0	THEORY-LEVEL	26	ACTIVE	5	2026-09-02	0
+knowledgeos-theory-overview-2026-09-09	THEORY-LEVEL	23	ACTIVE	6		0
+knowledgeos-theory-v1-0-definitions-axioms-theorems	THEORY-LEVEL	83	ACTIVE	5		0
+knowledgeos-theory-v1-1-formal-derivation	THEORY-LEVEL	26	ACTIVE	5	2026-09-02	0
+knowledgeos-theory-v1-1-simulation-executed-results	THEORY-LEVEL	28	ACTIVE	5		0
+knowledgeos-theory-v1-1-simulation-experiment-protocol	METHODOLOGICAL	38	ACTIVE	6	2026-09-02	0
+knowledgeos-theory-v1-2-corrections-against-steps-285-290	THEORY-LEVEL	12	ACTIVE	4		0
+knowledgeos-theory-v1-2-simulation-experiment	METHODOLOGICAL	5	ACTIVE	3		0
+knowledgeos-theory-v12-remaining-todos-register-2026-09	`METHODOLOGICAL`	16	ACTIVE	2	1788480004	0
+knowledgeos-traceability-experiment-model	THEORY-LEVEL	75	DORMANT	7	1787913801	0
+knowledgeos-tripurti-three-entities	OBJECT	2	DORMANT	4		0
+knowledgeos-type-system	OBJECT	13	DORMANT	4	2026-08-26	0
+knowledgeos-vs-epistemic-os-layering	CROSS-OBJECT	7	DORMANT	4	August 22,	0
+knowledgeos-witness-invariant-and-transition-graph	`THEORY-LEVEL`	1	DORMANT	4	1787962246	0
+knowledgeos-zero-concept-v1-2-formal	THEORY-LEVEL	4	ACTIVE	2		0
+known-unknowns-register-artifact	OBJECT	1	DORMANT	1		0
+kos-adr-kos-candidates	OBJECT	1	DORMANT	0		0
+kos-aip-gov-state-durability-program	OBJECT	28	CONTESTED	8		0
+kos-architecture-fitness-rules	OBJECT	50	DORMANT	6		0
+kos-architecture-registry	THEORY-LEVEL	35	DORMANT	5		0
+kos-artifact-classification-model	OBJECT	13	DORMANT	4	1787914584	0
+kos-assurance-graph	THEORY-LEVEL	24	DORMANT	4	2025-06-01	0
+kos-authority-conflict-model	OBJECT	1	DORMANT	2		0
+kos-boundary-test-scenarios-preview	METHODOLOGICAL	12	DORMANT	4	2026-06-15	0
+kos-boundary-violation-catalog	OBJECT	5	DORMANT	3		0
+kos-bounded-context-candidates	THEORY-LEVEL	13	DORMANT	4	1787914224	0
+kos-canonical-domain-model	THEORY-LEVEL	87	DORMANT	6		0
+kos-canonical-essence	OBJECT	1	DORMANT	1		0
+kos-causal-identifiability-invariants	OBJECT	8	DORMANT	5	1787910328	0
+kos-computability-and-execution-boundary	OBJECT	10	DORMANT	6		0
+kos-constitution-v1	OBJECT	23	CONTESTED	5		0
+kos-constitutional-invariant-decision-matrix	OBJECT	12	DORMANT	3		0
+kos-constitutional-invariant-map	OBJECT	13	DORMANT	2		0
+kos-context-map-v2-preview	THEORY-LEVEL	29	DORMANT	6	1787914288	2
+kos-contract-neutrality-001-fact-model	OBJECT	9	CONTESTED	8		0
+kos-current-state-reconstruction-model	METHODOLOGICAL	35	DORMANT	5		0
+kos-ddd-boundary-test-model	METHODOLOGICAL	4	DORMANT	4		0
+kos-decision-model-governance	OBJECT	13	DORMANT	7		0
+kos-decision-theory-model	OBJECT	27	DORMANT	7	1787910297	0
+kos-delta-map-preview	METHODOLOGICAL	17	DORMANT	3		0
+kos-distributed-epistemic-consistency	OBJECT	5	DORMANT	5		0
+kos-domain-model-preview	THEORY-LEVEL	3	DORMANT	1		0
+kos-domain-model-reduction-preview	THEORY-LEVEL	39	DORMANT	6		0
+kos-domain-type-system	OBJECT	22	DORMANT	8		0
+kos-emergence-systemic-risk-collective-correctness	OBJECT	13	DORMANT	7	1787911910	0
+kos-epistemic-algebra	OBJECT	21	DORMANT	9		0
+kos-epistemic-kernel	THEORY-LEVEL	24	DORMANT	5		0
+kos-epistemic-provenance-kernel-invariants	THEORY-LEVEL	10	DORMANT	1		0
+kos-epistemic-type-system	OBJECT	15	DORMANT	8	1787911459	0
+kos-evolution-roadmap-preview	`METHODOLOGICAL`	28	DORMANT	5	1787914967	0
+kos-execution-evidence-governance-boundary	THEORY-LEVEL	7	DORMANT	5		0
+kos-experiment-id-registry-v1-2-lane	METHODOLOGICAL	2	ACTIVE	1		0
+kos-external-lens-extraction-method	METHODOLOGICAL	40	DORMANT	7		0
+kos-fitness-rule-model	THEORY-LEVEL	11	DORMANT	4		0
+kos-five-layer-architecture-model	THEORY-LEVEL	5	DORMANT	3		0
+kos-global-invariant-set-20	THEORY-LEVEL	7	DORMANT	8		0
+kos-golden-trace	THEORY-LEVEL	30	DORMANT	4	1787915020	0
+kos-governance-runtime	THEORY-LEVEL	18	DORMANT	5	2026-09-15	0
+kos-governed-action-lifecycle	OBJECT	2	DORMANT	2		0
+kos-graph-edge-taxonomy	THEORY-LEVEL	4	DORMANT	2		0
+kos-graph-integrity-invariants	OBJECT	1	DORMANT	2	2025-06-01	0
+kos-identity-trust-cryptographic-provenance	OBJECT	11	DORMANT	6		0
+kos-implementation-constitution	THEORY-LEVEL	13	DORMANT	3		0
+kos-implementation-readiness-analysis-2026-09-06	METHODOLOGICAL	6	ACTIVE	1		0
+kos-implementation-readiness-reverification-2026-09-06	METHODOLOGICAL	0	DORMANT	0		1
+kos-information-gain-and-epistemic-quality	`OBJECT`	13	DORMANT	8	1787910241	0
+kos-inquiry-concept	OBJECT	2	DORMANT	2		0
+kos-integration-contract-model	OBJECT	31	DORMANT	5		0
+kos-invariant-family-taxonomy	THEORY-LEVEL	28	DORMANT	3	2026-08-22	0
+kos-ip-protection-strategy	`METHODOLOGICAL`	5	DORMANT	3	2026-08-19	0
+kos-kernel-adjudication-wave1-extent-contents	THEORY-LEVEL	1	DORMANT	1		0
+kos-kernel-decision-step5	OBJECT	6	DORMANT	1	2026-08-22	0
+kos-kernel-engine-boundary	THEORY-LEVEL	11	ACTIVE	4	2026-08-22	0
+kos-law-01-identity	OBJECT	12	DORMANT	6		0
+kos-law-02-dimension	OBJECT	4	DORMANT	1		0
+kos-law-03-authority	`OBJECT`	3	DORMANT	1	2026-08-22	0
+kos-law-04-decision	OBJECT	3	DORMANT	1	2026-08-22	0
+kos-law-05-projection	OBJECT	3	DORMANT	1		0
+kos-law-06-verification	OBJECT	3	DORMANT	1		0
+kos-law-07-failure-state	OBJECT	3	DORMANT	1	2026-08-22	10
+kos-law-08-contradiction	`OBJECT`	3	DORMANT	1	2026-08-22	0
+kos-law-09-unknown	OBJECT	3	DORMANT	1		0
+kos-law-10-agency	OBJECT	3	DORMANT	1	2026-08-22	0
+kos-law-11-history	OBJECT	4	DORMANT	2		0
+kos-lens-extraction-methodology	METHODOLOGICAL	1	DORMANT	0		0
+kos-liveness-progress-calculus	OBJECT	9	DORMANT	6		0
+kos-logical-architecture-preview	THEORY-LEVEL	47	DORMANT	5		0
+kos-maturity-ladders	THEORY-LEVEL	5	DORMANT	3		0
+kos-minimal-kernel	OBJECT	14	DORMANT	6		0
+kos-ml-01-12-invariant-set	THEORY-LEVEL	5	DORMANT	6	1787573028	0
+kos-model-breaking-adversarial-audit	THEORY-LEVEL	11	DORMANT	7		0
+kos-model-risk-and-self-validation	OBJECT	14	DORMANT	7		0
+kos-multi-agent-epistemic-independence	OBJECT	17	DORMANT	7		0
+kos-multi-graph-model	THEORY-LEVEL	12	DORMANT	6		0
+kos-multi-lens-pattern-matrix-pass2	THEORY-LEVEL	18	DORMANT	4	1787532079	0
+kos-multi-objective-decision-governance	OBJECT	11	DORMANT	6	1787911808	0
+kos-negative-boundary-non-identities	THEORY-LEVEL	10	DORMANT	3		0
+kos-observability-identifiability-model	OBJECT	17	DORMANT	8	1787912008	0
+kos-operating-model-step156-preview	THEORY-LEVEL	49	DORMANT	6	1787917832	0
+kos-organizational-agency-multi-agent-boundary	OBJECT	15	DORMANT	6	1787911873	0
+kos-organizational-control-feedback	OBJECT	16	DORMANT	7		0
+kos-paraconsistency-and-revision	OBJECT	10	DORMANT	6	1787911509	0
+kos-partial-observability-epistemic-boundary	OBJECT	15	DORMANT	10		0
+kos-persistence-architecture	THEORY-LEVEL	20	DORMANT	5	1787915524	0
+kos-pointer-layer-principle	THEORY-LEVEL	3	DORMANT	3		0
+kos-primitive-reduction-kernel	`THEORY-LEVEL`	15	DORMANT	7	1787906506	0
+kos-property-based-testing-methodology	METHODOLOGICAL	9	DORMANT	5		0
+kos-reference-architecture-v1	THEORY-LEVEL	14	DORMANT	5		0
+kos-reference-state-machine	OBJECT	17	DORMANT	10		0
+kos-repository-archaeology-preview	METHODOLOGICAL	15	DORMANT	6	1787914554	0
+kos-risk-register	OBJECT	1	DORMANT	1		0
+kos-runtime-archaeology-preview	METHODOLOGICAL	1	DORMANT	1		0
+kos-runtime-architecture	THEORY-LEVEL	15	DORMANT	5	1787915583	0
+kos-self-assurance-engine	THEORY-LEVEL	23	DORMANT	6	1787915825	0
+kos-semantic-ownership-matrix	THEORY-LEVEL	21	DORMANT	6	1787914621	0
+kos-semantic-triangle	THEORY-LEVEL	2	DORMANT	2		0
+kos-session-bootstrap-mechanism	`OBJECT`	23	DORMANT	7	1787403225	0
+kos-seven-context-ddd-mapping	THEORY-LEVEL	13	DORMANT	9		0
+kos-seven-layer-architecture	THEORY-LEVEL	2	DORMANT	3		0
+kos-sv-01-self-verification-suite	OBJECT	17	DORMANT	6		0
+kos-sv-vs-self-governance-distinction	THEORY-LEVEL	18	DORMANT	5		0
+kos-theory-foundations-gap-review	THEORY-LEVEL	5	DORMANT	4		0
+kos-theory-v2-rewrite-outline-plan-2026-09	THEORY-LEVEL	3	ACTIVE	2		0
+kos-theory-v2-rewrite-parts-i-xvii-2026-09	THEORY-LEVEL	82	ACTIVE	5	2026-09-05	0
+kos-vertical-slice-v01	THEORY-LEVEL	23	DORMANT	5	1787915661	0
+kr-2026-09-01-kernel-reduction-ablation	OBJECT	4	ACTIVE	5	2026-09-02	1
+kr-access-2026-09-experiment	METHODOLOGICAL	2	ACTIVE	3	1788366686	0
+kr-algebra-x3-voting-carrier-proposal-2026-09	THEORY-LEVEL	12	ACTIVE	3		0
+kr-algebra-zero-quotient-congruence-hierarchy-2026-09	`THEORY-LEVEL`	18	ACTIVE	4	1788482004	0
+kr-biocomm-zero-01-formal-foundations-and-witness-propositions	OBJECT	18	ACTIVE	10	1788760512	0
+kr-biocomm-zero-01-initial-proposal	OBJECT	1	ACTIVE	0		0
+kr-bridge-01-zero-preservation-experiment-protocol-2026-09	THEORY-LEVEL	47	ACTIVE	7		0
+kr-bridge-02-pi-q-grid-experiment	`THEORY-LEVEL`	22	ACTIVE	5	2026-09-04	0
+kr-bridge-03-generator-regime-2026-09	THEORY-LEVEL	4	ACTIVE	3	2026-09-04	0
+kr-capability-traceability-2026-09-recommendation	METHODOLOGICAL	3	ACTIVE	1	1788779995	0
+kr-comp-frame-qualifier-result	OBJECT	2	ACTIVE	4		0
+kr-comp-sep-rule-separation-result	OBJECT	70	CONTESTED	9		0
+kr-context-integration-01-proposed	OBJECT	1	ACTIVE	0		0
+kr-contr-2026-09-experiment-protocol	METHODOLOGICAL	77	CONTESTED	10	1788357814	3
+kr-contr-fde-four-representation-adequacy-test	OBJECT	5	ACTIVE	7		0
+kr-contr-two-models-result	OBJECT	61	CONTESTED	6		0
+kr-contribution-01-argument-challenge-balance-algebra-2026-09	THEORY-LEVEL	12	CONTESTED	5		0
+kr-dl-2026-09-description-logic-integration-and-gap-closure	METHODOLOGICAL	4	ACTIVE	2		0
+kr-dyn-situation-calculus-integration-thread	METHODOLOGICAL	4	ACTIVE	1	1788366049	0
+kr-epistemic-agency-2026-09-formal-specification	OBJECT	47	ACTIVE	10	1788780034	0
+kr-godel-2026-09-experiment	METHODOLOGICAL	1	ACTIVE	2	1788367096	0
+kr-history-kernel-vs-domain-experiment	METHODOLOGICAL	9	ACTIVE	4		0
+kr-hr-fr-series-theory-additions	THEORY-LEVEL	27	ACTIVE	7		0
+kr-hr-theory-integration-handbook	OBJECT	9	ACTIVE	4		0
+kr-integration-proposed-theory-extension	METHODOLOGICAL	2	ACTIVE	1	2026-09-02	0
+kr-kernel-minimality-2026-09	THEORY-LEVEL	128	ACTIVE	7	1788478997	3
+kr-krr-2026-09-knowledge-representation-integration-thread	METHODOLOGICAL	4	ACTIVE	2	1788364577	0
+kr-ll-2026-09-experiment	METHODOLOGICAL	2	ACTIVE	2	1788367900	0
+kr-orgasm-closure-experiment-design	METHODOLOGICAL	21	ACTIVE	6		0
+kr-reiter-2026-09-experiment	METHODOLOGICAL	11	ACTIVE	5	1788369177	0
+kr-rep-dataset-corpus-audit-protocol-2026-09	`THEORY-LEVEL`	10	ACTIVE	3	1788464609	0
+kr-rep-reduction-audit-protocol-2026-09	THEORY-LEVEL	14	ACTIVE	4	1788471398	0
+kr-rep-reduction-executed-results-interpretation-2026-09	THEORY-LEVEL / OBJECT (mixed per row)	38	ACTIVE	6		0
+kr-rep-reduction-formal-corrections-2026-09	THEORY-LEVEL	33	ACTIVE	5		0
+kr-rep-reduction-master-handoff-preservation-contracts-2026-09	THEORY-LEVEL	22	ACTIVE	6		0
+kr-rreq-closure-bridge-sequence	METHODOLOGICAL	8	ACTIVE	7	1788370527	0
+kr-shieber-2026-09-experiment-package	METHODOLOGICAL	0	DORMANT	0		0
+kr-state-01-axis-e-epistemic-junction-traversal-2026-09	THEORY-LEVEL	11	ACTIVE	4		0
+kr-state-01-multidimensional-epistemic-state-2026-09	THEORY-LEVEL	23	ACTIVE	6		0
+kr-state-01-temporal-rebasing-2026-09	THEORY-LEVEL	17	ACTIVE	3	1788487894	0
+kr-zero-algebra-executed-results-2026-09	OBJECT	15	ACTIVE	9	1788760512	0
+kr-zero-algebra-transformation-relative-zero-2026-09	OBJECT	5	ACTIVE	4	2026-09	0
+kr-zero-mechanism-order-interaction-analysis	`THEORY-LEVEL`	36	ACTIVE	7	1788465017	0
+kr-zero-resolution-2026-09-three-zero-distinction	OBJECT	13	ACTIVE	8	1788779849	0
+kr-zoom-out-01-avail-predicate-and-e2b-final-corrections	`OBJECT`	1	ACTIVE	1	2026-09-05	0
+kr-zoom-out-01-calibration-gate-failed	OBJECT	1	ACTIVE	1		0
+kr-zoom-out-01-carrier-and-m2-corrections	OBJECT	1	ACTIVE	0		0
+kr-zoom-out-01-conditional-estimand-not-adopted	OBJECT	1	ACTIVE	1		0
+kr-zoom-out-01-controls-oa-of	OBJECT	1	ACTIVE	1		0
+kr-zoom-out-01-design-rival-meanings	OBJECT	1	ACTIVE	1	2026-09-05	0
+kr-zoom-out-01-final-status-and-fr-004-candidate	OBJECT	1	ACTIVE	0	1788758289	0
+kr-zoom-out-01-frozen-and-kr-zoom-04-outstanding	GOVERNANCE	1	ACTIVE	1		0
+kr-zoom-out-01-m1-winner-is-null-population-artifact	OBJECT	2	ACTIVE	2	1788758289	0
+kr-zoom-out-01-preregistration-estimands	OBJECT	1	ACTIVE	1	2026-09-05	0
+kr-zoom-out-01-three-institutionalized-lessons	METHODOLOGICAL	1	ACTIVE	1		0
+kr-zoom-out-02-ready-for-freeze	GOVERNANCE	1	ACTIVE	1	2026-09-05	0
+kr-zoom-recommended-four-step-plan	GOVERNANCE	1	ACTIVE	1	1788757781	0
+kr-zoom01-audit-invalidated-structural-counterfactual	OBJECT	1	ACTIVE	1		0
+kr-zoom01-connection-to-semantic-equivalence-work	THEORY-LEVEL	1	ACTIVE	1	1788757781	0
+kr-zoom01-controls-d1-d2-validated	`METHODOLOGICAL`	1	ACTIVE	1	1788757781	0
+kr-zoom01-gita-lens-expectation-refuted	OBJECT	1	ACTIVE	2		0
+kr-zoom01-governance-conclusion-no-kernel-change	GOVERNANCE	1	ACTIVE	1		0
+kr-zoom01-harness-bug-vs-result-validity	METHODOLOGICAL	1	ACTIVE	1	1788757781	0
+kr-zoom01-refinement-reduces-determination	THEORY-LEVEL	1	ACTIVE	1		0
+kr-zoom01-reinterpreted-as-restriction-artifact	`OBJECT`	1	ACTIVE	0	1788757991	0
+kr-zoom01-three-level-result-synthesis	METHODOLOGICAL	1	ACTIVE	2		0
+kr-zoom01-traversal-order-noncommutativity	OBJECT	1	ACTIVE	1		0
+kr-zoom01-untestable-hypotheses-left-unresolved	METHODOLOGICAL	1	ACTIVE	0	1788757781	0
+kr-zoom02-budget-plateau-vs-scaling-result	OBJECT	1	ACTIVE	1	1788757991	0
+kr-zoom02-order-agreement-result	OBJECT	1	ACTIVE	1		0
+kr-zoom02-set-anchored-design-proposal	OBJECT	1	ACTIVE	1		0
+kr-zoom02-seven-percent-result-corrected	METHODOLOGICAL	1	ACTIVE	0		0
+kr-zoom03-actual-borderline-result	OBJECT	1	ACTIVE	1	2026-09-05	0
+kr-zoom03-design-and-controls	OBJECT	1	ACTIVE	1	1788757991	0
+kr-zoom03-frozen-contract-after-critique	OBJECT	1	ACTIVE	1	2026-09-05	0
+kr-zoom03-not-yet-authorized	GOVERNANCE	1	ACTIVE	0		0
+kr-zoom03-preregistered-effect-floor-and-determine-contract	OBJECT	1	ACTIVE	1		0
+kr-zoom03-two-failed-controls	OBJECT	1	ACTIVE	1	2026-09-05	0
+kr-zoom03-wrong-estimand-discovered-not-adopted	`METHODOLOGICAL`	1	ACTIVE	0	2026-09-05	0
+ksetra-ksetrajna-field-knower-distinction	OBJECT	8	ACTIVE	4		0
+kst-atomic-tuple-and-two-gap-distinction	THEORY-LEVEL	9	ACTIVE	5		0
+kt-invariant-map-dependency-graph-synthesis	`THEORY-LEVEL`	4	ACTIVE	3	1788285036	0
+kt-research-provenance-layering-audit	METHODOLOGICAL	5	ACTIVE	3		0
+kt-tuple-spine-wars-steps-26-40	CROSS-OBJECT	60	CONTESTED	3		0
+lane-conflict-v4-evidence-package-H2-2026-09	METHODOLOGICAL	11	CONTESTED	4		0
+learning-adaptation-model-evolution-governance	THEORY-LEVEL	65	DORMANT	7		0
+lens-commutation-question	OBJECT	1	DORMANT	1		0
+leonardo-context-completeness-lens	OBJECT	3	DORMANT	4		0
+level-4-is-evaluation-frame-not-structural-level	METHODOLOGICAL	1	ACTIVE	0		0
+level-a-falsification-closing-verdicts	OBJECT	1	ACTIVE	1		0
+level-a-level-b-nested-necessity-proof	THEORY-LEVEL	1	ACTIVE	1		0
+level-confusion-audit-matrix-ten-levels	METHODOLOGICAL	2	DORMANT	1		0
+lexical-semantic-hybrid-search-and-embedding-fallacy	THEORY-LEVEL	1	ACTIVE	2		0
+lifecycle-responsibility-five-way-decomposition	METHODOLOGICAL	0	DORMANT	0		1
+lineage-47-tests-inflation	CROSS-OBJECT	2	DORMANT	2		0
+lineage-quality-and-null-semantics	THEORY-LEVEL	1	ACTIVE	3		0
+linga-yoni-projection-transformation-experiment	METHODOLOGICAL	32	ACTIVE	6		0
+llm-confidence-vs-calibrated-probability	THEORY-LEVEL	2	DORMANT	3	1787985044	0
+llm-from-scratch-book-technical-mapping	THEORY-LEVEL	5	DORMANT	6		0
+local-consistency-boundary-preservation	THEORY-LEVEL	2	DORMANT	2		0
+local-ignorance-systemic-amnesia-invariant	THEORY-LEVEL	4	DORMANT	4		0
+logical-omniscience-problem	OBJECT	1	ACTIVE	3		0
+logitica-problem-structure-extraction-lens	THEORY-LEVEL	27	DORMANT	6	2019	0
+lord-algebra-025g	THEORY-LEVEL	5	CONTESTED	5	2026-08-27	0
+lord-lens-horizon-expansion	`OBJECT`	15	ACTIVE	7	1787953951	0
+lord-omega-infinite-knowledge-space-lens	THEORY-LEVEL	96	CONTESTED	9		0
+lord-omega-lineage-reconciliation	OBJECT	8	ACTIVE	5		0
+lossy-semantic-projection-blocked-by-qualify	OBJECT	46	CONTESTED	8		0
+m-7-project-decided-not-stable-fact	METHODOLOGICAL	2	DORMANT	3	2026-08-24	0
+madhyamaka-time-indexed-knowledge-transition-2026-09	THEORY-LEVEL	45	ACTIVE	7		0
+mandatory-operation-set-gap	OBJECT	117	CONTESTED	11	2026-08-30	0
+margin-for-error-candidate	OBJECT	4	ACTIVE	4		0
+master-gap-register-53-gaps	`OBJECT`	5	ACTIVE	3	1788128564	0
+mathematical-knowledge-architecture-multilens-proposal	METHODOLOGICAL	10	DORMANT	6	1787577217	0
+mathematical-regimes-composition	THEORY-LEVEL	3	DORMANT	3		0
+mathematical-research-priority-ranking-del-first	METHODOLOGICAL	4	ACTIVE	3		0
+mcginn-logical-properties-lens	THEORY-LEVEL	50	DORMANT	9		0
+measurable-epistemic-gain-metric-correction	OBJECT	3	DORMANT	3		0
+measure-theory-crisis-abandonment	METHODOLOGICAL	11	DORMANT	7		0
+measure-theory-falsification-cascade	OBJECT	1	DORMANT	2		0
+measurement-cannot-vary-invariant	`METHODOLOGICAL`	1	ACTIVE	1	1788757781	0
+measurement-representation-stage-unestablished	THEORY-LEVEL	1	DORMANT	2		0
+measurement-scale-semantics-VD	THEORY-LEVEL	31	DORMANT	8	1788111336	0
+measurement-structure-and-source-independence-downgraded	THEORY-LEVEL	1	ACTIVE	1		0
+measurement-theory-admissibility-gap	THEORY-LEVEL	6	DORMANT	6	1788115143	0
+merge-algebra-question	`OBJECT`	3	DORMANT	5	1788115221	0
+merricks-eliminativist-ontology-lens	THEORY-LEVEL	43	DORMANT	10		0
+meskin-metaphor-critique-category-errors	OBJECT	4	ACTIVE	3		0
+meskin-zero-sexual-metaphor	OBJECT	6	ACTIVE	1	1788344609	0
+meta-epistemic-kernel-substrate-hypothesis	THEORY-LEVEL	33	ACTIVE	10		0
+meta-model	OBJECT	29	DORMANT	7		0
+metaphor-extraction-remove-unsupported-claims-discipline	METHODOLOGICAL	1	ACTIVE	1		0
+metazero-hypothesis	OBJECT	2	ACTIVE	2		0
+migration-plan-amendment-chain	OBJECT	48	CONTESTED	8		0
+minica-del-questions-inquiry-lens-2026-09	OBJECT	32	ACTIVE	7		0
+minimal-adequate-representation-entropy-formalization	THEORY-LEVEL	5	ACTIVE	2		0
+minimal-formal-state-type-system	OBJECT	26	DORMANT	5	1787847205	0
+minimum-preservation-unit-identity-bearing-assertion	OBJECT	2	CONTESTED	1		0
+minimum-preservation-unit	OBJECT	3	DORMANT	3		0
+mismatch-type-taxonomy	METHODOLOGICAL	1	DORMANT	2		0
+missing-vs-negative-evidence-invariant	THEORY-LEVEL	1	DORMANT	3	1787568329	0
+missingness-taxonomy-abhava	OBJECT	8	DORMANT	7		0
+mission	OBJECT	33	CONTESTED	8		0
+model-amnesia	THEORY-LEVEL	12	DORMANT	4		0
+model-boundary-observability-identifiability-algebra	OBJECT	52	DORMANT	8	1787904846	0
+model-evidence-complexity-tradeoff	`OBJECT`	1	DORMANT	2	1787573551	0
+model-hypothesis-prediction-revision-algebra	OBJECT	43	DORMANT	10	1787904363	0
+model-identifiability-invariant	THEORY-LEVEL	2	DORMANT	5		0
+model-interpretation-vs-evidence-invariant	THEORY-LEVEL	2	DORMANT	2	1787994251	0
+model-registry-object	`OBJECT`	7	DORMANT	5	1787567335	0
+model-validity-state	OBJECT	6	DORMANT	6		0
+moksha-epistemic-limit-concept	OBJECT	4	DORMANT	7		0
+monotonic-convergence-assumption-rejected	THEORY-LEVEL	1	ACTIVE	1	1788759986	0
+multi-agent-trust-conflict-consensus-algebra	OBJECT	51	DORMANT	10		0
+multi-dimensional-epistemic-state-model	OBJECT	39	ACTIVE	10		0
+multi-state-space-unresolved-question	THEORY-LEVEL	1	DORMANT	1		0
+multi-temporal-dimension-model	THEORY-LEVEL	11	DORMANT	7	1787987296	0
+multidimensional-epistemic-distance-d_E	OBJECT	1	ACTIVE	3	1788285340	0
+mutation-ownership-invariant	OBJECT	7	DORMANT	4	2026-08-17	0
+n60-stratifier-dropping-anti-pattern-caught	METHODOLOGICAL	1	ACTIVE	0		0
+nasadiya-sukta-epistemic-boundary-lens	THEORY-LEVEL	13	DORMANT	7	2023	0
+natural-forced-transition-distinction	OBJECT	3	ACTIVE	6	1788366049	0
+navya-nyaya-relational-ontology	THEORY-LEVEL	10	DORMANT	6		0
+navya-nyaya-relations-lens	METHODOLOGICAL	0	DORMANT	0		1
+necessity-sufficiency-untested-both-bases	OBJECT	1	ACTIVE	1		0
+negative-epistemology-boundary	THEORY-LEVEL	13	DORMANT	4		0
+negative-test-propositions-p1-p10	METHODOLOGICAL	6	ACTIVE	7		0
+neutral-biological-terminology-warning	METHODOLOGICAL	1	ACTIVE	2		0
+next-actor-orchestration-ast018	`OBJECT`	19	DORMANT	8	2026-08-22	0
+next-epistemic-act-function-and-gap-classification	THEORY-LEVEL	7	ACTIVE	6	1788779995	0
+nexus-worked-example-and-formalization	OBJECT	1	ACTIVE	2	1788757991	0
+nine-survivors-classification-table	OBJECT	1	ACTIVE	1		0
+nine-survivors-dependency-graph	`OBJECT`	1	ACTIVE	1	2026-09-06	0
+ninety-nine-cell-operation-contract-measurement	OBJECT	2	DORMANT	2	2026-08-31	0
+no-semantic-elevation-without-transition-principle	THEORY-LEVEL	2	DORMANT	3		0
+non-identifiability-omega-w	OBJECT	2	DORMANT	4	2026-08-22	0
+non-monotonic-dynamics-vs-mechanical-control	THEORY-LEVEL	1	ACTIVE	1		0
+non-response-not-equal-zero	OBJECT	1	ACTIVE	2		0
+nonmonotonicity-lifecycle-principle	`THEORY-LEVEL`	5	ACTIVE	6	1788364577	0
+normative-state-concept	OBJECT	11	DORMANT	6		0
+not-established-vs-proven-impossible-discipline	`METHODOLOGICAL`	1	ACTIVE	1	2026-08-25	0
+not-knowledge-inverse-definition-approach	THEORY-LEVEL	9	DORMANT	8	1787578974	0
+noun-to-domain-object-promotion-warning	METHODOLOGICAL	1	DORMANT	2		0
+null-results-not-retroactively-reinterpreted	METHODOLOGICAL	1	ACTIVE	1	1788759821	0
+nyaya-pramana-lens	METHODOLOGICAL	0	DORMANT	0		3
+nyaya-sutra-kernel-falsification-lens	OBJECT	9	DORMANT	5		0
+nyaya-vaisesika-epistemic-process-lens	THEORY-LEVEL	24	DORMANT	6		0
+o-core-not-enumerated-against-ratified-primitives	OBJECT	6	CONTESTED	3	1788196442	0
+o-core-ratification-gap-d0	OBJECT	21	CONTESTED	6		0
+o-core-six-operator-candidate-set	OBJECT	9	ACTIVE	7	1788370527	0
+o-f-star-estimand-nondegeneracy-preflight-protocol-2026-09	METHODOLOGICAL	4	CONTESTED	4		0
+object-meta-level-non-collapse-principle	THEORY-LEVEL	1	ACTIVE	3	1788367096	0
+observability-runtime-empirical-assurance-model	THEORY-LEVEL	74	DORMANT	8	1787912814	0
+observation-dimension-vs-behavioural-equivalence-four-way-distinction	OBJECT	4	CONTESTED	2		0
+observation-formal-model	OBJECT	50	CONTESTED	10		0
+observation-runtime-changeset-pipeline	OBJECT	4	DORMANT	4		0
+observed-unobserved-unknown-state-model	OBJECT	2	DORMANT	3		0
+oconnor-persons-causes-agency-lens	THEORY-LEVEL	19	DORMANT	6		0
+ocore-cannot-be-derived-not-established	OBJECT	1	ACTIVE	0	2026-09-06	0
+ocore-coin-flip-quantified	`OBJECT`	1	ACTIVE	2	2026-09-06	0
+ocore-necessity-proof-gap	OBJECT	2	ACTIVE	1		0
+ocore-necessity-test-already-exists	OBJECT	2	ACTIVE	2	2026-09-06	0
+ocore-present-in-only-half-of-worlds	OBJECT	1	ACTIVE	1	1788680410	0
+of-star-corrected-to-require-admissible-witness	METHODOLOGICAL	1	ACTIVE	0		0
+omega-d-omega-e-space-separation	THEORY-LEVEL	1	DORMANT	3		0
+one-irreducible-blocker-qualify-consolidated-position	THEORY-LEVEL	7	DORMANT	2	1788201568	0
+only-knowing-about-boundary-candidate	OBJECT	1	ACTIVE	2		0
+only-knowing-o-operator-zero-candidate	`OBJECT`	5	ACTIVE	5	1788367334	0
+ontology-concepts-semantics-domain-models	OBJECT	39	DORMANT	8		0
+ontology	OBJECT	13	DORMANT	5		0
+open-by-commission-negative-history-category	METHODOLOGICAL	18	ACTIVE	5	2026-09-02	0
+open-questions-registry-oq1-12	OBJECT	23	DORMANT	6		0
+operating-model-maturity-ladder	OBJECT	1	DORMANT	1	1787914150	0
+operation-non-injectivity-hypothesis	OBJECT	12	DORMANT	4	2026-08-31	0
+operation-registry-commission-step284-285-deliverables	OBJECT	6	ACTIVE	1		0
+operation-registry-implementation-candidate	OBJECT	1	ACTIVE	2	2026-09-02	0
+operation-universe-p11-membership-criterion	OBJECT	22	CONTESTED	4		0
+operational-evidence-register	OBJECT	2	DORMANT	1		0
+operational-independence-test	OBJECT	17	DORMANT	9		0
+operational-knowledge-principles	OBJECT	1	DORMANT	1		0
+operational-validation-report	OBJECT	2	DORMANT	2	2026-08-03	0
+operations-transformations-contract-gap	OBJECT	10	DORMANT	7		0
+operator-vs-mechanism-kernel-question	OBJECT	1	ACTIVE	1	1788759986	0
+optimized-model-layered-proposal	THEORY-LEVEL	16	ACTIVE	5		0
+oq-5-role-model-ownership	THEORY-LEVEL	2	DORMANT	1		0
+oq-h-c14-home-question	`OBJECT`	2	DORMANT	1	2026-08-18	0
+oq-i-untracked-material-disposition	THEORY-LEVEL	0	DORMANT	0		1
+oq-j-receipt-authority-claim	OBJECT	3	DORMANT	3		0
+oq-k-missing-knowledge-response	OBJECT	0	DORMANT	0		1
+oq-l-shared-control-plane-invariant	THEORY-LEVEL	5	DORMANT	4		0
+oq1-carrier-decision-brief-2026-09	METHODOLOGICAL	11	ACTIVE	5		0
+oq1-carrier-falsified-k-t-ratified	OBJECT	1	ACTIVE	0	2026-09-06	0
+oq2-decision02-survives	OBJECT	1	ACTIVE	1	2026-09-06	1
+oq4-adequacy-realization-witness-2026-09	OBJECT	23	ACTIVE	5	1788790312	3
+orphan-state-structural-not-epistemic	`OBJECT`	12	DORMANT	5	2026-08-30	0
+oscillation-not-equal-revision-and-stability-function	THEORY-LEVEL	1	ACTIVE	1		0
+p-r-content-mechanism-split	OBJECT	3	CONTESTED	2	2026-08-25	0
+p4-constitutional-invariant-map-process	METHODOLOGICAL	15	CONTESTED	5		0
+paninian-semantic-transformation-lens	METHODOLOGICAL	9	DORMANT	6	1787577591	0
+paraconsistent-belief-revision	OBJECT	34	DORMANT	8		0
+parallel-lanes-future-intake-v11	OBJECT	13	DORMANT	4		0
+part-2-acceptance-closure-p2a-f1-word-count-red	OBJECT	3	DORMANT	1		0
+part-2-final-acceptance-review	METHODOLOGICAL	5	DORMANT	3		0
+part2-review-gate-report-gn66	OBJECT	6	DORMANT	3		0
+part3-method-quality-gate-report-gn51-53	`OBJECT`	3	DORMANT	3	2026-08-28	0
+pearl-causal-landscape-lens	METHODOLOGICAL	1	ACTIVE	1	1788759908	0
+permission-vs-authority-invariant	THEORY-LEVEL	3	DORMANT	3		0
+perplexity-external-research-doc	OBJECT	4	CONTESTED	3		0
+persistence-as-memory-and-boundary-principle	THEORY-LEVEL	1	ACTIVE	2		0
+persistence-as-semantic-transformation	THEORY-LEVEL	1	ACTIVE	2		0
+persistence-constitution-xix-c1-c20	THEORY-LEVEL	1	ACTIVE	1		0
+persistence-contract-stack-and-knowledge-gap	THEORY-LEVEL	1	ACTIVE	1		0
+persistence-final-principle-and-part20-preview	THEORY-LEVEL	1	ACTIVE	1		0
+persistence-non-explosion-and-corruption-as-evidence	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+persistence-theorems-part19	THEORY-LEVEL	1	ACTIVE	1		0
+persistence-verification-and-fitness-functions	THEORY-LEVEL	1	ACTIVE	1		0
+persistent-identity-of-observation-hypothesis	OBJECT	2	ACTIVE	4		0
+persons-as-epistemic-agents-metaphor	OBJECT	2	ACTIVE	1	1788342310	0
+phase-ledger-001-182-report	CROSS-OBJECT	11	DORMANT	2		0
+phase-measure-theory-systematic-synthesis	THEORY-LEVEL	151	CONTESTED	8		0
+philosophical-source-programme-may-may-not-boundary	METHODOLOGICAL	1	DORMANT	0		0
+philosophy-of-complex-systems-condition-structured-knowledge-lens	THEORY-LEVEL	25	DORMANT	6		0
+philosophy-to-falsification-routing-discipline	`METHODOLOGICAL`	1	DORMANT	1	1787950296	0
+pi-in-equiv-tension-unresolved	OBJECT	1	CONTESTED	1		0
+pi-in-equiv-two-acts-distinction	OBJECT	1	ACTIVE	1		0
+pi3-scoping-correction-against-maximal-contract	METHODOLOGICAL	1	ACTIVE	0	1788760415	0
+pks-current-architecture-baseline-stage2	OBJECT	12	CONTESTED	4		0
+pks	OBJECT	45	CONTESTED	8		0
+planning-downstream-of-knowledge-distinction	THEORY-LEVEL	2	ACTIVE	2		0
+platform-domain	OBJECT	27	CONTESTED	7		0
+plato-object-knowledge-and-distinguish-requirement	OBJECT	6	ACTIVE	4		0
+plato-white-twelve-epistemological-principles	`OBJECT`	10	ACTIVE	5	1788291320	0
+policies-bc7	OBJECT	1	DORMANT	1	2026-08-17	0
+policy-change-authorisation-humanActRef	OBJECT	7	DORMANT	6		0
+policy-concept-fact-norm-authority-triad	OBJECT	7	DORMANT	3		0
+policy-equality-evidence-boundary-not-k-level-definition	OBJECT	1	DORMANT	1		0
+policy-provenance-reflexivity-gap	THEORY-LEVEL	14	DORMANT	5	2026-08-30	0
+policy-semantic-minimality-boundary	THEORY-LEVEL	3	DORMANT	7		0
+policy-stratification-invariant	OBJECT	22	DORMANT	8	1787936967	0
+polyglot-persistence-and-canonical-projections	`THEORY-LEVEL`	1	ACTIVE	2	1788671057	0
+polyphallic-linga-yoni-emotional-field	OBJECT	6	ACTIVE	4	1788345965	0
+population-is-load-bearing-variable	METHODOLOGICAL	1	ACTIVE	1		0
+population-stratify-not-filter-detailed	METHODOLOGICAL	1	ACTIVE	1		0
+portfolio-lifecycle-reconciliation	METHODOLOGICAL	6	DORMANT	4		0
+pramana-four-knowledge-sources	OBJECT	14	DORMANT	9		0
+pramana-layer-model	OBJECT	2	DORMANT	2		0
+pramana-registry-knowledge-production-pipeline	OBJECT	9	DORMANT	4		0
+pramana-six-source-epistemic-acquisition-model	OBJECT	8	DORMANT	6	1787582687	3
+prediction-ledger-object	OBJECT	3	DORMANT	3		0
+premise-and-assumption-tracking	THEORY-LEVEL	1	ACTIVE	2	1788672181	0
+preserve-perform-asymmetry-corrected	OBJECT	1	DORMANT	1	1787947882	0
+primary-blocker-characterized-and-corrected	OBJECT	1	ACTIVE	1	2026-09-02	0
+prime-implicate-minimal-gap-hypothesis	OBJECT	5	ACTIVE	5	1788364577	1
+privacy-information-boundary-model	THEORY-LEVEL	80	DORMANT	9		0
+prml-latent-dhatu-research-bridge	THEORY-LEVEL	10	DORMANT	6	October 26	0
+problem-of-the-priors	OBJECT	1	ACTIVE	3		0
+problem-solving-semantic-operator-algebra	OBJECT	8	DORMANT	7		0
+process-composition-contract-model	THEORY-LEVEL	7	DORMANT	4		0
+process-idempotency-execution-trace-distinction	THEORY-LEVEL	2	DORMANT	2	1787994056	0
+process-vs-domain-state-distinction	THEORY-LEVEL	5	DORMANT	5		0
+producer-verifier-separation	METHODOLOGICAL	15	DORMANT	5		0
+production-findings-pf-register	OBJECT	14	DORMANT	7	1787950879	0
+progression-strips-formalization	OBJECT	1	ACTIVE	1		0
+progressive-epistemic-computation-principle	OBJECT	4	DORMANT	5		0
+progressive-investigation-principle	THEORY-LEVEL	5	DORMANT	7		0
+promotion-rule-corrected-to-necessary-not-sufficient	GOVERNANCE	1	ACTIVE	0		0
+proof-artifact-derivation-evidence-candidate	OBJECT	2	ACTIVE	2		0
+proof-checking-vs-generation-and-ai-reasoning	THEORY-LEVEL	1	ACTIVE	2		0
+proof-objects-derivation-trees-and-dags	OBJECT	1	ACTIVE	1	1788672181	0
+proof-obligation-deterministic-assurance	THEORY-LEVEL	3	DORMANT	3		0
+property-based-falsification-knowledge-state	OBJECT	26	DORMANT	7		0
+proposal-challenge-epistemic-roles	OBJECT	8	ACTIVE	3		0
+proposal-vs-canon-audit-hpa-material-absent-act	METHODOLOGICAL	6	CONTESTED	4		0
+proposition-assertion-knowledge-hierarchy	OBJECT	100	DORMANT	10	1787828168	0
+proposition-claim-truth-non-collapse	OBJECT	1	ACTIVE	3		0
+proposition-expressiveness-gap	OBJECT	4	DORMANT	5		0
+proposition-identity-context-invariant	OBJECT	2	DORMANT	4		0
+proposition-position-claim-kernel-model	THEORY-LEVEL	5	DORMANT	5		0
+proposition-subject-predicate-object-schema	OBJECT	1	DORMANT	1		0
+proposition-type-EDV-vs-SROG-contest	OBJECT	3	CONTESTED	3	2026-08-30	0
+protocol-self-corrections-h2-h3-and-response-not-interpretation	METHODOLOGICAL	1	ACTIVE	0		0
+protocol-self-falsification-track-record	METHODOLOGICAL	1	DORMANT	1		0
+provenance-concern	`OBJECT`	1	DORMANT	0	2026-08-03	0
+provenance-lineage-history-placement	OBJECT	15	DORMANT	5		0
+provenance-ontology-gap	CROSS-OBJECT	3	DORMANT	3	2026-08-03	0
+provenance-persistence-graph-and-audit-distinction	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+provenance-write-class-tool-use-method	METHODOLOGICAL	5	DORMANT	3		0
+provenance	OBJECT	54	CONTESTED	10	1788111812	0
+provisional-coherence-proposition	THEORY-LEVEL	3	DORMANT	3		0
+pseudo-evidence-pramanabhasa-detection	OBJECT	3	DORMANT	2		0
+psycho-cybernetics-classification-and-hypothesis	OBJECT	1	ACTIVE	0		0
+psycho-cybernetics-goal-feedback-correction-metaphor	OBJECT	1	ACTIVE	1		0
+publication-gate-trusted-advancement	`THEORY-LEVEL`	5	DORMANT	4	2026-08-22	0
+q-series-step-trace-b3-findings	THEORY-LEVEL	5	CONTESTED	4	2026-08-26	0
+q2-rewritten-as-frequency-estimands	METHODOLOGICAL	1	ACTIVE	1		0
+qualification-sufficiency-predicate	OBJECT	3	DORMANT	4	2026-08-28	0
+qualify-closure-robustness-answered-no	OBJECT	1	ACTIVE	1		0
+qualify-does-not-block-kernel-path	OBJECT	1	ACTIVE	1		0
+qualify-kernel-relevance-reopened	OBJECT	1	ACTIVE	0	2026-09-06	0
+qualify-reframed-as-missing-terminus-not-missing-body	OBJECT	5	DORMANT	4	2026-08-31	0
+query-evaluation-determination-distinction	THEORY-LEVEL	4	ACTIVE	4		0
+query-expansion-ambiguity-and-retrieval-contract	THEORY-LEVEL	1	ACTIVE	1		0
+query-identity-and-retrieval-equivalence	THEORY-LEVEL	1	ACTIVE	2		0
+query-vs-question-and-query-semantics-tuple	THEORY-LEVEL	1	ACTIVE	2	1788671427	0
+question-intent-state-object	OBJECT	2	DORMANT	2	1787775312	0
+quine-logical-point-of-view-lens	OBJECT	14	DORMANT	7		0
+quine-review-eight-findings-kernel-lens	THEORY-LEVEL	12	DORMANT	6		0
+quine-word-and-object-stress-test	METHODOLOGICAL	24	DORMANT	7		0
+r-6-guides-product-engineering	OBJECT	1	DORMANT	1		0
+r-conflict-invariant	THEORY-LEVEL	17	CONTESTED	7		0
+r-req-fde-kernel-test-vectors-result	OBJECT	9	ACTIVE	6		0
+r-req-formal-specification	THEORY-LEVEL	15	ACTIVE	6		0
+r-req-governance-ratification-timeline	METHODOLOGICAL	1	ACTIVE	1		0
+r-req-priority-tiers	`THEORY-LEVEL`	5	CONTESTED	4	1788369263	0
+r-req-question-relative-correction-package	THEORY-LEVEL	43	CONTESTED	9	1788369941	0
+r-req-ratification-edition-spec	OBJECT	15	CONTESTED	8		0
+r-req-verification-criteria-critique	METHODOLOGICAL	1	ACTIVE	1		0
+r-req-verification-test-suite	METHODOLOGICAL	2	ACTIVE	3		0
+r0-rx-research-verdict-scale	METHODOLOGICAL	3	ACTIVE	2		0
+r1-source-evidence-register-e01-e10	OBJECT	1	DORMANT	0		0
+r4-falsification-independence-final-scorecard	THEORY-LEVEL	7	DORMANT	3		0
+rag-knowledge-access-layer-lens	THEORY-LEVEL	26	DORMANT	7		0
+rag-pipeline-and-citation-not-proof	THEORY-LEVEL	1	ACTIVE	2	1788671427	0
+ranged-credences-representors	OBJECT	1	ACTIVE	3		0
+ratified-invariant-catalog-i1-i12	OBJECT	37	CONTESTED	9		0
+reachability-fails-at-contract-not-search-level	OBJECT	1	ACTIVE	1		0
+reachability-safety-horizon-model	OBJECT	2	DORMANT	2		0
+read-model-cqs-epistemic-caveat-part18	`THEORY-LEVEL`	1	ACTIVE	1	1788670245	0
+readiness-dependency-graph-minimum-implementable-kernel	OBJECT	17	CONTESTED	3		0
+readiness-matrix-twelve-class-gap-taxonomy	METHODOLOGICAL	1	ACTIVE	3	1788380556	0
+readiness-picture-restated-with-root	OBJECT	1	ACTIVE	1	2026-09-06	0
+reality-knowledge-decision-truth-separation	THEORY-LEVEL	1	DORMANT	2		0
+reality-knowledge-divergence-freshness	THEORY-LEVEL	4	DORMANT	4		0
+reality-observation-knower-three-way-epistemic-architecture	OBJECT	1	DORMANT	0		0
+reasoning-architecture-constraints-c1-c8	THEORY-LEVEL	1	ACTIVE	0		0
+reasoning-argument-structure-five-member-syllogism	OBJECT	7	DORMANT	4		0
+reasoning-closure-and-fixed-points	THEORY-LEVEL	1	ACTIVE	2	1788672181	0
+reasoning-constitution-xxi-c1-c20	THEORY-LEVEL	1	ACTIVE	1	1788672181	0
+reasoning-context-and-formal-rule-model	THEORY-LEVEL	1	ACTIVE	2		0
+reasoning-contract-gap-and-zero	THEORY-LEVEL	2	ACTIVE	1		0
+reasoning-ddd-concepts-and-bounded-context	OBJECT	1	ACTIVE	0	1788672181	0
+reasoning-failure-taxonomy	THEORY-LEVEL	1	ACTIVE	1		0
+reasoning-final-principle-part21	THEORY-LEVEL	1	ACTIVE	1		0
+reasoning-integrity-kernel	THEORY-LEVEL	2	DORMANT	4		0
+reasoning-object-model-and-anti-patterns	OBJECT	1	ACTIVE	2	1788672181	0
+reasoning-revision-and-governance	THEORY-LEVEL	1	ACTIVE	1		0
+reasoning-state-machine-and-reproducibility	`THEORY-LEVEL`	1	ACTIVE	2	1788672181	0
+reasoning-theorems-part21	THEORY-LEVEL	1	ACTIVE	1	1788672181	0
+reasoning-trace-invariant	OBJECT	2	DORMANT	2		0
+receiver-relative-information-value	THEORY-LEVEL	1	ACTIVE	1		0
+reciprocal-bidirectional-agent-structure	OBJECT	1	ACTIVE	1	1788760328	0
+recommendation-decision-outcome-assessment-loop	OBJECT	2	DORMANT	1		0
+recommendation-identity-revision-hypothesis	OBJECT	1	DORMANT	0	2026-08-04	0
+recommendation-lifecycle	OBJECT	12	DORMANT	4		0
+reconciled-closure-register-and-construction-gate-verdict	OBJECT	6	DORMANT	3		0
+reconciliation-gate-verdict-report	CROSS-OBJECT	5	DORMANT	3		0
+reconstructable-transition-basis-invariant	THEORY-LEVEL	6	DORMANT	5		0
+reconstructible-epistemology	THEORY-LEVEL	0	DORMANT	0		0
+recordedby-referent-ambiguity	OBJECT	3	DORMANT	1		0
+recursive-epistemic-zoom-resolution-relative-atomicity-2026-09	THEORY-LEVEL	49	ACTIVE	7		0
+reference-class-object	OBJECT	3	DORMANT	5		0
+refined-step-286-master-register	OBJECT	12	ACTIVE	4		0
+refined-step-287-invariants-register	OBJECT	9	ACTIVE	7		0
+refined-step-290-operation-semantics-mandate	OBJECT	32	ACTIVE	5		0
+refined-step288-equality-decision-procedure-closure-mandate	METHODOLOGICAL	16	DORMANT	3		0
+refined-zoom-definition-focus-not-deletion	THEORY-LEVEL	1	ACTIVE	2		0
+refinement-relation	OBJECT	1	DORMANT	1	1787985044	0
+refinement-review-program-pipeline	`METHODOLOGICAL`	8	DORMANT	3	1787994432	0
+reframed-dynamics-research-question	THEORY-LEVEL	1	ACTIVE	2	1788760094	0
+regime-concept-vanishing	OBJECT	1	DORMANT	1		0
+registry-extension-proposal-2026-09	METHODOLOGICAL	12	ACTIVE	3		0
+regression-progression-reasoning-mechanisms	OBJECT	8	ACTIVE	7		0
+reiter-knowledgeos-derivation-mandate	METHODOLOGICAL	27	CONTESTED	7	1788368800	3
+reject-operation-i12-article8-tension	OBJECT	10	CONTESTED	4		0
+reject-operation-vs-rejected-proposition	OBJECT	1	ACTIVE	1	2026-09-06	0
+rejection-produces-hypothesis-space-not-truth	OBJECT	1	ACTIVE	1		0
+relation-8-tuple-vs-triple-reduction	OBJECT	10	DORMANT	4		0
+relation-matrix-formalism	THEORY-LEVEL	17	DORMANT	4	1787994645	0
+relational-structure-core-regime-model	THEORY-LEVEL	40	ACTIVE	7		0
+reliability-fault-tolerance-recovery-model	THEORY-LEVEL	83	DORMANT	8		0
+reliability-relational-invariant	`THEORY-LEVEL`	4	DORMANT	6	1787565723	0
+representability-acceptance-test	METHODOLOGICAL	1	DORMANT	1		0
+representation-adequacy-principle	THEORY-LEVEL	16	ACTIVE	7	1788349256	0
+representation-theorem-res-function	OBJECT	1	ACTIVE	2		0
+requirement-subsumption-preceq-r-candidate	OBJECT	3	ACTIVE	4		0
+rescorla-kernel-as-cognitive-mechanism-not-repository	THEORY-LEVEL	14	ACTIVE	6		0
+research-design-object	OBJECT	2	DORMANT	2		0
+research-direction-formal-model-recommendation	METHODOLOGICAL	10	DORMANT	5		0
+research-extraction-agent-prompt-methodology	METHODOLOGICAL	17	DORMANT	5	1787526520	0
+research-index-00-artifact-running-log	`METHODOLOGICAL`	3	ACTIVE	2	2026-08-25	0
+residual-object	OBJECT	2	DORMANT	4		0
+resource-bounds-and-approximate-reasoning	`THEORY-LEVEL`	1	ACTIVE	1	1788672181	0
+result-status-not-action-validity-invariant	OBJECT	7	DORMANT	2		0
+retention-integrity-content-addressing-immutability	THEORY-LEVEL	1	ACTIVE	1		0
+retrieval-as-measurement-instrument	THEORY-LEVEL	1	ACTIVE	2		0
+retrieval-constitution-xx-c1-c20	THEORY-LEVEL	1	ACTIVE	1		0
+retrieval-contradiction-temporal-validity-authority-diversity	THEORY-LEVEL	1	ACTIVE	1	1788671427	0
+retrieval-ddd-concepts-and-bounded-context	OBJECT	1	ACTIVE	0	1788671427	0
+retrieval-error-propagation-and-invalidation	CROSS-OBJECT	1	ACTIVE	2		0
+retrieval-evidence-inference-determination-separation	THEORY-LEVEL	1	ACTIVE	2		0
+retrieval-evidence-inference-four-stage-pipeline	THEORY-LEVEL	1	ACTIVE	2		0
+retrieval-evidence-principle-and-theorems-part20	THEORY-LEVEL	1	ACTIVE	2		0
+retrieval-final-principle-and-part21-preview	THEORY-LEVEL	1	ACTIVE	1		0
+retrieval-function-relevance-not-truth	`THEORY-LEVEL`	1	ACTIVE	2	1788671427	0
+retrieval-gap-can-increase-with-quality	THEORY-LEVEL	1	ACTIVE	2		0
+retrieval-knowledge-gap-zero-and-open-world	THEORY-LEVEL	1	ACTIVE	2	1788671427	0
+retrieval-pipeline-and-evidence-retrieval-objects	OBJECT	1	ACTIVE	1		0
+retrieval-provenance-and-temporal-participant-relativity	THEORY-LEVEL	1	ACTIVE	2	1788671427	0
+retrieval-similarity-not-evidence-part19	THEORY-LEVEL	1	ACTIVE	1		0
+retrieval-vs-answer-reproducibility	THEORY-LEVEL	1	ACTIVE	1		0
+reusable-experimental-governance-pipeline	METHODOLOGICAL	1	ACTIVE	1	1788758289	0
+reverification-final-verdict-not-ready-one-blocker	THEORY-LEVEL	1	ACTIVE	1		0
+reverification-surviving-blockers-list	THEORY-LEVEL	1	ACTIVE	2	2026-09-06	0
+reverification-updated-dependency-chain-and-matrix	THEORY-LEVEL	2	ACTIVE	3		0
+reversibility-compensation-idempotency-taxonomy	THEORY-LEVEL	4	DORMANT	3		0
+revised-post-step283-roadmap-steps-284-290	METHODOLOGICAL	5	CONTESTED	7		0
+revised-protocol-with-control-and-five-questions	OBJECT	1	ACTIVE	0	1788760328	0
+revision-contraction-update-distinction	OBJECT	2	ACTIVE	3		0
+rgolog-interrupt-semantics	OBJECT	1	ACTIVE	2		0
+risk-sensitive-escalation-decision-theory	OBJECT	2	DORMANT	1		0
+rival-explanation-object	OBJECT	7	DORMANT	5		0
+roberts-measurement-theory-lens	THEORY-LEVEL	12	DORMANT	6		0
+roopa-pai-vedas-upanishads-knowledge-hierarchy	`OBJECT`	7	ACTIVE	4	1788290645	0
+rule-conflict-and-priority	OBJECT	1	ACTIVE	1		0
+rules-inference-logic-reasoning-engine	OBJECT	35	DORMANT	8		0
+running-example-continuity-ledger	OBJECT	7	DORMANT	3	2026-08-29	0
+runtime-adapter	OBJECT	18	CONTESTED	7		0
+runtime-architecture-conformance-model	THEORY-LEVEL	80	DORMANT	7		0
+rust-semantic-reconstruction-engine-choice	IMPLEMENTATION	2	DORMANT	3		0
+s1595-executable-kernel-and-blocker-ranking	OBJECT	28	CONTESTED	8		0
+s1596-244-mandate-formal-construction-protocol	METHODOLOGICAL	12	DORMANT	2	1788080418	0
+s1597-identity-roundtrip-mandate	METHODOLOGICAL	11	DORMANT	5		0
+s1598-k0-construction-and-content-qualification-governance	OBJECT	30	CONTESTED	7		0
+s1600-category-error-lineage-not-knowledge-state	THEORY-LEVEL	19	DORMANT	7		0
+s1601-identity-equality-contradiction-uncertainty-stress-test	OBJECT	38	DORMANT	8	1788081067	0
+s1602-formal-system-reconstruction-mandate	METHODOLOGICAL	13	DORMANT	4		0
+s1603-typed-family-refutation-of-k0	`THEORY-LEVEL`	25	DORMANT	7	2026-08-30	0
+s1604-theory-discovery-phase-mandate	METHODOLOGICAL	11	DORMANT	2		0
+s1605-question-7-assertion-layer-rediscovery	THEORY-LEVEL	38	CONTESTED	7		0
+s1606-sigma-three-state-derivation-and-orthogonal-governance	THEORY-LEVEL	31	CONTESTED	7		0
+s1607-verification-programme-self-audit	METHODOLOGICAL	15	DORMANT	4		0
+s1608-transformation-congruence-and-state-sufficiency	OBJECT	38	DORMANT	6		0
+s1609-state-history-equivalence-class-hypothesis	OBJECT	16	DORMANT	5		0
+s1611-normative-impasse-to-theory-construction-mandate	METHODOLOGICAL	23	DORMANT	5		0
+s1612-k-minimality-proof-and-valid-k-computability	THEORY-LEVEL	36	CONTESTED	7		0
+s1613-transformation-system-typed-graph-not-algebra	OBJECT	33	DORMANT	6		0
+s1614-corpus-derived-transformation-ontology	OBJECT	20	DORMANT	6		0
+s1615-transition-formulation-genealogy-and-layer-conflation	OBJECT	20	DORMANT	5		0
+s1616-ddd-vocabulary-audit-and-semantic-type-discipline	OBJECT	25	CONTESTED	7	1788108108	5
+s1617-closure-report-ekp-discovery-and-assurance-blocker	THEORY-LEVEL	39	CONTESTED	7		0
+s1618-primitive-vs-structural-ontology-audit	OBJECT	18	DORMANT	6		0
+s1619-post-k-derivation-completeness-mandate	METHODOLOGICAL	16	DORMANT	5		0
+s1620-removal-test-provenance-base-case-and-user-decisions	OBJECT	30	DORMANT	7		0
+s1621-coarsest-sufficient-state-abstraction-and-counterexample-catalogue	OBJECT	22	DORMANT	7	1788109054	0
+s1622-p-reconstruction-entity-dimension-value	THEORY-LEVEL	19	CONTESTED	6		0
+s1623-operation-registry-schema-and-dependency-matrix	OBJECT	16	DORMANT	6		0
+s1624-relation-algebra-decomposition	THEORY-LEVEL	10	DORMANT	4	2026-08-30	0
+s1625-sigma-signed-ordinal-refutation-and-evidence-refinement	THEORY-LEVEL	14	CONTESTED	5		0
+s1626-four-valid-predicates-and-twelve-operation-algebra	THEORY-LEVEL	11	DORMANT	4	2026-08-30	0
+s1627-transformation-signature-by-distinguishability-and-retract-failure	`THEORY-LEVEL`	11	DORMANT	7	2026-08-30	0
+s1628-canonical-glossary-and-live-conflict-register	THEORY-LEVEL	6	CONTESTED	1	2026-08-30	0
+s1629-four-operations-identity-precedes-equality	OBJECT	18	DORMANT	6		0
+s1630-computability-matrix-and-under-specification-diagnosis	THEORY-LEVEL	5	DORMANT	3		0
+s1631-claude-chatgpt-reconciliation-and-probability-claim-contest	THEORY-LEVEL	11	CONTESTED	5		0
+s1632-final-gap-register-and-supervisory-checkpoint	THEORY-LEVEL	14	DORMANT	4		0
+s1633-operational-relevance-and-extensional-state-definition	OBJECT	17	DORMANT	7		0
+s1634-triangulation-mandate-corpus-math-implementation	METHODOLOGICAL	16	DORMANT	3		0
+s1635-minimal-k-as-unproven-quotient-candidate	OBJECT	21	DORMANT	7		0
+s2-f024-candidate-b-rejection-vs-never-attempted	OBJECT	1	DORMANT	2		0
+safety-invariant-taxonomy-and-gate	OBJECT	10	DORMANT	6		0
+samsaya-structured-doubt-state	OBJECT	11	ACTIVE	7	2026-08-22	0
+sanjaya-observation-layer-closes-omega-referent-gap	OBJECT	19	ACTIVE	6	2026-08-31	0
+sankhya-consciousness-multi-lens-reference-model	THEORY-LEVEL	32	DORMANT	10		0
+sanskrit-grammar-lens	OBJECT	18	DORMANT	6		0
+sarathi-body-gap	OBJECT	0	DORMANT	0		0
+sarathi-investigation-guide	OBJECT	14	ACTIVE	8		0
+sat-accept-eval-factorization-proposal-2026-09-10	THEORY-LEVEL	21	ACTIVE	4	1789040275	0
+sat-decision-boundary-research-framework-2026-09	OBJECT	71	ACTIVE	6	2026-09-09	0
+sat-end-to-end-closure-test-v1	OBJECT	41	ACTIVE	6		0
+satisfaction-by-requirement-class-sat-c-proposal	METHODOLOGICAL	22	ACTIVE	6		0
+sb-1-conformance-authority	CROSS-OBJECT	8	DORMANT	4		0
+sb-2-evidence-chain-location-coupling	CROSS-OBJECT	1	DORMANT	2	2026-08-19	0
+sb-3-enforcement-posture	CROSS-OBJECT	0	DORMANT	0		0
+scaffolding-vs-argument-body-overclaim-pattern	METHODOLOGICAL	6	CONTESTED	5		0
+schema-vs-semantic-evolution-versioning-canonicalization	THEORY-LEVEL	1	ACTIVE	2		0
+scoped-completeness-principle	THEORY-LEVEL	1	ACTIVE	2		0
+seam-025-algebra-knowledge-identity	CROSS-OBJECT	13	DORMANT	10		0
+seam-identity-continuity-012-038-195	CROSS-OBJECT	13	DORMANT	10		0
+search-index-as-projection-and-acl-for-retrieval	THEORY-LEVEL	1	ACTIVE	1		0
+searle-social-reality-institutional-facts-lens	THEORY-LEVEL	33	DORMANT	5	1787665835	0
+second-order-congruence-correction-of-first-order-exp3	OBJECT	6	DORMANT	3		0
+section-e-justified-exclusions-retested	OBJECT	1	ACTIVE	2		0
+select-correction-kept-open-not-prematurely-external	`OBJECT`	1	ACTIVE	1	1788760094	0
+selection-procedure-object	OBJECT	5	DORMANT	5	1787535259	1
+self-locating-credences-centered-worlds	OBJECT	1	ACTIVE	1		0
+self-output-laundering-provenance-loop	METHODOLOGICAL	3	DORMANT	4		0
+semantic-compiler-kir-architecture	OBJECT	20	DORMANT	7	1787395424	0
+semantic-conflict-predicate	OBJECT	1	DORMANT	1		0
+semantic-elevation-chain-invariant	THEORY-LEVEL	2	DORMANT	2		0
+semantic-equivalence-refinement-contradiction-merge-algebra	OBJECT	45	DORMANT	11		0
+semantic-interoperability-bounded-context-algebra	OBJECT	50	DORMANT	10	1787904622	0
+semantic-kernel-matilal-meaning-layer	THEORY-LEVEL	15	DORMANT	5		0
+semantic-loss-set-and-architecture-knowledge-gap	THEORY-LEVEL	1	ACTIVE	1		0
+semantic-model-conformance-test	OBJECT	85	DORMANT	8		0
+semantic-normal-form-snf	OBJECT	31	CONTESTED	11		0
+semantic-parsing-extraction-architecture	OBJECT	16	DORMANT	9		0
+semantic-precision-invariant	OBJECT	1	DORMANT	3		0
+semantic-reference-object	OBJECT	4	DORMANT	5	1787566715	0
+semantic-regularization-cross-book-research-architecture	THEORY-LEVEL	6	DORMANT	6	1787578195	0
+semantic-significance-function	THEORY-LEVEL	8	DORMANT	6		0
+semantic-transition-vs-technical-mutation-distinction	THEORY-LEVEL	5	DORMANT	4		0
+sender-receiver-asymmetry-and-frozen-position	THEORY-LEVEL	1	ACTIVE	0		0
+sensing-epistemic-update-candidate	OBJECT	5	ACTIVE	6		0
+separation-of-duties-invariant	THEORY-LEVEL	4	DORMANT	4		0
+sequential-multi-round-meaning-and-zero-example	THEORY-LEVEL	1	ACTIVE	1		0
+session-assignment-resolver	OBJECT	3	DORMANT	3	2026-08-21	0
+session-bootstrap-ast017	OBJECT	15	DORMANT	9	2026-08-22	0
+session-completion-handoff-protocol	OBJECT	17	DORMANT	7	2026-08-22	0
+session-identity-attestation-mechanism	METHODOLOGICAL	20	CONTESTED	8		0
+session1-kernel-corpus-coverage-report	METHODOLOGICAL	11	CONTESTED	5		0
+session2-cross-track-observation-register	METHODOLOGICAL	0	DORMANT	0		0
+session2-ten-lens-review-framework	METHODOLOGICAL	0	DORMANT	0		0
+seven-candidate-cybernetic-capabilities	OBJECT	1	ACTIVE	1		0
+seven-gaps-genuinely-missing-vs-not-yet-formalized-audit	METHODOLOGICAL	4	ACTIVE	5	1788285340	0
+shannon-weaver-information-theory-lens	THEORY-LEVEL	15	DORMANT	7	1787645881	2
+sher-epistemic-friction-dynamic-structured-holism-2026-09	`OBJECT`	17	ACTIVE	7	1788780615	0
+shieber-basing-relation-object	OBJECT	6	DORMANT	7		0
+shieber-epistemic-process-lens	OBJECT	28	DORMANT	7		0
+shipment-release-worked-example-21a	OBJECT	1	ACTIVE	1		0
+shiva-shakti-continuity-change-lens	METHODOLOGICAL	0	DORMANT	0		1
+shum-measure-theoretic-information-boundary-formalization	THEORY-LEVEL	11	ACTIVE	3	1788289334	2
+sigma-component-axis-order-analysis-zero-established	OBJECT	3	CONTESTED	1		0
+sigma-derivation-from-step272-six-sources	OBJECT	10	DORMANT	6		0
+sigma-five-axis-epistemic-state-q4a	OBJECT	30	ACTIVE	10		0
+sigma-five-axis-flattening-and-derived-repairs	OBJECT	20	CONTESTED	6		0
+sigma-gamma-reconstruction-after-policy	THEORY-LEVEL	18	DORMANT	7		0
+sigma-lifecycle-sourcetrust-separation	OBJECT	3	CONTESTED	3		0
+sigma-min-powerset-support-refute-four-state	OBJECT	38	CONTESTED	10		0
+sigma-model-refuted-on-adequacy	`OBJECT`	1	ACTIVE	2	2026-09-02	0
+sigma-necessity-decomposition	`OBJECT`	4	DORMANT	5	1788116139	0
+sigma-order-vs-k-order-category-error-f5	`OBJECT`	5	CONTESTED	2	1788204145	0
+sigma0-minimal-four-state-derivation-d4-closure	OBJECT	13	CONTESTED	8		0
+signal-not-knowledge-and-graph-model	OBJECT	1	ACTIVE	2		0
+signal-not-sender-state-and-response-not-knowledge	THEORY-LEVEL	1	ACTIVE	2		0
+signalling-game-formalization	OBJECT	1	ACTIVE	1	1788760187	1
+signed-contribution-polarity-negative-zero-distinction-2026-09	THEORY-LEVEL	56	CONTESTED	7		0
+situation-state-history-falsification-mandate	OBJECT	1	ACTIVE	1		0
+situation-state-refutation-result	OBJECT	5	ACTIVE	4	1788369221	0
+situational-provenance	OBJECT	3	DORMANT	4	1787535374	0
+six-candidate-books-ranked	METHODOLOGICAL	1	ACTIVE	1	1788759908	0
+six-layer-constitutional-model	OBJECT	1	DORMANT	2	2026-08-22	0
+six-role-brainstorming-document	OBJECT	5	DORMANT	4	2026-08-19	0
+six-role-cost-optimization-proposal	METHODOLOGICAL	4	DORMANT	3	2026-08-14	0
+six-role-model	THEORY-LEVEL	27	CONTESTED	7		0
+smallest-missing-concept-dependency-order	THEORY-LEVEL	1	DORMANT	1		0
+smallest-trustworthy-core	OBJECT	7	DORMANT	3		0
+social-legitimation-layer	THEORY-LEVEL	8	DORMANT	7		0
+soundness-completeness-distinction	THEORY-LEVEL	1	ACTIVE	2		0
+soundness-derivability-truth-bridge-principle	`THEORY-LEVEL`	4	ACTIVE	4	1788367096	0
+source-knowledge-plane-three-pathways-separation	THEORY-LEVEL	4	DORMANT	4		0
+spec-amend-2026-v1-demotion-and-ea-definition	METHODOLOGICAL	4	ACTIVE	6		0
+spec-c1-c2-2026-v1-3-measurement-scale-and-history-preserving-delta	OBJECT	12	CONTESTED	5		0
+spec-contr-2026-v1-1-structural-conflict-detection	OBJECT	7	CONTESTED	5	1788371476	0
+spec-contr-2026-v1-contradiction-lifecycle-spec	OBJECT	9	ACTIVE	6		0
+spec-delta-2026-v1-non-destructive-transition	OBJECT	4	ACTIVE	5	2026-09-02	0
+spec-det-2026-v1-threshold-determination	OBJECT	13	ACTIVE	8		0
+spec-equiv-2026-v1-1-executable-adequacy-final-closure	OBJECT	9	CONTESTED	6		0
+spec-eval-2026-v1-five-tuple-standing-boundary-reason-context-provenance	OBJECT	15	CONTESTED	6		0
+spec-eval-det-2026-v1-partial-evaluation-determination-bridge	OBJECT	15	ACTIVE	7		0
+spec-ops-delta-2026-v1-1-five-primitive-kernel	OBJECT	11	CONTESTED	5	1788371476	0
+spec-ops-delta-equiv-2026-v1-operation-contracts-composition-algebra	OBJECT	6	ACTIVE	5		0
+spec-rreq-2026-v1-six-invariant-ratification	OBJECT	16	ACTIVE	8	2026-09-02	0
+specialized-reasoners-architecture-principle	THEORY-LEVEL	2	ACTIVE	3		0
+start-gate-refusal-precedent	`METHODOLOGICAL`	15	DORMANT	5	2026-08-22	0
+state-congruence-criterion	THEORY-LEVEL	42	DORMANT	10		0
+state-history-distinction	OBJECT	4	ACTIVE	4		0
+state-not-operation-not-history-not-evidence-separation-principle	OBJECT	2	DORMANT	1	2026-08-31	0
+state-phase-transition-verification-plan	METHODOLOGICAL	6	ACTIVE	8		0
+state-space-decomposition-program	THEORY-LEVEL	1	DORMANT	1		0
+state-space-federation-model	THEORY-LEVEL	18	DORMANT	6		0
+state-sufficiency-candidate-definition-285	OBJECT	2	DORMANT	2		0
+state-transition-algebra-audit-232-report	CROSS-OBJECT	11	CONTESTED	3		0
+state-transition-formalization	OBJECT	12	DORMANT	6		0
+statistical-learning-method-catalogue	METHODOLOGICAL	12	DORMANT	7		0
+status-ladder-committed-boundary	OBJECT	10	DORMANT	9		0
+status-sigma-five-axis-overload	OBJECT	8	DORMANT	2		0
+step-271-policy-semantic-minimality-unclosed	OBJECT	10	DORMANT	6		0
+step-series-formalization-attacks-itself	METHODOLOGICAL	8	DORMANT	4		0
+step-to-theory-traceability-matrix	CROSS-OBJECT	23	CONTESTED	4		0
+step-trace-b1-day1-kernel-inquiry	THEORY-LEVEL	11	CONTESTED	7		0
+step-trace-b2-day2-dimension-space-and-complete-model	THEORY-LEVEL	15	CONTESTED	10	2026-08-26	0
+step-trace-b5-pass-inflation-and-8-primitive-kernel	THEORY-LEVEL	59	CONTESTED	9	2026-08-28	0
+step-trace-b6-corpus-audit	THEORY-LEVEL	22	CONTESTED	8		0
+step-verify-221-222-audit	`CROSS-OBJECT`	6	DORMANT	2	2026-08-30	0
+step-verify-programme	METHODOLOGICAL	338	CONTESTED	7		0
+step008-six-outcome-acceptance-function-and-omega-A	OBJECT	3	DORMANT	5	1787984412	0
+step060-semilattice-overclaim-k-order	THEORY-LEVEL	5	CONTESTED	8		0
+step158-architecture-conformance-audit-method	THEORY-LEVEL	7	DORMANT	5	1787958372	0
+step161-semantic-contract-set	THEORY-LEVEL	10	DORMANT	8	1787958789	0
+step162-bc-candidate-derivation	THEORY-LEVEL	4	DORMANT	6		0
+step162-invariant-catalog-i01-i20	THEORY-LEVEL	3	DORMANT	4		0
+step163-context-map-and-transformation-taxonomy	THEORY-LEVEL	7	DORMANT	8		0
+step163-p1-p10-architectural-propositions	THEORY-LEVEL	1	DORMANT	2		0
+step164-candidate-event-catalog	THEORY-LEVEL	4	DORMANT	5		0
+step164-domain-event-derivation-method	THEORY-LEVEL	4	DORMANT	5		0
+step165-aggregate-derivation-table	THEORY-LEVEL	3	DORMANT	4		0
+step165-cross-aggregate-consistency-and-god-aggregate-warning	THEORY-LEVEL	2	DORMANT	3	1787959342	0
+step165-historical-chain-and-dual-trace-assurance	THEORY-LEVEL	2	DORMANT	3		0
+step166-current-state-not-superset-of-history	THEORY-LEVEL	2	DORMANT	5	1787959621	0
+step166-process-vs-aggregate-vs-case	THEORY-LEVEL	5	DORMANT	5		0
+step166-saga-compensation-vs-correction	THEORY-LEVEL	2	DORMANT	4		0
+step167-claim-verification-formalism	THEORY-LEVEL	4	DORMANT	6		0
+step167-invariant-category-taxonomy-and-matrix	THEORY-LEVEL	1	DORMANT	2		0
+step167-recursive-basis-and-trace	THEORY-LEVEL	1	DORMANT	4	1787959718	0
+step167-state-projection-information-loss	THEORY-LEVEL	1	DORMANT	5		0
+step167-verification-verdict-vocabulary-and-vv-distinction	`THEORY-LEVEL`	1	DORMANT	3	1787959718	0
+step168-capability-vs-authority-and-verification-authority	THEORY-LEVEL	3	DORMANT	4		0
+step168-deterministic-verification-caveats	THEORY-LEVEL	1	DORMANT	3	1787959894	0
+step168-epistemic-classification-and-lattice	THEORY-LEVEL	2	DORMANT	5		0
+step168-promotion-rule-and-state-dimension-collapse	THEORY-LEVEL	3	DORMANT	6	1787959894	0
+step168-sampling-and-freshness-and-verification-dependency-graph	THEORY-LEVEL	2	DORMANT	6		0
+step169-architectural-parsimony-and-boundary-criterion	THEORY-LEVEL	3	DORMANT	6		0
+step169-law-falsification-pass	THEORY-LEVEL	5	DORMANT	5		0
+step169-record-history-truth-chain	THEORY-LEVEL	1	DORMANT	3		0
+step169-weakest-mechanism-principle-and-epistemic-cycle	THEORY-LEVEL	1	DORMANT	3		0
+step170-assurance-dimensions-and-broken-chains	THEORY-LEVEL	4	DORMANT	4	1787960126	0
+step170-backward-forward-assurance	THEORY-LEVEL	2	DORMANT	4		0
+step170-gated-transition-chain	THEORY-LEVEL	4	DORMANT	6		0
+step171-accountability-authority-chain-and-transition-contract	THEORY-LEVEL	2	DORMANT	4		0
+step171-authority-is-temporal-and-domain-not-technical	THEORY-LEVEL	3	DORMANT	6		0
+step171-five-role-arev-matrix	THEORY-LEVEL	2	DORMANT	5		0
+step171-promotion-rule-and-verb-precision	THEORY-LEVEL	1	DORMANT	2	1787960221	0
+step171-separation-of-duties-and-independence	`THEORY-LEVEL`	1	DORMANT	3	1787960221	0
+step172-control-points-and-descriptive-vs-normative	THEORY-LEVEL	2	DORMANT	5		0
+step172-historical-vs-current-truth-and-invalidation	THEORY-LEVEL	2	DORMANT	6	1787960360	0
+step172-role-separation-not-actor-separation	THEORY-LEVEL	1	DORMANT	3		0
+step172-six-experiments-results	THEORY-LEVEL	3	DORMANT	3		0
+step173-anti-corruption-and-double-falsification	THEORY-LEVEL	3	DORMANT	5		0
+step173-knowledgeos-name-danger	THEORY-LEVEL	1	DORMANT	1	1787960458	0
+step173-merge-experiment-and-ddd-score	THEORY-LEVEL	2	DORMANT	4		0
+step173-three-zone-strategic-architecture	THEORY-LEVEL	3	DORMANT	4		0
+step174-contract-stability-and-execution-authorization-conformance	THEORY-LEVEL	2	DORMANT	5		0
+step174-required-traceability-is-policy-driven	THEORY-LEVEL	2	DORMANT	5		0
+step174-snapshot-vs-live-reference-resolved	THEORY-LEVEL	2	DORMANT	4		0
+step174-three-domain-contracts-schemas	THEORY-LEVEL	2	DORMANT	4		0
+step175-agent-context-not-history	`THEORY-LEVEL`	2	DORMANT	4	1787960660	0
+step175-anchoring-invariant-and-three-query-types	THEORY-LEVEL	1	DORMANT	2		0
+step175-four-model-comparison	THEORY-LEVEL	1	DORMANT	4	1787960660	0
+step175-memory-not-knowledge-and-decision-conditional-on-info-set	THEORY-LEVEL	2	DORMANT	6	1787960660	0
+step175-multiple-old-states-and-selective-anchoring	THEORY-LEVEL	1	DORMANT	3		0
+step175-non-identifiability-of-history-formal	THEORY-LEVEL	3	DORMANT	6		0
+step176-actorcontext-projection-of-knowledge	THEORY-LEVEL	1	DORMANT	4		0
+step176-exists-knows-canretrieve	THEORY-LEVEL	1	DORMANT	4	1787960746	0
+step176-knowledge-relative-to-information-state	THEORY-LEVEL	1	DORMANT	4		0
+step176-knowledgeos-as-institutional-memory-and-persist-filter	THEORY-LEVEL	2	DORMANT	4	1787960746	0
+step176-orthogonal-access-authority-lattice	THEORY-LEVEL	1	DORMANT	3		0
+step176-retrieval-includes-epistemic-status	THEORY-LEVEL	1	DORMANT	4		0
+step177-belief-and-ai-hallucination-prevention	THEORY-LEVEL	2	DORMANT	4		0
+step177-claim-evidence-determination-tuple	THEORY-LEVEL	1	DORMANT	4		0
+step177-conditional-knowledge-and-scope	THEORY-LEVEL	1	DORMANT	3		0
+step177-deterministic-vs-probabilistic-knowledge	THEORY-LEVEL	1	DORMANT	3	1787960830	0
+step177-truth-rejected-as-single-predicate	THEORY-LEVEL	3	DORMANT	5	1787960830	0
+step178-decision-as-constrained-optimization	THEORY-LEVEL	1	DORMANT	5		0
+step178-decision-legitimacy-and-hindsight-leakage	THEORY-LEVEL	1	DORMANT	5		0
+step178-decision-provenance-and-alternatives	THEORY-LEVEL	1	DORMANT	4		0
+step178-epistemic-vs-governance-functions	THEORY-LEVEL	2	DORMANT	6		0
+step178-facts-vs-norms-and-three-valid-predicates	THEORY-LEVEL	1	DORMANT	3		0
+step178-no-silent-cross-boundary-transformation	THEORY-LEVEL	1	DORMANT	3		0
+step179-ai-bounded-role-and-provenance-with-capacity	THEORY-LEVEL	1	DORMANT	4	1787961001	0
+step179-authority-is-contextual-temporal-and-delegated	THEORY-LEVEL	2	DORMANT	5	1787961001	0
+step179-capability-never-sufficient-for-authority	`THEORY-LEVEL`	2	DORMANT	5	1787961001	0
+step179-four-actor-relations-rhuq	THEORY-LEVEL	1	DORMANT	4	1787961001	0
+step179-three-authorities-and-knowledge-powers	`THEORY-LEVEL`	1	DORMANT	3	1787961001	0
+step180-absence-of-evidence-not-evidence-of-absence-formal	THEORY-LEVEL	1	DORMANT	3		0
+step180-epistemic-state-final-model	THEORY-LEVEL	2	DORMANT	5	1787961107	0
+step180-four-epistemic-situations-and-correction-preserves-history	THEORY-LEVEL	1	DORMANT	3	1787961107	0
+step180-investigation-object-and-decision-relevant-uncertainty	`THEORY-LEVEL`	1	DORMANT	2	1787961107	0
+step180-scope-required-for-unknown-and-contradiction	THEORY-LEVEL	1	DORMANT	4		0
+step180-unknown-vs-contradictory-state-space	THEORY-LEVEL	2	DORMANT	5		0
+step181-ai-conflict-contract-and-knowledge-situation	THEORY-LEVEL	1	DORMANT	2		0
+step181-alignment-before-contradiction	THEORY-LEVEL	1	DORMANT	4	1787961225	0
+step181-conflict-is-epistemic-fact-not-error	THEORY-LEVEL	1	DORMANT	4		0
+step181-conflict-model-and-resolution-tuple	THEORY-LEVEL	1	DORMANT	4	1787961225	0
+step181-epistemic-vs-governance-resolution-authority	THEORY-LEVEL	2	DORMANT	4	1787961225	0
+step181-evidence-independence-and-triangulation	THEORY-LEVEL	1	DORMANT	4		0
+step181-preserve-both-resolution-not-deletion	THEORY-LEVEL	1	DORMANT	3	1787961225	0
+step182-authority-is-proposition-specific	THEORY-LEVEL	1	DORMANT	4		0
+step182-authority-vs-evidence-two-axes	THEORY-LEVEL	1	DORMANT	3		0
+step182-bounded-authority-and-repository-not-sovereign	THEORY-LEVEL	1	DORMANT	3		0
+step182-five-questions-replace-who-owns-truth	THEORY-LEVEL	1	DORMANT	3	1787961301	0
+step182-four-owner-types-and-relationship-modeling	THEORY-LEVEL	1	DORMANT	2		0
+step182-question-decomposition-and-truth-layering	THEORY-LEVEL	2	DORMANT	4		0
+step182-truth-not-an-ownership-object	THEORY-LEVEL	1	DORMANT	3		0
+step183-epistemic-gap-proposed	`THEORY-LEVEL`	1	DORMANT	1	1787961730	0
+step183-preserve-absence-and-uncertainty-transitions	`THEORY-LEVEL`	1	DORMANT	3	1787961730	0
+step183-reconstruction-contract-and-four-capabilities	THEORY-LEVEL	1	DORMANT	3		0
+step183-reconstruction-vs-summarization	THEORY-LEVEL	2	DORMANT	6	1787961730	0
+step183-two-histories-and-decision-tuple	THEORY-LEVEL	1	DORMANT	4	1787961730	0
+step183-typed-lineage-not-generic-links	THEORY-LEVEL	1	DORMANT	4	1787961730	0
+step183-verdict-reasoning-lineage-not-artifact-lineage	THEORY-LEVEL	1	DORMANT	3	1787961730	0
+step183-worked-nexus-reconstruction-and-outcome-contradiction	THEORY-LEVEL	1	DORMANT	4		0
+step184-ai-contract-no-silent-upgrade	THEORY-LEVEL	1	DORMANT	3	1787961825	0
+step184-confidence-cannot-upgrade-unknown	THEORY-LEVEL	1	DORMANT	3	1787961825	0
+step184-correction-vs-change-vs-recontextualization-vs-refinement	THEORY-LEVEL	1	DORMANT	2		0
+step184-epistemic-debt-and-multi-dimensional-proposition	THEORY-LEVEL	1	DORMANT	4		0
+step184-epistemic-gap-first-class-and-verdict	THEORY-LEVEL	1	DORMANT	3		0
+step184-established-inferable-unknown	THEORY-LEVEL	1	DORMANT	4		0
+step184-task-specific-evidence-use-and-knowledge-not-one-aggregate	THEORY-LEVEL	1	DORMANT	3		0
+step184-unknown-typology-and-truthful-graph-gaps	THEORY-LEVEL	1	DORMANT	4	1787961825	0
+step185-assertion-lifecycle-ontology-draft	THEORY-LEVEL	1	DORMANT	2		0
+step185-assertion-tuple-and-two-time-dimensions	THEORY-LEVEL	1	DORMANT	4		0
+step185-authority-over-epistemic-transitions-proposed	THEORY-LEVEL	1	DORMANT	2		0
+step185-differentiated-non-identity-chain	THEORY-LEVEL	1	DORMANT	2	1787961911	0
+step185-five-case-classification-experiment	THEORY-LEVEL	1	DORMANT	2		0
+step185-four-transition-types-worked	THEORY-LEVEL	1	DORMANT	4		0
+step185-i15-i20-invariants-and-verdict	THEORY-LEVEL	1	DORMANT	3		0
+step185-temporal-difference-not-causal-and-ai-retrieval	THEORY-LEVEL	1	DORMANT	3		0
+step186-authority-as-relation-proposed	THEORY-LEVEL	1	DORMANT	3		0
+step186-conflict-has-lineage-and-provenance-not-evidence	THEORY-LEVEL	1	DORMANT	2		0
+step186-justified-state-transition-and-m1-m10-axioms	THEORY-LEVEL	1	DORMANT	3		0
+step186-kernel-as-invariant-boundary-and-two-functions	THEORY-LEVEL	1	DORMANT	5		0
+step186-math-vs-domain-model-and-parallel-inference	THEORY-LEVEL	1	DORMANT	3	1787962346	0
+step186-multilayer-graph-G-EG-SG-TG-GG-C	THEORY-LEVEL	1	DORMANT	4		0
+step186-refined-KS-typed-proposition	THEORY-LEVEL	1	DORMANT	3		0
+step186-typed-witness-and-transition-admission-rule	THEORY-LEVEL	1	DORMANT	4	1787962346	0
+step186-unknown-needs-reason-and-two-times-confirmed	THEORY-LEVEL	1	DORMANT	2	1787962346	0
+step187-admission-function-and-statistical-confidence-cannot-manufacture-authority	THEORY-LEVEL	1	DORMANT	4		0
+step187-authority-provenance-and-delegation	THEORY-LEVEL	1	DORMANT	4		0
+step187-decision-under-uncertainty-and-two-state-machines	THEORY-LEVEL	1	DORMANT	3		0
+step187-four-relations-cap-perm-auth-resp	THEORY-LEVEL	1	DORMANT	4		0
+step187-gita-chapters-reapplied-to-authority	THEORY-LEVEL	1	DORMANT	3		0
+step187-i21-i28-invariants-and-constitutional-redefinition	THEORY-LEVEL	1	DORMANT	3		0
+step187-kernel-enforces-not-originates	THEORY-LEVEL	1	DORMANT	3		0
+step187-transition-specific-authority-requirement	THEORY-LEVEL	1	DORMANT	4	1787984178	0
+step188-bayesian-updating-analogy-for-history	THEORY-LEVEL	1	DORMANT	4		0
+step188-filtration-model-and-verdict	THEORY-LEVEL	1	DORMANT	5		0
+step188-four-time-dimensions-and-bitemporal-core	THEORY-LEVEL	1	DORMANT	2	1787984679	0
+step188-hindsight-contamination-formalized	THEORY-LEVEL	1	DORMANT	4	1787984679	0
+step188-i29-i32-invariants	THEORY-LEVEL	1	DORMANT	2		0
+step188-krishna-lens-formalized-state-not-history	THEORY-LEVEL	1	DORMANT	3	1787984679	0
+step188-transmission-function-and-preservation-properties	THEORY-LEVEL	1	DORMANT	3		0
+step188-typed-relation-and-decision-replay	THEORY-LEVEL	1	DORMANT	4		0
+step189-truth-belief-knowledge-transition-machine-proposed	THEORY-LEVEL	1	DORMANT	1		0
+step201-fork-and-invalid-freeze-finding	THEORY-LEVEL	5	CONTESTED	5		0
+step208-215-contradiction-catalogue	CROSS-OBJECT	18	CONTESTED	2	2026-08-30	0
+step208-215-execution-and-fabrication-audit	`CROSS-OBJECT`	9	DORMANT	5	2026-08-30	0
+step208-semantic-contract-algebra	OBJECT	24	CONTESTED	5		0
+step209-invariant-algebra	OBJECT	28	CONTESTED	5		0
+step210-invariant-verification-matrix	OBJECT	36	CONTESTED	5	2026-08-30	0
+step212-architecture-gap-discovery	OBJECT	48	CONTESTED	6		0
+step213-evidence-first-reconstruction	OBJECT	44	CONTESTED	5		0
+step214-evidence-ledger	`OBJECT`	49	CONTESTED	6	1788046830	0
+step215-reconstruction-method	OBJECT	60	CONTESTED	5		0
+step216-217-reconstruction-constitution	OBJECT	15	CONTESTED	4		0
+step216-reconstruction-protocol	OBJECT	14	DORMANT	2		0
+step218-evidence-ledger	OBJECT (node-level); all 5 rows scoped THEORY-LEVEL	5	CONTESTED	1		0
+step218-semantic-preservation-principle	OBJECT	17	DORMANT	2		0
+step219-evidence-audit-ground-truth	OBJECT	39	CONTESTED	7	1788074248	0
+step220-concept-genealogy-method	OBJECT	21	DORMANT	6		0
+step221-concept-genealogy-map-boundary-preservation	OBJECT	30	CONTESTED	7		0
+step222-falsification-pass-candidate-architecture	OBJECT	50	CONTESTED	8		0
+step230-minimal-architectural-kernel	OBJECT	56	CONTESTED	8	1788075907	0
+step231-mathematical-space-of-knowledge	`OBJECT`	37	CONTESTED	8	1788075907	0
+step232-knowledge-state-algebra	`OBJECT`	62	CONTESTED	9	1788075986	0
+step233-empirical-validation-mathematical-kernel	OBJECT	24	DORMANT	6		0
+step234-canonical-alignment-audit-framework	OBJECT	44	DORMANT	7	1788076289	0
+step235-phase-reconstruction-steps-1-182	OBJECT	22	DORMANT	6		0
+step236-evidence-based-reconstruction-failure-finding	?	0	?	5		0
+step237-phase1-archaeology-evidence-reconstruction	OBJECT	19	CONTESTED	6		0
+step237-reconstruct-actual-source-corpus	OBJECT	2	DORMANT	1		0
+step238-regime-comparison-matrix	OBJECT	21	CONTESTED	5	2026-08-01	0
+step239-claim-registry-kernel-genealogy	OBJECT	29	DORMANT	6		0
+step240-decision-contradiction-registry-kernel	OBJECT	1	DORMANT	1	1788078265	0
+step241-dependency-graph-knowledgeos-theory	OBJECT	29	DORMANT	5		0
+step242-kernel-candidate-formal-comparison	OBJECT	22	CONTESTED	6		0
+step243-typed-universe-layered-architecture-hypothesis	OBJECT	10	CONTESTED	6		0
+step254-decision3-provenance-inside-semantic-equality	OBJECT	14	DORMANT	6	2026-08-31	0
+step260-behavioural-equivalence-history-quotient	OBJECT	5	DORMANT	7		0
+step261-223-corpus-stop-gate-matches-d288	OBJECT	5	DORMANT	3		0
+step261-equality-ambiguity-stop-gate	THEORY-LEVEL	28	ACTIVE	8		0
+step266-class-c-noncomputable-objects	THEORY-LEVEL	2	DORMANT	5	1788115702	0
+step272a-core-operation-universe-layered-derivation	OBJECT	20	CONTESTED	9		0
+step273-knowledge-state-sufficiency-minimality-mandate	OBJECT	10	DORMANT	5	2026-08-30	0
+step275-epistemic-dimension-separation-mandate	OBJECT	30	CONTESTED	8		0
+step276-foundational-closure-audit-four-closure-types	OBJECT	15	DORMANT	3		0
+step277-transformation-inventory-ocore-layered-reduction	OBJECT	21	CONTESTED	9		0
+step278-policy-authority-conditional-verdict-governance-closure	OBJECT	24	CONTESTED	8	2026-08-30	0
+step279-policy-authority-executable-implementation	OBJECT	28	DORMANT	6		0
+step280-281-harness-id-collision-defect	OBJECT	10	CONTESTED	6		0
+step280-empirical-closure-test-suite-ec-not-achieved	OBJECT	28	DORMANT	9	2026-08-30	0
+step280-end-to-end-empirical-closure-test-mandate	OBJECT	40	DORMANT	7	2026-01-01	0
+step280-frontier-freeze-and-contamination-map	OBJECT	3	DORMANT	2	2026-08-30	0
+step281-missingness-repair-inquiry-register-selection	OBJECT	73	DORMANT	10		0
+step282-theory-criticality-and-closure-decision	OBJECT	68	CONTESTED	11	1788128367	0
+step283-governance-ratification-protocol	OBJECT	14	CONTESTED	7	2026-08-31	0
+step285-298-canonical-kernel-research-programme	METHODOLOGICAL	7	DORMANT	1		0
+step285-canonical-state-reconciliation-protocol	OBJECT	15	DORMANT	4		0
+step285-over-derivation-retraction-and-must-not-do-list	METHODOLOGICAL	9	CONTESTED	2	2026-08-31	0
+step286-gita-hypothesis-falsification-research-programme	METHODOLOGICAL	8	DORMANT	4	2026-08-31	0
+step286-ontology-reconstruction-layered-model	THEORY-LEVEL	12	ACTIVE	7		0
+step287-294-qualify-equality-critical-path-roadmap	METHODOLOGICAL	6	DORMANT	4		0
+step287-derivability-classification-and-research-chain	METHODOLOGICAL	3	DORMANT	1		0
+step287-equality-identity-semantics-observability-mandate	METHODOLOGICAL	7	DORMANT	3		0
+step287-invariant-research-programme	`METHODOLOGICAL`	23	CONTESTED	6	2026-08-31	0
+step288-congruence-operation-bindings	THEORY-LEVEL	6	DORMANT	9		0
+step288-decision-procedure-completeness-matrix	THEORY-LEVEL	5	DORMANT	5		0
+step288-equality-register-nine-registers-g67	THEORY-LEVEL	15	CONTESTED	8		0
+step288-gap-update-change-control	METHODOLOGICAL	3	DORMANT	2		0
+step288-identity-register-eleven-kinds	THEORY-LEVEL	3	DORMANT	6	1788208139	0
+step288-mathematical-audits-thirteen-falsifications	METHODOLOGICAL	12	CONTESTED	7		0
+step288-normative-decision-register-n-series	METHODOLOGICAL	5	DORMANT	3		0
+step289-degeneracy-audit-principle	METHODOLOGICAL	4	DORMANT	6	1788209516	1
+step289-dependency-bootstrap-mandate	METHODOLOGICAL	7	DORMANT	5		0
+step289-dependency-graph-bootstrap-cut	THEORY-LEVEL	55	CONTESTED	8	1788209287	0
+step289-derivation-governance-matrix	`THEORY-LEVEL`	4	DORMANT	4	1788209582	0
+step289-equality-closure-contract	THEORY-LEVEL	2	DORMANT	5		0
+step289-operations-mandate-superseded	METHODOLOGICAL	19	DORMANT	7		0
+step290-n1-equality-observational-adjudication-mandate	METHODOLOGICAL	9	ACTIVE	5		0
+step290-n1-verdict-candidate-not-contradiction	THEORY-LEVEL	32	ACTIVE	7		0
+step291-closure-vs-membership-taxonomy	METHODOLOGICAL	21	ACTIVE	6		0
+step291-kernel-operation-algebra-proposal	OBJECT, THEORY-LEVEL	35	ACTIVE	10		0
+step291-knowledgeos-kernel-operator-discovery-programme	OBJECT	8	ACTIVE	4		0
+step291-n4-leverage-not-earliest	METHODOLOGICAL	7	ACTIVE	4	1788211039	0
+step291-omega-tau-three-distinct-objects	OBJECT	17	CONTESTED	6	1788211197	0
+step291-vnext-claim-level-type-discipline	METHODOLOGICAL	7	ACTIVE	2		0
+step292-deliverables-structure	METHODOLOGICAL	2	ACTIVE	1		0
+steps-1-40-review-architectural-verdict-plan	THEORY-LEVEL	20	DORMANT	5		0
+stigler-seven-pillars-lens	METHODOLOGICAL	14	DORMANT	8		0
+stochastic-golog-mdp-candidate	OBJECT	1	ACTIVE	1		0
+strategic-behavior-game-theory-model	THEORY-LEVEL	168	DORMANT	9	1787912190	0
+stratify-dont-filter-and-control-o-g	METHODOLOGICAL	1	ACTIVE	1		0
+structural-strata-anti-pattern-caught-and-common-cause-rule	METHODOLOGICAL	1	ACTIVE	1		0
+structural-unknowability-three-way-classification	OBJECT	4	ACTIVE	4	1788366686	0
+structure-first-not-projection-first-principle	THEORY-LEVEL	69	ACTIVE	7	1788349256	2
+structured-and-graph-retrieval-path-not-inference	THEORY-LEVEL	1	ACTIVE	1		0
+structured-not-scalar-assessment-invariant	`THEORY-LEVEL`	2	DORMANT	5	2026-08-26	0
+subject-matter-epistemic-projection	OBJECT	2	ACTIVE	3		0
+successor-state-semantics-candidate	OBJECT	25	ACTIVE	9		0
+sufficiency-completeness-decision-readiness	`OBJECT`	34	DORMANT	8	1787837822	0
+sufficient-f-o-i-criterion-adoption	OBJECT	7	DORMANT	7		0
+sufficient-state-control-theory-lens	OBJECT	14	DORMANT	8		0
+supersession-concept	OBJECT	1	DORMANT	1		0
+sutra-commentary-knowledge-stack	OBJECT	1	DORMANT	2		0
+symbol-drift-e-a-s-g-registers-steps-208-215	OBJECT	4	CONTESTED	3		0
+system-relative-undecidability-hierarchy	OBJECT	1	ACTIVE	2		0
+target-experiment-pattern	OBJECT	3	DORMANT	3		0
+tarka-argument-falsification-lens	METHODOLOGICAL	0	DORMANT	0		2
+tarka-nine-family-falsification-instrument	METHODOLOGICAL	0	DORMANT	0		2
+tarka-vs-anumana-distinction	CROSS-OBJECT	17	DORMANT	5		0
+tell-ask-operations-candidate	OBJECT	10	ACTIVE	5		0
+temporal-and-bitemporal-persistence	THEORY-LEVEL	1	ACTIVE	2		0
+temporal-bitemporal-consistency-snapshot-algebra	OBJECT	49	DORMANT	10		0
+temporal-epistemic-consistency-test-program	THEORY-LEVEL	1	DORMANT	1	1787987178	0
+temporal-knowledge-state-evolution-versioning	OBJECT	37	DORMANT	7	1787839201	0
+temporal-knowledge-validity	OBJECT	74	DORMANT	9		0
+temporal-precision-invariant	THEORY-LEVEL	6	DORMANT	3		0
+temporal-role-refinement	THEORY-LEVEL	1	DORMANT	1	1787987296	0
+ten-additional-kr-distinctions	THEORY-LEVEL	3	ACTIVE	2	1788369300	1
+ten-component-pre-registration-quality-checklist	GOVERNANCE	1	ACTIVE	0		0
+ten-statistical-capability-families	OBJECT	8	DORMANT	7		0
+ten-value-epistemic-status-zero-reference	`OBJECT`	2	DORMANT	1	2026-08-30	0
+terminological-assertional-knowledge-split	OBJECT	4	ACTIVE	4		0
+theory-backbone-two-chains-mature	THEORY-LEVEL	1	ACTIVE	1	1788758289	0
+theory-closure-audit-all-gaps-closed	THEORY-LEVEL	12	CONTESTED	5		0
+theory-closure-gate-2026-v1-constitutional-axioms	THEORY-LEVEL	10	ACTIVE	5	1788378676	2
+theory-closure-gate-five-way-classification	METHODOLOGICAL	6	ACTIVE	4		0
+theory-closure-roadmap-nine-gates-2026-09	METHODOLOGICAL	13	ACTIVE	3	1788984983	0
+theory-compatibility-cross-synthesis-verdict	THEORY-LEVEL	26	CONTESTED	7	2026-09-01	0
+theory-corpus-map-proposal	OBJECT	90	CONTESTED	7		0
+theory-doc-series-00-14-information-transformation-2026-09	THEORY-LEVEL	73	ACTIVE	9		0
+theory-evolution-map-independent-reconstruction	THEORY-LEVEL	20	CONTESTED	6		0
+theory-gap-map-001-report	CROSS-OBJECT	15	CONTESTED	3		0
+theory-gap-register	METHODOLOGICAL	4	CONTESTED	5		0
+theory-inventory-canonical-discovery-assessment-2026-09	METHODOLOGICAL	12	ACTIVE	4		0
+theory-level-obligations-and-meta-pattern	THEORY-LEVEL	2	ACTIVE	1	2026-09-06	0
+theory-object-dependency-graph-layered-model	THEORY-LEVEL	6	DORMANT	4		0
+theory-to-architecture-non-uniqueness	THEORY-LEVEL	3	ACTIVE	3	1788670245	0
+theory-to-architecture-traceability-plan	`METHODOLOGICAL`	5	DORMANT	5	1788012463	0
+theory-to-ekp-conformance-matrix	THEORY-LEVEL	17	CONTESTED	5		0
+theory-v1-0-def-register-findings-2026-09-10	THEORY-LEVEL	43	CONTESTED	7	2026-09-02	0
+theory-v1-2-fifteen-document-set-2026-09	THEORY-LEVEL	20	CONTESTED	8		0
+theory-v1-2-unresolved-proof-obligations-critical-path-2026-09	THEORY-LEVEL	3	ACTIVE	3		0
+theory-v12-meta-status-frozen-not-incomplete	GOVERNANCE	1	ACTIVE	1		0
+theory-v12-status-catalogue	THEORY-LEVEL	1	ACTIVE	2	1788758289	0
+theory-verification-programme-four-levels	`METHODOLOGICAL`	4	DORMANT	2	1787993206	0
+three-candidate-exp-principles-p1-p2-p3	THEORY-LEVEL	1	ACTIVE	1		0
+three-candidate-kernel-architectures	OBJECT	1	ACTIVE	1		0
+three-graph-metaphors-convergence	`THEORY-LEVEL`	1	ACTIVE	0	1788759908	0
+three-kernels-layering	THEORY-LEVEL	19	DORMANT	8	2026-08-28	0
+three-layer-epistemic-architecture	OBJECT	7	DORMANT	4		0
+three-layer-transition-model	THEORY-LEVEL	3	DORMANT	4		0
+three-level-equivalence-synthesis	OBJECT	10	ACTIVE	6		0
+three-level-maturity-model	`METHODOLOGICAL`	2	DORMANT	2	1787994251	0
+three-model-structural-convergence-not-formal	THEORY-LEVEL	7	ACTIVE	3	1788288889	0
+three-model-ten-convergences-and-four-non-convergences	THEORY-LEVEL	12	ACTIVE	4		0
+three-operations-observe-focus-investigate	THEORY-LEVEL	1	ACTIVE	2		0
+three-preservation-contracts-tested-not-assumed	OBJECT	1	ACTIVE	1	1788760415	0
+threshold-audit-subdirs-loose-files	OBJECT	6	DORMANT	4		0
+threshold-type-conflated-with-sample-mean	OBJECT	3	CONTESTED	2		0
+titelbaum-epistemic-standards-missing-primitive	`THEORY-LEVEL`	72	ACTIVE	9	1788294691	0
+topological-knowledge-state-lens	`OBJECT`	12	DORMANT	6	1787576191	0
+topological-lens	OBJECT	0	DORMANT	0		1
+topology-invariant-lens	OBJECT	2	DORMANT	2		0
+track-1-track-2-parallel-authorization	CROSS-OBJECT	3	DORMANT	2		0
+track2-eks-rule-authority-scope-semantics	OBJECT	7	DORMANT	5	2026-08-16	0
+tractatus-logico-philosophicus-lens	OBJECT	10	DORMANT	6		0
+transaction-boundary-vs-domain-aggregate	THEORY-LEVEL	1	ACTIVE	1		0
+transformation-class-taxonomy-six-classes-285	OBJECT	1	DORMANT	0	2026-08-31	0
+transformation-layer-skip-degradation-law	THEORY-LEVEL	1	DORMANT	4		0
+transformation-signature-instability	`THEORY-LEVEL`	3	DORMANT	5	1788116393	0
+transition-algebra-program	THEORY-LEVEL	1	DORMANT	1	1787994747	0
+transition-composition-algebra	OBJECT	4	ACTIVE	4		0
+transition-contract-formalism	THEORY-LEVEL	11	CONTESTED	4		0
+transition-independence-primitive-vs-derived-question	OBJECT	1	DORMANT	1	2026-08-31	0
+transition-ledger-artifact	`OBJECT`	1	DORMANT	0	1787996645	0
+transition-log	OBJECT	8	DORMANT	4		0
+transition-safety-risk-formula	THEORY-LEVEL	4	DORMANT	3		0
+transition-validity-formalization	THEORY-LEVEL	3	DORMANT	2	1787985665	1
+triple-robustness-world-enumeration	OBJECT	1	ACTIVE	1		0
+true-business-capabilities	THEORY-LEVEL	2	DORMANT	1	2026-08-17	0
+truth-as-argmax-average-evaluation	OBJECT	3	ACTIVE	3		0
+truth-evidence-knowledge-confidence-non-collapse	OBJECT	4	ACTIVE	5		0
+truth-knowledge-lattice-program	THEORY-LEVEL	15	DORMANT	7		0
+truth-seeking-kernel-definition	THEORY-LEVEL	7	DORMANT	5		0
+truth-theory-boundary-invariant	THEORY-LEVEL	4	DORMANT	4	1787565021	0
+truth-validity-belief-epistemic-status-algebra	`OBJECT`	43	DORMANT	10	1787902976	0
+twelve-constitutional-principles	OBJECT	1	DORMANT	3		0
+twenty-review-dimensions	METHODOLOGICAL	17	DORMANT	5		0
+two-dimensional-decision-validity	THEORY-LEVEL	1	DORMANT	1	1787994251	0
+two-kinds-of-philosophical-source-behavior	METHODOLOGICAL	1	DORMANT	2		0
+two-pole-knowledge-state-structure	OBJECT	3	ACTIVE	1		0
+two-rival-k-state-models-vocabulary-disjoint	OBJECT	11	CONTESTED	3	2026-08-31	0
+type1-type2-type3-blocker-classification-method	METHODOLOGICAL	1	ACTIVE	1		0
+type3-analogy-misreported-as-type1	OBJECT	1	CONTESTED	3	1788116549	0
+typed-mathematical-epistemic-model	OBJECT	9	DORMANT	7		0
+typed-uncertainty-taxonomy	OBJECT	4	CONTESTED	2		0
+u-as-lossy-projection-of-boundary	THEORY-LEVEL	3	ACTIVE	2		0
+ubiquitous-language-audit-implementation-cleaner-than-theory	OBJECT	1	DORMANT	2	2026-08-30	0
+uncertainty-authority-interaction	THEORY-LEVEL	3	DORMANT	3		0
+uncertainty-calculus-multidimensional-algebra	OBJECT	64	DORMANT	11		0
+uncertainty-conservation-through-transformation	THEORY-LEVEL	2	DORMANT	3	1787994149	0
+uncertainty-probability-confidence-program	THEORY-LEVEL	1	DORMANT	1		0
+uncertainty-propagation-dependence-epistemic-risk-algebra	OBJECT	68	DORMANT	8	1787905464	0
+uncertainty-propagation-derived-knowledge	OBJECT	36	DORMANT	8	1787837053	2
+uncertainty-propagation-model	THEORY-LEVEL	60	DORMANT	8	1787912053	0
+uncertainty-statistical-model-based-reasoning-part21	THEORY-LEVEL	1	ACTIVE	2		0
+uncertainty-statistical-model-persistence	THEORY-LEVEL	1	ACTIVE	2	1788671057	0
+uncertainty-taxonomy-typed-propagation	OBJECT	40	DORMANT	8		0
+uncertainty-typed-object-u-h	OBJECT	2	DORMANT	5		0
+unified-epistemic-assessment-object	OBJECT	6	DORMANT	4	1787994149	0
+unified-runtime-human-binding-invariant	THEORY-LEVEL	5	DORMANT	5		0
+universal-knower-refuted-by-observation-destruction-impossibility	OBJECT	8	DORMANT	5		0
+unknown-ambiguous-conflicted-taxonomy	THEORY-LEVEL	10	DORMANT	6		0
+unknown-no-home-gap	OBJECT	1	DORMANT	3		0
+unknown-value-bottom-element-gap	OBJECT	0	DORMANT	0		1
+update-preserve-assertion-lifecycle	OBJECT	22	ACTIVE	9		0
+v1-1-sim-adequate-zero-redundancy	OBJECT	2	ACTIVE	2		0
+v1-1-sim-circ5-semantic-equivalence-circularity	OBJECT	8	CONTESTED	5		0
+v1-1-sim-factivity-impossibility-finding	OBJECT	19	ACTIVE	8		0
+v1-1-sim-final-verdict-partially-executable	THEORY-LEVEL	1	ACTIVE	1		0
+v1-1-sim-kernel-capability-set	OBJECT	3	ACTIVE	3		0
+v1-1-sim-revision-without-retraction-gap	OBJECT	3	ACTIVE	2	1788333152	0
+v1-1-sim-theory-gap-register	METHODOLOGICAL	0	DORMANT	0		2
+v1-2-sim-equality-relations-implication-order	OBJECT	1	ACTIVE	1	2026-09-02	0
+v1-2-sim-evaluation-semantics-experiment-g-final	OBJECT	5	ACTIVE	2		0
+v1-2-sim-evaluator-retraction-governance-temporal	`OBJECT`	6	ACTIVE	3	1788336880	0
+v1-2-sim-factivity-repair-experiment	OBJECT	36	ACTIVE	6		0
+v1-2-sim-repair-phase-reordered-rerun-h	OBJECT	2	ACTIVE	2		0
+v1-2-sim-satc-semantic-closure-experiment-d	`OBJECT`	16	CONTESTED	7	2026-09-02	0
+v1-2-sim-three-valued-zero-ambiguity	OBJECT	11	ACTIVE	7		0
+v1-2-sim-zero-candidate-readings-refuted-supported	OBJECT	2	ACTIVE	2		0
+vaisheshika-ontology-kernel	OBJECT	2	DORMANT	2	2026-08-22	0
+value-of-information-concept	OBJECT	8	DORMANT	6		0
+vani-expression-meaning-lens	OBJECT	11	CONTESTED	8		0
+vedanta-pramana-epistemic-pipeline	OBJECT	14	DORMANT	6		0
+vedic-implicit-information-theory-transmission-integrity	OBJECT	9	ACTIVE	4		0
+vedic-math-genius-structural-algebra-discovery-2026-09	THEORY-LEVEL	50	ACTIVE	6		0
+vedic-mathematics-candidate-transformation-algebra	OBJECT	31	ACTIVE	6	1788460450	0
+vedic-palmistry-structural-reasoning-inventory-2026-09	THEORY-LEVEL	14	ACTIVE	5		0
+vedic-time-quantum-analogy-source-article	OBJECT	5	DORMANT	4		0
+verdict-governance-blockers-traded-for-derivation-blockers	GOVERNANCE	1	ACTIVE	2		0
+verdict-one-root-one-independent-act	OBJECT	1	ACTIVE	0	2026-09-06	0
+verdict-undefined-term	OBJECT	0	DORMANT	0		1
+verification-directive-execute-not-plan-20260830	METHODOLOGICAL	20	DORMANT	3	2026-08-30	0
+verification-directive-steps-221-232-mandate	METHODOLOGICAL	19	DORMANT	3		0
+verification-foundational-reconstruction-audit-directive	METHODOLOGICAL	17	DORMANT	3		0
+verification-lane-vs-ratified-k-observation-distinction	OBJECT	5	DORMANT	4	1788196442	0
+verification-missing-theory-identification-directive	METHODOLOGICAL	16	DORMANT	3		0
+verification-phase-evidence-classification-scale	METHODOLOGICAL	12	ACTIVE	5		0
+verification-pipeline-and-reasoning-failure-not-falsehood	THEORY-LEVEL	1	ACTIVE	2		0
+verification-post240-gap-map-directive	METHODOLOGICAL	12	DORMANT	3	2026-08-30	1
+verification-reconciliation-gate-directive	METHODOLOGICAL	16	DORMANT	3	2026-08-30	0
+verify-readiness-claims-correction	OBJECT	1	ACTIVE	0		0
+verify-session-reconstruction-phase-protocol	`METHODOLOGICAL`	19	DORMANT	4	1788074052	0
+versioned-cross-aggregate-reference-pattern	OBJECT	2	DORMANT	2		0
+viewpoint	THEORY-LEVEL	6	DORMANT	6	2026-08-03	0
+viewpoints-projections	OBJECT	0	DORMANT	0		1
+vocabulary-freeze-program	METHODOLOGICAL	1	DORMANT	1		0
+vocabulary-integrity-ungoverned-schema-files	OBJECT	3	DORMANT	1		0
+vyapti-inference-warranting-relation	OBJECT	11	DORMANT	6		0
+w-kr-contr-eval-structured-evaluation-result	OBJECT	111	CONTESTED	10		0
+way-representation-metaphor-lens	`METHODOLOGICAL`	1	ACTIVE	1	1788759908	0
+well-formed-proposition-requires-named-equality-principle	METHODOLOGICAL	10	DORMANT	2		0
+williamson-epistemic-boundary-lens	METHODOLOGICAL	2	DORMANT	4		0
+williamson-knowledge-and-its-limits-source	OBJECT	30	CONTESTED	9		0
+williamson-modal-logic-metaphysics-lens	THEORY-LEVEL	23	DORMANT	7		0
+wisdom-action-guidance-function	THEORY-LEVEL	10	DORMANT	8		0
+wisdom-engineering-narrow-definition	OBJECT	1	DORMANT	5		0
+wisdom-multi-objective-formalization	THEORY-LEVEL	2	DORMANT	5		0
+witness-based-state-transition-sufficiency-invariant	OBJECT	1	DORMANT	2	2026-08-30	0
+witness-not-cause-or-authority	OBJECT	3	DORMANT	5	1787986889	0
+worked-example-action-execution	OBJECT	1	ACTIVE	2	1788673913	0
+worked-example-architectural-significance-rev2	OBJECT	1	ACTIVE	1		0
+worked-example-architectural-significance	OBJECT	1	ACTIVE	2		0
+worked-example-compressed-formal-chain	OBJECT	1	ACTIVE	2		0
+worked-example-counterfactual-evidence-later-fails	OBJECT	1	ACTIVE	2		0
+worked-example-counterfactual-manager-rejects	OBJECT	1	ACTIVE	2		0
+worked-example-counterfactual-rule-changes-rev2	OBJECT	1	ACTIVE	2	1788673913	0
+worked-example-counterfactual-variations	OBJECT	2	ACTIVE	3		0
+worked-example-ddd-interpretation-rev2	OBJECT	1	ACTIVE	0		0
+worked-example-ddd-interpretation	OBJECT	1	ACTIVE	1		0
+worked-example-decision-pending-authorization	OBJECT	1	ACTIVE	1	1788673913	0
+worked-example-derivation-and-proof-object	OBJECT	1	ACTIVE	2		0
+worked-example-determination-not-decision	OBJECT	1	ACTIVE	2		0
+worked-example-determination-reached	OBJECT	1	ACTIVE	1	1788673874	0
+worked-example-eighteen-demonstrated-propositions	OBJECT	1	ACTIVE	1		0
+worked-example-eleven-way-semantic-separation	OBJECT	1	ACTIVE	1	1788673913	0
+worked-example-evidence-not-yet-determination	OBJECT	1	ACTIVE	2		0
+worked-example-fifteen-demonstrated-propositions	OBJECT	1	ACTIVE	1		0
+worked-example-final-decision-outcome	OBJECT	1	ACTIVE	2		0
+worked-example-final-decision-record	OBJECT	1	ACTIVE	2		0
+worked-example-final-principle-rev2	OBJECT	1	ACTIVE	1		0
+worked-example-final-principle	OBJECT	1	ACTIVE	1	1788673874	0
+worked-example-final-state-table	OBJECT	1	ACTIVE	1		0
+worked-example-inquiry-and-decision-contract	OBJECT	1	ACTIVE	2	1788673874	0
+worked-example-managerial-authorization-event	OBJECT	1	ACTIVE	2		0
+worked-example-outcome-and-decision-quality	`OBJECT`	1	ACTIVE	2	1788673913	0
+worked-example-proof-verification-and-reasoning-result	OBJECT	1	ACTIVE	1		0
+worked-example-retrieval-and-evidence-construction	OBJECT	1	ACTIVE	1		0
+worked-example-rev2-compressed-chain	OBJECT	1	ACTIVE	2	1788673913	0
+worked-example-rev2-extension-intent	`OBJECT`	1	ACTIVE	0	1788673913	0
+worked-example-rule-and-applicability-check	OBJECT	1	ACTIVE	2		0
+worked-example-state-transition-sequence	OBJECT	1	ACTIVE	2		0
+workflow-lifecycle-engine	THEORY-LEVEL	74	DORMANT	9		0
+workflow-mechanism	`OBJECT`	7	DORMANT	3	2026-08-16	0
+workitem-aggregate	OBJECT	18	DORMANT	5		0
+world-information-knowledge-change-non-collapse	`OBJECT`	1	ACTIVE	2	1788285036	0
+yoga-operator-simulation-framework	OBJECT, THEORY-LEVEL	8	ACTIVE	6		0
+yoga-sutra-observer-reality-separation	THEORY-LEVEL	7	DORMANT	4	2026-08-22	0
+yoni-lens-hypothesis	THEORY-LEVEL	37	ACTIVE	6		0
+yoni-zero-lens-proposal-audit	OBJECT	5	ACTIVE	7		0
+z-kos-001-neutral-reference	THEORY-LEVEL	13	DORMANT	6	1787394323	0
+z-kos-001-zero-principle	THEORY-LEVEL	43	ACTIVE	10		0
+zero-compositionality-question-and-preservation-signature	THEORY-LEVEL	1	ACTIVE	2	1788760415	0
+zero-defined-by-preservation-not-state-change	OBJECT	1	ACTIVE	0	1788760415	0
+zero-lens-bayesian-gaps	THEORY-LEVEL	10	ACTIVE	11		0
+zero-lens-boundary-concept	THEORY-LEVEL	25	CONTESTED	8		0
+zero-lens-discovery-method	METHODOLOGICAL	15	DORMANT	7	1787534528	1
+zero-lens-gap-detection-formalization	OBJECT	22	DORMANT	6		0
+zero-lens-non-collapse-discipline	THEORY-LEVEL	61	DORMANT	9	1787736088	0
+zero-lens-vs-zero-closure-distinction	THEORY-LEVEL	2	ACTIVE	1		0
+zero-lord-sarathi-guidance-cycle	THEORY-LEVEL	57	CONTESTED	10		0
+zero-neutral-origin-hypothesis	OBJECT	6	DORMANT	2		0
+zero-neutral-state-lens	OBJECT	37	DORMANT	9		0
+zero-non-collapse-principle	THEORY-LEVEL	1	ACTIVE	2	2026-09-02	0
+zero-of-the-relationship-emergent-zero	OBJECT	1	ACTIVE	1	1788760328	0
+zero-reasoned-closure-reading	OBJECT	4	ACTIVE	2	1788336828	0
+zero-relative-eliminability-fits-graph	THEORY-LEVEL	1	ACTIVE	2		0
+zero-relativity-biological-analogy	THEORY-LEVEL	1	ACTIVE	1	1788760187	0
+zero-requirements-vs-completeness-world-distinction	OBJECT	3	ACTIVE	3	1788364577	0
+zero-research-roadmap-post-zero-concept	METHODOLOGICAL	3	ACTIVE	1		0
+zero-ten-invariants-zi-01-to-zi-10	THEORY-LEVEL	3	ACTIVE	2	2026-09-02	0
+zero-vs-closed-world-assumption-comparator	CROSS-OBJECT	12	ACTIVE	6	1788364577	0
+ziran-identity-invariant-challenge-three-axes	OBJECT	3	DORMANT	4		0
+zoom-experiment-series-synthesis	THEORY-LEVEL	1	ACTIVE	2		0
+zoom-in-as-inquiry-directed-dimension-discovery	OBJECT	42	ACTIVE	11		0
+zoom-in-zoom-out-distinction-proposed	THEORY-LEVEL	1	ACTIVE	1		0
+zoom-out-not-a-new-foundational-branch	GOVERNANCE	1	ACTIVE	0	1788758289	0
+zoom-restriction-vs-inquiry-focus-distinction	THEORY-LEVEL	1	ACTIVE	1	1788757991	1
+zoom-status-table-and-key-consequence	THEORY-LEVEL	1	ACTIVE	1		0
+zoomin-operational-zoomout-workflow-only	THEORY-LEVEL	1	ACTIVE	1	1788759821	0
+zoomout-as-context-integration-not-inverse	THEORY-LEVEL	1	ACTIVE	1		0

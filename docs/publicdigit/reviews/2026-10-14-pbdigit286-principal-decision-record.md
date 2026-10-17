@@ -26,6 +26,16 @@
   - **G-ISO and the P5 Evidence phase only** (Principal, 2026-10-14 18:54 UTC). Conditions: target exclusively `pbdigit274_isolated_test` with the identity guard verified before each run; never `nrna_test`, the development database or MariaDB; only G-ISO/P5 tests; no P1–P4 or P6–P8. It does **not** approve O-3, G-ADR-A, G-MIG, G-AUD2, G-REL or any later phase.
   - **Evidence of the authorised run:** `docs/publicdigit/election/evidence/2026-10-14-pbdigit286-p5-evidence/01-isolated-run.txt` (19:01 UTC; guard confirmed `pbdigit274_isolated_test`; 7 tests, 8 assertions, 3 deprecations, exit 0).
   - **P5 is not accepted** and must not be released without P6 (plan §8, review F1).
+- **P5/P6 ACCEPTED (Principal, 2026-10-15; dated annotation, the lines above are unchanged):** "accept P5/P6 as a bounded implementation milestone, retain the production-release hold".
+  - **Scope accepted:** P5 (trust level from verification evidence, fail-closed) and P6 (D6 count via `IpVoteLimit::votesFrom`, D7 `>=`, D7a minimum 1), committed `2f998b8ae` and `153ad7bf6` (not pushed). Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit286-p5-evidence/`, `…/2026-10-15-pbdigit286-p6-evidence/` (`01`–`28`).
+  - **Residual risks accepted:**
+    - `SecurityEventRecorderTest` fails; probable cause PBDIGIT-42 (code reading, not runtime-confirmed); separate issue;
+    - the full isolated suite and `nrna_test` were not run;
+    - production enforcement is unverified;
+    - `max_votes_per_ip` stays fixed at the default 6 (no configuration path until P1/P2);
+    - enforcement reads the live column, not the frozen record (until P3/P4).
+  - **Production release: NOT approved (hold retained).** Release still needs P1–P4, P7–P9, G-MIG, G-AUD2, G-REL, the deployment route and a production-configuration check.
+  - **Not decided by this acceptance:** O-3 (open), G-ADR-A (draft, blocked on O-3), ADR-A-T, PBDIGIT-42. No push, merge or deployment authorised.
 - **Blocked:** the operations verification **O-3**.
 - **These decisions are not implementation authorization.** PBDIGIT-286 stays `OPEN`.
 
