@@ -2,6 +2,15 @@
 
 **Kind:** session-state, the single S-Series working list (placement: `php scripts/doc-placement.php --scope=session-state` → `.claude/`).
 
+**Status update 2026-10-17 (end of day):**
+- Still 0 of 1,975 labels measured. No new human act: the governance log ends at G-LOG-0140.
+- **One consolidated decision packet:** `audit-p3b/20261017_S-SERIES-PRINCIPAL-DECISION-PACKET.md`, decisions D1–D6. By the Principal's instruction it replaces any Session B packet; the professor lane is set aside.
+- **Conflicts found today:**
+  - the confirmatory test settings are unresolved: Freeze 1 says B = 9,999 with a CSPRNG seed drawn at the freeze; the seed was never drawn; the code defaults to 999/20260927;
+  - Freeze 1 vs prereg_v2 is not reconciled (RQ-1);
+  - the verdict rules contradict themselves on dispute resolution (N-a/C-4).
+- **Next 👤 decision: D1** (records location), then D2…D6.
+
 **Status update 2026-10-16 (supersedes the 2026-10-01 statement below where they differ):**
 - **Measurement.** The canary repair went through G1 and G1.5 (G-LOG-0110, G-LOG-0111). Rehearsal runs 1 and 2 FAILED (G-LOG-0113, G-LOG-0116). **Run-3 is approved at G2 but not launched** (G-LOG-0117): it is waiting for the quiet period and `PREFLIGHT-OK`. G3–G5 are not authorized. Still **0 of 1,975 labels** measured.
 - **Scientific design.** prereg_v2 is FROZEN (G-LOG-0137). Early theory recovery: O1 (G-LOG-0125). The theory-track protocol v1 is a DRAFT (G-LOG-0139); T-0 and T-1 are pending.
@@ -15,7 +24,7 @@
 - **The repair package** was challenged twice (reviews D and E) and needs revision. A complete field inventory shows the defect is wider than the canary's failures revealed.
 - **No S5 label has yet become measured data** (AM-2).
 - **Current gate:** revise the repair package → adversarial review → human authorization.
-- **Standing states:** H-19 SEALED; RI-1 DEFERRED.
+- **Standing states:** H-19 SEALED. RI-1 reopened on its condition 1 and addressed by EG-2 (G-LOG-0104); RI-1b coverage report-only (G-LOG-0106). *(Corrected 2026-10-17; the earlier "RI-1 DEFERRED" was stale.)*
 
 **Researcher's rule:** observe the corpus as brainstorming material and derive a robust theory; "no coherent theory found" is a valid outcome.
 
@@ -40,7 +49,7 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 | Master Protocol P1, P2, P3a | DONE (discovery; 2,497 P2 labels; P3a pair verdicts frozen) |
 | Research design | ✅ frozen (Freeze 1, Freeze 2, EP-01) |
 | Execution machinery | ✅ demonstrated in the canary (dispatch, reader, witness, freezes, verifier, state) |
-| Measurement contract | ❌ defect found: 37 of 85 agent-output fields/rules not fully specified (inventory, under review) |
+| Measurement contract | repair package approved (fork H, G-LOG-0110; adjudication G-LOG-0111); rehearsal runs 1 and 2 FAILED (G-LOG-0113, G-LOG-0116); run-3 approved at G2, not launched (G-LOG-0117) |
 | Measurement instrument | ⚠️ not validated |
 | Accepted S5 measurements | **0 of 1,975 labels** (0 of 396 batches) |
 | Theory | unknown: neither supported nor disproved |
@@ -143,54 +152,98 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
   - Provably unreachable: 107 of 340 strings (31.5%); 140 (41.2%) with the escaped stage-2 ids. 86.5% is an upper bound only.
   - Agent errors: 46 lenient / 42 strict, touching 7 / 5 of 11 runs.
 
-**REMAINING WORK BY LANE (recomputed 2026-10-16 from the governance state; supersedes the 2026-10-01 critical path below; 👤 = human gate; nothing here is authorized by this list):**
+**RESEARCHER TODOS BY PHASE (2026-10-17; replaces the lane list of 2026-10-16; lane tags V/M/T/R/H/G kept; 👤 = human gate; a derived view, not a governance act, ARCH RA-12; nothing here is authorized by this list):**
 
-*Lane V — verdict criteria (must be finished before any S5 data; on the critical path ahead of S5 authorization, not ahead of run-3):*
-- [x] V-a v1.8 B-core drafted and fully reviewed (PASS-WITH-MINOR-FIX, fixes applied; REVIEW round 11; W `9a220f613`)
-- [ ] V-a2 👤 **N-a/C-4**: option (a), one binding, pre-assigned, blind audit per ruling before any verdict computation (a new mechanism, its own act, then a v1.9 with a full review), or option (b), accept as a limitation with mandatory disclosure. Decision package: `audit-p3b/verdict-criteria/VERDICT-CRITERIA-DECISION-PACKAGE-NA-C4-2026-10-16.md` (v2; round-12 review NEEDS-REVISION: N1, the audit timing relative to the verdict computation, is unresolved; drafting stopped). **First sub-decision:** do audits happen inside the pass before E_close (two agreeing blind rulings per pair; the existing freeze and ordering rules apply) or after it (a new ordering duty)?
-- [ ] V-a3 👤 Q-c: who makes J1 rulings and who does J5 audits (human / model / mixed), disclosed in every outcome's wording
-- [ ] V-b 👤 name every carried v1.8 §22.3 item as a final, pre-data limitation; rule on C-1/B-7 (adoption timing with Holm-coupled inputs); rule on N-b if V-2 (i) is chosen
-- [ ] V-c 👤 V-12 (extent of "S5 data"; whether the search counts as "access"), V-13 ((α) or (β); how O1 is read)
-- [ ] V-d 👤 V-1 (can be put now), then V-2…V-11, one at a time
-- [ ] V-e 👤 the studies, each by its own act: V-5 θ_D adequacy, V-8 R2 precision, V-9 generation sensitivity, V-10 (b), V-11 (a new prereg version)
-- [ ] V-f 👤 adoption act for the criteria (version + sha256)
+*Finish lines, kept distinct:*
+- (1) **theory extraction completed:** evidence reconstructed, candidates formulated and attacked, a defensible outcome reported;
+- (2) **independently corroborated:** the hold-out procedure authorized and completed;
+- (3) **ready for implementation:** specification, invariants, traceable evidence and a reviewed architecture.
 
-*Lane M — measurement:*
-- [ ] M1 👤 run-3 launch conditions (quiet period: every session on PROD and its worktrees stopped, F-Series included; `PREFLIGHT-OK`; G-LOG-0117)
-- [ ] M2 run-3 (non-counting, OB9100-r3) → independent evaluation → evidence commit
-- [ ] M3 👤 G3: G-01 allowed mention; the 48 PENDING annex clauses; the three reader strings; the R1 prompt block; the r5 environment for production; engineering and F-Series checkouts moved out of PROD's `.git`
-- [ ] M4 👤 contract text sha + code commit → production rebind
-- [ ] M5 👤 disclosed attempt re-registration + counted canary (OB0012 attempt 3, OB0114 attempt 2) → evaluate
-- [ ] M6 👤 full S5 authorization (needs M5 **and** Lane V adopted)
-- [ ] M7 S5: 396 batches / 1,975 labels → VERIFIED → §21 AUDITED → H-06 ACCEPTED
-- [ ] M8 EP-01 statistical analysis (θ_D, θ_A, E-3); pre-registered probability audit before the P4 hand-off
+The outcome may be ROBUST THEORY FOUND, NO COHERENT THEORY FOUND or OPEN — INSUFFICIENT EVIDENCE. A failed test, a non-significant result, an incomplete search or missing evidence is never reported as "no coherent theory".
 
-*Lane T — theory track and early theory recovery (optional; O1 in force):*
-- [ ] T-a 👤 T-0 (adopt the protocol, carve-out form) and the T-1 route (a act / b P3b amendment / c keep O1)
-- [ ] T-b if a route is chosen: protocol v1.1 (notes A–E), then T-5…T-7
-- [ ] T-c ETR-ENG: EP-01 plan → 👤 approval → tooling outside PROD's `.git` (paused during the run-3 quiet period)
+*Ordering:* Phase A must be finished **before any S5 data**, but **not before run-3**; A and B run in parallel. No phase may bypass a 👤 gate.
 
-*Lane R — reconstruction and recovery (after S5 data):*
-- [ ] R1 S5a/S5b; 66 hubs ESCALATED; H-02; P3b terminal predicate (§23) → reconciliation → P4 hand-off
-- [ ] R2 research dataset G = (V, E, τ, ρ, p) + observation-process model (C1)
-- [ ] R3 Track B pass 1: confirmatory H1, H2, H4 (Holm); exploratory H3, H5 (BH)
-- [ ] R4 👤 recovery charter (after S5b per O1/G-LOG-0028, or as V-13 rules) → recovery pass → **E_close** (hashed candidate manifest + GL record)
-- [ ] R5 formalization (simplest adequate structure) + counterexample search + competing models incl. Model 0
-- [ ] R6 verdict computation under the adopted criteria → independent reproduction (R5/N6). The verdict engine (architecture doc §6, slices VE-0…VE-6) needs adopted criteria, an EP-01 plan and 👤 approval
+*Phase A — verdict criteria, before any S5 data [V]:*
+- [x] A0 v1.8 B-core drafted and fully reviewed (PASS-WITH-MINOR-FIX, fixes applied; REVIEW round 11; W `9a220f613`, sha `469fddca…a1d7`)
+- [ ] A1a 👤 **Q-a first:** is the second linkage judgement binding, or are failed, conflicting and repeated audits accepted as a final, declared limitation with mandatory disclosure (option (b); the researcher recommends (b))? If (b), A1b and A1c become moot.
+- [ ] A1b 👤 (only if Q-a = binding) the generation premise: does candidate generation read the J1 rulings (G1) or not (G0)? This is a charter constraint that interacts with V-13 (β)/O1 timing (round-13 R2-2). The package `…DECISION-PACKAGE-NA-C4-AUDIT-PLACEMENT-2026-10-17.md` is NEEDS-REVISION; its smallest blocker is a pre-registered conditional decision line.
+- [ ] A1c 👤 (only if Q-a = binding) audit placement: A inside the pass / B after E_close; the conflict reading (pair-level l.69 / set-level l.94 / code-only); J3 placement
+- [ ] A2 👤 Q-c: who makes J1 rulings and who audits (human / model / mixed); the independence limits are disclosed in every outcome's wording
+- [ ] A3 👤 name every carried v1.8 §22.3 item as a final, pre-data limitation; rule on C-1/B-7 (adoption timing with Holm-coupled inputs) and on N-b if V-2 (i)
+- [ ] A3b 👤 **confirmatory test settings + RQ-1 (packet D2):** B for H1/H2/H4 (frozen 9,999 vs 999), the analysis seed (CSPRNG draw in a recorded act before any S5 data), the single-run rule; reconcile prereg_v2 with Freeze 1 (B1 §8). Code defaults are **not** decisions
+- [ ] A3c record the PO-1 limitations (documentation only, after D2): H3/H5 star scheme not exact in general, actual size unknown; H3 tests only the swap-reachable component; H3 self-loops; H4 null spans all `births` keys; the frozen `prereg_v2.py` self-labels "DRAFT, NOT FROZEN"
+- [ ] A3d 👤 C1 observation-process model **design** before any S5 data (document only, by authorization). Necessary for CA-8, so for any Kind P core and possibly any K claim; needs a human reference standard
+- [ ] A3e 👤 outside review of the confirmatory validity proof and the D2 settings (packet D5): a human statistician recommended
+- [ ] A4 👤 V-12 (extent of "S5 data"; whether the search counts as "access"), V-13 ((α)/(β); the reading of O1), then V-1 (can be put now) and V-2…V-11, one at a time
+- [ ] A5 👤 only the studies authorized by their own acts: V-5 θ_D adequacy, V-8 R2 precision, V-9 generation sensitivity (planted candidates), V-10 (b), V-11 (a new prereg version)
+- [ ] A6 👤 the adoption act: exact version + sha256 entered in GL. A reviewed proposal is not an adopted rule
+- *Exit:* criteria adopted; every pre-data decision settled.
 
-*Lane H — hold-out and final verdict:*
-- [ ] H1 👤 the ADD §6 ruling after the seal breach (scoreable or not); S5c only by a separate act
-- [ ] H2 if authorized: S5c scoring against the FROZEN candidates (one unseal, no changes after)
-- [ ] H3 👤 J4: adopt or reject the computed outcome → the final readable report (ROBUST / NCTF / OPEN with codes)
-- [ ] H4 👤 only after an adopted ROBUST verdict: canonicalization (Layer 5) → theory specification → product architecture (derivation method in the architecture doc §7)
+*Phase B — measurement readiness [M]:*
+- [ ] B1 👤 run-3 launch conditions: quiet period across every session, IDE, git client and loop on PROD and its worktrees (F-Series included); `PREFLIGHT-OK` (G-LOG-0117)
+- [ ] B2 run-3 (non-counting rehearsal OB9100-r3; never counted S5 evidence)
+- [ ] B3 independent evaluation + evidence commit; on failure, diagnose and repair only within authorized scope
+- [ ] B4 👤 G3: G-01 allowed mention; the 48 PENDING annex clauses; the three reader strings; the R1 prompt block; the r5 environment for production; engineering and F-Series checkouts moved out of PROD's `.git`
+- [ ] B5 👤 exact contract text sha + code commit → production rebind
+- [ ] B6 👤 disclosed attempt re-registration + counted canary (OB0012 attempt 3, OB0114 attempt 2)
+- [ ] B7 evaluate the canary against its frozen acceptance criteria
+- [ ] B8 👤 full S5 authorization (requires B7 **and** A6)
+- *Exit:* rehearsal and canary passed; S5 explicitly authorized.
+
+*Phase C — acquire and validate S5 evidence [M]:*
+- [ ] C1 S5: 396 batches / 1,975 labels (retry policy, W-SYS, AM-1 single writer)
+- [ ] C2 per batch VERIFIED → §21 AUDITED → H-06 ACCEPTED before a label counts as measured (AM-2)
+- [ ] C3 the 66 hubs ESCALATED; Tier-X labels under H-02; empty-set labels per R17
+- [ ] C4 EP-01 statistical analysis (θ_D, θ_A, E-3); the pre-registered probability audit **before** the P4 hand-off
+- [ ] C5 provenance: accepted measurements, exceptions, audit outcomes and evidence commits, all reproducible
+- *Exit:* the accepted evidence and the probability audit support the hand-off. 1,975 labels alone prove neither data adequacy nor a theory.
+
+*Phase D — reconstruct and recover candidates [R]:*
+- [ ] D1 S5a/S5b; escalations; H-02; P3b terminal predicate (§23)
+- [ ] D2 reconciliation artifact → P4 hand-off
+- [ ] D3 research dataset G = (V, E, τ, ρ, p); the C1 model is FITTED here, under the design fixed in A3d
+- [ ] D4 registered tests: H1, H2, H4 confirmatory (Holm); H3, H5 exploratory (BH); results read only through the licensed readings of prereg_v2
+- [ ] D5 👤 recovery charter (generation procedure, stopping rule, J1 criteria: timing per V-13 and O1) → recovery pass → **E_close** (hashed candidate manifest + GL record)
+- [ ] D6 formalize surviving structures with the simplest adequate mathematics: relations → graphs → partial orders / transition systems → algebra or logic only where needed
+- [ ] D7 competing explanations incl. Model 0 and non-strawman alternatives; contradictions, unresolved observations and negative findings are kept
+- *Exit:* candidates explicit, traceable, formally stated and attackable.
+
+*Phase E — attack and validate [R/H]:*
+- [ ] E0 👤 the ADD §6 scoreability ruling and the S5c route decide whether ROBUST is reachable at all under V-2 (ii); weigh them together with V-2, before any S5 data
+- [ ] E1 counterexample search (∃ observed x: ¬H(x)), recorded with its search space and coverage
+- [ ] E2 logical and computational consistency: satisfiability witnesses and UNSAT certificates (v1.8 §3), boundary cases, dependency cycles, alternative models
+- [ ] E3 statistical robustness and scope: confirmatory vs exploratory kept apart; observation process, coverage and instrument limits
+- [ ] E4 ML only on adjudicated S5 data, within the approved boundary: candidate generation, clustering, review prioritization, against lexical/graph baselines; never truth, verdicts, weights or a substitute for the criteria. Possible reliability report from recorded rulings: Fleiss' κ / Krippendorff's α (no threshold proposed)
+- [ ] E5 apply the **adopted** linkage and audit procedure (decided in A1–A2, never re-decided after data)
+- [ ] E6 independent reproduction of the verdict computation and the evidence-based findings (R5/N6)
+- [ ] E7 👤 H-19: the ADD §6 ruling after the seal breach; any unseal or S5c only by its own act, against FROZEN candidates (one unseal, no changes after)
+- *Exit:* candidates survived the registered tests, the attacks and any authorized corroboration — or they demonstrably did not.
+
+*Phase F — outcome and report [H]:*
+- [ ] F1 compute the outcome under the adopted criteria (verdict engine only via an EP-01 plan + 👤 approval; architecture doc §6)
+- [ ] F2 independent reproduction and audit of the result
+- [ ] F3 👤 J4: adopt or reject the computed outcome
+- [ ] F4 the final readable report: evidence, scope, limitations, rejected candidates, open questions, reasoning
+- [ ] F5 👤 only after an adopted ROBUST verdict: canonicalization (Layer 5) → theory specification → implementation architecture (derivation method in the architecture doc §7)
+
+*Optional lane T — theory track (O1 in force):*
+- [ ] T1 👤 T-0 (adopt the protocol, carve-out form) and the T-1 route (a act / b P3b amendment / c keep O1)
+- [ ] T2 if a route is chosen: protocol v1.1 (notes A–E), then T-5…T-7; ETR-ENG only via an EP-01 plan and approval, outside PROD's `.git`, paused during the run-3 quiet period
+
+*Lane P — professor / manuscript: **SET ASIDE by the Principal (2026-10-17: "forget the professor").** Session B's files in `docs/knowledgeos/knowledgeos-s-series-theory/` stay untracked and untouched. Session A carries the work; the items below are inactive:*
+- [ ] P1 👤 adopt the working model conditionally; first deliverable a Stage-1 Registered Report (pre-data methods only; no theory content before S5b); manuscript location/branch; inactive during the run-3 quiet period
+- [ ] P2 researcher handoff index (artifact, status, path, sha256) for Session B
+- [ ] P3 👤 one genuinely independent review of the Stage-1 report (human expert or a different model family)
 
 *Lane G — governance and hygiene:*
-- [ ] G1 hash-chain the governance log
-- [ ] G2 👤 R-5: the 5 misrouted READ-LOG files in the ansible repo
-- [ ] G3 👤 push decision for local commits (nothing pushed)
-- [ ] G4 RI-1 stays DEFERRED; reopen only on its G-LOG-0089 conditions
+- [ ] G1 👤 records location (packet D1). Verified 2026-10-17: `knowelegeos-modelling` is contained in `election-flow-updated`, where every lane has committed state since about 2026-10-15; S-Series research artifacts are on the worktree branch; the worktree's copy of the governance log is stale (110 of 140 entries). Nothing is to be moved or rewritten
+- [ ] G2 hash-chain the governance log
+- [ ] G3 👤 R-5: the 5 misrouted READ-LOG files in the ansible repo
+- [ ] G4 👤 push decision for local commits (nothing pushed)
+- [x] G5 RI-1 reopened on condition 1 and addressed by EG-2 (G-LOG-0104); RI-1b report-only (G-LOG-0106)
+- [ ] G6 review-loop rule (researcher's suggestion): at most one review + one re-review per artifact, then accept with declared findings or change approach
 
-**CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; HISTORICAL, superseded by the lanes above; it superseded B1–B3 and the older critical paths below; 👤 = human gate):**
+**CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; HISTORICAL, superseded by the phases above; it superseded B1–B3 and the older critical paths below; 👤 = human gate):**
 - [x] 1. Independent check of the field inventory (review F: RELIABLE-WITH-CORRECTIONS; 48/19/10/8)
 - [x] 2. Package v3 `8e095b780` (fork P/H/R, rec. H) → review G (ACCEPT-WITH-FIXES, 13 MATERIAL) → **package v4** (G fixes + §3a binding engineering constraints)
 - [ ] 3. Independent adversarial review of v4 → revise until accepted
@@ -246,7 +299,7 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 - [ ] **C6** Open H-19 against the FROZEN theory → independent corroboration
 - [ ] **C7** Candidate KnowledgeOS theory, or "no coherent theory found"; canonicalization only after C6
 - [ ] ML (only after adjudicated S5 data): lexical/TF-IDF → graph → embedding baselines, for candidate generation and review prioritization only; never truth, verdicts or weights
-- [ ] RI-1 (deferred): reopen only on its G-LOG-0089 conditions
+- [x] RI-1: reopened and addressed (G-LOG-0104, G-LOG-0106); historical line kept, status corrected 2026-10-17
 - [x] R7 implementation → engineering verification → STOP (done; see above)
 - [ ] HUMAN: authorize ONE narrow independent R7 audit (never automatic)
 - [ ] HUMAN: acceptance of R7

@@ -1,5 +1,17 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-17, S-Series) — one consolidated decision packet; test-settings conflict found; professor lane set aside
+- Packet: W `audit-p3b/20261017_S-SERIES-PRINCIPAL-DECISION-PACKET.md`.
+  - D1 records location;
+  - D2 confirmatory B/seed/single-run + RQ-1 (Freeze 1 says B = 9,999 with a CSPRNG seed never drawn; the code defaults to 999/20260927; no act reconciles them);
+  - D3 N-a/C-4;
+  - D4 V-1 vocabulary only;
+  - D5 outside review of the validity proof;
+  - D6 run-3 (separate).
+- Principal (2026-10-17): "forget the professor". Session B's untracked files in `docs/knowledgeos/knowledgeos-s-series-theory/` are left untouched; Session A completes the work.
+- Governance log unchanged (G-LOG-0140); 0 of 1,975 labels; run-3 not launched.
+- **Next action (human):** D1, then D2…D5, one at a time.
+
 ## 📍 UPDATE (2026-10-16, later, S-Series) — N-a/C-4 decision package NEEDS-REVISION; drafting stopped; TODO lanes written
 - `.claude/S-SERIES-TODO.md` now carries a 2026-10-16 status update and the remaining work in six lanes (V, M, T, R, H, G); the 2026-10-01 critical path is marked historical.
 - Decision package on N-a/C-4 (W `audit-p3b/verdict-criteria/VERDICT-CRITERIA-DECISION-PACKAGE-NA-C4-2026-10-16.md`, v1 kept as `…-v1.md`): v1 review NEEDS-REVISION (M1–M4); v2 review NEEDS-REVISION (N1: audits could be recorded after the outcome is visible). Lemma A (downgrading a ruling to "unruled" moves outcomes only toward OPEN) holds under C1–C4. Record: REVIEW round 12. Fourth consecutive round in which the orchestrator's own additions introduced a new material defect → stopped.
