@@ -1,0 +1,60 @@
+== 1. guard rows substituted into FZ (all other rows FZ) ==
+  FZ (T3) guard verdicts: {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'}
+  A1: guard verdicts S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | reproduces T3 on all six: True
+      E3-REL S 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22'] | S' 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  A2: guard verdicts S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | reproduces T3 on all six: True
+      E3-REL S 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22'] | S' 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  B1: guard verdicts S' {'R11': 'CB23', 'R14': 'none', 'R15': 'X', 'R16': 'none', 'R17': 'none', 'R21': 'CB1'} | S==S' True | reproduces T3 on all six: False
+      E3-REL S 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22'] | S' 5 ['R2', 'R3', 'R9', 'R15', 'R22']
+  B2: guard verdicts S' {'R11': 'CB23', 'R14': 'none', 'R15': 'none', 'R16': 'none', 'R17': 'none', 'R21': 'none'} | S==S' True | reproduces T3 on all six: False
+      E3-REL S 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22'] | S' 4 ['R2', 'R3', 'R9', 'R22']
+  C range for comparison: K1c/SH 9/4; R15ref and C-Sigma 10/5; R15ref-R14 11/6
+
+== 2. controls (blind encoding vs FZ, verdicts under S and S') ==
+  A1: R1: enc =FZ, S CB23->CB23, S' CB23->CB23 | R6: enc =FZ, S X->X, S' CB23->CB23 | R9: enc =FZ, S X->X, S' X->X | R79: enc !=FZ, S CB23->X, S' CB23->X | R80: enc !=FZ, S none->X, S' none->X
+  A2: R1: enc =FZ, S CB23->CB23, S' CB23->CB23 | R6: enc =FZ, S X->X, S' CB23->CB23 | R9: enc =FZ, S X->X, S' X->X | R79: enc !=FZ, S CB23->X, S' CB23->X | R80: enc !=FZ, S none->X, S' none->X
+  B1: R1: enc =FZ, S CB23->CB23, S' CB23->CB23 | R6: enc =FZ, S X->X, S' CB23->CB23 | R9: enc =FZ, S X->X, S' X->X | R79: enc =FZ, S CB23->CB23, S' CB23->CB23 | R80: enc !=FZ, S none->CB23, S' none->CB23
+  B2: R1: enc =FZ, S CB23->CB23, S' CB23->CB23 | R6: enc =FZ, S X->X, S' CB23->CB23 | R9: enc =FZ, S X->X, S' X->X | R79: enc =FZ, S CB23->CB23, S' CB23->CB23 | R80: enc !=FZ, S none->CB23, S' none->CB23
+  R80 reference values: T3/K/C empty -> none; VC8 {8,9} -> CB23; M/U denial {8,9,13,17} -> X
+
+== 3. Jaccard of each blind guard-row set vs reference encodings ==
+  A1:
+     R11 [3, 4, 5, 6, 8, 9, 12]       FZ=T3=K=K-T=U:1.00 M:1.00 C-K1c:0.43 C-SH:0.00 C-R15ref:0.43 C-R15ref-R14:0.43 C-Sigma:0.86  | best FZ=T3=K=K-T=U
+     R14 [11, 12, 14]                 FZ=T3=K=K-T=U:0.75 M:0.75 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:1.00 C-Sigma:0.00  | best C-R15ref-R14
+     R15 [11, 12, 14, 18, 20, 22]     FZ=T3=K=K-T=U:0.75 M:1.00 C-K1c:0.17 C-SH:0.00 C-R15ref:0.44 C-R15ref-R14:0.44 C-Sigma:0.44  | best M
+     R16 [8, 9, 13, 17, 19, 23]       FZ=T3=K=K-T=U:1.00 M:1.00 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best FZ=T3=K=K-T=U
+     R17 [5, 8, 9, 19]                FZ=T3=K=K-T=U:0.80 M:0.80 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best FZ=T3=K=K-T=U
+     R21 [4, 6, 12, 15]               FZ=T3=K=K-T=U:0.75 M:0.75 C-K1c:0.25 C-SH:0.00 C-R15ref:0.25 C-R15ref-R14:0.25 C-Sigma:0.25  | best FZ=T3=K=K-T=U
+     mean over guard rows: {'FZ=T3=K=K-T=U': 0.842, 'M': 0.883, 'C-K1c': 0.141, 'C-SH': 0.0, 'C-R15ref': 0.187, 'C-R15ref-R14': 0.354, 'C-Sigma': 0.259}
+  A2:
+     R11 [3, 4, 5, 6, 8, 9, 12]       FZ=T3=K=K-T=U:1.00 M:1.00 C-K1c:0.43 C-SH:0.00 C-R15ref:0.43 C-R15ref-R14:0.43 C-Sigma:0.86  | best FZ=T3=K=K-T=U
+     R14 [11, 12, 14]                 FZ=T3=K=K-T=U:0.75 M:0.75 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:1.00 C-Sigma:0.00  | best C-R15ref-R14
+     R15 [11, 12, 14, 18, 20, 22]     FZ=T3=K=K-T=U:0.75 M:1.00 C-K1c:0.17 C-SH:0.00 C-R15ref:0.44 C-R15ref-R14:0.44 C-Sigma:0.44  | best M
+     R16 [8, 9, 13, 17, 19, 23]       FZ=T3=K=K-T=U:1.00 M:1.00 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best FZ=T3=K=K-T=U
+     R17 [4, 5, 8, 9, 19]             FZ=T3=K=K-T=U:0.67 M:0.67 C-K1c:0.00 C-SH:0.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best FZ=T3=K=K-T=U
+     R21 [4, 6, 12, 15]               FZ=T3=K=K-T=U:0.75 M:0.75 C-K1c:0.25 C-SH:0.00 C-R15ref:0.25 C-R15ref-R14:0.25 C-Sigma:0.25  | best FZ=T3=K=K-T=U
+     mean over guard rows: {'FZ=T3=K=K-T=U': 0.819, 'M': 0.861, 'C-K1c': 0.141, 'C-SH': 0.0, 'C-R15ref': 0.187, 'C-R15ref-R14': 0.354, 'C-Sigma': 0.259}
+  B1:
+     R11 [3, 4, 5, 6, 8, 12]          FZ=T3=K=K-T=U:0.86 M:0.86 C-K1c:0.50 C-SH:0.00 C-R15ref:0.50 C-R15ref-R14:0.50 C-Sigma:1.00  | best C-Sigma
+     R14 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:0.00 C-Sigma:1.00  | best C-K1c
+     R15 [11, 14, 18]                 FZ=T3=K=K-T=U:0.38 M:0.50 C-K1c:0.00 C-SH:0.00 C-R15ref:0.43 C-R15ref-R14:0.43 C-Sigma:0.43  | best M
+     R16 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:1.00  | best C-K1c
+     R17 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:1.00  | best C-K1c
+     R21 [15]                         FZ=T3=K=K-T=U:0.33 M:0.33 C-K1c:1.00 C-SH:0.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:1.00  | best C-K1c
+     mean over guard rows: {'FZ=T3=K=K-T=U': 0.261, 'M': 0.282, 'C-K1c': 0.75, 'C-SH': 0.5, 'C-R15ref': 0.821, 'C-R15ref-R14': 0.655, 'C-Sigma': 0.905}
+  B2:
+     R11 [3, 4, 6]                    FZ=T3=K=K-T=U:0.43 M:0.43 C-K1c:1.00 C-SH:0.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:0.50  | best C-K1c
+     R14 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:0.00 C-Sigma:1.00  | best C-K1c
+     R15 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:0.00 C-SH:1.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best C-SH
+     R16 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:1.00  | best C-K1c
+     R17 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:1.00 C-SH:1.00 C-R15ref:1.00 C-R15ref-R14:1.00 C-Sigma:1.00  | best C-K1c
+     R21 []                           FZ=T3=K=K-T=U:0.00 M:0.00 C-K1c:0.00 C-SH:1.00 C-R15ref:0.00 C-R15ref-R14:0.00 C-Sigma:0.00  | best C-SH
+     mean over guard rows: {'FZ=T3=K=K-T=U': 0.071, 'M': 0.071, 'C-K1c': 0.667, 'C-SH': 0.833, 'C-R15ref': 0.667, 'C-R15ref-R14': 0.5, 'C-Sigma': 0.583}
+
+== 4. kappa uncertainty (guard rows; 6 rows x 28 items = 168 item decisions per pair) ==
+  A1~A2: kappa 0.980 | item bootstrap 95% [0.931, 1.000] | row-cluster bootstrap 95% [0.935, 1.000] (0 undefined draws dropped) | range over the 63 row subsets [0.868, 1.000]
+      exact set agreement 5/6; P-c verdict agreement 6/6
+  B1~B2: kappa 0.446 | item bootstrap 95% [0.000, 0.760] | row-cluster bootstrap 95% [0.000, 0.659] (303 undefined draws dropped) | range over the 63 row subsets [0.000, 0.654]
+      exact set agreement 3/6; P-c verdict agreement 4/6
+  note (r1, M6): these intervals are DESCRIPTIVE ONLY. They resample items or the six rows, not encoders (n = 2 per arm);
+  items within a row are not independent; undefined row-cluster draws were dropped. They are not inferential.

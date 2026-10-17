@@ -1,0 +1,345 @@
+== 0. factorisation checks ==
+  T3 guard rows == FZ (encoding): True
+  M guard rows == FZ (encoding): False
+  K guard rows == FZ (encoding): True
+  U guard rows == FZ (encoding): True
+  T3 guard-row verdicts == FZ (S, S1, S2): True
+  M guard-row verdicts == FZ (S, S1, S2): True
+  K guard-row verdicts == FZ (S, S1, S2): True
+  U guard-row verdicts == FZ (S, S1, S2): True
+  M vs FZ guard-row encoding diff: [('R15', [11, 12, 14, 18, 20, 22])]
+  C (K1c) == K rest + c-K1c: True
+  C-SH == K rest + b-SH: True
+  C-R15ref == K rest + c-R15ref: True
+  C-R15ref-R14 == K rest + c-R15ref-R14: True
+  C-Sigma [E] == K rest + c-Sigma: True
+  K-T == K (all 83 rows): True
+  rank reproduces kc.rank on named sets: True
+
+== 1. space ==
+  encodings (full product, Ccls only where C-family): 928; x 3 spanning = 2784; x 2 D12 = 5568 E3-REL evaluations
+  native encodings (each named convention with only its own open boxes): 47; x3 = 141; x2 D12 = 282
+
+== 2. native results per named convention (E3-REL a / b under S, S'; host diffs; rank; asymmetry) ==
+
+## T3  (1 encodings)
+  S   E3-REL(D12a/D12b) {'13/14': 1} | host-diff cells {0: 1} | rank {(24, 10, 78): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R38'), (), 'asym', 'asym'): 1}
+  S'  E3-REL(D12a/D12b) {'8/9': 1} | host-diff cells {0: 1} | rank {(17, 0, 1): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 1}
+  S'' E3-REL(D12a/D12b) {'8/9': 1} | host-diff cells {0: 1} | rank {(17, 0, 1): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 1}
+
+## M  (2 encodings)
+  S   E3-REL(D12a/D12b) {'13/14': 2} | host-diff cells {2: 2} | rank {(26, 147, 417): 1, (26, 188, 434): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R38'), (), 'sym', 'sym'): 2}
+       [denial,a,read] host diffs: ['R79:CB23->X', 'R80:none->X']
+  S'  E3-REL(D12a/D12b) {'8/9': 2} | host-diff cells {2: 2} | rank {(19, 0, 2): 1, (19, 2, 5): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'sym', 'sym'): 2}
+       [denial,a,read] host diffs: ['R79:CB23->X', 'R80:none->X']
+  S'' E3-REL(D12a/D12b) {'8/9': 2} | host-diff cells {2: 2} | rank {(19, 0, 2): 1, (19, 2, 3): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'sym', 'sym'): 2}
+       [denial,a,read] host diffs: ['R79:CB23->X', 'R80:none->X']
+
+## K (= K-T)  (4 encodings)
+  S   E3-REL(D12a/D12b) {'13/14': 4} | host-diff cells {2: 2, 3: 2} | rank {(26, 64, 304): 2, (26, 121, 326): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 4}
+       [empty,a,read] host diffs: ['R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'8/9': 4} | host-diff cells {0: 2, 1: 2} | rank {(17, 0, 1): 2, (17, 0, 3): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 4}
+       [VC8,a,read] host diffs: ['R80:none->CB23']
+  S'' E3-REL(D12a/D12b) {'8/9': 4} | host-diff cells {0: 2, 1: 2} | rank {(17, 0, 1): 2, (17, 0, 2): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 4}
+       [VC8,a,read] host diffs: ['R80:none->CB23']
+
+## C-SH  (8 encodings)
+  S   E3-REL(D12a/D12b) {'9/10': 4, '9/9': 4} | host-diff cells {8: 2, 10: 2, 9: 2, 11: 2} | rank {(22, 80, 204): 2, (20, 80, 204): 2, (22, 127, 379): 2, (20, 127, 379): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none', 'R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'4/5': 4, '4/4': 4} | host-diff cells {6: 2, 8: 2, 7: 2, 9: 2} | rank {(13, 0, 1): 2, (11, 0, 1): 2, (13, 1, 10): 2, (11, 1, 10): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+  S'' E3-REL(D12a/D12b) {'4/5': 4, '4/4': 4} | host-diff cells {6: 2, 8: 2, 7: 2, 9: 2} | rank {(13, 0, 1): 2, (11, 0, 1): 2, (13, 1, 7): 2, (11, 1, 7): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none']
+
+## C-K1c  (8 encodings)
+  S   E3-REL(D12a/D12b) {'9/10': 4, '9/9': 4} | host-diff cells {7: 2, 9: 2, 8: 2, 10: 2} | rank {(22, 46, 234): 2, (20, 46, 234): 2, (22, 127, 379): 2, (20, 127, 379): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'4/5': 4, '4/4': 4} | host-diff cells {5: 2, 7: 2, 6: 2, 8: 2} | rank {(13, 0, 1): 2, (11, 0, 1): 2, (13, 1, 10): 2, (11, 1, 10): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'' E3-REL(D12a/D12b) {'4/5': 4, '4/4': 4} | host-diff cells {5: 2, 7: 2, 6: 2, 8: 2} | rank {(13, 0, 1): 2, (11, 0, 1): 2, (13, 1, 7): 2, (11, 1, 7): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+
+## C-R15ref  (8 encodings)
+  S   E3-REL(D12a/D12b) {'10/11': 4, '10/10': 4} | host-diff cells {6: 2, 8: 2, 7: 2, 9: 2} | rank {(23, 53, 283): 2, (21, 53, 283): 2, (23, 133, 429): 2, (21, 133, 429): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'5/6': 4, '5/5': 4} | host-diff cells {4: 2, 6: 2, 5: 2, 7: 2} | rank {(14, 0, 1): 2, (12, 0, 1): 2, (14, 1, 10): 2, (12, 1, 10): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'' E3-REL(D12a/D12b) {'5/6': 4, '5/5': 4} | host-diff cells {4: 2, 6: 2, 5: 2, 7: 2} | rank {(14, 0, 1): 2, (12, 0, 1): 2, (14, 1, 7): 2, (12, 1, 7): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+
+## C-R15ref-R14  (8 encodings)
+  S   E3-REL(D12a/D12b) {'11/12': 4, '11/11': 4} | host-diff cells {5: 2, 7: 2, 6: 2, 8: 2} | rank {(24, 116, 409): 2, (22, 116, 409): 2, (24, 199, 605): 1, (22, 199, 605): 1, (24, 199, 604): 1, (22, 199, 604): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'6/7': 4, '6/6': 4} | host-diff cells {3: 2, 5: 2, 4: 2, 6: 2} | rank {(15, 0, 1): 2, (13, 0, 1): 2, (15, 1, 11): 2, (13, 1, 11): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'' E3-REL(D12a/D12b) {'6/7': 4, '6/6': 4} | host-diff cells {3: 2, 5: 2, 4: 2, 6: 2} | rank {(15, 0, 1): 2, (13, 0, 1): 2, (15, 1, 8): 2, (13, 1, 8): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 8}
+       [empty,a,read] host diffs: ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+
+## C-Sigma  (4 encodings)
+  S   E3-REL(D12a/D12b) {'10/11': 4} | host-diff cells {6: 2, 7: 2} | rank {(23, 34, 155): 2, (23, 116, 316): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'asym', 'asym'): 4}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1', 'R27:CB23->X', 'R28:CB23->X']
+  S'  E3-REL(D12a/D12b) {'5/6': 4} | host-diff cells {4: 2, 5: 2} | rank {(14, 0, 1): 2, (14, 1, 10): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 4}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+  S'' E3-REL(D12a/D12b) {'5/6': 4} | host-diff cells {4: 2, 5: 2} | rank {(14, 0, 1): 2, (14, 1, 7): 2}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'asym', 'asym'): 4}
+       [empty,a,read] host diffs: ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1']
+
+## U  (4 encodings)
+  S   E3-REL(D12a/D12b) {'13/14': 4} | host-diff cells {4: 4} | rank {(28, 469, 1246): 1, (28, 550, 1259): 1, (27, 140, 336): 1, (27, 183, 374): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {(('R25', 'R27', 'R28', 'R38'), (), 'sym', 'sym'): 2, (('R25', 'R27', 'R28', 'R38'), (), 'sym', 'asym'): 2}
+       [denial,a,read] host diffs: ['R27:CB23->X', 'R28:CB23->X', 'R79:CB23->X', 'R80:none->X']
+  S'  E3-REL(D12a/D12b) {'8/9': 4} | host-diff cells {2: 4} | rank {(19, 0, 1): 1, (19, 2, 3): 1, (18, 0, 1): 1, (18, 0, 3): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'sym', 'sym'): 2, ((), (), 'sym', 'asym'): 2}
+       [denial,a,read] host diffs: ['R79:CB23->X', 'R80:none->X']
+  S'' E3-REL(D12a/D12b) {'8/9': 4} | host-diff cells {2: 4} | rank {(19, 0, 1): 1, (19, 2, 2): 1, (18, 0, 1): 1, (18, 0, 3): 1}
+       asymmetry (HD X rows, HB X rows, R-i, R-i') {((), (), 'sym', 'sym'): 2, ((), (), 'sym', 'asym'): 2}
+       [denial,a,read] host diffs: ['R79:CB23->X', 'R80:none->X']
+
+== 3. E3-REL values over the full space (D12 a), by K1 value and rule ==
+  K1=a             S   {'13:R2,R3,R5,R6,R8,R9,R10,R14,R15,R16,R19,R21,R22': 128}
+  K1=a             S'  {'8:R2,R3,R9,R14,R15,R16,R21,R22': 128}
+  K1=b-SH          S   {'9:R2,R3,R5,R6,R8,R9,R10,R19,R22': 160}
+  K1=b-SH          S'  {'4:R2,R3,R9,R22': 160}
+  K1=c-K1c         S   {'9:R2,R3,R5,R6,R8,R9,R10,R19,R22': 160}
+  K1=c-K1c         S'  {'4:R2,R3,R9,R22': 160}
+  K1=c-R15ref      S   {'10:R2,R3,R5,R6,R8,R9,R10,R15,R19,R22': 160}
+  K1=c-R15ref      S'  {'5:R2,R3,R9,R15,R22': 160}
+  K1=c-R15ref-R14  S   {'11:R2,R3,R5,R6,R8,R9,R10,R14,R15,R19,R22': 160}
+  K1=c-R15ref-R14  S'  {'6:R2,R3,R9,R14,R15,R22': 160}
+  K1=c-Sigma       S   {'10:R2,R3,R5,R6,R8,R9,R10,R15,R19,R22': 160}
+  K1=c-Sigma       S'  {'5:R2,R3,R9,R15,R22': 160}
+
+== 4. parameter -> consequence: share of single-parameter flips that change each output ==
+  rest      flips  3456 | E3-REL D12a 0 | E3-REL D12b 0 | host diffs 2688 | rank 3350 | rank S'-minimality (strictly fewer==0) 229 | asymmetry 2688 | any row verdict 3456
+  K1        flips  6720 | E3-REL D12a 5760 | E3-REL D12b 5760 | host diffs 6240 | rank 6116 | rank S'-minimality (strictly fewer==0) 105 | asymmetry 0 | any row verdict 6240
+  R80       flips  4176 | E3-REL D12a 0 | E3-REL D12b 0 | host diffs 4176 | rank 2956 | rank S'-minimality (strictly fewer==0) 204 | asymmetry 2088 | any row verdict 4176
+  Ccls      flips   480 | E3-REL D12a 0 | E3-REL D12b 480 | host diffs 480 | rank 480 | rank S'-minimality (strictly fewer==0) 0 | asymmetry 0 | any row verdict 480
+  K8        flips  1392 | E3-REL D12a 0 | E3-REL D12b 0 | host diffs 0 | rank 1392 | rank S'-minimality (strictly fewer==0) 336 | asymmetry 0 | any row verdict 0
+  K9        flips  1392 | E3-REL D12a 0 | E3-REL D12b 0 | host diffs 0 | rank 1392 | rank S'-minimality (strictly fewer==0) 516 | asymmetry 0 | any row verdict 0
+  K13       flips  1392 | E3-REL D12a 0 | E3-REL D12b 0 | host diffs 0 | rank 1308 | rank S'-minimality (strictly fewer==0) 148 | asymmetry 0 | any row verdict 0
+  spanning  flips  2784 | E3-REL D12a 1856 | E3-REL D12b 1856 | host diffs 1088 | rank 2521 | rank S'-minimality (strictly fewer==0) 556 | asymmetry 1856 | any row verdict 1856
+
+== 5. invariants over the FULL space (all encodings x 3 rules) ==
+  [INVARIANT] E3-REL (D12a) contains R2, R3, R9, R22 (every rule): 2784/2784
+  [INVARIANT] E3-REL (D12a) under S contains R2,R3,R5,R6,R8,R9,R10,R19,R22: 928/928
+  [INVARIANT] E3-REL (D12a) is a subset of the 13-row S list: 2784/2784
+  [INVARIANT] E3-REL non-guard members = ratified non-guard members (D12a): 2784/2784
+  [INVARIANT] verdicts under S' == S'' on all 83 rows: 2784/2784
+  [not inv.] R24 crosses (so D12 adds R24): 2304/2784
+  [INVARIANT] R24 crosses, excluding Ccls=nothing: 2304/2304
+  [INVARIANT] P-c not the strict minimum under S (some cut strictly fewer): 928/928
+  [not inv.] no cut strictly fewer under S'/S'': 540/1856
+  [not inv.] no cut strictly fewer under S'/S'' (K8=a, K9=a): 426/464
+  [not inv.] R-i record clause asymmetric (row level): 1632/2784
+  [not inv.] R-i' record clause asymmetric (row level): 2088/2784
+  [INVARIANT] under S'/S'' no change/status clause row crosses (HD or HB): 1856/1856
+  [INVARIANT] under S, R25 crosses (D-chg): 928/928
+  [INVARIANT] no H-B change/conformance clause row crosses (any rule): 2784/2784
+  [INVARIANT] K8, K9, K13 never move a row verdict: 2784/2784
+  (K8/K9/K13 row-verdict flips, from section 4): {'K8': 0, 'K9': 0, 'K13': 0}
+  E3-REL movers (flips changing E3-REL D12a): {'K1': 5760, 'spanning': 1856}
+  E3-REL movers (D12b): {'K1': 5760, 'Ccls': 480, 'spanning': 1856}
+
+== 6. hinge analysis: on which parameters does each conclusion depend? ==
+  E3-REL (D12a) = ratified 13/8 list: true in 384/2784; depends on ['K1']
+  E3-REL (D12b) = 14/9 (ratified + R24): true in 384/2784; depends on ['K1']
+  F-LOG-0297 13/8 stands (D12a list identical): true in 384/2784; depends on ['K1']
+  T-A host cells identical to ratified: true in 384/2784; depends on ['K1']
+  T-A+T-B host cells identical to ratified: true in 40/2784; depends on ['rest', 'K1', 'R80', 'spanning']
+  P-c unique minimum (strictly fewer 0, equal 1): true in 280/2784; depends on ['rest', 'K1', 'R80', 'K8', 'K9', 'K13', 'spanning']
+  P-c minimal (strictly fewer 0): true in 540/2784; depends on ['rest', 'K1', 'R80', 'K8', 'K9', 'K13', 'spanning']
+  R-i/R-i' record asymmetry at row level: true in 1224/2784; depends on ['rest', 'R80']
+  S-only H-D asymmetry widened to D-st (R27 X under S): true in 544/2784; depends on ['rest', 'spanning']
+  guard rows all keep their ratified verdict: true in 384/2784; depends on ['K1']
+
+== 7. row x parameter flip matrix (all 83 rows; flips over the full space, spanning included) ==
+  flips per parameter (denominators): {'rest': 3456, 'K1': 6720, 'R80': 4176, 'Ccls': 480, 'K8': 1392, 'K9': 1392, 'K13': 1392, 'spanning': 2784}
+  row |   rest     K1    R80   Ccls     K8     K9    K13 spanni | params moving it
+  R1   |      0      0      0      0      0      0      0      0 | 
+  R2   |      0      0      0      0      0      0      0      0 | 
+  R3   |      0      0      0      0      0      0      0      0 | 
+  R4   |      0      0      0      0      0      0      0      0 | 
+  R5   |      0      0      0      0      0      0      0   1856 | spanning
+  R6   |      0      0      0      0      0      0      0   1856 | spanning
+  R7   |      0      0      0      0      0      0      0      0 | 
+  R8   |      0      0      0      0      0      0      0   1856 | spanning
+  R9   |      0      0      0      0      0      0      0      0 | 
+  R10  |      0      0      0      0      0      0      0   1856 | spanning
+  R11  |      0   2304      0      0      0      0      0      0 | K1
+  R12  |      0      0      0      0      0      0      0      0 | 
+  R13  |      0      0      0      0      0      0      0      0 | 
+  R14  |      0   3456      0      0      0      0      0      0 | K1
+  R15  |      0   4128      0      0      0      0      0      0 | K1
+  R16  |      0   1920      0      0      0      0      0      0 | K1
+  R17  |      0   1920      0      0      0      0      0      0 | K1
+  R18  |      0      0      0      0      0      0      0      0 | 
+  R19  |      0      0      0      0      0      0      0   1856 | spanning
+  R20  |      0      0      0      0      0      0      0      0 | 
+  R21  |      0   3840      0      0      0      0      0      0 | K1
+  R22  |      0      0      0      0      0      0      0      0 | 
+  R23  |      0      0      0    480      0      0      0      0 | Ccls
+  R24  |      0      0      0    480      0      0      0      0 | Ccls
+  R25  |      0      0      0      0      0      0      0   1856 | spanning
+  R26  |      0      0      0      0      0      0      0      0 | 
+  R27  |    768      0      0      0      0      0      0   1088 | rest,spanning
+  R28  |    768      0      0      0      0      0      0   1088 | rest,spanning
+  R29  |      0      0      0      0      0      0      0      0 | 
+  R30  |      0      0      0      0      0      0      0      0 | 
+  R31  |      0      0      0      0      0      0      0      0 | 
+  R32  |      0      0      0      0      0      0      0      0 | 
+  R33  |      0      0      0      0      0      0      0      0 | 
+  R34  |      0      0      0      0      0      0      0      0 | 
+  R35  |      0      0      0      0      0      0      0      0 | 
+  R36  |      0      0      0      0      0      0      0      0 | 
+  R37  |      0      0      0      0      0      0      0      0 | 
+  R38  |      0      0      0      0      0      0      0   1856 | spanning
+  R39  |      0      0      0      0      0      0      0      0 | 
+  R79  |   2304      0      0      0      0      0      0      0 | rest
+  R80  |      0      0   4176      0      0      0      0      0 | R80
+  R83  |      0      0      0      0      0      0      0      0 | 
+  R40  |      0      0      0      0      0      0      0      0 | 
+  R41  |      0      0      0      0      0      0      0      0 | 
+  R42  |      0      0      0      0      0      0      0      0 | 
+  R43  |      0      0      0      0      0      0      0      0 | 
+  R44  |      0      0      0      0      0      0      0      0 | 
+  R45  |   1728      0      0      0      0      0      0      0 | rest
+  R46  |      0      0      0      0      0      0      0      0 | 
+  R47  |      0      0      0      0      0      0      0      0 | 
+  R48  |      0      0      0      0      0      0      0      0 | 
+  R49  |      0      0      0      0      0      0      0      0 | 
+  R50  |      0      0      0      0      0      0      0      0 | 
+  R51  |      0      0      0      0      0      0      0      0 | 
+  R52  |   1728      0      0      0      0      0      0      0 | rest
+  R53  |      0      0      0      0      0      0      0      0 | 
+  R54  |      0      0      0      0      0      0      0      0 | 
+  R55  |      0      0      0      0      0      0      0      0 | 
+  R56  |    768      0      0      0      0      0      0   1088 | rest,spanning
+  R57  |      0      0      0      0      0      0      0      0 | 
+  R58  |      0      0      0      0      0      0      0      0 | 
+  R59  |      0      0      0      0      0      0      0      0 | 
+  R60  |    768      0      0      0      0      0      0   1088 | rest,spanning
+  R61  |    768      0      0      0      0      0      0   1088 | rest,spanning
+  R62  |   2304      0      0      0      0      0      0      0 | rest
+  R63  |      0      0      0      0      0      0      0   1856 | spanning
+  R81  |      0      0      0      0      0      0      0      0 | 
+  R64  |      0      0      0      0      0      0      0      0 | 
+  R65  |      0      0      0      0      0      0      0      0 | 
+  R66  |      0      0      0    480      0      0      0      0 | Ccls
+  R67  |      0      0      0    480      0      0      0      0 | Ccls
+  R68  |      0      0      0    480      0      0      0      0 | Ccls
+  R69  |      0      0      0    480      0      0      0      0 | Ccls
+  R70  |      0      0      0    480      0      0      0      0 | Ccls
+  R71  |   1536      0      0      0      0      0      0    768 | rest,spanning
+  R72  |      0      0      0      0      0      0      0      0 | 
+  R73  |      0      0      0      0      0      0      0      0 | 
+  R74  |      0      0      0      0      0      0      0      0 | 
+  R75  |   2304      0      0      0      0      0      0      0 | rest
+  R76  |      0      0      0      0      0      0      0   1856 | spanning
+  R77  |      0      0      0      0      0      0      0      0 | 
+  R78  |      0      0      0      0      0      0      0      0 | 
+  R82  |      0      0      0    480      0      0      0      0 | Ccls
+
+  clusters by sensitivity signature (exact equality of the set of parameters that move the row):
+    ['(none: robust core)']: 48 rows ['R1', 'R2', 'R3', 'R4', 'R7', 'R9', 'R12', 'R13', 'R18', 'R20', 'R22', 'R26', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R39', 'R83', 'R40', 'R41', 'R42', 'R43', 'R44', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R53', 'R54', 'R55', 'R57', 'R58', 'R59', 'R81', 'R64', 'R65', 'R72', 'R73', 'R74', 'R77', 'R78']
+    ['Ccls']: 8 rows ['R23', 'R24', 'R66', 'R67', 'R68', 'R69', 'R70', 'R82']
+    ['K1']: 6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+    ['R80']: 1 rows ['R80']
+    ['rest']: 5 rows ['R79', 'R45', 'R52', 'R62', 'R75']
+    ['spanning']: 9 rows ['R5', 'R6', 'R8', 'R10', 'R19', 'R25', 'R38', 'R63', 'R76']
+    ['rest', 'spanning']: 6 rows ['R27', 'R28', 'R56', 'R60', 'R61', 'R71']
+
+  rows ranked by total flips: [('R80', 4176), ('R15', 4128), ('R21', 3840), ('R14', 3456), ('R11', 2304), ('R79', 2304), ('R62', 2304), ('R71', 2304), ('R75', 2304), ('R16', 1920), ('R17', 1920), ('R5', 1856), ('R6', 1856), ('R8', 1856), ('R10', 1856), ('R19', 1856), ('R25', 1856), ('R27', 1856), ('R28', 1856), ('R38', 1856), ('R56', 1856), ('R60', 1856), ('R61', 1856), ('R63', 1856), ('R76', 1856), ('R45', 1728), ('R52', 1728), ('R23', 480), ('R24', 480), ('R66', 480), ('R67', 480), ('R68', 480), ('R69', 480), ('R70', 480), ('R82', 480)]
+
+== 7b. native-subspace row sensitivity: rows whose verdict differs among the 47 native encodings (per rule) ==
+  S: 25 rows {'R11': [('CB23', 39), ('none', 8)], 'R14': [('X', 19), ('none', 28)], 'R15': [('CB23', 8), ('X', 31), ('none', 8)], 'R16': [('X', 11), ('none', 36)], 'R17': [('CB23', 11), ('none', 36)], 'R21': [('CB1', 28), ('X', 11), ('none', 8)], 'R23': [('X', 31), ('none', 16)], 'R24': [('X', 31), ('none', 16)], 'R27': [('CB23', 3), ('X', 44)], 'R28': [('CB23', 3), ('X', 44)], 'R79': [('CB23', 41), ('X', 6)], 'R80': [('CB1', 2), ('CB23', 20), ('X', 4), ('none', 21)], 'R45': [('CB1', 2), ('X', 45)], 'R52': [('CB1', 2), ('X', 45)], 'R56': [('CB23', 3), ('X', 44)], 'R60': [('CB23', 3), ('X', 44)], 'R61': [('CB23', 3), ('X', 44)], 'R62': [('CB1', 3), ('X', 44)], 'R66': [('X', 31), ('none', 16)], 'R67': [('X', 31), ('none', 16)], 'R68': [('X', 31), ('none', 16)], 'R69': [('X', 31), ('none', 16)], 'R70': [('X', 31), ('none', 16)], 'R75': [('X', 44), ('none', 3)], 'R82': [('X', 31), ('none', 16)]}
+  S': 21 rows {'R11': [('CB23', 39), ('none', 8)], 'R14': [('X', 19), ('none', 28)], 'R15': [('CB23', 8), ('X', 31), ('none', 8)], 'R16': [('X', 11), ('none', 36)], 'R17': [('CB23', 11), ('none', 36)], 'R21': [('CB1', 28), ('X', 11), ('none', 8)], 'R23': [('X', 31), ('none', 16)], 'R24': [('X', 31), ('none', 16)], 'R79': [('CB23', 41), ('X', 6)], 'R80': [('CB1', 2), ('CB23', 20), ('X', 4), ('none', 21)], 'R45': [('CB1', 2), ('X', 45)], 'R52': [('CB1', 2), ('X', 45)], 'R62': [('CB1', 3), ('X', 44)], 'R66': [('X', 31), ('none', 16)], 'R67': [('X', 31), ('none', 16)], 'R68': [('X', 31), ('none', 16)], 'R69': [('X', 31), ('none', 16)], 'R70': [('X', 31), ('none', 16)], 'R71': [('CB23', 3), ('X', 44)], 'R75': [('X', 44), ('none', 3)], 'R82': [('X', 31), ('none', 16)]}
+  S'': 21 rows {'R11': [('CB23', 39), ('none', 8)], 'R14': [('X', 19), ('none', 28)], 'R15': [('CB23', 8), ('X', 31), ('none', 8)], 'R16': [('X', 11), ('none', 36)], 'R17': [('CB23', 11), ('none', 36)], 'R21': [('CB1', 28), ('X', 11), ('none', 8)], 'R23': [('X', 31), ('none', 16)], 'R24': [('X', 31), ('none', 16)], 'R79': [('CB23', 41), ('X', 6)], 'R80': [('CB1', 2), ('CB23', 20), ('X', 4), ('none', 21)], 'R45': [('CB1', 2), ('X', 45)], 'R52': [('CB1', 2), ('X', 45)], 'R62': [('CB1', 3), ('X', 44)], 'R66': [('X', 31), ('none', 16)], 'R67': [('X', 31), ('none', 16)], 'R68': [('X', 31), ('none', 16)], 'R69': [('X', 31), ('none', 16)], 'R70': [('X', 31), ('none', 16)], 'R71': [('CB23', 3), ('X', 44)], 'R75': [('X', 44), ('none', 3)], 'R82': [('X', 31), ('none', 16)]}
+
+== 8. pairwise equivalence of named conventions (native default: R80 per convention, K9=a, Ccls=read) ==
+  checks: M/U/T3/K builds equal committed encodings: True True True True
+  T3           ~ M           : E3-REL-EQUAL                         enc-diff  9; verdict diff S ['R79', 'R80', 'R45', 'R52'] S' ['R79', 'R80', 'R45', 'R52']
+  T3           ~ K           : E3-REL-EQUAL                         enc-diff 13; verdict diff S ['R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R62', 'R71', 'R75']
+  T3           ~ K-T         : E3-REL-EQUAL                         enc-diff 13; verdict diff S ['R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R62', 'R71', 'R75']
+  T3           ~ U           : E3-REL-EQUAL                         enc-diff 17; verdict diff S ['R27', 'R28', 'R79', 'R80', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R79', 'R80', 'R62', 'R71', 'R75']
+  T3           ~ C-K1c       : -                                    enc-diff 19; verdict diff S ['R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']
+  T3           ~ C-SH        : -                                    enc-diff 19; verdict diff S ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']
+  T3           ~ C-R15ref    : -                                    enc-diff 19; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']
+  T3           ~ C-R15ref-R14: -                                    enc-diff 19; verdict diff S ['R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R16', 'R17', 'R21', 'R62', 'R71', 'R75']
+  T3           ~ C-Sigma     : -                                    enc-diff 19; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']
+  M            ~ K           : E3-REL-EQUAL                         enc-diff 21; verdict diff S ['R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ K-T         : E3-REL-EQUAL                         enc-diff 21; verdict diff S ['R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ U           : E3-REL-EQUAL                         enc-diff 16; verdict diff S ['R27', 'R28', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ C-K1c       : -                                    enc-diff 26; verdict diff S ['R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ C-SH        : -                                    enc-diff 26; verdict diff S ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ C-R15ref    : -                                    enc-diff 26; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ C-R15ref-R14: -                                    enc-diff 26; verdict diff S ['R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  M            ~ C-Sigma     : -                                    enc-diff 26; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'] S' ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']
+  K            ~ K-T         : ENCODING-EQUAL                       enc-diff  0; verdict diff S [] S' []
+  K            ~ U           : E3-REL-EQUAL                         enc-diff  5; verdict diff S ['R79', 'R80'] S' ['R79', 'R80']
+  K            ~ C-K1c       : -                                    enc-diff  6; verdict diff S ['R14', 'R15', 'R16', 'R17', 'R21'] S' ['R14', 'R15', 'R16', 'R17', 'R21']
+  K            ~ C-SH        : -                                    enc-diff  6; verdict diff S ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] S' ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+  K            ~ C-R15ref    : -                                    enc-diff  6; verdict diff S ['R14', 'R16', 'R17', 'R21'] S' ['R14', 'R16', 'R17', 'R21']
+  K            ~ C-R15ref-R14: -                                    enc-diff  6; verdict diff S ['R16', 'R17', 'R21'] S' ['R16', 'R17', 'R21']
+  K            ~ C-Sigma     : -                                    enc-diff  6; verdict diff S ['R14', 'R16', 'R17', 'R21'] S' ['R14', 'R16', 'R17', 'R21']
+  K-T          ~ U           : E3-REL-EQUAL                         enc-diff  5; verdict diff S ['R79', 'R80'] S' ['R79', 'R80']
+  K-T          ~ C-K1c       : -                                    enc-diff  6; verdict diff S ['R14', 'R15', 'R16', 'R17', 'R21'] S' ['R14', 'R15', 'R16', 'R17', 'R21']
+  K-T          ~ C-SH        : -                                    enc-diff  6; verdict diff S ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] S' ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+  K-T          ~ C-R15ref    : -                                    enc-diff  6; verdict diff S ['R14', 'R16', 'R17', 'R21'] S' ['R14', 'R16', 'R17', 'R21']
+  K-T          ~ C-R15ref-R14: -                                    enc-diff  6; verdict diff S ['R16', 'R17', 'R21'] S' ['R16', 'R17', 'R21']
+  K-T          ~ C-Sigma     : -                                    enc-diff  6; verdict diff S ['R14', 'R16', 'R17', 'R21'] S' ['R14', 'R16', 'R17', 'R21']
+  U            ~ C-K1c       : -                                    enc-diff 11; verdict diff S ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80'] S' ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80']
+  U            ~ C-SH        : -                                    enc-diff 11; verdict diff S ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80'] S' ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80']
+  U            ~ C-R15ref    : -                                    enc-diff 11; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R79', 'R80'] S' ['R14', 'R16', 'R17', 'R21', 'R79', 'R80']
+  U            ~ C-R15ref-R14: -                                    enc-diff 11; verdict diff S ['R16', 'R17', 'R21', 'R79', 'R80'] S' ['R16', 'R17', 'R21', 'R79', 'R80']
+  U            ~ C-Sigma     : -                                    enc-diff 11; verdict diff S ['R14', 'R16', 'R17', 'R21', 'R79', 'R80'] S' ['R14', 'R16', 'R17', 'R21', 'R79', 'R80']
+  C-K1c        ~ C-SH        : E3-REL-EQUAL                         enc-diff  3; verdict diff S ['R11', 'R15', 'R21'] S' ['R11', 'R15', 'R21']
+  C-K1c        ~ C-R15ref    : -                                    enc-diff  1; verdict diff S ['R15'] S' ['R15']
+  C-K1c        ~ C-R15ref-R14: -                                    enc-diff  2; verdict diff S ['R14', 'R15'] S' ['R14', 'R15']
+  C-K1c        ~ C-Sigma     : -                                    enc-diff  2; verdict diff S ['R15'] S' ['R15']
+  C-SH         ~ C-R15ref    : -                                    enc-diff  3; verdict diff S ['R11', 'R15', 'R21'] S' ['R11', 'R15', 'R21']
+  C-SH         ~ C-R15ref-R14: -                                    enc-diff  4; verdict diff S ['R11', 'R14', 'R15', 'R21'] S' ['R11', 'R14', 'R15', 'R21']
+  C-SH         ~ C-Sigma     : -                                    enc-diff  3; verdict diff S ['R11', 'R15', 'R21'] S' ['R11', 'R15', 'R21']
+  C-R15ref     ~ C-R15ref-R14: -                                    enc-diff  1; verdict diff S ['R14'] S' ['R14']
+  C-R15ref     ~ C-Sigma     : VERDICT-EQUAL (all rows, S and S')   enc-diff  1; verdict diff S [] S' []
+  C-R15ref-R14 ~ C-Sigma     : -                                    enc-diff  2; verdict diff S ['R14'] S' ['R14']
+
+== 9. S'-minimality of P-c in the native subspace, by convention and K9 ==
+  minimal (strictly fewer == 0): 27/47
+   {('T3', 'K9=a', 'minimal'): 1, ('M', 'K9=a', 'minimal'): 1, ('M', 'K9=b', 'not'): 1, ('K (= K-T)', 'K9=a', 'minimal'): 2, ('K (= K-T)', 'K9=b', 'minimal'): 2, ('C-SH', 'K9=a', 'minimal'): 4, ('C-SH', 'K9=b', 'not'): 4, ('C-K1c', 'K9=a', 'minimal'): 4, ('C-K1c', 'K9=b', 'not'): 4, ('C-R15ref', 'K9=a', 'minimal'): 4, ('C-R15ref', 'K9=b', 'not'): 4, ('C-R15ref-R14', 'K9=a', 'minimal'): 4, ('C-R15ref-R14', 'K9=b', 'not'): 4, ('C-Sigma', 'K9=a', 'minimal'): 2, ('C-Sigma', 'K9=b', 'not'): 2, ('U', 'K9=a', 'minimal'): 2, ('U', 'K9=b', 'not'): 1, ('U', 'K9=b', 'minimal'): 1}
+
+== 10. T3 rest with each K1 value (R80 empty, K8=K9=K13=a): E3-REL D12a/D12b, host diffs, rank, asymmetry ==
+  a             S   13/14 [] (24, 10, 78) (('R25', 'R38'), (), 'asym', 'asym')
+  a             S'  8/9 [] (17, 0, 1) ((), (), 'asym', 'asym')
+  b-SH          S   9/10 ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none'] (20, 13, 50) (('R25', 'R38'), (), 'asym', 'asym')
+  b-SH          S'  4/5 ['R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none'] (13, 0, 1) ((), (), 'asym', 'asym')
+  c-K1c         S   9/10 ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (20, 5, 48) (('R25', 'R38'), (), 'asym', 'asym')
+  c-K1c         S'  4/5 ['R14:X->none', 'R15:X->CB23', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (13, 0, 1) ((), (), 'asym', 'asym')
+  c-R15ref      S   10/11 ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (21, 5, 58) (('R25', 'R38'), (), 'asym', 'asym')
+  c-R15ref      S'  5/6 ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (14, 0, 1) ((), (), 'asym', 'asym')
+  c-R15ref-R14  S   11/12 ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (22, 12, 122) (('R25', 'R38'), (), 'asym', 'asym')
+  c-R15ref-R14  S'  6/7 ['R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (15, 0, 1) ((), (), 'asym', 'asym')
+  c-Sigma       S   10/11 ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (21, 5, 47) (('R25', 'R38'), (), 'asym', 'asym')
+  c-Sigma       S'  5/6 ['R14:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->CB1'] (14, 0, 1) ((), (), 'asym', 'asym')

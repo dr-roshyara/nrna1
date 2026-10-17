@@ -1,0 +1,18 @@
+A1~A2  guard    exact 5/6  meanJaccard 0.967  item-agree 0.994  kappa 0.980
+A1~A2  control  exact 5/5  meanJaccard 1.000  item-agree 1.000  kappa 1.000
+B1~B2  guard    exact 3/6  meanJaccard 0.583  item-agree 0.958  kappa 0.446
+B1~B2  control  exact 5/5  meanJaccard 1.000  item-agree 1.000  kappa 1.000
+A1~B1  guard    exact 0/6  meanJaccard 0.268  item-agree 0.881  kappa 0.451
+A1~B1  control  exact 3/5  meanJaccard 0.833  item-agree 0.979  kappa 0.914
+A2~B2  guard    exact 0/6  meanJaccard 0.071  item-agree 0.833  kappa 0.149
+A2~B2  control  exact 3/5  meanJaccard 0.833  item-agree 0.979  kappa 0.914
+
+per guard row (A1 | A2 | B1 | B2):
+R11 ['C3', 'C4', 'C5', 'C6', 'C8', 'C9', 'C12'] | ['C3', 'C4', 'C5', 'C6', 'C8', 'C9', 'C12'] | ['C3', 'C4', 'C5', 'C6', 'C8', 'C12'] | ['C3', 'C4', 'C6']
+R14 ['C11', 'C12', 'C14'] | ['C11', 'C12', 'C14'] | [] | []
+R15 ['C11', 'C12', 'C14', 'C18', 'C20', 'C22'] | ['C11', 'C12', 'C14', 'C18', 'C20', 'C22'] | ['C11', 'C14', 'C18'] | []
+R16 ['C8', 'C9', 'C13', 'C17', 'C19', 'C23'] | ['C8', 'C9', 'C13', 'C17', 'C19', 'C23'] | [] | []
+R17 ['C5', 'C8', 'C9', 'C19'] | ['C4', 'C5', 'C8', 'C9', 'C19'] | [] | []
+R21 ['C4', 'C6', 'C12', 'C15'] | ['C4', 'C6', 'C12', 'C15'] | ['C15'] | []
+
+empty-set agreement on guard rows (B reads nothing): {'R11': (False, False), 'R14': (True, True), 'R15': (False, True), 'R16': (True, True), 'R17': (True, True), 'R21': (False, True)}

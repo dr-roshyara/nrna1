@@ -1,0 +1,72 @@
+== 1. verbatim text checks ==
+  T3:66 OK  "A **guard row** (T-A guard form: R11, R14–R17, R21) is judged by the i..."
+  T3:66 OK  "A **T-B row** is judged by its clause text only..."
+  T3:68 OK  "**[r1.7] What counts as "reading C1".**..."
+  T3:68 OK  "Negations ("with no Cap condition", "no Cap or status condition") are ..."
+  T3:76 OK  "A row reading no placed item (an absent clause, finite parameters, an ..."
+  T3:75 OK  "is assessed by the items its own statement reads, not through those ro..."
+  T3:281 OK  "where a statement names a Def 3.1 clause and also cites a row id, the ..."
+  negation sentence lines: [68] | same line opens with the bullet "What counts as reading C1": True
+  other occurrences in T3 of "are not read" / "not read": [68, 198]
+  occurrences in T3 of "lex specialis" / "takes priority" / "prevails": [281, 608]
+
+== 2. row selector: T2 tier column containing "guard form" ==
+  rows: ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] | equals T3 rule-1 list: True
+  T2:183 counts line: ['**Counts (r1.4; r1.2 unchanged from r1):** 83 rows. **T-A: 24** (R1–R24; of which 4 definitional (R18–R20, R22), 6 guard']
+
+== 3. strict reading (both rules as exceptionless universals) -> conflict witnesses ==
+  For a guard row x, D(x) = items read under rule 1 (FZ) that are absent when denial parts are not read (K1c/SH):
+  R11: FZ [3, 4, 5, 6, 8, 9, 12]  K1c [3, 4, 6]  D(K1c)=[5, 8, 9, 12]  D(SH)=[3, 4, 5, 6, 8, 9, 12]  -> conflict: True
+  R14: FZ [11, 12, 14, 22]  K1c []  D(K1c)=[11, 12, 14, 22]  D(SH)=[11, 12, 14, 22]  -> conflict: True
+  R15: FZ [8, 9, 11, 12, 14, 18, 20, 22]  K1c [20]  D(K1c)=[8, 9, 11, 12, 14, 18, 22]  D(SH)=[8, 9, 11, 12, 14, 18, 20, 22]  -> conflict: True
+  R16: FZ [8, 9, 13, 17, 19, 23]  K1c []  D(K1c)=[8, 9, 13, 17, 19, 23]  D(SH)=[8, 9, 13, 17, 19, 23]  -> conflict: True
+  R17: FZ [5, 6, 8, 9, 19]  K1c []  D(K1c)=[5, 6, 8, 9, 19]  D(SH)=[5, 6, 8, 9, 19]  -> conflict: True
+  R21: FZ [6, 12, 15]  K1c [15]  D(K1c)=[6, 12]  D(SH)=[6, 12, 15]  -> conflict: True
+  strict reading: a rho(x) must both contain D(x) (rule 1) and exclude it (negation rule) -> no model for every x with D(x) nonempty
+
+== 4. rule domains under lex specialis (specific: closed list in rule 1; general: negation / absent-clause handling) ==
+  guard rows with an actor flag in FZ (overlap with a C1-scoped negation sentence): []
+  guard list intersect T-B: [] | R79, R80 in guard list: [False, False]
+  rows other than the guard list that FZ reads through a denial: none listed by T3; R79 contrast and R80 absent clause read nothing extra: ({8, 9}, None) (set(), None)
+
+== 5. parse robustness of guard-row verdicts ==
+  K1 (a): verdicts (S'; guard rows carry no actor flag, so S = S' = S'')
+     FZ (T3)                R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     M (R15 without E)      R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     K-T A-i variants       R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     minimal tie [E]        R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     blind A1               R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     blind A2               R11:CB23 R14:X    R15:X    R16:X    R17:CB23 R21:X   
+     distinct verdicts per row: {'R11': ['CB23'], 'R14': ['X'], 'R15': ['X'], 'R16': ['X'], 'R17': ['CB23'], 'R21': ['X']}  | rows with >1 verdict: []
+     guard rows in E3-REL by parse: {'FZ (T3)': ['R14', 'R15', 'R16', 'R21'], 'M (R15 without E)': ['R14', 'R15', 'R16', 'R21'], 'K-T A-i variants': ['R14', 'R15', 'R16', 'R21'], 'minimal tie [E]': ['R14', 'R15', 'R16', 'R21'], 'blind A1': ['R14', 'R15', 'R16', 'R21'], 'blind A2': ['R14', 'R15', 'R16', 'R21']}
+  K1 (b)/(c): verdicts (S'; guard rows carry no actor flag, so S = S' = S'')
+     SH (b)                 R11:none R14:none R15:none R16:none R17:none R21:none
+     K1c                    R11:CB23 R14:none R15:CB23 R16:none R17:none R21:CB1 
+     R15ref                 R11:CB23 R14:none R15:X    R16:none R17:none R21:CB1 
+     R15ref-R14             R11:CB23 R14:X    R15:X    R16:none R17:none R21:CB1 
+     C-Sigma                R11:CB23 R14:none R15:X    R16:none R17:none R21:CB1 
+     blind B1               R11:CB23 R14:none R15:X    R16:none R17:none R21:CB1 
+     blind B2               R11:CB23 R14:none R15:none R16:none R17:none R21:none
+     distinct verdicts per row: {'R11': ['CB23', 'none'], 'R14': ['X', 'none'], 'R15': ['CB23', 'X', 'none'], 'R16': ['none'], 'R17': ['none'], 'R21': ['CB1', 'none']}  | rows with >1 verdict: ['R11', 'R14', 'R15', 'R21']
+     guard rows in E3-REL by parse: {'SH (b)': [], 'K1c': [], 'R15ref': ['R15'], 'R15ref-R14': ['R14', 'R15'], 'C-Sigma': ['R15'], 'blind B1': ['R15'], 'blind B2': []}
+
+  (a) by construction: a guard row crosses iff its denied tie has an endpoint on each side. Endpoints per T2 label [E]:
+     R11: sigma C6  <->  acts E C8/C9
+     R14: f C12, d C11  <->  r C14
+     R15: d C11, f C12  <->  r C14
+     R16: acts/work C8/C9/C19  <->  records/Ref C13/C17
+     R17: norm value C4/C5/C6  <->  acts/work C8/C9/C19
+     R21: sigma C6, f C12  <->  text c C15
+
+== 6. E3-REL per K1 value vs the T-A rows of T3's (unadopted) relations-table "held" column (T3:310) ==
+  T3:310 names R9, R2, R3, R8, R5, R6, R10, R19, R22: True | R15 cited as guard in "not held" (T3:310): True | R17 cited as guard in "not held" (T3:311): True
+  K1 (a): T3/FZ      S   E3-REL 13 == held T-A rows: False  extra ['R14', 'R15', 'R16', 'R21']
+  K1 (a): T3/FZ      S1  E3-REL  8 == held T-A rows: False  extra ['R14', 'R15', 'R16', 'R21']
+  K1 (b): SH on T3   S   E3-REL  9 == held T-A rows: True  extra []
+  K1 (b): SH on T3   S1  E3-REL  4 == held T-A rows: True  extra []
+  K1 (c) K1c on K    S   E3-REL  9 == held T-A rows: True  extra []
+  K1 (c) K1c on K    S1  E3-REL  4 == held T-A rows: True  extra []
+  K1 (c) R15ref      S   E3-REL 10 == held T-A rows: False  extra ['R15']
+  K1 (c) R15ref      S1  E3-REL  5 == held T-A rows: False  extra ['R15']
+  C-Sigma            S   E3-REL 10 == held T-A rows: False  extra ['R15']
+  C-Sigma            S1  E3-REL  5 == held T-A rows: False  extra ['R15']

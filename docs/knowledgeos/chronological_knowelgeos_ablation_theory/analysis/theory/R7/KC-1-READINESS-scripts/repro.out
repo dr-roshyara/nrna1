@@ -1,0 +1,40 @@
+== KC-CONVENTIONS-scripts/kc.py: BYTE-IDENTICAL
+== KC-MKC-REASSESSMENT-scripts/mkc.py: BYTE-IDENTICAL
+== KC-MKC-REASSESSMENT-scripts/adhoc.py: BYTE-IDENTICAL
+== KC-GUARD-PURPOSE-scripts/quotes.py: 8 changed lines
+    --- committed
+    +++ rerun
+    @@ -3 +3 @@
+    -KC-1-DECISION-MATRIX.md: sha256 bc5d1c2664726172
+    +KC-1-DECISION-MATRIX.md: sha256 46b55196f90da25c
+    @@ -64 +64 @@
+    -Q57 KC-1-DECISION-MATRIX.md:88 OK
+    +Q57 KC-1-DECISION-MATRIX.md:88 MISSING
+    @@ -68 +68 @@
+    -F-GOVERNANCE-LOG.md: sha256 02bd04f4ae0235ae
+    +F-GOVERNANCE-LOG.md: sha256 a485b8f7bf7ccbe1
+    @@ -85 +85 @@
+    -RESULT: all quotes verified
+    +RESULT: 1 quote(s) missing
+
+== sha256 prefixes (16 hex) of artifacts reviewed ==
+  KC-1-DECISION-MATRIX.md                                      46b55196f90da25c
+  KC-GUARD-PURPOSE-ANALYSIS.md                                 53685c6041ed1dcf
+  KC-MKC-REASSESSMENT.md                                       8cccf5a32aa7c668
+  KC-CONVENTIONS-PROPOSAL.md                                   2cfa32ccd823605c
+  AUDIT-Q6-TEST2-CLAUSE-COORDINATE-TABLE.md                    212dcdb1b19aa58b
+  T3-CANDIDATE-MODEL.md                                        24c4b5bf8cc343ac
+  T2-RULE-CANDIDATES.md                                        463527a7386c063f
+  E2b-ADOPTION-TEXT.md                                         255b05decc0d0796
+  E3-ARCHITECTURE-PROPOSAL.md                                  b975d9dadd7704aa
+  RESEARCH-AUDIT-1.md                                          2265d84104967b18
+  KC-CONVENTIONS-scripts/kc.py                                 a697c384f5fcc29a
+  KC-CONVENTIONS-scripts/kc.out                                830750e0fbe4ae54
+  KC-MKC-REASSESSMENT-scripts/mkc.py                           10d40efb451ec061
+  KC-MKC-REASSESSMENT-scripts/mkc.out                          e9a2dce2a9ac1bc4
+  KC-MKC-REASSESSMENT-scripts/adhoc.py                         91935bc6d613f595
+  KC-MKC-REASSESSMENT-scripts/adhoc.out                        c84fdddb01dd3f5b
+  KC-GUARD-PURPOSE-scripts/quotes.py                           279916b2de20d6b5
+  KC-GUARD-PURPOSE-scripts/quotes.out                          4297362a5f7242b0
+  AUDIT-Q6-TEST1-scripts/blind_enc.py                          03343c88c5d9773d
+  ../../../F-GOVERNANCE-LOG.md                                 a485b8f7bf7ccbe1

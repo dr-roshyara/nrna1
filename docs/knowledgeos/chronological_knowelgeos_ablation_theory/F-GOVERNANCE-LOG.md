@@ -4278,3 +4278,19 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Matrix:** a dated note was added to `KC-1-DECISION-MATRIX.md`. No figure changed. The two groups and the E3-REL figures stand.
 - **Not affected:** C-γ stays returned (KC:69 engaged); nothing is ratified; D12 and the spanning rule stay open; E4 and E5 are not authorized.
 - **Next:** human KC-1.
+
+
+## F-LOG-0307 — **Executor (2026-10-17): KC-1 readiness audit READY** (`R7/KC-1-READINESS-AUDIT.md` r1). Analysis only; nothing decided
+- **Commissioned under:** the human's 2026-10-17 instruction (pasted research prompt, directed to be followed): a decision-readiness audit and robust theory derivation for KC-1. This entry records the instruction; it is not a ratification.
+- **Review:** r0 got PASS_WITH_LIMITATIONS. The reviewer re-ran every computation (byte-identical) and verified the partition, the counts, the κ values and the E3-REL points. **The r1 fixes (M1–M9) are not re-reviewed.**
+- **Findings** (the scope is the enumerated space: 928 encodings, 2,784 evaluations, 5,568 E3-REL values; K18, K2–K7 and K10–K12 are not enumerated):
+  - **T3 is not internally contradictory as written.** Rule 2's negation sentence (T3:68) is scoped to contrast clauses (R26, R30; AUDIT-Q6-TEST1 F11). The conflict with rule 1 at the six guard rows arises only under KC's A1 generalisation [E]. If the human chooses T3, the act may add a clarifying clause.
+  - **The guard verdicts depend on K1 alone.** So do the T-A host cells and F-LOG-0297's E3-REL box. 48 rows stay robust. S′ equals S″ on all rows. P-c is never the strict minimum under S. K8 or K9 at (b) changes the S′ rank, not the verdicts.
+  - **Blind determinacy test** (within-family; n = 2 encoders per arm; intervals descriptive only):
+    - Packet A (interpretation A): no disagreement observed on the guard verdicts, which reproduced T3 (13/8).
+    - Packet B (interpretation B): the encoders split at R15 and R21, landing at 10/5 and 9/4 — an existence result for packet B as written.
+    - The two packets differ in how specific they are.
+  - **Outcome (4): a genuine human normative choice on K1.** No option is disqualified on the use-grounded requirements (Rq6, Rq8). Two readings are excluded: N_gen together with rule 1, and "C" without a parse. Preference (2) is demoted to an observation.
+  - **Choosing (b)/(c)** requires naming the parse. A coupling-like E3-REL is reachable without O2 only under C's content sense of "reads" [E]. For M, U and C, choosing the rest of the convention and K1 separately would be option P.
+- **Not affected:** no convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6, K15–K19, (g), (h), H13, A1 and A5 stay open; E4 and E5 are not authorized.
+- **Next:** human KC-1.
