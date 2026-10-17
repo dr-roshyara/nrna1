@@ -41,6 +41,7 @@
 - KC-MKC reassessment r1.2 (0303). Audit Q6 test 2 r1.1 (0304): Lemma 2 holds unless the actor is counted on the record side (under A-1). **Decision matrix `R7/KC-1-DECISION-MATRIX.md` r1.1 (0305)**: the guard-row purpose is the option-level choice that moves E3-REL. Hosting group 13/8; coupling group 9/4 to 11/6, which needs a new acceptance. Each analysis has had independent reviews (PWL); its last fixes are not re-reviewed.
 - **2026-10-16 (F-LOG-0306):** the guard-row purpose analysis r1.1 finds that, given D1 as written, KC-1's option-level choice is **the K1 value at R11, R14–R17 and R21**; "purpose" restates it. The groups and E3-REL figures are unchanged.
 - **2026-10-17 (F-LOG-0307):** KC-1 readiness audit r1. Within the enumerated space, the guard verdicts, the T-A host cells and F-LOG-0297's E3-REL box depend on K1 alone. T3 is not self-contradictory as written. The blind test was within-family with n = 2 per arm. Outcome (4): a genuine human choice on K1.
+- **2026-10-17 (F-LOG-0308):** decision package in readiness audit r2.1 §14. Offer K1 as (a), (b) SH or (c)+named parse, never by label. R80 is its own box. Branch S (split) is possible only by amending E3:111. No K1 recommendation; deferral is coherent.
 - **Next (human):** KC-1, then KC-2 to KC-5 as the option requires, then E4/R8 and E5, each by its own act. Open: C-γ, D12, spanning rule, C6 (§5), K15–K19, R11, (g), (h), H13, A1, A5.
 
 ## 📍 UPDATE (2026-10-13, F-Series) — E3b COMPLETE (F-LOG-0285–0298)
