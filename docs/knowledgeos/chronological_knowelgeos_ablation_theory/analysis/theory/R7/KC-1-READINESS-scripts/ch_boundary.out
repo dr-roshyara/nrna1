@@ -1,0 +1,119 @@
+== 0. row-locality of the verdict ==
+  B.side(enc, r, rule) depends on enc[r] only (83 rows x 3 rules, two perturbations): True
+  hence: guard verdicts depend only on rho at L; T-A host cells only on rho at T-A; E3-REL (D12 a) only on rho at T-A \ H
+
+== 1. footprints of the KC inventory alternatives (rows whose encoding differs from FZ) ==
+  K1 guard rows read nothing (SH)                      [enumerated in readiness.py] rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] | in L: ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] | in T-A: ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+  K1c guard rows read object-level content only        [enumerated in readiness.py] rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] | in L: ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'] | in T-A: ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+  K2 class rule off (SD)                               [NOT enumerated independently] rows ['R12', 'R24', 'R51', 'R66', 'R67', 'R68', 'R69', 'R82'] | in L: [] | in T-A: ['R12', 'R24']
+  K3 Adopted read through (SA)                         [NOT enumerated independently] rows ['R27', 'R28', 'R61', 'R68'] | in L: [] | in T-A: []
+  K3b independent read through (SC)                    [NOT enumerated independently] rows ['R62', 'R70'] | in L: [] | in T-A: []
+  K4 named clauses not read through (SI)               [NOT enumerated independently] rows ['R38', 'R71'] | in L: [] | in T-A: []
+  K4b row references read through                      [NOT enumerated independently] rows ['R71', 'R73', 'R75', 'R76', 'R77'] | in L: [] | in T-A: []
+  K5a R80 negated clause read (SF)                     [enumerated in readiness.py] rows ['R80'] | in L: [] | in T-A: []
+  K5b R80 "acts exist" read (VC8)                      [enumerated in readiness.py] rows ['R80'] | in L: [] | in T-A: []
+  K5c contrast/negated clauses read (R26,R30,R79,R68)  [NOT enumerated independently] rows ['R26', 'R30', 'R79', 'R68'] | in L: [] | in T-A: []
+  K6 Cap named alone names an actor (SB)               [NOT enumerated independently] rows ['R56', 'R60', 'R61', 'R76'] | in L: [] | in T-A: []
+  K6b roles/offices do not name an actor               [NOT enumerated independently] rows ['R63', 'R76'] | in L: [] | in T-A: []
+  K7 relational clause off (SE)                        [NOT enumerated independently] rows ['R15', 'R45', 'R52'] | in L: ['R15'] | in T-A: ['R15']
+  K8 generic act -> C8 only                            [enumerated in readiness.py] rows ['R2', 'R3', 'R9', 'R11', 'R12', 'R13', 'R15', 'R16', 'R17', 'R22', 'R23', 'R24', 'R29', 'R36', 'R39', 'R79', 'R83', 'R41', 'R44', 'R45', 'R47', 'R49', 'R51', 'R52', 'R58', 'R66', 'R67', 'R68', 'R69', 'R70', 'R72', 'R77', 'R78', 'R82'] | in L: ['R11', 'R15', 'R16', 'R17'] | in T-A: ['R2', 'R3', 'R9', 'R11', 'R12', 'R13', 'R15', 'R16', 'R17', 'R22', 'R23', 'R24']
+  K9 value mapping v->C4, prep->C8                     [enumerated in readiness.py] rows ['R1', 'R5', 'R11', 'R12', 'R13', 'R23', 'R24', 'R25', 'R26', 'R30', 'R31', 'R37', 'R38', 'R51', 'R61', 'R66', 'R67', 'R68', 'R69', 'R71', 'R82'] | in L: ['R11'] | in T-A: ['R1', 'R5', 'R11', 'R12', 'R13', 'R23', 'R24']
+  K10 conforms own placement (R33,R34)                 [NOT enumerated independently] rows ['R33', 'R34'] | in L: [] | in T-A: []
+  K13 statement scope: R41/R83 without C23 (VC6)       [enumerated in readiness.py] rows ['R83', 'R41'] | in L: [] | in T-A: []
+
+== 2. K15 (attribute reads bearer) and K16 (O -> C13 + C14 + C15): side preservation ==
+  attribute -> bearer pairs, placement equal: {'C14->C13': True, 'C15->C13': True, 'C16->C13': True, 'C17->C13': True, 'C18->C13': True, 'C11->C8': True, 'C12->C8': True, 'C20->C19': True}
+  O-expansion {C13, C14, C15} all CB1: True
+  [FD] adding an item placed on a side the row already reads, or a co-placed bearer, never changes |sides|; both transformers are side-preserving for every row, every K1 value and every spanning rule
+
+== 3. extended per-row product over the non-enumerated deltas (signed: off / on / inverted), plus K15, K16 ==
+  guard rows, verdict set per K1 value: enumerated space vs extended space (S / S' / S'')
+    R11 K1=a             enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 16 SAME
+    R11 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R11 K1=c-K1c         enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 4 SAME
+    R11 K1=c-R15ref      enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 4 SAME
+    R11 K1=c-R15ref-R14  enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 4 SAME
+    R11 K1=c-Sigma       enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 8 SAME
+    R14 K1=a             enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 0 evals 4 SAME
+    R14 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R14 K1=c-K1c         enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R14 K1=c-R15ref      enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R14 K1=c-R15ref-R14  enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 0 evals 4 SAME
+    R14 K1=c-Sigma       enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R15 K1=a             enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 1 evals 36 SAME
+    R15 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 1 evals 12 SAME
+    R15 K1=c-K1c         enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 1 evals 12 SAME
+    R15 K1=c-R15ref      enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 1 evals 24 SAME
+    R15 K1=c-R15ref-R14  enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 1 evals 24 SAME
+    R15 K1=c-Sigma       enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 1 evals 24 SAME
+    R16 K1=a             enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 0 evals 8 SAME
+    R16 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R16 K1=c-K1c         enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R16 K1=c-R15ref      enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R16 K1=c-R15ref-R14  enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R16 K1=c-Sigma       enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R17 K1=a             enum [['CB23'], ['CB23'], ['CB23']] ext [['CB23'], ['CB23'], ['CB23']] deltas 0 evals 8 SAME
+    R17 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R17 K1=c-K1c         enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R17 K1=c-R15ref      enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R17 K1=c-R15ref-R14  enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R17 K1=c-Sigma       enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R21 K1=a             enum [['X'], ['X'], ['X']] ext [['X'], ['X'], ['X']] deltas 0 evals 4 SAME
+    R21 K1=b-SH          enum [['none'], ['none'], ['none']] ext [['none'], ['none'], ['none']] deltas 0 evals 4 SAME
+    R21 K1=c-K1c         enum [['CB1'], ['CB1'], ['CB1']] ext [['CB1'], ['CB1'], ['CB1']] deltas 0 evals 4 SAME
+    R21 K1=c-R15ref      enum [['CB1'], ['CB1'], ['CB1']] ext [['CB1'], ['CB1'], ['CB1']] deltas 0 evals 4 SAME
+    R21 K1=c-R15ref-R14  enum [['CB1'], ['CB1'], ['CB1']] ext [['CB1'], ['CB1'], ['CB1']] deltas 0 evals 4 SAME
+    R21 K1=c-Sigma       enum [['CB1'], ['CB1'], ['CB1']] ext [['CB1'], ['CB1'], ['CB1']] deltas 0 evals 4 SAME
+  any guard verdict widened for a fixed K1 value: False
+  non-guard T-A rows: verdict set over the enumerated space vs the extended space
+    R12 (H) deltas ['K2 class rule off (SD)'] enum [['X'], ['X'], ['X']] ext [['CB23', 'X'], ['CB23', 'X'], ['CB23', 'X']]
+    R24 (H) deltas ['K2 class rule off (SD)'] enum [['X', 'none'], ['X', 'none'], ['X', 'none']] ext [['X', 'none'], ['X', 'none'], ['X', 'none']]
+  T-A \ H rows (E3-REL, D12 a) whose X-status can change in the extended space but not in the enumerated one: []
+  R24 (enters E3-REL under D12 b): {'S': ['X', 'none'], "S'": ['X', 'none'], "S''": ['X', 'none']}
+
+== 4. K18: source of rho = T2 "rests on ... C-ids" column (restson.py logic), composed with K1 ==
+  rows without the column (kept at FZ here; restson.py drops them): ['R23', 'R51', 'R53', 'R57', 'R58', 'R61', 'R75']
+  K18 + K1 (a) [column sets at L]        S   guard ['CB23', 'X', 'X', 'CB1', 'CB23', 'CB1'] | E3-REL a 6 ['R3', 'R5', 'R6', 'R14', 'R15', 'R22'] | E3-REL \ L ['R3', 'R5', 'R6', 'R22'] | T-A host diffs ['R2:X->CB1', 'R8:X->CB1', 'R9:X->CB1', 'R10:X->CB23', 'R16:X->CB1', 'R19:X->CB23', 'R21:X->CB1', 'R24:X->CB1']
+  K18 + K1 (a) [column sets at L]        S'  guard ['CB23', 'X', 'X', 'CB1', 'CB23', 'CB1'] | E3-REL a 3 ['R3', 'R14', 'R15'] | E3-REL \ L ['R3'] | T-A host diffs ['R2:X->CB1', 'R9:X->CB1', 'R16:X->CB1', 'R21:X->CB1', 'R22:X->CB1', 'R24:X->CB1']
+  K18 + K1 (b) SH                        S   guard ['none', 'none', 'none', 'none', 'none', 'none'] | E3-REL a 4 ['R3', 'R5', 'R6', 'R22'] | E3-REL \ L ['R3', 'R5', 'R6', 'R22'] | T-A host diffs ['R2:X->CB1', 'R8:X->CB1', 'R9:X->CB1', 'R10:X->CB23', 'R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R19:X->CB23', 'R21:X->none', 'R24:X->CB1']
+  K18 + K1 (b) SH                        S'  guard ['none', 'none', 'none', 'none', 'none', 'none'] | E3-REL a 1 ['R3'] | E3-REL \ L ['R3'] | T-A host diffs ['R2:X->CB1', 'R9:X->CB1', 'R11:CB23->none', 'R14:X->none', 'R15:X->none', 'R16:X->none', 'R17:CB23->none', 'R21:X->none', 'R22:X->CB1', 'R24:X->CB1']
+  statement + K1 (a) = T3 (reference)    S   guard ['CB23', 'X', 'X', 'X', 'CB23', 'X'] | E3-REL a 13 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R16', 'R19', 'R21', 'R22'] | E3-REL \ L ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22'] | T-A host diffs []
+  statement + K1 (a) = T3 (reference)    S'  guard ['CB23', 'X', 'X', 'X', 'CB23', 'X'] | E3-REL a 8 ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22'] | E3-REL \ L ['R2', 'R3', 'R9', 'R22'] | T-A host diffs []
+  composition I (column replaces the input at L): K1 (a) and K1 (c) both read the column at L -> identical to the K18 + (a) rows above
+  composition II: K18 outside L + K1=a             S   guard ['CB23', 'X', 'X', 'X', 'CB23', 'X'] | E3-REL a 8 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=a             S'  guard ['CB23', 'X', 'X', 'X', 'CB23', 'X'] | E3-REL a 5 | E3-REL \ L ['R3']
+  composition II: K18 outside L + K1=b-SH          S   guard ['none', 'none', 'none', 'none', 'none', 'none'] | E3-REL a 4 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=b-SH          S'  guard ['none', 'none', 'none', 'none', 'none', 'none'] | E3-REL a 1 | E3-REL \ L ['R3']
+  composition II: K18 outside L + K1=c-K1c         S   guard ['CB23', 'none', 'CB23', 'none', 'none', 'CB1'] | E3-REL a 4 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=c-K1c         S'  guard ['CB23', 'none', 'CB23', 'none', 'none', 'CB1'] | E3-REL a 1 | E3-REL \ L ['R3']
+  composition II: K18 outside L + K1=c-R15ref      S   guard ['CB23', 'none', 'X', 'none', 'none', 'CB1'] | E3-REL a 5 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=c-R15ref      S'  guard ['CB23', 'none', 'X', 'none', 'none', 'CB1'] | E3-REL a 2 | E3-REL \ L ['R3']
+  composition II: K18 outside L + K1=c-R15ref-R14  S   guard ['CB23', 'X', 'X', 'none', 'none', 'CB1'] | E3-REL a 6 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=c-R15ref-R14  S'  guard ['CB23', 'X', 'X', 'none', 'none', 'CB1'] | E3-REL a 3 | E3-REL \ L ['R3']
+  composition II: K18 outside L + K1=c-Sigma       S   guard ['CB23', 'none', 'X', 'none', 'none', 'CB1'] | E3-REL a 5 | E3-REL \ L ['R3', 'R5', 'R6', 'R22']
+  composition II: K18 outside L + K1=c-Sigma       S'  guard ['CB23', 'none', 'X', 'none', 'none', 'CB1'] | E3-REL a 2 | E3-REL \ L ['R3']
+
+== 5. K19: actor-location typing (S'' only); every flag value at every flagged T-A row ==
+  flagged T-A rows (FZ): ['R5', 'R6', 'R8', 'R10', 'R12', 'R13', 'R19', 'R22', 'R23', 'R24'] | flags: {'R5': 'N', 'R6': 'N', 'R8': 'R', 'R10': 'N', 'R12': 'N', 'R13': 'N', 'R19': 'N', 'R22': 'U', 'R23': 'B', 'R24': 'N'} | guard rows flagged: []
+    R5     FZ flag N: verdict range by flag {'S': ['X'], "S'": ['CB23'], "S''": ['CB23', 'X']}
+    R6     FZ flag N: verdict range by flag {'S': ['X'], "S'": ['CB23'], "S''": ['CB23', 'X']}
+    R8     FZ flag R: verdict range by flag {'S': ['X'], "S'": ['CB1'], "S''": ['CB1', 'X']}
+    R10     FZ flag N: verdict range by flag {'S': ['X'], "S'": ['CB23'], "S''": ['CB23', 'X']}
+    R12 (H) FZ flag N: verdict range by flag {'S': ['X'], "S'": ['X'], "S''": ['X']}
+    R13 (H) FZ flag N: verdict range by flag {'S': ['X'], "S'": ['X'], "S''": ['X']}
+    R19     FZ flag N: verdict range by flag {'S': ['X'], "S'": ['CB23'], "S''": ['CB23', 'X']}
+    R22     FZ flag U: verdict range by flag {'S': ['X'], "S'": ['X'], "S''": ['X']}
+    R23 (H) FZ flag B: verdict range by flag {'S': ['X'], "S'": ['X'], "S''": ['X']}
+    R24 (H) FZ flag N: verdict range by flag {'S': ['X'], "S'": ['X'], "S''": ['X']}
+  [FD] under S any flag spans both sides and under S' no flag counts, so K19 can act only under S''
+
+== 6. N_gen outside L: T-A rows of denial form not in rule 1's list ==
+  R23: FZ ['C2', 'C3', 'C5', 'C6', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C16', 'C17', 'C18', 'C19', 'C20'] flag B -> residue [E] [13]; {'S': ('X', 'CB1'), "S'": ('X', 'CB1'), "S''": ('X', 'CB1')} | hosted (H): True
+  R24, R1, R4, R13: the negated part is a contrast inside a positive statement whose items are read anyway (no verdict effect) [E]
+  class-rule denial rows, verdict with rule 3 on (FZ) vs off (SD):
+    R66: {'S': ('X', 'X'), "S'": ('X', 'X'), "S''": ('X', 'X')}
+    R69: {'S': ('X', 'CB23'), "S'": ('X', 'CB23'), "S''": ('X', 'CB23')}
+    R82: {'S': ('X', 'X'), "S'": ('X', 'X'), "S''": ('X', 'X')}
+
+== 7. cross-row dependencies inside L u T-A (scope of row-locality for the deltas; review N7) ==
+  K4b footprint inside L u T-A: [] | R3 side sets over 928 encodings: [[0, 1]]

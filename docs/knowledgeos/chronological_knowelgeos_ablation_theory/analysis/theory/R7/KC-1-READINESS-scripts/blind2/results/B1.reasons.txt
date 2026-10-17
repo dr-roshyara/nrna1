@@ -1,0 +1,7 @@
+R80 HARD: empty record clause not read; only "acts exist" → C8/C9.
+R21 HARD: rule 3 denial of tie → object-level parts c, σ, f; missing-axiom report and Σ/V parenthetical contribute nothing.
+R16 HARD: rule 3 drops missing completeness axiom; rule 4 reads "absence" (C23) through its definition → C8, C9, C19, C13, C17.
+R14: rule 3 denial → object-level parts f, d, r.
+R17 HARD: rule 3 denial → norm value (C4), acts, work events.
+R15 HARD: rule 3 denied order → r, d, f; asserted exception d=r under con → C18, C8/C9, C13; t(w) → C20, C19.
+R11: rule 1 σ, V, 𝒯; absence contributes nothing; F1 read through → C12, C5, C8.

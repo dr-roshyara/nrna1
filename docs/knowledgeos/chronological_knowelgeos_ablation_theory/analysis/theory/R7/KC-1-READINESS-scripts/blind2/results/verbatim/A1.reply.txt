@@ -1,0 +1,13 @@
+{"R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R80": ["C8", "C9"], "R79": ["C8", "C9"], "R21": ["C4", "C6", "C12", "C15"], "R1": ["C3", "C5", "C6", "C8", "C12"], "R16": ["C8", "C9", "C13", "C17", "C19", "C23"], "R14": ["C11", "C12", "C14"], "R17": ["C4", "C8", "C9", "C19"], "R6": ["C1", "C3", "C19", "C20"], "R15": ["C8", "C9", "C11", "C12", "C13", "C14", "C18", "C20"], "R11": ["C3", "C4", "C5", "C6", "C8", "C9", "C12"]}
+
+R9: Rule 2. The row names Ref, R, E and W, and con with its domain E and range R. Ref and con also read the acts and work events they relate records to.
+R80: Rules 1 and 3, reading the clause text only. "Acts exist" reads acts (C8, C9). "No record requirement" is a negation, so it is not read (rule 2). The text of the H-B clause is not supplied. HARD
+R79: Rules 1 and 3, reading the clause text only. "E ≠ ∅" reads acts. "Not that a record references it" is a negation, so it is not read. The text of the H-B clause is not supplied. HARD
+R21: Rule 1 (denial of a tie). The tie it denies is between c (C15) and σ (C6) or f (C12). Σ and V are also named, giving C15 and C4. The text of A5 and Def 1.1 is not supplied. HARD
+R1: Rule 2. The row names issue act, f, σ, τ(a) and v(a). T is not an item. The text of F1 is limited to what the statement itself gives.
+R16: Rule 1 (denial of a tie). It denies a tie between acts or work events and a referencing record, so it reads acts, W, records and Ref. Not-evidenced-in-capture is named as a concept (C23). HARD
+R14: Rule 1 (denial of a tie or order). The row is about f, d and r.
+R17: Rule 1 (denial of a tie). It denies a tie between a norm value (C4) and acts and work events. HARD (I read "norm value" as C4 rather than C5)
+R6: Rule 2. τ(w) is C19 by the glossary, 𝒯 is C3, α(w) and 𝒜 are C1, and t(w) is C20. T is not an item.
+R15: Rules 1 and 2 (denial of order). The row reads r, d, f and t(w). "Under constitution" is con, which also reads records and acts. I did not follow the reference to R3 (rule 4), and the text of F2 is not supplied. I left out C22 because it is not named. HARD
+R11: Rule 2. The row reads σ, V^𝒯 (C4, C3) and E. The F1 equation in its own words reads f, τ(a), v(a) and the issue act. I did not follow the reference to R1 (rule 4), and the text of A5 is not supplied.

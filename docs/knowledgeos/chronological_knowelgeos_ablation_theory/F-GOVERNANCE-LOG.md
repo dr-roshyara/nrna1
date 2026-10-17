@@ -4294,3 +4294,35 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **Choosing (b)/(c)** requires naming the parse. A coupling-like E3-REL is reachable without O2 only under C's content sense of "reads" [E]. For M, U and C, choosing the rest of the convention and K1 separately would be option P.
 - **Not affected:** no convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6, K15–K19, (g), (h), H13, A1 and A5 stay open; E4 and E5 are not authorized.
 - **Next:** human KC-1.
+
+
+## F-LOG-0308 — **Executor (2026-10-17): KC-1 evidence challenge and decision package READY** (`R7/KC-1-READINESS-AUDIT.md` r2.1, §12–§14). Analysis only; nothing decided
+- **Commissioned under:** the human's 2026-10-17 instruction (a pasted research prompt the human directed be followed): a final KC-1 evidence challenge and human decision package. This entry is a record, not a ratification.
+- **Review:**
+  - The r2 review was PASS_WITH_LIMITATIONS. No recomputed number was wrong.
+  - **The r2.1 fixes (N1–N10) are not re-reviewed. The r1 fixes (M1–M9) were re-verified in §12.1 but not independently re-reviewed.**
+  - All outputs reproduce byte-identically, except the known log-hash drift in `repro.out`.
+- **Normalized blind replication:**
+  - Pre-registered in `blind2/prereg.md` (self-hash 2055aa68…, anchored by file times; first committed here).
+  - Six Claude-family encoders, three per arm, given packets of equal specificity.
+  - **H2 true:** T3's general-form (a) reproduced the six guard verdicts in 3/3 encoders, and in 5/5 across both blind tests.
+  - **H1 true, at R21 only.** No B′ encoder (C's principle text without KC's §2.4 parse) produced a C-family vector.
+  - Coupling-group outputs **were observed only under explicit stipulations**.
+  - Verbatim replies were recovered from the transcripts by `extract_verbatim.py`, for 10/10 encoders. The transcripts themselves are not archived.
+- **Findings:**
+  - **The hinge on K1 holds beyond the r1 enumeration**, given K18 = statement cell. K18 is not orthogonal to K1 (6/3 under composition I). K2 moves R12, which is a hosted row.
+  - **The T3 clarifying clause is explanatory.** It changes no verdict, and it should be worded positively.
+  - **"(c)" without a named parse is not a viable branch.** It spans at least 9/4 to 13/8.
+  - **R80's "none" rests on T3's row-specific entry**, so R80 should be its own box.
+  - **The ρ_name/ρ_assert refinement relabels the K1 choice but does not dissolve it.** It adds a split branch S, which requires amending E3:111.
+- **§14.D:** no K1 recommendation; outcome (4) stands. Two conditionals are stated evenly:
+  - if Rq1 binds, (c)+parse is disfavoured, and (a) and (b) tie;
+  - if Rq7c binds, (a) fails, and (b), (c)+parse and S remain.
+- **Procedural recommendations:**
+  - offer (a), (b) SH, or (c) with a named parse, never by label;
+  - word the T3 clause positively;
+  - put K18 = statement and the K2/R12 caveat in the act;
+  - make R80 its own box;
+  - treat branch S only as an explicit amendment to E3:111.
+- **Not affected:** no convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6, K15–K19, (g), (h), H13, A1 and A5 stay open; E4 and E5 are not authorized.
+- **Next:** the human decides KC-1 (or defers it, which §14.F finds coherent).

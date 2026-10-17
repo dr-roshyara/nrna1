@@ -1,0 +1,15 @@
+```json
+{"R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R80": ["C8", "C9"], "R79": ["C8", "C9"], "R21": ["C6", "C12", "C15"], "R1": ["C3", "C5", "C6", "C8", "C12"], "R16": ["C8", "C9", "C13", "C17", "C19", "C23"], "R14": ["C11", "C12", "C14"], "R17": ["C5", "C8", "C9", "C19"], "R6": ["C1", "C3", "C19", "C20"], "R15": ["C8", "C9", "C11", "C12", "C14", "C18", "C20"], "R11": ["C3", "C4", "C5", "C6", "C8", "C9", "C12"]}
+```
+
+R9: Rule 2. Ref (C17) and R (C13) are named, E maps to C8+C9 and W to C19, and con is C18. Ref and con also bring in the acts and work events they relate.
+R80: Rule 1/3, a clause of a hypothesis judged by its clause text only, so the class rule is not applied. "Acts exist" gives C8+C9. "No record requirement" is a negation and is not read (rule 2). The R-i′ text is not supplied, so only the row's own words were used. HARD.
+R79: Rule 1/3, clause text only. "E ≠ ∅" gives C8+C9. "Not that a record references it" is a negation and is not read. The R-i text is not supplied.
+R21: Rule 1 (denial), judged by the items whose tie is denied: c (C15), σ (C6) and f (C12). The A5 and Def 1.1 texts are not supplied. Σ and V are mentioned only to say no type distinction is claimed, so V (C4) is not added. HARD.
+R1: Rule 2. Issue act (C8), f (C12), σ (C6), τ(a) (C3) and v(a) (C5). T has no item. The F1 text is not supplied beyond the row's own words.
+R16: Rule 1 (denial of a tie between acts/work events and records) plus rule 2. Acts (C8+C9), work events (C19), records (C13), "referenced" (C17), and NOT-EVIDENCED-IN-CAPTURE named as its own concept (C23). HARD.
+R14: Rule 1 (denial of an equation), judged by f (C12), d (C11) and r (C14).
+R17: Rule 1 (denial of a dependence), judged by the norm value (C5), acts (C8+C9) and work events (C19). It was hard to choose C5 over C4 for "norm value". HARD.
+R6: Rule 2 with the glossary. τ(w) and work event give C19, 𝒯 gives C3, α(w) and 𝒜 give C1, and t(w) gives C20. T has no item.
+R15: Rule 1 (denial of an order among r, d and f gives C14, C11 and C12) plus rule 2. "d = r under constitution" names con (C18), which brings in acts (C8+C9). t(w) gives C20. The F2 and R3 texts are not supplied, and the R3 citation is not followed (rule 4). C22 is not named at its own level, so it is not added. HARD.
+R11: Rule 1 (denial of a tie between σ and E) plus rule 2. σ (C6), V (C4), 𝒯 and τ(a) (C3), E and acts (C8+C9), f (C12) and v(a) (C5). The F1 and A5 texts are not supplied, and the R1 citation is not followed (rule 4). HARD.

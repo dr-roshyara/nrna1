@@ -1,0 +1,7 @@
+R80 HARD: empty B-side record clause adds nothing; "acts exist" asserted → C8, C9.
+R21 HARD: missing axiom and denied tie add nothing; negated observation not read; object-level part "self-assertion is a value of c" → C15.
+R16 HARD: missing completeness axiom nothing; "absence" (C23) read through definition → C8, C9, C19, C13, C17.
+R14: rule 3 denies a tie → object-level parts f, d, r.
+R17 HARD: rule 3 object-level parts norm value C4, acts, work events; unclear whether denial-only row should be [].
+R15 HARD: denied order reads r, d, f; asserted exception d=r under con adds C18, C8, C9, C13; t(w) C20, C19.
+R11: σ, V, 𝒯; F1 restated → C12, C5, C8; "no axiom derives σ from E" nothing.

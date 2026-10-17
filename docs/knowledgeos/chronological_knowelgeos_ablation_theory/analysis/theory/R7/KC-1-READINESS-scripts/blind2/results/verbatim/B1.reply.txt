@@ -1,0 +1,13 @@
+{"R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R80": ["C8", "C9"], "R79": ["C8", "C9"], "R21": ["C6", "C12", "C15"], "R1": ["C3", "C5", "C6", "C8", "C12"], "R16": ["C8", "C9", "C13", "C17", "C19"], "R14": ["C11", "C12", "C14"], "R17": ["C4", "C8", "C9", "C19"], "R6": ["C1", "C3", "C19", "C20"], "R15": ["C8", "C9", "C11", "C12", "C13", "C14", "C18", "C19", "C20"], "R11": ["C3", "C4", "C5", "C6", "C8", "C12"]}
+
+R9: Rules 1+2. Ref ⊆ R×(E∪W) reads C17, C13, acts C8/C9 and work events C19. con : E⇀R reads C18 with C8/C9 and C13. "ρ reports a" is the con mode (C18).
+R80 (HARD): Rule 4 clause-text-only plus Rule 3. The record requirement is an empty clause, so it is not read. The only content read is "acts exist" (∃a ∈ E), giving C8/C9. Neither the H-B nor the R-i′ text is supplied, so I used only the row's own words.
+R79: Rule 4 clause-text-only. The clause E ≠ ∅ gives C8/C9. The negated "record references it" is not read (Rule 3).
+R21 (HARD): Rule 3, denial of a tie, so only the object-level parts are read: c (C15), σ (C6), f (C12). The missing-axiom report and the Σ/V parenthetical are a contrast or absence, so they contribute nothing. The text of A5 is not supplied.
+R1: Rule 1. ∀ issue a, f(a)=t∈T → σ(t)(τ(a))=v(a) gives C8, C12, C6, C3, C5. The "says nothing" sentences only delimit the formula (Rule 3). T has no item. The text of F1 is not supplied.
+R16 (HARD): Rule 3 drops the missing completeness axiom. Rule 4 reads "absence" (C23) through its definition: an act or work event that no record references, giving C8, C9, C19, C13, C17.
+R14: Rule 3, denial of an equation or an order, so only the object-level parts are read: f (C12), d (C11), r (C14).
+R17 (HARD): Rule 3, denial of a tie. The object-level parts are the norm value (V, C4), acts (C8/C9) and work events (C19). It is unclear whether "norm value" means C4 or C5/C6. I chose C4.
+R6: Rules 1+5. τ(w)∈𝒯 gives C19 and C3. α(w)∈𝒜 gives C1. t(w) gives C20. T has no item.
+R15 (HARD): Rule 3 for the denied order, giving the object-level r, d, f (C14, C11, C12). The asserted exception d = r under constitution reads con (C18), acts C8/C9 and records C13. The text of R3 and F2 is not supplied, so I used only the row's words. t(w) as a work attribute gives C20 and C19.
+R11: Rule 1. σ : T→V^𝒯, total, gives C6, C4, C3. "No axiom derives σ from E" is an absence and contributes nothing (Rule 3). F1/R1 is read through (Rule 4) from the formula quoted in the row, σ(f(a))(τ(a))=v(a) for issue acts, giving C12, C5, C8. The texts of A5 and F1 are not supplied.

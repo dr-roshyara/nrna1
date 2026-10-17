@@ -1,0 +1,76 @@
+FZ (T3) guard verdicts S': {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'}
+A1: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | =T3 True | E3-REL S 13 S' 8
+A2: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | =T3 True | E3-REL S 13 S' 8
+A3: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | =T3 True | E3-REL S 13 S' 8
+B1: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | =T3 True | E3-REL S 13 S' 8
+B2: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'CB1'} | S==S' True | =T3 False | E3-REL S 12 S' 7
+B3: S' {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | S==S' True | =T3 True | E3-REL S 13 S' 8
+
+== H2 (A' agree on all six guard verdicts) ==
+  R11 ['CB23', 'CB23', 'CB23']
+  R14 ['X', 'X', 'X']
+  R15 ['X', 'X', 'X']
+  R16 ['X', 'X', 'X']
+  R17 ['CB23', 'CB23', 'CB23']
+  R21 ['X', 'X', 'X']
+  H2: True
+== H1 (B' disagree on >=1 guard verdict) ==
+  R11 ['CB23', 'CB23', 'CB23']
+  R14 ['X', 'X', 'X']
+  R15 ['X', 'X', 'X']
+  R16 ['X', 'X', 'X']
+  R17 ['CB23', 'CB23', 'CB23']
+  R21 ['X', 'CB1', 'X']
+  H1: True
+== cross-arm: B' verdicts equal A' verdicts? ==
+  R11 A ['CB23'] B ['CB23']
+  R14 A ['X'] B ['X']
+  R15 A ['X'] B ['X']
+  R16 A ['X'] B ['X']
+  R17 A ['CB23'] B ['CB23']
+  R21 A ['X'] B ['CB1', 'X']
+
+== secondary: exact item-set match (pairs within arm) ==
+  A guard: 12/18 pairwise row matches
+  A control: 15/15 pairwise row matches
+  B guard: 13/18 pairwise row matches
+  B control: 15/15 pairwise row matches
+
+== r2 additions ==
+== r2-a. KC / MKC encodings at the guard rows (S'), and E3-REL S / S' ==
+  T3 (FZ)       {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'X', 'R17': 'CB23', 'R21': 'X'} | E3-REL S 13 S' 8
+  C-SH          {'R11': 'none', 'R14': 'none', 'R15': 'none', 'R16': 'none', 'R17': 'none', 'R21': 'none'} | E3-REL S 9 S' 4
+  C (K1c)       {'R11': 'CB23', 'R14': 'none', 'R15': 'CB23', 'R16': 'none', 'R17': 'none', 'R21': 'CB1'} | E3-REL S 9 S' 4
+  C-R15ref      {'R11': 'CB23', 'R14': 'none', 'R15': 'X', 'R16': 'none', 'R17': 'none', 'R21': 'CB1'} | E3-REL S 10 S' 5
+  C-R15ref-R14  {'R11': 'CB23', 'R14': 'X', 'R15': 'X', 'R16': 'none', 'R17': 'none', 'R21': 'CB1'} | E3-REL S 11 S' 6
+  C-Sigma       {'R11': 'CB23', 'R14': 'none', 'R15': 'X', 'R16': 'none', 'R17': 'none', 'R21': 'CB1'} | E3-REL S 10 S' 5
+== r2-b. guard rows where each blind encoder departs from each reference (S') ==
+  A1: T3 (FZ) =; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17', 'R21']; C-R15ref ['R14', 'R16', 'R17', 'R21']; C-R15ref-R14 ['R16', 'R17', 'R21']; C-Sigma ['R14', 'R16', 'R17', 'R21']
+  A2: T3 (FZ) =; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17', 'R21']; C-R15ref ['R14', 'R16', 'R17', 'R21']; C-R15ref-R14 ['R16', 'R17', 'R21']; C-Sigma ['R14', 'R16', 'R17', 'R21']
+  A3: T3 (FZ) =; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17', 'R21']; C-R15ref ['R14', 'R16', 'R17', 'R21']; C-R15ref-R14 ['R16', 'R17', 'R21']; C-Sigma ['R14', 'R16', 'R17', 'R21']
+  B1: T3 (FZ) =; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17', 'R21']; C-R15ref ['R14', 'R16', 'R17', 'R21']; C-R15ref-R14 ['R16', 'R17', 'R21']; C-Sigma ['R14', 'R16', 'R17', 'R21']
+  B2: T3 (FZ) ['R21']; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17']; C-R15ref ['R14', 'R16', 'R17']; C-R15ref-R14 ['R16', 'R17']; C-Sigma ['R14', 'R16', 'R17']
+  B3: T3 (FZ) =; C-SH ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; C (K1c) ['R14', 'R15', 'R16', 'R17', 'R21']; C-R15ref ['R14', 'R16', 'R17', 'R21']; C-R15ref-R14 ['R16', 'R17', 'R21']; C-Sigma ['R14', 'R16', 'R17', 'R21']
+== r2-c. controls: verdicts (S', S) against FZ ==
+  R1: FZ ('CB23', 'CB23') | A1 CB23 A2 CB23 A3 CB23 B1 CB23 B2 CB23 B3 CB23 | all equal FZ: True
+  R6: FZ ('CB23', 'X') | A1 CB23 A2 CB23 A3 CB23 B1 CB23 B2 CB23 B3 CB23 | all equal FZ: True
+  R9: FZ ('X', 'X') | A1 X A2 X A3 X B1 X B2 X B3 X | all equal FZ: True
+  R79: FZ ('CB23', 'CB23') | A1 CB23 A2 CB23 A3 CB23 B1 CB23 B2 CB23 B3 CB23 | all equal FZ: True
+  R80: FZ ('none', 'none') | A1 CB23 A2 CB23 A3 CB23 B1 CB23 B2 CB23 B3 CB23 | all equal FZ: False
+== r2-d. integrity ==
+  prereg.md (own line removed)   2055aa682a314b2f recorded in prereg.md: True
+  packet_A.md                    7a62f67636d16558 recorded in prereg.md: True
+  packet_B.md                    08225e82501d3f86 recorded in prereg.md: True
+  saved outputs: ['A1.json', 'A1.reasons.txt', 'A2.json', 'A2.reasons.txt', 'A3.json', 'A3.reasons.txt', 'B1.json', 'B1.reasons.txt', 'B2.json', 'B2.reasons.txt', 'B3.json', 'B3.reasons.txt', 'verbatim']
+  verbatim replies (prereg §4 "<id>.txt"; extracted by the orchestrator, transcripts not archived):
+    blind2/A1: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind2/A2: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind2/A3: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind2/B1: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind2/B2: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind2/B3: JSON equals saved <id>.json: True; rows with a reason line: 11 of 11
+    blind/A1: JSON equals saved <id>.json: True; rows with a reason line: 4 of 11
+    blind/A2: JSON equals saved <id>.json: True; rows with a reason line: 3 of 11
+    blind/B1: JSON equals saved <id>.json: True; rows with a reason line: 5 of 11
+    blind/B2: JSON equals saved <id>.json: True; rows with a reason line: 5 of 11
+  verbatim replies present: 10/10; JSON equal: 10/10

@@ -1,0 +1,8 @@
+R80 HARD: "acts exist" reads acts; "no record requirement" is a negation (rule 2), not read.
+R79 HARD: "E ≠ ∅" reads acts; "not that a record references it" is a negation, not read.
+R21 HARD: rule 1 denial; tie between c (C15) and σ (C6) or f (C12); Σ and V named (C15, C4).
+R16 HARD: rule 1 denial; acts, W, records, Ref; not-evidenced-in-capture named (C23).
+R14: rule 1 denial; f, d, r.
+R17 HARD: rule 1 denial; norm value read as C4 rather than C5; acts and work events.
+R15 HARD: rules 1 and 2; r, d, f, t(w); "under constitution" is con, reading records and acts; C22 not named.
+R11: rule 2; σ, V^T (C4, C3), E; F1 equation reads f, τ(a), v(a), issue act.

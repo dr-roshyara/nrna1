@@ -1,0 +1,8 @@
+R80 HARD: T-B-like clause text only; "no record requirement" negation not read; acts exist = C8+C9.
+R79 HARD: clause text only; E≠∅; negated record reference not read.
+R21 HARD: rule 1 denial of tie c (C15) vs σ (C6)/f (C12); denies Σ/V type distinction (C4).
+R16 HARD: rule 1 denial; acts/work (C8,C9,C19), records (C13), Ref (C17); names C23.
+R14: rule 1 denial between f, d, r.
+R17 HARD: rule 1 denial of dependence; norm value C4 vs C5.
+R15 HARD: rule 1 denial of order among r, d, f; con (C18) reads acts; t(w) C20; C22 not counted.
+R11: rules 1-2; σ, V, 𝒯, E (denial of σ-from-E tie); F1 gives f, τ, v, issue act.

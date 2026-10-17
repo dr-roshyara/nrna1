@@ -1,0 +1,22 @@
+== ./repro.py: 4 changed lines
+    -    +F-GOVERNANCE-LOG.md: sha256 a485b8f7bf7ccbe1
+    +    +F-GOVERNANCE-LOG.md: sha256 eb02dc3191e9d186
+    -  ../../../F-GOVERNANCE-LOG.md                                 a485b8f7bf7ccbe1
+    +  ../../../F-GOVERNANCE-LOG.md                                 eb02dc3191e9d186
+== ./readiness.py: BYTE-IDENTICAL
+== ./lex.py: BYTE-IDENTICAL
+== ./blind_eval.py: BYTE-IDENTICAL
+== blind/results/agree.py: BYTE-IDENTICAL
+== ./blind2_eval.py: BYTE-IDENTICAL
+== ./ch_boundary.py: BYTE-IDENTICAL
+== ./ch_rho.py: BYTE-IDENTICAL
+
+== sha256 prefixes (16 hex): F-LOG-0303..0307 artifacts and the log ==
+  KC-MKC-REASSESSMENT.md                                       8cccf5a32aa7c668
+  AUDIT-Q6-TEST2-CLAUSE-COORDINATE-TABLE.md                    212dcdb1b19aa58b
+  KC-1-DECISION-MATRIX.md                                      46b55196f90da25c
+  KC-GUARD-PURPOSE-ANALYSIS.md                                 53685c6041ed1dcf
+  KC-CONVENTIONS-PROPOSAL.md                                   2cfa32ccd823605c
+  T3-CANDIDATE-MODEL.md                                        24c4b5bf8cc343ac
+  AUDIT-Q6-TEST1-FROZEN-ENCODING.md                            c705d06dc65a8171
+  ../../../F-GOVERNANCE-LOG.md                                 eb02dc3191e9d186

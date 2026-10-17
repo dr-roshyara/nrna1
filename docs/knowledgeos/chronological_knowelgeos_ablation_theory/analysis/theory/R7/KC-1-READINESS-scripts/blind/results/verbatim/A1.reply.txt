@@ -1,0 +1,6 @@
+{"R1": ["C3", "C5", "C6", "C8", "C12"], "R6": ["C1", "C3", "C19", "C20"], "R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R11": ["C3", "C4", "C5", "C6", "C8", "C9", "C12"], "R14": ["C11", "C12", "C14"], "R15": ["C11", "C12", "C14", "C18", "C20", "C22"], "R16": ["C8", "C9", "C13", "C17", "C19", "C23"], "R17": ["C5", "C8", "C9", "C19"], "R21": ["C4", "C6", "C12", "C15"], "R79": ["C8", "C9", "C13", "C17"], "R80": ["C8", "C9", "C13"]}
+
+R15: I counted "outside the governance times" as naming C22. I left out C19 because "work attribute" does not name a work event.
+R17: I read "norm value" as the norm (C5), not the deontic value set (C4).
+R21: I included C4 because V is named in the parenthesis. I left out C13 because "observation of σ" is not the observation O.
+R14: I left out C22 because the row denies equations among f, d and r but does not name the three-times distinction.

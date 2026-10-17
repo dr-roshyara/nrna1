@@ -1,0 +1,13 @@
+{"R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R80": ["C8", "C9"], "R79": ["C8", "C9"], "R21": ["C4", "C6", "C12", "C15"], "R1": ["C3", "C5", "C6", "C8", "C12"], "R16": ["C8", "C9", "C13", "C17", "C19", "C23"], "R14": ["C11", "C12", "C14"], "R17": ["C4", "C8", "C9", "C19"], "R6": ["C1", "C3", "C19", "C20"], "R15": ["C8", "C9", "C11", "C12", "C14", "C18", "C20"], "R11": ["C3", "C4", "C5", "C6", "C8", "C9", "C12"]}
+
+R9: Rules 2 and 3 (glossary). Ref = C17, R = C13, E = C8+C9, W = C19, con = C18. "ρ reports a" adds no new item.
+R80: Rule 1 and the exception in rule 3. The row states a reading of a hypothesis, so I used only its clause text. "No record requirement" is a negation and is not read (rule 2). "Acts exist" = C8+C9. The R-i′ text was not supplied. HARD
+R79: Rule 1 and the exception in rule 3. I used only the clause text: "E ≠ ∅" = C8+C9. "Not that a record references it" is a negation and is not read. The R-i text was not supplied. HARD
+R21: Rule 1 (denial of a tie). The row denies a tie between c (C15) and σ (C6) / f (C12). It also denies a type distinction between Σ (C15) and V (C4). The A5 and Def 1.1 texts were not supplied. HARD (whether V counts)
+R1: Rule 2 (glossary). Issue act = C8, f = C12, σ = C6, τ(a) = C3, v(a) = C5. T has no item. The F1 text came only from the row itself.
+R16: Rules 1 and 2. The row denies a tie between acts/work events (C8, C9, C19) and records (C13) through reference (C17), and it names NOT-EVIDENCED-IN-CAPTURE (C23). HARD (does the negation rule remove the reference items?)
+R14: Rule 1 (denial of a tie or order) between f (C12), d (C11) and r (C14).
+R17: Rule 1 (denial of a dependence). It is between a norm value (C4) and acts (C8, C9) or work events (C19). HARD (is "norm value" C4 or C5?)
+R6: Rule 2 (glossary). Work event and τ(w) = C19, 𝒯 = C3, α(w) and 𝒜 = C1, t(w) = C20. T has no item.
+R15: Rule 1 (denial of an order) among r, d, f (C14, C11, C12). "Under constitution" = con (C18), and by rule 2 it also reads the related acts (C8, C9). t(w) = C20. I did not count "governance times" as naming C22, because the row names the coordinates individually. The F2 and R3 texts were not supplied, and the row reference R3 was not followed (rule 4). HARD
+R11: Rules 1 and 2. σ = C6, V = C4, 𝒯 = C3, E = C8+C9 (denial of the σ-from-E tie). The F1 equation gives f = C12, τ(a) = C3, v(a) = C5, issue act = C8. The A5 text was not supplied, and the row reference R1 was not followed (rule 4).

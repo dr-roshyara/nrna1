@@ -1,0 +1,15 @@
+```json
+{"R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R80": ["C8", "C9"], "R79": ["C8", "C9"], "R21": ["C15"], "R1": ["C3", "C5", "C6", "C8", "C12"], "R16": ["C8", "C9", "C13", "C17", "C19", "C23"], "R14": ["C11", "C12", "C14"], "R17": ["C4", "C8", "C9", "C19"], "R6": ["C1", "C3", "C19", "C20"], "R15": ["C8", "C9", "C11", "C12", "C13", "C14", "C18", "C19", "C20"], "R11": ["C3", "C4", "C5", "C6", "C8", "C12"]}
+```
+
+R9: Rules 1 and 2. The row reads Ref over R × (E ∪ W) and the partial con on E, so it reads records, acts (issue and adoption), work events, Ref and con/mode.
+R80: HARD. Rule 4 (clause text only) and rule 3. The B-side record clause is empty, so it adds nothing. The "acts exist" reading is still asserted about histories (E ≠ ∅), so it reads acts (C8, C9). The cited R-i′ text is not supplied, so I used only the row's own words.
+R79: Rule 4 (clause text only). The row asserts E ≠ ∅, so it reads acts (C8, C9). Rule 3: the negated "not that a record references it" is not read. The cited R-i text is not supplied.
+R21: HARD. Rule 3. The missing axiom (A5) and the denied tie add nothing, and the negated "not an observation of σ or f" is not read. The object-level part that remains is "a self-assertion is a value of c", so the row reads C15. The A5 and Def 1.1 texts are not supplied.
+R1: Rule 1. The row asserts that for every issue act with f(a) = t, σ(t)(τ(a)) = v(a), so it reads C8, C12, C6, C3 and C5. Rule 3: "says nothing about" only delimits the formula. The F1 text beyond the row's own words is not supplied.
+R16: HARD. Rule 3: the missing completeness axiom adds nothing. Rule 4: "absence" (C23) is read through its definition (an act or work event that no record references), so the row also reads acts, work events, records and Ref (C8, C9, C19, C13, C17).
+R14: Rule 3 (denies a tie). Only the object-level parts are read: f, d and r, and "f may coincide with d or r" (C12, C11, C14).
+R17: HARD. Rule 3. The row reports a missing axiom and denies a tie, so only its object-level parts are read: norm value (V, C4), acts (C8, C9) and work events (C19). It is unclear whether this denial-only row should be read as [].
+R6: Rule 1. The row asserts τ(w) ∈ 𝒯, α(w) ∈ 𝒜 and t(w) ∈ T, so it reads C19, C3, C1 and C20. T maps to no item.
+R15: HARD. Rule 3: the denied order reads only r, d and f. The "d = r under constitution (R3)" exception is asserted, and con binds acts and records (rules 2 and 4), adding C18, C8, C9 and C13. t(w) as a work attribute adds C20 and C19. The F2 and R3 texts are not supplied, so I used only the row's own words.
+R11: Rules 1 and 4. σ: T → V^𝒯 reads C6, C4 and C3. "Constrained through F1" restates R1: σ(f(a))(τ(a)) = v(a) for issue acts, adding C12, C5 and C8. Rule 3: "no axiom derives σ from E" adds nothing. The A5 text is not supplied.

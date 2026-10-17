@@ -1,0 +1,7 @@
+{"R6": ["C1", "C3", "C19", "C20"], "R16": [], "R80": ["C8", "C9"], "R21": ["C15"], "R11": ["C3", "C4", "C5", "C6", "C8", "C12"], "R79": ["C8", "C9"], "R15": ["C11", "C14", "C18"], "R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R17": [], "R1": ["C3", "C5", "C6", "C8", "C12"], "R14": []}
+
+R16: I could have read "absence is NOT-EVIDENCED-IN-CAPTURE" as asserting C23. I treated it as part of the denial of completeness, so it adds nothing.
+R80: I counted "acts exist" (E ≠ ∅, joint) as asserted, giving C8 and C9. The record clause is denied, so it adds nothing.
+R21: I counted "is a value of c" as asserting C15. The denial that c is tied to σ or f adds nothing.
+R15: I counted only "d = r under constitution" (C11, C14, C18). I treated "t(w) as a work attribute" as a contrast that only delimits, so C19 and C20 are left out.
+R11: I took the a in F1 to be an issue act (it has v(a) and f(a)), so I gave C8 and not C9.

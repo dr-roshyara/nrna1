@@ -1,0 +1,122 @@
+== 1. where the relations differ (set level; verdict level S / S' / S'') ==
+  N-T3 (FZ)  vs A-T3[SH]         set-diff  6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+      verdict-diff {'S': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'], "S'": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21'], "S''": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']}
+  N-T3 (FZ)  vs A-C[SH]          set-diff 19 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R68', 'R70', '...']
+      verdict-diff {'S': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75'], "S''": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']}
+  N-T3 (FZ)  vs A-T3[K1c]        set-diff  6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+      verdict-diff {'S': ['R14', 'R15', 'R16', 'R17', 'R21'], "S'": ['R14', 'R15', 'R16', 'R17', 'R21'], "S''": ['R14', 'R15', 'R16', 'R17', 'R21']}
+  N-T3 (FZ)  vs A-C[K1c]         set-diff 19 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R68', 'R70', '...']
+      verdict-diff {'S': ['R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75'], "S''": ['R14', 'R15', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']}
+  N-T3 (FZ)  vs A-T3[R15ref]     set-diff  6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21'], "S'": ['R14', 'R16', 'R17', 'R21'], "S''": ['R14', 'R16', 'R17', 'R21']}
+  N-T3 (FZ)  vs A-C[R15ref]      set-diff 19 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R68', 'R70', '...']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75'], "S''": ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']}
+  N-T3 (FZ)  vs A-T3[R15ref-R14] set-diff  6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+      verdict-diff {'S': ['R16', 'R17', 'R21'], "S'": ['R16', 'R17', 'R21'], "S''": ['R16', 'R17', 'R21']}
+  N-T3 (FZ)  vs A-C[R15ref-R14]  set-diff 19 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R68', 'R70', '...']
+      verdict-diff {'S': ['R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R16', 'R17', 'R21', 'R62', 'R71', 'R75'], "S''": ['R16', 'R17', 'R21', 'R62', 'R71', 'R75']}
+  N-T3 (FZ)  vs A-T3[Sigma]      set-diff  6 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21'], "S'": ['R14', 'R16', 'R17', 'R21'], "S''": ['R14', 'R16', 'R17', 'R21']}
+  N-T3 (FZ)  vs A-C[Sigma]       set-diff 19 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R68', 'R70', '...']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75'], "S''": ['R14', 'R16', 'R17', 'R21', 'R62', 'R71', 'R75']}
+  N-M (M)    vs A-T3[SH]         set-diff 14 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R30', 'R34', 'R79', 'R80', 'R45', 'R52', 'R68']
+      verdict-diff {'S': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S'": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S''": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52']}
+  N-M (M)    vs A-C[SH]          set-diff 26 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R27', 'R28', 'R30', 'R34', 'R79', 'R80', 'R45', '...']
+      verdict-diff {'S': ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75'], "S''": ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']}
+  N-M (M)    vs A-T3[K1c]        set-diff 14 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R30', 'R34', 'R79', 'R80', 'R45', 'R52', 'R68']
+      verdict-diff {'S': ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S'": ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S''": ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52']}
+  N-M (M)    vs A-C[K1c]         set-diff 26 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R27', 'R28', 'R30', 'R34', 'R79', 'R80', 'R45', '...']
+      verdict-diff {'S': ['R14', 'R15', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75'], "S''": ['R14', 'R15', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']}
+  N-M (M)    vs A-T3[R15ref]     set-diff 14 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R30', 'R34', 'R79', 'R80', 'R45', 'R52', 'R68']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S'": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S''": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52']}
+  N-M (M)    vs A-C[R15ref]      set-diff 26 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R27', 'R28', 'R30', 'R34', 'R79', 'R80', 'R45', '...']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75'], "S''": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']}
+  N-M (M)    vs A-T3[R15ref-R14] set-diff 14 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R30', 'R34', 'R79', 'R80', 'R45', 'R52', 'R68']
+      verdict-diff {'S': ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S'": ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S''": ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52']}
+  N-M (M)    vs A-C[R15ref-R14]  set-diff 26 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R27', 'R28', 'R30', 'R34', 'R79', 'R80', 'R45', '...']
+      verdict-diff {'S': ['R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75'], "S''": ['R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']}
+  N-M (M)    vs A-T3[Sigma]      set-diff 14 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R30', 'R34', 'R79', 'R80', 'R45', 'R52', 'R68']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S'": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52'], "S''": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52']}
+  N-M (M)    vs A-C[Sigma]       set-diff 26 rows ['R11', 'R14', 'R15', 'R16', 'R17', 'R21', 'R26', 'R27', 'R28', 'R30', 'R34', 'R79', 'R80', 'R45', '...']
+      verdict-diff {'S': ['R14', 'R16', 'R17', 'R21', 'R27', 'R28', 'R79', 'R80', 'R45', 'R52', 'R56', 'R60', 'R61', 'R62', 'R75'], "S'": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75'], "S''": ['R14', 'R16', 'R17', 'R21', 'R79', 'R80', 'R45', 'R52', 'R62', 'R71', 'R75']}
+
+== 2. monotonicity: is rho_assert(x) a subset of rho_name(x) for every row? (then coupling-crossing implies crossing) ==
+  N-T3 (FZ)  > A-T3[SH]        : holds
+  N-T3 (FZ)  > A-C[SH]         : fails at ['R27', 'R28', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R27: +[2, 9, 11], R28: +[2, 9, 11], R62: +[3, 8, 9, 16, 18, 19]
+  N-T3 (FZ)  > A-T3[K1c]       : holds
+  N-T3 (FZ)  > A-C[K1c]        : fails at ['R27', 'R28', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R27: +[2, 9, 11], R28: +[2, 9, 11], R62: +[3, 8, 9, 16, 18, 19]
+  N-T3 (FZ)  > A-T3[R15ref]    : fails at ['R15']  e.g. R15: +[13]
+  N-T3 (FZ)  > A-C[R15ref]     : fails at ['R15', 'R27', 'R28', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+  N-T3 (FZ)  > A-T3[R15ref-R14]: fails at ['R15']  e.g. R15: +[13]
+  N-T3 (FZ)  > A-C[R15ref-R14] : fails at ['R15', 'R27', 'R28', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+  N-T3 (FZ)  > A-T3[Sigma]     : fails at ['R15']  e.g. R15: +[13]
+  N-T3 (FZ)  > A-C[Sigma]      : fails at ['R15', 'R27', 'R28', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+  N-M (M)    > A-T3[SH]        : fails at ['R34', 'R45', 'R52']  e.g. R34: +[3, 4, 6, 20], R45: +[8, 9], R52: +[8, 9]
+  N-M (M)    > A-C[SH]         : fails at ['R27', 'R28', 'R34', 'R45', 'R52', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R27: +[2, 9, 11], R28: +[2, 9, 11], R34: +[3, 4, 6, 20]
+  N-M (M)    > A-T3[K1c]       : fails at ['R34', 'R45', 'R52']  e.g. R34: +[3, 4, 6, 20], R45: +[8, 9], R52: +[8, 9]
+  N-M (M)    > A-C[K1c]        : fails at ['R27', 'R28', 'R34', 'R45', 'R52', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R27: +[2, 9, 11], R28: +[2, 9, 11], R34: +[3, 4, 6, 20]
+  N-M (M)    > A-T3[R15ref]    : fails at ['R15', 'R34', 'R45', 'R52']  e.g. R15: +[8, 9, 13], R34: +[3, 4, 6, 20], R45: +[8, 9]
+  N-M (M)    > A-C[R15ref]     : fails at ['R15', 'R27', 'R28', 'R34', 'R45', 'R52', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[8, 9, 13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+  N-M (M)    > A-T3[R15ref-R14]: fails at ['R15', 'R34', 'R45', 'R52']  e.g. R15: +[8, 9, 13], R34: +[3, 4, 6, 20], R45: +[8, 9]
+  N-M (M)    > A-C[R15ref-R14] : fails at ['R15', 'R27', 'R28', 'R34', 'R45', 'R52', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[8, 9, 13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+  N-M (M)    > A-T3[Sigma]     : fails at ['R15', 'R34', 'R45', 'R52']  e.g. R15: +[8, 9, 13], R34: +[3, 4, 6, 20], R45: +[8, 9]
+  N-M (M)    > A-C[Sigma]      : fails at ['R15', 'R27', 'R28', 'R34', 'R45', 'R52', 'R62', 'R68', 'R70', 'R71', 'R73', 'R75', 'R76', 'R77']  e.g. R15: +[8, 9, 13], R27: +[2, 9, 11], R28: +[2, 9, 11]
+
+== 3. E3-REL (D12 a) and host-cell departures from the ratified lists, per relation ==
+  N-T3 (FZ)        S: E3-REL 13 host-diff 0 | S': E3-REL 8 host-diff 0 | E3-REL S' ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  N-M (M)          S: E3-REL 13 host-diff 2 | S': E3-REL 8 host-diff 2 | E3-REL S' ['R2', 'R3', 'R9', 'R14', 'R15', 'R16', 'R21', 'R22']
+  A-T3[SH]         S: E3-REL 9 host-diff 6 | S': E3-REL 4 host-diff 6 | E3-REL S' ['R2', 'R3', 'R9', 'R22']
+  A-C[SH]          S: E3-REL 9 host-diff 8 | S': E3-REL 4 host-diff 6 | E3-REL S' ['R2', 'R3', 'R9', 'R22']
+  A-T3[K1c]        S: E3-REL 9 host-diff 5 | S': E3-REL 4 host-diff 5 | E3-REL S' ['R2', 'R3', 'R9', 'R22']
+  A-C[K1c]         S: E3-REL 9 host-diff 7 | S': E3-REL 4 host-diff 5 | E3-REL S' ['R2', 'R3', 'R9', 'R22']
+  A-T3[R15ref]     S: E3-REL 10 host-diff 4 | S': E3-REL 5 host-diff 4 | E3-REL S' ['R2', 'R3', 'R9', 'R15', 'R22']
+  A-C[R15ref]      S: E3-REL 10 host-diff 6 | S': E3-REL 5 host-diff 4 | E3-REL S' ['R2', 'R3', 'R9', 'R15', 'R22']
+  A-T3[R15ref-R14] S: E3-REL 11 host-diff 3 | S': E3-REL 6 host-diff 3 | E3-REL S' ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']
+  A-C[R15ref-R14]  S: E3-REL 11 host-diff 5 | S': E3-REL 6 host-diff 3 | E3-REL S' ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']
+  A-T3[Sigma]      S: E3-REL 10 host-diff 4 | S': E3-REL 5 host-diff 4 | E3-REL S' ['R2', 'R3', 'R9', 'R15', 'R22']
+  A-C[Sigma]       S: E3-REL 10 host-diff 6 | S': E3-REL 5 host-diff 4 | E3-REL S' ['R2', 'R3', 'R9', 'R15', 'R22']
+
+== 4. the refined split: crossing / hosting on rho_name, E3-REL as coupling on rho_assert ==
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[SH]         S  : 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R15', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[SH]         S' : 4 ['R2', 'R3', 'R9', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R15', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[K1c]        S  : 9 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R19', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R15', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[K1c]        S' : 4 ['R2', 'R3', 'R9', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R15', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[R15ref]     S  : 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[R15ref]     S' : 5 ['R2', 'R3', 'R9', 'R15', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[R15ref-R14] S  : 11 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R14', 'R15', 'R19', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[R15ref-R14] S' : 6 ['R2', 'R3', 'R9', 'R14', 'R15', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[Sigma]      S  : 10 ['R2', 'R3', 'R5', 'R6', 'R8', 'R9', 'R10', 'R15', 'R19', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R16', 'R21']
+  hosts from N-T3 (ratified, 0 departures); E3-REL-coupling from A-T3[Sigma]      S' : 5 ['R2', 'R3', 'R9', 'R15', 'R22']; hosted on both but not coupled (r2.1 label fix, N8): ['R14', 'R16', 'R21']
+
+== 5. counterexample search: a row-level rule selecting L without a per-row table ==
+  rows 83; features 10: ['title_starts_No', 'title_has_neg', 'stmt_has_neg', 'stmt_has_does_not_require', 'tier_TA', 'tier_TB', 'tier_meta', 'LABEL_tier_guard', 'LABEL_tier_nonconstraint', 'ncol_guard']
+  feature extensions (rows where true):
+    title_starts_No              ['R14', 'R15', 'R16', 'R17', 'R80']
+    title_has_neg                ['R11', 'R14', 'R15', 'R16', 'R17', 'R26', 'R49', 'R65', 'R75', 'R80']
+    stmt_has_neg                 ['R1', 'R4', 'R11', 'R13', 'R14', 'R15', 'R16', 'R17', 'R21', 'R23', 'R24', 'R26', 'R30', 'R39', 'R41', 'R49', 'R62', 'R65', 'R66', 'R68', 'R69', 'R70', 'R75', 'R79', 'R80', 'R82', 'R83']
+    stmt_has_does_not_require    ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+    tier_TA                      ['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8', 'R9', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R24']
+    tier_TB                      ['R25', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R79', 'R80', 'R83']
+    tier_meta                    ['R23', 'R66', 'R67', 'R68', 'R69', 'R70', 'R82']
+    LABEL_tier_guard             ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+    LABEL_tier_nonconstraint     ['R14', 'R15', 'R16', 'R17']
+    ncol_guard                   ['R1', 'R2', 'R3', 'R6', 'R9', 'R11', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R24', 'R43', 'R46', 'R47', 'R48', 'R49']
+  exact rules found: 116; using a LABEL feature: 92; label-free: 24
+     AND stmt_has_does_not_require 
+     AND LABEL_tier_guard [LABEL]
+     AND stmt_has_neg & stmt_has_does_not_require 
+     AND stmt_has_neg & LABEL_tier_guard [LABEL]
+     AND stmt_has_does_not_require & tier_TA 
+     AND stmt_has_does_not_require & LABEL_tier_guard [LABEL]
+     AND stmt_has_does_not_require & ncol_guard 
+     AND stmt_has_does_not_require & ~tier_TB 
+     AND stmt_has_does_not_require & ~tier_meta 
+     AND tier_TA & LABEL_tier_guard [LABEL]
+     AND LABEL_tier_guard & ncol_guard [LABEL]
+     AND LABEL_tier_guard & ~tier_TB [LABEL]
+  best label-free conjunction (<= 3 literals): stmt_has_does_not_require -> ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']; symmetric difference with L: []
+  [post-hoc feature] stmt_has_does_not_require was written after reading L; re-search without it:
+    label-free exact rules without it: 0
+    best: title_has_neg & stmt_has_neg & tier_TA -> ['R11', 'R14', 'R15', 'R16', 'R17']; symmetric difference with L: ['R21']
+    near miss R80: [r1] No B-side record clause (R-i′): H-B carries no record requirement; "acts exist" is read as a joint statement about both hypotheses
+    near miss R23: Checkability boundary (Lem 1.12). O, and every function of O, is independent of σ, f, Ref, con, d, Cap, k, 𝒜, E, W and their attributes, and unchanged

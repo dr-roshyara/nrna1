@@ -1,0 +1,7 @@
+R80 HARD: missing record clause not read; "acts exist" → C8, C9; unclear whether joint reading asserts a formula.
+R21 HARD: rule 3 denial → object-level parts c, σ, f, Σ/V (C4); conflicts with "frame lacks axiom contributes nothing".
+R16 HARD: missing completeness axiom contributes nothing; "absence" read through definition → C8, C9, C19, C13, C17; unclear whether gloss is asserted.
+R14: rule 3 denial → object-level parts f, d, r.
+R17 HARD: rule 3 denial of dependence → norm value C4, acts, work events.
+R15 HARD: rule 3 denied order r, d, f; asserted d=r under con → C18, C8, C9, C13; t(w) → C20, C19; unclear whether exception and t(w) remark are asserted.
+R11: rules 1,3,4: σ, V, 𝒯; absence nothing; F1 read through → C6, C12, C3, C5, C8.

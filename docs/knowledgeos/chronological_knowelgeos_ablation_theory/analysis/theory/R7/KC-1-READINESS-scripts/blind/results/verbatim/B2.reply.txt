@@ -1,0 +1,7 @@
+{"R6": ["C1", "C3", "C19", "C20"], "R16": [], "R80": ["C8", "C9"], "R21": [], "R11": ["C3", "C4", "C6"], "R79": ["C8", "C9"], "R15": [], "R9": ["C8", "C9", "C13", "C17", "C18", "C19"], "R17": [], "R1": ["C3", "C5", "C6", "C8", "C12"], "R14": []}
+
+R16: I treated "absence is NOT-EVIDENCED-IN-CAPTURE" as a contrast around a statement that the frame requires nothing, so it adds no items. C23 is the alternative.
+R80: The record clause is empty. I treated "acts exist" as the asserted formula, which gives C8 and C9.
+R21: I treated "is a value of c" as delimiting the absence of a tie, since the row says the point is the absence. C15 is the alternative.
+R11: I treated the F1 clause as a delimiting concession, so only the totality typing of σ is encoded. C5, C8 and C12 would be added if F1 counted as asserted.
+R15: I treated "except d = r" and "t(w) as a work attribute" as delimiting a non-order statement. C11, C14 and C20 are the alternatives.

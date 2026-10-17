@@ -1,0 +1,7 @@
+R80 HARD: clause text only; acts exist C8+C9; negation not read.
+R21 HARD: rule 1 denial judged by c, σ, f; Σ/V mentioned only to say no distinction, V not added.
+R16 HARD: rule 1 denial acts/work vs records; Ref; C23 named.
+R14: rule 1 denial of equation f, d, r.
+R17 HARD: rule 1 denial of dependence; norm value read as C5 (hard vs C4).
+R15 HARD: rule 1 denial of order r, d, f; con brings acts; t(w) C20; C22 not added.
+R11 HARD: rule 1 denial σ vs E plus rule 2: σ, V, 𝒯, τ, E, f, v.
