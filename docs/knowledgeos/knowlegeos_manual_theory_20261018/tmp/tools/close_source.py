@@ -20,6 +20,8 @@ Usage:
   close_source.py S0208 branch-consult "BRANCH-01" ["note"] --passages "L19-30, L210-241" [--dry]
   close_source.py S0412 --depth topic-full --topic F11-execute "book: where it went" ["note"] [--dry]
   close_source.py --position
+  close_source.py --status S0113 [S…]               (read state; rows from before the last RESTART count as UNREAD)
+  close_source.py --open                            (sources started but not closed; --start also warns)
   close_source.py --open-branch BRANCH-02 slug      (Amendment 32b: snapshot of the theory map before the branch)
 """
 import sys, json, hashlib, csv, re, glob, datetime, pathlib, unicodedata
@@ -85,20 +87,72 @@ def utcnow():
     return datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
-if sys.argv[1:2] == ['--start']:
-    sid = sys.argv[2]
-    assert sid in ORDER, f'unknown source {sid}'
-    with open(STARTS, 'a', encoding='utf-8') as fh:
-        fh.write(f'{sid}\t{utcnow()}\n')
-    print(f'{sid} start recorded')
-    sys.exit(0)
-
 if sys.argv[1:] == ['--position']:
     pos, read, consulted, scans = counts()
     nxt = INDEX[pos + 1]['source_id'] if pos + 1 < len(INDEX) else None
     print(f'reading position: {INDEX[pos]["source_id"] if pos >= 0 else "none"}; next in order: {nxt}')
     print(f'read in order (full/skim): {len(read)}; consulted in branches only: {len([c for c in consulted if c not in read])} {consulted}; scans: {scans}')
     sys.exit(0)
+
+def read_status(sid):
+    """What counts as read: only rows AFTER the last RESTART marker. A row from before the restart is history,
+    not a read (Principal, 2026-10-19, after S0113 was miscounted as read in Trial T2)."""
+    _, rows, lr = reading_position()
+    after = [r for r in rows[lr + 1:] if len(r) > 5 and r[1] == sid]
+    before = [r for r in rows[:lr + 1] if len(r) > 5 and r[1] == sid]
+    depths = sorted({r[5] for r in after})
+    if any(d in ('full', 'skim') for d in depths):
+        state = 'read in order'
+    elif 'topic-full' in depths:
+        state = 'read whole (topic-full; position not moved)'
+    elif 'branch-consult' in depths:
+        state = 'passages consulted only'
+    else:
+        state = 'UNREAD' + (' (a row from before the RESTART exists and is ignored)' if before else '')
+    return state, depths, len(before)
+
+
+def open_reads():
+    """Sources whose latest --start has no closing row at or after that start time."""
+    if not STARTS.exists():
+        return []
+    latest = {}
+    for l in open(STARTS, encoding='utf-8'):
+        p = l.rstrip('\n').split('\t')
+        if len(p) == 2:
+            latest[p[0]] = max(latest.get(p[0], ''), p[1])
+    rows = list(csv.reader(open(LOG, encoding='utf-8'), delimiter='\t'))[1:]
+    closed = {}
+    for r in rows:
+        if len(r) > 5 and r[5] in ('full', 'skim', 'topic-full', 'branch-consult'):
+            closed[r[1]] = max(closed.get(r[1], ''), r[0])
+    return sorted([(s, t) for s, t in latest.items() if closed.get(s, '') < t], key=lambda x: x[1])
+
+
+if sys.argv[1:2] == ['--start']:
+    sid = sys.argv[2]
+    assert sid in ORDER, f'unknown source {sid}'
+    with open(STARTS, 'a', encoding='utf-8') as fh:
+        fh.write(f'{sid}\t{utcnow()}\n')
+    print(f'{sid} start recorded')
+    pending = [o for o in open_reads() if o[0] != sid] if 'open_reads' in globals() else []
+    if pending:
+        print('WARNING: started but not closed: ' + ', '.join(f'{s} ({t})' for s, t in pending))
+    sys.exit(0)
+
+if sys.argv[1:2] == ['--status']:
+    for sid in sys.argv[2:]:
+        assert sid in ORDER, f'unknown source {sid}'
+        state, depths, nbefore = read_status(sid)
+        print(f'{sid}: {state}' + (f'  [rows after restart: {", ".join(depths)}]' if depths else ''))
+    sys.exit(0)
+
+if sys.argv[1:] == ['--open']:
+    o = open_reads()
+    print(f'{len(o)} started but not closed' + (':' if o else ''))
+    for s, t in o:
+        print(f'  {s} started {t}')
+    sys.exit(0 if not o else 1)
 
 argv = sys.argv[1:]
 dry = '--dry' in argv
