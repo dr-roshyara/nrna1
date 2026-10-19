@@ -128,14 +128,14 @@ Distinguish disproved, unsupported, unresolved and not yet built. Only your verd
 5. **Next steps for the theory**, in dependency order: each correction, investigation or derivation with its completion condition. Add a question for the Principal only where the theory cannot proceed without one.
 6. **Limits:** what you did not read, did not check, or could not decide.
 
-Do not restate what the book already says correctly. Lower-priority points go into a short **appendix** after the six parts, so the main report stays about two pages.
+Do not restate what the book already says correctly. Lower-priority points go into a short **appendix** after the six parts, so the main report stays about two pages: **at most about 1,200 words** before the appendix.
 
 ## Working rules
 
 - **Read each file whole, in one read**, where it fits; read it in parts only when it is too large.
 - **Deliver each report once, directly through the hand-back** (`SubagentHandback`). Do not write it out as text first and then send it again.
 - **Evidence for your own claims:** a statement about your own work (for example "300 anchors checked", or a recomputed figure) is backed by a traceable record (a command, a list, a computation), or is labelled "reported, not shown".
-- Time is a target, not a licence to skip analysis. Report the time you actually spent, **measured by the tool clock** (`date -u` at start and end), not estimated.
+- Time is a target, not a licence to skip analysis. Report the time you actually spent, **measured by the tool clock**, not estimated: `date -u` as the **very first** and the **very last** command of each step.
 - **Severity:**
   - **critical:** it could invalidate a foundational concept, derivation or chapter conclusion. It stops dependent work at once: flag it first;
   - **high:** a material omission, a contradiction, a wrong concept status or an unsupported generalisation. It is resolved before the topic is finalised;

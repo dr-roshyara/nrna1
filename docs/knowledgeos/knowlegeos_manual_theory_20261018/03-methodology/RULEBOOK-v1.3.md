@@ -46,6 +46,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 ## 4. Writing
 
 - **Section order:** plain language → definitions → claims and derivations → open questions → **what does not hold** → references.
+- **Generalisation rule** (Principal, 2026-10-19): a claim that goes beyond its source's case (from one case to a class, a law, "always", "cannot", "the only") is written as **Hyp** until a second, independent source or a proof supports it. Only then may it be written as Ded or as a law. State the case it rests on ("shown for S0044's RD-6 only").
 - **What does not hold** (Principal, 2026-10-19): refuted claims (INVALID) move out of the main text into the section's closing subsection "What does not hold", each with its ID and the reason. The main text carries only what holds or is open. Applies to new sections now, and to older sections when they are rewritten.
 - **Every chapter is a folder of section files** (`NN.MM-<short-name>.md`) with an index (`NN.00-index.md`). Chapters 0–2, until now single files, are split once by script along their `##` headings. Section numbers are unchanged, and the joined result must be byte-for-byte identical to the original.
 - **Book outline:** `06-theory/manuscript/BOOK-OUTLINE.md` arranges the sections by the deliverables of `RESEARCH-PURPOSE.md`: primitives, laws, the kernel/application boundary, the forks, the kernel's type and existence. It shows what is missing. It is updated at every consolidation review, and new sections are placed in it when they are written.
