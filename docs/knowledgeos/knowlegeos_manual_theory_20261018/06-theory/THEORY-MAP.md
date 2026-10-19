@@ -139,6 +139,8 @@
 | F23 | **Trust as a primitive?** The central question asks how knowledge can be trusted, and the book has no trust concept. S0913 proposes Trust(a, d, c, t), contextual; trust ≠ authority ≠ expertise; trust modifies epistemic weight and creates no truth; trust assessments are themselves evidence-bearing knowledge. Is trust a primitive, derivable (evidence × provenance × calibration), or outside the kernel? | primitive | consolidation S0036–S0065 (both reviewers); S0913 L133, L188–198, L1398, L1426–1428 |
 | F24 | **Conflicting claims: preserve or supersede?** S0913 makes conflict a first-class state with "Unresolved" as a valid terminal state; S0129's R-CONFLICT forbids silently choosing a side; but §9.4 C3 settles a content dispute by one current claim plus supersession, i.e. a winner. Which does the kernel require, and where? | law / primitive | consolidation S0036–S0065 (both reviewers); S0913 L450, L1148–1161; S0129 L45, L102; §9.4 C3 |
 | F25 | **Who may correct (restated after review C13):** may a process that verified an object then produce on it in another lane (role vs process), and is a permitting grant sufficient? Both S0056 and S0074 keep the forward rule (a corrector may not verify its own correction); they differ on a grant (none vs "bars no one") and on lane | law | Ch. 8 §8.8 C3 (window C13) |
+| F26 | **Order of acts (theory turn 2):** does the evaluator CE work on one global total order of record positions (a uniqueness, so one serialization point and K4 = yes for positions), or on a partial order, answering U where acts are incomparable (S2775 L1650–1688, in meaning)? | architecture | Ch. 9 §9.7 Analysis 2 step 2; reopens §9.6.6a items 2–4 |
+| F27 | **The record view ρ (theory turn 2):** an organisational policy (§1.14.1 safeguard 3) or a parameter of each query (S2775's three queries)? Reserved decision 2 stays the Principal's | normative | Ch. 9 §9.7 Analysis 2 step 3 |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -193,6 +195,13 @@
 - **Authorization subject (§5.5 C6):** a subject-blind check cannot enforce a rule about subjects `[CON-0131 ✓]`; read by S0067 as the boundary, not a defect.
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
+
+**Theory turn 2, the evaluator CE (§9.7; reviewed and settled 2026-10-19):**
+- an evaluator of standing is necessary (Principal's act); §1.14.1's CE is **not yet a function** for any θ (covers, actor–holder link, non-monotone υ, recursive σ);
+- CE's order is a uniqueness: F26; recording by set union (§9.6.6a items 3–4) holds only under F26(b);
+- K5 restated with a time axis `[CON-0143 ~]`; under K3 and K5 the definition, coverage relation, root and policy values need one authoritative, versioned home, not shown to be the kernel `[CON-0142 ✗ as stated]`;
+- delegated computation needs a declared cut and a must-do (soundness and completeness relative to evidenced acts); on the present record CE would be uninformative;
+- for the Principal: K5; F27 (ρ policy or query).
 
 **Window C13, S0071–S0075 (reviewed and settled 2026-10-19):**
 - **§8.8:**
