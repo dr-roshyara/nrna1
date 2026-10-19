@@ -7,7 +7,7 @@
 | Companion | `RULEBOOK-v2-PROPOSAL-REPORT.md`: inventory, mapping table (every v1.3 obligation → its place here), regression check, efficiency estimate, trial, open questions |
 | If approved | replaces `RULEBOOK-v1.3.md` as the operating rules, forward only. v1.3, its amendments, trials and the register stay as history. `REVIEWER-INSTRUCTIONS.md` stays the single home of how a review is done |
 
-*Each requirement appears once. Where a rule has a script that enforces it, the script is named. Rationale and history are in the report, not here. Markers: **[new]** = not in v1.3 · **[changed]** = in v1.3 in another form. Revision 1 (2026-10-19) adds the Principal's answer to Q1 and the refinements accepted from the architecture review (report §13).*
+*Each requirement appears once. Where a rule has a script that enforces it, the script is named. Rationale and history are in the report, not here. Markers: **[new]** = not in v1.3 · **[changed]** = in v1.3 in another form. Revision 1 (2026-10-19) adds the Principal's answer to Q1 and the refinements accepted from the architecture review (report §13); revision 2 the trial criteria (report §14) and §0, theory first (report §15).*
 
 **Every rule serves at least one of four purposes** [new]: **discover** the theory without narrowing it early · establish **validity** · expose **uncertainty** (counterexamples, open choices) · **communicate** the theory faithfully. A rule that serves none is challenged; the report lists the purposes per section.
 
@@ -23,6 +23,25 @@
 | **blind** | the reviewer writes and hands back its own inventory of the sources **before** it sees any of the Professor's work (book, map, register, brief). Before that it may have only the sources, `RESEARCH-PURPOSE.md` and its instructions |
 
 ---
+
+## 0. Theory first (the governing strategy) [new; Principal, 2026-10-19: "make sure that we strongly apply research oriented theory first strategy"]
+
+**This is a research programme, not a document pipeline.** Every other section of this rulebook serves the theory; none of them is an end in itself.
+
+1. **The method of theory building**, applied to every material concept, law and fork:
+   **question** (what must the theory explain?) → **evidence** (what do the sources say, read whole and in order?) → **definition** (what is inside the concept and what is not?) → **assumptions** (stated) → **derivation** (each step justified) → **falsification attempt** (§5.1) → **status** (only by independent review).
+2. **Three kinds of progress, kept apart** (§11.1): reading more sources is corpus progress; rewriting a chapter is book progress; **only a better definition, an exposed assumption, a resolved contradiction, a tested boundary, or a derivation strengthened or refuted is theory progress.** A turn that produced none says so.
+3. **Corpus first, theory open:** chronological reading exists so that unexpected concepts, contradictions and rival explanations can appear. Focused research supplements it and never narrows the theory early: an open fork stays open until evidence or derivation closes it.
+4. **The derivation chain is explicit:** primitives → definitions → assumptions → propositions → laws. Every law and proposition names, in its "rests on" line, the steps it comes from, and whether each rests on corpus evidence, an added assumption or an unresolved hypothesis.
+5. **Priority when time or attention is short**, in this order:
+   1. a critical foundational problem (§10);
+   2. the validity of new and changed theory (falsification, review, settlement);
+   3. coverage of the corpus in index order;
+   4. book form (rewrites, outline, layout).
+
+   A lower priority never displaces a higher one. **A procedure is never satisfied at the theory's expense:** a needed correction is not left out to keep a rewrite "pure", a finding is not dropped to keep a settlement short, and a source is not skimmed to keep a window on time.
+6. **When a rule obstructs a necessary theory step,** the Professor does not bend the theory and does not silently bypass the rule: it records the conflict in the settlement and raises it with the Principal, who decides.
+7. **Polished prose, agreement between sessions, a completed checklist or a commit establish nothing about validity.** Evidence, derivation and independent challenge do.
 
 ## 1. Purpose and authority
 
@@ -101,7 +120,8 @@
 
 ## 5. The cycle for a full source
 
-1. **Validate** each concept by reasoning: does it make sense; does it survive a real counterexample? Use computation and machine learning where they decide something (similarity for synonyms and word senses, dependency graphs, counterexample search); state their limits and verify every finding in the source text.
+1. **Validate** each concept by reasoning: does it make sense; does it survive a real counterexample?
+   - **Falsification before review** [new]: for each new concept, law or settled fork, the Professor attempts, and records in the brief, **(a)** a counterexample within its stated scope, **(b)** its boundary: the case where it should stop holding, and **(c)** at least one **rival explanation** of the same evidence, with the reason the book prefers its own reading or keeps both open. "None found" is a valid answer, with the attempt shown. Use computation and machine learning where they decide something (similarity for synonyms and word senses, dependency graphs, counterexample search); state their limits and verify every finding in the source text.
 2. **Find the existing home** before writing: search the book and the register by script (`book_search.py`, lexical and `--meaning`), **read the top five hits** and mark each *same / extends / different*. Extend an existing home rather than writing a second; cite it.
 3. **Write** into that home or a new section (§6).
 4. **Record concepts** in `06-theory/CONCEPT-REGISTER.tsv` (§7).
@@ -162,7 +182,7 @@ The Professor sends, after the reviewer's blind inventory is saved:
 2. **changed theory of the previous settlement** (window, theory turn or consolidation), so no correction stays unreviewed;
 3. **book search:** existing homes and the top-five hits read;
 4. **dependencies** of each new or changed section, each checked for: definitions preserved · no established result contradicted or silently changed · no necessary concept missing; unverified dependencies marked. **This check finds implicit, meaning-level dependencies; the graph (§8.4) finds declared ones and their transitive reach. Neither replaces the other, and neither is repeated twice;**
-5. **strength scan** result;
+5. **strength scan** result, and the **falsification attempts** of §5.1 (counterexample, boundary, rival explanation);
 6. **undefined-term check** [new]: identifiers and corpus-specific terms in the new text with no definition in the book or glossary (script; candidate list, read by the reviewer);
 7. for a two-step rewrite: old and new text, claim by claim;
 8. for computed results: the script and its output.

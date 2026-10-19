@@ -4,7 +4,7 @@
 |---|---|
 | Status | **PROPOSAL (revision 2), for the Principal's decision.** Nothing here is in force. `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` and `METHOD-VERSIONS.md` are unchanged |
 | Author | the Rule Reviewer session, 2026-10-19 |
-| The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 1 (251 lines, 4,368 words; revision 0 had 211 lines, 3,442 words) |
+| The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 2 (273 lines, 4,930 words; revision 1: 251 lines, 4,368 words; revision 0: 211 lines, 3,442 words; v1.3: 272 lines, 4,135 words) |
 | Principle | simplify administration, not reasoning; reduce duplication, not safeguards; keep chronological completeness and conceptual depth |
 
 Every statement below is marked as one of three kinds:
@@ -355,3 +355,26 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | the seven invariants and five domain concepts | — | agreed; each is already a v2 rule (§3.1, §4.2, §4.1, §7, §8.4, §8.5, §1.4). Not added as a separate list, to avoid stating them twice |
 
 **[V] State at this revision:** the reading position is S0100; review C18 (S0097–S0100) has started. **The whole-book review is next**, under v1.3. Its planted-gap test is mine to prepare (§12c); I will apply the isolation lessons to it under v1.3, since they are lessons of a past test, not a v2 rule.
+
+## 15. Revision 2, continued: theory first made the governing strategy
+
+**The Principal (2026-10-19):** "make sure that we strongly apply research oriented theory first strategy".
+
+**[V] What v1.3 and v2 revision 1 already had:** the purpose "the work is the theory" (§1); validation by reasoning and a counterexample (§2.2); blind independent review with validity tests, independence models and proof checking (the instructions); theory turns on RESEARCH-PURPOSE deliverables (§12b). **What was missing:** a statement that theory governs the procedure; a priority order when they compete; the Professor's own falsification step beyond one counterexample; rival explanations; an explicit derivation chain for every law.
+
+**Added (v2 §0, §5.1, §8.2.5):**
+
+| Addition | What it protects | Administrative cost |
+|---|---|---|
+| §0.1 the method: question → evidence → definition → assumptions → derivation → falsification → status | the order of reasoning | none (no record) |
+| §0.2 only five things count as theory progress | against mistaking reading or rewriting for theory | one line in the end report (already there, §11.1) |
+| §0.3 corpus first, theory open | discovery; no early narrowing | none |
+| §0.4 explicit derivation chain in "rests on" | derivation before generalisation; also feeds the dependency graph | uses the existing "rests on" line |
+| §0.5 priority order; no procedure at the theory's expense | theory over book form and pace | none |
+| §0.6 rule conflict raised, never bent or bypassed | the Principal's authority and the theory together | a settlement line, only when it occurs |
+| §0.7 prose, agreement, checklists and commits prove nothing | no false closure | none |
+| §5.1 falsification before review: counterexample, boundary, rival explanation | falsification before acceptance | a few lines per new concept in the brief |
+
+**[A] Effect:** about 1–3 minutes of Professor time per window for the falsification lines; it moves part of the reviewer's refutation work earlier, so reviews may find fewer simple defects and spend more on deep ones. **[R] Trial measure:** in the trial settlements, count findings that a recorded falsification attempt should have caught but did not; a high count means the attempts are a formality.
+
+**Not added:** a new register, new states or a new file. **[V]** v2 revision 2 has 4,930 words, against 4,135 for v1.3. **It is longer, not shorter:** the gain is precision and a theory-first priority, not brevity.
