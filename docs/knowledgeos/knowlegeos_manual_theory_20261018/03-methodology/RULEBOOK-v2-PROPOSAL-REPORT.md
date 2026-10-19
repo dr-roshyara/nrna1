@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSAL, for the Principal's decision.** Nothing here is in force. `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` and `METHOD-VERSIONS.md` are unchanged |
+| Status | **PROPOSAL (revision 2), for the Principal's decision.** Nothing here is in force. `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` and `METHOD-VERSIONS.md` are unchanged |
 | Author | the Rule Reviewer session, 2026-10-19 |
 | The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 1 (251 lines, 4,368 words; revision 0 had 211 lines, 3,442 words) |
 | Principle | simplify administration, not reasoning; reduce duplication, not safeguards; keep chronological completeness and conceptual depth |
@@ -234,26 +234,40 @@ Every statement below is marked as one of three kinds:
 - **Before the trial:** the undefined-term script and the `book_search.py` exclude option exist and are tested on a known case (BC-7 in the pre-§6.5.2 text).
 - **Plants (by the Rule Reviewer, key sealed), one per known failure class:** one undefined code and one undefined ordinary word used as jargon (a concept missed in reading); one unsupported generalisation; one downstream claim left unassessed after a change; one defect introduced in a settlement change. **The test shows how the rule handles each case, not only that the rule mentions it.**
 
-**Acceptance criteria (all must hold):**
-1. the closing checklist shows every v2 obligation done or excused with a reason;
-2. every blind-inventory item not COVERED has a disposition;
-3. the end report has the three separate parts;
-4. findings per window and critical findings are within the range of C13–C16 (14–17 findings): **no fall that cannot be explained by the sources**;
-5. at least 4 of the 5 plants are found, and the settlement records how each was handled;
-6. Professor harness time per window is recorded, and the administrative records take less time than in C16 (measured, not estimated);
-7. no defect found later that a v1.3 safeguard removed in v2 would have caught.
+**Acceptance criteria, in three separate groups** (revision 2). Efficiency never makes up for a failure in group A.
 
-**If any of 1–5 or 7 fails:** return to v1.3 and record why. Criterion 6 alone failing means v2 is clearer but not faster; the Principal decides whether that suffices.
+*A. Research integrity (any failure: the trial fails, return to v1.3):*
+1. **the plant designated critical is found and handled correctly**, whatever the total score;
+2. at least 4 of the 5 plants are found;
+3. **every missed plant is analysed:** why it was missed, and which rule should have caught it;
+4. **finding is not resolving:** for each found plant, the settlement shows the correct treatment (the claim restated, downgraded or moved; dependants reassessed), checked against the sealed key by the Rule Reviewer;
+5. no defect is found later that a v1.3 safeguard removed in v2 would have caught.
+
+*B. Process compliance (a failure is corrected and the window repeated once; a second failure ends the trial):*
+
+6. the closing checklist shows every v2 obligation done or excused with a reason;
+7. every blind-inventory item not COVERED has a disposition, and the top-five hits are each marked same / extends / different (the merged coverage pass, Q6);
+8. the end report has its three parts;
+9. every finding carries a severity on the one scale, with a one-line rationale.
+
+*C. Operational efficiency (measured, never estimated; informs the decision, does not decide it):*
+
+10. Professor harness time and reviewer harness time per window are recorded;
+11. the administrative records take less time than in C16.
+
+**Diagnostic, not a target:** findings per window in C13–C16 were 14–17. A window well below that range is asked one question in the settlement: were the sources cleaner, or did coverage fall? The blind inventory and its dispositions answer it. The count alone decides nothing.
+
+**Decision:** the Principal decides on the evidence: adopt, revise and trial again, or return to v1.3. The trial gives v2 no standing authority. If only C fails, v2 is clearer but not faster; the Principal decides whether that suffices.
 
 ## 10. Open questions for the Principal
 
 | Q | Question | My recommendation |
 |---|---|---|
 | Q1 | May the Professor read **repository records outside the allowed list** as evidence (Repo)? | **ANSWERED** (Principal, 2026-10-19): **yes**; scope **implementation only** (`app/`, `config/`, `routes/`, `database/migrations/`, `tests/`, `scripts/`; excluded: `docs/knowledgeos/` outside the allowed list, sealed/hold-out, secrets, `*.sql`, `*.csv`, logs, `storage/`, `vendor/`, `node_modules/`); **applies with v2 only** (trial or adoption), not under v1.3. Recorded in the decision record; v2 §2.2 |
-| Q2 | **Branches:** merge into theory turns (one limit of 8 sources, the same trigger), keeping the snapshot and prediction mechanics of 32a/32b? | yes |
-| Q3 | **One revision home:** is `BASELINE-REVISIONS.md` closed as history, with `NN.99-change-log.md` plus the old text in the review folder serving the L-4 continuity rule? | yes |
-| Q4 | **Severity scale:** require critical / high / normal (reports since C14 use major/minor)? | yes; one scale, defined by v2 §10 for critical |
-| Q5 | **Planted-gap isolation:** is the commission instruction plus the tool option enough, or should the originals of tested sections be moved out of the reviewers' reach for the test's duration? | instruction + tool first; moving files only if a breach recurs |
+| Q2 | **Branches:** merge into theory turns (one limit of 8 sources, the same trigger), keeping the snapshot and prediction mechanics of 32a/32b? | yes. One mechanism, **two sizes**: a passage check (`branch-consult`, a few passages, for a small factual question) and a full theory turn (whole sources, a deliverable). Both name the question first, record reused vs new evidence, keep snapshots and predictions, and never move the position. More than 8 sources only with the Principal's approval. BRANCH-01's records stay as they are |
+| Q3 | **One revision home:** is `BASELINE-REVISIONS.md` closed as history, with `NN.99-change-log.md` plus the old text in the review folder serving the L-4 continuity rule? | yes. **Reconstruction test [V], 2026-10-19:** for the three integrations so far (§1.12 in C16, §1.13 in C17, §1.14 in C18) the old text is kept in the review folder (`01.1x-OLD-before-integration.md`), and the change-log row gives the change, the reason and the review findings; the settlement holds the dependency reassessment. The change log holds chapter revisions only, not evidence or theory decisions |
+| Q4 | **Severity scale:** require critical / high / normal (reports since C14 use major/minor)? | yes; one scale, all three levels defined in v2 §10.1, each finding with a one-line rationale. Critical triggers investigation and reassessment of dependants, never their automatic invalidation |
+| Q5 | **Planted-gap isolation:** is the commission instruction plus the tool option enough, or should the originals of tested sections be moved out of the reviewers' reach for the test's duration? | instruction + tool exclusion **+ a statement in each report** that the isolation procedure was followed, or how it was breached. Isolation is a control under test, not a proven safeguard. Moving the originals out of reach for the test's duration if a breach recurs, or from the start if the Professor pauses during the review |
 | Q6 | The T2 "coverage pass before writing": merged into the book search and top-5 reading, or kept as its own step? | merged |
 | Q7 | **Approval form:** approve v2 as a trial (§9.2) first, then adopt; or adopt directly? | trial first |
 | Q8 | The register's duplicate entry 38 (V-5): add a correction entry like 24-corr? | yes, at the same time as the v2 entry |
@@ -322,3 +336,22 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 ### 13.4 Still not changed
 
 `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md`, `METHOD-VERSIONS.md`. The proposed additions to the instructions (§3.4) now also need: the blind sequence (v2 §8.2) and re-reading earlier topic sources blind (v2 §3.1).
+
+## 14. Revision 2 (2026-10-19): a second architecture review
+
+**[V] Its limits, as it states them:** it reviewed this report only, not `RULEBOOK-v2-PROPOSED.md` or the repository. Its "verified" points are therefore my verified points, not independently rechecked.
+
+| Point | Done | Verdict |
+|---|---|---|
+| trial outcomes in three groups (integrity · compliance · efficiency); efficiency cannot make up for integrity | §9.2 | adopted |
+| a critical plant must be found, whatever the score; missed plants analysed; finding ≠ resolving | §9.2 A1–A4 | adopted |
+| C13–C16 findings range as a diagnostic, not a target | §9.2 | adopted (the earlier wording read like a target) |
+| Q2: one mechanism, different sizes | §10 Q2 | adopted; v2 §9.3 already allowed passage consultation |
+| Q3: test reconstruction before closing the old file | §10 Q3 | **tested [V]**: passes for the three integrations so far |
+| Q4: define all three levels, rationale per finding | v2 §10.1; §10 Q4 | adopted (high and normal were defined only in the instructions) |
+| Q5: attestation of isolation | §10 Q5 | adopted |
+| Q6: merged, but verified in the trial | §9.2 B7 | adopted |
+| Q8: correction with lineage, by timestamp | §10 Q8 | already the proposal (like 24-corr) |
+| the seven invariants and five domain concepts | — | agreed; each is already a v2 rule (§3.1, §4.2, §4.1, §7, §8.4, §8.5, §1.4). Not added as a separate list, to avoid stating them twice |
+
+**[V] State at this revision:** the reading position is S0100; review C18 (S0097–S0100) has started. **The whole-book review is next**, under v1.3. Its planted-gap test is mine to prepare (§12c); I will apply the isolation lessons to it under v1.3, since they are lessons of a past test, not a v2 rule.
