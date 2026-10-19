@@ -2,12 +2,25 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT IN FORCE.** Written by the Rule Reviewer, 2026-10-19, on the Principal's instruction "Proceed with Rulebook v2 as a proposal. Do not replace or modify the currently authoritative rulebook yet." |
+| Status | **PROPOSED, NOT IN FORCE** (revision 1). Written by the Rule Reviewer, 2026-10-19, on the Principal's instruction "Proceed with Rulebook v2 as a proposal. Do not replace or modify the currently authoritative rulebook yet." |
 | Authoritative until the Principal decides | `RULEBOOK-v1.3.md` and `REVIEWER-INSTRUCTIONS.md`. **The Professor works under v1.3.** Nothing in this file applies yet |
 | Companion | `RULEBOOK-v2-PROPOSAL-REPORT.md`: inventory, mapping table (every v1.3 obligation → its place here), regression check, efficiency estimate, trial, open questions |
 | If approved | replaces `RULEBOOK-v1.3.md` as the operating rules, forward only. v1.3, its amendments, trials and the register stay as history. `REVIEWER-INSTRUCTIONS.md` stays the single home of how a review is done |
 
-*Each requirement appears once. Where a rule has a script that enforces it, the script is named. Rationale and history are in the report, not here. Markers: **[new]** = not in v1.3 · **[changed]** = in v1.3 in another form.*
+*Each requirement appears once. Where a rule has a script that enforces it, the script is named. Rationale and history are in the report, not here. Markers: **[new]** = not in v1.3 · **[changed]** = in v1.3 in another form. Revision 1 (2026-10-19) adds the Principal's answer to Q1 and the refinements accepted from the architecture review (report §13).*
+
+**Every rule serves at least one of four purposes** [new]: **discover** the theory without narrowing it early · establish **validity** · expose **uncertainty** (counterexamples, open choices) · **communicate** the theory faithfully. A rule that serves none is challenged; the report lists the purposes per section.
+
+**Terms** [new; one meaning each]:
+
+| Term | Meaning |
+|---|---|
+| **reading window** | the next sources in index order plus any added sources (§3.3), read, written and reviewed together |
+| **settlement** | the work after a review: every finding gets an outcome, dependencies are reassessed, corrections are made (§8.5). **A settlement is not a theory turn** (v1.3 §6.5 called it a "theory-only turn") |
+| **theory turn** | an investigation of one named theoretical question (§9) |
+| **critical investigation** | a theory turn opened at once by a critical foundational problem (§10) |
+| **consolidation** / **whole-book review** | a review of accumulated work over a stated scope (§8.1) |
+| **blind** | the reviewer writes and hands back its own inventory of the sources **before** it sees any of the Professor's work (book, map, register, brief). Before that it may have only the sources, `RESEARCH-PURPOSE.md` and its instructions |
 
 ---
 
@@ -23,13 +36,14 @@
 1. **Corpus:** only the rows of `CORPUS-ALLOWED.tsv` (D-C1). Sealed lists, the sealed hold-out files and every file not on the list: never. Every read goes through `tmp/tools/close_source.py` (allowed-list check, fingerprint, depth, read log).
 2. **Other evidence**, under §4:
    - outside works and the Principal's brainstorm folder (classed external, 2026-10-19): as now;
-   - **repository records outside the allowed list: only within a scope the Principal authorizes [new; open question Q1]**. Until then, none.
+   - **repository records** [new; Principal, 2026-10-19, Q1: "yes", scope "implementation only", applies with v2 only]: **code and configuration** in `app/`, `config/`, `routes/`, `database/migrations/`, `tests/`, `scripts/`. **Excluded:** all of `docs/knowledgeos/` outside the allowed list; sealed and hold-out material; `.env` and any secret; `*.sql` backups; `*.csv` and other data files; logs; `storage/`, `vendor/`, `node_modules/`. Every read is logged with path, commit and sha256. **Not in force while v1.3 applies.**
 3. **No corpus text** goes to any outside service or search.
 4. **Reviewer access:** before a reviewer starts, one entry in `00-access/ACCESS-RECORD.md` lists the grant and the files of step 1 and step 2. **[changed: the closing line moves to the settlement, §8.5]**
 
 ## 3. Reading
 
-1. **Index order is the coverage line.** Every allowed source is eventually read in index order, or, if it was read earlier out of order, checked against the book when index order reaches it. Only `full` and `skim` rows move the reading position (enforced by `close_source.py`).
+1. **Index order is the coverage line.** Every allowed source is read when index order reaches it. Only `full` and `skim` rows move the reading position (enforced by `close_source.py`).
+   - **A source read earlier out of order** (`topic-full`, `branch-consult`) [changed]: when index order reaches it, it joins that window like any other source and **the reviewer reads it blind again**. Earlier evidence may be reused, but the window's disposition is made against **the source**, not only against the book, since the book may carry an earlier misreading. Branch predictions about it are scored. A discrepancy that cannot be resolved stays open.
 2. **Every source is opened and scanned whole.** The scan, not the index entry, decides the depth:
    - **full:** it carries theory; the whole cycle of §5 applies;
    - **skim:** it repeats earlier material or is purely operational; one line on whether it adds anything. The reviewer reads one skimmed source of the window blind.
@@ -51,15 +65,16 @@
 | **Principal testimony** | a statement by the Principal about the corpus | `[PT-001]`, in `06-theory/PRINCIPAL-TESTIMONY.md` |
 | **own reasoning** | the Professor's derivation, interpretation or conjecture | the premises it rests on (§, CON-ID, anchors) |
 
-**How strong is the claim (epistemic status)?** The existing labels stay, so no book text needs relabelling:
-- **Src:** the corpus states it (provenance corpus, status "stated");
-- **Ext:** an outside work states it;
-- **Repo** [new]: a repository record shows it;
-- **Ded:** it follows from cited premises;
-- **Int:** an interpretation of cited evidence;
-- **Hyp:** a conjecture, not yet supported.
+**Four separate questions, never inferred from one another** [changed]:
 
-A Ded, Int or Hyp names its premises, so its provenance is visible. **No claim is stronger than its evidence.**
+| Question | Values | Where it is recorded |
+|---|---|---|
+| **1. reasoning type:** what kind of claim? | **Src** stated by a source · **Ded** follows from cited premises · **Int** interpretation of cited evidence · **Hyp** conjecture | the label in the text |
+| **2. provenance:** where does the evidence come from? | the table above | the anchor; **Ext** and **Repo** are written as labels in the text where an outside work or a repository record states it (as Ext is now) |
+| **3. review status:** has it survived review? | VALIDATED · PROVISIONAL · INVALID | `CONCEPT-REGISTER.tsv` (not in the prose) |
+| **4. decision authority:** who may settle it? | evidence (factual) · definition (definitional) · Principal or ARB (normative), with its state: open · decided (where) | the fork in the theory map; reserved questions |
+
+**One does not imply another.** A Ded can be INVALID (a wrong step). A Hyp can be well supported and still not a Ded. A reviewer can validate a derivation under its assumptions without the authority to settle a normative question, and without showing that the assumptions hold. No existing book text needs relabelling. **No claim is stronger than its evidence.**
 
 ### 4.2 Rules for each kind of evidence
 
@@ -72,7 +87,13 @@ A Ded, Int or Hyp names its premises, so its provenance is visible. **No claim i
 ### 4.3 Claim strength
 
 - **Scope before recording:** every derived result states its scope and assumptions ("shown for this case", "holds under …"). A source's proposal is not written as an established definition.
-- **Generalisation:** a claim beyond its source's case ("always", "cannot", "the only", a law) is Hyp until a second, independent source or a proof supports it. The case it rests on is named. Sources with a shared origin count as one line of support.
+- **Generalisation** [changed: v1.3 let a second source turn a claim into a Ded]: a claim beyond its source's case ("always", "cannot", "the only", a law) is written as one of four kinds, and its acceptance test is whether **the strength and scope of the conclusion are justified by its evidence and reasoning**:
+  1. **restricted:** stated for the case examined ("shown for S0044's RD-6");
+  2. **empirical generalisation:** supported by independent observations; it stays Hyp or Int, and its support is stated as a count of independent lines. More examples strengthen it; they never make it a Ded or a universal law;
+  3. **derivation:** a Ded from stated premises, valid without a second source; its generality is that of its premises;
+  4. **conjecture:** Hyp, unproven.
+
+  Sources with a shared origin count as one line of support.
 - **Rates:** no rate, interval or percentage without a stated random sample; for a purposive sample, the count only.
 - **Strength scan** before every review (`tmp/tools/strength_scan.py`): each strong word in new text ("always", "never", "only", "all", "none", "necessary", "sufficient", "impossible", "proves") is justified or weakened.
 - **Formal models** are tested on their trivial cases (empty mechanism set, a mechanism that refuses everything, the unchanged state) before they go into the book. A model that a trivial case satisfies lacks "must-do" requirements.
@@ -93,7 +114,11 @@ A Ded, Int or Hyp names its premises, so its provenance is visible. **No claim i
 2. **Layout:** every chapter is a folder of section files `NN.MM-<name>.md` with `NN.00-index.md` and a `TODO.md`; `NN.99-change-log.md` is added when a section is first revised. Revision history lives only in the change log; no revision tags or correction notes in the theory text.
 3. **Rewriting a section of Ch. 0–2** has two steps, one section per window, in the order §1.12 → §1.13 → §1.14:
    1. scaffolding (`form_rewrite.py`): plain language, numbered claims index, open questions, What does not hold, references;
-   2. integration (required): the argument rewritten claim by claim, **each claim keeping its number, meaning, assumptions, evidential limits and status**; evidence that supports or challenges a claim worked into that claim; uncertainty kept explicit where integration would need an unsupported inference; no new claims. The old text is kept in the review folder. `integration_check.py` checks the formatting only; the reviewer checks meaning claim by claim. Length is a diagnostic, not a limit.
+   2. integration (required): the argument rewritten claim by claim, **each claim keeping its number, meaning, assumptions, evidential limits and status**; evidence that supports or challenges a claim worked into that claim; uncertainty kept explicit where integration would need an unsupported inference. The old text is kept in the review folder.
+   - **Three kinds of change** [changed: replaces "no new claims"]:
+     - *editorial:* rephrasing or restructuring without changing meaning: allowed;
+     - *evidence integration:* evidence that supports, qualifies or challenges the claim, with its status and limits kept: allowed;
+     - *substantive:* a new proposition, definition, assumption or derivation, or a changed status. **Allowed only as a marked theory change** ("new in this rewrite", with label, provenance and dependencies), listed in the brief as new theory and reviewed as such. A needed correction is never left out to keep the rewrite "pure". `integration_check.py` checks the formatting only; the reviewer checks meaning claim by claim. Length is a diagnostic, not a limit.
 4. **Book outline:** `BOOK-OUTLINE.md` arranges sections by the RESEARCH-PURPOSE deliverables and shows what is missing; new sections are placed in it when written. `CHAPTER-PLAN.md` stays in force until the Principal decides on `TARGET-TOC.md` (§9.4).
 5. **Defined before used** [changed: made checkable]: a term, identifier or code (for example "lane", "BC-7", "I-4") is defined in the book, or in the glossary, before or where it is first used. The undefined-term check (§8.2) lists candidates.
 
@@ -130,11 +155,13 @@ Only sources read in index order count towards 25 and 100.
 
 ### 8.2 The brief (one file per review, `BRIEF.md`) [changed: STEP8-AND-SCAN renamed; content unchanged plus one check]
 
+**Sequence** [new, stated once]: (1) the reviewer receives the sources (and may consult `RESEARCH-PURPOSE.md`); (2) it writes its own inventory of their theory, omissions and counterexamples included; (3) it hands that inventory back, and it is saved and frozen; (4) only then does it receive the brief below and the Professor's work; (5) disagreements are settled on evidence.
+
 The Professor sends, after the reviewer's blind inventory is saved:
 1. **before:** the relevant earlier sections; **new:** what was added or changed; the whole theory map;
 2. **changed theory of the previous settlement** (window, theory turn or consolidation), so no correction stays unreviewed;
 3. **book search:** existing homes and the top-five hits read;
-4. **dependencies** of each new or changed section, each checked for: definitions preserved · no established result contradicted or silently changed · no necessary concept missing; unverified dependencies marked;
+4. **dependencies** of each new or changed section, each checked for: definitions preserved · no established result contradicted or silently changed · no necessary concept missing; unverified dependencies marked. **This check finds implicit, meaning-level dependencies; the graph (§8.4) finds declared ones and their transitive reach. Neither replaces the other, and neither is repeated twice;**
 5. **strength scan** result;
 6. **undefined-term check** [new]: identifiers and corpus-specific terms in the new text with no definition in the book or glossary (script; candidate list, read by the reviewer);
 7. for a two-step rewrite: old and new text, claim by claim;
@@ -153,6 +180,16 @@ The Professor sends, after the reviewer's blind inventory is saved:
 - **`dependency_graph.py`** runs at every settlement and before every consolidation or whole-book review. When a concept becomes INVALID or changes in substance, it lists every downstream item transitively. **No automatic invalidation:** the Professor reassesses each item in the settlement; the next reviewer checks that. Its limit (explicit references only) is stated in each settlement.
 
 ### 8.5 Settlement (one file per review, `SETTLEMENT.md`)
+
+**A window (or turn) is settled** [new: the acceptance contract] only when all of these are recorded:
+1. every source has a disposition (full / skim with its line / re-read of an earlier topic source, §3.1);
+2. every finding has an outcome (accepted and done · rejected with evidence · open);
+3. every blind-inventory item not COVERED has a disposition (§7);
+4. every listed dependency has an assessment, or is marked **blocked** with its reason;
+5. the checks have run (quotes, strength scan, dependency graph, integration check where it applies);
+6. the next reading position is stated.
+
+An item may stay open, but only with **the role that owns it, the reason, and the next action**. "Settled" means the process is complete. **It never means the theory is valid:** that is the review status of each concept. A commit shows the work is saved, not that it is correct.
 
 The settlement is **the record of the review**. It contains:
 - the findings and what was done with each (accepted · rejected with evidence), and, for two reviewers, which were found by both and which by one only;
@@ -193,12 +230,15 @@ A finding stands unless disproved with evidence. **Engineering supplies evidence
 
 ## 11. End of each turn
 
-1. **Report, in three separate parts, never merged into one figure** [new]:
-   - **source coverage:** sources read in index order (full / skim) out of the allowed total; topic-full and branch-consult reads; the reading position;
-   - **concept coverage:** register counts by status; open forks; open TODOs and SEQ gaps; this window's blind-inventory items and their dispositions (§7);
-   - **theory maturity**, per RESEARCH-PURPOSE deliverable (primitives, laws, kernel/application boundary, forks, kernel type and existence), each as: *not built · sketch · PROVISIONAL · VALIDATED (by review)*, from `BOOK-OUTLINE.md`.
+1. **Report, in three separate parts, never merged into one figure** [new]. They influence one another but do not substitute for one another: reading many sources does not settle a foundational question, and a rewrite can make the book clearer without improving the theory.
+   - **corpus progress:** sources read in index order (full / skim) out of the allowed total; topic-full and branch-consult reads; earlier topic sources re-read in order; the reading position;
+   - **theory progress:**
+     - concept coverage: register counts by status; open forks; open TODOs and SEQ gaps; this window's blind-inventory items and their dispositions (§7);
+     - maturity, per RESEARCH-PURPOSE deliverable (primitives, laws, kernel/application boundary, forks, kernel type and existence): *not built · sketch · PROVISIONAL · VALIDATED (by review)*, from `BOOK-OUTLINE.md`;
+     - what changed: definitions, results, counterexamples, assumptions exposed, forks opened or settled;
+   - **book progress:** sections rewritten (two-step), sections still in the old form, outline gaps.
 
-   Plus what the theory gained (definitions, results, counterexamples, forks), and whether a theory question is ready (§9.5).
+   Plus whether a theory question is ready (§9.5).
 2. **Closing checklist:** each part of the instruction marked done, or not done with the reason.
 3. **Commit** after each settlement: only the Professor's own paths; `git diff --cached --name-status` before, `git show --name-status HEAD` after; the commit ID in the report.
 4. **Session log:** one line per review, pointing to its settlement and commit; it does not repeat the settlement. **CONTEXT** only when direction or state changes. [changed]

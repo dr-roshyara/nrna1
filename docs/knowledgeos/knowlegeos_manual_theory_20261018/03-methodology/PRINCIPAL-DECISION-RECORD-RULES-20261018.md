@@ -295,3 +295,13 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **In short:** one factual or definitional topic; five sources read in full in date order (`topic-full`, not moving the chronological position); section written; independent review with a per-concept verdict and question 6; then a comparison note against group C6 (S0031–S0035).
 - **Reviewer access** for this trial is granted by this approval: the five trial sources, the new section and the theory map, listed in the access record before the reviewer starts.
 - **Not changed:** Rulebook v1.3 §2 and §11 outside the trial; every source eventually opened and logged; no source skipped.
+
+---
+
+## Addendum (2026-10-19): repository evidence (Rulebook v2 proposal, Q1) — APPROVED, applies with v2 only
+
+- **Question** (`RULEBOOK-v2-PROPOSAL-REPORT.md` §10, Q1): may the Professor read repository files outside the allowed list as evidence ("Repo")?
+- **Principal (verbatim):** "Q1: may the Professor read repository files outside the allowed list as evidence, and which paths? yes ." Scope then chosen by the Principal from the options put: **"Implementation only"**; and when it applies: **"With v2 only"**.
+- **Scope:** code and configuration in `app/`, `config/`, `routes/`, `database/migrations/`, `tests/`, `scripts/`. **Excluded:** all of `docs/knowledgeos/` outside `CORPUS-ALLOWED.tsv`; sealed lists, the sealed hold-out files and the hold-out concepts; `.env` and any secret; `*.sql` backups; `*.csv` and other data files; logs; `storage/`, `vendor/`, `node_modules/`. Every read logged with path, commit and sha256.
+- **Applies:** from the start of a v2 trial or v2 adoption, whichever the Principal approves first. **Not in force under Rulebook v1.3.** D-C1 and its exclusions are unchanged.
+- **When it becomes active:** a matching scope entry goes into `00-access/ACCESS-RECORD.md`.

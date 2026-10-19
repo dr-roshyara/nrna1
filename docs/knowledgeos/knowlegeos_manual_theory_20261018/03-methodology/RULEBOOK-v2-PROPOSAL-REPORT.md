@@ -4,7 +4,7 @@
 |---|---|
 | Status | **PROPOSAL, for the Principal's decision.** Nothing here is in force. `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` and `METHOD-VERSIONS.md` are unchanged |
 | Author | the Rule Reviewer session, 2026-10-19 |
-| The proposed manual | `RULEBOOK-v2-PROPOSED.md` (211 lines, 3,442 words) |
+| The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 1 (251 lines, 4,368 words; revision 0 had 211 lines, 3,442 words) |
 | Principle | simplify administration, not reasoning; reduce duplication, not safeguards; keep chronological completeness and conceptual depth |
 
 Every statement below is marked as one of three kinds:
@@ -217,7 +217,7 @@ Every statement below is marked as one of three kinds:
 
 | Item | Basis | Estimate |
 |---|---|---|
-| rule text the Professor must hold | v1.3 4,135 words → v2 3,442 words (−17 %); plus no reading of T2 or the archive for live obligations | **[V]** the word counts; **[A]** the effect on time |
+| rule text the Professor must hold | v1.3 4,135 words → v2 revision 1 4,368 words (**+6 %**; revision 0 was −17 %); but no reading of T2, the archive or the register for live obligations, and the review mechanics of v1.3 §6 are no longer stated twice | **[V]** the word counts; **[A]** the effect on time. Revision 1 buys precision (terms, acceptance contract, four claim questions), not brevity |
 | records per window | the closing line, session-log paragraph and CONTEXT update go; one line added (disposition table) | **[A]** 1–2 minutes of ~8–10 Professor minutes |
 | theory turns | fewer forced turns where no question is ready, but possibly more urgent ones (§10) | **[A]** not predictable; could go either way |
 | review time | unchanged (C16: 549 s harness) | **[V]** for C16 |
@@ -232,14 +232,14 @@ Every statement below is marked as one of three kinds:
 - **When:** after the whole-book review at S0100 has been settled under v1.3 (it is already prepared under v1.3; changing rules during it would mix two regimes).
 - **Scope:** two reading windows (S0101 onward) and the theory turn that v2 §9 opens, if one is ready. v2 is the working text; v1.3 remains the reference for anything v2 does not say.
 - **Before the trial:** the undefined-term script and the `book_search.py` exclude option exist and are tested on a known case (BC-7 in the pre-§6.5.2 text).
-- **Plants (by the Rule Reviewer, key sealed):** one undefined code, one undefined ordinary word used as jargon, and one defect introduced in a settlement change.
+- **Plants (by the Rule Reviewer, key sealed), one per known failure class:** one undefined code and one undefined ordinary word used as jargon (a concept missed in reading); one unsupported generalisation; one downstream claim left unassessed after a change; one defect introduced in a settlement change. **The test shows how the rule handles each case, not only that the rule mentions it.**
 
 **Acceptance criteria (all must hold):**
 1. the closing checklist shows every v2 obligation done or excused with a reason;
 2. every blind-inventory item not COVERED has a disposition;
 3. the end report has the three separate parts;
 4. findings per window and critical findings are within the range of C13–C16 (14–17 findings): **no fall that cannot be explained by the sources**;
-5. at least 2 of the 3 plants are found;
+5. at least 4 of the 5 plants are found, and the settlement records how each was handled;
 6. Professor harness time per window is recorded, and the administrative records take less time than in C16 (measured, not estimated);
 7. no defect found later that a v1.3 safeguard removed in v2 would have caught.
 
@@ -249,7 +249,7 @@ Every statement below is marked as one of three kinds:
 
 | Q | Question | My recommendation |
 |---|---|---|
-| Q1 | May the Professor read **repository records outside the allowed list** as evidence (Repo)? If yes, which paths (for example `app/`, `config/`, `docs/` outside the corpus), and does the hold-out risk accepted in D-C1 extend to them? | yes, for named paths only, logged like corpus reads, never sealed or hold-out material |
+| Q1 | May the Professor read **repository records outside the allowed list** as evidence (Repo)? | **ANSWERED** (Principal, 2026-10-19): **yes**; scope **implementation only** (`app/`, `config/`, `routes/`, `database/migrations/`, `tests/`, `scripts/`; excluded: `docs/knowledgeos/` outside the allowed list, sealed/hold-out, secrets, `*.sql`, `*.csv`, logs, `storage/`, `vendor/`, `node_modules/`); **applies with v2 only** (trial or adoption), not under v1.3. Recorded in the decision record; v2 §2.2 |
 | Q2 | **Branches:** merge into theory turns (one limit of 8 sources, the same trigger), keeping the snapshot and prediction mechanics of 32a/32b? | yes |
 | Q3 | **One revision home:** is `BASELINE-REVISIONS.md` closed as history, with `NN.99-change-log.md` plus the old text in the review folder serving the L-4 continuity rule? | yes |
 | Q4 | **Severity scale:** require critical / high / normal (reports since C14 use major/minor)? | yes; one scale, defined by v2 §10 for critical |
@@ -268,3 +268,57 @@ Every statement below is marked as one of three kinds:
 - **Did not delete or move** any historical file.
 - **Did not read** sealed or hold-out material, or any corpus text.
 - **Did not verify:** the Professor's per-window time; whether step 9 has caught a defect since it was introduced; whether reports C14–C16 kept the main part under ~1,200 words (their total length is 2,145–3,202 words including the appendix).
+
+## 13. Revision 1 (2026-10-19): the architecture review's refinements
+
+The Principal asked whether I agree with a further architecture review, then said "yes revise the RULEBOOK". This revision applies the points I agreed with, to the proposal only.
+
+### 13.1 Verified in v1.3 [V]
+
+| ID | Finding | Evidence |
+|---|---|---|
+| V-17 | **The generalisation rule lets support change the reasoning type:** "Only then may it be written as Ded or as a law" after "a second, independent source or a proof" | `RULEBOOK-v1.3.md` L60 |
+| V-18 | **"Theory turn" has two meanings:** §6.5 "one theory-only turn: settle the findings"; §12b a scheduled investigation | L144; L210–224 |
+| V-19 | **Earlier topic sources are only "checked against the book"** when index order reaches them; a misreading already in the book would be confirmed, not found | L194, L269 |
+| V-20 | "No new claims" in the two-step rewrite has no route for a needed substantive correction | L72 |
+
+### 13.2 What changed in the proposal
+
+| Review point | v2 revision 1 | Verdict |
+|---|---|---|
+| 1 coverage of earlier topic sources | §3.1: re-read blind in the window that reaches it; disposition against the source; predictions scored | adopted |
+| 2 terminology | terms table at the top; a settlement is not a theory turn | adopted |
+| 3 claim metadata | §4.1: four questions (reasoning type, provenance, review status, authority), none implying another; only the first two in the prose | adopted, kept light |
+| 4 acceptance contract | §8.5: six conditions; open items with role, reason, next action; settled ≠ valid; commit ≠ correct | adopted |
+| 5 "no new claims" | §6.3: editorial · evidence integration · substantive (marked and reviewed as new theory) | adopted |
+| 6 blind | terms table and §8.2 sequence; before its inventory, the reviewer sees only the sources, `RESEARCH-PURPOSE.md` and its instructions | adopted, **without** "background context" from the Professor's work |
+| 7 graph vs manual check | §8.2.4: one sentence on what each finds | already in v1.3 §12d; restated once |
+| 8 generalisation | §4.3: restricted · empirical generalisation · derivation · conjecture; strength and scope justified by evidence and reasoning | adopted (fixes V-17) |
+| three levels of progress | §11.1: corpus · theory · book | adopted, replacing revision 0's split |
+| four purposes per rule | header of v2; table 13.3 | adopted |
+| failure-class tests | §9.2 of this report: five plants | adopted |
+| seven research states of a claim | — | **not adopted:** the multi-stage lifecycle you ruled out; three review statuses plus the reasoning type cover it |
+| "the Rule Reviewer tests evidence" | — | **not adopted:** the independent reviewers test; the Rule Reviewer keeps the rules and prepares tests |
+| "544 lines" | — | factual error in the review: v1.3 has 272 lines |
+
+### 13.3 Which purpose each v2 section serves
+
+| v2 § | Discover | Validity | Uncertainty | Communicate |
+|---|---|---|---|---|
+| 1 purpose and authority | | ✓ | | ✓ |
+| 2 access | ✓ | ✓ | | |
+| 3 reading | ✓ | | | |
+| 4 evidence and claims | | ✓ | ✓ | ✓ |
+| 5 cycle | ✓ | ✓ | | |
+| 6 writing | | | ✓ | ✓ |
+| 7 dispositions | ✓ | | ✓ | |
+| 8 review, settlement | ✓ | ✓ | ✓ | |
+| 9 theory turns | ✓ | ✓ | | |
+| 10 critical problems | | ✓ | ✓ | |
+| 11 end of turn | | | ✓ | ✓ |
+
+No section serves none. **[A]** The administrative parts (§2.4 access entry, §11.3 commit, §11.4 session log) serve validity only indirectly, through reconstructability; they are kept for that reason (§7).
+
+### 13.4 Still not changed
+
+`RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md`, `METHOD-VERSIONS.md`. The proposed additions to the instructions (§3.4) now also need: the blind sequence (v2 §8.2) and re-reading earlier topic sources blind (v2 §3.1).
