@@ -322,3 +322,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Test copies** of three in-scope sections, with points removed or distorted: `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/sections/` (§6.4, §8.6, §9.2; neutral file names, so the reviewers cannot tell). Both reviewers receive these copies **instead of** the originals of those three sections; all other sections as frozen.
 - **Answer key** kept outside the workspace until scoring; sha256 `c174485276effc01a10279a47d82666119a107f3c34cdecb425dff08ef5c7077`.
 - The Professor does not open, diff or describe the test copies, and does not tell the reviewers that a test is running.
+
+## Entry 2026-10-19T15:29:45Z: consolidation review S0036–S0065, two reviewers in parallel (Opus, Sonnet), recorded before the reviewers start
+- **Grant:** the Principal's instruction ("Commission both reviewers now, in parallel, on different models (one Opus, one Sonnet), each with a blind step 1, independently, under REVIEWER-INSTRUCTIONS in consolidation mode"). Answer key sealed by the Principal beforehand (entry above).
+- **Step 1, blind (39 sources):** the list in `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/SOURCES.md`.
+- **Step 2, after each inventory is saved:** the sections listed in `SCOPE.md`, as frozen at `adbe16c5c`, except §6.4, §8.6, §9.2, which are given as the files in `review/CONSOLIDATION-S0036-S0065/sections/` (as instructed; the Professor has not opened them); plus the map, the register, the outline, RESEARCH-PURPOSE and the dependent chapters.
+- Read-only; no files written by the reviewers. The reports go to the Principal unsettled.
