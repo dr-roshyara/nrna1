@@ -61,6 +61,17 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
   - **No rate or interval without a random sample:** before any rate, interval or "x % of …", state how the sample was drawn. For a purposive or self-selected sample, give only the count, with no rate and no generalisation.
 - **What does not hold** (Principal, 2026-10-19): refuted claims (INVALID) move out of the main text into the section's closing subsection "What does not hold", each with its ID and the reason. The main text carries only what holds or is open. Applies to new sections now, and to older sections when they are rewritten.
 - **Every chapter is a folder of section files** (`NN.MM-<short-name>.md`) with an index (`NN.00-index.md`). Chapters 0–2, until now single files, are split once by script along their `##` headings. Section numbers are unchanged, and the joined result must be byte-for-byte identical to the original.
+- **Rewriting a section of Ch. 0–2 has two steps** (Principal, 2026-10-19), one section per reading window:
+  1. **Scaffolding** (`tmp/tools/form_rewrite.py`): plain language, a numbered claims index, open questions, "What does not hold", references. The body stays byte-identical.
+  2. **Integration** (required; step 1 alone is not a rewrite):
+     - rewrite the body along the claims index, and **every claim keeps its number**;
+     - appended evidence ("Corpus evidence … (batch …; revision RC-…)") goes into the argument of the claim it supports;
+     - revision tags go only into the chapter's `NN.99-change-log.md`;
+     - refuted claims go only into "What does not hold";
+     - **no new claims; the meaning stays the same.**
+  - **Done when, measured by script:** the section's text has **0 revision tags and 0 inline INVALID marks**, and it is **not longer** than before step 1.
+  - **The reviewer checks both things:** claim by claim against the numbers, that the meaning is unchanged; and that the measures above are met.
+  - Sections that received step 1 only (§1.12, §1.13, §1.14) get step 2 retrospectively, one per window.
 - **Book outline:** `06-theory/manuscript/BOOK-OUTLINE.md` arranges the sections by the deliverables of `RESEARCH-PURPOSE.md`: primitives, laws, the kernel/application boundary, the forks, the kernel's type and existence. It shows what is missing. It is updated at every consolidation review, and new sections are placed in it when they are written.
 - **Labels:** each claim is labelled as the source's statement (**Src**), a derivation (**Ded**), an interpretation (**Int**) or a hypothesis (**Hyp**). No claim is stronger than its evidence. No revision numbers or correction notes appear in the theory text.
 - **Claim-scoping before recording** (Principal, 2026-10-19T10:01:35Z): before each derived result is written, its **scope and assumptions** are stated: "holds under these assumptions", "shown for this case", "sufficient for the present maturity level". A proposal or interpretation from a source is not written as an established definition. This self-check does not replace the independent review.
