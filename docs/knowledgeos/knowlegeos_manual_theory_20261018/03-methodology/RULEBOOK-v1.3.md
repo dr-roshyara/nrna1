@@ -76,6 +76,11 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    **A dependency on a concept without an independent VALIDATED verdict is marked "unverified"** and not treated as established. Check only the relevant dependencies; do not reread the whole book. Fix what the check finds before commissioning the review, and give the reviewer the list of dependencies.
 
    **When a definition or law that other work rests on changes** (entry 55), this check runs **claim by claim** for the downstream derivations, along their "rests on" and § citations; section-level links are for navigation only. The check is done when **every materially affected conclusion has been reassessed**, not when the graph (§12d) has produced its list.
+
+   **Mechanical checks before every review and every settlement** (entry 56; procedures, limits and tests in `06-theory/manuscript/review/WHOLE-BOOK-S0100/RULEBOOK-REVISION-PROPOSAL-S0100.md`; tools read-only):
+   - **R1, register home** (`tmp/tools/register_home_check.py`): every register row whose home is a section file is found there with its CON-ID, and its status tags agree with the register. Every flag is disposed of in the step-8 file: corrected, or explained. A row missing from its home section is a missing claim until shown otherwise.
+   - **R2, undefined terms** (`tmp/tools/undefined_terms.py`): a **candidate list, not a finding**. Every tier-A candidate (book-wide) and every tier-B/C candidate of a new or changed section gets a disposition in the step-8 file: defined, deleted, or explained. Thresholds stay as drafted until the Rule Reviewer's next planted-gap test (Q6).
+   - **In a planted-gap test** the reviewers run R1–R3 on the copy themselves; the Professor does not, so the lists cannot point the Professor to the plants.
 9. **The previous settlement's changes are reviewed too** (Principal, 2026-10-19). Every review brief lists, as changed theory, the text changed in the previous settlement (window, theory turn or consolidation), so no correction stays unreviewed until the next consolidation. *(Evidence: the T3 settlement introduced 3 defects that no reviewer saw afterwards.)*
 
 ## 3. Reading depth (v1.3 item 6)
@@ -167,6 +172,17 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 
    **Refutation adequacy** (entry 55): the reviewer judges each falsification attempt of §2 step 2 as **adequate or inadequate, with the reason**, and gives the strongest counterexample or rival explanation it finds itself. A filled-in line is not proof of serious testing. The Professor puts this paragraph into every review commission until `REVIEWER-INSTRUCTIONS.md` carries it.
 
+   **R4, proof steps behind "adequate"** (entry 56): a falsification attempt on a derivation (Ded, lemma, theorem, or a result built from them) may be judged adequate only with a **proof-step table**: each step, its justification (a stated premise, a definition with its home, an earlier step, or a cited result with its home), and whether each object the step uses is defined in the book. A step using an object the book declares undefined, without stating it as a premise, makes the derivation incomplete: the judgement is then "inadequate: premise missing". Without the table, the judgement is "not assessed". The helper `tmp/tools/proof_step_check.py` supports the table; it never replaces it.
+
+   **R5, severity of a missing premise** (entry 56). A missing premise is one that a proof uses, or a conclusion needs, but the statement does not state. It is **critical** if any of these holds, otherwise **high**; it is **normal** only if N1 holds:
+   - **F1:** a numbered result, or a register concept with status VALIDATED or PROVISIONAL, cites the derivation (its R3 list is not empty);
+   - **F2:** another derivation uses its conclusion as a step;
+   - **F3:** it decides a kernel candidate, a boundary test, a primitive's independence, or a fork marked for the Principal;
+   - **F4:** the missing premise is one the book itself states is false or not established;
+   - **N1:** nothing rests on it and it decides none of F3.
+
+   **Resolved** only when the statement carries the premise, the proof step names it, every result in the R3 list is reassessed and carries the condition, and every affected register row carries it. **A condition recorded only in the register does not resolve the finding.** A critical finding triggers reassessment of each dependant, never their automatic invalidation.
+
    **What the review continues to assess** (Principal, 2026-10-19T10:01:35Z). These are mapped onto the questions above, not added as new ones:
    - the validity of the reasoning and derivations (questions 2–4);
    - whether conclusions are supported by the evidence (the refutation step, with source support where it matters);
@@ -178,6 +194,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    **Division of labour:** the Professor writes what he finds and does not keep a separate log of omissions. The reviewer's blind reading is the check on coverage, and its refutation the check on validity.
 4. The reviewer may disagree, and gives reasons. A finding stands unless disproved with evidence. Every report states that its independence is process independence, not personal independence.
 5. After the review comes one **theory-only turn**: settle the findings and consolidate the sections.
+   - **R3, downstream of every accepted correction** (entry 56; `tmp/tools/inbound_citations.py`): the settlement runs the inbound-citation check on the corrected claim and its concept ID, and lists the result in the correction's row. Each inbound citation is reassessed claim by claim and stated in the row: unaffected, corrected, or to be reassessed. Section-only hits are read, not ignored.
 
 ## 7. Limits
 
@@ -240,8 +257,10 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
 
   Topic rows (`topic-full`) never move the reading position.
 - **A consolidation review every 25 sources read in order.** The reviewer gives verdicts on concepts marked VALIDATED without an independent verdict, and checks the order (SEQ) of the chapters touched since the last consolidation.
+  - **Rotation of older chapters** (entry 57): each consolidation also reviews **one or two older chapters in full**, in a fixed rotation recorded in `BOOK-OUTLINE.md` (the chapters reviewed longest ago first), so that every chapter is reviewed in full about once per 100–150 sources.
+  - **A short cross-chapter integration review** (entry 57) after the consolidation's reviewers: one reviewer reads their reports, `BOOK-OUTLINE.md` and the R3 lists of the corrections they propose, and checks the four cross-chapter questions of §12c.
   - **Two reviewers on different models** (for example Opus and Sonnet), commissioned independently, with neither seeing the other's report. Their findings are compared in the settlement: found by both, found by one only. Points found by one only are checked like any other finding.
-  - **A planted-gap test** with each consolidation: some points are removed from, or distorted in, a copy of sections already written, by the Principal or the Rule Reviewer (never by the Professor). The answer key is sealed (sha256 in the access record) before the review. Plants must leave no traces in the text. The result is reported as a count ("found k of n"), not as a rate. Every planted point is repaired in the book afterwards, whether found or not.
+  - **A planted-gap test at every second consolidation** (entry 57; before: each consolidation), small (3–4 plants), aimed first at the classes missed so far (undefined terms, a removed claim, a stale citation elsewhere): some points are removed from, or distorted in, a copy of sections already written, by the Principal or the Rule Reviewer (never by the Professor). The answer key is sealed (sha256 in the access record) before the review. Plants must leave no traces in the text. The result is reported as a count ("found k of n"), not as a rate. Every planted point is repaired in the book afterwards, whether found or not.
   - *(Principal, 2026-10-19, after the C10 test: found 6 of 7 planted gaps; a second reviewer on another model found about ten real omissions the first review had missed.)*
 - **Research branches (§11)** remain for consulting passages only. A topic turn reads whole sources.
 
@@ -263,7 +282,12 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
 
 ### 12c. Whole-book review (R2)
 
-- **When:** once S0100 has been read in index order, then every 100 sources read in index order. Sources read in topic turns do not count. At that point it replaces the regular consolidation review.
+- **When** (entry 57; replaces "every 100 sources"): the first was held at S0100. From then on, **at milestones only**:
+  - when a RESEARCH-PURPOSE deliverable changes status (for example the primitive set or Req is fixed);
+  - before the book is declared ready for readers;
+  - at the latest **every 500 sources** read in index order (topic-turn reads do not count).
+
+  It replaces the regular consolidation review it coincides with. **The S0100 review is the template** (parts, briefs, frozen copy, isolation audit, two-stage settlement), so a milestone review needs one approval, not a new plan.
 - **Scope:** **all chapters**, not only recent changes:
   - definitions, derivations and assumptions;
   - forks;
@@ -278,6 +302,7 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
     - a law in one chapter that rests on a concept another chapter rejects;
     - the derivation chain from the primitives to the laws, across all chapters;
     - duplicates (one law with two homes).
+  - the integration reviewer receives the R3 lists of the corrections proposed in the part reports (entry 56).
 - **Result:** cross-chapter defects, merged in one settlement; `BOOK-OUTLINE.md` updated.
 - **A proposed target table of contents** (Principal, 2026-10-19), written by the Professor with each whole-book review, in `06-theory/manuscript/TARGET-TOC.md`:
   - **organised by the deliverables of `RESEARCH-PURPOSE.md`, not by reading order.** For example: I problem and foundations · II primitives · III laws and the derivation chain · IV the kernel (type, existence, boundary) · V validation · appendix (open forks, rejected concepts);

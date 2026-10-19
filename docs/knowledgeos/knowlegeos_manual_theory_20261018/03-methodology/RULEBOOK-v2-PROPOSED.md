@@ -222,8 +222,8 @@
 |---|---|---|---|
 | **window review** | after every reading window | one (a 10-source window: split into two parallel commissions) | transition |
 | **theory-turn review** | after every theory turn (§9) | two, on different models, independent | topic |
-| **consolidation** | every 25 sources read in index order | two, on different models, independent; planted-gap test | consolidation |
-| **whole-book review** | at S0100, then every 100 in index order (replaces the consolidation then) | two per part, chapter by chapter; planted-gap test; then one cross-chapter integration review | consolidation, all chapters |
+| **consolidation** | every 25 sources read in index order | two, on different models, independent; plus **one or two older chapters in full, in rotation** (each chapter about once per 100–150 sources); then a **short cross-chapter integration review**; planted-gap test (3–4 plants) **at every second consolidation** | consolidation |
+| **whole-book review** | held at S0100; then **at milestones only**: a RESEARCH-PURPOSE deliverable changes status, the book is declared ready for readers, or at the latest every 500 sources in index order (replaces the consolidation then). The S0100 review is the template | two per part, chapter by chapter; planted-gap test; then one cross-chapter integration review | consolidation, all chapters |
 
 Only sources read in index order count towards 25 and 100.
 
@@ -253,6 +253,14 @@ The Professor sends, after the reviewer's blind inventory is saved:
 
 - **Whole-book cross-chapter review:** one reviewer reads the chapter reports and `BOOK-OUTLINE.md` and checks: one term with different meanings across chapters; a law resting on a concept another chapter rejects; the derivation chain from primitives to laws; one law with two homes.
 - **`dependency_graph.py`** runs at every settlement and before every consolidation or whole-book review. When a concept becomes INVALID or changes in substance, it lists every downstream item transitively. **No automatic invalidation:** the Professor reassesses each item in the settlement; the next reviewer checks that. Its limit (explicit references only) is stated in each settlement.
+
+### 8.4a Mechanical checks R1–R5 (in force in v1.3 since entry 56; carried here)
+
+- **R1, register home** and **R2, undefined terms** run before every review and every settlement; every flag or candidate gets a disposition in the brief file (corrected / defined / deleted / explained). R2 is a candidate list, not a finding. In a planted-gap test the reviewers run them on the copy, never the Professor. (These implement §8.2.6.)
+- **R3, inbound citations** of every accepted correction, listed and reassessed in the correction's settlement row; the integration reviewer receives the lists.
+- **R4:** "adequate" for a derivation needs a proof-step table; an undefined object used without a premise makes it "inadequate: premise missing"; without the table, "not assessed".
+- **R5:** a missing premise is critical if results or derivations rest on it, if it decides a kernel or boundary question, or if the book itself says the premise is undefined or false; normal only if nothing rests on it. Resolved only in the statement, the proof step, every dependant and the register together; a condition in the register alone does not resolve it.
+- Procedures, limits and tests: `06-theory/manuscript/review/WHOLE-BOOK-S0100/RULEBOOK-REVISION-PROPOSAL-S0100.md`.
 
 ### 8.5 Settlement (one file per review, `SETTLEMENT.md`)
 
