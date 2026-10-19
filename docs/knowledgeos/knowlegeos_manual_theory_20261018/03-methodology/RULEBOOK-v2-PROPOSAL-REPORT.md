@@ -4,7 +4,7 @@
 |---|---|
 | Status | **PROPOSAL (revision 2), for the Principal's decision.** Nothing here is in force. `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` and `METHOD-VERSIONS.md` are unchanged |
 | Author | the Rule Reviewer session, 2026-10-19 |
-| The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 2 (273 lines, 4,930 words; revision 1: 251 lines, 4,368 words; revision 0: 211 lines, 3,442 words; v1.3: 272 lines, 4,135 words) |
+| The proposed manual | `RULEBOOK-v2-PROPOSED.md`, revision 2 as of §18 (329 lines, 6,316 words, of which about 600 are the Principal's statement quoted verbatim; v1.3 now 4,710 words with the same statement); earlier: revision 1: 251 lines, 4,368 words; revision 0: 211 lines, 3,442 words; v1.3: 272 lines, 4,135 words) |
 | Principle | simplify administration, not reasoning; reduce duplication, not safeguards; keep chronological completeness and conceptual depth |
 
 Every statement below is marked as one of three kinds:
