@@ -189,7 +189,7 @@
 - **Correction chains (§8.7):** no superseded value asserted as current; moved, not renumbered, as a sufficient condition `[CON-0129 ✓]`; a stopping rule under a branching model, premise unmet `[CON-0130 ~]`; accepting a verification ≠ accepting its object; wrong pen.
 - **Authorization subject (§5.5 C6):** a subject-blind check cannot enforce a rule about subjects `[CON-0131 ✓]`; read by S0067 as the boundary, not a defect.
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings never exercised (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117).
-- **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the reviewer's nature UNKNOWN (question for the Principal).
+- **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
 
 **New topics from the consolidation review (2026-10-19):**
 - **"Authority" has three meanings:** a claim's standing structure (§1.2, CON-0016), an actor's permission or grant (§1.6, act × scope × time), and a justification order (§3.8, CON-0064). To be split into three IDs, so that A1's domain names exactly one.
