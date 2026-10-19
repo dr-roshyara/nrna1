@@ -1,0 +1,49 @@
+# External sources used by the theory
+
+*Every work from outside the corpus that the book uses (Rulebook v1.3 §4, "Concepts from outside the corpus"). One row per work. In the book, these are labelled **Ext** and cited under "External references" at the end of the section. They may analyse, sharpen or criticise the corpus's theory, but never replace what the corpus says.*
+
+| ID | Full citation (author, title, year, edition / section) | Type (textbook · peer-reviewed · standard · other) | Role (tool · benchmark · gap-filler) | Concepts (CON-IDs) | Used in (section) | Assumptions under which it applies here |
+|---|---|---|---|---|---|---|
+
+## Principal's brainstorms (post-snapshot): `docs/knowledgeos/brainstorming/philosophical_questions/`
+
+*Classed as external by the Principal (access record, 2026-10-19T11:26:43Z). Not corpus; **direction, not evidence**. Read in full, in date order, 2026-10-19. Type for all rows: **Principal's brainstorm (post-snapshot)**. Outside works they cite get their own `EXT` row only once the book uses them. Notes per file: `review/EXT-DIRECTION-20261019/NOTES.md`.*
+
+| ID | Path (under the folder above) | Date | sha256 | Lines | Role | Concepts it bears on |
+|---|---|---|---|---|---|---|
+| EXT-001 | `20260923-113749_hegel_upgrade_of_knowledgeos_mathematical_theory.md` | 2026-09-23 11:37 (filename) | `1e6ff51114f175df…` | 903 | direction | kernel as invariants surviving transformation; dimensions as fibres; UNKNOWN(S) indexed; kernel as fixed point of a dialectic (Hegel) |
+| EXT-002 | `20260923-173223_adding_deleuze_logic_of_sense_to_knowledgeos.md` | 2026-09-23 17:32 (filename) | `109ffe3663a43e4b…` | 526 | direction | dimensions as heterogeneous series; UNKNOWN as paradoxical element (Deleuze) |
+| EXT-003 | `20260923-173234_can_deleuze_contribute_to_knowledgeos_technique.md` | 2026-09-23 17:32 (filename) | `fc559d3cb74153de…` | 348 | direction; tool candidate | technique test (trigger · operation · output · criterion); self-correction of EXT-002 |
+| EXT-004 | `20260923-174630_knowledgeos_philosophical_and_technical_review.md` | 2026-09-23 17:46 (filename) | `94d12739e4ad220e…` | 335 | direction (self-review) | "a research program, not yet a theory"; missing objects, morphisms, equations, decidability, sampling, falsifiers |
+| EXT-005 | `20260923-181333_can_foundational_books_generate_replies_after_kernel_analysis.md` | 2026-09-23 18:13 (filename) | `100bbf565da039b5…` | 525 | direction | kernel analysis → constraints → generator → verification; "books constrain, kernel verifies" |
+| EXT-006 | `20260923-184059_expressing_corpus_in_mathematical_logic.md` | 2026-09-23 18:40 (filename) | `903c5a60e2ea7fd0…` | 324 | direction | form expressible, content not; KnowledgeOS ≅ fibration over a lattice (with mathematical errors) |
+| EXT-007 | `20260924-155115_integrating_correct_parts_of_linux_ai_document.md` | 2026-09-24 15:51 (filename) | `24955a3f2d09cbae…` | 496 | direction | capability ≠ authority; AI proposes, never ratifies; technology-neutral foundation |
+| EXT-008 | `20260924-155423_knowledgeos_theory_rewritten_with_brainstorming_contributions.md` | 2026-09-24 15:54 (filename) | `a554c76a994b1abe…` | 650 | direction ★ | kernel defined by problem, boundary, invariants; problem statement; I-Id/Trace/Gov/Use; ablation boundary criterion; quarantine of implementation |
+| EXT-009 | `20260924-155524_is_hegel_logic_included_in_rewrite.md` | 2026-09-24 15:55 (filename) | `b390f0cfd8ec9257…` | 355 | direction | Hegel as form, not content |
+| EXT-010 | `20260924-161833_assessing_two_files_as_formal_scaffold_candidates.md` | 2026-09-24 16:18 (filename) | `b9fd34c3085964de…` | 536 | direction ★ | kernel tuple K = (𝒮, M, I, A); invariant preservation; minimality; KR-01…KR-09; existence question |
+| EXT-011 | `20260924-161927_step01_knowledgeos_theory_complete_derivation.md` | 2026-09-24 16:19 (filename) | `3d1189303bffd2ed…` | 763 | direction ★ | state ≠ representation; state ≠ event; mechanisms partial with ⊥; interface mediation; obs_K |
+| EXT-012 | `20260924-162510_step02_knowledgeos_theory_continued_derivation_research_program.md` | 2026-09-24 16:25 (filename) | `9e5587ff1d093705…` | 601 | direction | phased research program; failure modes; decision rules |
+| EXT-013 | `20260924-163643_comparison_of_derivation_with_gap_theory.md` | 2026-09-24 16:36 (filename) | `6df5071267afb820…` | 490 | direction ★ | gap Δ = unsatisfied requirements; Zero = Δ = ∅; epistemic contract; 10 gap types; Sat |
+| EXT-014 | `20260924-163652_knowledgeos_theory_v2_mathematical_statistical_review.md` | 2026-09-24 16:36 (filename) | `678eb436d5c757ef…` | 566 | direction (self-review) | corrections to the gap theory; Zero ⟺ K ⊨ EC; Sat per class |
+| EXT-015 | `20260924-163705_five_fundamental_open_questions_of_knowledgeos.md` | 2026-09-24 16:37 (filename) | `8a123ee5813bc7c5…` | 453 | direction ★ | the five fundamental open questions (resource, state space, Sat, kernel existence, adjoint string) |
+| EXT-016 | `20260924-163958_what_remains_after_defining_sat_function.md` | 2026-09-24 16:39 (filename) | `e1486acf512b4782…` | 374 | direction | what remains once Sat is defined (R1–R5) |
+| EXT-017 | `20260924-164310_other_philosophies_to_improve_open_questions.md` | 2026-09-24 16:43 (filename) | `4f6116ae9d80c9f4…` | 580 | direction | philosophies per open question; R_K as inferential commitment (Brandom) |
+| EXT-018 | `20260924-174354_theory_of_zero_in_knowledgeos.md` | 2026-09-24 17:43 (filename) | `c1a6b88cf21ea396…` | 438 | direction | zero in Foundations of Mathematics (with errors corrected in EXT-019) |
+| EXT-019 | `20260924-182449_review_of_theory_of_zero_document.md` | 2026-09-24 18:24 (filename) | `f752524f3ecbdb8c…` | 312 | direction (review) | 12 mathematical errors in EXT-018 |
+| EXT-020 | `20260924-182500_response_to_review_of_theory_of_zero.md` | 2026-09-24 18:25 (filename) | `1cc7d9477ca6e801…` | 505 | direction | response accepting 11 of 12; zero as clarifying, not constructive |
+| EXT-021 | `20260924-234610_rigvedic_conception_of_knowledge_integration.md` | 2026-09-24 23:46 (filename) | `785042143a9d82d6…` | 395 | direction | Rigvedic aspects: performative operator, bandhu, cognitive modes, designed ambiguity |
+| EXT-022 | `20260924-234626_rigvedic_theory_of_knowledge_review_and_integration.md` | 2026-09-24 23:46 (filename) | `093867079ced7012…` | 485 | direction | Rigvedic candidate answers to R1–R5 |
+| EXT-023 | `20260924-234751_review_of_rigvedic_theory_of_knowledge_integration.md` | 2026-09-24 23:47 (filename) | `747252647564e351…` | 525 | direction (review) | text-grounded corrections; ritual context; tripartite bandhu |
+| EXT-024 | `20260924-235031_integrating_rigvedic_theory_after_review.md` | 2026-09-24 23:50 (filename) | `c091ce0c70a396f8…` | 584 | direction | acceptance of EXT-023 |
+| EXT-025 | `20260925-003121_review_of_knowledgeos_through_rigveda_as_metaphor.md` | 2026-09-25 00:31 (filename) | `0373883937cdfc4d…` | 335 | direction (review) | Rigveda as metaphor, not formal system |
+| EXT-026 | `20260925-003405_rigvedic_philosophy_to_computer_program.md` | 2026-09-25 00:34 (filename) | `6a6b225d23afa3ca…` | 1292 | direction | Rigvedic computational metaphor; failable performative operator; context constitutive |
+| EXT-027 | `20260925-003533_rigvedic_computational_model_finding_truth_in_corpus.md` | 2026-09-25 00:35 (filename) | `c4f828f98a2cdc1e…` | 967 | direction | propositional vs relational truth; hybrid engine (fabricated accuracy table) |
+| EXT-028 | `# The Polyphallic Field as a Formal Epis` | 2026-09-27 11:27 (file mtime, UTC) | `6db2ea4d9fc9c4e6…` | 714 | direction | proposal/challenge roles; Toulmin ⟨claim, evidence, warrant⟩; knowledge as limit of challenge |
+| EXT-029 | `Yes.md` | 2026-09-27 13:21 (file mtime, UTC) | `4502f4b207fc9595…` | 2259 | direction ★ | ideal epistemic state; finite convergent approximations; coverage ≠ accuracy; unseen-knowledge estimation; four-valued; ML proposes, logic tests |
+
+**Used in the book (2026-10-19):**
+- EXT-013, EXT-014, EXT-015 and EXT-016 in Ch. 5 §5.4 C7 (benchmark of intent);
+- EXT-029 in Ch. 3 §3.10 C8 (gap-filler candidate);
+- all 29 in `RESEARCH-PURPOSE.md` ("What KnowledgeOS should be, and how").
+
+The outside works these files cite (Hegel, Deleuze, Brandom, Belnap, Toulmin, Stewart & Tall, the Rigveda and others) are not yet used by the book, so they get no row of their own.

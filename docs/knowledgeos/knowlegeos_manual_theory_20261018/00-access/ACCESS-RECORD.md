@@ -409,3 +409,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Read-only.
 - *Closing line (2026-10-19T19:02:14Z):* inventory saved; report saved; settled. One commission, one step-2 message. **The run to S0100 is complete; the whole-book review (§12c) is not started.**
 
+
+## Entry 2026-10-19T19:18:23Z: planted-gap test for the whole-book review S0100 (Rulebook §12c), sealed before any reviewer starts
+- **Prepared by** the Rule Reviewer session, not the Professor, on the Principal's instruction ("yes, prepare the planted-gap test"). Base: commit `f7be43070`.
+- **Book under review:** `06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW/`, a **full copy** of the book (all chapters, outline, chapter plan, theory map, register, purpose, external sources, testimony) with its own copy of `book_search.py`, which searches the copy only. Plants are in some of its files; which ones is in the key only. All reviewers receive this copy **instead of** the working book.
+- **Answer key** kept outside the workspace until scoring; sha256 `cd58fe22d367d1b47292a1bfb151a6a8e133db6e29e9f8fb69c82ad3153a454c`. Manifest of the copy (sha256 of all 119 files) also outside the workspace; its sha256 `6c164d80c28cfeb9a8d61eb52a42aa380292262770c71f91f7579b6fabf05976`, so a later change to the copy is detectable.
+- **Isolation:** `REVIEWER-NOTE.md` goes with every commission (copy only; no working chapter files, old texts or git history; no comparing files; a list of files opened and searches run at the end of each report). The reviewers are not told that a test is running.
+- **The Professor** (`README-PROFESSOR.md`): freezes the working book until scoring; does not compare the copy with the working book; settles in two stages: first on the copy, scored by the Rule Reviewer; then applied to the working book.
