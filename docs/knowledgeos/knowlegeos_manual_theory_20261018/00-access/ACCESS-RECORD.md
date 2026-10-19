@@ -315,3 +315,4 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Answer key:** sealed before the reviewer starts, sha256 `077e416235787a17bd7fe9e12a89e7618907bc0513bbb4b33c4d0272475cb7ca`.
 - Run by the coordinating session (Rule Reviewer), not the Professor. No book file is changed.
 - *Closing line (2026-10-19T15:17:27Z):* completeness test scored: found 6 of 7 planted gaps (O1 missed; O3, O5 partly). Files in `06-theory/manuscript/review/TEST-C10-planted-gaps/`.
+- *Closing line (2026-10-19T15:19:31Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.

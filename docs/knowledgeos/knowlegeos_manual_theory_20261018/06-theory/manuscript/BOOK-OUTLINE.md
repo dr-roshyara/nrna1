@@ -33,9 +33,9 @@
 | Rule applicability is three-valued | §2.8 | ~ |
 | A gap is a set of unmet requirements, relative to a contract | §5.4 | ~ |
 | The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a law) | ~ |
-| A subject-blind authorization check cannot enforce a rule about subjects | §5.5 C6 (CON-0131) | ~ (T3) |
-| Differential testing reports only the symmetric difference of blind sets; corroboration counts independent information | §8.6 C2, C4 (CON-0126, CON-0128) | ~ (T3) |
-| Renumbering is safe exactly for identifiers no outside reference binds | §8.7 C2 (CON-0129) | ~ (T3) |
+| A subject-blind authorization check cannot enforce a rule about subjects | §5.5 C6 (CON-0131) | ✓ (T3) |
+| Differential testing reports only the symmetric difference of blind sets; corroboration counts independent information | §8.6 C2, C4 (CON-0126 ✓ for common-mode failures; CON-0128 ~) | ✓ / ~ (T3) |
+| Renumbering is safe exactly for identifiers no outside reference binds | §8.7 C2 (CON-0129, as a sufficient condition) | ✓ (T3) |
 | *Missing:* the derivation from primitives to laws as one chain (consolidation review: the architecture view) | — | — |
 
 ## 3. The boundary: kernel and application
@@ -49,11 +49,12 @@
 | "Kernel" as a homonym (F14) | §6.1 C4; §6.4 C6 | recorded |
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
 | Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
+| **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0 | open fork (T3 critical finding) |
 | *Missing:* any capability tested by all three boundary questions | — | — |
 
 ## 4. The open forks
 
-The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F17, F13a). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17), §5.5 (F13a).
+The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F22, F13a). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17), §5.5 (F13a).
 
 ## 5. The kernel's type and existence
 
