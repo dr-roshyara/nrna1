@@ -1,0 +1,16 @@
+PASS  circular_delegation_without_root_invalid                                  
+PASS  T1_unique_fixed_point_equals_recursion                                    7458 histories
+PASS  L2_locality                                                               
+PASS  T3_soundness_under_completeness                                           
+PASS  P7_effective_implies_recorded                                             
+PASS  same_instant_nonuniqueness_absent_in_template_alphabet                    templates cannot express mutual revocation - reported, not a proof of absence
+PASS  test_same_instant_semantics_not_unique                                    stable assignments under same-instant semantics: 2
+PASS  strict_semantics_resolves_mutual_revocation_by_A0_order                   
+PASS  T4_flip_AUTHORIZED_to_NOT_exists(late_revocation)                         72
+PASS  T4_flip_NOT_to_AUTHORIZED_exists(late_grant)                              2198
+PASS  T6_open_world_completion_always_authorizes                                2611 unauthorized-act cases
+PASS  test_order_from_positions_breaks_soundness                                
+
+Minimal T4 flip ( down ): [('gRa', 'R', 'GRANT', 1), ('gab', 'a', 'GRANT', 2), ('rRa', 'R', 'REVOKE', 1)] pos {'gRa': 1, 'gab': 2, 'rRa': 3} act gab at k 3
+
+32/32 checks passed

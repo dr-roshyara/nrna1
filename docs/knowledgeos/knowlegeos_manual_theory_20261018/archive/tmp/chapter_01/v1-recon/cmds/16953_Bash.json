@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; grep -n \"It supports the layered reading above.\\|^\\*\\*Open:\\*\\* whether the corpus theory is about\" chapter_00/CH-00-foundations.md | cut -c1-120; grep -n \"Each \\\"X ≠ authority\\\" is an instance of this theorem\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-80; grep -n \"Its second rule, that provenance travels into the package, is already required by Ch. 0 §0.7\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-60; sed -n '/^## 1.7 /,/^## 1.8 /p' chapter_01/CH-01-knowledge-authority-execution.md | head -12 | cut -c1-200",
+  "description": "Locate anchors for file-4 integration"
+ },
+ "result": "69:The same ruling withdraws an earlier claim that the system had \"five names\". It assigns the names to **different leve\n73:**Open:** whether the corpus theory is about the theory layer, the platform, or the product. The corpus chapters must\n217:Each \"X ≠ authority\" is an instance of this theorem for one property X. The \n1206:- **If** read access is governed, context assembly must\n## 1.7 Visibility: derivation may narrow, never widen\n\n**The idea.** GA reports one gap that *neither* document set had seen: nothing governs **who may read what** [GA L257–263]. The 16 August work proposed the rule "
+}

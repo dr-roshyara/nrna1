@@ -1,0 +1,202 @@
+### 1.14.1 STATE ≠ AUTHORITY
+
+**The idea (Src, ARB REV 1; V3 L309–323).**
+> Active ≠ Authorized · Approved ≠ Currently authoritative · Exists ≠ Permitted
+
+The new member is **"Approved ≠ currently authoritative"**. A rule can be *Active* on its rule path (RM-3 lifecycle, glossary) yet not currently authoritative, because the authority behind it has lapsed, been revoked or been superseded. "A single status field cannot say that." V3 leaves open whether this needs a second field or "a governed authority lifecycle" (**OQ-11**) [V3 L469].
+
+**Classification:** REFINEMENT of §1.2 and §1.6.
+
+**The lifecycle model it extends (Src, ARB REV 1; V3 L297–307).** V3 carries forward a **three-class structure**, *pre-authority → authoritative → terminal*, and adopts per-type chains as "instances of the 3-class structure, not a replacement":
+- Decision: Proposed → Reviewed → Approved → Implemented → Superseded → Retired;
+- Rule: Draft → Validated → Active → Suspended → Retired;
+- Evidence: Collected → Normalized → Verified → Invalidated.
+
+It also carries forward "3 identity modes", which V3 does not define here (**cited-only, open**). Of the STATE ≠ AUTHORITY family, V3 says that **"Approved ≠ currently authoritative"** is "the one the per-type lifecycles above cannot express" [V3 L317].
+
+*Analysis (Ded).* Sorted by the axes this book keeps apart, the chains mix at least two of them clearly, and several states are **ambiguous** because V3 gives only their names:
+
+| State | Axis it actually belongs to |
+|---|---|
+| Proposed, Draft | **standing**, pre-authority class |
+| Reviewed, Validated | **ambiguous**: pre-authority standing, or a verification event (evidential grade). The names do not decide it |
+| Approved, Active | **standing**, authoritative class (subject to §1.14.1's derivation) |
+| Superseded, Retired | **standing**, terminal class |
+| **Implemented** | **realization** (§1.9): a decision does not become more authoritative by being built |
+| **Collected, Normalized, Verified, Invalidated** (the whole Evidence chain) | **evidential grade** and processing (§1.3), not standing: verified evidence is not thereby authoritative, and invalidated evidence is refuted, not "retired" |
+| **Suspended** | **unclear**: see finding 2 |
+
+Two findings follow:
+1. The chains repeat the fusion this book found in GKC's governance status (§1.2 mapping table): **Implemented** is realization and the **Evidence chain** is evidential grade, beside standing states in the same sequences. Not all their states are "instances" of the three classes; the standing states are, and some states are ambiguous.
+2. **Suspension is not placed by the three classes**. V3's Rule chain has no Suspended → Active edge, so "it can resume" was my assumption, and V3 does not define "terminal". There are two readings:
+   - suspension is an **interruption of validity**, with standing unchanged. That case is already available in Ch. 2 §2.11 ("adopted but not in force"), so no new class is needed;
+   - suspension is a **standing class**, which would need a fourth class if it can be reversed.
+
+   AM-1 lists suspension as a distinct ending (§1.13.3) but does not decide between the two readings. **Open.**
+
+*Counterexample attempt.* Could "Implemented" be a standing, e.g. "in force since built"? Only if building were an act conferring standing, which the axiom excludes (§1.6). Could "Verified" evidence be authoritative? Verification raises evidential grade; adoption is a separate act (Ch. 2 §2.7). Both readings fail, so the analysis stands. **Ded; for targeted review.**
+
+**Independent check (Ind).** The session resolver states the first member in code: "assignment is ACTIVE — operable; **operability is not authorization**" (`.claude/scripts/session-resolve.php` L225).
+
+**Development (Ded): an answer to OQ-11.** With act × scope × time (§1.6), standing becomes **time-dependent and derived**:
+
+> **Corrected 2026-10-18 (batch 3, file 3; §1.16.2).** The first version read: "currently-authoritative(c, t) ⇔ c was adopted by an act ∧ the backing grant is valid at t ∧ c is not superseded at t". **It is refuted given the premise stated below, not by the data alone**. A grant recorded as CONSUMED (§1.13.2) ended *because* its work was delivered, so the formula would strip that work of authority at the moment of delivery. Likewise every decision of an office-holder would lapse when the term ends. The error was to evaluate the grant at the time of **use** instead of the time of the **act**.
+
+*Premise made explicit (Int).* The counterexample rests on a **normative premise**: work done under a grant that was valid when the work was done keeps its standing after the grant **expires or is consumed**, unless a recorded act revokes or supersedes **that work itself** (the claim *c*). This is how offices and mandates ordinarily work. **The data show only that a CONSUMED ending exists.** They do not show how the organisation treats work done under it.
+
+*Counter-position in the sources (Src; V3 L319).* V3 says a rule "may be `Active` in its lifecycle and not currently authoritative — because its authority lapsed, was revoked, or was superseded". Two readings:
+- **Reading 1:** "its authority" is the **grant** behind the rule. Then the grant's lapse, revocation or supersession ends the rule's current authority, which **contradicts** the premise for expiry ("lapsed").
+- **Reading 2:** "its authority" is the rule's **own** standing. Then "lapsed" means the rule's own validity ran out, and the sentence is consistent with the premise.
+
+**Reading 1 is the more natural one.** V3's own rule model lists *Validity* and *Authority Reference* as separate parts of a rule [V3 L495–507], so "its authority" most plausibly points to the referenced authority, not to the rule's validity. V3 does not settle it. The premise therefore stands as an **interpretation that the more natural reading of a source opposes**, not as a result.
+
+**Grants and claims.** §1.13.3(d) asks whether a **delegated grant** ends when its parent grant ends, and leans *yes*. A delegated grant is itself the product of a completed act. So "products survive the end of their grant" cannot be a general law, only a **per-kind policy**: products of one kind may survive while products of another kind (delegated grants) do not.
+
+**In plain words.** A decision counts *today* if three things hold. It was properly made back then: the person had the authority, and acted inside its limits and its time window. It has not run out, and it has not been withdrawn or replaced **by someone entitled to do so**. And the authority behind it has not ended in a way the organisation's policy says should carry over to the decision. The formula below states this precisely. Its most important practical consequence comes first: **today no rule in this organisation cites the grant it was adopted under** [AMS L200–206], **so no rule can currently be *shown* to be authoritative.** It may well be authoritative; the record cannot demonstrate it.
+
+**In business terms: what the organisation needs from this, with one running example.** An organisation has the rule *"the Board Chair may approve a new election procedure"*. Over time it collects records: approvals, cancellations, replacements, corrections. KnowledgeOS must say, for any procedure and any day, whether the organisation should **currently recognise** it, **why**, **on whose authority**, and **what remains uncertain**. Six safeguards follow. Each is part of the model below.
+1. **Who may decide what.** A record says the Chair approved procedure A. The system checks the person, **the kind of decision** they were allowed to make (approve election procedures, not, say, membership rules), the **area** it covers, and whether their permission was **in effect at that moment**.
+2. **A record is not the decision, and that holds for every kind of record.** An entry "the Board cancelled procedure A" proves only that someone wrote it. A cancellation counts only if **it, too,** was made by someone entitled to cancel, inside their area and time. The same applies to an entry that "ends" the **Chair's permission**: if whoever ended it had no right to, the Chair's later decisions are unaffected.
+3. **Late and corrected records.** Records often arrive after the event: a cancellation decided on 1 March may be entered on 10 March. A permission may also be found in March to have been issued in error in January. KnowledgeOS can evaluate either **what the records showed at the time** or **what they show now**; the two answers can differ. **Which view applies, and whether an error-correction reaches back to the beginning, is a policy the organisation must decide** (reserved decisions 1 and 2). The system must not choose silently.
+4. **Authorized is not the same as well-supported.** The Chair may have approved A properly but on wrong figures. The system answers two separate questions: *was it authorized?* (this section) and *was it well-founded?* (§1.17.2).
+5. **Incomplete, conflicting or unverifiable information.** Procedure A may have passed its end date **and** have a disputed cancellation **and** be missing a record of the Chair's permission. The system reports **one headline with all the reasons**, and says "cannot determine" when the gaps could change the answer.
+6. **Nobody can freeze a decision by an unverifiable entry, unless the organisation wants that.** If any recorded cancellation whose authority cannot be checked made a decision undeterminable, anyone could freeze any decision. Whether an unverified cancellation counts at all is a policy choice (reserved decision 6). The model shows both behaviours.
+
+**Five things the answer keeps apart.**
+- **authorized**: made by someone entitled to make it, of the right kind, in the right area, at the right time;
+- **well-supported**: its reasons cite enough evidence (§1.17.2), a separate question;
+- **currently recognized**: authorized, not withdrawn or replaced, not run out, and the authority behind it not ended in a way that matters;
+- **cannot determine**: the records are not enough to say. **Missing evidence is never reported as missing authority**, unless the organisation adopts the rule that records constitute authority (C1);
+- **your decision needed**: two valid rules exist and the organisation has not chosen; the answer is given under each.
+
+*Realistic cases, and what the model answers* (with the reserved choices left open):
+- **unauthorized cancellation:** A stays current; the attempt is on record;
+- **cancellation whose authority cannot be checked:** "cannot determine" or "current, with a warning", depending on reserved decision 6;
+- **unauthorized "ending" of the Chair's permission:** it has no effect; the Chair's later decisions are judged normally;
+- **expired permission:** a decision made **after** the permission ran out was never validly made. Whether decisions made **before** stay current depends on the ending policy (reserved decision 1);
+- **cancellation recorded late:** the answer for acts between the decision and its entry depends on the record view (reserved decision 2);
+- **permission later found to have been issued in error:** from the beginning or from then on, as decided (reserved decision 2);
+- **no adoption on record at all:** "cannot determine" (if records represent authority) or "never adopted" (if records constitute it), alternative C1;
+- **no permission on record:** "cannot determine" or "not validly made", alternative C2;
+- **two conflicting decisions** (A and a later B, both properly made): each is judged **on its own**. Whether B silently replaces A ("later prevails") or both stay current until a recorded decision resolves the conflict is alternative C6. Chapter 2 (§2.3) defines conflict precisely only for **rules**.
+
+**Acts and their records.** The model below speaks about **acts**: events in the world, performed by people (§1.12). The system holds **records** of acts, which are evidence about them, never the acts themselves. Every predicate is evaluated **on the evidence of the records**, under the residual trust assumption of §1.12 that a record faithfully reports its act. A missing record means "not evidenced", not "did not happen" (§1.17.3), **unless** alternative C1 (records constitute authority) is chosen.
+
+**Two time axes (bitemporal).** Every act *x* has:
+- an **act time** *t*ₓ, when it was done;
+- a **record position** *s*ₓ, its place in the one global, gap-free sequence of record entries. No two entries share a position.
+
+An act that **ends** something also has an **effective time**, from which its effect applies. Normally this equals its act time. For an annulment it may be **earlier**: "void from the start". All comparisons of acts use the **total order** (*t*ₓ, *s*ₓ): by act time, and by record position when act times are equal. Intervals are **half-open**, [from, to).
+
+**Notation.** An act *x* has:
+- one or more **actors**;
+- an **activity**: *adopt*, *revoke*, *supersede*, *end-grant* (expiry by decision, revocation, supersession or suspension of a grant), *annul* (of a grant or of an act), *issue-grant*, …;
+- an **object** (a claim, a grant or an act);
+- the claim's **scope** where relevant;
+- its **cited authority**: one or more alternative **bases**, each a set of grants that are jointly required (a disjunction of conjunctions).
+
+Joint bases with several actors express dual control; the recorded "PO/ARB" grants are **one** holder [AMS L61–72], so this is a conceptual case.
+- A **grant** has a holder, permitted activities, a scope, a start and possibly an end of period, all as recorded.
+- The **act window** of a grant at a given record state is [start, first effective terminal ending) minus suspension intervals. Only endings made by **authorized** acts count (safeguard 2). **When judging act *x*, *x*'s own effects are ignored**: an ending that **is** *x*, or is **caused by** *x* (e.g. *x* consumes a single-use grant, or *x* annuls the very grant it relies on). Otherwise an act could invalidate itself, and its authorization would depend on its own outcome.
+- **Root acts.** The regress "every ending needs an authorized act, which needs a grant, which needs …" stops at the **root**. These are acts of the human authority that the organisation's constitution designates as the source of grants: here the PO/ARB, the single real holder in the live record [AMS L61–72], whose acts are referenced, not granted [AMS L214–226]. Root acts are authorized by stipulation. *Who* the root is, is a governance fact the organisation must record, not something the model derives.
+
+**Open parameters (alternatives kept, Section C of the final review).**
+
+| Symbol | Meaning | Values |
+|---|---|---|
+| ρ | record view | *at-the-time*: when judging act *x*, use only entries with position < *s*ₓ · *now*: use all entries |
+| κ | an **unknown** citation (C2): the record says nothing about which grant was relied on (⊥) | *constitutive*: false · *evidential*: undetermined |
+| χ | joint coverage (C4) | *co-signature*: each grant covers activity and scope · *pooled*: the union covers the scope |
+| ω | partial scope overlap (C4) | *whole-or-nothing* · *valid on the intersection* |
+| σ | supersession (C5) | *standalone* · *conditional on the successor being current* |
+| π | grant without a recorded period (C7) | *undetermined* (an analogy to the SC-2 ruling on scope, Ch. 2 §2.8.3, **Int**) · *open-ended until ended* (AMS reads the absence as "on its face, permanent" [AMS L119–122]) |
+| υ | revocation whose authorization is undetermined (brief 6) | *counts as undetermined* · *does not count until evidenced* |
+| P | ending policy, per kind of claim and kind of ending | reserved decision 1 |
+| ι | the reason condition of I-2 (brief 4) | (a) required for validity · (b) not · (c) required for specified activities |
+
+**Definitions (Ded; logic: strong Kleene, values T, F, U).**
+
+> **authorized**(*x*) = T if *x* is a root act. Otherwise:
+> - if the record of *x* **explicitly cites no grant** (cited = ∅): F. Only root acts need no grant;
+> - if the citation is **unknown** (cited = ⊥): F or U according to κ;
+> - else ⋁ over the cited bases *B* of ⋀ of:
+>   - (i) every grant in *B* has *t*ₓ inside its act window, under the record state chosen by ρ;
+>   - (ii) covers(*B*, *x*) under χ and ω;
+>   - (iii) the reason condition under ι.
+>
+> **A grant ending, an act annulment, a revocation or a supersession has effect only if its act is authorized** (with υ deciding how U counts).
+>
+> **currently-authoritative**(*c*, *t*) = ⋁ over adoption acts *x* of *c* with *t*ₓ ≤ *t*, and over bases *B* of *x*, of ⋀ of:
+> 1. *x* authorized **through this *B***, and *x* not annulled with effect by *t*;
+> 2. *t* ∈ the validity of *c* as set by *x*;
+> 3. no effective revocation or supersession of *c* by an act *y* ordered after *x* and with effective time ≤ *t* (supersession subject to σ);
+> 4. *B* intact at *t* under P: no grant in *B* has an effective terminal ending of a kind in P(kind of *c*) after *x* and up to *t*, **other than an ending caused by *x* itself** (e.g. *x* consumed the grant). If suspension ∈ P, no grant in *B* is suspended at *t*. *Timing under ρ = at-the-time:* an ending that was not yet on record when *x* was recorded takes effect, for *x*, from its **own act time**, never retroactively. A backdated annulment therefore cannot reach back past *x*'s recording under this view; it can still end the claim from the moment it was made, if annulment ∈ P.
+
+**Well-definedness (Ded; proof sketch).** "Authorized" depends on endings and annulments, whose effect depends on whether **their** acts are authorized. Under ρ = *now*, a later act can reach back: a backdated annulment affects an earlier act. Circular cases are then possible, e.g. two acts each annulling the grant the other was made under. The definition is therefore taken as the **least fixed point** in the information order (U below T and F), computed from "everything undetermined except root acts". Strong-Kleene connectives are monotone in that order, and the set of acts is finite. So the least fixed point **exists and is unique** (Knaster–Tarski; Kripke's construction for three-valued fixed points). Genuine cycles stay U: the two mutual annulments both come out **"cannot determine"**, which is the honest answer. Under ρ = *at-the-time*, an act's evaluation uses only entries recorded before it, so there are no cycles and the fixed point is reached in one pass along the record order. *Alternative (noted, not used):* forbid retroactive effect across already-recorded acts, which would remove cycles but also remove "void from the start".
+
+> **Status of this formal model in baseline v1 (2026-10-18): conditional, with known formal defects.** An independent review found the following; they are **tracked, not yet repaired** (the correction register is in `CH-01-step1-correction-and-review.md`). Read the claims of existence, uniqueness and totality below as **not established** in these cases:
+> 1. under υ = "does not count until evidenced" the operator is **not monotone**, so a least fixed point need not exist (mutual annulment oscillates). The correct theorem is the least fixed point of a monotone map on a complete partial order (Kleene/Kripke), not Knaster–Tarski;
+> 2. **grant issuance and delegation are not checked.** An unauthorized delegation would produce a working grant, and a parent grant's ending does not reach the child grant's acts. Grants must be modelled as products of acts;
+> 3. **"no adoption on record"** evaluates to F in the formula but is headlined "cannot determine" under C1-b. An **annulled adoption** has no headline. The **recorded end of a grant's period** is not an act, so the window as written never closes by expiry; π is not used in any formula;
+> 4. intervals mix act time with the total order (a same-moment consumption race); ρ is wired into condition (i) only, nested record views are unspecified, and the model has record **positions** but no recording **time**;
+> 5. σ = conditional recurses outside the fixed point; covers(B, x) and the actor–holder link are undefined, and ω has no scope argument;
+> 6. a revoked actor can create a cycle that makes the revoker's acts "cannot determine" (a policy question: should such cycles resolve to U or by causal priority?);
+> 7. the live grant records name an `authority` that may be the **issuer**, not the holder. The resolver states that the holder is "not evaluable from the record" (`session-resolve.php` L268–269).
+>
+> **What still stands:** the separation of act time and time of use; authorized endings; the ending policy P and the other parameters as explicit alternatives; three-valued answers with a headline and reasons; the business safeguards as **requirements** the model must meet.
+
+**The answer: a headline with all reasons (total).**
+- **current**: some adoption satisfies 1–4 (= T). Reasons why other adoptions or bases fail are kept as notes.
+- **cannot determine**: the value is U. This includes **no adoption on record** under C1 = "records represent authority".
+- **not current** (= F), with the headline chosen in **causal order**:
+  - **not validly made**, or **never adopted** under C1 = "records constitute authority";
+  - otherwise the first of: **revoked** · **superseded** · **authority ended** (with ending kind) · **suspended** · **no longer valid** · **not yet valid**.
+
+Every applicable reason is listed below the headline. *Alternative order (C8, noted):* most recent intent first, i.e. revoked or superseded before not validly made. The causal order is used because a claim that never counted should not be headlined as "revoked", as if it once had.
+
+**Properties (Ded, with proofs).**
+1. **Totality.** Every (*c*, *t*) gets exactly one headline. *Proof:* the value is one of T, F, U (unique least fixed point); the three headline cases partition them, and within F the causal list ends with the cases that remain.
+2. **Adding an alternative basis or a further adoption act for *c* never turns current into not current.** *Proof:* current = ⋁ over (*x*, *B*), and T ∨ anything = T. It **can** turn F into U. **This does not hold** for alternatives added to a revoking or ending act: making a revocation better authorized can end a claim.
+3. **Several adoptions make standing grow only.** A re-adoption with narrower validity cannot narrow an earlier unrevoked adoption; narrowing requires revoking the earlier one.
+4. **When the two record views differ.** They give the same value for (*c*, *t*) if no entry relevant to the evaluation is recorded **after** an act it affects. *Proof:* under that condition the record state each act sees under *at-the-time* already contains every entry that *now* would use for it. The views can differ **only** through late-recorded entries or backdated effects: a late cancellation, a late grant ending, a backdated annulment. *(This corrects an earlier claim that only annulment matters.)*
+
+*Re-checking against the cases, including those that broke the previous version (Ded).*
+1. **Alternative grants:** {*g*₁} or {*g*₂} cited; *g*₁ revoked with revocation ∈ P: **current** through *g*₂.
+2. **Joint authority, suspension:** basis {*g*₁, *g*₂}, suspension ∈ P, *g*₂ suspended: **suspended** during the suspension, current afterwards.
+3. **Grant ended before the act:** **not validly made**.
+4. **Consumed grant:** if the adoption itself consumed *g*, the claim stays current; if another act consumed it, the result depends on P.
+5. **Supersession by an invalid successor:** under σ = standalone, **superseded**; under σ = conditional, **current**, with the note "supersession pending a valid successor".
+6. **Annulment of a grant:** with a backdated effective time and ρ = now, claims made under it are **not validly made**. Under ρ = at-the-time they were validly made, because the annulment was not yet on record; whether the annulment ends them **from the time it was made** depends on P.
+7. **Re-adoption after revocation:** current, revoked, then current again.
+8. **Validity ran out and revoked:** headline **revoked**; both reasons listed.
+9. **No cited grant.** With an **explicit** "none" (∅): **not validly made** (unless a root act). With an **unknown** citation (⊥): **cannot determine** (κ evidential) or **not validly made** (κ constitutive).
+10. **Late-recorded cancellation:** revoked 1 March, recorded 10 March. For **another** act that relies on the revoked grant, made on 5 March: under ρ = at-the-time it was authorized (the revocation was not yet on record); under ρ = now it was not. Defined under each view (property 4).
+11. **Unauthorized ending of the Chair's grant:** no effect; the Chair's later approvals are judged normally.
+    **Authorized ending of the Chair's grant** (by a root act or a covering grant): the act window closes at its effective time. Approvals made later are **not validly made**; those made earlier depend on P (case 4 and reserved decision 1).
+    **Delegated authority:** the Chair delegates approval of procedures to the Secretary (a grant issued by the Chair's authorized act, §1.13.3). If the Chair's own grant ends, the Secretary's grant ends with it only if its kind's ending policy says so; §1.13.3(d) leans *yes* for delegated grants, as reserved decision 1.
+12. **Same moment:** an adoption and a revocation share the same act time; record position decides the order. Revocation after adoption: **revoked**. Before: **current** (the revocation preceded the claim).
+13. **Mutual annulment:** **cannot determine** for both acts under ρ = now; a defined order under ρ = at-the-time.
+14. **No adoption on record:** **cannot determine** or **never adopted**, by C1.
+15. **Revocation whose authority cannot be checked:** U under υ = "counts as undetermined", so **cannot determine**; under υ = "does not count until evidenced", **current** with a warning.
+
+Each case gets a defined, explainable answer under every value of the open parameters. Where a value is missing (e.g. who the root is, or the effective time of an annulment), the model reports it as **undetermined**, not as a default. **These checks do not prove the model correct**: they show it is well-defined and keeps the reserved questions open.
+
+**Two readings of AB's exception rule (Src AB L100).** "An exception's validity cannot exceed the approver's authority":
+- **static reading**: the exception's validity lies inside the approver's act window, checked once at *t*ₐ;
+- **dynamic reading**: the exception binds only while the approver's authority lasts, so any ending of that authority ends it. In the notation, P(exception) contains every ending kind.
+
+**The sources lean static without settling it.** AB frames the question as "was the authority valid **at the time of approval**?" [AB L107]. IM's worksheet for expired exceptions marks the reconstruction "n/a — the interval is self-contained" [IM L221], but that concerns the exception's **own** interval, so it bears only weakly on the question. Neither selects a reading; the dynamic reading would decide P for exceptions.
+
+**The grant's act window vs the claim's binding period.** These are different periods belonging to different things: the act window belongs to the **grant**, validity(*c*) to the **claim**. Tying the second to the first is a per-kind policy; AB's rule ties them for exceptions. Tying them for **all** claims would make every decision lapse when the office-holder's term ends, which the two-time form is designed to avoid. *Terminology:* where this book speaks of a grant's "validity period" (e.g. §1.6, refined, point 2), it means its **act window**.
+
+**validity(*c*) for claims that state no period** (e.g. decisions). This book takes validity(*c*) = [*t*ₐ, ∞). That is a **convention** (Int), not a source rule; a different convention changes only the second conjunct.
+
+**Current authority is not standing** (Ded). The axiom says **standing** changes only by recorded acts (§1.6). "Age ≠ authority" is a statement about standing. **Current authority** is derived from standing **plus** time-dependent conditions: the claim's validity, and grant endings in P. So current authority can lapse with time alone while standing is untouched. There is no conflict with the axiom, because the two are different properties. The narrower notion **effective** (Ch. 2 §2.11: standing *adopted* ∧ *t* ∈ validity) is current authority **without** the grant conditions. It is what can be checked for rules today.
+
+Consequences:
+- No second *stored* field is needed. Current authority is **derived** from the record of acts, their cited grants, the endings of those grants and later acts on *c*. A stored copy can drift from the record that determines it; this is IM's point that "a stored `is_valid` boolean is the bug" (§1.16.8).
+- So **my proposed** answer to OQ-11 is a governed lifecycle from which current standing is derived, with no second stored field. V3's phrase "governed authority lifecycle" may mean the **grant's** lifecycle. My answer reads it as the claim's standing over time, plus the cited grants as of the act, plus the policy P. That is a reinterpretation of the question (**Int**), not V3's meaning.
+- **Claims end through their own validity and through revocation or supersession of the claim itself.** Grant endings matter for claims only through P. Without any of these endings, every approval would count forever, which is why V3 needs endings at all (§1.13.2).
+
+*(This section was revised in correction rounds 1–4 after self-review and independent review; the history is in the change log.)*
+

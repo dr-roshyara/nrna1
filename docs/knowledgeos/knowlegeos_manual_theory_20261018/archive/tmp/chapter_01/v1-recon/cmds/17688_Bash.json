@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; F=chapter_01/CH-01-knowledge-authority-execution.md; sed -n '226p' $F | cut -c200-700; sed -n '1127,1133p' $F",
+  "description": "Check §1.6 and §1.16.8 passages"
+ },
+ "result": "plicability, or truth\" [AG L53]. In retrieval terms, embedding similarity measures topical closeness, not whether a claim **applies** here, **binds**, or is **true**. So similarity ranking can never **replace** filtering by visibility, applicability and standing. Filtering must have happened **before the result is used**, whatever the order of computation.) The list is open-ended: the theorem predicts further instances, such as \"popularity ≠ authority\" and \"age ≠ authority\", without new rules. A \n- **from the evaluator:** an evaluator **produces** the reference during the activating transactio"
+}

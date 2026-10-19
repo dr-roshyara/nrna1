@@ -1,0 +1,291 @@
+{
+ "n_sources": 103,
+ "n_authority_sentences": 561,
+ "census": {
+  "currency": [
+   [
+    "standing",
+    156
+   ],
+   [
+    "binding",
+    110
+   ],
+   [
+    "governing",
+    26
+   ],
+   [
+    "in force",
+    16
+   ]
+  ],
+  "ending": [
+   [
+    "superseded",
+    69
+   ],
+   [
+    "withdrawn",
+    63
+   ],
+   [
+    "retired",
+    25
+   ],
+   [
+    "supersedes",
+    20
+   ],
+   [
+    "retire",
+    17
+   ],
+   [
+    "superseding",
+    11
+   ],
+   [
+    "supersede",
+    7
+   ],
+   [
+    "withdrawal",
+    5
+   ],
+   [
+    "withdraws",
+    4
+   ],
+   [
+    "withdraw",
+    4
+   ],
+   [
+    "retires",
+    2
+   ],
+   [
+    "superseded_by",
+    2
+   ],
+   [
+    "revoked",
+    2
+   ],
+   [
+    "withdrawals",
+    2
+   ],
+   [
+    "revokes",
+    2
+   ]
+  ],
+  "authority_noun": [
+   [
+    "authority",
+    655
+   ],
+   [
+    "authorities",
+    47
+   ]
+  ],
+  "authoritative": [
+   [
+    "authoritative",
+    197
+   ]
+  ]
+ },
+ "clusters": [
+  {
+   "cluster": 0,
+   "size": 42,
+   "top_terms": [
+    "authoritative human",
+    "human review",
+    "generated authoritative",
+    "authority generated",
+    "review",
+    "generated",
+    "authoritative",
+    "human",
+    "authority",
+    "conflict"
+   ],
+   "manual_sense_labels": [
+    [
+     "b_document_trust",
+     42
+    ]
+   ],
+   "example": "S0001: Authority Generated — never authoritative without human review"
+  },
+  {
+   "cluster": 1,
+   "size": 196,
+   "top_terms": [
+    "authority",
+    "bc",
+    "role",
+    "governance",
+    "does",
+    "record",
+    "act",
+    "model",
+    "grant",
+    "boundary"
+   ],
+   "manual_sense_labels": [
+    [
+     "none",
+     82
+    ],
+    [
+     "e_flow_or_record",
+     49
+    ],
+    [
+     "mixed",
+     29
+    ]
+   ],
+   "example": "S0001: Both structural candidates are owned by the Decision Authority. So the Reference-Architecture-vs-Meta-Model question is NOT an ownership dispute — it is a scope"
+  },
+  {
+   "cluster": 2,
+   "size": 16,
+   "top_terms": [
+    "conformance",
+    "conformance authority",
+    "adr",
+    "adr aip",
+    "aip",
+    "sb",
+    "assign",
+    "assign conformance",
+    "aip 04",
+    "04"
+   ],
+   "manual_sense_labels": [
+    [
+     "none",
+     11
+    ],
+    [
+     "d_governing_body",
+     2
+    ],
+    [
+     "e_flow_or_record",
+     2
+    ]
+   ],
+   "example": "S0011: \"Its own decision series — ADR-M, distinct from ADR-AIP\" WEAKENED. The ARB participates in both. ADR-M is a scoping device under a shared authority , not a sepa"
+  },
+  {
+   "cluster": 3,
+   "size": 41,
+   "top_terms": [
+    "submitted decision",
+    "submitted",
+    "decision authority",
+    "decision",
+    "authority",
+    "adopted submitted",
+    "candidate adopted",
+    "status candidate",
+    "adopted",
+    "candidate"
+   ],
+   "manual_sense_labels": [
+    [
+     "d_governing_body",
+     38
+    ],
+    [
+     "mixed",
+     3
+    ]
+   ],
+   "example": "S0001: Submitted to the Decision Authority."
+  },
+  {
+   "cluster": 4,
+   "size": 225,
+   "top_terms": [
+    "authority",
+    "governance",
+    "decision",
+    "knowledge",
+    "status",
+    "decision authority",
+    "derived",
+    "owner",
+    "evidence",
+    "yaml"
+   ],
+   "manual_sense_labels": [
+    [
+     "none",
+     113
+    ],
+    [
+     "b_document_trust",
+     58
+    ],
+    [
+     "d_governing_body",
+     26
+    ]
+   ],
+   "example": "S0001: Method rule I-9 governs this whole document: governance-status ⟂ authority. The commission's question decomposes into three columns that must never be conflated"
+  },
+  {
+   "cluster": 5,
+   "size": 41,
+   "top_terms": [
+    "arb",
+    "po",
+    "po arb",
+    "sponsor",
+    "decision",
+    "decision authority",
+    "authority",
+    "person",
+    "sponsor arb",
+    "governance"
+   ],
+   "manual_sense_labels": [
+    [
+     "d_governing_body",
+     21
+    ],
+    [
+     "mixed",
+     16
+    ],
+    [
+     "none",
+     4
+    ]
+   ],
+   "example": "S0011: \"Decision Authority (all ADRs unless noted): Round 39 Methodology Governance ( sponsor + ARB ).\""
+  }
+ ],
+ "probe": {
+  "writes_authority": [
+   "S0067",
+   "S0069",
+   "S0071",
+   "S0073",
+   "S0078"
+  ],
+  "records_not_creates": [
+   "S0067",
+   "S0091"
+  ]
+ }
+}

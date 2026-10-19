@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; F=chapter_01/CH-01-knowledge-authority-execution.md; sed -n '170,186p;220,224p;251,253p;353,362p;446,456p' $F; grep -n \"DE L85\\|five-item\\|OQ-33\\|incomparable\\|filter\" $F | cut -c1-240",
+  "description": "Inspect Ch1 sections claimed corrected"
+ },
+ "result": "**Refinement: what closes a question (Src: DR L14–27, L61–123, L127–133; Ded).** A later consolidation of 29 open questions sorts them by **what they are waiting for before they can be closed**:\n- **nothing**: \"no unresolved dependency; needs only a human act\" [DR L20], for example a naming decision (13 of 29);\n- **another decision first**: two root questions. The register counts 11 items blocked by them, but four of those are not questions (a technology stack, gates, field lists, row statuses), so the roots block **7** questions [DR L86–105];\n- **work not yet done**: an analysis or a complete"
+}

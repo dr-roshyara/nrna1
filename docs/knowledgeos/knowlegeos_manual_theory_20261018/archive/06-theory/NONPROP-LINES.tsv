@@ -1,0 +1,21 @@
+source	lines	reason
+docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	L1,L3	title and banner (standing registered in B3-F1-37)
+docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	L81,L83,L137,L288,L427,L429,L493,L509,L633	section headings
+docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	L653,L655	footer: derivation note and standing (registered in B3-F1-37)
+docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	L1,L3-10	title and governance header table (standing: PROPOSED, AI-generated; in Ch1 source list)
+docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	L12	one-line verdict summarising B3-F2-01 and B3-F2-05
+docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	L258,L260-261,L269	§10 change table header and summary sentence (each change registered in B3-F2-02/-03/-14)
+docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	L291,L293	footer and standing
+docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	L1,L3-9	title and governance header table
+docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	L82,L84-85	section heading and table header
+docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	L197,L199-207,L209	§11 change table: each row summarises a registered item (B3-F3-01, -07, -08, -12, -04, -15)
+docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	L238,L240	footer and standing
+docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	L1,L3-10	title and governance header table
+docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	L120,L182,L250,L366,L376	section headings
+docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	L368-369	table header
+docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	L378-387	bottom line: summarises B3-F4-01, -13, -14, -02
+docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	L391,L393	footer and standing
+docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	L1,L3-9	title and governance header table
+docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	L169,L171-172	section heading and table header
+docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	L179-188	bottom line: summarises B3-F5-01, -02, -03, -06, -10
+docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	L264,L266	footer and standing

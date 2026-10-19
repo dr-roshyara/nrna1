@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; grep -n \"sorts them by \\*\\*what closes them\\*\\*\\|names \\*\\*one of these four kinds\\*\\* of closer\\|\\*\\*No time-to-live may apply to a pinned referent.\\*\\*\\|cannot be deleted\\|The single compiled contract is\" $C | cut -c1-90",
+  "description": "Locate the three passages to correct"
+ },
+ "result": "171:**Refinement: what closes a question (Src: DR L14–27, L61–123, L127–133; Ded).** A lat\n178:- \"what evidence would close it\" in the paragraph above is too narrow. A closing crite\n353:The single compiled contract is \"knowledge feeds authority; it never holds it\" (ARCH-I\n1066:**Retention follows from pinning (Ded; Src DE L398–408).** If a claim pins *d*@*v*, t"
+}

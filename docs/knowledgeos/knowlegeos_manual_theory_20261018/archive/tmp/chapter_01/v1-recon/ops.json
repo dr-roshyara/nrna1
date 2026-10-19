@@ -1,0 +1,296 @@
+[
+ [
+  "16751_Bash.json",
+  "replace",
+  "A **confirmation request** (the mechanism asks, a person decides) is not a block, **provided the person asked holds a grant covering the decision**.",
+  "A **confirmation request** (the mechanism asks, a person decides) is not a block, **provided the person asked holds a grant covering the decision and the confirmation is recorded as an act** (who confirmed, when, under which grant). A confirmation that leaves no record, such as a dismissed dialog box, is a **report**, not an act (INV-A1). It cannot lift a block [PC L159–161]."
+ ],
+ [
+  "16751_Bash.json",
+  "replace",
+  "- **If** read access is governed, context assembly must filter by may-read before relevance (conditional revision of Ch. 0 §0.7, step 2). Otherwise the assembled context leaks what the reader may not know, whatever its relevance.",
+  "- **If** read access is governed, context assembly must filter by may-read before relevance (conditional revision of Ch. 0 §0.7, step 2). Otherwise the assembled context leaks what the reader may not know, whatever its relevance. A later source proposes the same mechanism as a \"context assembly policy\", with the rule that **the policy filters and never elevates**: an assembled context may contain less than the actor could reach, never more [PC L118–128]. This is §1.7's \"derivation may narrow, never widen\" applied to assembly. Its second rule, that provenance travels into the package, is already required by Ch. 0 §0.7 (step 3). Whether read access is governed at all remains open (OQ-25)."
+ ],
+ [
+  "16751_Bash.json",
+  "replace",
+  "> - **IA**: `docs/knowledge_tranfer/20260816_1029_invariant_allocation.md` (AI-generated, PROPOSED; external citations unverified)",
+  "> - **IA**: `docs/knowledge_tranfer/20260816_1029_invariant_allocation.md` (AI-generated, PROPOSED; external citations unverified)\n> - **PC**: `docs/knowledge_tranfer/20260816_1034_policy_catalogue.md` (AI-generated, PROPOSED; external citations unverified)"
+ ],
+ [
+  "16817_Bash.json",
+  "replace",
+  "A gap without such a criterion is not yet actionable knowledge. This suggests a refinement of KnowledgeNeed: the \"unsatisfiable\" state should carry the *criterion that would make it satisfiable*. **Hyp** for the corpus.",
+  "A gap without such a criterion is not yet actionable knowledge. This suggests a refinement of KnowledgeNeed: the \"unsatisfiable\" state should carry the *criterion that would make it satisfiable*. **Hyp** for the corpus.\n\n**Refinement: what closes a question (Src: DR L14–27, L61–123, L127–133; Ded).** A later consolidation of 29 open questions sorts them by **what closes them**:\n- **an act alone**: decidable now, for example a naming decision (13 of 29);\n- **another decision first**: two root questions block 11 others;\n- **work not yet done**: an analysis or a completed artifact;\n- **evidence that does not yet exist**: e.g. a second independent execution.\n\nIts finding is that **13 of 29 were never blocked**. They stayed open because every document raised them and none was authorized to close them [DR L199–201]. *Development (Ded):*\n- \"what evidence would close it\" in the paragraph above is too narrow. A closing criterion names **one of these four kinds** of closer, and questions form a **dependency graph**, so whether a question is blocked can be computed;\n- **an answer is not a closure.** One question was *answered* by building an artifact, yet is \"awaiting only closure\" [DR L127–133]. By the authority axiom (§1.6), an analysis can **answer** a question; only an act **closes** it. A question answered but not closed should be recorded as such, not left \"open\" or silently treated as decided;\n- two questions may be **the same question** in different words [DR L159–160], so questions need identity, like any knowledge item (§1.10)."
+ ],
+ [
+  "16817_Bash.json",
+  "replace",
+  "> - **PC**: `docs/knowledge_tranfer/20260816_1034_policy_catalogue.md` (AI-generated, PROPOSED; external citations unverified)",
+  "> - **PC**: `docs/knowledge_tranfer/20260816_1034_policy_catalogue.md` (AI-generated, PROPOSED; external citations unverified)\n> - **DR**: `docs/knowledge_tranfer/20260816_1040_decision_register.md` (AI-generated, PROPOSED; a consolidation of 29 open questions)"
+ ],
+ [
+  "16884_Bash.json",
+  "replace",
+  "This is §1.14.5 (gates follow ratification) for **modelling**: a model may not settle a question that is still open.",
+  "This is §1.14.5 (gates follow ratification) for **modelling**: a model may not settle a question that is still open.\n\n**Check and effect belong to one atomic change (Src: DE L342–352, L58; Ded).** A later source states the rule for message handling: \"a check performed *before* an effect is not deduplication; it is a race\". The general form: **a condition read at one instant and acted on at another, with nothing guaranteeing it still holds** [DE L352]. The same applies to **authority**. An authorization checked before an act and relied on after it may have ended in between. So the check and the effect it licenses must fall within one atomic change, or the check must be repeated at the effect. The same source adds that an event announcing a change may be published only **after** the change committed; otherwise it reports a state change that did not happen [DE L58]."
+ ],
+ [
+  "16884_Bash.json",
+  "replace",
+  "**The list omits the anchor:** the **record of the human act itself** and the **grant** under which it was made (§1.13).",
+  "**The kinds of event, elaborated by a later source (Src, PROPOSED; DE L78–96).**\n\n| Kind | What it is |\n|---|---|\n| **domain event** | an internal fact in the shared vocabulary |\n| **notification** | an in-process dispatch mechanism, not a contract |\n| **integration event** | crosses a boundary; a versioned, deliberately smaller published contract |\n| **audit event** | an accountability record: actor, policy version, provenance |\n\n\"An audit event may be generated from a domain event but is not identical to it\" [DE L91]. That is a report of an act, not the act (INV-A1), at the event layer. The source also rejects a single vague \"knowledge updated\" event: it carries no domain fact, so **every receiver must re-derive what happened**, which gives many independent interpretations of one fact [DE L15–37]. That is the one-owner principle (P-7) violated by construction.\n\n**The list omits the anchor:** the **record of the human act itself** and the **grant** under which it was made (§1.13)."
+ ],
+ [
+  "16884_Bash.json",
+  "replace",
+  "Supersession as a link (I-7) makes pinning cheap: old versions persist, so *d*@*v* stays resolvable.",
+  "Supersession as a link (I-7) makes pinning cheap: old versions persist, so *d*@*v* stays resolvable.\n\n**Retention follows from pinning (Ded; Src DE L398–408).** If a claim pins *d*@*v*, then *d*@*v* must stay resolvable for as long as the claim may be checked. In particular, a record whose deletion would make a recorded authority act unverifiable, such as the pinned version of the grant behind an exception, cannot be deleted. A later source draws the same conclusion for events: \"retention for governance-critical events is bounded by **reconstructability**, not by operational convenience\" [DE L406]. *Derivation:* reconstructability (premise R, Ch. 0 §0.5) plus pinning implies retention. **No time-to-live may apply to a pinned referent.**"
+ ],
+ [
+  "16884_Bash.json",
+  "replace",
+  "A present reference is evidence of a **claim** of authority, not of authority.",
+  "A present reference is evidence of a **claim** of authority, not of authority.\n\n**Where the reference came from also matters (Src: DE L113–131, L277–301; Ded).** A later source contrasts two activation designs:\n- **from the caller:** the activation receives the approval reference from the caller (`activate(approval_reference)`). It **executes an approval already recorded**;\n- **from the evaluator:** an evaluator **produces** the reference during the activating transaction.\n\n\"A mechanism that produces the approval reference has granted the authority that reference is supposed to record\" [DE L295]. The presence check passes in both cases, so **it cannot detect the difference** [DE L297]. Hence a further condition (Ded): an authority reference must resolve to an act **recorded before, and independently of,** the transaction that relies on it. The source proposes this as a new invariant (its OQ-33)."
+ ],
+ [
+  "16884_Bash.json",
+  "replace",
+  "> - **DR**: `docs/knowledge_tranfer/20260816_1040_decision_register.md` (AI-generated, PROPOSED; a consolidation of 29 open questions)",
+  "> - **DR**: `docs/knowledge_tranfer/20260816_1040_decision_register.md` (AI-generated, PROPOSED; a consolidation of 29 open questions)\n> - **DE**: `docs/knowledge_tranfer/20260816_1044_domain_events.md` (AI-generated, PROPOSED; with addenda on outbox and inbox; external citations unverified)"
+ ],
+ [
+  "16909_Bash.json",
+  "ERROR",
+  "TypeError(\"'F' object is not iterable\")",
+  "import csv\np='IDEA-REGISTER.tsv'; rows=list(csv.DictReader(open(p),delimiter='\\t')); F=list(rows[0].keys())\nS='docs/knowledge_tranfer/20260816_1044_domain_events.md'\ndef row(i,loc,idea,cl,disp,ms,fu='"
+ ],
+ [
+  "16922_Bash.json",
+  "replace",
+  "Hence a further condition (Ded): an authority reference must resolve to an act **recorded before, and independently of,** the transaction that relies on it. The source proposes this as a new invariant (its OQ-33).",
+  "Hence a further condition (Ded): an authority reference must resolve to an act **made and recorded by its human author, independently of the mechanism that relies on it**, never produced by that mechanism. Usually the act is recorded before the relying transaction. If it is recorded in the **same** atomic change, which §1.16.1 permits and even prefers, its record must show the human author, not the evaluator, as its source. The source proposes a narrower version of this as a new invariant (its OQ-33: \"not a value produced during the activating transaction\")."
+ ],
+ [
+  "16986_Bash.json",
+  "replace",
+  "**Classification:** NEW IDEA; a gap in this book as well. Chapters 0–2 govern **standing** (what counts as authoritative) and **grant scope** (who may act). Neither says who may **know**.",
+  "**Classification:** UPDATE OR REFINEMENT of §1.7. *(Revised R1-10: the first version said that \"Chapters 0–2 … neither says who may **know**\". That contradicted §1.7, which already gives the visibility rule vis(d) ⊆ ∩ vis(sᵢ) and treats visibility as a fourth label.)* What IA adds is that the **sources** of 08-16 had not yet turned §1.7's rule into a governed mechanism; the book's own model of read access is in §1.7."
+ ],
+ [
+  "16986_Bash.json",
+  "replace",
+  "- *Candidate* dimension: the confidentiality class of a claim. It is shown independent of **standing** only; it is **not tested** against the governed classification κ, which may already be able to carry it.",
+  "- *Candidate* dimension: the confidentiality class of a claim. **This is the visibility label of §1.7** (\"visibility is a fourth label … orthogonal\"), stated from the grant side: vis(c) is the set of principals whose read grants cover *c*'s class. It is shown independent of **standing** only; it is **not tested** against the governed classification κ, which may already be able to carry it."
+ ],
+ [
+  "16986_Bash.json",
+  "replace",
+  "This rule is directly relevant to *this* research programme. The sealed and hold-out rules that currently block corpus reading are visibility rules in exactly this sense.",
+  "**Necessary, not sufficient: inferred relationships (Src: AG L63–69; Ded; added R1-8).** A later source points out that \"a graph projection must not reveal restricted relationships merely because the connected nodes themselves are visible\", and that **an edge inferred from two visible nodes can disclose a restricted fact that neither node discloses alone** [AG L65, L69]. *Analysis (Ded):* the rule above bounds a derived item's visibility by its **sources**. It cannot see that a **combination** of permitted items may itself be sensitive: the aggregation problem known from database security. So the bound is **necessary but not sufficient**. Derived items (edges, chunks, summaries, assembled contexts) need their **own** visibility classification, which may be stricter than the intersection of their sources. Where no such classification exists, the safe reading is to treat the derived item as undetermined for visibility, not as visible.\n\nThis rule is directly relevant to *this* research programme. The sealed and hold-out rules that currently block corpus reading are visibility rules in exactly this sense."
+ ],
+ [
+  "16986_Bash.json",
+  "replace",
+  "Each \"X ≠ authority\" is an instance of this theorem for one property X.",
+  "Each \"X ≠ authority\" is an instance of this theorem for one property X. *(Example from a later source, added R1-9:* \"a similarity score is only a relevance signal. It is not permission, authority, applicability, or truth\" [AG L53]. In retrieval terms, embedding similarity measures topical closeness, not whether a claim **applies** here, **binds**, or is **true**. So ranking by similarity can only follow filtering by visibility, applicability and standing, never replace it.)"
+ ],
+ [
+  "16986_Bash.json",
+  "replace",
+  "> - **DE**: `docs/knowledge_tranfer/20260816_1044_domain_events.md` (AI-generated, PROPOSED; with addenda on outbox and inbox; external citations unverified)",
+  "> - **DE**: `docs/knowledge_tranfer/20260816_1044_domain_events.md` (AI-generated, PROPOSED; with addenda on outbox and inbox; external citations unverified)\n> - **AG**: `docs/knowledge_tranfer/20260816_1057_artifact_gap_analysis.md` (AI-generated, PROPOSED; gap analysis of remaining artifacts)"
+ ],
+ [
+  "17068_Bash.json",
+  "after_line",
+  "**Same word, different concept.**",
+  "**A census of realization levels (Src, observed; SI L206–231; verified in part; added R1-11).** An inventory of the platform's own mechanisms grades how each of 20 recorded contracts is actually held:\n- **compiled**: 1;\n- **blocking**: 2;\n- **gate or threshold**: about 5;\n- **advisory or reminder**: about 7;\n- **convention**: about 4.\n\nThe single compiled contract is \"knowledge feeds authority; it never holds it\" (ARCH-INV-1). It is realized by a type restriction: the verdict enumeration lets a mechanism emit only PASS, FAIL, WARN and INCONCLUSIVE. The values reserved for review acts are excluded by `Verdict::emittable()` (**verified**: `scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php` L31–33). *Reading (Ded):* this is the realization ladder measured. **Most contracts sit low on it**, and the one principle at its top is the one this book treats as the core authority rule. The same inventory confirms the two verdict vocabularies noted above: `AssessmentService` uses SUPPORTED · PARTIALLY_SUPPORTED · NOT_SUPPORTED · INCONCLUSIVE (**verified**, `scripts/observations/AssessmentService.php` L10–41). The scale for partial support is therefore already in use while the governed verdict vocabulary lacks it (open question OQ-28 of the sources)."
+ ],
+ [
+  "17068_Bash.json",
+  "after_line",
+  "**Generalization (pilot 2, file 5; Ch. 2 §2.8.7).**",
+  "**Evidence from the platform: silent fail-open (Src, observed; SI L117–126, L160–167, L263–273, L334–341, L356, L392; added R1-12).** The inventory records three incidents in which the **enforcement layer failed silently**, each time with a reassuring visible symptom:\n1. a guard printed \"BLOCKED\" but exited with a code that did not block, so \"the destructive command executed regardless\";\n2. a counterfeit tool answered every query with empty output, so the gates \"run on empty configuration and **fail open**: they pass without measuring anything\";\n3. a guard's path could not be resolved, so it \"did not run at all … an absent gate reports nothing and blocks nothing\".\n\nTo these come a component whose header describes a file path its code does not write, and a registry entry \"planned\" for five weeks for a mechanism that does not exist: \"the registry describing an intention, not an inventory\" [SI L392]. *Reading (Ded):* every one is a **self-report diverging from behaviour**, the case this section describes, found in the platform's own enforcement. The platform's own cure is a **meta-rule**: \"a governance gate must **refuse to run** when it cannot read its policy\" (**verified**, `scripts/lib/config-guard.sh` L6). In the terms of Ch. 2 §2.8.8, a gate whose policy is unreadable is in E6(c) and must fail closed. The inventory notes that the cure is applied only to some gates [SI L273]."
+ ],
+ [
+  "17068_Bash.json",
+  "after_line",
+  "**Classification:** REFINEMENT of §1.11 (ownership) and of the invariants I-1 and I-7",
+  "**One owner, possibly several mechanisms (Src, observed; SI L293–332; Ded; added R1-13).** The platform shows both cases:\n- **duplicate ownership**: one invariant (domain-layer purity) enforced by a blocking gate and by an advisory reminder that do not reference each other, with \"no contract stating which is authoritative\" [SI L300]. That is the P-7 failure;\n- **defence in depth**: one contract (the repository is the single source of truth) enforced by two mechanisms, one of which names the other as its \"companion control\" [SI L332].\n\n*Distinction (Ded):* \"one owner per invariant\" does not forbid several enforcement mechanisms. It requires that **one** of them is declared authoritative, or that their relation is **declared**. The difference between duplication and defence in depth is a recorded relation, not the number of mechanisms."
+ ],
+ [
+  "17068_Bash.json",
+  "replace",
+  "> - **AG**: `docs/knowledge_tranfer/20260816_1057_artifact_gap_analysis.md` (AI-generated, PROPOSED; gap analysis of remaining artifacts)",
+  "> - **AG**: `docs/knowledge_tranfer/20260816_1057_artifact_gap_analysis.md` (AI-generated, PROPOSED; gap analysis of remaining artifacts)\n> - **SI**: `docs/knowledge_tranfer/20260816_1144_script_capability_evidence_inventory_v1.md` (AI-generated evidence inventory for the ARB; claims graded OBSERVED / INFERRED; key claims re-verified in code here)"
+ ],
+ [
+  "17093_Bash.json",
+  "replace",
+  "- **compiled**: 1;\n- **blocking**: 2;\n- **gate or threshold**: about 5;\n- **advisory or reminder**: about 7;\n- **convention**: about 4.",
+  "- **compiled**: 1;\n- **blocking**: 2;\n- **checked by a gate, threshold, error, enumeration, structural rule or fail-closed guard**: 8;\n- **advisory or reminder**: 6;\n- **convention only**: 3."
+ ],
+ [
+  "17132_Bash.json",
+  "append",
+  "| 2026-10-18 | **Batch 4** (PC, DR, DE, AG, SI): baseline revisions R1-1…R1-13 (`BASELINE-REVISIONS.md`): §1.14.5 recorded confirmation; §1.17.5 filter-never-elevates and repaired contradiction with §1.7; §1.4 what closes a question, answered ≠ closed; §1.16.1 check-and-effect atomic, one owner with several mechanisms; §1.16.4 event kinds; §1.16.6 retention from pinning; §1.16.8 provenance of approval references; §1.7 visibility bound necessary not sufficient; §1.6 relevance ≠ authority example; §1.9 realization census (verified); §1.12 silent fail-open evidence | batch 4 |\n",
+  null
+ ],
+ [
+  "17218_Bash.json",
+  "replace",
+  "A later consolidation of 29 open questions sorts them by **what closes them**:\n- **an act alone**: decidable now, for example a naming decision (13 of 29);\n- **another decision first**: two root questions block 11 others;\n- **work not yet done**: an analysis or a completed artifact;\n- **evidence that does not yet exist**: e.g. a second independent execution.",
+  "A later consolidation of 29 open questions sorts them by **what they are waiting for before they can be closed**:\n- **nothing**: \"no unresolved dependency; needs only a human act\" [DR L20], for example a naming decision (13 of 29);\n- **another decision first**: two root questions block 11 others;\n- **work not yet done**: an analysis or a completed artifact;\n- **evidence that does not yet exist**: e.g. a second independent execution.\n\nThese are four kinds of **prerequisite**. In the register, the **closing step itself is always an act**."
+ ],
+ [
+  "17218_Bash.json",
+  "replace",
+  "- \"what evidence would close it\" in the paragraph above is too narrow. A closing criterion names **one of these four kinds** of closer, and questions form a **dependency graph**, so whether a question is blocked can be computed;",
+  "- \"what evidence would close it\" in the paragraph above is too narrow. A closing criterion should name **what must be in place before the closing act** (nothing, a prior decision, work, or evidence). Questions form a **dependency graph**, so whether a question is blocked can be computed;\n- *Open (different question types):* for a **decision question** (what the organisation will do or adopt), closure is an act. For a **factual or research question**, evidence can *answer* it, but recording that answer as accepted is still an act, because it changes standing. Whether some factual questions may be treated as closed by evidence alone, without an act, is not settled here;"
+ ],
+ [
+  "17218_Bash.json",
+  "replace",
+  "The single compiled contract is \"knowledge feeds authority; it never holds it\" (ARCH-INV-1). It is realized by a type restriction: the verdict enumeration lets a mechanism emit only PASS, FAIL, WARN and INCONCLUSIVE. The values reserved for review acts are excluded by `Verdict::emittable()` (**verified**: `scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php` L31–33).",
+  "The single compiled contract is \"knowledge feeds authority; it never holds it\" (ARCH-INV-1). It is realized by a type restriction: the verdict enumeration lets a mechanism emit only PASS, FAIL, WARN and INCONCLUSIVE. The values reserved for review acts are excluded by `Verdict::emittable()` (**verified by reading the code**: `scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php` L31–33; not tested by execution). *What this establishes, and what it does not:* it guarantees **one boundary** of the invariant, namely that a verdict-emitting mechanism of this library cannot output a review-act verdict. It does **not** establish the whole invariant. Other mechanisms can still produce the effects of authority, e.g. a gate switched to blocking by configuration (§1.14.5)."
+ ],
+ [
+  "17218_Bash.json",
+  "replace",
+  "In particular, a record whose deletion would make a recorded authority act unverifiable, such as the pinned version of the grant behind an exception, cannot be deleted.",
+  "In particular, a record whose deletion would make a recorded authority act unverifiable, such as the pinned version of the grant behind an exception, cannot be deleted **while that act may still need to be checked**."
+ ],
+ [
+  "17218_Bash.json",
+  "replace",
+  "*Derivation:* reconstructability (premise R, Ch. 0 §0.5) plus pinning implies retention. **No time-to-live may apply to a pinned referent.**",
+  "*Derivation:* reconstructability (premise R, Ch. 0 §0.5) plus pinning implies retention **for as long as the pinning claim may be checked**. No time-to-live may end it earlier. **Permanence does not follow from this alone.** It follows only with a further assumption: that recorded authority acts must remain checkable **indefinitely** (for audit, dispute or history). That is an organisational retention policy, not derived here. The source asserts permanence for its \"governance-critical\" events [DE L406]."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "**A census of realization levels (Src, observed; SI L206–231; verified in part; added R1-11).** An inventory of the platform's own mechanisms grades how each of 20 recorded contracts is actually held:",
+  "**A census of enforcement modes (Src: SI L206–231, graded OBSERVED by SI except K-14 and K-15, which SI grades INFERRED; added R1-11, corrected after the batch review).** An inventory of the platform's own mechanisms records **how** each of 20 contracts is enforced. This is a census of **enforcement mode**, not of realization level: Ch. 2 §2.9 keeps the two apart (an executable check can still be advisory). The counts:"
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "- **checked by a gate, threshold, error, enumeration, structural rule or fail-closed guard**: 8;",
+  "- **checked by a gate, threshold, error, enumeration, structural rule, fail-closed guard, or an \"exit 2 = unruled\" result**: 8;"
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "It is realized by a type restriction: the verdict enumeration lets a mechanism emit only PASS, FAIL, WARN and INCONCLUSIVE. The values reserved for review acts are excluded by `Verdict::emittable()` (**verified by reading the code**: `scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php` L31–33; not tested by execution). *What this establishes, and what it does not:* it guarantees **one boundary** of the invariant, namely that a verdict-emitting mechanism of this library cannot output a review-act verdict. It does **not** establish the whole invariant. Other mechanisms can still produce the effects of authority, e.g. a gate switched to blocking by configuration (§1.14.5). *Reading (Ded):* this is the realization ladder measured. **Most contracts sit low on it**, and the one principle at its top is the one this book treats as the core authority rule. The same inventory confirms the two verdict vocabularies noted above: `AssessmentService` uses SUPPORTED · PARTIALLY_SUPPORTED · NOT_SUPPORTED · INCONCLUSIVE (**verified**, `scripts/observations/AssessmentService.php` L10–41). The scale for partial support is therefore already in use while the governed verdict vocabulary lacks it (open question OQ-28 of the sources).",
+  "*What \"compiled\" amounts to (verified by reading the code, not by execution).* The verdict enumeration declares all seven values. `Verdict::emittable()` is a list of the four values a mechanism may emit (`Verdict.php` L31–33), and the actual enforcement is a **runtime exception** when an `Assessment` is created with a reserved value (`Assessment.php` L38–42). So it is **one runtime guard on one code path**: an `Assessment` object cannot carry a review-act verdict. It is **not** a compile-time guarantee, and it does **not** establish the invariant \"knowledge feeds authority, never holds it\" in general. Other code can reference reserved values directly, other vocabularies are unconstrained, and other mechanisms can produce the effects of authority (e.g. a gate switched to blocking by configuration, §1.14.5). *Reading (Int):* 11 of the 20 contracts are enforced by something stronger than advice or convention; 9 rely on advice or convention. *Two facts about verdict vocabularies, stated as facts only:* `AssessmentService` emits SUPPORTED · PARTIALLY_SUPPORTED · NOT_SUPPORTED · INCONCLUSIVE as plain strings (`AssessmentService.php` L10–41), and a source proposes a third vocabulary with UNKNOWN and REFUTED [PC L175]. Whether the governed verdict vocabulary should admit partial support (OQ-28) is not decided by either fact. Decision B above keeps vocabularies of different kinds apart."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "*Reading (Ded):* every one is a **self-report diverging from behaviour**, the case this section describes, found in the platform's own enforcement.",
+  "*Reading (Ded):* in each case a **declaration diverged from behaviour**: a printed message, a declared hook wiring (incident 3 produced no report at all; the divergence was between the wiring declaration and what ran), a header, or a registry entry. That is the case this section describes, found in the platform's own enforcement."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "The inventory notes that the cure is applied only to some gates [SI L273].",
+  "The inventory notes that the cure is applied only to some gates [SI L273]. *A limit of the cure (verified, `scripts/design-check.sh` L42–46):* the design gate fills **missing** settings with hard-coded defaults (e.g. threshold 150, `exit_on_fail` false). An absent policy value is therefore silently replaced by a specified one, the failure Ch. 2 §2.8.8 names (\"E2 silently replaced by a specified value\"). The guard catches unreadable values, not missing ones."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "- **duplicate ownership**: one invariant (domain-layer purity) enforced by a blocking gate and by an advisory reminder that do not reference each other, with \"no contract stating which is authoritative\" [SI L300]. That is the P-7 failure;",
+  "- **potential duplicate ownership** [SI L300]: domain-layer purity is checked by a blocking gate and touched by an advisory reminder that do not reference each other, with \"no contract stating which is authoritative\". Two readings: (i) one invariant with two owners, the P-7 failure; (ii) the inventory itself lists them under **different contracts** (K-11 domain purity; K-6 the seven DDD principles, of which purity is one), so they **overlap** rather than duplicate [SI L215, L220];"
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "The source proposes a narrower version of this as a new invariant (its OQ-33: \"not a value produced during the activating transaction\").",
+  "*This differs from the source, and the difference is a trade-off (two concepts, kept):* the source forbids an approval reference that is \"a value produced during the activating transaction\" (its OQ-33) [DE L301]. That rule can be **checked by machine** from transaction boundaries, but it excludes a human approval recorded atomically with its effect. The book's condition allows that case, but relies on **recorded authorship**, which ultimately rests on the trust assumption of §1.12. Neither is a narrower version of the other."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "This is §1.14.1's \"derived, never stored\" (I-9), reached independently.",
+  "This is §1.14.1's point that current authority is derived and never stored, reached independently."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "**The list omits the anchor:** the **record of the human act itself** and the **grant** under which it was made (§1.13). In this theory every standing transition must point to one (§1.6), so it is a sixth kind of record, and the only one that is *not* produced by the system.",
+  "**AB's five-item list omits the anchor:** the **record of the human act itself** and the **grant** under which it was made (§1.13). In this theory every standing transition must point to one (§1.6), so it is a sixth kind of record. It is the only one whose **act** is not produced by the system; its record, like all records, is (§1.12)."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "| **audit event** | an accountability record: actor, policy version, provenance |",
+  "| **audit event** | an accountability record: actor, policy version, request identity, provenance, integrity protection [DE L85] |"
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "*Analysis (Ded):* the rule above bounds a derived item's visibility by its **sources**.",
+  "*Analysis (Ded):* the example covers **two cases**. (i) A **stored** restricted edge between two visible nodes: this is incomplete lineage, and the intersection bound handles it if the edge itself is counted among the sources. (ii) An **inferred** edge, computed from visible items only: the aggregation case. The rule above bounds a derived item's visibility by its **sources**."
+ ],
+ [
+  "17295_Bash.json",
+  "replace",
+  "So ranking by similarity can only follow filtering by visibility, applicability and standing, never replace it.)",
+  "So similarity ranking can never **replace** filtering by visibility, applicability and standing. Filtering must have happened **before the result is used**, whatever the order of computation.)"
+ ],
+ [
+  "17312_Bash.json",
+  "replace",
+  "- **another decision first**: two root questions block 11 others;",
+  "- **another decision first**: two root questions. The register counts 11 items blocked by them, but four of those are not questions (a technology stack, gates, field lists, row statuses), so the roots block **7** questions [DR L86–105];"
+ ],
+ [
+  "17312_Bash.json",
+  "replace",
+  "These are four kinds of **prerequisite**. In the register, the **closing step itself is always an act**.",
+  "These are four kinds of **prerequisite**, and they can combine. Some questions need **all** of several (one waits on two decisions [DR L103, L105]); others need **any one** of several (\"a second lineage **or** external review\" [DR L123]). In the register, the **closing step itself is always an act**."
+ ],
+ [
+  "17312_Bash.json",
+  "replace",
+  "- *Open (different question types):* for a **decision question** (what the organisation will do or adopt), closure is an act. For a **factual or research question**, evidence can *answer* it, but recording that answer as accepted is still an act, because it changes standing. Whether some factual questions may be treated as closed by evidence alone, without an act, is not settled here;",
+  "- *Two closure rules, by kind of question (Ded; supported by the register's own examples):*\n  - a **decision question** (what the organisation will do or adopt) closes by a **valid act** alone, once its prerequisites are met;\n  - a **factual or research question** (e.g. \"is the link verified?\" [DR L122]) closes only by **evidence meeting the standard of its kind** (§1.16.8), **recorded** by an act. No act can make it true; the act records that the evidence meets the standard.\n\n  Whether some factual questions may be treated as closed by evidence without any recording act is not settled here;"
+ ],
+ [
+  "17312_Bash.json",
+  "replace",
+  "Supersession as a link (I-7) makes pinning cheap: old versions persist, so *d*@*v* stays resolvable.",
+  "Supersession as a link (I-7) makes pinning cheap: old versions persist, so *d*@*v* stays resolvable.\n\n**Pinning applies to the deciding logic too, and to identities (Src: PC L67–69; DE L364–368).** A decision is reconstructable only if **both** its inputs **and the version of the logic that decided** are recorded: \"a policy whose rules changed silently makes every prior decision unexplainable\" [PC L67]. The same discipline gives idempotency: \"identity must include the version of what was read\" [DE L368]."
+ ],
+ [
+  "17579_Edit.json",
+  "replace",
+  "which gives many independent interpretations of one fact [DE L15–37]. That is the one-owner principle (P-7) violated by construction.",
+  "which gives many independent interpretations of one fact [DE L15–37]. That is the one-owner principle (P-7) violated by construction.\n\nTwo further constraints from the same source (Src, PROPOSED; added after batch-4 review F23):\n- **a projection may emit a notification that work is needed, never a fact others treat as truth** [DE L174]. This is the sink rule of §1.14.4 at the event layer;\n- **ordering may not be assumed unless the contract guarantees it** [DE L380]. Under INV-A3 an unordered stream is a fact that consumers must handle. This is why the formal model of §1.14.1 needs a **recorded** order of acts (repair input, `CH-01-step1-correction-and-review.md` §7)."
+ ],
+ [
+  "17629_Bash.json",
+  "append",
+  "| 2026-10-18 | **Batch-4 independent review corrections** (R1-11b … R1-20 in `BASELINE-REVISIONS.md`): §1.9 census recast as enforcement modes, \"ladder measured\" and \"most sit low\" withdrawn, \"compiled\" re-graded as one runtime guard on one path, INFERRED rows marked, third verdict vocabulary noted (F1–F3, F12, F18); §1.12 declaration vs behaviour, design-check defaults (F15, F17); §1.16.1 potential duplicate ownership, two readings (F6); §1.16.8 disagreement with DE kept as a trade-off (F11); §1.16.4 referent fixed, audit fields, projection notification and no assumed ordering (F14, F23); §1.7 stored vs inferred edge (F20); §1.6 filtering before use (F19); §1.4 prerequisites vs closing act, conjunctions/disjunctions, two closure rules, count 7 (F5); §1.16.6 policy-version pinning, idempotency identity (F22a, F23) | batch-4 review |\n",
+  null
+ ],
+ [
+  "17641_Bash.json",
+  "replace",
+  "(R1-11b … R1-20 in `BASELINE-REVISIONS.md`)",
+  "(R1-3b, R1-5a, R1-6b, R1-7a, R1-8a, R1-9a, R1-11b, R1-12a, R1-13a in `BASELINE-REVISIONS.md`)"
+ ],
+ [
+  "17641_Bash.json",
+  "ERROR",
+  "ValueError('substring not found')",
+  "p='chapter_01/CH-01-knowledge-authority-execution.md'\ns=open(p).read()\nold='(R1-11b … R1-20 in `BASELINE-REVISIONS.md`)'\nassert s.count(old)==1\ns=s.replace(old,'(R1-3b, R1-5a, R1-6b, R1-7a, R1-8a, R1-"
+ ],
+ [
+  "17767_Bash.json",
+  "ERROR",
+  "ValueError('substring not found')",
+  "p='CONTEXT.md'; s=open(p).read()\nreps=[\n(\"Repair proposed for the batch-4 checkpoint |\",\"Revised since by `06-theory/manuscript/BASELINE-REVISIONS.md` (batch 4; Principal's checkpoint review; independ"
+ ]
+]

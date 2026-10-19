@@ -1,0 +1,19 @@
+case 1    AGREES                 v1: current  |  ALM: True  - ALM is existential over grants; v1 uses CITED bases (see case 9)
+case 2    NOT-EXPRESSIBLE        v1: suspended during suspension  |  ALM: n/a  - ALM has no joint bases (C4) and no suspension ending kind
+case 3    AGREES                 v1: not validly made  |  ALM: False  
+case 4    NOT-EXPRESSIBLE        v1: current if the adoption consumed g; else per P  |  ALM: n/a  - ALM baseline has no consumption (single-use) at all - M2 G-3/C13 not covered
+case 5    NOT-EXPRESSIBLE        v1: sigma=standalone: superseded; conditional: current  |  ALM: n/a  - ALM has END_CLAIM only; no supersession-with-successor (C5 sigma)
+case 6    NOT-EXPRESSIBLE        v1: rho=now: not validly made; rho=at-the-time: validly made  |  ALM: n/a  - ALM has no annulment and no effective time distinct from act time
+case 7    AGREES                 v1: current, revoked, current  |  ALM: [True, False, True]  
+case 8    PARTIAL                v1: not current; headline revoked + reasons  |  ALM: False  - value agrees (not current); ALM has no headline/reasons (C8)
+case 9    NOT-EXPRESSIBLE        v1: explicit none: not validly made; unknown: U or F by kappa  |  ALM: n/a  - ALM does not model citations: it searches for ANY covering grant. Semantic difference from v1 (validity relative to the cited basis)
+case 10   AGREES                 v1: at-the-time: authorized; now: not  |  ALM: ('AUTHORIZED', 'NOT_AUTHORIZED', 'V=False')  - ALM's V equals v1's rho=now; ALM's R at the act's own position equals rho=at-the-time
+case 11a  AGREES                 v1: no effect  |  ALM: True  
+case 11b  AGREES                 v1: later not validly made; earlier per P  |  ALM: (True, False)  - earlier: kappa (= RD 1 P)
+case 11c  HIDDEN-POLICY          v1: per RD 1 (delta); v1 leans yes for delegated grants  |  ALM: True  - ALM baseline silently fixes delta = NO: a delegate outlives the revoked delegator
+case 12   DIVERGES               v1: revocation after adoption: revoked; before: current  |  ALM: (False, False)  - ALM V3(c) uses tau(x) <= t, ignoring the A0 order between ADOPT and END_CLAIM
+case 13   NOT-EXPRESSIBLE        v1: U under rho=now; defined order under at-the-time  |  ALM: n/a  - no act annulment in ALM; the grant analogue (mutual revocation) is resolved by A0, not U
+case 14   AGREES(C1-b)           v1: cannot determine (C1-b) / never adopted (C1-a)  |  ALM: UNDETERMINED  
+case 15   NOT-EXPRESSIBLE        v1: U (upsilon=undetermined) or current with warning  |  ALM: n/a  - ALM baseline has no evidence quality: a recorded revocation is either valid or not (RD 6 not covered)
+
+summary: {'AGREES': 7, 'NOT-EXPRESSIBLE': 7, 'PARTIAL': 1, 'HIDDEN-POLICY': 1, 'DIVERGES': 1}

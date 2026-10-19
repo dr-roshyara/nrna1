@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; grep -n \"^## 1.10 \" $C; n=$(grep -n \"^## 1.10 \" $C | cut -d: -f1); sed -n \"$((n-6)),$((n-1))p\" $C | cut -c1-200; grep -n \"It connects to §1.2's \\*authored-by\\* requirement: the record must name its producer.\" $C | cut -c1-40; grep -n \"^\\*\\*Classification:\\*\\* REFINEMENT of §1.11 (ownership) and of the invariants I-1 and I-7\" $C | cut -c1-40; grep -n \"INV-A3 also prescribes the \\*\\*response\\*\\*\" chapter_02/CH-02-rules-and-conflict.md | cut -c1-40",
+  "description": "Locate anchors for file-5 integration"
+ },
+ "result": "347:## 1.10 Identity of knowledge items needs governed names\n**Where I disagree with the source.** DR-AB calls the traced rule the **existence proof** that completes this chain [DR-AB L177]. TR names a *semantic owner* for the governed definition (AD-1, TR L59)\n\n**Same word, different concept.** \"INCONCLUSIVE\" appears in both vocabularies with no shared type [TR L99]. Consistent with the foundations' definitional rule: a term's meaning is fixed inside one con\n\n---\n\n429:**Generalization (pilot 2, file 5; C\n943:**Classification:** REFINEMENT of §1\n571:*Added from V3 (batch 3, file 1):* t"
+}

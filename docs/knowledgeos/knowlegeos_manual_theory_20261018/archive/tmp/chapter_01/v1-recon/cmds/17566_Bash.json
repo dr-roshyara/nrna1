@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; grep -n -i \"projection\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-200; sed -n '1038,1050p' chapter_01/CH-01-knowledge-authority-execution.md",
+  "description": "Find projection mentions in Ch1"
+ },
+ "result": "251:**Necessary, not sufficient: inferred relationships (Src: AG L63–69; Ded; added R1-8).** A later source points out that \"a graph projection must not reveal restricted relationships merely because \n781:> **A representation or projection must never acquire semantic authority merely because it is executable, searchable, visualized, indexed, or consumed by AI.**\n790:\"Layer 3 never becomes Layer 1.\" For persistence the ARB rejects the binary \"repository *vs* database\". The repository is the **canonical representation**; database, graph, search and vector store\n805:**The conceptual target as an "
+}

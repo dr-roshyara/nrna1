@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; sed -n 356,358p $C; echo ====; sed -n 445,452p $C; echo ====; sed -n 1116,1122p $C; echo ===; sed -n 247p $C | cut -c400-1200; echo ===; sed -n 222p $C | grep -o \"So ranking.\\{0,200\\}\"",
+  "description": "Read remaining exact passages"
+ },
+ "result": "The single compiled contract is \"knowledge feeds authority; it never holds it\" (ARCH-INV-1). It is realized by a type restriction: the verdict enumeration lets a mechanism emit only PASS, FAIL, WARN and INCONCLUSIVE. The values reserved for review acts are excluded by `Verdict::emittable()` (**verified by reading the code**: `scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php` L31–33; not tested by execution). *What this establishes, and what it does not:* it guarantees **one boundary** of the invariant, namely that a verdict-emitting mechanism of this library cannot output a review-ac"
+}

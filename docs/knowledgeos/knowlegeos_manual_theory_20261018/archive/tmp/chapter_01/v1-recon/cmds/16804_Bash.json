@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; sed -n '/^## 1.4 /,/^## 1.5 /p' chapter_01/CH-01-knowledge-authority-execution.md",
+  "description": "Read Ch1 §1.4"
+ },
+ "result": "## 1.4 Detail does not confer authority; questions need closing criteria\n\nTwo further principles from EP01, both about how knowledge work goes wrong:\n\n1. **The \"fourth ontology\" risk** [EP01 L16–20]. A thorough analysis tends to become an unofficial authority simply by being detailed. The guards are grading every claim and deciding structure only by an existing, cited rule, never by preference. This is the social counterpart of §1.2 point 4. **Src.**\n2. **Open questions need activation criteria** [EP01 L222–234]. An open question with no stated condition for closing it \"cannot close except by "
+}

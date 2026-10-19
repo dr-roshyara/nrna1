@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; sed -n 801p chapter_01/CH-01-knowledge-authority-execution.md; sed -n 1171p chapter_01/CH-01-knowledge-authority-execution.md; sed -n 631p chapter_02/CH-02-rules-and-conflict.md",
+  "description": "Read exact target sentences"
+ },
+ "result": "**Recommended rules and confirmation requests.** Blocking on a *recommended* rule gives a \"should\" the force of a \"must\", so it needs an authorizing act like any other block. A **confirmation request** (the mechanism asks, a person decides) is not a block, **provided the person asked holds a grant covering the decision**. A request routed to someone who cannot validly decide stops the work just as a block does, and counts as one.\n- **If** read access is governed, context assembly must filter by may-read before relevance (conditional revision of Ch. 0 §0.7, step 2). Otherwise the assembled cont"
+}

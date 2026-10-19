@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; for h in \"### 1.16.2\" \"### 1.16.5\" \"### 1.16.7\" \"### 1.17 \"; do n=$(grep -n \"^$h\\|^## 1.17 \" $C | head -1 | cut -d: -f1); echo \"$h at $n\"; done; grep -n \"^\\*\\*The list omits the anchor:\\*\\*\\|^\\*\\*Phase (Src\\|^Supersession as a link (I-7) makes pinning cheap\\|^\\*\\*Presence is not validity\" $C | cut -c1-90",
+  "description": "Locate §1.16 subsection anchors"
+ },
+ "result": "### 1.16.2 at 953\n### 1.16.5 at 1005\n### 1.16.7 at 1038\n### 1.17  at 1074\n951:**Phase (Src: AB L39–51; REPEATED).** AB's proposal is \"correctly shaped\" but arrives \n1003:**The list omits the anchor:** the **record of the human act itself** and the **grant\n1024:Supersession as a link (I-7) makes pinning cheap: old versions persist, so *d*@*v* st\n1068:**Presence is not validity (Src → Ded; IM L184–205).** IM splits \"an active rule has"
+}

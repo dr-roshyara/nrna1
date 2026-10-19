@@ -1,0 +1,6 @@
+53a634090eda6d621cec64a77d4b7d9e0a82512afe8c032a18294ada79664a4a  chapter_03/03.08-four-orders.md
+8b502f6379fad7fd55917b9fa74808426242724b9f731ca64183df9e7ba2a2ea  chapter_04/04.01-from-observation-to-pattern.md
+feb00e6e3eb60a99660c38e8d6ca0569ebb35f50874b8ce811668de702552199  chapter_05/05.03-deferral.md
+1576d0ddd7501bce7069dc4ab435a33af1eb58c5ede21f04def6409347263145  chapter_06/06.01-method-binding-evidence.md
+9c47927f222bf5707ca334ec91cecc68d70611a522f81e6cd237b5584c405c24  chapter_01/CH-01-knowledge-authority-execution.md
+88bcd293c9c7662395aca2f44e7032679436402a06bbfbc0ad99ffcf44694b95  06-theory/THEORY-MAP.md

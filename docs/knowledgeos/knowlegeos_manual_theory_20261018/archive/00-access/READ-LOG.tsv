@@ -1,0 +1,168 @@
+utc	path	sha256	depth	purpose
+2026-10-18T12:04:09Z	[2,734 frame files]	frame 1f8e7638…c5c1; script f8fb8f40…6ff6	mechanical term count only	pilot step A: Zero/Gap/FalseZero/UNKNOWN/epistemic-contract hit counts
+2026-10-18T12:07:07Z	engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md	a02a4eae839367bf3b58a8f7f53d4245be1a162a56ff939efbccab1da2d1ffca	full	basis: engineering ADRs (Principal instruction)
+2026-10-18T12:07:07Z	engineering/architecture/adr/ADR-AIP-02-Product-Primacy.md	da90ff2d4a8f0b560fa56ec212eda8fe5cd9921ac41d0b39186bc7bbdb96b632	full	basis: engineering ADRs (Principal instruction)
+2026-10-18T12:07:07Z	engineering/architecture/adr/ADR-AIP-03-Governed-Session-Orchestration-Context.md	e9c60bd17f987fc6de1b4603e60ed762d29e3c035b75dd40f6fb6d916c55da70	full	basis: engineering ADRs (Principal instruction)
+2026-10-18T12:07:07Z	engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md	7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f	full	basis: engineering ADRs (Principal instruction)
+2026-10-18T12:07:10Z	[2,734 frame files]	frame 1f8e7638…c5c1	mechanical pattern count only	basis: does the corpus cite the engineering ADR rulings?
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-01-Discovery.md	61fd8f1474a6a4e9b0af8cb703ce38f9f7344cc67dc19829f543953faecca008	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-02.5-Certification-Plan.md	eef98516193a121eae8c2fac929fec778155a5f496adc9cfc108ba94f396bd39	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md	baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-02.7-Platform-Decisions.md	0135e69eabba8cdbc90a97c2249d2af37a2b4376dfa96f2552eeb48c57b6a05d	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-02-Domain-Model.md	3387f4113ba7e66a56b00b4225f5b4eedcf4ae283118143da2e3fb7ba893b42c	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:09:56Z	engineering/architecture/baseline/Phase-03A-Reference-Architecture.md	e69dc102b894cceef8a9d1c26996e83534b8e498c64dbd009030fa395c79c160	full	basis: engineering baseline (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/c4/2026-07-08-arb-diagram-draft-superseded.md	0121d6f031ed41fb028e345f28f2158e4d8d7fd4d4c8b6bbb96bd2cac6e4f701	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/c4/AI_Engineering_Platform_Views.md	787d6b9d49899f49b8c1d872b1d8590f6d55e0bfd635c8b099c9951b7a4d6983	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/c4/Engineering_Knowledge_System_Reference_Model.md	1e547d75c89b9740a7d874fbf80b02647fcaf4c9d111b5334735bf2ffe5c47b5	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/reference/Engineering_Decision_Model.md	c19339d3d570aae3ad86cae3a86c74c2542dedebcb8a323df0b5a55ed117d9a5	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md	a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:20Z	engineering/architecture/reference/Engineering_Platform_Reference_Architecture.md	08dfea9949a0ef7e75aab73839eda9f14131d3f054025d95a2919a73c97a7d84	full	basis: engineering c4/reference (Principal instruction)
+2026-10-18T12:16:45Z	engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md	013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d	full	basis: engineering developer_guide (Principal instruction)
+2026-10-18T12:16:45Z	engineering/developer_guide/AI_Engineering_Platform_Engineering_Theory_Reference.md	85b90209c452f6c4339824f960e4f6f8752c9043ea9689c781afecc5be768c3f	full	basis: engineering developer_guide (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-01-documentation-classification-gap-observation.md	e1c8346ea291077c39f88613ed6f05de3cf00d11773393bc618b3e86466b7347	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-01-documentation-debt-observation.md	9b105eb89461ec1929a505816b86f2575ad1b056a5081fa963b83cacb81e2580	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-cap-001-architecture-stabilization-report.md	5a25278e45b79dfb00e7ebf21fa78f54b2d549f6657c2729ec2b541f12d1d96c	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-engineering-translation-register-discipline-validator.md	717d00e2629c621a3492d958bf67c83d50d8dd0d29b3ed562cc638d93d2970a8	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-identifier-minting-process-model.md	c4249978513c2616f6096524643d0012ac42336591aa53e4d9ed4e00d34457af	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-operational-workflow-assessment.md	c07a8c663be2c0e46f0149ed15fd7e0d141365261e523b75c5b762c27dcb09ad	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-pks-architecture-validation-report.md	d58f9175eed2820b812338f41cd84e1a34c2ae0f0e1a28a5e93a0424e67f1f83	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-02-triple-qualification-timing-observation.md	21e521244f334b8a3d773284f13de1c9d172368fceb928bc87fb17582e25c328	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-04-discovery-commission-three-phase-observation.md	ee77913d8eae4bcb050a745766f268f476904126c2aa3b868198e854403f81e7	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-05-knowledgeos-distillation-principle-candidate.md	d00493b6047a385c4878317ada136d0f054072466dd90ed6b0ce82f83fe8023c	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-05-manual-code-editing-observation.md	264276360b1ecc9279168cd4dff2b217498eca6da8a33de041fec1d5c4be19b2	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md	28574141680762439f3bca1482b4c1837a9a681cd43a86de0ea8f80abe28d3c8	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-06-discovery-does-not-design-candidate.md	16bacdaccbf96bb783542fd22f976f4d8d8bf757d52cf9ccc1fb4b8d8b214fe4	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-06-legacy-consumer-migration-pattern-candidate.md	61fce7ff1f6845ac1b73b00f8eeb5d8331c28188fcd2a523e7b8fa8b16f76669	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-13-architectural-authority-evidence-hierarchy-candidate.md	b7e75043cd69ed4c89a2404ea151f4b833b31aed92716194de1d8f800fed2b1a	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/2026-08-13-tenant-qualified-cache-key-observation.md	cc985dfdde00dde2b467eee13f4dc83ec9ab0eef48d21919cbfa751ab35e0299	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/pks/README.md	35beaaa1e5a38aa04dc3e10e211eb016d5509242e20d192c825c14993ad6296b	full	basis: docs/pks (Principal instruction)
+2026-10-18T12:22:46Z	docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md	77d3ac0ab4c8c3c42842ebe51af9e748d66bab8f5a1e69adf0ab62efc7bc0d27	partial (grep: l.8,24,42,54,152-160,199,203)	basis: locate OQ-5 KnowledgeOS identity question; NOT extracted
+2026-10-18T12:27:21Z	engineering/governance/Engineering_Execution_Protocol.md	b095df0c8c9af6fa63737845912b33be96e0fd98c4b70917a5120c5cc8e7dafa	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-001-Engineering-Constitution.md	59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-002-Engineering-Execution.md	b1a8fb8f0fcda43e5a516b7cb7c48b1ad0300a7246ae2999d001b46911129181	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-003-Qualification.md	cb70155aca6853c44d05e62198e4d0012aa4235f3b22c5030f2e1ca306d240be	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-004-Documentation.md	4d500f417c970d003e9fa4911ec632a2247785cbbd114d86d326d16b5e526486	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-005-Repository.md	61fb2086e66a2bed8ae38e6f65fe97d2c542072b65a519c3d42a99cb2f49885b	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/ES-006-Engineering-Knowledge-Governance.md	349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:27:21Z	engineering/governance/STANDARDS_INDEX.md	8bacdd75a07f8e881ae1b2e9d6e0546d995aef983e17a31c28b3acbb7189698f	full	basis: engineering/governance (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/KnowledgeOS_Product_Discovery_Charter.md	6949bb8b9ebac92c891ef2fc3173d081c9cf32dcc5d531dec0119cb042a29a7e	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/KnowledgeOS_Development_Constitution.md	4ccf2215ebfaf47b2b04bcb2d6ff82e2ffa9ab7583f4477b34ed0b1b747642fc	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/KnowledgeOS_Governance_Execution_Plan.md	2fec7e74d683cd2ee2984e3196f25cd4ef009503fb82b5b2c3fbf7569fbbf5ec	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/Project_Knowledge_Architecture_Charter.md	c452e40bc180a6ff89124013ca50d1b44188496ab40f2d06e62a1d879b0eb46a	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/Project_Knowledge_Strategic_Model.md	a54271b02109a7c6c02497f9b3633759f4c8001c9198c7e767a3bab4799caf2f	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Architectural_Synthesis.md	e271fb4a42137b2c6bfb30164aba63c4634748740f9b595bc7b2c189458ab26a	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_General_Knowledge_Architecture_Constitutional_Model.md	869d06fe3389976823a228173a381aea980f0451099bdd2479657a4544db4a00	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Knowledge_Meta_Model.md	f07bc81472b5e9cdaa302e1061e04162126a2e2528a93fc0751f0513cb97502a	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Knowledge_Taxonomy.md	90d2b7f1235adfd462628b9cf6bb3e5d2faffd4f29aae27fcee710eb168a1534	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Project_Knowledge_Domain.md	0669b0d2e57a3a52e280db0a78beb6e30f779f6a2902bd21cabd1d56b323a867	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Research_Findings_Raw.md	47490d402b061b80aac816dacb043ce0a6b5b318312e8aef724475a8aca6cfc6	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:28:43Z	docs/implementation/RQ-002_Strategic_Discovery_Report.md	81d61aba6c7149b1d73b81aa531ecd13ca30023188d77b8f6765a44a0e88df9f	full	basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)
+2026-10-18T12:31:41Z	docs/ideas/2026-08-ai-engineering-orchestration.md	a08825b4e71765055d10e625e1116dd7f869b6fac2d38965b32d0c3193742856	full	basis: docs/ideas (Principal question)
+2026-10-18T12:31:41Z	docs/ideas/2026-08-engineering-observation-service.md	7d8ae5944e58f5f4fedc57168d4d1ed8ba060a5423d93c7a8b56b22ea5ae75cc	full	basis: docs/ideas (Principal question)
+2026-10-18T12:31:41Z	docs/ideas/2026-08-knowledgeos-cloud.md	bd83f7cda830fb103d0fcaaa2672cab9db97cefcbb0ac54336bc79555406efd6	full	basis: docs/ideas (Principal question)
+2026-10-18T12:31:41Z	docs/ideas/2026-08-observation-runtime.md	eda4dd0e61246cfeed9b9e9f52334d8766cec98e5c5470545c712a0153673155	full	basis: docs/ideas (Principal question)
+2026-10-18T12:31:41Z	docs/ideas/README.md	565f02f8bf8c06fc37bac1d16472a045c13f1692bcf5454047584ea8b2840538	full	basis: docs/ideas (Principal question)
+2026-10-18T12:33:33Z	docs/knowledge_tranfer/what_is_pks_v0.md	078710df3c425e1ece880d3b866b94d464bb97552ff79bfcdd9ebbeb54e8b4f4	full	basis: knowledge_tranfer batch 1
+2026-10-18T12:33:33Z	docs/knowledge_tranfer/20260728_1710_what_is_pks_v1.md	eff81320cc523ce2d1b7c1b9774ad8bf66dc50f4fe0faae2288176b035160f88	full	basis: knowledge_tranfer batch 1
+2026-10-18T12:33:33Z	docs/knowledge_tranfer/20260729_1812_pks_progress.md	a90e132dc114d288efaef02c2603fb1552ddac08e63a5b454b1b36f5007ab860	full	basis: knowledge_tranfer batch 1
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/PKS_Bootstrapping_and_Location.md	7479205d3bbfae0326a344bb439265b79eb76b2262489eefeba0702412ee30e5	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/C4 Level 1 -PKS_System_Context_c4.md	19bf4bdad7394a8fdeec35591bcc9f6953539d8c5ffa241fba0b939880c742a9	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/C4 Level 2 — Container Diagram.md	e2e82fc400f6033732bf5e57f721c69d67b7b892030af8f6b99f5182a72f3aec	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/C4 Level 3 — Component View_Knowledge.md	8744bf88454e5e3d96511d205ffdcbd9ba4aa9b7b324bef7b060135f61973869	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/C4 Level 4 — Code.md	0ff2396c077e82670c5b9c60634eaa040e413c51a3f1d21185064a90e46286de	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:10Z	docs/knowledge_tranfer/20260728_SLR_Strategic_DDD_Methodology_Benchmark.md	350472d884ff3c43f2cab9cd36165d75d7035a12b48fcf99191dd793f54d8459	full	basis: knowledge_tranfer batch 2
+2026-10-18T12:34:47Z	docs/knowledge_tranfer/20260815_0148_how_to_work_with_sessions.md	455c7ab7dc1c21bcfdf57c8782b1fb3639dcdb03c79fa45e6ed3ce4c7a33d4c2	full	basis: knowledge_tranfer batch 3
+2026-10-18T12:34:47Z	docs/knowledge_tranfer/20260815_1615_target_architecture.md	82a9035a6febfdd467595a9241b377cf95280a1bc5d0c8ddf1a737cef5446dad	full	basis: knowledge_tranfer batch 3
+2026-10-18T12:34:47Z	docs/knowledge_tranfer/20260815_1615_targer_architecure.md	5ebde77610b62723a4861eb13692c1780030e83f10d48736d379c2eff0c8ee6c	full	basis: knowledge_tranfer batch 3
+2026-10-18T12:34:47Z	docs/knowledge_tranfer/20260815_1617_eks_2.0.md	fc5e7236779be2aab3bd3aa76f051de618fcd78107252405e712393db79a7946	full	basis: knowledge_tranfer batch 3
+2026-10-18T12:35:47Z	docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	e011a5a9fcab06c45af8ce2be363706deaa0dc01d854fd716d0565855acc0c50	full	basis: knowledge_tranfer batch 4a
+2026-10-18T12:35:47Z	docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md	b41d5e4403867db9552b88aa47a11c5cc1c18116a21f9f64b5e528ce56d6a82c	full	basis: knowledge_tranfer batch 4a
+2026-10-18T12:36:29Z	docs/knowledge_tranfer/20260816_1156_arb_decision_record_A_B.md	f1ea34ad6949084a7f5aa79797ea522b252a0bd7c12784e24787ce51a7987d52	full	basis: knowledge_tranfer batch 4b
+2026-10-18T12:36:29Z	docs/knowledge_tranfer/20260816_1150_arch_inv_1_trace.md	847ed3a6c28dbd22fda677ab9b032c3f3d72fb0fe27f8e62a302aa74ed0f218b	full	basis: knowledge_tranfer batch 4b
+2026-10-18T12:36:29Z	docs/knowledge_tranfer/20260816_1129_arb_evidence_package_01_v3.md	0511255e25dc0c0a216a0a327e8cb178f4c3efc668cb82c2b4273300587f3182	full	basis: knowledge_tranfer batch 4b
+2026-10-18T12:36:29Z	docs/knowledge_tranfer/20260816_1057_artifact_gap_analysis.md	9d1512e66316003c70c6b2bcc67e0c32997bdec067954c546d0d4158f8945467	full	basis: knowledge_tranfer batch 4b
+2026-10-18T12:36:43Z	docs/knowledge_tranfer/20260816_1211_rule_model_business_semantics.md	d516d6a125f9a930c2b5829f0f8ecacb3ba2b7a1b14e26603eb55ca3cb1dba68	full	basis: knowledge_tranfer batch 4c (Track B semantics)
+2026-10-18T12:36:43Z	docs/knowledge_tranfer/20260816_1332_authority_model_business_semantics.md	c4f2bcad626bd5b8cab52a10505df8991e6508dcd292f453d3e9ce3394700f07	full	basis: knowledge_tranfer batch 4c (Track B semantics)
+2026-10-18T12:36:43Z	docs/knowledge_tranfer/20260816_1351_scope_applicability_business_semantics.md	87aa5de39625d735fd0a8a7406b9cc2c7031ac1855baadcbdb1d96867f01dd2f	full	basis: knowledge_tranfer batch 4c (Track B semantics)
+2026-10-18T12:37:14Z	docs/knowledge_tranfer/20260816_1513_sc1_dimension_preparation.md	e3033b5cfe2489c2e2a9be1a98987ccef4600d0e67acb0b4d3b96597e1f1b136	full	basis: knowledge_tranfer batch 4c (Track B semantics)
+2026-10-18T12:37:14Z	docs/knowledge_tranfer/20260816_2043_environment_vocabulary_preparation.md	82643b842003675f4f27f3e53ea7efa7315f11f93060a9be16c8e1d4a7551d4a	full	basis: knowledge_tranfer batch 4c (Track B semantics)
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	41c363673ec67f08871fb93a1f4d45e73ab54b162614713007e19e722a24d31f	full	basis: knowledge_tranfer batch KT-7
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_0914_rule_model_and_conflict_analysis.md	0dbf641a0416439db7a868bcd567e72884695488121f8670825646e5311d9518	full	basis: knowledge_tranfer batch KT-7
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1040_decision_register.md	f8870fb3866eb2004f7ba02500407eb7a6afdbbf04f4d3807669f9a87b5fd73f	full	basis: knowledge_tranfer batch KT-7
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1144_script_capability_evidence_inventory_v1.md	9e93226f5e0ded53c1aa6216599d94a845853f56f135facbd3f7154321a0c46a	full	basis: knowledge_tranfer batch KT-7
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1203_python_migration_gap_analysis.md	ecc8d6e5a69d54925b1e92ab60017394753c32627d90e222b3b3dcef0eb0feef	full	basis: knowledge_tranfer batch KT-7
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	3661e14a2f8bf4758ab134fb8814ed5fb1fcf8d709368c78579d4fe735b63618	full	basis: knowledge_tranfer batch KT-8
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	04cf8f7224fcebcf8e3b458c1447b8044a2755fe2bcdf10711a2b341cc8baef7	full	basis: knowledge_tranfer batch KT-8
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	4b414f54d8b4dce03f3913139ac6b8cb89cdb4045cff315b4ec35a4907cfb0c1	full	basis: knowledge_tranfer batch KT-8
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1034_policy_catalogue.md	6b3e8101c61cb01ebdaa4683c72bc25f39efc0f90da10e1781983b1e480b2493	full	basis: knowledge_tranfer batch KT-8
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/20260816_1044_domain_events.md	31e76b533b5267200f4c1b083ad2ee2e3c3c1f53f8b2437c403f7b1e134537f4	full	basis: knowledge_tranfer batch KT-8
+2026-10-18T12:40:13Z	docs/knowledge_tranfer/Constitutional Governance Platform.md	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	full	basis: knowledge_tranfer batch EMPTY
+2026-10-18T12:41:45Z	developer_guide/knowledgeos/01_architecture_and_design_patterns.md	bff936f5bf2105b3d68f0e7e4032f2837fe80d732f2d1bae71166cda51c0eda8	full	basis: KnowledgeOS developer guide 01
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/00_index.md	55109dd56624eb9ce1de727a4c78837a6c145953b2d4c0c0c13069ddbc45ee2f	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/02_track2_structural_profile.md	440e819809238ae294d78750322744289f6e50756f18067ec6ccd9e2d5ac909b	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/03_phase1_author_side_adoption.md	67436c8f2cc9a286b2a48195e4b3e233ce63842de576a1d8c63498e15436af5e	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/04_session_bootstrap_ast017.md	935aae135aa41622a28661883e3e3160ed543ce20dac0355ea82e2a6fc7645d2	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/05_activate_commissioned_fresh_session_ast019.md	df1f57d26c7b30c3340d2c937875c604aee46dd5d52fcce37492bdc698dab760	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/06_research_gate_instrument_trust_extended_1a.md	ab945e305640724e076654ee8bfbb5dc7c7994d7c756dbf36a2a31185758fcc0	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/07_admit_audit_void_rows.md	b3624bc30d71d7ac4a3f18c748ff98607123b9ad323549c60496ab76d586aeea	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/00_index.md	64b69921ef6402a543acf3ed8b1bea1b04317dc579742ce1a5cc35cdd92b36b7	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/01_contexts_and_verdicts.md	2952fd29a2d820be50dc7c6a111d0aa07d741ccaf62f5df99d483c13aead55f9	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/02_witness_and_reader.md	2e42db5d7307d34a64e37c1178313e3e745d640bb41576cd12e2a0feee1a9b69	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/03_universe_evidence_reconstruction_statistics.md	8fe031ec4c7cfc88bb13fd9f8505a935d2b07141ab315e6c2fcc350d660361cb	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/04_testing_and_known_conflicts.md	d7a7ce71a9928240a32ca2c1966dad3bb1887421d454ff2e6672ce85c77ba0c7	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T12:44:35Z	developer_guide/knowledgeos/s5_r7/05_orchestrator_and_slice_view.md	367796ce11c5a0d0d1ec2900483b52a3ae7f4596bff799abb5aabe4469e19e10	full	basis: KnowledgeOS developer guides 02-07 + s5_r7
+2026-10-18T13:17:23Z	docs/knowledgeos/chronological-read/P3B-GOVERNANCE-LOG.md	e9ef2d0285586d6e6bd5083db99a6d39894a2ae8dde4fc771baafb7a9e37b76b	partial (l.2218-2307, 2343-2352; grep for gate-pass entries)	M-01 assessment: verify current authoritative access decision; NOT extracted to basis
+2026-10-18T13:31:10Z	docs/knowledgeos/chronological-read/P3B-GOVERNANCE-LOG.md	e9ef2d0285586d6e6bd5083db99a6d39894a2ae8dde4fc771baafb7a9e37b76b	grep for entries after G-LOG-0145 and gate-pass records; tail	M-03: re-verify governance state; NOT extracted
+2026-10-18T13:37:44Z	docs/knowledgeos/knowledgeos-s-series-theory/safety-gate/D1-REVIEW-PACKET-AND-HUMAN-TEST-SHEET.md	05966ca93ab99b5c6fd550e6dbc5134aec74a47022a25f9f5d7e8e02116935ab	partial (status lines)	prerequisite status check for corpus access; NOT extracted
+2026-10-18T13:37:44Z	docs/knowledgeos/knowledgeos-s-series-theory/safety-gate/D2-CLARIFICATION-REQUEST-20261017_1929.md	b38f2487fa9d2dfba53153bc629e89ee95c65e5a88aed1b08e9df590d97ed461	partial (status lines)	prerequisite status check for corpus access; NOT extracted
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Architectural_Synthesis.md	e271fb4a42137b2c6bfb30164aba63c4634748740f9b595bc7b2c189458ab26a	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_General_Knowledge_Architecture_Constitutional_Model.md	869d06fe3389976823a228173a381aea980f0451099bdd2479657a4544db4a00	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Knowledge_Meta_Model.md	f07bc81472b5e9cdaa302e1061e04162126a2e2528a93fc0751f0513cb97502a	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Knowledge_Taxonomy.md	90d2b7f1235adfd462628b9cf6bb3e5d2faffd4f29aae27fcee710eb168a1534	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Project_Knowledge_Domain.md	0669b0d2e57a3a52e280db0a78beb6e30f779f6a2902bd21cabd1d56b323a867	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Research_Findings_Raw.md	47490d402b061b80aac816dacb043ce0a6b5b318312e8aef724475a8aca6cfc6	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/implementation/RQ-002_Strategic_Discovery_Report.md	81d61aba6c7149b1d73b81aa531ecd13ca30023188d77b8f6765a44a0e88df9f	full	V-2 Professor extraction (blind)
+2026-10-18T13:49:27Z	docs/knowledgeos/knowlegeos_manual_theory_20261018/05-validation/v2-professor/FREEZE.sha256	90d7263e656a0dee29531d334dc0006711b1facfd665be77dc3b59690c26918c	frozen	V-2 freeze: Professor extraction manifest (7 records, 538 items)
+2026-10-18T14:06:08Z	docs/knowledgeos/knowlegeos_manual_theory_20261018/05-validation/v2-reviewer/FREEZE.sha256	359cb1687f57154d4f28c8e534bce2d7a04cb3398562ad9f587cae43ea7d3f4d	frozen	V-2 freeze: reviewer extraction manifest (7 records, 854 items reported)
+2026-10-18T14:09:40Z	docs/implementation/RQ-002_*.md (git history)	-	metadata + 7 earlier versions of the Constitutional Model (grep counts, 2 diff lines)	RQ-002 revision timeline for T-01
+2026-10-18T14:29:48Z	docs/implementation/KnowledgeOS_Product_Discovery_Charter.md	6949bb8b9ebac92c891ef2fc3173d081c9cf32dcc5d531dec0119cb042a29a7e	full (re-read)	CH-00 theory chapter
+2026-10-18T14:29:48Z	docs/implementation/KnowledgeOS_Development_Constitution.md	4ccf2215ebfaf47b2b04bcb2d6ff82e2ffa9ab7583f4477b34ed0b1b747642fc	full (re-read)	CH-00 theory chapter
+2026-10-18T14:29:48Z	docs/implementation/Project_Knowledge_Strategic_Model.md	a54271b02109a7c6c02497f9b3633759f4c8001c9198c7e767a3bab4799caf2f	full (re-read)	CH-00 theory chapter
+2026-10-18T14:29:48Z	docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	e011a5a9fcab06c45af8ce2be363706deaa0dc01d854fd716d0565855acc0c50	partial (l.1-30 + grep)	CH-00: standing of the T1 statement
+2026-10-18T14:37:53Z	docs/knowledge_tranfer/20260816_1129_arb_evidence_package_01_v3.md	0511255e25dc0c0a216a0a327e8cb178f4c3efc668cb82c2b4273300587f3182	full (re-read)	theory pilot (CH-01, CH-02)
+2026-10-18T14:37:53Z	docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md	b41d5e4403867db9552b88aa47a11c5cc1c18116a21f9f64b5e528ce56d6a82c	full (re-read)	theory pilot (CH-01, CH-02)
+2026-10-18T14:37:53Z	docs/knowledge_tranfer/20260816_1150_arch_inv_1_trace.md	847ed3a6c28dbd22fda677ab9b032c3f3d72fb0fe27f8e62a302aa74ed0f218b	full (re-read)	theory pilot (CH-01, CH-02)
+2026-10-18T14:37:53Z	docs/knowledge_tranfer/20260816_0914_rule_model_and_conflict_analysis.md	0dbf641a0416439db7a868bcd567e72884695488121f8670825646e5311d9518	full (re-read)	theory pilot (CH-01, CH-02)
+2026-10-18T14:37:53Z	docs/knowledge_tranfer/20260816_1351_scope_applicability_business_semantics.md	87aa5de39625d735fd0a8a7406b9cc2c7031ac1855baadcbdb1d96867f01dd2f	full (re-read)	theory pilot (CH-01, CH-02)
+2026-10-18T14:37:53Z	scripts/lib/EngineeringKnowledge/Shared/Domain/Assessment.php	a6b17ff90f29d4d00c01635539d1c6877375faa88d269ff54256e5f1717156d8	partial (enforcement lines, cases, test names)	CH-01 §1.9 independent check
+2026-10-18T14:37:53Z	scripts/lib/EngineeringKnowledge/Shared/Domain/Verdict.php	47b0d67358ec1ca3d5f875261b46409b02e02cf08f9981972deca00f5231c6ec	partial (enforcement lines, cases, test names)	CH-01 §1.9 independent check
+2026-10-18T14:37:53Z	scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/Tests/Domain/AssessesIdentifierIntegrityTest.php	027f9e175a269cfe3fae34404d9f4b03f454aae718e3f0862bdcf0398e5718a9	partial (enforcement lines, cases, test names)	CH-01 §1.9 independent check
+2026-10-18T14:42:49Z	docs/knowledge_tranfer/20260816_1156_arb_decision_record_A_B.md	f1ea34ad6949084a7f5aa79797ea522b252a0bd7c12784e24787ce51a7987d52	full	theory pilot 2
+2026-10-18T14:42:49Z	docs/knowledge_tranfer/20260816_1211_rule_model_business_semantics.md	d516d6a125f9a930c2b5829f0f8ecacb3ba2b7a1b14e26603eb55ca3cb1dba68	full	theory pilot 2
+2026-10-18T14:42:49Z	scripts/design-rules.json	3e9802deed67e6c651e5dd72e6fd8debba8752de3fde0066a710ada46e165889	partial (enforcement, phases, severities)	CH-02 §2.9 independent check
+2026-10-18T14:42:49Z	scripts/design-check.sh	a5dd5f871d2a023e35428c93ffda4fd1a98c2c3de2b681a3e76ab3e72580068a	partial (enforcement, phases, severities)	CH-02 §2.9 independent check
+2026-10-18T14:44:41Z	docs/knowledge_tranfer/20260816_1332_authority_model_business_semantics.md	c4f2bcad626bd5b8cab52a10505df8991e6508dcd292f453d3e9ce3394700f07	full	theory pilot 2
+2026-10-18T14:44:41Z	.claude/runtime/workflow/*.json (22 files)	-	mechanical field counts only (grants, keys, statuses, patterns)	CH-01 §1.13 independent recount
+2026-10-18T14:46:12Z	docs/knowledge_tranfer/20260816_1513_sc1_dimension_preparation.md	e3033b5cfe2489c2e2a9be1a98987ccef4600d0e67acb0b4d3b96597e1f1b136	full	theory pilot 2
+2026-10-18T14:46:12Z	docs/knowledge/schema/*.yaml (10 files)	-	vocabulary counts + authorities list	CH-01/02 independent checks
+2026-10-18T14:47:56Z	docs/knowledge_tranfer/20260816_2043_environment_vocabulary_preparation.md	82643b842003675f4f27f3e53ea7efa7315f11f93060a9be16c8e1d4a7551d4a	full	theory pilot 2
+2026-10-18T14:47:56Z	config/app.php	d2a14b53a7ad59aed28aab95db227120bd6334b30ba013a52f648c927c039871	partial (grep)	CH-02 §2.8.7 independent check
+2026-10-18T14:47:56Z	phpunit.xml	9dfbf25ae3cedb63c9e716377f5e2b91581d57e516fef8a3eebee0dd71e652ef	partial (grep)	CH-02 §2.8.7 independent check
+2026-10-18T14:47:56Z	.claude/scripts/db-safety-check.sh	6baad948dbe224aecaf053b3b9f7bfe442020e04344d31d981d612905d9513c9	partial (grep)	CH-02 §2.8.7 independent check
+2026-10-18T15:16:49Z	docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	e011a5a9fcab06c45af8ce2be363706deaa0dc01d854fd716d0565855acc0c50	full	batch 3 file 1
+2026-10-18T15:16:49Z	.claude/scripts/session-resolve.php	00c68cc9b18d43d5a2298d27e6915ba6cbb735d5f62d6671fb28f471710cf725	partial (grep)	CH-01 §1.14 independent check
+2026-10-18T15:16:49Z	scripts/observations/recommendation-rules.yaml	bb942ca74cd5eea47731ca805707d84159c1028ea7248195f6afc25c55e4ffae	partial (grep)	CH-01 §1.14 independent check
+2026-10-18T15:22:59Z	docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	41c363673ec67f08871fb93a1f4d45e73ab54b162614713007e19e722a24d31f	full	batch 3 file 2
+2026-10-18T15:26:34Z	docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	3661e14a2f8bf4758ab134fb8814ed5fb1fcf8d709368c78579d4fe735b63618	full	batch 3 file 3 (earlier summarised in KT-8)
+2026-10-18T15:28:53Z	docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	04cf8f7224fcebcf8e3b458c1447b8044a2755fe2bcdf10711a2b341cc8baef7	full	batch 3 file 4 (earlier summarised in KT-8)
+2026-10-18T15:31:06Z	docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	4b414f54d8b4dce03f3913139ac6b8cb89cdb4045cff315b4ec35a4907cfb0c1	full	batch 3 file 5 (earlier summarised in KT-8)
+2026-10-18T15:52:50Z	docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md	e011a5a9fcab06c45af8ce2be363706deaa0dc01d854fd716d0565855acc0c50	partial (uncovered lines; V3 L295-326)	correction round 1 coverage check (E-1)
+2026-10-18T15:52:50Z	docs/knowledge_tranfer/20260816_0905_architecture_conformance.md	41c363673ec67f08871fb93a1f4d45e73ab54b162614713007e19e722a24d31f	partial (uncovered lines; V3 L295-326)	correction round 1 coverage check (E-1)
+2026-10-18T15:52:50Z	docs/knowledge_tranfer/20260816_0922_aggregate_boundaries.md	3661e14a2f8bf4758ab134fb8814ed5fb1fcf8d709368c78579d4fe735b63618	partial (uncovered lines; V3 L295-326)	correction round 1 coverage check (E-1)
+2026-10-18T15:52:50Z	docs/knowledge_tranfer/20260816_1023_invariant_aggregate_matrix.md	04cf8f7224fcebcf8e3b458c1447b8044a2755fe2bcdf10711a2b341cc8baef7	partial (uncovered lines; V3 L295-326)	correction round 1 coverage check (E-1)
+2026-10-18T15:52:50Z	docs/knowledge_tranfer/20260816_1029_invariant_allocation.md	4b414f54d8b4dce03f3913139ac6b8cb89cdb4045cff315b4ec35a4907cfb0c1	partial (uncovered lines; V3 L295-326)	correction round 1 coverage check (E-1)
+2026-10-18T17:13:17Z	docs/knowledge_tranfer/20260816_1034_policy_catalogue.md	6b3e8101c61cb01ebdaa4683c72bc25f39efc0f90da10e1781983b1e480b2493	full	batch 4 file 1
+2026-10-18T17:14:59Z	docs/knowledge_tranfer/20260816_1040_decision_register.md	f8870fb3866eb2004f7ba02500407eb7a6afdbbf04f4d3807669f9a87b5fd73f	full	batch 4 file 2
+2026-10-18T17:15:42Z	docs/knowledge_tranfer/20260816_1044_domain_events.md	31e76b533b5267200f4c1b083ad2ee2e3c3c1f53f8b2437c403f7b1e134537f4	full	batch 4 file 3
+2026-10-18T17:17:46Z	docs/knowledge_tranfer/20260816_1057_artifact_gap_analysis.md	9d1512e66316003c70c6b2bcc67e0c32997bdec067954c546d0d4158f8945467	full	batch 4 file 4
+2026-10-18T17:19:17Z	docs/knowledge_tranfer/20260816_1144_script_capability_evidence_inventory_v1.md	9e93226f5e0ded53c1aa6216599d94a845853f56f135facbd3f7154321a0c46a	full	batch 4 file 5

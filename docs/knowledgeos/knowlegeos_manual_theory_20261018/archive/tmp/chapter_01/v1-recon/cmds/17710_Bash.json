@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1; M=docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; python3 docs/knowledgeos/knowlegeos_manual_theory_20261018/tools/anchor_check.py . $M/chapter_00/CH-00-foundations.md $M/chapter_01/CH-01-knowledge-authority-execution.md $M/chapter_02/CH-02-rules-and-conflict.md 2>&1 | tail -8",
+  "description": "Run anchor check on three chapters"
+ },
+ "result": "# 421 anchors checked, 0 out of range; unmapped keys: ['GKC', 'PKSM']"
+}

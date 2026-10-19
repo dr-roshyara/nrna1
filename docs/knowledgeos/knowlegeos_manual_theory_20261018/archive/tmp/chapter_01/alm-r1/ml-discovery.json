@@ -1,0 +1,9 @@
+{
+ "cases": 282243,
+ "disagreements": 7153,
+ "precision_disagree": 0.1561,
+ "recall_disagree": 0.9779,
+ "tree": "|--- unrecorded_earlier_grant <= 0.50\n|   |--- comp_k_tau <= 0.50\n|   |   |--- unrecorded_earlier_revoke <= 0.50\n|   |   |   |--- class: 0\n|   |   |--- unrecorded_earlier_revoke >  0.50\n|   |   |   |--- class: 0\n|   |--- comp_k_tau >  0.50\n|   |   |--- class: 0\n|--- unrecorded_earlier_grant >  0.50\n|   |--- unrecorded_earlier_revoke <= 0.50\n|   |   |--- n_acts <= 2.50\n|   |   |   |--- class: 1\n|   |   |--- n_acts >  2.50\n|   |   |   |--- class: 1\n|   |--- unrecorded_earlier_revoke >  0.50\n|   |   |--- class: 1\n",
+ "train_accuracy": 0.8655,
+ "disagreements_with_completeness": 0
+}

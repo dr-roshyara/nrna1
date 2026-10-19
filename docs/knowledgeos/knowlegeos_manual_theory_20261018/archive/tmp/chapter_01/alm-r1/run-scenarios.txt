@@ -1,0 +1,30 @@
+PASS  REG/POL   REG_CE1_cascade_uses_authorizing_grant             cascade: not current; persist: current
+PASS  REG/CONF  REG_CE2_end_must_follow_adoption                   
+PASS  REG/POL   REG_CE3_delta_parameter                            independent: valid; dependent: invalid
+PASS  REG/CONF  REG_CE4_target_specific_revoke                     
+PASS  REG/POL   REG_CE5_bar_mode_parameter                         any: ineligible; all: eligible
+PASS  REG/CONF  REG_CE6_r11_positive_for_recorded_root_act         
+PASS  REG/CONF  REG_CE7_theorem3_end_claim                         V=False Rec=F (END precedes its ADOPT: ill-formed, so invalid in both)
+PASS  REG/CONF  REG_CE8_unrecorded_tie_order_gives_U               unrecorded: U; recorded: F
+PASS  REG/CONF  REG_CE10_wellformedness                            
+PASS  REG/POL   REG_CE12_separate_conventions                      
+PASS  REG/CONF  REG_V1_CASE12_same_moment_order                    
+PASS  REG/CONF  REG_IND1_authority_restriction                     basis exists, yet not valid: restriction, not missing grant
+PASS  REG/CONF  REG_IND2_relational                                
+PASS  CONF      S0058_anachronistic_linkage                        
+PASS  CONF      own_period_ends_currency                           
+PASS  CONF      unauthorized_end_no_effect                         
+PASS  CONF      r11_never_F_even_with_recorded_revocation          
+PASS  CONF      S0092_given_unrecorded                             
+PASS  POL       S0103_C1b_vs_C1a                                   C1=b: k1 U, k2 T; C1=a (closed world): F
+PASS  POL       T1-20_horizons_change_negative_only                lam-=inf: U; window still open (3 > 100-98): U; closed: F
+PASS  POL       C10_mutual_revocation                              given: first recorded wins; no_same_instant: both take effect
+PASS  POL       C6_two_current_vs_later_prevails                   
+PASS  CONF      S0052_conditional_grant                            
+PASS  CONF      S-8_no_clock_undetermined_with_witness_determined  no witness: U on (0, 2); witness (4,2): T on (2, 2)
+PASS  CONF      usable_from_position                               
+PASS  CONF      IND3_permit_with_disclosure                        ('ELIGIBLE_ASSERTED', ['IND-3 DISCLOSURE_REQUIRED (governance defect)'])
+PASS  CONF      IND7_attested_grade_and_IND3_disclosed             ('ELIGIBLE_ATTESTED', [])
+PASS  SCOPE     IND4_closure_IND6_gate_rule_not_in_core            declared out of scope (Phase A A3)
+
+28/28 passed

@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; F=chapter_01/CH-01-knowledge-authority-execution.md; for p in \"K-14\" \"INFERRED\" \"NO_COVERING_GRANT\" \"SOD\" \"notification\" \"idempoten\" \"policy_version\\|policy version\" \"batch-4 review\" \"ladder measured\" \"sit low\"; do echo \"== $p: $(grep -c -i \"$p\" $F)\"; grep -n -i \"$p\" $F | cut -c1-220 | head -4; done",
+  "description": "Check which Ch1 review items are present"
+ },
+ "result": "== K-14: 1\n353:**A census of enforcement modes (Src: SI L206–231, graded OBSERVED by SI except K-14 and K-15, which SI grades INFERRED; added R1-11, corrected after the batch review).** An inventory of the platform's own mechanisms\n== INFERRED: 6\n22:> - **SI**: `docs/knowledge_tranfer/20260816_1144_script_capability_evidence_inventory_v1.md` (AI-generated evidence inventory for the ARB; claims graded OBSERVED / INFERRED; key claims re-verified in code here)\n128:**The idea.** EP01 grades every statement with one of five labels, OBSERVED · INFERRED · HYPOTHESIZED · PROPOSED · ADOPTED, and rules "
+}

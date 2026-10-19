@@ -1,0 +1,6 @@
+N1 unrecorded tie order          robust-T under all 256 ALM-r1 configurations: True  (256/256 T)
+N2 unknown revoker               robust-T under all 256 ALM-r1 configurations: True  (256/256 T)
+N3 unverifiable revocation       robust-T under all 256 ALM-r1 configurations: True  (256/256 T)
+
+Note: ALM-r1 has no upsilon parameter. Under DEC, upsilon (RD 6) would be in the quantified set,
+so N3 would be removed IF the 'counts_as_undetermined' semantics is correctly implemented.

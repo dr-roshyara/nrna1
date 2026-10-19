@@ -1,0 +1,11 @@
+CE1 cascade current at 5 though authorizing g1 expired: True
+CE2 claim current at 3 (END_CLAIM precedes ADOPT): False
+CE3 pb valid after upstream revoke: True  ab current@5 under cascade: True
+CE4 revoke by c with scope (REVOKE,g) valid: False  w valid: True
+CE5 eligible with one barring grant + one non-barring: True
+CE6 root act recognized at lam=inf: UNDETERMINED
+CE7 Valid(x) in H: True  Rec_k(x) with Comp(k,tau(x)) true: NOT_AUTHORIZED
+CE8 w valid [g,r,w]: False  [g,w,r]: True
+CE10 ill-formed grant accepted, w valid: True
+CE11 w valid w/ recorded revoke: False  after late root grant: True
+CE12 current at 3 closed/half_open: True False

@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; python3 - <<'EOF'\np='chapter_01/CH-01-knowledge-authority-execution.md'\ns=open(p).read()\nold='(R1-11b … R1-20 in `BASELINE-REVISIONS.md`)'\nassert s.count(old)==1\ns=s.replace(old,'(R1-3b, R1-5a, R1-6b, R1-7a, R1-8a, R1-9a, R1-11b, R1-12a, R1-13a in `BASELINE-REVISIONS.md`)')\nopen(p,'w').write(s)\np='BASELINE-REVISIONS.md'\ns=open(p).read()\nold='| R1-10 | Ch. 1 §1.17.5, classification'\ni=s.index(old); j=s.index('\\n',i)\nassert s[j:j+3]=='\\n\\n|'\ns=s[:j]+'\\n'+s[j+2:]\nopen(p,'w').write(s)\nprint('ok')\nEOF",
+  "description": "Fix revision ids in change log; repair broken table row"
+ },
+ "result": "ok"
+}

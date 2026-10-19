@@ -1,0 +1,15 @@
+KNOWN-DEFECT  REG_CE1_cascade_uses_the_authorizing_grant          [C-1] expected=False observed=True
+KNOWN-DEFECT  REG_CE2_end_claim_must_follow_adoption              [C-4] expected=True observed=False
+KNOWN-DEFECT  REG_CE3_delta_is_a_parameter_not_fixed_no           [C-2 (RD 1 delta)] expected=parameterized observed=fixed-no
+KNOWN-DEFECT  REG_CE4_target_specific_revoke_scope                [C-3] expected=True observed=False
+KNOWN-DEFECT  REG_CE5_bar_any_all_is_parameter                    [C-5] expected=parameterized observed=all-must-bar
+KNOWN-DEFECT  REG_CE6_recorded_root_act_positive_under_r11        [C-8/F-1] expected=AUTHORIZED observed=UNDETERMINED
+KNOWN-DEFECT  REG_CE7_theorem3_soundness_end_claim                [P-1 (BLOCKER)] expected=True observed=False
+KNOWN-DEFECT  REG_CE8_result_independent_of_unrecorded_tie_order  [P-2] expected=False observed=True
+KNOWN-DEFECT  REG_CE10_wellformedness_from_ge_tau_enforced        [P-10] expected=rejected-or-flagged observed=accepted
+KNOWN-DEFECT  REG_CE12_separate_conventions_grant_vs_claim        [C-11 (C14)] expected=separate-parameters observed=one-parameter
+KNOWN-DEFECT  REG_V1_CASE12_same_moment_order                     [author / v1 case 12] expected=(False, True) observed=(False, False)
+KNOWN-DEFECT  REG_IND1_is_authority_not_eligibility               [E-8] expected=authority observed=eligibility (V4/B0)
+KNOWN-DEFECT  REG_IND2_is_relational_same_work                    [E-5] expected=relational observed=actor-level
+
+0/13 pass on this baseline (13 known defects)

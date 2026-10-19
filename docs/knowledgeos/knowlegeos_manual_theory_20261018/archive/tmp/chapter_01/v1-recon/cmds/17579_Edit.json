@@ -1,0 +1,9 @@
+{
+ "input": {
+  "replace_all": false,
+  "file_path": "/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript/chapter_01/CH-01-knowledge-authority-execution.md",
+  "old_string": "which gives many independent interpretations of one fact [DE L15–37]. That is the one-owner principle (P-7) violated by construction.",
+  "new_string": "which gives many independent interpretations of one fact [DE L15–37]. That is the one-owner principle (P-7) violated by construction.\n\nTwo further constraints from the same source (Src, PROPOSED; added after batch-4 review F23):\n- **a projection may emit a notification that work is needed, never a fact others treat as truth** [DE L174]. This is the sink rule of §1.14.4 at the event layer;\n- **ordering may not be assumed unless the contract guarantees it** [DE L380]. Under INV-A3 an unordered stream is a fact that consumers must handle. This is why the formal model of §1.14.1 needs a **recorded** order of acts (repair input, `CH-01-step1-correction-and-review.md` §7)."
+ },
+ "result": "The file /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript/chapter_01/CH-01-knowledge-authority-execution.md has been updated successfully."
+}

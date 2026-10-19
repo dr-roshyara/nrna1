@@ -1,0 +1,62 @@
+{
+ "Th1_uniqueness_and_oracle_agreement": {
+  "checks": 67704,
+  "nonunique": 0,
+  "disagreements": 0
+ },
+ "currency_oracle_agreement": {
+  "checks": 121152,
+  "disagreements": 0
+ },
+ "first_disagreement": "None",
+ "Th2_locality": {
+  "checks": 270816,
+  "violations": 0
+ },
+ "Th3_soundness_under_completeness": {
+  "checks": 363558,
+  "violations": 0
+ },
+ "Th4_flips_lam_pos0": {
+  "T->F": 28,
+  "T->U": 28,
+  "F->T": 5292,
+  "U->T": 102544,
+  "U->F": 93217
+ },
+ "Th4_minimal_examples": {
+  "U->T": "([('gRa', 1)], ['gRa'], 'gRa', 1, 0)",
+  "U->F": "([('gab', 1)], ['gab'], 'gab', 1, 0)",
+  "F->T": "([('gRa', 1), ('gab', 1)], ['gab', 'gRa'], 'gab', 2, 0)",
+  "T->F": "([('gRa', 1), ('gab', 2), ('rRa', 1)], ['gRa', 'gab', 'rRa'], 'gab', 3, 0)",
+  "T->U": "([('gRa', 1), ('gab', 2), ('rRa', 1)], ['gRa', 'gab', 'rRa'], 'gab', 3, inf)"
+ },
+ "Th5_defeasibility": {
+  "invalid_acts": 11920,
+  "defeasible": 8532,
+  "characterization_matches": 11920,
+  "mismatches": 0,
+  "with_recorded_revocation_defeasible": 2934
+ },
+ "Pr10_C1_incomparability": {
+  "checks": 638235,
+  "valid_a_not_b": 80,
+  "valid_b_not_a": 100499,
+  "first_examples": {
+   "b_not_a": "([('gRa', 1, None)], 'gRa')",
+   "a_not_b": "([('gRa', 1, 1), ('gab', 2, 2), ('rRa', 1, None)], 'gab')"
+  }
+ },
+ "random_property": {
+  "seed": 20261018,
+  "trials": 3000,
+  "sizes": [
+   4,
+   6
+  ],
+  "disagreements": 0,
+  "minimized": []
+ },
+ "seconds": 36.4,
+ "bounds": "13 templates; subsets 1..3; tau in {1,2,3}; 8 validity configs; 16 currency configs"
+}

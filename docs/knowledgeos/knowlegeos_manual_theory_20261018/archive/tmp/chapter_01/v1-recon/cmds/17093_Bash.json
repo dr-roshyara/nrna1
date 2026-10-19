@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; python3 -I - <<'EOF'\np='chapter_01/CH-01-knowledge-authority-execution.md'; s=open(p).read()\na=\"\"\"- **compiled**: 1;\n- **blocking**: 2;\n- **gate or threshold**: about 5;\n- **advisory or reminder**: about 7;\n- **convention**: about 4.\"\"\"\nb=\"\"\"- **compiled**: 1;\n- **blocking**: 2;\n- **checked by a gate, threshold, error, enumeration, structural rule or fail-closed guard**: 8;\n- **advisory or reminder**: 6;\n- **convention only**: 3.\"\"\"\nassert s.count(a)==1; open(p,'w').write(s.replace(a,b)); print('ok')\nEOF",
+  "description": "Correct census counts to exact figures"
+ },
+ "result": "ok"
+}

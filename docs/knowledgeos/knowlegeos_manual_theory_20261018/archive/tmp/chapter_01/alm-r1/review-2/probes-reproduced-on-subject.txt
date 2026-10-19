@@ -1,0 +1,50 @@
+=== probe1
+== N1 ord-domain: unrecorded ord of a REVOKE can never be placed before recorded same-instant acts
+ Rec_4(valid e) = T | true world with ord(r)=-1: False
+ with ord(e)=10, ord(r)=⊥: Rec = U | world ord(r)=11: True
+== N2 ⊥ holder on a recorded REVOKE is treated as a definite non-holder (RD6 υ decided)
+ Rec(valid e) = T | world holder=R: False
+ END with ⊥ target: Rec(current a,3) = T
+== N3 recorded REVOKE by holder with no recorded authority -> T under r1.1 (closed world over authority)
+ Rec(valid e) = T
+ END by c (authority unrecorded): Rec(current a,3) = T
+== N4 Auth conflated with Form: anachronistic grant by root
+ form False auth(code) False spec: Basis∋ROOT so Auth=T
+ C1=a, rho(e)=⊥: auth(code)= False
+== N5 C1=a: claim current before the adopting act is recorded; END needs record, ADOPT does not
+ current(a,2) with rho(a)=50: True
+ END at 2 recorded at 50: current(a,3): True
+== N6 oracle vs impl, C1=a & C6=later_prevails
+ impl current(a1,6): False  oracle: True
+== N7 rec_at_date upper bound from a lower-bound witness
+ witnesses {(2,2),(5,3)}, d=3: ('T', (2, 2)) | Rec_3 = U
+== N8 BAR=all with ROOT in basis + a barring grant (spec: every non-root g bars -> INELIGIBLE)
+ elig: ('ELIGIBLE_ASSERTED', []) basis {'ROOT', 'gb'}
+== N9 IND-2 with ⊥ implementer performer -> ELIGIBLE
+ elig: ('ELIGIBLE_ASSERTED', [])
+=== probe2
+trials 6000 valid disagreements 0 current disagreements 0
+=== probe3
+== Th-3 counterexample: premises hold (all acts with tau<=t complete), an act with true tau>t recorded with tau=⊥
+ V(valid e)= True
+ Rec_3 lam-=0 (tau_dom default (1,2,3)): F | worlds: 2
+ Rec_3 lam-=0 with tau_dom (1..7): U
+== Th-5 (i) counterexample: ill-formed REVOKE (target not yet recorded) is curable by adding the target
+ Rec_1(valid rv) lam-=0: F
+ completion adding g9 at pos 2: T
+== Th-5 non-defeasible negatives not in (i)-(iv)
+ (A) current(a,3) with tau(a)=5: Rec= F (no completion can cure)
+ (B) cascade+BASIS=all, basis grant expired: Rec(current ab,5)= F
+     + late root grant g*:  F (g1 still dead -> ALL fails)
+ (C) C6 later_prevails, superseding adopt under ROOT: Rec(current a1,3)= F
+== Th-4 claim 'under r1.1 the change is T->U' vs C1=a with late rho?  (just reproduce construction)
+ Rec_2, Rec_3 (lam-=7): T F lam-=inf: U
+== C10=no_same_instant: END at same instant as ADOPT is void forever
+ current(A,5): True
+== Covers: root ('R',('*','*')) is outside spec S-4.2 Covers; spec-literal covers:
+ spec-literal root covers (PERFORM,(implement,w)): False
+== C7: grant with no stated period alive forever
+ alive at t=10^9: True
+=== probe4
+recursive reading impl: False oracle: False
+literal 'V on H^a_e' reading (C1=b eval on H^a_e): True

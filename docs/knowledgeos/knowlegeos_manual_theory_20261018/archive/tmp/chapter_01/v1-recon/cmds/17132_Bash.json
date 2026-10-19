@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; echo '| 2026-10-18 | **Batch 4** (PC, DR, DE, AG, SI): baseline revisions R1-1…R1-13 (`BASELINE-REVISIONS.md`): §1.14.5 recorded confirmation; §1.17.5 filter-never-elevates and repaired contradiction with §1.7; §1.4 what closes a question, answered ≠ closed; §1.16.1 check-and-effect atomic, one owner with several mechanisms; §1.16.4 event kinds; §1.16.6 retention from pinning; §1.16.8 provenance of approval references; §1.7 visibility bound necessary not sufficient; §1.6 relevance ≠ authority example; §1.9 realization census (verified); §1.12 silent fail-open evidence | batch 4 |' >> chapter_01/CH-01-knowledge-authority-execution.md; echo '| 2026-10-18 | **Batch 4:** §2.8.8 E6 split into undecidable / resource-exhausted / unreadable; same epistemic rule from the delivery domain; unreadable policy must fail closed · §2.9 override as a property; results that may open a gate; where a check may live (EVT-1); OQ-24 made concrete | batch 4 |' >> chapter_02/CH-02-rules-and-conflict.md; echo ok",
+  "description": "Change-log rows for batch 4"
+ },
+ "result": "ok"
+}

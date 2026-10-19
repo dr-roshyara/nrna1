@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; sed -n 171,182p $C; echo ====; sed -n 353p $C; echo ====; sed -n 1066p $C",
+  "description": "Read the three passages in full"
+ },
+ "result": "**Refinement: what closes a question (Src: DR L14–27, L61–123, L127–133; Ded).** A later consolidation of 29 open questions sorts them by **what closes them**:\n- **an act alone**: decidable now, for example a naming decision (13 of 29);\n- **another decision first**: two root questions block 11 others;\n- **work not yet done**: an analysis or a completed artifact;\n- **evidence that does not yet exist**: e.g. a second independent execution.\n\nIts finding is that **13 of 29 were never blocked**. They stayed open because every document raised them and none was authorized to close them [DR L199–201]."
+}

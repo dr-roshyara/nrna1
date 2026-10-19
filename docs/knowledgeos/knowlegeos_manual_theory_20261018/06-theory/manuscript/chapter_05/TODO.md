@@ -1,0 +1,17 @@
+# Chapter 5: TODOs (undefined, ambiguous, inconsistent or INVALID concepts)
+
+*Rules: the Principal's TODO rule (2026-10-18); CV-1 §4a (every INVALID concept or idea is entered here with its ID; work continues).*
+
+**Status values:** Open · Under Research · Awaiting Human Decision · Resolved.
+
+| ID | Concept | Issue type | Related | Problem (business language) | Evidence | Status | Next action | Resolution criteria |
+|---|---|---|---|---|---|---|---|---|
+| **T5-01** | **CON-0052 model amnesia: INVALID (partly valid)** | counts not reconciled | §5.1; Ch. 7 (planned) | The repeated "discover → model → forget → rediscover" pattern is counted as n=11 in the docket and as occurrence #12 in a same-day source; the measurement is not shown | S0023 L151–154; S0017 L26 | Open | find the counter's own record | one reconciled count with its measurement |
+| **T5-02** | **"PA" (a reviewing role)** | TODO — UNDEFINED | §5.1 | The docket amends itself "per PA review" and cites the PA declaring a phase ended; the role and its authority are not stated | S0023 L9, L32, L166 | Open | look for the expansion in later sources | a source naming the role and its standing |
+| **T5-03** | **"Adopted stance N-10"** | inconsistent | §5.1; Ch. 0 RC-28, RC-32, RC-57 | The docket calls the stance adopted while asking the ARB to ratify the Reference Architecture it is attributed to | S0023 L110–114, L168; S0019 (N-10) | Open | look for an adoption record of N-10 | an adoption record, or a correction |
+| **T5-04** | **CON-0050 presupposing evidence: INVALID (partly valid)** | too strong as general rule | §5.1 | Robust evidence (supports the conclusion under every candidate answer) still counts | S0023 L34 | Open | a real counterexample attempt on the qualified form | the qualified form validated |
+| **T5-05** | **CON-0053 gap kinds: INVALID (partly valid)** | classification inconsistent | §5.2 | The paradigm case (genesis) is architectural in S0024 and governance in S0025; no criterion for a single kind | S0024 L24, L155, L162; S0025 L139, L155 | Open | look for a criterion in later sources | a criterion that assigns each gap one kind, or the kinds recorded as non-exclusive |
+| **SEQ-0014** | **Sequence gap (SQ-1): undefined** | undefined | "primary closure", Ch. 5 §5.2 | found by review C4 | CON-0053 | Resolved 2026-10-19 (withdrawn; T5-05 open on the concept) | — | closed by the revision named |
+| **SEQ-0016** | **Sequence gap (SQ-1): missing link (imprecise back-pointer)** | missing link (imprecise back-pointer) | Ch. 5 §5.1 "three-valued reading of Ch. 1" without section | found by review C4 | CON-0048 | Resolved 2026-10-19 (pointer §1.14.1, §1.17.3) | — | closed by the revision named |
+| **T5-06** | **A sole evidence path** ("the log's growth is the ONLY path to an AI-Orchestration ADR") | might not be valid | §5.3 C1 | Restricting a decision to one internal log excludes external evidence; a deferral needs a fixed criterion, not a single permitted source | S0030 L7 | Open | look for how the orchestration question is actually decided in later sources | a reason why external evidence is excluded, or a revised criterion |
+| **T5-07** | **Incidents and commissions as activations** | open (normative part for the Principal) | §5.3 C3, C4; Ch. 1 §1.13 (D-2) | Most activations came from acts and incidents, none from an independently fired criterion; whether these are lawful second paths is not stated | S0029 L59–65 | Open | follow D-2 | a ruling on lawful activation paths |

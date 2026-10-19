@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; F=chapter_01/CH-01-knowledge-authority-execution.md; for p in \"before use\" \"wiring declaration\\|declaration diverged\" \"potential duplicate\" \"INV-RULE-011\" \"stored restricted edge\\|stored edge\" \"block 7\\|blocks 7\\|seven questions\" \"two closure rules\\|closure rule\" \"11 of 20\\|Assessment::of\" \"integrity\"; do echo \"== $p\"; grep -n -i \"$p\" $F | cut -c1-260 | head -2; done",
+  "description": "Verify earlier Ch1 edits exist"
+ },
+ "result": "== before use\n1280:| 2026-10-18 | **Batch-4 independent review corrections** (R1-3b, R1-5a, R1-6b, R1-7a, R1-8a, R1-9a, R1-11b, R1-12a, R1-13a in `BASELINE-REVISIONS.md`): §1.9 census recast as enforcement modes, \"ladder measured\" and \"most sit low\" withdrawn, \"compiled\" re\n== wiring declaration\\|declaration diverged\n453:To these come a component whose header describes a file path its code does not write, and a registry entry \"planned\" for five weeks for a mechanism that does not exist: \"the registry describing an intention, not an inventory\" [SI L392]. *Reading (Ded):* in\n== potential duplica"
+}

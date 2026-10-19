@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1; sed -n '93,108p' docs/knowledge_tranfer/20260816_1034_policy_catalogue.md; cd docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; n=$(grep -n \"^### 1.17.3\" chapter_01/*.md | cut -d: -f1); echo \"== 1.17.3 at $n\"; sed -n \"${n},$((n+14))p\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-400; grep -n -i \"not a denial\\|separation of dut\\|judgement about a person\\|judgment about\" chapter_0*/*.md | cut -c1-200",
+  "description": "Check PC L93-108 and §1.17.3 coverage"
+ },
+ "result": "The input has it return **`ALLOW` / `DENY` / `REVIEW_REQUIRED`**. `..._1029` §4 ruled thirty minutes earlier that an authority evaluator reports whether a covering grant is **recorded**, and never concludes *authorized*. That ruling stands, and the reason is unchanged:\n\n> `NOT_FOUND` and *unauthorized* diverge whenever a grant exists but was not recorded — and this corpus's entire authority model exists because that case is real. A policy returning `DENY` has converted a gap in the record into a judgement about a person.\n\n**Corrected return vocabulary:**\n\n```\nCOVERING_GRANT_FOUND      a record"
+}

@@ -1,0 +1,2 @@
+record times unknown   C1=b: T   C1=a: U   robust over C1: not established
+record times known     C1=b: T   C1=a: T   robust over C1: T

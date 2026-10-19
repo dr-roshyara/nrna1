@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; grep -n \"^| E6 |\" chapter_02/CH-02-rules-and-conflict.md | cut -c1-200; grep -n \"A gap between hardness and enforcement consequence is normal\" chapter_02/CH-02-rules-and-conflict.md | cut -c1-80; grep -n \"A \\*\\*confirmation request\\*\\* (the mechanism asks, a person decides) is not a block\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-80; grep -n \"If\\*\\* read access is governed, context assembly must filter\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-100; grep -n \"^## 1.7 \\|narrow, never widen\" chapter_01/CH-01-knowledge-authority-execution.md | head -3 | cut -c1-100",
+  "description": "Locate integration targets for file 1"
+ },
+ "result": "559:| E6 | **not analysable** in the logic used (undecided, time-out), or **not readable** (see V3 addition below) | UNKNOWN | RM, Ch. 2 §2.3(a); V3 L292 |\n631:A gap between hardness and enforcement consequence is normal during migratio\n801:**Recommended rules and confirmation requests.** Blocking on a *recommended*\n1171:- **If** read access is governed, context assembly must filter by may-read before relevance (co\n215:## 1.7 Visibility: derivation may narrow, never widen"
+}

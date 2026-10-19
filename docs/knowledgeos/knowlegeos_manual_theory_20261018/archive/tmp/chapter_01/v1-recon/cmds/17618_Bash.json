@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; tail -4 chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-300; tail -3 ../IDEA-REGISTER.tsv; head -1 ../IDEA-REGISTER.tsv",
+  "description": "View Ch1 change log and register tail"
+ },
+ "result": "| 2026-10-18 | **Correction round 4** (independent review of packet RP-R3): §1.14.1 rewritten as one readable section with a plain-language summary (alternative cited bases; act window to first terminal ending minus suspensions; consumption constraint on P; status-with-reason output; \"cannot determi\n| 2026-10-18 | **Chapter 1 review — bounded correction pass** (findings A–G and §1.16.8): §1.14.1 model rewritten (adoption act and basis bound in one expression; several adoption acts allowed, re-adoption is a new act; revocation/supersession count only if authorized; activity checked beside actor"
+}

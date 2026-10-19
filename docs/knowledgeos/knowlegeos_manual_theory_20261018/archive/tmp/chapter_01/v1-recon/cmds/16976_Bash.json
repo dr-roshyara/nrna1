@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; sed -n 1198,1199p chapter_01/CH-01-knowledge-authority-execution.md",
+  "description": "Read the candidate-dimension lines"
+ },
+ "result": "- *Candidate* dimension: the confidentiality class of a claim. It is shown independent of **standing** only; it is **not tested** against the governed classification κ, which may already be able to carry it.\n- **It is not shown necessary.** Counterexample from the independent review: the operational case below is fully expressible as **grant scope over named items**, without any class. A class becomes useful only where items are too many to name. That is a scale argument, not a necessity."
+}

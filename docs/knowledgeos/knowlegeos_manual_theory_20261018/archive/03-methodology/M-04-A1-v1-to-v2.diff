@@ -1,0 +1,167 @@
+--- A-1 v1 (M-04-A1-v1-superseded.md)
++++ A-1 v2 (section of M-04-working-method-business-language.md)
+@@ -1,42 +1,131 @@
+-## Amendment A-1 — PROPOSED, pending the Principal's approval (2026-10-18)
++## Amendment A-1 — PROPOSED, pending the Principal's approval (version 2, 2026-10-18)
+ 
+-*Not part of the approved method until the Principal approves it. The approved text above is unchanged. Rationale and the change record are in the methodology review of 2026-10-18 (`M-04-review-20261018.md`). Hypothetical simulations motivated A-1(b) and (c) only as stress tests; they are not KnowledgeOS findings.*
++*Not part of the approved method until the Principal approves it. The approved text above and below is unchanged. Version 2 replaces version 1 of this amendment after the Principal's corrective review; the change record is in `M-04-A1-corrective-review-20261018.md`. Each part names its evidence and the class of that evidence, per part (g).*
+ 
+-**(a) Conclusions no stronger than the evidence.** Refines step 4. For every important claim I ask five questions:
+-1. what kind of claim is it?
+-2. what evidence would support or refute it?
+-3. what evidence did I actually examine?
+-4. what conclusion does that evidence justify?
+-5. what remains assumed or uncertain?
++### (a) A claim is described on five separate dimensions
+ 
+-The conclusion written into the book may not be stronger than the answer to question 4.
++Refines step 4. Version 1 listed seven "kinds of claim" as one list. They were not alternatives: a single claim can be stated in a source, be about software, be an adopted decision, and be checked by me, all at once. So each important claim is described on five dimensions. Within a dimension the values exclude each other; across dimensions they combine.
+ 
+-| Kind of claim | What it needs | What it can establish |
++| Dimension | Question | Values |
+ |---|---|---|
+-| source claim | the source passage | **only what the source states**, not that it is true |
+-| decision | the governing record | a decision **within its actual authority and scope** (proposal ≠ exploratory ruling ≠ adopted decision) |
+-| logical or mathematical claim | premises, derivation and a counterexample attempt; a proof for theorem-level claims | a conclusion **from stated premises** |
+-| implementation claim | code, configuration, records or tests | behaviour **for the paths, versions and conditions examined** |
+-| empirical claim | observations with a stated population, period and coverage | a finding **within that coverage**. *Absence of a record is not absence of the event* until coverage is known |
+-| researcher deduction | named premises and an explicit inference | a deduction, labelled as mine |
+-| hypothesis | a stated test | nothing yet; stays provisional |
+-
+-**(b) Split compound statements.** One sentence or paragraph can hold several claims needing different checks; each is recorded and checked separately. *Covers a gap shown in simulation A: step 3 labels "each idea" but does not say compound statements must be split.*
+-
+-**(c) Contradictions are not settled by date or by majority.** A newer document may be exploratory or outside its author's authority, and an independent reviewer's disagreement is settled by evidence and reasoning, not by vote. I keep both claims with their provenance, authority, scope and evidence, and revise the book only when the reasoning justifies it. *Clarifies step 3's "Contradiction" row; motivated by simulation B.*
+-
+-**(d) A glossary of the book's terms.** One meaning per term, kept as an appendix and checked at every five-file review. *Evidence (confirmed, not hypothetical): both pilots found real term clashes. Pilot 1: "authority scope" meant two things. Pilot 2: "standing" meant two things.*
+-
+-**(e) The completeness re-read covers the whole source**, including footnotes, tables, examples, code and qualifications, not only the passages already extracted. *States explicitly what step 6a implies; adds no new step.*
+-
+-**(f) Audits are measured, not declared.** Each independent audit records:
+-- omissions (foundational and other, separately);
+-- interpretation errors;
+-- claims stated more strongly than their evidence;
+-- defects still present after correction;
+-- open conflicts with their reasons.
++| **1. Origin** | who asserts it? | stated in the source (with location) · cited-only (the source reports another document) · mine (researcher) · a reviewer's or auditor's |
++| **2. Domain** | what is it about? This decides which check fits | conceptual or definitional · logical or mathematical · implementation (software behaviour) · empirical or operational (events, records, counts) · normative (a decision, rule or ruling) |
++| **3. Verification** | what did I examine, and with what result? | not examined · supported · partly supported · refuted · not verifiable (reason given). Every value except "not examined" states its **coverage**: paths, versions, period or population examined |
++| **4. Standing** | what authority stands behind it? Required for normative claims; for the others it records only the source document's standing | proposal · exploratory ruling (Track B) · adopted decision · superseded or withdrawn · unknown |
++| **5. Written conclusion** | how strongly the book states it | the book's marks: **Src** (the source says so) · **Ind** (I verified it) · **Int** (my reading of its meaning) · **Ded** (derived from named premises) · **Hyp** (proposed, with a stated test) · **Open** |
++
++**The rule (unchanged from version 1):** the written conclusion may not be stronger than dimensions 1–4 support. In particular:
++- **Ind** requires verification *supported* or *partly supported*, and the book states the coverage;
++- **Src** asserts only that the source says it, never that it is true or in force;
++- a normative claim is written as in force only if its standing is *adopted decision* and is not superseded;
++- **Ded** names its premises and records one attempt at a counterexample; theorem-level claims need a proof;
++- for empirical claims, *absence of a record is not absence of the event* until the record's coverage is known.
+ 
+-There is no zero-defect target. Severity decides the response, and a significant miss on a foundational idea can justify a pause.
++**What each domain needs** (the check, not the result):
++
++| Domain | Needs | Can establish at most |
++|---|---|---|
++| conceptual or definitional | the defining passages, and the glossary (part d) | what the term means in that source or in the book |
++| logical or mathematical | premises, derivation, counterexample attempt; a proof for theorem-level claims | a conclusion from stated premises |
++| implementation | code, configuration, records or tests | behaviour for the paths, versions and conditions examined |
++| empirical or operational | observations with a stated population, period and coverage | a finding within that coverage |
++| normative | the governing record of the act | a decision within its actual authority, scope and time |
++
++**Recording.** From the next batch on, the idea register records dimensions 2 and 4 in two added columns (`claim_domain`, `standing`). The existing columns carry the rest: `source` and `location` give origin (1), `verification` gives verification with coverage (3), `epistemic` gives the written conclusion (5) as **one** mark. Rows written before approval are not relabelled; their compound marks are recorded as a known limitation.
++
++### (b) The unit of extraction is a claim, not a sentence
++
++Refines step 3 ("each idea gets one label") and step 6a.
++
++**A claim** is one assertion that can be checked on its own: a statement that can be true or false, a definition, a norm that can be complied with or broken, or an open question the source poses. It keeps its own **qualifications** (scope, conditions, time, modality such as "must" or "may", exceptions). A qualification is part of its claim, not a separate claim, unless it asserts something that needs its own check.
++
++**Where claims are found.** Anywhere in the source: running text, headings, table rows and cells, footnotes, lists, examples, diagrams, code and configuration, and qualifying remarks. An example can carry an implied claim (a rule it presupposes); I record it, marked **Int**.
++
++**Splitting and joining.**
++- **Split** a passage when its parts need different evidence or could receive different dispositions. One sentence may hold several claims.
++- **Join** a claim that is distributed across a source (stated in one place, qualified in another) into one claim with **all** its locations.
++- A claim repeated inside one source is one claim with several locations.
++- A register row holds **one** claim. A source claim and my deduction from it are two rows (or one row with the deduction recorded as a separate, linked entry).
++
++### (c) Contradictions are resolved by reasons, never by date or by count
++
++Refines step 3's "Contradiction" row. Applies to conflicts between sources, between a source and the book, and between me and a reviewer.
++
++**Procedure.** The steps are taken in order, and the first that settles the case ends it:
++1. **Meaning.** Do both claims use their terms in the same sense? If not, it is a term clash, recorded under part (d), not a contradiction.
++2. **Scope.** Do they apply to the same subject, conditions, time and context? Disjoint scopes do not conflict. A narrower claim may be a specialisation or an exception of the wider one.
++3. **Kind.** A description of what *is*, a proposal of what *should be*, and a record of what *was decided* answer different questions. A proposal does not contradict a decision about what is in force; it disagrees with it.
++4. **Provenance.** Are the claims independent, or do they share an origin? Repetition from one origin counts once (rule 2 below).
++5. **Authority and adoption** (normative claims). What is in force follows from the applicable authority: a recorded act, within its actor's scope, valid at the time it was made, and not superseded by a later recorded act. A later date matters **only** when the later act is itself within authority and supersedes the earlier one. If the authority cannot be determined, the case is unresolved.
++6. **Evidence** (factual claims). The claim better supported by examined evidence prevails **within the coverage examined**. If the evidence does not decide it, the case is unresolved.
++7. **Reconciliation.** A reading under which both hold (different scope, time or meaning) is accepted only if the sources support it, and is marked **Int**.
++
++**Outcomes** (one per contradiction, recorded with its reason):
++not a contradiction (meaning or scope differ) · reconciled (how) · resolved by authority (which act) · resolved by evidence (which evidence, what coverage) · **unresolved** (both claims stay visible in the book with provenance, standing and evidence).
++
++**Never a reason on its own:** a later date; the number of documents or reviewers on one side; my preference. A reviewer disagreement is settled by the same procedure; an adjudicator decides by evidence and reasoning, not by vote. Decisions about the method or the book itself belong to the Principal.
++
++### (d) A glossary that is checked for use, not only for existence
++
++Refines the five-file review. The book keeps an appendix with **one meaning per term**, and at every five-file review I run a **consistency check**:
++1. **Definition.** Each glossary term has exactly one defining passage in the chapters; other passages refer to it. Count terms with zero or several definitions.
++2. **Use.** For every term added or changed since the last review, and for five further terms drawn by the rule in part (f), I read **every** occurrence in the reviewed chapters. I classify each occurrence as consistent, inconsistent (another meaning) or ambiguous.
++3. **Terms that may not be used bare** (marked so in the glossary, e.g. "lifecycle") are checked for their qualifier.
++4. **New terms.** Terms defined in the batch's new text but missing from the glossary are counted.
++5. **Disposition.** Every inconsistency or gap is fixed or kept visible with a reason.
++
++The review reports the counts. "No inconsistencies" is a valid result only if the check was run and its scope is stated.
++
++### (e) The completeness re-read covers the whole source
++
++Unchanged from version 1: it states what step 6a already implies. The re-read covers footnotes, tables, examples, code, diagrams and qualifications, not only passages already extracted, and uses the unit of part (b).
++
++### (f) Audits record five measures
++
++Refines "independent audit by a fresh reviewer". Each audit records the five measures below. They describe; they do not grade. **There is no target value.** Severity decides the response, and a significant miss on a foundational point can justify a pause.
++
++**Severity, used by measures 1–4.**
++- **Foundational:** the defect, once corrected, changes a definition, an axiom or invariant, a theorem-level claim, a chapter conclusion, or the disposition of another claim.
++- **Ordinary:** it changes an example, a supporting reference, the wording, or the strength of a claim without changing any of the above.
++
++Each defect is assigned one severity, with a one-line reason. The assignment can be challenged in adjudication.
++
++**Unit and sampling.** The unit is the claim of part (b). Samples are drawn by a recorded, repeatable rule:
++- list the eligible items in source order;
++- order them by the SHA-256 of "batch-id/item-id";
++- take the first *n*.
++
++If fewer than *n* items are eligible, take all of them and report the number. If none is eligible, report zero and the number of passages examined. The default *n* is 10 per measure; the auditor may take more, and states *n*.
++
++| # | Measure | Counts | Denominator | Scope | Limitation |
++|---|---|---|---|---|---|
++| **M1** | **Omissions**, foundational and ordinary reported separately | claims the auditor finds in the source that have no disposition in the register or the book | claims the auditor identified in the sampled passages. **The auditor identifies them before seeing the register** | sampled passages of the audited sources | the auditor's extraction is not ground truth; disputed items go to adjudication; a rate from a small sample is reported with its *n*, not generalised |
++| **M2** | **Interpretation errors** | statements that attribute to a source something it does not say or mean | references checked | the reference sample | judges reading, not truth of the source |
++| **M3** | **Overstatements** | written conclusions stronger than dimensions 1–4 of part (a) support | claims checked | the claim sample | depends on the auditor seeing the evidence I examined |
++| **M4** | **Residual defects** | defects accepted in an earlier review or audit that are still present, or were corrected wrongly | accepted defects re-checked | defects accepted since the previous audit | measures correction, not new defects |
++| **M5** | **Open conflicts** | contradictions with outcome *unresolved* (part c) | none: a count, each listed with its reason | the reviewed chapters | an open conflict is not a defect; one **without** a recorded reason is counted under M4 |
++
++Errors of logic or mathematics in my own reasoning are reported alongside these five, under the audit scope M-04 already approves ("that the mathematics holds"). Version 1 did not include them among the five; whether to add them is left to the Principal.
++
++### (g) Evidence for changes to the method is classed
++
++Applies to this amendment and to any later change to M-04. Every reason given for a change to the method carries one class:
++- **confirmed**: observed in this project's records, with its location;
++- **reported**: stated by the Principal, a reviewer or a source, not checked by me;
++- **deduction**: argued from stated premises;
++- **hypothetical**: from a constructed scenario or simulation. It may motivate a stress test. It is **never** presented as an observed defect of the method or of KnowledgeOS.
++
++### (h) The approved version can be identified
++
++- **Register.** `03-methodology/METHOD-VERSIONS.md` lists every version of M-04 and of each amendment:
++  - identifier and status (PROPOSED · APPROVED · REJECTED · SUPERSEDED);
++  - file and SHA-256 of the exact text;
++  - the decider and where the decision is recorded;
++  - what it supersedes.
++- **Who writes what.** Only the Principal approves or rejects. I record the decision; I never mark my own proposal approved.
++- **Content identity.** An approval refers to the SHA-256 of the exact text approved. Later editorial changes (for example, the status line) get their own entry with the new hash and are classed as editorial.
++- **Reconstructed baseline.** The approved v1.0 text is held, byte for byte and without any added header, in `M-04-v1.0-approved-baseline.md`. How it was reconstructed is recorded in `METHOD-VERSIONS.md`. Its identity with what the Principal approved rests on this session's change record. It becomes reliable only when the Principal confirms its hash.
++- **Limitation.** The research workspace is not under version control. Hashes detect a change; they do not prevent it, and the register file can itself be edited. Whether to place the workspace under version control is a Principal decision, outside this amendment.
+ 
+ **Limits, stated plainly:** completeness is a goal to be tested, not a status the register can certify; a coherent book is not yet a validated theory.
+ 

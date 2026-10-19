@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018; F=06-theory/manuscript/chapter_01/CH-01-knowledge-authority-execution.md; sha256sum $F; ls -la --time-style=full-iso $F; echo \"== candidate stored copies of baseline v1\"; grep -rl \"4d65261d18f6fdb1\" . 2>/dev/null; find / -xdev -name \"CH-01*\" -newer 03-methodology/M-04-v1.0-approved-baseline.md 2>/dev/null | grep -v \"^/proc\" | head; git -C /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1 ls-files --error-unmatch $F 2>&1 | tail -1",
+  "description": "Verify Chapter 1 hash and look for baseline copy"
+ },
+ "result": "562230ad6780848c21f92e25c7c88c9287c476461fda3ac625751df08fffc54a  06-theory/manuscript/chapter_01/CH-01-knowledge-authority-execution.md\n-rw-r--r--. 1 nab-raj.roshyara nab-raj.roshyara 171023 2026-10-18 19:32:35.107517462 +0200 06-theory/manuscript/chapter_01/CH-01-knowledge-authority-execution.md\n== candidate stored copies of baseline v1\nCONTEXT.md\n06-theory/manuscript/BASELINE-REVISIONS.md\nsessions/2026-10-18.md\nDid you forget to 'git add'?"
+}

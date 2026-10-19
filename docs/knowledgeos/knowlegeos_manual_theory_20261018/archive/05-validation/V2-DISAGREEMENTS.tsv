@@ -1,0 +1,367 @@
+file	prop_id	lines	class	reader_at_fault	foundational	professor_items	reviewer_items	note
+01	P001	3	OMISSION	Professor	no	-	Q1	Document kind = constitutional modeling of the invariant structure of knowledge; X has no item for it.
+01	P004	3	SCOPE	none	no	Q2	Q4	NOT design. X CLM vs Y INV; both faithful.
+01	P008	4	OMISSION	Professor	no	-	Q8	"complete enough to be falsified": in X:Q4 quote only, not in X's meaning sentence.
+01	P009	4	SCOPE	none	no	Q4	Q9	Research freeze: changes only from pilot evidence. X CLM vs Y INV.
+01	P011	5	OMISSION	Professor	no	-	Q12	No evidence from medicine/law/aviation/finance/education collected.
+01	P013	5	OMISSION	Professor	no	-	Q14	The boundary strengthens the model (states what evidence covers).
+01	P014	6	SCOPE	none	no	Q8	Q15	Closed evidence base. X CLM (omits the six-document chain) vs Y ASM (full composition).
+01	P016	13	SCOPE	none	no	-	Q17	Y's flagged [I]: parenthesis = provisional; product form assumes orthogonality. Orthogonality is not stated in the source but correctly marked as inference; X not obliged to record it.
+01	P018	18	SCOPE	none	no	Q11	Q19	Retrieval matches coordinates, never artifact types. X CLM vs Y INV.
+01	P035	31	OMISSION	Professor	yes	-	Q36	Knowledge Instance = NATURE x REPRESENTATION x GOVERNANCE-STATUS (x AUTHORITY-SCOPE); §2 restates the product for the Instance.
+01	P045	41	OMISSION	Professor	no	-	Q46	First-party evidence: measurement baseline vs ratchet constraint.
+01	P047	41	SCOPE	none	no	Q33	Q48	Purpose = consumer-side selector of Knowledge Queries. X DEF vs Y REL.
+01	P048	43	OMISSION	Professor	no	-	Q49	Confidence table exists per the ARB's epistemic-honesty requirement. Y's gloss ("explicit confidence levels", typed INV) is slightly stronger than the source but defensible.
+01	P055	54	OMISSION	Reviewer	no	Q40	-	Heading announces "(ten)" invariants; eleven are listed (L56-66). X records the source statement and flags the internal inconsistency; Y has no item.
+01	P059	59	SCOPE	none	yes	Q44	Q59,Q60	I-4 Contradictions visible; coexist at rest, resolve at consumption. Y splits into 4a/4b.
+01	P061	61	SCOPE	none	yes	Q46	Q62,Q63	I-6 Freshness observable at discovery, priced per domain half-life. Y splits into 6a/6b.
+01	P063	63	LABEL-ERROR	Reviewer	yes	Q48	Q65	I-8 No second-population artifact class. The source never defines "second-population"; Y asserts an unflagged gloss ("maintained by a population different from their consumers") as if stated. Needed [I].
+01	P074	70	LABEL-ERROR	Reviewer	no	Q57	Q76	P5, P9 are theorems. Source: "P5 = f(Nature)". Y asserts "P5 from lifecycle = f(Nature)", an unflagged inference linking P5 to L32. X faithful.
+01	P076	70	OMISSION	Professor	no	-	Q78	Every domain trusts encoded over prose; how much can be encoded differs.
+01	P077	74	SCOPE	none	yes	Q59	Q79	Eight-stage lifecycle with regime fork = f(Nature) at Evolution. X DEF vs Y MATH.
+01	P084	78	SCOPE	none	yes	Q62	Q86	Nature derivation = new instance of a new nature referencing its source. Definition is in X:Q62 quote only; X meaning coarser.
+01	P085	78	SCOPE	none	yes	Q62	Q87	Representation transition = same nature moved to a better representation. X coarser as for P084.
+01	P094	92	SCOPE	none	no	Q68	Q96	Appendix A = observed dense regions / examples. X CLM vs Y REL.
+01	P095	92	OMISSION	Professor	no	-	Q97	Examples will move to their own architecture documents when derived.
+01	P099	98	OMISSION	Professor	no	-	Q100	Runtime Knowledge profile (Observation x Recorded instrument-produced; instrument runs; Project; Publication/Retirement). X records only the flag.
+01	P100	99	OMISSION	Professor	no	-	Q101	Business Knowledge profile (cells, validation, Constitutional canon, risk stages). X:Q72 says only "example".
+01	P103	103	OMISSION	Professor	no	-	Q104	Explicit coordinate assignments (ADR-AIP-01, merge-gate, OQ-ENG-001, ...). Y faithful; note the source itself uses values outside the §2 value sets (see §3).
+01	P106	105	SCOPE	none	no	Q76	Q107	Model conclusion, not a migration order; R-37, rule parsimony, P1 forbid restructuring. X CLM (no reasons) vs Y INV.
+01	P108	109	SCOPE	none	no	Q77	Q109	Order Project -> Engineering -> Runtime with gates (E-1, zero refactoring, EPIC-002). X says only "in a stated order".
+01	P110	111	SCOPE	none	no	Q79	Q111	STOP: ARB review precedes any domain-specific architecture. X CLM vs Y INV.
+02	P01	3	OMISSION	Professor	no	-	Y:Q1	Document kind: synthesis artifact, modeling not design.
+02	P02	3	SCOPE	none	yes	X:Q1	Y:Q2	Hypothesis under test: seven types are projections of orthogonal dimensions. X types it CLM, Y types it ASM. Both faithful.
+02	P04	4	SCOPE	none	no	X:Q2	Y:Q4	STOP gate: no Reference Architecture until the ARB rules. X folds it into the status item as a CLM; Y gives it a separate INV.
+02	P06	5	SCOPE	none	no	X:Q3	Y:Q6	"No new research; no unsupported concepts." X folds it into the ASM; Y gives it a separate INV.
+02	P11	11	SCOPE	none	yes	X:Q7	Y:Q11	Archetype = densely populated cell of the dimensional space. Y gives it a separate DEF; X has it inline in the REV.
+02	P12	14	BOTH-DEFENSIBLE	none	yes	X:Q8	Y:Q12	Instance = NATURE x REPRESENTATION x GOVERNANCE-STATUS (x AUTHORITY-SCOPE). X reads it as a product of four dimensions; Y reads the parenthesis as an "optional" scope factor. The source's parenthesis is not explained; L53/L81 call scope "provisional", not "optional". Both readings are defensible.
+02	P13	15	SCOPE	none	yes	X:Q9	Y:Q13	lifecycle regime = f(Nature). X bundles both functions in one item.
+02	P14	16	SCOPE	none	yes	X:Q9	Y:Q14	validation method = f(Representation, Nature). X bundles both functions.
+02	P16	21	OMISSION	Professor	no	-	Y:Q16	"One thing cannot change type by changing clothes": an item's type does not change with its encoding.
+02	P18	21	SCOPE	none	no	X:Q12	Y:Q18	The Business-Rules merge was an unrecognized dimensional split. X types it CLM, Y types it REV.
+02	P21	22	SCOPE	none	no	X:Q15	Y:Q21	Remedy (capture at decision time) is a representation transition within an unchanged nature. X types it CLM, Y types it REL. Y's "tacit->recorded" agrees with L77.
+02	P23	23	OMISSION	Professor	no	-	Y:Q23	This is "exactly what pulling a dimension out of a flat classification looks like".
+02	P24	23	SCOPE	none	no	X:Q17	Y:Q24	Governance status escaped first; D10 extracts the rest. X types it REL, Y types it CLM.
+02	P31	35	SCOPE	none	yes	X:Q24	Y:Q31	Tacit was never a peer; it is a representation column for every nature ("strongest proof"). X types it CLM, Y types it REV.
+02	P35	41	SCOPE	none	no	X:Q27	Y:Q35	The model must permit composite artifacts of single-nature claims (PK-P3). X types it CLM, Y types it INV.
+02	P38	44	OMISSION	Professor	no	-	Y:Q38	Agent memory, RAG and docs findings (D) vary by representation at constant content.
+02	P39	45	OMISSION	Professor	no	-	Y:Q39	No contradictory evidence against the dimension; the only doubt is whether the value list is complete.
+02	P42	48	SCOPE	none	no	X:Q32	Y:Q42	Four independent status systems map to one vocabulary. X types it CLM; Y types it MATH (the source uses the correspondence symbol).
+02	P43	48	OMISSION	Professor	no	-	Y:Q43	D9's Historical falsification is cited as further evidence for Dimension 3.
+02	P47	52	OMISSION	Professor	no	-	Y:Q47	The EM-001 product/platform ADR split is first-party evidence that decisions carry scope.
+02	P49	56	SCOPE	none	no	X:Q38	Y:Q49	Regime mapping: decisions->immutable+superseded, descriptions->evolve/regenerate, measurements->immutable records, skill->practice-bound. X types it DEF, Y types it MATH.
+02	P50	56	LABEL-ERROR	Reviewer	no	X:Q37	Y:Q50	Source: "No evidenced counterexample of a nature freely choosing its regime -> recording regime as an axis would denormalize". Y:Q50 restates this as a fact ("Since no nature freely chooses its regime"), dropping the absence-of-evidence qualifier. X keeps the evidential form.
+02	P51	56	OMISSION	Professor	no	-	Y:Q51	PK-P5 still stands, restated as "the regime is determined by the nature".
+02	P52	57	SCOPE	none	no	X:Q39	Y:Q52	Validation mapping: executable->execution, prose->review/regeneration, conversational->conversation, tacit->use. X types it DEF, Y types it MATH.
+02	P53	57	SCOPE	none	no	X:Q40	Y:Q53	Nature override: Decision-nature requires enforcement-binding regardless of representation (Watson Discovery). X types it CLM, Y types it INV.
+02	P63	74	SCOPE	none	yes	X:Q50	Y:Q66	The status vocabulary (D3) is uniform across all knowledge (constitutional core). X types it CLM, Y types it INV. Neither notes the section 5 "direction only" frame (see P82).
+02	P64	74	SCOPE	none	no	X:Q51	Y:Q67	Machinery split by dimension: validation per Representation, capture and lifecycle per Nature, canonicity per Scope. X states only that machinery splits by dimension; Y gives the mapping.
+02	P67	75	OMISSION	Professor	no	-	Y:Q70	Task-driven retrieval matches minimal-sufficient-context (PK-P6).
+02	P68	76	SCOPE	none	no	X:Q53	Y:Q71,Y:Q74	The seven archetypes remain the working vocabulary; humans and agents keep speaking in archetypes. X conveys this only through the model/ubiquitous-language item. Y:Q74 types it INV, which is acceptable.
+02	P70	76	SCOPE	none	no	X:Q54	Y:Q73	Do NOT build a five-dimensional bureaucracy; the dimensions govern the machinery (PK-AD4 applied reflexively). X types it CLM, Y types it INV.
+02	P72	77	OMISSION	Professor	no	-	Y:Q76	The evidence's biggest wins are transitions (tacit->recorded, prose->executable, prose->regenerated).
+02	P74	81	SCOPE	none	no	X:Q57	Y:Q78	Criterion 1: 3 orthogonal + 1 provisional scope + 2 derived functions. X types it CLM, Y types it MATH.
+02	P77	84	SCOPE	none	no	X:Q60	Y:Q81	Semantic foundation: 9 invariants + 10 principles + 4 dimensions + 7 archetypes + 2 derivation functions. X types it CLM, Y types it MATH.
+02	P78	84	SPURIOUS	Professor	no	X:Q60	-	X:Q60 adds "(later eleven in the Constitutional Model)". The source has nothing about a later count of eleven or a Constitutional Model; this is outside knowledge presented as part of the item.
+02	P79	86	OMISSION	Professor	no	-	Y:Q82	Engineering Platform artifacts (qualification records, ADRs, guides) decompose identically into the same dimensional space.
+02	P81	88	SCOPE	none	no	X:Q62	Y:Q84	Closing STOP gate (restates P04). X types it CLM, Y types it INV.
+02	P82	72	NEITHER	both	no	-	-	The section 5 heading "Impact on the future architecture (direction only)" marks L74-77 as non-binding direction. Neither reader records this status label, and Y types several section 5 items as INV (Y:Q66, Y:Q73, Y:Q74).
+03	P05	5	SCOPE	none	no	Q3	Q5	Method rule: no new research, traceable, candidates validated or falsified; Y keeps only the candidate-testing part
+03	P08	11	OMISSION	Professor	yes	-	Q8	Types differ on every governance-relevant axis (producer, validation, lifecycle, retirement, freshness, discovery)
+03	P16	22	OMISSION	Professor	no	-	Q16	Evidence: B r=0.67, D 6% vs 35%
+03	P27	34	OMISSION	Professor	no	-	Q27	Binding grounded in the one longitudinal ADR success (B)
+03	P33	39	OMISSION	Professor	no	-	Q33	ADR consumption gap is a discoverability failure; readership never measured
+03	P40	47	OMISSION	Professor	no	-	Q40	Living Glossary = tacit admission that hand-maintained glossaries fail
+03	P42	49	MISREADING	Reviewer	no	Q35	Q42	Source: rots when owning conversation stops (~2 yrs after OWNER DEPARTURE); X: rots ~2 yrs after the conversation stops (minor). Y quotes verbatim
+03	P51	58	OMISSION	Professor	no	-	Q51	Second-population variants (wikis) decay; best-evidenced failure in corpus
+03	P54	60	OMISSION	Professor	no	-	Q54	Validation = review coupled to code change + regeneration (Y keeps only the caveat)
+03	P62	65	OMISSION	Professor	no	-	Q62	Runbooks = strongest consumption-feedback loop of any prose form
+03	P72	77	SCOPE	none	no	Q59	Q72	Born-stale (58.4%) dominates aging; intake validation ≥ review cadence. Y omits the ≥ relation; X types it MATH
+03	P92	101	SCOPE	none	no	Q79	Q92	Tacit lifecycle; X types the sequence MATH, Y keeps only the departure-loss clause; both faithful
+03	P100	112	OMISSION	Professor	no	-	Q101	r=0.41 for architecture docs sits between constituent strata
+03	P102	113	OMISSION	Professor	no	-	Q103	Un-encoded rules carry lower default authority (PK-P4); no separate behaviour found
+03	P105	115	OMISSION	Professor	no	-	Q107	Any instance becomes historical via supersession/archival; historical = lifecycle position
+03	P108	116	OMISSION	Professor	no	-	Q110	Runtime's instrument-produced character suggests kinship with Qualification
+03	P110	117	OMISSION	Professor	no	-	Q113	Executable-specification failure history (12% versioned); no distinct behaviour
+03	P111	121-129	OMISSION	Professor	yes	-	Q114	Classification matrix (per-type profile). X miscounts: 6 governance axes + platform status, not 7. Matrix marks Descriptive ◐ while L66 says implemented ✅ (source inconsistency, unnoted)
+03	P112	131	LABEL-ERROR	Reviewer	no	Q93	Q115	"Family thesis holds" is labelled INTERPRETATION in source; Y keeps the label, X states it as fact ("confirmed")
+03	P113	131	OMISSION	Professor	no	-	Q116	Core applies to all rows; governance machinery must differ per row. This restates L11 (P10), but X types it INV inside an INTERPRETATION paragraph
+03	P115	131	OMISSION	Professor	no	-	Q118	Strengthens, without deciding, the specialization-of-general-domain question
+03	P117	135	OMISSION	Professor	no	-	Q120	Convergence of EPIC-002 and RQ-002 research threads
+03	P120	141	OMISSION	Professor	no	-	Q123	Success check: 7 types identified; per-type properties defined
+03	P123	141	OMISSION	Professor	no	-	Q126	Constraints honored; STOP awaiting ARB (STOP itself also at L4/P03)
+04	R02	3	OMISSION	Professor	no	-	Q2	Constitution of a research phase defining question, sub-questions, boundaries; Y quote spans it but meaning states only "research charter, not a design"
+04	R03	3	SCOPE	none	no	Q1	Q3	Decides nothing about the solution; X separate INV, Y folded into "not a design"
+04	R07	4	OMISSION	Professor	no	-	Q6	RQ-002 is the durable id
+04	R09	6	SCOPE	none	yes	Q5	Q8	Binding role instruction: researcher not architect; Y types it ASM though the source says "binding" (type choice, meaning faithful)
+04	R11	6	OMISSION	Professor	no	-	Q10	Role persists until ARB authorizes design
+04	R14	8	SCOPE	none	no	Q7	Q13	"Design knowledge. Not documentation." X INV vs Y CLM/slogan
+04	R15	12	OMISSION	Professor	no	-	Q14	Research question broadened at ARB review: knowledge dynamic not static
+04	R18	16	OMISSION	Professor	yes	-	Q17	Knowledge deliberately superseded, invalidated, forked; two truths coexist; forgotten knowledge rediscovered
+04	R19	16	SCOPE	none	yes	Q9	Q18	Entropy/obsolescence/conflict/forgetting/rediscovery are first-class concepts; X types ASM ("assumed"), source asserts it flatly; type choice only
+04	R20	16	SCOPE	none	yes	Q10	Q19	Taxonomy adequacy criterion (must express decay and contradiction); X INV vs Y CLM
+04	R23	18	SCOPE	none	yes	Q12	Q22	Every other structure rests on granularity; X ASM vs Y REL
+04	R25	22	OMISSION	Professor	no	-	Q24	Project knowledge exists but its architecture is implicit
+04	R27	23	OMISSION	Professor	no	-	Q26	EKP components (frozen Constitution, lifecycle, cards, ai/ quarantine, tooling, Adjudication pilot)
+04	R28	23	OMISSION	Professor	no	-	Q27	EKP purpose statement near-verbatim this research question
+04	R33	29	SCOPE	none	yes	Q17	Q32	"Project Knowledge Platform" is a hypothesis, not a design; X ASM vs Y CLM
+04	R35	29	SCOPE	none	yes	Q18	Q34	Discovery must not assume its own answer; X INV vs Y ASM ("none presumed")
+04	R36	33	SCOPE	none	yes	Q19	Q35,Q36	Sub-q1 taxonomy: seven-kind candidate list to validate or falsify, completeness/right cuts; X splits in two
+04	R39	35	OMISSION	Professor	no	-	Q39	Pipeline need -> discover -> assemble -> detect contradictions -> working context; source gives it as a parenthetical inside an open question, X's "is modeled as" slightly firmer than source
+04	R41	36	OMISSION	Professor	no	-	Q41	Correctness-over-time problem attacked by no current tooling
+04	R47	43	OMISSION	Professor	no	-	Q47	Components of inherited method (quality gates, evidence classification, negative findings, promotion, time-box, impl-as-research)
+04	R49	46-47	SCOPE	none	yes	Q27	Q49	NKM ten fields; X MATH vs Y DEF
+04	R54	56	OMISSION	Professor	yes	-	Q54	Engineering Platform governs HOW engineering happens; research is WHAT project knowledge is (boundary underlying sub-q5/sub-q6)
+04	R59	62	OMISSION	Professor	no	-	Q59	Architectural synthesis only after literature review complete
+04	R60	64	OMISSION	Professor	no	-	Q60	Literature scope broadened at ARB review; heading says "six disciplines" (table then lists seven: internal source tension, X faithfully reports heading)
+04	R61	68-73	SCOPE	none	no	Q34	Q61,Q62,Q63,Q64,Q65,Q66	Six base disciplines and topics; X one item per row, Y one list item (names only)
+04	R67	81	SCOPE	none	no	Q38	Q71	Deliverable 1 literature review with gap analysis vs EKP; Y aggregates all eight
+04	R68	82	SCOPE	none	no	Q38	Q72	Deliverable 2 candidate ubiquitous language
+04	R70	84	SCOPE	none	no	Q38	Q74	Deliverable 4 ownership map
+04	R71	85	SCOPE	none	no	Q38	Q75	Deliverable 5 context map
+04	R72	86	SCOPE	none	no	Q38	Q76	Deliverable 6 open questions register
+04	R73	87	SCOPE	none	no	Q38	Q77	Deliverable 7 recommendation with evidence
+04	R75	90	OMISSION	Professor	no	-	Q80	ARB warning: must not become a six-month project (Y's "time-boxed" at L92 is a different statement)
+04	R78	92	OMISSION	Professor	no	-	Q83	Only after the STOP may architecture begin
+04	R81	98	OMISSION	Professor	no	-	Q86	Success criterion elevated at ARB review: domain model, not verdict
+04	R84	100	OMISSION	Professor	no	-	Q89	Later architectures become implementations of the domain, not starting points
+04	R90	109	SCOPE	none	no	Q47	Q95	Traceability; X lists all five links, Y only the ARB elevation review
+05	P001	3	OMISSION	Professor	no	-	Y:Q1	Document kind: research synthesis, NOT architecture, NOT design
+05	P007	13	SCOPE	none	no	X:Q5	Y:Q7,Y:Q8	Decay examples; X lists classes without figures, Y carries figures (GooWiki ~90%, LLIS, ~2 yrs, ADR ~50%)
+05	P009	14	OMISSION	Professor	no	-	Y:Q10	NASA/SO/wiki/RAG failures reduce to: consumer cannot distinguish canonical/historical/wrong at retrieval
+05	P011	14	SCOPE	none	no	X:Q7	Y:Q12	Intake validation matters at least as much as maintenance cadence; X folds into Q7
+05	P012	15	SCOPE	none	no	X:Q8	Y:Q13	Smallest unit converged four ways
+05	P013	15	OMISSION	Professor	no	-	Y:Q14,Y:Q15	Per-discipline units (nanopublication, knowledge claim, smallest span true alone, decision-or-definition in context); Y:Q15 quote is only "AI/CogSci:" but meaning is faithful
+05	P017	16	OMISSION	Professor	no	-	Y:Q19	Accuracy-consultation correlation r=0.67 (testing docs) to r=0.03 (specs)
+05	P018	16	SCOPE	none	yes	X:Q11	Y:Q20	De facto trust hierarchy ordering (X REL, Y MATH)
+05	P021	17	OMISSION	Professor	no	-	Y:Q23	Rationale neither executes nor arises in daily conversation
+05	P022	17	OMISSION	Professor	no	-	Y:Q24	Rationale lives in mental models; lost fat-tailed via turnover (65% truck factor <=2)
+05	P025	21	SCOPE	none	no	X:Q14	Y:Q27	SECI lacks empirical grounding; X omits that the knowledge-leak diagnosis is independently confirmed
+05	P027	22	SCOPE	none	no	X:Q15	Y:Q29	No consumption feedback loop means quality cannot be maintained (X only via quote)
+05	P029	23	OMISSION	Professor	yes	-	Y:Q31	Regime membership is a first-class property of an artifact (underpins OQ3, L94)
+05	P031	24	OMISSION	Professor	no	-	Y:Q33	Discovery in-flow, opportunistic, satisficing; people preferred over documents
+05	P032	24	SCOPE	none	no	X:Q17	Y:Q34	For AI minimal-sufficient context beats volume; X omits context rot (18 models) and agentic search displacing indexes
+05	P034	25	OMISSION	Professor	no	-	Y:Q36	Packaging governed by cognitive load; LLM-generated instruction files net-negative for duplicating the derivable
+05	P035	26	SCOPE	none	no	X:Q19	Y:Q37,Y:Q38	Contradictions coexist under explicit status at rest, resolve at consumption, demote by supersession, never silent edit
+05	P037	27	OMISSION	Professor	no	-	Y:Q40	Depreciation domain-relative (17%/week to 3%/month)
+05	P038	27	OMISSION	Professor	no	-	Y:Q41	Deliberate retirement least-designed stage; default = silent abandonment
+05	P040	28	SCOPE	none	no	X:Q21	Y:Q43	Unretired stale knowledge actively harmful (newcomer dropout, poisons AI grounding)
+05	P041	30	NEITHER	both	no	-	-	Section status label: "Gap analysis: the EKP incumbent against the evidence — INTERPRETATION". Both readers record the L34-40 verdicts as plain CLM/REV without carrying this label
+05	P048	40	SCOPE	none	no	X:Q28	Y:Q50,Y:Q51	Consumption model untested; decisive question answerable from session logs, pending
+05	P068	44	SPURIOUS	Professor	no	X:Q36	-	X's meaning adds "five in the Meta-Model"; no Meta-Model or five-value vocabulary exists in the source
+05	P070	48	NEITHER	both	no	-	-	Section status: "Normalized Knowledge Ontology — INTERPRETATION (semantic backbone; not folders, not a schema)". Neither reader records that the ontology is INTERPRETATION, or that it is not a folder or schema design
+05	P071	51	OMISSION	Professor	no	-	Y:Q64	Root PROJECT KNOWLEDGE with six child nodes (X has the six nodes but not the tree claim)
+05	P072	52-54	SCOPE	none	yes	X:Q42	Y:Q65	Binding node; Y adds producers=consumers=developers, highest trust (X DEF vs Y MATH)
+05	P073	55-58	SCOPE	none	yes	X:Q43	Y:Q66	Decision node: immutable + supersession-by-link, rationale gap; X omits enforcement-binding validation
+05	P074	57	OMISSION	Professor	yes	-	Y:Q66	canonical = accepted ∧ unsuperseded ∧ owned ∧ bound (the only formal predicate in the document)
+05	P075	59-61	SCOPE	none	yes	X:Q44	Y:Q67	Definitional node: conversational validation, term-bound-to-context; Y adds rots when conversation stops
+05	P076	62-64	SCOPE	none	yes	X:Q45	Y:Q68	Descriptive node: survives only code-proximate/same-population
+05	P077	65-67	SCOPE	none	yes	X:Q46	Y:Q69	Experiential node: claim evaluation at intake; Y adds append-only, falsified claims retained
+05	P078	68-70	SCOPE	none	yes	X:Q47	Y:Q70	Tacit node: transfer by practice/succession only; Y adds validation by use, concentration risk
+05	P079	70	OMISSION	Professor	no	-	Y:Q71	Capture programs against tacit knowledge fail
+05	P080	71-72	SCOPE	none	yes	X:Q48	Y:Q72	Six cross-cutting properties attach to every node (X REL vs Y INV)
+05	P081	75	SCOPE	none	yes	X:Q49	Y:Q73,Y:Q74	Primary cut by validation mechanism and population structure, not topic; Y:Q74 "rejected" is defensible as rejection of topic as the primary cut (L103 says REFRAMED)
+05	P083	80	SCOPE	none	yes	X:Q51	Y:Q76,Y:Q77	Observes artifacts in place; the evidence forbids centralizing (knowledge lives with what it describes)
+05	P085	85	OMISSION	Professor	no	-	Y:Q79	Engineering Platform supplies validation machinery
+05	P088	86	OMISSION	Professor	no	-	Y:Q82	Constitutional invariants are Binding knowledge validated by fitness suites
+05	P090	87	OMISSION	Professor	no	-	Y:Q84	CLAUDE.md-class files subject to non-derivable-only rule (X captures it only later in the L108 rule list)
+05	P091	87	OMISSION	Professor	no	-	Y:Q85	Agentic search over live repo displaced indexes
+05	P097	96	SCOPE	none	no	X:Q61	Y:Q91	OQ5 conversational validation with AI engineers (X CLM vs Y ASM; Y also captures the human-cadence presumption)
+05	P103	105	OMISSION	Professor	no	-	Y:Q97	A new central platform = wiki/LLIS pattern with better intentions
+05	P104	105	OMISSION	Professor	no	-	Y:Q98	Evidence-shaped alternative: rules + metadata in place, plus one capability
+05	P107	108	OMISSION	Professor	no	-	Y:Q101	Most rules already platform practice; recommendation names and generalizes them
+05	P109	109	OMISSION	Professor	no	-	Y:Q103	Mechanism: extend session startup via agentic discovery over live sources, not an index
+05	P110	109	OMISSION	Professor	no	-	Y:Q104	Only candidate satisfying the same-population law by construction
+05	P111	110	SCOPE	none	no	X:Q70	Y:Q105	EKP retain/test/refine, do not expand; X omits usage-test-first and the bypass condition
+05	P112	111	SCOPE	none	no	X:Q71	Y:Q106	Four explicitly not-recommended options (X CLM vs Y REV)
+05	P113	111	OMISSION	Professor	no	-	Y:Q107	Each rejection based on sourced negative findings
+05	P115	116	SCOPE	none	no	X:Q73	Y:Q110	Success check: assumptions judged; Y adds ontology draft exists
+05	P116	116	OMISSION	Professor	no	-	Y:Q109	Success check: format/tool/provider/project-independent UL derived
+05	P117	116	OMISSION	Professor	no	-	Y:Q111	Exit criteria and time-box met (7 disciplines, 35 contradictions, 33 negative findings, single cycle)
+06	P002	3	SCOPE	none	no	Q1	Q2	NOT design (no folders/templates/software/APIs/aggregates); X folds into Q1 meaning "not design"
+06	P003	3	SCOPE	none	no	Q1	Q3	Status COMPLETE; architecture only after ARB rules; X folds into Q1
+06	P004	4	SCOPE	none	no	Q2	Q4	Closed evidence base; Y enumerates its members, X names it only
+06	P006	5	SCOPE	none	no	Q3	Q6	Four output tests; type CLM (X) vs INV (Y)
+06	P009	14	SCOPE	none	no	Q6	Q9	PK-P1 supporting evidence; X quotes docs-as-code fragment only
+06	P010	15	SCOPE	none	no	Q7	Q10	Watson Discovery counter-evidence (80+ ADRs only with enforcement binding); X names it in meaning only
+06	P012	16	SCOPE	none	no	Q8	Q12	No new stores/portals/repositories; capabilities extend existing gestures; X quotes first half, CLM vs INV
+06	P015	21	SCOPE	none	no	Q11	Q15	PK-P2 supporting evidence A/C/D/B
+06	P016	22	SCOPE	none	no	Q12	Q16	No contradictory evidence; stamping cost addressed by PK-P1 (X omits the PK-P1 resolution)
+06	P017	23	SCOPE	none	no	Q13	Q17	No retrieval surface without status; bare document is a defect
+06	P019	27	SCOPE	none	no	Q15	Q19	PK-P3 rationale; X omits four-discipline convergence
+06	P021	29	SCOPE	none	no	Q17	Q21	Atomization counter-evidence; X omits nanopublication-overhead niche clause
+06	P022	30	OMISSION	Professor	no	-	Q22	Claim-level metadata is the reference model; composite forms remain units of comprehension
+06	P023	30	SCOPE	none	no	Q18	Q23	Architecture supports both granularities without forced atomization
+06	P024	33	SCOPE	none	yes	Q19	Q24	PK-P4 Execution-Proximity statement; INV (X) vs CLM (Y)
+06	P025	34	SCOPE	none	no	Q20	Q25	r=0.67..0.03 accuracy-consultation correlation; non-executable decays (X omits second clause); CLM vs MATH
+06	P026	35	SCOPE	none	no	Q21	Q26	PK-P4 supporting evidence (trust hierarchy, 6% vs 35%, in-flow)
+06	P028	37	SCOPE	none	no	Q23	Q28	Prefer executable forms; distance raises governance metadata, lowers authority
+06	P030	40	SCOPE	none	yes	Q24	Q30	Every artifact declares its regime; X merged into one item
+06	P032	42	SCOPE	none	no	Q26	Q32	PK-P5 supporting evidence
+06	P034	43	OMISSION	Professor	no	-	Q33	Regime assignment for boundary artifacts is an open question (§8)
+06	P035	44	SCOPE	none	no	Q28	Q35	"Which regime?" is a mandatory property of every knowledge class
+06	P038	49	SCOPE	none	no	Q31	Q38	PK-P6 supporting evidence (18/18, masking, 89.1 vs 70.7, CLT, fragments)
+06	P040	51	SCOPE	none	no	Q33	Q40	Assembly first-class, storage substrate; Y adds "context is perishable, assembled per task"
+06	P042	55	SCOPE	none	no	Q35	Q42	Storage-time resolution destroys information; X omits plural-truths clause
+06	P043	56	SCOPE	none	no	Q36	Q43	PK-P7 supporting evidence (C)
+06	P044	57	SCOPE	none	no	Q37	Q44	Machine consumers need one value; no AI conflict adjudication (open gap)
+06	P045	58	SCOPE	none	no	Q38	Q45	No delete-the-losing-fact operation; rank, reason, resolve-at-read; CLM vs INV
+06	P048	63	SCOPE	none	no	Q41	Q48	PK-P8 supporting evidence
+06	P050	65	SCOPE	none	no	Q43	Q50	Retirement path named before creation path; CLM vs INV
+06	P051	68	SCOPE	none	yes	Q44	Q51	PK-P9: tacit knowledge transferred by practice/succession, not capture mandates
+06	P052	68	SCOPE	none	no	Q44	Q52	Platform measures concentration risk, supports succession, never demands externalization; X covers via statement label only
+06	P053	69	SCOPE	none	no	Q45	Q53	PK-P9 rationale; X captures SECI clause only
+06	P054	70	SCOPE	none	no	Q46	Q54	PK-P9 supporting evidence
+06	P056	72	SCOPE	none	no	Q48	Q56	Rationale vs skill distinguished; no tacit-knowledge repository deliverable
+06	P057	75	SCOPE	none	yes	Q49	Q57	PK-P10 Scent statement; INV (X) vs DEF (Y)
+06	P058	76	SCOPE	none	no	Q50	Q58	Foraging validated; NASA failure = scent failure; X omits first clause
+06	P059	77	SCOPE	none	no	Q51	Q59	PK-P10 supporting evidence; naming and structure ARE knowledge architecture
+06	P061	79	SCOPE	none	no	Q53	Q61	Naming/titling/summarization/addressability obligations of every producer
+06	P062	85	OMISSION	Professor	no	-	Q62	AD1 alternatives & trade-offs (central store = one surface but second population/drift; co-located survives but governance fragments)
+06	P063	85	SCOPE	none	no	Q54	Q63	AD1 recommendation: co-located content, centralized governance metadata only
+06	P064	86	OMISSION	Professor	no	-	Q64	AD2 trade-offs (docs expressive but decay; executable true but limited)
+06	P065	86	SCOPE	none	no	Q55	Q65	AD2 recommendation: executable where possible, bind rest; unbound prose lowest authority
+06	P066	87	OMISSION	Professor	no	-	Q66	AD3 trade-offs (immutability keeps history/risks staleness; evolution keeps currency/destroys history)
+06	P067	87	SCOPE	none	no	Q56	Q67	AD3 recommendation: both, by declared regime
+06	P068	88	OMISSION	Professor	no	-	Q68	AD4 trade-offs (formal ontology precise but catastrophic cost; emergent cheap but noisy)
+06	P069	88	SCOPE	none	no	Q57	Q69	AD4 recommendation: minimal explicit core + emergent enrichment, faceted; no comprehensive ontology
+06	P070	89	OMISSION	Professor	no	-	Q70	AD5 trade-offs (capture-all becomes ROT, add-all harms; selective risks loss)
+06	P071	89	SCOPE	none	no	Q58	Q71	AD5 recommendation: selective with intake gates except decisions (capture at decision time or never)
+06	P072	90	OMISSION	Professor	no	-	Q72	AD6 trade-offs (global SSOT becomes stale mirror; scoped needs discipline)
+06	P073	90	SCOPE	none	no	Q59	Q73	AD6 recommendation: scoped canonicity; global SSOT rejected (Y REV is apt)
+06	P074	91	OMISSION	Professor	no	-	Q74	AD7 trade-offs (prevent-all = hoarding; managed forgetting risks loss)
+06	P075	91	SCOPE	none	no	Q60	Q75	AD7 recommendation: managed forgetting with safety rail
+06	P076	92	OMISSION	Professor	no	-	Q76	AD8 trade-offs (index cheap but silently stale; live discovery current but token-expensive)
+06	P077	92	SCOPE	none	no	Q61	Q77	AD8 recommendation: live sources default for code-proximate; indexes only where staleness governed; economics open (X omits)
+06	P081	100	OMISSION	Professor	no	-	Q81	Evidence anchor: authority = process property; ownerless = non-authoritative
+06	P084	104	LABEL-ERROR	Reviewer	no	Q67	Q84	Source marks this INTERPRETATION; X flags it, Y records the correspondence as a plain REL with no [I]
+06	P085	104	OMISSION	Professor	no	-	Q85	Platform may already be a partial implementation of the knowledge domain (hedged; Y keeps the hedge)
+06	P089	110	SCOPE	none	yes	Q71	Q89	Invariant 3: provenance (producer, time, context) mandatory on every claim; X quotes only the corollary
+06	P090	110	SCOPE	none	yes	Q71	Q90	A claim without provenance is data, not knowledge; X merged, Y split as DEF
+06	P095	114	OMISSION	Professor	no	-	Q95	Invariant 7 matches the platform's existing append-only law
+06	P099	123	SCOPE	none	no	Q79	Q99	Force Freshness: domain-relative decay, born stale, observable and gated; CLM vs INV
+06	P102	126	SCOPE	none	no	Q82	Q102	Force Human cognition; X quotes worked-example clause only
+06	P103	127	SCOPE	none	no	Q83	Q103	Force AI context limitations; X captures conflict-adjudication clause only
+06	P104	128	SCOPE	none	no	Q84	Q104	Force Organizational learning/turnover; X omits mental-models/fat-tail clauses
+06	P105	133-138,44	SCOPE	none	yes	Q85	Q105,Q34	Lifecycle: linear to Evolution, forks (descriptions loop; decisions -> supersession -> historical retention -> staged retirement); REL vs MATH; Y also states fork at L44
+06	P106	143	SCOPE	none	no	Q86	Q106	Creation stage (inv 3, 8); DEF vs INV
+06	P108	144	OMISSION	Professor	no	-	Q108	Qualification stage evidence: McElroy; 58.4% born stale
+06	P110	146	SCOPE	none	no	Q89	Q110	Discovery & Consumption stage; validation is use; DEF vs REL
+06	P111	147	SCOPE	none	no	Q90	Q111	Evolution stage regime fork (inv 7); DEF vs INV
+06	P114	150	SCOPE	none	no	Q93	Q114	Staged retirement stage (inv 1, 8); DEF vs INV
+06	P124	170	SCOPE	none	no	Q103	Q124	Conditionally yes; D1/D2/D4/D6 triangulated and stable; X omits triangulation clause
+06	P127	171	SCOPE	none	no	Q104	Q127	Next step 2: PK Reference Architecture (DRAFT->ADOPTED->STABLE); X in meaning only
+06	P128	171	SCOPE	none	no	Q104	Q128	Next step 3: unpause ER-09 reframed; all behind execution queue (X omits sequencing)
+06	P131	173	OMISSION	Professor	no	-	Q131	Design answer must come from a small evidence-producing pilot, not further synthesis
+06	P132	177	SCOPE	none	no	Q107	Q132	Constraint check (nothing designed, all anchored, traceable); X via meaning label only
+06	P134	81	NEITHER	both	no	-	-	Status label of Deliverable 2: "direction only, no implementation" (decisions are recommendations)
+06	P135	106	NEITHER	both	yes	-	-	Normative scope of D4: "every future implementation must satisfy; all evidence-anchored"
+07	P002	3	OMISSION	Professor	no	-	Q2	synthesis deliverables 1-7 consume this file
+07	P003	3	OMISSION	Professor	no	-	Q3	each section = one executor's complete return
+07	P016	13	OMISSION	Professor	no	-	Q16	humans curate coexisting truths, machines resolve at consumption
+07	P018	13	OMISSION	Professor	no	-	Q18	staleness->distrust->disuse->no-maintenance decay spiral
+07	P025	17	OMISSION	Professor	no	-	Q25	enterprise KGs routinely abandoned (67%; ~18 months; entity resolution)
+07	P026	17	OMISSION	Professor	no	-	Q26	ADR adoption broad in awareness, shallow in practice
+07	P027	17	OMISSION	Professor	no	-	Q27	recorded knowledge often stale on arrival, almost never repaired
+07	P028	19	OMISSION	Professor	no	-	Q28	C-C1 formal semantics vs statistics; lightweight cores + statistical enrichment
+07	P029	19	OMISSION	Professor	no	-	Q29	C-C2 control vs emergent vocabulary; hybrids win
+07	P031	19	OMISSION	Professor	no	-	Q31	C-C4 practice moved from global SSOT to scoped canonicity
+07	P032	19	OMISSION	Professor	no	-	Q32	C-C5 capture-everything vs selective; unresolved
+07	P033	19	OMISSION	Professor	no	-	Q33	C-C6 tacit convertible (SECI) vs inarticulable (Polanyi)
+07	P034	19	LABEL-ERROR	Reviewer	no	-	Q34	C-C7: source marks the outcome "(synthesis: ...)", Y reports it as "resolved" (source uses "resolved" only for C9); X omitted the item
+07	P035	19	OMISSION	Professor	no	-	Q35	C-C8 born-stale evidence: creation-time validation >= maintenance
+07	P036	19	OMISSION	Professor	no	-	Q36	C-C9 resolved: small core + extensions
+07	P039	21	OMISSION	Professor	no	-	Q39	per-discipline units: nanopublication / scented chunk / assessable claim / decision with alternatives
+07	P042	23	OMISSION	Professor	no	-	Q42	canonicity scoped; conflicts coexist at rest, resolve at consumption
+07	P043	23	OMISSION	Professor	no	-	Q43	freshness domain-relative, two-sided; validate at creation
+07	P045	23	OMISSION	Professor	no	-	Q45	quality has negative space; ROT removal is a quality operation
+07	P053	31	OMISSION	Professor	no	-	Q53	counter-position: token economics (Milvus)
+07	P055	31	OMISSION	Professor	no	-	Q55	quality-gated storage + selective deletion = +10%
+07	P056	31	OMISSION	Professor	no	-	Q56	write-time summarization destroys episodic signal; verbatim beats extracted
+07	P065	31	OMISSION	Professor	no	-	Q64	trust decays faster and near-irreversibly (death spiral); second proposition in Y:Q64
+07	P068	33	OMISSION	Professor	no	-	Q67	agentic search: codebase as knowledge store; legibility = KA property
+07	P070	33	OMISSION	Professor	no	-	Q69	decision records only mainstream form with explicit retirement semantics
+07	P072	35	OMISSION	Professor	no	-	Q71	ADR practice fails at capture not value
+07	P073	37	OMISSION	Professor	no	-	Q72	D-C1 big windows vs context rot; rot empirical
+07	P074	37	OMISSION	Professor	no	-	Q73	D-C2 minimal-sufficient validated
+07	P075	37	OMISSION	Professor	no	-	Q74	D-C3 agentic search won; economics contested
+07	P076	37	OMISSION	Professor	no	-	Q75	D-C4 curation validated
+07	P078	37	OMISSION	Professor	no	-	Q77	D-C6 small units vs decontextualization; query-adaptive
+07	P079	37	OMISSION	Professor	no	-	Q78	D-C7 document-everything vs freshness-beats-coverage
+07	P080	37	OMISSION	Professor	no	-	Q79	D-C8 managed forgetting genuinely open
+07	P081	37	OMISSION	Professor	no	-	Q80	D-C9 human-authored context files win
+07	P083	39	OMISSION	Professor	no	-	Q82	everything needed to use the assertion travels with it
+07	P084	39	OMISSION	Professor	no	-	Q83	AI unit = self-contained proposition + provenance + timestamp
+07	P087	41	OMISSION	Professor	no	-	Q86	freshness absent from embeddings; explicit metadata or live sources
+07	P088	41	OMISSION	Professor	no	-	Q87	conflicting retrievals largely unsolved; open gap
+07	P089	41	OMISSION	Professor	no	-	Q88	humans check quality via credibility, recency, other humans
+07	P090	41	OMISSION	Professor	no	-	Q89	ADR only artifact class with built-in quality semantics
+07	P094	49	LABEL-ERROR	Reviewer	no	-	Q93	source attributes non-convertibility to "Polanyi scholars" in a critique, and the document itself lists it as contested (L19 C6, L55 C1); Y states it as unattributed fact; X omitted the item
+07	P096	49	OMISSION	Professor	no	-	Q95	operational knowledge in individuals/routines; repository metaphor contested
+07	P100	49	OMISSION	Professor	no	-	Q99	KM lifecycle models converge on create->validate->store->distribute->use
+07	P101	49	OMISSION	Professor	no	-	Q100	only later models add deliberate retirement
+07	P109	51	OMISSION	Professor	no	-	Q108	concentration risk 3-5x; counter-study absorbs loss
+07	P110	51	OMISSION	Professor	no	-	Q109	authority-without-maintenance worse than none
+07	P113	53	OMISSION	Professor	no	-	Q112	corporate wikis mostly fail critical mass
+07	P114	53	OMISSION	Professor	no	-	Q113	ADR adopt-then-abandon; author pays, stranger benefits
+07	P115	53	OMISSION	Professor	no	-	Q114	codified knowledge often wrong from birth, rarely corrected
+07	P116	53	MISREADING	Reviewer	no	-	Q115	source "designed CoPs frequently die early"; Y drops the quantifier ("die early"). Minor. X omitted the item
+07	P117	55	OMISSION	Professor	no	-	Q116	A-C1 tacit convertible vs inconvertible
+07	P118	55	OMISSION	Professor	no	-	Q117	A-C2 codify/connect 80/20 vs evolving mix
+07	P119	55	OMISSION	Professor	no	-	Q118	A-C3 stock vs enacted practice; SE leans practice
+07	P120	55	OMISSION	Professor	no	-	Q119	A-C4 forgetting bug vs feature
+07	P122	55	OMISSION	Professor	no	-	Q121	A-C6 decision-record failure cultural vs structural
+07	P123	55	OMISSION	Professor	no	-	Q122	A-C7 core-developer loss fatal vs absorbed
+07	P124	55	OMISSION	Professor	no	-	Q123	A-C8 validation, not refinement, creates knowledge
+07	P125	55	OMISSION	Professor	no	-	Q124	A-C9 CoPs designable vs emergent
+07	P127	57	OMISSION	Professor	no	-	Q126	org-knowledge: no consensus; smallest transferable = shared practice episode
+07	P130	57	OMISSION	Professor	no	-	Q129	bundle-granularity governance cannot detect partial staleness
+07	P131	59	OMISSION	Professor	no	-	Q130	authority = governance assignment; evaluation-based authority untested
+07	P132	59	OMISSION	Professor	no	-	Q131	unmaintained authority teaches routing around governance
+07	P133	59	OMISSION	Professor	no	-	Q132	trust = binding constraint, property of source relationship
+07	P134	59	OMISSION	Professor	no	-	Q133	two spoilage mechanisms: scheduled revalidation vs intake validation
+07	P135	59	OMISSION	Professor	yes	-	Q134	retirement is a status transition, not deletion (core lifecycle rule, echoed L23/L33/L79)
+07	P136	59	OMISSION	Professor	no	-	Q135	dominant failure = unmarked status; historical/canonical indistinguishable
+07	P140	67	OMISSION	Professor	no	-	Q139	workshop artifact death by design
+07	P141	67	OMISSION	Professor	no	-	Q140	glossaries/context maps rot ~2 years after owner departure
+07	P142	67	OMISSION	Professor	no	-	Q141	practitioner literature silent on sustainment
+07	P143	67	OMISSION	Professor	no	-	Q142	language drift signals crossed context boundary
+07	P144	67	OMISSION	Professor	no	-	Q143	context maps survive only as code by-products
+07	P145	67	OMISSION	Professor	no	-	Q144	many small disposable maps, not one master map
+07	P147	69	OMISSION	Professor	no	-	Q146,Q147	staleness universal (68%) and tolerated (81% still useful)
+07	P149	69	OMISSION	Professor	no	-	Q149	code-proximate must be accurate to be used; abstract docs = archaeology
+07	P151	69	OMISSION	Professor	yes	-	Q151,Q152	rationale scarcest, most demanded, lives in heads (basis of L79 "unsolved middle" and thesis part 3)
+07	P155	69	OMISSION	Professor	no	-	Q156	only quantified positive: ~15% efficiency, preliminary (Y keeps "preliminary")
+07	P156	71	OMISSION	Reviewer	no	Q65	-	Executor B lists 13 NKMs (count only in X meaning)
+07	P157	71	OMISSION	Professor	no	-	Q157	UL rots when ownership breaks despite canon (supported by L67 documented failure)
+07	P158	71	OMISSION	Professor	no	-	Q158	crunching without externalization creates fragility
+07	P159	71	OMISSION	Professor	no	-	Q159	EventStorming board does not transfer knowledge to absentees
+07	P160	71	OMISSION	Professor	no	-	Q160	Domain Story: absence of maintenance reports is the finding
+07	P161	71	OMISSION	Professor	no	-	Q161	ADR modal lifecycle trial-and-abandon; readership unmeasured; success needed enforcement tooling
+07	P162	71	OMISSION	Professor	no	-	Q162	living documentation unevaluated; view-model not model-reality consistency
+07	P163	71	OMISSION	Professor	no	-	Q163	executable specification failure per author's survey
+07	P165	71	OMISSION	Professor	no	-	Q165	team wiki best-evidenced failure; stale docs cause newcomer dropout
+07	P166	71	OMISSION	Professor	no	-	Q166	NASA LLIS two decades of audited non-use
+07	P167	71	OMISSION	Professor	no	-	Q167	tacit knowledge/mental models = actual store; strongest-evidenced
+07	P168	71	OMISSION	Professor	no	-	Q168	code-proximate micro-docs only class updated promptly
+07	P169	73	OMISSION	Professor	no	-	Q169	B negative: Google wiki died measurably (90%)
+07	P171	73	OMISSION	Professor	no	-	Q171	93% observe outdated docs, ~60% never contribute
+07	P172	75	OMISSION	Professor	no	-	Q172	B-C1 resolved: trust stratified by proximity and reader; newcomers harmed
+07	P173	75	OMISSION	Professor	no	-	Q173	B-C2 conversation for creation; artifacts only when maintainers=users
+07	P175	75	OMISSION	Professor	no	-	Q175	B-C4 docs necessary-not-sufficient; human scaffolding
+07	P176	75	OMISSION	Professor	no	-	Q176	B-C5 automation relocates staleness
+07	P177	75	OMISSION	Professor	no	-	Q177	B-C6 behavioral evidence is arbiter (Y types INV; CLM fits better)
+07	P178	75	OMISSION	Professor	no	-	Q178	B-C7 ADR endorsement = authority cascade
+07	P179	77	OMISSION	Professor	no	-	Q179	DDD unit: term bound to context; invariant = smallest binding unit
+07	P180	77	OMISSION	Professor	no	-	Q180	SE: surviving unit updated in same gesture; consumed unit = task-situated answer
+07	P182	77	OMISSION	Professor	no	-	Q182	separate maintenance gesture decays at wiki rate
+07	P183	79	OMISSION	Professor	no	-	Q183	authority = ownership + freshness; ownerless = non-authoritative
+07	P184	79	OMISSION	Professor	no	-	Q184	canonical-vs-historical solved only on paper in ADR model
+07	P185	79	OMISSION	Professor	no	-	Q185	de facto trust hierarchy running code > tests > ... > departed colleagues' notes
+07	P186	79	SPURIOUS	Reviewer	no	-	Q185	Y:Q185 meaning asserts "(repeated in file 05)", which is not in the source and cannot be verified from it
+07	P187	79	OMISSION	Professor	no	-	Q186	verification-by-execution only mechanism shown to keep artifact true
+07	P188	79	OMISSION	Professor	no	-	Q187	DDD validates conversationally, SE behaviorally
+07	P189	79	OMISSION	Professor	no	-	Q188	rationale = unsolved middle, most demanded, least validated
+07	P191	79	OMISSION	Professor	no	-	Q190	retirement least-designed stage; default = silent abandonment
+07	P193	81	OMISSION	Professor	no	-	Q192	thesis 2: second-population / separate-gesture artifact classes decay to graveyard
+07	P194	81	OMISSION	Professor	no	-	Q193	thesis 3: design rationale stays tacit, lost fat-tailed through turnover

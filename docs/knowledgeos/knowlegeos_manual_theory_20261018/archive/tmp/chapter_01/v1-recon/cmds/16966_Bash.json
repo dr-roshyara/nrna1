@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; grep -n \"Neither says who may\\|\\*\\*Classification:\\*\\* NEW IDEA; a gap in this book as well\\|Candidate\\* dimension: the confidentiality class\\|What a grant cannot express is the property\" chapter_01/CH-01-knowledge-authority-execution.md | cut -c1-80; grep \"\\*\\*Classification:\\*\\* NEW IDEA; a gap in this book as well\" chapter_01/CH-01-knowledge-authority-execution.md; sed -n '/^## 1.7 /,/^## 1.8 /p' chapter_01/CH-01-knowledge-authority-execution.md | sed -n 12,20p",
+  "description": "Read §1.17.5 gap claim and §1.7 end"
+ },
+ "result": "1181:**Classification:** NEW IDEA; a gap in this book as well. Chapters 0–2 gove\n1193:**Model-integrity check, with a counterexample attempt (Lookback B).** Is m\n1198:- *Candidate* dimension: the confidentiality class of a claim. It is shown \n**Classification:** NEW IDEA; a gap in this book as well. Chapters 0–2 govern **standing** (what counts as authoritative) and **grant scope** (who may act). Neither says who may **know**.\n3. **A consequence for quoting** (related to \"never a copy\", Chapter 0 §0.8; not a conflict, audit L-23). Legitimate *declassification*, e.g. publishing an aggregate, mu"
+}

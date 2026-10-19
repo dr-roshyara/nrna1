@@ -1,0 +1,7 @@
+{
+ "input": {
+  "command": "cd /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript; C=chapter_01/CH-01-knowledge-authority-execution.md; for n in 951 1003 1024 1068; do echo \"[$n]\"; sed -n \"${n}p\" $C; done",
+  "description": "Read the four anchor paragraphs in full"
+ },
+ "result": "[951]\n**Phase (Src: AB L39–51; REPEATED).** AB's proposal is \"correctly shaped\" but arrives before the strategic questions it depends on are closed. \"Forbids tactical decomposition\" means \"not yet derivable\", not \"never\". This is §1.14.5 (gates follow ratification) for **modelling**: a model may not settle a question that is still open.\n[1003]\n**The list omits the anchor:** the **record of the human act itself** and the **grant** under which it was made (§1.13). In this theory every standing transition must point to one (§1.6), so it is a sixth kind of record, and the only one that is *not* pr"
+}
