@@ -38,7 +38,7 @@ All hold. **All 15 findings are accepted.**
 | appendix | §1.14 heading levels made consistent (H3); index note on unnumbered blocks |
 
 ## Dependency graph
-`--down CON-0141`: §8.8 (host). Revised. Nothing else cites it.
+`--down CON-0141`: §8.8 (host, revised) and §9.7 (via §8.8 C1). §9.7 uses C1 only for "the evaluator's output must be inert", which holds in the scoped form (for the reader that confers standing); unaffected.
 
 ## For the Principal
 None blocking.

@@ -351,3 +351,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 8 §8.8; Ch. 1 §1.14 (rewritten) with its previous version via git; STEP8-AND-SCAN; register CON-0141; map F25; dependent sections.
 - Read-only.
 - *Closing line (2026-10-19T17:21:32Z):* inventory saved; report saved; settled. One commission, one step-2 message.
+
+## Entry 2026-10-19T17:21:56Z: theory turn 2 (the evaluator CE), topic review, recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("theory turn 2: the evaluator … with my F22 answers"; Rulebook §12b). One reviewer, topic-review mode.
+- **Step 1, blind (4 sources):** S0128 `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-ADR.md` · S0916 `docs/knowledgeos/brainstorming/phase_measure_theory/20260828-101108_step-025w-…` · S1414 `docs/knowledgeos/brainstorming/phase_measure_theory/20260829-105816_step_196_the-authority-responsibility-model.md` · S2775 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-005257_theory-part-12-…`.
+- **Step 2:** Ch. 9 §9.7; Ch. 1 §1.14.1 (the model under test); §9.6; register CON-0138, 0142, 0143.
+- Read-only.
