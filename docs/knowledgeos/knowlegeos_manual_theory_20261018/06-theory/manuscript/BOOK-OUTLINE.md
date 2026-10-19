@@ -10,7 +10,7 @@
 |---|---|---|---|
 | **Knowledge object and identity** | §0.3 the knowledge model; §1.5 knowledge is not its carrier; §1.10 identity needs governed names; §3.1 dimensions; §3.3 kinds; §3.4 knowledge ≠ artifact | ~ | one attribute table for a knowledge item (F13); identity (I-0) has no concept ID |
 | **Lifecycle** | §0.4 how knowledge moves; §2.11 exceptions and the rule lifecycle; §4.1–4.3 change, the improvement cycle, the observed recommendation lifecycle | ~ | the four kinds of change (Ch. 4 plan) not written; retirement unobserved |
-| **Authority** | §1.2 provenance and standing; §1.6 nothing but an act confers authority (A1); §1.12–1.14 record ≠ act, grants, roles; §5.5 who executed, who authorized; §6.5 record ≠ act as a context boundary (T3) | ✓ (CON-0016, scoped) | "authority" in three senses not yet split into three IDs (consolidation review) |
+| **Authority** | §1.2 provenance and standing; §1.6 nothing but an act confers authority (A1); §1.12–1.14 record ≠ act, grants, roles; §5.5 who executed, who authorized; §6.5 record ≠ act as a context boundary (T3) | ✓ (CON-0016, scoped) | "authority" in three senses not yet split into three IDs (consolidation review); a fourth use, "authoritative" as the canonical home of knowledge (S0066, §6.6 C3), C12 |
 | **Evidence** | §1.3 grading claims; §4.1 from observation to pattern; §8.3 usage ≠ outcome | ~ | the evidence scales are not related to one another |
 | **Relationships** | §3.6 relationships; §3.8 four orders | ✓ (CON-0064, scoped) | "realization" in two senses |
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
@@ -52,7 +52,7 @@
 | Capabilities are not kernel operators | §9.3 C4 (CON-0111) | ✓ (restricted) |
 | "Kernel" as a homonym (F14) | §6.1 C4; §6.4 C6 | recorded |
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
-| Applications consume the kernel by link, not copy; several harnesses on one truth | §6.6 (CON-0139) | ~ (C12) |
+| No second authoritative home (CON-0139 ✗ as "never copies"); the direction law: applications → kernel only | §6.6 C1, C8 | ~ (C12; direction law a candidate for deliverable 3) |
 | Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
 | **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0 | open fork (T3 critical finding) |
 | **First boundary test (theory turn 1): recording authority, F22** | §9.6 (revised after review TT1): CR-a necessary iff R_s ∈ Req; the evaluator CE also necessary, and the stronger kernel candidate; placement decided by K3 (several independent applications?) and K4 (uniqueness across them); BC-7 as built fails I-1 (lost writes), the roles law and one-write-path; a delegation contract stated | ~ (Principal's act 2026-10-19: K3 = several applications, R_s ∈ Req; open on K4; CE's rule a kernel candidate, to be tested in theory turn 2) |

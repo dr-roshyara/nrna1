@@ -1,13 +1,13 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 17:05Z, at window C12. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-19 after the C12 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
 | Step | Content | State |
 |---|---|---|
-| Window C12 | S0066–S0070 | read; §6.6 written; **review step 2 running** |
-| Window C13 | S0071–S0075 (S0071, S0072 already topic-full: check only) + **rewrite of §1.14** (form only, no new claims, reviewed in the window) | next |
+| Window C12 | S0066–S0070 | **done** (12 findings, 0 critical; settled) |
+| Window C13 | S0071–S0075 (S0071, S0072 already topic-full: check only) + **rewrite of §1.14** (form only, no new claims, reviewed in the window) | **next** |
 | Theory turn 2 | the evaluator CE: "does item k have standing in scope x at time t?", built on the Principal's F22 act | after C13 |
 | Windows C14, C15 | S0076–S0085, each with one Ch. 0–2 section rewritten | — |
 | Theory turn 3 | from BOOK-OUTLINE "missing" (a primitive with its independence model, or the derivation chain) | — |
@@ -43,9 +43,9 @@
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 only)**, F23 trust, F24 claim conflict (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |
 
-## Known corrections pending in C12's settlement
+## Known corrections pending
 
-- S0066 is not "undated": file mtime 2026-08-17 16:17Z (index basis), first commit 2026-08-28 (`f24edf316`). Correct the §6.6 lineage line.
+- none
 
 ## Standing rules from the Principal (in session; kept here so they survive context loss)
 

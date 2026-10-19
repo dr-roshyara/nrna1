@@ -193,6 +193,16 @@
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
 
+**Window C12, S0066–S0070 (reviewed and settled 2026-10-19):**
+- **§6.6:** linked, not copied, restricted to "no second authoritative home" `[CON-0139 ✗ as stated]`; six state questions `[CON-0140 ~]`; the direction law, applications → kernel only (S0066 L99; S0069 L53–54, Observed); four work states, unordered.
+- **Authority homonym:** S0066 says "authority" for the canonical home, not for standing from an act (for the open split of "authority").
+- **Not yet in the book (review C12, for the next consolidation):**
+  - the Capability Identity Invariant as I-0's time clause: one id, one owner, no reuse after retirement (S0068 L10–12; §1.10);
+  - declared ≠ realized: CAP-03 knowledge curation "not built" (S0068 L20);
+  - "governance" as an external domain vs the Governance role (S0067 L115–117; §1.10's table);
+  - S0068's realization vocabulary as a maturity order (§1.9);
+  - claim → evidence → assessment as a possible shared primitive (S0070 L35).
+
 **Consolidation review S0036–S0065 (two reviewers, Opus and Sonnet; settled 2026-10-19):**
 - **Second verdicts:** all 12 VALIDATED concepts of CON-0099–0134 confirmed by both reviewers; all PROVISIONAL and INVALID verdicts confirmed.
 - **Architecture view (both):** no derivation chain from primitives to laws. The sections add cases to Ch. 1 laws. **Req (T9-01)** is the load-bearing undefined object: six claims defer to it.
