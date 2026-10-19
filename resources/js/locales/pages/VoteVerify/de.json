@@ -10,8 +10,8 @@
   "secure_process": "Sicherer Verifizierungsprozess",
   "verification_title": "Verifizierungscode eingeben",
   "verification_subtitle": "Geben Sie den 6-stelligen Code ein, der an Ihre E-Mail-Adresse gesendet wurde",
-  "status_complete": "Abstimmung erfolgreich eingereicht",
-  "status_message": "Ihre Stimme wurde aufgezeichnet und wartet auf abschließende Bestätigung.",
+  "status_complete": "Stimme übermittelt – noch nicht gespeichert",
+  "status_message": "Ihre Auswahl wurde übermittelt, ist aber noch nicht gespeichert. Geben Sie unten Ihren 6-stelligen Code ein und klicken Sie auf „Überprüfen und speichern Sie meine Stimme“, um Ihre Stimme zu speichern.",
   "email_notice": {
     "title": "Überprüfen Sie Ihre E-Mail",
     "message": "Ein 6-stelliger Verifizierungscode wurde an Ihre registrierte E-Mail-Adresse gesendet"

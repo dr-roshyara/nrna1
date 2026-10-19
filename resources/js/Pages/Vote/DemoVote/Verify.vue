@@ -75,18 +75,18 @@
 
                             <!-- Status and Instructions -->
                             <div class="space-y-4 md:space-y-6 mb-6 md:mb-8">
-                                <!-- Vote Complete Status -->
-                                <div class="p-3 md:p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg">
+                                <!-- Vote Submitted (not saved yet: pending until the code is verified) -->
+                                <div class="p-3 md:p-4 bg-warning-50 border border-warning-200 rounded-lg" role="status">
                                     <div class="flex items-center mb-1">
-                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-warning-600 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        <span class="font-semibold text-green-800">
+                                        <span class="font-semibold text-warning-800">
                                             {{ $t('pages.vote-verify.status_complete') }}
                                         </span>
                                     </div>
-                                    <p class="text-green-700 text-xs md:text-sm">
+                                    <p class="text-warning-700 text-xs md:text-sm">
                                         {{ $t('pages.vote-verify.status_message') }}
                                     </p>
                                 </div>

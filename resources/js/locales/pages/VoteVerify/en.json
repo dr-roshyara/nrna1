@@ -10,8 +10,8 @@
   "secure_process": "Secure Verification Process",
   "verification_title": "Enter Verification Code",
   "verification_subtitle": "Enter the 6-digit code sent to your email address",
-  "status_complete": "Vote Successfully Submitted",
-  "status_message": "Your vote has been recorded and is awaiting final confirmation.",
+  "status_complete": "Vote Submitted – Not Saved Yet",
+  "status_message": "Your choices have been submitted but are not saved yet. Enter your 6-digit code below and click “Verify & Save My Vote” to save your vote.",
   "email_notice": {
     "title": "Check Your Email",
     "message": "A 6-digit verification code has been sent to your registered email address"
