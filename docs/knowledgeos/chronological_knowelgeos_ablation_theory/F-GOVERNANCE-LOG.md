@@ -4326,3 +4326,34 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - treat branch S only as an explicit amendment to E3:111.
 - **Not affected:** no convention is ratified; C-γ stays returned; D12, the spanning rule (F-LOG-0271), C6, K15–K19, (g), (h), H13, A1 and A5 stay open; E4 and E5 are not authorized.
 - **Next:** the human decides KC-1 (or defers it, which §14.F finds coherent).
+
+
+## F-LOG-0309 — **Human direction (Human ARB, 2026-10-17): KC-1 DEFERRED temporarily (controlled, bounded); validation commissioned**
+- **Act:** the human wrote "I strongly accept the recommendation written in above writing". The recommendation accepted was the pasted advisory text the human adopted:
+  > "I recommend a short, controlled deferral of KC-1—not an indefinite postponement. … Decide now: defer KC-1 temporarily. Record that the evidence package is ready for human consideration but needs a final independent quality check before ratification. Keep downstream work blocked. Next: commission a bounded validation step. Independently review the unreviewed fixes in F-LOG-0303–0308 and prepare a genuinely blind test that a human or non-Claude reviewer can perform. … Do not decide yet: E4/R8 or E5."
+- **Recorded:**
+  - **KC-1 is deferred, temporarily.** No K-c convention is ratified. KC-2 to KC-5 stay blocked.
+  - **The evidence package (F-LOG-0303–0308) is ready for human consideration** but needs an independent quality check before ratification.
+  - **Bounded validation is commissioned:**
+    - independent review of the unreviewed fixes in F-LOG-0303–0308;
+    - an independent reference recomputation;
+    - preparation of a human or non-Claude blind replication protocol and its materials.
+    The protocol is prepared only. It is executed only by a later human act.
+  - **E4/R8 and E5 are not authorized.**
+  - **C-γ stays returned.** D12, the spanning rule (F-LOG-0271), C6, K15–K19, R11, (g), (h), H13, A1, A5 and CV9/§3b stay open.
+- **Commit discipline (per the adopted prompt):** this entry is written but **not committed**. A commit needs an explicit human instruction.
+
+
+## F-LOG-0310 — **Executor (2026-10-17): bounded validation under F-LOG-0309 DONE; corrigendum to F-LOG-0308.** Analysis only; nothing decided; uncommitted
+- **Validation:** `R7/KC-1-VALIDATION/` (PROPOSED / NOT RATIFIED):
+  - **A, independent re-review:** PASS_WITH_LIMITATIONS. Every figure was re-derived. Nine wording and integrity defects were found; none is numeric.
+  - **B, independent reference implementation:** written from the source definitions; zero disagreements on E3-REL 13/8, 9/4, 10/5, 11/6 or on K18 6/3 (composition I).
+  - **C, external protocol:** materials only, not executed. The human must ratify and freeze it before any encoding.
+  - Synthesis: `VALIDATION-REPORT.md`.
+- **Corrigendum to F-LOG-0308 (append-only correction):**
+  - "Packets of equal specificity" overclaims. The packets were about equal in length but unequal on the decisive content: B′ omitted KC §2.4's parse, and the glossary-vs-unfolding tension burdened B′ only.
+  - **So blind2 cannot distinguish C-with-parse from (a).** It shows only that C's text without its parse reads as (a)-like.
+  - Pre-registration order rests on mtimes set by the agents; the commit came after the outcomes.
+  - "(c) at least 9/4 … 13/8" mixes KC's stipulated parses (lower end) with blind B′ (12/7, 13/8).
+- **Recommendation [REC]:** the evidence is ready only after a bounded validation — one external replication round (T3-with-list, SH, and (c)+K1c; at least 5 encoders per arm across 3 clusters; the REPRODUCED rule fixed in advance). After that round the human decides KC-1. The normative choice (Rq1 vs Rq7c) cannot be settled by more data.
+- **Not affected:** KC-1 stays deferred (F-LOG-0309); nothing is ratified; E4/R8 and E5 are not authorized; every open item stays open.

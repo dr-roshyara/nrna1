@@ -2217,7 +2217,7 @@ The two `sha256sum` listings must be identical.
 | State unchanged | O1 (G-LOG-0125) and OMQ-14 (G-LOG-0017) in force; H-19 sealed and S5c prohibited (P3B-ESC-0001, l.848); prereg_v2 frozen (G-LOG-0137); T-1/T-0 (G-LOG-0139) pending |
 | Not authorized | adopting any criterion; corpus reads; S5 or any research run; run-3 outside G-LOG-0117; G3–G5; any H-19 unseal or S5c scoring; changes to frozen artifacts; changes to `p3b_read_source.py` or production ledgers; theory-track tooling |
 
-# G-LOG-0141:
+# G-LOG-0141 allowed only for professor:
 1. Permission. The Professor (Session B) may read documents in docs/knowledgeos/brainstorming/, read-only, with priority on phase_measure_theory, mathematical_ideas_that_can_be_implemented and kernel.
 2. Protecting the hold-out. 33 files and 45 concepts are sealed away as a hold-out, used later to test whether a theory predicts material it has never seen. A small script would check every file before I open it and hide any sealed one. I'd only see "allowed" files and a count of hidden ones, never which files are sealed.
 3. Logging. Every file I read is logged with its fingerprint (hash), time and purpose.
@@ -2229,3 +2229,124 @@ Professor should write in folder /home/nab-raj.roshyara@dg-nexolution.de/roshyar
 
 # Extension (2026-10-17): 
 scope = all discovery-population files of 02-FILES.jsonl and chronological-read/20-FAMILIES/, same filter and logging.
+#
+# G-LOG-01xx — Principal Authorization for Session B: S-Series Corpus Research
+
+**Date:** 17 October 2026  
+**Decision-maker:** Principal  
+**Scope:** KnowledgeOS S-Series Theory  
+**Status:** Authorized in principle; effective only after all safety-gate conditions are met.
+
+## 1. Principal's decision
+
+I authorize **Session B (Professor), exclusively in the KnowledgeOS S-Series theory workspace**, to conduct the approved research using permitted KnowledgeOS corpus documents, subject to the conditions below.
+
+This authorization applies only to Session B. It does not extend to other sessions, sub-agents, reviewers, tools, or people.
+
+## 2. Sealed lists and hold-out protection
+
+The sealed lists, hold-out file lists, hold-out documents and their protected contents must remain confidential.
+
+Session B must not open, display, print, export, copy, summarize or disclose the sealed lists or hold-out documents.
+
+A reviewed filter may consult the sealed lists internally, in memory only, solely to exclude protected material, provided that the D1 review and all other safety-gate conditions have been satisfied.
+
+No sealed-list contents, withheld identifiers, labels, hashes or protected text may be passed to another session, sub-agent, reviewer or person.
+
+## 3. Conditions before research can begin
+
+This authorization becomes effective only when all of the following are complete:
+
+1. The independent D1 review is PASS, or PASS WITH CONDITIONS with every condition satisfied.
+2. A separate human tester has completed and signed the fake-fixture test as PASS, using a non-root account.
+3. The Principal has explicitly recorded the safety gate as passed.
+4. The permitted research scope and logging requirements are confirmed.
+
+Until then, the existing pause remains in force. No production filter run, count-only source-ID check or primary-source read is authorized.
+
+## 4. Permitted work after the gate passes
+
+Within the approved S-Series scope, Session B may:
+
+- Run only the reviewed filter at the exact approved version and hashes.
+- Read only corpus documents explicitly marked as permitted by the approved filtering process.
+- Conduct the authorized count-only source-ID check, with output limited to approved counts and yes/no results.
+- Record research findings and evidence references without disclosing sealed-list contents or hold-out material.
+
+Any expansion of scope requires a separate written authorization from the Principal.
+
+## 5. Restrictions on other sessions and agents
+
+No other session, sub-agent, reviewer, tool or person receives permission through this decision.
+
+Session B must not pass corpus documents, corpus excerpts, sealed-list contents or other protected research inputs to sub-agents. If additional independent review is needed, the reviewer must receive only the material separately approved for that review.
+
+## 6. Earlier runs on 17 October 2026
+
+The two previously disclosed runs of `discovery_filter.py` and `corpus_filter.py` must be assessed under the clarified rule.
+
+Pending that assessment, their outputs must not be treated as trusted authorization to read further material. The approved mechanism must be used to regenerate any permitted list if required.
+
+The count-only check may run only after the safety gate passes and only under the authorization and operator conditions recorded by the Principal.
+
+If the check indicates that previously read material may have been affected, Session B must stop corpus research and report the result to the Principal without investigating further.
+
+## 7. Logging and change control
+
+Every authorized run must record the date, approved script version or hash, operator, permitted output counts and relevant access-log reference.
+
+Every full or partial corpus read must be logged according to the approved read-log procedure.
+
+The filter must not be modified after approval without a new D1 review and renewed authorization.
+
+## 8. Review and withdrawal
+
+This authorization is limited to the S-Series theory work. It may be reviewed or withdrawn by the Principal at any time.
+
+It does not authorize access to hold-out documents, unrestricted corpus access, other KnowledgeOS workstreams or F-Series integration.
+
+## G-LOG-0142 — Human act: V-12, meaning of "S5 data" = (a) adjudication reading
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner (Principal), 2026-10-17. Provenance: in-session answer in Session A, selecting option "(a) H-06 submission" (option wording drafted by Session A); recorded by Session A at the Principal's written instruction of 2026-10-17 |
+| Basis | decision sheet `audit-p3b/20261017_PRINCIPAL-DECISION-SHEET-V12-G0.md` §3 and §9 (worktree W `s-series/s5-r7-v29-repair`, uncommitted, sha256 `54f6c7e11b6e456e…`); VERDICT-CRITERIA-PROPOSAL v1.8 l.70, l.404 (proposal); AM-2 (GL l.1695) |
+| Decided | "S5 data" = S5 batch outputs submitted to an H-06 acceptance decision, plus all results derived from them. The pre-data deadline passes at the first such submission (to be recorded in `audit-p3b/S5-ACCEPTANCE.jsonl`) |
+| Nature | a disclosed interpretation of "accessed" (G-LOG-0140), not its literal meaning |
+| Distinction | earlier entries authorized S5 runs only up to AUDITED, stopping before H-06 (GL l.875, l.904), and excluded any H-06 act (l.1653, l.1670); these are not H-06 submissions |
+| State at this entry (verified) | no H-06 act is recorded after AM-2 ("0 labels are measured today", l.1695), and no `S5-ACCEPTANCE*` file exists in PROD or W. All pre-data deadlines are therefore open |
+| Consequences | rehearsal, failed and canary outputs are not S5 data; sessions that read them are exposed (G-LOG-0144) |
+| Not authorized | S5; any corpus read; any research run; adoption of v1.8 |
+
+## G-LOG-0143 — Human act: G-0.1, scoreability of H-19 = (C) deferred
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner (Principal), 2026-10-17. Provenance: in-session answer in Session A, selecting option "(C) Defer" (option wording drafted by Session A); recorded by Session A at the Principal's written instruction of 2026-10-17 |
+| Basis | decision sheet §4, §4a and §9; GL l.810, l.848; H-19 addendum v1.5 §6 l.162–163 ("The human then decides whether predictions may still be scored") |
+| Decided | the scoreability question of addendum §6 is deferred. GL l.848 stays fully in force (no unseal, no S5c scoring, no use of H-19 predictions); P3B-ESC-0001 stays open |
+| Deadline | to be decided before any S5 data (G-LOG-0142), because G-0.2, KP-1 and, under V-13 (α), the recovery charter depend on it |
+| Precondition for reconsideration | feasibility evidence per decision sheet §4a, each item only under its own separate act: (1) the GL l.810 reviewer's session id, by a reviewed script printing ids only; (2) the outcome of the assessment of the earlier filter runs named in the unnumbered "G-LOG-01xx" entry §6; (3) a reviewed design of the containment controls |
+| Not authorized | the feasibility investigation itself; designing, building or changing controls; unseal; scoring; any use or identification of hold-out material |
+
+## G-LOG-0144 — Human act: V-12b, role separation for pre-reading writers = yes
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner (Principal), 2026-10-17. Provenance: in-session answer in Session A, selecting option "Yes" (option wording drafted by Session A); recorded by Session A at the Principal's written instruction of 2026-10-17 |
+| Basis | decision sheet §6 and §9 |
+| Decided (policy) | a session may draft or formalise a Kind P candidate, or write a hold-out prediction, only if: (1) its session id is recorded in this log with that role; (2) an audit of its transcript shows no Read, Grep, Glob or Bash access to `docs/knowledgeos/brainstorming/**`, `docs/knowledgeos/knowledgeos-s-series-theory/**`, `chronological-read/20-FAMILIES/**`, `chronological-read/02-FILES*`, `chronological-read/_batch_input*`, `chronological-read/ledger-p3b-r2/**`, `chronological-read/pilot-s5-decomp/**`, `chronological-read/audit-p3b/S5-*.jsonl`, and no hold-out material; (3) it is not the Professor session (G-LOG-0141 item 5). The Principal's own registration act is exempt; the Principal's authorship of the corpus is disclosed in any registration record, as is the reduced power to fail of predictions the Principal registers |
+| Relation | complements O1 (G-LOG-0125) and G-LOG-0141; changes neither |
+| Enforcement | no enforcement tooling exists at this entry; compliance can be checked only by manual transcript review, which requires the transcript to be preserved |
+| Not authorized | enforcement tooling (session registry, transcript audit, read-deny rules); changes to settings or hooks |
+
+## G-LOG-0145 — Human act: G-0.2, out-of-sample requirement = V-2 (ii), with proviso
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner (Principal), 2026-10-17. Provenance: in-session answer in Session A, selecting option "(ii) Yes, with proviso" (option wording drafted by Session A); recorded by Session A at the Principal's written instruction of 2026-10-17 |
+| Basis | decision sheet §5 and §9; VERDICT-CRITERIA-PROPOSAL v1.8 V-2 l.394 (proposal); OP §13, §27; B1 l.87 |
+| Decided | a ROBUST verdict requires at least one prediction confirmed on unseen material (V-2 (ii)). Such confirmation is within this programme and on the corpus periphery (P3b L-9, l.3087), never independent replication |
+| Proviso | if G-0.1 is later ruled (B), V-2 is revisited before any S5 data |
+| Not adopted | the rest of v1.8 (V-1, V-3 … V-13, N-a/C-4, the verdict procedure) |
+| Not authorized | any study, run, unseal or scoring |

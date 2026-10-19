@@ -1,0 +1,24 @@
+python 3.13.2 (main, Jun 18 2026, 16:43:14) [GCC 16.1.1 20260515 (Red Hat 16.1.1-2)] Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43
+K1 k=0: window==full mismatches 0/300; truncated-window power mismatches 0/300 (n/a k=0)
+K1 k=1: window==full mismatches 0/300; truncated-window power mismatches 298/300
+K1 k=2: window==full mismatches 0/300; truncated-window power mismatches 272/300
+K2: refinement violations 0 (of 300*10 pairs); D^4 != D kernel: 0/300
+K3 (exploratory): {'gw_up': 80, 'maxnode_up': 83, 'somehist_up': 126, 'Nn_up': 0, 'pairs': 1200}
+K4 s=2 n=1: spine NODE pi'_K brute=0 formula=0 identity=1 | GW total-then-identity=1 identity GW=1 ok=True
+K4 s=2 n=2: spine NODE pi'_K brute=1 formula=1 identity=2 | GW total-then-identity=2 identity GW=1 ok=True
+K4 s=2 n=3: spine NODE pi'_K brute=2 formula=2 identity=3 | GW total-then-identity=3 identity GW=1 ok=True
+K4 s=2 n=4: spine NODE pi'_K brute=4 formula=4 identity=4 | GW total-then-identity=4 identity GW=1 ok=True
+K4 s=2 n=5: spine NODE pi'_K brute=6 formula=6 identity=5 | GW total-then-identity=5 identity GW=1 ok=True
+K4 s=2 n=6: spine NODE pi'_K brute=9 formula=9 identity=6 | GW total-then-identity=6 identity GW=1 ok=True
+K4 s=2 n=7: spine NODE pi'_K brute=13 formula=13 identity=7 | GW total-then-identity=7 identity GW=1 ok=True
+K4 s=2 n=8: spine NODE pi'_K brute=17 formula=17 identity=8 | GW total-then-identity=8 identity GW=1 ok=True
+K4 s=2 n=9: spine NODE pi'_K brute=22 formula=22 identity=9 | GW total-then-identity=9 identity GW=1 ok=True
+K4 s=3 n=1: spine NODE pi'_K brute=1 formula=1 identity=2 | GW total-then-identity=2 identity GW=2 ok=True
+K4 s=3 n=2: spine NODE pi'_K brute=3 formula=3 identity=4 | GW total-then-identity=4 identity GW=2 ok=True
+K4 s=3 n=3: spine NODE pi'_K brute=6 formula=6 identity=6 | GW total-then-identity=5 identity GW=2 ok=True
+K4 s=3 n=4: spine NODE pi'_K brute=10 formula=10 identity=8 | GW total-then-identity=7 identity GW=2 ok=True
+K4 s=3 n=5: spine NODE pi'_K brute=15 formula=15 identity=10 | GW total-then-identity=8 identity GW=2 ok=True
+K4 s=3 n=6: spine NODE pi'_K brute=21 formula=21 identity=12 | GW total-then-identity=10 identity GW=2 ok=True
+K4 failures: 0
+K5 violations (i..vi): [0, 0, 0, 0, 0, 0]
+K6: {'a_fail': 0, 'b_fail': 0, 'b_equal_positions': [(2, 0), (3, 0), (3, 1)], 'c_out_of_bounds': 0, 'c_VL_gt_FL': 17062, 'c_VL_lt_FL': 924, 'c_VL_eq_FL': 614, 'd_fail': 0}

@@ -1,0 +1,11 @@
+# PROPOSED / NOT RATIFIED; materials only; not executed.
+# DRY RUN ONLY: blind2 verbatim replies (Claude-family encoders, INELIGIBLE for the external study).
+# blind2 A' (general-form (a), different packet) is scored against the GEN key as the closest arm; blind2 B' (full principle C
+# without a parse) has no arm here and is scored key-free under the label BPRIME_blind2.
+encoder_id,arm,identity_class,cluster,sheet_path
+b2-A1,GEN,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/A1.reply.txt
+b2-A2,GEN,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/A2.reply.txt
+b2-A3,GEN,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/A3.reply.txt
+b2-B1,BPRIME_blind2,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/B1.reply.txt
+b2-B2,BPRIME_blind2,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/B2.reply.txt
+b2-B3,BPRIME_blind2,model:Claude (blind2),claude,../../KC-1-READINESS-scripts/blind2/results/verbatim/B3.reply.txt

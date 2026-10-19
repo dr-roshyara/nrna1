@@ -1,0 +1,92 @@
+PROPOSED / NOT RATIFIED; materials only; not executed
+DRY RUN ONLY of score.py on the blind2 verbatim replies (Claude-family encoders, ineligible; different packets). Not a result of this protocol.
+Command: python3 -B score.py --manifest tools/dryrun_blind2_manifest.csv --key key_PRIVATE.md --base .
+
+KC-1 external replication scorer. Primary unit: guard-row verdict (S'), derived by the scorer from item sets via the
+published placement table; secondary: exact item-set match. No significance test is computed (analysis-plan.md 3).
+
+==================== arm GEN ====================
+       b2-A1 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+       b2-A2 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+       b2-A3 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+  n_valid = 3; clusters = {'claude': 3}
+  FLAG: cluster(s) ['claude'] exceed 40% of the arm (analysis-plan.md 3.5)
+  S vs S' at guard rows: identical
+
+  -- primary unit: guard-row verdict (S'), derived by the scorer --
+  row   key   counts                                   modal        k/n key  95% CP (key)     unanimous
+  R11   CB23  {'CB23': 3}                              CB23         3/3      [0.29, 1.00]     True
+  R14   X     {'X': 3}                                 X            3/3      [0.29, 1.00]     True
+  R15   X     {'X': 3}                                 X            3/3      [0.29, 1.00]     True
+  R16   X     {'X': 3}                                 X            3/3      [0.29, 1.00]     True
+  R17   CB23  {'CB23': 3}                              CB23         3/3      [0.29, 1.00]     True
+  R21   X     {'X': 3}                                 X            3/3      [0.29, 1.00]     True
+
+  DECISION (analysis-plan.md 2): INCONCLUSIVE (n_valid = 3 < 4; descriptive only)
+  cluster-collapsed sensitivity: not possible (1 cluster(s), n_valid 3; needs >= 3 clusters and n_valid >= 4)
+  Fleiss' kappa over 6 guard rows x 3 raters (DESCRIPTIVE ONLY; see caveats): 1.000
+
+  -- secondary unit: exact item-set match --
+  R11  guard   pairwise exact 3/3; modal set ['C3', 'C4', 'C5', 'C6', 'C8', 'C9', 'C12'] held by 3/3
+  R14  guard   pairwise exact 3/3; modal set ['C11', 'C12', 'C14'] held by 3/3
+  R15  guard   pairwise exact 1/3; modal set ['C8', 'C9', 'C11', 'C12', 'C14', 'C18', 'C20'] held by 2/3
+  R16  guard   pairwise exact 3/3; modal set ['C8', 'C9', 'C13', 'C17', 'C19', 'C23'] held by 3/3
+  R17  guard   pairwise exact 1/3; modal set ['C4', 'C8', 'C9', 'C19'] held by 2/3
+  R21  guard   pairwise exact 1/3; modal set ['C4', 'C6', 'C12', 'C15'] held by 2/3
+  R1   control pairwise exact 3/3; modal set ['C3', 'C5', 'C6', 'C8', 'C12'] held by 3/3
+  R6   control pairwise exact 3/3; modal set ['C1', 'C3', 'C19', 'C20'] held by 3/3
+  R9   control pairwise exact 3/3; modal set ['C8', 'C9', 'C13', 'C17', 'C18', 'C19'] held by 3/3
+  R79  control pairwise exact 3/3; modal set ['C8', 'C9'] held by 3/3
+  R80  control pairwise exact 3/3; modal set ['C8', 'C9'] held by 3/3
+
+  -- controls (descriptive; enter no decision): verdict S' --
+  R1   key CB23  {'CB23': 3}
+  R6   key CB23  {'CB23': 3}
+  R9   key X     {'X': 3}
+  R79  key CB23  {'CB23': 3}
+  R80  key none  {'CB23': 3}
+
+==================== arm BPRIME_blind2 ====================
+       b2-B1 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+       b2-B2 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+       b2-B3 model:Claude (blind2)        cluster claude       valid  INELIGIBLE (Claude-family; dry run only)
+  n_valid = 3; clusters = {'claude': 3}
+  FLAG: cluster(s) ['claude'] exceed 40% of the arm (analysis-plan.md 3.5)
+  S vs S' at guard rows: identical
+
+  -- primary unit: guard-row verdict (S'), derived by the scorer --
+  row   key   counts                                   modal        k/n key  95% CP (key)     unanimous
+  R11   -     {'CB23': 3}                              CB23         -        -                True
+  R14   -     {'X': 3}                                 X            -        -                True
+  R15   -     {'X': 3}                                 X            -        -                True
+  R16   -     {'X': 3}                                 X            -        -                True
+  R17   -     {'CB23': 3}                              CB23         -        -                True
+  R21   -     {'X': 2, 'CB1': 1}                       X            -        -                False
+
+  DECISION (analysis-plan.md 2): INCONCLUSIVE (n_valid = 3 < 4; descriptive only)
+  cluster-collapsed sensitivity: not possible (1 cluster(s), n_valid 3; needs >= 3 clusters and n_valid >= 4)
+  Fleiss' kappa over 6 guard rows x 3 raters (DESCRIPTIVE ONLY; see caveats): 0.783
+
+  -- secondary unit: exact item-set match --
+  R11  guard   pairwise exact 3/3; modal set ['C3', 'C4', 'C5', 'C6', 'C8', 'C12'] held by 3/3
+  R14  guard   pairwise exact 3/3; modal set ['C11', 'C12', 'C14'] held by 3/3
+  R15  guard   pairwise exact 3/3; modal set ['C8', 'C9', 'C11', 'C12', 'C13', 'C14', 'C18', 'C19', 'C20'] held by 3/3
+  R16  guard   pairwise exact 1/3; modal set ['C8', 'C9', 'C13', 'C17', 'C19'] held by 2/3
+  R17  guard   pairwise exact 3/3; modal set ['C4', 'C8', 'C9', 'C19'] held by 3/3
+  R21  guard   pairwise exact 0/3; modal set ['C6', 'C12', 'C15'] held by 1/3
+  R1   control pairwise exact 3/3; modal set ['C3', 'C5', 'C6', 'C8', 'C12'] held by 3/3
+  R6   control pairwise exact 3/3; modal set ['C1', 'C3', 'C19', 'C20'] held by 3/3
+  R9   control pairwise exact 3/3; modal set ['C8', 'C9', 'C13', 'C17', 'C18', 'C19'] held by 3/3
+  R79  control pairwise exact 3/3; modal set ['C8', 'C9'] held by 3/3
+  R80  control pairwise exact 3/3; modal set ['C8', 'C9'] held by 3/3
+
+  -- controls (descriptive; enter no decision): verdict S' --
+  R1   key -     {'CB23': 3}
+  R6   key -     {'CB23': 3}
+  R9   key -     {'X': 3}
+  R79  key -     {'CB23': 3}
+  R80  key -     {'CB23': 3}
+
+==================== summary ====================
+  GEN              INCONCLUSIVE (n_valid = 3 < 4; descriptive only)
+  BPRIME_blind2    INCONCLUSIVE (n_valid = 3 < 4; descriptive only)

@@ -1,0 +1,12 @@
+run: 2026-10-17 20:52:10
+protocol: 24b93f0896fe6dbdb92cf6cfba0ed18a09db50715edee3ea868987fb7ed783a7  PROTOCOL.md
+code: cb61e3b78ac1aa3c41cbdc6b3b201dc7161143c78ed9c18e8d1398ddca3a297f  o10fig_checks.py
+python: Python 3.13.2
+F1 outcome log not verifiable (named): True
+F2 verifiable <=> projection determines F: mismatches 0 over 300 instances x 8 subsets
+F3 (exploratory) instances with incomparable minimal evidence sets: 7/300; named P3 instance verifiable by subset: {(): False, (0,): True, (1,): True, (0, 1): True}
+I1 bitemporal ≡*_bi greatest: 300/300
+I2 current-only log loses corrected past decision (holds, cur log, D(h,1) for '1c','10'): (True, (1, 0), 0, 1)
+I3 (max-merge order-independent, last-writer-wins order-dependent): (True, True)
+G2 named (pi ⊆ pi2, width pi, width pi2): (True, 1, 2)
+G1/G2/G3 exhaustive: {'pc': 7176, 'pairs': 735776, 'g1_violations': 0, 'g2_width_increase': 71401, 'g3_some_history_increase': 66690, 'g3_max_increase': 2000, 'g3_expected_increase': 1088}

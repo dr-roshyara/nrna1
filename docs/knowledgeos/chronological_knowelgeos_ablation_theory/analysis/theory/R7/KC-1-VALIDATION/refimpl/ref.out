@@ -1,0 +1,126 @@
+KC-1 reference implementation output (PROPOSED / NOT RATIFIED; analysis only)
+==============================================================================
+
+§0 Self-check: T-A category counts vs T3 r1.7 counts table (S 17/6/1/0/0; S′,S″ 12/10/2/0/0)
+  S   : X=17 CB23=6 CB1=1 none=0
+  S'  : X=12 CB23=10 CB1=2 none=0
+  S'' : X=12 CB23=10 CB1=2 none=0
+
+§1 Guard-row verdicts (R11, R14, R15, R16, R17, R21) per K1 value (identical under S, S′, S″: no guard row reads C1)
+  (a)        : R11=CB23  R14=X  R15=X  R16=X  R17=CB23  R21=X   sets: R11[6, 8]; R14[11, 12, 14]; R15[11, 12, 14, 20]; R16[8, 13, 17, 19]; R17[6, 8, 19]; R21[6, 12, 15]
+  SH         : R11=none  R14=none  R15=none  R16=none  R17=none  R21=none   sets: R11[]; R14[]; R15[]; R16[]; R17[]; R21[]
+  K1c        : R11=CB23  R14=none  R15=CB23  R16=none  R17=none  R21=CB1   sets: R11[3, 4, 6]; R14[]; R15[20]; R16[]; R17[]; R21[15]
+  R15ref     : R11=CB23  R14=none  R15=X  R16=none  R17=none  R21=CB1   sets: R11[3, 4, 6]; R14[]; R15[11, 14, 18, 20]; R16[]; R17[]; R21[15]
+  R15ref-R14 : R11=CB23  R14=X  R15=X  R16=none  R17=none  R21=CB1   sets: R11[3, 4, 6]; R14[11, 12, 14]; R15[11, 14, 18, 20]; R16[]; R17[]; R21[15]
+  C-Σ        : R11=CB23  R14=none  R15=X  R16=none  R17=none  R21=CB1   sets: R11[3, 4, 5, 6, 8, 12]; R14[]; R15[11, 14, 18, 20]; R16[]; R17[]; R21[15]
+
+§2 E3-REL (T-A rows with verdict X, not hosted at MW1 {R12,R13,R23} or, under D12 (a), CV4 {R24})
+    x/y = |E3-REL under S| / |E3-REL under S′ (= S″)|; two counts, not a ratio.
+    Eligible universe: 24 T-A rows − 4 hosted = 20 (D12 a) or − 3 = 21 (D12 b).
+  (a)         D12(a): 13/8
+      S : R2, R3, R5, R6, R8, R9, R10, R14, R15, R16, R19, R21, R22 (13)
+      S′: R2, R3, R9, R14, R15, R16, R21, R22 (8)
+  (a)         D12(b): 14/9
+      S : R2, R3, R5, R6, R8, R9, R10, R14, R15, R16, R19, R21, R22, R24 (14)
+      S′: R2, R3, R9, R14, R15, R16, R21, R22, R24 (9)
+  SH          D12(a): 9/4
+      S : R2, R3, R5, R6, R8, R9, R10, R19, R22 (9)
+      S′: R2, R3, R9, R22 (4)
+  SH          D12(b): 10/5
+      S : R2, R3, R5, R6, R8, R9, R10, R19, R22, R24 (10)
+      S′: R2, R3, R9, R22, R24 (5)
+  K1c         D12(a): 9/4
+      S : R2, R3, R5, R6, R8, R9, R10, R19, R22 (9)
+      S′: R2, R3, R9, R22 (4)
+  K1c         D12(b): 10/5
+      S : R2, R3, R5, R6, R8, R9, R10, R19, R22, R24 (10)
+      S′: R2, R3, R9, R22, R24 (5)
+  R15ref      D12(a): 10/5
+      S : R2, R3, R5, R6, R8, R9, R10, R15, R19, R22 (10)
+      S′: R2, R3, R9, R15, R22 (5)
+  R15ref      D12(b): 11/6
+      S : R2, R3, R5, R6, R8, R9, R10, R15, R19, R22, R24 (11)
+      S′: R2, R3, R9, R15, R22, R24 (6)
+  R15ref-R14  D12(a): 11/6
+      S : R2, R3, R5, R6, R8, R9, R10, R14, R15, R19, R22 (11)
+      S′: R2, R3, R9, R14, R15, R22 (6)
+  R15ref-R14  D12(b): 12/7
+      S : R2, R3, R5, R6, R8, R9, R10, R14, R15, R19, R22, R24 (12)
+      S′: R2, R3, R9, R14, R15, R22, R24 (7)
+  C-Σ         D12(a): 10/5
+      S : R2, R3, R5, R6, R8, R9, R10, R15, R19, R22 (10)
+      S′: R2, R3, R9, R15, R22 (5)
+  C-Σ         D12(b): 11/6
+      S : R2, R3, R5, R6, R8, R9, R10, R15, R19, R22, R24 (11)
+      S′: R2, R3, R9, R15, R22, R24 (6)
+
+§2b Published figures vs this implementation (D12 a)
+  (a)         published 13/8  computed 13/8  AGREE
+  SH          published 9/4  computed 9/4  AGREE
+  K1c         published 9/4  computed 9/4  AGREE
+  R15ref      published 10/5  computed 10/5  AGREE
+  C-Σ         published 10/5  computed 10/5  AGREE
+  R15ref-R14  published 11/6  computed 11/6  AGREE
+
+§3a Invariant: E3-REL outside the guard rows L under each K1 value
+  S   D12(a): 1 distinct value(s): ['R2, R3, R5, R6, R8, R9, R10, R19, R22 (9)']
+  S   D12(b): 1 distinct value(s): ['R2, R3, R5, R6, R8, R9, R10, R19, R22, R24 (10)']
+  S'  D12(a): 1 distinct value(s): ['R2, R3, R9, R22 (4)']
+  S'  D12(b): 1 distinct value(s): ['R2, R3, R9, R22, R24 (5)']
+
+§3b Rows that move between S and S′ (= S″), T-A, base encoding (a)
+  R5: S=X  S′=CB23  S″=CB23
+  R6: S=X  S′=CB23  S″=CB23
+  R8: S=X  S′=CB1  S″=CB1
+  R10: S=X  S′=CB23  S″=CB23
+  R19: S=X  S′=CB23  S″=CB23
+  rows where S′ ≠ S″: []
+
+§3c K2 (class rule) off: effect on R12 and on E3-REL
+  S  : moved ['R12: X→CB23'];  E3-REL D12(a) on 13, off 13; D12(b) on 14, off 14
+  S' : moved ['R12: X→CB23'];  E3-REL D12(a) on 8, off 8; D12(b) on 9, off 9
+
+§3d K18: T2 'rests on' C-ids as item source (every T-A row)
+  composition I  K1=(a)         D12(a) 6/3; D12(b) 6/3  S: R3, R5, R6, R14, R15, R22 (6); S′: R3, R14, R15 (3)
+      guard verdicts: R11=CB23 R14=X R15=X R16=CB1 R17=CB23 R21=CB1
+  composition I  K1=SH          D12(a) 4/1; D12(b) 4/1  S: R3, R5, R6, R22 (4); S′: R3 (1)
+      guard verdicts: R11=none R14=none R15=none R16=none R17=none R21=none
+  composition I  K1=K1c         D12(a) 6/3; D12(b) 6/3  S: R3, R5, R6, R14, R15, R22 (6); S′: R3, R14, R15 (3)
+      guard verdicts: R11=CB23 R14=X R15=X R16=CB1 R17=CB23 R21=CB1
+  composition II K1=(a)         D12(a) 8/5; D12(b) 8/5  S: R3, R5, R6, R14, R15, R16, R21, R22 (8); S′: R3, R14, R15, R16, R21 (5)
+      guard verdicts: R11=CB23 R14=X R15=X R16=X R17=CB23 R21=X
+  composition II K1=SH          D12(a) 4/1; D12(b) 4/1  S: R3, R5, R6, R22 (4); S′: R3 (1)
+      guard verdicts: R11=none R14=none R15=none R16=none R17=none R21=none
+  composition II K1=K1c         D12(a) 4/1; D12(b) 4/1  S: R3, R5, R6, R22 (4); S′: R3 (1)
+      guard verdicts: R11=CB23 R14=none R15=CB23 R16=none R17=none R21=CB1
+  composition II K1=R15ref      D12(a) 5/2; D12(b) 5/2  S: R3, R5, R6, R15, R22 (5); S′: R3, R15 (2)
+      guard verdicts: R11=CB23 R14=none R15=X R16=none R17=none R21=CB1
+  composition II K1=R15ref-R14  D12(a) 6/3; D12(b) 6/3  S: R3, R5, R6, R14, R15, R22 (6); S′: R3, R14, R15 (3)
+      guard verdicts: R11=CB23 R14=X R15=X R16=none R17=none R21=CB1
+  composition II K1=C-Σ         D12(a) 5/2; D12(b) 5/2  S: R3, R5, R6, R15, R22 (5); S′: R3, R15 (2)
+      guard verdicts: R11=CB23 R14=none R15=X R16=none R17=none R21=CB1
+
+§4 Comparison with existing outputs (T-A rows only; per-row verdicts and E3-REL lists)
+  kc.out [T3/FZ (status quo)] S : T-A verdict disagreements: none (24/24 agree)
+  kc.out [T3/FZ (status quo)] S': T-A verdict disagreements: none (24/24 agree)
+  kc.out [C (content)] S : T-A verdict disagreements: none (24/24 agree)
+  kc.out [C (content)] S': T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-SH (content; guards all empty)] S : T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-SH (content; guards all empty)] S': T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-R15ref (R15 reads R3 via its row reference)] S : T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-R15ref (R15 reads R3 via its row reference)] S': T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-R15ref-R14 (also R14 "may coincide")] S : T-A verdict disagreements: none (24/24 agree)
+  kc.out [C-R15ref-R14 (also R14 "may coincide")] S': T-A verdict disagreements: none (24/24 agree)
+  readiness.out §3 K1=a             S  E3-REL(D12a): AGREE (13)
+  readiness.out §3 K1=a             S' E3-REL(D12a): AGREE (8)
+  readiness.out §3 K1=b-SH          S  E3-REL(D12a): AGREE (9)
+  readiness.out §3 K1=b-SH          S' E3-REL(D12a): AGREE (4)
+  readiness.out §3 K1=c-K1c         S  E3-REL(D12a): AGREE (9)
+  readiness.out §3 K1=c-K1c         S' E3-REL(D12a): AGREE (4)
+  readiness.out §3 K1=c-R15ref      S  E3-REL(D12a): AGREE (10)
+  readiness.out §3 K1=c-R15ref      S' E3-REL(D12a): AGREE (5)
+  readiness.out §3 K1=c-R15ref-R14  S  E3-REL(D12a): AGREE (11)
+  readiness.out §3 K1=c-R15ref-R14  S' E3-REL(D12a): AGREE (6)
+  readiness.out §3 K1=c-Sigma       S  E3-REL(D12a): AGREE (10)
+  readiness.out §3 K1=c-Sigma       S' E3-REL(D12a): AGREE (5)
+  total disagreements: 0

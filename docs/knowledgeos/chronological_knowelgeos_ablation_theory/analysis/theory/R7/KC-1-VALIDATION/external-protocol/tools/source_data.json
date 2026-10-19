@@ -1,0 +1,186 @@
+{
+ "_header": "PROPOSED / NOT RATIFIED; materials only; not executed. Copy of KC-1-READINESS-scripts/blind2/build/data.json (texts, src, concepts, csrc, initial_order); blind2 \"order\" field dropped (a new seed is used).",
+ "texts": {
+  "R1": "F1 (entry into force). For every issue act a with f(a) = t ∈ T: σ(t)(τ(a)) = v(a). It says nothing about σ at other times, and nothing about acts with f(a) = ∞",
+  "R6": "Work-event attribute typing. Every work event has τ(w) ∈ 𝒯, α(w) ∈ 𝒜, t(w) ∈ T",
+  "R9": "Reference and constitution typing. Ref ⊆ R × (E ∪ W); con : E ⇀ R is partial (may be undefined everywhere). If (ρ, a) ∈ Ref and con(a) ≠ ρ, then ρ reports a (definitional)",
+  "R11": "Norm state is a total primitive, not computed from acts. σ : T → V^𝒯 is total; no frame axiom derives σ from E. σ is constrained only through F1 (A5): F1 does fix σ(f(a))(τ(a)) = v(a) at every finite entry into force (R1), but nothing determines σ elsewhere from acts",
+  "R14": "No equation between f and d or r (\"f ≠ r/d\" in the sense *no equation*): the frame never equates entry into force with recording or decision time. It equally imposes no inequality: f may coincide with d or r in some histories",
+  "R15": "No time order among r, d, f beyond F2; t(w) outside the governance times. The frame imposes no order between r, d and f except d = r under constitution (R3), and treats t(w) as a work attribute, not a governance time",
+  "R16": "No completeness constraint. The frame does not require that every act or work event is referenced by some record; absence is NOT-EVIDENCED-IN-CAPTURE, not non-occurrence",
+  "R17": "No norm→work dependence. The frame does not require that a norm value implies or excludes any act or work event",
+  "R21": "Texts are texts. No axiom ties the text c to σ or f (A5): a self-assertion such as \"effective immediately\" or \"remains blocked\" is a value of c, not an observation of σ or f. (Σ and V are not declared disjoint by Def 1.1; the point is the absence of a tie, not a type distinction)",
+  "R79": "B-side record clause replaced by \"E ≠ ∅\" (R-i): H-B requires only that some act exists, not that a record references it",
+  "R80": "No B-side record clause (R-i′): H-B carries no record requirement; \"acts exist\" is read as a joint statement about both hypotheses"
+ },
+ "src": {
+  "R1": 53,
+  "R6": 58,
+  "R9": 61,
+  "R11": 63,
+  "R14": 66,
+  "R15": 67,
+  "R16": 68,
+  "R17": 69,
+  "R21": 73,
+  "R79": 96,
+  "R80": 97
+ },
+ "concepts": [
+  [
+   "C1",
+   "Participant (an actor, i.e. an identity that items refer to; what it is *able* to do is C2, not part of this row)"
+  ],
+  [
+   "C2",
+   "Capability of a participant for an act kind (issue / adopt), constant within a history"
+  ],
+  [
+   "C3",
+   "Governed target (the subject a norm is about, e.g. a work package)"
+  ],
+  [
+   "C4",
+   "Deontic value, with a distinguished subset of values that permit work to begin"
+  ],
+  [
+   "C5",
+   "Norm as a pair (target, value) only"
+  ],
+  [
+   "C6",
+   "Norm state (value in force per target per time), held as its own primitive, not computed from acts"
+  ],
+  [
+   "C7",
+   "Change point of the norm state (target, time at which the value differs)"
+  ],
+  [
+   "C8",
+   "Issue act (participant, norm, prepared flag). Its decision time is in C11 and its entry into force in C12, both unobserved, so neither is part of this row"
+  ],
+  [
+   "C9",
+   "Adoption act whose object is an issue act"
+  ],
+  [
+   "C10",
+   "Prepared / adopted status of an issue act (derived: prepared flag plus capable adoption by a time)"
+  ],
+  [
+   "C11",
+   "Decision time of an act"
+  ],
+  [
+   "C12",
+   "Entry into force of an issue act (a time, or never)"
+  ],
+  [
+   "C13",
+   "Record (identity, recording time, text). The keeper is unobserved in general and belongs to C16, not this row"
+  ],
+  [
+   "C14",
+   "Recording time of a record (as reported; possibly missing)"
+  ],
+  [
+   "C15",
+   "Record text as text, including self-asserted statements of force or status (\"effective immediately\", \"remains blocked\") held as content"
+  ],
+  [
+   "C16",
+   "Record keeper"
+  ],
+  [
+   "C17",
+   "Reference from a record to an act or work event (\"carries or references\")"
+  ],
+  [
+   "C18",
+   "Report-vs-constitution mode of a record–act pair, held as *unknown-capable* (record reports the act / record is the act / undetermined)"
+  ],
+  [
+   "C19",
+   "Work event (target, executor). Its start time is unobserved and belongs to C20, not this row"
+  ],
+  [
+   "C20",
+   "Work start time"
+  ],
+  [
+   "C21",
+   "Conformance / violation of a work event against the norm state at its start"
+  ],
+  [
+   "C22",
+   "Three governance times kept distinct (recording, decision, entry into force), with the work start time outside them"
+  ],
+  [
+   "C23",
+   "Not-evidenced-in-capture (an act or work event no record references; capture incompleteness)"
+  ],
+  [
+   "C24",
+   "Execution trace (a capture item ordered by recording order only)"
+  ],
+  [
+   "C25",
+   "Record independence for a target (keeper is neither norm-maker nor executor; record constitutes no act on that target)"
+  ],
+  [
+   "C26",
+   "Norm-state attestation channel (an external observable reporting the norm state for a work event's target at its start time)"
+  ],
+  [
+   "C27",
+   "Mode-undetermined flag on a record–act pair (performative ambiguity as a property of what is observable, not of one history)"
+  ],
+  [
+   "C28",
+   "Two independent limitation kinds on any norm-state claim: structural non-identifiability vs instrument unreliability"
+  ]
+ ],
+ "csrc": {
+  "C1": 46,
+  "C2": 47,
+  "C3": 48,
+  "C4": 49,
+  "C5": 50,
+  "C6": 51,
+  "C7": 52,
+  "C8": 53,
+  "C9": 54,
+  "C10": 55,
+  "C11": 56,
+  "C12": 57,
+  "C13": 58,
+  "C14": 59,
+  "C15": 60,
+  "C16": 61,
+  "C17": 62,
+  "C18": 63,
+  "C19": 64,
+  "C20": 65,
+  "C21": 66,
+  "C22": 67,
+  "C23": 68,
+  "C24": 69,
+  "C25": 70,
+  "C26": 71,
+  "C27": 72,
+  "C28": 73
+ },
+ "initial_order": [
+  "R1",
+  "R6",
+  "R9",
+  "R11",
+  "R14",
+  "R15",
+  "R16",
+  "R17",
+  "R21",
+  "R79",
+  "R80"
+ ]
+}

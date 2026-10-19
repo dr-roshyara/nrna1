@@ -1,0 +1,9 @@
+env: 3.13.2 Linux 7.2.8-200.fc44.x86_64
+C-F2-8 control: J=False S-joint=False S-multi=False families=19
+p=0.3: T1 mismatches (J vs S-joint) 0/2000; S-joint 937; S-multi 665; strict (S-joint & not S-multi) 272
+   smallest strict instance: ({0: 1, 1: 0}, {(0, 0): 1, (0, 1): 0, (1, 0): 1, (1, 1): 1}, [((0, 1), (0, 1)), ((1, 1), (0, 0))])
+p=0.6: T1 mismatches (J vs S-joint) 0/2000; S-joint 1622; S-multi 1471; strict (S-joint & not S-multi) 151
+   smallest strict instance: ({0: 0, 1: 1}, {(0, 0): 0, (0, 1): 0, (1, 0): 1, (1, 1): 1}, [((0, 0), (1, 0)), ((1, 0), (0, 0)), ((1, 0), (1, 1))])
+p=0.9: T1 mismatches (J vs S-joint) 0/2000; S-joint 1998; S-multi 1997; strict (S-joint & not S-multi) 1
+   smallest strict instance: ({0: 1, 1: 0}, {(0, 0): 1, (0, 1): 1, (1, 0): 0, (1, 1): 1}, [((0, 0), (0, 0)), ((0, 0), (0, 1)), ((0, 0), (1, 0)), ((0, 0), (1, 1)), ((0, 1), (0, 0)), ((0, 1), (0, 1)), ((0, 1), (1, 0)), ((1, 0), (1, 1)), ((1, 1), (0, 0)), ((1, 1), (1, 0)), ((1, 1), (1, 1))])
+T1 total mismatches: 0

@@ -1,0 +1,17 @@
+run: 05:40:38
+34e6ce9de03220952a684a15dc73d5910b053bf0cb5b30613038f8b27ade8887  PROTOCOL.md
+2ffee359a53514b3f8d7b79e6882419226b9a8b29da45f5cf2c469e5c33fa5a0  workerA_checks.py
+K1: evaluated 69120 (F,W,e) triples; mismatches = 0  (expected 0)
+K2: (F,W) pairs = 13824; mismatches = 0 (expected 0); (F,W) where condition fails = 6540; (<=) failures = 0 (expected 0)
+K3a: F=id, o in {F,F+2}, empty evidence: Ver=True (exp True), determines F=False (exp False)
+K3b: F=2x, o in {F,F+2}, empty evidence: Ver=False (exp False)
+K4: characterization mismatches = 0 (exp 0); S-multi instances = 11835, equivalence mismatches = 0 (exp 0)
+K4 named: Ver_2=True (exp True); G determines d_2=False (exp False); S-multi=False (exp False); marginal (x2,o2) set=[(0, 0), (0, 1), (1, 0), (1, 1)] (exp all 4)
+K5a: local Ver=True (exp True), global Ver=False (exp False)
+K5b: global Ver=True (exp True), local Ver=False (exp False)
+K5c: (o,c) Ver=True (exp True), (o,c) determines d=False (exp False)
+K6a: auditor Ver=True (exp True), party contest=False (exp False)
+K6b: auditor Ver=True (exp True), party contest=False (exp False)
+K6c: party (private x) contest=True (exp True), auditor Ver=False (exp False)
+K7a: current-evidence-only Ver=False (exp False), bitemporal Ver=True (exp True)
+K7b: current-version-only Ver=False (exp False), bitemporal-version Ver=True (exp True)

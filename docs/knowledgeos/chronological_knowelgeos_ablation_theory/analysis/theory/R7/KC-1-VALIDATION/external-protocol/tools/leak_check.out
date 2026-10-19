@@ -1,0 +1,63 @@
+PROPOSED / NOT RATIFIED; materials only; not executed (output of tools/leak_check.py)
+PASS packet_T3.md: status header present
+PASS packet_SH.md: status header present
+PASS packet_PARSE.md: status header present
+PASS packet_PARSE_B.md: status header present
+PASS packet_GEN.md: status header present
+
+== 1. shared sections byte-identical across all packets ==
+PASS section 1 (task) identical in all 5 packets
+PASS section 3 (glossary) identical in all 5 packets
+PASS section 4 (concept items) identical in all 5 packets
+PASS section 5 (rows) identical in all 5 packets
+
+== 2. section 2: only rule 6 (and, for GEN, the last sentence of rule 1) differs ==
+PASS T3: rules 1-5 identical to T3
+PASS SH: rules 1-5 identical to T3
+PASS PARSE: rules 1-5 identical to T3
+PASS PARSE_B: rules 1-5 identical to T3
+PASS GEN: rules 1-5 differ from T3 only in rule 1
+PASS rule-6 table has 7 parts (a)-(g) in every packet
+PASS rule-6 part descriptions identical across T3, SH, PARSE, PARSE_B
+
+== 3. rows: same set and order; listed rows are exactly the six guard rows ==
+PASS row order identical: R6, R16, R80, R21, R11, R79, R15, R9, R17, R1, R14
+PASS 11 rows = 6 listed + 5 controls
+PASS T3: listed rows = ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+PASS SH: listed rows = ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+PASS PARSE: listed rows = ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+PASS PARSE_B: listed rows = ['R11', 'R14', 'R15', 'R16', 'R17', 'R21']
+PASS GEN: no row list (general form)
+
+== 4. banned vocabulary (verdicts, sides, analyses, preferences, arm names) ==
+PASS T3: no banned term outside the fixed corpus text
+PASS SH: no banned term outside the fixed corpus text
+PASS PARSE: no banned term outside the fixed corpus text
+PASS PARSE_B: no banned term outside the fixed corpus text
+PASS GEN: no banned term outside the fixed corpus text
+INFO banned-pattern matches inside the fixed corpus text (rows, concepts; identical in every packet, so not arm-revealing): ['side']
+
+== 5. no answer lists in the packets ==
+PASS T3: only the format example carries a C-id list (['["C2", "C10"]'])
+PASS SH: only the format example carries a C-id list (['["C2", "C10"]'])
+PASS PARSE: only the format example carries a C-id list (['["C2", "C10"]'])
+PASS PARSE_B: only the format example carries a C-id list (['["C2", "C10"]'])
+PASS GEN: only the format example carries a C-id list (['["C2", "C10"]'])
+
+== 6. matched length of the varying text (rule 6) ==
+PASS T3: rule-6 words 338 (+14% vs mandatory-arm mean 297; tolerance ±25%)
+PASS SH: rule-6 words 270 (-9% vs mandatory-arm mean 297; tolerance ±25%)
+PASS PARSE: rule-6 words 283 (-5% vs mandatory-arm mean 297; tolerance ±25%)
+PASS PARSE_B: rule-6 words 306 (+3% vs mandatory-arm mean 297; tolerance ±25%)
+PASS GEN: rule-6 words 342 (+15% vs mandatory-arm mean 297; tolerance ±25%)
+INFO T3: packet words 2290
+INFO SH: packet words 2222
+INFO PARSE: packet words 2235
+INFO PARSE_B: packet words 2258
+INFO GEN: packet words 2301
+
+== 7. packet codes are neutral ==
+PASS codes distinct single letters, no X: ['D', 'F', 'H', 'J', 'K']
+
+RESULT: ALL PASS
+exit 0

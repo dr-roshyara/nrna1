@@ -1,0 +1,64 @@
+python 3.13.2 (main, Jun 18 2026, 16:43:14) [GCC 16.1.1 20260515 (Red Hat 16.1.1-2)]
+platform Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43
+numpy 2.5.0
+Bell per layer [1, 2, 15, 4140]; product candidates 124200; |PC| = 7176 (claimed 7176: MATCH)
+== S1 binary single Dv with |F|<=9 (exhaustive): instances=5632  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 256, 2: 1024, 4: 1536, 5: 512, 7: 1024, 8: 1280}
+   N1: differs=5632 detected=5632 detected&differs=5632 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=5632 detected=5632 detected&differs=5632 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=5376 detected=5376 detected&differs=5376 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=5632 detected=5632 detected&differs=5632 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=5632 detected=5632 detected&differs=5632 undetected-while-differing(defect)=0 detected-without-differing=0
+== S0 all 2^15 binary single Dv: instances=32768  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 256, 2: 1024, 4: 1536, 5: 512, 7: 1024, 8: 1280, 10: 1024, 14: 2048, 16: 768, 19: 256, 20: 512, 25: 256, 26: 256, 28: 1024, 32: 256, 35: 1024, 37: 1024, 38: 512, 40: 256, 43: 512, 44: 256, 49: 1024, 50: 128, 53: 1024, 56: 512, 57: 1024, 60: 512, 61: 256, 64: 576, 67: 512, 70: 512, 76: 256, 80: 192, 86: 512, 95: 256, 98: 512, 99: 256, 100: 256, 105: 512, 110: 256, 112: 256, 114: 1024, 120: 512, 122: 384, 128: 32, 133: 512, 134: 512, 141: 512, 152: 128, 168: 128, 190: 128, 200: 256, 210: 512, 220: 256, 244: 128, 266: 256, 304: 64, 339: 128, 361: 64, 377: 64, 423: 128, 536: 512, 565: 128, 574: 256, 678: 128, 722: 32, 779: 256, 856: 128, 864: 256, 910: 128, 986: 32, 1283: 16, 1568: 64, 1908: 128, 7176: 16}
+   N1: differs=30592 detected=30592 detected&differs=30592 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=14000 detected=14000 detected&differs=14000 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=32512 detected=32512 detected&differs=32512 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=16384 detected=16384 detected&differs=16384 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=30592 detected=30592 detected&differs=30592 undetected-while-differing(defect)=0 detected-without-differing=0
+== S2 q=0.1: instances=100  C2 failures=0  C4 failures=0
+   |F| distribution: {4: 2, 6: 1, 8: 1, 14: 1, 16: 1, 18: 1, 28: 3, 35: 1, 36: 1, 40: 1, 44: 1, 48: 1, 49: 1, 53: 1, 57: 2, 76: 5, 92: 1, 98: 1, 112: 1, 114: 2, 133: 5, 141: 2, 210: 5, 220: 3, 244: 1, 257: 1, 266: 1, 292: 1, 339: 1, 344: 1, 361: 4, 377: 1, 563: 2, 571: 1, 678: 6, 722: 1, 864: 5, 1568: 2, 1908: 11, 7176: 17}
+   N1: differs=59 detected=59 detected&differs=59 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=25 detected=25 detected&differs=25 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=100 detected=100 detected&differs=100 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=25 detected=25 detected&differs=25 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=59 detected=59 detected&differs=59 undetected-while-differing(defect)=0 detected-without-differing=0
+== S2 q=0.3: instances=100  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 6, 2: 10, 3: 3, 4: 6, 6: 4, 7: 2, 8: 5, 10: 2, 14: 3, 15: 1, 16: 2, 20: 1, 21: 2, 28: 2, 35: 1, 40: 1, 43: 1, 46: 1, 48: 2, 49: 2, 50: 2, 56: 1, 57: 1, 64: 1, 67: 1, 74: 1, 86: 1, 95: 1, 98: 1, 105: 2, 120: 1, 122: 1, 125: 1, 133: 3, 134: 3, 141: 1, 210: 3, 244: 1, 344: 1, 361: 1, 377: 2, 423: 1, 536: 2, 565: 1, 779: 2, 864: 2, 1908: 4, 7176: 1}
+   N1: differs=85 detected=85 detected&differs=85 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=41 detected=41 detected&differs=41 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=94 detected=94 detected&differs=94 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=49 detected=49 detected&differs=49 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=85 detected=85 detected&differs=85 undetected-while-differing(defect)=0 detected-without-differing=0
+== S2 q=0.5: instances=100  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 8, 2: 18, 3: 2, 4: 12, 5: 1, 6: 6, 7: 2, 8: 4, 10: 2, 14: 4, 16: 1, 18: 1, 25: 2, 28: 3, 32: 1, 35: 2, 37: 2, 49: 2, 53: 1, 54: 1, 56: 1, 57: 1, 60: 1, 64: 2, 67: 2, 70: 2, 86: 2, 98: 1, 99: 1, 110: 1, 114: 1, 122: 1, 133: 2, 141: 2, 200: 1, 266: 1, 536: 1, 722: 1, 864: 1}
+   N1: differs=96 detected=96 detected&differs=96 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=44 detected=44 detected&differs=44 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=92 detected=92 detected&differs=92 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=68 detected=68 detected&differs=68 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=96 detected=96 detected&differs=96 undetected-while-differing(defect)=0 detected-without-differing=0
+== S2 all q: instances=300  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 14, 2: 28, 3: 5, 4: 20, 5: 1, 6: 11, 7: 4, 8: 10, 10: 4, 14: 8, 15: 1, 16: 4, 18: 2, 20: 1, 21: 2, 25: 2, 28: 8, 32: 1, 35: 4, 36: 1, 37: 2, 40: 2, 43: 1, 44: 1, 46: 1, 48: 3, 49: 5, 50: 2, 53: 2, 54: 1, 56: 2, 57: 4, 60: 1, 64: 3, 67: 3, 70: 2, 74: 1, 76: 5, 86: 3, 92: 1, 95: 1, 98: 3, 99: 1, 105: 2, 110: 1, 112: 1, 114: 3, 120: 1, 122: 2, 125: 1, 133: 10, 134: 3, 141: 5, 200: 1, 210: 8, 220: 3, 244: 2, 257: 1, 266: 2, 292: 1, 339: 1, 344: 2, 361: 5, 377: 3, 423: 1, 536: 3, 563: 2, 565: 1, 571: 1, 678: 6, 722: 2, 779: 2, 864: 8, 1568: 2, 1908: 15, 7176: 18}
+   N1: differs=240 detected=240 detected&differs=240 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=110 detected=110 detected&differs=110 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=286 detected=286 detected&differs=286 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=142 detected=142 detected&differs=142 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=240 detected=240 detected&differs=240 undetected-while-differing(defect)=0 detected-without-differing=0
+   S3 constant: |F|=7176 C2=True C4=True cand(differs,detected)={'N1': (False, False), 'N2': (False, False), 'N3': (True, True), 'N4': (False, False), 'N5': (False, False)}
+   S3 first symbol (eps->-): |F|=361 C2=True C4=True cand(differs,detected)={'N1': (False, False), 'N2': (False, False), 'N3': (True, True), 'N4': (True, True), 'N5': (False, False)}
+   S3 first symbol (eps->0): |F|=361 C2=True C4=True cand(differs,detected)={'N1': (False, False), 'N2': (False, False), 'N3': (True, True), 'N4': (True, True), 'N5': (False, False)}
+   S3 last symbol (eps->-): |F|=1 C2=True C4=True cand(differs,detected)={'N1': (True, True), 'N2': (True, True), 'N3': (False, False), 'N4': (True, True), 'N5': (True, True)}
+   S3 last symbol (eps->0): |F|=1 C2=True C4=True cand(differs,detected)={'N1': (True, True), 'N2': (True, True), 'N3': (False, False), 'N4': (True, True), 'N5': (True, True)}
+== S3 named: instances=5  C2 failures=0  C4 failures=0
+   |F| distribution: {1: 2, 361: 2, 7176: 1}
+   N1: differs=2 detected=2 detected&differs=2 undetected-while-differing(defect)=0 detected-without-differing=0
+   N2: differs=2 detected=2 detected&differs=2 undetected-while-differing(defect)=0 detected-without-differing=0
+   N3: differs=3 detected=3 detected&differs=3 undetected-while-differing(defect)=0 detected-without-differing=0
+   N4: differs=4 detected=4 detected&differs=4 undetected-while-differing(defect)=0 detected-without-differing=0
+   N5: differs=2 detected=2 detected&differs=2 undetected-while-differing(defect)=0 detected-without-differing=0
+== OVERALL: C2 failures 0  C4 failures 0  harness defects 0
+   N1 differs on at least one instance overall: True
+   N2 differs on at least one instance overall: True
+   N3 differs on at least one instance overall: True
+   N4 differs on at least one instance overall: True
+   N5 differs on at least one instance overall: True

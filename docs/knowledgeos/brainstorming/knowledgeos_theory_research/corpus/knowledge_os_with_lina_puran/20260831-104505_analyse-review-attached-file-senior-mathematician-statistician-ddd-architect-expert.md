@@ -6,7 +6,7 @@ Analyse  and review the attached file  as senior mathematician, statistician and
 Continue to work for next step as senior mathematician, statistician and ddd architect and expert of computer logic and theory of logic.  define the whole architeture of the knowledgeos architecture  . C4 modelle might be important . Work As Senior DDD Architect and suggest the implementation part in detail . 
 #
 
-I have nearly 4 thousand brainstorming files related to knowelgeos theory . that is the output of chatgpt , deepseek and gemini.  I believe that they all together represent a professional derivation of knowelgeos theory but I dont know where to start to build the final theory and implement it. So 
+I orginally have nearly 4 thousand brainstorming files related to knowelgeos theory . that is the output of chatgpt , deepseek and gemini.  I believe that they all together represent a professional derivation of knowelgeos theory but I dont know where to start to build the final theory and implement it. So 
 can you tellme  as senior architet where to start  to build the whole theory and implement it in a professional way. what is the  most optimal path ? The files are saved with names containing timestamp build with the point of time they are saved. Mostly the documents are written in a chronological way . That means older files contain previous part and the newer files contain later part of the theory. 
     #
 
@@ -16,8 +16,7 @@ can you tellme  as senior architet where to start  to build the whole theory and
 
         While computation,   technique of computer logic and machine learning techniques may also help us . So you also need to use your expertise in machine learning techiniques.  Keep optimizing the final goal, architecture and todos. 
         
-        Write prompt instructions for claude code. Tell not to spend unnecessary time in admnistrative things . We should observe the current corpus as brainstorming material and derive a robost theory as researcher's responsibility . so remnind claude     that     A researcher responsibility is to  observe the current corpus as brainstorming material and derive a robost theory.
- and  finally write in sort as bullet points how far we are to achieve our goal and mention the rest of the todos in short in bullet points.
+        Write prompt instructions for claude code. Tell not to spend unnecessary time in admnistrative things . We should observe the current corpus as brainstorming material and derive a robost theory as researcher's responsibility . so remnind claude     that     A researcher responsibility is to  observe the current corpus as brainstorming material and derive a robost theory. Finally write in sort as bullet points how far we are to achieve our goal and mention the rest of the todos in short in bullet points.
 
 # #################################################################
 
