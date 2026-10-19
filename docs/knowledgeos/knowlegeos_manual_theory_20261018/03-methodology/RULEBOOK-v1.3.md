@@ -12,7 +12,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 
 ## 2. The core loop, per source
 
-1. **Triage, then read** (§3). The source is read in **index order**, with the theory map (`06-theory/THEORY-MAP.md`) in mind.
+1. **Triage, then read** (§3). The source is read in **index order**, with the theory map (`06-theory/THEORY-MAP.md`) in mind. Index order is the coverage line; topic turns for open forks run beside it (§12).
 2. **Validate** each concept or idea by reasoning. Does it make sense? Does it survive a real counterexample?
    - **Computation and machine learning** are used where they decide something: for example, similarity to find one concept under several names, or a dependency graph of the register. Their limits are stated, and every finding is verified in the source text. *(Principal, 2026-10-19)*
 3. **Is it already in the book?** If yes, update that section. If no, write it in a new section or subsection.
@@ -67,6 +67,8 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
   - **Cited at the end of the section** under "External references", separate from the corpus references.
   - **Boundary:** outside concepts may analyse, sharpen or criticise the corpus's theory, but never replace what the corpus says.
   - **No corpus text** goes into an outside search.
+
+- **Formal models are tested on their trivial cases** before they go into the book: the empty mechanism set, a mechanism that refuses everything, and the unchanged state. Use a script where possible. If a trivial case satisfies the model, it lacks "must-do" requirements beside its "must-never" constraints.
 
 ## 5. Parallel lines (forks)
 
@@ -127,11 +129,17 @@ The quote check is **kept**, now on the book sections (§4).
 ## 9. Open (the Principal's decision)
 
 - When whole-book reviews run.
-- Whether the workspace is committed at checkpoints.
+- ~~Whether the workspace is committed at checkpoints~~: decided 2026-10-19, see §10.
 
 ## 10. Each turn ends with
 
 What the **theory** gained: definitions, derived results, counterexamples, forks opened or settled, and open questions. Plus, per source, the depth read and the number of new concepts.
+
+- **A closing checklist:** every part of the instruction is marked done, or not done with the reason. Nothing is left out silently.
+- **A commit at every checkpoint** (after each review settlement; Principal, 2026-10-19: "yes, approve 1 and 2"):
+  - only the Professor's own paths;
+  - check `git diff --cached --name-status` before, and `git show --name-status HEAD` after;
+  - report the commit ID.
 
 ## 11. Research branches (Amendments 32a and 32b) — added 2026-10-19T09:41:23Z
 
@@ -148,3 +156,30 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
 - **Search:** search terms come from the register and the book (including E1–E10). A search reports findings within its scope, never proof of absence.
 - **The theory map shows two counts:** sources read in order, and sources consulted in branches.
 - **Enforced by the scripts:** `full` and `skim` only for the next source in order; `branch-consult` only with passages and an existing snapshot; no VALIDATED branch concept before its review.
+
+## 12. The mixed method (Principal, 2026-10-19: "yes, approve 1 and 2")
+
+- **Chronological reading for coverage:** sources in index order, five per review group (§2, §6). Every allowed source is eventually read this way, or checked against the book if a topic turn read it first.
+- **Topic turns for open forks**, under the conditions of Trial T2 (`TRIAL-T2-topic-first-20261019.md`):
+  - a fork that blocks a chapter, or a topic the Principal names;
+  - sources chosen by a rule fixed before reading;
+  - sources already read on the topic are included;
+  - the fork is left open in the first draft;
+  - strength scan and step 8 before review;
+  - one reviewer commission.
+
+  Topic rows (`topic-full`) never move the reading position.
+- **A consolidation review every 25 sources read in order.** The reviewer gives verdicts on concepts marked VALIDATED without an independent verdict, and checks the order (SEQ) of the chapters touched since the last consolidation.
+- **Research branches (§11)** remain for consulting passages only. A topic turn reads whole sources.
+
+### 12a. Flexible reading window (Principal, 2026-10-19: "if you find a topic in a different file while searching, you can take that file also in the research reading window")
+
+- **Window size, in general: 5 to 8 sources.** That is 5 in index order, plus up to 3 added.
+- **The window is not fixed at five.** Its core is the next five sources in index order. If a topic in those sources leads the Professor to another allowed source that bears on it, that source may join the window.
+- **Conditions for an added source:**
+  - it was found by a **logged search** (`branch_search.py --log`, terms from the register and the book), not picked by memory;
+  - **one line on why:** which concept or open question of this window it serves;
+  - it is read **whole**, as `topic-full`, and **never moves the reading position**. When index order reaches it later, it is only checked against the book;
+  - it goes into the **reviewer's blind step** with the others;
+  - usually **at most three added sources per window**, so the review stays thorough. More only with a stated reason.
+- **Against picking what fits:** where the search finds several candidates, take the earliest and the latest relevant one, not only the one that supports the current reading.
