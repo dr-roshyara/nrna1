@@ -181,6 +181,8 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    - **F4:** the missing premise is one the book itself states is false or not established;
    - **N1:** nothing rests on it and it decides none of F3.
 
+   **The criteria are not applied mechanically** (entry 58): F1 and F2 are read from explicit citations, so the reviewer confirms that each listed dependency really uses the premise, and names, with a reason, any dependency that is not cited.
+
    **Resolved** only when the statement carries the premise, the proof step names it, every result in the R3 list is reassessed and carries the condition, and every affected register row carries it. **A condition recorded only in the register does not resolve the finding.** A critical finding triggers reassessment of each dependant, never their automatic invalidation.
 
    **What the review continues to assess** (Principal, 2026-10-19T10:01:35Z). These are mapped onto the questions above, not added as new ones:
@@ -194,6 +196,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    **Division of labour:** the Professor writes what he finds and does not keep a separate log of omissions. The reviewer's blind reading is the check on coverage, and its refutation the check on validity.
 4. The reviewer may disagree, and gives reasons. A finding stands unless disproved with evidence. Every report states that its independence is process independence, not personal independence.
 5. After the review comes one **theory-only turn**: settle the findings and consolidate the sections.
+   - **Every finding states when it counts as resolved** (entry 58): an observable condition in the book, the register or the map (for example "§5.7 C3, §5.7.1 and CON-0145 state the same rule"). A finding is closed only when that condition holds, checked at the next settlement or review. An item left open names the role that owns it, the reason, and the next action.
    - **R3, downstream of every accepted correction** (entry 56; `tmp/tools/inbound_citations.py`): the settlement runs the inbound-citation check on the corrected claim and its concept ID, and lists the result in the correction's row. Each inbound citation is reassessed claim by claim and stated in the row: unaffected, corrected, or to be reassessed. Section-only hits are read, not ignored.
 
 ## 7. Limits
@@ -286,6 +289,8 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
   - when a RESEARCH-PURPOSE deliverable changes status (for example the primitive set or Req is fixed);
   - before the book is declared ready for readers;
   - at the latest **every 500 sources** read in index order (topic-turn reads do not count).
+
+  **Entry 57 is evaluated, not assumed** (entry 58): at the consolidations of S0125 and S0150 the settlement records the harness time of the review and the defects found in the rotated chapters; at S0150 the Principal confirms or revises the cadence.
 
   It replaces the regular consolidation review it coincides with. **The S0100 review is the template** (parts, briefs, frozen copy, isolation audit, two-stage settlement), so a milestone review needs one approval, not a new plan.
 - **Scope:** **all chapters**, not only recent changes:

@@ -260,6 +260,8 @@ The Professor sends, after the reviewer's blind inventory is saved:
 - **R3, inbound citations** of every accepted correction, listed and reassessed in the correction's settlement row; the integration reviewer receives the lists.
 - **R4:** "adequate" for a derivation needs a proof-step table; an undefined object used without a premise makes it "inadequate: premise missing"; without the table, "not assessed".
 - **R5:** a missing premise is critical if results or derivations rest on it, if it decides a kernel or boundary question, or if the book itself says the premise is undefined or false; normal only if nothing rests on it. Resolved only in the statement, the proof step, every dependant and the register together; a condition in the register alone does not resolve it.
+- **R5 is not applied mechanically** (entry 58): the reviewer confirms that each dependency listed from citations really uses the premise, and names any uncited one, with a reason.
+- **The cadence of §8.1 is evaluated** (entry 58): harness time and defects found in rotated chapters are recorded at the consolidations of S0125 and S0150; the Principal confirms or revises it at S0150. (The general "resolved when" rule of entry 58 is §8.5's acceptance contract.)
 - Procedures, limits and tests: `06-theory/manuscript/review/WHOLE-BOOK-S0100/RULEBOOK-REVISION-PROPOSAL-S0100.md`.
 
 ### 8.5 Settlement (one file per review, `SETTLEMENT.md`)
