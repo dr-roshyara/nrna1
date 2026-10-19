@@ -378,3 +378,18 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 **[A] Effect:** about 1–3 minutes of Professor time per window for the falsification lines; it moves part of the reviewer's refutation work earlier, so reviews may find fewer simple defects and spend more on deep ones. **[R] Trial measure:** in the trial settlements, count findings that a recorded falsification attempt should have caught but did not; a high count means the attempts are a formality.
 
 **Not added:** a new register, new states or a new file. **[V]** v2 revision 2 has 4,930 words, against 4,135 for v1.3. **It is longer, not shorter:** the gain is precision and a theory-first priority, not brevity.
+
+## 16. Revision 2, continued: third architecture review
+
+**[V] Its limits, as it states them:** based on my report of the changes; it did not inspect the commits or v2.
+
+| Point | Done | Verdict |
+|---|---|---|
+| definitions testable (what falls outside, where it stops) | v2 §5.1 | adopted |
+| rival explanations genuine, materially different | v2 §5.1 | adopted |
+| the Professor never gives its own work a review status | v2 §5.1 (pointer to §7) | already a rule; restated where the Professor works |
+| coverage non-negotiable; interruption recorded; no skipped sources | v2 §0.5 | adopted |
+| isolation shown by evidence, not declaration | v2 §8.3: the reviewer lists files opened and searches run; checked before scoring | adopted; **also applied to the S0100 whole-book test** (a lesson, not a v2 rule) |
+| planted-gap results are bounded conclusions | v2 §8.3 | adopted (counts only was already the rule) |
+| Q3: independent reconstruction, not the author's | — | [R] ask one whole-book reviewer to reconstruct one rewritten section from its records alone |
+| sequence: C18 → whole-book review under v1.3 → seal the test → baseline → separate v2 decision | — | agreed; this is the plan already stated (§9.2, §14) |

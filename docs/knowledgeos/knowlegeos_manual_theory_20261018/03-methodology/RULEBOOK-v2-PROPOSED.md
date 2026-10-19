@@ -39,7 +39,7 @@
    3. coverage of the corpus in index order;
    4. book form (rewrites, outline, layout).
 
-   A lower priority never displaces a higher one. **A procedure is never satisfied at the theory's expense:** a needed correction is not left out to keep a rewrite "pure", a finding is not dropped to keep a settlement short, and a source is not skimmed to keep a window on time.
+   A lower priority never displaces a higher one. **A lower priority may wait; it is never dropped.** Corpus coverage in particular is non-negotiable: an interruption for a critical problem is recorded, and index-order reading resumes at the next unread source without skipping any. **A procedure is never satisfied at the theory's expense:** a needed correction is not left out to keep a rewrite "pure", a finding is not dropped to keep a settlement short, and a source is not skimmed to keep a window on time.
 6. **When a rule obstructs a necessary theory step,** the Professor does not bend the theory and does not silently bypass the rule: it records the conflict in the settlement and raises it with the Principal, who decides.
 7. **Polished prose, agreement between sessions, a completed checklist or a commit establish nothing about validity.** Evidence, derivation and independent challenge do.
 
@@ -121,7 +121,9 @@
 ## 5. The cycle for a full source
 
 1. **Validate** each concept by reasoning: does it make sense; does it survive a real counterexample?
-   - **Falsification before review** [new]: for each new concept, law or settled fork, the Professor attempts, and records in the brief, **(a)** a counterexample within its stated scope, **(b)** its boundary: the case where it should stop holding, and **(c)** at least one **rival explanation** of the same evidence, with the reason the book prefers its own reading or keeps both open. "None found" is a valid answer, with the attempt shown. Use computation and machine learning where they decide something (similarity for synonyms and word senses, dependency graphs, counterexample search); state their limits and verify every finding in the source text.
+   - **Falsification before review** [new]: for each new concept, law or settled fork, the Professor attempts, and records in the brief, **(a)** a counterexample within its stated scope, **(b)** its boundary: the case where it should stop holding, and **(c)** at least one **rival explanation** of the same evidence, with the reason the book prefers its own reading or keeps both open. **A rival explanation must be materially different** (another mechanism, another premise, or another reading of the source), never a weak alternative set up to be rejected. "None found" is a valid answer, with the attempt shown.
+   - **A definition is testable:** it states what falls outside the concept and where it stops applying, not only a description of what is inside.
+   - The Professor proposes and challenges; **it never gives its own work a review status** (§7). Use computation and machine learning where they decide something (similarity for synonyms and word senses, dependency graphs, counterexample search); state their limits and verify every finding in the source text.
 2. **Find the existing home** before writing: search the book and the register by script (`book_search.py`, lexical and `--meaning`), **read the top five hits** and mark each *same / extends / different*. Extend an existing home rather than writing a second; cite it.
 3. **Write** into that home or a new section (§6).
 4. **Record concepts** in `06-theory/CONCEPT-REGISTER.tsv` (§7).
@@ -191,7 +193,8 @@ The Professor sends, after the reviewer's blind inventory is saved:
 
 - Plants are made by the Principal or the Rule Reviewer, never by the Professor, in copies of written sections; no traces in the text.
 - The answer key is sealed (sha256 in the access record) before the review.
-- **Isolation** [new; lesson of the S0036–S0065 test]: the commission states that the copies are the versions under review; the reviewers do not open the original files of those sections, do not compare files, and the book search runs on the copies (`book_search.py` needs an exclude option: open item). A reviewer that reaches an original says so, and its omission score is reported as not blind.
+- **Isolation** [new; lesson of the S0036–S0065 test]: the commission states that the copies are the versions under review; the reviewers do not open the original files of those sections, do not compare files, and the book search runs on the copies (`book_search.py` needs an exclude option: open item). A reviewer that reaches an original says so, and its omission score is reported as not blind. **Evidence, not only a declaration:** the report lists every file the reviewer opened and every search it ran; the Rule Reviewer checks that list against the originals before scoring.
+- **Bounded conclusion:** a planted-gap result shows whether the process caught these defects under these conditions. It is never reported as general reliability.
 - Result as a count ("found k of n"), never a rate. Every plant is repaired in the book afterwards.
 
 ### 8.4 Integration and outline
