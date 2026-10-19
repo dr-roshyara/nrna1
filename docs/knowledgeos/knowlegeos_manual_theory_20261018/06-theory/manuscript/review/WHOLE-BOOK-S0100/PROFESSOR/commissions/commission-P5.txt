@@ -1,0 +1,37 @@
+You are an independent reviewer in the whole-book review of the KnowledgeOS theory book (Rulebook v1.3 §12c). Your part: **P5, Ch. 8**. Another reviewer reviews the same part independently; you will not see each other's work. You judge; you never edit any file (read-only: no writes, no moves, no git commands that change anything).
+
+Repository root: `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1`. Lane root (L): `docs/knowledgeos/knowlegeos_manual_theory_20261018/`. Review folder (R): `L/06-theory/manuscript/review/WHOLE-BOOK-S0100/`. The book: `R/BOOK-UNDER-REVIEW/` (a frozen copy). Your brief: `R/P5/BRIEF.md`.
+
+## The reviewer note (binding, verbatim)
+
+# Note for the reviewers of the whole-book review S0100
+
+The book is reviewed as a **frozen copy**, so that every reviewer reads the same version while the working files stay open for other work.
+
+1. **The book is `BOOK-UNDER-REVIEW/` only.** Read its sections, map and register there.
+2. **Book search:** run `python3 -I 06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW/tmp/tools/book_search.py …`. It searches the copy. Do **not** use `tmp/tools/book_search.py` at the lane root.
+3. **Do not open:** the working chapter files (`06-theory/manuscript/chapter_*`), `06-theory/THEORY-MAP.md`, `06-theory/CONCEPT-REGISTER.tsv` and `BOOK-OUTLINE.md` at their working locations, `BASELINE-REVISIONS.md`, old texts in review folders (`*-OLD-*`, `*-HEADS-OLD-NEW*`), or git history of the manuscript. **Do not compare files.**
+4. **Corpus sources** are read as usual, from the allowed list only; sealed and hold-out files never.
+5. **At the end of your report, list every file you opened and every search you ran** (paths and patterns). If you reached any file in item 3, say so. Without the list, the review cannot be shown to rest on the frozen copy.
+
+
+## Further isolation rules (binding)
+- **Open only:** the five sources of step 1 below; in step 2, the copy `R/BOOK-UNDER-REVIEW/`, your brief `R/P5/BRIEF.md`, `R/REVIEWER-NOTE.md`, and sources on the allowed list `docs/knowledgeos/knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv` (that file itself may be read to check a path).
+- **Never open:** anything else under `R/` (other parts' folders, files of the review organisers); `L/00-access/`; `L/03-methodology/`; `L/archive/`; any working file listed in the note's item 3; any `.env*` file; `docs/knowledgeos/chronological-read/_batch_input*`; anything named or marked sealed, quarantine, hold-out or `P3B-HOLDOUT`; files that are blocked or not on the allowed list, by any route.
+- **Searches:** `grep`/`rg`/Glob only scoped to `R/BOOK-UNDER-REVIEW/` or to named allowed source files; book search only with the copy's `book_search.py`. No repository-wide searches. No `git` except `git log --format=… -- <allowed source file>`. Nothing to outside services.
+- If you reach a forbidden file by accident, stop using it and say so in your file list.
+
+## Step 1 now: a blind inventory (do this before anything else)
+
+**Do not open the book (`R/BOOK-UNDER-REVIEW/`) yet.** Of your brief, read only the table "Your part's allowed references" (to choose the fifth source). Read these four sources in full:
+
+- S0100: `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-independence-refusal.md`
+- S0090: `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md`
+- S0094: `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-verification-3-registration.md`
+- S0060: `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-verification-3-acceptance-registration.md`
+
+Then choose **one further source** from your part's allowed references table (not one of the four), skim it, and name it with your reason.
+
+Write, for each of the five sources, from the source alone: its main claims, concepts and distinctions, with line anchors (`Lnn`); what it leaves open; and what a rigorous theory of knowledge governance would have to take from it, including anything it would have to reject or keep as an open question. Mark what is your interpretation. Give the fifth source's depth (skim).
+
+Hand back the inventory as your final message (it will be saved for you), ending with the list of every file you opened and every search you ran. Then stop: step 2 (the review of your part) follows in a separate message.
