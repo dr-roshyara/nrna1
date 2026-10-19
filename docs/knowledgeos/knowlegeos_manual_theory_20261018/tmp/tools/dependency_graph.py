@@ -24,11 +24,17 @@ Usage:
   python3 -I dependency_graph.py --up §8.6                             # what an item depends on (direct)
   python3 -I dependency_graph.py --stats                               # node/edge counts, isolated sections, cycles
   add --md for a markdown table
+  add --root DIR to read the book under DIR instead of the lane (DIR holds 06-theory/; read-only; e.g. a frozen review
+  copy). Approved by the Principal, 2026-10-19, for the whole-book review S0100. The script writes no files.
 """
 import csv, glob, pathlib, re, sys
 from collections import defaultdict, deque
 
 W = pathlib.Path(__file__).resolve().parents[2]
+if '--root' in sys.argv:
+    _i = sys.argv.index('--root')
+    W = pathlib.Path(sys.argv[_i + 1]).resolve()
+    del sys.argv[_i:_i + 2]
 T = W / '06-theory'
 M = T / 'manuscript'
 SEC = re.compile(r'(?:Ch(?:apter)?\.?\s*\d+\s*)?§\s?(\d+)\.(\d+)(?:\.(\d+[a-z]?))?')

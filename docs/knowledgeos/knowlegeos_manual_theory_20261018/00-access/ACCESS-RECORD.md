@@ -416,3 +416,28 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Answer key** kept outside the workspace until scoring; sha256 `cd58fe22d367d1b47292a1bfb151a6a8e133db6e29e9f8fb69c82ad3153a454c`. Manifest of the copy (sha256 of all 119 files) also outside the workspace; its sha256 `6c164d80c28cfeb9a8d61eb52a42aa380292262770c71f91f7579b6fabf05976`, so a later change to the copy is detectable.
 - **Isolation:** `REVIEWER-NOTE.md` goes with every commission (copy only; no working chapter files, old texts or git history; no comparing files; a list of files opened and searches run at the end of each report). The reviewers are not told that a test is running.
 - **The Professor** (`README-PROFESSOR.md`): freezes the working book until scoring; does not compare the copy with the working book; settles in two stages: first on the copy, scored by the Rule Reviewer; then applied to the working book.
+
+## Entry 2026-10-19T19:45:51Z: whole-book review S0100 (Rulebook v1.3 §12c): grant, sampling and isolation, recorded before any reviewer starts
+- **Authority:** the Principal's approval with corrections 1–4 (2026-10-19); D2, the Rule Reviewer's ruling confirmed by the Principal. Rulebook v1.3 governs; the v2 proposal is not used.
+- **Book under review:** `06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW/` only (entry above). Pre-review snapshot of the copy: `review/WHOLE-BOOK-S0100/PROFESSOR/COPY-SNAPSHOT-PRE.sha256` (119 files); unchanged after the tool run below.
+- **Grant, P1 and P2 reviewers only (the Principal, 2026-10-19, correction 3):** read-only access to **exactly** the Chapter 0–2 basis files logged in `archive/00-access/READ-LOG.tsv` with purpose "basis: KnowledgeOS charter stack + RQ-002 (Principal instruction)", **solely for checking quoted material and its meaning**. Fingerprints checked against READ-LOG on 2026-10-19, all matching:
+  - `docs/implementation/KnowledgeOS_Product_Discovery_Charter.md` (6949bb8b…)
+  - `docs/implementation/KnowledgeOS_Development_Constitution.md` (4ccf2215…)
+  - `docs/implementation/KnowledgeOS_Governance_Execution_Plan.md` (2fec7e74…)
+  - `docs/implementation/Project_Knowledge_Architecture_Charter.md` (c452e40b…)
+  - `docs/implementation/Project_Knowledge_Strategic_Model.md` (a54271b0…)
+  - `docs/implementation/RQ-002_Architectural_Synthesis.md` (e271fb4a…)
+  - `docs/implementation/RQ-002_General_Knowledge_Architecture_Constitutional_Model.md` (869d06fe…)
+  - `docs/implementation/RQ-002_Knowledge_Meta_Model.md` (f07bc815…)
+  - `docs/implementation/RQ-002_Knowledge_Taxonomy.md` (90d2b7f1…)
+  - `docs/implementation/RQ-002_Project_Knowledge_Domain.md` (0669b0d2…)
+  - `docs/implementation/RQ-002_Research_Findings_Raw.md` (47490d40…)
+  - `docs/implementation/RQ-002_Strategic_Discovery_Report.md` (81d61aba…)
+  
+  **Not extended** to other files, reviewers or purposes. **Not covered:** the `docs/knowledge_tranfer/` files that Ch. 1 and Ch. 2 also cite (AB, AG, AMS, CF, DE, DR, DR-AB, EP01, GA, IA, IM, PC, RM, RS, SC, SD, SI, TR, V3, EV); claims resting only on them are marked U (internal validity only, attribution unverifiable) in the P1 and P2 briefs.
+- **Quote checks (correction 2):** each reviewer may open the **whole** allowed source behind any anchor its part cites (the part's allowed references, listed in its brief). Nothing outside the allowed list and the grant above.
+- **Blind sample (correction 1), fixed before anyone reads:** per part, the two most-cited allowed sources, two drawn at random from the part's other allowed references, and one skimmed source of the reviewer's choice (recorded in each report). Seed **20261019**, `random.Random(seed).sample(sorted(candidates), 2)`, one generator per part. P1: S0032, S0018 + S0022, S0008. P2: S0016, S0020 + S0030, S0013. P3: S2377, S0044 + S0061, S0027. P4: S0071, S0066 + S2834, S0073. P5: S0100, S0090 + S0094, S0060. Record: `review/WHOLE-BOOK-S0100/PROFESSOR/SAMPLING.md`, `sampling.json`.
+- **Tool change (approved):** `tmp/tools/dependency_graph.py` gains `--root DIR` (reads the book under DIR; writes nothing). Output on the copy: `review/WHOLE-BOOK-S0100/PROFESSOR/DEPENDENCY-GRAPH-COPY.txt`.
+- **Professor's step 8 (D2):** `review/WHOLE-BOOK-S0100/PROFESSOR-STEP8-FINDINGS.md`, committed before the first commission; **never given to the reviewers**; fixed in stage 2. One-time deviation from step 8's "fix before commissioning", recorded there and in the settlement.
+- **Reviewers:** 10 part reviewers (P1–P5, each one Opus and one Sonnet, independent, in parallel), then one integration reviewer (Opus). Each gets `REVIEWER-NOTE.md` and its part's brief. **Forbidden to them:** the working book (chapter files, `06-theory/THEORY-MAP.md`, `06-theory/CONCEPT-REGISTER.tsv`, the working BOOK-OUTLINE, BASELINE-REVISIONS.md), `*-OLD-*` and `*-HEADS-OLD-NEW*` files, git history of the manuscript, the lane-root `book_search.py`, everything under `review/WHOLE-BOOK-S0100/` except their own brief, REVIEWER-NOTE.md and BOOK-UNDER-REVIEW/, and this access record. They are not told that a test is running.
+- **Isolation audit:** after each hand-back, the subagent transcript's tool calls are checked against the forbidden paths and searches; result in `review/WHOLE-BOOK-S0100/ISOLATION-AUDIT.md` (breach classes B0–B3).

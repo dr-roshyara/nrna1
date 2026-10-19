@@ -1,0 +1,370 @@
+{
+ "P1": {
+  "top": [
+   [
+    "S0032",
+    20
+   ],
+   [
+    "S0018",
+    16
+   ]
+  ],
+  "random": [
+   "S0022",
+   "S0008"
+  ],
+  "n_candidates": 37,
+  "paths": {
+   "S0032": "docs/knowledgeos/KnowledgeOS_Vision_Mission_Clarification.md",
+   "S0018": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "S0022": "docs/knowledgeos/KnowledgeOS_Ontology_Cross_Product_Validation.md",
+   "S0008": "docs/knowledgeos/KnowledgeOS_Semantic_Architecture_Reconciliation.md"
+  },
+  "allowed_refs": [
+   "S0001",
+   "S0002",
+   "S0003",
+   "S0004",
+   "S0005",
+   "S0006",
+   "S0007",
+   "S0008",
+   "S0009",
+   "S0010",
+   "S0011",
+   "S0012",
+   "S0013",
+   "S0014",
+   "S0015",
+   "S0016",
+   "S0017",
+   "S0018",
+   "S0019",
+   "S0020",
+   "S0021",
+   "S0022",
+   "S0023",
+   "S0024",
+   "S0025",
+   "S0026",
+   "S0027",
+   "S0028",
+   "S0031",
+   "S0032",
+   "S0034",
+   "S0089",
+   "S0090",
+   "S0095",
+   "S0096",
+   "S0097",
+   "S0100",
+   "S0128",
+   "S0129"
+  ]
+ },
+ "P2": {
+  "top": [
+   [
+    "S0016",
+    31
+   ],
+   [
+    "S0020",
+    23
+   ]
+  ],
+  "random": [
+   "S0030",
+   "S0013"
+  ],
+  "n_candidates": 36,
+  "paths": {
+   "S0016": "docs/knowledgeos/KnowledgeOS_Meta_Model.md",
+   "S0020": "docs/knowledgeos/KnowledgeOS_Ontology_Architecture_Classification.md",
+   "S0030": "docs/knowledgeos/AI_Workflow_Observation_Log.md",
+   "S0013": "docs/knowledgeos/KnowledgeOS_Architecture_Synthesis_Matrix.md"
+  },
+  "allowed_refs": [
+   "S0001",
+   "S0003",
+   "S0005",
+   "S0007",
+   "S0008",
+   "S0009",
+   "S0012",
+   "S0013",
+   "S0014",
+   "S0015",
+   "S0016",
+   "S0017",
+   "S0018",
+   "S0020",
+   "S0021",
+   "S0022",
+   "S0023",
+   "S0024",
+   "S0025",
+   "S0026",
+   "S0028",
+   "S0029",
+   "S0030",
+   "S0031",
+   "S0033",
+   "S0034",
+   "S0035",
+   "S0043",
+   "S0166",
+   "S0357",
+   "S0577",
+   "S0651",
+   "S0721",
+   "S0889",
+   "S1052",
+   "S1524",
+   "S2221",
+   "S2838"
+  ]
+ },
+ "P3": {
+  "top": [
+   [
+    "S2377",
+    23
+   ],
+   [
+    "S0044",
+    21
+   ]
+  ],
+  "random": [
+   "S0061",
+   "S0027"
+  ],
+  "n_candidates": 37,
+  "paths": {
+   "S2377": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-082333_knowledgeos-theory-v1-0-formal-theory-of-epistemic-gaps.md",
+   "S0044": "docs/knowledgeos/KnowledgeOS_Recommendation_Lifecycle_Discovery.md",
+   "S0061": "docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-phase-a-acceptance-registration.md",
+   "S0027": "docs/knowledgeos/KnowledgeOS_Operational_Evidence_Register.md"
+  },
+  "allowed_refs": [
+   "S0014",
+   "S0017",
+   "S0019",
+   "S0023",
+   "S0024",
+   "S0025",
+   "S0026",
+   "S0027",
+   "S0028",
+   "S0029",
+   "S0030",
+   "S0036",
+   "S0040",
+   "S0041",
+   "S0044",
+   "S0045",
+   "S0051",
+   "S0052",
+   "S0053",
+   "S0055",
+   "S0058",
+   "S0061",
+   "S0064",
+   "S0065",
+   "S0067",
+   "S0076",
+   "S0077",
+   "S0078",
+   "S0079",
+   "S0080",
+   "S0129",
+   "S0164",
+   "S0208",
+   "S0721",
+   "S0896",
+   "S0913",
+   "S1296",
+   "S2377",
+   "S2834"
+  ]
+ },
+ "P4": {
+  "top": [
+   [
+    "S0071",
+    32
+   ],
+   [
+    "S0066",
+    26
+   ]
+  ],
+  "random": [
+   "S2834",
+   "S0073"
+  ],
+  "n_candidates": 76,
+  "paths": {
+   "S0071": "docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-bc7-domain-model-proposal.md",
+   "S0066": "docs/knowledgeos/developer_guide/developer-guide-set-up-ai-agents-with-knowledgeos.md",
+   "S2834": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-131918_what-knowledgeos-makes-possible-beyond-conventional-ai-rag.md",
+   "S0073": "docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-verification-2-report.md"
+  },
+  "allowed_refs": [
+   "S0001",
+   "S0002",
+   "S0012",
+   "S0019",
+   "S0022",
+   "S0024",
+   "S0025",
+   "S0027",
+   "S0028",
+   "S0029",
+   "S0030",
+   "S0031",
+   "S0032",
+   "S0033",
+   "S0034",
+   "S0035",
+   "S0036",
+   "S0037",
+   "S0038",
+   "S0039",
+   "S0040",
+   "S0041",
+   "S0042",
+   "S0045",
+   "S0046",
+   "S0047",
+   "S0048",
+   "S0049",
+   "S0050",
+   "S0051",
+   "S0056",
+   "S0058",
+   "S0062",
+   "S0063",
+   "S0064",
+   "S0065",
+   "S0066",
+   "S0067",
+   "S0068",
+   "S0069",
+   "S0070",
+   "S0071",
+   "S0072",
+   "S0073",
+   "S0078",
+   "S0079",
+   "S0080",
+   "S0081",
+   "S0083",
+   "S0084",
+   "S0085",
+   "S0086",
+   "S0089",
+   "S0090",
+   "S0091",
+   "S0092",
+   "S0095",
+   "S0096",
+   "S0113",
+   "S0128",
+   "S0129",
+   "S0164",
+   "S0167",
+   "S0234",
+   "S0357",
+   "S0630",
+   "S0913",
+   "S0916",
+   "S0973",
+   "S1004",
+   "S1414",
+   "S1491",
+   "S1500",
+   "S1524",
+   "S1609",
+   "S2775",
+   "S2782",
+   "S2834"
+  ]
+ },
+ "P5": {
+  "top": [
+   [
+    "S0100",
+    27
+   ],
+   [
+    "S0090",
+    26
+   ]
+  ],
+  "random": [
+   "S0094",
+   "S0060"
+  ],
+  "n_candidates": 47,
+  "paths": {
+   "S0100": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-independence-refusal.md",
+   "S0090": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md",
+   "S0094": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-verification-3-registration.md",
+   "S0060": "docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-verification-3-acceptance-registration.md"
+  },
+  "allowed_refs": [
+   "S0022",
+   "S0024",
+   "S0025",
+   "S0029",
+   "S0036",
+   "S0038",
+   "S0041",
+   "S0043",
+   "S0045",
+   "S0046",
+   "S0049",
+   "S0050",
+   "S0051",
+   "S0052",
+   "S0054",
+   "S0055",
+   "S0056",
+   "S0057",
+   "S0058",
+   "S0059",
+   "S0060",
+   "S0062",
+   "S0065",
+   "S0067",
+   "S0071",
+   "S0072",
+   "S0073",
+   "S0074",
+   "S0075",
+   "S0078",
+   "S0080",
+   "S0087",
+   "S0088",
+   "S0089",
+   "S0090",
+   "S0091",
+   "S0092",
+   "S0093",
+   "S0094",
+   "S0095",
+   "S0096",
+   "S0097",
+   "S0098",
+   "S0099",
+   "S0100",
+   "S0164",
+   "S0577",
+   "S0913",
+   "S1524"
+  ]
+ }
+}

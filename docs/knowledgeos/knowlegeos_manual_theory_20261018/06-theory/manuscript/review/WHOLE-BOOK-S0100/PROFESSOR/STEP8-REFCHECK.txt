@@ -1,0 +1,213 @@
+chapter_00/00.01-the-problem.md NO REFERENCES
+chapter_00/00.02-what-knowledgeos-names.md NO REFERENCES
+chapter_00/00.03-the-knowledge-model.md NO REFERENCES
+chapter_00/00.04-how-knowledge-moves.md NO REFERENCES
+chapter_00/00.05-the-invariants.md NO REFERENCES
+chapter_00/00.06-knowledge-and-authority.md NO REFERENCES
+chapter_00/00.07-knowledge-needs-and-context-assembly.md NO REFERENCES
+chapter_00/00.08-look-back-review-after-sections-0.md NO REFERENCES
+chapter_00/00.09-questions-the-corpus-chapters-must.md NO REFERENCES
+chapter_01/01.01-knowledge-does-not-execute.md NO REFERENCES
+chapter_01/01.02-authority-is-two-things-provenance.md NO REFERENCES
+chapter_01/01.03-grading-claims-evidence-strength-is.md NO REFERENCES
+chapter_01/01.04-detail-does-not-confer-authority.md NO REFERENCES
+chapter_01/01.05-knowledge-is-not-its-carrier.md NO REFERENCES
+chapter_01/01.06-nothing-but-an-act-confers.md NO REFERENCES
+chapter_01/01.07-visibility-derivation-may-narrow-never.md NO REFERENCES
+chapter_01/01.08-what-knowledgeos-is-a-generator.md NO REFERENCES
+chapter_01/01.09-how-a-principle-becomes-real.md NO REFERENCES
+chapter_01/01.10-identity-of-knowledge-items-needs.md NO REFERENCES
+chapter_01/01.11-ownership-method-binding-and-evidence.md NO REFERENCES
+chapter_01/01.12-a-record-of-an-act.md S0090 missing 1
+chapter_01/01.12-a-record-of-an-act.md S0095 missing 1
+chapter_01/01.13-authority-as-a-recorded-reference.md S0014 missing 2
+chapter_01/01.13-authority-as-a-recorded-reference.md S0015 missing 1
+chapter_01/01.13-authority-as-a-recorded-reference.md S0023 missing 2
+chapter_01/01.13-authority-as-a-recorded-reference.md S0089 missing 1
+chapter_01/01.13-authority-as-a-recorded-reference.md S0090 missing 1
+chapter_01/01.13-authority-as-a-recorded-reference.md S0095 missing 3
+chapter_01/01.13-authority-as-a-recorded-reference.md S0129 missing 5
+chapter_01/01.14-state-is-not-authority-roles.md S0011 missing 12
+chapter_01/01.14-state-is-not-authority-roles.md S0012 missing 21
+chapter_01/01.14-state-is-not-authority-roles.md S0014 missing 2
+chapter_01/01.14-state-is-not-authority-roles.md S0015 missing 5
+chapter_01/01.14-state-is-not-authority-roles.md S0016 missing 1
+chapter_01/01.14-state-is-not-authority-roles.md S0017 missing 1
+chapter_01/01.14-state-is-not-authority-roles.md S0018 missing 12
+chapter_01/01.14-state-is-not-authority-roles.md S0019 missing 1
+chapter_01/01.14-state-is-not-authority-roles.md S0020 missing 4
+chapter_01/01.14-state-is-not-authority-roles.md S0021 missing 1
+chapter_01/01.14-state-is-not-authority-roles.md S0024 missing 3
+chapter_01/01.14-state-is-not-authority-roles.md S0025 missing 7
+chapter_01/01.14-state-is-not-authority-roles.md S0096 missing 1
+chapter_01/01.14-state-is-not-authority-roles.md S0097 missing 2
+chapter_01/01.14-state-is-not-authority-roles.md S0100 NOT IN REFS (cited lines 1)
+chapter_01/01.14-state-is-not-authority-roles.md S0128 NOT IN REFS (cited lines 1)
+chapter_01/01.14-state-is-not-authority-roles.md S0129 NOT IN REFS (cited lines 1)
+chapter_01/01.15-the-pks-concept-vocabulary-tested.md NO REFERENCES
+chapter_01/01.16-consistency-boundaries-time-and-reproducibility.md NO REFERENCES
+chapter_01/01.17-who-may-reject-who-may.md NO REFERENCES
+chapter_02/02.00a-what-counts-as-a-rule.md NO REFERENCES
+chapter_02/02.01-why-rules-need-structure.md NO REFERENCES
+chapter_02/02.02-the-rule-as-a-formal.md NO REFERENCES
+chapter_02/02.03-what-a-conflict-is.md NO REFERENCES
+chapter_02/02.04-most-apparent-contradictions-are-not.md NO REFERENCES
+chapter_02/02.05-why-priority-numbers-are-rejected.md NO REFERENCES
+chapter_02/02.06-scale-partitioning-must-be-sound.md NO REFERENCES
+chapter_02/02.07-where-ai-fits.md NO REFERENCES
+chapter_02/02.08-scope-silence-and-three-valued-applicability.md NO REFERENCES
+chapter_02/02.09-how-strongly-a-rule-binds.md NO REFERENCES
+chapter_02/02.10-the-rules-with-meaning-and.md NO REFERENCES
+chapter_02/02.11-exceptions-and-the-rule-lifecycle.md NO REFERENCES
+chapter_03/03.01-dimensions.md S0016 missing 3
+chapter_03/03.01-dimensions.md S0018 NOT IN REFS (cited lines 1)
+chapter_03/03.01-dimensions.md S0020 NOT IN REFS (cited lines 1)
+chapter_03/03.04-knowledge-and-artifact.md S0017 missing 1
+chapter_03/03.04-knowledge-and-artifact.md S0020 NOT IN REFS (cited lines 1)
+chapter_03/03.05-ontology-layers.md S0016 NOT IN REFS (cited lines 2)
+chapter_03/03.05-ontology-layers.md S0020 missing 2
+chapter_03/03.05-ontology-layers.md S0023 NOT IN REFS (cited lines 1)
+chapter_03/03.05-ontology-layers.md S0029 NOT IN REFS (cited lines 0)
+chapter_03/03.06-relationships.md S0012 NOT IN REFS (cited lines 0)
+chapter_03/03.06-relationships.md S0016 NOT IN REFS (cited lines 0)
+chapter_03/03.06-relationships.md S0022 NOT IN REFS (cited lines 0)
+chapter_03/03.06-relationships.md S0025 NOT IN REFS (cited lines 1)
+chapter_03/03.06-relationships.md S0028 NOT IN REFS (cited lines 0)
+chapter_03/03.07-cross-product-projection.md S0012 NOT IN REFS (cited lines 0)
+chapter_03/03.09-what-executes.md S0029 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0005 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0008 NOT IN REFS (cited lines 3)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0009 NOT IN REFS (cited lines 1)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0012 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0013 NOT IN REFS (cited lines 1)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0021 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0022 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0031 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0033 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0034 NOT IN REFS (cited lines 0)
+chapter_03/03.10-spaces-nested-or-adjacent.md S0035 NOT IN REFS (cited lines 0)
+chapter_04/04.02-improvement-cycle.md S0044 NOT IN REFS (cited lines 0)
+chapter_04/04.03-recommendation-lifecycle-observed.md S0036 NOT IN REFS (cited lines 0)
+chapter_04/04.03-recommendation-lifecycle-observed.md S0041 NOT IN REFS (cited lines 0)
+chapter_04/04.03-recommendation-lifecycle-observed.md S0044 missing 6
+chapter_04/04.03-recommendation-lifecycle-observed.md S0045 NOT IN REFS (cited lines 0)
+chapter_04/04.03-recommendation-lifecycle-observed.md S0065 NOT IN REFS (cited lines 0)
+chapter_05/05.01-decision-docket.md S0024 NOT IN REFS (cited lines 0)
+chapter_05/05.01-decision-docket.md S0025 NOT IN REFS (cited lines 1)
+chapter_05/05.02-gap-kinds.md S0025 NOT IN REFS (cited lines 2)
+chapter_05/05.02-gap-kinds.md S0029 NOT IN REFS (cited lines 1)
+chapter_05/05.03-deferral.md S0024 NOT IN REFS (cited lines 0)
+chapter_05/05.03-deferral.md S0025 NOT IN REFS (cited lines 0)
+chapter_05/05.04-gap-operator.md S0036 NOT IN REFS (cited lines 0)
+chapter_05/05.04-gap-operator.md S0065 NOT IN REFS (cited lines 0)
+chapter_05/05.04-gap-operator.md S0913 NOT IN REFS (cited lines 10)
+chapter_05/05.05-who-executed-who-authorized.md S0014 NOT IN REFS (cited lines 0)
+chapter_05/05.05-who-executed-who-authorized.md S0040 NOT IN REFS (cited lines 0)
+chapter_05/05.05-who-executed-who-authorized.md S0041 NOT IN REFS (cited lines 0)
+chapter_05/05.05-who-executed-who-authorized.md S0045 NOT IN REFS (cited lines 0)
+chapter_05/05.05-who-executed-who-authorized.md S0067 NOT IN REFS (cited lines 0)
+chapter_05/05.06-what-an-act-covers.md S0061 missing 1
+chapter_05/05.06-what-an-act-covers.md S0164 NOT IN REFS (cited lines 17)
+chapter_05/05.07-closure-and-the-record.md S0058 NOT IN REFS (cited lines 1)
+chapter_05/05.07-closure-and-the-record.md S0061 NOT IN REFS (cited lines 1)
+chapter_06/06.01-method-binding-evidence.md S0027 NOT IN REFS (cited lines 0)
+chapter_06/06.01-method-binding-evidence.md S0035 NOT IN REFS (cited lines 0)
+chapter_06/06.02-admitting-a-context.md S0029 NOT IN REFS (cited lines 0)
+chapter_06/06.02-admitting-a-context.md S0031 NOT IN REFS (cited lines 0)
+chapter_06/06.02-admitting-a-context.md S0033 missing 1
+chapter_06/06.03-types-and-splits.md S0012 NOT IN REFS (cited lines 0)
+chapter_06/06.03-types-and-splits.md S0022 NOT IN REFS (cited lines 0)
+chapter_06/06.03-types-and-splits.md S0028 NOT IN REFS (cited lines 0)
+chapter_06/06.03-types-and-splits.md S0034 missing 20
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0001 NOT IN REFS (cited lines 1)
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0002 NOT IN REFS (cited lines 0)
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0019 NOT IN REFS (cited lines 0)
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0024 NOT IN REFS (cited lines 0)
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0036 missing 1
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0037 missing 4
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0039 missing 1
+chapter_06/06.04-ownership-thresholds-breached-invariants.md S0065 NOT IN REFS (cited lines 0)
+chapter_06/06.05-recording-authority-without-holding-it.md S0036 NOT IN REFS (cited lines 0)
+chapter_06/06.05-recording-authority-without-holding-it.md S0056 NOT IN REFS (cited lines 0)
+chapter_06/06.05-recording-authority-without-holding-it.md S0058 missing 1
+chapter_06/06.05-recording-authority-without-holding-it.md S0062 missing 1
+chapter_06/06.05-recording-authority-without-holding-it.md S0064 NOT IN REFS (cited lines 0)
+chapter_06/06.05-recording-authority-without-holding-it.md S0065 missing 2
+chapter_06/06.05-recording-authority-without-holding-it.md S0073 NOT IN REFS (cited lines 1)
+chapter_06/06.05-recording-authority-without-holding-it.md S0164 NOT IN REFS (cited lines 17)
+chapter_06/06.05-recording-authority-without-holding-it.md S0234 NOT IN REFS (cited lines 1)
+chapter_06/06.06-agent-harnesses-linked-not-copied.md S0065 NOT IN REFS (cited lines 0)
+chapter_06/06.06-agent-harnesses-linked-not-copied.md S0913 NOT IN REFS (cited lines 0)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0066 NOT IN REFS (cited lines 3)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0080 NOT IN REFS (cited lines 3)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0082 NOT IN REFS (cited lines 0)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0089 NOT IN REFS (cited lines 1)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0090 NOT IN REFS (cited lines 1)
+chapter_06/06.07-a-platform-drawn-without-its-kernel.md S0164 NOT IN REFS (cited lines 0)
+chapter_08/08.01-bootstrap-experiment.md S0022 NOT IN REFS (cited lines 0)
+chapter_08/08.01-bootstrap-experiment.md S0024 NOT IN REFS (cited lines 0)
+chapter_08/08.02-rediscovery-and-reachability.md S0038 missing 1
+chapter_08/08.02-rediscovery-and-reachability.md S0065 NOT IN REFS (cited lines 0)
+chapter_08/08.03-does-it-govern.md S0029 NOT IN REFS (cited lines 0)
+chapter_08/08.03-does-it-govern.md S0045 missing 1
+chapter_08/08.03-does-it-govern.md S0577 NOT IN REFS (cited lines 0)
+chapter_08/08.03-does-it-govern.md S1524 NOT IN REFS (cited lines 0)
+chapter_08/08.04-claims-of-novelty-and-of-absence.md S0050 NOT IN REFS (cited lines 0)
+chapter_08/08.05-verifying-a-reconstruction.md S0036 NOT IN REFS (cited lines 0)
+chapter_08/08.05-verifying-a-reconstruction.md S0049 NOT IN REFS (cited lines 0)
+chapter_08/08.05-verifying-a-reconstruction.md S0062 NOT IN REFS (cited lines 0)
+chapter_08/08.05-verifying-a-reconstruction.md S0065 NOT IN REFS (cited lines 0)
+chapter_08/08.06-independence-of-a-check.md S0036 NOT IN REFS (cited lines 0)
+chapter_08/08.06-independence-of-a-check.md S0055 NOT IN REFS (cited lines 0)
+chapter_08/08.06-independence-of-a-check.md S0058 missing 1
+chapter_08/08.06-independence-of-a-check.md S0060 NOT IN REFS (cited lines 0)
+chapter_08/08.06-independence-of-a-check.md S0065 NOT IN REFS (cited lines 0)
+chapter_08/08.07-correction-chains.md S0056 missing 1
+chapter_08/08.07-correction-chains.md S0065 NOT IN REFS (cited lines 0)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0049 NOT IN REFS (cited lines 0)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0051 NOT IN REFS (cited lines 0)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0055 NOT IN REFS (cited lines 0)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0056 NOT IN REFS (cited lines 1)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0059 NOT IN REFS (cited lines 0)
+chapter_08/08.08-stored-is-not-true-and-who-may-correct.md S0078 NOT IN REFS (cited lines 0)
+chapter_08/08.09-content-provenance-and-recusal.md S0058 NOT IN REFS (cited lines 0)
+chapter_08/08.09-content-provenance-and-recusal.md S0089 missing 2
+chapter_08/08.09-content-provenance-and-recusal.md S0090 missing 10
+chapter_08/08.09-content-provenance-and-recusal.md S0092 NOT IN REFS (cited lines 17)
+chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md S0080 NOT IN REFS (cited lines 6)
+chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md S0092 missing 4
+chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md S0093 missing 4
+chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md S0094 missing 2
+chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md S0096 missing 1
+chapter_08/08.11-identity-across-a-continuation.md S0082 NOT IN REFS (cited lines 0)
+chapter_08/08.11-identity-across-a-continuation.md S0092 NOT IN REFS (cited lines 0)
+chapter_08/08.11-identity-across-a-continuation.md S0093 NOT IN REFS (cited lines 0)
+chapter_08/08.11-identity-across-a-continuation.md S0097 missing 11
+chapter_08/08.11-identity-across-a-continuation.md S0098 missing 41
+chapter_08/08.11-identity-across-a-continuation.md S0100 missing 10
+chapter_09/09.01-kernel-scaffold.md S0036 NOT IN REFS (cited lines 0)
+chapter_09/09.01-kernel-scaffold.md S0040 NOT IN REFS (cited lines 0)
+chapter_09/09.01-kernel-scaffold.md S0065 NOT IN REFS (cited lines 0)
+chapter_09/09.02-parts-and-whole.md S0036 NOT IN REFS (cited lines 0)
+chapter_09/09.02-parts-and-whole.md S0040 NOT IN REFS (cited lines 0)
+chapter_09/09.03-say-no-and-learn.md S0037 NOT IN REFS (cited lines 0)
+chapter_09/09.03-say-no-and-learn.md S0041 NOT IN REFS (cited lines 1)
+chapter_09/09.04-invariants-that-cannot-fail.md S0036 NOT IN REFS (cited lines 0)
+chapter_09/09.04-invariants-that-cannot-fail.md S0046 NOT IN REFS (cited lines 0)
+chapter_09/09.04-invariants-that-cannot-fail.md S0051 NOT IN REFS (cited lines 1)
+chapter_09/09.04-invariants-that-cannot-fail.md S0065 NOT IN REFS (cited lines 0)
+chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md S0036 NOT IN REFS (cited lines 0)
+chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md S0046 NOT IN REFS (cited lines 0)
+chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md S0050 NOT IN REFS (cited lines 0)
+chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md S0065 NOT IN REFS (cited lines 0)
+chapter_09/09.06-boundary-test-authority-recording.md S0036 NOT IN REFS (cited lines 0)
+chapter_09/09.06-boundary-test-authority-recording.md S0067 missing 1
+chapter_09/09.08-is-history-a-primitive.md S0078 NOT IN REFS (cited lines 0)
+chapter_09/09.08-is-history-a-primitive.md S0128 NOT IN REFS (cited lines 0)
+chapter_09/09.08-is-history-a-primitive.md S1524 NOT IN REFS (cited lines 1)
+chapter_09/09.08-is-history-a-primitive.md S2775 NOT IN REFS (cited lines 0)
+chapter_09/09.09-is-trust-a-primitive.md S0090 NOT IN REFS (cited lines 1)
+chapter_09/09.09-is-trust-a-primitive.md S0095 NOT IN REFS (cited lines 1)
+chapter_09/09.09-is-trust-a-primitive.md S0630 NOT IN REFS (cited lines 0)
+chapter_09/09.09-is-trust-a-primitive.md S1004 NOT IN REFS (cited lines 0)
+chapter_09/09.09-is-trust-a-primitive.md S1491 NOT IN REFS (cited lines 0)

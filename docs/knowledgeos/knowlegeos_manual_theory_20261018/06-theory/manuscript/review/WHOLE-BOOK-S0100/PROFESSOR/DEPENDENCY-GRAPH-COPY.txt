@@ -1,0 +1,11 @@
+# dependency_graph.py --root 06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW (run 2026-10-19T19:37:09Z)
+nodes: 84 sections, 161 concepts; edges: 972
+sections with no explicit link in or out: ['§2.6']
+cycles (mutual citation groups, not errors in themselves): 5
+    CON-0074 ↔ CON-0075
+    CON-0029 ↔ CON-0030
+    CON-0027 ↔ CON-0028
+    CON-0019 ↔ CON-0020
+    CON-0001 ↔ CON-0002 ↔ CON-0003 ↔ CON-0004 ↔ CON-0005 ↔ CON-0006 ↔ CON-0007 ↔ CON-0008 ↔ CON-0009 ↔ CON-0010 ↔ CON-0011 ↔ CON-0013 …
+
+(Limit, Rulebook §12d: this graph sees only explicit references — CON-IDs and § citations in the sections, host sections, and register fields. Implicit dependencies remain the task of step 8 and of the reviewers. Nothing is invalidated automatically.)
