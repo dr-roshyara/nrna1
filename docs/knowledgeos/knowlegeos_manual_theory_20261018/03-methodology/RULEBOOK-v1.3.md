@@ -17,6 +17,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    - **Computation and machine learning** are used where they decide something: for example, similarity to find one concept under several names, or a dependency graph of the register. Their limits are stated, and every finding is verified in the source text. *(Principal, 2026-10-19)*
 3. **Is it already in the book?** If yes, update that section. If no, write it in a new section or subsection.
    - **Book search before writing** (Principal, 2026-10-19: "yes, add those two lines"). Before writing a new section or claim, search the book and the concept register for its key terms and their synonyms, by script (for example `tmp/tools/book_search.py`). List the existing homes: sections and CON-IDs. Record them in the window's step-8 file as "existing homes: …". Extend an existing home rather than writing a second one, and cite it.
+   - **Read the hits:** read the top 5 hits of the search (the lexical and the meaning search) before writing, and note for each in the step-8 file: *same* / *extends* / *different*. A hit that is not read does not count as checked.
 4. **References** go at the end of the file: source, S-ID, lines.
 5. **Mark it read** with `tmp/tools/close_source.py`, which:
    - checks the allowed list;
@@ -47,6 +48,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 
 - **Section order:** plain language → definitions → claims and derivations → open questions → **what does not hold** → references.
 - **Generalisation rule** (Principal, 2026-10-19): a claim that goes beyond its source's case (from one case to a class, a law, "always", "cannot", "the only") is written as **Hyp** until a second, independent source or a proof supports it. Only then may it be written as Ded or as a law. State the case it rests on ("shown for S0044's RD-6 only").
+  - **No rate or interval without a random sample:** before any rate, interval or "x % of …", state how the sample was drawn. For a purposive or self-selected sample, give only the count, with no rate and no generalisation.
 - **What does not hold** (Principal, 2026-10-19): refuted claims (INVALID) move out of the main text into the section's closing subsection "What does not hold", each with its ID and the reason. The main text carries only what holds or is open. Applies to new sections now, and to older sections when they are rewritten.
 - **Every chapter is a folder of section files** (`NN.MM-<short-name>.md`) with an index (`NN.00-index.md`). Chapters 0–2, until now single files, are split once by script along their `##` headings. Section numbers are unchanged, and the joined result must be byte-for-byte identical to the original.
 - **Book outline:** `06-theory/manuscript/BOOK-OUTLINE.md` arranges the sections by the deliverables of `RESEARCH-PURPOSE.md`: primitives, laws, the kernel/application boundary, the forks, the kernel's type and existence. It shows what is missing. It is updated at every consolidation review, and new sections are placed in it when they are written.
