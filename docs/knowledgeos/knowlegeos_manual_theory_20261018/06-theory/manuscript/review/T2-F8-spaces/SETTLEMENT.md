@@ -22,3 +22,4 @@ Report: `REVIEW-REPORT.md`, 14 findings. None was disproved, so all are accepted
 | 14 | F8-type vs F8-instance | the fork split in the book and the theory map |
 
 **Professor's own error found during settlement.** The source rule counted S0113 as read; it was read only before the RESTART. The correct pool is 60, and the fourth pick should have been **S2041**, not **S2221**. This is recorded and not repaired; the Principal decides whether S2041 is to be read.
+- **S2041, read in full 2026-10-19 (topic-full, F8; the fixed rule's correct fourth source): changes nothing in §3.10.** It speaks only of S2: Ω as the "complete knowledge space", unbounded (L240), with Ω = ∪ Domain_i and every K contained in it (L250–256). That restates S2's unbounded reading and S2221's O_t ⊆ 𝒦. It says nothing on S1 containers or on EKP/PKS. Source defects, not relied on: Θ_D names both Dissolution (L291) and Description (L511), and the seven-operator composition is ill-typed (L506–520).

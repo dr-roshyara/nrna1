@@ -219,3 +219,45 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - The 29 files in `docs/knowledgeos/brainstorming/philosophical_questions/` (dated 2026-09-23…27) are **external sources**, not corpus. They may be read in full, and are used under Rulebook v1.3 §4 ("Concepts from outside the corpus"), listed in `06-theory/EXTERNAL-SOURCES.md`.
 - **Hold-out check:** none of the 29 paths is in the corpus registry `02-FILES.jsonl` (2,779 entries), so none can be one of the sealed hold-out files, which belong to the registered corpus. The sealed list itself was not opened.
 - *(2026-10-19T11:38:24Z)* The 29 external files were read in full for the purpose step. They are not logged in the corpus read log (by instruction). Results: `06-theory/EXTERNAL-SOURCES.md` (EXT-001 … 029), `RESEARCH-PURPOSE.md`, Ch. 5 §5.4 C7, Ch. 3 §3.10 C8; notes at `review/EXT-DIRECTION-20261019/NOTES.md`.
+
+## Entry 2026-10-19T11:45:19Z: review of the direction extraction (EXT-001 … 029), recorded before the reviewer starts
+- **Principal (verbatim):** "it should not be independent like it also extracts and then you compare but it check what you have extrated and if it agrees and any important concept is left behind"
+- **Kind:** a check of the Professor's extraction, not an independent one. No blind step. `03-methodology/REVIEWER-INSTRUCTIONS.md` is in the commission for its finding types, verdicts and report form; step 1 is replaced by the check.
+- **Files:**
+  - the 29 external files in `docs/knowledgeos/brainstorming/philosophical_questions/` (EXT-001 … 029; not corpus);
+  - `06-theory/manuscript/review/EXT-DIRECTION-20261019/NOTES.md`;
+  - `06-theory/RESEARCH-PURPOSE.md` (deliverable 5, the candidate test, the direction section);
+  - `06-theory/EXTERNAL-SOURCES.md` (the EXT rows);
+  - `chapter_05/05.04-gap-operator.md` C7 and `chapter_03/03.10-spaces-nested-or-adjacent.md` C8;
+  - `06-theory/THEORY-MAP.md` ("Direction topics" block).
+- Read-only; no files written; no corpus files.
+- *Closing line (2026-10-19T11:57:39Z):* report saved (`review/EXT-DIRECTION-20261019/REVIEW-REPORT.md`); settled (`SETTLEMENT.md`); one commission, no messages; ≈ 9 min.
+
+## Entry 2026-10-19T12:00:55Z: consolidation review, recorded before the reviewer starts
+- **Grant:** METHOD-VERSIONS entry 36. Scope: `06-theory/manuscript/review/CONSOLIDATION-20261019/SCOPE.md` (24 concepts, RC-7, RC-9, sequence check of Ch. 0–3). The reviewer works under `03-methodology/REVIEWER-INSTRUCTIONS.md`, in its commission from the start.
+- **Step 1, blind (22 sources, already read in order):**
+  - S0001 `docs/knowledgeos/KnowledgeOS_Viewpoint_Ownership_Discovery.md`
+  - S0002 `docs/knowledgeos/KnowledgeOS_Platform_Discovery_Coverage_Map.md`
+  - S0003 `docs/knowledgeos/KnowledgeOS_Governed_Retrieval_Positioning_Validation.md`
+  - S0004 `docs/knowledgeos/KnowledgeOS_Research_Backlog.md`
+  - S0005 `docs/knowledgeos/KnowledgeOS_Relationship_Validation_Matrix.md`
+  - S0006 `docs/knowledgeos/KnowledgeOS_Engineering_Decision_Model_Validation.md`
+  - S0007 `docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md`
+  - S0008 `docs/knowledgeos/KnowledgeOS_Semantic_Architecture_Reconciliation.md`
+  - S0009 `docs/knowledgeos/KnowledgeOS_Meta_Model_Discovery.md`
+  - S0011 `docs/knowledgeos/KnowledgeOS_Domain_Model_Falsification_Report.md`
+  - S0012 `docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md`
+  - S0013 `docs/knowledgeos/KnowledgeOS_Architecture_Synthesis_Matrix.md`
+  - S0016 `docs/knowledgeos/KnowledgeOS_Meta_Model.md`
+  - S0017 `docs/knowledgeos/KnowledgeOS_Engineering_Decision_Model_Discovery.md`
+  - S0018 `docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md`
+  - S0019 `docs/knowledgeos/KnowledgeOS_Mission_Discovery.md`
+  - S0020 `docs/knowledgeos/KnowledgeOS_Ontology_Architecture_Classification.md`
+  - S0024 `docs/knowledgeos/KnowledgeOS_Architecture_Fitness_Assessment.md`
+  - S0026 `docs/knowledgeos/KnowledgeOS_Ontology_Discovery.md`
+  - S0027 `docs/knowledgeos/KnowledgeOS_Operational_Evidence_Register.md`
+  - S0028 `docs/knowledgeos/2026-08-02-knowledgeos-architecture-baseline.md`
+  - S0029 `docs/knowledgeos/KnowledgeOS_Deferred_Architecture_Register.md`
+- **Step 2, after the inventory is saved:** Ch. 0 `CH-00-foundations.md`; Ch. 1 `CH-01-knowledge-authority-execution.md`; Ch. 2 `CH-02-rules-and-conflict.md`; Ch. 3 `03.00`…`03.10`; the chapters' `TODO.md`; the sections where the 24 concepts live (Ch. 4 §4.1, Ch. 5 §5.1 and §5.3, Ch. 6 §6.1, Ch. 8 §8.1); `BASELINE-REVISIONS.md` (RC-7, RC-9); `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; the earlier review reports C3, C4 (for what they said, not as verdicts to copy).
+- Read-only; no files written.
+- *Closing line (2026-10-19T12:20:02Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.

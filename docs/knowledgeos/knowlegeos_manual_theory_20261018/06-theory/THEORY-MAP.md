@@ -66,7 +66,7 @@
   - **a count needs its class fixed in advance** `[CON-0070 ✓]`;
   - **evidenced ≠ measured** (no baseline; the rival explanation is instruction-following);
   - recurrence must be **independent**: no shared actor, instructions, reviewer or work item. The corpus's own counts (R-6 n=3) fail this; the proposing instance must not count.
-- **An obligation shrinks to its monitor's coverage** `[CON-0071 ✓]`.
+- **Monitored compliance = scope ∩ coverage** `[CON-0071 ✓, definitional part only]`; that an obligation *shrinks* to it is an n = 1 hypothesis.
 - **The loop back** (evidence → platform change) is thin: about 3 informal passes; the formal count depends on how "formal" is defined.
 
 ## 4a. Boundaries: platform and product (Ch. 6)
@@ -76,7 +76,7 @@
 - **Res:** from one product the split (*M*, β) is not identifiable **unless the interface is declared**. A second product helps only if its binding differs. This grounds condition (3) of the component rule `[CON-0076 ✓]`.
 - SD-1 admits several rule/binding splits; choosing one is part of the ARB's question (F10).
 - **Res: portability is a lattice** {0,1}² (binding-free × case-law-free) plus "not domain-free" `[CON-0075 ✓]`, not a four-tier ladder `[CON-0074 ✗]`.
-- **Kernel admission:** tier 1 is necessary, not sufficient `[CON-0057 ✓]`.
+- **Kernel admission:** tier 1 is necessary, not sufficient `[CON-0057 ✗]`. Refuted as necessary by §6.1 C4; "kernel" there is the portable engineering kit (F14).
 - If case law lives in product spaces, the platform's evidence lies across a boundary; but the corpus keeps evidence in **three or more** homes, so its placement rule is not followed (T6-02, T6-03).
 - The four orders of §3.8 are **not exhaustive**: "guides" and "hosts" lie outside them.
 - **Context type vs instances** `[CON-0086 ✗]` (partly valid; the source weakens it to one observed instance): the open deployment question becomes "what is the instance key?", possibly hierarchical. **Five readings** of a knowledge space on one day (domain · type · generated artifact · authored · projection); S0035's, citing a ruling, has most standing (§6.3 C7).
@@ -128,6 +128,8 @@
 | F9 | Is authority part of the knowledge theory, or the governance around it? | definitional (largest) | Ch. 0 §0.6, §0.8 |
 | F11 | What "execute" means. **Open.** Trial T1 (§3.9) mapped the uses: two activities, **run** and **act** (dispatch and perform, reads included), each **specified** or **performed**, plus three further uses. **Per source:** S0043 uses "capability" for things among scripts (A's reading); S0166 and S1052 support C and, for service capabilities, A; S0889 supports B in the transition sense. **Proposal, unreviewed:** a governed capability is not an artifact `[CON-0095 provisional]`, under which A fails for governed capabilities. Executable ≠ executed `[CON-0093 ✓]`; running ≠ enforcing, as non-sufficiency `[CON-0092 ✓]` | definitional; open until a reviewer verdict | Ch. 3 §3.8, §3.9; Ch. 1 §1.5 |
 | F12 | Can a mechanism change standing? A runtime ALLOW (S1052) or an epistemic commitment gate (S0889) either **applies a prior grant** (consistent with A1) or **changes standing by itself** (contradicting A1). The sources do not choose | factual / definitional | Ch. 3 §3.9 C5a; Ch. 1 A1, ARCH-INV-1; F9 |
+| F13 | **The kernel's attribute set (state space 𝒮).** Ch. 1's labels (provenance, evidential grade, standing, visibility, owner, identity I-0) and Ch. 3's six dimensions are two attribute systems never mapped onto each other; evidence status has 3 values in §3.1 and 4 in §1.3. Which attributes, with which value sets, and which are dimensions, components or derived? | definitional | Ch. 1 §1.3, §1.7, §1.10, §1.11; Ch. 3 §3.1; RESEARCH-PURPOSE deliverables 1, 5 (consolidation review, finding 1) |
+| F14 | **"Kernel" is a homonym:** the portable engineering kit (S0024 Tier-1, S0002 A-5, S0008 "Engineering Kernel") vs the knowledge kernel of RESEARCH-PURPOSE. Answered by RESEARCH-PURPOSE for this book; to be marked wherever the corpus uses it | definitional | Ch. 6 §6.1 C4; Ch. 3 §3.6 |
 | F10 | SD-1's rule part ("consume only a certified release"): platform rule or not? (the either/or form of OQ-S1 is dissolved, §6.1 C3) | normative (ARB) | Ch. 6 §6.1 |
 
 **Trial T1 topic (2026-10-19): F11, what "execute" means.** Chosen because its answer decides more of the theory than any other open factual or definitional fork: whether I-11 ("knowledge does not execute") is more than a stipulation (CON-0039, CON-0066), how capability, runtime asset, port and adapter relate (Ch. 1 §1.5, Ch. 3 §3.8, CON-0084), and so the realization order of §3.8 and F3 (genesis).
@@ -145,23 +147,39 @@
 - **Already read and used as well:** S0005, S0008, S0009, S0012, S0013, S0021, S0022, S0031, S0033, S0034, S0035.
 - **Rule-application error, found during settlement:** S0113 was counted as read, but it was read only before the RESTART. With S0113 unread, the pool is 60, and the rule picks S2041, not S2221, as its fourth source. Recorded; not repaired (the Principal decides).
 
+**New topics from the consolidation review (2026-10-19):**
+- **"Authority" has three meanings:** a claim's standing structure (§1.2, CON-0016), an actor's permission or grant (§1.6, act × scope × time), and a justification order (§3.8, CON-0064). To be split into three IDs, so that A1's domain names exactly one.
+- **Evidence scales are not related:** evidence status (CON-0005), §1.3's grade, P-4 maturity, P-10 count; TIME is not validated (S0004 L72).
+- **Product binding ≈ SPECIALIZES / INSTANTIATES** (CON-0072): unify or keep apart.
+- **DOMAIN:** confirmed as a kind by "observed owners" (S0009 L52), then said to own nothing (S0026 L39).
+- **"Realization" is two relations** (representation and implementation; S0026 L34, L40, L85).
+- **Kernel primitives without a concept ID:** identity (I-0), standing (CON-0018 ✗), visibility, policy.
+
 **Direction topics from the Principal's later brainstorms (Ext; EXT-001 … EXT-029; not corpus; for later work):**
-- **The kernel's type** (𝒮, M, I, A), with invariant preservation, mechanism minimality and an existence question; "no kernel exists" is a permitted answer (EXT-010, EXT-011, EXT-015). *Open; not yet in the book.*
-- **What the kernel manages** (R_K): object, claim, formulation, inferential commitment (EXT-015 Q1, EXT-017, EXT-022). This bears on Ch. 3 §3.4 knowledge ≠ artifact.
+- **The kernel's type** (𝒮, M, I, A), with invariant preservation, mechanism minimality and an existence question; "no kernel exists" is a permitted answer (EXT-010, EXT-011, EXT-015). *Open; not yet in the book.* **As written it is degenerate:** preservation is a safety property, every subset of a preserving set preserves, so ∅ is minimal and exists. It needs required capabilities (liveness), for example I-Use (EXT-008 L129) or ablation measured on Δ (EXT-014 L229–239), and preservation written as m(s, x) ∈ 𝒮_I ∪ {⊥}.
+- **Candidate laws and invariants:** the four forbidden collapses (EXT-001 L36–41); dimension purity, which rules out a single-number confidence (EXT-004 L29–30); the invariant list identity, provenance, attribution, integrity, authority, history, consistency, traceability (EXT-010 L183–192; EXT-011 L198–205); interface bypass as the test of mediation (EXT-012 L153); kernel-equivalence ≡_K through obs_K (EXT-011 L111–127).
+- **Requirements are discovered, not given** (EXT-022 L112; EXT-023 L197; EXT-026 L72–95): bears on §5.4's open ContractDerivation. Also open in the direction: whether a canonical scalar gap exists, and how semantic equivalence preserves Sat (EXT-013 L360–369).
+- **Time-varying mechanisms** (the formulation mechanism is eliminated, EXT-023 L127) against the kernel's stability claim; **designed ambiguity**, ambiguity that lowers satisfaction when removed (EXT-022 L214), against the homonym findings.
+- **What the kernel manages** (R_K): knowledge object, claim, organizational knowledge, knowledge + provenance + authority, knowledge product (EXT-015 L19–25); formulation × context ℱ × 𝒞 (EXT-023 L325); a relation knower–known (K, O, R) (EXT-021 L116–122; EXT-001 L113–124; EXT-026 L42–70); inferential commitment (EXT-017). This bears on Ch. 3 §3.4 knowledge ≠ artifact.
 - **Two notions of minimality:** no redundant mechanism (direction) vs no derivable primitive (RESEARCH-PURPOSE). A fork to state precisely.
-- **A boundary test by removal** (EXT-008 L249–282), as a candidate operational form of kernel vs application.
-- **Coverage ≠ accuracy, and unseen-knowledge estimation** (EXT-029). It could be applied to this book's own reviews: the overlap between the Professor's and the reviewer's findings estimates what both missed (capture–recapture; a tool candidate).
-- **Four-valued states** True / False / Both / Neither (EXT-029 L1264–1316): a benchmark for Ch. 2 §2.8.8 and for splitting §5.4's Unknown.
+- **A boundary test by delegability** (EXT-008 L249–254; KR-06, EXT-010 L338), tested by relocating the capability into the applications. The file's removal procedure (L268–282) tests necessity, not placement.
+- **Where the DDD contexts sit** (a boundary fork inside the direction): outside the kernel (EXT-008 L423–425) vs supplying 𝒮, M, I, A (EXT-010 L110–115; EXT-011 L548–563; EXT-012 L318–330).
+- **The order of work** (a fork inside the direction): top-down "strictly ordered" (EXT-012 L19, L258), iterative (EXT-008 L29–33), bottom-up from observation (EXT-029 L2073–2091).
+- **Coverage ≠ accuracy, and unseen-knowledge estimation** (EXT-029). It could be applied to this book's own reviews: the overlap between the Professor's and the reviewer's findings estimates what both missed (capture–recapture; a tool candidate). *Only if the two are independent:* same model family and non-independent reviews bias the estimate low (EXT-029 L1127, L1665). The identifiability of the ideal state from finite evidence is open (L1666).
+- **Four-valued states** True / False / Both / Neither (EXT-029 L1264–1316): a benchmark for Ch. 2 §2.8.8 (unknown ≠ conflict). Neither is one value and does not split §5.4's Unknown; the richer lists do (UNOBSERVED; ignorance, weak, conflicting, ambiguous; EXT-029 L812–821, L1276–1281).
 - **Proposal and challenge as roles** (EXT-028), with Toulmin's ⟨claim, evidence, warrant⟩ against the book's evidence and warrant.
 - **Forks inside the direction itself:**
   - truth as correspondence, coherence-plus-pragmatism, or resonance (EXT-023, EXT-028, EXT-027);
-  - formalizing the traditions vs using them as lenses (EXT-021–024 vs EXT-025);
-  - preventing collapses vs sublating them (EXT-001).
+  - formalizing the traditions vs using them as lenses (EXT-021–024 vs EXT-025); Hegel's structure is kept as axiom A6 throughout (EXT-011 L614; EXT-015 Q5);
+  - how collapses are handled, the outcome being the same: prohibition and tests vs diagnosis and repair (EXT-001 L636–642, L837–839; EXT-002 L353–355; EXT-008 L415; EXT-010 L105).
 - **Conflicts with the book, named, not resolved (RESEARCH-PURPOSE):**
-  - the central question (validity, ownership, trust vs identifiable, traceable, governable, usable);
+  - the central question (validity, ownership, trust vs identifiable, traceable, governable, usable): a difference, not a contradiction;
   - a dialectical fixed point as the way the kernel is found;
   - performative satisfaction;
-  - improvement of a gap by inclusion or size, without criticality (§5.4 C7).
+  - improvement of a gap by expected size, without criticality (§5.4 C7); inclusion is compatible with C2, the weighted gap open.
+- *The topics above that came from the extraction review's Check D (liveness, delegability, DDD-context placement, order of work, candidate laws and invariants, interface bypass, requirements discovered, ≡_K, the gap theory's open items, the epistemic vocabulary, identifiability, the relational knower–known state, time-varying M, designed ambiguity) are **candidates, not defects** of the book.*
+- **Candidate attachments** (listed in `review/EXT-DIRECTION-20261019/SETTLEMENT.md`; awaiting the Principal's confirmation; C7's Int stays provisional until then).
+- **Provenance question for the Principal:** which documents are the attached "Gap theory" (EXT-013), the "two files" (EXT-010), the "Foundation document" and the "Linux document" (EXT-007)? Needed before §5.4 C7's match can count as convergence.
 
 **New topics and open questions found during T2:**
 - **"Knowledge space" has several senses** (container · epistemic space · KST family; §3.10, CON-0098). The container sense itself has the five readings of §6.3 C7.
@@ -192,7 +210,7 @@
 - **Nothing has been validated in use.** The loop back is thin.
 - I-8 (no second maintaining population) risks being unfalsifiable.
 - "Runtime adapter" defined (Ch. 1 §1.5, four-layer model, S0031; CON-0084 ✗ until its two senses are separated; portability a hypothesis). Still undefined: the maturity levels L0–L4 (SEQ-0002).
-- A capability is stipulated to be "that which executes" (SEQ-0012, partly reduced; §3.9 C2–C3 propose that in the run sense nothing but a runtime executes, provisional).
+- A capability is stipulated to be "that which executes" (SEQ-0012, **not reduced**: consolidation review; proposed closure by stipulation, I-11 as the definition of a capability in sense B, with §3.9 C3 as its testable counterpart; §3.9 C2–C3 propose that in the run sense nothing but a runtime executes, provisional).
 - 42 of 71 registered concepts are INVALID. Many of them are source vocabulary rather than the theory's building blocks (to be pruned under RK-2).
 
 ## 9. Position

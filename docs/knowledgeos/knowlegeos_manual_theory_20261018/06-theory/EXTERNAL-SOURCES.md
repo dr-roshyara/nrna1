@@ -42,7 +42,7 @@
 | EXT-029 | `Yes.md` | 2026-09-27 13:21 (file mtime, UTC) | `4502f4b207fc9595…` | 2259 | direction ★ | ideal epistemic state; finite convergent approximations; coverage ≠ accuracy; unseen-knowledge estimation; four-valued; ML proposes, logic tests |
 
 **Used in the book (2026-10-19):**
-- EXT-013, EXT-014 and EXT-015 in Ch. 5 §5.4 C7 (benchmark of intent);
+- EXT-013, EXT-014, EXT-015 and EXT-016 in Ch. 5 §5.4 C7 (benchmark of intent);
 - EXT-029 in Ch. 3 §3.10 C8 (gap-filler candidate);
 - all 29 in `RESEARCH-PURPOSE.md` ("What KnowledgeOS should be, and how").
 

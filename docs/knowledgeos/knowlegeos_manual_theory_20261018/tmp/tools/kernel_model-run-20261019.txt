@@ -1,0 +1,10 @@
+states 64, valid states |S_I| = 16
+M = ∅                              P=True  Req=False Kernel=False Minimal(old)=True  Minimal(new)=False
+M = {record}                       P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
+M = {record, grant}                P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=True
+M = {record, grant, revoke}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
+M = {record, grant, grant2}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
+M = {record, bad}                  P=False Req=True  Kernel=False Minimal(old)=False Minimal(new)=False
+minimal sets, scaffold as written : [[]]
+minimal kernels, with R and ⊥     : [['grant', 'record'], ['grant2', 'record']]
+all assertions passed

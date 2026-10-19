@@ -143,7 +143,7 @@ This makes authority **checkable**: a claim's history is valid iff it starts in 
 
 | Part | Values | Can it change? | Concept |
 |---|---|---|---|
-| **provenance**: "where did it come from?" | generated · derived | **never**: "origin is an immutable historical fact" | `[CON-0017 · validated]` |
+| **provenance**: "where did it come from?" | generated · derived | **never**: "origin is an immutable historical fact" | `[CON-0017 · invalid]`: the two values are not a partition (a generated index is also derived), and original human work has no value. The core holds: origin is immutable and ≠ standing. Candidate repair: producer (human · tool/AI · external) × derivation (original · derived from {s} at t) (consolidation review) |
 | **standing**: "how much should I trust it?" | authoritative · provisional · historical | **only by a governance act**; "provisional … carries no authority *yet*" | `[CON-0018 · invalid]` (partly valid: the source uses "standing" in at least three senses, e.g. "reusability standing" [S0018 L46], "evidential standing" [L105]; T1-07, T1-52; RC-36a) |
 
 [Src: S0018 L77–83]. The whole is **authority** `[CON-0016 · validated]`.
@@ -305,14 +305,14 @@ Each "X ≠ authority" is an instance of this theorem for one property X. *(Exam
 > 3. **Open:** grant scope and canon scope (Ch. 0 §0.3) live in different value spaces. Containment between them is undefined until a mapping exists.
 > 4. **Standing:** the ARB calls the containment chain a "**candidate relationship … not an adopted universal law**" [SD L317]. The scope and time conditions are therefore **Ded**, not ruled.
 
-**Evidence is necessary, not sufficient: two keys (batch C-1; revision RC-7).** The programme's own rule is "evidence EARNS · governance GRANTS · promotion requires BOTH" [Src: S0002 L37; E-S0002 Q8]. This section says no property except an act confers standing. The rule adds the converse condition for promotion: **an act of promotion without evidence is also not the programme's practice**. In business terms there are two keys: evidence shows the knowledge is worth trusting; an authorized person turns the authority key. Neither opens the door alone. The corpus aligns this with technology-readiness levels and GRADE, both of which "separate evidence accumulation from adoption decisions" [Src: S0007 L28]. **Src** for the rule; **Int** that it is a necessary condition on acts, where the source states it for promotion only.
+**Evidence is necessary, not sufficient: two keys (batch C-1; revision RC-7).** The programme's own rule is "evidence EARNS · governance GRANTS · promotion requires BOTH" [Src: S0002 L37; E-S0002 Q8]. This section says no property except an act confers standing. The rule adds the converse condition for promotion: **an act of promotion without evidence is also not the programme's practice**. In business terms there are two keys: evidence shows the knowledge is worth trusting; an authorized person turns the authority key. Neither opens the door alone. The corpus aligns this with technology-readiness levels and GRADE, both of which "separate evidence accumulation from adoption decisions" [Src: S0007 L28]. **Src** for the rule; **Int** that it is a necessary condition on acts, where the source states it for promotion only. *Consolidation review (2026-10-19): the rule is VALIDATED for promotion along an evidence ladder; the general Int form is **INVALID**. Counterexamples: questions that "need only a human act" (§1.4), freezes by declaration [S0017 L55], and genesis, where no prior evidence exists [S0024 L159–162]. TRL and GRADE support separating the two keys, not requiring both.*
 
 **Why the two keys cannot replace each other: granted vs earned (S0018; revision RC-37).** The Progression Model gives the reason, as a difference of **cause**:
 
 | Kind of change | Moved by | Reversible by |
 |---|---|---|
 | governance-act progression `[CON-0019 · validated]` | a decision by a named role | a further act (supersession) |
-| evidential progression `[CON-0020 · validated]` | accumulating evidence; "nobody can decree it" | refutation only, "never by decision" |
+| evidential progression `[CON-0020 · invalid]` (survives as "cannot be decreed"; re-analysis and staleness also lower it, §4.1) | accumulating evidence; "nobody can decree it" | refutation only, "never by decision" |
 
 "A GOVERNANCE-ACT progression can be granted. An EVIDENTIAL progression can only be earned." "No ARB ruling can make an observation Replicated. No amount of evidence can make a document frozen." [S0018 L61–68; E-S0018 Q8].
 
@@ -374,7 +374,7 @@ Chapter 0 §0.2's four meanings now align with tiers:
 
 **Open:** whether the corpus states the generative relation formally.
 
-**When structure is justified (Src, GA L401, "LA-4").** "A responsibility becomes a component only at n ≥ 2, exercised by another." This is a concrete threshold for the parsimony principle of Chapter 0 §0.8 (i): one occurrence is an observation; a second, independent use justifies structure. *Added in Review A.* **Full form (S0028):** a responsibility becomes a component only when "(1) exercised at least once · (2) exercised by someone other than the originator · (3) a repeatable pattern extracted from ≥ 2 instances" [S0028 L142] `[CON-0076 · validated]`. Where a method does not declare its interface, condition (3) is also what makes it **identifiable** (Ch. 6 §6.1 C1, forward reference). The rule governs claims of reuse across contexts (Ch. 5 §5.3 C2).
+**When structure is justified (Src, GA L401, "LA-4").** "A responsibility becomes a component only at n ≥ 2, exercised by another." This is a concrete threshold for the parsimony principle of Chapter 0 §0.8 (i): one occurrence is an observation; a second, independent use justifies structure. *Added in Review A.* **Full form (S0028):** a responsibility becomes a component only when "(1) exercised at least once · (2) exercised by someone other than the originator · (3) a repeatable pattern extracted from ≥ 2 instances" [S0028 L142] `[CON-0076 · provisional]`. Where a method does not declare its interface, condition (3) is also what makes it **identifiable** (Ch. 6 §6.1 C1, forward reference). The rule governs claims of reuse across contexts (Ch. 5 §5.3 C2).
 
 **The loop has never closed (Src, GA L376–378).** The evidence layer (observation → recommendation → decision → outcome → assessment) has fed back into governance or capability **zero times**. Chapter 0 §0.7 called need → evaluation → gap → improvement a feedback theory of knowledge growth. **It is designed and partly built, but has never once operated end-to-end.** This strengthens Chapter 0's weak point 3 (§0.8) with a measured count.
 
@@ -661,7 +661,7 @@ One operating-unowned asset was found, the Runtime Adapter [Src: S0001 L21, L38;
 **Spaces nest; a deployment is a nested space (S0012; revision RC-26).** The question whether knowledge spaces nest (H-3) was declared resolved by a **structural argument** ("resolved on evidence" corrected RC-26b: S0012 offers that the ontology *permits* containment, plus an assertion). A deployment has its own bindings and a declared boundary, so "a deployment IS a Knowledge Space", nested in its product's space, with no new concept needed [Src: S0012 L93, L158]. This strengthens the **Hyp** above (ownership boundaries follow spaces) on the structural side; ownership itself is not shown by it.
 **Contested a day later (revision RC-26a).** The synthesis of 2026-08-03 still lists "Space NESTING (containment vs adjacency)" as a **hypothesis, "unevidenced"** (H-7), and K-6 waits on RO-2 (nesting) [Src: S0013 L54, L75]. It does not mention S0012's resolution. **Both positions are kept:** S0012 resolves nesting by a structural argument; S0013 does not accept it as evidence. Classification: **undetermined** (TODO T1-43).
 
-**Three authority systems, and no authority over all three (S0019; revision RC-42).** The mission discovery replaces a flat list of owners with **three kinds of authority over different subjects** `[CON-0026 · validated]`:
+**Three authority systems, and no authority over all three (S0019; revision RC-42).** The mission discovery replaces a flat list of owners with **three kinds of authority over different subjects** `[CON-0026 · provisional]`:
 
 | Authority system | Decides | Holder (as observed) |
 |---|---|---|
@@ -1125,7 +1125,7 @@ So the diagram is the authority axiom drawn as a graph. A useful test follows: a
 - The PKS artifacts' "Authority: Generated" [S0011 L53] is likewise a provenance value.
 - **What S0011 actually falsifies** is that the PKS artifacts are **projections**, i.e. regenerated without an accepting act. It does **not** show that derived provenance excludes authoritative standing.
 - Three things are kept apart: **projection** (a lifecycle), **derived provenance** (an origin), **authoritative standing** (the result of an act).
-- **The definition in the vocabulary (S0020; revision RC-44).** The design policy DP-2 of **CAP-002**, a capability that was **DEFERRED** [S0020 L100], defines a projection (owner corrected after review C3 F-14): "every projection regenerates from its sources and is cited as authority by nothing" [S0020 L89; E-S0020 Q7] `[CON-0033 · validated]`; see Ch. 3 §3.5.
+- **The definition in the vocabulary (S0020; revision RC-44).** The design policy DP-2 of **CAP-002**, a capability that was **DEFERRED** [S0020 L100], defines a projection (owner corrected after review C3 F-14): "every projection regenerates from its sources and is cited as authority by nothing" [S0020 L89; E-S0020 Q7] `[CON-0033 · invalid as stated]`; see Ch. 3 §3.5.
 - **Note:** the platform's `authorities.yaml` ranks `derived` (rank 2) on the same scale as `authoritative` (rank 1) [S0020 L28, L89]. That is exactly the fusion of provenance and standing that the corpus proposes to separate (PM-1, §1.2; the order of S0018 and S0020, both 2026-08-02, is not established; review C3 F-17).
 
 **Derivation is not attestation (S0012; revision RC-25).** A cross-product test had seemed to break the rule that a derived item never becomes authoritative: a hospital's derived discharge summary does become authoritative. The corpus withdrew that "falsification":
