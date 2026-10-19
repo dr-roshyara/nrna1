@@ -48,12 +48,12 @@ def classify(text, grant):
             return 'B2', f'pattern {pat}'
     # working book: 06-theory paths not inside the copy
     for m in re.finditer(r'06-theory/(manuscript/chapter_\d\d|THEORY-MAP\.md|CONCEPT-REGISTER\.tsv|BOOK-OUTLINE\.md|CHAPTER-PLAN\.md)', t):
-        before = t[max(0, m.start() - 80):m.start()]
+        before = t[:m.start()]  # a `cd …/BOOK-UNDER-REVIEW` earlier in the command makes relative paths the copy's
         if 'BOOK-UNDER-REVIEW' not in before:
             return 'B2', f'working book: {m.group(0)}'
     if re.search(r'\bgit\b', t) and not re.search(r'git log --format', t):
         return 'B2', 'git command other than log --format'
-    if re.search(r'(?<!BOOK-UNDER-REVIEW/)tmp/tools/book_search\.py', t) and 'BOOK-UNDER-REVIEW/tmp/tools/book_search.py' not in t:
+    if re.search(r'(?<!BOOK-UNDER-REVIEW/)tmp/tools/book_search\.py', t) and 'BOOK-UNDER-REVIEW' not in t:  # the copy's tool may be reached via a shell variable holding the copy path
         return 'B2', 'lane-root book_search.py'
     if re.search(r'review/WHOLE-BOOK-S0100/(?!BOOK-UNDER-REVIEW|REVIEWER-NOTE|P[1-5]/BRIEF|P[1-5]/STEP2-COMMISSION|P[1-5]\b(?!/))', t):
         return 'B3', 'organisers\' files under the review folder'
