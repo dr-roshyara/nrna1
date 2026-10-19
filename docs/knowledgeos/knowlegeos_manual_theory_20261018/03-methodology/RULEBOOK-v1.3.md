@@ -8,6 +8,15 @@
 
 ## 1. Purpose
 
+> **What matters for the theory** (Principal, 2026-10-19):
+> 1. Is the concept precisely defined?
+> 2. Does the mathematical derivation follow logically?
+> 3. Are the assumptions explicit?
+> 4. Can an independent reviewer reproduce or challenge the result?
+> 5. Is the decision and its responsible authority recorded?
+>
+> **AI authorship does not automatically make a result wrong, and human authorship does not automatically make it correct.** What matters is the evidence, the reasoning, the verification process, and the authority behind the decision. **Record authorship only when it affects provenance, accountability, independence, or the interpretation of evidence**; do not spend time reconstructing who typed every sentence.
+
 Build the theory of KnowledgeOS from the corpus. **The work is the theory.** What matters is whether it makes sense and is valid. The wording need not match the source word for word, but **the meaning must**: what the book attributes to a source is what the source says, no more and no less. *(v1.3 item 2)*
 
 ## 2. The core loop, per source
