@@ -48,6 +48,14 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 1. **Triage, then read** (§3). The source is read in **index order**, with the theory map (`06-theory/THEORY-MAP.md`) in mind. Index order is the coverage line; topic turns for open forks run beside it (§12).
 2. **Validate** each concept or idea by reasoning. Does it make sense? Does it survive a real counterexample?
    - **Computation and machine learning** are used where they decide something: for example, similarity to find one concept under several names, or a dependency graph of the register. Their limits are stated, and every finding is verified in the source text. *(Principal, 2026-10-19)*
+   - **Falsification before review** (Principal, 2026-10-19, entry 55): for each new or materially changed concept, law or settled fork, the Professor attempts, and records in the step-8 file:
+     - **(a)** the strongest counterexample within its stated scope;
+     - **(b)** its boundary: the case where it should stop holding;
+     - **(c)** at least one **rival explanation** of the same evidence, materially different (another mechanism, premise or reading of the source), with the reason the book prefers its own reading or keeps both open;
+     - **(d)** its **falsifier:** the result that would force it to be narrowed or rejected. A claim that can name none is reported as not testable as stated.
+
+     "None found" is a valid answer, with the attempt shown.
+   - **Method record** (entry 55), only where a computational, statistical, formal or machine-learning method materially shapes a conclusion (never for trivial commands): one short entry in the step-8 file or the section's references: question · why this method · assumptions · input data · limits · validation or reproducibility check · effect on the conclusion. Limits by type: similarity finds candidates, never sameness; statistics needs a justified sampling and inference design (§4); a simulation holds only under its model; a proof or model check covers only what was formalised.
 3. **Is it already in the book?** If yes, update that section. If no, write it in a new section or subsection.
    - **Book search before writing** (Principal, 2026-10-19: "yes, add those two lines"). Before writing a new section or claim, search the book and the concept register for its key terms and their synonyms, by script (for example `tmp/tools/book_search.py`). List the existing homes: sections and CON-IDs. Record them in the window's step-8 file as "existing homes: …". Extend an existing home rather than writing a second one, and cite it.
    - **Read the hits:** read the top 5 hits of the search (the lexical and the meaning search) before writing, and note for each in the step-8 file: *same* / *extends* / *different*. A hit that is not read does not count as checked.
@@ -66,6 +74,8 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    - **omissions:** is a necessary concept or relationship from it missing?
 
    **A dependency on a concept without an independent VALIDATED verdict is marked "unverified"** and not treated as established. Check only the relevant dependencies; do not reread the whole book. Fix what the check finds before commissioning the review, and give the reviewer the list of dependencies.
+
+   **When a definition or law that other work rests on changes** (entry 55), this check runs **claim by claim** for the downstream derivations, along their "rests on" and § citations; section-level links are for navigation only. The check is done when **every materially affected conclusion has been reassessed**, not when the graph (§12d) has produced its list.
 9. **The previous settlement's changes are reviewed too** (Principal, 2026-10-19). Every review brief lists, as changed theory, the text changed in the previous settlement (window, theory turn or consolidation), so no correction stays unreviewed until the next consolidation. *(Evidence: the T3 settlement introduced 3 defects that no reviewer saw afterwards.)*
 
 ## 3. Reading depth (v1.3 item 6)
@@ -155,6 +165,8 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 
    For questions 2–4, **"not applicable, with a reason"** is a valid answer. *(v1.3 item 5)*
 
+   **Refutation adequacy** (entry 55): the reviewer judges each falsification attempt of §2 step 2 as **adequate or inadequate, with the reason**, and gives the strongest counterexample or rival explanation it finds itself. A filled-in line is not proof of serious testing. The Professor puts this paragraph into every review commission until `REVIEWER-INSTRUCTIONS.md` carries it.
+
    **What the review continues to assess** (Principal, 2026-10-19T10:01:35Z). These are mapped onto the questions above, not added as new ones:
    - the validity of the reasoning and derivations (questions 2–4);
    - whether conclusions are supported by the evidence (the refutation step, with source support where it matters);
@@ -190,6 +202,8 @@ The quote check is **kept**, now on the book sections (§4).
 ## 10. Each turn ends with
 
 What the **theory** gained: definitions, derived results, counterexamples, forks opened or settled, and open questions. Plus, per source, the depth read and the number of new concepts.
+
+- **For each significant theory change** (a definition, a law, or a claim's status or scope; entry 55), one row: **before** (the claim or open question) · **new** (evidence, derivation, counterexample or contradiction) · **after** (what changed and why) · **still unproven** · **review needed**. If the theory did not change, say so; progress is never invented to fill the row.
 
 - **A closing checklist:** every part of the instruction is marked done, or not done with the reason. Nothing is left out silently.
 - **A commit at every checkpoint** (after each review settlement; Principal, 2026-10-19: "yes, approve 1 and 2"):
@@ -271,6 +285,7 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
   - **missing chapters named**, for example those the unread corpus parts are likely to need (the mathematical theory of knowledge states, the gap theory, verification);
   - **the cost of renumbering** listed from the dependency graph (§12d): which citations would change;
   - **a proposal only:** whether the book is reorganised this way is the Principal's decision. Until then, `CHAPTER-PLAN.md` stays in force.
+- **A research-level to-do triage** (entry 55), with each whole-book review: every chapter TODO closed, merged or reprioritised by its value to the theory; each **major** open question or missing deliverable gets five lines: its importance to the final theory · the evidence or dependency that makes it a priority now · what it blocks · the next concrete research action · the condition for calling it resolved. Refinements of the architecture and of the method are proposed at the same time, each with its evidence. **Changes to the final goal and reserved decisions are the Principal's.**
 
 ### 12d. Generated dependency graph (R3)
 

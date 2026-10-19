@@ -416,7 +416,7 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 
 ## 18. Fourth architecture review (on v1.3 itself): five improvements
 
-**Principal:** "yes" (to adding them to v2, the adequacy line to the reviewer additions, and the falsifier to the trial measures). v1.3 unchanged by this revision.
+**Principal:** "yes" (to adding them to v2, the adequacy line to the reviewer additions, and the falsifier to the trial measures), then "change v1.3 also": **the five are also in force in v1.3** (§2 steps 2 and 8, §6, §10, §12c; register entry 55). The v1.3 falsification step includes (a)–(d), since v1.3 had only a counterexample.
 
 | Improvement | v2 | Verdict |
 |---|---|---|
