@@ -202,6 +202,10 @@
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
 
+**Window C18, S0097–S0100 (provisional; review pending):**
+- **§8.11:** self-declared identity failed in both directions across a context-compaction continuation `[CON-0157 ~]`; is a continuation of a barred process barred (for the Principal; a further option for F32: the lineage of the working context); the author of a finding may not judge its uptake `[CON-0158 ~, Hyp]`; a barred process does not record the act; independence is not sufficient (object and registration); a verification of scope `[CON-0159 ~]`; an advisory AI that sees the estate only through the operator.
+- **§1.14 integrated (step 2, entry 52a).**
+
 **Window C17, S0092–S0096 (reviewed and settled 2026-10-19):**
 - **§8.10:** adopting a model is not evidence of a capability, nor adoption of a document; superseded, not disproven `[CON-0156 ✓ scoped]`; existence vs category, one direction, an analogy to the boundary test only `[CON-0153 ✓ distinction]`; authoritative for which claim `[CON-0154 ~]`; an identifier bar made enforceable by the provenance of the writing act `[CON-0155 ✗ as stated; restated ~]`; access evidence short of corroboration; six separations; three kinds of dependency; contradictions: the START's time, the DDD order changed silently; a reachable stuck state (F33); no identity criterion for capabilities.
 - **§1.13 integrated (step 2)**, two integrations made two-sided at the settlement.

@@ -401,3 +401,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 9 §9.9; STEP8-AND-SCAN; register CON-0160, 0161; changed theory of the C17 settlement (§8.10, §1.13, §8.9 C2, §9.8 M5 and result 6, §5.7, register CON-0153–0156, map F33).
 - Read-only. Neither reviewer sees the other's report.
 
+## Entry 2026-10-19T18:50:07Z: window C18 transition review (S0097–S0100) and the §1.14 integration (step 2), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue the run to S0100"); Rulebook §4 entry 52a (step 2 for §1.14); step 9 (the C17 settlement's changes are under review by the TT4 reviewers; the brief points to them). One reviewer (a four-source window).
+- **Step 1, blind:** S0097 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-registration.md` · S0098 `docs/knowledgeos/brainstorming/20260819-104748-ai-engineering-lifecycle-five-responsibilities-governance.md` · S0099 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-correction3-verification-stop.md` · S0100 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-independence-refusal.md`.
+- **Step 2:** Ch. 8 §8.11; Ch. 1 §1.14 old and new; STEP8-AND-SCAN; register CON-0157–0159.
+- Read-only.
+

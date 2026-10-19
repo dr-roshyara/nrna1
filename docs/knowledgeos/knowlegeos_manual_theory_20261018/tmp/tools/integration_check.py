@@ -6,7 +6,7 @@ INVALID markers in the prose outside the 'What does not hold' subsection, claim 
 import re, sys, pathlib
 new = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8')
 old = pathlib.Path(sys.argv[2]).read_text(encoding='utf-8') if len(sys.argv) > 2 else None
-body = re.split(r'\n### [\d.]+\.99 ', new)[0]
+body = re.split(r'\n### [\d.]+ What does not hold', new)[0]
 tags = re.findall(r'\bRC-\d+[a-z]?\b|\bR\d-\d+[a-z]?\b|pilot \d, file \d|\bbatch \d\b|(?:added|revised|corrected|restated|rewritten)[^.\n]{0,40}(?:review|settlement|window|rewrite)', body, re.I)
 inval = re.findall(r'INVALID|invalid as stated', body)
 nums = lambda t: sorted(set(re.findall(r'\*\*(\d+\.\d+(?:\.\d+)?-\d+)\.', t)))
