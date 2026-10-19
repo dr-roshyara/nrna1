@@ -62,7 +62,7 @@
 
     Repetition is allowed only where it serves a reader (a plain-language summary, a cross-reference with a one-line gloss) and never creates a second authority. **Earlier work is revisited when new evidence or a contradiction justifies it**, and the settlement names which.
 12. **Optimisation at fixed points, on evidence** [new]. With each whole-book review the Professor proposes, each item with its evidence:
-    - **to-do triage:** each chapter TODO closed, merged or reprioritised by its value to the theory;
+    - **to-do triage:** each chapter TODO closed, merged or reprioritised by its value to the theory. Each **major** open question or missing deliverable gets five lines: its importance to the final theory · the evidence or dependency that makes it a priority now · what it blocks · the next concrete research action · the condition for calling it resolved;
     - **refinements of the goal and the architecture** (`RESEARCH-PURPOSE.md` deliverables, primitives, chapter structure, with `TARGET-TOC.md`);
     - **method changes**, from the running measures.
 
@@ -149,6 +149,11 @@
 - **External concepts:** one role each: *tool* (to analyse), *benchmark* (to compare), *gap-filler* (the theory needs it, the corpus lacks it). Mapping: the same idea under another name → Int; absent from the corpus → Hyp until supported; contradicting the corpus → a fork, which the outside concept does not win automatically. Validated is the *fit*: a credible source, the assumptions under which it applies, and one corpus case where it applies and one where it does not (or why there is none). Registered with origin `external`, PROVISIONAL until the reviewer's verdict. Cited under "External references".
 - **Principal testimony** is recorded apart from the corpus and never counted as a corpus source.
 - **Computed results** [new]: a result produced by a script (a model search, a count, a similarity) is a Ded only when the section cites the script and its output file, and the reviewer receives both. A model states and checks that its objects are distinct (no two names for one function) and states the pool and granularity its result depends on.
+- **Method record** [new; only where a computational, statistical, formal or machine-learning method materially shapes a conclusion, never for trivial commands]: in the section's references or the brief, one short entry: the question · why this method · assumptions · input data · limits · the validation or reproducibility check · the effect on the conclusion. Each method type keeps its own limit:
+  - **similarity or clustering** finds candidates; it never shows that two concepts are the same;
+  - **statistics** needs a justified sampling and inference design (§4.3 rates);
+  - **a simulation** explores consequences under its model's assumptions; it never establishes a general theorem;
+  - **a formal proof or model check** holds only for what was formalised.
 
 ### 4.3 Claim strength
 
@@ -168,7 +173,7 @@
 ## 5. The cycle for a full source
 
 1. **Validate** each concept by reasoning: does it make sense; does it survive a real counterexample?
-   - **Falsification before review** [new]: for each new concept, law or settled fork, the Professor attempts, and records in the brief, **(a)** a counterexample within its stated scope, **(b)** its boundary: the case where it should stop holding, and **(c)** at least one **rival explanation** of the same evidence, with the reason the book prefers its own reading or keeps both open. **A rival explanation must be materially different** (another mechanism, another premise, or another reading of the source), never a weak alternative set up to be rejected. "None found" is a valid answer, with the attempt shown.
+   - **Falsification before review** [new]: for each new concept, law or settled fork, the Professor attempts, and records in the brief, **(a)** a counterexample within its stated scope, **(b)** its boundary: the case where it should stop holding, and **(c)** at least one **rival explanation** of the same evidence, with the reason the book prefers its own reading or keeps both open, and **(d)** its **falsifier: the result or observation that would force the claim to be narrowed or rejected.** A claim that can name no falsifier is reported as not testable as stated. **A rival explanation must be materially different** (another mechanism, another premise, or another reading of the source), never a weak alternative set up to be rejected. "None found" is a valid answer, with the attempt shown.
    - **A definition is testable:** it states what falls outside the concept and where it stops applying, not only a description of what is inside.
    - The Professor proposes and challenges; **it never gives its own work a review status** (§7). Use computation and machine learning where they decide something (similarity for synonyms and word senses, dependency graphs, counterexample search); state their limits and verify every finding in the source text.
 2. **Find the existing home** before writing: search the book and the register by script (`book_search.py`, lexical and `--meaning`), **read the top five hits** and mark each *same / extends / different*. Extend an existing home rather than writing a second; cite it.
@@ -230,8 +235,8 @@ The Professor sends, after the reviewer's blind inventory is saved:
 1. **before:** the relevant earlier sections; **new:** what was added or changed; the whole theory map;
 2. **changed theory of the previous settlement** (window, theory turn or consolidation), so no correction stays unreviewed;
 3. **book search:** existing homes and the top-five hits read;
-4. **dependencies** of each new or changed section, each checked for: definitions preserved · no established result contradicted or silently changed · no necessary concept missing; unverified dependencies marked. **This check finds implicit, meaning-level dependencies; the graph (§8.4) finds declared ones and their transitive reach. Neither replaces the other, and neither is repeated twice;**
-5. **strength scan** result, and the **falsification attempts** of §5.1 (counterexample, boundary, rival explanation);
+4. **dependencies** of each new or changed section, each checked for: definitions preserved · no established result contradicted or silently changed · no necessary concept missing; unverified dependencies marked. **This check finds implicit, meaning-level dependencies; the graph (§8.4) finds declared ones and their transitive reach. Neither replaces the other, and neither is repeated twice.** **When a definition or law that others rest on changes,** this check runs **claim by claim** along the "rests on" lines (§0.4) for the downstream derivations; section-level links are for navigation only. Its acceptance question: **has every materially affected conclusion been reassessed?** Not: how long is the list;**
+5. **strength scan** result, and the **falsification attempts** of §5.1 (counterexample, boundary, rival explanation, falsifier). **The reviewer judges each attempt as adequate or inadequate, with the reason:** a filled-in line is not proof of serious testing;
 6. **undefined-term check** [new]: identifiers and corpus-specific terms in the new text with no definition in the book or glossary (script; candidate list, read by the reviewer);
 7. for a two-step rewrite: old and new text, claim by claim;
 8. for computed results: the script and its output.
@@ -308,6 +313,7 @@ A finding stands unless disproved with evidence. **Engineering supplies evidence
      - concept coverage: register counts by status; open forks; open TODOs and SEQ gaps; this window's blind-inventory items and their dispositions (§7);
      - maturity, per RESEARCH-PURPOSE deliverable (primitives, laws, kernel/application boundary, forks, kernel type and existence): *not built · sketch · PROVISIONAL · VALIDATED (by review)*, from `BOOK-OUTLINE.md`;
      - what changed: definitions, results, counterexamples, assumptions exposed, forks opened or settled;
+     - **for each significant change** (a definition, a law, or a claim's status or scope) [new], one row: **before** (the claim or open question) · **new** (evidence, derivation, counterexample or contradiction) · **after** (what changed and why) · **still unproven** · **review needed**. If the theory did not change, the report says so; progress is never invented to fill the row;
    - **book progress:** sections rewritten (two-step), sections still in the old form, outline gaps.
 
    Plus whether a theory question is ready (§9.5).

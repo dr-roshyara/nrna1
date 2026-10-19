@@ -150,6 +150,7 @@ Every statement below is marked as one of three kinds:
 3. **Undefined terms:** read the brief's undefined-term list; report each term used without a definition in the book.
 4. **Computed results:** read the cited script and output; check that the model's objects are distinct and the result's dependence on pool and granularity is stated.
 5. **Planted-gap isolation:** do not open the original files of sections under test; do not compare files; say so if you did.
+6. **Refutation adequacy:** for each falsification attempt in the brief (counterexample, boundary, rival explanation, falsifier), say whether it is adequate and why; give the strongest counterexample or rival you can find yourself. A filled-in line is not serious testing.
 
 ## 4. The evidence model
 
@@ -376,7 +377,7 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | §0.7 prose, agreement, checklists and commits prove nothing | no false closure | none |
 | §5.1 falsification before review: counterexample, boundary, rival explanation | falsification before acceptance | a few lines per new concept in the brief |
 
-**[A] Effect:** about 1–3 minutes of Professor time per window for the falsification lines; it moves part of the reviewer's refutation work earlier, so reviews may find fewer simple defects and spend more on deep ones. **[R] Trial measure:** in the trial settlements, count findings that a recorded falsification attempt should have caught but did not; a high count means the attempts are a formality.
+**[A] Effect:** about 1–3 minutes of Professor time per window for the falsification lines; it moves part of the reviewer's refutation work earlier, so reviews may find fewer simple defects and spend more on deep ones. **[R] Trial measure:** in the trial settlements, count findings that a recorded falsification attempt should have caught but did not; a high count means the attempts are a formality. Also count **claims with no stated falsifier**, and the reviewer's **adequate / inadequate** judgements of the attempts.
 
 **Not added:** a new register, new states or a new file. **[V]** v2 revision 2 has 4,930 words, against 4,135 for v1.3. **It is longer, not shorter:** the gain is precision and a theory-first priority, not brevity.
 
@@ -412,3 +413,17 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | statement verbatim | v2 §0 (so it survives if v2 replaces v1.3) |
 
 **[R] Caution recorded:** "continuously optimise" is applied as *at fixed points, on evidence*: the method register gained more than 55 entries in two days, and rules that change every window make results incomparable and become administration themselves.
+
+## 18. Fourth architecture review (on v1.3 itself): five improvements
+
+**Principal:** "yes" (to adding them to v2, the adequacy line to the reviewer additions, and the falsifier to the trial measures). v1.3 unchanged by this revision.
+
+| Improvement | v2 | Verdict |
+|---|---|---|
+| 1 before/after record of significant theory change | §11.1 theory progress, one row per significant change; "no change" said, never invented | adopted |
+| 2 refutation quality reviewable; falsifier | §5.1 (d) falsifier; §8.2.5 reviewer judges adequacy; §3.4 item 6; §15 trial measures | adopted |
+| 3 claim-level dependency check for foundational changes | §8.2.4, along "rests on" (§0.4); acceptance = every affected conclusion reassessed | adopted. **[A] not verified:** whether `dependency_graph.py` parses claim-level references; the check is manual where it does not |
+| 4 method record, only where a method shapes a conclusion | §4.2 method record; limits per method type | adopted |
+| 5 research-level to-do triage at each whole-book review | §0.12, five lines per major item | adopted |
+| not added: a TheoryLedger aggregate, theory-driven instead of chronological reading, per-term translation maps, a rival-theory entity per concept | — | agreed |
+| four responsibilities (evidence · theory construction · independent review · governance) | — | agreed as a conceptual view; already reflected (§4, §0/§5, §8, §1.4); not a new structure |
