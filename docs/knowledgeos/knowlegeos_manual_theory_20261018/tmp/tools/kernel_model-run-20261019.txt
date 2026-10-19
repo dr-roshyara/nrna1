@@ -1,13 +1,19 @@
-states 64, valid states |S_I| = 16
+states 64, valid states |S_I| = 16, pool 7 mechanisms, 128 subsets
 M = ∅                              P=True  Req=False Kernel=False Minimal(old)=True  Minimal(new)=False
 M = {record}                       P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
 M = {record, grant}                P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=True
+M = {recgrant}                     P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=True
 M = {record, grant, revoke}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
-M = {record, grant, grant2}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
+M = {record, grant, recgrant}      P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
 M = {record, bad}                  P=False Req=True  Kernel=False Minimal(old)=False Minimal(new)=False
 M = {refuse}                       P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
 M = {noop}                         P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
 M = {refuse, noop}                 P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
 minimal sets, scaffold as written : [[]]
-minimal kernels, with R and ⊥     : [['grant', 'record'], ['grant2', 'record']]
+minimal kernels, with R and ⊥     : [['recgrant'], ['grant', 'record']]
+P closed under union and subsets  : True
+Req monotone                      : True
+union of preserving mechanisms    : ['grant', 'noop', 'recgrant', 'record', 'refuse', 'revoke'] -> Kernel = True
+pool without recgrant, minimal    : [['grant', 'record']]
+with R = {}, minimal kernels      : [[]]
 all assertions passed

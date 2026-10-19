@@ -261,3 +261,21 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2, after the inventory is saved:** Ch. 0 `CH-00-foundations.md`; Ch. 1 `CH-01-knowledge-authority-execution.md`; Ch. 2 `CH-02-rules-and-conflict.md`; Ch. 3 `03.00`…`03.10`; the chapters' `TODO.md`; the sections where the 24 concepts live (Ch. 4 §4.1, Ch. 5 §5.1 and §5.3, Ch. 6 §6.1, Ch. 8 §8.1); `BASELINE-REVISIONS.md` (RC-7, RC-9); `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; the earlier review reports C3, C4 (for what they said, not as verdicts to copy).
 - Read-only; no files written.
 - *Closing line (2026-10-19T12:20:02Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T12:39:51Z: group C7 transition review (S0036–S0040), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("Then: S0036–S0040 … In the review brief, include as new theory: the kernel section (2) and the revised C7 and S2377 content (3)"). Mode: transition review under `03-methodology/REVIEWER-INSTRUCTIONS.md`, in the commission from the start.
+- **Step 1, blind (six sources):**
+  - S0036 `docs/knowledgeos/KnowledgeOS_Platform_Capability_Model.md`
+  - S0037 `docs/knowledgeos/KnowledgeOS_Strategic_Architecture_Discovery.md`
+  - S0038 `docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md`
+  - S0039 `docs/knowledgeos/2026-08-02-knowledgeos-product-boundary-discovery.md`
+  - S0040 `docs/knowledgeos/KnowledgeOS_Engineering_Improvement_Cycle.md`
+  - S2377 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-082333_knowledgeos-theory-v1-0-formal-theory-of-epistemic-gaps.md` (source of the new §5.4 C8)
+- **Step 2, after the inventory is saved:**
+  - the new sections: Ch. 6 §6.4, Ch. 9 §9.1 and §9.2, Ch. 8 §8.2, Ch. 4 §4.2, Ch. 5 §5.4 C7–C8;
+  - the step-8 records `review/C7-S0036-S0040/STEP8-AND-SCAN.md` and `review/EXT-DIRECTION-20261019/STEP8-S2377-AND-CH9.md`;
+  - `THEORY-MAP.md`, `CONCEPT-REGISTER.tsv`, `RESEARCH-PURPOSE.md`, `tmp/tools/kernel_model.py` and its run;
+  - the dependent sections: Ch. 6 §6.2, Ch. 2 §2.10, Ch. 3 §3.8 and §3.9, Ch. 4 §4.1, Ch. 5 §5.3 and §5.4, Ch. 8 §8.1, Ch. 1 §1.8 and §1.11;
+  - the external files EXT-008, EXT-010, EXT-011, EXT-014 (for §9.1).
+- Read-only; no files written.
+- *Closing line (2026-10-19T12:53:40Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
