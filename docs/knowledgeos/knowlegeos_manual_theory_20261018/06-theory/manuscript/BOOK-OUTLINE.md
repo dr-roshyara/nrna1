@@ -32,6 +32,7 @@
 | A deferred rule cannot be cited as authority | §2.8.3 (CON-0063) | ✓ |
 | Rule applicability is three-valued | §2.8 | ~ |
 | A gap is a set of unmet requirements, relative to a contract | §5.4 | ~ |
+| The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a law) | ~ |
 | *Missing:* the derivation from primitives to laws as one chain (consolidation review: the architecture view) | — | — |
 
 ## 3. The boundary: kernel and application
@@ -63,5 +64,5 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F17, F13a). Sections t
 
 ## Chapters that serve method, not a deliverable directly
 
-- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.4): how the theory is tested.
+- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.5): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.

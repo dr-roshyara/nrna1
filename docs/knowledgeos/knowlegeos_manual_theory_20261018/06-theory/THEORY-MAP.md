@@ -134,6 +134,7 @@
 | F18 | **Pinned or resolved at use?** Evidence needs pinned references (§1.16.6); operating rules need resolution at use. A pin used for an operating rule taught a session a superseded path (S0048) | definitional | Ch. 9 §9.5 C1 (review C9) |
 | F19 | **Uniqueness or aggregation?** Two ways to make an outcome definite: at most one established assessment (needs serialization), or a deterministic aggregate over all of them (does not) | definitional | Ch. 9 §9.4 C2 (review C9) |
 | F20 | **May an act that changes evidence only be performed by its producer?** The assessor establishes its own assessment (S0050 R-6) against producer ≠ verifier | definitional | Ch. 9 §9.4 C5 (review C9) |
+| F21 | **The interpretive act:** does an interpretation of an approved text, which adds a constraint the text does not state, change what is in force, and must it be recorded as an amendment? | definitional | Ch. 5 §5.6 C1a (review C10) |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -175,6 +176,12 @@
 - **Distribution (§9.5):** the failure case of context assembly (§0.7) via a pinned reference (§1.16.6) `[CON-0117 ~]`; a two-valued response cannot fire on an undecidable condition `[CON-0118 ✗ as "inert"]`; the INV-A3 tension is answered by §1.14.5.
 - **Claims (§8.4):** novelty and demonstration as two axes `[CON-0119 ✗ as three classes]`; an absence claim needs its search scope `[CON-0120 ✓]`, and the book's own search broke it once.
 - **To map:** S0113's five knowledge conditions onto E1–E10; "current" in three senses; "Missing" in three senses.
+
+**Window C10, S0051–S0055 (reviewed and settled 2026-10-19):**
+- **Verification (§8.5):** a fixed object; replication by a different method, beside reproduction `[CON-0121 ✓, one line]`; a wrong high grade damages reliance on that grade `[CON-0122 ✗ as an estimated rate]`; materiality relative to reliance; a supersession must be named where readers look.
+- **Acts (§5.6):** the object of an act may include its argument (refines §1.17.2) `[CON-0123 ~]`; the interpretive act (F21); an acceptance covers the delivered, pinned version `[CON-0124 ✗ as a law of acts]`.
+- **Added to earlier sections after review:** §5.5 C2, S0055's code-verified engine gaps; §9.4 C7, the assurance model's trivial case.
+- **Not yet in the book:** resolver against fold, two views of one state with a precedence rule (S0054 L91); no boundary inferred from a name; an evidence hierarchy whose disagreements are recorded, not settled (S0055 L80–83); a count is evidence only with its method (S0055 L49).
 
 **New topics from the consolidation review (2026-10-19):**
 - **"Authority" has three meanings:** a claim's standing structure (§1.2, CON-0016), an actor's permission or grant (§1.6, act × scope × time), and a justification order (§3.8, CON-0064). To be split into three IDs, so that A1's domain names exactly one.

@@ -293,3 +293,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2, after the inventory is saved:** Ch. 9 §9.4, §9.5; Ch. 8 §8.4; `review/C9-S0046-S0050/STEP8-AND-SCAN.md`; `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; dependent sections Ch. 1 §1.14.2, §1.14.3, §1.16.7, §1.17.4, A1; Ch. 9 §9.1; Ch. 6 §6.4; Ch. 8 §8.2; Ch. 5 §5.5.
 - Read-only; no files written.
 - *Closing line (2026-10-19T13:43:58Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T14:12:45Z: window C10 transition review (S0051–S0055), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("Then S0051 onwards under §12a"). Mode: transition review under `03-methodology/REVIEWER-INSTRUCTIONS.md` (entry 45: report ≤ ~1,200 words before the appendix; `date -u` first and last in each step), in the commission from the start.
+- **Step 1, blind (five sources):** S0051 `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-f1-f8-repair-independent-verification.md` · S0052 `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-review-decision-summary.md` · S0053 `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-stage1-approval-registration.md` · S0054 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-producer-self-review-disclosure.md` · S0055 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-phase-a-independent-verification.md`.
+- **Step 2, after the inventory is saved:** Ch. 8 §8.5, Ch. 5 §5.6; `review/C10-S0051-S0055/STEP8-AND-SCAN.md`; `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; `BOOK-OUTLINE.md`; dependent sections Ch. 1 §1.3, §1.12, §1.13, §1.14.3, §1.16.2, §1.16.3, §1.16.8; Ch. 5 §5.1, §5.5; Ch. 8 §8.3; Ch. 9 §9.4; the tool `tmp/tools/book_search.py` (may be run).
+- Read-only; no files written.
+- *Closing line (2026-10-19T14:21:51Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
