@@ -10,7 +10,7 @@
 |---|---|---|---|
 | **Knowledge object and identity** | §0.3 the knowledge model; §1.5 knowledge is not its carrier; §1.10 identity needs governed names; §3.1 dimensions; §3.3 kinds; §3.4 knowledge ≠ artifact | ~ | one attribute table for a knowledge item (F13); identity (I-0) has no concept ID |
 | **Lifecycle** | §0.4 how knowledge moves; §2.11 exceptions and the rule lifecycle; §4.1–4.3 change, the improvement cycle, the observed recommendation lifecycle | ~ | the four kinds of change (Ch. 4 plan) not written; retirement unobserved |
-| **Authority** | §1.2 provenance and standing; §1.6 nothing but an act confers authority (A1); §1.12–1.14 record ≠ act, grants, roles; §5.5 who executed, who authorized | ✓ (CON-0016, scoped) | "authority" in three senses not yet split into three IDs (consolidation review) |
+| **Authority** | §1.2 provenance and standing; §1.6 nothing but an act confers authority (A1); §1.12–1.14 record ≠ act, grants, roles; §5.5 who executed, who authorized; §6.5 record ≠ act as a context boundary (T3) | ✓ (CON-0016, scoped) | "authority" in three senses not yet split into three IDs (consolidation review) |
 | **Evidence** | §1.3 grading claims; §4.1 from observation to pattern; §8.3 usage ≠ outcome | ~ | the evidence scales are not related to one another |
 | **Relationships** | §3.6 relationships; §3.8 four orders | ✓ (CON-0064, scoped) | "realization" in two senses |
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
@@ -33,6 +33,9 @@
 | Rule applicability is three-valued | §2.8 | ~ |
 | A gap is a set of unmet requirements, relative to a contract | §5.4 | ~ |
 | The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a law) | ~ |
+| A subject-blind authorization check cannot enforce a rule about subjects | §5.5 C6 (CON-0131) | ~ (T3) |
+| Differential testing reports only the symmetric difference of blind sets; corroboration counts independent information | §8.6 C2, C4 (CON-0126, CON-0128) | ~ (T3) |
+| Renumbering is safe exactly for identifiers no outside reference binds | §8.7 C2 (CON-0129) | ~ (T3) |
 | *Missing:* the derivation from primitives to laws as one chain (consolidation review: the architecture view) | — | — |
 
 ## 3. The boundary: kernel and application
@@ -45,6 +48,7 @@
 | Capabilities are not kernel operators | §9.3 C4 (CON-0111) | ✓ (restricted) |
 | "Kernel" as a homonym (F14) | §6.1 C4; §6.4 C6 | recorded |
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
+| Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
 | *Missing:* any capability tested by all three boundary questions | — | — |
 
 ## 4. The open forks
@@ -64,5 +68,5 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F17, F13a). Sections t
 
 ## Chapters that serve method, not a deliverable directly
 
-- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.5): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades).
+- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.5): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.
