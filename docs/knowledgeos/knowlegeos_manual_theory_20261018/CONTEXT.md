@@ -27,6 +27,8 @@
 
 **Rulebook entry 51 (2026-10-19):** step 9, every review brief lists the previous settlement's changes; §12b, theory turns get two reviewers on different models (Opus, Sonnet); §12a, T3 closed, 10 + 4 not the default.
 
+**Rulebook entry 52a (2026-10-19), §4 two-step rewrite:** from C16, each window does step 2 (integration) of one rewritten section: §1.12 (C16), §1.13 (C17), §1.14 (C18). Rewrite the argument claim by claim, numbers kept; evidence that supports or challenges a claim goes into its argument; meaning, assumptions, evidential limits and status unchanged, no silent upgrades; uncertainty explicit where integration would need an unsupported inference; revision history only in `01.99-change-log.md`; 0 inline revision tags and 0 INVALID markers in the prose. Review brief: old and new, numbered by claim; the reviewer checks meaning preservation and book form. Length is a diagnostic.
+
 **Window size:** 5 sources (10 only for a coherent series of short documents, at most 2 added, review split into two parallel commissions).
 
 **Stop and ask the Principal if:**

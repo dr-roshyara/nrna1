@@ -197,6 +197,11 @@
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
 
+**Window C16, S0087–S0091 (provisional; review pending):**
+- **§8.9:** content assessment vs provenance binding `[CON-0150 ~]`; recusal is not clearance, the eligible-verifier pool can run out `[CON-0151 ~]`; the absence discipline broken one scope wider; a behaviour is not a modelled capability (live, narrow, unmodelled); a correction that does not reach the reader; a count that drifts because governed work happened; a shared contract changes only by its own act `[CON-0152 ~, Hyp]`; a programme is not an assignment.
+- **§1.12 integrated (step 2, entry 52a).** §6.7 C1: the diagrams were untracked on 2026-08-19 (S0090 L57).
+- **Theory turn 3 (§9.8), under review by two reviewers:** history as three record properties H1–H3 `[CON-0148 ~]`; the record a missing candidate primitive `[CON-0149 ~, Hyp]`.
+
 **Window C15, S0081 + S0083–S0086 (reviewed and settled 2026-10-19):**
 - **§6.7, the C4 proposal set:** a self-declared proposal; the three C4 views draw no kernel/application line and disagree on the system boundary; S0084 draws an adapter/core line; grants, handoffs and policy in different homes; the authorizer's arrow ambiguous (possibly notation); testing the direction law needs a partition and identifiable dependencies `[CON-0147 ~]`; an output-only check confirms its inputs exactly when the fibre is a singleton `[CON-0146 ✗ as stated; restated ✓ as mathematics]`; verification never reaches acceptance; a seven-verb lifecycle with no negative verbs.
 - **§1.12 rewritten in form** (form VALIDATED).

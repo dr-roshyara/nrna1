@@ -380,3 +380,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 9 §9.8; STEP8-AND-SCAN; register CON-0148, 0149; BOOK-OUTLINE primitives table; changed theory of the C15 settlement (§6.7, §9.7, §9.6.6a, §5.7 C1, §1.13.3-2, §1.12 header, register CON-0138, 0142, 0144, 0146, 0147, map F26).
 - Read-only. Neither reviewer sees the other's report.
 
+## Entry 2026-10-19T18:13:57Z: window C16 transition review (S0087–S0091) and the §1.12 integration (step 2), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue the run to S0100"); Rulebook §4 entry 52a (step 2 for §1.12; old and new by claim in the brief); step 9 (changed theory). One reviewer (a five-source window).
+- **Step 1, blind:** S0087 `docs/knowledgeos/reviews/2026-08-18-two-track-parallel-authorization.md` · S0088 `…/2026-08-18-KOS-AIP04-DISCOVERY-001-commission.md` · S0089 `…/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md` · S0090 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md` · S0091 `docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md`.
+- **Step 2:** Ch. 8 §8.9; Ch. 1 §1.12 old and new; STEP8-AND-SCAN; register CON-0150–0152; §6.7 C1's added bullet; Ch. 8 §8.4 (home).
+- Read-only.
+
