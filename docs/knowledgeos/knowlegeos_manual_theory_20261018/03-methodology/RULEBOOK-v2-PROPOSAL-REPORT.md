@@ -271,6 +271,7 @@ Every statement below is marked as one of three kinds:
 | Q6 | The T2 "coverage pass before writing": merged into the book search and top-5 reading, or kept as its own step? | merged |
 | Q7 | **Approval form:** approve v2 as a trial (§9.2) first, then adopt; or adopt directly? | trial first |
 | Q8 | The register's duplicate entry 38 (V-5): add a correction entry like 24-corr? | yes, at the same time as the v2 entry |
+| Q9 | **Decisions in one home:** the decision record holds the verbatim text; `METHOD-VERSIONS.md` becomes an index of one line per decision pointing to it (no second summary of the content)? | yes, from v2 onward; existing entries stay as they are |
 
 ## 11. Recommendation
 
@@ -393,3 +394,21 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | planted-gap results are bounded conclusions | v2 §8.3 | adopted (counts only was already the rule) |
 | Q3: independent reconstruction, not the author's | — | [R] ask one whole-book reviewer to reconstruct one rewritten section from its records alone |
 | sequence: C18 → whole-book review under v1.3 → seal the test → baseline → separate v2 decision | — | agreed; this is the plan already stated (§9.2, §14) |
+
+## 17. The Principal's statement "theory first, evidence driven, continuously challenged" (2026-10-19)
+
+**Principal:** "yes, add them to v2 and record it in v1.3".
+
+**[V] Gaps it exposed:** the Professor's role was defined nowhere (only the reviewer's, `REVIEWER-INSTRUCTIONS.md` L7); "the corpus is brainstorming material" was stated only for the reviewer; no rule set when goal, architecture, methods and to-dos are reconsidered; method choice needed no stated reason; Principal decisions have two homes (decision record and register).
+
+| Done | Where |
+|---|---|
+| statement recorded verbatim, with a short "how this applies" pointer list | **v1.3 §1 (in force now)**; register entry 54 |
+| Professor's role | v2 §0.8 |
+| attribution vs judgement of the corpus | v2 §0.9 |
+| methods chosen by the problem, reason stated | v2 §0.10 |
+| one canonical home per kind of item | v2 §0.11; Q9 for decisions |
+| optimisation at fixed points (each whole-book review) | v2 §0.12 |
+| statement verbatim | v2 §0 (so it survives if v2 replaces v1.3) |
+
+**[R] Caution recorded:** "continuously optimise" is applied as *at fixed points, on evidence*: the method register gained more than 55 entries in two days, and rules that change every window make results incomparable and become administration themselves.

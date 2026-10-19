@@ -305,3 +305,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Scope:** code and configuration in `app/`, `config/`, `routes/`, `database/migrations/`, `tests/`, `scripts/`. **Excluded:** all of `docs/knowledgeos/` outside `CORPUS-ALLOWED.tsv`; sealed lists, the sealed hold-out files and the hold-out concepts; `.env` and any secret; `*.sql` backups; `*.csv` and other data files; logs; `storage/`, `vendor/`, `node_modules/`. Every read logged with path, commit and sha256.
 - **Applies:** from the start of a v2 trial or v2 adoption, whichever the Principal approves first. **Not in force under Rulebook v1.3.** D-C1 and its exclusions are unchanged.
 - **When it becomes active:** a matching scope entry goes into `00-access/ACCESS-RECORD.md`.
+
+## Addendum (2026-10-19T19:01:43Z): "theory first, evidence driven, continuously challenged" — recorded in Rulebook v1.3 §1
+
+- **Principal (verbatim):** "yes, add them to v2 and record it in v1.3" (to the proposal to record the Principal's statement as a principle in v1.3 §1 and to add its consequences to the v2 proposal).
+- **The statement's verbatim text:** `RULEBOOK-v1.3.md` §1 (its canonical home; not copied here). Register entry 54.
+- **In force from now,** including the S0100 whole-book review. The v2 additions (Professor's role, attribution vs judgement, methods, canonical homes, optimisation at fixed points) remain PROPOSED with v2.
