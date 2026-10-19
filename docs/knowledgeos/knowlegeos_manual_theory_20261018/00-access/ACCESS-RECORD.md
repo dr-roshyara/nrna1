@@ -279,3 +279,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
   - the external files EXT-008, EXT-010, EXT-011, EXT-014 (for §9.1).
 - Read-only; no files written.
 - *Closing line (2026-10-19T12:53:40Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T13:13:31Z: window C8 transition review (S0041–S0045 + S0129, S2834), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("Then S0041–S0045 under §12a, the flexible window"). Mode: transition review under `03-methodology/REVIEWER-INSTRUCTIONS.md`, in the commission from the start.
+- **Step 1, blind (seven sources):** S0041 `docs/knowledgeos/KnowledgeOS_Architecture_Health_Dashboard.md` · S0042 `docs/knowledgeos/README.md` · S0043 `docs/knowledgeos/KnowledgeOS_Operational_Knowledge_Principles.md` · S0044 `docs/knowledgeos/KnowledgeOS_Recommendation_Lifecycle_Discovery.md` · S0045 `docs/knowledgeos/KnowledgeOS_Operational_Validation_Report.md` · S0129 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md` (§12a) · S2834 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-131918_what-knowledgeos-makes-possible-beyond-conventional-ai-rag.md` (§12a).
+- **Step 2, after the inventory is saved:** the new sections (Ch. 5 §5.5, Ch. 9 §9.3, Ch. 8 §8.3, Ch. 4 §4.3); `review/C8-S0041-S0045/STEP8-AND-SCAN.md`; `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; dependent sections Ch. 1 §1.2 and A1, Ch. 9 §9.1, Ch. 4 §4.1–4.2, Ch. 5 §5.4, Ch. 3 §3.2 and §3.9, Ch. 6 §6.3–6.4.
+- Read-only; no files written.
+- *Closing line (2026-10-19T13:22:58Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
