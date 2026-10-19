@@ -135,7 +135,7 @@ Do not restate what the book already says correctly. Lower-priority points go in
 - **Read each file whole, in one read**, where it fits; read it in parts only when it is too large.
 - **Deliver each report once, directly through the hand-back** (`SubagentHandback`). Do not write it out as text first and then send it again.
 - **Evidence for your own claims:** a statement about your own work (for example "300 anchors checked", or a recomputed figure) is backed by a traceable record (a command, a list, a computation), or is labelled "reported, not shown".
-- Time is a target, not a licence to skip analysis. Report the time you actually spent.
+- Time is a target, not a licence to skip analysis. Report the time you actually spent, **measured by the tool clock** (`date -u` at start and end), not estimated.
 - **Severity:**
   - **critical:** it could invalidate a foundational concept, derivation or chapter conclusion. It stops dependent work at once: flag it first;
   - **high:** a material omission, a contradiction, a wrong concept status or an unsupported generalisation. It is resolved before the topic is finalised;
