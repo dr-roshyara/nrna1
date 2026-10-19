@@ -177,6 +177,9 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including ย
 
   Topic rows (`topic-full`) never move the reading position.
 - **A consolidation review every 25 sources read in order.** The reviewer gives verdicts on concepts marked VALIDATED without an independent verdict, and checks the order (SEQ) of the chapters touched since the last consolidation.
+  - **Two reviewers on different models** (for example Opus and Sonnet), commissioned independently, with neither seeing the other's report. Their findings are compared in the settlement: found by both, found by one only. Points found by one only are checked like any other finding.
+  - **A planted-gap test** with each consolidation: some points are removed from, or distorted in, a copy of sections already written, by the Principal or the Rule Reviewer (never by the Professor). The answer key is sealed (sha256 in the access record) before the review. Plants must leave no traces in the text. The result is reported as a count ("found k of n"), not as a rate. Every planted point is repaired in the book afterwards, whether found or not.
+  - *(Principal, 2026-10-19, after the C10 test: found 6 of 7 planted gaps; a second reviewer on another model found about ten real omissions the first review had missed.)*
 - **Research branches (ยง11)** remain for consulting passages only. A topic turn reads whole sources.
 
 ### 12a. Flexible reading window (Principal, 2026-10-19: "if you find a topic in a different file while searching, you can take that file also in the research reading window")
