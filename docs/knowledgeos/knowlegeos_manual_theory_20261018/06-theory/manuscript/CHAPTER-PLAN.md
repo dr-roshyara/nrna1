@@ -58,3 +58,4 @@ Chapters 0–2 already answer the first three. They stay single files (ML-1 exce
 | 2026-10-19 | Ch. 5 §5.3 added (deferral); Ch. 6 opened (§6.1). Working picture of the theory now in `../THEORY-MAP.md` | S0028–S0030 read |
 | 2026-10-19 | Ch. 5 §5.4 added (gap operator), from research branch BRANCH-01 | trial of a topic branch (register 32) |
 | 2026-10-19 | **Ch. 9 opened** (§9.1 the kernel scaffold, tested) | Principal: the kernel result as a section where deliverable 5 belongs |
+| 2026-10-19 | **Ch. 0–2 split into section files** by `tmp/tools/split_chapter.py` along their `##` headings; each rejoins byte for byte (sha256 4efa1c12…, 0772bb16…, 653ec213…); originals removed; each chapter now has an `NN.00-index.md` | METHOD-VERSIONS entry 44 |

@@ -1,6 +1,6 @@
 # Book outline: the sections arranged by what the book must deliver
 
-*Rulebook §4, METHOD-VERSIONS entry 44 (Principal, 2026-10-19). Arranges the existing sections by the five deliverables of `06-theory/RESEARCH-PURPOSE.md`, and shows what is missing. Section numbers (§) are stable; files are listed in each chapter's index. Updated at every consolidation review; new sections are placed here when they are written. First version 2026-10-19; updated after the C9 settlement.*
+*Rulebook §4, METHOD-VERSIONS entry 44 (Principal, 2026-10-19). Arranges the existing sections by the five deliverables of `06-theory/RESEARCH-PURPOSE.md`, and shows what is missing. Section numbers (§) are stable; files are listed in each chapter's index (`chapter_NN/NN.00-index.md`; Ch. 0–2 split into section files on 2026-10-19). Updated at every consolidation review; new sections are placed here when they are written. First version 2026-10-19; updated after the C9 settlement.*
 
 **Status marks:** ✓ holds (has VALIDATED concepts) · ~ provisional · ✗ mostly refuted (see the section's "What does not hold") · — missing.
 
