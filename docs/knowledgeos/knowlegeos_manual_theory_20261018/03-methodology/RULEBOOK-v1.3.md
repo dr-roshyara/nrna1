@@ -209,7 +209,12 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
 - **How:**
   - the book is divided into parts, chapter by chapter;
   - each part is reviewed by **two reviewers on different models**, independently and in parallel;
-  - plus a planted-gap test (§12, prepared by the Principal or the Rule Reviewer, never by the Professor; key sealed before the review).
+  - plus a planted-gap test (§12, prepared by the Principal or the Rule Reviewer, never by the Professor; key sealed before the review);
+  - **then a final cross-chapter integration review** (Principal, 2026-10-19): one reviewer reads the chapter reports and `BOOK-OUTLINE.md`, and checks across the parts:
+    - the same term used with different meanings in different chapters;
+    - a law in one chapter that rests on a concept another chapter rejects;
+    - the derivation chain from the primitives to the laws, across all chapters;
+    - duplicates (one law with two homes).
 - **Result:** cross-chapter defects, merged in one settlement; `BOOK-OUTLINE.md` updated.
 
 ### 12d. Generated dependency graph (R3)
