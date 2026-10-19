@@ -17,6 +17,7 @@
 | Theory turn 4 | trust: a primitive or derivable? (§9.9; F23) | **done** (two reviewers: A 12 findings, B 12, 0 critical; 11 raised by both; settled) |
 | Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | **done** (11 findings, 1 critical, settled from the evidence; appendix 8) |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | **reached** — next actor: the Principal (planted-gap test, whole-book review) |
+| **Whole-book review S0100** (§12c, v1.3) | 5 parts × 2 reviewers (Opus, Sonnet) + integration reviewer; frozen copy `review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW/`; the Professor's step 8 in `PROFESSOR-STEP8-FINDINGS.md` (D2) | **in progress**: step 1 blind done (10 inventories); step 2 running. Next: reports → isolation audit → integration review → stage-1 settlement on the copy → the Rule Reviewer scores → stage 2. **Working book frozen until scored.** |
 
 **Per window and per theory turn:**
 - review;
