@@ -13,7 +13,7 @@
 | Window C15 | S0081, S0083–S0086 + rewrite of §1.12 | **done** (18 findings, 1 critical on the TT2 settlement, settled from the evidence; S0082 not on the allowed list, not opened) |
 | Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782, S1609 topic-full) | **done** (two reviewers: A 12 findings, 2 critical; B 14, 0 critical; 11 raised by both; settled from the evidence) |
 | Window C16 | S0087–S0091 + §1.12 integration (step 2) | **done** (14 findings, 0 critical; settled) |
-| Window C17 | S0092–S0096 + §1.13 integration | next; brief lists the TT3 and C16 settlement changes |
+| Window C17 | S0092–S0096 + §1.13 integration | **written; review next** (brief lists the TT3 and C16 settlement changes) |
 | Theory turn 4 | from the outline | — |
 | Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | — |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | — |
@@ -42,9 +42,9 @@
 
 | Item | State |
 |---|---|
-| Reading position | **S0091** read in order (90; S0082 not allowed); next **S0092** |
+| Reading position | **S0096** read in order (95; S0082 not allowed); next **S0097** |
 | Book | Ch. 0–6, 8, 9 as section files; newest §6.6 (C12), §9.6 (F22) |
-| Concepts | CON-0001…0152 (`06-theory/CONCEPT-REGISTER.tsv`) |
+| Concepts | CON-0001…0156 (`06-theory/CONCEPT-REGISTER.tsv`) |
 | Last settled | consolidation S0036–S0065 (c8ef7833b); theory turn 1, F22 (4801780f2); the Principal's F22 act (adedac41c) |
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 and F26)**, F23 trust, F24 claim conflict, F25 who may correct, **F26 order of acts**, **F27 ρ policy or query**, F28 a synthesis adopted as truth (candidate) (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |

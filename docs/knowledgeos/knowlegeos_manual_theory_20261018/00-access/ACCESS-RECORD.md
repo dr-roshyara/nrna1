@@ -388,3 +388,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Read-only.
 - *Closing line (2026-10-19T18:22:55Z):* inventory saved; report saved; settled. One commission, one step-2 message.
 
+## Entry 2026-10-19T18:28:18Z: window C17 transition review (S0092–S0096) and the §1.13 integration (step 2), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue the run to S0100"); Rulebook §4 entry 52a (step 2 for §1.13); step 9 (the brief lists the TT3 and C16 settlement changes). One reviewer (a five-source window).
+- **Step 1, blind:** S0092 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-3-correction2.md` · S0093 `…/2026-08-19-six-role-operating-model-adoption.md` · S0094 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-verification-3-registration.md` · S0095 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-record-integrity-disposition.md` · S0096 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-capability-analysis-amendment.md`.
+- **Step 2:** Ch. 8 §8.10; Ch. 1 §1.13 old and new; STEP8-AND-SCAN; register CON-0153–0156; changed theory: Ch. 9 §9.8 (TT3 settlement), §5.7 C1, §9.6 option (C), map rows; Ch. 8 §8.9 and §1.12 (C16 settlement).
+- Read-only.
+
