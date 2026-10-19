@@ -319,6 +319,6 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 
 ## Entry 2026-10-19T15:27:29Z: planted-gap test for the consolidation review S0036–S0065 (Rulebook §12), sealed before the reviewers start
 - **Prepared by** the Rule Reviewer session, not the Professor. Base: the frozen sections at `adbe16c5c`.
-- **Test copies** of three in-scope sections, with points removed or distorted: `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/TEST-COPIES/` (§6.4, §8.6, §9.2). Both reviewers receive these copies **instead of** the originals of those three sections; all other sections as frozen.
+- **Test copies** of three in-scope sections, with points removed or distorted: `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/sections/` (§6.4, §8.6, §9.2; neutral file names, so the reviewers cannot tell). Both reviewers receive these copies **instead of** the originals of those three sections; all other sections as frozen.
 - **Answer key** kept outside the workspace until scoring; sha256 `c174485276effc01a10279a47d82666119a107f3c34cdecb425dff08ef5c7077`.
 - The Professor does not open, diff or describe the test copies, and does not tell the reviewers that a test is running.
