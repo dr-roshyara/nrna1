@@ -336,3 +336,4 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind (8 sources):** S0067, S0068, S0069, S0071, S0072, S0078 (all `docs/knowledgeos/reviews/…`, 2026-08-17), S0234 (`docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md`), S0062 (`…-stage2-bounded-context-confirmation.md`).
 - **Step 2:** Ch. 9 §9.6; Ch. 6 §6.5 (C2 correction); register CON-0135–0137; map F22; outline; dependent sections Ch. 1 §1.6, §1.12–§1.14, §1.16.7–§1.16.8; Ch. 6 §6.1, §6.3; Ch. 9 §9.1–§9.3.
 - Read-only; no files written by the reviewer.
+- *Closing line (2026-10-19T16:16:46Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
