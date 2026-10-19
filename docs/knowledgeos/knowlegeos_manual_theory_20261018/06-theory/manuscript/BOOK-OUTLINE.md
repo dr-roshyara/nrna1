@@ -54,7 +54,8 @@
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
 | Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
 | **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0 | open fork (T3 critical finding) |
-| *Missing:* any capability tested by all three boundary questions | — | — |
+| **First boundary test (theory turn 1): recording authority, F22** | §9.6: two capabilities (CR-a, CR-w); CR-a necessary iff R_s ∈ Req; kernel placement iff KC; delegation safe under a contract and one recorder per act-space | ~ (prepared; decision reserved for the Principal) |
+| *Missing:* further capabilities tested by all three boundary questions | — | — |
 
 ## 4. The open forks
 

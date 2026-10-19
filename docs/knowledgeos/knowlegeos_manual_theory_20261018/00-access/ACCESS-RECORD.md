@@ -330,3 +330,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Read-only; no files written by the reviewers. The reports go to the Principal unsettled.
 - *Closing line (2026-10-19T15:45:58Z):* both inventories and both reports saved verbatim (STEP1-INVENTORY-A/B.md, REVIEW-REPORT-A/B.md); **unsettled**, passed to the Principal for test scoring. One commission and one step-2 message per reviewer. Disclosure: reviewer B diffed the three sections/ copies against the chapter files (its own statement); reviewer A noticed text present in the chapter files via book_search hits.
 - *Closing line (2026-10-19T15:48:48Z):* planted-gap test scored: A found 6 of 7, B 6 of 7, but the omission findings are not blind (originals reachable through the chapter files and the book search); distortions found by reading 4 of 4; O5 missed by both. Key and result in `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/`.
+
+## Entry 2026-10-19T16:06:50Z: theory turn 1 (F22), topic review, recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("yes, start the F22 theory turn"; Rulebook §12b, entry 49). Mode: topic review under `03-methodology/REVIEWER-INSTRUCTIONS.md`, one reviewer.
+- **Step 1, blind (8 sources):** S0067, S0068, S0069, S0071, S0072, S0078 (all `docs/knowledgeos/reviews/…`, 2026-08-17), S0234 (`docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md`), S0062 (`…-stage2-bounded-context-confirmation.md`).
+- **Step 2:** Ch. 9 §9.6; Ch. 6 §6.5 (C2 correction); register CON-0135–0137; map F22; outline; dependent sections Ch. 1 §1.6, §1.12–§1.14, §1.16.7–§1.16.8; Ch. 6 §6.1, §6.3; Ch. 9 §9.1–§9.3.
+- Read-only; no files written by the reviewer.
