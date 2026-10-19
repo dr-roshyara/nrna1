@@ -13,6 +13,8 @@ Mechanisms m : S × X → S ∪ {⊥} (pool):
   grant2   behaves exactly as grant (a redundant twin)
   revoke   removes x's standing; ⊥ if x has none
   bad      gives x standing without an act (breaks I1)
+  refuse   refuses every input (always ⊥): preserves everything, does nothing
+  noop     returns the state unchanged: preserves everything, does nothing
 Required capabilities R (liveness: what the kernel must be able to do), from s0 = (∅, ∅, ∅):
   R1  some state with a recorded claim is reachable
   R2  some state with a claim that has standing is reachable
@@ -21,6 +23,8 @@ Checks:
   P   (preservation with refusal)  ∀m ∈ M, s ∈ S_I, x: m(s, x) ∈ S_I ∪ {⊥}
   Req (required capabilities)      ∀r ∈ R: r is reachable from s0 using only M
   Kernel(M) = P ∧ Req;  Minimal(M) = Kernel(M) ∧ no proper subset is a Kernel.
+
+Trivial cases (Rulebook §4): the empty set, refuse-everything, and the unchanged state (noop) each satisfy P and fail Req.
 
 Usage: python3 -I kernel_model.py
 """
@@ -66,7 +70,15 @@ def bad(st, x):
     return (c, a, s | {x})
 
 
-POOL = {'record': record, 'grant': grant, 'grant2': grant, 'revoke': revoke, 'bad': bad}
+def refuse(st, x):
+    return BOT
+
+
+def noop(st, x):
+    return st
+
+
+POOL = {'record': record, 'grant': grant, 'grant2': grant, 'revoke': revoke, 'bad': bad, 'refuse': refuse, 'noop': noop}
 S0 = (frozenset(), frozenset(), frozenset())
 R = {'R1 record a claim': lambda st: len(st[0]) > 0,
      'R2 give a claim standing': lambda st: len(st[2]) > 0}
@@ -123,6 +135,9 @@ if __name__ == '__main__':
     show('M = {record, grant, revoke}', ['record', 'grant', 'revoke'])
     show('M = {record, grant, grant2}', ['record', 'grant', 'grant2'])
     show('M = {record, bad}', ['record', 'bad'])
+    show('M = {refuse}', ['refuse'])
+    show('M = {noop}', ['noop'])
+    show('M = {refuse, noop}', ['refuse', 'noop'])
     allM = subsets(POOL)
     old = [sorted(M) for M in allM if minimal_old(M)]
     new = [sorted(M) for M in allM if minimal_new(M)]
@@ -132,4 +147,8 @@ if __name__ == '__main__':
     assert not kernel(frozenset()), '∅ must fail once R is required'
     assert kernel(frozenset({'record', 'grant'})), 'a non-empty model must pass'
     assert all('bad' not in M for M in new), 'an invariant-breaking mechanism is never in a kernel'
+    assert preserves(frozenset({'refuse'})) and not kernel(frozenset({'refuse'})), 'refusing everything preserves but must fail'
+    assert all('refuse' not in M for M in new), 'a mechanism that refuses everything is never in a minimal kernel'
+    assert preserves(frozenset({'noop'})) and not kernel(frozenset({'noop'})), 'the unchanged state preserves but must fail'
+    assert all('noop' not in M for M in new), 'a mechanism that changes nothing is never in a minimal kernel'
     print('all assertions passed')

@@ -179,7 +179,7 @@
   - improvement of a gap by expected size, without criticality (§5.4 C7); inclusion is compatible with C2, the weighted gap open.
 - *The topics above that came from the extraction review's Check D (liveness, delegability, DDD-context placement, order of work, candidate laws and invariants, interface bypass, requirements discovered, ≡_K, the gap theory's open items, the epistemic vocabulary, identifiability, the relational knower–known state, time-varying M, designed ambiguity) are **candidates, not defects** of the book.*
 - **Candidate attachments** (listed in `review/EXT-DIRECTION-20261019/SETTLEMENT.md`; awaiting the Principal's confirmation; C7's Int stays provisional until then).
-- **Provenance question for the Principal:** which documents are the attached "Gap theory" (EXT-013), the "two files" (EXT-010), the "Foundation document" and the "Linux document" (EXT-007)? Needed before §5.4 C7's match can count as convergence.
+- **Provenance of the attachments:** **decided by the Principal (2026-10-19): the "Gap theory" (EXT-013) is S2377**, the corpus document "formal theory of epistemic gaps" (2026-09-02). So §5.4 C7 is a restatement of a corpus document, not independent agreement. **Still open:** the "two files" (EXT-010), the "Foundation document" (EXT-015) and the "Linux document" (EXT-007).
 
 **New topics and open questions found during T2:**
 - **"Knowledge space" has several senses** (container · epistemic space · KST family; §3.10, CON-0098). The container sense itself has the five readings of §6.3 C7.

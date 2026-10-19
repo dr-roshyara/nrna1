@@ -38,7 +38,7 @@ Orientation in the corpus: S0167 (`docs/knowledgeos/brainstorming/_misc/20260819
 2. **The laws between them:** invariants, derivations, what follows from what, and what is impossible.
 3. **The boundary:** what is kernel (stable, minimal, independent of AI, tools and products) and what is application (it changes, and builds on the kernel).
 4. **The open forks,** stated precisely enough to decide them.
-5. **The kernel's type and its existence** *(added 2026-10-19 from the Principal's direction, EXT-010, EXT-011, EXT-015)*: what kind of object the kernel is (a candidate is a state space, mechanisms, invariants and an interface), and whether a kernel meeting the requirements exists at all. "No coherent KnowledgeOS Kernel can be established under the proposed assumptions" is a permitted answer (EXT-010 L220–224). *The type must include **required capabilities** (what the kernel must do, not only what it must not break), and existence is relative to them: with invariant preservation alone, the empty set of mechanisms is minimal and the existence question is trivially "yes" (review EXT-DIRECTION, finding 1). **Tested on a finite toy model** (`tmp/tools/kernel_model.py`; run `tmp/tools/kernel_model-run-20261019.txt`): as written, the only minimal set is ∅. With required capabilities and preservation written as m(s, x) ∈ 𝒮_I ∪ {⊥}, ∅ fails and the minimal kernels are {record, grant} and {record, grant2}. So a kernel exists in the toy model, and the minimal kernel is **not unique**. This tests the form only; it shows nothing about KnowledgeOS's content. Deliverable 5 stays open.*
+5. **The kernel's type and its existence** *(added 2026-10-19 from the Principal's direction, EXT-010, EXT-011, EXT-015)*: what kind of object the kernel is (a candidate is a state space, mechanisms, invariants and an interface), and whether a kernel meeting the requirements exists at all. "No coherent KnowledgeOS Kernel can be established under the proposed assumptions" is a permitted answer (EXT-010 L220–224). *The type must include **required capabilities** (what the kernel must do, not only what it must not break), and existence is relative to them: with invariant preservation alone, the empty set of mechanisms is minimal and the existence question is trivially "yes" (review EXT-DIRECTION, finding 1). **Tested on a finite toy model** (`tmp/tools/kernel_model.py`; run `tmp/tools/kernel_model-run-20261019.txt`): as written, the only minimal set is ∅. With required capabilities and preservation written as m(s, x) ∈ 𝒮_I ∪ {⊥}, ∅ fails and the minimal kernels are {record, grant} and {record, grant2}. So a kernel exists in the toy model, and the minimal kernel is **not unique**. This tests the form only; it shows nothing about KnowledgeOS's content. Deliverable 5 stays open. The book section: Ch. 9 §9.1.*
 
 ## The test for every concept and every source
 
@@ -118,6 +118,22 @@ Orientation in the corpus: S0167 (`docs/knowledgeos/brainstorming/_misc/20260819
 - the test gains a candidate operational form.
 
 The **central question is kept as it stands**. The direction's problem statement differs from it: "usable" is added, and "valid" and "trusted" are missing. That difference is the Principal's to decide.
+
+**The two formulations compared (Int; for the Principal to decide).**
+- **What the purpose's question covers.** "Which knowledge is valid, who owns it, and how can it be trusted?" (S0167 L1577) asks about the **standing** of knowledge: its validity (evidence and correctness), its owner (who may change it), and its trust (why a user may rely on it). In the book's terms it is about evidence, authority and standing (Ch. 1).
+- **What the direction's problem covers.** "identifiable, traceable, governable, and usable across independent higher-level applications" (EXT-008 L45) asks about the **conditions under which knowledge can be managed** at all:
+  - identity: one thing, distinguishable (I-0);
+  - traceability: where it came from and how it changed (provenance, history);
+  - governability: changes go through governed acts;
+  - usability: applications can consume it.
+- **What each leaves out.**
+  - The purpose's question has no **identity** or **traceability**. They are presupposed: one cannot ask who owns a thing one cannot identify. It also has nothing on **use** by applications.
+  - The direction's problem has no **validity** and no **trust**. A piece of knowledge can be identifiable, traceable, governable and usable, and still be wrong. "Governable" covers part of ownership (who may change it), but not the question whether it is right.
+- **Whether they can be combined.** They answer different questions, so they do not compete:
+  - the direction's four properties are **preconditions**: what the kernel must keep true of every item;
+  - the purpose's three are the **judgements** the kernel lets one make about an item.
+  
+  A combined form is therefore possible (Hyp): *the kernel keeps knowledge identifiable, traceable, governable and usable, so that its validity, its ownership and its trustworthiness can be decided.* In this form the four properties are candidate invariants or required capabilities (Ch. 9 §9.1), and the three judgements are what they serve. This combination is a proposal, not a finding.
 
 ## What this does not change
 

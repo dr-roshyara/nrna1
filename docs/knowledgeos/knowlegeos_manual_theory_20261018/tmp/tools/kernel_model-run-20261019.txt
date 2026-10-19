@@ -5,6 +5,9 @@ M = {record, grant}                P=True  Req=True  Kernel=True  Minimal(old)=F
 M = {record, grant, revoke}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
 M = {record, grant, grant2}        P=True  Req=True  Kernel=True  Minimal(old)=False Minimal(new)=False
 M = {record, bad}                  P=False Req=True  Kernel=False Minimal(old)=False Minimal(new)=False
+M = {refuse}                       P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
+M = {noop}                         P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
+M = {refuse, noop}                 P=True  Req=False Kernel=False Minimal(old)=False Minimal(new)=False
 minimal sets, scaffold as written : [[]]
 minimal kernels, with R and ⊥     : [['grant', 'record'], ['grant2', 'record']]
 all assertions passed

@@ -29,6 +29,7 @@ Chapters 0–2 already answer the first three. They stay single files (ML-1 exce
 | **5** | **Decisions and decision-readiness** | Engineer decisions (catalogue) vs governance decisions (log); the stopping rule; freeze and retire as ungoverned decision types; the platform prepares, humans decide | S0006, S0017, **S0023** (+ S0013, S0014) | **started 2026-10-19**: §5.1 (the decision docket), §5.2 (gap kinds), §5.3 (deferral) |
 | **6** | **Boundaries, ownership and spaces** | Tests of a real boundary; ownership as evidence; spaces and nesting; one meaning per term; identifier namespaces | S0001, S0008, S0011, S0012, **S0028** (+ S0013) | **started 2026-10-19**: §6.1 (method, binding, evidence) |
 | **7** | **The KnowledgeOS loop and its evidence** | Generation (n = 0); evidence back-flow (n≈3 informal, ≈2 formal); survival ≠ sufficiency; the register as an incomplete record of authorization; what is validated vs hypothesis | S0002, S0005, S0010, S0014, S0015 | planned |
+| **9** | **The kernel: type and existence** | RESEARCH-PURPOSE deliverable 5: the kernel scaffold, required capabilities, minimality, existence | EXT-008, EXT-010, EXT-011 (external) + corpus kernel sources when read | **started 2026-10-19**: §9.1 (the scaffold, tested) |
 | **8** | **How the theory is validated** | Falsification against artifacts; blind review; process vs personal independence; external validation cannot close an internal link; repetition is not proof | S0007, S0011, S0015, **S0025** (+ S0005, S0022, S0024) | **started 2026-10-19**: §8.1 (the bootstrap experiment) |
 
 ## 2. Rules for moving material
@@ -56,3 +57,4 @@ Chapters 0–2 already answer the first three. They stay single files (ML-1 exce
 | 2026-10-19 | **Ch. 8 started** (§8.1 the bootstrap experiment); the Ch. 8 notes of S0022 and S0024 are now referenced from `chapter_08/08.00-index.md` | S0025 read |
 | 2026-10-19 | Ch. 5 §5.3 added (deferral); Ch. 6 opened (§6.1). Working picture of the theory now in `../THEORY-MAP.md` | S0028–S0030 read |
 | 2026-10-19 | Ch. 5 §5.4 added (gap operator), from research branch BRANCH-01 | trial of a topic branch (register 32) |
+| 2026-10-19 | **Ch. 9 opened** (§9.1 the kernel scaffold, tested) | Principal: the kernel result as a section where deliverable 5 belongs |
