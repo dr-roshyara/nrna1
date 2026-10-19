@@ -213,6 +213,10 @@ def norm(s):
 QUOTE = re.compile(r'"([^"\n]{6,}?)"\s*\[' + sid + r'\s+L(\d+)(?:\s*[–-]\s*L?(\d+))?')
 checked, fails = 0, []
 for f in sorted(glob.glob(str(W / '06-theory/manuscript/**/*.md'), recursive=True)):
+    # reviewers' verbatim hand-backs and planted-gap test copies are not the book's text: kept unedited, not checked
+    fp = pathlib.Path(f)
+    if fp.name.startswith(('STEP1-INVENTORY', 'REVIEW-REPORT', 'test-')) or 'sections' in fp.parts:
+        continue
     for i, line in enumerate(open(f, encoding='utf-8'), 1):
         for m in QUOTE.finditer(line):
             q, a, b = m.group(1), int(m.group(2)), int(m.group(3) or m.group(2))

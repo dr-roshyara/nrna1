@@ -52,6 +52,7 @@
 | Capabilities are not kernel operators | §9.3 C4 (CON-0111) | ✓ (restricted) |
 | "Kernel" as a homonym (F14) | §6.1 C4; §6.4 C6 | recorded |
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
+| Applications consume the kernel by link, not copy; several harnesses on one truth | §6.6 (CON-0139) | ~ (C12) |
 | Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
 | **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0 | open fork (T3 critical finding) |
 | **First boundary test (theory turn 1): recording authority, F22** | §9.6 (revised after review TT1): CR-a necessary iff R_s ∈ Req; the evaluator CE also necessary, and the stronger kernel candidate; placement decided by K3 (several independent applications?) and K4 (uniqueness across them); BC-7 as built fails I-1 (lost writes), the roles law and one-write-path; a delegation contract stated | ~ (Principal's act 2026-10-19: K3 = several applications, R_s ∈ Req; open on K4; CE's rule a kernel candidate, to be tested in theory turn 2) |

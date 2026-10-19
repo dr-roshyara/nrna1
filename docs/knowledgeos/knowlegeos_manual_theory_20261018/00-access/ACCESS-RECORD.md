@@ -337,3 +337,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 9 §9.6; Ch. 6 §6.5 (C2 correction); register CON-0135–0137; map F22; outline; dependent sections Ch. 1 §1.6, §1.12–§1.14, §1.16.7–§1.16.8; Ch. 6 §6.1, §6.3; Ch. 9 §9.1–§9.3.
 - Read-only; no files written by the reviewer.
 - *Closing line (2026-10-19T16:16:46Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T16:59:28Z: window C12 transition review (S0066–S0070), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("Continue as planned: reading from S0066, then theory turn 2 on the evaluator"). Mode: transition review, one reviewer (a five-source window).
+- **Step 1, blind:** S0066 `docs/knowledgeos/developer_guide/developer-guide-set-up-ai-agents-with-knowledgeos.md` · S0067 · S0068 · S0069 (`docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-002-…`) · S0070 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-003-commission.md`.
+- **Step 2:** Ch. 6 §6.6; STEP8-AND-SCAN; register CON-0139–0140; outline; dependent sections.
+- Read-only.
