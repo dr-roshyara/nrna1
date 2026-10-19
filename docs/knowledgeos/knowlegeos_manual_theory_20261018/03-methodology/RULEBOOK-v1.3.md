@@ -241,6 +241,12 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
     - the derivation chain from the primitives to the laws, across all chapters;
     - duplicates (one law with two homes).
 - **Result:** cross-chapter defects, merged in one settlement; `BOOK-OUTLINE.md` updated.
+- **A proposed target table of contents** (Principal, 2026-10-19), written by the Professor with each whole-book review, in `06-theory/manuscript/TARGET-TOC.md`:
+  - **organised by the deliverables of `RESEARCH-PURPOSE.md`, not by reading order.** For example: I problem and foundations · II primitives · III laws and the derivation chain · IV the kernel (type, existence, boundary) · V validation · appendix (open forks, rejected concepts);
+  - **every existing section mapped onto it**, not rewritten;
+  - **missing chapters named**, for example those the unread corpus parts are likely to need (the mathematical theory of knowledge states, the gap theory, verification);
+  - **the cost of renumbering** listed from the dependency graph (§12d): which citations would change;
+  - **a proposal only:** whether the book is reorganised this way is the Principal's decision. Until then, `CHAPTER-PLAN.md` stays in force.
 
 ### 12d. Generated dependency graph (R3)
 
