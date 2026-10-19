@@ -344,3 +344,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 6 §6.6; STEP8-AND-SCAN; register CON-0139–0140; outline; dependent sections.
 - Read-only.
 - *Closing line (2026-10-19T17:06:33Z):* inventory saved; report saved; settled. One commission, one step-2 message.
+
+## Entry 2026-10-19T17:11:26Z: window C13 transition review (S0071–S0075) and the §1.14 form rewrite, recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue to S0100"; "one section of Ch. 0–2 rewritten per reading window, starting with §1.14 (form only, no new claims; reviewed in that window)"). One reviewer.
+- **Step 1, blind:** S0071 `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-bc7-domain-model-proposal.md` · S0072 `…-verification-report.md` · S0073 `…-verification-2-report.md` · S0074 `…-correction-delivery-note.md` · S0075 `…-verification-3-report.md`.
+- **Step 2:** Ch. 8 §8.8; Ch. 1 §1.14 (rewritten) with its previous version via git; STEP8-AND-SCAN; register CON-0141; map F25; dependent sections.
+- Read-only.
