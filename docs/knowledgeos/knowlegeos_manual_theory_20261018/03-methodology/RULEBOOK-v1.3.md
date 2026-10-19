@@ -45,7 +45,10 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
 
 ## 4. Writing
 
-- **Section order:** plain language → definitions → claims and derivations → open questions → references.
+- **Section order:** plain language → definitions → claims and derivations → open questions → **what does not hold** → references.
+- **What does not hold** (Principal, 2026-10-19): refuted claims (INVALID) move out of the main text into the section's closing subsection "What does not hold", each with its ID and the reason. The main text carries only what holds or is open. Applies to new sections now, and to older sections when they are rewritten.
+- **Every chapter is a folder of section files** (`NN.MM-<short-name>.md`) with an index (`NN.00-index.md`). Chapters 0–2, until now single files, are split once by script along their `##` headings. Section numbers are unchanged, and the joined result must be byte-for-byte identical to the original.
+- **Book outline:** `06-theory/manuscript/BOOK-OUTLINE.md` arranges the sections by the deliverables of `RESEARCH-PURPOSE.md`: primitives, laws, the kernel/application boundary, the forks, the kernel's type and existence. It shows what is missing. It is updated at every consolidation review, and new sections are placed in it when they are written.
 - **Labels:** each claim is labelled as the source's statement (**Src**), a derivation (**Ded**), an interpretation (**Int**) or a hypothesis (**Hyp**). No claim is stronger than its evidence. No revision numbers or correction notes appear in the theory text.
 - **Claim-scoping before recording** (Principal, 2026-10-19T10:01:35Z): before each derived result is written, its **scope and assumptions** are stated: "holds under these assumptions", "shown for this case", "sufficient for the present maturity level". A proposal or interpretation from a source is not written as an established definition. This self-check does not replace the independent review.
 - **Quotes** are written in quotation marks **immediately before a full anchor**: `"…" [S0031 L49]` or `[S0031 L49–52]`. The script checks them; a paraphrase carries no quotation marks. *(v1.3 item 1)*
