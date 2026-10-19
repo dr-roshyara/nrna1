@@ -364,3 +364,4 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind:** S0076 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-003-verification-3-acceptance-registration.md` · S0077 `…-KOS-ARCH-BASELINE-003-acceptance-registration.md` · S0078 `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-domain-model-refinement.md` · S0079 `docs/knowledgeos/reviews/2026-08-18-portfolio-lifecycle-reconciliation.md` · S0080 `docs/knowledgeos/reviews/2026-08-18-arb-sequencing-determination.md`.
 - **Step 2:** Ch. 5 §5.7; Ch. 1 §1.13 (rewritten) and its previous version via git; STEP8-AND-SCAN; register CON-0144, 0145.
 - Read-only.
+- *Closing line (2026-10-19T17:40:40Z):* inventory saved; report saved; settled. One commission, one step-2 message.

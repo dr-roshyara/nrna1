@@ -45,3 +45,6 @@ A lexical miss for "off-record": the home §8.6 C3 is known and was read.
 - 10 claims numbered (1.13.n-k).
 - Added: a header, §1.13.0 in plain language, a claims index, §1.13.98 open questions, §1.13.99 what does not hold, and references.
 - **One quote anchor that already failed** ("REALIZED" [S0014 L53]) is in the committed body too. It is left as is (form only) and reported here.
+
+
+*Corrected at the C14 settlement (review appendix B):* "only ×4, all scoped" was wrong: C5's "changes only by an act on evidence" and CON-0145's "exists only" were unscoped; both are restated. The dependency table missed C5 → A1, §5.6 C6 and C2 → §1.12 (now A1).
