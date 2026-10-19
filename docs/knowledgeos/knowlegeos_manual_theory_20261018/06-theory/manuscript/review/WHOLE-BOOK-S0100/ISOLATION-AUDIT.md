@@ -50,6 +50,21 @@ Every fifth source is on its part's allowed list (checked against `PROFESSOR/sam
 
 **Pending.** Commissioned 2026-10-19 (Opus; commission `INTEGRATION/COMMISSION.md`); to be audited on hand-back and added here.
 
+**Update (2026-10-19, after the hand-back; the entry above is kept):**
+
+| Reviewer (identity) | Audit result | Files opened | Searches run | Detected / suspected breach | Assessment | Evidence · effect |
+|---|---|---|---|---|---|---|
+| Integration · kos-theory-reviewer, Opus (default) | 64 tool calls, 11 flags. All 11 are its commission and the ten part reports, which `isolation_audit.py` flags as files under the review folder. The integration commission permits exactly these. Checked by hand: no other file under `R/` was opened (no inventory, no step-2 commission, no `PROFESSOR/`, no `ISOLATION-AUDIT.md`, no `PROFESSOR-STEP8-FINDINGS.md`). A second scan found no `cd` or file path into the working `06-theory/` outside the copy. | the commission; the ten reports (full); the copy's BOOK-OUTLINE, CHAPTER-PLAN, RESEARCH-PURPOSE, 04.00 index (full); targeted lines of the register, map and sections of Ch. 0–9 (listed in its report §11); sources S0097 L60–68, S0100 L128–136, S0073 L77 and L112–124, S0071 L208, S0913 L1140–1175, S0896 L800–808 and L1237–1262; the allowed list (look-ups) | the copy's `book_search.py` (Ch. 7 patterns); greps and Python regex over the copy, excluding `review/` (list in its report §11) | none | **pass** | transcript scan; report saved as `INTEGRATION/REPORT.md` |
+
+## Rule Reviewer's assessment of the P5-A item (2026-10-19; recorded here; the Professor's entry above, "unresolved as to its origin", is kept as history)
+
+- **Ruling:** no isolation breach.
+- **Disclosure:** no evidence that the planted-gap test was disclosed.
+- **Reason:** P5-A read §8.5 in full. §8.5 C9 in the frozen copy names the earlier test (`TEST-C10-planted-gaps`).
+- **Basis:** the reviewer's statement appeared in a routine "Not done" list, and the commissions did not mention a test.
+- **Authority:** the Rule Reviewer's assessment.
+- **Status of the item:** closed. **P5-A: pass.**
+
 ## Appendix: observed files and commands per reviewer and stage (generated from the transcripts)
 
 *Mechanical extraction: files from Read calls and from file names in shell commands ("via shell"); commands truncated to 170 characters. A file name in a command shows that a command named it, not necessarily that its content was displayed.*
