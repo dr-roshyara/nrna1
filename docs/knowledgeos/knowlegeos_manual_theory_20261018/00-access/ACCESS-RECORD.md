@@ -306,3 +306,12 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind (fourteen sources):** S0056 … S0065 (`docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-…`, `…-KOS-ATTR-ARCH-001-stage2-bounded-context-confirmation.md`, `…-KOS-ARCH-BASELINE-002-…`) · S0164 `docs/knowledgeos/brainstorming/20260821-120810-kos-governance-role-cost-optimization.md` (§12a; topic passages) · S0913 `docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100905_step-025u-multi-agent-knowledge-conflict-resolution-consensus-trust-and-distributed-epistemics.md` (§12a) · S0067 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-002-architecture-landscape-v2.md` (§12a) · S0071 `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-bc7-domain-model-proposal.md` (§12a).
 - **Step 2, after the inventory is saved:** Ch. 8 §8.6, §8.7; Ch. 6 §6.5; Ch. 5 §5.5 (C6), §5.6 (C6); `review/C11-S0056-S0065/STEP8-AND-SCAN.md`; `CONCEPT-REGISTER.tsv` (CON-0125–0134); `BOOK-OUTLINE.md`; `RESEARCH-PURPOSE.md`; dependent sections Ch. 1 §1.6, §1.10, §1.12, §1.14.1, §1.14.3, §1.16.8; Ch. 4 §4.1, §4.3; Ch. 6 §6.2–6.4; Ch. 8 §8.4, §8.5; Ch. 9 §9.3, §9.4; the tool `tmp/tools/book_search.py` (may be run).
 - Read-only; no files written by the reviewer.
+
+## Entry 2026-10-19T15:11:51Z: reviewer completeness test on window C10 (planted gaps), recorded before the reviewer starts
+- **Principal (verbatim):** "yes, run the test on C10 with Sonnet reviewer".
+- **Reviewer:** a fresh read-only reviewer on Sonnet, under `03-methodology/REVIEWER-INSTRUCTIONS.md` (transition mode). It is not told that this is a test.
+- **Step 1, blind:** S0051–S0055 (already read; on the allowed list).
+- **Step 2:** altered copies of §8.5 and §5.6 (C10 versions, with 5 points removed and 2 distorted), kept in the coordinating session's scratchpad. The theory map and register are withheld, because they summarise the removed points.
+- **Answer key:** sealed before the reviewer starts, sha256 `077e416235787a17bd7fe9e12a89e7618907bc0513bbb4b33c4d0272475cb7ca`.
+- Run by the coordinating session (Rule Reviewer), not the Professor. No book file is changed.
+- *Closing line (2026-10-19T15:17:27Z):* completeness test scored: found 6 of 7 planted gaps (O1 missed; O3, O5 partly). Files in `06-theory/manuscript/review/TEST-C10-planted-gaps/`.

@@ -1,0 +1,65 @@
+# 8.5 Verifying a reconstruction: a fixed object, a different method, a calibrated grade
+
+*Window C10 (2026-10-19). Sources, in index order: S0051 (2026-08-16), S0054 and S0055 (2026-08-17). **Status: written, for review.***
+
+*Lineage:* S0051 verifies the repair of a design (work item KOS-ATTR-ARCH-001). S0054 and S0055 concern a second work item: S0054 is the producer's self-review, and S0055 the independent verification that used it as leads. **S0055's verifier is the process that reviewed the first design** ("this process's entire history in this estate is the 2026-08-16 KOS-ATTR-ARCH-001 rev-3 review" [S0055 L12–15]), so S0049 and S0055 share a reviewer. Each claim below rests on one case unless stated.
+
+*Existing homes (book search, lexical and by meaning):* Ch. 1 §1.14.3 (verification falsifies and may not repair); §1.16.8 (acceptance needs the test that fits the kind of claim; a failed refutation raises confidence but proves nothing); §1.3 (evidence grades); §1.16.3 (reproducibility is a precondition for verification by re-running); §1.16.2 (authority is valid at the time of the act); §1.13.2 (record integrity); §1.16.8 RC-22 (falsified is worse than unevidenced). This section adds instances and one practice (C2).
+
+## 8.5.1 In plain language
+
+Two reports show how a check of someone else's work was done in practice: the object was frozen, every claim was measured again in a different way, the author's own list of errors was used only as a list of places to look, and the result said how much each error mattered. One of them also shows the limit: checking a repair against the list of findings is only as good as that list.
+
+## 8.5.2 Claims and derivations
+
+**C1. The object under verification stays fixed (Src; an instance of Ch. 1 §1.14.3 and §1.16.3).**
+- The producer did not repair the defects it found: "**Nothing below has been repaired** — repairing the artifact under verification would contaminate it." The artifact was "byte-identical" to its commit [S0054 L6].
+- The verifier controlled drift: the inputs measured were "**byte-unchanged since `75bfcaae`** (empty diffs), so today's measurements are valid measurements of the baseline's subject" [S0055 L26].
+- **Int:** §1.14.3 forbids the verifier to repair. S0054 adds the producer's side: during verification, the producer does not repair either. §1.16.3 needs the inputs fixed; here they were checked by diff.
+
+**C2. Re-derive by a different method; use the producer's disclosure as leads only (Src).** `[CON-0121 · validated]` (as the practice of one line)
+- The producer re-derived "each Phase-A claim … using a **different** measurement method than the original, deliberately seeking falsification" [S0054 L14].
+- The verifier re-derived "by a method different from both the original and (where known) the producer's self-review method", with the producer's disclosure "used as **leads only**", each item "re-established from primary evidence" [S0055 L26].
+- And: "**Falsify, do not confirm.** A verification that re-reads the document and agrees adds nothing." [S0054 L76]
+- **Ded (a possibility claim):** repeats of one method share its systematic errors; a second method can catch them. This is independence of **method**, beside §1.14.3's independence of **role**. The two are independent of each other: S0054 is method-independent but not role-independent; a verifier re-running the same method is the opposite case.
+- **Reproduction is not replication:** §1.16.3's re-running of the same analysis tests that it was done as stated; a different method tests whether the result holds. Both are verification; they test different things.
+- **The better example is D-2,** which the producer "had read … repeatedly without noticing" although it "was visible on its own page" [S0054 L73]. The hook count "eyeballed rather than computed" [S0054 L27] is an execution slip that a careful re-run of the same method would also catch.
+- **One case on sufficiency:** the producer, using a different method, missed V-A; the verifier, with a different role and a different method, found it [S0055 L47]. So method independence alone was not sufficient here.
+- *Hyp (one case):* that independence of method is needed in general for verification, not only for counts.
+
+**C3. A wrong high-grade observation damages reliance on that grade (Src; Int; restated after review C10).** `[CON-0122 · invalid as stated]` (valid core below)
+- "A wrong observation is worse than an acknowledged unknown." [S0054 L30]; "**A wrong `Observed`/high measurement is the defect class the classification scheme exists to prevent** — the severity is in the calibration damage, not the number." [S0055 L33]
+- **Int (Ch. 1 §1.3; §1.16.8 RC-22):** a grade such as OBSERVED is relied on without re-checking. A wrong OBSERVED claim therefore weakens reliance on that grade **in the document where it occurs**. *Hyp (one case):* across documents.
+- **No error rate is estimable from this sample.** The table holds 13 sampled claims with two failures, not "11 of 12" [S0055 L7]. And the sample is purposive: the two failures were the producer's disclosed defects, checked *because* they were known; the other 11, chosen as load-bearing, all held. A binomial interval would treat this as a random sample, and it is not.
+
+**C5. Materiality: direction against magnitude (Src).**
+- The verifier separates whether a defect changes a conclusion from whether it changes its size: for D-2, "direction preserved, magnitude wrong, self-contradicting" [S0055 L104]; overall, two of the defects reverse the direction of a Phase-A conclusion [S0055 L7].
+- **Int:** materiality is relative to reliance: "the classification currency is what acceptance relies on" [S0055 L103]. A defect that keeps the direction can still be material where the number or the grade is relied on.
+
+**C6. A snapshot's figures can become unauditable (Src; an instance of Ch. 1 §1.13.2).**
+- The baseline's count of eight workflow records "is retroactively unverifiable — because of Phase A's own finding." [S0055 L50]: the records are gitignored with no history; the baseline's "machine-state figures are declarations of a moment that left no trace".
+- **Int:** §1.13.2 found the grant records less protected than the acts they point to. Here the same untracked records make a measurement **unverifiable by third parties after the fact**. For the observer at the time it was an observation; for everyone later it is testimony.
+
+**C7. Verifying a repair against the findings is only as good as the findings (Src; Int).**
+- S0051 verified each repair against "the accepted finding text and the recorded decisions" and found "**8 CLOSED · 0 PARTIAL · 0 NOT CLOSED**" [S0051 L68]. It confirmed, for example, that the closed gate input set closes "**both** latent channels" [S0051 L96].
+- This book's review C9 found that one of those channels, a governance practice, cannot be closed by any rule on an input set (Ch. 9 §9.4 C4).
+- **Int:** a verification whose ground truth is the accepted findings checks conformance to them, not their correctness. If a finding prescribes a wrong repair, the repair passes. The verifier says so itself: it works on "the review's own disposition" [S0051 L7]. *Scope:* one case.
+
+## 8.5.3 Open questions
+
+- Should every verification in this book state its method, and whether it differs from the producer's (C2)?
+- What sample size would bound the error rate of a grade usefully (C3)?
+
+## 8.5.4 What does not hold
+
+- **CON-0122's interval** ("11 of 12 → 95 % interval 0.62 to 1.00; up to about 38 % wrong"). INVALID: the sample has 13 rows (a source slip the book relied on), and it is purposive, so no binomial interval estimates an error rate (review C10, finding 1).
+- **"A figure about an untracked state is a declaration, whatever its grade."** Restated: unverifiable by third parties after the fact (review C10, finding 10).
+
+## References
+
+| Source | S-ID | Lines | Read |
+|---|---|---|---|
+| `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-f1-f8-repair-independent-verification.md` | S0051 | L7, L68, L96 | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-producer-self-review-disclosure.md` | S0054 | L6, L14, L27, L30, L73, L76 | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-phase-a-independent-verification.md` | S0055 | L7, L12–15, L26, L33, L47, L50, L103–104 | in order |
+| Ch. 1 §1.3, §1.13.2, §1.14.3, §1.16.2, §1.16.3, §1.16.8; Ch. 8 §8.3; Ch. 9 §9.4 | — | — | existing homes |
