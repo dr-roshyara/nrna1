@@ -365,3 +365,11 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2:** Ch. 5 §5.7; Ch. 1 §1.13 (rewritten) and its previous version via git; STEP8-AND-SCAN; register CON-0144, 0145.
 - Read-only.
 - *Closing line (2026-10-19T17:40:40Z):* inventory saved; report saved; settled. One commission, one step-2 message.
+
+## Entry 2026-10-19T17:51:10Z: window C15 transition review (S0081, S0083–S0086) and the §1.12 form rewrite, recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue to S0100"; one Ch. 0–2 section rewritten per window); Rulebook step 9 (entry 51): the brief lists the TT2 and C14 settlement changes as changed theory. One reviewer (a five-source window).
+- **S0082:** not on the allowed list; not opened, no metadata inspected.
+- **Step 1, blind:** S0081 `docs/knowledgeos/architecture/README.md` · S0083 `…/01-system-context.puml` · S0084 `…/04-contract-neutrality-fact-model.puml` · S0085 `…/03-component-knowledgeos.puml` · S0086 `…/02-container-architecture.puml`.
+- **Step 2:** Ch. 6 §6.7; Ch. 1 §1.12 (rewritten) and its previous version via git; STEP8-AND-SCAN; register CON-0146, 0147; changed theory: Ch. 9 §9.7 and §9.6.6a (TT2 settlement), Ch. 5 §5.7 and Ch. 1 §1.13 header and §1.13.3-2 (C14 settlement), register CON-0138, 0142–0145, map F26–F28.
+- Read-only.
+

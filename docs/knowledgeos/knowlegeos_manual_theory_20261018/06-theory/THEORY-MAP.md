@@ -197,6 +197,10 @@
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
 
+**Window C15, S0081 + S0083–S0086 (provisional; review pending):**
+- **§6.7, the C4 proposal set:** the set declares itself a proposal; no kernel/application line drawn; grants and handoffs in different homes in different views; the authorizer's arrow at a person, an engine, a workflow engine; relations untyped, so the direction law cannot be tested on them `[CON-0147 ~]`; a final metric cannot verify the facts behind a non-injective derivation `[CON-0146 ~]`.
+- **§1.12 rewritten in form** (body byte-identical; claims labelled 1.12-k).
+
 **Window C14, S0076–S0080 (reviewed and settled 2026-10-19):**
 - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated]`; a supersession is recognized only when recorded `[CON-0145 ✗ as stated]`; registered, never activated, closed (a subtype of §8.6 C3); stability of an accepted model as a *should*, not A1; a synthesis adopted as truth (F28); in BC-7's model the judged party never supplies its premise (T-1a); no context owns who produced a fact; the accepted model kept a statement already shown false.
 - **§1.13 rewritten in form** (body byte-identical; header corrected; the "REALIZED" anchor corrected to S0015 L58).
