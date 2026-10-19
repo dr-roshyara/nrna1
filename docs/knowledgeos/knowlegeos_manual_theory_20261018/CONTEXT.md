@@ -1,6 +1,6 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 after the TT3 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-19 after the C16 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
@@ -12,8 +12,8 @@
 | Window C14 | S0076–S0080 + rewrite of §1.13 | **done** (12 findings, 0 critical; settled) |
 | Window C15 | S0081, S0083–S0086 + rewrite of §1.12 | **done** (18 findings, 1 critical on the TT2 settlement, settled from the evidence; S0082 not on the allowed list, not opened) |
 | Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782, S1609 topic-full) | **done** (two reviewers: A 12 findings, 2 critical; B 14, 0 critical; 11 raised by both; settled from the evidence) |
-| Window C16 | S0087–S0091 + §1.12 integration (step 2) | **written; review in progress** (step 2 sent) |
-| Window C17 | S0092–S0096 + §1.13 integration | next; brief lists the TT3 settlement changes |
+| Window C16 | S0087–S0091 + §1.12 integration (step 2) | **done** (14 findings, 0 critical; settled) |
+| Window C17 | S0092–S0096 + §1.13 integration | next; brief lists the TT3 and C16 settlement changes |
 | Theory turn 4 | from the outline | — |
 | Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | — |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | — |

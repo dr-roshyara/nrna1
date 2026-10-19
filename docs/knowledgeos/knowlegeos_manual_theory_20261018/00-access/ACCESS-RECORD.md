@@ -386,4 +386,5 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind:** S0087 `docs/knowledgeos/reviews/2026-08-18-two-track-parallel-authorization.md` · S0088 `…/2026-08-18-KOS-AIP04-DISCOVERY-001-commission.md` · S0089 `…/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md` · S0090 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md` · S0091 `docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md`.
 - **Step 2:** Ch. 8 §8.9; Ch. 1 §1.12 old and new; STEP8-AND-SCAN; register CON-0150–0152; §6.7 C1's added bullet; Ch. 8 §8.4 (home).
 - Read-only.
+- *Closing line (2026-10-19T18:22:55Z):* inventory saved; report saved; settled. One commission, one step-2 message.
 
