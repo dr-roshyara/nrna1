@@ -1,6 +1,6 @@
 # Book outline: the sections arranged by what the book must deliver
 
-*Rulebook §4, METHOD-VERSIONS entry 44 (Principal, 2026-10-19). Arranges the existing sections by the five deliverables of `06-theory/RESEARCH-PURPOSE.md`, and shows what is missing. Section numbers (§) are stable; files are listed in each chapter's index (`chapter_NN/NN.00-index.md`; Ch. 0–2 split into section files on 2026-10-19). Updated at every consolidation review; new sections are placed here when they are written. First version 2026-10-19; updated after the C9 settlement.*
+*Rulebook §4, METHOD-VERSIONS entry 44 (Principal, 2026-10-19). Arranges the existing sections by the five deliverables of `06-theory/RESEARCH-PURPOSE.md`, and shows what is missing. Section numbers (§) are stable; files are listed in each chapter's index (`chapter_NN/NN.00-index.md`; Ch. 0–2 split into section files on 2026-10-19). Updated at every consolidation review; new sections are placed here when they are written. First version 2026-10-19; updated after the C9 settlement, and at the consolidation review S0036–S0065.*
 
 **Status marks:** ✓ holds (has VALIDATED concepts) · ~ provisional · ✗ mostly refuted (see the section's "What does not hold") · — missing.
 
@@ -16,6 +16,9 @@
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
 | **History** | §1.13.2 record integrity; §5.5 C5 | ~ | S0129's R-CONFLICT and "History ≠ Reconstruction Guess" not yet in the book |
 | *Candidates added by the corpus* | visibility §1.7; standing §1.2 (CON-0018 ✗) | ~ | — |
+| **Trust** (F23) | — (S0913: Trust(a, d, c, t); trust ≠ authority; trust is itself knowledge) | — | not in the book; primitive or derivable? |
+| **Conflict over claims** (F24) | §9.4 C3 (one current claim + supersession) against S0913 / R-CONFLICT (preserve, "Unresolved" terminal) | — | the tension is recorded, not settled |
+| **Requirement / contract** | §5.4 (EC_t, Sat, Δ); §9.1 (Req: reachable states). Two objects, one word | ~ | the relation is open (T9-01) |
 
 ## 2. The laws between them
 
@@ -35,8 +38,9 @@
 | The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a law) | ~ |
 | A subject-blind authorization check cannot enforce a rule about subjects | §5.5 C6 (CON-0131) | ✓ (T3) |
 | Differential testing reports only the symmetric difference of blind sets; corroboration counts independent information | §8.6 C2, C4 (CON-0126 ✓ for common-mode failures; CON-0128 ~) | ✓ / ~ (T3) |
-| Renumbering is safe exactly for identifiers no outside reference binds | §8.7 C2 (CON-0129, as a sufficient condition) | ✓ (T3) |
-| *Missing:* the derivation from primitives to laws as one chain (consolidation review: the architecture view) | — | — |
+| Renumbering is safe for identifiers no outside reference binds (a sufficient condition) | §8.7 C2 (CON-0129, as a sufficient condition) | ✓ (T3) |
+| A claim must declare the layer it holds at (neutrality, conformance) | — (S0164 L1276–1323, L1485) | missing (consolidation S0036–S0065) |
+| *Missing:* the derivation from primitives to laws as one chain. **Both consolidation reviewers (S0036–S0065):** the sections in scope add cases to Ch. 1 laws and derive nothing from primitives; minimality of the primitives was never tested | — | — |
 
 ## 3. The boundary: kernel and application
 
@@ -54,7 +58,7 @@
 
 ## 4. The open forks
 
-The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F22, F13a). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17), §5.5 (F13a).
+The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F24, F13a). New at the consolidation S0036–S0065: F23 (trust), F24 (conflicting claims). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17), §5.5 (F13a).
 
 ## 5. The kernel's type and existence
 
@@ -65,7 +69,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F22, F13a). Sections t
 | Preventive and generative halves | §9.3 | ✗ as stated (CON-0110), analogy kept |
 | Invariants that cannot fail | §9.4 | ✗ as first stated (CON-0114, 0116); valid cores kept |
 | Distribution as a candidate required capability | §9.5 (failure case of §0.7, §1.16.6) | ~ (CON-0117) |
-| *Missing:* the required capabilities of KnowledgeOS itself (T9-01); the state space (F13, T9-02) | — | — |
+| *Missing:* the required capabilities of KnowledgeOS itself (T9-01), **the load-bearing undefined object**: six claims defer to it (§5.5 C3, §6.5 C1, §9.3, §9.4 C7, §9.5 C1, C5); candidates in scope: distribution (§9.5), bootstrap (§9.2), the record and fold (§6.5), Zero(EC) reachable (§5.4); how to establish a capability (S0164 D5 E1–E10); the state space (F13, T9-02) | — | — |
 
 ## Chapters that serve method, not a deliverable directly
 

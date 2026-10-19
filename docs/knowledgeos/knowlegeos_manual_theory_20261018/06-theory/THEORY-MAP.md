@@ -136,6 +136,8 @@
 | F20 | **May an act that changes evidence only be performed by its producer?** The assessor establishes its own assessment (S0050 R-6) against producer ≠ verifier | definitional | Ch. 9 §9.4 C5 (review C9) |
 | F21 | **The interpretive act:** does an interpretation of an approved text, which adds a constraint the text does not state, change what is in force, and must it be recorded as an amendment? | definitional | Ch. 5 §5.6 C1a (review C10) |
 | F22 | **Plane or context:** is the authority-record machinery (assignments, grants, handoffs, STARTs, transitions) a cross-cutting plane under every context (ARB ruling, §1.14.3) or one application context, BC-7 (ADR-AIP-03, S0063, S0065)? A plane is a kernel candidate; a context is an application | definitional / boundary | Ch. 6 §6.5 C0 (review C11/T3, critical finding) |
+| F23 | **Trust as a primitive?** The central question asks how knowledge can be trusted, and the book has no trust concept. S0913 proposes Trust(a, d, c, t), contextual; trust ≠ authority ≠ expertise; trust modifies epistemic weight and creates no truth; trust assessments are themselves evidence-bearing knowledge. Is trust a primitive, derivable (evidence × provenance × calibration), or outside the kernel? | primitive | consolidation S0036–S0065 (both reviewers); S0913 L133, L188–198, L1398, L1426–1428 |
+| F24 | **Conflicting claims: preserve or supersede?** S0913 makes conflict a first-class state with "Unresolved" as a valid terminal state; S0129's R-CONFLICT forbids silently choosing a side; but §9.4 C3 settles a content dispute by one current claim plus supersession, i.e. a winner. Which does the kernel require, and where? | law / primitive | consolidation S0036–S0065 (both reviewers); S0913 L450, L1148–1161; S0129 L45, L102; §9.4 C3 |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -190,6 +192,20 @@
 - **Authorization subject (§5.5 C6):** a subject-blind check cannot enforce a rule about subjects `[CON-0131 ✓]`; read by S0067 as the boundary, not a defect.
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings never exercised (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
+
+**Consolidation review S0036–S0065 (two reviewers, Opus and Sonnet; settled 2026-10-19):**
+- **Second verdicts:** all 12 VALIDATED concepts of CON-0099–0134 confirmed by both reviewers; all PROVISIONAL and INVALID verdicts confirmed.
+- **Architecture view (both):** no derivation chain from primitives to laws. The sections add cases to Ch. 1 laws. **Req (T9-01)** is the load-bearing undefined object: six claims defer to it.
+- **Primitives:** missing candidates are **trust** (F23), **conflict over claims** (F24) and **requirement/contract** (§5.4). Minimality was never tested; "history" may be derivable (append-only record + I-7 + fold).
+- **Not yet in the book:**
+  - a claim must declare the layer it holds at: a neutrality claim "never stated its layer", and library defaults stood in for a decision (S0164 L1276–1323, L1485);
+  - establishing a capability, D5 E1–E10, where Option A is unsatisfiable because E10 needs history (S0164 L2235–2264, L2432);
+  - four orthogonal evidence dimensions (S0164 L2420);
+  - Unknown ≠ Uncertain, and E_t/A_t/K_t, factive Knows (S2834 L864–878, L2039–2081);
+  - representation adequacy relative to an inquiry, q = g ∘ T (S2834 L355–437);
+  - "role" has three meanings, and communication splits into distribution and composition (S0091 L169–172, L122–124, L310–313);
+  - the discovery stopping rule and uncertainty carriage (S0036 L55–57).
+- **Language:** "Zero" has a fourth sense (§5.4, Z4). "Requirement" names two objects (§5.4 vs §9.1). BC-7's I-n are not the book's I-n (§6.5). The assurance-model terms are now glossed (§9.4.1a).
 
 **New topics from the consolidation review (2026-10-19):**
 - **"Authority" has three meanings:** a claim's standing structure (§1.2, CON-0016), an actor's permission or grant (§1.6, act × scope × time), and a justification order (§3.8, CON-0064). To be split into three IDs, so that A1's domain names exactly one.
@@ -255,10 +271,10 @@
 - I-8 (no second maintaining population) risks being unfalsifiable.
 - "Runtime adapter" defined (Ch. 1 §1.5, four-layer model, S0031; CON-0084 ✗ until its two senses are separated; portability a hypothesis). Still undefined: the maturity levels L0–L4 (SEQ-0002).
 - A capability is stipulated to be "that which executes" (SEQ-0012, **not reduced**: consolidation review; proposed closure by stipulation, I-11 as the definition of a capability in sense B, with §3.9 C3 as its testable counterpart; §3.9 C2–C3 propose that in the run sense nothing but a runtime executes, provisional).
-- 42 of 71 registered concepts are INVALID. Many of them are source vocabulary rather than the theory's building blocks (to be pruned under RK-2).
+- 71 of 134 registered concepts are INVALID (count as of the consolidation S0036–S0065; it was 42 of 71). Many of them are source vocabulary rather than the theory's building blocks (to be pruned under RK-2).
 
 ## 9. Position
 
-- Last source read **in order**: **S0035**; next: **S0036** (after review C6 of S0031–S0035).
-- **Counts (from `close_source.py --position`):** read in order (full/skim): **35** · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **1**.
-- Chapters: 0–3 written · 4 (§4.1) · 5 (§5.1–5.3) · 6 (§6.1) · 8 (§8.1) · 7 planned.
+- Last source read **in order**: **S0065**; next: **S0066** (after the consolidation review S0036–S0065; the first theory turn, F22, comes before S0066, Rulebook §12b).
+- **Counts (from `close_source.py --position`, 2026-10-19):** read in order (full/skim): **65** · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **26**.
+- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.6) · 6 (§6.1–6.5) · 8 (§8.1–8.7) · 9 (§9.1–9.5) · 7 planned.
