@@ -395,3 +395,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Read-only.
 - *Closing line (2026-10-19T18:40:20Z):* inventory saved; report saved; settled. One commission, one step-2 message.
 
+## Entry 2026-10-19T18:41:08Z: theory turn 4 (trust, F23), topic review, two reviewers in parallel (Opus, Sonnet), recorded before the reviewers start
+- **Grant:** the Principal's instruction (theory turns 3 and 4 from BOOK-OUTLINE "missing"); Rulebook §12b (two reviewers, entry 51); step 9 (the brief lists the C17 settlement changes).
+- **Step 1, blind (each reviewer, independently):** S0913 `docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100905_step-025u-multi-agent-knowledge-conflict-resolution-consensus-trust-and-distributed-epistemics.md` · S0973 `…/20260828-120900_step-073-identity-trust-and-cryptographic-provenance.md` · S1500 `docs/knowledgeos/brainstorming/verification/spec/STEP-VERIFY-025h-025z.md`.
+- **Step 2:** Ch. 9 §9.9; STEP8-AND-SCAN; register CON-0160, 0161; changed theory of the C17 settlement (§8.10, §1.13, §8.9 C2, §9.8 M5 and result 6, §5.7, register CON-0153–0156, map F33).
+- Read-only. Neither reviewer sees the other's report.
+
