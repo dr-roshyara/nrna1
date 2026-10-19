@@ -138,7 +138,7 @@
 | F22 | **Plane or context:** is the authority-record machinery (assignments, grants, handoffs, STARTs, transitions) a cross-cutting plane under every context (ARB ruling, §1.14.3) or one application context, BC-7 (ADR-AIP-03, S0063, S0065)? A plane is a kernel candidate; a context is an application | definitional / boundary | Ch. 6 §6.5 C0 (review C11/T3, critical finding); **prepared in theory turn 1, Ch. 9 §9.6, revised after review TT1:** decided by the relocation test (does the kernel serve several independent applications? K3) together with whether the record must keep a uniqueness across them (K4), given R_s ∈ Req; the evaluator CE is the stronger kernel candidate; options (C) delegated / (P) plane; for the Principal. **Narrowed by the Principal's act of 2026-10-19: K3 = several independent applications; R_s ∈ Req. Open: K4 (uniqueness across applications), a research question.** Consequences (Ded, §9.6.6): CR-a and the evaluator CE are necessary; CE is delegable only as a kernel-defined function over a shared record; whether the kernel must also provide serialization points depends on K4 |
 | F23 | **Trust as a primitive?** The central question asks how knowledge can be trusted, and the book has no trust concept. S0913 proposes Trust(a, d, c, t), contextual; trust ≠ authority ≠ expertise; trust modifies epistemic weight and creates no truth; trust assessments are themselves evidence-bearing knowledge. Is trust a primitive, derivable (evidence × provenance × calibration), or outside the kernel? | primitive | consolidation S0036–S0065 (both reviewers); S0913 L133, L188–198, L1398, L1426–1428 |
 | F24 | **Conflicting claims: preserve or supersede?** S0913 makes conflict a first-class state with "Unresolved" as a valid terminal state; S0129's R-CONFLICT forbids silently choosing a side; but §9.4 C3 settles a content dispute by one current claim plus supersession, i.e. a winner. Which does the kernel require, and where? | law / primitive | consolidation S0036–S0065 (both reviewers); S0913 L450, L1148–1161; S0129 L45, L102; §9.4 C3 |
-| F25 | **Producer ≠ verifier: exclusion or forward constraint?** S0056 bars a verifier from repairing ("wrong pen"); S0074's grant "bars no one" and only forbids the corrector to verify its own correction. Does mechanical re-checkability decide between them? | law | Ch. 8 §8.8 C3 (window C13) |
+| F25 | **Who may correct (restated after review C13):** may a process that verified an object then produce on it in another lane (role vs process), and is a permitting grant sufficient? Both S0056 and S0074 keep the forward rule (a corrector may not verify its own correction); they differ on a grant (none vs "bars no one") and on lane | law | Ch. 8 §8.8 C3 (window C13) |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -193,6 +193,18 @@
 - **Authorization subject (§5.5 C6):** a subject-blind check cannot enforce a rule about subjects `[CON-0131 ✓]`; read by S0067 as the boundary, not a defect.
 - **Record ≠ act as a context (§6.5):** = ARCH-INV-1 (§1.14.2) `[CON-0133 ✗ as new]`; plane or context (F22); owned vs preserved invariants, I-5 breached in practice `[CON-0132 ~]`; derived projection never stored, given a fixed fold `[CON-0134 ~]`; authority endings not exercised in S0071's census of 2026-08-17 (41 grants all AUTHORIZED; CONTINUATION, FAIL 0 of 117); the book's later recount found REVOKED 1, CONSUMED 1 (§1.13.2).
 - **Acts (§5.6 C6):** a pinned acceptance, then an annotation of the same file; a six-word act read through a prepared text (F21); caveats dropped at acceptance; the S0064 reviews AI-written, the Principal agreeing (two facts, Principal testimony PT-001; the PO/ARB act assessed on the record only).
+
+**Window C13, S0071–S0075 (reviewed and settled 2026-10-19):**
+- **§8.8:**
+  - stored is not true, for a given reader `[CON-0141 ~, a lemma]`;
+  - a count needs its selection rule and measurement point (ten cases, one estate);
+  - who may correct (F25, restated);
+  - the model factor is unknown to the verifier, and declared inconsistently;
+  - an amendment completes and never re-decides;
+  - two different A–D defect taxonomies.
+- **§6.5 C9:** "Handoff" contradicted; mutation ownership in two senses (pending, actual).
+- **§1.14 rewritten in form** (body byte-identical; claims labelled 1.14.n-k).
+- **Not yet in the book:** forks (a) non-consultation with several readers, (b) separation of duties bound to a lane or a process.
 
 **Window C12, S0066–S0070 (reviewed and settled 2026-10-19):**
 - **§6.6:** linked, not copied, restricted to "no second authoritative home" `[CON-0139 ✗ as stated]`; six state questions `[CON-0140 ~]`; the direction law, applications → kernel only (S0066 L99; S0069 L53–54, Observed); four work states, unordered.

@@ -350,3 +350,4 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind:** S0071 `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-bc7-domain-model-proposal.md` · S0072 `…-verification-report.md` · S0073 `…-verification-2-report.md` · S0074 `…-correction-delivery-note.md` · S0075 `…-verification-3-report.md`.
 - **Step 2:** Ch. 8 §8.8; Ch. 1 §1.14 (rewritten) with its previous version via git; STEP8-AND-SCAN; register CON-0141; map F25; dependent sections.
 - Read-only.
+- *Closing line (2026-10-19T17:21:32Z):* inventory saved; report saved; settled. One commission, one step-2 message.
