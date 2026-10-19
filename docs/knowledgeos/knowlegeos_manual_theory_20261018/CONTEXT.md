@@ -1,6 +1,6 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 after the C17 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-19 after the TT4 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
@@ -14,8 +14,8 @@
 | Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782, S1609 topic-full) | **done** (two reviewers: A 12 findings, 2 critical; B 14, 0 critical; 11 raised by both; settled from the evidence) |
 | Window C16 | S0087–S0091 + §1.12 integration (step 2) | **done** (14 findings, 0 critical; settled) |
 | Window C17 | S0092–S0096 + §1.13 integration | **done** (17 findings, 0 critical; settled) |
-| Theory turn 4 | from the outline | — |
-| Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | — |
+| Theory turn 4 | trust: a primitive or derivable? (§9.9; F23) | **done** (two reviewers: A 12 findings, B 12, 0 critical; 11 raised by both; settled) |
+| Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | **written; review in progress** (step 2 sent) |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | — |
 
 **Per window and per theory turn:**
@@ -44,7 +44,7 @@
 |---|---|
 | Reading position | **S0100** read in order (99; S0082 not allowed) — **the stop point** |
 | Book | Ch. 0–6, 8, 9 as section files; newest §6.6 (C12), §9.6 (F22) |
-| Concepts | CON-0001…0159 (`06-theory/CONCEPT-REGISTER.tsv`) |
+| Concepts | CON-0001…0161 (`06-theory/CONCEPT-REGISTER.tsv`) |
 | Last settled | consolidation S0036–S0065 (c8ef7833b); theory turn 1, F22 (4801780f2); the Principal's F22 act (adedac41c) |
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 and F26)**, F23 trust, F24 claim conflict, F25 who may correct, **F26 order of acts**, **F27 ρ policy or query**, F28 a synthesis adopted as truth (candidate) (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |

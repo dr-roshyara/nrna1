@@ -400,6 +400,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind (each reviewer, independently):** S0913 `docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100905_step-025u-multi-agent-knowledge-conflict-resolution-consensus-trust-and-distributed-epistemics.md` · S0973 `…/20260828-120900_step-073-identity-trust-and-cryptographic-provenance.md` · S1500 `docs/knowledgeos/brainstorming/verification/spec/STEP-VERIFY-025h-025z.md`.
 - **Step 2:** Ch. 9 §9.9; STEP8-AND-SCAN; register CON-0160, 0161; changed theory of the C17 settlement (§8.10, §1.13, §8.9 C2, §9.8 M5 and result 6, §5.7, register CON-0153–0156, map F33).
 - Read-only. Neither reviewer sees the other's report.
+- *Closing line (2026-10-19T18:56:46Z):* both inventories saved; both reports saved; settled. One commission and one step-2 message per reviewer.
 
 ## Entry 2026-10-19T18:50:07Z: window C18 transition review (S0097–S0100) and the §1.14 integration (step 2), recorded before the reviewer starts
 - **Grant:** the Principal's instruction ("continue the run to S0100"); Rulebook §4 entry 52a (step 2 for §1.14); step 9 (the C17 settlement's changes are under review by the TT4 reviewers; the brief points to them). One reviewer (a four-source window).
