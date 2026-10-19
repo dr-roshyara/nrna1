@@ -286,3 +286,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 2, after the inventory is saved:** the new sections (Ch. 5 §5.5, Ch. 9 §9.3, Ch. 8 §8.3, Ch. 4 §4.3); `review/C8-S0041-S0045/STEP8-AND-SCAN.md`; `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; dependent sections Ch. 1 §1.2 and A1, Ch. 9 §9.1, Ch. 4 §4.1–4.2, Ch. 5 §5.4, Ch. 3 §3.2 and §3.9, Ch. 6 §6.3–6.4.
 - Read-only; no files written.
 - *Closing line (2026-10-19T13:22:58Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T13:34:12Z: window C9 transition review (S0046–S0050 + S0091, S0113), recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue with S0046–S0050 under §12a"). Mode: transition review under `03-methodology/REVIEWER-INSTRUCTIONS.md`, in the commission from the start; reviewer reports its time from the tool clock.
+- **Step 1, blind (seven sources):** S0046 `docs/knowledgeos/KnowledgeOS_External_Positioning_Comparison_Matrix.md` · S0047 `docs/knowledgeos/reviews/README.md` · S0048 `docs/knowledgeos/reviews/2026-08-16-knowledge-placement-requirement-registration.md` · S0049 `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-rev3-independent-architecture-review.md` · S0050 `docs/knowledgeos/reviews/2026-08-16-KOS-ATTR-ARCH-001-f1-f8-repair.md` · S0091 `docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md` (§12a) · S0113 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-c10-d4-decision-prep.md` (§12a).
+- **Step 2, after the inventory is saved:** Ch. 9 §9.4, §9.5; Ch. 8 §8.4; `review/C9-S0046-S0050/STEP8-AND-SCAN.md`; `THEORY-MAP.md`; `CONCEPT-REGISTER.tsv`; `RESEARCH-PURPOSE.md`; dependent sections Ch. 1 §1.14.2, §1.14.3, §1.16.7, §1.17.4, A1; Ch. 9 §9.1; Ch. 6 §6.4; Ch. 8 §8.2; Ch. 5 §5.5.
+- Read-only; no files written.
+- *Closing line (2026-10-19T13:43:58Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.

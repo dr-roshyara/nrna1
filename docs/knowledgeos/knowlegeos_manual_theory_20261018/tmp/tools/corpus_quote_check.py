@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Check every "…" [Snnnn Lx(–y)] quote in a book file against the cited corpus lines (path from 02-FILES.jsonl).
+Elided quotes ("…") are checked segment by segment, in order.
 Usage: python3 -I corpus_quote_check.py <section.md> [...]"""
 import re, sys, json, pathlib
 W = pathlib.Path(__file__).resolve().parents[2]
@@ -12,6 +13,11 @@ for f in sys.argv[1:]:
         for q, sid, a, b in re.findall(r'"([^"]{6,})"\s*\[(S\d{4}) L(\d+)(?:[–-](\d+))?', line):
             src = (R / paths[sid]).read_text(encoding='utf-8').split('\n')
             a = int(a); b = int(b or a)
-            if norm(q) in norm(' '.join(src[a - 1:b])): ok += 1
+            text, pos, hit = norm(' '.join(src[a - 1:b])), 0, True
+            for seg in [norm(x) for x in re.split(r'…|\.\.\.', q) if norm(x)]:   # an elided quote: each segment, in order
+                k = text.find(seg, pos)
+                if k < 0: hit = False; break
+                pos = k + len(seg)
+            if hit: ok += 1
             else: bad += 1; print(f'{pathlib.Path(f).name} L{n} NOT FOUND [{sid} L{a}-{b}]: "{q[:70]}"')
     print(f'{pathlib.Path(f).name}: {ok} found, {bad} not found')

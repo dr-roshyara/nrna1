@@ -131,6 +131,9 @@
 | F13 | **The kernel's attribute set (state space 𝒮).** Ch. 1's labels (provenance, evidential grade, standing, visibility, owner, identity I-0) and Ch. 3's six dimensions are two attribute systems never mapped onto each other; evidence status has 3 values in §3.1 and 4 in §1.3. Which attributes, with which value sets, and which are dimensions, components or derived? | definitional | Ch. 1 §1.3, §1.7, §1.10, §1.11; Ch. 3 §3.1; RESEARCH-PURPOSE deliverables 1, 5 (consolidation review, finding 1) |
 | F14 | **"Kernel" is a homonym:** the portable engineering kit (S0024 Tier-1, S0002 A-5, S0008 "Engineering Kernel") vs the knowledge kernel of RESEARCH-PURPOSE. Answered by RESEARCH-PURPOSE for this book; to be marked wherever the corpus uses it | definitional | Ch. 6 §6.1 C4; Ch. 3 §3.6 |
 | F13a | **The attribution layer of an act** (a sub-fork of F13): executor · authorizer · recorder as separate attributes of an act record, and an attributed epistemic state A_t beside the epistemic state E_t and the factive Knows(a, p, c, t) (S2834 L2051–2071) | definitional | Ch. 5 §5.5 C1; Ch. 1 §1.12, §1.14.3 (review C8, findings 1, 13) |
+| F18 | **Pinned or resolved at use?** Evidence needs pinned references (§1.16.6); operating rules need resolution at use. A pin used for an operating rule taught a session a superseded path (S0048) | definitional | Ch. 9 §9.5 C1 (review C9) |
+| F19 | **Uniqueness or aggregation?** Two ways to make an outcome definite: at most one established assessment (needs serialization), or a deterministic aggregate over all of them (does not) | definitional | Ch. 9 §9.4 C2 (review C9) |
+| F20 | **May an act that changes evidence only be performed by its producer?** The assessor establishes its own assessment (S0050 R-6) against producer ≠ verifier | definitional | Ch. 9 §9.4 C5 (review C9) |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -166,6 +169,12 @@
 - **Does it govern (§8.3):** cases vs counterfactual or comparative vs not observed `[CON-0112 ✗ as five parts]`; usage ≠ outcome; two levels of feedback.
 - **Recommendation lifecycle (§4.3):** vocabulary graded by exercise `[CON-0113 ✗ as "only when used"]`; a derived attribute (time-to-decision); the first decision tests §4.2's stage rule.
 - **Not yet in the book:** Unknown ≠ Uncertain (S2834 L864–878); S2834's two status ladders disagree (L1249–1261 vs L1447–1465); S0129's R-CONFLICT and Execution Context ≠ Governance Evidence Context (L45, L194–197).
+
+**Window C9, S0046–S0050 + S0091, S0113 (§12a; reviewed and settled 2026-10-19):**
+- **Invariants (§9.4):** a totally derived read rule cannot justify a boundary `[CON-0114 ✗ as "vacuous"]`; uniqueness as an instance of §1.16.1/§1.16.7, on a stated premise; one current claim per (act, dimension), no owner `[CON-0115 ~]`; gate inputs declared closed `[CON-0116 ✗ as "closes"]`.
+- **Distribution (§9.5):** the failure case of context assembly (§0.7) via a pinned reference (§1.16.6) `[CON-0117 ~]`; a two-valued response cannot fire on an undecidable condition `[CON-0118 ✗ as "inert"]`; the INV-A3 tension is answered by §1.14.5.
+- **Claims (§8.4):** novelty and demonstration as two axes `[CON-0119 ✗ as three classes]`; an absence claim needs its search scope `[CON-0120 ✓]`, and the book's own search broke it once.
+- **To map:** S0113's five knowledge conditions onto E1–E10; "current" in three senses; "Missing" in three senses.
 
 **New topics from the consolidation review (2026-10-19):**
 - **"Authority" has three meanings:** a claim's standing structure (§1.2, CON-0016), an actor's permission or grant (§1.6, act × scope × time), and a justification order (§3.8, CON-0064). To be split into three IDs, so that A1's domain names exactly one.
