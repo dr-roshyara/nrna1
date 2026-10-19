@@ -42,6 +42,7 @@ Build the theory of KnowledgeOS from the corpus. **The work is the theory.** Wha
    - **omissions:** is a necessary concept or relationship from it missing?
 
    **A dependency on a concept without an independent VALIDATED verdict is marked "unverified"** and not treated as established. Check only the relevant dependencies; do not reread the whole book. Fix what the check finds before commissioning the review, and give the reviewer the list of dependencies.
+9. **The previous settlement's changes are reviewed too** (Principal, 2026-10-19). Every review brief lists, as changed theory, the text changed in the previous settlement (window, theory turn or consolidation), so no correction stays unreviewed until the next consolidation. *(Evidence: the T3 settlement introduced 3 defects that no reviewer saw afterwards.)*
 
 ## 3. Reading depth (v1.3 item 6)
 
@@ -201,7 +202,7 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including Â
 - **How:**
   - up to 8 sources, consulted through a logged topic search under the Â§12a conditions;
   - reads are `topic-full`, and the reading position does not move;
-  - one reviewer, in topic-review mode;
+  - **two reviewers on different models** (for example Opus and Sonnet), independently and in parallel, in topic-review mode; the settlement compares their findings (both / one only) *(Principal, 2026-10-19; evidence: in the consolidation S0036â€“S0065, 18 of 33 findings were raised by only one of two reviewers)*;
   - the result goes into the book and `BOOK-OUTLINE.md`.
 - **Reserved questions:** architectural questions reserved for the Principal (for example F22) are prepared, not decided.
 - **Unchanged:** chronological reading and every existing review rule.
@@ -239,6 +240,7 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including Â
 ### 12a. Flexible reading window (Principal, 2026-10-19: "if you find a topic in a different file while searching, you can take that file also in the research reading window")
 
 - **Window size, in general: 5 to 8 sources.** That is 5 in index order, plus up to 3 added.
+- **Trial T3 closed (2026-10-19): a 10 + 4 window is not adopted as the default.** Its own review missed 6 defects that the consolidation found, and its settlement introduced 3 more. Ten sources in index order remain allowed only for a coherent series of short documents, with at most 2 added and the review split into two parallel commissions.
 - **The window is not fixed at five.** Its core is the next five sources in index order. If a topic in those sources leads the Professor to another allowed source that bears on it, that source may join the window.
 - **Conditions for an added source:**
   - it was found by a **logged search** (`branch_search.py --log`, terms from the register and the book), not picked by memory;
