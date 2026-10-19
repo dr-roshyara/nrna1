@@ -135,7 +135,7 @@ The quote check is **kept**, now on the book sections (§4).
 
 ## 9. Open (the Principal's decision)
 
-- When whole-book reviews run.
+- ~~When whole-book reviews run~~: decided 2026-10-19, see §12c.
 - ~~Whether the workspace is committed at checkpoints~~: decided 2026-10-19, see §10.
 
 ## 10. Each turn ends with
@@ -181,6 +181,46 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
   - **A planted-gap test** with each consolidation: some points are removed from, or distorted in, a copy of sections already written, by the Principal or the Rule Reviewer (never by the Professor). The answer key is sealed (sha256 in the access record) before the review. Plants must leave no traces in the text. The result is reported as a count ("found k of n"), not as a rate. Every planted point is repaired in the book afterwards, whether found or not.
   - *(Principal, 2026-10-19, after the C10 test: found 6 of 7 planted gaps; a second reviewer on another model found about ten real omissions the first review had missed.)*
 - **Research branches (§11)** remain for consulting passages only. A topic turn reads whole sources.
+
+### 12b. Theory turns (R1; Principal, 2026-10-19: "yes, apply R1–R3 as proposed")
+
+- **When:** after every second completed reading window. Only windows in index order count; consolidation reviews, whole-book reviews and theory turns do not.
+- **What:** one deliverable of `RESEARCH-PURPOSE.md`, chosen from the "missing" entries of `BOOK-OUTLINE.md`:
+  - (a) **a primitive:** a precise definition, and an independence model (a model in which it alone fails while the other primitives hold). If none exists, it is derivable and not a primitive;
+  - (b) **the derivation chain** from the primitives to the laws;
+  - (c) **a boundary test** of one concrete capability, as three separate analyses: is it necessary? Must the kernel provide it? Can an application context provide it without breaking kernel invariants?
+- **How:**
+  - up to 8 sources, consulted through a logged topic search under the §12a conditions;
+  - reads are `topic-full`, and the reading position does not move;
+  - one reviewer, in topic-review mode;
+  - the result goes into the book and `BOOK-OUTLINE.md`.
+- **Reserved questions:** architectural questions reserved for the Principal (for example F22) are prepared, not decided.
+- **Unchanged:** chronological reading and every existing review rule.
+- **First theory turn:** the boundary test for F22 (recording authority), directly after the consolidation review S0036–S0065 is settled. From then on: two reading windows, one theory turn.
+
+### 12c. Whole-book review (R2)
+
+- **When:** once S0100 has been read in index order, then every 100 sources read in index order. Sources read in topic turns do not count. At that point it replaces the regular consolidation review.
+- **Scope:** **all chapters**, not only recent changes:
+  - definitions, derivations and assumptions;
+  - forks;
+  - cross-chapter dependencies;
+  - the architecture view (primitives → laws → results; completeness and minimality of the primitives).
+- **How:**
+  - the book is divided into parts, chapter by chapter;
+  - each part is reviewed by **two reviewers on different models**, independently and in parallel;
+  - plus a planted-gap test (§12, prepared by the Principal or the Rule Reviewer, never by the Professor; key sealed before the review).
+- **Result:** cross-chapter defects, merged in one settlement; `BOOK-OUTLINE.md` updated.
+
+### 12d. Generated dependency graph (R3)
+
+- `tmp/tools/dependency_graph.py` builds a graph of concepts and sections from their **explicit** references: CON-IDs, § citations, "existing homes", "rests on" and "depends on".
+- **When a concept becomes INVALID or changes in substance,** the script lists every downstream item, transitively (B depends on A, C on B: both are listed).
+- **No automatic invalidation:**
+  - the Professor reassesses each listed item on evidence in the settlement;
+  - the reviewer checks that reassessment in the next review.
+- **When it runs:** at every settlement, and before every consolidation or whole-book review. Its list goes into the settlement.
+- **Limit, stated in each report:** the graph sees only explicit references. Implicit dependencies remain the task of step 8 and of the reviewers.
 
 ### 12a. Flexible reading window (Principal, 2026-10-19: "if you find a topic in a different file while searching, you can take that file also in the research reading window")
 
