@@ -357,3 +357,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind (4 sources):** S0128 `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-ADR.md` · S0916 `docs/knowledgeos/brainstorming/phase_measure_theory/20260828-101108_step-025w-…` · S1414 `docs/knowledgeos/brainstorming/phase_measure_theory/20260829-105816_step_196_the-authority-responsibility-model.md` · S2775 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-005257_theory-part-12-…`.
 - **Step 2:** Ch. 9 §9.7; Ch. 1 §1.14.1 (the model under test); §9.6; register CON-0138, 0142, 0143.
 - Read-only.
+
+## Entry 2026-10-19T17:28:28Z: window C14 transition review (S0076–S0080) and the §1.13 form rewrite, recorded before the reviewer starts
+- **Grant:** the Principal's instruction ("continue to S0100"; one Ch. 0–2 section rewritten per window). One reviewer.
+- **Step 1, blind:** S0076 `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-003-verification-3-acceptance-registration.md` · S0077 `…-KOS-ARCH-BASELINE-003-acceptance-registration.md` · S0078 `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-domain-model-refinement.md` · S0079 `docs/knowledgeos/reviews/2026-08-18-portfolio-lifecycle-reconciliation.md` · S0080 `docs/knowledgeos/reviews/2026-08-18-arb-sequencing-determination.md`.
+- **Step 2:** Ch. 5 §5.7; Ch. 1 §1.13 (rewritten) and its previous version via git; STEP8-AND-SCAN; register CON-0144, 0145.
+- Read-only.
