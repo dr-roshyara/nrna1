@@ -407,4 +407,5 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind:** S0097 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-registration.md` · S0098 `docs/knowledgeos/brainstorming/20260819-104748-ai-engineering-lifecycle-five-responsibilities-governance.md` · S0099 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-correction3-verification-stop.md` · S0100 `…/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification-independence-refusal.md`.
 - **Step 2:** Ch. 8 §8.11; Ch. 1 §1.14 old and new; STEP8-AND-SCAN; register CON-0157–0159.
 - Read-only.
+- *Closing line (2026-10-19T19:02:14Z):* inventory saved; report saved; settled. One commission, one step-2 message. **The run to S0100 is complete; the whole-book review (§12c) is not started.**
 
