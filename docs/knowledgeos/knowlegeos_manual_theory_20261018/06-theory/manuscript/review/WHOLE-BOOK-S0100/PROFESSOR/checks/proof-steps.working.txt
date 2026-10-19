@@ -1,0 +1,2 @@
+# 2026-10-19T21:02:13Z · python3 -I tmp/tools/proof_step_check.py
+# lemmas/theorems scanned: 1; flags: 0

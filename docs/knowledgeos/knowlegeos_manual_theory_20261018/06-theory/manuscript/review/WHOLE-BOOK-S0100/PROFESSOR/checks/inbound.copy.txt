@@ -1,0 +1,36 @@
+# 2026-10-19T21:00:51Z · python3 -I tmp/tools/inbound_citations.py --root 06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW §5.7 C3 §8.11 C1
+== §5.7 C3  (home: 06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md; concept IDs at the claim: none)
+  -- claim: 5
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:16  | Ch. 5 §5.7 C3, gaps in the lifecycle vocabulary | extends (C9) |
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:83  **C9. A lifecycle with no verbs for refusing or withdrawing (Src; an extension of §5.7 C3; added after review C15).**
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:85  - **Int (§5.7 C3):** this is a second instance of a lifecycle vocabulary without a needed ending, after the engine's missing "retire" and "un-cancel" (S0080 L46
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:16  *Existing homes (book search "history"):* §1.2 (a claim's history is valid iff every change is labelled by a recorded act); §1.12 (valid vs verifiable); §1.13.2
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:95  5. **A history that is reconstructed is not history.** S0129 records the principle "**`History ≠ Reconstruction Guess`**" [S0129 L102], called new there and pla
+  -- concept: 0
+  -- section-only: 12
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:119  | Ch. 0 §0.2; Ch. 1 §1.12, §1.13, §1.14, §1.14.3, §1.14.5; Ch. 5 §5.7; Ch. 6 §6.5, §6.6; Ch. 8 §8.8; Ch. 9 §9.6; CON-0134; THEORY-MAP (S0164 note); RESEARCH-PUR
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:41  - **Int (an analogous rule, not the boundary test itself):** RESEARCH-PURPOSE's boundary test asks whether a capability is **necessary** (a counterfactual remov
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:71  - **The third off-record verification in the estate.** The third verification's lane "has no `START` on the record"; "the human PO/ARB's `START` act **did occur
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:72  - **Delivery ahead of the record:** a correction "finished its work and said so in the artifact, but **its lane never handed off**" [S0094 L25]; "the work is re
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:80  - **Two differently ordered chains on one day.** The adoption repeats the ARB's order "capability → ownership → bounded context / stewardship → role → agent → s
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:113  | Ch. 1 §1.12, §1.14, §1.16.6; Ch. 5 §5.6, §5.7; Ch. 6 §6.6, §6.7; Ch. 8 §8.4, §8.6, §8.9; Ch. 9 §9.5, §9.6, §9.7, §9.8; RESEARCH-PURPOSE | — | — | existing hom
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:20  | Ch. 5 §5.7 C1, closure needs the deliverable and the lifecycle | supports (C6) |
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:70  - The advisor separates "the **role model**" from "the **workflow state machine**": "The roles tell us *who may act*; the lifecycle tells us *what happens and i
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:102  | Ch. 1 §1.12, §1.14.3, §1.14.5; Ch. 5 §5.6, §5.7; Ch. 8 §8.6, §8.9, §8.10; Ch. 9 §9.8 | — | — | existing homes |
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:140  | Ch. 1 §1.2, §1.12, §1.14.1, §1.16.2, §1.16.6, §1.16.8; Ch. 2 §2.11; Ch. 5 §5.7; Ch. 6 §6.5, §6.7; Ch. 9 §9.7; BOOK-OUTLINE; THEORY-MAP | — | — | existing home
+     06-theory/THEORY-MAP.md:144  | F28 | **A synthesis adopted as truth (window C14; candidate):** can a recorded prose synthesis hold standing as "the authoritative state" beside the record (S
+     06-theory/THEORY-MAP.md:228  - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated]`; a
+== §8.11 C1  (home: 06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md; concept IDs at the claim: ['CON-0157'])
+  -- claim: 5
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:310  *Further evidence (challenging and extending; status unchanged).* The laws are stated, and the estate breaches them in practice: lanes recorded their own STARTs
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:543  | book | — | §6.5 C2; §8.9 C9; §8.10 C7; §8.11 C1, C3, C6; §9.7 | 1.14.1-7, 1.14.3-2, 1.14.3-3, 1.14.5-1 |
+     06-theory/manuscript/chapter_01/01.99-change-log.md:51  | 2026-10-19 | §1.14 integrated (window C18; Rulebook §4 step 2, entry 52a): 47 claim heads restated as claims, numbers 1.14.1-1 … 1.14.5-14 kept; the C13 form-
+     06-theory/manuscript/chapter_01/01.99-change-log.md:53  | 2026-10-19 | §1.14 integration corrected at the C18 settlement: 1.14.1-7's head (well-definedness sketched, not established) and body made conditional (Kleene
+     06-theory/manuscript/chapter_09/09.09-is-trust-a-primitive.md:16  *Existing homes (book search "trust"):* §1.3 (evidential grade); §1.6 (A1); §1.12 (the residual trust assumption); §8.6 (independence of a check); §8.9 C1, C2; 
+  -- concept: 2
+     06-theory/CONCEPT-REGISTER.tsv:158  CON-0157	a continuation attributed an act in its inherited context to itself	a context-compaction continuation, reading its own identifier correctly, attributed
+     06-theory/THEORY-MAP.md:209  - **§8.11:** a context-compaction continuation attributed an act in its inherited context to itself; every self-declaration was true; identifiers do not track w
+  -- section-only: 3
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:272  *Further evidence on 1.14.2-1 (supporting and challenging, same estate; status unchanged).* Supporting: the workflow engine refuses a grant without a human-act 
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:401  *Further evidence (related; status unchanged).* The same structure appears for analyses: a verification charge asks whether an analysis "REMAINS A DECISION-PREP
+     06-theory/manuscript/chapter_09/09.09-is-trust-a-primitive.md:13  - **The estate's own records** (§1.12, §8.6, §8.9–§8.11) supply instances that bear on trust without using the word in these senses. They are a separate, observ

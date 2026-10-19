@@ -1,0 +1,3 @@
+32,33d31
+< - **BC-7** (added at the consolidation settlement S0036–S0065): the sources' name for the bounded context "Governed Session Orchestration", the record of governed engineering work (work items, session assignments, transitions, grants), recognized by ADR-AIP-03 [S0063 L19; S0067 L33]. Whether it is a context or a plane is F22 (C0).
+< - **Lane** (added at the consolidation settlement S0036–S0065): the sources' word for a **session assignment**, a named line of work inside a work item with a fixed role, created by a REGISTER transition [S0071 L61]. "Lane separation" means that different assignments carry different roles.

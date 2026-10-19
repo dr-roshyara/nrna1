@@ -1,0 +1,81 @@
+# 2026-10-19T21:01:47Z · python3 -I tmp/tools/undefined_terms.py --root /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/16a0ac97-2df1-4d21-8fca-c43f5de5b1e2/scratchpad/fixture-lane-bc7
+A | pinning | book 16 | sections 9 | corpus files 0 | first 01.14 L429
+A | unattested | book 6 | sections 5 | corpus files 0 | first 05.07 L74
+A | annulment | book 18 | sections 4 | corpus files 0 | first 01.14 L149
+A | KT-8 | book 5 | sections 4 | corpus files 0 | first 00.06 L14
+A | telo | book 6 | sections 2 | corpus files 0 | first 00.05 L3
+A | LA-4 | book 3 | sections 2 | corpus files 0 | first 01.08 L27
+A | RK-1 | book 3 | sections 2 | corpus files 0 | first 01.99 L46
+A | undeterminable | book 3 | sections 2 | corpus files 0 | first 01.14 L123
+A | worksheet | book 2 | sections 2 | corpus files 0 | first 01.14 L255
+A | recasting | book 2 | sections 2 | corpus files 0 | first 02.09 L67
+A | laminar | book 6 | sections 1 | corpus files 0 | first 03.10 L96
+A | mechanizing | book 3 | sections 1 | corpus files 0 | first 01.14 L59
+A | snap | book 3 | sections 1 | corpus files 0 | first 01.16 L65
+A | truster | book 3 | sections 1 | corpus files 0 | first 09.09 L24
+A | unminted | book 2 | sections 1 | corpus files 0 | first 01.13 L126
+A | fetche | book 2 | sections 1 | corpus files 0 | first 01.17 L95
+A | subtree | book 2 | sections 1 | corpus files 0 | first 02.08 L102
+A | rater | book 2 | sections 1 | corpus files 0 | first 06.04 L18
+A | regrouped | book 2 | sections 1 | corpus files 0 | first 08.03 L13
+A | KBI-1 | book 1 | sections 1 | corpus files 0 | first 00.09 L8
+A | ALLOC-4 | book 1 | sections 1 | corpus files 0 | first 01.17 L95
+A | AR-11 | book 1 | sections 1 | corpus files 0 | first 08.01 L42
+A | codified | book 1 | sections 1 | corpus files 0 | first 00.07 L39
+A | blamed | book 1 | sections 1 | corpus files 0 | first 01.08 L79
+A | misdescribing | book 1 | sections 1 | corpus files 0 | first 01.10 L7
+A | annulling | book 1 | sections 1 | corpus files 0 | first 01.14 L200
+A | unpoliced | book 1 | sections 1 | corpus files 0 | first 01.14 L399
+A | dialog | book 1 | sections 1 | corpus files 0 | first 01.14 L424
+A | mechanize | book 1 | sections 1 | corpus files 0 | first 01.14 L473
+A | unexplainable | book 1 | sections 1 | corpus files 0 | first 01.16 L119
+A | voided | book 1 | sections 1 | corpus files 0 | first 02.05 L19
+A | initio | book 1 | sections 1 | corpus files 0 | first 02.05 L27
+A | obedient | book 1 | sections 1 | corpus files 0 | first 04.01 L53
+A | lexicographically | book 1 | sections 1 | corpus files 0 | first 05.04 L107
+A | staffing | book 1 | sections 1 | corpus files 0 | first 05.07 L50
+A | workbenche | book 1 | sections 1 | corpus files 0 | first 06.07 L36
+A | undercounting | book 1 | sections 1 | corpus files 0 | first 08.06 L67
+A | undeclarable | book 1 | sections 1 | corpus files 0 | first 08.08 L68
+A | attestor | book 1 | sections 1 | corpus files 0 | first 08.10 L64
+A | unfaithful | book 1 | sections 1 | corpus files 0 | first 09.09 L87
+B | RQ-002 | book 24 | sections 14 | corpus files 11 | first 00.00 L8
+B | C-1 | book 19 | sections 14 | corpus files 112 | first 00.01 L26
+B | CV-1 | book 11 | sections 9 | corpus files 3 | first 00.02 L47
+B | CAP-001 | book 21 | sections 8 | corpus files 41 | first 00.02 L66
+B | BC-7 | book 40 | sections 7 | corpus files 47 | first 05.07 L20
+B | DP-2 | book 7 | sections 6 | corpus files 7 | first 01.14 L376
+B | C-5 | book 6 | sections 5 | corpus files 80 | first 01.10 L44
+B | D-1 | book 6 | sections 5 | corpus files 84 | first 03.05 L17
+B | SC-2 | book 25 | sections 4 | corpus files 5 | first 01.14 L177
+B | SD-1 | book 11 | sections 4 | corpus files 14 | first 05.02 L20
+B | H-3 | book 8 | sections 4 | corpus files 5 | first 01.11 L79
+B | PM-1 | book 7 | sections 4 | corpus files 8 | first 01.02 L67
+B | P-7 | book 6 | sections 4 | corpus files 9 | first 01.06 L36
+B | H-08 | book 4 | sections 4 | corpus files 1 | first 01.00 L27
+B | Tier-1 | book 4 | sections 4 | corpus files 22 | first 03.06 L106
+B | C-14 | book 7 | sections 3 | corpus files 36 | first 08.04 L38
+B | R-6 | book 5 | sections 3 | corpus files 18 | first 04.01 L44
+B | V-1 | book 5 | sections 3 | corpus files 31 | first 05.06 L68
+B | N-10 | book 4 | sections 3 | corpus files 14 | first 00.05 L51
+B | F-01 | book 4 | sections 3 | corpus files 1 | first 01.02 L84
+B | F-14 | book 4 | sections 3 | corpus files 2 | first 01.99 L40
+B | B-11 | book 3 | sections 3 | corpus files 3 | first 00.02 L9
+B | H-01 | book 3 | sections 3 | corpus files 1 | first 00.03 L38
+B | C-2 | book 3 | sections 3 | corpus files 75 | first 01.13 L124
+B | MM-1 | book 3 | sections 3 | corpus files 10 | first 03.00 L8
+B | OQ-10 | book 3 | sections 3 | corpus files 39 | first 06.05 L57
+B | G-1 | book 3 | sections 3 | corpus files 57 | first 06.05 L59
+C | keep | in section 01.09: 3 uses | corpus files 565
+C | adopt | in section 01.13: 3 uses | corpus files 312
+C | action | in section 03.09: 12 uses | corpus files 1157
+C | port | in section 03.09: 7 uses | corpus files 153
+C | agent | in section 03.09: 4 uses | corpus files 627
+C | lane | in section 06.05: 8 uses | corpus files 449
+C | registration | in section 06.05: 5 uses | corpus files 166
+C | separation | in section 08.06: 9 uses | corpus files 935
+C | untracked | in section 08.09: 5 uses | corpus files 49
+C | assignment | in section 08.09: 4 uses | corpus files 253
+C | assignment | in section 08.11: 3 uses | corpus files 253
+C | correct | in section 09.09: 3 uses | corpus files 1227
+# candidates: tier A 40 · tier B 27 · tier C 12 (from 270 identifiers and 3958 word types; 232 ids and 3039 words undefined by the forms)

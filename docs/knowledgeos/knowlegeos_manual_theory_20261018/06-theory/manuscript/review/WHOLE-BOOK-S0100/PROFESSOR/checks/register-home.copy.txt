@@ -1,0 +1,10 @@
+# 2026-10-19T21:00:51Z · python3 -I tmp/tools/register_home_check.py --root 06-theory/manuscript/review/WHOLE-BOOK-S0100/BOOK-UNDER-REVIEW
+CON-0133 | H4 tag carries no status (information) | chapter_06/06.05-recording-authority-without-holding-it.md | register INVALID; text ['merged into ARCH-INV-1']
+CON-0135 | H4 tag carries no status (information) | chapter_09/09.06-boundary-test-authority-recording.md | register INVALID; text ['restated at TT1']
+CON-0136 | H4 tag carries no status (information) | chapter_09/09.06-boundary-test-authority-recording.md | register INVALID; text ['restated at TT1']
+CON-0137 | H4 tag carries no status (information) | chapter_09/09.06-boundary-test-authority-recording.md | register INVALID; text ['restated at TT1']
+CON-0138 | H2 ID not in its home | chapter_09/09.06-boundary-test-authority-recording.md | register status PROVISIONAL
+CON-0140 | H2 ID not in its home | chapter_06/06.06-agent-harnesses-linked-not-copied.md | register status PROVISIONAL
+CON-0143 | H2 ID not in its home | chapter_09/09.07-boundary-test-the-evaluator.md | register status PROVISIONAL
+CON-0149 | H2 ID not in its home | chapter_09/09.08-is-history-a-primitive.md | register status PROVISIONAL
+# rows with a section home: 137; flags: 8 (H1 0, H2 4, H3 0, H4 4); untagged homes (information): 5

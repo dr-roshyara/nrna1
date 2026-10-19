@@ -1,0 +1,131 @@
+# 6.5 A context that records authority without holding it: owned and preserved invariants
+
+*Window C11, Trial T3 (2026-10-19). Sources, in index order: S0062, S0063, S0064, S0065 (all 2026-08-17). Added under Rulebook §12a after a logged search on the boundary sentence "whether an act was authorized … whether it was recorded": S0067 (2026-08-17, the landscape that states it) and S0071 (2026-08-17, the latest relevant hit). **Status: reviewed in C11/T3 (2026-10-19); settled in `review/C11-S0056-S0065/SETTLEMENT.md`.***
+
+*Lineage:* all six sources were written on one day, on one programme of work: Stage 2 → commission → landscape v2 → review registration → acceptance → domain model. Each builds on the one before it. Two producing terminals disclose different models: S0067 "Claude Fable 5" [S0067 L9], S0071 "Claude Opus 5" [S0071 L11]. Their inputs, however, are the same chain of accepted documents. **They count as one line of support.** The reviews and the acceptance in S0064–S0065 show that a reviewer and the PO/ARB agreed. They are not independent derivations. Three things are kept apart:
+  1. **Authorship:** an AI wrote the S0064 reviews (**PT**, Principal testimony 2026-10-19 [PT-001]).
+  2. **Agreement:** the Principal agreed with them [PT-001]. That is a human act on an AI-authored review, not a review written or performed by a human.
+  3. **Independent human verification:** none is shown. S0065 itself records the acceptance as made "without a separate independent verification of the v2 model" [S0065 L20].
+
+  S0065 calls it "the Principal (human) review" [S0065 L20]; by PT-001 that is half true. The agreement validates none of the review's claims by itself: each keeps its own evidence status. S0065 is not edited. *(Corrected at the consolidation settlement on the basis of PT-001. The earlier text, "whether that reviewer was a person is UNKNOWN", rested on S0164 L1119–1135, review C11/T3 finding 10.)* The PO/ARB act in S0065 is assessed separately, on the record (`06-theory/PRINCIPAL-TESTIMONY.md`).
+
+*Existing homes (book search, lexical and by meaning; top hits read):*
+- Ch. 1 §1.12, a record of an act is not the act. *Extends:* here the same distinction is a context boundary;
+- **Ch. 1 §1.14.2, ARCH-INV-1 ("The mechanism records authority. It never grants authority"), and §1.14.3, the ARB ruling that this machinery is "a plane, not a bounded context".** *Same subject, missed by the search before review* (review C11/T3, critical finding). See C0;
+- Ch. 5 §5.5 C2 and C6, the record and the recorder. *Same subject;* C3 below adds a competing reading of C6;
+- Ch. 6 §6.2, admission of a context: necessary criteria, no sufficiency condition. *Extends* (C6);
+- Ch. 6 §6.4 C3, stated ≠ held ≠ enforced `[CON-0102]`. *Same;* C2 uses it;
+- Ch. 6 §6.3, a boundary through a concept `[CON-0087]`. *Same form;* the grant is split the same way (C1);
+- Ch. 4 §4.3 C5a and Ch. 3 §3.2, a derived attribute is computed, not stored. *Same* (C4);
+- Ch. 9 §9.4, invariants that cannot fail. *Bears on C5;*
+- Ch. 1 §1.16.8, presence ≠ validity of a reference. *Bears on C4.*
+
+## 6.5.1 In plain language
+
+The platform has one part that actually runs governance: a record of work items, lanes, transitions and grants. The sources draw its boundary in one sentence: "Governance decides whether an act was authorized; BC-7 answers whether it was recorded". The record keeps the **registration** of an act and never the act; it keeps the **record** of a grant and never the grant's authority. The sources also make a distinction this book needs for the kernel's boundary. A context **owns** an invariant when the reason for the invariant lives in it. It only **preserves** an invariant when it enforces it on behalf of an owner elsewhere, and then often only in part.
+
+## 6.5.2 Definitions (Src)
+
+- **Owns / preserves.** "an invariant a context **owns** is one whose *reason* lives in that context; an invariant it **preserves** is one it enforces on behalf of an owner elsewhere." [S0067 L57]. `[CON-0132 · provisional]` ("the reason lives in" is not yet an operational test) `[CON-0132 · provisional]`
+- **Recorded occurrence** (a modelling term, "Proposed"): what BC-7 holds about any act, "that it happened, in what order, and with what declared attribution — never whether it was right, authorized, or true." [S0071 L73]
+- **Fold:** "The deterministic computation that derives current state … from the append-only log." [S0071 L72]
+- **I-n in this section** (added at the consolidation settlement S0036–S0065): BC-7's own invariants as numbered in S0067 (I-1 … I-10), written **BC-7 I-n**. They are **not** the book's I-0 … I-12 of Ch. 0 §0.5.
+
+## 6.5.3 Claims and derivations
+
+**C0. The same machinery, classified twice (Src; added at settlement).** *Fork F22.*
+- **Earlier:** an ARB ruling classes the machinery that carries assignments, grants, handoffs, STARTs, transitions and mutation ownership as "a plane, not a bounded context": "a cross-cutting operational authority mechanism" (Ch. 1 §1.14.3, V3 L197–216). It states ARCH-INV-1: the mechanism records authority and never grants it (§1.14.2).
+- **Later, the same estate:** ADR-AIP-03 recognizes it as a bounded context, BC-7 [S0063 L19], and the PO/ARB's acceptance places it in the seven-context model [S0065 L28].
+- **What follows for this section:** C1 is **not a new law.** It is ARCH-INV-1, restated by the sources as a context boundary. What is new is the **classification**: plane or context. The book records the change and does not decide it. This matters for the kernel, but only through the boundary questions: a plane under every context is a **candidate** to test as a kernel part, and one context among seven is a candidate application. Being cross-cutting does not make a mechanism kernel: a cross-cutting mechanism can still be delegable. *(Premise stated at the consolidation settlement, reviewer B.)* **F22: is the authority-record machinery a kernel plane or an application context?** Until F22 is settled, C6's kernel reading is on hold.
+
+**C1. Record ≠ act, realized as a boundary (Src; an instance of ARCH-INV-1, §1.14.2, and of §1.12).** `[CON-0133 · merged into ARCH-INV-1]`
+- **The boundary sentence:** "*Governance decides whether an act was authorized; BC-7 answers whether it was recorded — and refuses to answer anything else.*" [S0067 L144]. The PO/ARB's acceptance takes it into the accepted model [S0065 L29].
+- **The grant is split:** BC-7 owns the grant **record** (schema, registration, status, queryability). It does not own the grant's **authority content**: "what the scope means, who may grant, whether granting was right" [S0067 L51].
+- **The human act is moved out:** "Owning the registration of a thing is not owning the thing" [S0067 L52]. At the tactical stage this gives a reason against making the act an aggregate: "the act is the most *important* thing in the system — importance is not ownership" [S0071 L218].
+- **The law at its tactical grain:** "BC-7 can refuse a *malformed* act. It can never refuse an *unauthorized* one" [S0071 L293]. "Every one of these is a *record-consistency* rule." [S0071 L282], said of all its own domain policies.
+- **Its must-do half (the trivial-solution test):** a record that refuses everything also never answers a policy question. So the boundary needs its obligations, which the source lists: record, refuse illegal transitions, fold, answer read-only queries, reference and never contain (S0067 L73–77).
+- **Int:** §1.12 states that a machine can check only records, never acts. Here a design accepts that limit and draws its boundary along it. The line is the one through a concept of §6.3 (CON-0087): the record of a grant is on one side, its authority on the other.
+- **The cost, stated by the sources:** the store of that record is gitignored and has no provenance, so the record of authority is "the one governance artifact git cannot see" [S0067 L180] (C-3, not remedied).
+
+**C2. Owned and preserved invariants; a preserved invariant may be only partly enforced (Src; Ded).** `[CON-0132]`
+- **The sources' table (BC-7's own numbering, not Ch. 0 §0.5):** BC-7 owns I-1 (one mutation owner), I-3 (sticky STOPPED), I-4 (lifecycle record ≠ authority record) and I-10 (the record outranks prose). It preserves I-5 (only Governance writes authority), I-7 (process identity never authorizes) and I-8 (engineering never accepts its own work) [S0067 L59–69]. I-2 is mixed: it owns the "conjunction mechanics" and preserves "its authority premise" [S0067 L62].
+- **The partial case:** I-5 is enforced "on 2 of 5 transition types only" (`recordedBy ∈ {governance, human}` on COMPLETE and CONTINUATION; a free string on REGISTER, HANDOFF and START) [S0067 L65].
+- **Ded:** a preserved invariant has its owner elsewhere. Where the preserving context enforces only part of it, the rest is held by the owner's other means, here convention. Then it is stated, partly enforced and partly held (CON-0102).
+- **Int:** the distinction is the one the repository already uses for its product ("anonymity is constitutional, Messaging only preserves it", cited by the source [S0067 L57]). For this book it is a candidate for the **second boundary question** (must the kernel provide it?): a capability can preserve an invariant of the kernel without the kernel owning the capability.
+- **The HANDOFFs are not a breach; the STARTs remain one (corrected in theory turn F22, §9.6.7, as reviewed at TT1):**
+  - **not a breach:** the `recordedBy: architecture` entries [S0071 L237] are HANDOFFs, recorded by the current mutation owner, the actor DP-3 requires; a HANDOFF confers nothing [S0078 L201–204]. "I-5 is not wrong, it is being applied where it does not reach" [S0078 L230];
+  - **still open:** a producing lane "wrote its own seq-3 START into the work-item record" [S0071 L11], a practice "disclosed and accepted" [S0078 L294]. That breaches the roles law that Governance records STARTs (Ch. 1 §1.14.3), and `recordedBy` on a START names the origin of the act, not its recorder (OQ-10, S0078 L258);
+  - **I-5, restated:** the declared writer role of a grant is checked, and the grant path "sets `registeredBy = 'governance'` unconditionally" [S0078 L143], so 47/47 is structural, not evidence. The actual writer is unattested (T-4), and a second write-capable path exists (S0234 L20, in meaning).
+- **The "2 of 5" source query, answered:** the two recorder checks (COMPLETE, CONTINUATION) "are not I-5's"; they belong to G-1 and Inv E [S0078 L208]. So S0067's "2 of 5" counted checks of other rules against I-5.
+- **Endings that never ran, in S0071's census of 2026-08-17 (dated at TT1):** all 41 grants are AUTHORIZED, and none was ever observed changing [S0071 L46, L187]. CONTINUATION and FAIL occur 0 times in 117 transitions [S0071 L42], so the only exit from sticky STOPPED has never run. **Int (Ch. 1 §1.13):** whether authority can end is stated in the model and unexercised in the record. A concept with no instance is "a claim, not a fact" [S0071 L154]. *The book's own later recount of the live record found REVOKED 1 and CONSUMED 1 among 144 records (Ch. 1 §1.13.2); so endings have since been exercised, rarely.*
+- **"Realized by absence":** I-7 is preserved because "no code path reads process identity for a gate" [S0067 L67]. That is an absence claim. It needs an exhaustive search of the code paths, with its scope stated (CON-0120). The source marks it Observed, and does not state its search.
+
+**C3. The `authorized` check: a defect, or the boundary as designed? Two readings (Src; Int).**
+- **Reading 1 (S0058, the same day, earlier):** the subject-blind check is "direct, reproducible evidence" for a governance-gaps work item, "carried there as a finding, decided nowhere" [S0058 L88] (Ch. 5 §5.5 C6).
+- **Reading 2 (S0067):** "A context that cannot bind a grant to a session cannot be pretending to own authorization policy; the "defect" is boundary-conforming behaviour." [S0067 L83]. The mechanism's "measured inability to evaluate policy" is "not a gap to fix but **the boundary, realized as designed**" [S0067 L144].
+- **Ded (narrowed at settlement):** both readings are compatible with §5.5 C6's proof. A subject-blind check cannot enforce producer ≠ verifier. Reading 2 adds that BC-7 is not meant to. **Lane** separation is still enforced: roles are immutable per assignment (R8), a fresh verification needs a new assignment [S0058 L63], and HANDOFF names its receiver. What no mechanism enforces is the binding of a **process** to a lane. That binding is held by the processes' restraint and by Governance. The two readings differ on **whose gap** this is (BC-7's or Governance's), not on the fact.
+- **The name:** the command is called `authorized`, and it answers whether some grant carries a scope string. The sources' own rule applies to it: "never infer a boundary from a name" [S0062 L104]. The book records this as a homonym, the name of a query against what the query does.
+
+**C4. In BC-7, a derived value is computed from the log and never stored (Src; Ded; an instance of Ch. 4 §4.3 C5a).** `[CON-0134 · provisional]` (needs a fixed fold function; not new: Ch. 1 §1.14.1)
+- **The measurement:** `mutationOwner` has "**0 occurrences** — never persisted" in the 15 records, with 4 and 5 references in the two mechanism files [S0071 L47–48]. "**mutation ownership exists only as a computation.** It is written nowhere and derived everywhere." [S0071 L50]
+- **The proposed rule (T-1):** "**no derived projection may be stored, set, or accepted as input.** Storing one would create a second truth able to drift from the log" [S0071 L208].
+- **Ded (premise added at settlement):**
+  - a stored copy of a derived value agrees with its derivation only as long as every write updates both, so it can drift. Computing it on read cannot drift **if the fold function is fixed.** Here it is not: the interpreter can be redirected by an environment variable, `KOS_MECHANISM_PATH` [S0062 L112] (C-2). The derived state can then change with no change to the log;
+  - the price: the derived value is only as reliable as the log, and this log has no history outside itself (C1's cost). So no-drift is guaranteed, and the log's own integrity is not.
+- **The reference rule (T-2):** "A reference value is never dereferenced by BC-7" [S0071 L241]. **Ded (Ch. 1 §1.16.8):** a context that never dereferences a reference cannot check that it resolves. BC-7 can check that a `humanActRef` is **present**, never that it is **valid**. Validity is someone else's check, by this design.
+
+**C5. A negative invariant across two parts, and an invariant that would become true by construction (Src; Ded).**
+- **The source's argument for one aggregate:** no positive invariant spans transitions and grants: START "does not consult grants at all", and `authorized` "never consults the session" [S0071 L132–135]. But "I-4 is itself a spanning invariant — a negative one", which "still needs a holder that can see both" [S0071 L141]. Splitting "would make I-4 true by construction but would **relocate** the problem", to a new rule that binds two aggregates to one identity [S0071 L143].
+- **Ded:** under a split into two stores, each admitting only its own kind of entry, "never merged" can no longer fail. It becomes an invariant that cannot fail (Ch. 9 §9.4) and needs no holder. What needs a holder after the split is the new binding rule. So the source's argument holds as **relocation**, not as "a negative invariant needs a holder". The source says so itself in its third point. Its first point, taken alone, is stronger than its third supports.
+- **The choice is left open:** the source records the split as "the strongest rejected option — the PO/ARB may legitimately prefer it" [S0071 L219].
+
+**C6. Admission by three tests: language, ownership, change reason (Src; an instance of §6.2).**
+- **The tests:** language, ownership, change reason. "A context can pass all three with no code (rules-only contexts are real), but a context that fails the language test cannot be rescued by having code." [S0062 L14–20]
+- **Int (§6.2 C1):** the language test is stated as necessary. No combination is stated as sufficient, so admission is still underdetermined in the sense of §6.2. All the verdicts are graded `Inferred` with a confidence [S0062 L26–34].
+- **A capability is not a context:** for BC-4 the source confirms the capability and challenges the context. The capability is "real but realized entirely by the role model and human acts, not by anything with its own state" [S0062 L31]. This is §9.3 C4 (capabilities are not kernel operators, CON-0111) seen from the strategic side. The question is carried open [S0065 L35].
+- **What the platform is organized around:** the source finds that the most consequential executable capability, authority registration and audit, has no declared context and no capability ID [S0062 L60, L69]. **Int, for Ch. 9:** the one part of the platform that executes governance is the record half of authority. The act half stays outside the software. *Hyp (one line):* that a kernel's authority primitive splits the same way, into a record that can be mechanized and an act that cannot (A1, Ch. 1 §1.6).
+
+**C7. Two truth disciplines: adjudicated identity against folded occurrence (Src; Int).**
+- "Knowledge truth is **adjudicated** (a human accepts a meaning); workflow truth is **folded** (a deterministic computation over recorded facts). Merging would force one authority model onto both" [S0067 L163]. The boundary sentence: "*Knowledge Engineering holds the meaning; BC-7 holds the movement.*" [S0067 L178]
+- **Int:** for this book's knowledge model (Ch. 0 §0.3), this separates two kinds of state a kernel might hold: knowledge items, whose standing comes from acts, and the occurrence record of work, whose state is computed. *Hyp (one line):* that the two need different primitives.
+
+**C8. "Mechanically enforced" by a declared role set (Src; Int, a limit).**
+- The commission excludes the implementation role from the work item's role set, so that "no implementation changes" is "mechanically enforced, not merely written" [S0063 L6]; the landscape repeats it [S0067 L86].
+- **Int:** what the role set enforces is that no implementation lane can be **registered** in this record. It does not stop a file write: all lanes "share one worktree and one git identity" [S0062 L115]. So it is enforced in the record, and held by restraint in the repository. This is the "stated ≠ held ≠ enforced" split of CON-0102, at a finer grain.
+
+**C9. Further points from the same sources (added at the consolidation settlement S0036–S0065) (Src).**
+- **A test for the aggregate root:** "an invariant that spans several instances of a candidate proves the candidate is not the root" [S0071 L80]. It is a necessary condition only (a root must hold its invariants), as reviewer T3 noted.
+- **Identity scope:** a session name is "a **free string scoped to the record**, not a globally unique identity; nothing enforces uniqueness across work items" [S0071 L98]. Whether it is local or global is open (Ch. 1 §1.10).
+- **Closure asymmetry, a count only:** "33 REGISTER / 32 START / 16 COMPLETE" [S0071 L262]. About half of the lanes have no recorded completion. Whether that is a bookkeeping gap or an accurate picture is not judged by the source, nor here.
+- **"Handoff" contradicted within the line (added at the C13 settlement):** the domain model defines a Handoff as "The transition that moves mutation ownership from one assignment to another" [S0071 L66]. The verification and the refinement show that a HANDOFF confers nothing: the fold sets the owner to null, and ownership passes only at START (S0073 L151, in meaning; S0078 L204). So "mutation ownership" has two senses, pending after a handoff and actual after START, and S0071's definition is superseded by the later measurement.
+- **No clocks:** "sequence is `seq`, never wall-time authority" [S0067 L94]. **Int (Ch. 1 §1.16.2):** the record orders acts but does not date them with authority; the time of an act, where it matters, comes from elsewhere.
+
+## 6.5.4 Open questions
+
+- Is owns/preserves (C2) a test the kernel's boundary questions can use: does the kernel own an invariant, or only preserve one whose owner is a product or a constitution?
+- Which context owns the check that a reference is valid, if the record never dereferences (C4)?
+- Who owns the gap left by a subject-blind authorization check (C3): the record context or Governance?
+- **F4 (constitute or represent):** START needs a recorded HANDOFF and a recorded human act, so the record **gates** activation [S0071 L67]. Does a record that gates an act's effect only represent it (added after review C11/T3)?
+- **F22:** a kernel plane or an application context (C0)?
+
+## 6.5.5 What does not hold
+
+- **CON-0133 as a new concept.** It duplicates ARCH-INV-1 (§1.14.2), which the search missed. Merged; the classification (plane or context) is F22 (review C11/T3, critical finding).
+- **"No mechanism enforces the rule"** (C3). Narrowed: lane separation is enforced; the binding of a process to a lane is not (finding 12).
+- **"Computing on read cannot drift"** without its premise (C4). It holds only for a fixed fold function, and the interpreter is swappable (finding 9).
+- **"I-5 … stated, partly enforced, and not held"** (C2, added at the T3 settlement). Refuted for the HANDOFFs by S0078 (measured against the wrong part of the record). **And the first correction, "not a breach after all … I-5 enforced in full",** overreached: the self-recorded STARTs breach the roles law, and 47/47 is structural (theory turn F22, §9.6.7; review TT1 finding 6).
+- **"One human reviewer"** (lineage). Wrong: the S0064 reviews were written by AI, and the Principal agreed with them; these are two facts [PT-001]. First recorded as UNKNOWN (finding 10), then settled by testimony.
+- **C6's Hyp on the kernel's authority primitive.** On hold until F22 is settled.
+
+## References
+
+| Source | S-ID | Lines | Read |
+|---|---|---|---|
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ATTR-ARCH-001-stage2-bounded-context-confirmation.md` | S0062 | L14–20, L26–34, L31, L60, L69, L104, L115 | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-002-commission.md` | S0063 | L6, L19 (added at the consolidation settlement) | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-002-acceptance-registration.md` | S0065 | L29, L35 | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-verification-3-authorization.md` | S0058 | L88 | in order |
+| `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-002-architecture-landscape-v2.md` | S0067 | L9, L51–52, L57, L59–69, L83, L86, L144, L163, L178, L180, L33, L94 (added at the consolidation settlement) | topic-full (§12a) |
+| `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-bc7-domain-model-proposal.md` | S0071 | L11, L47–50, L72–73, L132–143, L208, L218–219, L241, L61, L66, L80, L98, L262 (added at the consolidation settlement) | topic-full (§12a) |
+| `docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-domain-model-refinement.md` | S0078 | L143, L201–208, L230, L258, L294 | topic-full (theory turn F22) |
+| Ch. 0 §0.3; Ch. 1 §1.6, §1.12, §1.16.8; Ch. 3 §3.2; Ch. 4 §4.3; Ch. 5 §5.5; Ch. 6 §6.2–6.4; Ch. 9 §9.3, §9.4 | — | — | existing homes |

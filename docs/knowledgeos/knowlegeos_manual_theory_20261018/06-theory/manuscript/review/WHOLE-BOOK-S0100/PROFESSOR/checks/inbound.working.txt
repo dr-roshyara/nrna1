@@ -1,0 +1,136 @@
+# 2026-10-19T21:00:52Z · python3 -I tmp/tools/inbound_citations.py §5.7 C3 §8.11 C1 §2.3 §9.1 C2 CON-0100 §3.1 §9.9
+== §5.7 C3  (home: 06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md; concept IDs at the claim: none)
+  -- claim: 5
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:16  | Ch. 5 §5.7 C3, gaps in the lifecycle vocabulary | extends (C9) |
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:83  **C9. A lifecycle with no verbs for refusing or withdrawing (Src; an extension of §5.7 C3; added after review C15).**
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:85  - **Int (§5.7 C3):** this is a second instance of a lifecycle vocabulary without a needed ending, after the engine's missing "retire" and "un-cancel" (S0080 L46
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:16  *Existing homes (book search "history"):* §1.2 (a claim's history is valid iff every change is labelled by a recorded act); §1.12 (valid vs verifiable); §1.13.2
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:97  6. **A history that is reconstructed is not history.** S0129 records the principle "**`History ≠ Reconstruction Guess`**" [S0129 L102], called new there and pla
+  -- concept: 0
+  -- section-only: 12
+     06-theory/manuscript/chapter_06/06.07-a-platform-drawn-without-its-kernel.md:119  | Ch. 0 §0.2; Ch. 1 §1.12, §1.13, §1.14, §1.14.3, §1.14.5; Ch. 5 §5.7; Ch. 6 §6.5, §6.6; Ch. 8 §8.8; Ch. 9 §9.6; CON-0134; THEORY-MAP (S0164 note); RESEARCH-PUR
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:41  - **Int (an analogous rule, not the boundary test itself):** RESEARCH-PURPOSE's boundary test asks whether a capability is **necessary** (a counterfactual remov
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:71  - **The third off-record verification in the estate.** The third verification's lane "has no `START` on the record"; "the human PO/ARB's `START` act **did occur
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:72  - **Delivery ahead of the record:** a correction "finished its work and said so in the artifact, but **its lane never handed off**" [S0094 L25]; "the work is re
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:80  - **Two differently ordered chains on one day.** The adoption repeats the ARB's order "capability → ownership → bounded context / stewardship → role → agent → s
+     06-theory/manuscript/chapter_08/08.10-what-adoption-establishes-and-how-authorship-is-shown.md:113  | Ch. 1 §1.12, §1.14, §1.16.6; Ch. 5 §5.6, §5.7; Ch. 6 §6.6, §6.7; Ch. 8 §8.4, §8.6, §8.9; Ch. 9 §9.5, §9.6, §9.7, §9.8; RESEARCH-PURPOSE | — | — | existing hom
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:20  | Ch. 5 §5.7 C1, closure needs the deliverable and the lifecycle | supports (C6) |
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:70  - The advisor separates "the **role model**" from "the **workflow state machine**": "The roles tell us *who may act*; the lifecycle tells us *what happens and i
+     06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md:102  | Ch. 1 §1.12, §1.14.3, §1.14.5; Ch. 5 §5.6, §5.7; Ch. 8 §8.6, §8.9, §8.10; Ch. 9 §9.8 | — | — | existing homes |
+     06-theory/manuscript/chapter_09/09.08-is-history-a-primitive.md:142  | Ch. 1 §1.2, §1.12, §1.14.1, §1.16.2, §1.16.6, §1.16.8; Ch. 2 §2.11; Ch. 5 §5.7; Ch. 6 §6.5, §6.7; Ch. 9 §9.7; BOOK-OUTLINE; THEORY-MAP | — | — | existing home
+     06-theory/THEORY-MAP.md:144  | F28 | **A synthesis adopted as truth (window C14; candidate):** can a recorded prose synthesis hold standing as "the authoritative state" beside the record (S
+     06-theory/THEORY-MAP.md:228  - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated]`; a
+== §8.11 C1  (home: 06-theory/manuscript/chapter_08/08.11-identity-across-a-continuation.md; concept IDs at the claim: ['CON-0157'])
+  -- claim: 5
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:310  *Further evidence (challenging and extending; status unchanged).* The laws are stated, and the estate breaches them in practice: lanes recorded their own STARTs
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:543  | book | — | §6.5 C2; §8.9 C9; §8.10 C7; §8.11 C1, C3, C6; §9.7 | 1.14.1-7, 1.14.3-2, 1.14.3-3, 1.14.5-1 |
+     06-theory/manuscript/chapter_01/01.99-change-log.md:51  | 2026-10-19 | §1.14 integrated (window C18; Rulebook §4 step 2, entry 52a): 47 claim heads restated as claims, numbers 1.14.1-1 … 1.14.5-14 kept; the C13 form-
+     06-theory/manuscript/chapter_01/01.99-change-log.md:53  | 2026-10-19 | §1.14 integration corrected at the C18 settlement: 1.14.1-7's head (well-definedness sketched, not established) and body made conditional (Kleene
+     06-theory/manuscript/chapter_09/09.09-is-trust-a-primitive.md:16  *Existing homes (book search "trust"):* §1.3 (evidential grade); §1.6 (A1); §1.12 (the residual trust assumption); §8.6 (independence of a check); §8.9 C1, C2; 
+  -- concept: 2
+     06-theory/CONCEPT-REGISTER.tsv:158  CON-0157	a continuation attributed an act in its inherited context to itself	a context-compaction continuation, reading its own identifier correctly, attributed
+     06-theory/THEORY-MAP.md:209  - **§8.11:** a context-compaction continuation attributed an act in its inherited context to itself; every self-declaration was true; identifiers do not track w
+  -- section-only: 3
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:272  *Further evidence on 1.14.2-1 (supporting and challenging, same estate; status unchanged).* Supporting: the workflow engine refuses a grant without a human-act 
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:401  *Further evidence (related; status unchanged).* The same structure appears for analyses: a verification charge asks whether an analysis "REMAINS A DECISION-PREP
+     06-theory/manuscript/chapter_09/09.09-is-trust-a-primitive.md:13  - **The estate's own records** (§1.12, §8.6, §8.9–§8.11) supply instances that bear on trust without using the word in these senses. They are a separate, observ
+== §2.3  (home: 06-theory/manuscript/chapter_02/02.03-what-a-conflict-is.md; concept IDs at the claim: none)
+  -- claim: 0
+  -- concept: 0
+  -- section-only: 15
+     06-theory/manuscript/chapter_00/00.02-what-knowledgeos-names.md:37  - formal analysis → Ch. 2 §2.3–§2.7;
+     06-theory/manuscript/chapter_00/00.05-the-invariants.md:10  | I-4 | Contradictions stay visible: they coexist at rest and are resolved at use | design rule | **Open** for machine users, who need one answer [Synth L57]. *
+     06-theory/manuscript/chapter_01/01.14-state-is-not-authority-roles.md:141  - **two conflicting decisions** (A and a later B, both properly made): each is judged **on its own**. Whether B silently replaces A ("later prevails") or both s
+     06-theory/manuscript/chapter_02/02.02-the-rule-as-a-formal.md:43  > **Revised 2026-10-18 (pilot file 5, §2.8).** This two-valued "applies iff …" holds only when every relevant scope dimension is *specified*. Under the ARB ruli
+     06-theory/manuscript/chapter_02/02.04-most-apparent-contradictions-are-not.md:26  - **CONDITIONAL is undefined in the source.** Possibly "conflict only under further conditions", which the region-valued result of §2.3(c) already expresses.
+     06-theory/manuscript/chapter_02/02.04-most-apparent-contradictions-are-not.md:53  - If none of these dissolves it, the remainder is a genuine conflict in the sense of §2.3 and must be reported unresolved (§2.5); the session's "picked one" wou
+     06-theory/manuscript/chapter_02/02.05-why-priority-numbers-are-rejected.md:22  - **Int: voidness is partial, and on the narrow reading bounded by the conflict region.** By §2.3, a conflict has a **region**: the states where both rules appl
+     06-theory/manuscript/chapter_02/02.05-why-priority-numbers-are-rejected.md:24  - **Where it is computable.** The region is defined for rules (§2.3). Some of the listed lower artifacts are not rules: a **baseline** is a frozen set of artifa
+     06-theory/manuscript/chapter_02/02.08-scope-silence-and-three-valued-applicability.md:85  A conflict verdict (§2.3) over an *unknown* overlap is therefore **UNKNOWN, never CONSISTENT**. This is the formal reason RM's UNKNOWN value [RM L191] is requir
+     06-theory/manuscript/chapter_02/02.08-scope-silence-and-three-valued-applicability.md:227  **Idea 4: we reasoned with an environment we do not have (Src, EV L105–111).** Every worked example in the rule discussions used "production", yet no such syste
+     06-theory/manuscript/chapter_02/02.08-scope-silence-and-three-valued-applicability.md:255  | E6 | **not analysable**: (a) **undecidable or unresolved** in the logic used; (b) **resource-exhausted** (time-out): the analysis gave up, so the domain may b
+     06-theory/manuscript/chapter_02/02.09-how-strongly-a-rule-binds.md:38  2. **Effects: obligation side only, with a partial strength scale.** After RM-1 a rule's effect is one of **oblige** (MUST, SHOULD) or **forbid** (MUST_NOT, SHO
+     06-theory/manuscript/chapter_02/02.09-how-strongly-a-rule-binds.md:39  - **Proven conflicts arise only between mandatory effects**, from the joint unsatisfiability of their propositions on the effective overlap (§2.3). This include
+     06-theory/manuscript/chapter_02/02.99-change-log.md:10  | 2026-10-18 | §2.0, §2.9–2.11 from RS; §2.2 element list revised to 10 parts; §2.3(b) revised (permission vs prohibition = unauthorised exception) | pilot 2, f
+     06-theory/manuscript/chapter_02/TODO.md:22  | **T2-01** | **Conflict between decisions** | undefined | T1-15 | Chapter 2 defines a conflict precisely only for **rules** (joint unsatisfiability of mandator
+== §9.1 C2  (home: 06-theory/manuscript/chapter_09/09.01-kernel-scaffold.md; concept IDs at the claim: ['CON-0100'])
+  -- claim: 5
+     06-theory/manuscript/chapter_06/06.06-agent-harnesses-linked-not-copied.md:77  - **The stop conditions are the refusal half only:** nine conditions to stop [S0066 L606–616]. An agent that always stops meets them all (the trivial case of §9
+     06-theory/manuscript/chapter_09/09.02-parts-and-whole.md:19  - **Link to §9.1:** the litmus is the corpus's per-element condition, like preservation (P) in §9.1 C2; "can bootstrap a product" is a required capability (Req)
+     06-theory/manuscript/chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md:19  - The proposed invariant: "*the executing session holds the CURRENT governed rule at START*" [S0091 L188]. **It is degenerate on its own:** a system that never 
+     06-theory/manuscript/chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md:44  - **Int:** a must-never gate over a capability that has produced nothing lets nothing pass. Its must-do half has to exist first (§9.1 C2; C1 above).
+     06-theory/manuscript/chapter_09/TODO.md:9  | **T9-01** | **The kernel's required capabilities** | undefined | §9.1 C2 | The test used two invented requirements. Which capabilities KnowledgeOS's kernel mu
+  -- concept: 7
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:3  *Window C8 (2026-10-19). Sources: S0045 (2026-08-03) and S0042 in index order; S2834 (2026-09-07) added under §12a. **Status: reviewed in C8 (2026-10-19); settl
+     06-theory/CONCEPT-REGISTER.tsv:101  CON-0100	kernel = preservation with refusal ∧ required capabilities; minimal kernel	P: m(s,x) ∈ 𝒮_I ∪ {⊥}; Req: each required capability reachable from s0 using
+     06-theory/CONCEPT-REGISTER.tsv:106  CON-0105	portability of parts ≠ sufficiency of the whole	per-element properties do not imply whole-set sufficiency (counterexample: {record} vs {record, grant})
+     06-theory/CONCEPT-REGISTER.tsv:111  CON-0110	observed governance was preventive only	refuse · block · constrain observed; the generative half (promotion, extraction, improvement from evidence) nev
+     06-theory/CONCEPT-REGISTER.tsv:112  CON-0111	capabilities are not kernel operators	a system capability may be a composite of kernel mechanisms; audit by two dimensions (can it do this? does it nee
+     06-theory/THEORY-MAP.md:172  - **Kernel:** Ch. 9 opened. §9.1: preservation alone admits the trivial kernel `[CON-0099 ✓, closed reading]`; with required capabilities, ∅, refuse and noop fa
+     06-theory/manuscript/BOOK-OUTLINE.md:71  | The scaffold, its degeneracy, the repair, existence by one check | §9.1 | ✓ (CON-0099, scoped) / ~ (CON-0100) |
+  -- section-only: 27
+     06-theory/manuscript/chapter_05/05.04-gap-operator.md:39  - **"Requirement" here** (added at the consolidation settlement S0036–S0065): an epistemic requirement of a contract EC_t, met or not by the knowledge state (Sa
+     06-theory/manuscript/chapter_09/09.02-parts-and-whole.md:7  Before the corpus tested its minimum kernel, it warned that checking each part is not the same as checking the set. The test then failed, for this reason among 
+     06-theory/manuscript/chapter_09/09.02-parts-and-whole.md:18  - **Ded (a non-implication, by counterexample):** in §9.1 C4, {record} and {record, grant} have the same per-element status (each mechanism preserves the invari
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:9  The corpus's own validation report finds that everything KnowledgeOS was seen to do was refusing, blocking or constraining. What it was built to do as well, lea
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:18  **C2. An analogy to §9.1, with its limits (Int; depends on §9.1, unverified; restated after review C8).**
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:19  - **The analogy:** §9.1 separates what must never happen (preservation) from what the kernel must be able to do (required capabilities). S0045 separates refusin
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:21  1. §9.1's must-never items are **properties** of a mechanism set. S0045's refusals are **mechanisms**, guards on others' work. Observing refusals does not show 
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:22  2. Guards put the platform in §9.1's **guard reading**, where the existence result (§9.1 C3) does not apply.
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:25  - So the claim is an analogy only. It does not say that S0045 has the form of §9.1's distinction.
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:35  - **Int:** this is RESEARCH-PURPOSE's minimality test (not derivable from other primitives) applied to capabilities. It separates a **required capability** (wha
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:36  - "necessity" and "sufficiency" of a candidate basis "become independent claims" [S2834 L1431–1437]. In §9.1's terms, necessity corresponds to **minimality** an
+     06-theory/manuscript/chapter_09/09.04-invariants-that-cannot-fail.md:67  - So the model, like §9.1's scaffold, has must-never rules and no must-do. Which must-do it needs is open.
+     06-theory/manuscript/chapter_09/09.04-invariants-that-cannot-fail.md:86  | Ch. 1 §1.6, §1.14.1, §1.14.3, §1.14.5, §1.16.1, §1.16.7; Ch. 9 §9.1 | — | — | existing homes |
+     06-theory/manuscript/chapter_09/09.06-boundary-test-authority-recording.md:15  - §9.1–§9.3; §6.5;
+     06-theory/manuscript/chapter_09/09.06-boundary-test-authority-recording.md:71  **The form of the test (§9.1; RESEARCH-PURPOSE):**
+     06-theory/manuscript/chapter_09/09.06-boundary-test-authority-recording.md:260  | RESEARCH-PURPOSE (the three boundary questions, the relocation test); Ch. 0 §0.5; Ch. 1 §1.6, §1.12, §1.13, §1.14.1–1.14.3, §1.16.2, §1.16.6, §1.16.7; Ch. 6 §
+     06-theory/manuscript/chapter_09/TODO.md:10  | **T9-02** | **The state space 𝒮** | undefined | §9.1; F13 | The test used a three-part toy state. The kernel's real attributes are not fixed (F13) | consolida
+     06-theory/manuscript/chapter_09/TODO.md:11  | **T9-03** | **Two notions of minimality; the pool** | inconsistent | §9.1 C5; RESEARCH-PURPOSE | Mechanism minimality depends on the pool and its granularity 
+     06-theory/manuscript/chapter_09/TODO.md:12  | **T9-04** | **Uniqueness of the minimal kernel** | open | §9.1 C4–C5 | In the toy model the minimal kernel is unique for the fine-grained pool and not unique 
+     06-theory/CONCEPT-REGISTER.tsv:100  CON-0099	kernel scaffold as written is degenerate	"preservation (safety) + ""no proper subset preserves"": ∅ is the only minimal set; A1 is under-specified with
+     06-theory/THEORY-MAP.md:152  | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional 
+     06-theory/THEORY-MAP.md:153  | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definiti
+     06-theory/THEORY-MAP.md:182  - **Say no, not yet learn (§9.3):** in S0045 Run 1, governance observed only as preventive at canon level `[CON-0110 ✗ as "only"]`; an analogy to §9.1 with four
+     06-theory/THEORY-MAP.md:273  - **Language:** "Zero" has a fourth sense (§5.4, Z4). "Requirement" names two objects (§5.4 vs §9.1). BC-7's I-n are not the book's I-n (§6.5). The assurance-mo
+     06-theory/THEORY-MAP.md:349  - Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.6) · 6 (§6.1–6.5) · 8 (§8.1–8.7) · 9 (§9.1–9.5) · 7 planned.
+     06-theory/manuscript/BOOK-OUTLINE.md:21  | **Requirement / contract** | §5.4 (EC_t, Sat, Δ); §9.1 (Req: reachable states). Two objects, one word | ~ | the relation is open (T9-01) |
+     06-theory/manuscript/BOOK-OUTLINE.md:65  The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F24, F13a). New at the consolidation S0036–S0065: F23 (trust), F24 (conflicting claims). Sections that s
+== CON-0100  (home: —; concept IDs at the claim: ['CON-0100'])
+  -- claim: 0
+  -- concept: 8
+     06-theory/manuscript/chapter_09/09.01-kernel-scaffold.md:25  **C2. The repair: required capabilities, and preservation with refusal (Ded; a proposal of this book).** `[CON-0100 · provisional]`
+     06-theory/manuscript/chapter_09/09.03-say-no-and-learn.md:3  *Window C8 (2026-10-19). Sources: S0045 (2026-08-03) and S0042 in index order; S2834 (2026-09-07) added under §12a. **Status: reviewed in C8 (2026-10-19); settl
+     06-theory/CONCEPT-REGISTER.tsv:101  CON-0100	kernel = preservation with refusal ∧ required capabilities; minimal kernel	P: m(s,x) ∈ 𝒮_I ∪ {⊥}; Req: each required capability reachable from s0 using
+     06-theory/CONCEPT-REGISTER.tsv:106  CON-0105	portability of parts ≠ sufficiency of the whole	per-element properties do not imply whole-set sufficiency (counterexample: {record} vs {record, grant})
+     06-theory/CONCEPT-REGISTER.tsv:111  CON-0110	observed governance was preventive only	refuse · block · constrain observed; the generative half (promotion, extraction, improvement from evidence) nev
+     06-theory/CONCEPT-REGISTER.tsv:112  CON-0111	capabilities are not kernel operators	a system capability may be a composite of kernel mechanisms; audit by two dimensions (can it do this? does it nee
+     06-theory/THEORY-MAP.md:172  - **Kernel:** Ch. 9 opened. §9.1: preservation alone admits the trivial kernel `[CON-0099 ✓, closed reading]`; with required capabilities, ∅, refuse and noop fa
+     06-theory/manuscript/BOOK-OUTLINE.md:71  | The scaffold, its degeneracy, the repair, existence by one check | §9.1 | ✓ (CON-0099, scoped) / ~ (CON-0100) |
+  -- section-only: 0
+== §3.1  (home: 06-theory/manuscript/chapter_03/03.01-dimensions.md; concept IDs at the claim: none)
+  -- claim: 0
+  -- concept: 0
+  -- section-only: 15
+     06-theory/manuscript/chapter_00/00.03-the-knowledge-model.md:66  - **Developed in Chapter 3** (revision RC-41): the six dimensions with their concept IDs (§3.1), what is not a dimension (§3.2), kinds and the category test (§3
+     06-theory/manuscript/chapter_03/03.02-derived-attributes.md:37  **Ded.** The intent function depends on **owner**, which is **not** one of the six dimensions (§3.1). The model is therefore not closed under its own derived at
+     06-theory/manuscript/chapter_03/03.03-kinds.md:9  The 2026-08-03 meta-model discovery extends §3.1's formula with a kind [S0009 L65–69]:
+     06-theory/manuscript/chapter_03/03.06-relationships.md:42  **Int:** owner appears here as an **attribute** of every concept, and for artifacts as a field. That places owner outside the six dimensions of §3.1, which bear
+     06-theory/manuscript/chapter_03/03.06-relationships.md:94  - the test includes the document itself [L148], as S0016's test did (§3.1, review C3 notes);
+     06-theory/manuscript/chapter_03/TODO.md:17  | **T3-09** | **CON-0006 operational state: INVALID (partly valid)** | undefined carrier (MM-4) | §3.1 | Does the value belong to the artifact or to the rule it
+     06-theory/CONCEPT-REGISTER.tsv:2  CON-0001	nature (dimension)	what kind of thing a knowledge item is (decision, definition, constraint, description, finding, measurement, skill); a rule stays a 
+     06-theory/CONCEPT-REGISTER.tsv:3  CON-0002	representation (dimension)	how a knowledge item is encoded (executable, recorded, conversational, tacit). Defined: Ch. 3 §3.1	S0016 L42; GKC (Ch. 0 §0.
+     06-theory/CONCEPT-REGISTER.tsv:4  CON-0003	governance status (dimension)	the lifecycle position of an item (draft … archived; 8 executable values in statuses.yaml). Defined: Ch. 3 §3.1	S0016 L43
+     06-theory/CONCEPT-REGISTER.tsv:5  CON-0004	authority scope (dimension; book: canon scope)	how far a knowledge item reaches (context-local, project, platform, constitutional / runtime). Defined: 
+     06-theory/CONCEPT-REGISTER.tsv:6  CON-0005	evidence status (dimension)	how strongly a claim is held: observed · inferred · hypothesized. Defined: Ch. 3 §3.1	S0016 L45; S0009 L69; S0013 L77		chap
+     06-theory/CONCEPT-REGISTER.tsv:7  CON-0006	operational state (dimension)	whether a rule bites: enforced · advisory · unexercised. Defined: Ch. 3 §3.1	S0016 L46, L127-135; S0008 L67		chapter_03/0
+     06-theory/THEORY-MAP.md:125  | F6 | Governance status: one dimension, or standing and lifecycle split apart (PM-1)? | definitional | Ch. 3 §3.1 |
+     06-theory/THEORY-MAP.md:131  | F13 | **The kernel's attribute set (state space 𝒮).** Ch. 1's labels (provenance, evidential grade, standing, visibility, owner, identity I-0) and Ch. 3's six
+     06-theory/manuscript/BOOK-OUTLINE.md:11  | **Knowledge object and identity** | §0.3 the knowledge model; §1.5 knowledge is not its carrier; §1.10 identity needs governed names; §3.1 dimensions; §3.3 ki
+== §9.9  (home: 06-theory/manuscript/chapter_09/09.09-is-trust-a-primitive.md; concept IDs at the claim: none)
+  -- claim: 0
+  -- concept: 0
+  -- section-only: 3
+     06-theory/THEORY-MAP.md:139  | F23 | **Trust as a primitive?** The central question asks how knowledge can be trusted, and the book has no trust concept. S0913 proposes Trust(a, d, c, t), c
+     06-theory/THEORY-MAP.md:206  **Theory turn 4, trust (§9.9; reviewed by two reviewers and settled 2026-10-19):** at least three senses (source T-a, knowledge item T-c, record T-b); T-a a con
+     06-theory/manuscript/BOOK-OUTLINE.md:19  | **Trust** (F23) | **§9.9 (theory turn 4)**: three senses; trust in a source a conditional, definitional reduction (premises: faithful outcome records, adjudic
