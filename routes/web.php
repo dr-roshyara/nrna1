@@ -563,66 +563,8 @@ Route::get('/privacy-policy', function () {
 // ============================================================================
 // DIAGNOSTIC ROUTES (Development/Testing Only)
 // ============================================================================
-Route::get('/test/email', function () {
-    try {
-        // Test 1: Check mail config
-        $config = [
-            'mailer' => config('mail.default'),
-            'host' => config('mail.mailers.smtp.host'),
-            'port' => config('mail.mailers.smtp.port'),
-            'encryption' => config('mail.mailers.smtp.encryption'),
-            'username' => config('mail.mailers.smtp.username'),
-            'from_address' => config('mail.from.address'),
-            'queue_driver' => config('queue.default'),
-        ];
-
-        \Log::info('📧 Email Configuration Test', $config);
-
-        // Test 2: Send a test email
-        \Illuminate\Support\Facades\Mail::raw('This is a test email from Public Digit.', function ($message) {
-            $message->to('roshyara@gmail.com')
-                ->subject('Public Digit - Email Configuration Test');
-        });
-
-        \Log::info('✅ Test email sent successfully');
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Test email sent successfully to roshyara@gmail.com!',
-            'config' => $config,
-            'check_logs' => 'Check storage/logs/laravel.log for details'
-        ]);
-    } catch (\Exception $e) {
-        \Log::error('❌ Email configuration test failed', [
-            'error' => $e->getMessage(),
-            'exception_class' => get_class($e),
-            'trace' => $e->getTraceAsString()
-        ]);
-
-        return response()->json([
-            'success' => false,
-            'error' => $e->getMessage(),
-            'type' => get_class($e),
-            'check_logs' => 'Check storage/logs/laravel.log for full trace'
-        ], 500);
-    }
-})->name('test.email');
-
-// Test route for email diagnostics
-Route::get('/test-email', function () {
-    $user = \App\Models\User::first();
-    if (!$user) {
-        return 'No user found';
-    }
-    
-    try {
-        $result = $user->notify(new \App\Notifications\SendFirstVerificationCode($user, 'TEST123'));
-        return 'Email sent! Result: ' . ($result ? 'true' : 'false');
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
-
+// The public mail test routes (/test/email, /test-email) were removed: they were
+// unauthenticated, sent mail and exposed the mail configuration (PBDIGIT-305).
 
 // Diagnostic endpoint - check demo election setup
 Route::get('/diagnostic/demo', [App\Http\Controllers\DiagnosticController::class, 'diagnoseDemo'])

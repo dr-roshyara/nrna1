@@ -181,6 +181,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-302`](PBDIGIT-302-mail-transport-tls-policy.md) | **Mail transport TLS policy and the misleading `verify_peer` block** (STARTTLS opportunistic on 587; port 465 used for SES; check symfony/mailer 7.4) | — | `OPEN` · not authorised |
 | [`PBDIGIT-303`](PBDIGIT-303-stale-middleware-order-integration-test.md) | **Integration test expects `TenantContext` in the `web` group**, contrary to the deliberate route-middleware design (`bootstrap/app.php:39`); `tests/Integration` is in no default suite | — | `OPEN` · not authorised |
 | [`PBDIGIT-304`](PBDIGIT-304-psr4-autoload-cleanup.md) | **PSR-4 autoload cleanup**: 11 classes skipped by Composer (3 stale duplicates, 2 dead classes, 1 misplaced model, 5 test namespace/class issues) | — | `IN PROGRESS` · plan approved 2026-10-16 |
+| [`PBDIGIT-305`](PBDIGIT-305-remove-public-mail-test-routes.md) | **Public mail test routes removed** (`/test/email` sent mail and returned the SMTP username; `/test-email` sent a verification code to the first user; both unauthenticated) | — | `IMPLEMENTED` · awaiting acceptance and deployment |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
