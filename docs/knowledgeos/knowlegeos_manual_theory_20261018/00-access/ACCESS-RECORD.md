@@ -316,3 +316,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Run by the coordinating session (Rule Reviewer), not the Professor. No book file is changed.
 - *Closing line (2026-10-19T15:17:27Z):* completeness test scored: found 6 of 7 planted gaps (O1 missed; O3, O5 partly). Files in `06-theory/manuscript/review/TEST-C10-planted-gaps/`.
 - *Closing line (2026-10-19T15:19:31Z):* inventory saved (STEP1-INVENTORY.md); report saved (REVIEW-REPORT.md); settled (SETTLEMENT.md). One commission, one step-2 message.
+
+## Entry 2026-10-19T15:27:29Z: planted-gap test for the consolidation review S0036–S0065 (Rulebook §12), sealed before the reviewers start
+- **Prepared by** the Rule Reviewer session, not the Professor. Base: the frozen sections at `adbe16c5c`.
+- **Test copies** of three in-scope sections, with points removed or distorted: `06-theory/manuscript/review/CONSOLIDATION-S0036-S0065/TEST-COPIES/` (§6.4, §8.6, §9.2). Both reviewers receive these copies **instead of** the originals of those three sections; all other sections as frozen.
+- **Answer key** kept outside the workspace until scoring; sha256 `c174485276effc01a10279a47d82666119a107f3c34cdecb425dff08ef5c7077`.
+- The Professor does not open, diff or describe the test copies, and does not tell the reviewers that a test is running.
