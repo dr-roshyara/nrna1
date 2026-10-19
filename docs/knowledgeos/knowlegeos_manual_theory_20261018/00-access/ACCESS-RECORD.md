@@ -374,3 +374,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Read-only.
 - *Closing line (2026-10-19T18:05:22Z):* inventory saved; report saved; settled. One commission, one step-2 message.
 
+## Entry 2026-10-19T18:06:55Z: theory turn 3 (history), topic review, two reviewers in parallel (Opus, Sonnet), recorded before the reviewers start
+- **Grant:** the Principal's instruction (theory turns 3 and 4 from BOOK-OUTLINE "missing"); Rulebook §12b (two reviewers on different models, entry 51) and step 9 (the brief lists the C15 settlement changes).
+- **Step 1, blind (each reviewer, independently):** S0095 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-record-integrity-disposition.md` · S2782 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-070417_theory-part-19-persistence-as-semantic-preservation.md` · S0129 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md`.
+- **Step 2:** Ch. 9 §9.8; STEP8-AND-SCAN; register CON-0148, 0149; BOOK-OUTLINE primitives table; changed theory of the C15 settlement (§6.7, §9.7, §9.6.6a, §5.7 C1, §1.13.3-2, §1.12 header, register CON-0138, 0142, 0144, 0146, 0147, map F26).
+- Read-only. Neither reviewer sees the other's report.
+
