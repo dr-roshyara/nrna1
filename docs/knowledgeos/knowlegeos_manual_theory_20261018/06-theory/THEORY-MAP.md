@@ -142,6 +142,9 @@
 | F26 | **Order of acts (theory turn 2; scoped after review C15):** where act times are absent, tied or untrusted, does the evaluator CE work on (a) one global total order of record positions (a uniqueness, one serialization point, K4 = yes for positions), (b) a partial order answering U where acts are incomparable (S2775 L1650–1688, in meaning), or (c) act-time order with a tie rule needing no serialization point? §1.14.1 orders by act time first | architecture | Ch. 9 §9.7 Analysis 2 step 2; §9.6.6a items 2–4 |
 | F27 | **The record view ρ (theory turn 2):** an organisational policy (§1.14.1 safeguard 3) or a parameter of each query (S2775's three queries)? Reserved decision 2 stays the Principal's | normative | Ch. 9 §9.7 Analysis 2 step 3 |
 | F28 | **A synthesis adopted as truth (window C14; candidate):** can a recorded prose synthesis hold standing as "the authoritative state" beside the record (S0080 L8–10), against "the record outranks prose" (S0078 L163)? Compatible reading: standing for a dated classification only | normative | Ch. 5 §5.7 C7 |
+| F29 | **State history vs act history (theory turn 3):** must the kernel answer act history ("what happened, who authorized it", S0129 L47) as well as state history, or does act history belong to an application that reads the record? | architecture | Ch. 9 §9.8.8 |
+| F30 | **H1′ vs absolute append-only (theory turn 3):** may a kernel record lose entries by a recorded act (retention, law; S2782 L1873–1905), or never? | normative | Ch. 9 §9.8.8 |
+| F31 | **The regress of θ(u) (theory turn 3):** which meta-evaluator or root fixes the policy in force for policy items? | architecture | Ch. 9 §9.8.8 |
 | F15 | **What Sat refers to:** satisfied **in the world**, or satisfied **by what the system believes**? It decides whether a larger gap can be progress under a fixed contract (S2377 L1745 vs L2171–2256) | definitional | Ch. 5 §5.4 C8 (review C7, finding 7) |
 | F16 | **Granularity of mechanisms:** "minimal kernel" depends on the pool the interface A offers; one coarse mechanism can be a minimal kernel | definitional | Ch. 9 §9.1 C4–C5; T9-03 (review C7, finding 2) |
 | F17 | **What a mechanism is:** a transition (closed reading) or also a guard on others' transitions; existence (§9.1 C3) holds only under the first | definitional | Ch. 9 §9.1 C1, C3; EXT-011 L230 (review C7, finding 3) |
@@ -200,7 +203,7 @@
 **Window C16, S0087–S0091 (provisional; review pending):**
 - **§8.9:** content assessment vs provenance binding `[CON-0150 ~]`; recusal is not clearance, the eligible-verifier pool can run out `[CON-0151 ~]`; the absence discipline broken one scope wider; a behaviour is not a modelled capability (live, narrow, unmodelled); a correction that does not reach the reader; a count that drifts because governed work happened; a shared contract changes only by its own act `[CON-0152 ~, Hyp]`; a programme is not an assignment.
 - **§1.12 integrated (step 2, entry 52a).** §6.7 C1: the diagrams were untracked on 2026-08-19 (S0090 L57).
-- **Theory turn 3 (§9.8), under review by two reviewers:** history as three record properties H1–H3 `[CON-0148 ~]`; the record a missing candidate primitive `[CON-0149 ~, Hyp]`.
+- **Theory turn 3 (§9.8; reviewed by two reviewers and settled 2026-10-19):** state history decomposes into H1′, H2, H3a/H3b and the evaluator, conditional `[CON-0148 ✗ as stated; restated ~]`; relative to the book's authority (§1.2, §1.16.2) and policy (RM-3) history is not independent, so its status as a primitive turns on the split of authority (valid vs verifiable): **for the Principal**; truthful history needs H4 soundness and H5 completeness or marked absence; S1609's congruence test; the record as a primitive `[CON-0149 ~, Hyp]`; forks F29–F31.
 
 **Window C15, S0081 + S0083–S0086 (reviewed and settled 2026-10-19):**
 - **§6.7, the C4 proposal set:** a self-declared proposal; the three C4 views draw no kernel/application line and disagree on the system boundary; S0084 draws an adapter/core line; grants, handoffs and policy in different homes; the authorizer's arrow ambiguous (possibly notation); testing the direction law needs a partition and identifiable dependencies `[CON-0147 ~]`; an output-only check confirms its inputs exactly when the fibre is a singleton `[CON-0146 ✗ as stated; restated ✓ as mathematics]`; verification never reaches acceptance; a seven-verb lifecycle with no negative verbs.
@@ -209,13 +212,13 @@
 
 **Window C14, S0076–S0080 (reviewed and settled 2026-10-19):**
 - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated]`; a supersession is recognized only when recorded `[CON-0145 ✗ as stated]`; registered, never activated, closed (a subtype of §8.6 C3); stability of an accepted model as a *should*, not A1; a synthesis adopted as truth (F28); in BC-7's model the judged party never supplies its premise (T-1a); no context owns who produced a fact; the accepted model kept a statement already shown false.
-- **§1.13 rewritten in form** (body byte-identical; header corrected; the "REALIZED" anchor corrected to S0015 L58).
+- **§1.13 rewritten in form** (body byte-identical; header corrected; the "REALIZED" anchors S0014 L68 and S0015 L58, as re-checked at the C15 settlement).
 - **Not yet in the book (minor):** precision vs integrity (S0076 L16); accepting a verification ≠ accepting the model (S0076 L34); no cosmetic closure (S0079 L47); kinds of non-closure (S0079 L44–67); sequencing to avoid encoding an unresolved fork (S0080 L18); OQ-13 (S0078 L266).
 
 **Theory turn 2, the evaluator CE (§9.7; reviewed and settled 2026-10-19):**
 - an evaluator of standing is necessary (Principal's act); §1.14.1's CE is **not yet a function** for any θ (covers, actor–holder link, non-monotone υ, recursive σ);
-- CE's order is a uniqueness: F26; recording by set union (§9.6.6a items 3–4) holds only under F26(b);
-- K5 restated with a time axis `[CON-0143 ~]`; under K3 and K5 the definition, coverage relation, root and policy values need one authoritative, versioned home, not shown to be the kernel `[CON-0142 ✗ as stated]`;
+- CE's order is a uniqueness only where act times are absent, tied or untrusted (F26, three options; scoped at the C15 settlement); recording by set union (§9.6.6a items 3–4) holds under F26(b) and F26(c);
+- K5 restated with a time axis `[CON-0143 ~]`; under K3 and K5 the definition, coverage relation, root and policy values need a common, versioned value (one home only with §1.10's premise; C15 settlement), not shown to be the kernel `[CON-0142 ✗ as stated]`;
 - delegated computation needs a declared cut and a must-do (soundness and completeness relative to evidenced acts); on the present record CE would be uninformative;
 - for the Principal: K5; F27 (ρ policy or query).
 

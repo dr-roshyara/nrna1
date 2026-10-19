@@ -379,6 +379,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind (each reviewer, independently):** S0095 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-record-integrity-disposition.md` · S2782 `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-070417_theory-part-19-persistence-as-semantic-preservation.md` · S0129 `docs/knowledgeos/reviews/2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md`.
 - **Step 2:** Ch. 9 §9.8; STEP8-AND-SCAN; register CON-0148, 0149; BOOK-OUTLINE primitives table; changed theory of the C15 settlement (§6.7, §9.7, §9.6.6a, §5.7 C1, §1.13.3-2, §1.12 header, register CON-0138, 0142, 0144, 0146, 0147, map F26).
 - Read-only. Neither reviewer sees the other's report.
+- *Closing line (2026-10-19T18:20:44Z):* both inventories saved; both reports saved; settled. One commission and one step-2 message per reviewer. S1609 read topic-full at the settlement on both reviewers' finding (theory-turn limit of 8 sources respected: 6 used).
 
 ## Entry 2026-10-19T18:13:57Z: window C16 transition review (S0087–S0091) and the §1.12 integration (step 2), recorded before the reviewer starts
 - **Grant:** the Principal's instruction ("continue the run to S0100"); Rulebook §4 entry 52a (step 2 for §1.12; old and new by claim in the brief); step 9 (changed theory). One reviewer (a five-source window).

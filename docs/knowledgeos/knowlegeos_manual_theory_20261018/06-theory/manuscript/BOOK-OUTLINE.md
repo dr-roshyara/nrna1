@@ -14,7 +14,7 @@
 | **Evidence** | §1.3 grading claims; §4.1 from observation to pattern; §8.3 usage ≠ outcome | ~ | the evidence scales are not related to one another |
 | **Relationships** | §3.6 relationships; §3.8 four orders | ✓ (CON-0064, scoped) | "realization" in two senses |
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
-| **History** | §1.13.2 record integrity; §5.5 C5 | ~ | S0129's R-CONFLICT and "History ≠ Reconstruction Guess" not yet in the book |
+| **History** | §1.13.2 record integrity; §5.5 C5; **§9.8 (theory turn 3)**: state history decomposes into record properties H1′ (every change an entry), H2 (two orders), H3a/H3b (policy as entries; pinned evaluator) and the evaluator, conditional (D); truthful history needs H4 (soundness) and H5 (completeness or marked absence), not checkable inside the record; "History ≠ Reconstruction Guess" (S0129 L102); R-CONFLICT not adopted | ~ | whether history is a separate primitive or part of authority (§1.2 checkability, §1.16.2) and policy (RM-3): **for the Principal**; "the record" as a primitive has no independence model (Hyp); forks F29–F31 |
 | *Candidates added by the corpus* | visibility §1.7; standing §1.2 (CON-0018 ✗) | ~ | — |
 | **Trust** (F23) | — (S0913: Trust(a, d, c, t); trust ≠ authority; trust is itself knowledge) | — | not in the book; primitive or derivable? |
 | **Conflict over claims** (F24) | §9.4 C3 (one current claim + supersession) against S0913 / R-CONFLICT (preserve, "Unresolved" terminal) | — | the tension is recorded, not settled |

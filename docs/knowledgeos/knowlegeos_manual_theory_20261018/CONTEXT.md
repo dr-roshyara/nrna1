@@ -1,6 +1,6 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 after the C15 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-19 after the TT3 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
@@ -11,10 +11,11 @@
 | Theory turn 2 | the evaluator CE (§9.7) | **done** (12 findings, 2 critical, settled from the evidence; F26, F27 added) |
 | Window C14 | S0076–S0080 + rewrite of §1.13 | **done** (12 findings, 0 critical; settled) |
 | Window C15 | S0081, S0083–S0086 + rewrite of §1.12 | **done** (18 findings, 1 critical on the TT2 settlement, settled from the evidence; S0082 not on the allowed list, not opened) |
-| Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782 topic-full) | **drafted; two reviewers next** (Opus, Sonnet; brief lists the C15 settlement changes) |
-| Windows C16, C17 | S0086–S0095, with rewrites | — |
+| Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782, S1609 topic-full) | **done** (two reviewers: A 12 findings, 2 critical; B 14, 0 critical; 11 raised by both; settled from the evidence) |
+| Window C16 | S0087–S0091 + §1.12 integration (step 2) | **written; review in progress** (step 2 sent) |
+| Window C17 | S0092–S0096 + §1.13 integration | next; brief lists the TT3 settlement changes |
 | Theory turn 4 | from the outline | — |
-| Window C18 | S0096–S0100, with a rewrite | — |
+| Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | — |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | — |
 
 **Per window and per theory turn:**
@@ -41,9 +42,9 @@
 
 | Item | State |
 |---|---|
-| Reading position | **S0086** read in order (85; S0082 not allowed); next **S0087** |
+| Reading position | **S0091** read in order (90; S0082 not allowed); next **S0092** |
 | Book | Ch. 0–6, 8, 9 as section files; newest §6.6 (C12), §9.6 (F22) |
-| Concepts | CON-0001…0147 (`06-theory/CONCEPT-REGISTER.tsv`) |
+| Concepts | CON-0001…0152 (`06-theory/CONCEPT-REGISTER.tsv`) |
 | Last settled | consolidation S0036–S0065 (c8ef7833b); theory turn 1, F22 (4801780f2); the Principal's F22 act (adedac41c) |
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 and F26)**, F23 trust, F24 claim conflict, F25 who may correct, **F26 order of acts**, **F27 ρ policy or query**, F28 a synthesis adopted as truth (candidate) (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |
@@ -67,3 +68,5 @@
 - None blocking. K4 (uniqueness across applications) is a research question by the Principal's act.
 - K5 (standing is one answer per item, scope, time and axis across applications), restated in §9.7, is for the Principal to confirm. Not blocking.
 - F27: is the record view ρ an organisational policy or a parameter of each query (reserved decision 2)? Not blocking.
+- TT3: is verifiability part of "authority" in the list of primitives, or a separate property? Should the list carry "the record" in place of history, or history under authority and policy? Not blocking.
+- Change log: `01.99-change-log.md` was closed by RK-1; entry 52a names it for step-2 history. Reopened for step-2 entries only. Not blocking.
