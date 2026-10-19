@@ -1,0 +1,64 @@
+# 2026-10-19T21:08:47Z · undefined_terms.py on the book at adbe16c5c (read-only extraction; ACCESS-RECORD entry)
+A | pinning | book 11 | sections 5 | corpus files 0 | first 01.14 L365
+A | KT-8 | book 5 | sections 4 | corpus files 0 | first 00.06 L14
+A | annulment | book 17 | sections 3 | corpus files 0 | first 01.14 L93
+A | telo | book 6 | sections 2 | corpus files 0 | first 00.05 L3
+A | LA-4 | book 3 | sections 2 | corpus files 0 | first 01.08 L27
+A | approvable | book 3 | sections 2 | corpus files 0 | first 01.00 L13
+A | undeterminable | book 3 | sections 2 | corpus files 0 | first 01.14 L67
+A | RK-1 | book 2 | sections 2 | corpus files 0 | first 01.99 L46
+A | worksheet | book 2 | sections 2 | corpus files 0 | first 01.14 L197
+A | recasting | book 2 | sections 2 | corpus files 0 | first 02.09 L67
+A | pasting | book 2 | sections 2 | corpus files 0 | first 05.06 L51
+A | laminar | book 6 | sections 1 | corpus files 0 | first 03.10 L96
+A | snap | book 3 | sections 1 | corpus files 0 | first 01.16 L65
+A | unminted | book 2 | sections 1 | corpus files 0 | first 01.13 L96
+A | fetche | book 2 | sections 1 | corpus files 0 | first 01.17 L95
+A | subtree | book 2 | sections 1 | corpus files 0 | first 02.08 L102
+A | rater | book 2 | sections 1 | corpus files 0 | first 06.04 L18
+A | regrouped | book 2 | sections 1 | corpus files 0 | first 08.03 L13
+A | KBI-1 | book 1 | sections 1 | corpus files 0 | first 00.09 L8
+A | ALLOC-4 | book 1 | sections 1 | corpus files 0 | first 01.17 L95
+A | AR-11 | book 1 | sections 1 | corpus files 0 | first 08.01 L42
+A | codified | book 1 | sections 1 | corpus files 0 | first 00.07 L39
+A | blamed | book 1 | sections 1 | corpus files 0 | first 01.08 L79
+A | misdescribing | book 1 | sections 1 | corpus files 0 | first 01.10 L7
+A | annulling | book 1 | sections 1 | corpus files 0 | first 01.14 L144
+A | unpoliced | book 1 | sections 1 | corpus files 0 | first 01.14 L337
+A | dialog | book 1 | sections 1 | corpus files 0 | first 01.14 L360
+A | mechanizing | book 1 | sections 1 | corpus files 0 | first 01.14 L411
+A | mechanize | book 1 | sections 1 | corpus files 0 | first 01.14 L411
+A | unexplainable | book 1 | sections 1 | corpus files 0 | first 01.16 L119
+A | voided | book 1 | sections 1 | corpus files 0 | first 02.05 L19
+A | initio | book 1 | sections 1 | corpus files 0 | first 02.05 L27
+A | obedient | book 1 | sections 1 | corpus files 0 | first 04.01 L53
+A | lexicographically | book 1 | sections 1 | corpus files 0 | first 05.04 L105
+A | undercounting | book 1 | sections 1 | corpus files 0 | first 08.06 L66
+B | RQ-002 | book 24 | sections 14 | corpus files 11 | first 00.00 L8
+B | C-1 | book 19 | sections 14 | corpus files 112 | first 00.01 L26
+B | CV-1 | book 11 | sections 9 | corpus files 3 | first 00.02 L47
+B | CAP-001 | book 19 | sections 8 | corpus files 41 | first 00.02 L66
+B | DP-2 | book 7 | sections 6 | corpus files 7 | first 01.14 L314
+B | SC-2 | book 25 | sections 4 | corpus files 5 | first 01.14 L121
+B | SD-1 | book 11 | sections 4 | corpus files 14 | first 05.02 L20
+B | H-3 | book 8 | sections 4 | corpus files 5 | first 01.11 L79
+B | PM-1 | book 6 | sections 4 | corpus files 8 | first 01.02 L67
+B | P-7 | book 6 | sections 4 | corpus files 9 | first 01.06 L36
+B | D-1 | book 5 | sections 4 | corpus files 84 | first 03.05 L17
+B | H-08 | book 4 | sections 4 | corpus files 1 | first 01.00 L27
+B | F-14 | book 4 | sections 4 | corpus files 2 | first 01.14 L314
+B | R-6 | book 5 | sections 3 | corpus files 18 | first 04.01 L44
+B | V-1 | book 5 | sections 3 | corpus files 31 | first 05.06 L59
+B | N-10 | book 4 | sections 3 | corpus files 14 | first 00.05 L51
+B | F-01 | book 4 | sections 3 | corpus files 1 | first 01.02 L84
+B | B-11 | book 3 | sections 3 | corpus files 3 | first 00.02 L9
+B | H-01 | book 3 | sections 3 | corpus files 1 | first 00.03 L38
+B | C-2 | book 3 | sections 3 | corpus files 75 | first 01.13 L94
+B | MM-1 | book 3 | sections 3 | corpus files 10 | first 03.00 L8
+C | keep | in section 01.09: 3 uses | corpus files 565
+C | action | in section 03.09: 12 uses | corpus files 1157
+C | port | in section 03.09: 7 uses | corpus files 153
+C | step | in section 03.09: 5 uses | corpus files 1514
+C | agent | in section 03.09: 4 uses | corpus files 627
+C | registration | in section 06.05: 5 uses | corpus files 166
+# candidates: tier A 35 · tier B 21 · tier C 6 (from 252 identifiers and 3634 word types; 217 ids and 2805 words undefined by the forms)

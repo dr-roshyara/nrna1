@@ -4,17 +4,17 @@
 
 **Question.** Should five checks be added to the method, and in which form?
 
-**Evidence.** The stage-1 review found 4 of 8 planted items (`88b6e3890`), including the critical one. It missed only what is **absent**: two undefined terms (RX-3, "watermark"), a removed result (CON-0149), and a stale citation elsewhere (§9.8 → §5.7 C3). It under-rated a lemma with a missing premise. Run read-only on the frozen copy, the proposed checks found every one of these known cases. On the working book, the register check also found three real register defects that stage 1 did not report (CON-0138, CON-0140, CON-0143).
+**Evidence.** The stage-1 review found 4 of 8 planted items (`88b6e3890`), including the critical one. It missed only what is **absent**: two undefined terms (RX-3, "watermark"), a removed result (CON-0149), and a stale citation elsewhere (§9.8 → §5.7 C3). It under-rated a lemma with a missing premise. Run read-only on the frozen copy, the proposed checks found every one of these known cases. **Exception:** R2 misses the earlier lane/BC-7 case on the book at `adbe16c5c` (a known case, not validation). On the working book, the register check also found three real register defects that stage 1 did not report (CON-0138, CON-0140, CON-0143).
 
 | ID | Decision | Recommendation | Uncertainty | What would change it |
 |---|---|---|---|---|
 | D-R1 | Require the **register-home check** before every review and settlement | **Approve** | low. Exact on the known case. Its non-status-tag flags are information | many flags without a defect behind them |
-| D-R2 | Require the **narrowed undefined-term check** (tier A book-wide; tiers B/C per new or changed section) | **Approve, with a review after stage 2** | medium. All four known cases are found, but the false-positive rate is unknown (40/26/9 candidates in the working book, unclassified). "lane"/"BC-7" were tested on a constructed fixture, not the original | stage 2's classification giving mostly false positives |
+| D-R2 | Require the **narrowed undefined-term check** (tier A book-wide; tiers B/C per new or changed section), with a recorded disposition for every candidate | **Approve as a reading list, with its known limits stated** | medium-high. On the working book, 64 of 75 candidates are false positives and 11 are actionable (7 true, 4 review labels). **The original lane/BC-7 case at `adbe16c5c` is missed at the drafted thresholds** (a known case, not validation; Q6) | the next planted-gap test showing that R2 misses fresh cases too |
 | D-R3 | Require the **inbound-citation check for every accepted correction**, listed and reassessed in the settlement row | **Approve** | low. It found the missed P6b. It misses uncited paraphrase | — |
 | D-R4 | Require a **proof-step table** behind every "adequate" judgement of a derivation | **Approve** | medium. Costly for reviewers. The helper covers only formatted lemmas | reviewer time doubling without new findings |
-| D-R5 | **Severity:** a missing premise in a foundational derivation is critical; resolution needs the statement, the proof and the downstream results corrected, not the register only | **Approve** | low. Applies v1.3's own definition explicitly | — |
-| D-R6 | **Form:** a v1.4 amendment now, or fold into v2 | **v1.4 amendment** (smallest change; v2 stays a separate decision) | — | a decision to adopt v2 as a whole |
-| D-Q2 | Permit reading the manuscript's git history (`adbe16c5c`) to re-run the original "lane"/"BC-7" case | **Optional:** permit once, read-only, for this test only | — | — |
+| D-R5 | **Severity:** a missing premise is critical if any of F1–F4 holds (results rest on it; derivations rest on it; it decides a kernel or boundary question; the missing premise is one the book states is false or undefined); normal only under N1; resolution needs (i)–(iv), not the register only | **Approve** | low. Explicit criteria; P1 classifies critical by F1 and F4 | criteria that over-rate many ordinary Ded claims |
+| D-R6 | **Form** | **Decided by the Principal (2026-10-19):** `RULEBOOK-REVISION-PROPOSAL-S0100.md` is the v1.4 amendment, not in force; on approval, the Rule Reviewer records it in v1.3 (entry 56) and in the v2 proposal | — | — |
+| D-Q2 | Reading git history at `adbe16c5c` | **Permitted and done (2026-10-19, ACCESS-RECORD):** R2 as drafted misses the original case. Q6 asks whether to widen tiers B/C | — | — |
 
 **Implications.**
 - Each approved check adds a short mechanical step to step 8 and the settlement. Tier A takes about 10 s and a few minutes of disposition.

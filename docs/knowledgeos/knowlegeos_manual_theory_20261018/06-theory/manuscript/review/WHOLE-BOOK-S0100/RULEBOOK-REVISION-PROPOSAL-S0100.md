@@ -1,6 +1,6 @@
-# Proposed Rulebook revision after the whole-book review S0100
+# Rulebook v1.4 amendment (proposed): checks after the whole-book review S0100
 
-> **STATUS: PROPOSED — NOT IN FORCE.** RULEBOOK-v1.3 governs until the Principal explicitly approves a change. This draft does not alter `03-methodology/RULEBOOK-v1.3.md` or `REVIEWER-INSTRUCTIONS.md`, and it is not an approved revision. Approved changes would be written into the Rulebook by its steward (the Rule Reviewer), with a METHOD-VERSIONS entry. Where the v2 proposal (`RULEBOOK-v2-PROPOSED.md`, also not in force) covers the same ground, see §7.
+> **STATUS: PROPOSED v1.4 AMENDMENT — NOT IN FORCE, pending the Principal's approval** (the Principal, 2026-10-19: "Treat RULEBOOK-REVISION-PROPOSAL-S0100.md as the v1.4 amendment, NOT IN FORCE pending my approval; no second copy. On approval, the Rule Reviewer records it in v1.3 (entry 56) and in the v2 proposal."). RULEBOOK-v1.3 governs until then. This is the only copy of the amendment. It does not alter `03-methodology/RULEBOOK-v1.3.md` or `REVIEWER-INSTRUCTIONS.md`.
 
 *2026-10-19. By the Professor, on the Principal's instruction after the scored stage-1 result (`88b6e3890`). Source of the recommendations: `PLANTED-GAP-RESULT.md` §5, recommendations 1–4.*
 
@@ -75,6 +75,17 @@ Test outputs: `review/WHOLE-BOOK-S0100/PROFESSOR/checks/`. **None of the tests m
   - **Narrowing achieved:** the Rule Reviewer's unnarrowed lists had 169 and 213 candidates. The narrowed tier A has 42 (2 of them the plants) and tiers B+C have 35. All four known cases are in the lists.
   - **Untested:** precision on unknown cases. The 40 tier-A and 35 tier-B/C candidates of the working book are not yet classified. Stage 2 classifies them, which gives the first false-positive count.
 - **Why a fixture for "lane" and "BC-7":** the original case (consolidation S0036–S0065: "lane" and "BC-7" undefined in §5.5 C6 and §6.5, at commit `adbe16c5c`) can only be reconstructed from the manuscript's git history. A command reading that history was not permitted in this session. The fixture reproduces the defect by removing the two definitions that the consolidation settlement added. **A historical re-run is an open item (Q2).**
+- **The original case at `adbe16c5c`** (read-only, on the Principal's permission; ACCESS-RECORD entry; output `PROFESSOR/checks/undefined-terms.adbe16c5c.txt`). **Reported as a known case, not as validation.** On the book at that commit, R2 as drafted flags **neither "lane" nor "BC-7"**:
+  - BC-7 occurs in 2 sections, below tier B's threshold of 3;
+  - "lane" occurs 7 times in §6.5 and 64 times in the 9 sources §6.5 cited then, but none of those sources backticks or bolds it, so tier C's term-mark condition fails.
+
+  **R2 as drafted misses the original case.** The fixture had passed because the current §6.5 cites more sources. Lowering the thresholds would catch the case, but that would be tuning on it, so the thresholds are left as drafted. Whether to widen them is Q6.
+- **Disposition of every candidate** (the false-positive count; `PROFESSOR/checks/R2-DISPOSITIONS-working.md`). Of 75 candidates on the working book:
+  - **7 are true** (undefined terms or codes: KT-8, AR-11, C-1, CV-1, CAP-001, C-14, "port");
+  - **4 are review labels;**
+  - **64 are false positives:** 34 ordinary English, 15 defined in place but missed by the forms, 12 cited source codes, 3 tokenisation artefacts.
+
+  False negatives are measured by the Rule Reviewer's next planted-gap test, with fresh cases.
 
 ## 4. R3: downstream-impact check for every accepted correction
 
@@ -118,18 +129,35 @@ Test outputs: `review/WHOLE-BOOK-S0100/PROFESSOR/checks/`. **None of the tests m
 
 ## 6. R5: severity guidance for missing premises
 
-- **Proposed rule text** (REVIEWER-INSTRUCTIONS "Severity", and the settlement's severity column): *"A derivation whose statement omits a premise its proof needs is **critical** when the derivation is foundational. A derivation is foundational when (a) a result of the theory map, a register concept with status VALIDATED or PROVISIONAL, or another derivation rests on it explicitly (its inbound-citation list, R3, is not empty at claim or concept level), or (b) it is a lemma or theorem used by a chapter's results. Otherwise the omission is **high**. Marking the condition only in the register does not resolve it: the statement, the proof step and every result using it must carry the premise. The finding is resolved when the statement is conditional and the downstream results are reassessed (R3)."*
-- **Input:** the finding; the R3 list for the derivation.
-- **Procedure:** a human applies criteria (a) and (b). The R3 list supplies the evidence for (a).
-- **Expected output:** the severity, with the criterion named.
-- **Limitations:** "foundational" depends on explicit citations, so an implicit dependency is missed. The criterion can over-rate a lemma that is cited only in a "related" list; such a citation is disposed of in the row.
-- **False positives and their handling:** an over-rated case is down-graded with the reason ("cited only as related; no result rests on it").
-- **Evidence to retain:** the criterion and the R3 list in the settlement row.
-- **Test (known case P1):**
-  - Lemma D carries §9.8 result 1 (CON-0148, whose restated form is provisional), so criterion (a) applies.
-  - §9.9 lists Lemma D among its existing homes, a navigation link only and not evidence for (a).
-  - The omission is therefore critical, which is the key's classification.
-  - The settlement had rated it high (P4-7) and put the condition in the register: both points are now covered by the rule text.
+- **Proposed rule text** (REVIEWER-INSTRUCTIONS "Severity", and the settlement's severity column):
+
+  > **A missing premise** is a premise that a derivation's proof uses, or that its conclusion needs, but that the derivation's statement does not state. Signs: a proof step justified by nothing stated (no premise, definition, earlier step or cited result); an object the book declares undefined used as if defined; a quantifier ("every", "always") wider than the premises give.
+  >
+  > **Severity of a missing premise, by explicit criteria.** It is **critical** if any of F1–F4 holds; otherwise **high**. It is **normal** only if N1 holds.
+  > - **F1 (results rest on it):** a numbered result of a section, or a register concept with status VALIDATED or PROVISIONAL, cites the derivation (its R3 list is not empty at claim or concept level, excluding "existing homes" and other navigation lists).
+  > - **F2 (other derivations rest on it):** another Ded, lemma or theorem uses its conclusion as a step.
+  > - **F3 (kernel or boundary):** the derivation decides a kernel candidate, a boundary test (necessary / kernel must provide / application could provide), a primitive's independence, or a fork marked "for the Principal".
+  > - **F4 (the premise is known false or undefined):** the missing premise is one the book itself states is false or not established (for example "CE is not yet defined").
+  > - **N1 (normal):** no result, concept or derivation rests on it (an empty R3 list at claim and concept level), and it decides none of F3.
+  >
+  > **Resolution.** The finding is resolved only when (i) the statement carries the premise, (ii) the proof step names it, (iii) every result in the R3 list is reassessed and carries the condition, and (iv) the register row of every concept affected carries it. A condition recorded only in the register does not resolve the finding.
+- **Input:** the finding; the derivation's R3 list; the section's statements about what is defined (R4's helper).
+- **Procedure:** the reviewer (and then the settlement) checks F1–F4 in order and names the first that holds. R3 supplies F1 and F2. F3 needs reading the section's purpose. R4's helper or the proof-step table supplies F4.
+- **Expected output:** the severity, the criterion that decided it, and its evidence (the R3 lines; the defining statement).
+- **Limitations:**
+  - F1 and F2 depend on explicit citations, so an implicit dependency is missed.
+  - F3 needs judgement.
+  - F4 needs the book to state what is undefined.
+- **False positives and their handling:**
+  - A derivation cited only in a "related" list is not F1; the settlement row says so.
+  - Over-rating is corrected with the reason given.
+- **Evidence to retain:** the criterion and its evidence in the settlement row.
+- **Test (known case P1, the copy's Lemma D):**
+  - **F1 holds:** §9.8 result 1 (CON-0148) rests on D. §9.9's mention of Lemma D is in its existing-homes list, so it is navigation and does not count.
+  - **F4 holds:** §9.8.2 says CE "is not yet defined".
+  - **Classification: critical,** the key's classification.
+  - The settlement had rated it high (P4-7) and put the condition in the register. Both points are now covered: severity by F1/F4, resolution by (i)–(iv).
+- **Test on a real case (working book):** the settlement's P2-2 (§2.3's pairwise conflict definition) is a missing-premise case in the wide sense (the quantifier "two rules" is narrower than the gate result needs). F1 holds through §2.9's gate result. Critical, as settled. Consistent.
 
 ## 7. Relation to other drafts and to v1.3
 
@@ -140,7 +168,8 @@ Test outputs: `review/WHOLE-BOOK-S0100/PROFESSOR/checks/`. **None of the tests m
 ## 8. Unresolved questions
 
 - **Q1.** Should R2's tiers B and C apply to the whole book, or only to new and changed sections? The test supports tier A book-wide (42 candidates); B and C are cheaper per section.
-- **Q2.** Should the historical "lane"/"BC-7" case (commit `adbe16c5c`) be re-run from git history, which needs the Principal's permission to read the manuscript's history? The constructed fixture is a substitute, not the original.
+- **Q2 (answered):** the Principal permitted the read-only run at `adbe16c5c`. Result: R2 as drafted misses the original case (§3).
 - **Q3.** Who disposes of the candidates? The Professor (step 8) or the reviewer (brief)? The proposal assigns the step-8 file to the Professor and the reading to reviewers through the brief. Mixing the two affects blindness: a brief must not carry assessments (D2).
-- **Q4.** False-positive rates are unknown until the working book's candidates are classified (stage 2). Should approval wait for that count?
-- **Q5.** R5's criterion (a) uses explicit citations. Should an implicit-dependency check (the reviewer's judgement) be added, or is that over-specification?
+- **Q4 (answered by the count):** 64 of 75 candidates are false positives, and 11 are actionable (§3; `R2-DISPOSITIONS-working.md`).
+- **Q5.** R5's criteria F1 and F2 use explicit citations. Should an implicit-dependency check (the reviewer's judgement) be added, or is that over-specification?
+- **Q6.** R2 misses the original lane/BC-7 case at its drafted thresholds. Should tier B count identifiers in 2 or more sections, and should tier C drop the term-mark condition? Either change would catch the case, at the cost of longer lists. The Rule Reviewer's next planted-gap test, with fresh cases, is the right place to measure false negatives before any threshold is changed.
