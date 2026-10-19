@@ -1,6 +1,6 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 after the C14 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-19 after the C15 settlement. The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
@@ -10,8 +10,8 @@
 | Window C13 | S0071–S0075 + rewrite of §1.14 | **done** (15 findings, 0 critical; settled) |
 | Theory turn 2 | the evaluator CE (§9.7) | **done** (12 findings, 2 critical, settled from the evidence; F26, F27 added) |
 | Window C14 | S0076–S0080 + rewrite of §1.13 | **done** (12 findings, 0 critical; settled) |
-| Window C15 | S0081–S0085 + next Ch. 0–2 rewrite | **next**; its brief lists the TT2 and C14 settlement changes (step 9, entry 51) |
-| Theory turn 3 | from BOOK-OUTLINE "missing" (a primitive with its independence model, or the derivation chain) | — |
+| Window C15 | S0081, S0083–S0086 + rewrite of §1.12 | **done** (18 findings, 1 critical on the TT2 settlement, settled from the evidence; S0082 not on the allowed list, not opened) |
+| Theory turn 3 | history: a primitive or derivable? (§9.8; S0095, S2782 topic-full) | **drafted; two reviewers next** (Opus, Sonnet; brief lists the C15 settlement changes) |
 | Windows C16, C17 | S0086–S0095, with rewrites | — |
 | Theory turn 4 | from the outline | — |
 | Window C18 | S0096–S0100, with a rewrite | — |
@@ -39,9 +39,9 @@
 
 | Item | State |
 |---|---|
-| Reading position | **S0080** read in order (80); next **S0081** |
+| Reading position | **S0086** read in order (85; S0082 not allowed); next **S0087** |
 | Book | Ch. 0–6, 8, 9 as section files; newest §6.6 (C12), §9.6 (F22) |
-| Concepts | CON-0001…0145 (`06-theory/CONCEPT-REGISTER.tsv`) |
+| Concepts | CON-0001…0147 (`06-theory/CONCEPT-REGISTER.tsv`) |
 | Last settled | consolidation S0036–S0065 (c8ef7833b); theory turn 1, F22 (4801780f2); the Principal's F22 act (adedac41c) |
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 and F26)**, F23 trust, F24 claim conflict, F25 who may correct, **F26 order of acts**, **F27 ρ policy or query**, F28 a synthesis adopted as truth (candidate) (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |

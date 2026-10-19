@@ -29,3 +29,5 @@
 ## Strength scan
 §6.7: 10 strong words in the book's own text, all scoped or inside a stated Ded; three restated before the review ("none is yet" → "the set calls itself a proposal"; "only if each relation is typed" → "only if its dependency relations are marked"; a quote split by line). Quotes: 22/22.
 §1.12 rewrite: body byte-identical after labels (script check); no source quotes with S-IDs.
+
+*Corrected at the C15 settlement (review appendix):* "all scoped or inside a stated Ded" was wrong: being inside a Ded is not scoping, and the words at the old L57–59 were the overclaims of finding 5 (restated). The dependency table also missed the Ext LCOM4 definition, S0066 L286–287 (C6, through §6.6) and RESEARCH-PURPOSE's stability test (C2).

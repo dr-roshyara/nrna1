@@ -372,4 +372,5 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Step 1, blind:** S0081 `docs/knowledgeos/architecture/README.md` · S0083 `…/01-system-context.puml` · S0084 `…/04-contract-neutrality-fact-model.puml` · S0085 `…/03-component-knowledgeos.puml` · S0086 `…/02-container-architecture.puml`.
 - **Step 2:** Ch. 6 §6.7; Ch. 1 §1.12 (rewritten) and its previous version via git; STEP8-AND-SCAN; register CON-0146, 0147; changed theory: Ch. 9 §9.7 and §9.6.6a (TT2 settlement), Ch. 5 §5.7 and Ch. 1 §1.13 header and §1.13.3-2 (C14 settlement), register CON-0138, 0142–0145, map F26–F28.
 - Read-only.
+- *Closing line (2026-10-19T18:05:22Z):* inventory saved; report saved; settled. One commission, one step-2 message.
 
