@@ -31,6 +31,7 @@
 | EXT-054 | Terauchi, T., Aiken, A. (2005). Secure information flow as a safety problem. *Static Analysis (SAS 2005)*, LNCS 3672, doi 10.1007/11547662_24. Verified 2026-10-20 (publisher record, abstract) | peer-reviewed | benchmark | CON-0189 | Ch. 9 §9.11 | information flow reduced to safety by self-composition |
 | EXT-055 | Abadi, M., Lamport, L. (1993). Composing specifications. *ACM TOPLAS* 15(1), 73–132. Verified 2026-10-20 (author's publication page, abstract) | peer-reviewed | benchmark | CON-0189 | Ch. 9 §9.11 | environment assumptions (E implies M) |
 | EXT-056 | Podelski, A., Rybalchenko, A. (2004). Transition invariants. *LICS 2004*, 32–41, doi 10.1109/LICS.2004.1319598. Verified 2026-10-20 | peer-reviewed | homonym note | — | Ch. 9 §9.11.2 | a different meaning of "transition invariant" |
+| EXT-057 | Lampson, B., Abadi, M., Burrows, M., Wobber, E. (1992). Authentication in distributed systems: theory and practice. *ACM Transactions on Computer Systems* 10(4), 265–310. Verified 2026-10-20 (author's publication page, abstract) | peer-reviewed | benchmark | CON-0190 | Ch. 9 §9.12 | principals, "speaks for", delegation from a root |
 
 ## Principal's brainstorms (post-snapshot): `docs/knowledgeos/brainstorming/philosophical_questions/`
 
