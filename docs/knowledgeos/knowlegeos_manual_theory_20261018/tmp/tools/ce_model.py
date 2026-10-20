@@ -19,7 +19,7 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(13), (2b), (11b): see the printed lines. Version 3: D admits citations of earlier entries only (the
+Checks (1)-(13), (2b), (9b), (11b): see the printed lines. Version 3: D admits citations of earlier entries only (the
 Principal, 2026-10-20); U carries its reasons (ce_star_explained). Checks 5, 7 and 8 use records outside D, to show what
 the restriction excludes. Usage: python3 -I ce_model.py
 """
@@ -340,6 +340,19 @@ def ce_star_explained(rec, item, t, qscope=None):
         return v, None
     a = wfs(rec)
     start = [x['id'] for x in rec.e if x['kind'] == 'adopt' and x['item'] == item and x['t'] <= t and a[x['id']] == U]
+    return U, u_reasons(rec, a, start)
+
+
+def act_explained(rec, i):
+    """authorized(i) with its reason for U (the Q3-style question about one recorded act)."""
+    ok, why = in_D(rec)
+    if not ok:
+        return ('undefined', why)
+    a = wfs(rec)
+    return (a[i], None) if a[i] != U else (U, u_reasons(rec, a, [i]))
+
+
+def u_reasons(rec, a, start):
     seen, stack, reasons = set(), list(start), []
     while stack:
         i = stack.pop()
@@ -362,7 +375,7 @@ def ce_star_explained(rec, item, t, qscope=None):
         if x['kind'] == 'annul' and x['target'] in seen and rec.by[x['target']]['kind'] == 'annul' \
                 and rec.by[x['target']]['target'] == i and i < x['target']:
             reasons.append(f"mutual annulment of {i} and {x['target']}")
-    return U, reasons or ['undetermined (no cycle or coverage reason found)']
+    return reasons or ['undetermined (no cycle or coverage reason found)']
 
 
 def random_record(rng, n_acts=6, forward=False, targets_any=False):
@@ -567,6 +580,9 @@ if __name__ == '__main__':
     wm = wfs(mut)
     print('(9) mutual annulment, WF: x, y =', wm['x'], wm['y'])
     assert wm['x'] == U and wm['y'] == U
+    mx = act_explained(mut, 'x')
+    print('(9b) authorized(x) =', mx[0], 'with reason', mx[1])
+    assert mx[0] == U and any('mutual annulment of x and y' in r for r in mx[1])
     # (10) a same-time ending: counts only if recorded before the act (key (t, position))
     def tie(first):
         x = {'id': 'x', 'kind': 'adopt', 'actor': 'A', 'cites': ['g'], 'item': 'c', 'scope': 's', 't': 3, 'vfrom': 0, 'vto': 9}

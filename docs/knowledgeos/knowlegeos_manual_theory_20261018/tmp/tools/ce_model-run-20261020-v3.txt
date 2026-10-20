@@ -13,6 +13,7 @@
 (7) circular grants: KK g1, g2, x = U U U ; WF = F F F ; all-T is a fixed point: True
 (8) loop annulling a rooted adoption: KK x = U ; WF x = T ; current-authority(c, 3) off WF = T ; {loop T, x F} is a fixed point: True ; CE* on this record (outside D): undefined
 (9) mutual annulment, WF: x, y = U U
+(9b) authorized(x) = U with reason ['mutual annulment of x and y']
 (10) ending with the act time of x: recorded after x -> x T ; recorded before x -> x F
 (11) self-annulment cycle: KK g1, e = U U ; WF = U U
 (11b) an adoption under that grant: CE*(c, 3) = U with reason ['self-cancelling act e: it annuls g1, the grant it acts under']
