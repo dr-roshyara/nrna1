@@ -221,6 +221,8 @@ The quote check is **kept**, now on the book sections (§4).
 
 ## 10. Each turn ends with
 
+**The theory deliverable comes first** (entry 59). Every turn names its theory deliverable first, with its "resolved when" condition. The end report states that deliverable's status first: **met**, **not met**, or **obstacle documented**. Other work is listed after it, and is done only when the deliverable is met or its obstacle documented.
+
 What the **theory** gained: definitions, derived results, counterexamples, forks opened or settled, and open questions. Plus, per source, the depth read and the number of new concepts.
 
 - **For each significant theory change** (a definition, a law, or a claim's status or scope; entry 55), one row: **before** (the claim or open question) · **new** (evidence, derivation, counterexample or contradiction) · **after** (what changed and why) · **still unproven** · **review needed**. If the theory did not change, say so; progress is never invented to fill the row.
@@ -280,6 +282,11 @@ Full text: `03-methodology/AMENDMENT-32a-hybrid-research-method.md` (including �
   - **two reviewers on different models** (for example Opus and Sonnet), independently and in parallel, in topic-review mode; the settlement compares their findings (both / one only) *(Principal, 2026-10-19; evidence: in the consolidation S0036–S0065, 18 of 33 findings were raised by only one of two reviewers)*;
   - the result goes into the book and `BOOK-OUTLINE.md`.
 - **Reserved questions:** architectural questions reserved for the Principal (for example F22) are prepared, not decided.
+- **A chain of critical-path turns** (entry 59). When critical findings block dependent work, the Professor may run **consecutive theory turns on the critical path**, outside the cadence above:
+  - each turn has **one deliverable** and a "resolved when" condition;
+  - each is reviewed by **two reviewers on different models** and **settled before the next turn builds on it**;
+  - the reading position does not move;
+  - index-order reading resumes when the chain is settled, or when the Principal decides.
 - **Unchanged:** chronological reading and every existing review rule.
 - **First theory turn:** the boundary test for F22 (recording authority), directly after the consolidation review S0036–S0065 is settled. From then on: two reading windows, one theory turn.
 
