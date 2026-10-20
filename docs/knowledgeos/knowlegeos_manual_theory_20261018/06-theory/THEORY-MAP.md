@@ -121,7 +121,7 @@
 | F1 | Mission: PublicDigit-specific vs product-neutral. **Dissolved for the vision only** (S0032): vision (later) vs Product Primacy (now) conflict only without a stated horizon. **Open for the mission:** S0032 puts the enacted mission in the present ("already behaving according to it"), so it still conflicts with Product Primacy now. S0019 also offers a rival reading (portability as a design quality, "why vs what"). The falsifier tests of S0019 and S0032 are in tension, not contradiction (S0032's test is conjunctive: falsifier and market validation) | normative (sponsor) | Ch. 0 §0.2 |
 | F2 | External authority: inside the act model (recognition act; grant citing an external act) vs outside it | factual / definitional | Ch. 1 §1.11, T1-15 |
 | F3 | Genesis: architectural gap vs governance gap | factual | Ch. 1, T1-17 |
-| F4 | Does the record **constitute** authority or **represent** it? (C1-a / C1-b) | normative (reserved) | Ch. 1 §1.13.1 |
+| F4 | Does the record **constitute** authority or **represent** it? (C1-a / C1-b) | normative (reserved). **Decided by the Principal at theory turn 4 (2026-10-20): constitute, within the kernel**; occurrence of recorded acts stays an assumption about the world (§9.9) | Ch. 1 §1.13.1; §9.13 |
 | F5 | I-2 "reasoned": a validity condition or a quality obligation? | normative (reserved) | Ch. 1 §1.17.2 |
 | F6 | Governance status: one dimension, or standing and lifecycle split apart (PM-1)? | definitional | Ch. 3 §3.1 |
 | F7 | Kind: its own axis or a nature value (MM-1)? | definitional | Ch. 0 §0.3 |

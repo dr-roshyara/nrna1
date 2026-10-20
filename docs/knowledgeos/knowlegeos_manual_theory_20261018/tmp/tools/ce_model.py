@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 2 (turn-4 settlement).
+it tests the FORM of the repaired definition, not its content. Version 3 (turn-4 decisions, applied in turn 5).
 
 Record: a list of entries in record order (positions 0..n-1). Entry kinds admitted in D (§9.13.2):
   root(id, actor, scope, t)                                    a root act: authorized by stipulation
@@ -19,7 +19,9 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(13): see the printed lines. Usage: python3 -I ce_model.py
+Checks (1)-(13), (2b), (11b): see the printed lines. Version 3: D admits citations of earlier entries only (the
+Principal, 2026-10-20); U carries its reasons (ce_star_explained). Checks 5, 7 and 8 use records outside D, to show what
+the restriction excludes. Usage: python3 -I ce_model.py
 """
 import random
 from itertools import product
@@ -88,6 +90,9 @@ def in_D(rec):
             return False, f"missing field in {x['id']}: {sorted(FIELDS[x['kind']] - set(x))}"
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
+        for g in x.get('cites', []):
+            if g in rec.pos and rec.pos[g] >= rec.pos[x['id']]:
+                return False, f"{x['id']} cites {g}, which is not an earlier entry (D: citations of earlier entries only)"
     return True, None
 
 
@@ -312,8 +317,57 @@ def ce_star(rec, item, t, qscope=None):
     return current(rec, wfs(rec), item, t, 'U', qscope)
 
 
-def random_record(rng, n_acts=6, forward=False):
-    """forward=False: every citation and target is an earlier entry. forward=True: any other entry (forward citation)."""
+def deps(rec, x):
+    """x's dependencies in the program reading: (positive cited bases, negative endings and annulments)."""
+    i = x['id']
+    if x['kind'] == 'root':
+        return [], []
+    pos, neg = [], [e['id'] for e in rec.e if e['kind'] == 'annul' and e['target'] == i]
+    for g in x['cites']:
+        if g in rec.by and rec.by[g]['kind'] in ('root', 'grant'):
+            pos.append(g)
+            neg += [e['id'] for e in rec.e if e['kind'] == 'endg' and e['grant'] == g and e['id'] != i
+                    and rec.key(e['id']) < rec.key(i)]
+            neg += [e['id'] for e in rec.e if e['kind'] == 'annul' and e['target'] == g and e['id'] != i]
+    return pos, neg
+
+
+def ce_star_explained(rec, item, t, qscope=None):
+    """CE* with its reason for U (the Principal, 2026-10-20: a self-cancelling act gives U with a refusal reason).
+    Reasons: the cycles among U atoms that the item's adoptions depend on, and covers pairs outside covers' domain."""
+    v = ce_star(rec, item, t, qscope)
+    if v != U:
+        return v, None
+    a = wfs(rec)
+    start = [x['id'] for x in rec.e if x['kind'] == 'adopt' and x['item'] == item and x['t'] <= t and a[x['id']] == U]
+    seen, stack, reasons = set(), list(start), []
+    while stack:
+        i = stack.pop()
+        if i in seen:
+            continue
+        seen.add(i)
+        x = rec.by[i]
+        pos, neg = deps(rec, x)
+        for g in pos:
+            gr = rec.by[g]
+            if covers(gr['scope'], x['scope'], rec.dom) == U:
+                reasons.append(f"covers({gr['scope']}, {x['scope']}) undefined for {i} under {g}")
+        stack += [d for d in pos + neg if a[d] == U]
+    for i in sorted(seen):                        # self-cancelling: i annuls a grant it acts under
+        x = rec.by[i]
+        if x['kind'] == 'annul' and x['target'] in x['cites']:
+            reasons.append(f"self-cancelling act {i}: it annuls {x['target']}, the grant it acts under")
+    for i in sorted(seen):                        # other negative cycles: i annuls j and j annuls i
+        x = rec.by[i]
+        if x['kind'] == 'annul' and x['target'] in seen and rec.by[x['target']]['kind'] == 'annul' \
+                and rec.by[x['target']]['target'] == i and i < x['target']:
+            reasons.append(f"mutual annulment of {i} and {x['target']}")
+    return U, reasons or ['undetermined (no cycle or coverage reason found)']
+
+
+def random_record(rng, n_acts=6, forward=False, targets_any=False):
+    """forward=False: every citation and target is an earlier entry. forward=True: any other entry (forward citation).
+    targets_any=True (with forward=False): citations earlier only, as D requires; annulment targets any other entry."""
     scopes = ['s', 's/a', 's/b']
     dom = {(g, x) for g in scopes for x in scopes}
     if rng.random() < 0.3:
@@ -335,7 +389,7 @@ def random_record(rng, n_acts=6, forward=False):
         elif kind == 'revoke':
             e.update(item='c')
         elif kind == 'annul':
-            e.update(target=rng.choice(pool))
+            e.update(target=rng.choice([y for y in ids if y != i] if targets_any else pool))
         elif kind == 'endg':
             gs = [y for y in pool if y.startswith('g')] or ['r']
             e.update(grant=rng.choice(gs))
@@ -439,10 +493,10 @@ if __name__ == '__main__':
     # (4) CE* (read off WF) answers T, F and U on some records: constant evaluators fail
     seen = set()
     for _ in range(3000):
-        rec = random_record(rng, forward=rng.random() < 0.5)
+        rec = random_record(rng, targets_any=rng.random() < 0.5)          # records in D
         for t in range(0, 7):
             seen.add(ce_star(rec, 'c', t))
-    print('(4) answers of CE*(c, t) on WF, random records:', sorted(seen))
+    print('(4) answers of CE*(c, t) on WF, 3000 random records in D:', sorted(seen))
     assert {T, F, U} <= seen
     # (5) exhaustive: every fixed point lies above KK; WF's extra values are not forced
     for name, gen in [('random forward', lambda: random_record(rng, n_acts=rng.randint(2, 6), forward=True)),
@@ -468,11 +522,14 @@ if __name__ == '__main__':
     assert fps > recs and not_kk > 0 and not_above_wf > 0
     # (6) the two routes agree: KK(Phi) = Fitting KK of the program; alternating WF = unfounded-set WF;
     #     with backward citations only WF = KK
-    for name, fw in gens + [('loop-rich', None)]:
+    for name, fw in gens + [('loop-rich', None), ('backward citations, any targets (D)', 'D')]:
         diff = 0
         for _ in range(3000):
-            rec = (loop_record(rng, n_acts=rng.randint(1, 9)) if fw is None
-                   else random_record(rng, n_acts=rng.randint(1, 9), forward=fw))
+            rec = (loop_record(rng, n_acts=rng.randint(1, 9)) if fw is None else
+                   random_record(rng, n_acts=rng.randint(1, 9), targets_any=True) if fw == 'D' else
+                   random_record(rng, n_acts=rng.randint(1, 9), forward=fw))
+            if fw == 'D':
+                assert in_D(rec)[0]
             kk, _ = lfp(rec, 'U')
             wf = wfs(rec)
             atoms, rules = program(rec)
@@ -481,8 +538,8 @@ if __name__ == '__main__':
             assert all(fw2[i] == wf[i] for i in rec.acts()), 'WF routes differ'
             assert leq(kk, wf)
             diff += kk != wf
-        print(f'(6) {name} citations, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on', diff)
-        assert (diff == 0) == (not fw)
+        print(f'(6) {name}, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on', diff)
+        assert (diff == 0) == (fw in (False, 'D'))
     # (7) circular self-authorization: KK U, WF F; the all-T assignment is a total fixed point (F is grounded, not forced)
     circ = Record([ROOT, G('g1', 'A', ['g2'], 'B'), G('g2', 'B', ['g1'], 'A'),
                    {'id': 'x', 'kind': 'adopt', 'actor': 'A', 'cites': ['g2'], 'item': 'c', 'scope': 's', 't': 2,
@@ -502,8 +559,9 @@ if __name__ == '__main__':
     kk, _ = lfp(cm2, 'U')
     wf = wfs(cm2)
     alt = {'r': T, 'x': F, 'g1': T, 'g2': T, 'n': T}
-    print('(8) loop annulling a rooted adoption: KK x =', kk['x'], '; WF x =', wf['x'], '; CE*(c, 3) =',
-          ce_star(cm2, 'c', 3), '; {loop T, x F} is a fixed point:', phi(cm2, alt, 'U') == alt)
+    print('(8) loop annulling a rooted adoption: KK x =', kk['x'], '; WF x =', wf['x'], '; current-authority(c, 3) off WF =',
+          current(cm2, wf, 'c', 3, 'U'), '; {loop T, x F} is a fixed point:', phi(cm2, alt, 'U') == alt,
+          '; CE* on this record (outside D):', ce_star(cm2, 'c', 3)[0])
     assert kk['x'] == U and wf['x'] == T and phi(cm2, alt, 'U') == alt
     # (9) mutual annulment stays undetermined under WF
     wm = wfs(mut)
@@ -525,6 +583,11 @@ if __name__ == '__main__':
     wf = wfs(selfa)
     print('(11) self-annulment cycle: KK g1, e =', kk['g1'], kk['e'], '; WF =', wf['g1'], wf['e'])
     assert kk['e'] == U and wf['e'] == U
+    selfx = Record(selfa.e + [{'id': 'x', 'kind': 'adopt', 'actor': 'A', 'cites': ['g1'], 'item': 'c', 'scope': 's',
+                               't': 2, 'vfrom': 0, 'vto': 9}], {('s', 's')})
+    ans = ce_star_explained(selfx, 'c', 3)
+    print('(11b) an adoption under that grant: CE*(c, 3) =', ans[0], 'with reason', ans[1])
+    assert ans[0] == U and any('self-cancelling' in r for r in ans[1])
     # (12) a parent grant's ending does not reach the child grant's acts (defect 2, open half)
     par = Record([ROOT, G('g1', 'P', ['r'], 'A', t=0), G('g2', 'A', ['g1'], 'B', t=1),
                   {'id': 'e', 'kind': 'endg', 'actor': 'P', 'cites': ['r'], 'grant': 'g1', 'scope': 's', 't': 2},
@@ -542,7 +605,8 @@ if __name__ == '__main__':
     sup = Record([ROOT, {'id': 'y', 'kind': 'supersede', 'actor': 'P', 'cites': ['r'], 'item': 'c', 'scope': 's', 't': 1}],
                  {('s', 's')})
     dropped = Record(bad_int.e[:2], {('s', 's')})
-    outs = [ce_star(r, 'c', 3) for r in (bad_int, nohold, sup)]
+    fwd = Record([ROOT, G('g1', 'P', ['g2'], 'A'), G('g2', 'P', ['r'], 'P')], {('s', 's')})
+    outs = [ce_star(r, 'c', 3) for r in (bad_int, nohold, sup, fwd)]
     print('(13) outside D:', [o[1] for o in outs], '; the same record with the failing annulment dropped would give',
           ce_star(dropped, 'c', 3))
     assert all(o[0] == 'undefined' for o in outs) and ce_star(dropped, 'c', 3) == T

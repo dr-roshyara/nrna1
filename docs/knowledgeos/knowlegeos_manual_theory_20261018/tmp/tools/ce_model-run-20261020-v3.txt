@@ -1,0 +1,21 @@
+(1) Phi monotone under υ=U, backward citations: violations 0 of 400
+(1) Phi monotone under υ=U, forward citations: violations 0 of 400
+(2) KK reached on 4000 random records; worst rounds/(n+1) = 0.6 ; a chain of 8 grants recorded leaf first: 8 rounds for n+1 = 9
+(2b) WF on 2000 forward records: worst outer rounds/(n+1) = 0.67 ; worst inner passes/(2(n+1)^2) = 0.444
+(3) mutual annulment: υ=U KK x, y = U U ; υ=notcount: iteration reaches a fixed point: False ; fixed points (x, y): [('F', 'T'), ('T', 'F')] ; least: 0
+(4) answers of CE*(c, t) on WF, 3000 random records in D: ['F', 'T', 'U']
+(5) exhaustive over 3^k assignments, 300 random forward records: 300 fixed points; records with more than one: 0; fixed points other than KK: 0 (all above KK); fixed points not above WF: 0; records where WF is not a fixed point of Phi: 0
+(5) exhaustive over 3^k assignments, 300 loop-rich records: 327 fixed points; records with more than one: 14; fixed points other than KK: 27 (all above KK); fixed points not above WF: 27; records where WF is not a fixed point of Phi: 0
+(6) backward, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(6) forward, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 1
+(6) loop-rich, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 176
+(6) backward citations, any targets (D), 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(7) circular grants: KK g1, g2, x = U U U ; WF = F F F ; all-T is a fixed point: True
+(8) loop annulling a rooted adoption: KK x = U ; WF x = T ; current-authority(c, 3) off WF = T ; {loop T, x F} is a fixed point: True ; CE* on this record (outside D): undefined
+(9) mutual annulment, WF: x, y = U U
+(10) ending with the act time of x: recorded after x -> x T ; recorded before x -> x F
+(11) self-annulment cycle: KK g1, e = U U ; WF = U U
+(11b) an adoption under that grant: CE*(c, 3) = U with reason ['self-cancelling act e: it annuls g1, the grant it acts under']
+(12) parent g1 ended at 2, act under child g2 at 4: x = T ; CE*(c, 5) = T
+(13) outside D: ['integrity check failed for n', "missing field in g: ['holder']", 'kind supersede not admitted (y)', 'g1 cites g2, which is not an earlier entry (D: citations of earlier entries only)'] ; the same record with the failing annulment dropped would give T
+all assertions passed
