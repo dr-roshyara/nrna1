@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 4 (turn-5 settlement).
+it tests the FORM of the repaired definition, not its content. Version 5 (turn-6 settlement).
 
 Record: a list of entries in record order (positions 0..n-1). Entry kinds admitted in D (§9.13.2):
   root(id, actor, scope, t)                                    a root act: authorized by stipulation
@@ -19,7 +19,9 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(16), (2b), (9b), (11b), (15b): see the printed lines. Version 4 (turn-5 settlement): general refusal
+Checks (1)-(16), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 5 (turn-6 settlement): dangling citations
+refused (D); refusal reasons read only U alternatives and U bodies, components named, self-annulling acts named, a soundness
+check (15c), and decision 3's 'when U' cases (15d). Version 4 (turn-5 settlement): general refusal
 reasons (u_reasons over the dependency graph), the tightness check (14), the reviewers' cases (15), Θ_f's fixed rules (16).
 Version 3: D admits citations of earlier entries only (the
 Principal, 2026-10-20); U carries its reasons (ce_star_explained). Checks 5, 7 and 8 use records outside D, to show what
@@ -93,7 +95,9 @@ def in_D(rec):
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
         for g in x.get('cites', []):
-            if g in rec.pos and rec.pos[g] >= rec.pos[x['id']]:
+            if g not in rec.pos:
+                return False, f"{x['id']} cites {g}, which is not in the record (D: citations of earlier entries only; v5: a dangling citation is refused)"
+            if rec.pos[g] >= rec.pos[x['id']]:
                 return False, f"{x['id']} cites {g}, which is not an earlier entry (D: citations of earlier entries only)"
     return True, None
 
@@ -336,24 +340,41 @@ def value(a, q):
     return U if isinstance(q, tuple) else a[q]
 
 
+def body_value(a, pos, neg):
+    return k_and(*[value(a, q) for q in pos], *[k_not(value(a, q)) for q in neg])
+
+
 def u_reasons(rec, a, start):
-    """Refusal reasons for U (§9.13.3, v4): walk the U atoms reachable from start through the dependency graph; name
-    every cycle among them (on D each contains a negative edge, R2) and every undefined covers pair met."""
-    atoms, edges = dep_graph(rec)
+    """Refusal reasons for U (§9.13.3, v5): from the U atoms the answer rests on, follow only the U literals of rule
+    bodies that are themselves U (a body that is F supports nothing); name every strongly connected component of U atoms
+    that has a cycle (on D each contains a negative edge, R2), and every undefined covers pair met."""
+    atoms, rules = program(rec)
+    rules_of = {}
+    for h, pos, neg in rules:
+        rules_of.setdefault(h, []).append((pos, neg))
+    edges = {}
     seen, stack = set(), [q for q in start if value(a, q) == U]
     while stack:
         q = stack.pop()
         if q in seen:
             continue
         seen.add(q)
-        stack += [r for r, _ in edges.get(q, ()) if value(a, r) == U and r not in seen]
+        for pos, neg in rules_of.get(q, ()):
+            if body_value(a, pos, neg) != U:
+                continue
+            for r in pos:
+                if value(a, r) == U:
+                    edges.setdefault(q, set()).add((r, 'pos')); stack.append(r)
+            for r in neg:
+                if value(a, r) == U:
+                    edges.setdefault(q, set()).add((r, 'neg')); stack.append(r)
     def reach(q):
-        out, st = set(), [r for r, _ in edges.get(q, ()) if r in seen]
+        out, st = set(), [r for r, _ in edges.get(q, ())]
         while st:
             r = st.pop()
             if r not in out:
                 out.add(r)
-                st += [s for s, _ in edges.get(r, ()) if s in seen]
+                st += [s for s, _ in edges.get(r, ())]
         return out
     R = {q: reach(q) for q in seen}
     sccs, done = [], set()
@@ -371,52 +392,77 @@ def u_reasons(rec, a, start):
             reasons.append(f"covers({gs}, {xs}) undefined (used by {', '.join(users)})")
             continue
         acts = sorted(comp)
-        selfc = []
+        named = []
         for e in acts:
             x = rec.by[e]
-            if x['kind'] == 'annul' and x['target'] in comp:
-                # does e depend positively (within the cycle) on its own target?
-                st, vis = [r for r, k in edges.get(e, ()) if k == 'pos' and r in comp], set()
-                while st:
-                    r = st.pop()
-                    if r not in vis:
-                        vis.add(r)
-                        st += [s for s, k in edges.get(r, ()) if k == 'pos' and s in comp]
-                if x['target'] in vis:
-                    how = 'directly' if x['target'] in x['cites'] else 'through the grants it acts under'
-                    selfc.append(f"self-cancelling act {e}: it annuls {x['target']}, on which its own authority rests ({how})")
-        if selfc:
-            reasons += selfc
+            if x['kind'] != 'annul' or x['target'] not in comp:
+                continue
+            if x['target'] == e:
+                named.append(f"self-annulling act {e}: it annuls itself")
+                continue
+            st, vis = [r for r, k in edges.get(e, ()) if k == 'pos' and r in comp], set()
+            while st:
+                r = st.pop()
+                if r not in vis:
+                    vis.add(r)
+                    st += [s for s, k in edges.get(r, ()) if k == 'pos' and s in comp]
+            if x['target'] in vis:
+                how = 'directly' if x['target'] in x['cites'] else 'through the grants it acts under'
+                named.append(f"self-cancelling act {e}: it annuls {x['target']}, a link of its own authorization chain ({how})")
+        if named:
+            reasons += named
         elif all(rec.by[e]['kind'] == 'annul' and rec.by[e]['target'] in comp for e in acts):
             reasons.append(f"mutual annulment of {' and '.join(acts)}" if len(acts) == 2
                            else f"annulment ring of {', '.join(acts)}")
         else:
-            reasons.append(f"negative cycle through {', '.join(acts)}")
+            reasons.append(f"negative cycle (strongly connected component) through {', '.join(acts)}")
     return reasons or ['undetermined (no cycle or coverage reason found)']
 
 
+def alternatives(rec, a, item, t, upsilon='U', qscope=None):
+    """current-authority's alternatives, one per adoption y with t_y <= t: (value, the U atoms it rests on, whether the
+    queried-scope covers pair is U, y)."""
+    out = []
+    for y in rec.e:
+        if not (y['kind'] == 'adopt' and y['item'] == item and y['t'] <= t):
+            continue
+        valid = T if y['vfrom'] <= t < y['vto'] else F
+        scope_ok = T if qscope is None else covers(y['scope'], qscope, rec.dom)
+        parts, uatoms = [a[y['id']], valid, scope_ok], ([y['id']] if a[y['id']] == U else [])
+        for v in rec.e:
+            if v['kind'] == 'revoke' and v['item'] == item and rec.key(v['id']) > rec.key(y['id']) and v['t'] <= t:
+                parts.append(k_not(effective(a, v['id'], upsilon)))
+                if a[v['id']] == U:
+                    uatoms.append(v['id'])
+        for g in y['cites']:
+            if g in rec.by and rec.by[g]['kind'] == 'grant':
+                gr = rec.by[g]
+                closes = T if gr['end'] <= t else F
+                ends = [e for e in rec.e if e['kind'] == 'endg' and e['grant'] == g
+                        and rec.key(y['id']) < rec.key(e['id']) and e['t'] <= t]
+                parts.append(k_not(k_or(closes, *[effective(a, e['id'], upsilon) for e in ends])))
+                uatoms += [e['id'] for e in ends if a[e['id']] == U]
+        out.append((k_and(*parts), uatoms, scope_ok == U, y['id']))
+    return out
+
+
 def ce_star_explained(rec, item, t, qscope=None):
-    """CE* with its refusal reason for U (the Principal, 2026-10-20: self-cancelling acts and mutual annulment give U
-    with a reason; v4: every U names the cycles or undefined covers pairs it rests on)."""
+    """CE* with its refusal reason for U (v5): the reason is computed only from alternatives whose value is U, and within
+    them from U literals of U rule bodies (§9.13.3)."""
     v = ce_star(rec, item, t, qscope)
     if v != U:
         return v, None
     a = wfs(rec)
     start, extra = [], []
-    for y in rec.e:
-        if y['kind'] == 'adopt' and y['item'] == item and y['t'] <= t:
-            start.append(y['id'])
-            start += [r['id'] for r in rec.e if r['kind'] == 'revoke' and r['item'] == item
-                      and rec.key(r['id']) > rec.key(y['id']) and r['t'] <= t]
-            for g in y['cites']:
-                start += [e['id'] for e in rec.e if e['kind'] == 'endg' and e['grant'] == g
-                          and rec.key(y['id']) < rec.key(e['id']) and e['t'] <= t]
-            if qscope is not None and covers(y['scope'], qscope, rec.dom) == U and a[y['id']] != F:
-                extra.append(f"covers({y['scope']}, {qscope}) undefined for the queried scope (adoption {y['id']})")
-    rs = u_reasons(rec, a, start)
-    if extra:
-        rs = [r for r in rs if not r.startswith('undetermined')] + extra
-    return U, rs
+    for val, uatoms, cov_u, y in alternatives(rec, a, item, t, 'U', qscope):
+        if val != U:
+            continue
+        start += uatoms
+        if cov_u:
+            extra.append(f"covers({rec.by[y]['scope']}, {qscope}) undefined for the queried scope (adoption {y})")
+    rs = u_reasons(rec, a, start) if start else []
+    rs = [r for r in rs if not r.startswith('undetermined')] + extra
+    return U, rs or ['undetermined (no cycle or coverage reason found)']
 
 
 def act_explained(rec, i):
@@ -572,6 +618,9 @@ if __name__ == '__main__':
     print('(3) mutual annulment: υ=U KK x, y =', a_u['x'], a_u['y'], '; υ=notcount: iteration reaches a fixed point:',
           a_n is not None, '; fixed points (x, y):', sorted((p['x'], p['y']) for p in fpn), '; least:', len(least))
     assert a_u['x'] == U and a_u['y'] == U and a_n is None and len(fpn) == 2 and not least
+    fpu = sorted((p['x'], p['y']) for p in all_fixed_points(mut, 'U'))
+    print('(3b) mutual annulment under υ=U: fixed points (x, y):', fpu)
+    assert fpu == [('F', 'T'), ('T', 'F'), ('U', 'U')]
     # (4) CE* (read off WF) answers T, F and U on some records: constant evaluators fail
     seen = set()
     for _ in range(3000):
@@ -693,7 +742,11 @@ if __name__ == '__main__':
                  {('s', 's')})
     dropped = Record(bad_int.e[:2], {('s', 's')})
     fwd = Record([ROOT, G('g1', 'P', ['g2'], 'A'), G('g2', 'P', ['r'], 'P')], {('s', 's')})
-    outs = [ce_star(r, 'c', 3) for r in (bad_int, nohold, sup, fwd)]
+    dang = Record([ROOT, {'id': 'x', 'kind': 'adopt', 'actor': 'P', 'cites': ['r'], 'item': 'c', 'scope': 's', 't': 1,
+                          'vfrom': 0, 'vto': 9},
+                   {'id': 'n', 'kind': 'annul', 'actor': 'A', 'cites': ['g'], 'target': 'x', 'scope': 's', 't': 2}],
+                  {('s', 's')})
+    outs = [ce_star(r, 'c', 3) for r in (bad_int, nohold, sup, fwd, dang)]
     print('(13) outside D:', [o[1] for o in outs], '; the same record with the failing annulment dropped would give',
           ce_star(dropped, 'c', 3))
     assert all(o[0] == 'undefined' for o in outs) and ce_star(dropped, 'c', 3) == T
@@ -760,6 +813,58 @@ if __name__ == '__main__':
                 nores += act_explained(rec, i)[1][0].startswith('undetermined')
     print(f'(15b) 3000 random records in D: {asked} U answers (items and acts); without a named reason: {nores}')
     assert nores == 0
+    # (15c) soundness of reasons: every act named in a reason is U; with a queried scope as well
+    import re as _re
+    bad = named_n = 0
+    def d_loop_record(n):
+        """In D, annulment-rich: citations of earlier grants or the root only; annulment targets any other entry."""
+        ents, ids = [dict(ROOT)], ['r']
+        for j in range(n):
+            kind = rng.choice(['grant', 'grant', 'annul', 'annul', 'adopt'])
+            i = f'{kind[0]}{j}'
+            bases = [y for y in ids if y == 'r' or y.startswith('g')]
+            e = {'id': i, 'kind': kind, 'actor': rng.choice(['P', 'A', 'B']), 'cites': [rng.choice(bases)], 'scope': 's',
+                 't': rng.randint(0, 3)}
+            if kind == 'grant':
+                e.update(holder=rng.choice(['P', 'A', 'B']), start=0, end=9)
+            elif kind == 'adopt':
+                e.update(item='c', vfrom=0, vto=9)
+            else:
+                e.update(target=None)
+            ents.append(e); ids.append(i)
+        for e in ents:
+            if e.get('target', 0) is None:
+                e['target'] = rng.choice([y for y in ids if y != 'r'])
+        return Record(ents, {('s', 's')})
+    for _ in range(2000):
+        rec = d_loop_record(rng.randint(3, 9)) if rng.random() < 0.7 else random_record(rng, n_acts=rng.randint(2, 9), targets_any=True)
+        a = wfs(rec)
+        for tt in range(0, 7):
+            for q in (None, 's/a'):
+                v, rs = ce_star_explained(rec, 'c', tt, q)
+                if v != U:
+                    continue
+                for r in rs:
+                    if r.startswith('covers('):
+                        continue
+                    for tok in _re.findall(r'[a-z]\d+|\br\b', r):
+                        if tok in a:
+                            named_n += 1
+                            bad += a[tok] != U
+    print(f'(15c) 2000 random records in D, with and without a queried scope: {named_n} acts named in reasons; not U: {bad}')
+    assert bad == 0 and named_n > 0
+    # (15d) decision 3 'when U': an act annulling a link of its own chain is U only when nothing else decides it
+    red = Record([ROOT, G('g1', 'P', ['r'], 'A', t=0), G('g2', 'P', ['r'], 'A', t=0),
+                  annul('e', 'A', ['g1', 'g2'], 'g1', t=1)], S1)
+    dead = Record([ROOT, G('g1', 'P', ['r'], 'A', t=0),
+                   {'id': 'n', 'kind': 'endg', 'actor': 'P', 'cites': ['r'], 'grant': 'g1', 'scope': 's', 't': 1},
+                   annul('e', 'A', ['g1'], 'g1', t=2)], S1)
+    selfann = Record([ROOT, G('g1', 'P', ['r'], 'A', t=0), annul('e', 'A', ['g1'], 'e', t=1)], S1)
+    vr, vd = wfs(red)['e'], wfs(dead)['e']
+    sa = act_explained(selfann, 'e')
+    print(f'(15d) self-cancelling with a second intact basis: e = {vr}; with the link already ended: e = {vd};',
+          f'an act annulling itself: {sa}')
+    assert vr == T and vd == F and sa[0] == U and 'self-annulling' in sa[1][0]
     # (16) two fixed rules of Θ_f made visible: P is conjunctive over cited grants; a root cannot be annulled
     conj = Record([ROOT, G('g1', 'P', ['r'], 'A', t=0), G('g2', 'P', ['r'], 'Z', t=0), adopt('y', 'A', ['g1', 'g2'], t=1),
                    {'id': 'e', 'kind': 'endg', 'actor': 'P', 'cites': ['r'], 'grant': 'g2', 'scope': 's', 't': 2}], S1)

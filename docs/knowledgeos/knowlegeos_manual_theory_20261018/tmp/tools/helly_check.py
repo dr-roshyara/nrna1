@@ -16,6 +16,9 @@ Checks:
      set the pairs miss is found;
  (4) the bound h <= |X| on random set classes over a finite outcome space, and its tightness;
  (5) three real half-planes (x >= 0, y >= 0, x + y <= -1): pairs satisfiable (witnesses), all three not (Farkas sum);
+ (7) version 3 (turn-6 settlement): the new row's exact domain conditions (n on n values; on Z two thresholds; one
+     threshold on N); one interior forbidden value with thresholds gives h = 3, an endpoint keeps 2; a partial order and a
+     cyclic order break the interval row; check 3 widened (a class with the empty set, boxes, required/forbidden Boolean).
  (6) version 2 (turn-5 settlement): the reviewers' counterexamples. Thresholds with forbidden values on one attribute
      (the family x <= m-1, x != 0..m-1 is minimal of size m + 1, so h is unbounded on an unbounded domain); required values with thresholds (h = 2);
      a coupling constraint on the outcome space (exactly one of three Booleans: three literals form a minimal triple);
@@ -151,7 +154,12 @@ if __name__ == '__main__':
     def random_rules(cls, n, contexts):
         return [({c for c in contexts if rng.random() < 0.7}, {c: rng.choice(cls) for c in contexts}) for _ in range(n)]
     ctx = ['c1', 'c2', 'c3']
+    B2x2 = list(product((0, 1), repeat=2))
+    boxes2 = [{x for x in B2x2 if x[0] in I and x[1] in J} for I in ({0}, {1}, {0, 1}) for J in ({0}, {1}, {0, 1})]
     classes = {'required value k=3 (h=2)': ([{v} for v in range(3)] + [set(range(3))], list(range(3)), 2),
+               'required value with the empty effect (h=2)': ([{v} for v in range(3)] + [set(range(3)), set()], list(range(3)), 2),
+               'boxes on 2 Boolean attributes (h=2)': (boxes2, B2x2, 2),
+               'required or forbidden value, Boolean (h=2)': ([{0}, {1}, {0, 1}], [0, 1], 2),
                'threshold intervals 0..5 (h=2)': (interval_class(6), list(range(6)), 2),
                'forbidden value k=3 (h=3)': ([set(range(3)) - {v} for v in range(3)], list(range(3)), 3),
                'clauses on 2 attributes (h=4)': (clauses, B2, 4)}
@@ -205,4 +213,29 @@ if __name__ == '__main__':
           minimal_empty(lits, X1), '| cardinality over members: exactly-one-owner with three prohibitions minimal empty:',
           minimal_empty([owners] + proh, X3))
     assert minimal_empty(lits, X1) and minimal_empty([owners] + proh, X3)
+    # (7) the new row's exact domain conditions, and two order counterexamples
+    nn = {}
+    for n in (2, 3, 4, 5):
+        D = list(range(n))
+        nn[n] = helly(interval_class(n) + [set(D) - {v} for v in D], D, cap=n)
+    Zd = list(range(-5, 12))
+    one = [set(x for x in Zd if x <= 2)] + [set(Zd) - {v} for v in range(3)]           # x <= 2, x != 0, 1, 2
+    two = [set(x for x in Zd if x >= 0), set(x for x in Zd if x <= 2)] + [set(Zd) - {v} for v in range(3)]
+    D5 = list(range(5))
+    h_int = helly(interval_class(5) + [set(D5) - {2}], D5)
+    h_end = helly(interval_class(5) + [set(D5) - {0}], D5)
+    # a partial order: a, b, c incomparable, with pairwise upper bounds ab, ac, bc and no common one
+    up = {'a': {'a', 'ab', 'ac'}, 'b': {'b', 'ab', 'bc'}, 'c': {'c', 'ac', 'bc'}}
+    P = ['a', 'b', 'c', 'ab', 'ac', 'bc']
+    poset_min = minimal_empty([up['a'], up['b'], up['c']], P)
+    C6 = list(range(6))
+    arcs = [{(s + i) % 6 for i in range(l)} for s in range(6) for l in range(1, 6)]
+    h_cyc = helly(arcs, C6, cap=6)
+    print(f'(7) intervals with point complements on n values: h = {nn} (n = 2..5); on -5..11 (a stand-in for Z) the',
+          f'one-threshold family x <= 2, x != 0, 1, 2 has a common point: {bool(inter(one, Zd))}, the two-threshold family',
+          f'is minimal: {minimal_empty(two, Zd)} ({len(two)} members); on 0..4 with thresholds, forbidding the interior 2:',
+          f'h = {h_int}, the endpoint 0: h = {h_end}; up-sets of three incomparable elements minimal empty: {poset_min};',
+          f'arcs of a cyclic order on 6 points (cap 6): h = {h_cyc}')
+    assert nn == {2: 2, 3: 3, 4: 4, 5: 5} and inter(one, Zd) and minimal_empty(two, Zd) and h_int == 3 and h_end == 2
+    assert poset_min and h_cyc >= 3
     print('all assertions passed')
