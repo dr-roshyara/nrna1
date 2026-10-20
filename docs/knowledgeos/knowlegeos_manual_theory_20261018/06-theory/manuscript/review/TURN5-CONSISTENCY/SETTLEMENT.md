@@ -98,3 +98,9 @@ The set-wise test holds for every class as defined. It reduces to pairs only for
 | the live rule stores' admitted effect forms; §2.3 (a)'s language and h; unknown context | Professor | §9.14.9 | turn 7 or later |
 | §9.13 v4 and §9.14 v2: corrected, not re-reviewed | reviewers | — | turn 6's reviewers, where used |
 | corpus searches for turns 2 and 3 (the Principal's instruction) | Professor | practice 2 | turn 7 |
+
+## 6. The Principal's answers (2026-10-20, after this settlement)
+
+1. **Keep D** (citations of earlier entries only). "Under C1, a grant exists only once recorded, so a citation of a later grant would be authorization after the fact. D is also checkable at each new entry." Recorded in §9.13.2 and R3.
+2. **Decision 3 covers indirect self-cancelling:** an act that annuls any link of its own authorization chain gives U, with a reason naming the act and the link. Recorded in §9.13 R2 and §9.13.5 row 6. The model's reason already names both (check 15).
+3. **Turn 6's brief** lists all changes of this settlement as changed theory: §9.13 v4 and §9.14 v2 in full, including the new row and its proof; not "where used". The commissions may be split again.
