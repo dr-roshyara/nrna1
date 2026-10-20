@@ -257,6 +257,7 @@ The Professor sends, after the reviewer's blind inventory is saved:
 ### 8.4a Mechanical checks R1–R5 (in force in v1.3 since entry 56; carried here)
 
 - **R1, register home** and **R2, undefined terms** run before every review and every settlement; every flag or candidate gets a disposition in the brief file (corrected / defined / deleted / explained). R2 is a candidate list, not a finding. In a planted-gap test the reviewers run them on the copy, never the Professor. (These implement §8.2.6.)
+- **Quote check** (entry 60) on every changed section against the whole-book baseline `tmp/tools/QUOTE-BASELINE.txt`: new failures fixed or given a justified disposition before settlement; inherited failures on a separate list for the consolidations. It tests quotation accuracy only, not support.
 - **R3, inbound citations** of every accepted correction, listed and reassessed in the correction's settlement row; the integration reviewer receives the lists.
 - **R4:** "adequate" for a derivation needs a proof-step table; an undefined object used without a premise makes it "inadequate: premise missing"; without the table, "not assessed".
 - **R5:** a missing premise is critical if results or derivations rest on it, if it decides a kernel or boundary question, or if the book itself says the premise is undefined or false; normal only if nothing rests on it. Resolved only in the statement, the proof step, every dependant and the register together; a condition in the register alone does not resolve it.
