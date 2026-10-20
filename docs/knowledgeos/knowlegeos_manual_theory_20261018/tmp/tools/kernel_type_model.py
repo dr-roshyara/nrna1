@@ -1,34 +1,28 @@
 #!/usr/bin/env python3
 """Finite test of the extended kernel type (Ch. 9 §9.1 C6). A toy model, not KnowledgeOS: it tests the FORM of the
-type, not its content. Written 2026-10-19/20 for the whole-book review S0100, stage 2, finding P4-1.
+type, not its content.
 
-P4-1: the scaffold of §9.1 C2 (kernel_model.py) checks state invariants only. It cannot exclude
-  (a) a record mechanism that also deletes old entries (breaks append-only, a TRANSITION property), or
-  (b) a mechanism that records an act itself and grants standing on it (breaks the act's outside origin, Ch. 1 A1).
-Both preserve the state invariants and meet Req. This script shows that, and that the extended type excludes both.
+Version 2 (2026-10-20), after the turn-0 review of stage 2 (REPORT-A A-1, A-2; REPORT-B B-6). Changes from version 1:
+- acts have their own identity: an input carries no act, or the act (item, k), k in {1, 2}. In version 1 an act was
+  identified with its item, so `revoke` could never fire after `grant` (A-2, B-6);
+- the history rule is now checked, in two forms: T3w (a consuming step needs its act unused and records it) and
+  T3 (T3w, and the history variable never shrinks). A mechanism `clear_used` that empties the history and consumes
+  nothing passes T3w and breaks uniqueness together with grant and revoke (A-1); T3 excludes it;
+- the "history class" is derived from T3, not chosen by hand.
 
-State s = (claims, acts, standing, used), each a subset of the items {a, b}.
-  'used' is a history variable: the items whose external act has been consumed.
-Input x = (item, e), e ∈ {act, none}: whether the input carries an act performed outside the kernel on that item.
+State s = (claims, acts, standing, used): claims, acts, standing are subsets of the items {a, b}; used is a subset of
+the act identities {(a,1), (a,2), (b,1), (b,2)} (the history variable). s0 = (∅, ∅, ∅, ∅).
+Input x = (item, k): k = 0 means no act; k in {1, 2} names an act performed outside the kernel (a trusted label:
+A1-as-form, §9.9 T-b; the model cannot tell a true label from a false one).
 State invariants I_S:  I1 standing ⊆ acts;  I2 acts ⊆ claims.
-Transition invariants I_T over (s, x, s'):
-  T1 append-only     claims(s) ⊆ claims(s') and acts(s) ⊆ acts(s')
-  T2 origin          if acts or standing change, x carries an act (e = act) and only x's item changes
-Trace invariant I_R over runs from s0:
-  U  uniqueness      no external act (item, act) is consumed twice in a run
-  With the history variable 'used', U becomes the transition invariant T3: a consuming step needs item ∉ used(s)
-  and adds it to used(s').
-Mechanisms (pool): record, record_del (records x and deletes claims without an act), grant (needs e = act; writes
-used), forge (records an act on x and grants it whatever e is), revoke (needs e = act; writes used), grant_nh and
-revoke_nh (as grant and revoke, but neither reads nor writes 'used'), refuse, noop.
-Guard: g_origin refuses any step that breaks T2 (a constraint on others' transitions: the guard reading of C1).
-Required capabilities R (reachability from s0 = (∅, ∅, ∅, ∅)): R1 a recorded claim; R2 a claim with standing.
-
-Checks:
-  P_S   state preservation (the scaffold's P, §9.1 C2)
-  P_T   every step from a valid state also satisfies T1 and T2
-  P_R   every run from s0 satisfies U (checked on the reachable (state, consumed) pairs)
-  Kernel'(M, G) = P_S ∧ P_T ∧ P_R ∧ Req, with the steps of M filtered by the guards G.
+Transition invariants: T1 append-only (claims, acts); T2 origin (acts or standing change only on an input carrying an
+act, and only for that input's item); T3w / T3 as above.
+Trace invariant U: no act identity is consumed twice in a run (a step consumes its act if it carries one and changes
+acts or standing).
+Mechanisms: record, record_del, grant, forge, revoke, grant_nh, revoke_nh (no history), clear_used, refuse, noop.
+Guard: g_origin (passes only steps that keep T2).
+Req: R1 a recorded claim; R2 a claim with standing. R3 (a claim granted and then revoked: acts ∋ i, standing ∌ i) is
+used only to show that revoke is reachable, not as a kernel requirement.
 
 Usage: python3 -I kernel_type_model.py
 """
@@ -36,7 +30,8 @@ from functools import lru_cache
 from itertools import chain, combinations
 
 ITEMS = ('a', 'b')
-INPUTS = [(i, e) for i in ITEMS for e in ('act', 'none')]
+ACTS = tuple((i, k) for i in ITEMS for k in (1, 2))
+INPUTS = tuple((i, k) for i in ITEMS for k in (0, 1, 2))
 BOT = None
 
 
@@ -45,8 +40,9 @@ def subsets(xs):
     return [frozenset(c) for c in chain.from_iterable(combinations(xs, k) for k in range(len(xs) + 1))]
 
 
-SUB = subsets(ITEMS)
-STATES = [(c, a, s, u) for c in SUB for a in SUB for s in SUB for u in SUB]
+SUB, USUB = subsets(ITEMS), subsets(ACTS)
+STATES = [(c, a, s, u) for c in SUB for a in SUB for s in SUB for u in USUB]
+S0 = (frozenset(), frozenset(), frozenset(), frozenset())
 
 
 def inv_s(st):
@@ -58,45 +54,43 @@ S_I = [st for st in STATES if inv_s(st)]
 
 
 def record(st, x):
-    c, a, s, u = st
-    i, e = x
+    c, a, s, u = st; i, k = x
     return BOT if i in c else (c | {i}, a, s, u)
 
 
 def record_del(st, x):                       # records x, and deletes every claim that carries no act
-    c, a, s, u = st
-    i, e = x
+    c, a, s, u = st; i, k = x
     return BOT if i in c else ((c & a) | {i}, a, s, u)
 
 
 def grant(st, x):
-    c, a, s, u = st
-    i, e = x
-    return BOT if e != 'act' or i not in c or i in s or i in u else (c, a | {i}, s | {i}, u | {i})
+    c, a, s, u = st; i, k = x
+    return BOT if k == 0 or i not in c or i in s or (i, k) in u else (c, a | {i}, s | {i}, u | {(i, k)})
 
 
-def forge(st, x):                            # the kernel records an act itself: e is ignored
-    c, a, s, u = st
-    i, e = x
+def forge(st, x):                            # the kernel records an act itself: the input's act is ignored
+    c, a, s, u = st; i, k = x
     return BOT if i not in c or i in s else (c, a | {i}, s | {i}, u)
 
 
 def revoke(st, x):
-    c, a, s, u = st
-    i, e = x
-    return BOT if e != 'act' or i not in s or i in u else (c, a, s - {i}, u | {i})
+    c, a, s, u = st; i, k = x
+    return BOT if k == 0 or i not in s or (i, k) in u else (c, a, s - {i}, u | {(i, k)})
 
 
 def grant_nh(st, x):
-    c, a, s, u = st
-    i, e = x
-    return BOT if e != 'act' or i not in c or i in s else (c, a | {i}, s | {i}, u)
+    c, a, s, u = st; i, k = x
+    return BOT if k == 0 or i not in c or i in s else (c, a | {i}, s | {i}, u)
 
 
 def revoke_nh(st, x):
+    c, a, s, u = st; i, k = x
+    return BOT if k == 0 or i not in s else (c, a, s - {i}, u)
+
+
+def clear_used(st, x):                       # empties the history variable; consumes no act
     c, a, s, u = st
-    i, e = x
-    return BOT if e != 'act' or i not in s else (c, a, s - {i}, u)
+    return BOT if not u else (c, a, s, frozenset())
 
 
 def refuse(st, x):
@@ -108,37 +102,69 @@ def noop(st, x):
 
 
 POOL = {'record': record, 'record_del': record_del, 'grant': grant, 'forge': forge, 'revoke': revoke,
-        'grant_nh': grant_nh, 'revoke_nh': revoke_nh, 'refuse': refuse, 'noop': noop}
+        'grant_nh': grant_nh, 'revoke_nh': revoke_nh, 'clear_used': clear_used, 'refuse': refuse, 'noop': noop}
 
 
-def t1(s, s2):
-    return s[0] <= s2[0] and s[1] <= s2[1]
-
-
-def changed_items(s, s2):
+def changed(s, s2):
     return (s[1] ^ s2[1]) | (s[2] ^ s2[2])
 
 
-def t2(s, x, s2):
-    ch = changed_items(s, s2)
-    return not ch or (x[1] == 'act' and ch == {x[0]})
-
-
 def consumes(s, x, s2):
-    return x[1] == 'act' and bool(changed_items(s, s2))
+    return x[1] != 0 and bool(changed(s, s2))
 
 
-def g_origin(s, x, s2):                      # a guard: pass only steps that keep T2
+def t1(s, x, s2):
+    return s[0] <= s2[0] and s[1] <= s2[1]
+
+
+def t2(s, x, s2):
+    ch = changed(s, s2)
+    return not ch or (x[1] != 0 and ch == {x[0]})
+
+
+def t3w(s, x, s2):                           # a consuming step needs its act unused, and records it
+    return not consumes(s, x, s2) or (x not in s[3] and x in s2[3])
+
+
+def t3(s, x, s2):                            # T3w, and the history variable never shrinks
+    return t3w(s, x, s2) and s[3] <= s2[3]
+
+
+def g_origin(s, x, s2):
     return t2(s, x, s2)
 
 
 GUARDS = {'g_origin': g_origin}
-S0 = (frozenset(), frozenset(), frozenset(), frozenset())
 R = {'R1 record a claim': lambda st: len(st[0]) > 0,
      'R2 give a claim standing': lambda st: len(st[2]) > 0}
+R3 = lambda st: bool(st[1] - st[2])          # granted, then revoked
 
 
-def steps(M, G, st):
+@lru_cache(maxsize=None)
+def steps_of(m):                             # all steps of one mechanism from valid states
+    out = []
+    for st in S_I:
+        for x in INPUTS:
+            nxt = POOL[m](st, x)
+            if nxt is not BOT:
+                out.append((st, x, nxt))
+    return tuple(out)
+
+
+def holds_step(M, G, test):
+    return all(test(s, x, s2) for m in M for (s, x, s2) in steps_of(m) if all(GUARDS[g](s, x, s2) for g in G))
+
+
+def p_s(M, G=()):
+    return holds_step(M, G, lambda s, x, s2: inv_s(s2))
+
+
+def p_t(M, G=(), hist=None):                 # T1 ∧ T2 (∧ T3w or T3 when hist is given)
+    extra = {None: lambda s, x, s2: True, 'T3w': t3w, 'T3': t3}[hist]
+    return holds_step(M, G, lambda s, x, s2: t1(s, x, s2) and t2(s, x, s2) and extra(s, x, s2))
+
+
+def succ(M, G, st):
     for m in M:
         for x in INPUTS:
             nxt = POOL[m](st, x)
@@ -147,27 +173,17 @@ def steps(M, G, st):
 
 
 @lru_cache(maxsize=None)
-def p_s(M, G=()):
-    return all(inv_s(nxt) for st in S_I for _, nxt in steps(M, G, st))
-
-
-@lru_cache(maxsize=None)
-def p_t(M, G=()):
-    return all(t1(st, nxt) and t2(st, x, nxt) for st in S_I for x, nxt in steps(M, G, st))
-
-
-@lru_cache(maxsize=None)
-def p_r(M, G=()):                            # U over runs: explore (state, consumed acts) from s0
+def p_r(M, G=()):                            # U over runs from s0, tracking the acts consumed so far
     start = (S0, frozenset())
     seen, todo = {start}, [start]
     while todo:
         st, done = todo.pop()
-        for x, nxt in steps(M, G, st):
+        for x, nxt in succ(M, G, st):
             d2 = done
             if consumes(st, x, nxt):
-                if x[0] in done:
+                if x in done:
                     return False
-                d2 = done | {x[0]}
+                d2 = done | {x}
             if (nxt, d2) not in seen:
                 seen.add((nxt, d2)); todo.append((nxt, d2))
     return True
@@ -178,7 +194,7 @@ def reachable(M, G=()):
     seen, todo = {S0}, [S0]
     while todo:
         st = todo.pop()
-        for _, nxt in steps(M, G, st):
+        for _, nxt in succ(M, G, st):
             if nxt not in seen:
                 seen.add(nxt); todo.append(nxt)
     return frozenset(seen)
@@ -189,69 +205,54 @@ def req(M, G=()):
     return all(any(goal(st) for st in reach) for goal in R.values())
 
 
-def kernel_old(M):                           # §9.1 C2: P (state invariants) ∧ Req
+def kernel_old(M):
     return p_s(M) and req(M)
 
 
-def kernel_new(M, G=()):                     # §9.1 C6
+def kernel_new(M, G=()):
     return p_s(M, G) and p_t(M, G) and p_r(M, G) and req(M, G)
 
 
-def proper_subsets(M):
-    return [frozenset(c) for k in range(len(M)) for c in combinations(sorted(M), k)]
-
-
-def minimal_new(M, G=()):
-    return kernel_new(M, G) and not any(kernel_new(N, G) for N in proper_subsets(M))
-
-
-def show(label, M, G=()):
-    M = frozenset(M)
-    print(f'{label:<38} P_S={p_s(M, G)!s:<5} P_T={p_t(M, G)!s:<5} P_R={p_r(M, G)!s:<5} Req={req(M, G)!s:<5} '
-          f'Kernel(C2)={kernel_old(M) if not G else "n/a"!s:<5} Kernel(C6)={kernel_new(M, G)}')
+def F(*names):
+    return frozenset(names)
 
 
 if __name__ == '__main__':
-    allM = subsets(POOL)
-    print(f'states {len(STATES)}, valid |S_I| = {len(S_I)}, inputs {len(INPUTS)}, pool {len(POOL)}, {len(allM)} subsets')
-    cases = [('{record, grant}', ['record', 'grant']), ('{record_del, grant}  (deleting record)', ['record_del', 'grant']),
-             ('{record, forge}  (forge)', ['record', 'forge']), ('{record, grant, revoke}', ['record', 'grant', 'revoke']),
-             ('{record, grant_nh}', ['record', 'grant_nh']), ('{record, revoke_nh}', ['record', 'revoke_nh']),
-             ('{record, grant_nh, revoke_nh}', ['record', 'grant_nh', 'revoke_nh']),
-             ('∅', []), ('{refuse}', ['refuse']), ('{noop}', ['noop'])]
-    for label, M in cases:
-        show(label, M)
-    show('{record, forge} + guard g_origin', ['record', 'forge'], ('g_origin',))
-    # (1) the scaffold admits both counter-models; the extended type excludes both
-    for M in (('record_del', 'grant'), ('record', 'forge')):
-        assert kernel_old(frozenset(M)) and not kernel_new(frozenset(M)), M
-    assert kernel_new(frozenset({'record', 'grant'}))
-    # (2) trivial cases still fail Req
-    for M in ([], ['refuse'], ['noop']):
-        assert not kernel_new(frozenset(M)) and p_s(frozenset(M)) and p_t(frozenset(M)), M
-    # (3) C3 re-checked. P_S ∧ P_T is a condition on each mechanism: closed under union and subsets.
-    pst = lambda M: p_s(M) and p_t(M)
-    closed_st = all(pst(A | B) == (pst(A) and pst(B)) for A in allM for B in allM)
-    # U as a trace invariant is NOT: grant_nh and revoke_nh each satisfy it alone, not together
-    assert p_r(frozenset({'record', 'grant_nh'})) and p_r(frozenset({'record', 'revoke_nh'}))
-    assert not p_r(frozenset({'record', 'grant_nh', 'revoke_nh'}))
-    closed_r = all(p_r(A | B) == (p_r(A) and p_r(B)) for A in allM for B in allM)
-    # with the history variable read and written by every consuming mechanism, U holds for every union of such
-    hist = frozenset({'record', 'grant', 'revoke', 'refuse', 'noop'})
-    assert all(p_r(A) for A in subsets(hist))
-    monotone = all(req(B) for A in allM for B in allM if A <= B and req(A))
-    U = frozenset(m for m in POOL if pst(frozenset({m})) and p_r(frozenset({m})))
-    print('P_S ∧ P_T closed under union and subsets :', closed_st)
-    print('P_R (U as a trace invariant) closed      :', closed_r)
-    print('Req monotone (closed reading)            :', monotone)
-    print('mechanisms preserving S, T, R alone      :', sorted(U), '-> Kernel(C6) =', kernel_new(U))
-    assert closed_st and not closed_r and monotone
-    # existence by one check, per class: union of individually preserving mechanisms within the history class
-    Uh = U & hist
-    assert kernel_new(Uh) == any(kernel_new(M) for M in subsets(hist)), 'C3 for S, T and history-encoded R'
-    print('within the history class, existence = Kernel(C6)(U ∩ hist) :', kernel_new(Uh))
-    # (4) the guard reading: a guard turns forge into a kernel, and adding a guard can only remove steps
-    assert kernel_new(frozenset({'record', 'forge'}), ('g_origin',))
-    assert all(reachable(frozenset(M), ('g_origin',)) <= reachable(frozenset(M)) for M in allM)
-    print('minimal kernels (C6), no guards          :', sorted(sorted(M) for M in allM if minimal_new(M)))
+    print(f'states {len(STATES)}, valid |S_I| = {len(S_I)}, inputs {len(INPUTS)}, pool {len(POOL)}')
+    # (1) both counter-models pass C2 and fail C6; {record, grant} passes both
+    for M in (F('record_del', 'grant'), F('record', 'forge')):
+        assert kernel_old(M) and not kernel_new(M), sorted(M)
+    assert kernel_new(F('record', 'grant'))
+    print('(1) deleting record and forge: kernels under C2, not under C6')
+    # (2) revocation is reachable now (A-2, B-6)
+    assert any(R3(st) for st in reachable(F('record', 'grant', 'revoke')))
+    assert kernel_new(F('record', 'grant', 'revoke'))
+    print('(2) revoke fires: a granted-then-revoked state is reachable in {record, grant, revoke}')
+    # (3) trivial cases fail Req
+    for M in (F(), F('refuse'), F('noop')):
+        assert p_s(M) and p_t(M) and not req(M)
+    print('(3) ∅, refuse, noop: preserve, fail Req')
+    # (4) result 4: uniqueness is not a per-mechanism condition (acts distinct from items)
+    assert p_r(F('record', 'grant_nh')) and p_r(F('record', 'revoke_nh'))
+    assert p_s(F('record', 'grant_nh', 'revoke_nh')) and p_t(F('record', 'grant_nh', 'revoke_nh'))
+    assert not p_r(F('record', 'grant_nh', 'revoke_nh'))
+    print('(4) grant_nh, revoke_nh: each keeps U alone; together a run grants (a,1), revokes (a,2), grants (a,1) again')
+    # (5) A-1: T3w is not enough; T3 (history never shrinks) is
+    cu = F('clear_used')
+    assert p_s(cu) and p_t(cu, hist='T3w') and p_r(cu) and not p_t(cu, hist='T3')
+    assert not p_r(F('record', 'grant', 'revoke', 'clear_used'))
+    print('(5a) clear_used passes T1, T2, T3w and U alone; with record, grant, revoke it breaks U; T3 excludes it')
+    cls = [m for m in POOL if p_s(F(m)) and p_t(F(m), hist='T3')]
+    print('     class of mechanisms satisfying I_S, T1, T2, T3 (derived):', sorted(cls))
+    assert all(p_r(M) for M in subsets(cls)), 'T3 + history empty at s0 => U for every union in the class'
+    print('(5b) every union of mechanisms in that class keeps U (', len(subsets(cls)), 'subsets checked)')
+    U = F(*cls)
+    assert kernel_new(U) == any(kernel_new(M) for M in subsets(cls))
+    print('(5c) within the class, a kernel exists iff the union of the class is a kernel:', kernel_new(U))
+    allpres = F(*[m for m in POOL if p_s(F(m)) and p_t(F(m)) and p_r(F(m))])
+    print('     union of all mechanisms preserving I_S, T1, T2, U alone:', sorted(allpres), '-> kernel:', kernel_new(allpres))
+    assert not kernel_new(allpres)
+    # (6) guards
+    assert kernel_new(F('record', 'forge'), ('g_origin',))
+    print('(6) {record, forge} with the guard g_origin is a kernel; a guard only removes steps')
     print('all assertions passed')

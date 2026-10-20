@@ -1,0 +1,12 @@
+states 1024, valid |S_I| = 256, inputs 6, pool 10
+(1) deleting record and forge: kernels under C2, not under C6
+(2) revoke fires: a granted-then-revoked state is reachable in {record, grant, revoke}
+(3) ∅, refuse, noop: preserve, fail Req
+(4) grant_nh, revoke_nh: each keeps U alone; together a run grants (a,1), revokes (a,2), grants (a,1) again
+(5a) clear_used passes T1, T2, T3w and U alone; with record, grant, revoke it breaks U; T3 excludes it
+     class of mechanisms satisfying I_S, T1, T2, T3 (derived): ['grant', 'noop', 'record', 'refuse', 'revoke']
+(5b) every union of mechanisms in that class keeps U ( 32 subsets checked)
+(5c) within the class, a kernel exists iff the union of the class is a kernel: True
+     union of all mechanisms preserving I_S, T1, T2, U alone: ['clear_used', 'grant', 'grant_nh', 'noop', 'record', 'refuse', 'revoke', 'revoke_nh'] -> kernel: False
+(6) {record, forge} with the guard g_origin is a kernel; a guard only removes steps
+all assertions passed

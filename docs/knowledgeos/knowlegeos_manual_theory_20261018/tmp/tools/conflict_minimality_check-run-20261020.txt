@@ -1,0 +1,3 @@
+global minimal sets, with the contexts where each is in conflict: [(['R1', 'R2'], ['c2'])]
+pointwise minimal sets per context: {'c1': [['R1', 'R2', 'R3']], 'c2': [['R1', 'R2']]}
+the conflict at c1 is reported only by the pointwise definition; all assertions passed

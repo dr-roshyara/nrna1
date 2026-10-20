@@ -778,3 +778,7 @@ Material (10): applied 6 (P3-2, P3-3, P3-4, P3-6, P3-7, P3-8), in part 1 (P3-10)
 | T9-05 (§9.6–§9.9 against Kernel′); T9-06 (relocation test on a known case); F35, F36, F37 | Professor | follow-ups of P4-1, P4-7, P5-2, P2-1 | in the next theory turn |
 | DB-1 … DB-7 | Principal | reserved decisions | as filed in `DECISION-BRIEFS-S0100.md` |
 | Per-row "open (U)" source checks (e.g. GKC, PKSM, RS not on the allowed list) | Principal | the files are outside the allowed list | a grant, or keep the reviewers' checks as recorded |
+
+## 10. Corrections after the turn-0 review (2026-10-20)
+
+This record is history and is not rewritten. Its errors found by the turn-0 review are corrected in `review/TURN0-STAGE2/SETTLEMENT.md` §5: the P2-1 line "holds for (A)" (wrong), the P4-4 citation "§8.6 C1" (the text has C3), and the P4-1 "Closed" (result 5 was false as stated, now corrected).
