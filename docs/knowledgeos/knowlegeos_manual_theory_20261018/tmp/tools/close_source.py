@@ -207,6 +207,8 @@ def norm(s):
     s = re.sub(r'[*_`~]', '', s)
     s = ''.join(ch for ch in s if unicodedata.category(ch)[0] != 'S' or ch in '→←≠⟂⊆⊂≤≥∧∨×·—–-')
     s = s.replace('“', '"').replace('”', '"').replace('’', "'").replace('‘', "'")
+    # LaTeX-escaped spaces ("Historical\ decisions") read as spaces, as in corpus_quote_check.py
+    s = s.replace('\\', ' ')
     return re.sub(r'\s+', ' ', s).strip().lower()
 
 

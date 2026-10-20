@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 6 (the Principal's turn-6 decisions, applied in turn 7).
+it tests the FORM of the repaired definition, not its content. Version 7 (turn 7: check 18, records of several applications
+merged without a shared serialization point; F22/K4, §9.16). Version 6: the Principal's turn-6 decisions, applied in turn 7.
 
 Record: a list of entries in record order (positions 0..n-1). Entry kinds admitted in D (§9.13.2):
   root(id, actor, scope, t)                                    a root act: authorized by stipulation
@@ -19,7 +20,7 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(17), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 6: recorder and auth fields
+Checks (1)-(18), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 6: recorder and auth fields
 required (defaults filled for the earlier checks), Q1's marks, removal by tombstone (17). Version 5 (turn-6 settlement): dangling citations
 refused (D); refusal reasons read only U alternatives and U bodies, components named, self-annulling acts named, a soundness
 check (15c), and decision 3's 'when U' cases (15d). Version 4 (turn-5 settlement): general refusal
@@ -75,9 +76,13 @@ def covers(gs, xs, domain):
 
 
 class Record:
-    def __init__(self, entries, cov_domain, defaults=True):
+    def __init__(self, entries, cov_domain, defaults=True, tie='pos'):
         """defaults=True fills a missing recorder (the actor) and auth ('signed-as-actor'), so that the earlier checks keep
-        their records; defaults=False keeps the entries as given (used to test D's field rule)."""
+        their records; defaults=False keeps the entries as given (used to test D's field rule).
+        tie='pos': equal act times are ordered by record position (F26 (a) on ties; the default, as in §9.13.2).
+        tie='id': by the act's identity, standing in for a content-derived identity (K2), so the order of acts needs
+        no record position (F26 (c) with a tie rule; v7, check 18). D's citation rule always reads positions."""
+        self.tie = tie
         if defaults:
             for x in entries:
                 x.setdefault('recorder', x.get('actor'))
@@ -91,7 +96,7 @@ class Record:
         return [x['id'] for x in self.e]
 
     def key(self, i):
-        return (self.by[i]['t'], self.pos[i])
+        return (self.by[i]['t'], self.pos[i] if self.tie == 'pos' else i)
 
 
 def in_D(rec):
@@ -610,6 +615,19 @@ def loop_record(rng, n_acts=5):
     return Record(ents, {('s', 's')})
 
 
+def linear_extension(rng, entries):
+    """A random order of the entries in which every citation points to an earlier entry (a topological sort of the
+    citation graph): one possible merged order of several applications' records (v7, check 18)."""
+    left, out, have = list(entries), [], set()
+    while left:
+        ready = [e for e in left if all(g in have for g in e.get('cites', []))]
+        e = rng.choice(ready)
+        left.remove(e)
+        out.append(e)
+        have.add(e['id'])
+    return out
+
+
 def all_fixed_points(rec, upsilon):
     ids = [i for i in rec.acts() if rec.by[i]['kind'] != 'root']
     out = []
@@ -958,4 +976,54 @@ if __name__ == '__main__':
     assert not in_D(nof)[0] and not in_D(badauth)[0]
     assert v_before == T and any('transcribed entries g' in m for m in m_c) and any('unsigned entries x' in m for m in m_c)
     assert m_d == [] and in_D(tomb)[0] and v_after == v_before and any('removed content g' in m for m in marks(tomb, 'c', 3))
+    # (18) v7 (turn 7, F22/K4): several applications' records merged with no shared serialization point. A causal history
+    # (every citation of an entry already made) is split between two applications; the merge is any order in which
+    # citations point backward. With ties by identity (F26 (c)), every such order gives the same answers; with ties by
+    # position (F26 (a)), the answer can depend on the merge order. A cut across records (one prefix per application) is
+    # in D iff it is citation-closed (a consistent cut).
+    same_id = diff_pos = n_hist = cut_ok = cut_bad = 0
+    for _ in range(600):
+        hist = random_record(rng, n_acts=rng.randint(3, 9), targets_any=True)
+        app = {x['id']: (0 if x['kind'] == 'root' else rng.choice([1, 2])) for x in hist.e}
+        n_hist += 1
+        answers = {'id': set(), 'pos': set()}
+        for _k in range(6):
+            ext = linear_extension(rng, [dict(x) for x in hist.e])
+            for tie_rule in ('id', 'pos'):
+                m = Record([dict(x) for x in ext], hist.dom, tie=tie_rule)
+                assert in_D(m)[0]
+                answers[tie_rule].add(tuple(ce_star(m, 'c', tt, q) for tt in range(7) for q in (None, 's/a')))
+        same_id += len(answers['id']) == 1
+        diff_pos += len(answers['pos']) > 1
+        cut_len = {1: rng.randint(0, 9), 2: rng.randint(0, 9)}
+        seen = {1: 0, 2: 0}
+        cut = []
+        for x in hist.e:
+            a_ = app[x['id']]
+            if a_ == 0:
+                cut.append(dict(x))
+                continue
+            seen[a_] += 1
+            if seen[a_] <= cut_len[a_]:
+                cut.append(dict(x))
+        ids_in = {x['id'] for x in cut}
+        closed = all(g in ids_in for x in cut for g in x.get('cites', []))
+        inD = in_D(Record(cut, hist.dom, tie='id'))[0]
+        assert closed == inD
+        cut_ok += closed
+        cut_bad += not closed
+    # the race: application 1 records A's grant x to B at act time 3; application 2 records P's ending of A's grant g at
+    # act time 3; B later adopts c under x. Neither of x, e cites the other, so both merge orders keep D.
+    y = {'id': 'y', 'kind': 'adopt', 'actor': 'B', 'cites': ['x'], 'item': 'c', 'scope': 's', 't': 5, 'vfrom': 0, 'vto': 9}
+    race = [ROOT, G('g', 'P', ['r'], 'A', t=0), G('x', 'A', ['g'], 'B', t=3),
+            {'id': 'e', 'kind': 'endg', 'actor': 'P', 'cites': ['r'], 'grant': 'g', 'scope': 's', 't': 3}, y]
+    order1, order2 = race, race[:2] + [race[3], race[2], y]
+    p1, p2 = (ce_star(Record([dict(x) for x in o], S1), 'c', 6) for o in (order1, order2))
+    i1, i2 = (ce_star(Record([dict(x) for x in o], S1, tie='id'), 'c', 6) for o in (order1, order2))
+    print(f'(18) {n_hist} causal histories split between two applications, 6 merge orders each: same answers under ties by',
+          f'identity in {same_id}; answers depend on the merge order under ties by position in {diff_pos}')
+    print(f'     cuts across records: in D exactly when citation-closed ({cut_ok} closed, {cut_bad} not, all refused)')
+    print(f'     the race (grant x and the ending e of its basis at the same act time, in two applications; B adopts c under x',
+          f'later): ties by position give CE*(c, 6) = {p1} or {p2} by merge order; ties by identity give {i1} and {i2}')
+    assert same_id == n_hist and p1 != p2 and i1 == i2 and cut_bad > 0
     print('all assertions passed')
