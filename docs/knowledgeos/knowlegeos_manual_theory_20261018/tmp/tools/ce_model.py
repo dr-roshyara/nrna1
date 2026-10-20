@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 9 (the Principal's decisions after turn 7): acts at
+it tests the FORM of the repaired definition, not its content. Version 10 (C19 settlement, commission T): a consumption's
+only basis is the grant it consumes, which it must cite (bases_of; T2-02); a consumption does not end the currency of
+adoptions made before it (§1.14.1-4; T1-04); the append guard counts only consumptions that are not F (T1-02); an
+unauthorized removal is refused, since lost content cannot be restored (T1-05); removed_by is a set, and the "removal not
+authorized" mark needs every removal act of the entry to be non-T (T1-06); a cut is evaluated with D checked on the whole
+record (ce_star_cut; T1-01); signed-as-other with recorder = actor is marked, not refused (T1-15); checks 18e, 21, 22,
+22b, 23. Version 9 (the Principal's decisions after turn 7): acts at
 the same act time are unordered ("ordered before" is U; Record.before; an atom o <- not o per tied pair in the program
 reading; reasons name the pair; check 10b); consumption admitted (kind 'consume', ending its grant; append_guard prevents a
 second consumption; check 21); a removal is an authorized, recorded act that the tombstone cites (kind 'remove',
@@ -30,7 +36,7 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(22), (2b), (3b), (9b), (10b), (11b), (15b)-(15d), (17b), (18b)-(18d): see the printed lines. Version 6: recorder and auth fields
+Checks (1)-(23), (2b), (3b), (9b), (10b), (11b), (15b)-(15d), (17b), (18b)-(18e), (22b): see the printed lines. Version 6: recorder and auth fields
 required (defaults filled for the earlier checks), Q1's marks, removal by tombstone (17). Version 5 (turn-6 settlement): dangling citations
 refused (D); refusal reasons read only U alternatives and U bodies, components named, self-annulling acts named, a soundness
 check (15c), and decision 3's 'when U' cases (15d). Version 4 (turn-5 settlement): general refusal
@@ -53,6 +59,11 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'consume': {'actor', 'cites', 'grant', 'scope', 't'},     # the holder uses up the grant: it ends it after
           'remove': {'actor', 'cites', 'target', 'scope', 't'}}     # the act a tombstone cites (removed_by)
 ENDING_KINDS = ('endg', 'consume')
+
+
+def bases_of(x):
+    """v10 (C19, T2-02): a consumption's only basis is the grant it consumes; every other act's are its citations."""
+    return [x['grant']] if x.get('kind') == 'consume' else x.get('cites', [])
 # v6 (the Principal, after turn 6): every entry also carries its recorder and authentication status, apart from the actor
 for _k in FIELDS:
     FIELDS[_k] = FIELDS[_k] | {'recorder', 'auth'}
@@ -135,13 +146,13 @@ def in_D(rec):
             return False, f"missing field in {x['id']}: {sorted(FIELDS[x['kind']] - set(x))}"
         if x['auth'] not in AUTH:
             return False, f"auth of {x['id']} is {x['auth']!r}, not one of {sorted(AUTH)}"
-        if x['auth'] == 'signed-as-other' and x['recorder'] == x.get('actor'):
-            return False, f"{x['id']} is signed-as-other but its recorder is its actor (v9: a transcription has another recorder)"
+        if x['kind'] == 'consume' and x['grant'] not in x['cites']:
+            return False, f"consumption {x['id']} does not cite the grant it consumes (v10, C19 T2-02)"
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
         if x.get('removed'):
-            r = rec.by.get(x.get('removed_by'))
-            if r is None or r['kind'] != 'remove' or r['target'] != x['id']:
+            rs = [rec.by.get(r) for r in x.get('removed_by', [])]
+            if not rs or any(r is None or r['kind'] != 'remove' or r['target'] != x['id'] for r in rs):
                 return False, f"tombstone {x['id']} cites no removal act of it (v9: a removal is an authorized, recorded act that the tombstone cites)"
         for g in x.get('cites', []):
             if g not in rec.pos:
@@ -188,7 +199,7 @@ def phi(rec, a, upsilon):
         if not x['cites']:
             new[i] = F
             continue
-        alts = [basis(rec, a, x, g, upsilon) for g in x['cites']]
+        alts = [basis(rec, a, x, g, upsilon) for g in bases_of(x)]
         own_annul = [effective(a, e['id'], upsilon) for e in rec.e if e['kind'] == 'annul' and e['target'] == i]
         new[i] = k_and(k_or(*alts), k_not(k_or(F, *own_annul)))
     return new
@@ -229,7 +240,7 @@ def wfs(rec, count=None):
                 if any(e['kind'] == 'annul' and e['target'] == i and e['id'] in J for e in rec.e):
                     continue
                 ok = False
-                for g in x['cites']:
+                for g in bases_of(x):
                     if g not in rec.by or g not in S:
                         continue
                     gr = rec.by[g]
@@ -278,7 +289,7 @@ def program(rec):
             rules.append((i, (), ()))
             continue
         own = tuple(e['id'] for e in rec.e if e['kind'] == 'annul' and e['target'] == i)
-        for g in x['cites']:
+        for g in bases_of(x):
             if g not in rec.by:
                 continue
             gr = rec.by[g]
@@ -372,7 +383,7 @@ def current(rec, a, item, t, upsilon, qscope=None):
                 gr = rec.by[g]
                 closes = T if gr['end'] <= t else F
                 ends = [k_and(effective(a, e['id'], upsilon), rec.before(x['id'], e['id']), T if e['t'] <= t else F)
-                        for e in rec.e if e['kind'] in ENDING_KINDS and e['grant'] == g]
+                        for e in rec.e if e['kind'] == 'endg' and e['grant'] == g]   # v10 (T1-04): not consumptions
                 intact.append(k_not(k_or(closes, *ends)))
         alts.append(k_and(a[x['id']], valid, scope_ok, k_not(k_or(F, *revs)), *intact))
     return k_or(*alts)
@@ -507,7 +518,7 @@ def alternatives(rec, a, item, t, upsilon='U', qscope=None):
             if g in rec.by and rec.by[g]['kind'] == 'grant':
                 gr = rec.by[g]
                 closes = T if gr['end'] <= t else F
-                ends = [e for e in rec.e if e['kind'] in ENDING_KINDS and e['grant'] == g
+                ends = [e for e in rec.e if e['kind'] == 'endg' and e['grant'] == g
                         and rec.before(y['id'], e['id']) != F and e['t'] <= t]
                 parts.append(k_not(k_or(closes, *[k_and(effective(a, e['id'], upsilon), rec.before(y['id'], e['id']))
                                                   for e in ends])))
@@ -553,13 +564,21 @@ def remove(rec, i, rid, actor, cites, t, scope='s', **kw):
     """v9 (the Principal after turn 7): a removal is an authorized, recorded act that the tombstone cites. Appends the
     removal act rid (kind 'remove', target i) and tombstones i with removed_by = rid. The removal's own authorization is
     evaluated like any act; if it is not T, the marks say so."""
+    guard = kw.pop('guard', True)
     r = dict({'id': rid, 'kind': 'remove', 'actor': actor, 'cites': list(cites), 'target': i, 'scope': scope, 't': t,
               'recorder': actor, 'auth': 'signed-as-actor'}, **kw)
     rec.e.append(r)
     rec.by[rid] = r
     rec.pos[rid] = len(rec.e) - 1
+    if guard:                                       # v10 (C19, T1-05): content loss cannot be undone, so prevent
+        v = wfs(rec)[rid]
+        if v != T:
+            rec.e.pop()
+            del rec.by[rid], rec.pos[rid]
+            return False, f"removal {rid} refused: its authorization is {v}, not T (the content would be lost)"
     tombstone(rec, i)
-    rec.by[i]['removed_by'] = rid
+    rec.by[i]['removed_by'] = sorted(set(rec.by[i].get('removed_by', [])) | {rid})
+    return True, None
 
 
 def support(rec, item, t, start=None):
@@ -608,10 +627,13 @@ def marks(rec, item, t, start=None):
     if rm:
         out.append(f"rests on removed content {', '.join(rm)}")
         a = wfs(rec)
-        bad = sorted(f"{rec.by[i]['removed_by']} ({a[rec.by[i]['removed_by']]})" for i in rm
-                     if a.get(rec.by[i].get('removed_by')) != T)
-        if bad:
-            out.append(f"removal not authorized: {', '.join(bad)}")
+        bad = sorted(f"{i} ({', '.join(f'{r}={a.get(r)}' for r in rec.by[i].get('removed_by', []))})" for i in rm
+                     if not any(a.get(r) == T for r in rec.by[i].get('removed_by', [])))
+        if bad:                                     # v10 (T1-06): marked only if no removal act of it is T
+            out.append(f"removal not, or no longer, authorized: {', '.join(bad)}")
+    od = sorted(i for i in s if rec.by[i]['auth'] == 'signed-as-other' and rec.by[i].get('recorder') == rec.by[i].get('actor'))
+    if od:                                          # v10 (T1-15, T2-14): a mark, not a refusal (decision 2)
+        out.append(f"inconsistent recording status (signed-as-other, recorder = actor) {', '.join(od)}")
     return out
 
 
@@ -739,7 +761,7 @@ def merge(records, rng=None):
             if any(x.get(f) != y.get(f) for f in READ_FIELDS[x['kind']] | {'kind'}):
                 return None, f'conflicting copies of {i}'
             if x.get('removed') or y.get('removed'):
-                y['removed_by'] = y.get('removed_by') or x.get('removed_by')
+                y['removed_by'] = sorted(set(y.get('removed_by') or []) | set(x.get('removed_by') or []))   # v10 (T1-06)
                 y['removed'] = True
                 y.pop('content', None)
             y['ok'] = y.get('ok', True) and x.get('ok', True)
@@ -756,9 +778,23 @@ def append_guard(rec, e):
     """v9 (the Principal after turn 7: prevent single use): the kernel refuses to append a consumption of a grant that
     the record already shows consumed, so within one record no grant is consumed twice. Across applications the same
     guard needs one shared serialization point per grant (K4-p; §9.16 R3-R4). Returns (ok, reason)."""
-    if e['kind'] == 'consume' and any(x['kind'] == 'consume' and x['grant'] == e['grant'] for x in rec.e):
-        return False, f"{e['grant']} is already consumed (single use, prevented)"
+    if e['kind'] == 'consume':
+        a = wfs(rec)                                # v10 (T1-02, T2-03): count consumptions that are not F
+        live = [x['id'] for x in rec.e if x['kind'] == 'consume' and x['grant'] == e['grant'] and a[x['id']] != F]
+        if live:
+            return False, f"{e['grant']} is already consumed by {', '.join(live)} (single use, prevented)"
     return True, None
+
+
+def ce_star_cut(rec, s, item, t, qscope=None):
+    """v10 (C19, T1-01): CE* at the cut of the first s entries of a record. Membership of D is a property of the
+    record, checked on the whole record; the cut is evaluated on its entries. So a tombstone whose removal act lies
+    after the cut does not put the cut outside D."""
+    ok, why = in_D(rec)
+    if not ok:
+        return ('undefined', why)
+    pre = Record([dict(x) for x in rec.e[:s]], rec.dom, tie=rec.tie)
+    return current(pre, wfs(pre), item, t, 'U', qscope)
 
 
 def all_fixed_points(rec, upsilon):
@@ -1230,7 +1266,7 @@ if __name__ == '__main__':
     g_copy = dict(G('g', 'P', ['r'], 'A', t=0), content='text', auth='signed-as-other', recorder='app2')
     xa = dict(adopt('x', 'A', ['g'], t=1), recorder='app1')
     r1, r2 = [dict(ROOT), g_full, xa], [dict(ROOT), g_copy]
-    t2 = [dict(ROOT), dict(g_copy, removed=True, removed_by='rm'),
+    t2 = [dict(ROOT), dict(g_copy, removed=True, removed_by=['rm']),
           {'id': 'rm', 'kind': 'remove', 'actor': 'P', 'cites': ['r'], 'target': 'g', 'scope': 's', 't': 5,
            'recorder': 'app2', 'auth': 'signed-as-actor'}]
     t2[1].pop('content')
@@ -1305,42 +1341,100 @@ if __name__ == '__main__':
         diff += v != [ce_star(r2_, 'c', tt) for tt in range(7)]
     print(f'(20) 1500 random records in D with random recorder and auth: values changed in {diff}')
     assert diff == 0
-    # (21) v9: consumption admitted to D. The holder consumes g: acts under g ordered after the consumption are F; a
-    # consumption by a non-holder is F and ends nothing; a second consumption is F after the first, U at the same act
-    # time; the append guard prevents a second consumption within the record (single use prevented).
-    def cons(i, actor, t, g='g'):
-        return {'id': i, 'kind': 'consume', 'actor': actor, 'cites': [g], 'grant': g, 'scope': 's', 't': t}
+    # (21) v9-v10: consumption admitted to D. The holder consumes g: acts under g ordered after the consumption are F; an
+    # adoption made before stays current (v10, T1-04, §1.14.1-4); a consumption by a non-holder, or by the holder of
+    # another grant, is F and ends nothing (v10, T2-02); a second consumption is F after the first, U at the same act
+    # time; the append guard refuses a consumption while another consumption of the grant is not F (v10, T1-02).
+    def cons(i, actor, t, g='g', cites=None):
+        return {'id': i, 'kind': 'consume', 'actor': actor, 'cites': cites or [g], 'grant': g, 'scope': 's', 't': t}
     base21 = [dict(ROOT), G('g', 'P', ['r'], 'A', t=0)]
     r21 = Record([dict(x) for x in base21] + [cons('k1', 'A', 2), adopt('x1', 'A', ['g'], t=1), adopt('x3', 'A', ['g'], t=3)], S1)
     w21 = wfs(r21)
+    cur_x1 = current(Record([dict(x) for x in base21] + [adopt('x1', 'A', ['g'], t=1), cons('k1', 'A', 2)], S1),
+                     wfs(Record([dict(x) for x in base21] + [adopt('x1', 'A', ['g'], t=1), cons('k1', 'A', 2)], S1)), 'c', 4, 'U')
     r21b = Record([dict(x) for x in base21] + [cons('k1', 'B', 2), adopt('x3', 'A', ['g'], t=3)], S1)
     w21b = wfs(r21b)
+    r21o = Record([dict(x) for x in base21] + [G('gB', 'P', ['r'], 'B', t=0), cons('kB', 'B', 2, g='g', cites=['gB', 'g']),
+                                               adopt('x3', 'A', ['g'], t=3)], S1)
+    w21o = wfs(r21o)
     r21c = Record([dict(x) for x in base21] + [cons('k1', 'A', 2), cons('k2', 'A', 4)], S1)
     r21d = Record([dict(x) for x in base21] + [cons('k1', 'A', 2), cons('k2', 'A', 2)], S1)
     g_ok, g_why = append_guard(r21, cons('k2', 'A', 4))
+    g_ok_b, _ = append_guard(r21b, cons('k2', 'A', 4))          # the earlier consumption is F: not blocking
+    r21a = Record([dict(x) for x in base21] + [cons('k1', 'A', 2), annul('n', 'P', ['r'], 'k1', t=3)], S1)
+    g_ok_a, _ = append_guard(r21a, cons('k2', 'A', 4))          # the earlier consumption is annulled (F): not blocking
+    bad_cite = Record([dict(x) for x in base21] + [G('gB', 'P', ['r'], 'B', t=0), cons('kB', 'B', 2, g='g', cites=['gB'])], S1)
     print('(21) consumption: k1 by the holder at 2: k1 =', w21['k1'], ', act at 1 =', w21['x1'], ', act at 3 =', w21['x3'],
+          '| an adoption at 1, consumed at 2: current at 4 =', cur_x1,
           '| by a non-holder: k1 =', w21b['k1'], ', act at 3 =', w21b['x3'],
-          '| a second consumption later: k2 =', wfs(r21c)['k2'], '; at the same act time: k1, k2 =', wfs(r21d)['k1'],
-          wfs(r21d)['k2'], '| append guard on a second consumption:', g_ok, g_why, '| in D:', in_D(r21)[0])
-    assert w21['k1'] == T and w21['x1'] == T and w21['x3'] == F and w21b['k1'] == F and w21b['x3'] == T
-    assert wfs(r21c)['k2'] == F and wfs(r21d)['k1'] == U and wfs(r21d)['k2'] == U and not g_ok and in_D(r21)[0]
-    # (22) v9: a removal is an authorized, recorded act that the tombstone cites
+          '| by the holder of another grant, citing both: kB =', w21o['kB'], ', act at 3 =', w21o['x3'],
+          '| not citing the consumed grant:', in_D(bad_cite)[1])
+    print('     a second consumption later: k2 =', wfs(r21c)['k2'], '; at the same act time: k1, k2 =', wfs(r21d)['k1'],
+          wfs(r21d)['k2'], '| append guard after an effective consumption:', g_ok, g_why,
+          '| after an ineffective one:', g_ok_b, '| after an annulled one:', g_ok_a, '| in D:', in_D(r21)[0])
+    assert w21['k1'] == T and w21['x1'] == T and w21['x3'] == F and cur_x1 == T and w21b['k1'] == F and w21b['x3'] == T
+    assert w21o['kB'] == F and w21o['x3'] == T and not in_D(bad_cite)[0]
+    assert wfs(r21c)['k2'] == F and wfs(r21d)['k1'] == U and wfs(r21d)['k2'] == U and not g_ok and g_ok_b and g_ok_a
+    assert in_D(r21)[0]
+    # (22) v9-v10: a removal is an authorized, recorded act that the tombstone cites; an unauthorized removal is refused
+    # (v10, T1-05: content loss cannot be undone, so it is prevented); a removal that later stops being T is marked
     r22 = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), content='text'), adopt('x', 'A', ['g'], t=1)], S1)
     v22 = ce_star(r22, 'c', 3)
-    remove(r22, 'g', 'rm', 'P', ['r'], 5)
+    ok22, _ = remove(r22, 'g', 'rm', 'P', ['r'], 5)
     r22b = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), content='text'), adopt('x', 'A', ['g'], t=1)], S1)
-    remove(r22b, 'g', 'rm', 'Z', ['r'], 5)                     # Z is not the root's actor: the removal is F
+    ok22b, why22b = remove(r22b, 'g', 'rm', 'Z', ['r'], 5)      # Z is not the root's actor: refused
+    r22f = Record([dict(ROOT), G('gR', 'P', ['r'], 'R', t=0), dict(G('g', 'P', ['r'], 'A', t=0), content='text'),
+                   adopt('x', 'A', ['g'], t=1)], S1)
+    remove(r22f, 'g', 'rm', 'R', ['gR'], 5)
+    r22f.e.append(dict(annul('n', 'P', ['r'], 'rm', t=6), recorder='P', auth='signed-as-actor'))
+    r22f = Record(r22f.e, S1)
     r22c = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), removed=True), adopt('x', 'A', ['g'], t=1)], S1)
-    print('(22) removal by an authorized act: CE* =', ce_star(r22, 'c', 3), '(before', v22, '), marks', marks(r22, 'c', 3),
-          '| by an unauthorized act:', ce_star(r22b, 'c', 3), marks(r22b, 'c', 3),
+    print('(22) removal by an authorized act:', ok22, 'CE* =', ce_star(r22, 'c', 3), '(before', v22, '), marks', marks(r22, 'c', 3),
+          '| by an unauthorized act: refused:', not ok22b, why22b, '; content kept:', 'content' in r22b.by['g'],
+          '| a removal later annulled: CE* =', ce_star(r22f, 'c', 3), marks(r22f, 'c', 3),
           '| a tombstone citing no removal act:', in_D(r22c)[1])
-    assert ce_star(r22, 'c', 3) == v22 == T and not any('not authorized' in m for m in marks(r22, 'c', 3))
-    assert ce_star(r22b, 'c', 3) == T and any('removal not authorized: rm (F)' in m for m in marks(r22b, 'c', 3))
-    assert not in_D(r22c)[0]
-    # (22b) v9: marks for one act's authorization; signed-as-other needs another recorder
+    assert ok22 and ce_star(r22, 'c', 3) == v22 == T and not any('authorized' in m for m in marks(r22, 'c', 3))
+    assert not ok22b and 'content' in r22b.by['g'] and ce_star(r22f, 'c', 3) == T
+    assert any('no longer, authorized' in m for m in marks(r22f, 'c', 3)) and not in_D(r22c)[0]
+    # (22b) v9-v10: marks for one act's authorization; signed-as-other with recorder = actor is marked, not refused
     r22d = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), auth='signed-as-other', recorder='Gov'),
                    adopt('x', 'A', ['g'], t=1)], S1)
-    r22e = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), auth='signed-as-other')], S1)
-    print('(22b) marks for authorized(x):', marks_act(r22d, 'x'), '| signed-as-other with recorder = actor:', in_D(r22e)[1])
-    assert any('transcribed entries g' in m for m in marks_act(r22d, 'x')) and not in_D(r22e)[0]
+    r22e = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), auth='signed-as-other'), adopt('x', 'A', ['g'], t=1)], S1)
+    print('(22b) marks for authorized(x):', marks_act(r22d, 'x'), '| signed-as-other with recorder = actor: in D',
+          in_D(r22e)[0], ', marks', marks(r22e, 'c', 3))
+    assert any('transcribed entries g' in m for m in marks_act(r22d, 'x')) and in_D(r22e)[0]
+    assert any('inconsistent recording status' in m for m in marks(r22e, 'c', 3))
+    # (23) v10 (T1-01): every cut of a record with removals is evaluable, and its values do not change by the removal
+    bad23 = n23 = 0
+    for _ in range(300):
+        rec = random_record(rng, n_acts=rng.randint(3, 8), targets_any=True)
+        if not in_D(rec)[0]:
+            continue
+        before = [ce_star_cut(rec, s_, 'c', tt) for s_ in range(1, len(rec.e) + 1) for tt in (2, 4, 6)]
+        victims = [x['id'] for x in rec.e if x['kind'] in ('grant', 'adopt')]
+        if not victims:
+            continue
+        r2_ = Record([dict(x) for x in rec.e], rec.dom)
+        if not remove(r2_, rng.choice(victims), 'rmX', 'P', ['r'], 9)[0]:
+            continue
+        n23 += 1
+        after = [ce_star_cut(r2_, s_, 'c', tt) for s_ in range(1, len(rec.e) + 1) for tt in (2, 4, 6)]
+        bad23 += before != after
+    print(f'(23) {n23} records with a removal: every cut evaluated; values changed by the removal at some cut in {bad23}')
+    assert n23 > 0 and bad23 == 0
+    # (18e) v10 (T1-06, T2-04): two removals of one entry, in two applications, one authorized and one not
+    gq = dict(G('g', 'P', ['r'], 'A', t=0), content='text')
+    xq = adopt('x', 'A', ['g'], t=1)
+    q1 = Record([dict(ROOT), dict(gq), dict(xq)], S1)
+    remove(q1, 'g', 'rm1', 'P', ['r'], 5)
+    q2 = Record([dict(ROOT), G('gZ', 'P', ['r'], 'Z', t=0), dict(gq), dict(xq)], S1)
+    remove(q2, 'g', 'rm2', 'Z', ['gZ'], 5)
+    q2.e.append(dict(annul('n2', 'P', ['r'], 'rm2', t=6), recorder='P', auth='signed-as-actor'))
+    outs = []
+    for rs in ([q1.e, q2.e], [q2.e, q1.e]):
+        ents, why = merge([[dict(x) for x in R] for R in rs])
+        m = Record(ents, S1)
+        outs.append((in_D(m)[0], ce_star(m, 'c', 3), tuple(marks(m, 'c', 3))))
+    print('(18e) two removals of one entry, one later annulled, both merge orders:', outs[0], outs[1])
+    assert outs[0] == outs[1] and outs[0][0] and not any('authorized' in m for m in outs[0][2])
     print('all assertions passed')

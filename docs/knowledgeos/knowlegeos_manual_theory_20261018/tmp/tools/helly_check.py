@@ -28,7 +28,8 @@ Checks:
      gives h = 3, an endpoint keeps 2; a partial order and a cyclic order break the interval row; check 3 widened (a
      class with the empty set, boxes, required/forbidden Boolean).
  (8) version 4 (turn-7 settlement, B1-01): not every partial order breaks the interval row: order intervals of the
-     product order 3 x 3 with up- and down-sets, and up- and down-sets of a rooted tree, have h = 2.
+     product order 3 x 3 with PRINCIPAL up- and down-sets, and principal up- and down-sets of a rooted tree, have h = 2.
+ (9) version 5 (C19 settlement, T1-08): general up- and down-sets of both orders have h >= 4 (cap 4).
 Searches marked cap=k are exhaustive only up to k members: the value printed is then a lower bound, and the theorem
 cited in §9.14 (R2, Doignon, R4) supplies the upper bound. Check 3 compares the set-wise report with an independently
 computed pairs-only report (single rules and pairs tested directly at each point).
@@ -265,4 +266,14 @@ if __name__ == '__main__':
     print(f'(8) order intervals, up- and down-sets of the product order 3 x 3 (cap 4): h = {h_prod};',
           f'up- and down-sets of a rooted tree on 6 nodes (cap 4): h = {h_tree}')
     assert h_prod == 2 and h_tree == 2
+    # (9) version 5 (C19 settlement, T1-08): GENERAL up- and down-sets of the same two orders have h >= 4 (cap 4)
+    def upsets(P, le):
+        subs = [set(c) for k in range(1, len(P)) for c in combinations(P, k)]
+        ups = [S for S in subs if all(w in S for v in S for w in P if le(v, w))]
+        downs = [S for S in subs if all(w in S for v in S for w in P if le(w, v))]
+        return [frozenset(c) for c in set(map(frozenset, ups + downs))]
+    h_tree_g = helly(upsets(T_, lambda u, v: u in anc(v)), T_, cap=4)
+    h_prod_g = helly(upsets(G3, le), G3, cap=4)
+    print(f'(9) GENERAL up- and down-sets: rooted tree on 6 nodes h >= {h_tree_g}; product order 3 x 3 h >= {h_prod_g} (cap 4)')
+    assert h_tree_g >= 3 and h_prod_g >= 3
     print('all assertions passed')

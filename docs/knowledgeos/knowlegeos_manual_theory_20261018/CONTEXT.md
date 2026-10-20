@@ -22,7 +22,11 @@
 
 **Standing instruction (the Principal, 2026-10-20, after turn 7):** "decide definitional and technical choices yourself, with the reason stated, and mark them for review. Bring me only normative questions." **Hand-back reports:** when a reviewer's report comes back as text, record its sha256 at hand-back.
 
-**Next: window C19 (S0101–S0105).** Its review includes a separate commission for all changes of the turn-7 settlement (§9.13 v7, §9.14 v4, §9.15 v4, §9.16 v2), in full, together with the application of the Principal's turn-7 answers (§9.13 v8, §9.15 v5, §9.16 v3; settlement §8).
+**Window C19 (S0101–S0105) settled** (2026-10-21; `review/C19-S0101-S0105/SETTLEMENT.md`): §8.12 v2 (CON-0195–0201); commission T settled the turn-7 changes and their application: §9.13 v9, §9.14 v5, §9.15 v6, §9.16 v4, models ce_model v10, helly_check v5. 47 findings, none critical. **Open for the Principal:** F22's remaining option, (C + K) kernel-provided coordination points or (C + O) owner application by contract (§9.16 R4 v4).
+
+**The Principal, 2026-10-21 (binding from C20):** window size stays 5; 10 only where §12a allows it (a coherent series of short documents, at most 2 added, review split into two commissions); record per window the **time per source** (start and close each source in turn) and the **findings per source**; apply **skim** honestly (every source opened and scanned whole; one that repeats earlier material or is purely operational is closed as skim with one line on what it adds); the reviewer reads **one skimmed source blind per window** (§3).
+
+**Next: window C20 (S0106–S0110).**
 
 **Per window and per theory turn:**
 - review;
