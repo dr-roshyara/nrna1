@@ -435,7 +435,7 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | Item | Change proposed for S0150 | Tested meanwhile as |
 |---|---|---|
 | Research question per theory turn | each turn states its question before its deliverable | practice 1 |
-| Prior work | a literature search for every result claiming a new theorem, mechanism or generalisation; established / adapted / extended / contradicted / possibly new; works in EXTERNAL-SOURCES | practice 2 |
+| Prior work, corpus first | for every result claiming a new theorem, mechanism or generalisation: a logged corpus search first (hits read topic-full, cited Src), then outside literature as benchmark or gap-filler; established / adapted / extended / contradicted / possibly new; works in EXTERNAL-SOURCES | practice 2 (revised 2026-10-20) |
 | Read before claiming | helper or forked text counts as the Professor's only once read | practices 3 and 6 (verification marks: author · read · reasoning checked) |
 | Effort by risk | editorial: mechanical checks; substance: window review; foundational: two reviewers (brings v2 §6.3's three kinds of change into force) | practice 4 |
 | **Challenge by type** | v1.3 §2 step 2 / v2 §5.1: mathematical, empirical, definitional and normative items each get their own challenge; definitions need no falsifier | practice 5 (interpretation of entry 55) |

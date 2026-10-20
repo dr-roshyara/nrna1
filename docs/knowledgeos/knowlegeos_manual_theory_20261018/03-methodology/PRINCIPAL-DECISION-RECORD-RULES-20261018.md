@@ -351,3 +351,13 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Practice 5, challenge by type** — the Rule Reviewer's **interpretation of v1.3 entry 55** during the freeze: mathematical results are challenged by a countermodel or an invalid step; empirical claims by a contradicting observation and the sampling; definitions by boundary cases, coherence, consequences and a rival definition, with **no falsifier required**; normative questions by the decision-maker and the consequences of each option. "Not testable as stated" applies only to claims that should be testable.
 - **Practice 6, verification marks:** each changed piece of theory is marked in the brief with author (Professor or helper) · read by the Professor (yes/no) · reasoning checked by the Professor (yes/no).
 - **Pending for the S0150 consolidated revision** (no rule text changes now): challenge by type as a rule; the canonical home of a concept divided between the register (identity, status, review, links, at most a one-line gloss) and the defining section (definition and argument; it governs when they disagree). Listed in `RULEBOOK-v2-PROPOSAL-REPORT.md` §19.
+
+## Addendum (2026-10-20T08:13:17Z): practice 2 revised — prior work, corpus first
+
+- **Principal (verbatim):** "yes" (to revising practice 2 so that the corpus is searched before outside literature).
+- **Replaces** practice 2 of the addendum "rule freeze until the S0150 evaluation" (that text stays as history). **Practice 2 now reads:** for every result that claims a new theorem, mechanism or generalisation:
+  1. **search the allowed corpus first**, by logged search (`tmp/tools/branch_search.py --log`; terms from the register and the book, and the known names of the idea); relevant hits are read whole as `topic-full`, within the turn's limit of 8 sources, and never move the reading position;
+  2. **what the corpus says is cited as Src**, with its own assumptions, even when a textbook says the same; when index order later reaches a source already read this way, it is checked against the source again, not only against the book;
+  3. **then the outside literature**, as a **benchmark** (does the corpus's version match, adapt or contradict the established result?) or, where the corpus search found nothing within its stated scope, as a **gap-filler** (Ext); the idea is stated as established, adapted, extended, contradicted, or possibly new, qualified by both searches;
+  4. **no corpus text** goes into any outside search.
+- **Why:** about 96 % of the allowed corpus is unread; an outside search first would credit to Ext what the corpus says (against v1.3 §4), lose the corpus's own version of an idea, and frame later reading by hindsight.
