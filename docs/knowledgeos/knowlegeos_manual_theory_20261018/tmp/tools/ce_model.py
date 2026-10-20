@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 10 (C19 settlement, commission T): a consumption's
+it tests the FORM of the repaired definition, not its content. Version 11 (the Principal, 2026-10-21, F22 = (C + O)):
+a grant carries its owner application, fixed at issuance (field 'owner'); a consumption carries the application that
+recorded it ('app'); a change of owner is kind 'transfer', appended only at the kernel and only if its authorization is
+T; the guarded append (append_guard, append) refuses a use (the Professor's reading: a consumption) not recorded by the
+owner the contract names when it is appended, and refuses while that owner is undetermined; a use present without the
+guard (e.g. by a merge) is marked "use not recorded by its owner"; Phi does not read owners or applications (24g);
+check 24. Transfers are not in the random generator. Version 10 (C19 settlement, commission T): a consumption's
 only basis is the grant it consumes, which it must cite (bases_of; T2-02); a consumption does not end the currency of
 adoptions made before it (§1.14.1-4; T1-04); the append guard counts only consumptions that are not F (T1-02); an
 unauthorized removal is refused, since lost content cannot be restored (T1-05); removed_by is a set, and the "removal not
@@ -57,8 +63,13 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'endg': {'actor', 'cites', 'grant', 'scope', 't'},
           # v9 (the Principal after turn 7): consumption admitted; a removal is an authorized, recorded act
           'consume': {'actor', 'cites', 'grant', 'scope', 't'},     # the holder uses up the grant: it ends it after
-          'remove': {'actor', 'cites', 'target', 'scope', 't'}}     # the act a tombstone cites (removed_by)
+          'remove': {'actor', 'cites', 'target', 'scope', 't'},     # the act a tombstone cites (removed_by)
+          # v11 (the Principal, F22 = (C + O)): a change of a grant's owner application, recorded at the kernel
+          'transfer': {'actor', 'cites', 'grant', 'new_owner', 'scope', 't'}}
+FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the owner application, fixed at issuance
 ENDING_KINDS = ('endg', 'consume')
+KERNEL = 'kernel'                                                    # v11: the application that holds the contract
+APP_KINDS = ('consume', 'transfer')                                  # v11: entries that carry their recording app
 
 
 def bases_of(x):
@@ -67,6 +78,8 @@ def bases_of(x):
 # v6 (the Principal, after turn 6): every entry also carries its recorder and authentication status, apart from the actor
 for _k in FIELDS:
     FIELDS[_k] = FIELDS[_k] | {'recorder', 'auth'}
+for _k in APP_KINDS:
+    FIELDS[_k] = FIELDS[_k] | {'app'}
 AUTH = {'signed-as-actor', 'signed-as-other', 'unsigned'}
 
 
@@ -114,6 +127,12 @@ class Record:
             for x in entries:
                 x.setdefault('recorder', x.get('actor'))
                 x.setdefault('auth', 'signed-as-actor')
+                if x.get('kind') == 'grant':        # v11: one owner application, 'A0' unless given
+                    x.setdefault('owner', 'A0')
+                elif x.get('kind') == 'consume':
+                    x.setdefault('app', 'A0')
+                elif x.get('kind') == 'transfer':
+                    x.setdefault('app', KERNEL)
         self.e = entries
         self.by = {x['id']: x for x in entries}
         self.pos = {x['id']: i for i, x in enumerate(entries)}
@@ -591,7 +610,7 @@ def support(rec, item, t, start=None):
     for e in rec.e:
         if e['kind'] == 'annul':
             targets.setdefault(e['target'], set()).add(e['id'])
-        elif e['kind'] in ENDING_KINDS:
+        elif e['kind'] in ENDING_KINDS or e['kind'] == 'transfer':   # v11: a grant's transfers, for the owner mark
             targets.setdefault(e['grant'], set()).add(e['id'])
         elif e['kind'] == 'remove':
             targets.setdefault(e['target'], set()).add(e['id'])   # the removal act a tombstone rests on
@@ -634,6 +653,16 @@ def marks(rec, item, t, start=None):
     od = sorted(i for i in s if rec.by[i]['auth'] == 'signed-as-other' and rec.by[i].get('recorder') == rec.by[i].get('actor'))
     if od:                                          # v10 (T1-15, T2-14): a mark, not a refusal (decision 2)
         out.append(f"inconsistent recording status (signed-as-other, recorder = actor) {', '.join(od)}")
+    cs = [i for i in sorted(s) if rec.by[i]['kind'] == 'consume']
+    if cs:                                          # v11: detect a use that did not pass the kernel's guard
+        a = wfs(rec)
+        nb = []
+        for i in cs:
+            ow, _ = owner_at(rec, rec.by[i]['grant'], rec.pos[i], a)
+            if ow is None or rec.by[i]['app'] != ow:
+                nb.append(f"{i} (by {rec.by[i]['app']}, owner {ow})")
+        if nb:
+            out.append(f"use not recorded by its owner: {', '.join(nb)}")
     return out
 
 
@@ -774,16 +803,69 @@ def merge(records, rng=None):
     return (linear_extension(rng, ents) if rng else ents), None
 
 
+def owner_at(rec, g, upto, a=None):
+    """v11 (F22 = (C + O)): the owner application of grant g named by the contract as recorded in the first `upto`
+    entries: the owner fixed at issuance, replaced by each transfer of g, taken in record order (the kernel is the only
+    writer of the contract, so its transfers are serialized by its record; S0137 L172: authority moves at the writer
+    switch). A transfer counts if it is T; one that is U leaves the owner undetermined (None, with the reason); F
+    counts as no transfer. Returns (owner, reason)."""
+    if g not in rec.by or rec.by[g]['kind'] != 'grant':
+        return None, f'{g} is not a grant on record'
+    a = a or wfs(rec)
+    owner = rec.by[g]['owner']
+    for x in rec.e[:upto]:
+        if x['kind'] == 'transfer' and x['grant'] == g:
+            if a[x['id']] == U:
+                return None, f'the transfer {x["id"]} of {g} is U, so its owner is undetermined'
+            if a[x['id']] == T:
+                owner = x['new_owner']
+    return owner, None
+
+
 def append_guard(rec, e):
     """v9 (the Principal after turn 7: prevent single use): the kernel refuses to append a consumption of a grant that
-    the record already shows consumed, so within one record no grant is consumed twice. Across applications the same
-    guard needs one shared serialization point per grant (K4-p; §9.16 R3-R4). Returns (ok, reason)."""
+    the record already shows consumed, so within one record no grant is consumed twice.
+    v11 (the Principal, F22 = (C + O)): "The kernel refuses a use of a grant not recorded by its owner." A use is a
+    consumption (the Professor's reading; the rival is any act citing the grant, check 24c). The owner is the one the
+    contract names when the use is appended (owner_at over the whole record); an undetermined owner is refused (prevent).
+    "A change of owner is a recorded, authorized act": a transfer is appended only if it is recorded by the kernel and its
+    authorization is T. The guard and the append are one step (§9.15 K4; S0137 L52: a check and an append that are not
+    one step lose writes). Returns (ok, reason)."""
+    e = dict(e)
+    Record([e], rec.dom)                            # fills the defaults of this one entry
+    if e['kind'] in ('consume', 'transfer'):
+        tmp = Record([dict(x) for x in rec.e] + [dict(e)], rec.dom, tie=rec.tie)
+        a = wfs(tmp)
     if e['kind'] == 'consume':
+        owner, why = owner_at(rec, e['grant'], len(rec.e))
+        if owner is None:
+            return False, f"use of {e['grant']} refused: {why}"
+        if e['app'] != owner:
+            return False, f"use of {e['grant']} refused: recorded by {e['app']}, not by its owner {owner}"
         a = wfs(rec)                                # v10 (T1-02, T2-03): count consumptions that are not F
         live = [x['id'] for x in rec.e if x['kind'] == 'consume' and x['grant'] == e['grant'] and a[x['id']] != F]
         if live:
             return False, f"{e['grant']} is already consumed by {', '.join(live)} (single use, prevented)"
+    if e['kind'] == 'transfer':
+        if e['grant'] not in rec.by or rec.by[e['grant']]['kind'] != 'grant':
+            return False, f"transfer {e['id']} refused: {e['grant']} is not a grant on record"
+        if e['app'] != KERNEL:
+            return False, f"transfer {e['id']} refused: recorded by {e['app']}, not at the kernel, which holds the contract"
+        if a[e['id']] != T:
+            return False, f"transfer {e['id']} refused: its authorization is {a[e['id']]}, not T"
     return True, None
+
+
+def append(rec, e):
+    """v11: the guarded append, one step: the entry is added only if append_guard accepts it. Returns (ok, reason)."""
+    ok, why = append_guard(rec, e)
+    if ok:
+        e = dict(e)
+        Record([e], rec.dom)
+        rec.e.append(e)
+        rec.by[e['id']] = e
+        rec.pos[e['id']] = len(rec.e) - 1
+    return ok, why
 
 
 def ce_star_cut(rec, s, item, t, qscope=None):
@@ -1437,4 +1519,70 @@ if __name__ == '__main__':
         outs.append((in_D(m)[0], ce_star(m, 'c', 3), tuple(marks(m, 'c', 3))))
     print('(18e) two removals of one entry, one later annulled, both merge orders:', outs[0], outs[1])
     assert outs[0] == outs[1] and outs[0][0] and not any('authorized' in m for m in outs[0][2])
+    # (24) v11 (the Principal, F22 = (C + O)): one owner application per grant, fixed at issuance; a change of owner is a
+    # recorded, authorized act (at the kernel); the kernel refuses a use of a grant not recorded by its owner.
+    def use(i, app, t, g='g', actor='A'):
+        return {'id': i, 'kind': 'consume', 'actor': actor, 'cites': [g], 'grant': g, 'scope': 's', 't': t, 'app': app}
+
+    def xfer(i, new_owner, t, actor='P', cites=('r',), app=KERNEL, g='g'):
+        return {'id': i, 'kind': 'transfer', 'actor': actor, 'cites': list(cites), 'grant': g, 'new_owner': new_owner,
+                'scope': 's', 't': t, 'app': app}
+    base24 = [dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), owner='A1')]
+    r24 = Record([dict(x) for x in base24], S1)
+    ok_own, _ = append_guard(r24, use('k1', 'A1', 2))
+    ok_oth, why_oth = append_guard(r24, use('k1', 'A2', 2))
+    # (24b) the cost: the owner A1 is unavailable, so nobody else can use g; moving ownership is the only way
+    r24b = Record([dict(x) for x in base24], S1)
+    before_move = append(r24b, use('k2', 'A2', 3))
+    move = append(r24b, xfer('m1', 'A2', 4))
+    after_move = append(r24b, use('k2', 'A2', 5))
+    r24s = Record([dict(x) for x in base24], S1)
+    append(r24s, xfer('m1', 'A2', 4))
+    stale = append(r24s, use('k1', 'A1', 3))                    # the old owner, not yet aware of the move
+    print('(24) use by the owner A1:', ok_own, '| by A2:', ok_oth, why_oth)
+    print('(24b) owner unavailable: use by A2 before the move:', before_move, '| the move to A2 at the kernel:', move,
+          '| use by A2 after it:', after_move, '| the old owner after the move (act time 3, appended later):', stale)
+    assert ok_own and not ok_oth and not before_move[0] and move[0] and after_move[0] and not stale[0]
+    # (24c) a transfer not at the kernel, an unauthorized transfer, a transfer at a tie with the end of its basis, and a
+    # record holding a U transfer (owner undetermined: a use is refused)
+    r24c = Record([dict(x) for x in base24] + [G('gQ', 'P', ['r'], 'Q', t=0), {'id': 'eQ', 'kind': 'endg', 'actor': 'P',
+                   'cites': ['r'], 'grant': 'gQ', 'scope': 's', 't': 5}], S1)
+    not_kernel = append_guard(r24c, xfer('m1', 'A2', 4, app='A1'))
+    unauth = append_guard(r24c, xfer('m1', 'A2', 4, actor='Z'))
+    tie_u = append_guard(r24c, xfer('m1', 'A2', 5, actor='Q', cites=('gQ',)))
+    r24u = Record([dict(x) for x in r24c.e] + [xfer('m1', 'A2', 5, actor='Q', cites=('gQ',))], S1)
+    use_u = append_guard(r24u, use('k1', 'A1', 6))
+    print('(24c) transfer recorded by A1:', not_kernel, '| by an actor without basis:', unauth, '| at a tie with its basis\'s end:',
+          tie_u, '| a use while a transfer is U:', use_u)
+    assert not not_kernel[0] and not unauth[0] and not tie_u[0] and 'U' in tie_u[1] and not use_u[0] and 'undetermined' in use_u[1]
+    # (24d) the reading of "use": a consumption; another act under g (an adoption) is not checked for its recording app
+    ok_ad = append_guard(r24, adopt('x', 'A', ['g'], t=1))
+    print('(24d) an adoption under g, any application: accepted', ok_ad, '(the reading of "use" as consumption; the rival is open)')
+    assert ok_ad[0]
+    # (24e) detection of a bypass: a consumption by a non-owner present in a record (e.g. arriving by a merge, not through
+    # the guard) is marked; values do not read the recording application
+    r24e = Record([dict(x) for x in base24] + [use('k1', 'A2', 2), adopt('x3', 'A', ['g'], t=3)], S1)
+    r24f = Record([dict(x) for x in base24] + [use('k1', 'A1', 2), adopt('x3', 'A', ['g'], t=3)], S1)
+    print('(24e) a bypassing use: values', wfs(r24e) == wfs(r24f), ', marks', marks_act(r24e, 'x3'), '| by the owner: marks',
+          marks_act(r24f, 'x3'))
+    assert wfs(r24e) == wfs(r24f) and any('not recorded by its owner' in m for m in marks_act(r24e, 'x3'))
+    assert not any('owner' in m for m in marks_act(r24f, 'x3'))
+    # (24f) the owner is a read field: two copies of a grant naming different owners do not merge
+    c1 = [dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), owner='A1')]
+    c2 = [dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), owner='A2')]
+    m24, why24 = merge([Record(c1, S1).e, Record(c2, S1).e])
+    print('(24f) copies naming two owners:', why24)
+    assert m24 is None
+    # (24g) the owner and the recording application change no value: 500 random records, apps and owners randomized
+    diff24 = 0
+    for _ in range(500):
+        rec = random_record(rng, n_acts=rng.randint(3, 8))
+        if not in_D(rec)[0]:
+            continue
+        v = [ce_star(rec, 'c', tt) for tt in range(7)]
+        r2_ = Record([dict(y, **({'owner': rng.choice(['A1', 'A2'])} if y['kind'] == 'grant' else
+                                 {'app': rng.choice(['A1', 'A2'])} if y['kind'] == 'consume' else {})) for y in rec.e], rec.dom)
+        diff24 += v != [ce_star(r2_, 'c', tt) for tt in range(7)]
+    print(f'(24g) 500 random records with random owners and recording applications: values changed in {diff24}')
+    assert diff24 == 0
     print('all assertions passed')
