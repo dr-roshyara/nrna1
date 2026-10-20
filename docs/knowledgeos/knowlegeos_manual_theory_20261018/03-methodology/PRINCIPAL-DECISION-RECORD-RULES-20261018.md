@@ -369,3 +369,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Loops of authority: the domain D allows citations of earlier entries only** (the corpus's acyclic recommendation). Under it the forced (least fixed point) and grounded (well-founded) readings coincide. The book states the design limit: delegation patterns that would need a later entry must be written in order.
 - **Self-cancelling acts** (a holder annuls the grant it acts under): **the answer is U, with a refusal reason**, not resolved by causal priority, which the book does not define. A priority rule may be added later only as a defined rule, on evidence.
 - **With these decisions:** the turn-5 brief lists all of §9.13's settlement changes as changed theory, including the new acyclic proof; under practice 2 the Professor checks whether "acyclic, so the readings coincide" is a known result (for example Apt and Bezem 1991 on acyclic logic programs; the Kripke–Kleene and well-founded literature) and cites it if so.
+
+## Addendum (2026-10-20T17:52:41Z): §9.13 v3 — mutual annulment confirmed as U
+
+- **Principal (verbatim):** "yes" (to confirming the extension the Professor marked in §9.13 v3, `d4ffbc692`, §9.13 question R2).
+- **Decision:** mutual annulment (two acts annulling each other, the other negative cycle) gives **U, with a refusal reason naming both acts**, as for a self-cancelling act. No priority rule is defined, so neither act prevails. §9.13 records it as decided, not as an extension.
+- **Advice with it (not a decision):** if the turn-5 brief becomes too long, the review is split into two commissions, §9.13's changes and global consistency, both settled before turn 6.
