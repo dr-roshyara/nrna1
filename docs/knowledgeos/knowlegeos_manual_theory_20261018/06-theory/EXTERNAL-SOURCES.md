@@ -24,6 +24,7 @@
 | EXT-047 | Harrison, M. A., Ruzzo, W. L., Ullman, J. D. (1976). Protection in operating systems. *Communications of the ACM* 19(8), 461–471. Verified 2026-10-20 (bibliographic records, abstract) | peer-reviewed | benchmark (contrast) | CON-0188 | Ch. 9 §9.10 Q3 | the safety question (can a right be acquired) vs a membership check |
 | EXT-048 | Denning, D. E. (1976). A lattice model of secure information flow. *Communications of the ACM* 19(5), 236–243, doi 10.1145/360051.360056. Verified 2026-10-20 | peer-reviewed | benchmark | — | Ch. 9 §9.10 C (read visibility); Ch. 1 §1.7 | derived data takes the most restrictive class of its sources |
 | EXT-049 | Doyle, J. (1979). A truth maintenance system. *Artificial Intelligence* 12(3), 231–272. Verified 2026-10-20 (bibliographic records) | peer-reviewed | pointer | — | Ch. 9 §9.10 Q4 | not compared |
+| EXT-050 | Clarkson, M. R., Schneider, F. B. (2010). Hyperproperties. *Journal of Computer Security* 18(6), 1157–1210, doi 10.3233/JCS-2009-0393. Verified 2026-10-20 (publisher record, abstract; the 2-safety detail via secondary sources) | peer-reviewed | benchmark | CON-0189 | Ch. 9 §9.11 | conditions over sets of runs (agreement, noninterference) |
 
 ## Principal's brainstorms (post-snapshot): `docs/knowledgeos/brainstorming/philosophical_questions/`
 
