@@ -332,3 +332,15 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   - DB-7: `TARGET-TOC.md` is adopted **as a reading order with stable section numbers**; no renumbering. `CHAPTER-PLAN.md` is superseded by it as the reading order.
 - **No new register column** for kernel/application marks: the register's fields stay as CV-1 fixes them; the marks are kept in `06-theory/manuscript/BOOK-OUTLINE.md` only (one home).
 - **Access:** the Professor may read, **read-only**, the Ch. 0–2 basis files logged with purpose "basis:" in `archive/00-access/READ-LOG.tsv` (sha256 `4eb2b2a31b7bda885414454a6a39157442e41193040c88e67d44fbb18f50b2e6`; 110 files; the corpus frame row excluded), **for quote and meaning checks only**. Recorded in `00-access/ACCESS-RECORD.md` before use. Sealed and hold-out material never; D-C1 otherwise unchanged.
+
+## Addendum (2026-10-20T07:24:00Z): rule freeze until the S0150 evaluation; four research practices tested through the instruction
+
+- **Principal (verbatim):** "yes I agree" (to the Rule Reviewer's response to the senior research review of v1.3).
+- **Rule freeze:** no new rule entries in `METHOD-VERSIONS.md` and no change to `RULEBOOK-v1.3.md` or `REVIEWER-INSTRUCTIONS.md` until the evaluation at the S0150 consolidation (entry 58), **except for a critical failure**: one that would let a wrong result through. Binding on the Rule Reviewer and the Professor alike.
+- **Four practices, run through the Professor's instruction and evaluated at S0150, not rules:**
+  1. **a research question per theory turn**, stated first: what must be explained, what is necessary or derivable, what would disprove the proposed answer;
+  2. **prior work for every result that claims a new theorem, mechanism or generalisation**: a search of textbooks, peer-reviewed work and standards; definitions, assumptions and results compared, not names; the idea stated as established, adapted, extended, contradicted, or possibly new (qualified by the search); each work used recorded in `06-theory/EXTERNAL-SOURCES.md`; no corpus text in any search;
+  3. **read before claiming:** text written by a forked or helper session counts as the Professor's only after the Professor has read it; until then it is listed in the brief as "not read by the author";
+  4. **effort by risk:** editorial changes get the mechanical checks; changes of substance the window review; foundational changes two reviewers.
+- **At S0150:** one consolidated rule revision, adopting what proved itself and dropping what did not; the decision whether v2 replaces v1.3 is taken there. The S0150 evaluation also records the Professor's time by activity (research vs verification and governance) and asks whether the same assurance could have been had with less work.
+- **Evidence behind it:** `EXTERNAL-SOURCES.md` lists 29 works, all the Principal's brainstorms, none a textbook, paper or standard; recent results (history variables, pairwise vs global consistency, bitemporal state) restate known results under other names; `METHOD-VERSIONS.md` grew from entry 33 to 60 in two days.
