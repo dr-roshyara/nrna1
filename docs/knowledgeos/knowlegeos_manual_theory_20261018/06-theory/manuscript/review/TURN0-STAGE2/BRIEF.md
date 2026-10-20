@@ -38,6 +38,7 @@ Supporting records (read them):
 
 ## 5. Quote check (`tmp/tools/corpus_quote_check.py`, every chapter section)
 - Before stage 2 (`8c4601ecf`): 15 not found (`QUOTE-CHECK-before-stage2-8c4601ecf.txt`).
+- **Baseline (entry 60):** `tmp/tools/QUOTE-BASELINE.txt` (whole book at 0b10262df; 17 failures, of which the three in 01.08, 03.01 and 05.04 are marked new for this turn, the other 14 inherited).
 - At `0b10262df`: **17 not found** (`QUOTE-CHECK-at-0b10262df.txt`). One earlier failure was fixed in stage 2 (§1.6, S0018 L121, N1-09). **Three are new since stage 2:** §1.8 L15 [S0028 L144–148], §3.1 L64 [S0016 L58–63], §5.4 L60 [S0896 L800–808].
 - The Professor checked the three against the sources: all three were **anchor errors** (the words are in the source: S0028 L149; S0016 L61 inside a block-quoted code block; S0896 L815). Fixed before this commission; after the fix: **14 not found**, all of them present before stage 2 (`QUOTE-CHECK-after-fix.txt`). You may check the remaining 14; they are not stage-2 defects.
 - The tool checks only the `"…" [Snnnn Lx]` form. Quotes "in meaning" and quotes of non-corpus files are not checked by it.
@@ -45,7 +46,7 @@ Supporting records (read them):
 ## 6. Access
 - The working book, register, map, outline, TODOs, change logs, review folders and git history of W: allowed.
 - Corpus sources: only files listed in `docs/knowledgeos/knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv` (check the sha256), opened at the anchors you check.
-- Ch. 0–2 basis files (GKC, PKSM, RS and the others logged in `W/archive/00-access/READ-LOG.tsv`, sha256 matching): read-only, **for quote and meaning checks only** (the Principal's grant, `W/00-access/ACCESS-RECORD.md`, entry 2026-10-20T07:15:56Z).
+- ~~Ch. 0–2 basis files … read-only, for quote and meaning checks only.~~ **Corrected during the review (message to both reviewers): reviewers have no access to the basis files.** The Principal's grant (ACCESS-RECORD, 2026-10-20T07:16:47Z) covers the Professor only. A check that needs such a file is marked U; any file opened before the correction is listed in the report under "Access outside the grant".
 - Never: `.env*`, `_batch_input*`, P3B-HOLDOUT, sealed or quarantine files, `docs/knowledgeos/chronological-read/*`. Do not edit anything. Do not send corpus text to outside services.
 
 ## 7. Method (for every material finding)
