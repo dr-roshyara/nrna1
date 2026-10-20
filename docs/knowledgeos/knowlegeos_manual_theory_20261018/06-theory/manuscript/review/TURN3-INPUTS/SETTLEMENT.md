@@ -29,7 +29,7 @@ What CE must read, and whether F37 or A1's readings change it. Both reviewers fo
 | A-15 / F10 | §9.12.7 overstated internal-ness and was not carried into §9.10.6 | high (B) / normal (A): settled **high** | Accepted. §9.12.7 per setting, with the recorded act time and integrity as conditions; key binding and serialisation as world or implementation assumptions; §9.10.6's Q1 row names the reading | per-setting table; §9.10.6 updated | **yes** |
 | A-17 / F11 | prior work thin (constitutive vs regulative rules; the rule of recognition; claim-level provenance; SPKI); EXT-057 without DOI; "transaction-time view" loose | normal | Accepted. Verified and added: Searle 1969/1995 (secondary sources), Hart 1961 (secondary sources), RFC 2693, Groth et al. 2010; EXT-057's DOI added; "bitemporal" | §9.12.8 rows; EXTERNAL-SOURCES updated | **yes** |
 
-**Counts:** 30 findings (A 17, B 13) → 14 settled rows; found by both: 10 rows; one reviewer only: 4 (A 4). No critical finding.
+**Counts:** 30 findings (A 17, B 13) → 14 settled rows; found by both: 11 rows; one reviewer only: 3 (A 3: A-04, A-11, A-13). No critical finding.
 
 ## 3. Checks run on the corrections
 
