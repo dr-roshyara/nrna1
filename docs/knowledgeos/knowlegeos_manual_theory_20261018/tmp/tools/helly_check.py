@@ -15,7 +15,14 @@ Checks:
      has at most h members; for h = 2 classes the union of pair reports equals the set-wise report; for h > 2 classes a
      set the pairs miss is found;
  (4) the bound h <= |X| on random set classes over a finite outcome space, and its tightness;
- (5) three real half-planes (x >= 0, y >= 0, x + y <= -1): pairs satisfiable (witnesses), all three not (Farkas sum).
+ (5) three real half-planes (x >= 0, y >= 0, x + y <= -1): pairs satisfiable (witnesses), all three not (Farkas sum);
+ (6) version 2 (turn-5 settlement): the reviewers' counterexamples. Thresholds with forbidden values on one attribute
+     (the family x <= m-1, x != 0..m-1 is minimal of size m + 1, so h is unbounded on an unbounded domain); required values with thresholds (h = 2);
+     a coupling constraint on the outcome space (exactly one of three Booleans: three literals form a minimal triple);
+     cardinality over members (exactly one owner and three prohibitions: a minimal set of four).
+Searches marked cap=k are exhaustive only up to k members: the value printed is then a lower bound, and the theorem
+cited in §9.14 (R2, Doignon, R4) supplies the upper bound. Check 3 compares the set-wise report with an independently
+computed pairs-only report (single rules and pairs tested directly at each point).
 Usage: python3 -I helly_check.py
 """
 import random
@@ -69,8 +76,8 @@ if __name__ == '__main__':
     D = list(range(n))
     ivals = interval_class(n)
     res[f'threshold interval on 0..{n - 1}'] = helly(ivals, D)
-    res[f'forbidden range (complement of an interval) on 0..{n - 1}'] = helly([set(D) - I for I in ivals], D, cap=6)
-    res[f'interval or forbidden range on 0..{n - 1}'] = helly(ivals + [set(D) - I for I in ivals], D, cap=6)
+    res[f'forbidden range (complement of an interval) on 0..{n - 1} (cap 6 = |X|)'] = helly([set(D) - I for I in ivals], D, cap=6)
+    res[f'interval or forbidden range on 0..{n - 1} (cap 6 = |X|)'] = helly(ivals + [set(D) - I for I in ivals], D, cap=6)
     print('(1) single-attribute classes: Helly number h')
     for name, h in res.items():
         print(f'    {name}: {h}')
@@ -80,7 +87,7 @@ if __name__ == '__main__':
         assert res[f'required or forbidden value, k={k}'] == max(2, k)
         assert res[f'allowed set (any subset), k={k}'] == k
     assert res[f'threshold interval on 0..{n - 1}'] == 2
-    assert res[f'forbidden range (complement of an interval) on 0..{n - 1}'] >= 3
+    assert res[f'forbidden range (complement of an interval) on 0..{n - 1} (cap 6 = |X|)'] == 6
     # multi-attribute classes
     X2 = list(product(range(4), range(4)))
     boxes = [{(x, y) for (x, y) in X2 if x in I and y in J} for I in interval_class(4) for J in interval_class(4)]
@@ -97,10 +104,10 @@ if __name__ == '__main__':
     halfplanes = {frozenset(p for p in grid if a * p[0] + b * p[1] <= c)
                   for a in (-2, -1, 0, 1, 2) for b in (-2, -1, 0, 1, 2) if (a, b) != (0, 0) for c in range(-8, 9)}
     hl = helly(list(halfplanes), grid, cap=5)
-    print(f'    boxes on a 4x4 grid (per-attribute thresholds): {hb}')
-    print(f'    partial assignments on 3 Boolean attributes (conjunctions of literals): {hp}')
+    print(f'    boxes on a 4x4 grid (per-attribute thresholds; cap 4, lower bound): {hb}')
+    print(f'    partial assignments on 3 Boolean attributes (conjunctions of literals; cap 4, lower bound): {hp}')
     print(f'    clauses on 2 Boolean attributes (disjunctions): {hc}  (|X| = 4)')
-    print(f'    lattice half-planes on a 4x4 grid (linear inequalities, integer points): {hl}  (Doignon bound 2^2 = 4)')
+    print(f'    lattice half-planes on a 4x4 grid (linear inequalities, integer points; cap 5, lower bound): {hl}  (Doignon bound 2^2 = 4)')
     assert hb == 2 and hp == 2 and hc == 4 and 3 <= hl <= 4
     # (2) the product lemma on random factor classes
     worst = 0
@@ -114,7 +121,8 @@ if __name__ == '__main__':
         h1, h2, hpr = helly(f1, V), helly(f2, V), helly(prods, X, cap=4)
         assert hpr <= max(h1, h2), (f1, f2)
         worst = max(worst, hpr - max(h1, h2))
-    print('(2) product lemma on 60 random pairs of factor classes: h(products) <= max h(factors) in every case')
+    print('(2) product lemma on 60 random pairs of factor classes over a full product space: h(products) <= max h(factors)',
+          'in every case (products searched up to cap 4)')
     # (3) the reduction, end to end
     def setwise_report(rules, contexts, X):
         """{(frozenset S, c)}: S minimal in conflict at context c (pointwise, §2.3 (d))."""
@@ -127,7 +135,19 @@ if __name__ == '__main__':
                         out.add((frozenset(S), c))
         return out
     def pairs_report(rules, contexts, X):
-        return {(S, c) for (S, c) in setwise_report(rules, contexts, X) if len(S) <= 2}
+        """Independent pairs-only analyser: at each point, a single applying rule with an empty effect, or a pair of
+        applying rules, each with a non-empty effect, whose effects do not meet."""
+        out = set()
+        for c in contexts:
+            app = [i for i, (A, E) in enumerate(rules) if c in A]
+            for i in app:
+                if not rules[i][1][c]:
+                    out.add((frozenset([i]), c))
+            for i, j in combinations(app, 2):
+                Ei, Ej = rules[i][1][c], rules[j][1][c]
+                if Ei and Ej and not (set(Ei) & set(Ej)):
+                    out.add((frozenset([i, j]), c))
+        return out
     def random_rules(cls, n, contexts):
         return [({c for c in contexts if rng.random() < 0.7}, {c: rng.choice(cls) for c in contexts}) for _ in range(n)]
     ctx = ['c1', 'c2', 'c3']
@@ -143,7 +163,7 @@ if __name__ == '__main__':
             biggest = max([biggest] + [len(S) for S, _ in sw])
             misses += sw != pairs_report(rules, ctx, X)
         print(f'(3) {name}: 300 random rule sets; largest pointwise-minimal conflicting set {biggest}; '
-              f'rule sets where pairs miss a conflict: {misses}')
+              f'rule sets where an independent pairs-only analyser misses a conflict: {misses}')
         assert biggest <= h
         assert (misses == 0) == (h <= 2)
     # (4) h <= |X| on random classes, and tightness
@@ -163,4 +183,26 @@ if __name__ == '__main__':
     farkas = [sum(a[d] for a, _ in H) for d in (0, 1)] == [0, 0] and sum(b for _, b in H) < 0
     print('(5) x >= 0, y >= 0, x + y <= -1: each pair has a witness:', ok, '; the three sum to 0 <= -1 (Farkas):', farkas)
     assert ok and farkas
+    # (6) the reviewers' counterexamples (turn-5 settlement)
+    h_rt = helly(interval_class(6) + [{v} for v in range(6)], list(range(6)))
+    Z = list(range(12))
+    sizes = []
+    for m in range(1, 6):
+        fam = [set(range(0, m))] + [set(Z) - {v} for v in range(m)]       # x <= m-1 and x != 0, ..., m-1
+        assert minimal_empty(fam, Z)
+        sizes.append(len(fam))
+    no_empty = all(inter([set(Z) - {v} for v in range(m)], Z) for m in range(1, 6))   # complements alone: never empty
+    print(f'(6) required values with thresholds on 0..5: h = {h_rt}; on 0..11, x <= m-1 with x != 0..m-1 is minimal',
+          f'with {sizes} members for m = 1..5, while those forbidden values alone always leave a common point: {no_empty}',
+          '(so on an unbounded domain the union of thresholds and forbidden values has unbounded h)')
+    assert h_rt == 2 and sizes == [2, 3, 4, 5, 6] and no_empty
+    X1 = [x for x in product((0, 1), repeat=3) if sum(x) == 1]          # exactly one of three Booleans
+    lits = [{x for x in X1 if x[i] == 0} for i in range(3)]              # MUST_NOT p_i
+    X3 = list(product((0, 1), repeat=3))
+    owners = {x for x in X3 if sum(x) == 1}                              # exactly one owner among a, b, c
+    proh = [{x for x in X3 if x[i] == 0} for i in range(3)]              # MUST_NOT owner(i)
+    print('(6) coupling: on X = exactly one of three Booleans, MUST_NOT p, q, r are minimal empty:',
+          minimal_empty(lits, X1), '| cardinality over members: exactly-one-owner with three prohibitions minimal empty:',
+          minimal_empty([owners] + proh, X3))
+    assert minimal_empty(lits, X1) and minimal_empty([owners] + proh, X3)
     print('all assertions passed')

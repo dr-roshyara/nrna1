@@ -50,6 +50,7 @@
 | EXT-073 | Danzer, L., Grünbaum, B., Klee, V. (1963). Helly's theorem and its relatives. *Proceedings of Symposia in Pure Mathematics* VII (Convexity), AMS, 101–180 (MR0157289). Verified 2026-10-20 (AMS Bulletin reference list, Springer bibliography, University of Washington copy) | peer-reviewed (survey) | benchmark | CON-0192 | Ch. 9 §9.14 | Helly numbers, Helly-type theorems |
 | EXT-074 | Doignon, J.-P. (1973). Convexity in crystallographical lattices. *Journal of Geometry* 3, 71–85 (doi 10.1007/BF01949705). Verified 2026-10-20 (Springer DOI record; secondary statements of the result; original text not read) | peer-reviewed | benchmark | CON-0192 | Ch. 9 §9.14 | Helly number 2^d of the integer lattice |
 | EXT-075 | Jeavons, P. G., Cohen, D. A., Cooper, M. C. (1998). Constraints, consistency and closure. *Artificial Intelligence* 101(1–2), 251–265 (doi 10.1016/S0004-3702(98)00022-8). Verified 2026-10-20 (Oxford listing; abstract only) | peer-reviewed | benchmark | CON-0192 | Ch. 9 §9.14 | constraint types for which strong k-consistency ensures global consistency (abstract) |
+| EXT-076 | Dechter, R., van Beek, P. (1997). Local and global relational consistency. *Theoretical Computer Science* 173(1), 283–308 (preliminary version CP 1995, 240–257). Verified 2026-10-20 (TCS bibliography record; author's abstract page) | peer-reviewed | benchmark | CON-0192 | Ch. 9 §9.14.5 | relational consistency: local consistency on subsets of constraints |
 
 ## Principal's brainstorms (post-snapshot): `docs/knowledgeos/brainstorming/philosophical_questions/`
 
