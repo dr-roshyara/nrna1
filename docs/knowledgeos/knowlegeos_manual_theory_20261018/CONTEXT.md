@@ -1,6 +1,6 @@
 # CONTEXT — KnowledgeOS theory reconstruction (Session B, "Professor")
 
-*Working state of this workspace. Updated 2026-10-19 after the C18 settlement: **the run to S0100 is complete and STOPPED** before the whole-book review (§12c). The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
+*Working state of this workspace. Updated 2026-10-20 (S0100 stage 2, items 1–4); earlier, 2026-10-19 after the C18 settlement: **the run to S0100 is complete and STOPPED** before the whole-book review (§12c). The previous version is in git history. **Re-read at the start of every window:** `03-methodology/RULEBOOK-v1.3.md` §1, §12–§12d, and `06-theory/RESEARCH-PURPOSE.md`.*
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
@@ -17,7 +17,7 @@
 | Theory turn 4 | trust: a primitive or derivable? (§9.9; F23) | **done** (two reviewers: A 12 findings, B 12, 0 critical; 11 raised by both; settled) |
 | Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | **done** (11 findings, 1 critical, settled from the evidence; appendix 8) |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | **reached** — next actor: the Principal (planted-gap test, whole-book review) |
-| **Whole-book review S0100** (§12c, v1.3) | stage 1 scored (`88b6e3890`: 4 of 8, critical found); **stage 2 in progress** | done: restated CON-IDs (CON-0162–0182), to-do triage (`manuscript/TODO-TRIAGE-S0100.md`, critical path Req → CE → kernel type → F22), TARGET-TOC (proposal), decision briefs DB-1–DB-8, v1.4 amendment (R1–R5, **not in force**). inline review notes removed per DB-8 (120 notes in v1.3 sections; history in the new chapter change logs 03.99–09.99). **Not yet done:** applying the settlement's real corrections; 3 register defects; 7 R2 terms. **Next actor: the Principal** (DB-1–DB-7, D-R1–D-R5, Q6). |
+| **Whole-book review S0100** (§12c, v1.3 with entries 56–58) | stage 1 scored (`88b6e3890`: 4 of 8, critical found); **stage 2, items 1–4 done (2026-10-20)** | withdrawals recorded in "what does not hold" (`8c4601ecf`); 4a: the four critical findings applied with R3 and "resolved when" (`81cfcd1eb`): P2-1 bearer fork F37, P2-2 set-wise conflict, P4-1 kernel type §9.1 C6 (CON-0183), P4-4 result 5 by A1's reading; 4b: the settlement's real corrections (`1862e2675`); 4c: CON-0138/0140/0143 homed, R1 H2 = 0; 4d: seven undefined terms defined. Record: `review/WHOLE-BOOK-S0100/STAGE2-APPLICATION-RECORD.md` (§9 open items). Next actor: the Principal (DB-1–DB-7; the register-column question) |
 
 **Per window and per theory turn:**
 - review;
@@ -45,14 +45,14 @@
 |---|---|
 | Reading position | **S0100** read in order (99; S0082 not allowed) — **the stop point** |
 | Book | Ch. 0–6, 8, 9 as section files; newest §6.6 (C12), §9.6 (F22) |
-| Concepts | CON-0001…0161 (`06-theory/CONCEPT-REGISTER.tsv`) |
+| Concepts | CON-0001…0187 (`06-theory/CONCEPT-REGISTER.tsv`; 187 rows) |
 | Last settled | consolidation S0036–S0065 (c8ef7833b); theory turn 1, F22 (4801780f2); the Principal's F22 act (adedac41c) |
 | Forks open | F13, F13a, F14–F21, **F22 (open on K4 and F26)**, F23 trust, F24 claim conflict, F25 who may correct, **F26 order of acts**, **F27 ρ policy or query**, F28 a synthesis adopted as truth (candidate) (`06-theory/THEORY-MAP.md`) |
 | Principal testimony | PT-001 (S0064 reviews AI-written; Principal agreed; separate facts): `06-theory/PRINCIPAL-TESTIMONY.md` |
 
 ## Known corrections pending
 
-- Form debt: older sections of this run (§6.5–§6.7, §8.6–§8.8, §9.6–§9.8) carry inline revision notes ("restated after review …"), against Rulebook §4's labels rule; for the whole-book review.
+- Form debt (inline review notes in v1.3 sections): removed under DB-8 (`de022b967`) and in stage 2's sweeps; each note is in the chapter change logs. Ch. 0–2's revision tags are left to the two-step rewrite.
 
 ## Standing rules from the Principal (in session; kept here so they survive context loss)
 

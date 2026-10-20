@@ -743,3 +743,38 @@ Material (10): applied 6 (P3-2, P3-3, P3-4, P3-6, P3-7, P3-8), in part 1 (P3-10)
 - **I-12 / P2-10 / P3-5 / P1-6 / P4-9 register column "kernel / application / observation":** role Professor, decision by the Principal if the register's structure changes; reason: the 13 columns are fixed by CV-1 §6 and read by tools; next action: propose the field (or a separate marks table keyed by CON-ID) and fill it from the chapter-index tables (Ch. 1, Ch. 6, Ch. 8 indexes).
 - **Glossary (N1-15, N1-28 ff., N2-12, N4-17, M10):** role Professor; reason: no glossary file exists; next action: create it under M10.
 - **Item 4c:** CON-0138, CON-0140, CON-0143 tags (parent).
+
+## 8. Register homes (item 4c) and undefined terms (item 4d)
+
+### 4c: CON-0138, CON-0140, CON-0143
+| ID | Home | Tag placed at | 
+|---|---|---|
+| CON-0138 (CE) | §9.6 | "The evaluator, CE" definition bullet (§9.6.2) |
+| CON-0140 (six questions for a state artifact) | §6.6 | the "Int (F13, …)" bullet that states the six questions |
+| CON-0143 (K5) | §9.7 | the K5 stipulation bullet |
+
+**R1 re-run** (`PROFESSOR/checks/register-home.working-stage2.txt`): 163 rows with a section home; H1 0, H2 0, H3 0, H4 1 (CON-0133, information only, unchanged). **Resolved when** "R1 reports no H2 flag": **holds. Closed.**
+
+### 4d: the seven true undefined terms (`R2-DISPOSITIONS-working.md`, code T)
+| Term | First use (book order) | Defined as |
+|---|---|---|
+| KT-8 | §0.6 | a background reading note in `archive/01-basis/B-10-knowledge-transfer/` on five tactical-model documents of 2026-08-16; engineering background, not corpus. The Ch. 1 index path was corrected to `archive/01-basis/` |
+| AR-11 | §8.1 | **the attribution was wrong:** the blind first reading is Rulebook v1.3 §6; AR-11 is the rule that a reviewer receives corpus material only with separate approval (standing approval in ACCESS-RECORD). Both are now said |
+| C-1 | §0.1 | "batch C-1" is the book's first corpus reading batch, not the C-1 of S0002 or the workflow engine (§1.10) |
+| CV-1 | §0.2 | the method's rule that several concepts of the same thing each get their own ID and a qualified name (§2a), archived rule file named |
+| CAP-001 | §0.2 | the first capability of the corpus's capability catalogue, first realized by `identifier-check.php` [S0002 L38] |
+| C-14 | §8.4 | the "Policy enforcement" row of S0091's capability table [S0091 L74]; references row updated |
+| port | §1.16 (first use, not §3.9) | *Ext:* an interface through which a component reaches something outside it, implemented by an adapter; §3.9 points to it |
+
+**R2 re-run** (`PROFESSOR/checks/undefined-terms.working-stage2.txt`): tier A 38 · B 25 · C 11. The seven are still listed: the tool's definition forms do not recognise an apposition or a parenthesis, so after this change they are disposition **D** (defined in place, form missed), not T. **Changed candidates since the first run:** gone: LA-4, pinning, regrouped, telo, CAP-001, RQ-002, Tier-1, registration, separation. New: foreclosure (§8.11; O, "forecloses" defined in the same bullet), idealisation (§8.6; O), N-2 (Ch. 1 index; S, pointer to §1.2 where EP01's N-2 is cited), T-1b (§5.7; **T**, defined in place now, with T-1a), discovery, handoff, material (tier C; O, ordinary English or a status value used as given). **Resolved when** "each of the seven has a definition at its first use": **holds. Closed.** The new candidate T-1b was a true one and is fixed.
+
+## 9. Open items after stage 2, items 4a–4d
+
+| Item | Role | Reason | Next action |
+|---|---|---|---|
+| P2-1, reading (B): bearers of governance status and canon scope | Professor | depend on F6 (standing vs lifecycle) and the scope senses | decide after F6; until then (B) has two open bearers |
+| Kernel / application / observation marks in the register (I-12, P1-6, P2-10, P3-5, P4-9) | Principal | the register's 13 fields are fixed by the archived rule CV-1 §6 and read by tools; adding a column is a method change | a decision: add a field, or keep the marks in the chapter index tables (as P1 and P5 now do) |
+| Glossary (N1-15, N1-28, N1-30–34, N2-12, N4-17, N5-14) | Professor | no glossary file exists (M10) | write it as a TARGET-TOC part II item, or in the next consolidation |
+| T9-05 (§9.6–§9.9 against Kernel′); T9-06 (relocation test on a known case); F35, F36, F37 | Professor | follow-ups of P4-1, P4-7, P5-2, P2-1 | in the next theory turn |
+| DB-1 … DB-7 | Principal | reserved decisions | as filed in `DECISION-BRIEFS-S0100.md` |
+| Per-row "open (U)" source checks (e.g. GKC, PKSM, RS not on the allowed list) | Principal | the files are outside the allowed list | a grant, or keep the reviewers' checks as recorded |
