@@ -47,7 +47,7 @@ What must the system answer and accept so that the three judgements of the centr
 | F9 | O1 and O4 conflicted on one input; unauthorised act? | normal | Accepted: O1's scope excludes inputs a guard refuses; an act without a covering grant is either refused (policy) or accepted as a record that confers no authority (ARCH-INV-1) | O1's scope refers to the guard | **yes** |
 | F21 | no quotes in checked form | note | — | — | — |
 
-**Counts:** 49 findings (A 28, B 21) → 31 settled rows; found by both: 13 rows; one reviewer only: 17 (A 13, B 4); one note. Critical after settlement: 2 (A-3, A-1), both resolved; A-2 settled high.
+**Counts:** 49 findings (A 28, B 21) → 31 settled rows; found by both: 13 rows; one reviewer only: 18 (A 15, B 3); plus one note (F21). Critical after settlement: 2 (A-3, A-1), both resolved; A-2 settled high.
 
 ## 3. Checks run on the corrections
 
