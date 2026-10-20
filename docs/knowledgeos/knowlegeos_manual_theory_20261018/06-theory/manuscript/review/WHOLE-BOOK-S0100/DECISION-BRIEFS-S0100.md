@@ -147,3 +147,20 @@
 - **Recommendation: (b)**, done section by section with a change-log row per section, and an integration-check run (tags 0 in the body) as the completion condition. **Or (d)**, if the 23 notes were identified elsewhere.
 - **Uncertainty.** None about the counts; the scope is the Principal's choice.
 - **What would change it.** The source of the "23 in 12" figure.
+
+---
+
+## Decisions (the Principal, 2026-10-20)
+
+*Verbatim:* "DB-1 to DB-7: accepted as you recommended. A1 is a norm, with named readings, and the empirical claim is kept as a separate hypothesis. Independence is graded and relative to the factor. K4 waits for the evaluator and the kernel type. Ch. 8 is split. The bearer of the dimensions stays a fork. Ch. 7 is retired. TARGET-TOC is a reading order with stable numbers." · "No register column. Keep the kernel/application marks in BOOK-OUTLINE.md only."
+
+| ID | Decision | Applied (2026-10-20) |
+|---|---|---|
+| DB-1 | A1 is a norm (a stipulated definition of recognized standing) with named readings; the empirical claim (A1-as-fact) is a separate hypothesis | §1.6 already states A1 so (stage 2, P1-2/I-04); used in theory turns 3 and 6 |
+| DB-2 | Independence is graded and factor-relative | to be applied where independence is used (§4.1, §8.6) in theory turn 7 |
+| DB-3 | K4 waits for the evaluator (turn 4) and the kernel type (turn 2) | placed in turn 7 |
+| DB-4 | Ch. 8 is split | TARGET-TOC: §8.6–§8.11 in Part III, §8.1–§8.5 in Part V |
+| DB-5 | The bearer of the dimensions stays a fork (F37) | no change; both readings carried into turn 3 |
+| DB-6 | Ch. 7 is retired | CHAPTER-PLAN, THEORY-MAP, TARGET-TOC, §5.1, T5-01 |
+| DB-7 | TARGET-TOC is a reading order with stable numbers | TARGET-TOC header; CHAPTER-PLAN note |
+| Register column | none; marks only in BOOK-OUTLINE.md | marks moved from the Ch. 1, Ch. 6 and Ch. 8 indexes to BOOK-OUTLINE §3a |

@@ -353,4 +353,4 @@
 - Last source read **in order**: **S0100**; next: **S0101** (the whole-book review S0100 is in stage 2).
 - **Counts (from `close_source.py --position`, 2026-10-20):** read in order (full/skim): **99** · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **30**.
 - **Register (2026-10-20):** 187 concepts: 35 VALIDATED, 67 PROVISIONAL, 85 INVALID (at the stage-1 settlement: 84 INVALID of 161).
-- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.11) · 9 (§9.1–9.9) · 7 planned, not written (whether it is written is the Principal's, TARGET-TOC).
+- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.11) · 9 (§9.1–9.9) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
