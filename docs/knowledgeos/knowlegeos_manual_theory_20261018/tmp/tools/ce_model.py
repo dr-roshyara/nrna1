@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 5 (turn-6 settlement).
+it tests the FORM of the repaired definition, not its content. Version 6 (the Principal's turn-6 decisions, applied in turn 7).
 
 Record: a list of entries in record order (positions 0..n-1). Entry kinds admitted in D (§9.13.2):
   root(id, actor, scope, t)                                    a root act: authorized by stipulation
@@ -19,7 +19,8 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(16), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 5 (turn-6 settlement): dangling citations
+Checks (1)-(17), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 6: recorder and auth fields
+required (defaults filled for the earlier checks), Q1's marks, removal by tombstone (17). Version 5 (turn-6 settlement): dangling citations
 refused (D); refusal reasons read only U alternatives and U bodies, components named, self-annulling acts named, a soundness
 check (15c), and decision 3's 'when U' cases (15d). Version 4 (turn-5 settlement): general refusal
 reasons (u_reasons over the dependency graph), the tightness check (14), the reviewers' cases (15), Θ_f's fixed rules (16).
@@ -37,6 +38,10 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'revoke': {'actor', 'cites', 'item', 'scope', 't'},
           'annul': {'actor', 'cites', 'target', 'scope', 't'},
           'endg': {'actor', 'cites', 'grant', 'scope', 't'}}
+# v6 (the Principal, after turn 6): every entry also carries its recorder and authentication status, apart from the actor
+for _k in FIELDS:
+    FIELDS[_k] = FIELDS[_k] | {'recorder', 'auth'}
+AUTH = {'signed-as-actor', 'signed-as-other', 'unsigned'}
 
 
 def k_not(a):
@@ -70,7 +75,13 @@ def covers(gs, xs, domain):
 
 
 class Record:
-    def __init__(self, entries, cov_domain):
+    def __init__(self, entries, cov_domain, defaults=True):
+        """defaults=True fills a missing recorder (the actor) and auth ('signed-as-actor'), so that the earlier checks keep
+        their records; defaults=False keeps the entries as given (used to test D's field rule)."""
+        if defaults:
+            for x in entries:
+                x.setdefault('recorder', x.get('actor'))
+                x.setdefault('auth', 'signed-as-actor')
         self.e = entries
         self.by = {x['id']: x for x in entries}
         self.pos = {x['id']: i for i, x in enumerate(entries)}
@@ -92,6 +103,8 @@ def in_D(rec):
             return False, f"kind {x.get('kind')} not admitted ({x['id']})"
         if not FIELDS[x['kind']] <= set(x):
             return False, f"missing field in {x['id']}: {sorted(FIELDS[x['kind']] - set(x))}"
+        if x['auth'] not in AUTH:
+            return False, f"auth of {x['id']} is {x['auth']!r}, not one of {sorted(AUTH)}"
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
         for g in x.get('cites', []):
@@ -463,6 +476,58 @@ def ce_star_explained(rec, item, t, qscope=None):
     rs = u_reasons(rec, a, start) if start else []
     rs = [r for r in rs if not r.startswith('undetermined')] + extra
     return U, rs or ['undetermined (no cycle or coverage reason found)']
+
+
+def tombstone(rec, i):
+    """A recorded removal by tombstone (the Principal, after turn 6): the entry keeps its identity, kind and the fields
+    citations rely on (every field D requires), drops its content, and is marked removed. The record stays in D."""
+    x = rec.by[i]
+    x.pop('content', None)
+    x['removed'] = True
+
+
+def support(rec, item, t):
+    """The entries an answer for (item, t) rests on, for its marks: the adoptions, revocations and endings that
+    current-authority reads, their cited grants, and everything these depend on in the program reading (live rules,
+    positive and negative). A superset of what the value strictly needs (§9.13.3, marks)."""
+    atoms, rules = program(rec)
+    deps = {}
+    for h, pos, neg in rules:
+        deps.setdefault(h, set()).update(q for q in pos + neg if not isinstance(q, tuple))
+    start = set()
+    for y in rec.e:
+        if y['kind'] == 'adopt' and y['item'] == item and y['t'] <= t:
+            start.add(y['id'])
+            start |= {v['id'] for v in rec.e if v['kind'] == 'revoke' and v['item'] == item and v['t'] <= t}
+            for g in y['cites']:
+                if g in rec.by:
+                    start.add(g)
+                    start |= {e['id'] for e in rec.e if e['kind'] == 'endg' and e['grant'] == g and e['t'] <= t}
+    seen, st = set(), list(start)
+    while st:
+        q = st.pop()
+        if q in seen:
+            continue
+        seen.add(q)
+        st += list(deps.get(q, ()))
+    return seen
+
+
+def marks(rec, item, t):
+    """Q1's marks (the Principal, after turn 6): the answer is marked, not refused, when it rests on transcribed or
+    unsigned entries, or on removed content."""
+    s = support(rec, item, t)
+    out = []
+    tr = sorted(i for i in s if rec.by[i]['auth'] == 'signed-as-other')
+    un = sorted(i for i in s if rec.by[i]['auth'] == 'unsigned')
+    rm = sorted(i for i in s if rec.by[i].get('removed'))
+    if tr:
+        out.append(f"rests on transcribed entries {', '.join(tr)}")
+    if un:
+        out.append(f"rests on unsigned entries {', '.join(un)}")
+    if rm:
+        out.append(f"rests on removed content {', '.join(rm)}")
+    return out
 
 
 def act_explained(rec, i):
@@ -872,4 +937,25 @@ if __name__ == '__main__':
     print('(16) adoption authorized through g1, unused g2 ended: authorized(y) =', wfs(conj)['y'], '; CE*(c, 3) =',
           ce_star(conj, 'c', 3), '| annulment of the root: root', wfs(ra)['r'], ', adoption under it', wfs(ra)['y'])
     assert wfs(conj)['y'] == T and ce_star(conj, 'c', 3) == F and wfs(ra)['r'] == T and wfs(ra)['y'] == T
+    # (17) v6: recorder and auth fields; marks; tombstones
+    nof = Record([{'id': 'r', 'kind': 'root', 'actor': 'P', 'scope': 's', 't': 0}], S1, defaults=False)
+    badauth = Record([dict(ROOT, auth='attested')], S1)
+    base = [dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), recorder='Gov', auth='signed-as-other'),
+            dict(adopt('x', 'A', ['g'], t=1), auth='unsigned'),
+            {'id': 'z', 'kind': 'adopt', 'actor': 'P', 'cites': ['r'], 'item': 'd', 'scope': 's', 't': 1, 'vfrom': 0,
+             'vto': 9, 'content': 'text'}]
+    mk = Record([dict(e) for e in base], S1)
+    v_before = ce_star(mk, 'c', 3)
+    m_c, m_d = marks(mk, 'c', 3), marks(mk, 'd', 3)
+    tomb = Record([dict(e) for e in base], S1)
+    tombstone(tomb, 'g')
+    v_after = ce_star(tomb, 'c', 3)
+    print('(17) entries without recorder and auth:', in_D(nof)[1], '| auth outside the allowed values:', in_D(badauth)[1])
+    print('     marks for c (rests on a transcribed grant and an unsigned adoption):', ce_star(mk, 'c', 3), m_c,
+          '| for d (signed-as-actor throughout):', ce_star(mk, 'd', 3), m_d)
+    print('     after a tombstone of g: in D:', in_D(tomb)[0], '; CE*(c, 3) =', v_after, '(before:', v_before, ');',
+          'marks:', marks(tomb, 'c', 3))
+    assert not in_D(nof)[0] and not in_D(badauth)[0]
+    assert v_before == T and any('transcribed entries g' in m for m in m_c) and any('unsigned entries x' in m for m in m_c)
+    assert m_d == [] and in_D(tomb)[0] and v_after == v_before and any('removed content g' in m for m in marks(tomb, 'c', 3))
     print('all assertions passed')
