@@ -361,3 +361,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   3. **then the outside literature**, as a **benchmark** (does the corpus's version match, adapt or contradict the established result?) or, where the corpus search found nothing within its stated scope, as a **gap-filler** (Ext); the idea is stated as established, adapted, extended, contradicted, or possibly new, qualified by both searches;
   4. **no corpus text** goes into any outside search.
 - **Why:** about 96 % of the allowed corpus is unread; an outside search first would credit to Ext what the corpus says (against v1.3 §4), lose the corpus's own version of an idea, and frame later reading by hindsight.
+
+## Addendum (2026-10-20T17:25:51Z): theory turn 4 — three decisions on the evaluator of current authority (CE*, Ch. 9 §9.13)
+
+- **Principal (verbatim):** "i accept your recommendation" (the Rule Reviewer's recommendations on the three decisions put by the turn-4 settlement, `fb1e67be5`).
+- **C1 (the fork of §1.13.1-2): records constitute authority within the kernel.** Whether a recorded act really occurred stays an assumption about the world, as in the trust turn (§9.9); the two questions are kept apart. Consistent with DB-1 (A1 as a norm).
+- **Loops of authority: the domain D allows citations of earlier entries only** (the corpus's acyclic recommendation). Under it the forced (least fixed point) and grounded (well-founded) readings coincide. The book states the design limit: delegation patterns that would need a later entry must be written in order.
+- **Self-cancelling acts** (a holder annuls the grant it acts under): **the answer is U, with a refusal reason**, not resolved by causal priority, which the book does not define. A priority rule may be added later only as a defined rule, on evidence.
+- **With these decisions:** the turn-5 brief lists all of §9.13's settlement changes as changed theory, including the new acyclic proof; under practice 2 the Professor checks whether "acyclic, so the readings coincide" is a known result (for example Apt and Bezem 1991 on acyclic logic programs; the Kripke–Kleene and well-founded literature) and cites it if so.
