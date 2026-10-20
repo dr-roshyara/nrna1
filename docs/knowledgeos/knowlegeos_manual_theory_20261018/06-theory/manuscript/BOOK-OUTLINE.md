@@ -16,7 +16,7 @@
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
 | **History** | §1.13.2 record integrity; §5.5 C5; **§9.8 (theory turn 3)**: state history decomposes into record properties H1′ (every change an entry), H2 (two orders), H3a/H3b (policy as entries; pinned evaluator) and the evaluator, conditional (D); truthful history needs H4 (soundness) and H5 (completeness or marked absence), not checkable inside the record; "History ≠ Reconstruction Guess" (S0129 L102); R-CONFLICT not adopted | ~ | whether history is a separate primitive or part of authority (§1.2 checkability, §1.16.2) and policy (RM-3): **for the Principal**; "the record" as a primitive has no independence model (Hyp); forks F29–F31 |
 | *Candidates added by the corpus* | visibility §1.7; standing §1.2 (CON-0018 ✗) | ~ | — |
-| **Trust** (F23) | **§9.9 (theory turn 4)**: three senses; trust in a source a conditional, definitional reduction (premises: faithful outcome records, adjudication with a root, F34); trust in a knowledge item Hyp; trust in the record: integrity and authenticity reduce to anchors, occurrence a candidate axiom | ~ | the root of source assessments (F34); whether Req needs source or item trust; occurrence as an explicit axiom (for the Principal) |
+| **Trust** (F23) | **§9.9 (theory turn 4)**: three senses; trust in a source a conditional, definitional reduction (premises: faithful outcome records, adjudication with a root, F34); trust in a knowledge item Hyp; trust in the record: integrity and authenticity reduce to anchors; occurrence a primitive candidate stated as an axiom relative to A1-as-form, A1's bridge premise relative to A1-as-fact | ~ | the root of source assessments (F34); whether Req needs source or item trust; occurrence as an explicit axiom (for the Principal) |
 | **Conflict over claims** (F24) | §9.4 C3 (one current claim + supersession) against S0913 / R-CONFLICT (preserve, "Unresolved" terminal) | — | the tension is recorded, not settled |
 | **Requirement / contract** | §5.4 (EC_t, Sat, Δ); §9.1 (Req: reachable states). Two objects, one word | ~ | the relation is open (T9-01) |
 
@@ -62,13 +62,14 @@
 
 ## 4. The open forks
 
-The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F24, F13a). New at the consolidation S0036–S0065: F23 (trust), F24 (conflicting claims). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17), §5.5 (F13a).
+The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F24, F13a). New at the consolidation S0036–S0065: F23 (trust), F24 (conflicting claims). Sections that state a fork: §3.9 (F11), §3.10 (F8), §5.4 C8 (F15), §9.1 (F16, F17, F36), §5.5 (F13a).
 
 ## 5. The kernel's type and existence
 
 | Part | Where | State |
 |---|---|---|
 | The scaffold, its degeneracy, the repair, existence by one check | §9.1 | ✓ (CON-0099, scoped) / ~ (CON-0100) |
+| The kernel type: transition and trace invariants, input origin, guards; existence by one check only for state and transition invariants | §9.1 C6 | ✗ (CON-0100 as the type) / ~ (CON-0183) |
 | Parts and whole | §9.2 | ✓ (CON-0105) |
 | Preventive and generative halves | §9.3 | ✗ as stated (CON-0110), analogy kept |
 | Invariants that cannot fail | §9.4 | ✗ as first stated (CON-0114, 0116); valid cores kept |
