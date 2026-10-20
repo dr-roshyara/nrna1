@@ -1,5 +1,6 @@
 # Quote-check baseline (Rulebook v1.3 entry 60): whole book at 0b10262df, 2026-10-20T07:15:27Z
 # Produced by tmp/tools/corpus_quote_check.py on every section file (change logs excluded). Lines marked NOT FOUND are the inherited failures; a later failure not listed here is new.
+# Exception for turn 0: three of the 17 failures were introduced by stage 2 of the S0100 review (81cfcd1eb..0b10262df), one each in 01.08, 03.01 and 05.04 (the failures listed for those files that were absent before 81cfcd1eb). Turn 0 treats these three as NEW, not inherited. The other 14 are inherited.
 00.00-index.md: 0 found, 0 not found
 00.01-the-problem.md: 0 found, 0 not found
 00.02-what-knowledgeos-names.md: 27 found, 0 not found
