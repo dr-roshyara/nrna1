@@ -1,0 +1,16 @@
+(1) Phi monotone under υ=U, backward citations: violations 0 of 400
+(1) Phi monotone under υ=U, forward citations: violations 0 of 400
+(2) KK reached on 4000 random records; worst rounds/(n+1) = 0.6 ; a chain of 8 grants recorded leaf first: 8 rounds for n+1 = 9
+(2b) WF on 2000 forward records: worst outer rounds/(n+1) = 0.67 ; worst inner passes/(2(n+1)^2) = 0.444
+(3) mutual annulment: υ=U KK x, y = U U ; υ=notcount: iteration reaches a fixed point: False ; fixed points (x, y): [('F', 'T'), ('T', 'F')] ; least: 0
+(4) answers of CE*(c, t) on WF, random records: ['F', 'T', 'U']
+(5) exhaustive over 3^k assignments, 300 random forward records: 300 fixed points; records with more than one: 0; fixed points other than KK: 0 (all above KK); fixed points not above WF: 0; records where WF is not a fixed point of Phi: 0
+(5) exhaustive over 3^k assignments, 300 loop-rich records: 333 fixed points; records with more than one: 18; fixed points other than KK: 33 (all above KK); fixed points not above WF: 33; records where WF is not a fixed point of Phi: 0
+(6) backward citations, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(6) forward citations, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 1
+(6) loop-rich citations, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 180
+Traceback (most recent call last):
+  File "/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/knowlegeos_manual_theory_20261018/tmp/tools/ce_model.py", line 485, in <module>
+    assert (diff == 0) == (not fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
