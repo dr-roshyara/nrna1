@@ -179,3 +179,15 @@ All are corrected. §9.14 v3's findings were all normal or low.
 | sealed cuts across applications (law 21 "now") | architecture | outside the theory |
 | §9.13 v7, §9.14 v4, §9.15 v4, §9.16 v2: corrected, not re-reviewed | reviewers | the next consolidation (around S0125) |
 | reading | Professor | resumes at S0101 |
+
+## 8. The Principal's answers after turn 7 (2026-10-20), and where they are applied
+
+*Recorded verbatim. The decision record (`03-methodology/`) is the Principal's and is not edited here.*
+
+1. "Prevent or detect: prevent a violation when its effects cannot be undone by a later recorded act; otherwise detect it. Apply this per law, with the reason, for review in C19. My reading: prevent single use and once-only handling of held acts; detect the other three." → §9.16 R3a (table with reasons), R4 v3 (the consequence for F22); §9.15 G4, K4; §9.13 v8 (the append guard).
+2. "Ties: acts at the same time are unordered; the answer is U." → §9.13 v8 (order three-valued; program atoms o ← not o; reasons), model v9 (checks 10b, 18, 18c); §9.16 R2 v3; §9.15 K2.
+3. "Tombstones, marks, consumption, F36 and R7: your choices, as follows. Tombstones keep every field D requires, and a removal is an authorized, recorded act that the tombstone cites. Keep the wider, sound marks. Admit consumption into D. Adopt R6's recommendation per law. Adopt R7 provisionally as Int. All of these are reviewed in C19." → §9.13 v8 (removal kind, removed_by, "removal not authorized" mark; consumption kind; marks kept), model v9 (checks 21, 22); §9.16 R5, R6, R7; §9.11 (F36); §9.15 R8 (c); THEORY-MAP F22, F26, F30, F36.
+
+**Standing instruction (from now on):** "decide definitional and technical choices yourself, with the reason stated, and mark them for review. Bring me only normative questions." Applied at once to two choices left open in §9.13 (signed-as-other requires recorder ≠ actor; marks for an act's authorization), each marked for C19's review.
+
+**C19 (S0101–S0105)** reviews, in a separate commission, all changes of this settlement (§9.13 v7, §9.14 v4, §9.15 v4, §9.16 v2) in full, and the application of these answers (§9.13 v8, §9.15 v5, §9.16 v3). A reviewer's report returned as text has its sha256 recorded at hand-back.
