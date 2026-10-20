@@ -318,3 +318,17 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "Decision now: I confirm option 2: the `--root` tool change is approved, provided it does not alter the frozen copy or its sealed manifest. Record this clarification in the decision or session log so there is no ambiguity about authorization."
 - **Condition checked:** the frozen copy matched its sealed manifest (119 of 119 files) at the Rule Reviewer's check on 2026-10-19, after the change.
 - **`ISOLATION-AUDIT.md` (Principal):** "yes, add it now". The Professor creates `06-theory/manuscript/review/WHOLE-BOOK-S0100/ISOLATION-AUDIT.md` now and updates it after step 2 and after the integration review: per reviewer and stage, identity, result, files opened, searches run, any detected or suspected breach; an assessment (pass / breach / unresolved) with its evidence and its effect on affected findings; and the limit that the audit shows observed access, not that prohibited access was technically impossible. Stages not yet audited are marked pending; earlier results are not rewritten.
+
+## Addendum (2026-10-20T07:16:47Z): S0100 stage 2 — decision briefs DB-1 to DB-7, the register column, and access to the Ch. 0–2 basis files
+
+- **Principal (verbatim):** "yes" (to recording the three decisions of the merged instruction before it is sent).
+- **DB-1 to DB-7** (`06-theory/manuscript/review/WHOLE-BOOK-S0100/DECISION-BRIEFS-S0100.md`), **accepted as the Professor recommended:**
+  - DB-1: A1 is treated as a **norm**, with named readings; the empirical claim is kept as a separate hypothesis;
+  - DB-2: independence is **graded and factor-relative**; instances inside one estate count as recurrence, not as independent confirmation;
+  - DB-3: K4 (prevent or detect) is **not decided** until the evaluator and the kernel type exist;
+  - DB-4: Ch. 8 is **split** into verification laws and validation of the book;
+  - DB-5: the bearer of the dimensions stays a **definitional fork** (F37); the kernel can carry both, one bearer per dimension;
+  - DB-6: Ch. 7 is **retired** as a separate chapter;
+  - DB-7: `TARGET-TOC.md` is adopted **as a reading order with stable section numbers**; no renumbering. `CHAPTER-PLAN.md` is superseded by it as the reading order.
+- **No new register column** for kernel/application marks: the register's fields stay as CV-1 fixes them; the marks are kept in `06-theory/manuscript/BOOK-OUTLINE.md` only (one home).
+- **Access:** the Professor may read, **read-only**, the Ch. 0–2 basis files logged with purpose "basis:" in `archive/00-access/READ-LOG.tsv` (sha256 `4eb2b2a31b7bda885414454a6a39157442e41193040c88e67d44fbb18f50b2e6`; 110 files; the corpus frame row excluded), **for quote and meaning checks only**. Recorded in `00-access/ACCESS-RECORD.md` before use. Sealed and hold-out material never; D-C1 otherwise unchanged.

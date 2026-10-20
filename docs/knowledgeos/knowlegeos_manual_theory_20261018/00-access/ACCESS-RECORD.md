@@ -454,3 +454,8 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Not covered (read as outside the grant's purpose):** the frame files of the pilot count; `docs/knowledgeos/chronological-read/*`; `docs/knowledgeos/knowledgeos-s-series-theory/safety-gate/*`; `05-validation/*/FREEZE.sha256`; `.claude/runtime/workflow/*.json`. Never: `.env*`, `_batch_input*`, P3B-HOLDOUT, sealed or quarantine files.
 - **Purpose:** quote and meaning checks only (the U marks of stage 2; quote checks for the review of stage 2). Not a source of new theory; nothing moves the reading position.
 - **Reviewers:** the Turn-0 reviewers may use the same files for the same purpose (stated in their brief).
+
+## Entry 2026-10-20T07:16:47Z: the Professor's read-only access to the Ch. 0–2 basis files, for quote and meaning checks
+- **Grant:** the Principal's "yes" (decision record, addendum of this time).
+- **Scope:** the 110 files logged with purpose "basis:" in `archive/00-access/READ-LOG.tsv` (sha256 `4eb2b2a31b7bda885414454a6a39157442e41193040c88e67d44fbb18f50b2e6`), excluding the corpus frame row. Read-only; for checking the book's quotes from, and claims about, these files (the "U" items of the S0100 review). Each read is logged with path and sha256; a file whose sha256 differs from the logged one is reported, not silently used.
+- **Not covered:** any other file outside `CORPUS-ALLOWED.tsv`; sealed lists, the sealed hold-out files and the hold-out concepts (never); reviewer access to these files (the S0100 P1/P2 grant is separate).
