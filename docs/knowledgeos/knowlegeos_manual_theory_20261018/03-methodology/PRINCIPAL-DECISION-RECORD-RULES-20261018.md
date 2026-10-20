@@ -375,3 +375,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "yes" (to confirming the extension the Professor marked in §9.13 v3, `d4ffbc692`, §9.13 question R2).
 - **Decision:** mutual annulment (two acts annulling each other, the other negative cycle) gives **U, with a refusal reason naming both acts**, as for a self-cancelling act. No priority rule is defined, so neither act prevails. §9.13 records it as decided, not as an extension.
 - **Advice with it (not a decision):** if the turn-5 brief becomes too long, the review is split into two commissions, §9.13's changes and global consistency, both settled before turn 6.
+
+## Addendum (2026-10-20T19:03:44Z): theory turn 5 — two decisions on the evaluator's domain (§9.13 v4)
+
+- **Principal (verbatim):** "Shall I record the two decisions in the decision record? yes" (the Rule Reviewer's recommendations on the two decisions put by the turn-5 settlement, `454df3aa4`).
+- **D is kept: citations of earlier entries only**, not D_acyclic (no citation cycles). Reasons: under C1 (records constitute authority) a grant exists only once recorded, so citing a grant recorded later would be authorization after the fact; and D is checkable at each new entry (a law on each step), while D_acyclic needs a check of the whole record and admits citations that point at nothing until the cited entry arrives. The design limit (delegation written in order) stands as stated in §9.13.
+- **Indirect self-cancelling is covered by decision 3** (turn 4): an act that annuls any link of its own authorization chain gives **U**, with a refusal reason naming the act and the annulled link.
+- **With these decisions (an instruction, not a rule change):** the turn-6 brief lists **all** changes of the turn-5 settlement as changed theory (§9.13 v4 and §9.14 v2 in full, including the new row and its proof), not "where used" (v1.3 §2 step 9); if the brief becomes too long, the review is split into commissions as in turn 5.
