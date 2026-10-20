@@ -427,3 +427,18 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | 5 research-level to-do triage at each whole-book review | §0.12, five lines per major item | adopted |
 | not added: a TheoryLedger aggregate, theory-driven instead of chronological reading, per-term translation maps, a rival-theory entity per concept | — | agreed |
 | four responsibilities (evidence · theory construction · independent review · governance) | — | agreed as a conceptual view; already reflected (§4, §0/§5, §8, §1.4); not a new structure |
+
+## 19. Pending for the S0150 consolidated revision (rule freeze in force; nothing here changes rule text now)
+
+*Recorded 2026-10-20 on the Principal's "yes" (decision record). Sources: the senior research reviews of v1.3 and of v2; the Rule Reviewer's analyses.*
+
+| Item | Change proposed for S0150 | Tested meanwhile as |
+|---|---|---|
+| Research question per theory turn | each turn states its question before its deliverable | practice 1 |
+| Prior work | a literature search for every result claiming a new theorem, mechanism or generalisation; established / adapted / extended / contradicted / possibly new; works in EXTERNAL-SOURCES | practice 2 |
+| Read before claiming | helper or forked text counts as the Professor's only once read | practices 3 and 6 (verification marks: author · read · reasoning checked) |
+| Effort by risk | editorial: mechanical checks; substance: window review; foundational: two reviewers (brings v2 §6.3's three kinds of change into force) | practice 4 |
+| **Challenge by type** | v1.3 §2 step 2 / v2 §5.1: mathematical, empirical, definitional and normative items each get their own challenge; definitions need no falsifier | practice 5 (interpretation of entry 55) |
+| **Canonical home of a concept** | v2 §0.11: the register owns identity, status, review, links and at most a one-line gloss; the defining section owns definition and argument and governs when they disagree; a check of gloss against definition to be considered | — |
+| Time by activity | research vs verification vs governance, recorded at S0125 and S0150 | decision record (freeze) |
+| One rulebook again | at S0150, v1.3 revised or v2 replaces it; the practices in the decision record move into it and the decision record stops carrying practices | — |
