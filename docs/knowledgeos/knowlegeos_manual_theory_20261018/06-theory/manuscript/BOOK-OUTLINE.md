@@ -171,6 +171,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 | **Req, the kernel's required capabilities** (theory turn 1) | §9.10 | ~ (CON-0188; turn 1 settled): core questions Q1–Q4 and inputs O1–O4, Q5 by I-4, seven candidates; reference definitions of Q1, Q3, Q4 partial or absent (the documented obstacle) |
 | **The kernel type from Req** (theory turn 2): 31 laws classified; whole histories carried by the record under P-loss (and one shared record for uniqueness across applications); C6 cannot express recoverability or hyperproperties; C3 does not reach guards, liveness or AE | §9.11 | ~ (CON-0189; turn 2 settled) |
 | **The evaluator's inputs** (theory turn 3): I1–I14; bearer readings differ on endings; A1's readings fix C1 and κ; as fact reads occurrence evidence | §9.12 | ~ (CON-0190; turn 3 settled; C1 for the Principal) |
+| **The evaluator CE\*** (theory turn 4): total on D for θ ∈ Θ_m; least fixed point / well-founded model | §9.13 | ~ (CON-0191; under review) |
 | *Missing:* the required capabilities of KnowledgeOS itself (T9-01), **the load-bearing undefined object**: six claims defer to it (§5.5 C3, §6.5 C1, §9.3, §9.4 C7, §9.5 C1, C5); candidates in scope: distribution (§9.5), bootstrap (§9.2), the record and fold (§6.5), Zero-all(EC) reachable or Zero-blocking(EC) reachable (§5.4; which one is open); how to establish a capability (S0164 D5 E1–E10); the state space (F13, T9-02) | — | — |
 
 ## Chapters that serve method, not a deliverable directly

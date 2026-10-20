@@ -1,0 +1,9 @@
+(1) Phi monotone in the information order under υ=U: violations 0 of 400
+(2) least fixed point reached on 2000 random records; worst rounds/(n+1) = 0.5
+(3) mutual annulment: υ=U least fixed point x, y = U U ; υ=notcount reaches a fixed point: False
+(4) answers of CE*(c, t) seen on random records: ['F', 'T', 'U']
+(5) total fixed points found and checked to extend the least one: 18624
+(6) the well-founded model extends the least fixed point on 1500 records; strictly more decided on 0
+(7) circular grants: least fixed point g1, g2, x = U U U ; well-founded = F F F
+(8) mutual annulment, well-founded: x, y = U U
+all assertions passed

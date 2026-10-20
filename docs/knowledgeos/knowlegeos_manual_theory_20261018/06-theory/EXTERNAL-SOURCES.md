@@ -36,6 +36,10 @@
 | EXT-059 | Hart, H. L. A. (1961). *The Concept of Law*. Oxford: Clarendon Press (2nd ed. 1994). Checked 2026-10-20 through secondary sources | textbook | benchmark | CON-0190 | Ch. 9 §9.12.8 | the rule of recognition |
 | EXT-060 | Ellison, C., Frantz, B., Lampson, B., Rivest, R., Thomas, B., Ylonen, T. (1999). SPKI Certificate Theory. RFC 2693 (Experimental). Verified 2026-10-20 (RFC Editor; section outline: delegation §4, validity §5) | standard (experimental RFC) | benchmark | CON-0190 | Ch. 9 §9.12.8 | delegation, validity conditions, revocation |
 | EXT-061 | Groth, P., Gibson, A., Velterop, J. (2010). The anatomy of a nanopublication. *Information Services and Use* 30(1–2), 51–56, doi 10.3233/ISU-2010-0613. Verified 2026-10-20 | peer-reviewed | benchmark | CON-0190, CON-0185 | Ch. 9 §9.12.8 | claims with identity and provenance apart from carriers |
+| EXT-062 | Kleene, S. C. (1952). *Introduction to Metamathematics*. North-Holland, §64. Verified 2026-10-20 (publisher and catalogue records; §64 via a secondary introduction) | textbook | benchmark | CON-0191 | Ch. 9 §9.13 | strong Kleene connectives |
+| EXT-063 | Kripke, S. (1975). Outline of a theory of truth. *Journal of Philosophy* 72(19), 690–716. Verified 2026-10-20 (citing reference lists; content via secondary sources) | peer-reviewed | benchmark | CON-0191 | Ch. 9 §9.13 | least fixed point over strong Kleene |
+| EXT-064 | Fitting, M. (1985). A Kripke–Kleene semantics for logic programs. *Journal of Logic Programming* 2(4), 295–312. Verified 2026-10-20 (citing reference lists and their descriptions) | peer-reviewed | benchmark | CON-0191 | Ch. 9 §9.13 | the Kripke–Kleene model of a logic program |
+| EXT-065 | Van Gelder, A., Ross, K. A., Schlipf, J. S. (1991). The well-founded semantics for general logic programs. *Journal of the ACM* 38(3), 620–650, doi 10.1145/116825.116838. Verified 2026-10-20 (JACM bibliography, DOI record) | peer-reviewed | benchmark | CON-0191 | Ch. 9 §9.13 | the well-founded model; positive loops false |
 
 ## Principal's brainstorms (post-snapshot): `docs/knowledgeos/brainstorming/philosophical_questions/`
 
