@@ -18,7 +18,7 @@
 | Window C18 | S0097–S0100 (four sources: the index shifted by one because S0082 is not allowed; the stop point S0100 is kept) + §1.14 integration | **done** (11 findings, 1 critical, settled from the evidence; appendix 8) |
 | **STOP** | before the whole-book review (§12c). Do **not** start it: the Principal prepares the planted-gap test. Final report: theory gained, outline update, sections rewritten, reviewer figures per window | **reached** — next actor: the Principal (planted-gap test, whole-book review) |
 | **Whole-book review S0100** (§12c, v1.3 with entries 56–58) | stage 1 scored (`88b6e3890`: 4 of 8, critical found); **stage 2, items 1–4 done (2026-10-20)** | withdrawals recorded in "what does not hold" (`8c4601ecf`); 4a: the four critical findings applied with R3 and "resolved when" (`81cfcd1eb`): P2-1 bearer fork F37, P2-2 set-wise conflict, P4-1 kernel type §9.1 C6 (CON-0183), P4-4 result 5 by A1's reading; 4b: the settlement's real corrections (`1862e2675`); 4c: CON-0138/0140/0143 homed, R1 H2 = 0; 4d: seven undefined terms defined. Record: `review/WHOLE-BOOK-S0100/STAGE2-APPLICATION-RECORD.md` (§9 open items). Next actor: the Principal (DB-1–DB-7; the register-column question) |
-| **Critical-path chain** (§12b, entry 59; rules frozen until S0150; four practices tested) | turns 0–2 settled (`cc5f416a5`, `9c418208e`, `e123006fb`); **turn 3 (evaluator inputs, §9.12) under review** | turns 2–7 to follow: kernel type from Req; the evaluator's inputs (F37, A1 readings); the evaluator; global consistency; the trust boundary; reassessment (F22, K4). Reading resumes at S0101 when the chain is settled |
+| **Critical-path chain** (§12b, entry 59; rules frozen until S0150; four practices tested) | turns 0–3 settled (`cc5f416a5`, `9c418208e`, `e123006fb`, turn 3 below); **turn 4 (the evaluator) next** | turns 2–7 to follow: kernel type from Req; the evaluator's inputs (F37, A1 readings); the evaluator; global consistency; the trust boundary; reassessment (F22, K4). Reading resumes at S0101 when the chain is settled |
 
 **Per window and per theory turn:**
 - review;
@@ -66,6 +66,8 @@
 - Settlement text is unreviewed text: grep my own settlement edits against the findings before committing.
 
 ## Open questions for the Principal
+
+- **C1 (from theory turn 3, §9.12):** DB-1 (A1 a norm: recognized standing) fixes §1.14.1's open alternative C1 to "records constitute authority" for Q1's evaluator (a record with no adoption act gives F, not U). To confirm or revise. Not blocking turn 4, which states CE with C1 as a parameter.
 
 - None blocking. K4 (uniqueness across applications) is a research question by the Principal's act.
 - K5 (standing is one answer per item, scope, time and axis across applications), restated in §9.7, is for the Principal to confirm. Not blocking.
