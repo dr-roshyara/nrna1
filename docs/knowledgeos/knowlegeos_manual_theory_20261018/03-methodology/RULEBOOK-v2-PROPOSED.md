@@ -312,8 +312,9 @@ A finding stands unless disproved with evidence. **Engineering supplies evidence
    **The one severity scale** [changed: all three levels here, one rationale line per finding]: **critical** as above · **high:** a material defect, omission, contradiction, wrong status or unsupported generalisation that weakens an important claim, with contained impact; resolved before the topic is finalised · **normal:** a local defect or clarification that does not undermine the main derivation; to the next consolidation. A critical finding triggers investigation and reassessment of each dependant, never automatic invalidation.
 2. **Trigger.** Raised by a reviewer or found by the Professor. It is written at the top of the settlement (or, if found while reading, as one line in the theory map's open items) with its evidence and its downstream list from `dependency_graph.py`.
 3. **Immediate investigation.** The next turn is an investigation of that problem, out of any sequence: a theory turn under §9.3, reviewed by two reviewers. Dependent work stops until it is settled; unrelated reading may continue, building nothing on the affected items.
-4. **The reading position is not lost:** the investigation's reads are `topic-full` or `branch-consult`, which never move the position (enforced by `close_source.py`). Reading resumes at the next source in index order.
-5. **Closing:** the settlement states the outcome (holds · restated · INVALID), reassesses every downstream item, and the next window brief lists the changes (§8.2.2).
+4. **A chain of critical-path turns** (in force in v1.3 since entry 59): where several critical findings block the same path, the investigations run as consecutive theory turns, one deliverable each, each reviewed by two reviewers and settled before the next builds on it; index-order reading resumes when the chain is settled or the Principal decides. (The theory-first ordering of reports, entry 59, is §0.5 and §11.1.)
+5. **The reading position is not lost:** the investigation's reads are `topic-full` or `branch-consult`, which never move the position (enforced by `close_source.py`). Reading resumes at the next source in index order.
+6. **Closing:** the settlement states the outcome (holds · restated · INVALID), reassesses every downstream item, and the next window brief lists the changes (§8.2.2).
 
 ## 11. End of each turn
 
