@@ -4,7 +4,8 @@ set-wise conflict test? A toy over small finite domains, not KnowledgeOS.
 
 Effect sets: a rule's mandatory effect at a context c is the set E(r, c) of outcomes x that satisfy it.
 The Helly number h of a class of sets: the largest size of a minimal subfamily with empty intersection
-(every proper subfamily has a common point). Families are multisets of members of the class.
+(every proper subfamily has a common point). Families are sets of members of the class (duplicates are removed: a
+minimal family never repeats a member).
 
 Checks:
  (1) Helly numbers of the book's single-attribute classes, by exhaustive search (required value, forbidden value,
@@ -16,13 +17,18 @@ Checks:
      set the pairs miss is found;
  (4) the bound h <= |X| on random set classes over a finite outcome space, and its tightness;
  (5) three real half-planes (x >= 0, y >= 0, x + y <= -1): pairs satisfiable (witnesses), all three not (Farkas sum);
- (7) version 3 (turn-6 settlement): the new row's exact domain conditions (n on n values; on Z two thresholds; one
-     threshold on N); one interior forbidden value with thresholds gives h = 3, an endpoint keeps 2; a partial order and a
-     cyclic order break the interval row; check 3 widened (a class with the empty set, boxes, required/forbidden Boolean).
  (6) version 2 (turn-5 settlement): the reviewers' counterexamples. Thresholds with forbidden values on one attribute
-     (the family x <= m-1, x != 0..m-1 is minimal of size m + 1, so h is unbounded on an unbounded domain); required values with thresholds (h = 2);
+     (the family x <= m-1, x != 0..m-1 is minimal of size m + 1, so h is unbounded on an infinite domain with finite
+     intervals of every size); required values with thresholds (h = 2; TAUTOLOGICAL: the interval class already contains
+     the singletons, so this line is no further evidence);
      a coupling constraint on the outcome space (exactly one of three Booleans: three literals form a minimal triple);
      cardinality over members (exactly one owner and three prohibitions: a minimal set of four).
+ (7) version 3 (turn-6 settlement): the new row's exact domain conditions (n on n values, cap n, exact by R4; on a
+     window -5..11 standing in for Z, two thresholds; one threshold on N); one interior forbidden value with thresholds
+     gives h = 3, an endpoint keeps 2; a partial order and a cyclic order break the interval row; check 3 widened (a
+     class with the empty set, boxes, required/forbidden Boolean).
+ (8) version 4 (turn-7 settlement, B1-01): not every partial order breaks the interval row: order intervals of the
+     product order 3 x 3 with up- and down-sets, and up- and down-sets of a rooted tree, have h = 2.
 Searches marked cap=k are exhaustive only up to k members: the value printed is then a lower bound, and the theorem
 cited in §9.14 (R2, Doignon, R4) supplies the upper bound. Check 3 compares the set-wise report with an independently
 computed pairs-only report (single rules and pairs tested directly at each point).
@@ -200,7 +206,7 @@ if __name__ == '__main__':
         assert minimal_empty(fam, Z)
         sizes.append(len(fam))
     no_empty = all(inter([set(Z) - {v} for v in range(m)], Z) for m in range(1, 6))   # complements alone: never empty
-    print(f'(6) required values with thresholds on 0..5: h = {h_rt}; on 0..11, x <= m-1 with x != 0..m-1 is minimal',
+    print(f'(6) required values with thresholds on 0..5 (tautological, see the docstring): h = {h_rt}; on 0..11, x <= m-1 with x != 0..m-1 is minimal',
           f'with {sizes} members for m = 1..5, while those forbidden values alone always leave a common point: {no_empty}',
           '(so on an unbounded domain the union of thresholds and forbidden values has unbounded h)')
     assert h_rt == 2 and sizes == [2, 3, 4, 5, 6] and no_empty
@@ -238,4 +244,25 @@ if __name__ == '__main__':
           f'arcs of a cyclic order on 6 points (cap 6): h = {h_cyc}')
     assert nn == {2: 2, 3: 3, 4: 4, 5: 5} and inter(one, Zd) and minimal_empty(two, Zd) and h_int == 3 and h_end == 2
     assert poset_min and h_cyc >= 3
+    # (8) version 4 (turn-7 settlement, B1-01): partial orders whose intervals keep h = 2
+    G3 = [(i, j) for i in range(3) for j in range(3)]
+    le = lambda p, q: p[0] <= q[0] and p[1] <= q[1]
+    box = [{x for x in G3 if le(a, x) and le(x, b)} for a in G3 for b in G3 if le(a, b)]
+    ups = [{x for x in G3 if le(a, x)} for a in G3]
+    downs = [{x for x in G3 if le(x, a)} for a in G3]
+    h_prod = helly([frozenset(c) for c in set(map(frozenset, box + ups + downs))], G3, cap=4)
+    parent = {'r': None, 'a': 'r', 'b': 'r', 'a1': 'a', 'a2': 'a', 'b1': 'b'}       # a rooted tree, root below
+    def anc(v):
+        out = {v}
+        while parent[v]:
+            v = parent[v]
+            out.add(v)
+        return out
+    T_ = list(parent)
+    t_up = [{w for w in T_ if v in anc(w)} for v in T_]                                 # up-sets: subtrees
+    t_down = [anc(v) for v in T_]                                                       # down-sets: paths to the root
+    h_tree = helly([frozenset(c) for c in set(map(frozenset, t_up + t_down))], T_, cap=4)
+    print(f'(8) order intervals, up- and down-sets of the product order 3 x 3 (cap 4): h = {h_prod};',
+          f'up- and down-sets of a rooted tree on 6 nodes (cap 4): h = {h_tree}')
+    assert h_prod == 2 and h_tree == 2
     print('all assertions passed')

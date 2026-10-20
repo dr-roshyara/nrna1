@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 7 (turn 7: check 18, records of several applications
-merged without a shared serialization point; F22/K4, §9.16). Version 6: the Principal's turn-6 decisions, applied in turn 7.
+it tests the FORM of the repaired definition, not its content. Version 8 (turn-7 settlement): the support is a closure
+under citations, annulments and endings, independent of live rules (check 19); tombstones keep position and integrity
+result (17b); merge() joins copies by identity (18b, 18d); crowded act times (18c); random recorder and auth (20); the
+bound ratios use n + 1 with n the non-root acts. Version 7 (turn 7: check 18, records of several applications merged
+without a shared serialization point; F22/K4, §9.16). Version 6: the Principal's turn-6 decisions, applied in turn 7.
 
 Record: a list of entries in record order (positions 0..n-1). Entry kinds admitted in D (§9.13.2):
   root(id, actor, scope, t)                                    a root act: authorized by stipulation
@@ -20,7 +23,7 @@ The activity is not modelled (one activity). υ: 'U' (an act of undetermined aut
 
 Two independent routes: Phi on the record (lfp = KK; wfs = the alternating fixpoint), and the record translated into
 a ground normal program (program(); KK by Fitting's operator, WF by unfounded sets, Van Gelder-Ross-Schlipf).
-Checks (1)-(18), (2b), (3b), (9b), (11b), (15b)-(15d): see the printed lines. Version 6: recorder and auth fields
+Checks (1)-(20), (2b), (3b), (9b), (11b), (15b)-(15d), (17b), (18b)-(18d): see the printed lines. Version 6: recorder and auth fields
 required (defaults filled for the earlier checks), Q1's marks, removal by tombstone (17). Version 5 (turn-6 settlement): dangling citations
 refused (D); refusal reasons read only U alternatives and U bodies, components named, self-annulling acts named, a soundness
 check (15c), and decision 3's 'when U' cases (15d). Version 4 (turn-5 settlement): general refusal
@@ -485,36 +488,34 @@ def ce_star_explained(rec, item, t, qscope=None):
 
 def tombstone(rec, i):
     """A recorded removal by tombstone (the Principal, after turn 6): the entry keeps its identity, kind and the fields
-    citations rely on (every field D requires), drops its content, and is marked removed. The record stays in D."""
+    citations rely on (the Professor's reading: every field D requires), keeps its record position and its integrity
+    result ('ok'), drops its content, and is marked removed. The record stays in D only if the entry passed the
+    integrity check before (v8, A1-04/A2-02: tombstoning a failing entry does not restore D)."""
     x = rec.by[i]
     x.pop('content', None)
     x['removed'] = True
 
 
 def support(rec, item, t):
-    """The entries an answer for (item, t) rests on, for its marks: the adoptions, revocations and endings that
-    current-authority reads, their cited grants, and everything these depend on in the program reading (live rules,
-    positive and negative). A superset of what the value strictly needs (§9.13.3, marks)."""
-    atoms, rules = program(rec)
-    deps = {}
-    for h, pos, neg in rules:
-        deps.setdefault(h, set()).update(q for q in pos + neg if not isinstance(q, tuple))
-    start = set()
-    for y in rec.e:
-        if y['kind'] == 'adopt' and y['item'] == item and y['t'] <= t:
-            start.add(y['id'])
-            start |= {v['id'] for v in rec.e if v['kind'] == 'revoke' and v['item'] == item and v['t'] <= t}
-            for g in y['cites']:
-                if g in rec.by:
-                    start.add(g)
-                    start |= {e['id'] for e in rec.e if e['kind'] == 'endg' and e['grant'] == g and e['t'] <= t}
+    """The entries an answer for (item, t) may rest on, for its marks (v8, turn-7 settlement, A1-01/A2-01): the closure,
+    from the adoptions and revocations of the item with act time <= t, under 'reads': an entry reads the entries it
+    cites, the annulments that target it and the endings of it (a grant). The closure does not depend on which rules
+    are live, so it contains every entry that the evaluation of a reached atom reads. A conservative over-approximation:
+    it may contain entries the value does not need (§9.13.3, marks; check 19 tests that nothing outside it matters)."""
+    targets = {}
+    for e in rec.e:
+        if e['kind'] == 'annul':
+            targets.setdefault(e['target'], set()).add(e['id'])
+        elif e['kind'] == 'endg':
+            targets.setdefault(e['grant'], set()).add(e['id'])
+    start = {y['id'] for y in rec.e if y['kind'] in ('adopt', 'revoke') and y['item'] == item and y['t'] <= t}
     seen, st = set(), list(start)
     while st:
         q = st.pop()
-        if q in seen:
+        if q in seen or q not in rec.by:
             continue
         seen.add(q)
-        st += list(deps.get(q, ()))
+        st += list(rec.by[q].get('cites', [])) + list(targets.get(q, ()))
     return seen
 
 
@@ -628,6 +629,43 @@ def linear_extension(rng, entries):
     return out
 
 
+READ_FIELDS = {k: v - {'recorder', 'auth'} for k, v in FIELDS.items()}
+AUTH_RANK = {'unsigned': 0, 'signed-as-other': 1, 'signed-as-actor': 2}
+
+
+def merge(records, rng=None):
+    """v8 (turn-7 settlement, D1-02/D2-02): the union of several applications' records. The identity of an act is
+    derived from the fields CE* reads (kind and READ_FIELDS); recorder and auth are not part of it. Copies with one
+    identity are joined: the fields CE* reads must agree, or the merge is refused (conflicting copies); a tombstone
+    wins over a full copy (removed, no content); the auth status is the weakest of the copies (unsigned < other <
+    actor), so the marks never get weaker by merging; the recorder is the set of recorders. Returns (entries, None) in
+    a linear extension of the citation order (random if rng is given, else the first record's order then the rest),
+    or (None, reason)."""
+    by, order = {}, []
+    for R in records:
+        for x in R:
+            i = x['id']
+            if i not in by:
+                by[i] = dict(x)
+                by[i]['recorder'] = frozenset([x.get('recorder')]) if not isinstance(x.get('recorder'), frozenset) else x['recorder']
+                order.append(i)
+                continue
+            y = by[i]
+            if any(x.get(f) != y.get(f) for f in READ_FIELDS[x['kind']] | {'kind'}):
+                return None, f'conflicting copies of {i}'
+            if x.get('removed') or y.get('removed'):
+                y['removed'] = True
+                y.pop('content', None)
+            y['ok'] = y.get('ok', True) and x.get('ok', True)
+            if AUTH_RANK[x['auth']] < AUTH_RANK[y['auth']]:
+                y['auth'] = x['auth']
+            y['recorder'] = y['recorder'] | (x['recorder'] if isinstance(x.get('recorder'), frozenset) else frozenset([x.get('recorder')]))
+    ents = [by[i] for i in order]
+    for e in ents:
+        e['recorder'] = ','.join(sorted(str(r) for r in e['recorder']))
+    return (linear_extension(rng, ents) if rng else ents), None
+
+
 def all_fixed_points(rec, upsilon):
     ids = [i for i in rec.acts() if rec.by[i]['kind'] != 'root']
     out = []
@@ -667,7 +705,7 @@ if __name__ == '__main__':
             rec = random_record(rng, n_acts=rng.randint(1, 9), forward=fw)
             a, k = lfp(rec, 'U')
             assert a is not None
-            worst = max(worst, k / (len(rec.e) + 1))
+            worst = max(worst, k / len(rec.e))       # n non-root acts and one root: n + 1 = len(rec.e) (v8, A1-18)
     n = 8
     chain = Record([ROOT] + [G(f'g{j}', 'P', [f'g{j + 1}'] if j < n - 1 else ['r'], 'P') for j in range(n)], {('s', 's')})
     _, kc = lfp(chain, 'U')
@@ -684,7 +722,7 @@ if __name__ == '__main__':
         rec = random_record(rng, n_acts=rng.randint(1, 9), forward=True)
         c = []
         wfs(rec, c)
-        m = len(rec.e) + 1
+        m = len(rec.e)                             # n + 1, n the non-root acts (v8, A1-18)
         wo, wi = max(wo, c[0] / m), max(wi, c[1] / (2 * m * m))
     print('(2b) WF on 2000 forward records: worst outer rounds/(n+1) =', round(wo, 2),
           '; worst inner passes/(2(n+1)^2) =', round(wi, 3))
@@ -1020,10 +1058,142 @@ if __name__ == '__main__':
     order1, order2 = race, race[:2] + [race[3], race[2], y]
     p1, p2 = (ce_star(Record([dict(x) for x in o], S1), 'c', 6) for o in (order1, order2))
     i1, i2 = (ce_star(Record([dict(x) for x in o], S1, tie='id'), 'c', 6) for o in (order1, order2))
-    print(f'(18) {n_hist} causal histories split between two applications, 6 merge orders each: same answers under ties by',
+    print(f'(18) {n_hist} causal histories split between two applications as FRAGMENTS (an application holds only its own entries,',
+          'so its record is in general not in D), 6 merge orders each: same answers under ties by',
           f'identity in {same_id}; answers depend on the merge order under ties by position in {diff_pos}')
     print(f'     cuts across records: in D exactly when citation-closed ({cut_ok} closed, {cut_bad} not, all refused)')
     print(f'     the race (grant x and the ending e of its basis at the same act time, in two applications; B adopts c under x',
           f'later): ties by position give CE*(c, 6) = {p1} or {p2} by merge order; ties by identity give {i1} and {i2}')
     assert same_id == n_hist and p1 != p2 and i1 == i2 and cut_bad > 0
+    # (18b) v8 (D1-01/D2-01): each application's record in D: it holds its own entries and copies of what they cite.
+    # Then every union of records, and every union of per-record prefixes, is closed under citation: the cut condition is
+    # automatic. With ties by identity, merge orders give the same values AND the same marks.
+    n_rec_in_D = vals_same = marks_same = cuts_in_D = cuts = 0
+    for _ in range(400):
+        hist = random_record(rng, n_acts=rng.randint(3, 9), targets_any=True)
+        app = {x['id']: rng.choice([1, 2]) for x in hist.e if x['kind'] != 'root'}
+        recs = []
+        for a_ in (1, 2):
+            need = set(['r'] + [i for i, v in app.items() if v == a_])
+            st = list(need)
+            while st:
+                q = st.pop()
+                for g in hist.by[q].get('cites', []):
+                    if g not in need:
+                        need.add(g)
+                        st.append(g)
+            own = [dict(x, recorder=f'app{a_}', auth=(x.get('auth') if app.get(x['id']) == a_ or x['id'] == 'r'
+                                                       else rng.choice(sorted(AUTH)))) for x in hist.e if x['id'] in need]
+            recs.append(own)
+        n_rec_in_D += all(in_D(Record([dict(x) for x in R], hist.dom, tie='id'))[0] for R in recs)
+        outs = set()
+        for _k in range(4):
+            ents, why = merge([[dict(x) for x in R] for R in recs], rng)
+            assert why is None
+            m = Record(ents, hist.dom, tie='id')
+            assert in_D(m)[0]
+            outs.add(tuple((ce_star(m, 'c', tt), tuple(marks(m, 'c', tt))) for tt in range(7)))
+        vals_same += len({tuple(v for v, _m in o) for o in outs}) == 1
+        marks_same += len(outs) == 1
+        for _k in range(3):
+            pre = [R[:rng.randint(1, len(R))] for R in recs]
+            ents, _w = merge([[dict(x) for x in R] for R in pre])
+            cuts += 1
+            cuts_in_D += in_D(Record(ents, hist.dom, tie='id'))[0]
+    print(f'(18b) 400 histories, each application holding copies of what it cites: both records in D in {n_rec_in_D};',
+          f'merge orders give the same values in {vals_same} and the same values and marks in {marks_same};',
+          f'cuts across records (one prefix each) in D: {cuts_in_D} of {cuts} (automatic)')
+    assert n_rec_in_D == 400 and vals_same == 400 and marks_same == 400 and cuts_in_D == cuts
+    # (18c) v8 (D1-09, D2): crowded act times (all in {1, 2}): ties by position do differ on random records; by identity not
+    dpos = did = 0
+    for _ in range(400):
+        hist = random_record(rng, n_acts=rng.randint(4, 9), targets_any=True)
+        for x in hist.e:
+            if x['kind'] != 'root':
+                x['t'] = rng.choice([1, 2])
+        res = {'id': set(), 'pos': set()}
+        for _k in range(6):
+            ext = linear_extension(rng, [dict(x) for x in hist.e])
+            for tr in res:
+                res[tr].add(tuple(ce_star(Record([dict(x) for x in ext], hist.dom, tie=tr), 'c', tt) for tt in range(4)))
+        dpos += len(res['pos']) > 1
+        did += len(res['id']) > 1
+    print(f'(18c) 400 histories with act times in {{1, 2}}, 6 merge orders: answers differ by merge order under ties by',
+          f'position in {dpos}, by identity in {did}')
+    assert did == 0 and dpos > 0
+    # (18d) v8 (D1-02/D2-02): copies of one act with different recorder and auth, and a tombstone with its original
+    g_full = dict(G('g', 'P', ['r'], 'A', t=0), content='text', auth='signed-as-actor', recorder='app1')
+    g_copy = dict(G('g', 'P', ['r'], 'A', t=0), content='text', auth='signed-as-other', recorder='app2')
+    xa = dict(adopt('x', 'A', ['g'], t=1), recorder='app1')
+    r1, r2 = [dict(ROOT), g_full, xa], [dict(ROOT), g_copy]
+    t2 = [dict(ROOT), dict(g_copy, removed=True)]
+    t2[1].pop('content')
+    res = []
+    for rs in ([r1, r2], [r2, r1], [r1, t2], [t2, r1]):
+        ents, why = merge([[dict(x) for x in R] for R in rs])
+        m = Record(ents, S1, tie='id')
+        res.append((in_D(m)[0], ce_star(m, 'c', 3), tuple(marks(m, 'c', 3))))
+    conflict = merge([[dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0))], [dict(ROOT), dict(G('g', 'P', ['r'], 'B', t=0))]])
+    print('(18d) one act copied by two applications (signed-as-actor, signed-as-other), both merge orders:', res[0], res[1],
+          '| a tombstone in one, the original in the other, both orders:', res[2], res[3],
+          '| copies that disagree on a field CE* reads:', conflict[1])
+    assert res[0] == res[1] and res[2] == res[3] and all(r[0] and r[1] == T for r in res)
+    assert any('transcribed' in m for m in res[0][2]) and any('removed' in m for m in res[2][2]) and conflict[0] is None
+    # (17b) v8 (A1-05, D2-06, A1-04/A2-02): a tombstone of an entry with content; a tombstone of a failing entry
+    tb = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), content='the grant text'), dict(adopt('x', 'A', ['g'], t=1))], S1)
+    before = ce_star(tb, 'c', 3)
+    tombstone(tb, 'g')
+    fail = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), content='text', ok=False), dict(adopt('x', 'A', ['g'], t=1))], S1)
+    f_before = in_D(fail)[0]
+    tombstone(fail, 'g')
+    print('(17b) tombstone of a grant with content: content dropped:', 'content' not in tb.by['g'], '; CE*(c, 3) before/after:',
+          before, ce_star(tb, 'c', 3), '; marks:', marks(tb, 'c', 3),
+          '| tombstone of an entry that failed the integrity check: in D before', f_before, ', after', in_D(fail)[0])
+    assert 'content' not in tb.by['g'] and before == ce_star(tb, 'c', 3) == T and not f_before and not in_D(fail)[0]
+    # (19) v8 (A1-01/A2-01): the support contains every entry the answer rests on. For entries outside it: removing the
+    # entry (with what cites it) or changing a grant's holder never changes the answer. Also the reviewers' two cases.
+    outside = changed = 0
+    for _ in range(1500):
+        rec = random_record(rng, n_acts=rng.randint(2, 9), targets_any=True)
+        for tt in (2, 4, 6):
+            v0 = ce_star(rec, 'c', tt)
+            sp = support(rec, 'c', tt)
+            for e in rec.e:
+                if e['id'] in sp or e['kind'] == 'root':
+                    continue
+                outside += 1
+                drop = {e['id']}
+                grow = True
+                while grow:
+                    grow = False
+                    for y in rec.e:
+                        if y['id'] not in drop and set(y.get('cites', [])) & drop:
+                            drop.add(y['id'])
+                            grow = True
+                r2_ = Record([dict(y) for y in rec.e if y['id'] not in drop], rec.dom)
+                if in_D(r2_)[0]:
+                    changed += ce_star(r2_, 'c', tt) != v0
+                if e['kind'] == 'grant':
+                    r3_ = Record([dict(y, holder=('Z' if y['holder'] != 'Z' else 'A')) if y['id'] == e['id'] else dict(y)
+                                  for y in rec.e], rec.dom)
+                    changed += ce_star(r3_, 'c', tt) != v0
+    p1 = Record([dict(ROOT), G('g', 'P', ['r'], 'A', t=0), adopt('y', 'A', ['g'], t=1),
+                 dict(G('h', 'P', ['r'], 'Z', t=0), auth='unsigned'),
+                 {'id': 'v', 'kind': 'revoke', 'actor': 'B', 'cites': ['h'], 'item': 'c', 'scope': 's', 't': 2}], S1)
+    p2 = Record([dict(ROOT), dict(G('g0', 'P', ['r'], 'Z', t=0), auth='signed-as-other'), G('g', 'A', ['g0'], 'A', t=0),
+                 adopt('y', 'A', ['g'], t=1)], S1)
+    print(f'(19) 1500 random records in D, times 2, 4, 6: {outside} entries outside the support; removing one or changing',
+          f'its holder changed the answer {changed} times | case P1: CE*(c, 5) =', ce_star(p1, 'c', 5), marks(p1, 'c', 5),
+          '| case P2:', ce_star(p2, 'c', 5), marks(p2, 'c', 5))
+    assert outside > 0 and changed == 0 and marks(p1, 'c', 5) and marks(p2, 'c', 5)
+    # (20) v8 (A2-10): random recorder and auth fields change no value
+    diff = 0
+    for _ in range(1500):
+        rec = random_record(rng, n_acts=rng.randint(2, 9), targets_any=True)
+        v = [ce_star(rec, 'c', tt) for tt in range(7)]
+        r2_ = Record([dict(y, recorder=rng.choice(['P', 'A', 'B', 'Gov']), auth=rng.choice(sorted(AUTH))) for y in rec.e],
+                     rec.dom, defaults=False)
+        diff += v != [ce_star(r2_, 'c', tt) for tt in range(7)]
+    print(f'(20) 1500 random records in D with random recorder and auth: values changed in {diff}')
+    assert diff == 0
     print('all assertions passed')
