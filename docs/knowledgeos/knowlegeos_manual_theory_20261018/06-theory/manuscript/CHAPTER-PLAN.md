@@ -19,6 +19,8 @@ The first eighteen corpus sources fall into **seven theory questions**:
 
 Chapters 0–2 already answer the first three. They stay single files (ML-1 exception) and keep what they hold. New topics get **new chapters in section files** rather than growing chapters 0–2 further. That keeps each chapter reviewable as a unit (AR-9, ML-2).
 
+> **Stale (2026-10-20):** the chapter order below and the "started" states in the State column no longer match the book (Ch. 4–6, 8 and 9 have sections beyond those listed; Ch. 7 is not written). This plan stays in force until the Principal decides on `TARGET-TOC.md`.
+
 | Ch. | Title (working) | Question it answers | Main corpus sources so far | State |
 |---|---|---|---|---|
 | 0 | Foundations before the corpus | What problem; what "KnowledgeOS" names; the claim model; invariants | background + S0002, S0004, S0007, S0014 | written (single file) |

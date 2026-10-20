@@ -1,0 +1,7 @@
+containment as written   pairs 625  unsound   70  exact  555
+   e.g. A = ('a', '⊥') B = ('∅', '∅') rule F truth U
+   e.g. A = ('a', '⊥') B = ('∅', 'a') rule F truth U
+   e.g. A = ('a', '⊥') B = ('∅', 'b') rule F truth U
+containment corrected    pairs 625  unsound    0  exact  625
+overlap as written       pairs 625  unsound    0  exact  625
+all assertions passed
