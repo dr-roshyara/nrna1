@@ -26,7 +26,11 @@
 
 **The Principal, 2026-10-21 (binding from C20):** window size stays 5; 10 only where §12a allows it (a coherent series of short documents, at most 2 added, review split into two commissions); record per window the **time per source** (start and close each source in turn) and the **findings per source**; apply **skim** honestly (every source opened and scanned whole; one that repeats earlier material or is purely operational is closed as skim with one line on what it adds); the reviewer reads **one skimmed source blind per window** (§3).
 
-**Next: window C20 (S0106–S0110).**
+**The Principal, 2026-10-21: F22 = (C + O)** ("The kernel holds the contract. The contract names one owner application per grant, fixed at issuance. A change of owner is a recorded, authorized act. The kernel refuses a use of a grant not recorded by its owner."; cost: no use while the owner is unavailable, unless ownership is moved). Applied after a corpus-first check (S0071, S0137, S0183 topic-full; EXT-090/091) as §9.16 R4a, §9.13, §9.15, model `ce_model`; reviewed in C20 and settled: §9.16 v6, §9.13 v11, §9.15 v8 (L10), model v12.
+
+**Window C20 (S0106–S0110) settled** (2026-10-21; `review/C20-S0106-S0110/SETTLEMENT.md`): §8.13 v2 (CON-0202–0204, 0206 provisional; CON-0205 INVALID as stated, restated as CON-0207). Per-source time and findings recorded; all five full, with the reviewer's blind depth judgements agreeing; the §3 skim safeguard could not run (nothing skimmed in 109 sources). 14 findings, 7 high, none critical. **Open for the Principal:** who may transfer a grant's ownership; the scope of "a use" (settlement §4).
+
+**Next: window C21 (S0111–S0115).**
 
 **Per window and per theory turn:**
 - review;
