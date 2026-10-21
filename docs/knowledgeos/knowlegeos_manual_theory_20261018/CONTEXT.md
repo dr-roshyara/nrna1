@@ -30,7 +30,11 @@
 
 **Window C20 (S0106–S0110) settled** (2026-10-21; `review/C20-S0106-S0110/SETTLEMENT.md`): §8.13 v2 (CON-0202–0204, 0206 provisional; CON-0205 INVALID as stated, restated as CON-0207). Per-source time and findings recorded; all five full, with the reviewer's blind depth judgements agreeing; the §3 skim safeguard could not run (nothing skimmed in 109 sources). 14 findings, 7 high, none critical. **Open for the Principal:** who may transfer a grant's ownership; the scope of "a use" (settlement §4).
 
-**Next: window C21 (S0111–S0115).**
+**The Principal, after C20 (2026-10-21):** transfer only by the issuer or an authority above the issuer's scope, never the holder, carrying the record of earlier uses; every act under a single-use grant is an owner-checked use. Applied (§9.16 R4a v7), reviewed in C21 and repaired (R4a v8, model v14).
+
+**Window C21 (S0111–S0115) settled** (2026-10-21; `review/C21-S0111-S0115/SETTLEMENT.md`): §8.14 v2 (CON-0208, 0210 INVALID as stated, restated as CON-0213, 0214; CON-0209 VALIDATED). 12 findings, 6 high, none critical. **Open for the Principal:** is every consumable grant single-use? Per-source time recorded (10–13 s); all full; no skim (the §3 safeguard cannot run).
+
+**Next: window C22 (S0116–S0120).**
 
 **Per window and per theory turn:**
 - review;

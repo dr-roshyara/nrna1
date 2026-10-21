@@ -350,7 +350,15 @@
 
 ## 9. Position
 
-- Last source read **in order**: **S0100**; next: **S0101** (the whole-book review S0100 is in stage 2).
-- **Counts (from `close_source.py --position`, 2026-10-20):** read in order (full/skim): **99** · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **30**.
-- **Register (2026-10-20):** 187 concepts: 35 VALIDATED, 67 PROVISIONAL, 85 INVALID (at the stage-1 settlement: 84 INVALID of 161).
-- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.11) · 9 (§9.1–9.9) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
+- Last source read **in order**: **S0115**; next: **S0116** (window C22). Windows C19 (§8.12), C20 (§8.13) and C21 (§8.14) are settled (updated 2026-10-21; C21 review, coverage).
+- **Counts (from `close_source.py --position`, 2026-10-21):** read in order (full/skim): **114** (none skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
+- **Register (2026-10-21):** 214 concepts: 35 VALIDATED, 89 PROVISIONAL, 90 INVALID.
+- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.14) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
+- **F22 decided:** (C + O) (the Principal, 2026-10-21), with the decisions after C20 (§9.16 R4a v7–v8). **Open for the Principal:** whether every consumable grant is single-use (C21 settlement).
+- **Open forks from C19–C21 (Open, not yet rows):**
+  - partition of one act by claim (withdrawing reliance for one claim; §8.14 C3);
+  - a dispute as a mark or as a suspending act (§8.14 C4);
+  - a failed or partial read of the record vs an absent adoption (§8.14 C5);
+  - a recorded exception as a third value beside prevent and detect (§8.14 C7);
+  - a correction kind for attribution (§8.13 C7);
+  - the inheritance channel (§8.12).
