@@ -33,6 +33,8 @@
 
 - **Time** is stop minus start, from the READ-LOG: one whole-file read plus the close.
 - **Reviewer time** (harness): step 1, 113 s; steps 2–3, 508 s.
+- **Correction (the Principal, 2026-10-21, after C21; additive):** the times above are **not** a measurement of time per source. They are the gap between the start call and the close call in the tool. From C22, a source is started when opened and closed after its theory is written into the book.
+
 - **Skim:** none, and both judgements agree. S0115 is the nearest to skim in both. The §3 safeguard still cannot run (no source skimmed in 114).
 - **Proportion** (the Principal, 2026-10-21): the window's own work was the five sources and §8.14. The kernel work was the application of the Principal's decisions and its repair, both required by the decisions and by the review's high findings on them.
 

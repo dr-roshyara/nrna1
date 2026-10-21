@@ -39,6 +39,8 @@ No critical finding. The reviewer's 14 findings break down as:
 
 - **Time.** The time is stop minus start from the READ-LOG. It measures one whole-file read plus the close by this reader, not reading effort.
 - **Reviewer time** (harness): step 1, 75 s; steps 2–3, 345 s.
+- **Correction (the Principal, 2026-10-21, after C21; additive):** the times above are **not** a measurement of time per source. They are the gap between the start call and the close call in the tool. From C22, a source is started when opened and closed after its theory is written into the book.
+
 - **Skim.** None was skimmed, and the two blind judgements agree on all five sources. S0106 is borderline in both. There is still no skimmed source in 109, so the §3 safeguard (read one skimmed source blind) could not be applied. **The C19 settlement's plan, to take one from an earlier window, could not be met either**: there is none. In its place the reviewer judged every source's depth blind. *A deviation from §3, recorded.*
 
 ## 2. Findings and their disposition
