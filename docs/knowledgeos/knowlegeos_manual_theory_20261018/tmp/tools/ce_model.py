@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 14 (C21 settlement):
+it tests the FORM of the repaired definition, not its content. Version 15 (the Principal after C21:
+"A grant that can be consumed is single-use by its kind. A grant meant for repeated use is used, not consumed."): D
+refuses a consumption of a grant not marked single-use; the random generator marks consumed grants single-use; check 21
+restated (every recorded use counts, C21). Version 14 (C21 settlement):
 every recorded use of a single-use grant counts, whatever its value now, and a use is accepted only if T (W-3); "above
 the issuer's scope" read against the scope of the basis the issuance rests on (W-2); a mark for a second use present
 without the guard (W-4); check 24l extended (annulments of uses and of annulments; the issuer's grantee), check 26.
@@ -177,6 +180,9 @@ def in_D(rec):
             return False, f"missing field in {x['id']}: {sorted(FIELDS[x['kind']] - set(x))}"
         if x['auth'] not in AUTH:
             return False, f"auth of {x['id']} is {x['auth']!r}, not one of {sorted(AUTH)}"
+        if x['kind'] == 'consume' and x['grant'] in rec.by and rec.by[x['grant']]['kind'] == 'grant' \
+                and not rec.by[x['grant']].get('single_use'):
+            return False, f"consumption {x['id']} of {x['grant']}, which is not single-use (v15, the Principal after C21: a grant that can be consumed is single-use by its kind)"
         if x['kind'] == 'consume' and x['grant'] not in x['cites']:
             return False, f"consumption {x['id']} does not cite the grant it consumes (v10, C19 T2-02)"
         for g_, u_ in list((x.get('prev_use') or {}).items()) + ([(x['grant'], x['last_use'])] if x['kind'] == 'transfer' else []):
@@ -746,6 +752,10 @@ def random_record(rng, n_acts=6, forward=False, targets_any=False):
                 e['cites'] = cites + [g] if g in pool else cites
             e.update(grant=g)
         ents.append(e)
+    consumed = {e['grant'] for e in ents if e['kind'] == 'consume'}
+    for e in ents:                                 # v15: a grant that can be consumed is single-use by its kind
+        if e['kind'] == 'grant' and e['id'] in consumed:
+            e['single_use'] = True
     return Record(ents, dom)
 
 
@@ -1524,7 +1534,7 @@ if __name__ == '__main__':
     # time; the append guard refuses a consumption while another consumption of the grant is not F (v10, T1-02).
     def cons(i, actor, t, g='g', cites=None):
         return {'id': i, 'kind': 'consume', 'actor': actor, 'cites': cites or [g], 'grant': g, 'scope': 's', 't': t}
-    base21 = [dict(ROOT), G('g', 'P', ['r'], 'A', t=0)]
+    base21 = [dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), single_use=True)]   # v15: consumable, so single-use
     r21 = Record([dict(x) for x in base21] + [cons('k1', 'A', 2), adopt('x1', 'A', ['g'], t=1), adopt('x3', 'A', ['g'], t=3)], S1)
     w21 = wfs(r21)
     cur_x1 = current(Record([dict(x) for x in base21] + [adopt('x1', 'A', ['g'], t=1), cons('k1', 'A', 2)], S1),
@@ -1551,7 +1561,8 @@ if __name__ == '__main__':
           '| after an ineffective one:', g_ok_b, '| after an annulled one:', g_ok_a, '| in D:', in_D(r21)[0])
     assert w21['k1'] == T and w21['x1'] == T and w21['x3'] == F and cur_x1 == T and w21b['k1'] == F and w21b['x3'] == T
     assert w21o['kB'] == F and w21o['x3'] == T and not in_D(bad_cite)[0]
-    assert wfs(r21c)['k2'] == F and wfs(r21d)['k1'] == U and wfs(r21d)['k2'] == U and not g_ok and g_ok_b and g_ok_a
+    # v15 (C21): every recorded use of a single-use grant counts, so an ineffective or annulled consumption also blocks
+    assert wfs(r21c)['k2'] == F and wfs(r21d)['k1'] == U and wfs(r21d)['k2'] == U and not g_ok and not g_ok_b and not g_ok_a
     assert in_D(r21)[0]
     # (22) v9-v10: a removal is an authorized, recorded act that the tombstone cites; an unauthorized removal is refused
     # (v10, T1-05: content loss cannot be undone, so it is prevented); a removal that later stops being T is marked
@@ -1813,4 +1824,10 @@ if __name__ == '__main__':
     print('(26) A1: first use', o1[0], '; after it is annulled, a second use:', o2, '| A3 marks:', marks_act(r26c, 'u2'),
           '| A4 the issuer grantee at the issuer scope:', o4)
     assert o1[0] and not o2[0] and any('second use' in m for m in marks_act(r26c, 'u2')) and not o4[0]
+    # (27) v15 (the Principal after C21): a grant meant for repeated use is used, not consumed
+    r27 = Record([dict(ROOT), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1), adopt('x2', 'A', ['g'], t=2)], S1)
+    r27c = Record([dict(ROOT), G('g', 'P', ['r'], 'A', t=0), cons('k', 'A', 2)], S1)
+    print('(27) a grant not single-use: two adoptions under it in D', in_D(r27)[0], 'and both', wfs(r27)['x1'], wfs(r27)['x2'],
+          '| a consumption of it:', in_D(r27c)[1])
+    assert in_D(r27)[0] and wfs(r27)['x2'] == T and not in_D(r27c)[0]
     print('all assertions passed')
