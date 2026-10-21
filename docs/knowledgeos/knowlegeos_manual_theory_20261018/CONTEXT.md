@@ -34,7 +34,11 @@
 
 **Window C21 (S0111–S0115) settled** (2026-10-21; `review/C21-S0111-S0115/SETTLEMENT.md`): §8.14 v2 (CON-0208, 0210 INVALID as stated, restated as CON-0213, 0214; CON-0209 VALIDATED). 12 findings, 6 high, none critical. **Open for the Principal:** is every consumable grant single-use? Per-source time recorded (10–13 s); all full; no skim (the §3 safeguard cannot run).
 
-**Next: window C22 (S0116–S0120).**
+**The Principal, after C21 (2026-10-21):** a consumable grant is single-use by its kind; F22 closed for now as a design sketch (§9.16 R4c–R4d; L9, L10); open protocol questions in F22 and Ch. 9 T9-07; no further F22 model versions unless a critical finding or a new source requires one; windows' main work is the five sources; time per source from opening to close after writing.
+
+**Window C22 (S0116–S0120) settled** (2026-10-21; `review/C22-S0116-S0120/SETTLEMENT.md`): §8.15 v2 (CON-0218 INVALID as stated, restated as CON-0224; CON-0213, 0219, 0220 VALIDATED; CON-0225 split off). 15 findings, 1 critical (repaired). **Open for the Principal:** is the work act itself the single use; amend R4d on availability?
+
+**Next: window C23 (S0121–S0125).**
 
 **Per window and per theory turn:**
 - review;
