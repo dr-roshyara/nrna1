@@ -180,3 +180,23 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 
 - **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.11; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.
+
+## Rotation of older chapters (Rulebook v1.3 §12, entry 57)
+
+*Recorded 2026-10-23, at the consolidation due at S0125 (held after C24). Each consolidation reviews one or two older chapters in full, those reviewed longest ago first, so that each chapter is reviewed in full about once per 100–150 sources.*
+
+**Last full review of every chapter:** the whole-book review S0100 (2026-10-19/20). Since then:
+- Ch. 8 (§8.12–§8.17) and Ch. 9 (§9.8, §9.13–§9.16) were reviewed section by section, in windows, turns and commissions;
+- Ch. 0–6 were changed only at the S0100 stage 2 and by pointers.
+
+All chapters therefore tie on their last full review. The order breaks the tie by chapter number, with Ch. 8 and Ch. 9 last, since their newest sections were reviewed most recently.
+
+| Consolidation | Chapters reviewed in full | Status |
+|---|---|---|
+| S0125 (held after C24, S0101–S0130) | **Ch. 0, Ch. 1** | in progress |
+| S0150 | Ch. 2, Ch. 3 | planned |
+| S0175 | Ch. 4, Ch. 5 | planned |
+| S0200 | Ch. 6, Ch. 8 | planned |
+| S0225 | Ch. 9 | planned |
+
+Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 has six (in §1.2, §1.6, §1.8, §1.11).
