@@ -40,7 +40,9 @@
 
 **Window C23 (S0121–S0125) settled** (2026-10-23; `review/C23-S0121-S0125/SETTLEMENT.md`): §8.16 v2 (CON-0227 INVALID as stated, restated as CON-0230; CON-0226 VALIDATED). The first skims (S0123, S0125); the §3 safeguard found that S0125's skim lost theory. 10 findings, 5 high, none critical. Clock calibrated: per-source times are real. Still open for the Principal: the two C22 questions.
 
-**Next: window C24 (S0126–S0130).**
+**Window C24 (S0126–S0130) settled** (2026-10-23; `review/C24-S0126-S0130/SETTLEMENT.md`): §8.17 v2 (CON-0234, 0235 INVALID as stated, restated as CON-0237, 0236; CON-0232 VALIDATED); §9.8.6 item 7 updated (R-CONFLICT adopted, its basis act not on record). 14 findings, 7 high, none critical. Still open for the Principal: the two C22 questions.
+
+**Next: window C25 (S0131–S0135).**
 
 **Per window and per theory turn:**
 - review;
