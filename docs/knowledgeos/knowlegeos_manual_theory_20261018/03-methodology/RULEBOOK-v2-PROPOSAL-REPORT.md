@@ -442,3 +442,5 @@ No section serves none. **[A]** The administrative parts (§2.4 access entry, §
 | **Canonical home of a concept** | v2 §0.11: the register owns identity, status, review, links and at most a one-line gloss; the defining section owns definition and argument and governs when they disagree; a check of gloss against definition to be considered | — |
 | Time by activity | research vs verification vs governance, recorded at S0125 and S0150 | decision record (freeze) |
 | One rulebook again | at S0150, v1.3 revised or v2 replaces it; the practices in the decision record move into it and the decision record stops carrying practices | — |
+
+*Superseded as the pending list by `S0150-CONSOLIDATED-REVISION-PROPOSAL.md` (2026-10-23), which carries every item above with its evidence and decision test.*
