@@ -6,7 +6,10 @@ import re, sys, json, pathlib
 W = pathlib.Path(__file__).resolve().parents[2]
 R = W.parents[2]
 paths = {o['source_id']: o['path'] for o in (json.loads(l) for l in open(W / '02-FILES.jsonl', encoding='utf-8'))}
-norm = lambda t: re.sub(r'[\s*_`$\\]+', ' ', t).strip().lower()
+_norm0 = lambda t: re.sub(r'[\s*_`$\\]+', ' ', t)
+# consolidation S0101-S0130 (B, inherited failures): markup removed beside punctuation leaves a stray space
+# ("**derived**," -> " derived ,"); spaces next to punctuation and brackets are dropped on both sides
+norm = lambda t: re.sub(r'\s*([,.;:!?)\]])', r'\1', re.sub(r'([(\[])\s*', r'\1', _norm0(t))).strip().lower()
 for f in sys.argv[1:]:
     ok = bad = 0
     for n, line in enumerate(open(f, encoding='utf-8'), 1):
