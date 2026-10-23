@@ -52,7 +52,9 @@
 
 **Window C26 (S0136–S0140) settled** (§8.19): acknowledged is not recorded (CON-0245, which needs serialisation and durability); CON-0246 and CON-0247 INVALID as stated, restated as CON-0248 and CON-0249; 19 findings (2 critical by F4 only, no dependants).
 
-**Next: window C27 (S0141–S0145).**
+**Window C27 (S0141–S0145) settled** (§8.20): an undisposed quarantine is a hold (CON-0250); without a shared order source, order between records only through citation (CON-0251); CON-0252 INVALID as stated, restated as CON-0254; rediscovery shows reach, on three axes (CON-0253). 18 findings (1 critical by F1). The Principal told that reading reached S0145.
+
+**Next: window C28 (S0146–S0150), then stop before the S0150 consolidation.**
 
 **Per window and per theory turn:**
 - review;
