@@ -18,13 +18,13 @@
 - **Rotated, in full:** Ch. 0 (`chapter_00/00.00`–`00.09`), Ch. 1 (`chapter_01/01.00`–`01.17`).
 - **Also:** `BOOK-OUTLINE.md` (with the new rotation section); `THEORY-MAP.md` §9 (Position) and rows F22, F24; `CONCEPT-REGISTER.tsv` rows CON-0184–CON-0237.
 
-## Concepts (54: CON-0184 … CON-0237)
+## Concepts (54: CON-0184 … CON-0237; 6 VALIDATED, 39 PROVISIONAL, 9 INVALID)
 
 - **VALIDATED by one transition review only (6)**, which need a second, independent verdict: CON-0209, CON-0213, CON-0219, CON-0220, CON-0226, CON-0232.
-- **PROVISIONAL (36):** a verdict is asked for each.
+- **PROVISIONAL (39):** a verdict is asked for each.
   - 0184–0196, 0199–0204, 0206, 0207, 0211, 0212, 0214–0217, 0221–0225, 0228–0231, 0233, 0236, 0237.
   - CON-0184–0190 belong to Ch. 3, Ch. 1, Ch. 5 and Ch. 9 and were settled at S0100 or in turns. Give a verdict where the material is in scope (CON-0186, Ch. 1); otherwise mark "not reviewed here".
-- **INVALID (12):** 0197, 0198, 0205, 0208, 0210, 0218, 0227, 0234, 0235. Check their valid cores, as restated, against the book. Do not re-litigate them.
+- **INVALID (9):** 0197, 0198, 0205, 0208, 0210, 0218, 0227, 0234, 0235. Check their valid cores, as restated, against the book. Do not re-litigate them.
 
 ## Sources
 
