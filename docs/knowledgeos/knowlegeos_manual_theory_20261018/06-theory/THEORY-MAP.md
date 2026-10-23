@@ -188,7 +188,7 @@
 - **Say no, not yet learn (§9.3):** in S0045 Run 1, governance observed only as preventive at canon level `[CON-0110 ✗ as "only"]`; an analogy to §9.1 with four limits; capabilities are not kernel operators `[CON-0111 ✓, restricted]`.
 - **Does it govern (§8.3):** cases vs counterfactual or comparative vs not observed `[CON-0112 ✗ as five parts; CON-0166 ~]`; usage ≠ outcome; two levels of feedback.
 - **Recommendation lifecycle (§4.3):** vocabulary graded by exercise `[CON-0113 ✗ as "only when used"]`; a derived attribute (time-to-decision); the first decision tests §4.2's stage rule.
-- **Not yet in the book:** Unknown ≠ Uncertain (S2834 L864–878); S2834's two status ladders disagree (L1249–1261 vs L1447–1465); Execution Context ≠ Governance Evidence Context (S0129 L194–197). *(R-CONFLICT is now in the book: §9.8.6 item 7, §8.17 C5, C9.)*
+- **Not yet in the book:** Unknown ≠ Uncertain (S2834 L864–878); S2834's two status ladders disagree (L1249–1261 vs L1447–1465); *(R-CONFLICT is now in the book: §9.8.6 item 7, §8.17 C5, C9. Execution Context ≠ Governance Evidence Context is now in §8.18 C24, CON-0244.)*
 
 **Window C9, S0046–S0050 + S0091, S0113 (§12a; reviewed and settled 2026-10-19):**
 - **Invariants (§9.4):** a totally derived read rule cannot justify a boundary `[CON-0114 ✗ as "vacuous"; CON-0167 ~]`; uniqueness as an instance of §1.16.1/§1.16.7, on a stated premise; one current claim per (act, dimension), no owner `[CON-0115 ~]`; gate inputs declared closed `[CON-0116 ✗ as "closes"]`.
@@ -350,9 +350,9 @@
 
 ## 9. Position
 
-- Last source read **in order**: **S0130**; next: **S0131** (window C25). Windows C19–C24 (§8.12–§8.17) are settled; the consolidation S0101–S0130 is settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
-- **Counts (2026-10-23):** read in order (full/skim): **129** (2 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
-- **Register (2026-10-23):** 238 concepts: 40 VALIDATED, 104 PROVISIONAL, 94 INVALID (after the consolidation S0101–S0130).
+- Last source read **in order**: **S0135**; next: **S0136** (window C26). Windows C19–C25 (§8.12–§8.18) are settled; the consolidation S0101–S0130 is settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
+- **Counts (2026-10-23):** read in order (full/skim): **134** (2 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
+- **Register (2026-10-23):** 244 concepts: 40 VALIDATED, 110 PROVISIONAL, 94 INVALID (after window C25).
 - Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.17) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
 - **F22 decided:** (C + O) (the Principal, 2026-10-21), with the decisions after C20 (§9.16 R4a v7–v8). **Decided after C21:** a consumable grant is single-use by its kind. **Consequence (§9.16 R4c):** for single-use grants the kernel is in effect the coordination point; (C + O) differs from (C + K) only in whose record carries the uses and who may move ownership.
 - **Open forks from C19–C21 (Open, not yet rows):**

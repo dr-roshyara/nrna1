@@ -46,7 +46,9 @@
 
 **Consolidation S0101–S0130 settled** (2026-10-23; `review/CONSOLIDATION-S0101-S0130/SETTLEMENT.md`): two reviewers (Opus, Sonnet) plus integration; Ch. 0 and Ch. 1 rotated in full (30 defects, union); harness time 2,915 s; CON-0202 INVALID as stated (→ CON-0238), CON-0208 restated and VALIDATED, CON-0213 PROVISIONAL; §1.14.1 marked as history with pointers to §9.13; S0164 shown to be a copy of S0103; inherited quote failures 14 → 3. Rotation recorded in BOOK-OUTLINE (next S0150: Ch. 2, Ch. 3).
 
-**Next: window C25 (S0131–S0135).**
+**Window C25 (S0131–S0135) settled** (2026-10-23; §8.18, `review/C25-S0131-S0135/SETTLEMENT.md`): one writer is not one record (CON-0239); a migration verified on bytes, given one decoder (CON-0240); a positional conflict is not yet a conflict of authority, for merge-safe laws (CON-0241); checkable is not checked (CON-0242); a commitment covers only its cut, a corollary of K1 (CON-0243); two lifecycles, two locations (CON-0244). 17 review findings applied (1 critical by rule, an error from the Professor's own pass). Several items are pending S0300 (the migration plan).
+
+**Next: window C26 (S0136–S0140).**
 
 **Per window and per theory turn:**
 - review;
