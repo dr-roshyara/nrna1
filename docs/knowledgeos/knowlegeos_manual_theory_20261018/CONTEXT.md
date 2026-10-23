@@ -48,7 +48,11 @@
 
 **Window C25 (S0131–S0135) settled** (2026-10-23; §8.18, `review/C25-S0131-S0135/SETTLEMENT.md`): one writer is not one record (CON-0239); a migration verified on bytes, given one decoder (CON-0240); a positional conflict is not yet a conflict of authority, for merge-safe laws (CON-0241); checkable is not checked (CON-0242); a commitment covers only its cut, a corollary of K1 (CON-0243); two lifecycles, two locations (CON-0244). 17 review findings applied (1 critical by rule, an error from the Professor's own pass). Several items are pending S0300 (the migration plan).
 
-**Next: window C26 (S0136–S0140).**
+**The Principal, 2026-10-23:** read on to S0150 (C26–C28); stop after C28 is settled. Do not prepare or start the S0150 consolidation; the Rule Reviewer freezes the book copy and seals the planted-gap key first. Meanwhile prepare the evaluation facts (time by activity, cadence, the six practices, skims, open kernel questions). Rules frozen.
+
+**Window C26 (S0136–S0140) settled** (§8.19): acknowledged is not recorded (CON-0245, which needs serialisation and durability); CON-0246 and CON-0247 INVALID as stated, restated as CON-0248 and CON-0249; 19 findings (2 critical by F4 only, no dependants).
+
+**Next: window C27 (S0141–S0145).**
 
 **Per window and per theory turn:**
 - review;
