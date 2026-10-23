@@ -18,7 +18,7 @@
 | **Reviewer's harness time** | step 1: 199 s · steps 2–3: 596 s · total 795 s |
 | **Depth, Professor** | full on all five |
 | **Depth, reviewer (blind)** | full on all five |
-| **Findings by severity** | critical: 1 (W-01, by F1: C8 and CON-0252 cited it; not F4) · high: 9 (W-02, 03, 04, 07, 08, 09, 11, 13; W-12's recount counted normal) · normal: 8 |
+| **Findings by severity** | critical: 1 (W-01, by F1: C8 and CON-0252 cited it; not F4) · high: 8 (W-02, 03, 04, 07, 08, 09, 11, 13) · normal: 9 *(count corrected when the S0150 evaluation facts were prepared: the draft said 9 high and 8 normal)* |
 
 ## 1. Findings and their disposition
 
