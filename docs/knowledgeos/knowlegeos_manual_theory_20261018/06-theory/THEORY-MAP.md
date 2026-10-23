@@ -291,7 +291,7 @@
 - **Candidate laws and invariants:** the four forbidden collapses (EXT-001 L36–41); dimension purity, which rules out a single-number confidence (EXT-004 L29–30); the invariant list identity, provenance, attribution, integrity, authority, history, consistency, traceability (EXT-010 L183–192; EXT-011 L198–205); interface bypass as the test of mediation (EXT-012 L153); kernel-equivalence ≡_K through obs_K (EXT-011 L111–127).
 - **Requirements are discovered, not given** (EXT-022 L112; EXT-023 L197; EXT-026 L72–95): bears on §5.4's open ContractDerivation. Also open in the direction: whether a canonical scalar gap exists, and how semantic equivalence preserves Sat (EXT-013 L360–369).
 - **Time-varying mechanisms** (the formulation mechanism is eliminated, EXT-023 L127) against the kernel's stability claim; **designed ambiguity**, ambiguity that lowers satisfaction when removed (EXT-022 L214), against the homonym findings.
-- **What the kernel manages** (R_K): knowledge object, claim, organizational knowledge, knowledge + provenance + authority, knowledge product (EXT-015 L19–25); formulation × context ℱ × 𝒞 (EXT-023 L325); a relation knower–known (K, O, R) (EXT-021 L116–122; EXT-001 L113–124; EXT-026 L42–70); inferential commitment (EXT-017). This bears on Ch. 3 §3.4 knowledge ≠ artifact.
+- **What the kernel manages** (R_K): knowledge object, claim, organizational knowledge, knowledge + provenance + authority, knowledge product (EXT-015 L19–25; corpus, non-authoritative: S0149 L28–34, L96–137, §8.21 C13); formulation × context ℱ × 𝒞 (EXT-023 L325); a relation knower–known (K, O, R) (EXT-021 L116–122; EXT-001 L113–124; EXT-026 L42–70); inferential commitment (EXT-017). This bears on Ch. 3 §3.4 knowledge ≠ artifact.
 - **Two notions of minimality:** no redundant mechanism (direction) vs no derivable primitive (RESEARCH-PURPOSE). A fork to state precisely.
 - **A boundary test by delegability** (EXT-008 L249–254; KR-06, EXT-010 L338), tested by relocating the capability into the applications. The file's removal procedure (L268–282) tests necessity, not placement.
 - **Where the DDD contexts sit** (a boundary fork inside the direction): outside the kernel (EXT-008 L423–425) vs supplying 𝒮, M, I, A (EXT-010 L110–115; EXT-011 L548–563; EXT-012 L318–330).
@@ -350,9 +350,9 @@
 
 ## 9. Position
 
-- Last source read **in order**: **S0145**; next: **S0146** (window C28). Windows C19–C27 (§8.12–§8.20) are settled; the consolidation S0101–S0130 is settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
-- **Counts (2026-10-23):** read in order (full/skim): **144** (2 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
-- **Register (2026-10-23):** 254 concepts: 40 VALIDATED, 117 PROVISIONAL, 97 INVALID (after window C27).
+- Last source read **in order**: **S0150**; next: **S0151**, after the S0150 consolidation. Windows C19–C28 (§8.12–§8.21) are settled; the consolidation S0101–S0130 is settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
+- **Counts (2026-10-23):** read in order (full/skim): **149** (4 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
+- **Register (2026-10-23):** 256 concepts: 40 VALIDATED, 118 PROVISIONAL, 98 INVALID (after window C28).
 - Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.17) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
 - **F22 decided:** (C + O) (the Principal, 2026-10-21), with the decisions after C20 (§9.16 R4a v7–v8). **Decided after C21:** a consumable grant is single-use by its kind. **Consequence (§9.16 R4c):** for single-use grants the kernel is in effect the coordination point; (C + O) differs from (C + K) only in whose record carries the uses and who may move ownership.
 - **Open forks from C19–C21 (Open, not yet rows):**

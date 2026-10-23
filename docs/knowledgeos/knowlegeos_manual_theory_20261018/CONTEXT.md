@@ -54,7 +54,9 @@
 
 **Window C27 (S0141–S0145) settled** (§8.20): an undisposed quarantine is a hold (CON-0250); without a shared order source, order between records only through citation (CON-0251); CON-0252 INVALID as stated, restated as CON-0254; rediscovery shows reach, on three axes (CON-0253). 18 findings (1 critical by F1). The Principal told that reading reached S0145.
 
-**Next: window C28 (S0146–S0150), then stop before the S0150 consolidation.**
+**Window C28 (S0146–S0150) settled** (§8.21): CON-0255 INVALID as stated, restated as CON-0256; the S0149 skim lost theory (safeguard worked); 16 findings (3 critical: 1 by F1, 2 by F4 only, no dependants).
+
+**STOPPED before the S0150 consolidation** (the Principal). Waiting for the Rule Reviewer to freeze the book copy and seal the planted-gap key. Evaluation facts prepared: `06-theory/manuscript/review/S0150-EVALUATION-FACTS.md`.
 
 **Per window and per theory turn:**
 - review;
