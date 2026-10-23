@@ -350,10 +350,10 @@
 
 ## 9. Position
 
-- Last source read **in order**: **S0115**; next: **S0116** (window C22). Windows C19 (§8.12), C20 (§8.13) and C21 (§8.14) are settled (updated 2026-10-21; C21 review, coverage).
-- **Counts (from `close_source.py --position`, 2026-10-21):** read in order (full/skim): **114** (none skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
+- Last source read **in order**: **S0125**; next: **S0126** (window C24). Windows C19–C23 (§8.12–§8.16) are settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
+- **Counts (2026-10-23):** read in order (full/skim): **124** (2 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
 - **Register (2026-10-21):** 214 concepts: 35 VALIDATED, 89 PROVISIONAL, 90 INVALID.
-- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.14) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
+- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.16) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
 - **F22 decided:** (C + O) (the Principal, 2026-10-21), with the decisions after C20 (§9.16 R4a v7–v8). **Decided after C21:** a consumable grant is single-use by its kind. **Consequence (§9.16 R4c):** for single-use grants the kernel is in effect the coordination point; (C + O) differs from (C + K) only in whose record carries the uses and who may move ownership.
 - **Open forks from C19–C21 (Open, not yet rows):**
   - partition of one act by claim (withdrawing reliance for one claim; §8.14 C3);
@@ -361,4 +361,6 @@
   - a failed or partial read of the record vs an absent adoption (§8.14 C5);
   - a recorded exception as a third value beside prevent and detect (§8.14 C7);
   - a correction kind for attribution (§8.13 C7);
-  - the inheritance channel (§8.12).
+  - the inheritance channel (§8.12);
+  - a test read on a snapshot or on the record up to t (§8.15 C5); an act's force apart from its content (§8.15 C6);
+  - what kind of act a receipt's claim is; the required recorder against S0122's forbidden actor field; semantic vs invariant owner (§8.16).

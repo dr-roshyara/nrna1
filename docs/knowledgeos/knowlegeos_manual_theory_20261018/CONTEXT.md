@@ -38,7 +38,9 @@
 
 **Window C22 (S0116–S0120) settled** (2026-10-21; `review/C22-S0116-S0120/SETTLEMENT.md`): §8.15 v2 (CON-0218 INVALID as stated, restated as CON-0224; CON-0213, 0219, 0220 VALIDATED; CON-0225 split off). 15 findings, 1 critical (repaired). **Open for the Principal:** is the work act itself the single use; amend R4d on availability?
 
-**Next: window C23 (S0121–S0125).**
+**Window C23 (S0121–S0125) settled** (2026-10-23; `review/C23-S0121-S0125/SETTLEMENT.md`): §8.16 v2 (CON-0227 INVALID as stated, restated as CON-0230; CON-0226 VALIDATED). The first skims (S0123, S0125); the §3 safeguard found that S0125's skim lost theory. 10 findings, 5 high, none critical. Clock calibrated: per-source times are real. Still open for the Principal: the two C22 questions.
+
+**Next: window C24 (S0126–S0130).**
 
 **Per window and per theory turn:**
 - review;
