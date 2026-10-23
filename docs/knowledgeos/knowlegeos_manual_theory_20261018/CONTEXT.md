@@ -42,6 +42,10 @@
 
 **Window C24 (S0126–S0130) settled** (2026-10-23; `review/C24-S0126-S0130/SETTLEMENT.md`): §8.17 v2 (CON-0234, 0235 INVALID as stated, restated as CON-0237, 0236; CON-0232 VALIDATED); §9.8.6 item 7 updated (R-CONFLICT adopted, its basis act not on record). 14 findings, 7 high, none critical. Still open for the Principal: the two C22 questions.
 
+**The Principal, 2026-10-23:** the two C22 questions answered (the work act is the single use; R4d unchanged, cost extended to owner and kernel availability; further F22 questions to T9-07).
+
+**Consolidation S0101–S0130 settled** (2026-10-23; `review/CONSOLIDATION-S0101-S0130/SETTLEMENT.md`): two reviewers (Opus, Sonnet) plus integration; Ch. 0 and Ch. 1 rotated in full (30 defects, union); harness time 2,915 s; CON-0202 INVALID as stated (→ CON-0238), CON-0208 restated and VALIDATED, CON-0213 PROVISIONAL; §1.14.1 marked as history with pointers to §9.13; S0164 shown to be a copy of S0103; inherited quote failures 14 → 3. Rotation recorded in BOOK-OUTLINE (next S0150: Ch. 2, Ch. 3).
+
 **Next: window C25 (S0131–S0135).**
 
 **Per window and per theory turn:**

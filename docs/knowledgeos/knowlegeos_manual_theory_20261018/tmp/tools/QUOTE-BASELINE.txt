@@ -1,9 +1,11 @@
-# Quote-check baseline (Rulebook v1.3 entry 60): whole book at 0b10262df, 2026-10-20T07:15:27Z
-# Produced by tmp/tools/corpus_quote_check.py on every section file (change logs excluded). Lines marked NOT FOUND are the inherited failures; a later failure not listed here is new.
-# Exception for turn 0: three of the 17 failures were introduced by stage 2 of the S0100 review (81cfcd1eb..0b10262df), one each in 01.08, 03.01 and 05.04 (the failures listed for those files that were absent before 81cfcd1eb). Turn 0 treats these three as NEW, not inherited. The other 14 are inherited.
+# Quote-check baseline (Rulebook v1.3 entry 60): whole book, regenerated at the consolidation S0101-S0130 settlement, 2026-10-23 (base 71f52d962 plus the settlement's edits).
+# Regeneration recorded: (1) the checker's normalizer no longer fails on markup removed beside punctuation (tmp/tools/corpus_quote_check.py; reviewer B's finding on the inherited Ch. 1 failures): 10 of the 14 inherited failures were this artifact; (2) S0018 L106 (§1.6) and S0028 L32 (§0.2) repaired in the Ch. 0-1 rotation. Remaining inherited failures: 3, all in Ch. 3 (rotation S0150).
+# Lines marked NOT FOUND are the inherited failures; a later failure not listed here is new.
+BASELINE-REVISIONS.md: 0 found, 0 not found
+BOOK-OUTLINE.md: 0 found, 0 not found
 00.00-index.md: 0 found, 0 not found
 00.01-the-problem.md: 0 found, 0 not found
-00.02-what-knowledgeos-names.md: 27 found, 0 not found
+00.02-what-knowledgeos-names.md: 28 found, 0 not found
 00.03-the-knowledge-model.md: 1 found, 0 not found
 00.04-how-knowledge-moves.md: 0 found, 0 not found
 00.05-the-invariants.md: 4 found, 0 not found
@@ -11,30 +13,26 @@
 00.07-knowledge-needs-and-context-assembly.md: 0 found, 0 not found
 00.08-look-back-review-after-sections-0.md: 0 found, 0 not found
 00.09-questions-the-corpus-chapters-must.md: 0 found, 0 not found
+TODO.md: 4 found, 0 not found
 01.00-index.md: 0 found, 0 not found
 01.01-knowledge-does-not-execute.md: 0 found, 0 not found
-01.02-authority-is-two-things-provenance.md L98 NOT FOUND [S0022 L93-93]: "`derived` describes provenance; `authoritative` describes standing. A "
-01.02-authority-is-two-things-provenance.md: 6 found, 1 not found
+01.02-authority-is-two-things-provenance.md: 7 found, 0 not found
 01.03-grading-claims-evidence-strength-is.md: 0 found, 0 not found
 01.04-detail-does-not-confer-authority.md: 0 found, 0 not found
 01.05-knowledge-is-not-its-carrier.md: 5 found, 0 not found
-01.06-nothing-but-an-act-confers.md L44 NOT FOUND [S0018 L61-68]: "No ARB ruling can make an observation Replicated. No amount of evidenc"
-01.06-nothing-but-an-act-confers.md L46 NOT FOUND [S0018 L106-106]: "P-7 produces P-10: work produces evidence"
-01.06-nothing-but-an-act-confers.md: 1 found, 2 not found
+01.06-nothing-but-an-act-confers.md: 3 found, 0 not found
 01.07-visibility-derivation-may-narrow-never.md: 0 found, 0 not found
-01.08-what-knowledgeos-is-a-generator.md L15 NOT FOUND [S0028 L144-148]: "no automation, no repeatable pattern, **n=0**"
-01.08-what-knowledgeos-is-a-generator.md: 7 found, 1 not found
+01.08-what-knowledgeos-is-a-generator.md: 9 found, 0 not found
 01.09-how-a-principle-becomes-real.md: 1 found, 0 not found
 01.10-identity-of-knowledge-items-needs.md: 5 found, 0 not found
-01.11-ownership-method-binding-and-evidence.md L95 NOT FOUND [S0034 L174-174]: "was adopted by sponsor authority (ADR-M-012), not by the ARB"
-01.11-ownership-method-binding-and-evidence.md L99 NOT FOUND [S0022 L115-115]: "election law is treated as product domain knowledge, not as external a"
-01.11-ownership-method-binding-and-evidence.md: 4 found, 2 not found
+01.11-ownership-method-binding-and-evidence.md: 6 found, 0 not found
 01.12-a-record-of-an-act.md: 1 found, 0 not found
 01.13-authority-as-a-recorded-reference.md: 6 found, 0 not found
 01.14-state-is-not-authority-roles.md: 16 found, 0 not found
 01.15-the-pks-concept-vocabulary-tested.md: 0 found, 0 not found
 01.16-consistency-boundaries-time-and-reproducibility.md: 0 found, 0 not found
-01.17-who-may-reject-who-may.md: 3 found, 0 not found
+01.17-who-may-reject-who-may.md: 4 found, 0 not found
+TODO.md: 6 found, 0 not found
 02.00a-what-counts-as-a-rule.md: 0 found, 0 not found
 02.00-index.md: 0 found, 0 not found
 02.01-why-rules-need-structure.md: 0 found, 0 not found
@@ -48,48 +46,45 @@
 02.09-how-strongly-a-rule-binds.md: 4 found, 0 not found
 02.10-the-rules-with-meaning-and.md: 1 found, 0 not found
 02.11-exceptions-and-the-rule-lifecycle.md: 1 found, 0 not found
+TODO.md: 1 found, 0 not found
 03.00-index.md: 0 found, 0 not found
 03.01-dimensions.md L22 NOT FOUND [S0016 L45-46]: "what '0 traversals' and my '0 of 11 enforcing' error both measured bad"
-03.01-dimensions.md L64 NOT FOUND [S0016 L58-63]: "KnowledgeOS instance = NATURE × …"
-03.01-dimensions.md: 6 found, 2 not found
+03.01-dimensions.md: 7 found, 1 not found
 03.02-derived-attributes.md: 4 found, 0 not found
-03.03-kinds.md L51 NOT FOUND [S0008 L37-37]: "a set of artifacts with a DECLARED boundary, an owner and a governing "
-03.03-kinds.md: 6 found, 1 not found
-03.04-knowledge-and-artifact.md L9 NOT FOUND [S0016 L88-88]: "ENGINEERING KNOWLEDGE ≠ ENGINEERING ARTIFACT. One is the thing; the ot"
+03.03-kinds.md: 7 found, 0 not found
 03.04-knowledge-and-artifact.md L11 NOT FOUND [S0016 L82-82]: "CARRY knowledge in a representation — it is never the knowledge"
-03.04-knowledge-and-artifact.md: 6 found, 2 not found
-03.05-ontology-layers.md L38 NOT FOUND [S0020 L34-35]: "would amend a declared scope, not fix a bug"
-03.05-ontology-layers.md: 4 found, 1 not found
+03.04-knowledge-and-artifact.md: 7 found, 1 not found
+03.05-ontology-layers.md: 5 found, 0 not found
 03.06-relationships.md L110 NOT FOUND [S0025 L153-153]: "remains HYPOTHESIS"
 03.06-relationships.md: 7 found, 1 not found
 03.07-cross-product-projection.md: 1 found, 0 not found
 03.08-four-orders.md: 1 found, 0 not found
-03.09-what-executes.md L45 NOT FOUND [S0166 L655-657]: "The composition root creates the dependency graph."
-03.09-what-executes.md: 25 found, 1 not found
+03.09-what-executes.md: 26 found, 0 not found
 03.10-spaces-nested-or-adjacent.md: 5 found, 0 not found
+TODO.md: 0 found, 0 not found
 04.00-index.md: 0 found, 0 not found
 04.01-from-observation-to-pattern.md: 1 found, 0 not found
 04.02-improvement-cycle.md: 6 found, 0 not found
 04.03-recommendation-lifecycle-observed.md: 10 found, 0 not found
+TODO.md: 0 found, 0 not found
 05.00-index.md: 0 found, 0 not found
 05.01-decision-docket.md: 4 found, 0 not found
 05.02-gap-kinds.md: 1 found, 0 not found
 05.03-deferral.md: 2 found, 0 not found
-05.04-gap-operator.md L60 NOT FOUND [S0896 L800-808]: "subject to authorization"
-05.04-gap-operator.md: 17 found, 1 not found
+05.04-gap-operator.md: 18 found, 0 not found
 05.05-who-executed-who-authorized.md: 19 found, 0 not found
 05.06-what-an-act-covers.md: 29 found, 0 not found
 05.07-closure-and-the-record.md: 23 found, 0 not found
+TODO.md: 0 found, 0 not found
 06.00-index.md: 0 found, 0 not found
 06.01-method-binding-evidence.md: 6 found, 0 not found
 06.02-admitting-a-context.md: 8 found, 0 not found
-06.03-types-and-splits.md L57 NOT FOUND [S0035 L72-72]: "would be its Core Domain — the inversion means platform rules (e.g. AI"
-06.03-types-and-splits.md L64 NOT FOUND [S0035 L144-144]: "A domain, registered as such (O-19), containing bounded contexts — not"
-06.03-types-and-splits.md: 13 found, 2 not found
+06.03-types-and-splits.md: 15 found, 0 not found
 06.04-ownership-thresholds-breached-invariants.md: 21 found, 0 not found
 06.05-recording-authority-without-holding-it.md: 45 found, 0 not found
 06.06-agent-harnesses-linked-not-copied.md: 22 found, 0 not found
 06.07-a-platform-drawn-without-its-kernel.md: 33 found, 0 not found
+TODO.md: 0 found, 0 not found
 08.00-index.md: 0 found, 0 not found
 08.01-bootstrap-experiment.md: 1 found, 0 not found
 08.02-rediscovery-and-reachability.md: 9 found, 0 not found
@@ -102,6 +97,13 @@
 08.09-content-provenance-and-recusal.md: 38 found, 0 not found
 08.10-what-adoption-establishes-and-how-authorship-is-shown.md: 31 found, 0 not found
 08.11-identity-across-a-continuation.md: 16 found, 0 not found
+08.12-provenance-settles-what-identity-could-not.md: 50 found, 0 not found
+08.13-a-reference-is-not-an-assertion.md: 30 found, 0 not found
+08.14-a-historical-claim-is-not-falsified-by-later-acts.md: 15 found, 0 not found
+08.15-claims-about-the-record-and-levels-of-establishment.md: 32 found, 0 not found
+08.16-ownership-released-is-not-work-done.md: 4 found, 0 not found
+08.17-adopted-is-not-verified-and-the-record-must-outlast-prose.md: 1 found, 0 not found
+TODO.md: 0 found, 0 not found
 09.00-index.md: 0 found, 0 not found
 09.01-kernel-scaffold.md: 0 found, 0 not found
 09.02-parts-and-whole.md: 6 found, 0 not found
@@ -110,5 +112,16 @@
 09.05-a-recorded-rule-must-reach-the-actor.md: 12 found, 0 not found
 09.06-boundary-test-authority-recording.md: 14 found, 0 not found
 09.07-boundary-test-the-evaluator.md: 15 found, 0 not found
-09.08-is-history-a-primitive.md: 16 found, 0 not found
+09.08-is-history-a-primitive.md: 20 found, 0 not found
 09.09-is-trust-a-primitive.md: 13 found, 0 not found
+09.10-required-capabilities.md: 4 found, 0 not found
+09.11-kernel-type-from-req.md: 10 found, 0 not found
+09.12-evaluator-inputs.md: 5 found, 0 not found
+09.13-the-evaluator.md: 10 found, 0 not found
+09.14-when-pairs-suffice.md: 2 found, 0 not found
+09.15-the-trust-boundary.md: 13 found, 0 not found
+09.16-reassessment.md: 21 found, 0 not found
+TODO.md: 0 found, 0 not found
+CHAPTER-PLAN.md: 0 found, 0 not found
+TARGET-TOC.md: 0 found, 0 not found
+TODO-TRIAGE-S0100.md: 0 found, 0 not found

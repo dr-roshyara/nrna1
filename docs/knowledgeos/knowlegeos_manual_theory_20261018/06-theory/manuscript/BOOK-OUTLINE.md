@@ -13,11 +13,12 @@
 | **Authority** | §1.2 provenance and standing; §1.6 A1, a stipulated definition of recognized standing, with named readings; §1.12–1.14 record ≠ act, grants, roles; §5.5 who executed, who authorized; §6.5 record ≠ act as a context boundary (T3) | ✓ (CON-0016, scoped) | "authority" in three senses not yet split into three IDs (consolidation review); a fourth use, "authoritative" as the canonical home of knowledge (S0066, §6.6 C3), C12 |
 | **Evidence** | §1.3 grading claims; §4.1 from observation to pattern; §8.3 usage ≠ outcome | ~ | the evidence scales are not related to one another |
 | **Relationships** | §3.6 relationships; §3.8 four orders | ✓ (CON-0064, scoped; impact clause H) | "realization" in two senses; acyclicity only on S0026's edges |
+| **Application (as a recorder)** *(candidate, added at the consolidation S0101–S0130, I-08)* | §9.16 R4a (owner application); §9.15 L10 (authenticated recording application); §9.13 (`app` field) | — | no Ch. 0–1 primitive or identity rule covers it: I-0 covers claims only. Either a primitive or a defined input, with its identity rule (I-0 extended, or L10 named as its only ground) |
 | **Policy (rules)** | Ch. 2 §2.0–2.11; §9.5 a recorded rule must reach the actor | ~ | no concept ID for policy as a primitive |
-| **History** | §1.13.2 record integrity; §5.5 C5; **§9.8 (theory turn 3)**: state history decomposes into record properties H1′ (every change an entry), H2 (two orders), H3a/H3b (policy as entries; pinned evaluator) and the evaluator, conditional (D); truthful history needs H4 (soundness) and H5 (completeness or marked absence), not checkable inside the record; "History ≠ Reconstruction Guess" (S0129 L102); R-CONFLICT not adopted | ~ | whether history is a separate primitive or part of authority (§1.2 checkability, §1.16.2) and policy (RM-3): **for the Principal**; "the record" as a primitive has no independence model (Hyp); forks F29–F31 |
+| **History** | §1.13.2 record integrity; §5.5 C5; **§9.8 (theory turn 3)**: state history decomposes into record properties H1′ (every change an entry), H2 (two orders), H3a/H3b (policy as entries; pinned evaluator) and the evaluator, conditional (D); truthful history needs H4 (soundness) and H5 (completeness or marked absence), not checkable inside the record; "History ≠ Reconstruction Guess" (S0129 L102); R-CONFLICT **adopted** since S0130 (no silent side, no deleted or rewritten history; its basis act not on record; §9.8.6 item 7); loss detectable only where something surviving points to it (§9.15 K1) | ~ | whether history is a separate primitive or part of authority (§1.2 checkability, §1.16.2) and policy (RM-3): **for the Principal**; "the record" as a primitive has no independence model (Hyp); forks F29–F31 |
 | *Candidates added by the corpus* | visibility §1.7; standing §1.2 (CON-0018 ✗) | ~ | — |
 | **Trust** (F23) | **§9.9 (theory turn 4)**: three senses; trust in a source a conditional, definitional reduction (premises: faithful outcome records, adjudication with a root, F34); trust in a knowledge item Hyp; trust in the record: integrity and authenticity reduce to anchors; occurrence A1's bridge premise relative to A1-as-fact; relative to A1-as-form one of several record-to-world assumptions, a primitive not shown | ~ | the root of source assessments (F34); whether Req needs source or item trust; occurrence as an explicit axiom (for the Principal) |
-| **Conflict over claims** (F24) | §9.4 C3 (one current claim + supersession) against S0913 / R-CONFLICT (preserve, "Unresolved" terminal) | — | the tension is recorded, not settled |
+| **Conflict over claims** (F24) | §9.4 C3 (one current claim + supersession) against S0913 (preserve, "Unresolved" terminal). *(R-CONFLICT is a record-merge rule, not claim-level evidence, and bans only a silent side, so it does not oppose §9.4 C3; consolidation S0101–S0130, A-09, I-02)* | — | the tension is recorded, not settled |
 | **Requirement / contract** | §5.4 (EC_t, Sat, Δ); §9.1 (Req's inputs: reachable states; questions: observers, C6 result 7); **§9.10 (Req as questions and inputs to accept)**. Two objects, one word | ~ | §9.10 keeps the contract gap (Q7) as a candidate only |
 
 ## 2. The laws between them
@@ -54,7 +55,7 @@
 | Contexts, types, splits, admission | §6.2–6.4 | ~ |
 | No second authoritative home (CON-0139 ✗ as "never copies"); the direction law: applications → kernel only | §6.6 C1, C8 | ~ (C12; direction law a candidate for deliverable 3) |
 | Owned vs preserved invariants: a candidate test for boundary question 2 | §6.5 C2 (CON-0132) | ~ (T3) |
-| **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0 | open fork (T3 critical finding) |
+| **Plane or context (F22):** the authority-record machinery as a kernel plane (§1.14.3) or an application context BC-7 (§6.5 C0) | §1.14.2–1.14.3; §6.5 C0; **§9.16 R4a–R4d** | **decided by the Principal (2026-10-21): (C + O), closed for now as a design sketch**; protocol questions in Ch. 9 T9-07 |
 | **First boundary test (theory turn 1): recording authority, F22** | §9.6 (revised after review TT1): CR-a necessary iff R_s ∈ Req; the evaluator CE also necessary (its rule common and versioned, its home open, §9.7.9); placement decided by K3 (several independent applications?) and K4 (uniqueness across them); BC-7 as built fails I-1 (lost writes), the roles law and one-write-path; a delegation contract stated | ~ (Principal's act 2026-10-19: K3 = several applications, R_s ∈ Req; open on K4; CE tested in theory turn 2 (§9.7): kernel home not shown) |
 | **Second boundary test (theory turn 2): the evaluator CE** | §9.7 (revised after review TT2): an evaluator is necessary; §1.14.1's CE not yet a function; order of acts a uniqueness where act times are absent, tied or untrusted (F26, three options); K5 with a time axis; a common, versioned value for definition, coverage, root and policy values (one home only with §1.10's premise); delegation needs a declared cut and a must-do | ~ (missing: a total, monotone definition of CE; F26; K5 and F27 for the Principal; recording time; versioning of θ) |
 | **Architecture views (window C15)** | §6.7: the C4 views draw no kernel line; testing the direction law needs a partition and identifiable dependencies (CON-0147); an output-only check confirms its inputs exactly when the fibre is a singleton (CON-0146 restated); S0084's adapter/core line | ~ (missing: a kernel-level view with typed relations; where verification meets acceptance) |
@@ -99,7 +100,7 @@ Each law or concept of Ch. 0 and Ch. 1 is classed by **form** (prohibition: what
 | ownership, method/binding split | §1.11 | definition | A | — |
 | a record of an act is not the act | §1.12 | definition | K? | — |
 | the grant holds a reference | §1.13 | must-do | K? | register grants by reference to an act |
-| current authority derived (CE) | §1.14.1 | must-do | K? (Ch. 9 §9.7) | a total evaluator of standing |
+| current authority derived (CE) | §1.14.1 (history); **§9.13 (CE\*, the one home)** | must-do | K? (Ch. 9 §9.7, §9.13) | done as CE\* on D for Θ_f |
 | ARCH-INV-1 records, never grants | §1.14.2 | prohibition | K? | — |
 | INV-A1 … A4 | §1.14.2 | prohibition; INV-A3 must-do | K? | STOP · REPORT · ESCALATE on absence (INV-A3) |
 | five roles; role laws | §1.14.3 | definition | A? (plane or context, F22) | — |
@@ -193,10 +194,22 @@ All chapters therefore tie on their last full review. The order breaks the tie b
 
 | Consolidation | Chapters reviewed in full | Status |
 |---|---|---|
-| S0125 (held after C24, S0101–S0130) | **Ch. 0, Ch. 1** | in progress |
+| S0125 (held after C24, S0101–S0130) | **Ch. 0, Ch. 1** | **done** (defects found: Ch. 0 12, Ch. 1 18, union of both reviewers; see the settlement) |
 | S0150 | Ch. 2, Ch. 3 | planned |
 | S0175 | Ch. 4, Ch. 5 | planned |
 | S0200 | Ch. 6, Ch. 8 | planned |
 | S0225 | Ch. 9 | planned |
 
 Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 has six (in §1.2, §1.6, §1.8, §1.11).
+
+### Ch. 8 §8.12–§8.17 and the kernel/application marks (added at the consolidation S0101–S0130, B-02)
+
+*Proposals (Int) from both reviewers, merged by the Professor. They are **not** boundary-test results: the three boundary questions (necessary? must the kernel provide it? can an application provide it without breaking kernel invariants?) have been run only for F22 and single use.*
+
+| Mark | Concepts |
+|---|---|
+| **K?** (kernel candidate; boundary test owed) | CON-0201, 0203, 0206, 0211, 0212, 0214, 0221, 0222, 0228, 0231, 0236, 0237, 0238 |
+| **A / O** (estate method or observation of one estate) | CON-0195, 0196, 0199, 0200, 0204, 0207, 0208, 0209, 0213, 0215, 0216, 0217, 0219, 0224, 0226, 0229, 0230, 0232, 0233 |
+| **D** (a definition or vocabulary) | CON-0223, 0225 |
+
+**Boundary tests owed** (for the theory turns): the failed-read input for Q1 (CON-0212); a correction kind for attribution (§8.13 C7); an act's force as a field (CON-0236); purpose or claim partition (CON-0214); a dispute as a mark or an act (CON-0211).
