@@ -32,6 +32,7 @@
 | S0120 | 714 | 68 s | full / full (repetition-weighted) | 7 | W-3, W-7, W-12, W-13, W-14, W-15 |
 
 - **The clock.** The times are the environment's clock. They look short for the amount written, so the clock's pace or resolution is uncertain; they are recorded as measured.
+  - *Calibrated at C23 (2026-10-23, additive):* the clock is accurate. Across a model run, the wall-clock gap (25.5 s) equals the process's own elapsed time (25.53 s). So the times are real; they are short because this reader reads and writes that fast.
 - **Reviewer time** (harness): step 1, 133 s; steps 2–3, 2,864 s.
 - **Skim:** none, and both judgements agree.
 
