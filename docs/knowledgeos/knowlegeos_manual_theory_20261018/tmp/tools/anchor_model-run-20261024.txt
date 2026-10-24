@@ -1,0 +1,8 @@
+scenarios: 32000
+S  sufficiency (A1 & A2 & A3 => every loss detected): HOLDS (0 counterexamples)
+   no false alarm under A1 & A2 & A3 (a loss-free removal passes): HOLDS (0)
+N  A1 necessary (others hold, A1 fails, loss undetected): witness {'writes': {'e1': None, 'e2': None, 'e3': 1}, 'tc': 0, 'drop': None, 'ta': 0, 'loss': ['e3']}
+N  A2 necessary (others hold, A2 fails, loss undetected): witness {'writes': {'e1': None, 'e2': None, 'e3': 0}, 'tc': 0, 'drop': 'e3', 'ta': 0, 'loss': ['e3']}
+N  A3 necessary (others hold, A3 fails, loss undetected): witness {'writes': {'e1': None, 'e2': None, 'e3': 0}, 'tc': 0, 'drop': 'e3', 'ta': 0, 'loss': ['e3']}
+T  no writes: loss [], detected False (nothing to detect)
+T  refuse-all check (always "differs") would detect every loss but block every removal; the model's check is required to pass when nothing is lost, which the no-false-alarm line tests
