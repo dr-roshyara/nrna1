@@ -1,0 +1,49 @@
+== CON-0246  (home: —; concept IDs at the claim: ['CON-0246'])
+  -- claim: 0
+  -- concept: 9
+     06-theory/manuscript/chapter_08/08.00-index.md:33  | 8.19 | `08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md` | window C26 (S0136–S0140; v2, settled): acknowledged is not reco
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:65  **C4. The least authoritative copy is the most discoverable; for readers outside the resolver a status held elsewhere is advisory (Src; for §8.18 C13 and CON-02
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:67  - **Int (§8.18 C13, CON-0239).** §8.18 C13 found the resolver advisory for readers outside it. S0136 shows what such readers do instead: they choose by **discov
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:117  - **Int (CON-0246; CON-0240).** CON-0246 offered two remedies for readers outside the resolver: mark the status in the artifact, or make the copy unreachable. S
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:177  **C22. A status marker needs its own retraction act (Src; for CON-0246).** *(Bears on CON-0246.)*
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:179  - **Int (CON-0246).** An out-of-band status is a second record about the first. It has a lifecycle of its own and becomes false unless it is changed when the st
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:244  - **CON-0246** (INVALID as stated; restated as CON-0248): the term contradicts its byte-verified case, and the path form fails (W-02).
+     06-theory/CONCEPT-REGISTER.tsv:247  CON-0246	for readers outside the resolver, the status must be in the artifact	A status held elsewhere (a declaration, registry or resolver) reaches only readers
+     06-theory/CONCEPT-REGISTER.tsv:249  CON-0248	for readers outside the resolver, a status held elsewhere is advisory	A status held outside the artifact (declaration, registry, resolver, out-of-band 
+  -- section-only: 0
+== CON-0247  (home: —; concept IDs at the claim: ['CON-0247'])
+  -- claim: 0
+  -- concept: 11
+     06-theory/manuscript/chapter_08/08.00-index.md:33  | 8.19 | `08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md` | window C26 (S0136–S0140; v2, settled): acknowledged is not reco
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:147  **C17. A freeze the operator must break: the claim becomes "nothing written except the declared" (Src; for C2 and CON-0243; restated at review, W-01).** `[CON-0
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:154  - *Corrected at review (W-01).* CON-0247's two "musts" fail.
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:207  **C25. The freeze partitions writes: "did anything change that we did not declare?" (Src; agreement with CON-0247; an attack).** *(Bears on CON-0247.)*
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:209  - **Int (CON-0247).** This is CON-0247's remedy. The list is given by **class** (registration, acceptance, declaration, reconciliation, switch-over, demotion, c
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:210  - *Attack on the source.* "delta ⊆ the declared records" decides membership by the record's **class and lane**. In this estate the lane and the producer are sel
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:212  - *Corrected at review (W-01):* the deduction above overstates. An authenticated actor is **sufficient**, not necessary (C17's correction (i)). CON-0247 is rest
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:231  - The expected-write predicate (CON-0247) and its authenticated actor (L10).
+     06-theory/manuscript/chapter_08/08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md:245  - **CON-0247** (INVALID as stated; restated as CON-0249): neither "must" is necessary, the trivial predicate detects nothing, and the granularity was unstated (
+     06-theory/CONCEPT-REGISTER.tsv:248  CON-0247	the operator's own writes must be named in advance	"When the operation guarded by an anchor writes its own evidence into the record it guards, ""nothin
+     06-theory/CONCEPT-REGISTER.tsv:250  CON-0249	nothing written except the declared	"When the operation guarded by an anchor writes its own evidence into the record it guards, the checkable claim is 
+  -- section-only: 0
+== CON-0252  (home: —; concept IDs at the claim: ['CON-0252'])
+  -- claim: 0
+  -- concept: 8
+     06-theory/manuscript/chapter_08/08.00-index.md:34  | 8.20 | `08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md` | window C27 (S0141–S0145; v2, settled): an undisposed quarantine is a hol
+     06-theory/manuscript/chapter_08/08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md:56  - *Corrected at review (W-01, critical by F1, since C8 and CON-0252 cited it; W-06).*
+     06-theory/manuscript/chapter_08/08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md:85  **C6. A hash cannot commit to itself; under evidence-to-the-leader, a follower cannot be closed until the evidence moves to it (Src; Ded; for CON-0251; restated
+     06-theory/manuscript/chapter_08/08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md:91  - *Corrected at review (W-02).* CON-0252 is INVALID as stated, and so is the draft's scoping.
+     06-theory/manuscript/chapter_08/08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md:237  - The closing-record rule (CON-0252) for records about records (§8.18 C1).
+     06-theory/manuscript/chapter_08/08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md:248  - **CON-0252** (INVALID as stated; restated as CON-0254): a self-including closing entry is possible, and the source's loop runs between two stores (W-02).
+     06-theory/CONCEPT-REGISTER.tsv:253  CON-0252	a store cannot record its own final state	A record cannot contain a complete, current statement of a state that includes the statement itself (a prefix
+     06-theory/CONCEPT-REGISTER.tsv:255  CON-0254	a hash cannot commit to itself; a follower closes only after the evidence moves to it	(i) A content commitment (hash) cannot cover its own bytes, thoug
+  -- section-only: 0
+== CON-0255  (home: —; concept IDs at the claim: ['CON-0255'])
+  -- claim: 0
+  -- concept: 5
+     06-theory/manuscript/chapter_08/08.00-index.md:35  | 8.21 | `08.21-a-reference-from-the-survivor-alone-cannot-detect-its-divergence.md` | window C28 (S0146–S0150; v2, settled): a reference computed from the surv
+     06-theory/manuscript/chapter_08/08.21-a-reference-from-the-survivor-alone-cannot-detect-its-divergence.md:39  **C1. A reference that is a function of the checked state alone cannot detect that the state differs from its intended state (Src; Ded; for CON-0243; restated a
+     06-theory/manuscript/chapter_08/08.21-a-reference-from-the-survivor-alone-cannot-detect-its-divergence.md:176  - **CON-0255** (INVALID as stated; restated as CON-0256): "cannot fail" lacked its premise, "closed before the act" is not necessary, and the falsifier was immu
+     06-theory/CONCEPT-REGISTER.tsv:256  CON-0255	a reference derived from the checked state cannot fail	The reference a gate compares against must be closed before the act it validates, must cover eve
+     06-theory/CONCEPT-REGISTER.tsv:257  CON-0256	a reference computed from the survivor alone cannot detect its divergence	To detect that a survivor (copy, result) differs from its intended state, the
+  -- section-only: 0
