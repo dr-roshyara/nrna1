@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Undefined-term candidate check, narrowed.
 
-PROPOSED for a Rulebook revision (S0100 recommendation 1c); NOT IN FORCE. Read-only: writes nothing.
+R2 of Rulebook v1.4 §2 step 8 (in force from 2026-10-24). Read-only: writes nothing.
 
-Usage: undefined_terms.py [--root DIR] [--sections GLOB …] [--no-corpus]
+Usage: undefined_terms.py [--root DIR] [--no-corpus]
 Tokens: identifiers (e.g. RX-3, BC-7, OQ-5: [A-Z][A-Za-z]{0,6}-\\d+, or [A-Z]{2,}\\d+) and words ([a-z]{4,}, plural folded).
 A token is DEFINED if the book, map or register shows a definition form for it: a bold or table-first-column entry
 followed by a gloss (`**X**:` `**X** (` `**X** —` `| X |` `- **X**`), "X: " at a line start, "X means"/"X is the",
@@ -15,7 +15,10 @@ Tiers (output, most suspect first):
   B  undefined identifier present in the corpus: a source code used without a book definition (first-use rule);
   C  undefined word present in the corpus, ranked: occurs in >= 3 sections, >= 8 times, never defined, and is
      marked as a term in the corpus (backticked or bold at least twice). Ranked by section count. Judgement needed.
-Output: tier · token · book count · sections · corpus files · first location. Exit 0.
+  D  an ordinary word (hyphenated compounds included) used in a claim heading or a definition and defined nowhere in
+     the book, kept if the corpus never uses it or marks it as a term at least twice (v1.4: "lane", "watermark",
+     "seal-line"). Every location is listed, so a changed section's rows can be found by its number. Judgement needed.
+Output: tier · token · book count · sections · corpus files · first location (tier D: all locations). Exit 0.
 Limits: definition forms are heuristics (a gloss in running prose may be missed: a false positive; a bold word with
 any colon counts as defined: a false negative). Tier C is a reading list, not a finding. Corpus scan reads the
 allowed list only (CORPUS-ALLOWED.tsv), never sealed or hold-out files.
@@ -72,10 +75,54 @@ for f, t in texts.items():
 
 cand_ids = [x for x in ids if not defined(x)]
 cand_words = [x for x in words if not defined(x)]
+
+# Tier D (Rulebook v1.4 §2 step 8): an ordinary word used in a claim heading or a definition and defined nowhere in
+# the book. Scope lines: a markdown heading; a bold span at line start of three or more words (a claim or instance
+# heading); a bold term of one or two words at line start with the rest of its line (a definition and its gloss).
+# Spans led by an evidence or review label (Int, Src, Ded, Status, …) are not heads. Quotes, code, [anchors] and
+# (parentheses) are removed first. Hyphenated compounds count as one word ("seal-line").
+HEAD = re.compile(r'^\s*(?:[-*]\s*|\d+\.\s*)?\*\*([^*\n]{1,200})\*\*(.*)$')
+DWORD = re.compile(r'(?<![\w-])([a-z]{4,}(?:-[a-z]+)*)(?![\w-])')
+LABELS = set('int src ded hyp ext status scope classification limit limits recorded deduction corrected note '
+             'observation premise attack lineage reason verdict'.split())
+DSTOP = set('would could should might shall must also only this that with from into than then them they their there '
+            'these those which while where when what will been were have more most such each other some very much '
+            'many does done over under upon about after before same both every none'.split())
+
+
+def head_text(line):
+    if re.match(r'^#{1,6}\s', line):
+        return line.lstrip('#')
+    m = HEAD.match(line)
+    if not m:
+        return None
+    span, rest = m.group(1), m.group(2)
+    first_word = re.sub(r'\W', '', span.split()[0]).lower() if span.split() else ''
+    if first_word in LABELS:
+        return None
+    return span if len(span.split()) >= 3 else span + ' ' + rest
+
+
+d_locs, d_total = collections.defaultdict(list), collections.Counter()
+for f, t in texts.items():
+    for m in DWORD.finditer(t.lower()):
+        d_total[fold(m.group(1))] += 1
+    for i, line in enumerate(t.split('\n'), 1):
+        s = head_text(line)
+        if s is None:
+            continue
+        s = re.sub(r'"[^"]*"|“[^”]*”|`[^`]*`|\[[^\]]*\]|\([^)]*\)', '', s)
+        for m in DWORD.finditer(s):
+            w = fold(m.group(1))
+            if w not in DSTOP and not defined(w):
+                d_locs[w].append(f'{f.name[:5]} L{i}')
+d_files, d_marked = collections.Counter(), collections.Counter()
+
 corpus_files, corpus_term = collections.Counter(), collections.Counter()
 if use_corpus:
     want_i = set(cand_ids)
     want_w = set(cand_words)
+    want_d = set(d_locs)
     for r in csv.reader(open(REPO / 'docs/knowledgeos/knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv', encoding='utf-8'), delimiter='\t'):
         if len(r) < 3:
             continue
@@ -91,6 +138,11 @@ if use_corpus:
         for m in re.finditer(r'[`*]{1,2}([a-z]{4,})[`*]{1,2}', tl):
             if fold(m.group(1)) in want_w:
                 corpus_term[fold(m.group(1))] += 1
+        for x in set(fold(m.group(1)) for m in DWORD.finditer(tl)) & want_d:
+            d_files[x] += 1
+        for m in re.finditer(r'(`|\*\*)([a-z]{4,}(?:-[a-z]+)*)(`|\*\*)', tl):
+            if fold(m.group(2)) in want_d:
+                d_marked[fold(m.group(2))] += 1
 everyid = set(ids)
 fam = collections.Counter(re.match(r'[A-Za-z]+', x).group(0) for x in everyid)
 MATH = re.compile(r'[≤≥∈∉⊆⊂⊇∧∨¬⟺⇔→⇒≔∅Σ∀∃]|\bR≤|\biff\b|:=|^\s*[-*]\s*\*\*[^*]+:\*\*|^\*\*[^*]+\.\*\*')
@@ -139,5 +191,12 @@ for tier in (rowsA, rowsB, rowsC):
             print(f'C | {x} | in section {s}: {n} uses | corpus files {corpus_files[x]}')
         else:
             print(f'{t_} | {x} | book {n} | sections {s} | corpus files {corpus_files[x]} | first {first[x]}')
-print(f'# candidates: tier A {len(rowsA)} · tier B {len(rowsB)} · tier C {len(rowsC)} '
+# Tier D kept: a word the allowed corpus never uses (invented in the book), or one the corpus marks as a term
+# (backticked or bold) at least twice (a source's term carried into a head or definition undefined). Without the corpus
+# (--no-corpus) every scope-line word undefined by the forms is listed.
+rowsD = [x for x in d_locs if not use_corpus or d_files[x] == 0 or d_marked[x] >= 2]
+for x in sorted(rowsD, key=lambda x: (d_total[x], x)):
+    print(f'D | {x} | book {d_total[x]} | heads/defs {len(d_locs[x])} | corpus files {d_files[x]} marked {d_marked[x]} '
+          f'| at {"; ".join(d_locs[x])}')
+print(f'# candidates: tier A {len(rowsA)} · tier B {len(rowsB)} · tier C {len(rowsC)} · tier D {len(rowsD)} '
       f'(from {len(ids)} identifiers and {len(words)} word types; {len(cand_ids)} ids and {len(cand_words)} words undefined by the forms)')
