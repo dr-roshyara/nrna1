@@ -1,0 +1,8 @@
+worlds: 384000
+C1  losses of members OLD still holds at the check, undetected:  G2 (outside ref from OLD) 0 · G0 (direct) 0 · G1 (survivor only) 16792
+    G1 witness (reference taken before a later member): {'accepted': {'m1': None, 'm2': None, 'm3': 1}, 'tc': 0, 'ta': 0, 'drop_new': None, 'loss': ['m3']}
+C2  survivor-derived reference under G1 detects a loss: 0 times (expected 0)
+C3  members lost from OLD before any read, with no other loss: 1287 cases; detected by G2 or G0 in 0 (expected 0: out of reach)
+C4  a foreign entry in OLD passes G2: 0 times (expected 0: it blocks); false alarms with an exact, covering reference and no loss: 0 (expected 0)
+C5  a member lost from OLD after the reference covered it: 1620 cases; detected by G2 1620, by G0 (casualty read at the check) 0
+Scope: three members, one foreign entry, one loss on each carrier at most; no write between check and act; a reference is a list. A passing check is not a proof beyond this scope.

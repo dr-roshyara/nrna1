@@ -60,7 +60,13 @@
 
 **Consolidation S0131–S0150 settled** (2026-10-24; `06-theory/manuscript/review/CONSOLIDATION-S0131-S0150/SETTLEMENT.md`, stage 1 `SETTLEMENT-STAGE1.md`): two reviewers (Opus, Sonnet) plus integration (Opus), harness 3,233 s; Ch. 2 and Ch. 3 rotated (defects 20 and 26). Planted-gap test scored by the Rule Reviewer: 3 of 5 found; stage-1 treatment 1 correct, 2 partial. The working book did not carry the plants; §8.21 C14 and §8.19 C19 checked against S0150 and S0138 L116. CON-0256 → CON-0257, CON-0038 → CON-0258, CON-0243 split (CON-0259), CON-0033 core CON-0260; Ch. 3 re-verdicts to PROVISIONAL: 0008, 0041, 0043, 0065 (0006 kept INVALID). R3 dispositioned line by line. Register 260 (45 V, 121 P, 94 I). Quote check 0 not found (baseline regenerated). B-35 carried as T3-28.
 
-**Next actor: the Principal** — the S0150 decision (evaluation facts, test result and its recommendations, open kernel questions). Rules stay frozen until then. No further reading.
+**S0150 decided (the Principal, 2026-10-24): Rulebook v1.4 in force** (`03-methodology/RULEBOOK-v1.4.md`, entry 61); the rule freeze ended.
+
+**Tools (v1.4):** `close_source.py` refuses the next full/skim source after 25 since the last settled consolidation (`consolidation_gate.py`, 7 tests; `6380afda0`); `undefined_terms.py` tier D (ordinary words in heads and definitions; lane, watermark, seal-line flagged; working book 500 candidates, 5 true, 495 false; `ee1d6e4b4`).
+
+**Theory turn 8 settled** (record identity and anchoring; §9.17; `review/TURN8-RECORD-IDENTITY/SETTLEMENT.md`): record vs carrier; K2 restated (K2-d presupposition, K2-w, K2-r); L11; CON-0262 and CON-0263 INVALID as stated, restated CON-0264 (membership) and CON-0265 (carrier-change gate, architecture); two reviewers, 26 findings (1 critical, corrected). Register 265 (45 V, 124 P, 96 I). Questions reserved for the Principal, non-blocking: designation as a kind of D; trusted shared recording time (T9-08).
+
+**Next: resume reading at S0151 in windows of 5** (C29 = S0151–S0155). Next consolidation due after S0175, Ch. 4 and Ch. 5 in rotation; the gate enforces it.
 
 **Per window and per theory turn:**
 - review;
