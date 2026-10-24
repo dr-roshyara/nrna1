@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT IN FORCE.** The rule freeze holds until the S0150 evaluation (decision record, 2026-10-20). Nothing here changes `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` or the practices in force |
+| Status | **DECIDED 2026-10-24** (Principal: "accept as recommended": option A, every item as recommended, the five test recommendations, K5 as a clarification); carried out as `RULEBOOK-v1.4.md`. Originally: **PROPOSED, NOT IN FORCE.** The rule freeze holds until the S0150 evaluation (decision record, 2026-10-20). Nothing here changes `RULEBOOK-v1.3.md`, `REVIEWER-INSTRUCTIONS.md` or the practices in force |
 | Author | the Rule Reviewer, 2026-10-23, on the Principal's "yes" |
 | Decided by | the Principal, once, at S0150, after the S0150 consolidation and its planted-gap test, with the Professor's evaluation figures filled in below |
 | Replaces | the pending list `RULEBOOK-v2-PROPOSAL-REPORT.md` §19 (its items are carried here; §19 points to this file) |

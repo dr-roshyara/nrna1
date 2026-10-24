@@ -1,5 +1,7 @@
 # Rulebook v1.3: KnowledgeOS theory research
 
+> **Superseded (2026-10-24T01:34:56Z) by `RULEBOOK-v1.4.md`** (the S0150 decision). Kept as history; its section numbers are kept in v1.4.
+
 | Field | Value |
 |---|---|
 | Status | **APPROVED** by the Principal, 2026-10-19 ("update the rules", with a review recommending items 1–7 and the adjustments to items 1 and 6) |

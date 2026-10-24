@@ -1,5 +1,7 @@
 # Rulebook v2 (PROPOSED): KnowledgeOS theory research
 
+> **Not adopted (2026-10-24):** the S0150 decision chose option A, v1.3 revised as `RULEBOOK-v1.4.md`. Kept as reference; much of its content is carried into v1.4.
+
 | Field | Value |
 |---|---|
 | Status | **PROPOSED, NOT IN FORCE** (revision 1). Written by the Rule Reviewer, 2026-10-19, on the Principal's instruction "Proceed with Rulebook v2 as a proposal. Do not replace or modify the currently authoritative rulebook yet." |
