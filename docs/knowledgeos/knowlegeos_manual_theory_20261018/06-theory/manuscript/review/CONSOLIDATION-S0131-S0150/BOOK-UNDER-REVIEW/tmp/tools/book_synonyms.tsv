@@ -1,0 +1,16 @@
+# Synonym sets for book_search.py --meaning: one set per line, words separated by tabs. Extend when a search misses a home.
+distribution	distribute	assembly	assemble	working	context	propagate	reach	discover	deliver
+pinned	pin	version	live	reference	resolve	current	superseded
+unique	uniqueness	serialize	serialization	atomic	exactly	one	single
+derived	derivation	computed	stored	cache	read
+gate	block	enforce	enforcement	halt	stop	refuse	blocking
+advisory	warn	recommend	report	nonblocking
+verify	verification	falsify	attack	check	review	refute
+producer	author	self	own	verifier	reviewer
+absence	missing	unknown	nothing	empty	silence	gap
+act	decision	approve	approval	grant	authorize	authorization
+evidence	observed	inferred	declared	grade	calibration
+snapshot	baseline	dated	time	temporal	drift	as-of
+supersede	supersession	replace	version	amend	erratum
+owner	ownership	steward	responsible	accountable
+invariant	rule	law	constraint	must
