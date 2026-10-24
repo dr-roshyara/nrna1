@@ -1,8 +1,11 @@
-# Quote-check baseline (Rulebook v1.3 entry 60): whole book, regenerated at the consolidation S0101-S0130 settlement, 2026-10-23 (base 71f52d962 plus the settlement's edits).
-# Regeneration recorded: (1) the checker's normalizer no longer fails on markup removed beside punctuation (tmp/tools/corpus_quote_check.py; reviewer B's finding on the inherited Ch. 1 failures): 10 of the 14 inherited failures were this artifact; (2) S0018 L106 (§1.6) and S0028 L32 (§0.2) repaired in the Ch. 0-1 rotation. Remaining inherited failures: 3, all in Ch. 3 (rotation S0150).
-# Lines marked NOT FOUND are the inherited failures; a later failure not listed here is new.
+# Quote-check baseline (Rulebook v1.3 entry 60): whole book, regenerated at the consolidation S0131-S0150 stage-2 settlement, 2026-10-24 (base 3b9b562bb plus the stage-2 edits): 1,082 quotations found, 0 not found.
+# Regeneration recorded: the 3 inherited failures, all in Ch. 3, were repaired in the Ch. 2-3 rotation (consolidation S0131-S0150, stage 2): 03.01 L22 and 03.04 L11 made exact with marked elision against S0016 L45-46 and L82; 03.06 L110 corrected to "remain HYPOTHESES" [S0025 L153]. No inherited failures remain. The previous baseline (5e5531a83) is superseded.
+# A NOT FOUND line in a later run is new.
 BASELINE-REVISIONS.md: 0 found, 0 not found
 BOOK-OUTLINE.md: 0 found, 0 not found
+CHAPTER-PLAN.md: 0 found, 0 not found
+TARGET-TOC.md: 0 found, 0 not found
+TODO-TRIAGE-S0100.md: 0 found, 0 not found
 00.00-index.md: 0 found, 0 not found
 00.01-the-problem.md: 0 found, 0 not found
 00.02-what-knowledgeos-names.md: 28 found, 0 not found
@@ -32,6 +35,7 @@ TODO.md: 4 found, 0 not found
 01.15-the-pks-concept-vocabulary-tested.md: 0 found, 0 not found
 01.16-consistency-boundaries-time-and-reproducibility.md: 0 found, 0 not found
 01.17-who-may-reject-who-may.md: 4 found, 0 not found
+01.99-change-log.md: 0 found, 0 not found
 TODO.md: 6 found, 0 not found
 02.00a-what-counts-as-a-rule.md: 0 found, 0 not found
 02.00-index.md: 0 found, 0 not found
@@ -46,26 +50,26 @@ TODO.md: 6 found, 0 not found
 02.09-how-strongly-a-rule-binds.md: 4 found, 0 not found
 02.10-the-rules-with-meaning-and.md: 1 found, 0 not found
 02.11-exceptions-and-the-rule-lifecycle.md: 1 found, 0 not found
+02.99-change-log.md: 0 found, 0 not found
 TODO.md: 1 found, 0 not found
-03.00-index.md: 0 found, 0 not found
-03.01-dimensions.md L22 NOT FOUND [S0016 L45-46]: "what '0 traversals' and my '0 of 11 enforcing' error both measured bad"
-03.01-dimensions.md: 7 found, 1 not found
+03.00-index.md: 1 found, 0 not found
+03.01-dimensions.md: 8 found, 0 not found
 03.02-derived-attributes.md: 4 found, 0 not found
 03.03-kinds.md: 7 found, 0 not found
-03.04-knowledge-and-artifact.md L11 NOT FOUND [S0016 L82-82]: "CARRY knowledge in a representation — it is never the knowledge"
-03.04-knowledge-and-artifact.md: 7 found, 1 not found
+03.04-knowledge-and-artifact.md: 8 found, 0 not found
 03.05-ontology-layers.md: 5 found, 0 not found
-03.06-relationships.md L110 NOT FOUND [S0025 L153-153]: "remains HYPOTHESIS"
-03.06-relationships.md: 7 found, 1 not found
+03.06-relationships.md: 8 found, 0 not found
 03.07-cross-product-projection.md: 1 found, 0 not found
 03.08-four-orders.md: 1 found, 0 not found
 03.09-what-executes.md: 26 found, 0 not found
 03.10-spaces-nested-or-adjacent.md: 5 found, 0 not found
+03.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
 04.00-index.md: 0 found, 0 not found
 04.01-from-observation-to-pattern.md: 1 found, 0 not found
 04.02-improvement-cycle.md: 6 found, 0 not found
 04.03-recommendation-lifecycle-observed.md: 10 found, 0 not found
+04.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
 05.00-index.md: 0 found, 0 not found
 05.01-decision-docket.md: 4 found, 0 not found
@@ -75,6 +79,7 @@ TODO.md: 0 found, 0 not found
 05.05-who-executed-who-authorized.md: 19 found, 0 not found
 05.06-what-an-act-covers.md: 29 found, 0 not found
 05.07-closure-and-the-record.md: 23 found, 0 not found
+05.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
 06.00-index.md: 0 found, 0 not found
 06.01-method-binding-evidence.md: 6 found, 0 not found
@@ -84,6 +89,7 @@ TODO.md: 0 found, 0 not found
 06.05-recording-authority-without-holding-it.md: 45 found, 0 not found
 06.06-agent-harnesses-linked-not-copied.md: 22 found, 0 not found
 06.07-a-platform-drawn-without-its-kernel.md: 33 found, 0 not found
+06.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
 08.00-index.md: 0 found, 0 not found
 08.01-bootstrap-experiment.md: 1 found, 0 not found
@@ -103,6 +109,11 @@ TODO.md: 0 found, 0 not found
 08.15-claims-about-the-record-and-levels-of-establishment.md: 32 found, 0 not found
 08.16-ownership-released-is-not-work-done.md: 4 found, 0 not found
 08.17-adopted-is-not-verified-and-the-record-must-outlast-prose.md: 1 found, 0 not found
+08.18-one-writer-is-not-one-record-and-checkable-is-not-checked.md: 69 found, 0 not found
+08.19-acknowledged-is-not-recorded-and-the-anchor-must-guard-the-destructive-act.md: 34 found, 0 not found
+08.20-a-quarantine-is-a-hold-and-order-between-records-needs-a-citation.md: 15 found, 0 not found
+08.21-a-reference-must-carry-information-the-act-cannot-rewrite.md: 5 found, 0 not found
+08.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
 09.00-index.md: 0 found, 0 not found
 09.01-kernel-scaffold.md: 0 found, 0 not found
@@ -121,7 +132,5 @@ TODO.md: 0 found, 0 not found
 09.14-when-pairs-suffice.md: 2 found, 0 not found
 09.15-the-trust-boundary.md: 13 found, 0 not found
 09.16-reassessment.md: 21 found, 0 not found
+09.99-change-log.md: 0 found, 0 not found
 TODO.md: 0 found, 0 not found
-CHAPTER-PLAN.md: 0 found, 0 not found
-TARGET-TOC.md: 0 found, 0 not found
-TODO-TRIAGE-S0100.md: 0 found, 0 not found

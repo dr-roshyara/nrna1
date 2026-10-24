@@ -58,6 +58,10 @@
 
 **STOPPED before the S0150 consolidation** (the Principal). Waiting for the Rule Reviewer to freeze the book copy and seal the planted-gap key. Evaluation facts prepared: `06-theory/manuscript/review/S0150-EVALUATION-FACTS.md`.
 
+**Consolidation S0131–S0150 settled** (2026-10-24; `06-theory/manuscript/review/CONSOLIDATION-S0131-S0150/SETTLEMENT.md`, stage 1 `SETTLEMENT-STAGE1.md`): two reviewers (Opus, Sonnet) plus integration (Opus), harness 3,233 s; Ch. 2 and Ch. 3 rotated (defects 20 and 26). Planted-gap test scored by the Rule Reviewer: 3 of 5 found; stage-1 treatment 1 correct, 2 partial. The working book did not carry the plants; §8.21 C14 and §8.19 C19 checked against S0150 and S0138 L116. CON-0256 → CON-0257, CON-0038 → CON-0258, CON-0243 split (CON-0259), CON-0033 core CON-0260; Ch. 3 re-verdicts to PROVISIONAL: 0008, 0041, 0043, 0065 (0006 kept INVALID). R3 dispositioned line by line. Register 260 (45 V, 121 P, 94 I). Quote check 0 not found (baseline regenerated). B-35 carried as T3-28.
+
+**Next actor: the Principal** — the S0150 decision (evaluation facts, test result and its recommendations, open kernel questions). Rules stay frozen until then. No further reading.
+
 **Per window and per theory turn:**
 - review;
 - settlement;

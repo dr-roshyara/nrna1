@@ -33,7 +33,7 @@
 | A policy receives its inputs; gate inputs are closed | §1.17.4; §9.4 C4 | ~ |
 | Running ≠ enforcing; executable ≠ executed | §3.9 (CON-0092, CON-0093) | ✓ |
 | Stated ≠ distributed ≠ held ≠ enforced | §6.4 C3 (CON-0102); §9.5 C1 | ✓ / ~ |
-| A deferred rule cannot be cited as authority | §2.8.3 (CON-0063) | ✓ |
+| A deferred rule cannot bind at t | §2.8.3 (CON-0063) | ✓ |
 | Rule applicability is three-valued | §2.8 | ~ |
 | A gap is a set of unmet requirements, relative to a contract | §5.4 | ~ |
 | The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a law) | ~ |
@@ -179,7 +179,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 
 ## Chapters that serve method, not a deliverable directly
 
-- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.11; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
+- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.21; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.
 
 ## Rotation of older chapters (Rulebook v1.3 §12, entry 57)
@@ -212,4 +212,14 @@ Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked
 | **A / O** (estate method or observation of one estate) | CON-0195, 0196, 0199, 0200, 0204, 0207, 0208, 0209, 0213, 0215, 0216, 0217, 0219, 0224, 0226, 0229, 0230, 0232, 0233 |
 | **D** (a definition or vocabulary) | CON-0223, 0225 |
 
-**Boundary tests owed** (for the theory turns): the failed-read input for Q1 (CON-0212); a correction kind for attribution (§8.13 C7); an act's force as a field (CON-0236); purpose or claim partition (CON-0214); a dispute as a mark or an act (CON-0211).
+### Ch. 8 §8.18–§8.21 and the kernel/application marks (added at the consolidation S0131–S0150, A-24 = B-11)
+
+*Proposals (Int) from reviewers A and B and the integration reviewer, merged by the Professor; not boundary-test results.*
+
+| Mark | Concepts |
+|---|---|
+| **K?** (kernel candidate; boundary test owed) | CON-0239 (record identity, an assumption), 0243 (core, a K1 corollary), 0245 (L9 with K6, K1), 0250 (a positive hold state), 0251 (a K2 corollary) |
+| **A / O** (estate method or observation of one estate) | CON-0240, 0241, 0242, 0244, 0248, 0249, 0253, 0257, 0259 |
+| **D** (a definition or a known fact) | CON-0254 (i) |
+
+**Boundary tests owed** (for the theory turns): the failed-read input for Q1 (CON-0212); a correction kind for attribution (§8.13 C7); an act's force as a field (CON-0236); purpose or claim partition (CON-0214); a dispute as a mark or an act (CON-0211). *(From §8.18–§8.21:)* the identity of the record (CON-0239); a positive hold state (CON-0250); L9 with K6 and K1 (CON-0245); the anchor's cut (CON-0243).

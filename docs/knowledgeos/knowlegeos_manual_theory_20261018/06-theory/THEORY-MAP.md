@@ -16,13 +16,13 @@
 - **Dimensions:** six dimensions: nature · representation `[CON-0002 ~]` · governance status `[CON-0003 ✗]` (mixes lifecycle and standing) · canon scope · evidence status · operational state `[CON-0006 ✗]` (conflates binding strength, enforcement consequence and exercise history; §3.1). **What carries them is a fork (F37, §3.1):** (A) one bearer, an instance = (claim, carrier), with nature and evidence status equal across a claim's instances `[CON-0184 ~]`; (B) a bearer per dimension: nature and evidence status → claim, representation → carrier, operational state split (binding strength → claim, enforcement consequence → realization), governance status and canon scope open `[CON-0185 ~]`; the re-run does not tell (A) from (B).
   - **Constraint set S:** tacit knowledge carries no status or scope; skill is tacit only.
   - **Res:** kind must not be one of the nature values, or the element formula counts nature twice (MM-1).
-- **Knowledge ≠ artifact** (I-1) `[CON-0010 ✗]`.
+- **Knowledge ≠ artifact** (I-1) `[CON-0010 ~]` *(PROVISIONAL at the consolidation S0131–S0150: distinctness supported, survival not)*.
   - **Res:** the deletion test shows that knowledge and artifact are **distinct**, not that knowledge **survives** deletion. A single carrier means no survival.
 - **Archetypes** (nine candidate kinds) and **three ontology layers**: documentation, platform (absent), product (partial).
 - **Relations per type, not one hierarchy** `[CON-0064 ✓, scoped]`: authority · production · realization · containment (plus references, which is cyclic, and constrains). Acyclic on S0026's listed edges only (S0021's depends-on has PKS ↔ product); the impact clause (reachability over the union) is H (§3.8 C3).
   - **Res:** a relation's reachability is a partial order exactly when its edges have no cycle; reachability ≠ the relation, for non-transitive relations.
   - **Res:** a typed union loses nothing; an unlabelled closure loses the type; a total extension adds false order. Impact questions need union reachability.
-- **What executes is undecided: fork F11** (three senses) `[CON-0066 ✗]`. "Knowledge does not execute" stays circular (SEQ-0012 not reduced).
+- **What executes is undecided: fork F11** (three statements, §3.9 C1; two activities in two modes) `[CON-0066 ✗]`. "Knowledge does not execute" stays circular (SEQ-0012 not reduced).
 
 ## 2. Authority (Ch. 1, Ch. 2 §2.8)
 
@@ -53,7 +53,7 @@
   - The **kinds of nothing** are E1–E8, plus two provisional candidates E9 (invalid evidence) and E10 (unknown dimension).
 - **Binding strength ≠ enforcement.** Rules with meaning and rules with enforcement are different sets, and here they sit in different components (§2.10, qualified).
 - **Exception** = a separately authorized deviation within a scope and validity period.
-  - **Res:** effective = adopted ∧ t ∈ validity, so a deferred rule cannot bind `[CON-0063 ✓]`.
+  - **Res:** a rule is effective only if adopted and t ∈ validity (a necessary condition; the full condition is §9.13's CE*), so a deferred rule cannot bind at t `[CON-0063 ✓]`.
 - **Constitutional override** `[CON-0040 ✗]` (partly valid): a conflicting lower rule is "void to the extent of the conflict", established for one constitution (Round39-MC) and its artifacts. **Int:** voidness bounded by the conflict region; a wider reading exists. Open: timing; who declares; artifacts without rule form.
 
 ## 4. How knowledge changes (Ch. 0 §0.4, Ch. 1 §1.6, Ch. 4)
@@ -182,6 +182,11 @@
 - **Change (§4.2):** the improvement cycle, each stage withholding what the next adds; IGNORED is closure, not a gap `[CON-0107]`.
 - **Not yet in the book (review C7 coverage):** S0036's discovery stopping rule ("when is discovery done?", L55) and uncertainty carriage (L57), for Ch. 5; S0037 reads ownership from a frontmatter `owner:` field (L77), a metadata value taken as semantic ownership, for Ch. 1 §1.11; S0039 AR-7, without the evidence-to-platform transition "earns its abstractions" is unfalsifiable (L281); S2377's backbone order K → EC (L2486) against Knower → EC (L2713), for ContractDerivation.
 - **New open questions:** what justifies an admission threshold; who guarantees each invariant; whether "no single owner" is a defect; whether the improvement cycle has produced any assessment; whether the litmus is a usable first filter for kernel candidates.
+
+**Windows C25–C28, S0131–S0150 (§8.18–§8.21; settled, and consolidated at the consolidation S0131–S0150):**
+- **Identity of the record** (§8.18 C1): one writer is not one record `[CON-0239 ✓]`; a migration verified on bytes, content identity certifies the fields CE* reads, not marks `[CON-0240 ✓]`; a positional conflict is not yet a conflict of authority `[CON-0241 ~]`; checkable is not checked `[CON-0242 ✓]`; a commitment covers only its cut, a K1 corollary `[CON-0243 ~]`; two lifecycles, two locations `[CON-0244 ~]`; three senses of reference `[CON-0238 ~]`.
+- **Concurrency and migration** (§8.19): acknowledged is not recorded `[CON-0245 ✓]`; a status held elsewhere is advisory `[CON-0248 ~]`; nothing written except the declared `[CON-0249 ~]`.
+- **Holds, order and gates** (§8.20, §8.21): an undisposed quarantine is a hold `[CON-0250 ~]`; order between records is shown only through citation, Lamport's happened-before (EXT-084) `[CON-0251 ~]`; rediscovery shows reach, not detection `[CON-0253 ✓]`; a hash cannot feasibly commit to itself `[CON-0254 ~]`; a reference must carry information the act cannot rewrite `[CON-0257 ~]`; a replacement gate must compare the survivor `[CON-0259 ~]`.
 
 **Window C8, S0041–S0045 + S0129, S2834 (§12a; reviewed and settled 2026-10-19):**
 - **Who executed, who authorized (§5.5):** RD-6 is the first observed instance of Ch. 1's residual trust assumption (§1.12); executor ≠ authorizer `[CON-0109 ✗ as three roles; CON-0165 ~]`; a self-referencing record attests nothing, given that the recorder holds no standing; the mechanism guarantees the reference's presence, not its externality.
@@ -351,9 +356,9 @@
 ## 9. Position
 
 - Last source read **in order**: **S0150**; next: **S0151**, after the S0150 consolidation. Windows C19–C28 (§8.12–§8.21) are settled; the consolidation S0101–S0130 is settled (updated 2026-10-23). **First skims: S0123, S0125** (C23); S0125's skim lost theory, found by the §3 safeguard.
-- **Counts (2026-10-23):** read in order (full/skim): **149** (4 skimmed) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
-- **Register (2026-10-23):** 256 concepts: 40 VALIDATED, 118 PROVISIONAL, 98 INVALID (after window C28).
-- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.17) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
+- **Counts (2026-10-24):** read in order (full/skim): **149** (4 skimmed; the index has no S0082, so 149 sources fill positions S0001–S0150) · consulted in branches only: **4** (S0208, S0721, S0896, S1296; BRANCH-01) · scans: **63**.
+- **Register (2026-10-24):** 260 concepts: 45 VALIDATED, 122 PROVISIONAL, 93 INVALID (after the consolidation S0131–S0150).
+- Chapters: 0–3 written · 4 (§4.1–4.3) · 5 (§5.1–5.7) · 6 (§6.1–6.7) · 8 (§8.1–8.21) · 9 (§9.1–9.16) · Ch. 7 retired (the Principal, DB-6, 2026-10-20); reading order: TARGET-TOC (stable numbers).
 - **F22 decided:** (C + O) (the Principal, 2026-10-21), with the decisions after C20 (§9.16 R4a v7–v8). **Decided after C21:** a consumable grant is single-use by its kind. **Consequence (§9.16 R4c):** for single-use grants the kernel is in effect the coordination point; (C + O) differs from (C + K) only in whose record carries the uses and who may move ownership.
 - **Open forks from C19–C21 (Open, not yet rows):**
   - partition of one act by claim (withdrawing reliance for one claim; §8.14 C3);
