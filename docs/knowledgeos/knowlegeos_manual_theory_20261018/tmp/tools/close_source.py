@@ -12,6 +12,8 @@
                       only if review/<origin>-*/REVIEW-REPORT.md has a table row naming that concept with a
                       VALIDATED (or VALIDATE) verdict cell; a review file merely existing is not enough;
   * effort            every row carries start= and stop= times: start is recorded by --start, stop is the close.
+  * consolidation     (Rulebook v1.4 §12) full / skim refused once 25 sources have been read in order since the last
+                      settled consolidation or milestone review (consolidation_gate.py); --position shows the count.
 A row is written only if every check passes.
 
 Usage:
@@ -31,6 +33,9 @@ REPO = W.parents[2]
 LOG = W / 'tmp/corpus-reading/READ-LOG-CHRONO-20261018.tsv'
 INDEX = [r for r in map(json.loads, open(W / '02-FILES.jsonl', encoding='utf-8'))]
 ORDER = {r['source_id']: i for i, r in enumerate(INDEX)}
+REVIEW = W / '06-theory/manuscript/review'
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))   # python3 -I does not add the script's folder
+import consolidation_gate
 
 
 def reading_position():
@@ -92,6 +97,9 @@ if sys.argv[1:] == ['--position']:
     nxt = INDEX[pos + 1]['source_id'] if pos + 1 < len(INDEX) else None
     print(f'reading position: {INDEX[pos]["source_id"] if pos >= 0 else "none"}; next in order: {nxt}')
     print(f'read in order (full/skim): {len(read)}; consulted in branches only: {len([c for c in consulted if c not in read])} {consulted}; scans: {scans}')
+    _, rows, lr = reading_position()
+    due, gate_msg = consolidation_gate.check(rows, lr, REVIEW, ORDER)
+    print(f'consolidation gate: {gate_msg}' + ('; DUE: the next full/skim source is refused' if due else ''))
     sys.exit(0)
 
 def read_status(sid):
@@ -176,11 +184,14 @@ if depth == 'topic-full' and not topic:
 started = [l.split('\t')[1].strip() for l in open(STARTS, encoding='utf-8') if l.split('\t')[0] == sid] if STARTS.exists() else []
 if not started:
     errors.append(f'no start time recorded for {sid} (run --start {sid} before reading)')
-pos, _, _ = reading_position()
+pos, log_rows, log_restart = reading_position()
 if depth in ('full', 'skim'):
     nxt = INDEX[pos + 1]['source_id'] if pos + 1 < len(INDEX) else None
     if sid != nxt:
         errors.append(f'chronological order: next source is {nxt}, not {sid}')
+    due, gate_msg = consolidation_gate.check(log_rows, log_restart, REVIEW, ORDER)
+    if due:
+        errors.append(f'consolidation due (Rulebook v1.4 §12): {gate_msg}; settle it before the next full/skim source')
 if depth == 'branch-consult' and not passages:
     errors.append('branch-consult requires --passages "Lnn-mm, …"')
 if depth == 'branch-consult':
