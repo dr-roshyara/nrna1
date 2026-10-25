@@ -66,7 +66,9 @@
 
 **Theory turn 8 settled** (record identity and anchoring; §9.17; `review/TURN8-RECORD-IDENTITY/SETTLEMENT.md`): record vs carrier; K2 restated (K2-d presupposition, K2-w, K2-r); L11; CON-0262 and CON-0263 INVALID as stated, restated CON-0264 (membership) and CON-0265 (carrier-change gate, architecture); two reviewers, 26 findings (1 critical, corrected). Register 265 (45 V, 124 P, 96 I). Questions reserved for the Principal, non-blocking: designation as a kind of D; trusted shared recording time (T9-08).
 
-**Next: resume reading at S0151 in windows of 5** (C29 = S0151–S0155). Next consolidation due after S0175, Ch. 4 and Ch. 5 in rotation; the gate enforces it.
+**Window C29 settled** (§8.22; S0151–S0154, S0158; S0155–S0157 not on the allowed list, skipped by the tool since `5b0c49392`; S0155 exposed, `review/C29-S0151-S0158/ACCESS-INCIDENT.md`). **The Principal's turn-8 decision applied** (designation a kind in D; order by citation; ce_model v16; `57785a947`).
+
+**Next: window C30** — the next five allowed sources after S0158 (`close_source.py --position`); its brief includes `57785a947` in full as changed theory. Consolidation due after 25 in-order sources since S0150 (the gate counts).
 
 **Per window and per theory turn:**
 - review;
