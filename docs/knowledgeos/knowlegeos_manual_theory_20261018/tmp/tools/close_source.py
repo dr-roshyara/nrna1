@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Mark a corpus source as read or consulted (Rulebook v1.3 + Amendment 32a). Enforces, not merely records:
 
-  * full / skim       accepted ONLY for the next source in index order after the reading position;
+  * full / skim       accepted ONLY for the next ALLOWED source in index order after the reading position;
+  * allowed list      --start refuses a source not on CORPUS-ALLOWED.tsv; non-allowed index entries are skipped,
+                      never 'next' (the Principal, 2026-10-25, after the S0155 incident; allowed_order.py);
   * branch-consult    requires --passages; never moves the reading position;
   * reading position  = the furthest full/skim row after the last RESTART marker in the read log;
   * quotes            every "…" [Snnnn Lnn] quote in the manuscript must match the source (meaning-level);
@@ -36,6 +38,9 @@ ORDER = {r['source_id']: i for i, r in enumerate(INDEX)}
 REVIEW = W / '06-theory/manuscript/review'
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))   # python3 -I does not add the script's folder
 import consolidation_gate
+import allowed_order
+ALLOWED = allowed_order.load_allowed(W.parent / 'knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv')
+PATH = {r['source_id']: r['path'] for r in INDEX}
 
 
 def reading_position():
@@ -94,8 +99,9 @@ def utcnow():
 
 if sys.argv[1:] == ['--position']:
     pos, read, consulted, scans = counts()
-    nxt = INDEX[pos + 1]['source_id'] if pos + 1 < len(INDEX) else None
-    print(f'reading position: {INDEX[pos]["source_id"] if pos >= 0 else "none"}; next in order: {nxt}')
+    nxt, skipped = allowed_order.next_allowed(INDEX, pos, ALLOWED)
+    print(f'reading position: {INDEX[pos]["source_id"] if pos >= 0 else "none"}; next in order: {nxt}'
+          + (f' (skipped, not on the allowed list: {", ".join(skipped)})' if skipped else ''))
     print(f'read in order (full/skim): {len(read)}; consulted in branches only: {len([c for c in consulted if c not in read])} {consulted}; scans: {scans}')
     _, rows, lr = reading_position()
     due, gate_msg = consolidation_gate.check(rows, lr, REVIEW, ORDER)
@@ -140,6 +146,8 @@ def open_reads():
 if sys.argv[1:2] == ['--start']:
     sid = sys.argv[2]
     assert sid in ORDER, f'unknown source {sid}'
+    if PATH[sid] not in ALLOWED:
+        sys.exit(f'REFUSED: {sid} ({PATH[sid]}) is NOT on the allowed list; do not open it (no start recorded)')
     with open(STARTS, 'a', encoding='utf-8') as fh:
         fh.write(f'{sid}\t{utcnow()}\n')
     print(f'{sid} start recorded')
@@ -186,7 +194,7 @@ if not started:
     errors.append(f'no start time recorded for {sid} (run --start {sid} before reading)')
 pos, log_rows, log_restart = reading_position()
 if depth in ('full', 'skim'):
-    nxt = INDEX[pos + 1]['source_id'] if pos + 1 < len(INDEX) else None
+    nxt, skipped = allowed_order.next_allowed(INDEX, pos, ALLOWED)    # non-allowed entries are skipped
     if sid != nxt:
         errors.append(f'chronological order: next source is {nxt}, not {sid}')
     due, gate_msg = consolidation_gate.check(log_rows, log_restart, REVIEW, ORDER)
@@ -203,8 +211,7 @@ if depth == 'branch-consult':
 
 row = next(r for r in INDEX if r['source_id'] == sid)
 path = row['path']
-allowed = (W.parent / 'knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv').read_text(encoding='utf-8')
-if path not in allowed:
+if path not in ALLOWED:                                              # exact path match (was a substring test)
     errors.append(f'{path} NOT on the allowed list')
     data = b''
 else:
