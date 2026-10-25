@@ -1,0 +1,67 @@
+(1) Phi monotone under υ=U, backward citations: violations 0 of 400
+(1) Phi monotone under υ=U, forward citations: violations 0 of 400
+(2) KK reached on 4000 random records; worst rounds/(n+1) = 0.75 ; a chain of 8 grants recorded leaf first (outside D): 8 rounds; recorded root first (in D: True): 8 rounds; n+1 = 9
+(2b) WF on 2000 forward records: worst outer rounds/(n+1) = 1.0 ; worst inner passes/(2(n+1)^2) = 1.0
+(3) mutual annulment: υ=U KK x, y = U U ; υ=notcount: iteration reaches a fixed point: False ; fixed points (x, y): [('F', 'T'), ('T', 'F')] ; least: 0
+(3b) mutual annulment under υ=U: fixed points (x, y): [('F', 'T'), ('T', 'F'), ('U', 'U')]
+(4) answers of CE*(c, t) on WF, 3000 random records in D: ['F', 'T', 'U']
+(5) exhaustive over 3^k assignments, 300 random forward records: 300 fixed points; records with more than one: 0; fixed points other than KK: 0 (all above KK); fixed points not above WF: 0; of these, other than KK: 0; records where WF is not a fixed point of Phi: 0
+(5) exhaustive over 3^k assignments, 300 loop-rich records: 316 fixed points; records with more than one: 9; fixed points other than KK: 16 (all above KK); fixed points not above WF: 16; of these, other than KK: 7; records where WF is not a fixed point of Phi: 0
+(6) backward, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(6) forward, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(6) loop-rich, 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 176
+(6) backward citations, any targets (D), 3000 records: KK routes agree, WF routes agree, KK <= WF; WF decides more on 0
+(7) circular grants: KK g1, g2, x = U U U ; WF = F F F ; all-T is a fixed point: True
+(8) loop annulling a rooted adoption: KK x = U ; WF x = T ; current-authority(c, 3) off WF = T ; {loop T, x F} is a fixed point: True ; CE* on this record (outside D): undefined
+(9) mutual annulment, WF: x, y = U U
+(9b) authorized(x) = U with reason ['mutual annulment of x and y']
+(10) ties by position (v1-v8): ending with the act time of x: recorded after x -> x T ; recorded before x -> x F
+(10b) v9, ties unordered (the Principal after turn 7): x = U U in both record orders, with reason ['same act time: the order of e and x is undetermined (ties unordered)']
+(11) self-annulment cycle: KK g1, e = U U ; WF = U U
+(11b) an adoption under that grant: CE*(c, 3) = U with reason ['self-cancelling act e: it annuls g1, a link of its own authorization chain (directly)']
+(12) parent g1 ended at 2, act under child g2 at 4: x = T ; CE*(c, 5) = T
+(13) outside D: ['integrity check failed for n', "missing field in g: ['holder']", 'kind supersede not admitted (y)', 'g1 cites g2, which is not an earlier entry (D: citations of earlier entries only)', 'n cites g, which is not in the record (D: citations of earlier entries only; v5: a dangling citation is refused)'] ; the same record with the failing annulment dropped would give T
+(14) 6000 records with forward citations: 3067 without a citation cycle (1632 of them outside D): WF = KK on all; 2933 with a cycle, WF != KK on 217
+(15) indirect self-cancelling (annuls the parent grant): U, reason ['self-cancelling act e: it annuls g1, a link of its own authorization chain (through the grants it acts under)']
+(15) annulment ring of three: U, reason ['annulment ring of a1, a2, a3']
+(15) ending cycle (position/key inversion): U, reason ['negative cycle (strongly connected component) through e, h']
+(15) queried scope with covers undefined: U, reason ['covers(s/a, s/a) undefined for the queried scope (adoption x)']
+(15) revocation of undetermined authorization: U, reason ['self-cancelling act e: it annuls g1, a link of its own authorization chain (directly)']
+(15b) 3000 random records in D: 208 U answers (items and acts); without a named reason: 0
+(15c) 2000 random records in D, with and without a queried scope: 58 acts named in reasons; not U: 0
+(15d) self-cancelling with a second intact basis: e = T; with the link already ended: e = F; an act annulling itself: ('U', ['self-annulling act e: it annuls itself'])
+(16) adoption authorized through g1, unused g2 ended: authorized(y) = T ; CE*(c, 3) = F | annulment of the root: root T , adoption under it T
+(17) entries without recorder and auth: missing field in r: ['auth', 'recorder'] | auth outside the allowed values: auth of r is 'attested', not one of ['signed-as-actor', 'signed-as-other', 'unsigned']
+     marks for c (rests on a transcribed grant and an unsigned adoption): T ['rests on transcribed entries g', 'rests on unsigned entries x'] | for d (signed-as-actor throughout): T []
+     after a tombstone of g: in D: True ; CE*(c, 3) = T (before: T ); marks: ['rests on transcribed entries g', 'rests on unsigned entries x', 'rests on removed content g']
+(18) 600 causal histories split between two applications as FRAGMENTS (an application holds only its own entries, so its record is in general not in D), 6 merge orders each: same answers under ties by identity in 600; answers depend on the merge order under ties by position in 1
+     cuts across records: in D exactly when citation-closed (488 closed, 112 not, all refused)
+     the race (grant x and the ending e of its basis at the same act time, in two applications; B adopts c under x later): ties by position give CE*(c, 6) = T or F by merge order; ties by identity give F and F; v9, ties unordered (the Principal after turn 7): U and U, reason ['same act time: the order of e and x is undetermined (ties unordered)']
+(18b) 400 histories, each application holding copies of what it cites: both records in D in 400; merge orders give the same values in 400 and the same values and marks in 400; cuts across records (one prefix each) in D: 1200 of 1200 (automatic)
+(18c) 400 histories with act times in {1, 2}, 6 merge orders: answers differ by merge order under ties by position in 1, by identity in 0, unordered (v9) in 0
+(18d) one act copied by two applications (signed-as-actor, signed-as-other), both merge orders: (True, 'T', ('rests on transcribed entries g',)) (True, 'T', ('rests on transcribed entries g',)) | a tombstone in one, the original in the other, both orders: (True, 'T', ('rests on transcribed entries g', 'rests on removed content g')) (True, 'T', ('rests on transcribed entries g', 'rests on removed content g')) | copies that disagree on a field CE* reads: conflicting copies of g
+(17b) tombstone of a grant with content: content dropped: True ; CE*(c, 3) before/after: T T ; marks: ['rests on removed content g'] | tombstone of an entry that failed the integrity check: in D before False , after False
+(19) 1500 random records in D, times 2, 4, 6: 9619 entries outside the support; removing one or changing its holder changed the answer 0 times | case P1: CE*(c, 5) = T ['rests on unsigned entries h'] | case P2: F ['rests on transcribed entries g0']
+(20) 1500 random records in D with random recorder and auth: values changed in 0
+(21) consumption: k1 by the holder at 2: k1 = T , act at 1 = T , act at 3 = F | an adoption at 1, consumed at 2: current at 4 = T | by a non-holder: k1 = F , act at 3 = T | by the holder of another grant, citing both: kB = F , act at 3 = T | not citing the consumed grant: consumption kB does not cite the grant it consumes (v10, C19 T2-02)
+     a second consumption later: k2 = F ; at the same act time: k1, k2 = U U | append guard after an effective consumption: False g is single-use and already used by k1, x1, x3 (prevented) | after an ineffective one: False | after an annulled one: False | in D: True
+(22) removal by an authorized act: True CE* = T (before T ), marks ['rests on removed content g'] | by an unauthorized act: refused: True removal rm refused: its authorization is F, not T (the content would be lost) ; content kept: True | a removal later annulled: CE* = T ['rests on removed content g', 'removal not, or no longer, authorized: g (rm=F)'] | a tombstone citing no removal act: tombstone g cites no removal act of it (v9: a removal is an authorized, recorded act that the tombstone cites)
+(22b) marks for authorized(x): ['rests on transcribed entries g'] | signed-as-other with recorder = actor: in D True , marks ['rests on transcribed entries g', 'inconsistent recording status (signed-as-other, recorder = actor) g']
+(23) 291 records with a removal: every cut evaluated; values changed by the removal at some cut in 0
+(18e) two removals of one entry, one later annulled, both merge orders: (True, 'T', ('rests on removed content g',)) (True, 'T', ('rests on removed content g',))
+(24) use by the owner A1: True | by A2: False use of g refused: recorded by A2, not by its owner A1
+(24b) owner unavailable: use by A2 before the move: (False, 'use of g refused: recorded by A2, not by its owner A1') | the move to A2 at the kernel: (True, None) | use by A2 after it: (True, None) | the old owner after the move (act time 3, appended later): (False, 'use of g refused: recorded by A1, not by its owner A2')
+(24c) transfer recorded by A1: (False, 'transfer m1 refused: recorded by A1, not at the kernel, which holds the contract') | by an actor without basis: (False, 'transfer m1 refused: its authorization is F, not T') | at a tie with its basis's end: (False, 'transfer m1 refused: its authorization is U, not T') | a use while a transfer is U: (False, 'use of g refused: the transfer m1 of g is U, so its owner is undetermined')
+(24d) an adoption under a single-use g by A2: (False, 'use of g refused: recorded by A2, not by its owner A1') | by the owner A1: (True, None) | under a grant not single-use, by A2: (True, None)
+(24e) a bypassing use: values True , marks ['use not recorded by its owner: k1 (by A2, owner A1)', 'second use of a single-use grant: g (2 uses)'] | by the owner: marks ['second use of a single-use grant: g (2 uses)']
+(24f) copies naming two owners: conflicting copies of g
+(24g) 500 random records with random owners and recording applications: values changed in 0
+(24h) transfer m1 T at append: True , then U: U | a use meanwhile: (False, 'use of g refused: the transfer m1 of g is U, so its owner is undetermined') | a later move to A3: True | use by A3: (True, None)
+(24i) Z, with authority on s/b, moves g (s/a): (False, 'transfer m refused: its scope s/b is not the scope s/a of g') | P from the root, scope s/a: (True, None)
+(24j) the transfer annulled after the use: m = F , marks of k: []
+(24k) a use declared app=A1 by whoever submits it: accepted True (L10: the kernel authenticates the submitting application)
+(24l) 400 random append sequences: 194 uses accepted; transfers accepted by the issuer 175, by an authority above 104; holder refused 195 / accepted 0; the issuer grantee refused 175 / accepted 0; wrong last use refused 31; a use after an annulled use refused 79; violations 0
+(26) A1: first use True ; after it is annulled, a second use: (False, 'g is single-use and already used by u1 (prevented)') | A3 marks: ['second use of a single-use grant: g (2 uses)'] | A4 the issuer grantee at the issuer scope: (False, "transfer m refused: S is not the issuer P2 and holds no authority above the issuer's scope s/a")
+(27) a grant not single-use: two adoptions under it in D True and both T T | a consumption of it: consumption k of g, which is not single-use (v15, the Principal after C21: a grant that can be consumed is single-use by its kind)
+(28) designation in D: True | its value T | other values unchanged True | a gap before it: designation d closes x1, which is not the last entry before it (v16: the switch cites the old carrier's last entry) | not citing what it closes: designation d does not cite the entry it closes, x1 (v16: order across designations comes from citation) | a designation closing nothing: designation d0 closes nothing: a designation in D is a change of carrier; the initial carrier is designated outside D (L11) | members of the closed carrier: ['r', 'gD', 'g', 'x1']
+all assertions passed

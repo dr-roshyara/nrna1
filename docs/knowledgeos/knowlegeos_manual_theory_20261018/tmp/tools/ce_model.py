@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 15 (the Principal after C21:
+it tests the FORM of the repaired definition, not its content. Version 16 (the Principal, 2026-10-25, after theory
+turn 8: "a designation becomes a recordable kind in D. Order across designations comes from citation (the switch cites the
+old store's last entry, CON-0251), not from recording time."): kind 'designate' (actor, cites, carrier, closes, scope,
+t); D requires 'closes' to be cited and to be the entry immediately before the designation in the record's order; a
+designation in D is a change of carrier (the initial carrier is the root designation, outside D, §9.15 L11); the closing citation is not an authorization basis;
+Phi reads no carrier, so no other value changes (check 28). Version 15 (the Principal after C21:
 "A grant that can be consumed is single-use by its kind. A grant meant for repeated use is used, not consumed."): D
 refuses a consumption of a grant not marked single-use; the random generator marks consumed grants single-use; check 21
 restated (every recorded use counts, C21). Version 14 (C21 settlement):
@@ -76,7 +81,10 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'consume': {'actor', 'cites', 'grant', 'scope', 't'},     # the holder uses up the grant: it ends it after
           'remove': {'actor', 'cites', 'target', 'scope', 't'},     # the act a tombstone cites (removed_by)
           # v11 (the Principal, F22 = (C + O)): a change of a grant's owner application, recorded at the kernel
-          'transfer': {'actor', 'cites', 'grant', 'new_owner', 'scope', 't', 'last_use'}}   # v13: carries the uses
+          'transfer': {'actor', 'cites', 'grant', 'new_owner', 'scope', 't', 'last_use'},   # v13: carries the uses
+          # v16 (the Principal after turn 8): a designation names the carrier of the record from here on, and cites the
+          # last entry under the previous carrier ('closes'); order across designations comes from that citation
+          'designate': {'actor', 'cites', 'carrier', 'closes', 'scope', 't'}}
 FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the owner application, fixed at issuance
 ENDING_KINDS = ('endg', 'consume')
 KERNEL = 'kernel'                                                    # v11: the application that holds the contract
@@ -85,6 +93,8 @@ APP_KINDS = ('consume', 'transfer')                                  # v11: entr
 
 def bases_of(x):
     """v10 (C19, T2-02): a consumption's only basis is the grant it consumes; every other act's are its citations."""
+    if x.get('kind') == 'designate':                # v16: the closing citation orders; it is not a basis
+        return [c for c in x.get('cites', []) if c != x.get('closes')]
     return [x['grant']] if x.get('kind') == 'consume' else x.get('cites', [])
 # v6 (the Principal, after turn 6): every entry also carries its recorder and authentication status, apart from the actor
 for _k in FIELDS:
@@ -190,6 +200,14 @@ def in_D(rec):
                 continue                            # v13: a use-pointer names an earlier use of the same grant
             if u_ not in rec.pos or rec.pos[u_] >= rec.pos[x['id']] or g_ not in bases_of(rec.by[u_]) or rec.by[u_]['kind'] == 'transfer':
                 return False, f"{x['id']} names {u_} as the last use of {g_}, which is not an earlier use of it (v13)"
+        if x['kind'] == 'designate':               # v16 (the Principal after turn 8)
+            k = rec.pos[x['id']]
+            if x['closes'] is None:                 # the initial carrier is the root designation, outside D (§9.15 L11)
+                return False, f"designation {x['id']} closes nothing: a designation in D is a change of carrier; the initial carrier is designated outside D (L11)"
+            elif x['closes'] not in x['cites']:
+                return False, f"designation {x['id']} does not cite the entry it closes, {x['closes']} (v16: order across designations comes from citation)"
+            elif x['closes'] not in rec.pos or rec.pos[x['closes']] != k - 1:
+                return False, f"designation {x['id']} closes {x['closes']}, which is not the last entry before it (v16: the switch cites the old carrier's last entry)"
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
         if x.get('removed'):
@@ -1830,4 +1848,23 @@ if __name__ == '__main__':
     print('(27) a grant not single-use: two adoptions under it in D', in_D(r27)[0], 'and both', wfs(r27)['x1'], wfs(r27)['x2'],
           '| a consumption of it:', in_D(r27c)[1])
     assert in_D(r27)[0] and wfs(r27)['x2'] == T and not in_D(r27c)[0]
+    # (28) v16 (the Principal after turn 8): a designation is a recordable kind; it cites the old carrier's last entry
+    def desig(i, actor, cites, closes, t=3):
+        return {'id': i, 'kind': 'designate', 'actor': actor, 'cites': list(cites), 'carrier': 'C2', 'closes': closes,
+                'scope': 's', 't': t}
+    base28 = [dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1)]
+    r28 = Record(base28 + [desig('d', 'D', ['gD', 'x1'], 'x1', t=2)], S1)
+    r28n = Record(list(base28), S1)
+    w28, w28n = wfs(r28), wfs(r28n)
+    same = all(w28[i] == w28n[i] for i in w28n)
+    r28gap = Record(base28 + [adopt('x2', 'A', ['g'], t=2), desig('d', 'D', ['gD', 'x1'], 'x1', t=3)], S1)
+    r28nocite = Record(base28 + [desig('d', 'D', ['gD'], 'x1', t=2)], S1)
+    r28first = Record([dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), desig('d0', 'D', ['gD'], None, t=1)], S1)
+    old_members = [x['id'] for x in r28.e[:r28.pos['x1'] + 1]]   # members held by the closed carrier: up to the cited entry
+    print('(28) designation in D:', in_D(r28)[0], '| its value', w28['d'], '| other values unchanged', same,
+          '| a gap before it:', in_D(r28gap)[1], '| not citing what it closes:', in_D(r28nocite)[1],
+          '| a designation closing nothing:', in_D(r28first)[1],
+          '| members of the closed carrier:', old_members)
+    assert in_D(r28)[0] and w28['d'] == T and same and not in_D(r28gap)[0] and not in_D(r28nocite)[0]
+    assert not in_D(r28first)[0] and old_members == ['r', 'gD', 'g', 'x1']
     print('all assertions passed')
