@@ -68,7 +68,9 @@
 
 **Window C29 settled** (§8.22; S0151–S0154, S0158; S0155–S0157 not on the allowed list, skipped by the tool since `5b0c49392`; S0155 exposed, `review/C29-S0151-S0158/ACCESS-INCIDENT.md`). **The Principal's turn-8 decision applied** (designation a kind in D; order by citation; ce_model v16; `57785a947`).
 
-**Next: window C30** — the next five allowed sources after S0158 (`close_source.py --position`); its brief includes `57785a947` in full as changed theory. Consolidation due after 25 in-order sources since S0150 (the gate counts).
+**Window C30 settled** (§8.23; S0159, S0160, S0162–S0164; S0161 not on the allowed list, skipped by the tool). Review W (Opus), 14 findings (1 critical): the turn-8 designation rule read recording position. Its premise is stated (the old carrier's append order, K6), and the rest goes to the Principal: T9-09 (a) the order premise or citation of every maximal entry, (b) the effect of an F/U designation; T8-04 (may the incumbent specify open choices). No new concept; register 265 unchanged in count.
+
+**Next: window C31** (S0165–S0169, per `close_source.py --position`). The gate stands at 10 of 25. Because of the skipped entries, the 25th allowed source is S0181, not S0175 (C31 S0165–S0169; C32 S0171–S0173, S0175, S0176; C33 S0177–S0181).
 
 **Per window and per theory turn:**
 - review;

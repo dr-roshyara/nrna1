@@ -188,6 +188,7 @@
 - **Concurrency and migration** (§8.19): acknowledged is not recorded `[CON-0245 ✓]`; a status held elsewhere is advisory `[CON-0248 ~]`; nothing written except the declared `[CON-0249 ~]`.
 - **Holds, order and gates** (§8.20, §8.21): an undisposed quarantine is a hold `[CON-0250 ~]`; order between records is shown only through citation, Lamport's happened-before (EXT-084) `[CON-0251 ~]`; rediscovery shows reach, not detection `[CON-0253 ✓]`; a hash cannot feasibly commit to itself `[CON-0254 ~]`; a reference must carry information the act cannot rewrite `[CON-0257 ~]`; a replacement gate must compare the survivor `[CON-0259 ~]`.
 - **Window C29** (§8.22, settled): no new concept. A duplicate is one source (S0151 = S0149); a checker follows the designated record (CON-0261); matching the incumbent is not evidence of conformance — the reference must be the intended result, the clause CON-0256 (i) carried and CON-0257 dropped (CON-0257 necessary, not sufficient); an event stream not designated as the carrier is a projection. Fork: the incumbent as specification for open choices (§8.22.3).
+- **Window C30** (§8.23, settled): no new concept. Which store is authoritative is a governance decision, compatible with R1 (CON-0261; S0160); the carrier is not a property of the entries, and S0160's context claim is analogous, not derived (C4); in the kernel the record is the source and state a projection, given authority = CE*(record) (C2); S0163 ≈ 586 lines of S0150 (C10); for the §8.22 C7 fork, a grant forbade the incumbent as the definition of correctness and the open choice was returned, not defaulted (C12, T8-04). The review also found that the turn-8 designation rule read recording position: its premise is stated (the old carrier's append order, K6), and the citation-based alternative and the effect of an F/U designation go to the Principal (T9-09).
 
 **Window C8, S0041–S0045 + S0129, S2834 (§12a; reviewed and settled 2026-10-19):**
 - **Who executed, who authorized (§5.5):** RD-6 is the first observed instance of Ch. 1's residual trust assumption (§1.12); executor ≠ authorizer `[CON-0109 ✗ as three roles; CON-0165 ~]`; a self-referencing record attests nothing, given that the recorder holds no standing; the mechanism guarantees the reference's presence, not its externality.
@@ -275,9 +276,9 @@
 - **Architecture view (both):** no derivation chain from primitives to laws. The sections add cases to Ch. 1 laws. **Req (T9-01)** is the load-bearing undefined object: six claims defer to it.
 - **Primitives:** missing candidates are **trust** (F23), **conflict over claims** (F24) and **requirement/contract** (§5.4). Minimality was never tested; "history" may be derivable (append-only record + I-7 + fold).
 - **Not yet in the book:**
-  - a claim must declare the layer it holds at: a neutrality claim "never stated its layer", and library defaults stood in for a decision (S0164 L1276–1323, L1485);
-  - establishing a capability, D5 E1–E10, where Option A is unsatisfiable because E10 needs history (S0164 L2235–2264, L2432);
-  - four orthogonal evidence dimensions (S0164 L2420);
+  - a claim must declare the layer it holds at: a neutrality claim "never stated its layer", and library defaults stood in for a decision (S0164 L1276–1323, L1485); *in the book since window C30: §8.23 C12 (the scope ruled; the open choice returned; AMD1), T8-04*;
+  - establishing a capability, D5 E1–E10, where Option A is unsatisfiable because E10 needs history (S0164 L2235–2264, L2432); *already in the book: §8.15 C4–C5 (CON-0217, CON-0224) and §8.17 C2, where the "unsatisfiable" inference is rejected (§8.15 W-1); corrected at the C30 review, W-11*;
+  - four orthogonal evidence dimensions (S0164 L2420); *already in the book: §8.15 C4 (CON-0217)*;
   - Unknown ≠ Uncertain, and E_t/A_t/K_t, factive Knows (S2834 L864–878, L2039–2081);
   - representation adequacy relative to an inquiry, q = g ∘ T (S2834 L355–437);
   - "role" has three meanings, and communication splits into distribution and composition (S0091 L169–172, L122–124, L310–313);
