@@ -54,3 +54,15 @@ Rulebook v1.4 §7, quoted: "Only files on the corpus allowed list are read (D-C1
 - Nothing from S0155 is ever used.
 - W's task is closed and is not resumed. C29 is completed with a new reviewer for the blind step.
 - Tool fix: `close_source.py` refuses `--start` for a non-allowed source, and the next source in order skips non-allowed entries (`allowed_order.py`, 5 tests; commit `5b0c49392`). Until the fix was in, every path was checked against CORPUS-ALLOWED.tsv before opening.
+
+## S0155 is sealed hold-out material (the Principal's measurement, 2026-10-25)
+
+The Principal ran, and pasted, the following:
+- `grep -c -e "S0155" -e "20260820-123902" docs/knowledgeos/chronological-read/P3B-HOLDOUT-SEALED-S3.jsonl` → **4**
+- the same on `P3B-HOLDOUT-QUARANTINE.jsonl` → **0**
+
+The Professor did not open either file and does not verify the result. Both lie under `chronological-read/`, which the Professor never accesses. **Fact, as measured by the Principal:** S0155 appears in the sealed hold-out set S3.
+
+**Consequence (stated, not decided).** Two readers have read a sealed hold-out source whole: the Professor (this session) and reviewer W (stopped). Any later use of S3 that relies on S0155 being unseen by them is compromised for S0155. Whether S0155 is withdrawn from S3, or S3 is treated as compromised, is for the Principal and the Rule Reviewer. Reviewer W2 did not open S0155 (W2's step-1 and step-2 file lists).
+
+**Open, for the Principal:** whether S0156, S0157, S0161, S0170, S0174 and S0233 (the other non-allowed entries up to S0400) are also sealed. The Professor cannot check without opening sealed files. The tool now refuses all of them at start and skips them in order (`5b0c49392`).
