@@ -420,3 +420,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **The rule freeze of 2026-10-20 ends.** The practices recorded in this decision record (2026-10-20) are now rules in v1.4 or dropped; **this record carries decisions only** from now on.
 - **Next research step (recommended, accepted):** one theory turn on record identity and anchoring (K1/K2), from the collected kernel questions of §8.18–§8.21; then reading resumes at S0151.
 - **Tool changes for the Professor** (rules in v1.4, tools to follow): `close_source.py` refuses the next source in order when a consolidation is due; `undefined_terms.py` lists ordinary words in claim headings and definitions not defined in the book (tested on "lane", "watermark", "seal-line").
+
+## Addendum (2026-10-25T01:52:54Z): the S0155 access incident; turn-8 decisions
+
+- **S0155** (not on the allowed list) was opened by the Professor and by a C29 reviewer; the reading tool now refuses non-allowed sources at start (access record, same time). **S0155 is treated as exposed** for the final hold-out test; the sealed list is not probed further. The Principal's private check was inconclusive (counts only, recorded in the access record).
+- **Window C29** completed with S0151–S0154 and S0158, with a new reviewer.
+- **Turn 8** (§9.17): a **designation** (which store is the record) is a recordable kind of entry in D, appended as the first entry of the new store and citing the old store's last entry; order across a designation comes from that citation (CON-0251), not from recording time. Applied in `57785a947`.
