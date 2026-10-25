@@ -31,3 +31,26 @@ Rulebook v1.4 §7, quoted: "Only files on the corpus allowed list are read (D-C1
   - removing the seven from the index, as was done for S0082;
   - a different skip rule;
   - what to do about the exposure.
+
+## Audit of reviewer W's transcript (the Principal's instruction, 2026-10-25)
+
+**Method.** The harness's JSONL transcript of the stopped task was parsed. Only tool calls (name and input) were listed, plus a count of tool results that mention S0155's path or a term from its content. The transcript's own text was not read.
+
+**Result: W opened S0155.**
+
+| Time (UTC) | W's tool call |
+|---|---|
+| 19:21:06–07 | Read REVIEWER-INSTRUCTIONS.md and BRIEF-W-STEP1.md |
+| 19:21:09 | Bash `wc -l` on the window's files in `brainstorming/` (line counts only) |
+| 19:21:12–18 | Read S0151, S0152, S0153, S0154 |
+| **19:21:19** | **Read `docs/knowledgeos/brainstorming/20260820-123902-kos-design-patterns.md` (S0155)** |
+
+- 16 tool-use records (each call appears twice in the stream), and nothing else after the S0155 read.
+- 5 tool results carry S0155's path or content.
+- No hand-back was produced. The task was stopped at about 19:37.
+
+**Disposition.**
+- S0155 is **recorded as exposed**, to the Professor and to reviewer W (Opus, task stopped).
+- Nothing from S0155 is ever used.
+- W's task is closed and is not resumed. C29 is completed with a new reviewer for the blind step.
+- Tool fix: `close_source.py` refuses `--start` for a non-allowed source, and the next source in order skips non-allowed entries (`allowed_order.py`, 5 tests; commit `5b0c49392`). Until the fix was in, every path was checked against CORPUS-ALLOWED.tsv before opening.
