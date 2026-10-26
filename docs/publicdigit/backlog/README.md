@@ -183,6 +183,10 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-304`](PBDIGIT-304-psr4-autoload-cleanup.md) | **PSR-4 autoload cleanup**: 11 classes skipped by Composer (3 stale duplicates, 2 dead classes, 1 misplaced model, 5 test namespace/class issues) | — | `IN PROGRESS` · plan approved 2026-10-16 |
 | [`PBDIGIT-305`](PBDIGIT-305-remove-public-mail-test-routes.md) | **Public mail test routes removed** (`/test/email` sent mail and returned the SMTP username; `/test-email` sent a verification code to the first user; both unauthenticated) | — | `IMPLEMENTED` · awaiting acceptance and deployment |
 | [`PBDIGIT-306`](PBDIGIT-306-verify-page-submitted-not-saved-message.md) | **Verify page said "successfully submitted" in green before the vote is saved**; now "submitted – not saved yet" in amber (en, de, np; real and demo pages) | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
+| [`PBDIGIT-307`](PBDIGIT-307-voter-invitation-login-ip-not-recorded.md) | **Voters who logged in through the invitation link had no `users.current_ip`** to capture; now recorded by the `Login` listener on every login path (future logins only) | — | `IMPLEMENTED` · `f9953525d`; awaiting acceptance and deployment |
+| [`PBDIGIT-308`](PBDIGIT-308-login-and-voter-test-fixtures-failing.md) | **Login and voter-management feature tests fail on stale fixtures** (27 related, 93 `tests/Feature/Auth`); causes analysed 2026-10-26 | — | `OPEN` · analysed, not authorised |
+| [`PBDIGIT-309`](PBDIGIT-309-platform-organisation-slug-mismatch.md) | **The platform organisation has two slugs in the code**: the tenant auto-fill looks up `platform`, the seeder and `UserFactory` create `publicdigit` | — | `OPEN` · needs PO decision |
+| [`PBDIGIT-310`](PBDIGIT-310-registration-role-listener-insert-fails.md) | **`CreateUserOrganisationRole` inserts a role row without its UUID `id`**: fails on every registration (caught and logged); breaks registration tests | — | `OPEN` · production log check pending |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
