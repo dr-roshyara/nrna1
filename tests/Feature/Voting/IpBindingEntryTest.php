@@ -33,6 +33,7 @@ use Tests\TestCase;
  *   B-E5 IPv6 written two ways → allowed
  *   B-E6 a capture in another election does not satisfy this election
  *   B-E7 after re-capture: allowed from the new IP, refused from the old one
+ *   B-E8…E11 PBDIGIT-315 (supersedes B3): the same IPv4 /24 or IPv6 /64 network is allowed; another network is refused
  *   B-A1 authority: mismatch → Denied; binding off → Allowed
  *   B-A2 the whitelist does not bypass binding (Q1)
  *   B-A3 the assessment envelope carries neither the request IP nor the captured IP
@@ -189,6 +190,52 @@ class IpBindingEntryTest extends TestCase
         $this->assertSame(SecurityVerdict::IpBindingDenied, $this->assess($voter, self::OTHER_IP)->verdict, 'the old IP no longer binds');
         $this->enterFrom($voter, $this->slugFor($voter), self::VOTING_IP)->assertOk();
         $this->assertSame(1, $this->codes($voter));
+    }
+
+    // ── PBDIGIT-315: the voter's network, not the exact address ─────────────
+
+    public function test_b_e8_a_captured_voter_in_the_same_ipv4_24_network_enters(): void
+    {
+        $this->bindingOn();
+        $voter = $this->member();
+        $this->capturedIp($voter, '106.101.7.23');
+
+        $this->enterFrom($voter, $this->slugFor($voter), '106.101.7.88')->assertOk();
+
+        $this->assertSame(1, $this->codes($voter), 'same /24 network: allowed');
+    }
+
+    public function test_b_e9_a_captured_voter_in_the_neighbouring_24_network_is_refused(): void
+    {
+        $this->bindingOn();
+        $voter = $this->member();
+        $this->capturedIp($voter, '106.101.7.23');
+
+        $response = $this->enterFrom($voter, $this->slugFor($voter), '106.101.8.23');
+
+        $this->assertRefusedForBinding($response, $voter, '106.101.7.23');
+    }
+
+    public function test_b_e10_a_captured_voter_in_the_same_ipv6_64_network_enters(): void
+    {
+        $this->bindingOn();
+        $voter = $this->member();
+        $this->capturedIp($voter, '2001:db8:1:2::10');
+
+        $this->enterFrom($voter, $this->slugFor($voter), '2001:db8:1:2:aaaa:bbbb:cccc:dddd')->assertOk();
+
+        $this->assertSame(1, $this->codes($voter), 'same /64 network: allowed');
+    }
+
+    public function test_b_e11_a_captured_voter_in_another_ipv6_64_network_is_refused(): void
+    {
+        $this->bindingOn();
+        $voter = $this->member();
+        $this->capturedIp($voter, '2001:db8:1:2::10');
+
+        $response = $this->enterFrom($voter, $this->slugFor($voter), '2001:db8:1:3::10');
+
+        $this->assertRefusedForBinding($response, $voter, '2001:db8:1:2::10');
     }
 
     // ── Security Verdict Authority ──────────────────────────────────────────

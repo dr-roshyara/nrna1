@@ -9,6 +9,13 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-26, later): **PBDIGIT-315 implemented: IP binding matches the voter's network (IPv4 /24, IPv6 /64), not the exact address**; awaiting PO acceptance; additive
+- **Done:**
+  - new pure `IpBindingNetwork`, used by `TrustLegitimacySecurityVerdict::ipBindingSatisfied()`;
+  - supersedes PBDIGIT-247 B3 only (fail closed, whitelist-no-bypass and message unchanged);
+  - RED → GREEN; binding suites 24/24; guide `developer_guide/election/ip_voting/09_…`.
+- **Next:** PO acceptance; deploy (`php artisan optimize`). **PBDIGIT-316:** 14 security unit tests fail with and without this change (not analysed).
+
 ## 📍 UPDATE (2026-10-26): **PBDIGIT-307 implemented: the last-login IP is recorded on every login path**; awaiting PO acceptance; additive, the blocks below are unchanged
 - **Done:** the `Login` listener `RecordLastLoginTimestamp` now writes `users.current_ip`. It was the invitation-link login that left it NULL (ONF East Asia: 46 of 51 logged-in voters). The duplicate write in `LoginController` was removed. RED → GREEN. Guide `developer_guide/election/voter_admission/10_…`.
 - **Operational:** the fix covers future logins only. Affected voters must log out and log in again before the officer can capture their IP; no backfill is possible.

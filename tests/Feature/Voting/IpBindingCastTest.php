@@ -73,6 +73,19 @@ class IpBindingCastTest extends TestCase
         $this->assertTrue((bool) $code->fresh()->has_voted, 'the vote is recorded from the bound IP');
     }
 
+    public function test_b_c4_a_cast_from_the_captured_ips_24_network_is_recorded(): void
+    {
+        $this->bindingOn();
+        [$voter, $slug, $code] = $this->voterReadyToCast();
+        $this->capturedIp($voter, '127.0.0.55');   // PBDIGIT-315: same /24 as CAST_IP, not the same address
+
+        $response = $this->cast($voter, $slug, $code);
+
+        $this->assertNotSame(500, $response->status());
+        $response->assertSessionHasNoErrors();
+        $this->assertTrue((bool) $code->fresh()->has_voted, 'the vote is recorded from the bound network');
+    }
+
     public function test_b_c3_a_cast_without_a_captured_ip_is_refused_fail_closed(): void
     {
         $this->bindingOn();

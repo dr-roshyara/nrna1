@@ -9,6 +9,7 @@ use App\Contexts\Elections\Application\DTO\SecurityAttemptContext;
 use App\Contexts\Elections\Application\Ports\VotingSecurityAssessmentQuery;
 use App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery;
 use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
+use App\Domain\Election\Security\IpBindingNetwork;
 use App\Domain\Election\Security\LegitimacyOutcome;
 use App\Domain\Election\Security\TrustEvidencePrivacyPolicy;
 use App\Models\Election;
@@ -85,9 +86,10 @@ final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
     }
 
     /**
-     * PBDIGIT-247 IP Binding (B1, B3): null when the election does not bind; otherwise whether the request IP is
-     * exactly the voter's captured IP in THIS election (voter_ip_verifications), compared after canonicalisation
-     * (IPv4 / IPv6). No capture ⇒ false (fail closed). The raw addresses never leave this method — only the fact.
+     * PBDIGIT-247 IP Binding (B1): null when the election does not bind; otherwise whether the request IP is in the
+     * network of the voter's captured IP in THIS election (voter_ip_verifications): IPv4 /24, IPv6 /64
+     * (PBDIGIT-315, superseding B3 "exact address"). No capture ⇒ false (fail closed). The raw addresses never
+     * leave this method — only the fact.
      */
     private function ipBindingSatisfied(Election $election, string $userId, string $clientIp): ?bool
     {
@@ -99,15 +101,7 @@ final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
             ->where('user_id', $userId)
             ->value('ip_address');
 
-        $canonical = static function (?string $ip): ?string {
-            $packed = $ip === null ? false : @inet_pton($ip);
-
-            return $packed === false ? null : inet_ntop($packed);
-        };
-
-        $bound = $canonical($captured);
-
-        return $bound !== null && $bound === $canonical($clientIp);
+        return IpBindingNetwork::matches($captured, $clientIp);
     }
 
     /**

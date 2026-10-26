@@ -9,7 +9,7 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 | **Per-IP vote limit** (`IpVoteLimit`, guides 01, 03) | completed votes per IP (IPv6: per /64) per election, counted at the IP of the vote | ✔ | ✔ | ✔ | ✔ under a per-network lock | `.env` `MAX_USE_IP_ADDRESS`; election "IP restriction" setting; default 10 |
 | **Constitutional per-IP limit** (trust policy) | votes per IP, scaled by evidence level | | ✔ (`forEntry`) | | ✔ (`forCast`) | `elections.max_votes_per_ip` (default 6, **not shown in the UI**, PBDIGIT-286) |
 | **IP whitelist** (`Ipv4Whitelist`, guide 02) | exempts listed IPv4 networks from **both** limits above | ✔ | ✔ | ✔ | ✔ | election settings, `ip_whitelist` |
-| **IP binding** (PBDIGIT-247) | the voter may act only from their captured IP | | ✔ | | ✔ | election setting `ip_binding_enabled` (default off); the captured IP is in `voter_ip_verifications` |
+| **IP binding** (PBDIGIT-247, guide 09) | the voter may act only from their captured IP's network (IPv4 /24, IPv6 /64, PBDIGIT-315) | | ✔ | | ✔ | election setting `ip_binding_enabled` (default off); the captured IP is in `voter_ip_verifications` |
 
 **Key rules:**
 - **The two per-IP limits are separate** (Human PO, 2026-10-13). At code entry the stricter one applies.
@@ -27,6 +27,7 @@ Protections that use the voter's IP address. **None of them stores an IP on a vo
 | 06 | [The constitutional per-IP limit (System B) as it works today](06_constitutional_limit.md) | `PBDIGIT-286` (OPEN) | **committed behaviour**; P5 (guide 07) is in the working tree, the other phases are planned |
 | 07 | [The trust level comes from real verification evidence](07_trust_level_from_verification.md) | `PBDIGIT-286` P5 | implemented 2026-10-14; first-review findings addressed; second review PASS WITH FINDINGS; committed `2f998b8ae` (not pushed); **not accepted**; **must not be released without P6 accepted** |
 | 08 | [No vote beyond the limit: the System B boundary](08_p6_boundary.md) | `PBDIGIT-286` P6 | D7, D7a and D6 (count via `IpVoteLimit::votesFrom`) implemented 2026-10-15; database-free and isolated tests green, including caller fail-closed tests and the mutation proof; committed `2f998b8ae` (not pushed); **not accepted** |
+| 09 | [IP binding matches the voter's network (`IpBindingNetwork`)](09_ip_binding_network_match.md) | `PBDIGIT-315` | implemented 2026-10-26; awaiting acceptance |
 
 ## How the client IP is obtained
 - **In code:** `$request->ip()` / `Request::getClientIp()` (no argument).
