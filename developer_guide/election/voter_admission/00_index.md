@@ -30,6 +30,7 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | [07_read_only_voter_list_verification_states.md](./07_read_only_voter_list_verification_states.md) | PBDIGIT-250 | Read-only voter list: Identity Verification / IP Address Verification state columns (states only), shared `VoterVerificationStates` read-model |
 | [08_ip_binding.md](./08_ip_binding.md) | PBDIGIT-247 | IP Binding: captured AND matching (fail closed) at forEntry / forCast, `IpBindingDenied`, locked setting, `capture_voter_ip` window |
 | [09_voter_management_lifecycle_access.md](./09_voter_management_lifecycle_access.md) | PBDIGIT-251 | Voter Management readable in every state; verification, IP capture and two-person suspension until voting closes; `capabilities` prop |
+| [10_login_ip_recorded_on_every_login.md](./10_login_ip_recorded_on_every_login.md) | PBDIGIT-307 | `users.current_ip` (read by Capture IP) recorded by the `Login` listener on every login path, including the invitation link |
 
 ## Related guides
 

@@ -5,7 +5,8 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Login;
 
 /**
- * Records users.last_login_at on successful authentication.
+ * Records users.last_login_at and users.current_ip (the last-login IP read by
+ * the "Voter's IP Verification" capture, PBDIGIT-307) on successful authentication.
  *
  * Illuminate\Auth\Events\Login is fired by Laravel's SessionGuard for every
  * login entry point in this app (password login, Google/social login,
@@ -19,6 +20,6 @@ class RecordLastLoginTimestamp
 {
     public function handle(Login $event): void
     {
-        $event->user->updateQuietly(['last_login_at' => now()]);
+        $event->user->updateQuietly(['last_login_at' => now(), 'current_ip' => request()->ip()]);
     }
 }

@@ -9,6 +9,11 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-26): **PBDIGIT-307 implemented: the last-login IP is recorded on every login path**; awaiting PO acceptance; additive, the blocks below are unchanged
+- **Done:** the `Login` listener `RecordLastLoginTimestamp` now writes `users.current_ip`. It was the invitation-link login that left it NULL (ONF East Asia: 46 of 51 logged-in voters). The duplicate write in `LoginController` was removed. RED → GREEN. Guide `developer_guide/election/voter_admission/10_…`.
+- **Operational:** the fix covers future logins only. Affected voters must log out and log in again before the officer can capture their IP; no backfill is possible.
+- **Next:** PO acceptance; deploy (`php artisan optimize`); tell the officer. **PBDIGIT-308:** 27 related and 93 `tests/Feature/Auth` failures exist without this change (stale fixtures).
+
 ## 📍 UPDATE (2026-10-15): **PBDIGIT-286 P5 + P6 committed `2f998b8ae` (not pushed); awaiting Principal acceptance**
 - **Done:** trust level from verification evidence (P5); refusal at `>=`, minimum 1, count via `IpVoteLimit::votesFrom` (P6). Evidence `docs/publicdigit/election/evidence/2026-10-15-pbdigit286-p6-evidence/`; guides 07, 08.
 - **Not done:**
