@@ -192,7 +192,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-313`](PBDIGIT-313-election-page-has-no-site-header.md) | **Election page `/elections/{slug}` had no site header** (no ☰ menu, no Logout): `ElectionLayout` wrapper restored in `Election/Show.vue` | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
 | [`PBDIGIT-314`](PBDIGIT-314-voter-ip-badge-larger-bold.md) | **Voter's IP on the election page shown larger and bold** (`<i18n-t>` slot, `.esp-ip-badge__ip`) | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
 | [`PBDIGIT-315`](PBDIGIT-315-ip-binding-network-match.md) | **IP binding matches the voter's network** (IPv4 /24, IPv6 /64) instead of the exact address; supersedes PBDIGIT-247 B3 | — | `IMPLEMENTED` · awaiting acceptance and deploy |
-| [`PBDIGIT-316`](PBDIGIT-316-security-unit-tests-failing.md) | **14 voting-security unit tests fail** on the current code (`D5ResolverIntegrationTest` 8, `OverlaySignalTest` 5, `SovereigntyConvergenceFitnessTest` 1) | — | `OPEN` · not analysed |
+| [`PBDIGIT-316`](PBDIGIT-316-security-unit-tests-failing.md) | **14 voting-security unit tests fail** on the current code (`D5ResolverIntegrationTest` 8, `OverlaySignalTest` 5, `SovereigntyConvergenceFitnessTest` 1) | — | `OPEN` · causes found (stale tests); fix needs authorisation |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
