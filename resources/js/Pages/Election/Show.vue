@@ -1,5 +1,5 @@
 <template>
-    <!-- <ElectionLayout> -->
+    <ElectionLayout>
         <Head></Head>
 
         <div class="esp-root">
@@ -285,7 +285,7 @@
             </section>
 
         </div>
-    <!-- </ElectionLayout> -->
+    </ElectionLayout>
 </template>
 
 <script setup>
