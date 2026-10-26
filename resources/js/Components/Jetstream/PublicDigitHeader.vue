@@ -219,56 +219,56 @@
       <!-- Mobile Menu - Dropdown for small screens -->
       <div
         v-if="showMobileMenu"
-        class="md:hidden absolute top-full left-0 right-0 bg-white border-t border-brand-gold-500/20 shadow-2xl py-4 px-0 space-y-2 z-50"
+        class="md:hidden absolute top-full left-0 right-0 bg-primary-900 border-t border-accent-400/20 shadow-2xl py-4 px-0 space-y-2 z-50"
         role="region"
         :aria-label="$t('common.mobile_navigation')"
       >
         <!-- Mobile Navigation Links -->
         <div class="space-y-1 px-3">
           <Link href="/" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🏠 {{ $t('navigation.home') }}
           </Link>
           <Link href="/about" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ℹ️ {{ $t('navigation.about') }}
           </Link>
           <Link href="/faq" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.faq') }}
           </Link>
           <Link href="/security" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🔒 {{ $t('navigation.security') }}
           </Link>
           <Link :href="route('public.election-architecture')" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🏛️ {{ $t('navigation.election_architecture', 'Architecture') }}
           </Link>
           <Link v-if="$page.props.user" :href="route('demo-result.index', { organisation_slug: $page.props.user.organisation?.slug })" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             📊 {{ $t('navigation.demo_result') }}
           </Link>
           <Link :href="route('public-demo.guide')" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.demo_guide') }}
           </Link>
           <Link :href="route('tutorials.hub')" @click="closeMobileMenu"
-            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             📚 {{ $t('navigation.tutorials') }}
           </Link>
         </div>
 
         <!-- Mobile Demo CTA - Gold -->
-        <div class="pt-3 border-t border-brand-gold-500/20 px-3">
+        <div class="pt-3 border-t border-accent-400/20 px-3">
           <Link
             :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
             @click="closeMobileMenu"
@@ -279,7 +279,7 @@
         </div> 
 
         <!-- Mobile Auth -->
-        <div class="pt-3 border-t border-brand-gold-500/20 space-y-2 sm:hidden px-3">
+        <div class="pt-3 border-t border-accent-400/20 space-y-2 sm:hidden px-3">
           <a
             v-if="!isLoggedIn"
             :href="route('login')"
@@ -293,7 +293,7 @@
             type="button"
             @click="logout"
             :disabled="isLoggingOut"
-            class="w-full px-4 py-3 border border-brand-gold-500 text-brand-gold-500 font-semibold text-sm rounded-lg hover:bg-gold hover:text-neutral-900 active:opacity-90 transition-all duration-150 min-h-[44px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full px-4 py-3 border border-accent-400 text-accent-400 font-semibold text-sm rounded-lg hover:bg-accent-400 hover:text-neutral-900 active:opacity-90 transition-all duration-150 min-h-[44px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             🚪 {{ isLoggingOut ? $t('navigation.logging_out', 'Logging out...') : $t('navigation.logout') }}
           </button>

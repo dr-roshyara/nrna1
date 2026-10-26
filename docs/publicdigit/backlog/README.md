@@ -187,6 +187,8 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-308`](PBDIGIT-308-login-and-voter-test-fixtures-failing.md) | **Login and voter-management feature tests fail on stale fixtures** (27 related, 93 `tests/Feature/Auth`); causes analysed 2026-10-26 | — | `OPEN` · analysed, not authorised |
 | [`PBDIGIT-309`](PBDIGIT-309-platform-organisation-slug-mismatch.md) | **The platform organisation has two slugs in the code**: the tenant auto-fill looks up `platform`, the seeder and `UserFactory` create `publicdigit` | — | `OPEN` · needs PO decision |
 | [`PBDIGIT-310`](PBDIGIT-310-registration-role-listener-insert-fails.md) | **`CreateUserOrganisationRole` inserts a role row without its UUID `id`**: fails on every registration (caught and logged); breaks registration tests | — | `OPEN` · production log check pending |
+| [`PBDIGIT-311`](PBDIGIT-311-mobile-menu-unreadable.md) | **Mobile menu (☰) was white on white; Logout invisible**: panel now dark (`primary-900`), Logout and accents in `accent-400` gold | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
+| [`PBDIGIT-312`](PBDIGIT-312-undefined-theme-colours.md) | **`brand-gold-*` and `primary-950` generate no CSS** (Tailwind 4 theme in `app.css`; `tailwind.config.js` not loaded); 5 components affected | — | `OPEN` · needs design decision |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
