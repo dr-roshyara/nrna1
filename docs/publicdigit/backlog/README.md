@@ -190,6 +190,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-311`](PBDIGIT-311-mobile-menu-unreadable.md) | **Mobile menu (☰) was white on white; Logout invisible**: panel now dark (`primary-900`), Logout and accents in `accent-400` gold | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
 | [`PBDIGIT-312`](PBDIGIT-312-undefined-theme-colours.md) | **`brand-gold-*` and `primary-950` generate no CSS** (Tailwind 4 theme in `app.css`; `tailwind.config.js` not loaded); 5 components affected | — | `OPEN` · needs design decision |
 | [`PBDIGIT-313`](PBDIGIT-313-election-page-has-no-site-header.md) | **Election page `/elections/{slug}` had no site header** (no ☰ menu, no Logout): `ElectionLayout` wrapper restored in `Election/Show.vue` | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
+| [`PBDIGIT-314`](PBDIGIT-314-voter-ip-badge-larger-bold.md) | **Voter's IP on the election page shown larger and bold** (`<i18n-t>` slot, `.esp-ip-badge__ip`) | — | `IMPLEMENTED` · awaiting acceptance and frontend release |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

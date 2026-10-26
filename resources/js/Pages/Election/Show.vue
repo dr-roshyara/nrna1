@@ -48,7 +48,9 @@
 
                     <div v-if="ipAddress" class="esp-ip-badge" aria-label="Your IP address">
                         <span class="esp-ip-badge__icon" aria-hidden="true">⬡</span>
-                        <span class="esp-ip-badge__text">{{ $t('pages.election-show.hero.ip_badge_text', { ip: ipAddress }) }}</span>
+                        <i18n-t keypath="pages.election-show.hero.ip_badge_text" tag="span" class="esp-ip-badge__text">
+                            <template #ip><strong class="esp-ip-badge__ip">{{ ipAddress }}</strong></template>
+                        </i18n-t>
                         <span class="esp-ip-badge__tooltip">{{ $t('pages.election-show.hero.ip_badge_tooltip') }}</span>
                     </div>
                 </div>
@@ -577,6 +579,12 @@ const ballotCardClass = computed(() => ({
     font-weight: 500;
     color: var(--cream);
     letter-spacing: 0.02em;
+}
+
+.esp-ip-badge__ip {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold-lt);
 }
 
 .esp-ip-badge__tooltip {
