@@ -216,7 +216,7 @@ if path not in ALLOWED:                                              # exact pat
     data = b''
 else:
     data = (REPO / path).read_bytes()
-sha, nlines = hashlib.sha256(data).hexdigest(), data.count(b'\n')
+sha, nlines = hashlib.sha256(data).hexdigest(), data.count(b'\n') + (1 if data and not data.endswith(b'\n') else 0)  # 2026-10-27: a last line without a newline counts (C31: S0166 L1332, S0168 L1612 were missed)
 src_lines = data.decode('utf-8', errors='replace').split('\n')
 
 
