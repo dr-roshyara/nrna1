@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 17 (the Principal, decision record 7ecf5a024,
+it tests the FORM of the repaired definition, not its content. Version 18 (C32 review W-01-W-04, W-07; the Professor's
+technical completion of the ruling, marked for review): the append guard requires a designation's old store to be the
+carrier in force at that kernel step (no fork, no stale designation); the kernel, not the caller, sets the store of an
+appended entry (the carrier in force; a designation's own store is its carrier); the old store's maximal entries are
+taken over the entries the kernel accepted, so a bypass write ('bypass': True) is never forced into the closed members;
+D (no position read) admits at most one designation per old store, a single chain of designations from the root
+carrier 'C1' in which each designation reaches its predecessor by citation, and only stores the chain names. The kind
+'observe' of v17 is withdrawn (W-07): an incumbent's behaviour is evidence outside D. Check 30. Version 17 (decision
+record 7ecf5a024,
 2026-10-27, after C30): "a designation cites every maximal entry of the old store (every entry no other entry of that
 store cites). At append, the kernel refuses a designation that omits any maximal entry. The old store's end is fixed by
 citation alone (CON-0251), whatever the merge order"; "a designation whose authority evaluates F or U is refused at
@@ -96,9 +104,8 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'transfer': {'actor', 'cites', 'grant', 'new_owner', 'scope', 't', 'last_use'},   # v13: carries the uses
           # v16 (the Principal after turn 8): a designation names the carrier of the record from here on, and cites the
           # last entry under the previous carrier ('closes'); order across designations comes from that citation
-          'designate': {'actor', 'cites', 'carrier', 'old', 'closes', 'scope', 't'},   # v17: closes = maximal entries
-          # v17 (the Professor's modelling choice, for review): an observed behaviour of a system; no act on the item
-          'observe': {'actor', 'cites', 'item', 'value', 'scope', 't'}}
+          'designate': {'actor', 'cites', 'carrier', 'old', 'closes', 'scope', 't'}}   # v17: closes = maximal entries
+ROOT_CARRIER = 'C1'                                  # v18: the carrier the root designation names (outside D, L11)
 FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the owner application, fixed at issuance
 ENDING_KINDS = ('endg', 'consume')
 KERNEL = 'kernel'                                                    # v11: the application that holds the contract
@@ -205,11 +212,37 @@ def down_store(rec, i, store):
     return seen
 
 
-def maximal_entries(rec, store):
-    """v17 (the Principal): the maximal entries of a store, every entry of it that no other entry of that store cites."""
-    ids = [x['id'] for x in rec.e if x.get('store') == store]
-    cited = {c for x in rec.e if x.get('store') == store for c in x.get('cites', [])}
-    return [i for i in ids if i not in cited]
+def maximal_entries(rec, store, accepted_only=False):
+    """v17 (the Principal): the maximal entries of a store, every entry of it that no other entry of that store cites.
+    v18 (C32 W-03): with accepted_only, over the entries the kernel accepted (a bypass write is not one)."""
+    es = [x for x in rec.e if x.get('store') == store and not (accepted_only and x.get('bypass'))]
+    cited = {c for x in es for c in x.get('cites', [])}
+    return [x['id'] for x in es if x['id'] not in cited]
+
+
+def carrier_in_force(rec):
+    """v18 (C32 W-01): the carrier the designation in force names: from the root carrier, follow the designation that
+    closes the current carrier, as long as there is one."""
+    cur, seen = ROOT_CARRIER, set()
+    while True:
+        nxt = [x for x in rec.e if x['kind'] == 'designate' and x['old'] == cur and not x.get('bypass')]
+        if not nxt or cur in seen:
+            return cur
+        seen.add(cur)
+        cur = nxt[0]['carrier']
+
+
+def reaches(rec, a, b):
+    """v18: entry a reaches entry b by citation (directly or through any entries)."""
+    seen, todo = set(), [a]
+    while todo:
+        for c in rec.by[todo.pop()].get('cites', []):
+            if c == b:
+                return True
+            if c in rec.by and c not in seen:
+                seen.add(c)
+                todo.append(c)
+    return False
 
 
 def members_closed(rec, d):
@@ -270,6 +303,24 @@ def in_D(rec):
                 return False, f"{x['id']} cites {g}, which is not in the record (D: citations of earlier entries only; v5: a dangling citation is refused)"
             if rec.pos[g] >= rec.pos[x['id']]:
                 return False, f"{x['id']} cites {g}, which is not an earlier entry (D: citations of earlier entries only)"
+    ds = [x for x in rec.e if x['kind'] == 'designate']      # v18 (C32 W-01, W-02): one chain, no position read
+    olds = [x['old'] for x in ds]
+    if len(olds) != len(set(olds)):
+        return False, f"two designations close the same store {sorted(o for o in set(olds) if olds.count(o) > 1)} (a fork)"
+    by_carrier = {}
+    for x in ds:
+        by_carrier.setdefault(x['carrier'], []).append(x)
+    for x in ds:
+        if x['old'] != ROOT_CARRIER:
+            prev = by_carrier.get(x['old'], [])
+            if len(prev) != 1:
+                return False, f"designation {x['id']} closes {x['old']}, which no single designation of the chain names"
+            if not reaches(rec, x['id'], prev[0]['id']):
+                return False, f"designation {x['id']} does not reach {prev[0]['id']}, the designation of its old store, by citation"
+    known = {ROOT_CARRIER} | {x['carrier'] for x in ds}
+    unknown = sorted({x.get('store', ROOT_CARRIER) for x in rec.e} - known)
+    if unknown:
+        return False, f"entries in stores {unknown}, which no designation names"
     return True, None
 
 
@@ -953,7 +1004,10 @@ def append_guard(rec, e):
     a_new = wfs(tmp)
     a = wfs(rec)
     if e['kind'] == 'designate':                   # v17 (decision record 7ecf5a024), in the same step as the append (K6)
-        omitted = [m for m in maximal_entries(rec, e['old']) if m not in e['cites']]   # "cites every maximal entry"
+        cif = carrier_in_force(rec)                  # v18 (C32 W-01): only the carrier in force can be closed
+        if e['old'] != cif:
+            return False, f"designation {e['id']} refused: it closes {e['old']}, but the carrier in force is {cif}"
+        omitted = [m for m in maximal_entries(rec, e['old'], accepted_only=True) if m not in e['cites']]   # v18 (W-03)
         if omitted:
             return False, f"designation {e['id']} refused: it omits the maximal entries {omitted} of {e['old']}"
         if a_new[e['id']] != T:
@@ -1040,6 +1094,7 @@ def complete(rec, e):
 def append(rec, e):
     """v11: the guarded append, one step: the entry is added only if append_guard accepts it. Returns (ok, reason)."""
     e = complete(rec, e)
+    e['store'] = e['carrier'] if e['kind'] == 'designate' else carrier_in_force(rec)   # v18 (C32 W-02): set by the kernel
     ok, why = append_guard(rec, e)
     if ok:
         rec.e.append(e)
@@ -1997,12 +2052,13 @@ if __name__ == '__main__':
         if len(ts) == 1 and all(v == F for o, v in vals.items() if o != ts[0]):
             return ts[0]
         return U
-    obs = {'id': 'ob', 'kind': 'observe', 'actor': 'A', 'cites': ['g'], 'item': 'k', 'value': 'o1', 'scope': 's', 't': 1}
-    base6 = [dict(ROOT), G('g', 'P', ['r'], 'A', t=0), obs]
+    incumbent = {'k': 'o1'}                         # v18 (W-07): the old system's behaviour, evidence outside D
+    base6 = [dict(ROOT), G('g', 'P', ['r'], 'A', t=0)]
     r6 = Record([dict(x) for x in base6], S1)
     v6 = choice_value(r6, 'k', ['o1', 'o2'], 5)
     res29[6] = in_D(r6)[0] and v6 == U
-    print('(29.6) only the old system\'s behaviour on record (observe k = o1): choice value', v6, '->', 'PASS' if res29[6] else 'FAIL')
+    print('(29.6) the old system chooses', incumbent['k'], '(evidence, not in the record); no adoption: choice value', v6,
+          '(true by construction: CE* reads adoptions only) ->', 'PASS' if res29[6] else 'FAIL')
     r7 = Record([dict(x) for x in base6] + [dict(adopt('x', 'A', ['g'], t=2), item='k=o1')], S1)
     v7 = choice_value(r7, 'k', ['o1', 'o2'], 5)
     r7u = Record([dict(x) for x in base6] + [dict(adopt('x', 'Z', ['g'], t=2), item='k=o1')], S1)
@@ -2012,4 +2068,46 @@ if __name__ == '__main__':
           '| the same adoption by an actor without basis:', v7u, '->', 'PASS' if res29[7] else 'FAIL')
     print('(29) passed:', [k for k in sorted(res29) if res29[k]], '| failed:', [k for k in sorted(res29) if not res29[k]])
     assert all(res29.values())
+    # (30) v18 (C32 review W-01-W-04): one chain of designations; the kernel sets the store; bypass writes not promoted
+    res30 = {}
+    b30 = [dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1)]
+    r30 = Record([dict(x) for x in b30], S1)
+    ok_d1, _ = append(r30, desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'))
+    ok_fork, why_fork = append(r30, desig('d2', 'D', ['gD', 'x1'], ['x1'], t=3, carrier='C3', old='C1'))
+    res30['fork refused at append'] = ok_d1 and not ok_fork and 'carrier in force is C2' in why_fork
+    forked = Record([dict(x) for x in b30] + [desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'),
+                                              desig('d2', 'D', ['gD', 'x1'], ['x1'], t=3, carrier='C3', old='C1')], S1)
+    res30['a forked record is outside D'] = not in_D(forked)[0] and 'fork' in in_D(forked)[1]
+    # a kernel append after d1 lands in C2 whatever the caller says
+    ok_y, _ = append(r30, dict(adopt('y', 'A', ['g'], t=3), store='C1'))
+    res30['the kernel sets the store'] = ok_y and r30.by['y']['store'] == 'C2'
+    # a stale designation (closing C1 again) and a correct second one (closing C2: cites every maximal entry of C2)
+    ok_stale, why_stale = append(r30, desig('d3', 'D', ['gD', 'x1'], ['x1'], t=4, carrier='C3', old='C1'))
+    mx2 = maximal_entries(r30, 'C2', accepted_only=True)
+    ok_d4, why_d4 = append(r30, desig('d4', 'D', ['gD'] + mx2, mx2, t=4, carrier='C3', old='C2'))
+    res30['stale designation refused'] = not ok_stale and 'carrier in force is C2' in why_stale
+    res30['second designation accepted, chain in D'] = ok_d4 and in_D(r30)[0] and carrier_in_force(r30) == 'C3' \
+        and members_closed(r30, 'd4') >= {'d1', 'y'}
+    # a bypass write in C1 before the designation: not required, not a member, record still in D
+    rb = Record([dict(x) for x in b30] + [dict(adopt('z', 'A', ['g'], t=1), bypass=True)], S1)
+    ok_b, why_b = append(rb, desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'))
+    res30['bypass write not forced into the members'] = ok_b and 'z' not in members_closed(rb, 'd1') and in_D(rb)[0]
+    # D refuses an entry in a store no designation names
+    unk = Record([dict(x) for x in b30] + [dict(adopt('q', 'A', ['g'], t=2), store='C9')], S1)
+    res30['unknown store outside D'] = not in_D(unk)[0] and 'C9' in in_D(unk)[1]
+    # merge orders with two designations and a later C3 entry that cites neither
+    chain = [dict(x) for x in r30.e] + [dict(adopt('w', 'A', ['g'], t=5), store='C3')]
+    outs, nord = set(), 0
+    rng30 = random.Random(30)
+    for _ in range(40):
+        le = linear_extension(rng30, [dict(x) for x in chain])
+        rr = Record(le, S1)
+        outs.add((in_D(rr)[0], tuple(sorted(wfs(rr).items())), tuple(sorted(members_closed(rr, 'd1'))),
+                  tuple(sorted(members_closed(rr, 'd4'))), carrier_in_force(rr)))
+        nord += 1
+    res30['two designations: one result over merge orders'] = len(outs) == 1
+    for k_, v_ in res30.items():
+        print('(30)', k_, '->', 'PASS' if v_ else 'FAIL')
+    print('(30) why: fork', why_fork, '| stale', why_stale, '| merge orders tried', nord)
+    assert all(res30.values())
     print('all assertions passed')
