@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 16 (the Principal, 2026-10-25, after theory
+it tests the FORM of the repaired definition, not its content. Version 17 (the Principal, decision record 7ecf5a024,
+2026-10-27, after C30): "a designation cites every maximal entry of the old store (every entry no other entry of that
+store cites). At append, the kernel refuses a designation that omits any maximal entry. The old store's end is fixed by
+citation alone (CON-0251), whatever the merge order"; "a designation whose authority evaluates F or U is refused at
+append. Authority is evaluated in the same kernel step as the append (K6)"; "the old system's behaviour is evidence of
+one possible choice, not a specification. An open choice is decided by a recorded act that adopts it explicitly, or
+stays U." Model: every entry carries the store it was appended to ('store', default 'C1'; a designation's store is the
+carrier it names, so it takes effect at itself); a designation names the store it closes ('old') and lists 'closes',
+the old store's maximal entries; D reads no position for designations (closes non-empty, cited, in the old store, an
+antichain); the append guard refuses an omitted maximal entry and an authorization other than T (checks 28, 29).
+LIMIT (the Principal): entries that bypass the kernel are not seen by this check; they stay with the reference-list
+loss check (CON-0243). Kind 'observe' (the Professor's modelling choice, for review): a recorded observation of a
+behaviour, e.g. an old system's choice; it is no act on the item and no basis (check 29 (6), (7)). Version 16 (the Principal, 2026-10-25, after theory
 turn 8: "a designation becomes a recordable kind in D. Order across designations comes from citation (the switch cites the
 old store's last entry, CON-0251), not from recording time."): kind 'designate' (actor, cites, carrier, closes, scope,
 t); D requires 'closes' to be cited and to be the entry immediately before the designation in the record's order; a
@@ -84,7 +96,9 @@ FIELDS = {'root': {'actor', 'scope', 't'},
           'transfer': {'actor', 'cites', 'grant', 'new_owner', 'scope', 't', 'last_use'},   # v13: carries the uses
           # v16 (the Principal after turn 8): a designation names the carrier of the record from here on, and cites the
           # last entry under the previous carrier ('closes'); order across designations comes from that citation
-          'designate': {'actor', 'cites', 'carrier', 'closes', 'scope', 't'}}
+          'designate': {'actor', 'cites', 'carrier', 'old', 'closes', 'scope', 't'},   # v17: closes = maximal entries
+          # v17 (the Professor's modelling choice, for review): an observed behaviour of a system; no act on the item
+          'observe': {'actor', 'cites', 'item', 'value', 'scope', 't'}}
 FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the owner application, fixed at issuance
 ENDING_KINDS = ('endg', 'consume')
 KERNEL = 'kernel'                                                    # v11: the application that holds the contract
@@ -93,8 +107,8 @@ APP_KINDS = ('consume', 'transfer')                                  # v11: entr
 
 def bases_of(x):
     """v10 (C19, T2-02): a consumption's only basis is the grant it consumes; every other act's are its citations."""
-    if x.get('kind') == 'designate':                # v16: the closing citation orders; it is not a basis
-        return [c for c in x.get('cites', []) if c != x.get('closes')]
+    if x.get('kind') == 'designate':                # v16/v17: the closing citations order; they are not bases
+        return [c for c in x.get('cites', []) if c not in (x.get('closes') or [])]
     return [x['grant']] if x.get('kind') == 'consume' else x.get('cites', [])
 # v6 (the Principal, after turn 6): every entry also carries its recorder and authentication status, apart from the actor
 for _k in FIELDS:
@@ -149,6 +163,7 @@ class Record:
                 x.setdefault('recorder', x.get('actor'))
                 x.setdefault('auth', 'signed-as-actor')
                 x.setdefault('app', 'A0' if x.get('kind') != 'transfer' else KERNEL)   # v13: every act carries it
+                x.setdefault('store', x['carrier'] if x.get('kind') == 'designate' else 'C1')   # v17: the store appended to
                 if x.get('kind') == 'grant':        # v11: one owner application, 'A0' unless given
                     x.setdefault('owner', 'A0')
                     x.setdefault('single_use', False)   # v13 (the Principal after C20): uses owner-checked only if True
@@ -179,6 +194,35 @@ class Record:
         return T if self.key(e) < self.key(x) else F
 
 
+def down_store(rec, i, store):
+    """v17: the entries of `store` that entry i reaches by citation (directly or through entries of that store)."""
+    seen, todo = set(), [i]
+    while todo:
+        for c in rec.by[todo.pop()].get('cites', []):
+            if c in rec.by and rec.by[c].get('store') == store and c not in seen:
+                seen.add(c)
+                todo.append(c)
+    return seen
+
+
+def maximal_entries(rec, store):
+    """v17 (the Principal): the maximal entries of a store, every entry of it that no other entry of that store cites."""
+    ids = [x['id'] for x in rec.e if x.get('store') == store]
+    cited = {c for x in rec.e if x.get('store') == store for c in x.get('cites', [])}
+    return [i for i in ids if i not in cited]
+
+
+def members_closed(rec, d):
+    """v17: the members of the store a designation closes: the entries of that store it cites (every maximal entry, by
+    the append guard) and what they reach in that store. A basis it cites in that store counts too."""
+    x = rec.by[d]
+    cited = [c for c in x['cites'] if c in rec.by and rec.by[c].get('store') == x['old']]
+    out = set(cited)
+    for c in cited:
+        out |= down_store(rec, c, x['old'])
+    return out
+
+
 def in_D(rec):
     """Membership of D, decidable: unique ids, admitted kinds, required fields, integrity."""
     if len(rec.by) != len(rec.e):
@@ -200,14 +244,21 @@ def in_D(rec):
                 continue                            # v13: a use-pointer names an earlier use of the same grant
             if u_ not in rec.pos or rec.pos[u_] >= rec.pos[x['id']] or g_ not in bases_of(rec.by[u_]) or rec.by[u_]['kind'] == 'transfer':
                 return False, f"{x['id']} names {u_} as the last use of {g_}, which is not an earlier use of it (v13)"
-        if x['kind'] == 'designate':               # v16 (the Principal after turn 8)
-            k = rec.pos[x['id']]
-            if x['closes'] is None:                 # the initial carrier is the root designation, outside D (§9.15 L11)
+        if x['kind'] == 'designate':               # v17 (decision record 7ecf5a024): no position is read here
+            cl = list(x['closes'] or [])
+            if not cl:                              # the initial carrier is the root designation, outside D (§9.15 L11)
                 return False, f"designation {x['id']} closes nothing: a designation in D is a change of carrier; the initial carrier is designated outside D (L11)"
-            elif x['closes'] not in x['cites']:
-                return False, f"designation {x['id']} does not cite the entry it closes, {x['closes']} (v16: order across designations comes from citation)"
-            elif x['closes'] not in rec.pos or rec.pos[x['closes']] != k - 1:
-                return False, f"designation {x['id']} closes {x['closes']}, which is not the last entry before it (v16: the switch cites the old carrier's last entry)"
+            if x['store'] != x['carrier'] or x['carrier'] == x['old']:
+                return False, f"designation {x['id']} is not appended to the new carrier it names, or names its old store again"
+            miss = [c for c in cl if c not in x['cites']]
+            if miss:
+                return False, f"designation {x['id']} does not cite the entries it closes, {miss} (order across designations comes from citation)"
+            alien = [c for c in cl if c not in rec.by or rec.by[c]['store'] != x['old']]
+            if alien:
+                return False, f"designation {x['id']} closes {alien}, which are not entries of its old store {x['old']}"
+            below = [c for c in cl if any(c in down_store(rec, o, x['old']) for o in cl if o != c)]
+            if below:
+                return False, f"designation {x['id']} closes {below}, which another closed entry already cites (not maximal)"
         if not x.get('ok', True):
             return False, f"integrity check failed for {x['id']}"
         if x.get('removed'):
@@ -901,6 +952,12 @@ def append_guard(rec, e):
     tmp = Record([dict(x) for x in rec.e] + [dict(e)], rec.dom, tie=rec.tie)
     a_new = wfs(tmp)
     a = wfs(rec)
+    if e['kind'] == 'designate':                   # v17 (decision record 7ecf5a024), in the same step as the append (K6)
+        omitted = [m for m in maximal_entries(rec, e['old']) if m not in e['cites']]   # "cites every maximal entry"
+        if omitted:
+            return False, f"designation {e['id']} refused: it omits the maximal entries {omitted} of {e['old']}"
+        if a_new[e['id']] != T:
+            return False, f"designation {e['id']} refused: its authorization is {a_new[e['id']]}, not T"
     su = single_use_grants(rec, e)
     if su:
         prev = dict(e.get('prev_use') or {})
@@ -1848,23 +1905,111 @@ if __name__ == '__main__':
     print('(27) a grant not single-use: two adoptions under it in D', in_D(r27)[0], 'and both', wfs(r27)['x1'], wfs(r27)['x2'],
           '| a consumption of it:', in_D(r27c)[1])
     assert in_D(r27)[0] and wfs(r27)['x2'] == T and not in_D(r27c)[0]
-    # (28) v16 (the Principal after turn 8): a designation is a recordable kind; it cites the old carrier's last entry
-    def desig(i, actor, cites, closes, t=3):
-        return {'id': i, 'kind': 'designate', 'actor': actor, 'cites': list(cites), 'carrier': 'C2', 'closes': closes,
-                'scope': 's', 't': t}
+    # (28) v17 (decision record 7ecf5a024; replaces v16's positional rule): a designation is a recordable kind; it cites
+    # every maximal entry of the old store; D reads no position for it
+    def desig(i, actor, cites, closes, t=3, carrier='C2', old='C1'):
+        return {'id': i, 'kind': 'designate', 'actor': actor, 'cites': list(cites), 'carrier': carrier, 'old': old,
+                'closes': list(closes), 'scope': 's', 't': t}
     base28 = [dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1)]
-    r28 = Record(base28 + [desig('d', 'D', ['gD', 'x1'], 'x1', t=2)], S1)
+    r28 = Record(base28 + [desig('d', 'D', ['gD', 'x1'], ['x1'], t=2)], S1)
     r28n = Record(list(base28), S1)
     w28, w28n = wfs(r28), wfs(r28n)
     same = all(w28[i] == w28n[i] for i in w28n)
-    r28gap = Record(base28 + [adopt('x2', 'A', ['g'], t=2), desig('d', 'D', ['gD', 'x1'], 'x1', t=3)], S1)
-    r28nocite = Record(base28 + [desig('d', 'D', ['gD'], 'x1', t=2)], S1)
-    r28first = Record([dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), desig('d0', 'D', ['gD'], None, t=1)], S1)
-    old_members = [x['id'] for x in r28.e[:r28.pos['x1'] + 1]]   # members held by the closed carrier: up to the cited entry
+    r28nocite = Record(base28 + [desig('d', 'D', ['gD'], ['x1'], t=2)], S1)
+    r28first = Record([dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), desig('d0', 'D', ['gD'], [], t=1)], S1)
+    r28below = Record(base28 + [adopt('x2', 'A', ['x1', 'g'], t=2), desig('d', 'D', ['gD', 'x1', 'x2'], ['x1', 'x2'], t=3)], S1)
+    old_members = sorted(members_closed(r28, 'd'))
     print('(28) designation in D:', in_D(r28)[0], '| its value', w28['d'], '| other values unchanged', same,
-          '| a gap before it:', in_D(r28gap)[1], '| not citing what it closes:', in_D(r28nocite)[1],
-          '| a designation closing nothing:', in_D(r28first)[1],
-          '| members of the closed carrier:', old_members)
-    assert in_D(r28)[0] and w28['d'] == T and same and not in_D(r28gap)[0] and not in_D(r28nocite)[0]
-    assert not in_D(r28first)[0] and old_members == ['r', 'gD', 'g', 'x1']
+          '| not citing what it closes:', in_D(r28nocite)[1], '| a designation closing nothing:', in_D(r28first)[1],
+          '| closing an entry another closed entry cites:', in_D(r28below)[1], '| members of the closed store:', old_members)
+    assert in_D(r28)[0] and w28['d'] == T and same and not in_D(r28nocite)[0] and not in_D(r28first)[0]
+    assert not in_D(r28below)[0] and old_members == ['g', 'gD', 'r', 'x1']
+    # (29) v17: the seven checks the Principal asked for (decision record 7ecf5a024)
+    res29 = {}
+    # (1) the same entries in different merge orders give the same result: D, every value, the closed members and the
+    # old store's maximal entries, over every citation-respecting order of the C30 W-01 case (x1, x2 concurrent; y a
+    # new-store entry not citing d), and over random records with a designation
+    def same_all(entries, tries=None):
+        outs, k = set(), 0
+        for perm in __import__('itertools').permutations(range(len(entries))):
+            es = [dict(entries[j]) for j in perm]
+            pos = {x['id']: n for n, x in enumerate(es)}
+            if any(pos[c] >= pos[x['id']] for x in es for c in x.get('cites', [])):
+                continue
+            rr = Record(es, S1)
+            ok_, _ = in_D(rr)
+            w_ = wfs(rr)
+            ds = [x['id'] for x in es if x['kind'] == 'designate']
+            outs.add((ok_, tuple(sorted(w_.items())), tuple(tuple(sorted(members_closed(rr, d_))) for d_ in sorted(ds)),
+                      tuple(sorted(maximal_entries(rr, 'C1')))))
+            k += 1
+        return outs, k
+    case1 = [dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1),
+             adopt('x2', 'A', ['g'], t=1), desig('d', 'D', ['gD', 'x1', 'x2'], ['x1', 'x2'], t=2),
+             dict(adopt('y', 'A', ['g'], t=3), store='C2')]
+    outs1, n1 = same_all(case1)
+    rng29 = random.Random(29)
+    rand_same, rand_n = 0, 0
+    for _ in range(40):
+        rr = random_record(rng29, n_acts=4)
+        mx = maximal_entries(rr, 'C1')
+        es = [dict(x) for x in rr.e] + [desig('dz', 'P', ['r'] + mx, mx, t=9)]
+        es[-1]['cites'] = list(dict.fromkeys(es[-1]['cites']))
+        if not in_D(Record([dict(x) for x in es], S1))[0]:
+            continue
+        rand_n += 1
+        outs = set()
+        for _k in range(6):
+            le = linear_extension(rng29, [dict(x) for x in es])
+            rr2 = Record(le, S1)
+            outs.add((in_D(rr2)[0], tuple(sorted(wfs(rr2).items())), tuple(sorted(members_closed(rr2, 'dz')))))
+        rand_same += len(outs) == 1
+    res29[1] = len(outs1) == 1 and n1 > 1 and rand_same == rand_n and rand_n > 0
+    print('(29.1) merge orders: W-01 case', n1, 'orders,', len(outs1), 'distinct result(s); random records with a designation:',
+          rand_same, 'of', rand_n, 'give one result over 6 orders each ->', 'PASS' if res29[1] else 'FAIL')
+    # (2) a designation omitting a maximal entry is refused at append
+    base29 = [dict(ROOT), G('gD', 'P', ['r'], 'D', t=0), G('g', 'P', ['r'], 'A', t=0), adopt('x1', 'A', ['g'], t=1),
+              adopt('x2', 'A', ['g'], t=1)]
+    ok2, why2 = append(Record([dict(x) for x in base29], S1), desig('d', 'D', ['gD', 'x1'], ['x1'], t=2))
+    res29[2] = not ok2 and 'omits' in why2
+    print('(29.2) omitting maximal x2:', ok2, why2, '->', 'PASS' if res29[2] else 'FAIL')
+    # (3) F refused: an actor with no basis (Z holds nothing)
+    ok3, why3 = append(Record([dict(x) for x in base29], S1), desig('d', 'Z', ['gD', 'x1', 'x2'], ['x1', 'x2'], t=2))
+    res29[3] = not ok3 and 'is F' in why3
+    print('(29.3) F designation:', ok3, why3, '->', 'PASS' if res29[3] else 'FAIL')
+    # (4) U refused: its basis is ended at the same act time (ties unordered, so the order is U)
+    base4 = [dict(x) for x in base29] + [{'id': 'e', 'kind': 'endg', 'actor': 'P', 'cites': ['r'], 'grant': 'gD', 'scope': 's', 't': 2}]
+    ok4, why4 = append(Record(base4, S1), desig('d', 'D', ['gD', 'x1', 'x2', 'e'], ['x1', 'x2', 'e'], t=2))   # e is maximal too, so it is cited
+    res29[4] = not ok4 and 'is U' in why4
+    print('(29.4) U designation:', ok4, why4, '->', 'PASS' if res29[4] else 'FAIL')
+    # (5) T accepted when everything else holds; the record stays in D and the closed members are all of C1
+    r5 = Record([dict(x) for x in base29], S1)
+    ok5, why5 = append(r5, desig('d', 'D', ['gD', 'x1', 'x2'], ['x1', 'x2'], t=2))
+    res29[5] = ok5 and in_D(r5)[0] and wfs(r5)['d'] == T and members_closed(r5, 'd') == {x['id'] for x in base29}
+    print('(29.5) T designation:', ok5, why5, '| in D', in_D(r5)[0], '| members', sorted(members_closed(r5, 'd')),
+          '->', 'PASS' if res29[5] else 'FAIL')
+    # (6) old behaviour does not settle an open choice; (7) an explicit recorded decision does.
+    def choice_value(rec, choice, options, t):
+        vals = {o: ce_star(rec, f'{choice}={o}', t) for o in options}
+        if any(v == 'undefined' or (isinstance(v, tuple)) for v in vals.values()):
+            return ('undefined', vals)
+        ts = [o for o, v in vals.items() if v == T]
+        if len(ts) == 1 and all(v == F for o, v in vals.items() if o != ts[0]):
+            return ts[0]
+        return U
+    obs = {'id': 'ob', 'kind': 'observe', 'actor': 'A', 'cites': ['g'], 'item': 'k', 'value': 'o1', 'scope': 's', 't': 1}
+    base6 = [dict(ROOT), G('g', 'P', ['r'], 'A', t=0), obs]
+    r6 = Record([dict(x) for x in base6], S1)
+    v6 = choice_value(r6, 'k', ['o1', 'o2'], 5)
+    res29[6] = in_D(r6)[0] and v6 == U
+    print('(29.6) only the old system\'s behaviour on record (observe k = o1): choice value', v6, '->', 'PASS' if res29[6] else 'FAIL')
+    r7 = Record([dict(x) for x in base6] + [dict(adopt('x', 'A', ['g'], t=2), item='k=o1')], S1)
+    v7 = choice_value(r7, 'k', ['o1', 'o2'], 5)
+    r7u = Record([dict(x) for x in base6] + [dict(adopt('x', 'Z', ['g'], t=2), item='k=o1')], S1)
+    v7u = choice_value(r7u, 'k', ['o1', 'o2'], 5)
+    res29[7] = v7 == 'o1' and v7u == U
+    print('(29.7) an explicit recorded adoption of k = o1 by the grantee: choice value', v7,
+          '| the same adoption by an actor without basis:', v7u, '->', 'PASS' if res29[7] else 'FAIL')
+    print('(29) passed:', [k for k in sorted(res29) if res29[k]], '| failed:', [k for k in sorted(res29) if not res29[k]])
+    assert all(res29.values())
     print('all assertions passed')
