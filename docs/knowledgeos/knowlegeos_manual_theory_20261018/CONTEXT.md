@@ -70,7 +70,9 @@
 
 **Window C30 settled** (§8.23; S0159, S0160, S0162–S0164; S0161 not on the allowed list, skipped by the tool). Review W (Opus), 14 findings (1 critical): the turn-8 designation rule read recording position. Its premise is stated (the old carrier's append order, K6), and the rest goes to the Principal: T9-09 (a) the order premise or citation of every maximal entry, (b) the effect of an F/U designation; T8-04 (may the incumbent specify open choices). No new concept; register 265 unchanged in count.
 
-**Next: window C31** (S0165–S0169, per `close_source.py --position`). The gate stands at 10 of 25. Because of the skipped entries, the 25th allowed source is S0181, not S0175 (C31 S0165–S0169; C32 S0171–S0173, S0175, S0176; C33 S0177–S0181).
+**Windows C31–C33 settled (2026-10-27)** (§8.24–§8.26; S0165–S0181, S0170 and S0174 not on the allowed list). The ruling on C30 (decision record `7ecf5a024`) applied for C32, then completed at the C32 review (fork, W-01 critical) and scoped at C33 (one kernel; T9-10). Model ce_model v18 (checks 28–30). Access: the Review Set summarizes six files not on the allowed list, S0155 among them (`review/C33-S0177-S0181/ACCESS-NOTE.md`).
+
+**Next: consolidation S0151–S0181** (gate 25 of 25): Ch. 4 and Ch. 5 rotated in full; two reviewers on different models; integration review with R3; entry-58 record; no planted-gap test. **Held** for the Principal's answer on the access question (exposure through allowed summaries). After it: reading to S0200; stop before the S0200 consolidation (planted-gap test, prepared by the Rule Reviewer).
 
 **Per window and per theory turn:**
 - review;
