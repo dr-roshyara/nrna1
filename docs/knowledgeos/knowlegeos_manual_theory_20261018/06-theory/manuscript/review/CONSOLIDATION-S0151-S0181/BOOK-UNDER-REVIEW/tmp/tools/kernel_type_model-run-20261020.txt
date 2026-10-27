@@ -1,0 +1,19 @@
+states 256, valid |S_I| = 64, inputs 4, pool 9, 512 subsets
+{record, grant}                        P_S=True  P_T=True  P_R=True  Req=True  Kernel(C2)=True  Kernel(C6)=True
+{record_del, grant}  (deleting record) P_S=True  P_T=False P_R=True  Req=True  Kernel(C2)=True  Kernel(C6)=False
+{record, forge}  (forge)               P_S=True  P_T=False P_R=True  Req=True  Kernel(C2)=True  Kernel(C6)=False
+{record, grant, revoke}                P_S=True  P_T=True  P_R=True  Req=True  Kernel(C2)=True  Kernel(C6)=True
+{record, grant_nh}                     P_S=True  P_T=True  P_R=True  Req=True  Kernel(C2)=True  Kernel(C6)=True
+{record, revoke_nh}                    P_S=True  P_T=True  P_R=True  Req=False Kernel(C2)=False Kernel(C6)=False
+{record, grant_nh, revoke_nh}          P_S=True  P_T=True  P_R=False Req=True  Kernel(C2)=True  Kernel(C6)=False
+∅                                      P_S=True  P_T=True  P_R=True  Req=False Kernel(C2)=False Kernel(C6)=False
+{refuse}                               P_S=True  P_T=True  P_R=True  Req=False Kernel(C2)=False Kernel(C6)=False
+{noop}                                 P_S=True  P_T=True  P_R=True  Req=False Kernel(C2)=False Kernel(C6)=False
+{record, forge} + guard g_origin       P_S=True  P_T=True  P_R=True  Req=True  Kernel(C2)=n/a   Kernel(C6)=True
+P_S ∧ P_T closed under union and subsets : True
+P_R (U as a trace invariant) closed      : False
+Req monotone (closed reading)            : True
+mechanisms preserving S, T, R alone      : ['grant', 'grant_nh', 'noop', 'record', 'refuse', 'revoke', 'revoke_nh'] -> Kernel(C6) = False
+within the history class, existence = Kernel(C6)(U ∩ hist) : True
+minimal kernels (C6), no guards          : [['grant', 'record'], ['grant_nh', 'record']]
+all assertions passed

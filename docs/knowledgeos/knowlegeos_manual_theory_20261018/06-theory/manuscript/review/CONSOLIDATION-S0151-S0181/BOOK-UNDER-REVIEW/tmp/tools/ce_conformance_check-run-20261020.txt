@@ -1,0 +1,5 @@
+correct     old condition 4: True  new (sound and complete on T, F, U): True
+constant T  old condition 4: True  new (sound and complete on T, F, U): False
+constant U  old condition 4: False new (sound and complete on T, F, U): False
+constant F  old condition 4: False new (sound and complete on T, F, U): False
+all assertions passed

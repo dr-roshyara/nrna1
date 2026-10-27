@@ -1,0 +1,112 @@
+== CON-0262  (home: —; concept IDs at the claim: ['CON-0262'])
+  -- claim: 0
+  -- concept: 6
+     06-theory/manuscript/chapter_09/09.17-the-designated-record-and-its-anchors.md:128  `[CON-0262 · invalid as stated]` `[CON-0264 · provisional]` (the restated form)
+     06-theory/manuscript/chapter_09/09.17-the-designated-record-and-its-anchors.md:298  - **CON-0262, membership "iff appended while designated"** (INVALID as stated). It classed carried-across entries as non-members, and its "decidable only with a
+     06-theory/CONCEPT-REGISTER.tsv:263  CON-0262	membership by the designation in force at the write	An entry is of the record iff a kernel step appended it while the designation in force named its st
+     06-theory/CONCEPT-REGISTER.tsv:265  CON-0264	membership by acceptance; classification across a carrier change	An entry is a member of a record iff a kernel step accepted it into the record (append
+     06-theory/THEORY-MAP.md:367  - **Theory turn 8 (§9.17, settled):** the record is distinct from its carrier, set by a designation `[CON-0261 ~]`; K2 restated (K2-d presupposition, K2-w, K2-r
+     06-theory/manuscript/BOOK-OUTLINE.md:176  | **The designated record and its carriers** (theory turn 8, settled): K2 restated as a designated record; membership by acceptance, classified across a carrier
+  -- section-only: 0
+== CON-0263  (home: —; concept IDs at the claim: ['CON-0263'])
+  -- claim: 0
+  -- concept: 7
+     06-theory/manuscript/chapter_09/09.17-the-designated-record-and-its-anchors.md:215  `[CON-0263 · invalid as stated]` `[CON-0265 · provisional]` (the restated form). **This is an architecture result:** D has no carriers to retire (§8.20 C1, C6).
+     06-theory/manuscript/chapter_09/09.17-the-designated-record-and-its-anchors.md:299  - **CON-0263, "detection iff coverage, independence and operand, three independent necessary conditions"** (INVALID as stated). Its loss counted foreign entries
+     06-theory/manuscript/chapter_09/09.99-change-log.md:62  | 2026-10-24 | §9.15 K1 (refutable cell) | not from the record alone; with an external anchor, yes. | with an outside reference meeting coverage, independence a
+     06-theory/manuscript/chapter_09/09.99-change-log.md:65  | 2026-10-24 | §9.15 K1, K2, L11 (turn-8 settlement) | K1 cell: "with an outside reference that covers the entries, does not come from the checked content, and 
+     06-theory/CONCEPT-REGISTER.tsv:264  CON-0263	detection by an outside reference: coverage, independence, operand	Before an irreversible act, comparing a store with an outside reference detects ever
+     06-theory/CONCEPT-REGISTER.tsv:266  CON-0265	the carrier-change gate: survivor and casualty against an outside list	Before retiring the old carrier of a record (an architecture act; D has no carri
+     06-theory/THEORY-MAP.md:367  - **Theory turn 8 (§9.17, settled):** the record is distinct from its carrier, set by a designation `[CON-0261 ~]`; K2 restated (K2-d presupposition, K2-w, K2-r
+  -- section-only: 0
+== CON-0113  (home: —; concept IDs at the claim: ['CON-0113'])
+  -- claim: 0
+  -- concept: 4
+     06-theory/manuscript/chapter_04/04.03-recommendation-lifecycle-observed.md:13  **C1. Terms are graded by exercise; promotion needs a recorded performance (Src).** `[CON-0113 · invalid as stated]` (valid in the restated form)
+     06-theory/manuscript/chapter_04/04.03-recommendation-lifecycle-observed.md:51  - **C1 as a rule for admitting terms** (the open question's first wording; CON-0113). Reworded at the consolidation settlement S0036–S0065: C1 governs promotion
+     06-theory/CONCEPT-REGISTER.tsv:114  CON-0113	a term enters the language only when used	vocabulary graded observed / observed-unexercised / hypothesized / emerging; promotion to observed requires a
+     06-theory/THEORY-MAP.md:201  - **Recommendation lifecycle (§4.3):** vocabulary graded by exercise `[CON-0113 ✗ as "only when used"]`; a derived attribute (time-to-decision); the first decis
+  -- section-only: 0
+== CON-0050  (home: —; concept IDs at the claim: ['CON-0050'])
+  -- claim: 0
+  -- concept: 4
+     06-theory/manuscript/chapter_05/05.01-decision-docket.md:37  ## Evidence that presupposes the answer `[CON-0050 · invalid]` (Src)
+     06-theory/manuscript/chapter_05/TODO.md:14  | **T5-04** | **CON-0050 presupposing evidence: INVALID (partly valid)** | too strong as general rule | §5.1 | Robust evidence (supports the conclusion under ev
+     06-theory/CONCEPT-REGISTER.tsv:51  CON-0050	presupposing evidence	an item counts as evidence for a decision only if its meaning does not depend on the answer to that decision, or to any open ques
+     06-theory/THEORY-MAP.md:93  - **Presupposing evidence:** evidence whose meaning depends on the answer, or on an open question the decision rests on, does not count, unless it is robust und
+  -- section-only: 0
+== CON-0052  (home: —; concept IDs at the claim: ['CON-0052'])
+  -- claim: 0
+  -- concept: 3
+     06-theory/manuscript/chapter_05/05.01-decision-docket.md:65  **Model amnesia (Package 10).** "discover → model → forget → rediscover" is called "the disease the platform exists to cure", counted at n=11 [L151–152] `[CON-0
+     06-theory/manuscript/chapter_05/TODO.md:11  | **T5-01** | **CON-0052 model amnesia: INVALID (partly valid)** | counts not reconciled | §5.1 (the home; Ch. 7 retired, DB-6) | The repeated "discover → model
+     06-theory/CONCEPT-REGISTER.tsv:53  CON-0052	model amnesia	the repeated pattern discover → model → forget → rediscover	S0023 L151-154; S0017 L26	W-159	chapter_05/05.01-decision-docket.md		INVALID	
+  -- section-only: 0
+== CON-0053  (home: —; concept IDs at the claim: ['CON-0053'])
+  -- claim: 0
+  -- concept: 7
+     06-theory/manuscript/chapter_05/05.02-gap-kinds.md:12  ## The three kinds `[CON-0053 · invalid]` (Src)
+     06-theory/manuscript/chapter_05/05.04-gap-operator.md:188  - reconcile it with Ch. 5's decision-readiness (CON-0012) and gap kinds (CON-0053).
+     06-theory/manuscript/chapter_05/TODO.md:15  | **T5-05** | **CON-0053 gap kinds: INVALID (partly valid)** | classification inconsistent | §5.2 | The paradigm case (genesis) is architectural in S0024 and go
+     06-theory/manuscript/chapter_05/TODO.md:16  | **SEQ-0014** | **Sequence gap (SQ-1): undefined** | undefined | "primary closure", Ch. 5 §5.2 | found by review C4 | CON-0053 | Resolved 2026-10-19 (withdrawn
+     06-theory/CONCEPT-REGISTER.tsv:54  CON-0053	gap kinds by closure	architectural (closed by modelling) · governance (closed by a ruling) · evidence (closed only by doing)	S0024 L16-24, L159-181	W-1
+     06-theory/CONCEPT-REGISTER.tsv:81  CON-0080	gap operator (Zero, Z3)	for a knowledge state and an epistemic contract, each required condition gets a typed status and a criticality; the operator re
+     06-theory/THEORY-MAP.md:94  - **Gap kinds by closure** (modelling · ruling · use) `[CON-0053 ✗]`: the classification is inconsistent across sources.
+  -- section-only: 0
+== CON-0078  (home: —; concept IDs at the claim: ['CON-0078'])
+  -- claim: 0
+  -- concept: 4
+     06-theory/manuscript/chapter_05/05.03-deferral.md:22  - **the closed family list with its cap** `[CON-0078 · invalid]`: the register's actual gates include friction [L23], duration [L30] and demand [L66], which fit
+     06-theory/CONCEPT-REGISTER.tsv:79  CON-0078	gate by risk	the closed list of six gate families with a cap of ~5–6 (as stated)	S0029 L14	S0029 idea 2	chapter_05/05.03-deferral.md		INVALID	the regis
+     06-theory/CONCEPT-REGISTER.tsv:188  CON-0187	gate justified by the failure mode it prevents (restated)	a gate is justified by the specific failure mode it protects against; without the closed list
+     06-theory/THEORY-MAP.md:96  - Gates by risk: the closed family list with its cap `[CON-0078 ✗]` (families do not cover the gates used); the principle, a gate justified by the failure mode 
+  -- section-only: 0
+== CON-0081  (home: —; concept IDs at the claim: ['CON-0081'])
+  -- claim: 0
+  -- concept: 6
+     06-theory/manuscript/chapter_05/05.04-gap-operator.md:66  **C3. The status set mixes kinds (Src + Ded).** `[CON-0081 · invalid]` The source of the absence lens itself warned that the list "should not automatically beco
+     06-theory/manuscript/chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md:7  *Existing homes:* the first book search ("distribut|current rule|at START") found none, and the section was written as new. **That was a lexical miss** (review 
+     06-theory/manuscript/chapter_09/09.05-a-recorded-rule-must-reach-the-actor.md:35  - **Homes:** enforceability needs a decidable verdict set (CON-0108); "Missing" asserting absence where only "not looked at" is known (CON-0081). S0113's "Missi
+     06-theory/CONCEPT-REGISTER.tsv:82  CON-0081	gap status set (eleven values)	Satisfied, PartiallySatisfied, Unknown, Insufficient, Conflicted, Stale, Invalid, Prohibited, NotApplicable, Missing, Fa
+     06-theory/CONCEPT-REGISTER.tsv:119  CON-0118	a response needs a detectable, owned state	a two-valued response cannot fire correctly where its condition cannot be decided	S0113 L24-44, L77	C9	chapt
+     06-theory/THEORY-MAP.md:106  - The status set mixes kinds `[CON-0081 ✗]`. "Missing" asserts absence (E1) where only "not found" (E3) may be known.
+  -- section-only: 0
+== CON-0109  (home: —; concept IDs at the claim: ['CON-0109'])
+  -- claim: 0
+  -- concept: 5
+     06-theory/manuscript/chapter_05/05.05-who-executed-who-authorized.md:13  - **The actor provenance gap.** "the decision record's `actor` stamps the git user, but the decider was the AI at the user's direction — *when AI participates i
+     06-theory/manuscript/chapter_05/05.05-who-executed-who-authorized.md:20  **C1. RD-6 is the first observed instance of Ch. 1's residual trust assumption (Src + Int).** `[CON-0165 · provisional]` (the valid core of CON-0109)
+     06-theory/CONCEPT-REGISTER.tsv:110  CON-0109	executor, decider, authorizer are three roles of an act	"as stated (INVALID): executor, decider and authorizer are three roles of an act (""decider"" a
+     06-theory/CONCEPT-REGISTER.tsv:166  CON-0165	executor ≠ authorizer	executor ≠ authorizer (n = 1, S0044 RD-6), recorder law-bound by §1.14.3; an instance of Ch. 1 §1.12 residual trust assumption	S0
+     06-theory/THEORY-MAP.md:198  - **Who executed, who authorized (§5.5):** RD-6 is the first observed instance of Ch. 1's residual trust assumption (§1.12); executor ≠ authorizer `[CON-0109 ✗ 
+  -- section-only: 0
+== CON-0124  (home: —; concept IDs at the claim: ['CON-0124'])
+  -- claim: 0
+  -- concept: 6
+     06-theory/manuscript/chapter_05/05.06-what-an-act-covers.md:29  **C3. An acceptance of a deliverable covers only a delivered, fixed version (Src; Hyp).** `[CON-0124 · invalid as stated]` (valid in the restricted form, `[CON-
+     06-theory/manuscript/chapter_05/05.06-what-an-act-covers.md:81  - **CON-0124 as first stated:** "the object of an act must exist and be fixed when the act is performed". INVALID as a law of acts: grants permit future activit
+     06-theory/CONCEPT-REGISTER.tsv:125  CON-0124	an act covers only an existing, fixed object	as stated (INVALID as a law of acts): the object of an act must exist and be fixed when the act is perform
+     06-theory/CONCEPT-REGISTER.tsv:169  CON-0168	acceptance of a deliverable covers the delivered, pinned version	an acceptance of a deliverable covers only the delivered, pinned version; a held act i
+     06-theory/THEORY-MAP.md:212  - **Acts (§5.6):** the object of an act may include its argument (refines §1.17.2) `[CON-0123 ~]`; the interpretive act (F21); an acceptance covers the delivere
+     06-theory/manuscript/BOOK-OUTLINE.md:39  | The object of an act: it may include its argument; an acceptance covers the delivered version; the interpretive act (F21) | §5.6 (CON-0123 ~; CON-0124 ✗ as a 
+  -- section-only: 0
+== CON-0144  (home: —; concept IDs at the claim: ['CON-0144'])
+  -- claim: 0
+  -- concept: 7
+     06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md:24  **C1. Closing work: a duty and a prohibition (Src; an extension of §6.6 C4).** `[CON-0174 · provisional]` (restates CON-0144, invalid as stated)
+     06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md:90  - **"A lane with no output is not completed"** (CON-0144 as stated). Two counterexamples in its own sources: a deliberate null was closed COMPLETE (S0079 L32), 
+     06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md:99  - **The restated CON-0144, "close when … deliverable and lifecycle both justify it, or when the closure states its lifecycle defect".** The defect clause had no
+     06-theory/CONCEPT-REGISTER.tsv:145  CON-0144	closure needs deliverable and lifecycle evidence	"as stated (INVALID): ""a lane with no output is not completed""; closure needs deliverable and lifecy
+     06-theory/CONCEPT-REGISTER.tsv:175  CON-0174	closure: deliverable ∧ (lifecycle ∨ defect stated)	restated twice: may close only if the commissioned deliverable exists and either the lifecycle justi
+     06-theory/THEORY-MAP.md:242  - **Changed theory reviewed (step 9):** TT2's "the order is a uniqueness" scoped to absent, tied or untrusted act times, F26(c) added; "one authoritative home" 
+     06-theory/THEORY-MAP.md:245  - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated; CON
+  -- section-only: 0
+== CON-0145  (home: —; concept IDs at the claim: ['CON-0145'])
+  -- claim: 0
+  -- concept: 5
+     06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md:42  **C3. A supersession is recognized only when recorded (Src; an extension of §8.5 C8 and I-7).** `[CON-0175 · provisional]` (restates CON-0145, invalid as stated
+     06-theory/manuscript/chapter_05/05.07-closure-and-the-record.md:92  - **"A supersession exists only as a recorded link"** (CON-0145 as stated). That settles the open fork of §1.13.1-2. Restated as a recognition rule in C3.
+     06-theory/CONCEPT-REGISTER.tsv:146  CON-0145	a supersession is recognized only when recorded	"as stated (INVALID): ""a supersession exists only as a recorded link"" (settled the open fork of §1.13
+     06-theory/CONCEPT-REGISTER.tsv:176  CON-0175	a supersession is recognized only when recorded (recognition rule)	restated: a supersession is recognized only when it is recorded, and inferring one i
+     06-theory/THEORY-MAP.md:245  - **Closure (§5.7):** a duty and a prohibition; a deliberate null counts; a defective lifecycle may be closed with its defect stated `[CON-0144 ✗ as stated; CON
+  -- section-only: 0

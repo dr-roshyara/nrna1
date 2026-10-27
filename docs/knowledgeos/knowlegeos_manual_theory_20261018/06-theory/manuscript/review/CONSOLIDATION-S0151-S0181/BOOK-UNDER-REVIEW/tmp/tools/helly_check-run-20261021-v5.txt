@@ -1,0 +1,36 @@
+(1) single-attribute classes: Helly number h
+    required value, k=2: 2
+    forbidden value, k=2: 2
+    required or forbidden value, k=2: 2
+    allowed set (any subset), k=2: 2
+    required value, k=3: 2
+    forbidden value, k=3: 3
+    required or forbidden value, k=3: 3
+    allowed set (any subset), k=3: 3
+    required value, k=4: 2
+    forbidden value, k=4: 4
+    required or forbidden value, k=4: 4
+    allowed set (any subset), k=4: 4
+    threshold interval on 0..5: 2
+    forbidden range (complement of an interval) on 0..5 (cap 6 = |X|): 6
+    interval or forbidden range on 0..5 (cap 6 = |X|): 6
+    boxes on a 4x4 grid (per-attribute thresholds; cap 4, lower bound): 2
+    partial assignments on 3 Boolean attributes (conjunctions of literals; cap 4, lower bound): 2
+    clauses on 2 Boolean attributes (disjunctions): 4  (|X| = 4)
+    lattice half-planes on a 4x4 grid (linear inequalities, integer points; cap 5, lower bound): 4  (Doignon bound 2^2 = 4)
+(2) product lemma on 60 random pairs of factor classes over a full product space: h(products) <= max h(factors) in every case (products searched up to cap 4)
+(3) required value k=3 (h=2): 300 random rule sets; largest pointwise-minimal conflicting set 2; rule sets where an independent pairs-only analyser misses a conflict: 0
+(3) required value with the empty effect (h=2): 300 random rule sets; largest pointwise-minimal conflicting set 2; rule sets where an independent pairs-only analyser misses a conflict: 0
+(3) boxes on 2 Boolean attributes (h=2): 300 random rule sets; largest pointwise-minimal conflicting set 2; rule sets where an independent pairs-only analyser misses a conflict: 0
+(3) required or forbidden value, Boolean (h=2): 300 random rule sets; largest pointwise-minimal conflicting set 2; rule sets where an independent pairs-only analyser misses a conflict: 0
+(3) threshold intervals 0..5 (h=2): 300 random rule sets; largest pointwise-minimal conflicting set 2; rule sets where an independent pairs-only analyser misses a conflict: 0
+(3) forbidden value k=3 (h=3): 300 random rule sets; largest pointwise-minimal conflicting set 3; rule sets where an independent pairs-only analyser misses a conflict: 140
+(3) clauses on 2 attributes (h=4): 300 random rule sets; largest pointwise-minimal conflicting set 3; rule sets where an independent pairs-only analyser misses a conflict: 49
+(4) h <= |X| on 200 random classes; complements of points give h = |X| for |X| = 2..5: True
+(5) x >= 0, y >= 0, x + y <= -1: each pair has a witness: True ; the three sum to 0 <= -1 (Farkas): True
+(6) required values with thresholds on 0..5 (tautological, see the docstring): h = 2; on 0..11, x <= m-1 with x != 0..m-1 is minimal with [2, 3, 4, 5, 6] members for m = 1..5, while those forbidden values alone always leave a common point: True (so on an unbounded domain the union of thresholds and forbidden values has unbounded h)
+(6) coupling: on X = exactly one of three Booleans, MUST_NOT p, q, r are minimal empty: True | cardinality over members: exactly-one-owner with three prohibitions minimal empty: True
+(7) intervals with point complements on n values: h = {2: 2, 3: 3, 4: 4, 5: 5} (n = 2..5); on -5..11 (a stand-in for Z) the one-threshold family x <= 2, x != 0, 1, 2 has a common point: True, the two-threshold family is minimal: True (5 members); on 0..4 with thresholds, forbidding the interior 2: h = 3, the endpoint 0: h = 2; up-sets of three incomparable elements minimal empty: True; arcs of a cyclic order on 6 points (cap 6): h = 6
+(8) order intervals, up- and down-sets of the product order 3 x 3 (cap 4): h = 2; up- and down-sets of a rooted tree on 6 nodes (cap 4): h = 2
+(9) GENERAL up- and down-sets: rooted tree on 6 nodes h >= 4; product order 3 x 3 h >= 4 (cap 4)
+all assertions passed

@@ -31,3 +31,13 @@ Seven files of the "Architecture Review Set" are on the allowed list: S0175–S0
 ## For the Principal
 
 Whether this exposure affects the hold-out test, or the reading of S0182 and similar summaries, is a question for the Principal. It is reported at the consolidation gate.
+
+## The Principal's answer (2026-10-27)
+
+- **The Principal's words, verbatim:** "continue".
+- **The Professor's reading, labelled as such:** the Principal accepts the recommendation given at the gate:
+  - S0156, S0157, S0161, S0170 and S0174 are recorded as **exposed through summaries**, as S0155 was;
+  - from allowed summaries, only claims that trace to allowed files are used;
+  - the consolidation runs as planned, and its reviewers are told not to rely on summary content about the six files;
+  - whether this changes the hold-out test before S0200 is for the Principal or the Rule Reviewer.
+- If the Principal meant otherwise, this reading is to be corrected.
