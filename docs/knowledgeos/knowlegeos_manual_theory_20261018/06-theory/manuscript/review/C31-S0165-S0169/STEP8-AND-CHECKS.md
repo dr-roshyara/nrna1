@@ -9,7 +9,7 @@
 | Sources, lines | S0165 818 · S0166 1,332 · S0167 2,711 · S0168 1,612 · S0169 352 = 6,825 lines (counted with the last line; `wc -l` gives 1,331 and 1,611 for S0166 and S0168) |
 | Depth | all five full. The Professor's and W's blind judgements agree |
 | Professor, reading (start/stop records) | S0165 16 s · S0166 19 s · S0167 26 s · S0168 18 s · S0169 21 s. Total 17:13:41Z–17:15:21Z, 1 min 40 s. These are the times between the tool's start and close records; they cover the read calls, not the later drafting |
-| Professor, drafting §8.24 and checks | about 17:15Z–17:40Z (session clock) |
+| Professor, drafting §8.24 and checks | 17:15:21Z (last close) to 17:20:56Z (draft commit `e95dfeb0a`), including the reading-defect repair |
 | Reviewer W, step 1 | 131.3 s (harness), 13 tool uses. Transcript audit: 7 files, the instructions, the brief and the five sources; no search, listing or Bash |
 | Findings by severity | after step 2 (see `SETTLEMENT.md`) |
 
