@@ -2,9 +2,10 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED.** Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
+| Status | **PROPOSED, NOT APPROVED** (revision 1). Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
 | Decides | the Principal |
 | Changes | nothing in force; Rulebook v1.4 and the research continue as they are until the Principal decides |
+| Revision | 2026-10-28, revision 1: an external review's (ChatGPT) refinements adopted — three kinds of validation; tests never promote a claim; an *unresolved* class in stage 2; the production gate conditional on the existence and uniqueness result; gates are conditions, not dates; a stop condition per stage; the S0200 decision in two parts |
 
 *Labels: **[V]** verified in the lane's records · **[R]** reported by the Professor or reviewers, not reconstructed · **[I]** inferred · **[P]** proposed · **[O]** open.*
 
@@ -24,16 +25,26 @@ The research and the building run as **two tracks with gates between them**. The
 
 **Consequence [I]:** the core is precise but **conditional and young**. It is enough to build an executable model that tests itself; it is not enough to build a product.
 
+## 2a. The governing principle
+
+**Let the theory be tested by executable models, but never let a model's successful execution become proof of the theory.** Three kinds of validation are kept apart, and none implies another:
+
+| Kind | What it establishes | Established by |
+|---|---|---|
+| **implementation correctness** | the code follows its formal specification | tests |
+| **formal-model adequacy** | the specification is coherent, and its assumptions and limits are explicit | independent review of the specification |
+| **empirical adequacy** | the theory is consistent with the relevant real evidence, within that evidence's limits | the corpus, and stage-2 validation |
+
 ## 3. The stability scale: what may be built on what
 
 | Level | Meaning | May be built as |
 |---|---|---|
 | **S0: unstable** | INVALID, or PROVISIONAL with open critical or high findings | nothing |
-| **S1: provisional** | PROVISIONAL, reviewed, no open critical finding, a design sketch closed with its assumptions | the **reference model** only, marked experimental |
-| **S2: reviewed core** | VALIDATED, or survived a consolidation and a planted-gap test without a critical finding | a **kernel prototype** |
-| **S3: established** | survived a milestone (whole-book) review; derived from the fixed primitive set | a **production kernel** |
+| **S1: experimental** | assumptions and limits explicit; reviewed; no open critical finding; a design sketch closed with its assumptions | the **reference model** only, marked experimental |
+| **S2: reviewed core** | **VALIDATED by an independent reviewer**; its formal specification independently reviewed; required tests passed; no unresolved critical finding affecting the intended use | a **kernel prototype** |
+| **S3: established** | derived from the fixed primitive set; survived a milestone (whole-book) review; scope and limits established | a **production kernel** |
 
-Each implemented rule carries its book claim, CON-ID and level. A claim that drops a level (a later review finds a defect) **blocks** what was built on it until it is reassessed [P].
+**Tests never promote a claim.** Passing tests is evidence of implementation correctness only; promotion needs a reviewer's verdict and, from S2 on, a reviewed specification. Each implemented rule carries its book claim, CON-ID, level, assumptions, tests, dependencies and known limits (mandatory). A claim that drops a level **blocks** what was built on it until it is reassessed [P].
 
 ## 4. The stages and their gates
 
@@ -41,11 +52,13 @@ Each implemented rule carries its book claim, CON-ID and level. A claim that dro
 |---|---|---|---|---|
 | **0. Now to S0200** | nothing; an **implementation-candidates list**: each kernel result with its claim, assumptions, level and open questions | — | the list reviewed at the S0200 milestone | Rule Reviewer (list), Professor (claims) |
 | **1. Executable reference model** | one clean library from the existing models: the record and its D-check, CE\*, refusal reasons, the single-use guard, designation; **each law of the book as an executable property test**; no storage, no UI, no product | S0200 decided; the candidates list approved; a separate implementation session named | every S1/S2 law of the list is a passing property test; every assumption (K/L) is visible as a parameter or a stub | a **separate engineering session**, not the Professor |
-| **2. Validation against reality** | the reference model run on **real governance records** of the estate that are on the allowed list (grants, transitions, registrations, as the corpus contains them): does CE\* reproduce the estate's recorded decisions? Every disagreement is a finding | stage 1 done; the Principal's grant for any file outside the allowed list | each disagreement classified: theory defect · estate defect · data gap | engineering session; findings to the Professor as evidence |
+| **2. Validation against reality** | the reference model run on **real governance records** of the estate that are on the allowed list (grants, transitions, registrations, as the corpus contains them): does CE\* reproduce the estate's recorded decisions? Every disagreement is a finding | stage 1 done; the Principal's grant for any file outside the allowed list | each disagreement classified, **with its evidence**: theory defect · estate defect · data gap · input-mapping error · outside the theory's scope · **unresolved**. The theory is never changed just to reproduce the estate's decisions | engineering session; findings to the Professor as evidence |
 | **3. Kernel prototype** | the kernel as a component: append-only record with attestation, D-check at append, CE\* as a query, the owner rules, designation; a minimal application on top | the primitive set fixed (a theory turn), the core at **S2**, a milestone review passed | the prototype passes the stage-1 tests and the stage-2 cases | engineering |
-| **4. Production kernel and applications** | hardened kernel; applications by the boundary test (what must the kernel provide, what can an application provide) | the laws **derived** from the primitive set (S3); kernel existence answered | the product's own acceptance | engineering, with the Principal |
+| **4. Production kernel and applications** | hardened kernel; applications by the boundary test (what must the kernel provide, what can an application provide) | the laws **derived** from the primitive set (S3); the existence question answered **as it comes out**: unique (proof and assumptions documented), not unique (the alternatives and the criteria for choosing documented), or unresolved (then the architecture is not claimed to be theoretically established) | the product's own acceptance, security and operational reviews | engineering, with the Principal |
 
-**Timing [I]:** stage 1 can start after S0200; stage 2 soon after; stage 3 needs the primitive set fixed, which on the present pace is a milestone around S0300–S0500; stage 4 later. Reading continues throughout.
+**Gates are conditions, not dates.** A stage starts when its conditions are met and the Principal approves, not when a source number is reached. *(For orientation only [I]: on the present pace the primitive set might be fixed around S0300–S0500; this is not a commitment.)* Reading continues throughout.
+
+**Every stage has a stop condition:** when the model or the prototype exposes a critical theoretical gap, the affected work pauses, the finding goes to the research, and no undocumented rule is introduced to work around it.
 
 ## 5. How the two tracks feed each other
 
@@ -66,6 +79,11 @@ Each implemented rule carries its book claim, CON-ID and level. A claim that dro
 | Building for one estate only | the boundary test decides what is kernel; estate-specific rules stay in an application |
 
 ## 7. Decisions for the Principal
+
+**At S0200 the decision is taken in two parts:**
+- **Part A, research and test integrity:** the strategy opens no new route by which excluded material could influence the theory or an independent test; approval of the strategy grants **no access** to files outside the allowed list.
+- **Part B, conditional authorisation:** the strategy in principle; the candidates list; a separate engineering session for stage 1 with its entry and exit criteria; authorised records for stage 2; where the code lives (separately). **No kernel prototype and no production work** are authorised at S0200.
+
 
 1. **Approve the two-track strategy** with its stability levels and gates? **[P] Recommended: yes.**
 2. **Start stage 1 after the S0200 decision?** **[P] Recommended: yes**, with a separate engineering session.
