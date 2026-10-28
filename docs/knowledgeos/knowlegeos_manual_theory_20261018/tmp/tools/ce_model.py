@@ -4,7 +4,8 @@ it tests the FORM of the repaired definition, not its content. Version 20 (C34 r
 decision of 2026-10-28, "Each store belongs to one application, and only that application may move the record to a new
 store"; the Professor's technical completion, marked for review): every designation carries its moving application
 ('app'); the owner of the root carrier is ROOT_OWNER, and the owner of a store a designation names is the application
-that moved the record there (no change of a store's owner is modelled: T9-11). The guard refuses a designation not
+that moved the record there; with the guard, the owner is therefore constant along a chain (C35 W-01: per-store
+and per-record ownership coincide; no change of a store's owner is modelled: T9-11). The guard refuses a designation not
 recorded by the owner of the store it closes; D refuses a record holding one ("designation not by the old store's
 owner"), so across merged applications a single foreign move is detected, not only a fork. The moving application is
 trusted as declared (a located assumption, as for grants, §9.15 L10); the attestation is checked for presence, not
@@ -2198,7 +2199,7 @@ if __name__ == '__main__':
     res32["the owner's move is accepted and the record is in D"] = oko and in_D(r32)[0]
     mx = maximal_entries(r32, 'C2', accepted_only=True)
     okn, _ = append(r32, desig('dn', 'D', ['gD'] + mx, mx, t=3, carrier='C3', old='C2'))
-    res32['the owner of a store it moved the record to moves it again'] = okn and in_D(r32)[0] and store_owner(r32, 'C3') == ROOT_OWNER
+    res32['the owner moves the record again: the owner is constant along the chain (ROOT_OWNER; C35 W-01, no owner transfer)'] = okn and in_D(r32)[0] and store_owner(r32, 'C3') == ROOT_OWNER
     merged = Record([dict(x) for x in b30] + [dict(desig('dk', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C5', old='C1'), app='B', katt='K2')], S1)
     res32['merged: a single foreign move attested by another kernel is outside D (W-01 probe)'] = not in_D(merged)[0] \
         and "not by the old store's owner" in in_D(merged)[1]

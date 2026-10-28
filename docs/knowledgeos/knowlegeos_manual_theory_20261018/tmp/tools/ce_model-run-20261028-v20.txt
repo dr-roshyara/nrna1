@@ -89,7 +89,7 @@
 (31) the guard reads no oracle flag -> PASS
 (32) a move by an application that does not own the store is refused at append -> PASS
 (32) the owner's move is accepted and the record is in D -> PASS
-(32) the owner of a store it moved the record to moves it again -> PASS
+(32) the owner moves the record again: the owner is constant along the chain (ROOT_OWNER; C35 W-01, no owner transfer) -> PASS
 (32) merged: a single foreign move attested by another kernel is outside D (W-01 probe) -> PASS
 (32) limit, stated not repaired: a forged attestation string by the owner application leaves the record in D: True
 all assertions passed
