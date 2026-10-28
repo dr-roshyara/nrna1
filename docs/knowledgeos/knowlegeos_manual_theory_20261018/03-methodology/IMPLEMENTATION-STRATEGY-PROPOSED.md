@@ -2,12 +2,23 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED** (revision 1). Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
+| Status | **PROPOSED, NOT APPROVED** (revision 2: roles; stage 0b strategic design and independent verification). Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
 | Decides | the Principal |
 | Changes | nothing in force; Rulebook v1.4 and the research continue as they are until the Principal decides |
 | Revision | 2026-10-28, revision 1: an external review's (ChatGPT) refinements adopted — three kinds of validation; tests never promote a claim; an *unresolved* class in stage 2; the production gate conditional on the existence and uniqueness result; gates are conditions, not dates; a stop condition per stage; the S0200 decision in two parts |
 
 *Labels: **[V]** verified in the lane's records · **[R]** reported by the Professor or reviewers, not reconstructed · **[I]** inferred · **[P]** proposed · **[O]** open.*
+
+## 0. Roles (revision 2, proposed names)
+
+| Role | Who | Does | Does not |
+|---|---|---|---|
+| **Principal (human ARB)** | the human | decides rules, normative questions, access, and every gate | — |
+| **Governance Engineer** | an AI session (until 2026-10-29: "Rule Reviewer") | keeps the rules and records, prepares planted-gap tests, evaluates the other roles, writes mandates and briefs, **communicates with the Principal and facilitates what the Principal wants**, records only what the Principal explicitly approves | writes theory or code; decides for the Principal |
+| **Professor (Research Lead)** | an AI session | reads the corpus, builds the theory **and the strategic design derived from it** | writes code; reads the implementation |
+| **Independent Reviewers** | fresh AI sessions per review | review the theory blind first, then challenge it | write theory |
+| **Verification Auditor** | a separate AI session | audits the existing EKS implementation against the strategic design and the reference architecture; reports gaps with evidence | writes theory; writes or changes code; sends findings to the Professor |
+| **Implementation Engineer** | a separate AI session (from stage 1) | builds the reference model and later the kernel, under the repository's engineering process | writes theory; audits its own work |
 
 ## 1. The idea in one paragraph
 
@@ -51,6 +62,7 @@ The research and the building run as **two tracks with gates between them**. The
 | Stage | What is built | Gate to start it | Gate to finish it | Who |
 |---|---|---|---|---|
 | **0. Now to S0200** | nothing; an **implementation-candidates list**: each kernel result with its claim, assumptions, level and open questions | — | the list reviewed at the S0200 milestone | Rule Reviewer (list), Professor (claims) |
+| **0b. Strategic design and independent verification** | nothing; (a) the **strategic design derived from the theory** (`MANDATE-STRATEGIC-DESIGN-PROPOSED.md`): subdomains, bounded contexts, context map, published language, ownership of invariants, each with evidence, stability level and open questions; (b) an **independent audit of the existing EKS** (`MANDATE-VERIFICATION-AUDITOR-PROPOSED.md`): theory against reference architecture against code | the S0200 decision; (a) after the S0200 consolidation is settled, as a chain of theory turns with closure criteria and a budget; (b) the auditor may start preparing at once and audits once the strategic-design baseline is reviewed | (a) a reviewed strategic-design baseline with its open questions visible; (b) a gap report, every finding classified with evidence | (a) Professor and reviewers; (b) Verification Auditor; findings to the Principal and the Governance Engineer only |
 | **1. Executable reference model** | one clean library from the existing models: the record and its D-check, CE\*, refusal reasons, the single-use guard, designation; **each law of the book as an executable property test**; no storage, no UI, no product | S0200 decided; the candidates list approved; a separate implementation session named | every S1/S2 law of the list is a passing property test; every assumption (K/L) is visible as a parameter or a stub | a **separate engineering session**, not the Professor |
 | **2. Validation against reality** | the reference model run on **real governance records** of the estate that are on the allowed list (grants, transitions, registrations, as the corpus contains them): does CE\* reproduce the estate's recorded decisions? Every disagreement is a finding | stage 1 done; the Principal's grant for any file outside the allowed list | each disagreement classified, **with its evidence**: theory defect · estate defect · data gap · input-mapping error · outside the theory's scope · **unresolved**. The theory is never changed just to reproduce the estate's decisions | engineering session; findings to the Professor as evidence |
 | **3. Kernel prototype** | the kernel as a component: append-only record with attestation, D-check at append, CE\* as a query, the owner rules, designation; a minimal application on top | the primitive set fixed (a theory turn), the core at **S2**, a milestone review passed | the prototype passes the stage-1 tests and the stage-2 cases | engineering |
