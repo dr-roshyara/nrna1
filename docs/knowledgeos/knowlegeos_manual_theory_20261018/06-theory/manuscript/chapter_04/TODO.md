@@ -2,7 +2,7 @@
 
 *Triaged at the whole-book review S0100 (2026-10-19): each row carries its disposition; the major items and the critical path are in `../TODO-TRIAGE-S0100.md`.*
 
-*Rules: the Principal's TODO rule; CV-1 §4a. Chapter 4 ("How knowledge changes") is planned (`../CHAPTER-PLAN.md`); this file holds TODOs for concepts registered for it.*
+*Rules: the Principal's TODO rule; CV-1 §4a. Chapter 4 ("How knowledge changes") is written (§4.1–§4.3; rotated in full at the consolidation S0151–S0181); this file holds TODOs for concepts registered for it.*
 
 | ID | Concept | Issue type | Related | Problem (business language) | Evidence | Status | Next action | Resolution criteria |
 |---|---|---|---|---|---|---|---|---|

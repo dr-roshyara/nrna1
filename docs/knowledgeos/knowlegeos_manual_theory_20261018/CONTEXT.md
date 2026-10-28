@@ -72,7 +72,7 @@
 
 **Windows C31–C33 settled (2026-10-27)** (§8.24–§8.26; S0165–S0181, S0170 and S0174 not on the allowed list). The ruling on C30 (decision record `7ecf5a024`) applied for C32, then completed at the C32 review (fork, W-01 critical) and scoped at C33 (one kernel; T9-10). Model ce_model v18 (checks 28–30). Access: the Review Set summarizes six files not on the allowed list, S0155 among them (`review/C33-S0177-S0181/ACCESS-NOTE.md`).
 
-**Next: consolidation S0151–S0181** (gate 25 of 25): Ch. 4 and Ch. 5 rotated in full; two reviewers on different models; integration review with R3; entry-58 record; no planted-gap test. **Held** for the Principal's answer on the access question (exposure through allowed summaries). After it: reading to S0200; stop before the S0200 consolidation (planted-gap test, prepared by the Rule Reviewer).
+**Consolidation S0151–S0181 settled (2026-10-28)**: Ch. 4 and Ch. 5 rotated; model v19 (kernel attestation, carrier at most once); T9-10 (a) awaiting the Principal (may two applications move the same record?). **Next: reading from S0182 to S0200**, in windows of 5 allowed sources; stop before the S0200 consolidation (planted-gap test, prepared by the Rule Reviewer); tell the Principal when the last window before S0200 is settled.
 
 **Per window and per theory turn:**
 - review;

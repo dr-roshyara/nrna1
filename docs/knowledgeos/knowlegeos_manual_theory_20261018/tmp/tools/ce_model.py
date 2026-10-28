@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 18 (C32 review W-01-W-04, W-07; the Professor's
+it tests the FORM of the repaired definition, not its content. Version 19 (consolidation S0151-S0181, A-01/B-02, A-02,
+A-03, A-10/B-03, and the integration review; the Professor's technical choices, marked for review): no oracle flag. Every entry the kernel accepts
+carries a kernel attestation ('katt', the attesting kernel; set by the kernel at append, covered by the integrity check,
+like K5); an entry without one was not accepted by the kernel and fails integrity, so the record is outside D (fail-
+closed; reported as 'not accepted by the kernel', not as a fork). 'bypass': True in a fixture only means 'written
+outside the kernel', i.e. no attestation. Each entry must carry a store. A store is a carrier at most once: the guard
+refuses a designation naming the root carrier or a store already in the chain, and D refuses two designations naming
+one carrier. Check 31. Version 18 (C32 review W-01-W-04, W-07; the Professor's
 technical completion of the ruling, marked for review): the append guard requires a designation's old store to be the
 carrier in force at that kernel step (no fork, no stale designation); the kernel, not the caller, sets the store of an
 appended entry (the carrier in force; a designation's own store is its carrier); the old store's maximal entries are
@@ -109,6 +116,7 @@ ROOT_CARRIER = 'C1'                                  # v18: the carrier the root
 FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the owner application, fixed at issuance
 ENDING_KINDS = ('endg', 'consume')
 KERNEL = 'kernel'                                                    # v11: the application that holds the contract
+KERNEL_ID = 'K1'                                                     # v19: the attesting kernel of this record
 APP_KINDS = ('consume', 'transfer')                                  # v11: entries that carry their recording app
 
 
@@ -171,6 +179,7 @@ class Record:
                 x.setdefault('auth', 'signed-as-actor')
                 x.setdefault('app', 'A0' if x.get('kind') != 'transfer' else KERNEL)   # v13: every act carries it
                 x.setdefault('store', x['carrier'] if x.get('kind') == 'designate' else 'C1')   # v17: the store appended to
+                x.setdefault('katt', None if x.get('bypass') else KERNEL_ID)   # v19: kernel attestation (none if bypass)
                 if x.get('kind') == 'grant':        # v11: one owner application, 'A0' unless given
                     x.setdefault('owner', 'A0')
                     x.setdefault('single_use', False)   # v13 (the Principal after C20): uses owner-checked only if True
@@ -215,9 +224,16 @@ def down_store(rec, i, store):
 def maximal_entries(rec, store, accepted_only=False):
     """v17 (the Principal): the maximal entries of a store, every entry of it that no other entry of that store cites.
     v18 (C32 W-03): with accepted_only, over the entries the kernel accepted (a bypass write is not one)."""
-    es = [x for x in rec.e if x.get('store') == store and not (accepted_only and x.get('bypass'))]
+    es = [x for x in rec.e if x.get('store') == store and not (accepted_only and not x.get('katt'))]   # v19: attested
     cited = {c for x in es for c in x.get('cites', [])}
     return [x['id'] for x in es if x['id'] not in cited]
+
+
+def kfill(rec, e):
+    """v19: an entry the kernel accepts directly in a fixture: the kernel's store and attestation."""
+    e.setdefault('store', carrier_in_force(rec))
+    e.setdefault('katt', KERNEL_ID)
+    return e
 
 
 def carrier_in_force(rec):
@@ -225,7 +241,7 @@ def carrier_in_force(rec):
     closes the current carrier, as long as there is one."""
     cur, seen = ROOT_CARRIER, set()
     while True:
-        nxt = [x for x in rec.e if x['kind'] == 'designate' and x['old'] == cur and not x.get('bypass')]
+        nxt = [x for x in rec.e if x['kind'] == 'designate' and x['old'] == cur and x.get('katt')]   # v19: attested
         if not nxt or cur in seen:
             return cur
         seen.add(cur)
@@ -267,6 +283,10 @@ def in_D(rec):
             return False, f"missing field in {x['id']}: {sorted(FIELDS[x['kind']] - set(x))}"
         if x['auth'] not in AUTH:
             return False, f"auth of {x['id']} is {x['auth']!r}, not one of {sorted(AUTH)}"
+        if 'store' not in x:                         # v19 (A-10, B-03): a store is required
+            return False, f"{x['id']} carries no store"
+        if not x.get('katt'):                        # v19: strict; a missing attestation fails integrity
+            return False, f"{x['id']} carries no kernel attestation: not accepted by the kernel (v19; a K1 or K2-w failure, not a fork)"
         if x['kind'] == 'consume' and x['grant'] in rec.by and rec.by[x['grant']]['kind'] == 'grant' \
                 and not rec.by[x['grant']].get('single_use'):
             return False, f"consumption {x['id']} of {x['grant']}, which is not single-use (v15, the Principal after C21: a grant that can be consumed is single-use by its kind)"
@@ -304,6 +324,9 @@ def in_D(rec):
             if rec.pos[g] >= rec.pos[x['id']]:
                 return False, f"{x['id']} cites {g}, which is not an earlier entry (D: citations of earlier entries only)"
     ds = [x for x in rec.e if x['kind'] == 'designate']      # v18 (C32 W-01, W-02): one chain, no position read
+    carriers = [x['carrier'] for x in ds]             # v19 (A-02): a store is a carrier at most once
+    if len(carriers) != len(set(carriers)) or ROOT_CARRIER in carriers:
+        return False, f"a store is named as carrier twice {sorted(c for c in set(carriers) if carriers.count(c) > 1 or c == ROOT_CARRIER)}"
     olds = [x['old'] for x in ds]
     if len(olds) != len(set(olds)):
         return False, f"two designations close the same store {sorted(o for o in set(olds) if olds.count(o) > 1)} (a fork)"
@@ -729,6 +752,8 @@ def remove(rec, i, rid, actor, cites, t, scope='s', **kw):
     guard = kw.pop('guard', True)
     r = dict({'id': rid, 'kind': 'remove', 'actor': actor, 'cites': list(cites), 'target': i, 'scope': scope, 't': t,
               'recorder': actor, 'auth': 'signed-as-actor'}, **kw)
+    r.setdefault('store', carrier_in_force(rec))   # v19: the kernel's own act carries its store and attestation
+    r.setdefault('katt', KERNEL_ID)
     rec.e.append(r)
     rec.by[rid] = r
     rec.pos[rid] = len(rec.e) - 1
@@ -1007,6 +1032,9 @@ def append_guard(rec, e):
         cif = carrier_in_force(rec)                  # v18 (C32 W-01): only the carrier in force can be closed
         if e['old'] != cif:
             return False, f"designation {e['id']} refused: it closes {e['old']}, but the carrier in force is {cif}"
+        used = {ROOT_CARRIER} | {x['carrier'] for x in rec.e if x['kind'] == 'designate'}
+        if e['carrier'] in used:                     # v19 (A-02): a store is a carrier at most once
+            return False, f"designation {e['id']} refused: {e['carrier']} has already been a carrier"
         omitted = [m for m in maximal_entries(rec, e['old'], accepted_only=True) if m not in e['cites']]   # v18 (W-03)
         if omitted:
             return False, f"designation {e['id']} refused: it omits the maximal entries {omitted} of {e['old']}"
@@ -1095,6 +1123,7 @@ def append(rec, e):
     """v11: the guarded append, one step: the entry is added only if append_guard accepts it. Returns (ok, reason)."""
     e = complete(rec, e)
     e['store'] = e['carrier'] if e['kind'] == 'designate' else carrier_in_force(rec)   # v18 (C32 W-02): set by the kernel
+    e['katt'] = KERNEL_ID                            # v19: the kernel attests what it accepts
     ok, why = append_guard(rec, e)
     if ok:
         rec.e.append(e)
@@ -1704,7 +1733,7 @@ if __name__ == '__main__':
     r22f = Record([dict(ROOT), G('gR', 'P', ['r'], 'R', t=0), dict(G('g', 'P', ['r'], 'A', t=0), content='text'),
                    adopt('x', 'A', ['g'], t=1)], S1)
     remove(r22f, 'g', 'rm', 'R', ['gR'], 5)
-    r22f.e.append(dict(annul('n', 'P', ['r'], 'rm', t=6), recorder='P', auth='signed-as-actor'))
+    r22f.e.append(kfill(r22f, dict(annul('n', 'P', ['r'], 'rm', t=6), recorder='P', auth='signed-as-actor')))
     r22f = Record(r22f.e, S1)
     r22c = Record([dict(ROOT), dict(G('g', 'P', ['r'], 'A', t=0), removed=True), adopt('x', 'A', ['g'], t=1)], S1)
     print('(22) removal by an authorized act:', ok22, 'CE* =', ce_star(r22, 'c', 3), '(before', v22, '), marks', marks(r22, 'c', 3),
@@ -1747,7 +1776,7 @@ if __name__ == '__main__':
     remove(q1, 'g', 'rm1', 'P', ['r'], 5)
     q2 = Record([dict(ROOT), G('gZ', 'P', ['r'], 'Z', t=0), dict(gq), dict(xq)], S1)
     remove(q2, 'g', 'rm2', 'Z', ['gZ'], 5)
-    q2.e.append(dict(annul('n2', 'P', ['r'], 'rm2', t=6), recorder='P', auth='signed-as-actor'))
+    q2.e.append(kfill(q2, dict(annul('n2', 'P', ['r'], 'rm2', t=6), recorder='P', auth='signed-as-actor')))
     outs = []
     for rs in ([q1.e, q2.e], [q2.e, q1.e]):
         ents, why = merge([[dict(x) for x in R] for R in rs])
@@ -1855,7 +1884,7 @@ if __name__ == '__main__':
     r24j = Record([dict(x) for x in base24], S1)
     append(r24j, xfer('m', 'A2', 3))
     append(r24j, use('k', 'A2', 4))
-    r24j.e.append(dict(annul('n', 'P', ['r'], 'm', t=5), recorder='P', auth='signed-as-actor'))
+    r24j.e.append(kfill(r24j, dict(annul('n', 'P', ['r'], 'm', t=5), recorder='P', auth='signed-as-actor')))
     r24j = Record(r24j.e, S1)
     print('(24j) the transfer annulled after the use: m =', wfs(r24j)['m'], ', marks of k:', marks_act(r24j, 'k'))
     assert wfs(r24j)['m'] == F and not any('owner' in m for m in marks_act(r24j, 'k'))
@@ -2091,7 +2120,8 @@ if __name__ == '__main__':
     # a bypass write in C1 before the designation: not required, not a member, record still in D
     rb = Record([dict(x) for x in b30] + [dict(adopt('z', 'A', ['g'], t=1), bypass=True)], S1)
     ok_b, why_b = append(rb, desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'))
-    res30['bypass write not forced into the members'] = ok_b and 'z' not in members_closed(rb, 'd1') and in_D(rb)[0]
+    res30['bypass write not forced into the members'] = ok_b and 'z' not in members_closed(rb, 'd1') \
+        and not in_D(rb)[0] and 'not accepted by the kernel' in in_D(rb)[1]   # v19: fail-closed, no oracle
     # D refuses an entry in a store no designation names
     unk = Record([dict(x) for x in b30] + [dict(adopt('q', 'A', ['g'], t=2), store='C9')], S1)
     res30['unknown store outside D'] = not in_D(unk)[0] and 'C9' in in_D(unk)[1]
@@ -2110,4 +2140,27 @@ if __name__ == '__main__':
         print('(30)', k_, '->', 'PASS' if v_ else 'FAIL')
     print('(30) why: fork', why_fork, '| stale', why_stale, '| merge orders tried', nord)
     assert all(res30.values())
+    # (31) v19 (consolidation S0151-S0181): attestation instead of an oracle; a store is a carrier at most once
+    res31 = {}
+    r31 = Record([dict(x) for x in b30], S1)
+    ok1, _ = append(r31, desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'))
+    mx = maximal_entries(r31, 'C2', accepted_only=True)
+    ok2, why2 = append(r31, desig('d2', 'D', ['gD'] + mx, mx, t=3, carrier='C1', old='C2'))
+    res31['reuse of a carrier refused at append (A-02)'] = ok1 and not ok2 and 'already been a carrier' in why2 and in_D(r31)[0]
+    reuse = Record([dict(x) for x in b30] + [desig('d1', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'),
+                                             dict(desig('d2', 'D', ['gD', 'd1'], ['d1'], t=3, carrier='C1', old='C2'))], S1)
+    res31['a record reusing a carrier is outside D'] = not in_D(reuse)[0] and 'carrier twice' in in_D(reuse)[1]
+    lone = Record([dict(x) for x in b30] + [dict(desig('dz', 'Z', ['gD', 'x1'], ['x1'], t=2, carrier='C7', old='C1'), bypass=True)], S1)
+    res31['a lone bypass designation: outside D, not reported as a fork (A-01)'] = not in_D(lone)[0] \
+        and 'not accepted by the kernel' in in_D(lone)[1]
+    cites_bp = Record([dict(x) for x in b30] + [dict(adopt('z', 'A', ['g'], t=1), bypass=True), adopt('w', 'A', ['z', 'g'], t=2)], S1)
+    res31['an accepted entry citing a bypass entry: outside D, nothing promoted (A-03)'] = not in_D(cites_bp)[0]
+    nostore = Record([dict(x) for x in b30], S1)
+    del nostore.e[-1]['store']
+    res31['an entry without a store is outside D (A-10)'] = not in_D(nostore)[0] and 'no store' in in_D(nostore)[1]
+    res31['the guard reads no oracle flag'] = 'bypass' not in __import__('inspect').getsource(append_guard) \
+        and 'bypass' not in __import__('inspect').getsource(maximal_entries).split('"""')[-1]
+    for k_, v_ in res31.items():
+        print('(31)', k_, '->', 'PASS' if v_ else 'FAIL')
+    assert all(res31.values())
     print('all assertions passed')
