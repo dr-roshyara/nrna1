@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 19 (consolidation S0151-S0181, A-01/B-02, A-02,
+it tests the FORM of the repaired definition, not its content. Version 20 (C34 review W-01, critical; the Principal's
+decision of 2026-10-28, "Each store belongs to one application, and only that application may move the record to a new
+store"; the Professor's technical completion, marked for review): every designation carries its moving application
+('app'); the owner of the root carrier is ROOT_OWNER, and the owner of a store a designation names is the application
+that moved the record there (no change of a store's owner is modelled: T9-11). The guard refuses a designation not
+recorded by the owner of the store it closes; D refuses a record holding one ("designation not by the old store's
+owner"), so across merged applications a single foreign move is detected, not only a fork. The moving application is
+trusted as declared (a located assumption, as for grants, §9.15 L10); the attestation is checked for presence, not
+validity, and one kernel identity is modelled. Check 32. Version 19 (consolidation S0151-S0181, A-01/B-02, A-02,
 A-03, A-10/B-03, and the integration review; the Professor's technical choices, marked for review): no oracle flag. Every entry the kernel accepts
 carries a kernel attestation ('katt', the attesting kernel; set by the kernel at append, covered by the integrity check,
 like K5); an entry without one was not accepted by the kernel and fails integrity, so the record is outside D (fail-
@@ -117,6 +125,7 @@ FIELDS['grant'] = FIELDS['grant'] | {'owner'}                       # v11: the o
 ENDING_KINDS = ('endg', 'consume')
 KERNEL = 'kernel'                                                    # v11: the application that holds the contract
 KERNEL_ID = 'K1'                                                     # v19: the attesting kernel of this record
+ROOT_OWNER = 'A0'                                                    # v20 (C34 W-01): the owner of the root carrier
 APP_KINDS = ('consume', 'transfer')                                  # v11: entries that carry their recording app
 
 
@@ -248,6 +257,16 @@ def carrier_in_force(rec):
         cur = nxt[0]['carrier']
 
 
+def store_owner(rec, store, attested_only=True):
+    """v20 (C34 W-01; the Principal, 2026-10-28): the owner application of a store: ROOT_OWNER for the root carrier,
+    else the application of the designation that names the store as carrier (the one that moved the record there).
+    None if no designation names it."""
+    if store == ROOT_CARRIER:
+        return ROOT_OWNER
+    ds = [x for x in rec.e if x['kind'] == 'designate' and x['carrier'] == store and (x.get('katt') or not attested_only)]
+    return ds[0]['app'] if ds else None
+
+
 def reaches(rec, a, b):
     """v18: entry a reaches entry b by citation (directly or through any entries)."""
     seen, todo = set(), [a]
@@ -340,6 +359,10 @@ def in_D(rec):
                 return False, f"designation {x['id']} closes {x['old']}, which no single designation of the chain names"
             if not reaches(rec, x['id'], prev[0]['id']):
                 return False, f"designation {x['id']} does not reach {prev[0]['id']}, the designation of its old store, by citation"
+    for x in ds:                                     # v20 (C34 W-01): a move only by the old store's owner
+        ow = store_owner(rec, x['old'], attested_only=False)
+        if x['app'] != ow:
+            return False, f"designation {x['id']} not by the old store's owner: recorded by {x['app']}, the owner of {x['old']} is {ow}"
     known = {ROOT_CARRIER} | {x['carrier'] for x in ds}
     unknown = sorted({x.get('store', ROOT_CARRIER) for x in rec.e} - known)
     if unknown:
@@ -1040,6 +1063,9 @@ def append_guard(rec, e):
             return False, f"designation {e['id']} refused: it omits the maximal entries {omitted} of {e['old']}"
         if a_new[e['id']] != T:
             return False, f"designation {e['id']} refused: its authorization is {a_new[e['id']]}, not T"
+        ow = store_owner(rec, e['old'])              # v20 (C34 W-01): only the owner of the old store moves the record
+        if e['app'] != ow:
+            return False, f"designation {e['id']} refused: recorded by {e['app']}, not by {ow}, the owner of {e['old']}"
     su = single_use_grants(rec, e)
     if su:
         prev = dict(e.get('prev_use') or {})
@@ -2163,4 +2189,23 @@ if __name__ == '__main__':
     for k_, v_ in res31.items():
         print('(31)', k_, '->', 'PASS' if v_ else 'FAIL')
     assert all(res31.values())
+    # (32) v20 (C34 review W-01; the Principal, 2026-10-28): one owner application per store; a move only by the owner
+    res32 = {}
+    r32 = Record([dict(x) for x in b30], S1)
+    okf, whyf = append(r32, dict(desig('df', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C5', old='C1'), app='B'))
+    res32['a move by an application that does not own the store is refused at append'] = not okf and 'owner of C1' in whyf
+    oko, _ = append(r32, desig('do', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C2', old='C1'))
+    res32["the owner's move is accepted and the record is in D"] = oko and in_D(r32)[0]
+    mx = maximal_entries(r32, 'C2', accepted_only=True)
+    okn, _ = append(r32, desig('dn', 'D', ['gD'] + mx, mx, t=3, carrier='C3', old='C2'))
+    res32['the owner of a store it moved the record to moves it again'] = okn and in_D(r32)[0] and store_owner(r32, 'C3') == ROOT_OWNER
+    merged = Record([dict(x) for x in b30] + [dict(desig('dk', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C5', old='C1'), app='B', katt='K2')], S1)
+    res32['merged: a single foreign move attested by another kernel is outside D (W-01 probe)'] = not in_D(merged)[0] \
+        and "not by the old store's owner" in in_D(merged)[1]
+    forged = Record([dict(x) for x in b30] + [dict(desig('dg', 'D', ['gD', 'x1'], ['x1'], t=2, carrier='C5', old='C1'), katt='forged')], S1)
+    lim = in_D(forged)[0]
+    for k_, v_ in res32.items():
+        print('(32)', k_, '->', 'PASS' if v_ else 'FAIL')
+    print('(32) limit, stated not repaired: a forged attestation string by the owner application leaves the record in D:', lim)
+    assert all(res32.values()) and lim
     print('all assertions passed')
