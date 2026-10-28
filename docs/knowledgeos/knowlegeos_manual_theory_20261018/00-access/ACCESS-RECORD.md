@@ -484,3 +484,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - Allowed sources S0175–S0182 (the "Architecture Review Set") summarise and quote six non-allowed files. **S0156, S0157, S0161, S0170 and S0174 are treated as exposed through summaries**, to the Professor and the window reviewers; S0155 as before. None was opened; the sealed list was not probed. Details: `06-theory/manuscript/review/C33-S0177-S0181/ACCESS-NOTE.md`.
 - Rule from now on (decision record, same time): allowed sources' statements about non-allowed files are not used as evidence; the final hold-out test reports every exposed item separately.
 - Not a breach: reading allowed sources is authorised; this is the residual risk of the allowed list accepted with D-C1.
+
+## Entry 2026-10-28T16:44:46Z: consolidation S0182–S0200, book copy for review, sealed before any reviewer starts
+- **Prepared by** the Rule Reviewer session, not the Professor (Rulebook v1.4 §12). Base: commit `64186ddd0`.
+- **Book under review:** `06-theory/manuscript/review/CONSOLIDATION-S0182-S0200/BOOK-UNDER-REVIEW/`, a full copy of the book without the chapters' review subfolders, with its own `book_search.py`; the checks are run with `--root` on it. Which files differ is in the key only.
+- **Key** outside the workspace until scoring; sha256 `66f6fe0f0a0f692e0c8bab4f8b912f2de3c98b0d197bf5c5d24fa9495f2f0d9b`. **Manifest of the copy** (148 files), outside the workspace; sha256 `43dbced284635594421731d4a5594599ba86427dad2ae5c8d3c14b08370df99f`.
+- **Isolation:** `REVIEWER-NOTE.md` with every commission; file and search lists; transcript audit; reviewers not told. **The preparation's commit subject is neutral** (lesson from `4ab5b3b82`).
+- **The Professor** (`README-PROFESSOR.md`): freezes the working book until scoring; does not compare; settles in two stages.
