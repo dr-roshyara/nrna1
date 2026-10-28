@@ -74,6 +74,8 @@
 
 **Consolidation S0151–S0181 settled (2026-10-28)**: Ch. 4 and Ch. 5 rotated; model v19 (kernel attestation, carrier at most once); T9-10 (a) awaiting the Principal (may two applications move the same record?). **Next: reading from S0182 to S0200**, in windows of 5 allowed sources; stop before the S0200 consolidation (planted-gap test, prepared by the Rule Reviewer); tell the Principal when the last window before S0200 is settled.
 
+**Windows C34–C37 settled (2026-10-28)** (§8.27–§8.30; S0182–S0200, all allowed, none refused). The Principal decided T9-10 (a): one owner application per store. C34 W-01 (critical) showed v19 did not enforce it, and **model v20** adds the owner check (check 32). C35 stated v20's limits: the owner is constant along a chain, and the check rests on a declared application. T0-03b was opened (PKS/EKS: one system or two; kernel candidates listed for a theory turn). **Reading has reached S0200. STOPPED before the S0200 consolidation**: do not freeze, commission or start it until the Rule Reviewer has prepared the copy and sealed the key. The Principal has been told.
+
 **Per window and per theory turn:**
 - review;
 - settlement;
