@@ -1,0 +1,74 @@
+# KnowledgeOS: research and implementation, one linked strategy (PROPOSED)
+
+| Field | Value |
+|---|---|
+| Status | **PROPOSED, NOT APPROVED.** Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
+| Decides | the Principal |
+| Changes | nothing in force; Rulebook v1.4 and the research continue as they are until the Principal decides |
+
+*Labels: **[V]** verified in the lane's records · **[R]** reported by the Professor or reviewers, not reconstructed · **[I]** inferred · **[P]** proposed · **[O]** open.*
+
+## 1. The idea in one paragraph
+
+The research and the building run as **two tracks with gates between them**. The research track keeps reading the corpus and building the theory. The implementation track builds only what the theory has made **stable**, starting with an **executable reference model**, not a product. Every built rule cites the book claim it implements and that claim's status. What the building reveals goes back to the research as evidence. Neither track waits for the other to finish, but **no stage of building starts before the research gate that justifies it** [P].
+
+## 2. Where we start
+
+| What | State | Label |
+|---|---|---|
+| Corpus read in order | about 190 of 2,734 sources (≈ 7 %) | [V] read log |
+| Concepts | 47 VALIDATED, 122 PROVISIONAL, 96 INVALID as stated | [V] register |
+| A formal core with test models | the evaluator CE\* (T/F/U with refusal reasons, total on a stated domain D), the kernel type (laws on states, steps, histories), the single-use guard (one owner per grant), designation of the record (a design sketch), the "pairs suffice" condition (Helly) | [V] book §9.10–§9.17; models `ce_model.py` v19, `helly_check.py` pass [R] |
+| The trust boundary | kernel assumptions K1–K7 against world assumptions L1–L11 | [V] §9.15 |
+| Not yet there | a fixed minimal primitive set; laws derived from it; parts of Req; whether a minimal kernel exists and is unique | [V] BOOK-OUTLINE |
+
+**Consequence [I]:** the core is precise but **conditional and young**. It is enough to build an executable model that tests itself; it is not enough to build a product.
+
+## 3. The stability scale: what may be built on what
+
+| Level | Meaning | May be built as |
+|---|---|---|
+| **S0: unstable** | INVALID, or PROVISIONAL with open critical or high findings | nothing |
+| **S1: provisional** | PROVISIONAL, reviewed, no open critical finding, a design sketch closed with its assumptions | the **reference model** only, marked experimental |
+| **S2: reviewed core** | VALIDATED, or survived a consolidation and a planted-gap test without a critical finding | a **kernel prototype** |
+| **S3: established** | survived a milestone (whole-book) review; derived from the fixed primitive set | a **production kernel** |
+
+Each implemented rule carries its book claim, CON-ID and level. A claim that drops a level (a later review finds a defect) **blocks** what was built on it until it is reassessed [P].
+
+## 4. The stages and their gates
+
+| Stage | What is built | Gate to start it | Gate to finish it | Who |
+|---|---|---|---|---|
+| **0. Now to S0200** | nothing; an **implementation-candidates list**: each kernel result with its claim, assumptions, level and open questions | — | the list reviewed at the S0200 milestone | Rule Reviewer (list), Professor (claims) |
+| **1. Executable reference model** | one clean library from the existing models: the record and its D-check, CE\*, refusal reasons, the single-use guard, designation; **each law of the book as an executable property test**; no storage, no UI, no product | S0200 decided; the candidates list approved; a separate implementation session named | every S1/S2 law of the list is a passing property test; every assumption (K/L) is visible as a parameter or a stub | a **separate engineering session**, not the Professor |
+| **2. Validation against reality** | the reference model run on **real governance records** of the estate that are on the allowed list (grants, transitions, registrations, as the corpus contains them): does CE\* reproduce the estate's recorded decisions? Every disagreement is a finding | stage 1 done; the Principal's grant for any file outside the allowed list | each disagreement classified: theory defect · estate defect · data gap | engineering session; findings to the Professor as evidence |
+| **3. Kernel prototype** | the kernel as a component: append-only record with attestation, D-check at append, CE\* as a query, the owner rules, designation; a minimal application on top | the primitive set fixed (a theory turn), the core at **S2**, a milestone review passed | the prototype passes the stage-1 tests and the stage-2 cases | engineering |
+| **4. Production kernel and applications** | hardened kernel; applications by the boundary test (what must the kernel provide, what can an application provide) | the laws **derived** from the primitive set (S3); kernel existence answered | the product's own acceptance | engineering, with the Principal |
+
+**Timing [I]:** stage 1 can start after S0200; stage 2 soon after; stage 3 needs the primitive set fixed, which on the present pace is a milestone around S0300–S0500; stage 4 later. Reading continues throughout.
+
+## 5. How the two tracks feed each other
+
+- **Theory → building:** only claims at the required level; each built rule cites its claim; a claim that changes triggers reassessment of what was built on it (the book's R3, applied to code).
+- **Building → theory:** every disagreement found in stage 2 or 3 goes to the Professor as **implementation evidence** (labelled Repo or Impl, never as corpus evidence): *the corpus intended X, the estate's records show Y*. It may open a fork; it never silently corrects the corpus (v2 proposal §4, the Principal's Q1 answer).
+- **Independence:** the implementation session does not write the theory, and the Professor does not write the implementation. Otherwise the theory would quietly be shaped to fit the code (hindsight) [P].
+- **Cost:** the implementation track runs in its own session and does not slow the reading. The Rule Reviewer's added work: the candidates list, the level of each built rule, and the gate checks [I].
+
+## 6. Risks and how the strategy meets them
+
+| Risk | Answer |
+|---|---|
+| Building on theory that later fails | the stability levels; blocking on a drop of level; stage 1 is a model, cheap to change |
+| The code shapes the theory | separate sessions; implementation findings enter the book only as labelled evidence, through review |
+| Engineering loops (as F22 and designation became in the theory) | closure criteria per component before it starts; a component is "done" when its tests pass, not when it is perfect |
+| The implementation drains the research | its own session; the research priority order (v1.4 §1) unchanged |
+| Hold-out exposure through implementation data | stage 2 uses only allowed-list records unless the Principal grants a file; never anything under `docs/knowledgeos/` outside the list |
+| Building for one estate only | the boundary test decides what is kernel; estate-specific rules stay in an application |
+
+## 7. Decisions for the Principal
+
+1. **Approve the two-track strategy** with its stability levels and gates? **[P] Recommended: yes.**
+2. **Start stage 1 after the S0200 decision?** **[P] Recommended: yes**, with a separate engineering session.
+3. **Who builds?** **[O]** A separate engineering session (Claude), under the repository's engineering process (EP-01 plan first, approval, tests); or a human team. The Professor does not build.
+4. **Stage 2 data:** only allowed-list records, or also named estate records outside it (case by case, never `docs/knowledgeos/` outside the list)? **[P] Recommended:** allowed-list records first; named grants later if a gap appears.
+5. **Where the code lives:** a new folder in this repository or a separate repository? **[O]** Not a research question; an engineering decision for stage 1's plan.
