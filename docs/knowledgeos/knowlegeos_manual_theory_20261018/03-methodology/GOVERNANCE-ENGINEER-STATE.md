@@ -13,12 +13,12 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | S0001–S0204 read; **window C38 (S0201–S0204) settled** as §8.31 (14 findings, all accepted; checked by the Governance Engineer, below); **window C39 (S0205–S0207)** drafted as §8.32, before review; 7 of 25 towards the **S0225 consolidation** (inferred from the windows' ranges) | C38 `b626c1fba`; C39 draft `e36088f56` |
-| C38 check (Governance Engineer) | report sha256 and step-1 inventory sha256 match their saved files; all of W-01–W-14 and the MISSING coverage items traced into §8.31 (C1–C6, §8.31.3–.5) and the index row. **Minor, for later (not re-planned):** (1) the C6 circularity answer (§8.31.4) still names only C-5 and C-6 as informative; W noted W-01 and W-02 are too; (2) W's "C4 rival absent" is answered in C4 itself (W-06), not as a challenge line; (3) for the next brief: Ch. 0–2 chapters are allowed, only the basis files are not (already noted in the settlement) | `b626c1fba` |
+| Reading | S0001–S0223 read and settled (windows C38–C44, §8.31–§8.37); **window C45 (S0224–S0225)** drafted as §8.38, before review; then the **S0225 consolidation** (25 of 25 once C45 settles) | C44 `977cf8038`; C45 draft `5db742c29` |
+| Window checks C38–C44 (Governance Engineer, 2026-10-29) | per window: report and step-1 inventory sha256 OK; every W finding in the report has a settlement row, all **Accepted** (C38 14; C39–C44 9–10 each; 0 critical); each settlement commit changed the section, index and change log. **Noted, no action:** C41 W-01's tie case worked from the text, not run in the model (the settlement says so); C42 C7 (a rival central question) recorded for the Principal, not adopted; C44 W-01 (guard reading) "a choice for the Principal" — to be brought as a question when the Professor asks; C43's settlement also touched §8.35 (settled), §8.37–§8.38 (drafts) and §10.2 G7 (logged in the Ch. 10 change log: source kind of evidence not carried). C38's three minor points stand | `b626c1fba`…`977cf8038` |
 | Register | 265 concepts: 52 VALIDATED, 117 PROVISIONAL, 96 INVALID (at S0200) | `0ae02e66b` |
 | Consolidation S0182–S0200 | settled; planted-gap test 2 of 4 | `e5da8af5a`; D1 |
 | Strategic design (Ch. 10) | **turns 1–5 settled** (`dca72c57f`); T10-16 (b) and the routed clarifications applied at the G1 settlement (`8e4b1a420`); all S0 | decision record |
-| G1 theory turn (§9.18) | settled (`8e4b1a420`); model `ce_model.py` v22 reproduces (46 PASS, 0 FAIL, checked by the Governance Engineer); evidence kinds are **proposals, not adopted** | `8e4b1a420` |
+| G1 theory turn (§9.18) | settled (`8e4b1a420`); evidence kinds are **proposals, not adopted**. **T9-16 (b) applied** (`ed29e5957`): `ce_model.py` v23 re-run by this session: 52 PASS, 0 FAIL, output identical to the saved run; check 37 (six cases) matches the decision; the claim "checks 1–36 identical to v22" not yet confirmed (interrupted by the access incident, 2026-10-29) | `ed29e5957` |
 | Principal's design decisions | T10-01 (b) promise; T10-05 (B) admission; T10-10 (1) own state; T10-16 (b) record owned by no area (designation with it; removal record-keeping, annulment standing); T9-12 (c) evidence shown, authorised counts; **T9-16 (b) + restore entry** (`4756be2f2`) | decision record |
 | R2 `--scope` (D2) | done by the Professor | `d587cfaf5` |
 | Brief template | in force from the S0225 consolidation | `bf75badfb` |
@@ -53,7 +53,7 @@
 
 | # | Owner | Action |
 |---|---|---|
-| 2 | Professor | apply T9-16 (b) (model new version: unrelated grant shown not counted; scoped grant counts; restore after withdrawal); then **T9-17** (with the routed Impl evidence B-04, B-05), then adopting the evidence kinds, then naming T10-21 — each to the Principal one at a time |
+| 2 | Professor | **T9-17** (with the routed Impl evidence B-04, B-05), then adopting the evidence kinds, then naming T10-21 — each to the Principal one at a time (T9-16 (b) applied, `ed29e5957`) |
 | 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
 | 4 | Governance Engineer | **check the S0225 consolidation briefs** against the template (G1–G7); no test there |
 | 5 | Governance Engineer | **prepare the S0250 planted-gap test** (mandate §8.3), aimed at the classes missed at S0200 (ordinary undefined word; removed claim); its preparation checked by a separate session (§8.3a) before reviewers start |
@@ -62,7 +62,7 @@
 
 ## Waiting for
 
-- The T9-16 application and the T9-17 question (Professor); the C39 review and settlement (Professor), then the Governance Engineer's check of it.
+- The T9-17 question; the C45 review and settlement; the S0225 consolidation briefs (Professor), then the Governance Engineer's checks.
 
 ## Next milestones
 
