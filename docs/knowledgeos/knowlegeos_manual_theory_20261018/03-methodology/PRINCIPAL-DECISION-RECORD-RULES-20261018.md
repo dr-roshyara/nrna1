@@ -517,3 +517,12 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "approve revision 3 of the strategy" (commit `5f69e40a2`).
 - **Decided:** `IMPLEMENTATION-STRATEGY-PROPOSED.md` **revision 3 is approved in principle** (sha256 at approval `eabe2cecea6f9fd09ea47b61abfe9c9dd1966362d8f268da863df72a42c110ad`), replacing revision 2. Consistency corrections only (§8): stage 1's entry in five separate authorisations, no code before the Principal approves the Implementation Engineer's plan; a testing disposition per law; §7 split into settled and pending; current role names, status from the decision record; stage-2 inputs as a named, versioned list with a reviewed mapping; stage-2 and stage-3 findings to the Principal first.
 - **Not decided here:** stage 1 and every other item listed as pending in §7.
+
+## Addendum (2026-10-29T10:00:44Z): what counts as an area's own state (T10-10); the G1 turn's starting point
+
+- **Question** (strategic-design turn 4, §10.3.6, settlement `87fbfa2ed`): under rule (B), what counts as an area's own state? (1) entry kinds of the one record whose acceptance rule belongs to the area; (2) also content outside the record that carries no standing; (3) a separate designated record per area.
+- **Principal (verbatim):** "(1), and G1 starts from entry kinds in the one record".
+- **Decided:**
+  1. **(1).** An area's own state is **the entry kinds of the one designated record whose acceptance rule is that area's rule**. Removing, annulling and designating stay with standing for every kind (§10.3.6). Shown compatible with K2 without changing it, so the K2 condition of T10-05 is met. **Consequence:** standing is admitted; norms is not admitted today (it owns no entry kind, G11); the earlier addendum's "standing and norms qualify now" is superseded on this point.
+  2. **The G1 theory turn starts from entry kinds in the one record:** evidence is first modelled as entry kinds of the one designated record, accepted under the evidence area's own rule. **A separate evidence record is considered only if the G1 turn shows it is necessary, and then the question returns to the Principal** (it would require reading K2 as allowing more than one record).
+- **Not decided here:** turn 5; the G1 turn's result; any level change.
