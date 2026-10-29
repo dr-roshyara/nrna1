@@ -1,0 +1,5 @@
+OLD: d1 accepted=True d2 accepted=True forked=True in_D=True
+NEW: d1 accepted=True d2 accepted=False forked=False in_D=True
+OLD: 19607 sequences; guarded records that fork: 1616; guarded records outside D: 0
+NEW: 19607 sequences; guarded records that fork: 0; guarded records outside D: 0
+bypass fork: in D_old=True in D_new=False
