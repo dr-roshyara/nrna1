@@ -467,3 +467,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   - **D10** `MANDATE-STRATEGIC-DESIGN-PROPOSED.md` **revision 1 approved** (sha256 `f26830b4143ccbb5fefe3148e07bddadffa33083374a3ace1671b31cd1bd1fa7` at approval; commit `64e6e8603`). It may start now that the S0200 consolidation is settled; the Professor may finish the current reading window first.
   - **D11** `MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` **revision 1 approved** (sha256 `d49a771c873003e17e9200816d6c30e04f1fb58b752e9658349bcdb79132b8df` at approval; commit `64e6e8603`). **Part A** may start in a new session; **part B needs a reviewed strategic-design baseline and the Principal's separate authorisation.**
 - **Not decided here:** the start of stage 1; part B of the audit; any access beyond the allowed list.
+
+## Addendum (2026-10-29T08:50:11Z): what KnowledgeOS promises (T10-01; T0-02)
+
+- **Question** (strategic-design turn 1, §10.1.2, settlement `20140bce9`): when KnowledgeOS serves a piece of knowledge, what does it promise the user? (a) only that its current standing is right and shown with its reasons; (b) that, plus an honest display of how well-founded it is (refuted, not attested, or supported by recorded evidence), without a guarantee; (c) that it is well-founded.
+- **Principal (verbatim):** "i accept your recommendation" — on the Governance Engineer's recommendation **(b)**.
+- **Decided: (b).** KnowledgeOS promises that a piece of knowledge's **current standing is right and shown with its reasons**, together with an **honest display of how well-founded it is** (refuted, not attested, or supported by recorded evidence), **without a guarantee that it is well-founded**. *(Consistent with the problem statement, `00.01` L30: usable = current ∧ well-founded ∧ visible, "visible" meaning the user sees both values.)*
+- **Consequence for the strategic design (for the Professor, turn 2):** the display of well-foundedness is part of the promise; turn 2 assigns its responsibility and shows that each displayed class can be read from the record alone.
+- **Not decided here:** the Governance Engineer mandate; the Verification Auditor's test-run question (both still open).
