@@ -633,3 +633,14 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   3. **A one-time permission** for the Governance Engineer to update `.claude/sessions/2026-10-29.md` and `.claude/CONTEXT.md` for 2026-10-29, describing state only; no authority is created by them.
   4. **Reporting form** for the Governance Engineer's later reports: the six labels (verified, reported, inferred, proposed, decision required, unknown), and per significant activity: purpose, authority, result, files changed, verification evidence, outstanding work, next action.
 - **Not decided here:** T9-17 itself; any file access (see implementation-track entry I-009); credential remediation (PublicDigit's owner).
+
+## Addendum (2026-10-29T23:55:13Z): how support and refutation combine (T9-17)
+
+- **Question** (Ch. 9 TODO T9-17; §9.18.5 g0; deferred until reviewer B's report, addendum 2026-10-29T16:34:45Z; reviewer B saved, consolidation S0201–S0225 settled `ae13f5987`): when live evidence both supports and refutes an item, what does the display show? (a) refutation first (g0); (b) "contested"; (c) one established assessment per claim; (d) recency. And the default with no purpose named.
+- **Principal (verbatim):** "T9-17 (b), keep the no-purpose default".
+- **Decided:**
+  1. **(b).** While both a live support and a live refutation exist, the item's class is **"contested"**. "Refuted" then holds only when a refutation is live and no support is.
+  2. **The no-purpose default is kept:** with no purpose named, no withdrawal applies, and the recorded withdrawals are listed (§9.18, check 34).
+- **For the Professor to state when applying (not decided here):** the class when one side is surely live and the other only possibly (the U cases under Kleene monotonicity); the model's new check; the consequences in Ch. 10 (the published class list, §10.2 refuted(k, t)).
+- **Still owed:** the Professor's note on whether the routed implementation evidence B-04 and B-05 (I-003) was used or rejected, and why. The Principal confirmed without waiting for it; it is recorded when it arrives.
+- **Not decided here:** adopting the evidence kinds; naming T10-21; any level change (S0 unchanged); the "guard" choice in the map.

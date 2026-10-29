@@ -54,7 +54,7 @@
 
 | # | Owner | Action |
 |---|---|---|
-| 2 | Professor | **T9-17** (with the routed Impl evidence B-04, B-05), then adopting the evidence kinds, then naming T10-21 — each to the Principal one at a time (T9-16 (b) applied, `ed29e5957`) |
+| 2 | Professor | **apply T9-17 (b), no-purpose default kept** (decided 2026-10-30; incl. the U cases, a model check, Ch. 10's class list); **note on B-04/B-05 used or rejected** (owed); then adopting the evidence kinds, naming T10-21, the map's "guard" choice — each to the Principal one at a time; T9-18 (a model check, not for the Principal) |
 | 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
 | 4 | Governance Engineer | **check the S0225 consolidation briefs** against the template (G1–G7); no test there |
 | 5 | Governance Engineer | **prepare the S0250 planted-gap test** (mandate §8.3), aimed at the classes missed at S0200 (ordinary undefined word; removed claim); its preparation checked by a separate session (§8.3a) before reviewers start |
