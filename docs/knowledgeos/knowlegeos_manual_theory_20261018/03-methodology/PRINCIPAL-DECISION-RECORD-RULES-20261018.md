@@ -511,3 +511,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Decided: (B), with a condition.** An area counts as a bounded context when it **owns a rule no other area owns, stated in its own vocabulary, and keeps independently owned state**. **Condition (K2):** turn 4 states what "a record of its own / independently owned state" means and shows that it is compatible with the kernel law of **one designated record** (K2, §9.17 R2; CON-0261) — for example, entries of the one record that only that area may append, not a second record. **If it is not compatible, the question returns to the Principal.**
 - **Consequence (per §10.3, under the condition):** standing and norms qualify now; well-foundedness qualifies once it has an evidence record (G1; the G1 theory turn decided today); the catalogue is doubtful; presentation, method, work management and assessment do not qualify.
 - **Not decided here:** the context map; any level change (rows stay at S0 until review).
+
+## Addendum (2026-10-29T09:50:07Z): implementation strategy, revision 3
+
+- **Principal (verbatim):** "approve revision 3 of the strategy" (commit `5f69e40a2`).
+- **Decided:** `IMPLEMENTATION-STRATEGY-PROPOSED.md` **revision 3 is approved in principle** (sha256 at approval `eabe2cecea6f9fd09ea47b61abfe9c9dd1966362d8f268da863df72a42c110ad`), replacing revision 2. Consistency corrections only (§8): stage 1's entry in five separate authorisations, no code before the Principal approves the Implementation Engineer's plan; a testing disposition per law; §7 split into settled and pending; current role names, status from the decision record; stage-2 inputs as a named, versioned list with a reviewed mapping; stage-2 and stage-3 findings to the Principal first.
+- **Not decided here:** stage 1 and every other item listed as pending in §7.
