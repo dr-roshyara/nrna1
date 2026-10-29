@@ -475,3 +475,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Decided: (b).** KnowledgeOS promises that a piece of knowledge's **current standing is right and shown with its reasons**, together with an **honest display of how well-founded it is** (refuted, not attested, or supported by recorded evidence), **without a guarantee that it is well-founded**. *(Consistent with the problem statement, `00.01` L30: usable = current ∧ well-founded ∧ visible, "visible" meaning the user sees both values.)*
 - **Consequence for the strategic design (for the Professor, turn 2):** the display of well-foundedness is part of the promise; turn 2 assigns its responsibility and shows that each displayed class can be read from the record alone.
 - **Not decided here:** the Governance Engineer mandate; the Verification Auditor's test-run question (both still open).
+
+## Addendum (2026-10-29T08:51:08Z): the Governance Engineer mandate; the auditor's test runs
+
+- **Principal (verbatim):** "yes, both" — on the two items left open in the addendum on T10-01.
+- **Decided:**
+  1. `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` is **approved**, including §8.2a (receiving the auditor's reports), §9 (how the Governance Engineer is checked: a separate session checks each planted-gap test's preparation before reviewers start) and §11 (handover and start prompt). sha256 at approval: `a4867624b7b7b05d4176ca8c138a8c6dd931496482395e6526274817abed69b7`. Its working state is `GOVERNANCE-ENGINEER-STATE.md`.
+  2. **The Verification Auditor may run EKS tests that read allowed corpus files as fixtures** (e.g. `Phase0BackTest`), provided it does not view their content and discloses each such test. One line added to its mandate §2.
+- **Not decided here:** part B of the audit; stage 1.

@@ -20,7 +20,7 @@ Find out, with evidence, how the existing Engineering Knowledge System (EKS) rel
 
 ## 2. Access
 
-- **Allowed:** the files of D and C above, read-only; running the existing EKS tests read-only.
+- **Allowed:** the files of D and C above, read-only; running the existing EKS tests read-only. **This includes tests that read allowed corpus files as fixtures** (for example `Phase0BackTest`, which reads `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` through `git show`), provided the auditor does not view their content and discloses each such test. *(The Principal, 2026-10-29, after part A.)*
 - **Never:** anything under `docs/knowledgeos/` (the research corpus and the theory lane, including its hold-out protections), except this mandate and the report folder below; the book is read **only** through the strategic-design baseline and the kernel sections named in the part-B commission, as copies.
 - **No changes** to any file outside the auditor's own report folder `docs/knowledgeos/knowlegeos_manual_theory_20261018/review-implementation/` (created for it).
 

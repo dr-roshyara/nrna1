@@ -15,14 +15,12 @@
 | Implementation strategy | approved in principle (D7, D8); stage 1 not authorised | — |
 | Brief template | in force from the next consolidation | `bf75badfb` |
 | Implementation-candidates list | **draft for the Professor's confirmation** | `IMPLEMENTATION-CANDIDATES-S0200.md` (`15969b047`) |
-| Governance Engineer mandate | **proposed** | this commit |
+| Governance Engineer mandate | **approved** 2026-10-29 | decision record |
 
 ## Pending (owner → action)
 
 | # | Owner | Action |
 |---|---|---|
-| 1 | Principal | approve or change the Governance Engineer mandate (§9 and §11 are new) |
-| 2 | Principal | decide on the auditor's part A: the test-run conflict (Phase0BackTest reads an allowed corpus file); the findings stay open until part B |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |
