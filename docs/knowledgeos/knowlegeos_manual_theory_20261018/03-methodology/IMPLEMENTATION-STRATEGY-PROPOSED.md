@@ -14,7 +14,7 @@
 | Role | Who | Does | Does not |
 |---|---|---|---|
 | **Principal (human ARB)** | the human | decides rules, normative questions, access, and every gate | — |
-| **Governance Engineer** | an AI session (until 2026-10-29: "Rule Reviewer") | keeps the rules and records, prepares planted-gap tests, evaluates the other roles, writes mandates and briefs, **communicates with the Principal and facilitates what the Principal wants**, records only what the Principal explicitly approves | writes theory or code; decides for the Principal |
+| **Governance Engineer** | an AI session (until 2026-10-28: "Rule Reviewer"; decision record, addendum of 2026-10-28T17:07:25Z) | keeps the rules and records, prepares planted-gap tests, evaluates the other roles, writes mandates and briefs, **communicates with the Principal and facilitates what the Principal wants**, records only what the Principal explicitly approves | writes theory or code; decides for the Principal |
 | **Professor (Research Lead)** | an AI session | reads the corpus, builds the theory **and the strategic design derived from it** | writes code; reads the implementation |
 | **Independent Reviewers** | fresh AI sessions per review | review the theory blind first, then challenge it | write theory |
 | **Verification Auditor** | a separate AI session | audits the existing EKS implementation against the strategic design and the reference architecture; reports gaps with evidence | writes theory; writes or changes code; sends findings to the Professor |
