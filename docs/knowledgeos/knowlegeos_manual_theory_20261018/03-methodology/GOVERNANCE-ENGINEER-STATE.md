@@ -28,14 +28,14 @@
 | Professor (Research Lead) | yes (§0) | Rulebook v1.4 + strategic-design mandate rev. 1 (approved, D10) | active: strategic-design turn 5, then the G1 turn (starting from entry kinds in the one record) |
 | Independent Reviewers | yes (§0) | `REVIEWER-INSTRUCTIONS.md` + brief template | per commission |
 | Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B not authorised** |
-| Lead DDD Architect | yes (§0, added 2026-10-29) | rev. 2 approved | **part 1 authorised; session not yet started**; parts 2–3 not authorised |
+| Lead DDD Architect | yes (§0, added 2026-10-29) | rev. 2 approved | part 1: **turns 1–4 reviewed** (`514068d6d`), routed A/B/C; turn 5 when settled; parts 2–3 not authorised |
 | Implementation Engineer | yes (§0) | rev. 2 approved | **inactive** until the stage-1 decision |
 
 ## Pending (owner → action)
 
 | # | Owner | Action |
 |---|---|---|
-| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2) |
+| 0 | Principal | SD1-05 (which reference product governs design investment) — in the stage-1 package |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |
