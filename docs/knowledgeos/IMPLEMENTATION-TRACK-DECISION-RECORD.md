@@ -65,3 +65,10 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
   2. **Rerun findings:** R1-02, R1-03, R1-04 (the record element, its invariants and R0′, and standing, have no counterpart in the code; class "theory element with no code") **confirm I-003** (the kernel is built new; EKS a supporting tool); no action. **R1-01** (the kind list in theory changes only by an authorised act; EKS's register list changes by editing a configuration file, unrecorded) stays **unresolved** and is **input for the Lead DDD Architect at stage 1**.
   3. **No partial rerun now** for the other Ch. 10 changes at `8e4b1a420` (R17, the count of conditional relationships, §10.4.4): **one full rerun of part B after the Ch. 10 revision for T10-17–T10-21.**
 - **Not decided here:** stage 1; any change to EKS.
+
+### I-005 (2026-10-29T11:41:54Z): the Lead DDD Architect and the Implementation Engineer may read both decision records
+
+- **Principal (verbatim):** "yes, fix Architect and Engineer the same way".
+- **Decided:** the same correction as for the auditor (I-004). `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` **revision 3** and `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` **revision 3** approved: **both decision records readable, read-only** (the research record and this record, which holds the stage-1 decision and the authorisations of the Architect's parts 2–3 and of each plan). Nothing else changes. Fingerprints at approval, after the status update: Architect `46d655700848774e92f71b38e8fb1d18282283d554ff90eaf251e0e5048caff5`; Engineer `2ecf66055d1bd2a6feabb6af2047dc0eee982293ff9951cf9bf9fc39dad19d24`. The start skills `/role-lead-ddd-architect` and `/role-implementation-engineer` now name both records in their first check.
+- **Why now:** without it, both roles' start checks would fail at the stage-1 decision.
+- **Not decided here:** stage 1.

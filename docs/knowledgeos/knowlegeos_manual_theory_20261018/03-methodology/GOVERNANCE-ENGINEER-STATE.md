@@ -46,14 +46,13 @@
 | Professor (Research Lead) | yes | Rulebook v1.4 + strategic-design mandate rev. 1 | active: reading; evidence questions one at a time |
 | Independent Reviewers | yes | `REVIEWER-INSTRUCTIONS.md` + brief template + agent `kos-lane-reviewer` | per commission |
 | Verification Auditor | yes | revision 3 approved (I-004) | idle |
-| Lead DDD Architect | yes | revision 2 approved | part 1 done for turns 1–5; parts 2–3 not authorised |
-| Implementation Engineer | yes | revision 2 approved | inactive until stage 1 |
+| Lead DDD Architect | yes | revision 3 approved (I-005) | part 1 done for turns 1–5; parts 2–3 not authorised |
+| Implementation Engineer | yes | revision 3 approved (I-005) | inactive until stage 1 |
 
 ## Pending (owner → action)
 
 | # | Owner | Action |
 |---|---|---|
-| 1 | Principal | **fix the decision-record gap for the Lead DDD Architect and the Implementation Engineer** (both mandates list only the research record; their stage-1 authorisations will be in the implementation-track record): recommended yes, needed **before the stage-1 decision** |
 | 2 | Professor | apply T9-16 (b) (model new version: unrelated grant shown not counted; scoped grant counts; restore after withdrawal); then **T9-17** (with the routed Impl evidence B-04, B-05), then adopting the evidence kinds, then naming T10-21 — each to the Principal one at a time |
 | 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
 | 4 | Governance Engineer | **check the S0225 consolidation briefs** against the template (G1–G7); no test there |

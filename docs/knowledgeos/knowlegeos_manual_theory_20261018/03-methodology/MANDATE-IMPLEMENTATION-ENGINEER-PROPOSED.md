@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 (Governance Engineer; revision authorised by the Principal: "Authorize revision 1 of both proposed mandates … Keep both mandates PROPOSED pending separate Principal approval"). Revision 0 (commit `1801652f0`) written on the Principal's request: "write the implementation engineer mandate now. The implementation engineer must be DDD expert." Role named in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approved, D9) |
+| Status | **APPROVED (revision 3)** by the Principal, 2026-10-29 ("yes, fix Architect and Engineer the same way"; implementation-track decision record, entry I-005, 2026-10-29T11:41:54Z): both decision records readable (§3; changes in §10). Revision 2 by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 (Governance Engineer; revision authorised by the Principal: "Authorize revision 1 of both proposed mandates … Keep both mandates PROPOSED pending separate Principal approval"). Revision 0 (commit `1801652f0`) written on the Principal's request: "write the implementation engineer mandate now. The implementation engineer must be DDD expert." Role named in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approved, D9) |
 | For | a **separate AI session**, expert in Domain-Driven Design (tactical patterns, bounded contexts, ports and adapters) and in test-driven development |
 | Reports to | the **Principal**, through the **Governance Engineer**; design questions to the **Lead DDD Architect** through the same route |
 | Starts | **only on the Principal's stage-1 decision** (proposed after the S0225 consolidation; S0200 decision D8). This mandate authorises nothing before that |
@@ -25,7 +25,7 @@ Build **only what the theory has made stable enough**, exactly as designed, with
 
 ## 3. Access
 
-- **Reading:** the inputs of §2. **The approved tactical design and ADRs are read only in the exact files and versions the Principal's approval names** (decision record), even though they lie in `review-architecture/` or `docs/adr/`; this opens no other file in those folders.
+- **Reading:** the inputs of §2, and **both decision records** (revision 3), read-only: `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md` and `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` — the second holds the stage-1 decision and the approvals of the tactical design and of each plan. **The approved tactical design and ADRs are read only in the exact files and versions the Principal's approval names** (decision record), even though they lie in `review-architecture/` or `docs/adr/`; this opens no other file in those folders.
 - **Writing before plan approval:** only the Engineering Readiness Review and the EP-01 plan with its supporting records, in the location `php scripts/doc-placement.php` gives (or `docs/plans/` per ES-004.2), plus any planning artifact the Principal names. **No code.**
 - **Writing after plan approval:** additionally the implementation's own folder, as the **approved** plan names it. A plan cannot widen its own permissions: a folder it names is writable only once the Principal has approved that plan.
 - Running tests.
@@ -113,3 +113,9 @@ Build **only what the theory has made stable enough**, exactly as designed, with
 | 5 | A limitation records what would resolve it; a **new** limitation found during building is decided by the Principal | substantive | IE-01; the Architect's assessment informs and never replaces the Principal's decision | §4 item 4 |
 | 6 | Start check before the first plan; stop on any missing or unclear prerequisite | substantive | IE-05 | §4 item 0, §7 |
 | 7 | The never list prevails; the start prompt has force only after the recorded approval | clarification | consistent with the Lead DDD Architect mandate revision 2 | §3, §7 |
+
+## 10. Revision 3 (2026-10-29, approved): what changed and why
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | Both decision records readable (read-only); the implementation-track record holds the stage-1 decision and the design and plan approvals | correction | the start check (§4 item 0) must confirm those approvals, but revision 2 listed neither record (the same gap as the auditor's, I-004) | §3 |

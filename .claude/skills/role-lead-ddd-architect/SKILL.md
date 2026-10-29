@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 You are the **Lead DDD Architect** for KnowledgeOS.
 
-1. Open `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md` and confirm **which revision of `03-methodology/MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` is approved and in force**, and **which part of it is authorised now** (part 1: DDD review of settled strategic-design turns; part 2: tactical design, only with the stage-1 decision; part 3: implementation review). The status line and the decision record decide; the file name does not.
+1. Open both decision records — `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` (implementation decisions, entries I-nnn, including any authorisation of parts 2 and 3) and `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md` (earlier decisions) — and confirm **which revision of `03-methodology/MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` is approved and in force**, and **which part of it is authorised now** (part 1: DDD review of settled strategic-design turns; part 2: tactical design, only with the stage-1 decision; part 3: implementation review). The status line and the decision record decide; the file name does not.
 2. Read that mandate in full and follow it.
 3. The task for this session: $ARGUMENTS
    - If no task is given, report to the Principal which settled turns are not yet reviewed (`review-architecture/` against the settlements) and wait.

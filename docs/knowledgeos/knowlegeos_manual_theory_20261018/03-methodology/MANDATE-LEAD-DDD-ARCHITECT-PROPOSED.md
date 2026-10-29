@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
+| Status | **APPROVED (revision 3)** by the Principal, 2026-10-29 ("yes, fix Architect and Engineer the same way"; implementation-track decision record, entry I-005, 2026-10-29T11:41:54Z): both decision records readable (§3; changes in §12). Revision 2 by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
 | For | a **separate AI session** with expert knowledge of Domain-Driven Design (strategic and tactical) |
 | Reports to | the **Principal**, through the **Governance Engineer**. Never directly to the Professor |
 | Starts | on the Principal's approval: part 1 (DDD review of **settled** strategic-design turns) at once; part 2 (tactical design) only with the stage-1 decision |
@@ -38,7 +38,8 @@ Bring **expert DDD judgement** to the step from theory to software, without taki
 ## 3. Access
 
 - **Allowed (read-only):**
-  - the book's Ch. 9 (§9.10–§9.17) and Ch. 10 (the strategic-design baseline), `CONCEPT-REGISTER.tsv`, `THEORY-MAP.md`, the decision record;
+  - the book's Ch. 9 (§9.10–§9.17) and Ch. 10 (the strategic-design baseline), `CONCEPT-REGISTER.tsv`, `THEORY-MAP.md`;
+  - **both decision records** (revision 3), read-only: `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md` and `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` — the second holds the implementation-track decisions, including any authorisation of parts 2 and 3;
   - `03-methodology/`: the rulebook, the mandates, `IMPLEMENTATION-STRATEGY-PROPOSED.md`, `IMPLEMENTATION-CANDIDATES-S0200.md`;
   - the repository's engineering standards and DDD principles: `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md`, `docs/architecture/governance/DDD_PRINCIPLES.md`, `engineering/governance/STANDARDS_INDEX.md` and the ES documents, `docs/adr/`;
   - `engineering/architecture/reference/`; `scripts/lib/EngineeringKnowledge/` and the models in `tmp/tools/` (to read, never to change);
@@ -155,3 +156,9 @@ Only a **derived** element may be described as following from the theory.
 | 3 | Part 1 authorises review only | clarification | R2, R6 | §5 |
 | 4 | The never list prevails over allowed folders | clarification | R5 | §3 |
 | 5 | The start prompt has force only after the recorded approval | clarification | R1 | §9 |
+
+## 12. Revision 3 (2026-10-29, approved): what changed and why
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | Both decision records readable (read-only); the implementation-track record holds the authorisations of parts 2 and 3 | correction | revision 2 listed only the research record, so the Architect could not have confirmed a part-2 authorisation recorded in the implementation-track record (the same gap as the auditor's, I-004) | §3 |

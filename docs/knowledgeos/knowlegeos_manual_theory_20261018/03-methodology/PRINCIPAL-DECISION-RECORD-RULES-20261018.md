@@ -615,3 +615,7 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   2. **Restoring reliance keeps its own entry type**, so that reliance can be restored without standing's authority to annul.
   3. The present model's acceptance of a withdrawal from **anyone holding any grant** is to be corrected accordingly.
 - **Not decided here:** the scope relation itself; how support and refutation combine (T9-17); adopting the evidence kinds; any level change.
+
+## Addendum (2026-10-29T11:41:54Z): pointer — Lead DDD Architect and Implementation Engineer mandates, revision 3
+
+- Recorded in the implementation-track decision record, entry **I-005**: both mandates' revision 3 approved (both decision records readable; sha256 at approval: Architect `46d655700848774e92f71b38e8fb1d18282283d554ff90eaf251e0e5048caff5`, Engineer `2ecf66055d1bd2a6feabb6af2047dc0eee982293ff9951cf9bf9fc39dad19d24`).
