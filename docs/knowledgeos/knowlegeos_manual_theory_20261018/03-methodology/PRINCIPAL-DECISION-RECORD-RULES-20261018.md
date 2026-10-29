@@ -581,3 +581,12 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Decided:** `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` **revision 2 approved and in force** (changes in its §14). **Fingerprint at approval, computed after the status update (as revision 2 itself requires): sha256 `854ac3d752d5b6784244034096a8b9563a746c5f372f6d4518fe8e47c2ae4776`.**
 - **Note on earlier fingerprints:** the fingerprints recorded at earlier approvals (this mandate's revisions 0–1, the Lead DDD Architect and Implementation Engineer mandates, the strategy revision 3) were computed **before** the status-line update and so differ from the files' later hashes; the differences are the status lines (and, for the two role mandates, the start-prompt date). Administrative; recorded here so that a checker can tell (F4).
 - **Not decided here:** anything else.
+
+## Addendum (2026-10-29T11:23:49Z): Governance Engineer mandate, revision 3 (test finding F1); replacing the current session
+
+- **Principal (verbatim):** "yes, F1 with option a, proceed with part B".
+- **Decided:**
+  1. `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` **revision 3 approved and in force**: one requirement added (§11.0): start every Governance Engineer session at the repository root. **Fingerprint at approval, after the status update: sha256 `6f9640f6afb5287fc45593b7e8e96c932fc3ab4681303635c08d2c73126b8290`.**
+  2. **Option (a):** the current Governance Engineer session (`f1575f5d-…`, started in the lane folder, so not covered by the repository's deny rules) continues for now and is **replaced at the next natural break** by a session started at the repository root with `/role-governance-engineer`.
+  3. The Part-B verification proceeds (under the implementation track's authorisation).
+- **Not decided here:** anything else.

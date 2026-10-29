@@ -39,7 +39,7 @@
 | Role | Role defined | Mandate | Activation |
 |---|---|---|---|
 | Principal (human ARB) | yes (§0) | — | active |
-| Governance Engineer | yes (§0) | **revision 1 approved** 2026-10-29 | active |
+| Governance Engineer | yes (§0) | **revision 3 approved** 2026-10-29 | active; **this session (started in the lane folder) to be replaced at the next natural break by a root session** (option a) |
 | Professor (Research Lead) | yes (§0) | Rulebook v1.4 + strategic-design mandate rev. 1 (approved, D10) | active: strategic-design turn 5, then the G1 turn (starting from entry kinds in the one record) |
 | Independent Reviewers | yes (§0) | `REVIEWER-INSTRUCTIONS.md` + brief template | per commission |
 | Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B may proceed** (conditions met 2026-10-29; baseline `dca72c57f`) |

@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("F3 + F4 — Governance Engineer mandate: I approve revision 2 …"; decision record, addendum 2026-10-29T11:21:15Z); changes in §14. Revision 1 approved 2026-10-29 (addendum 2026-10-29T09:31:14Z); revision 0 approved 2026-10-29 (addendum 2026-10-29T08:51:08Z). **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Revision 0 was written on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
+| Status | **APPROVED (revision 3)** by the Principal, 2026-10-29 ("yes, F1 with option a, proceed with part B"; decision record, addendum 2026-10-29T11:23:49Z); changes in §15. Revision 2 approved 2026-10-29 ("F3 + F4 …"; addendum 2026-10-29T11:21:15Z); changes in §14. Revision 1 approved 2026-10-29 (addendum 2026-10-29T09:31:14Z); revision 0 approved 2026-10-29 (addendum 2026-10-29T08:51:08Z). **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Revision 0 was written on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
 | Collects | the role decision (decision record, addendum 2026-10-28T17:07:25Z), the working practice (addendum 2026-10-28T02:25:00Z, item 4), the S0200 decisions (addendum 2026-10-29T02:08:48Z), and the practice of the sessions so far. **New for approval:** §9 (how the Governance Engineer is checked) and §11 (handover) |
 | Holder | an AI session, appointed by the Principal. Whoever holds the role works by this mandate; the role belongs to the mandate, not to a session |
 | State | the role's current working state is in `03-methodology/GOVERNANCE-ENGINEER-STATE.md` (mutable); this mandate is stable |
@@ -203,6 +203,10 @@ At the end of each piece of work:
 
 ## 11. Handover (NEW, for approval)
 
+### 11.0 Where to start the session (revision 3)
+
+**Start every Governance Engineer session at the repository root** (for example with `/role-governance-engineer`). Only there do the repository's `.claude/settings.json` deny rules, agents and skills apply; a session started in a sub-folder is not covered by them (pilot test finding F1).
+
 ### 11.1 Read first, in this order
 1. This mandate.
 2. `GOVERNANCE-ENGINEER-STATE.md` (where things stand).
@@ -257,3 +261,9 @@ It changes no rule, grants no access beyond §5, and does not alter the other ro
 | 2 | Decisions are recorded by track: research and mandate-history decisions in the research record; implementation-track decisions as entries I-nnn in the implementation record | substantive | the two-track decision of 2026-10-29 | §6 step 1 |
 | 3 | The fingerprint at approval is computed **after** the status update | correction | F4: the recorded fingerprint differed from the file after its status edit | §6 step 2 |
 | 4 | The implementation-track state among the records kept up to date, and in the handover reading list | clarification | consistency with 1–2 | §10, §11.1 |
+
+## 15. Revision 3 (2026-10-29, approved): what changed and why
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | Start every Governance Engineer session at the repository root | substantive | pilot test finding F1: only there do the deny rules, agents and skills apply | §11.0 |
