@@ -1,5 +1,7 @@
 # Governance Engineer: working state (mutable)
 
+> **Two tracks (decided 2026-10-29).** This file is the **research track** state and the Governance Engineer's own. The **implementation track** state is `docs/knowledgeos/IMPLEMENTATION-TRACK-STATE.md`; its decisions are in `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md`.
+
 *Updated 2026-10-29 by the Governance Engineer. Rules: `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md`. This file is overwritten as the state changes; history is in git.*
 
 ## Where things stand
