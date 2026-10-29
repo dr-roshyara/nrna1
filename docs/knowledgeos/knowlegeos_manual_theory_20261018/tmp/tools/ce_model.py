@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 20 (C34 review W-01, critical; the Principal's
+it tests the FORM of the repaired definition, not its content. Version 21 (the G1 theory turn, §9.18, 2026-10-29; the
+Professor's modelling, for review; NOTHING ADOPTED, T10-16 open): evidence as entry kinds of the one record, beside D's
+kinds, under W's own acceptance rule (W_FIELDS, in_D_W, append_W); generic clauses kept apart (in_generic); standing's
+domain under containment (in_D_S); the class rule g0 (wclass). in_D is unchanged and still refuses W's kinds, so checks
+1-32 give output identical to v20. Checks 33 (containment), 34 (the class rule), 35 (acceptance, gap G8).
+Version 20 (C34 review W-01, critical; the Principal's
 decision of 2026-10-28, "Each store belongs to one application, and only that application may move the record to a new
 store"; the Professor's technical completion, marked for review): every designation carries its moving application
 ('app'); the owner of the root carrier is ROOT_OWNER, and the owner of a store a designation names is the application
@@ -1181,6 +1186,166 @@ def all_fixed_points(rec, upsilon):
     return out
 
 
+# ---- v21 (the G1 theory turn, §9.18; the Professor's modelling, for review): evidence as entry kinds of the one record --
+# W's kinds (MODELLED, NOT ADOPTED: T10-16 open). They live beside D's kinds; in_D (standing's D) is unchanged and still
+# refuses them, so checks 1-32 are unchanged. The evaluation of W's entries uses the same operator: an evidence entry's
+# atom is its producer's authorization (premise iv, reading (b)); nothing of standing's reads it (containment, check 33).
+W_FIELDS = {'evid': {'actor', 'cites', 'about', 'polarity', 'scope', 't'},      # an evidence entry: object, polarity
+            'ewdr': {'actor', 'cites', 'target', 'purpose', 'scope', 't'},      # withdrawal of reliance, for a purpose
+            'erst': {'actor', 'cites', 'target', 'scope', 't'}}                 # restoration: cites the withdrawal
+for _k in W_FIELDS:
+    W_FIELDS[_k] = W_FIELDS[_k] | {'recorder', 'auth'}
+POLARITY = {'supports', 'refutes'}
+
+
+def in_generic(rec):
+    """The clauses every entry must meet whatever its kind: they decide what an entry IS, so a failure cannot be
+    attributed to one area (unique identity, integrity, attestation, store, citations of earlier entries present)."""
+    if len(rec.by) != len(rec.e):
+        return False, 'identifiers not unique'
+    for x in rec.e:
+        if x['auth'] not in AUTH:
+            return False, f"auth of {x['id']} is {x['auth']!r}"
+        if 'store' not in x or not x.get('katt'):
+            return False, f"{x['id']} carries no store or no kernel attestation"
+        if not x.get('ok', True):
+            return False, f"integrity check failed for {x['id']}"
+        for g in x.get('cites', []):
+            if g not in rec.pos or rec.pos[g] >= rec.pos[x['id']]:
+                return False, f"{x['id']} cites {g}, which is not an earlier entry present"
+    return True, None
+
+
+def s_part(rec):
+    """Standing's entries only (positions renumbered; citations among them are unchanged)."""
+    return Record([dict(x) for x in rec.e if x['kind'] not in W_FIELDS], rec.dom, tie=rec.tie)
+
+
+def in_D_S(rec):
+    """Standing's domain under containment: the generic clauses on the whole record, D on standing's entries, and no
+    standing entry takes a W entry as a basis. W's per-kind clauses are not read."""
+    ok, why = in_generic(rec)
+    if not ok:
+        return ok, why
+    for x in rec.e:
+        if x['kind'] not in W_FIELDS and any(g in rec.by and rec.by[g]['kind'] in W_FIELDS for g in bases_of(x)):
+            return False, f"{x['id']} takes a W entry as a basis"
+    return in_D(s_part(rec))
+
+
+def in_D_W(rec):
+    """W's domain: the generic clauses, and W's per-kind clauses (its acceptance rule, as D's clause)."""
+    ok, why = in_generic(rec)
+    if not ok:
+        return ok, why
+    for x in rec.e:
+        k = x['kind']
+        if k not in W_FIELDS:
+            continue
+        if not W_FIELDS[k] <= set(x):
+            return False, f"W: missing field in {x['id']}: {sorted(W_FIELDS[k] - set(x))}"
+        if k == 'evid' and x['polarity'] not in POLARITY:
+            return False, f"W: {x['id']} has polarity {x['polarity']!r}, not supports or refutes"
+        if k == 'ewdr' and (x['target'] not in rec.by or rec.by[x['target']]['kind'] != 'evid'):
+            return False, f"W: withdrawal {x['id']} does not target an evidence entry"
+        if k == 'erst' and (x['target'] not in rec.by or rec.by[x['target']]['kind'] != 'ewdr' or x['target'] not in x['cites']):
+            return False, f"W: restoration {x['id']} does not cite the withdrawal it restores"
+    return True, None
+
+
+def append_W(rec, e):
+    """The guarded append for W's kinds: the entry is accepted only if the record with it stays in D_W and in the
+    generic clauses (W's acceptance rule enforced by the kernel's step for another, §10.3.2). Refusals carry a reason."""
+    e = dict(e)
+    Record([e], rec.dom)
+    e['store'] = carrier_in_force(rec)
+    e['katt'] = KERNEL_ID
+    tmp = Record([dict(x) for x in rec.e] + [dict(e)], rec.dom, tie=rec.tie)
+    ok, why = in_D_W(tmp)
+    if not ok:
+        return False, why
+    rec.e.append(e)
+    rec.by[e['id']] = e
+    rec.pos[e['id']] = len(rec.e) - 1
+    return True, None
+
+
+def wclass(rec, s, about, purpose=None, producers='authorised'):
+    """The displayed class at the cut of the first s entries (the Professor's rule g0, for review; §9.18):
+    an evidence entry is LIVE if its producer is authorised (its atom; producers='any' skips this), it is not annulled
+    (correction: standing's annulment, voids from the start), and, for the purpose asked, no withdrawal of it is in effect
+    (a withdrawal is in effect if authorised and no authorised restoration citing it is in the cut). Order comes from
+    citation, never from act time, so no tie is read. Kleene: refuted if some refutation is surely live; else U if some
+    refutation may be live; else supported if some support is surely live; else U if one may be; else not attested.
+    Returns (class, reasons) with every evidence entry about the item and its state (contradictions stay visible)."""
+    pre = Record([dict(x) for x in rec.e[:s]], rec.dom, tie=rec.tie)
+    ok, why = in_D_W(pre)
+    if not ok:
+        return ('refused', why)
+    a = wfs(pre)
+    def tv(b):
+        return b
+    def withdrawn(e):
+        ws = [w for w in pre.e if w['kind'] == 'ewdr' and w['target'] == e['id'] and purpose is not None
+              and w['purpose'] in (purpose, '*')]
+        vals = []
+        for w in ws:
+            rs = [r for r in pre.e if r['kind'] == 'erst' and r['target'] == w['id']]
+            vals.append(k_and(a[w['id']], k_not(k_or(F, *[a[r['id']] for r in rs]))))
+        return k_or(F, *vals)
+    live, reasons = {}, []
+    for e in pre.e:
+        if e['kind'] != 'evid' or e['about'] != about:
+            continue
+        prod = a[e['id']] if producers == 'authorised' else k_not(k_or(F, *[a[x['id']] for x in pre.e
+                                                                            if x['kind'] == 'annul' and x['target'] == e['id']]))
+        v = k_and(prod, k_not(withdrawn(e)))
+        live[e['id']] = (e['polarity'], v)
+        reasons.append((e['id'], e['polarity'], v))
+    ref = k_or(F, *[v for p, v in live.values() if p == 'refutes'])
+    sup = k_or(F, *[v for p, v in live.values() if p == 'supports'])
+    if ref == T:
+        c = 'refuted'
+    elif ref == U:
+        c = 'U'
+    elif sup == T:
+        c = 'supported'
+    elif sup == U:
+        c = 'U'
+    else:
+        c = 'not attested'
+    return (c, reasons)
+
+
+def random_evidence(rng, rec, n=4):
+    """Adds evidence entries, annulments of them, withdrawals and restorations to a record of standing's entries."""
+    ents = [dict(x) for x in rec.e]
+    gs = [x['id'] for x in ents if x['kind'] in ('grant', 'root')]
+    evs, wds = [], []
+    for j in range(n):
+        r_ = rng.random()
+        if r_ < 0.5 or not evs:
+            i = f'ev{j}'
+            ents.append({'id': i, 'kind': 'evid', 'actor': rng.choice(['P', 'A', 'B']), 'cites': rng.sample(gs, 1),
+                         'about': rng.choice(['c', 'd']), 'polarity': rng.choice(['supports', 'refutes']),
+                         'scope': rng.choice(['s', 's/a', 's/b']), 't': rng.randint(0, 5)})
+            evs.append(i)
+        elif r_ < 0.7:
+            ents.append({'id': f'xa{j}', 'kind': 'annul', 'actor': rng.choice(['P', 'A', 'B']), 'cites': rng.sample(gs, 1),
+                         'target': rng.choice(evs), 'scope': 's', 't': rng.randint(0, 5)})
+        elif r_ < 0.9 or not wds:
+            i = f'wd{j}'
+            ents.append({'id': i, 'kind': 'ewdr', 'actor': rng.choice(['P', 'A', 'B']), 'cites': rng.sample(gs, 1),
+                         'target': rng.choice(evs), 'purpose': rng.choice(['p', 'q', '*']), 'scope': 's', 't': rng.randint(0, 5)})
+            wds.append(i)
+        else:
+            w = rng.choice(wds)
+            ents.append({'id': f'rs{j}', 'kind': 'erst', 'actor': rng.choice(['P', 'A', 'B']), 'cites': rng.sample(gs, 1) + [w],
+                         'target': w, 'scope': 's', 't': rng.randint(0, 5)})
+    return Record(ents, rec.dom, tie=rec.tie)
+
+
+
 def G(i, actor, cites, holder, t=1, start=0, end=9, scope='s'):
     return {'id': i, 'kind': 'grant', 'actor': actor, 'cites': cites, 'holder': holder, 'scope': scope, 't': t,
             'start': start, 'end': end}
@@ -2209,4 +2374,102 @@ if __name__ == '__main__':
         print('(32)', k_, '->', 'PASS' if v_ else 'FAIL')
     print('(32) limit, stated not repaired: a forged attestation string by the owner application leaves the record in D:', lim)
     assert all(res32.values()) and lim
+    # (33) v21 (the G1 turn, §9.18; routed finding B4): containment. Standing's values do not depend on W's entries.
+    rng33 = random.Random(20261029)
+    n33, same33, wbreach_contained, generic_refuses, one_D_refuses = 0, 0, 0, 0, 0
+    wvals33 = {T: 0, F: 0, U: 0}
+    for _ in range(600):
+        base = random_record(rng33, targets_any=False)
+        if not in_D(base)[0]:
+            continue
+        full = random_evidence(rng33, base, n=rng33.randint(1, 6))
+        if not in_D_S(full)[0]:
+            continue
+        n33 += 1
+        sp = s_part(full)
+        af, as_ = wfs(full), wfs(sp)
+        for x_ in full.e:
+            if x_['kind'] in W_FIELDS:
+                wvals33[af[x_['id']]] += 1
+        vals_ok = all(af[i] == as_[i] for i in sp.acts())
+        vals_ok = vals_ok and all(current(full, af, it, t, 'U') == current(sp, as_, it, t, 'U')
+                                  for it in ('c', 'd') for t in range(9))
+        same33 += vals_ok
+        evs = [x for x in full.e if x['kind'] == 'evid']
+        bad = Record([dict(x) for x in full.e], full.dom, tie=full.tie)
+        bad.by[evs[0]['id']]['polarity'] = 'maybe'
+        if in_D_S(bad)[0] and not in_D_W(bad)[0]:
+            wbreach_contained += 1
+        if not (in_D_S(bad)[0] and in_D_W(bad)[0]):
+            one_D_refuses += 1                       # (d3) as stated: one D for every kind refuses the whole record
+        bad2 = Record([dict(x) for x in full.e], full.dom, tie=full.tie)
+        bad2.by[evs[0]['id']]['ok'] = False
+        if not in_D_S(bad2)[0]:
+            generic_refuses += 1
+    print(f'(33) records with evidence, standing part in D: {n33}; standing values (every act, items c and d, t 0-8) '
+          f'equal with and without the W entries: {same33}')
+    print(f'(33) the W entries take every value (not a trivial case): T {wvals33[T]}, F {wvals33[F]}, U {wvals33[U]}')
+    print(f'(33) a breach of a W clause (polarity) on an entry that passes integrity: contained (standing still in D_S, '
+          f'outside D_W) in {wbreach_contained}; one D for every kind, as (d3) states it, refuses the record in {one_D_refuses}')
+    print(f'(33) an integrity failure of a W entry: standing refused (not containable: the kind of a failing entry '
+          f'cannot be trusted) in {generic_refuses}')
+    assert min(wvals33.values()) > 0 and n33 > 100 and same33 == n33 and wbreach_contained == n33 and one_D_refuses == n33 and generic_refuses == n33
+    # (34) v21: the class rule g0 (refuted / not attested / supported, U with its entries), on fixtures
+    D34 = {('s', 's')}
+    gA = G('gA', 'P', ['r'], 'A')
+    def ev(i, pol, actor='A', cites=('gA',), about='k', scope='s', t=2):
+        return {'id': i, 'kind': 'evid', 'actor': actor, 'cites': list(cites), 'about': about, 'polarity': pol,
+                'scope': scope, 't': t}
+    def R34(*xs):
+        return Record([dict(ROOT), dict(gA)] + [dict(x) for x in xs], D34)
+    res34 = {}
+    r = R34()
+    res34['no evidence: not attested'] = wclass(r, len(r.e), 'k')[0] == 'not attested'
+    r = R34(ev('e1', 'supports'))
+    res34['one authorised support: supported'] = wclass(r, len(r.e), 'k')[0] == 'supported'
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'))
+    c_, why_ = wclass(r, len(r.e), 'k')
+    res34['support and refutation: refuted, and both entries listed (contradiction visible)'] = \
+        c_ == 'refuted' and {w[0] for w in why_} == {'e1', 'e2'}
+    xa = {'id': 'x1', 'kind': 'annul', 'actor': 'P', 'cites': ['r'], 'target': 'e2', 'scope': 's', 't': 3}
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'), xa)
+    res34['correction (standing annuls the refutation): refuted at the cut before it, supported after (as-of)'] = \
+        wclass(r, 4, 'k')[0] == 'refuted' and wclass(r, 5, 'k')[0] == 'supported'
+    wd = {'id': 'w1', 'kind': 'ewdr', 'actor': 'A', 'cites': ['gA'], 'target': 'e2', 'purpose': 'p', 'scope': 's', 't': 3}
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'), wd)
+    res34['withdrawal for purpose p: supported for p, refuted for q'] = \
+        wclass(r, len(r.e), 'k', purpose='p')[0] == 'supported' and wclass(r, len(r.e), 'k', purpose='q')[0] == 'refuted'
+    rs = {'id': 'z1', 'kind': 'erst', 'actor': 'A', 'cites': ['gA', 'w1'], 'target': 'w1', 'scope': 's', 't': 4}
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'), wd, rs)
+    res34['restoration citing the withdrawal: refuted for p again'] = wclass(r, len(r.e), 'k', purpose='p')[0] == 'refuted'
+    r = R34(ev('e3', 'refutes', actor='B'))
+    res34['producer not authorised (B holds no grant): not counted under "authorised", counted under "any"'] = \
+        wclass(r, len(r.e), 'k')[0] == 'not attested' and wclass(r, len(r.e), 'k', producers='any')[0] == 'refuted'
+    r = R34(ev('e4', 'refutes', scope='s/x'))
+    c_, why_ = wclass(r, len(r.e), 'k')
+    res34['an undefined covers pair for the producer: U, with the entry named (never laundered)'] = \
+        c_ == 'U' and why_ == [('e4', 'refutes', U)]
+    r = R34(ev('e5', 'supports', scope='s/x'), ev('e1', 'supports'))
+    res34['a surely live support decides, whatever a U support says'] = wclass(r, len(r.e), 'k')[0] == 'supported'
+    res34['the class reads no order of act times (no tie is read)'] = 'before(' not in __import__('inspect').getsource(wclass)
+    res34["standing's in_D still refuses W's kinds (nothing adopted; T10-16)"] = not in_D(R34(ev('e1', 'supports')))[0]
+    for k_, v_ in res34.items():
+        print('(34)', k_, '->', 'PASS' if v_ else 'FAIL')
+    assert all(res34.values())
+    # (35) v21: W's acceptance rule at append (gap G8): refusals carry a reason
+    res35 = {}
+    r = R34(ev('e1', 'supports'))
+    ok_, why_ = append_W(r, ev('e9', 'maybe'))
+    res35['an evidence entry with no valid polarity is refused, with the reason'] = not ok_ and 'polarity' in why_
+    ok_, why_ = append_W(r, {'id': 'w9', 'kind': 'ewdr', 'actor': 'A', 'cites': ['gA'], 'target': 'gA', 'purpose': 'p', 'scope': 's', 't': 3})
+    res35['a withdrawal that targets no evidence entry is refused'] = not ok_ and 'target' in why_
+    ok_, _ = append_W(r, {'id': 'w1', 'kind': 'ewdr', 'actor': 'A', 'cites': ['gA'], 'target': 'e1', 'purpose': 'p', 'scope': 's', 't': 3})
+    ok2_, why2_ = append_W(r, {'id': 'z9', 'kind': 'erst', 'actor': 'A', 'cites': ['gA'], 'target': 'w1', 'scope': 's', 't': 4})
+    res35['a valid withdrawal is accepted; a restoration that does not cite it is refused'] = ok_ and not ok2_ and 'cite' in why2_
+    ok_, why_ = append_W(r, ev('e8', 'refutes', cites=('nope',)))
+    res35['an evidence entry citing an entry not present is refused (a generic clause)'] = not ok_ and 'nope' in why_
+    res35['after the accepted appends the record is in D_W and in D_S'] = in_D_W(r)[0] and in_D_S(r)[0]
+    for k_, v_ in res35.items():
+        print('(35)', k_, '->', 'PASS' if v_ else 'FAIL')
+    assert all(res35.values())
     print('all assertions passed')
