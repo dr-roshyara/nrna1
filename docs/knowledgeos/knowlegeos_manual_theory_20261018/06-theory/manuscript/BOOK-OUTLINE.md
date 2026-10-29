@@ -180,7 +180,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 
 ## Chapters that serve method, not a deliverable directly
 
-- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.21; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
+- **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.30; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.
 
 ## Rotation of older chapters (Rulebook v1.3 §12, entry 57)

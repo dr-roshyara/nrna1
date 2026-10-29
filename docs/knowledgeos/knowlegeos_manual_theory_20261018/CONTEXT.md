@@ -76,6 +76,8 @@
 
 **Windows C34–C37 settled (2026-10-28)** (§8.27–§8.30; S0182–S0200, all allowed, none refused). The Principal decided T9-10 (a): one owner application per store. C34 W-01 (critical) showed v19 did not enforce it, and **model v20** adds the owner check (check 32). C35 stated v20's limits: the owner is constant along a chain, and the check rests on a declared application. T0-03b was opened (PKS/EKS: one system or two; kernel candidates listed for a theory turn). **Reading has reached S0200. STOPPED before the S0200 consolidation**: do not freeze, commission or start it until the Rule Reviewer has prepared the copy and sealed the key. The Principal has been told.
 
+**Consolidation S0182–S0200 settled (2026-10-29)**: reviewers A, B, integration, and C (Ch. 8 §8.07–§8.26); stage 1 as a document; the planted-gap test scored by the Rule Reviewer (2 of 4); stage 2 applied to the working book (`review/CONSOLIDATION-S0182-S0200/STAGE2-SETTLEMENT.md`). Proposals P1–P3 (R2 scope; missing-claim check; test preparation) are with the Principal. Next: the Principal's instruction.
+
 **Per window and per theory turn:**
 - review;
 - settlement;
