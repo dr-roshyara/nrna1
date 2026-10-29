@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **Revision 1: PROPOSED, NOT APPROVED** (2026-10-29, on the Principal's "yes revise the governance engineer mandate"; changes in §13). **In force until the Principal approves revision 1: revision 0**, APPROVED by the Principal, 2026-10-29 ("yes, both"; decision record, addendum 2026-10-29T08:51:08Z), the text at commit `d1c201ee6`. **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Written by the Governance Engineer, 2026-10-29, on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
+| Status | **APPROVED (revision 1)** by the Principal, 2026-10-29 ("approve revision 1 of the governance engineer mandate"; decision record, addendum 2026-10-29T09:31:14Z); changes in §13. Revision 0 approved 2026-10-29 ("yes, both"; addendum 2026-10-29T08:51:08Z; commit `d1c201ee6`). **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Revision 0 was written on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
 | Collects | the role decision (decision record, addendum 2026-10-28T17:07:25Z), the working practice (addendum 2026-10-28T02:25:00Z, item 4), the S0200 decisions (addendum 2026-10-29T02:08:48Z), and the practice of the sessions so far. **New for approval:** §9 (how the Governance Engineer is checked) and §11 (handover) |
 | Holder | an AI session, appointed by the Principal. Whoever holds the role works by this mandate; the role belongs to the mandate, not to a session |
 | State | the role's current working state is in `03-methodology/GOVERNANCE-ENGINEER-STATE.md` (mutable); this mandate is stable |
@@ -231,7 +231,7 @@ At the end of each piece of work:
 
 It changes no rule, grants no access beyond §5, and does not alter the other roles' mandates. Approval of §9 and §11 is the only new authority it asks for.
 
-## 13. Revision 1 (2026-10-29, PROPOSED): what changed and why
+## 13. Revision 1 (2026-10-29, approved): what changed and why
 
 *From an outside review brought by the Principal (findings GE-01–GE-07). No authority is changed and no access is granted; GE-02 narrows the wording.*
 

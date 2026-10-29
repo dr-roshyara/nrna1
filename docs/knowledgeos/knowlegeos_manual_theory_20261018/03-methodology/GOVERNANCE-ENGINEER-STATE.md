@@ -15,7 +15,7 @@
 | Implementation strategy | approved in principle (D7, D8); stage 1 not authorised | — |
 | Brief template | in force from the next consolidation | `bf75badfb` |
 | Implementation-candidates list | **draft for the Professor's confirmation** | `IMPLEMENTATION-CANDIDATES-S0200.md` (`15969b047`) |
-| Governance Engineer mandate | **approved** 2026-10-29 | decision record |
+| Governance Engineer mandate | **revision 1 approved** 2026-10-29 | decision record |
 | Lead DDD Architect mandate | **approved (revision 2)** 2026-10-29; part 1 may start (turns 1 and 2 settled) | `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` |
 | Implementation Engineer mandate | **approved (revision 2)** 2026-10-29; inactive until the stage-1 decision | `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` |
 
@@ -24,7 +24,7 @@
 | Role | Role defined | Mandate | Activation |
 |---|---|---|---|
 | Principal (human ARB) | yes (§0) | — | active |
-| Governance Engineer | yes (§0) | revision 0 approved; **revision 1 proposed** | active |
+| Governance Engineer | yes (§0) | **revision 1 approved** 2026-10-29 | active |
 | Professor (Research Lead) | yes (§0) | Rulebook v1.4 + strategic-design mandate rev. 1 (approved, D10) | active: strategic-design turn 3 |
 | Independent Reviewers | yes (§0) | `REVIEWER-INSTRUCTIONS.md` + brief template | per commission |
 | Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B not authorised** |
@@ -35,7 +35,7 @@
 
 | # | Owner | Action |
 |---|---|---|
-| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2); approve or change revision 1 of the Governance Engineer mandate |
+| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2) |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |

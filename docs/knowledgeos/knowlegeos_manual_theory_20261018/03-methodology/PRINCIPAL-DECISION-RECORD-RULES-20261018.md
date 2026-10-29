@@ -491,3 +491,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   1. **A seventh role, the Lead DDD Architect** (renamed from "Principal DDD Architect" at revision 1 on the Principal's choice), with `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` revision 2 **approved** (sha256 at approval `1c66451b91fbd1b325b7ff31287bd7e762ee55be08a063342b105f35b8f9a087`). **Part 1** (DDD review of settled strategic-design turns) may start; part 2 (tactical design) only with the stage-1 decision. Added to the roles table of `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0.
   2. `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` revision 2 **approved** (sha256 at approval `5e68c114cd907d06ec65c509de10e0069be203a78c44a9f4c799a5552396788d`). The role stays **inactive until the stage-1 decision**.
 - **Not decided here:** stage 1; part B of the audit; any further role, permission or governance change.
+
+## Addendum (2026-10-29T09:31:14Z): Governance Engineer mandate, revision 1
+
+- **Principal (verbatim):** "approve revision 1 of the governance engineer mandate" (commit `c8d2eddb3`).
+- **Decided:** `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` **revision 1 is approved and in force** (sha256 at approval `0a7f8531ab01983bb5789ae13ee57f9ddb2f3d2cc3b3e664ffaf92f5bbd670bb`), replacing revision 0. Its changes (§13): access limited to the listed lane files, `02-FILES.jsonl` only for lookups of a named allowed ID, unclear files not opened; checklist C1–C6 for the independent check of a test's preparation, anything but PASS blocking the test until the Principal decides; ambiguous approvals recorded only in their clear part; auditor findings kept as verified / reported / pending; three statuses per role; the handover's five-item authorisation report.
+- **Not decided here:** anything else.
