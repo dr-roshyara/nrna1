@@ -170,7 +170,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 | Invariants that cannot fail | §9.4 | ✗ as first stated (CON-0114, 0116); valid cores kept |
 | Distribution as a candidate required capability | §9.5 (failure case of §0.7, §1.16.6) | ~ (CON-0117) |
 | **Req, the kernel's required capabilities** (theory turn 1) | §9.10 | ~ (CON-0188; turn 1 settled): core questions Q1–Q4 and inputs O1–O4, Q5 by I-4, seven candidates; reference definitions of Q1, Q3, Q4 partial or absent (the documented obstacle) |
-| **The kernel type from Req** (theory turn 2): 31 laws classified; whole histories carried by the record under P-loss (and one shared record for uniqueness across applications); C6 cannot express recoverability or hyperproperties; C3 does not reach guards, liveness or AE | §9.11 | ~ (CON-0189; turn 2 settled) |
+| **The kernel type from Req** (theory turn 2): 31 laws classified; whole histories carried by the record under P-loss (and, for uniqueness across applications, one shared record suffices; a split act space also does: A-01); C6 cannot express recoverability or hyperproperties; C3 does not reach guards, liveness or AE | §9.11 | ~ (CON-0189; turn 2 settled) |
 | **The evaluator's inputs** (theory turn 3): I1–I14; bearer readings differ on endings; A1's readings fix C1 and κ; as fact reads occurrence evidence | §9.12 | ~ (CON-0190; turn 3 settled; C1 for the Principal) |
 | **The trust boundary** (theory turn 6): guarantees on kernel assumptions K1–K7; occurrence, attribution and completeness are legitimacy assumptions L1–L7, located by recording mode | §9.15 | ~ (CON-0193; v2 settled at turn 6, provisional) |
 | **The designated record and its carriers** (theory turn 8, settled): K2 restated as a designated record; membership by acceptance, classified across a carrier change; the carrier-change gate (architecture) | §9.17 | ~ (CON-0261, 0264, 0265; CON-0262, 0263 INVALID as stated) |
@@ -199,9 +199,10 @@ All chapters therefore tie on their last full review. The order breaks the tie b
 | S0150 | Ch. 2, Ch. 3 | **done** (consolidation S0131–S0150) |
 | S0175 (held at S0181: the tool's gate counts allowed sources) | Ch. 4, Ch. 5 | **done** (consolidation S0151–S0181; defects: Ch. 4 9, Ch. 5 16, union of both reviewers, plus 3 found by the integration review) |
 | S0200 | Ch. 6, Ch. 8 | **done** (consolidation S0182–S0200, settled in two stages) |
-| S0225 | Ch. 9 | **in review** (consolidation S0201–S0225) |
+| S0225 | Ch. 9 | **done** (consolidation S0201–S0225; reviewers A, B, C and a two-part integration) |
+| S0250 | Ch. 10 | planned *(Ch. 10 opened 2026-10-29 by the strategic-design turns; C F-06)* |
 
-Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 has six (in §1.2, §1.6, §1.8, §1.11).
+Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 had six (in §1.2, §1.6, §1.8, §1.11); at the consolidation S0201–S0225 the quote check finds none left there (§1.2 7/0, §1.6 3/0, §1.8 9/0, §1.11 6/0; C F-05).
 
 ### Ch. 8 §8.12–§8.17 and the kernel/application marks (added at the consolidation S0101–S0130, B-02)
 
