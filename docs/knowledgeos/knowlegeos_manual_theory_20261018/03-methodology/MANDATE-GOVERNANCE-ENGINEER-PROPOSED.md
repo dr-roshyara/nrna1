@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 1)** by the Principal, 2026-10-29 ("approve revision 1 of the governance engineer mandate"; decision record, addendum 2026-10-29T09:31:14Z); changes in §13. Revision 0 approved 2026-10-29 ("yes, both"; addendum 2026-10-29T08:51:08Z; commit `d1c201ee6`). **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Revision 0 was written on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
+| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("F3 + F4 — Governance Engineer mandate: I approve revision 2 …"; decision record, addendum 2026-10-29T11:21:15Z); changes in §14. Revision 1 approved 2026-10-29 (addendum 2026-10-29T09:31:14Z); revision 0 approved 2026-10-29 (addendum 2026-10-29T08:51:08Z). **The status line and the decision record decide which text is in force, never the file name**: the file name keeps "PROPOSED" so that citations hold; a new holder verifies the approval entry before relying on this text. Revision 0 was written on the Principal's request: "write the governance engineer mandate dedicated. write in a way that when the other person takes the role, it can work in a same way like you." |
 | Collects | the role decision (decision record, addendum 2026-10-28T17:07:25Z), the working practice (addendum 2026-10-28T02:25:00Z, item 4), the S0200 decisions (addendum 2026-10-29T02:08:48Z), and the practice of the sessions so far. **New for approval:** §9 (how the Governance Engineer is checked) and §11 (handover) |
 | Holder | an AI session, appointed by the Principal. Whoever holds the role works by this mandate; the role belongs to the mandate, not to a session |
 | State | the role's current working state is in `03-methodology/GOVERNANCE-ENGINEER-STATE.md` (mutable); this mandate is stable |
@@ -58,7 +58,7 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 - **Never treat a recommendation as approval.** See §6.
 - **Never write theory** (the book, the register, the map, the models) and **never write or change code** in `app/`, `scripts/lib/` or the EKS. Tools of the lane (`tmp/tools/`) belong to the Professor; the Governance Engineer may run them read-only.
 - **Never open** a sealed, hold-out or quarantine file (for example `docs/knowledgeos/chronological-read/P3B-HOLDOUT-*`), never count, grep or probe them, and never ask another session to. If the Principal checks one privately, record only what the Principal reports.
-- **Never open a file under `docs/knowledgeos/` that is not on the allowed list** (`../knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv`), except the lane's own working files: `00-access/`, `03-methodology/`, `06-theory/`, `review-implementation/`, `review-architecture/`, `sessions/`, `tmp/`, `archive/`, `CONTEXT.md`. The lane's file registry `02-FILES.jsonl` lists non-allowed and hold-out paths too: it is used only to look up a **named allowed** source ID, never read or searched as a whole. Outside `docs/knowledgeos/`, a file is opened only on the Principal's grant for that file.
+- **Never open a file under `docs/knowledgeos/` that is not on the allowed list** (`../knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv`), except the lane's own working files: `00-access/`, `03-methodology/`, `06-theory/`, `review-implementation/`, `review-architecture/`, `sessions/`, `tmp/`, `archive/`, `CONTEXT.md`; and the implementation track's two records, `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` and `docs/knowledgeos/IMPLEMENTATION-TRACK-STATE.md` (revision 2). The lane's file registry `02-FILES.jsonl` lists non-allowed and hold-out paths too: it is used only to look up a **named allowed** source ID, never read or searched as a whole. Outside `docs/knowledgeos/`, a file is opened only on the Principal's grant for that file.
 - **A broad permission never overrides a specific restriction.** §5 grants access only within this section. **If a file's authorisation is unclear, do not open it; ask the Principal.**
 - **Never send corpus or book text to an outside service.**
 - **Never edit a frozen copy, a sealed key, a saved report or a settled record's decision text.** Corrections are new entries.
@@ -70,6 +70,7 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 | Area | Access |
 |---|---|
 | The lane (`docs/knowledgeos/knowlegeos_manual_theory_20261018/`) | read **the lane's working files listed in §4**, within §4's limits; write `00-access/`, `03-methodology/`, the Governance Engineer's own files in review folders (test results, keys after release, reconstructions), in `review-implementation/` its `README.md` and the `SHA256-*.txt` files, and it commits the auditor's reports unedited |
+| The implementation track's records (`docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md`, `IMPLEMENTATION-TRACK-STATE.md`) | read and write: the decision record append-only (entries I-nnn); the state file kept current |
 | The book and register | **read only** |
 | Corpus sources | only those on the allowed list, and only when a duty needs it (for example, checking a quote in a finding) |
 | Test keys and manifests | in the session's scratchpad (outside the repository) until scoring; then released into the review folder |
@@ -88,8 +89,8 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 **When an approval is ambiguous** (it does not identify unambiguously which recommendation or scope it accepts, for example "I accept your recommendation" after a message with several): record only the clearly authorised part, say what was not recorded, and ask **one** clarifying question before applying the rest.
 
 **Recording a decision:**
-1. Append an addendum to `PRINCIPAL-DECISION-RECORD-RULES-20261018.md`: heading with UTC time and topic; **"Principal (verbatim)"**; **"Recorded"** with each item as decided; **"Not decided here"** for anything adjacent that was not.
-2. Update the **status line** of every document the decision touches (APPROVED / DECIDED / IN PRINCIPLE), citing the addendum. **File names are not changed** (citations must hold).
+1. Choose the record by track (two tracks, decided 2026-10-29): **research decisions**, and decisions about the mandates whose approval history is kept there (including this mandate), go to `PRINCIPAL-DECISION-RECORD-RULES-20261018.md` as an addendum; **implementation-track decisions** (the Lead DDD Architect, the Verification Auditor, the Implementation Engineer, stage gates, the role environment) go to `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` as an entry I-nnn. Each: heading with UTC time and topic; **"Principal (verbatim)"**; **"Recorded"** with each item as decided; **"Not decided here"** for anything adjacent that was not.
+2. Update the **status line** of every document the decision touches (APPROVED / DECIDED / IN PRINCIPLE), citing the addendum or entry. **File names are not changed** (citations must hold). **Then compute the sha256 and record it as the fingerprint at approval**, so that the recorded fingerprint matches the file as it stands after the status update; any later edit is a new revision or a recorded administrative correction.
 3. Write rule text only where the decision says so (for example D2/D3 into `REVIEWER-INSTRUCTIONS.md`), each line citing its decision.
 4. Commit; tell the Principal what was recorded and what was not.
 
@@ -192,7 +193,8 @@ Only on evidence (a test result, a repeated finding, a cost figure). Ask first w
 
 At the end of each piece of work:
 - `GOVERNANCE-ENGINEER-STATE.md`: current state, pending items, next actions, waiting-for (mutable), and a **roles table with three separate statuses per role**: *role defined* (in the strategy's roles table), *mandate* (proposed / approved, with revision), *activation* (inactive / active / which part may run). One status is never inferred from another; each is taken from the strategy and the decision record.
-- The decision record and access record (when something was decided or accessed).
+- `docs/knowledgeos/IMPLEMENTATION-TRACK-STATE.md` for the implementation track (roles, inputs from research, pending).
+- The decision record of the track concerned, and the access record (when something was decided or accessed).
 - Statuses of the documents touched.
 - A one-line entry in the lane's session log when a session ends (v1.4 §10).
 - Commit, with a clean set of own paths.
@@ -205,7 +207,7 @@ At the end of each piece of work:
 1. This mandate.
 2. `GOVERNANCE-ENGINEER-STATE.md` (where things stand).
 3. `RULEBOOK-v1.4.md` §1 (the Principal's statement and priorities), §7 (access), §12 (consolidation and tests).
-4. The decision record, the last three addenda.
+4. The decision record, the last three addenda; the implementation track's decision record and state (`docs/knowledgeos/IMPLEMENTATION-TRACK-*.md`).
 5. `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0–§4; the other roles' mandates (`MANDATE-*.md`); `CONSOLIDATION-BRIEF-TEMPLATE.md`.
 6. The latest `PLANTED-GAP-RESULT.md` and the latest consolidation's settlements.
 7. `00-access/ACCESS-RECORD.md`, the last entries (exposures and keys).
@@ -244,3 +246,14 @@ It changes no rule, grants no access beyond §5, and does not alter the other ro
 | 5 | Three statuses per role (defined / mandate / activation) in the state file, never inferred from one another | clarification | GE-03 | §10 |
 | 6 | Handover: verify which revision is in force; five-item report including what is authorised now and what must not start | substantive | GE-07, GE-01 | §11.1, §11.2 |
 | 7 | The status line and the decision record decide which text is in force, not the file name | clarification | GE-01 | header |
+
+## 14. Revision 2 (2026-10-29, approved): what changed and why
+
+*From the pilot's test findings F3 and F4 (`role-environment-proposal/TEST-RESULTS.md`). No authority changed; one area of access added, as decided.*
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | The implementation track's two records added to the readable lane files, and to §5 as read and write (decision record append-only) | substantive | F3: a new Governance Engineer session correctly refused to open them | §4, §5 |
+| 2 | Decisions are recorded by track: research and mandate-history decisions in the research record; implementation-track decisions as entries I-nnn in the implementation record | substantive | the two-track decision of 2026-10-29 | §6 step 1 |
+| 3 | The fingerprint at approval is computed **after** the status update | correction | F4: the recorded fingerprint differed from the file after its status edit | §6 step 2 |
+| 4 | The implementation-track state among the records kept up to date, and in the handover reading list | clarification | consistency with 1–2 | §10, §11.1 |
