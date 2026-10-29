@@ -3,7 +3,13 @@
 
 R2 of Rulebook v1.4 §2 step 8 (in force from 2026-10-24). Read-only: writes nothing.
 
-Usage: undefined_terms.py [--root DIR] [--no-corpus]
+Usage: undefined_terms.py [--root DIR] [--no-corpus] [--scope SPEC]
+--scope SPEC (decision D2, the Principal, 2026-10-29): SPEC is a comma-separated list of chapters ("06"), sections
+("08.27") or section ranges ("08.27-08.30"). The candidates that occur in a scoped section are printed FIRST, under
+"# IN SCOPE", every tier, each to be judged by the reviewer; the whole-book list follows as background.
+In scope means: tiers A and B, the token's FIRST use is in a scoped section (an undefined term is a defect where it
+first appears); tier C, the section is scoped; tier D, the head or definition line is in a scoped section. Tokens of
+tiers A and B used in scope but first used elsewhere are listed once more, for information, after the in-scope block.
 Tokens: identifiers (e.g. RX-3, BC-7, OQ-5: [A-Z][A-Za-z]{0,6}-\\d+, or [A-Z]{2,}\\d+) and words ([a-z]{4,}, plural folded).
 A token is DEFINED if the book, map or register shows a definition form for it: a bold or table-first-column entry
 followed by a gloss (`**X**:` `**X** (` `**X** —` `| X |` `- **X**`), "X: " at a line start, "X means"/"X is the",
@@ -28,6 +34,7 @@ import collections, csv, pathlib, re, sys
 a = sys.argv[1:]
 root = pathlib.Path(a[a.index('--root') + 1]) if '--root' in a else pathlib.Path(__file__).resolve().parents[2]
 use_corpus = '--no-corpus' not in a
+scope_spec = a[a.index('--scope') + 1] if '--scope' in a else None
 T = root / '06-theory'
 M = T / 'manuscript'
 REPO = pathlib.Path(__file__).resolve().parents[5]
@@ -185,18 +192,53 @@ for f, t in texts.items():
         if k >= 5 * len(cited) and mark >= 1:
             rowsC.append(('C', w, n, f.name[:5]))
 rowsC.sort(key=lambda r: (r[3], -r[2]))
-for tier in (rowsA, rowsB, rowsC):
-    for t_, x, n, s in (sorted(tier, key=lambda r: (-r[3], -r[2])) if tier is not rowsC else tier):
-        if tier is rowsC:
-            print(f'C | {x} | in section {s}: {n} uses | corpus files {corpus_files[x]}')
-        else:
-            print(f'{t_} | {x} | book {n} | sections {s} | corpus files {corpus_files[x]} | first {first[x]}')
 # Tier D kept: a word the allowed corpus never uses (invented in the book), or one the corpus marks as a term
 # (backticked or bold) at least twice (a source's term carried into a head or definition undefined). Without the corpus
 # (--no-corpus) every scope-line word undefined by the forms is listed.
 rowsD = [x for x in d_locs if not use_corpus or d_files[x] == 0 or d_marked[x] >= 2]
-for x in sorted(rowsD, key=lambda x: (d_total[x], x)):
-    print(f'D | {x} | book {d_total[x]} | heads/defs {len(d_locs[x])} | corpus files {d_files[x]} marked {d_marked[x]} '
-          f'| at {"; ".join(d_locs[x])}')
+
+
+def in_scope_sec(sec):
+    # D2: sec is a section number "NN.MM"; the spec names chapters, sections or inclusive ranges
+    for item in scope_spec.split(','):
+        item = item.strip()
+        if '-' in item:
+            lo, hi = item.split('-', 1)
+            if lo.strip() <= sec <= hi.strip():
+                return True
+        elif sec == item or (len(item) == 2 and sec.startswith(item + '.')):
+            return True
+    return False
+
+
+def show(rows_a_b_c, rows_d, only_scope):
+    for tier in rows_a_b_c:
+        for t_, x, n, s in (sorted(tier, key=lambda r: (-r[3], -r[2])) if tier is not rowsC else tier):
+            if tier is rowsC:
+                if only_scope and not in_scope_sec(s):
+                    continue
+                print(f'C | {x} | in section {s}: {n} uses | corpus files {corpus_files[x]}')
+            else:
+                if only_scope and not in_scope_sec(first[x].split()[0]):
+                    continue
+                print(f'{t_} | {x} | book {n} | sections {s} | corpus files {corpus_files[x]} | first {first[x]}')
+    for x in sorted(rows_d, key=lambda x: (d_total[x], x)):
+        locs = [l for l in d_locs[x] if not only_scope or in_scope_sec(l.split()[0])]
+        if not locs:
+            continue
+        print(f'D | {x} | book {d_total[x]} | heads/defs {len(d_locs[x])} | corpus files {d_files[x]} marked {d_marked[x]} '
+              f'| at {"; ".join(locs)}')
+
+
+if scope_spec:
+    print(f'# IN SCOPE ({scope_spec}): judge every candidate below (decision D2)')
+    show((rowsA, rowsB, rowsC), rowsD, True)
+    nA = sum(1 for _, x, _, _ in rowsA if in_scope_sec(first[x].split()[0]))
+    print(f'# in scope: tier A {nA}')
+    also = [f'{t_} {x} (first {first[x]})' for tier in (rowsA, rowsB) for t_, x, _, _ in tier
+            if not in_scope_sec(first[x].split()[0]) and any(in_scope_sec(z) for z in (id_secs[x] if x in id_secs else w_secs[x]))]
+    print('# also used in scope, first used elsewhere (for information): ' + ('; '.join(also) if also else 'none'))
+    print('# BACKGROUND: the whole book')
+show((rowsA, rowsB, rowsC), rowsD, False)
 print(f'# candidates: tier A {len(rowsA)} · tier B {len(rowsB)} · tier C {len(rowsC)} · tier D {len(rowsD)} '
       f'(from {len(ids)} identifiers and {len(words)} word types; {len(cand_ids)} ids and {len(cand_words)} words undefined by the forms)')
