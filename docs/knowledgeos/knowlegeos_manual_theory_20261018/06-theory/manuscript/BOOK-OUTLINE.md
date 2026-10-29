@@ -198,8 +198,8 @@ All chapters therefore tie on their last full review. The order breaks the tie b
 | S0125 (held after C24, S0101–S0130) | **Ch. 0, Ch. 1** | **done** (defects found: Ch. 0 12, Ch. 1 18, union of both reviewers; see the settlement) |
 | S0150 | Ch. 2, Ch. 3 | **done** (consolidation S0131–S0150) |
 | S0175 (held at S0181: the tool's gate counts allowed sources) | Ch. 4, Ch. 5 | **done** (consolidation S0151–S0181; defects: Ch. 4 9, Ch. 5 16, union of both reviewers, plus 3 found by the integration review) |
-| S0200 | Ch. 6, Ch. 8 | planned |
-| S0225 | Ch. 9 | planned |
+| S0200 | Ch. 6, Ch. 8 | **done** (consolidation S0182–S0200, settled in two stages; a test consolidation) |
+| S0225 | Ch. 9 | **in review** (consolidation S0201–S0225) |
 
 Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 has six (in §1.2, §1.6, §1.8, §1.11).
 
