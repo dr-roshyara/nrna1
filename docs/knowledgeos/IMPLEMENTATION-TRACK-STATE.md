@@ -9,7 +9,7 @@
 | Role | Mandate | Activation | Session |
 |---|---|---|---|
 | **Principal** (leads the track) | — | active | — |
-| Governance Engineer (support) | rev. 1 approved | active | `f1575f5d-96b1-404a-af96-797d354857e2` |
+| Governance Engineer (support) | rev. 3 approved | active; **handover to a root session** (option a) | `f1575f5d-…` → successor records its ID in `GOVERNANCE-ENGINEER-STATE.md` |
 | Lead DDD Architect | rev. 2 approved | part 1 done for turns 1–5 (`149b8d5de`); parts 2–3 not authorised | `94ef3b1c-9499-4412-a177-082445a27076` |
 | Verification Auditor | rev. 3 approved (decision records readable) | part A done (`441df3b7d`); part B done (I-003); rerun 1 done (I-004); **next: one full rerun after the Ch. 10 revision (T10-17–T10-21)** | `76f3445f-0fdb-4fe5-833a-efe25aa62005` |
 | Implementation Engineer | rev. 2 approved | **inactive** until the stage-1 decision | — |
@@ -32,6 +32,7 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 
 | # | Owner | Action |
 |---|---|---|
+| 0 | Principal | fix the decision-record gap for the Lead DDD Architect and the Implementation Engineer (read both decision records) — **before the stage-1 decision** |
 | 2 | Principal | decide on test findings F2–F4 |
 | 3 | Governance Engineer | at the stage-1 package: hand R1-01 to the Lead DDD Architect as input |
 | 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05 |
