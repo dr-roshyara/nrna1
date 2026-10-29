@@ -2,14 +2,14 @@
 
 *Kept by the Governance Engineer for the Principal, who leads the track. Overwritten as the state changes; history is in git. Decisions: `IMPLEMENTATION-TRACK-DECISION-RECORD.md`. Research track state: `knowlegeos_manual_theory_20261018/03-methodology/GOVERNANCE-ENGINEER-STATE.md`.*
 
-*Updated 2026-10-29.*
+*Updated 2026-10-29T11:52Z (Governance Engineer successor session, handover housekeeping).*
 
 ## Roles
 
 | Role | Mandate | Activation | Session |
 |---|---|---|---|
 | **Principal** (leads the track) | — | active | — |
-| Governance Engineer (support) | rev. 3 approved | active; **handover to a root session** (option a) | `f1575f5d-…` → successor records its ID in `GOVERNANCE-ENGINEER-STATE.md` |
+| Governance Engineer (support) | rev. 3 approved | active (handover done; `f1575f5d-…` closed) | `57ddce41-5334-461f-981b-964872674366` (repository root) |
 | Lead DDD Architect | rev. 3 approved (I-005) | part 1 done for turns 1–5 (`149b8d5de`); parts 2–3 not authorised | `94ef3b1c-9499-4412-a177-082445a27076` |
 | Verification Auditor | rev. 3 approved (decision records readable) | part A done (`441df3b7d`); part B done (I-003); rerun 1 done (I-004); **next: one full rerun after the Ch. 10 revision (T10-17–T10-21)** | `76f3445f-0fdb-4fe5-833a-efe25aa62005` |
 | Implementation Engineer | rev. 3 approved (I-005) | **inactive** until the stage-1 decision | — |
@@ -20,8 +20,8 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 
 | Input | State |
 |---|---|
-| Strategic design (Ch. 10, §10.1–§10.5) | settled at `dca72c57f`, all S0; T10-16 (b) and the routed clarifications not yet applied (baseline will change) |
-| G1 (evidence in the record) | theory turn in progress |
+| Strategic design (Ch. 10, §10.1–§10.5) | turns 1–5 settled at `dca72c57f`, all S0; T10-16 (b) and the routed clarifications applied at the G1 settlement `8e4b1a420`; the revision for T10-17–T10-21 still to come (baseline will change again; then the auditor's full rerun, I-004) |
+| G1 (evidence in the record) | theory turn settled (`8e4b1a420`); evidence kinds proposed, not adopted; T9-12 (c) and T9-16 (b) decided; T9-17 pending |
 | Implementation-candidates list | draft (`IMPLEMENTATION-CANDIDATES-S0200.md`), awaiting the Professor's confirmation |
 
 ## Role environment (pilot)
@@ -32,6 +32,5 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 
 | # | Owner | Action |
 |---|---|---|
-| 2 | Principal | decide on test findings F2–F4 |
 | 3 | Governance Engineer | at the stage-1 package: hand R1-01 to the Lead DDD Architect as input |
 | 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05 |
