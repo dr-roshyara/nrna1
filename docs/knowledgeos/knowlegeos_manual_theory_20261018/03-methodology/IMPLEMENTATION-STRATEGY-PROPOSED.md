@@ -18,6 +18,7 @@
 | **Professor (Research Lead)** | an AI session | reads the corpus, builds the theory **and the strategic design derived from it** | writes code; reads the implementation |
 | **Independent Reviewers** | fresh AI sessions per review | review the theory blind first, then challenge it | write theory |
 | **Verification Auditor** | a separate AI session | audits the existing EKS implementation against the strategic design and the reference architecture; reports gaps with evidence | writes theory; writes or changes code; sends findings to the Professor |
+| **Lead DDD Architect** | a separate AI session (added 2026-10-29, `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md`) | reviews the settled strategic design as a DDD expert; derives the tactical design (with the stage-1 decision); reviews the Implementation Engineer's plans and slices; proposes architecture decisions | decides; writes theory or production code; reads the corpus; contacts the Professor directly |
 | **Implementation Engineer** | a separate AI session (from stage 1) | builds the reference model and later the kernel, under the repository's engineering process | writes theory; audits its own work |
 
 ## 1. The idea in one paragraph

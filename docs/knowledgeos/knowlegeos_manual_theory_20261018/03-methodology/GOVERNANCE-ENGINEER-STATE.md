@@ -16,14 +16,14 @@
 | Brief template | in force from the next consolidation | `bf75badfb` |
 | Implementation-candidates list | **draft for the Professor's confirmation** | `IMPLEMENTATION-CANDIDATES-S0200.md` (`15969b047`) |
 | Governance Engineer mandate | **approved** 2026-10-29 | decision record |
-| Lead DDD Architect mandate | **proposed, revision 2** (new role; renamed from "Principal DDD Architect") | `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` |
-| Implementation Engineer mandate | **proposed, revision 2**; starts only with the stage-1 decision | `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` |
+| Lead DDD Architect mandate | **approved (revision 2)** 2026-10-29; part 1 may start (turns 1 and 2 settled) | `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` |
+| Implementation Engineer mandate | **approved (revision 2)** 2026-10-29; inactive until the stage-1 decision | `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` |
 
 ## Pending (owner → action)
 
 | # | Owner | Action |
 |---|---|---|
-| 0 | Principal | approve or change revision 2 of the Lead DDD Architect and Implementation Engineer mandates |
+| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2) |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |

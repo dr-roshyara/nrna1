@@ -483,3 +483,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   1. `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` is **approved**, including §8.2a (receiving the auditor's reports), §9 (how the Governance Engineer is checked: a separate session checks each planted-gap test's preparation before reviewers start) and §11 (handover and start prompt). sha256 at approval: `a4867624b7b7b05d4176ca8c138a8c6dd931496482395e6526274817abed69b7`. Its working state is `GOVERNANCE-ENGINEER-STATE.md`.
   2. **The Verification Auditor may run EKS tests that read allowed corpus files as fixtures** (e.g. `Phase0BackTest`), provided it does not view their content and discloses each such test. One line added to its mandate §2.
 - **Not decided here:** part B of the audit; stage 1.
+
+## Addendum (2026-10-29T09:22:58Z): the Lead DDD Architect and the Implementation Engineer
+
+- **Principal (verbatim):** "approve both" — on revision 2 of the two mandates (commit `21ef02780`).
+- **Decided:**
+  1. **A seventh role, the Lead DDD Architect** (renamed from "Principal DDD Architect" at revision 1 on the Principal's choice), with `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` revision 2 **approved** (sha256 at approval `1c66451b91fbd1b325b7ff31287bd7e762ee55be08a063342b105f35b8f9a087`). **Part 1** (DDD review of settled strategic-design turns) may start; part 2 (tactical design) only with the stage-1 decision. Added to the roles table of `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0.
+  2. `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` revision 2 **approved** (sha256 at approval `5e68c114cd907d06ec65c509de10e0069be203a78c44a9f4c799a5552396788d`). The role stays **inactive until the stage-1 decision**.
+- **Not decided here:** stage 1; part B of the audit; any further role, permission or governance change.

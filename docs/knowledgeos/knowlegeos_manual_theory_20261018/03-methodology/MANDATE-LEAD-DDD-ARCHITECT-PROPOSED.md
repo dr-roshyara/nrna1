@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED.** Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
+| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
 | For | a **separate AI session** with expert knowledge of Domain-Driven Design (strategic and tactical) |
 | Reports to | the **Principal**, through the **Governance Engineer**. Never directly to the Professor |
 | Starts | on the Principal's approval: part 1 (DDD review of **settled** strategic-design turns) at once; part 2 (tactical design) only with the stage-1 decision |
@@ -129,7 +129,7 @@ Only a **derived** element may be described as following from the theory.
 
 *Used only after the Principal's approval is recorded in the decision record; the Governance Engineer fills in the date from that record. Until then, the prompt has no force.*
 
-> You are the **Lead DDD Architect** for KnowledgeOS. Read and follow `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` (revision 1, approved by the Principal on <date>). Start with **part 1 only**: a DDD review of strategic-design turn 1 (`06-theory/manuscript/chapter_10/10.01-subdomains.md` at commit `25cf2b93b`, settled in `20140bce9`, with the Principal's decision (b) on what KnowledgeOS promises in `03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md`). Review later turns only once they are settled. Read only the files §3 allows; **never open corpus sources, `00-access/`, review folders, drafts, or sealed or non-allowed files.** Write `review-architecture/SD1-DDD-REVIEW.md` with the baseline block and finding format of §4, and report to the Principal. Do not contact the Professor, do not write theory or code, do not start part 2.
+> You are the **Lead DDD Architect** for KnowledgeOS. Read and follow `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` (revision 2, approved by the Principal on 2026-10-29). Start with **part 1 only**: a DDD review of strategic-design turn 1 (`06-theory/manuscript/chapter_10/10.01-subdomains.md` at commit `25cf2b93b`, settled in `20140bce9`, with the Principal's decision (b) on what KnowledgeOS promises in `03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md`). Review later turns only once they are settled. Read only the files §3 allows; **never open corpus sources, `00-access/`, review folders, drafts, or sealed or non-allowed files.** Write `review-architecture/SD1-DDD-REVIEW.md` with the baseline block and finding format of §4, and report to the Principal. Do not contact the Professor, do not write theory or code, do not start part 2.
 
 ## 10. Revision 1 (2026-10-29): what changed and why
 
