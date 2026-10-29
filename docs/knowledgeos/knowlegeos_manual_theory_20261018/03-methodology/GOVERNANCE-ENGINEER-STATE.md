@@ -19,6 +19,19 @@
 | Lead DDD Architect mandate | **approved (revision 2)** 2026-10-29; part 1 may start (turns 1 and 2 settled) | `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` |
 | Implementation Engineer mandate | **approved (revision 2)** 2026-10-29; inactive until the stage-1 decision | `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` |
 
+## Sessions (Claude Code session IDs; verified 2026-10-29 from each transcript's first message)
+
+| Role | Session ID | Started (UTC) | Started from | Resume with |
+|---|---|---|---|---|
+| Governance Engineer | `f1575f5d-96b1-404a-af96-797d354857e2` | 2026-10-18/19 | the lane folder | `claude --resume f1575f5d-96b1-404a-af96-797d354857e2` |
+| Professor (Research Lead) | `16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` | (long-running) | repository root | `claude --resume 16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` |
+| Verification Auditor | `76f3445f-0fdb-4fe5-833a-efe25aa62005` | 2026-10-29 02:10 | repository root | `claude --resume 76f3445f-0fdb-4fe5-833a-efe25aa62005` |
+| Lead DDD Architect | `94ef3b1c-9499-4412-a177-082445a27076` | 2026-10-29 09:59 | repository root | `claude --resume 94ef3b1c-9499-4412-a177-082445a27076` |
+| Implementation Engineer | — (not started; inactive until stage 1) | — | — | — |
+| Independent Reviewers | — (a fresh subagent per review, commissioned by the Professor; no standing session) | — | — | — |
+
+*Resume a session from the folder it was started in. A session ID identifies the conversation, not the role: if a role moves to a new session, the new ID is recorded here and the old one marked closed. Transcripts are local to this machine (`~/.claude/projects/…`); this table is the repository's pointer to them.*
+
 ## Roles (three statuses, each from the strategy's roles table and the decision record)
 
 | Role | Role defined | Mandate | Activation |
