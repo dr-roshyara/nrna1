@@ -536,3 +536,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   - **C, into the Ch. 10 TODO** for a revision after the G1 turn and before part 2: SD3-01 (owner assignment against the "information to reject" test and the amending-act reading); SD2-01 (evidence for the own-language column); SD3-04 (the inventory lacks the applications' own rules); SD1-01 (classify the rule that derives the displayed class).
 - **Kept for the stage-1 decision package (D):** SD1-05 — which reference product governs design investment (KnowledgeOS as its own product, or canon's supporting subdomain of PublicDigit).
 - **Not decided here:** any finding's acceptance; any change to the theory (the Professor's, through review).
+
+## Addendum (2026-10-29T10:18:15Z): the Verification Auditor's part B
+
+- **Principal (verbatim):** "yes, part B after the turn-5 review".
+- **Decided:** part B of the Verification Auditor's audit (`MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` §4) is **authorised, to start once both conditions hold:** (1) strategic-design turn 5 is settled; (2) the Lead DDD Architect's review of turn 5 (`review-architecture/SD5-DDD-REVIEW.md`) is saved. **Baseline T** = Ch. 10 (§10.1–§10.5) at the turn-5 settlement commit, plus the kernel sections the commission names. If G1 or a later revision changes the baseline, the affected comparisons are **rerun** as new reports (mandate §4a).
+- **Unchanged:** findings go to the Principal and the Governance Engineer only, never to the Professor; the auditor recommends nothing and changes nothing.
+- **Not decided here:** any finding's disposition.
