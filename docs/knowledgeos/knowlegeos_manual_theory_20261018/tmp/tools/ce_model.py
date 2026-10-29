@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 22 (the G1 turn's review, A-01-A-10, B F1-F15;
+it tests the FORM of the repaired definition, not its content. Version 23 (T9-16 (b), the Principal, 2026-10-29;
+the Professor's modelling, for review; nothing adopted): in g0, a withdrawal or restoration counts only if its actor
+holds a grant over the scope of the evidence entry it bears on; others are shown with their cause, not counted; the
+producer has no special right; v22's rule stays available (withdrawers='any'). Checks 1-36 give output identical to
+v22; check 37 is new. Version 22 (the G1 turn's review, A-01-A-10, B F1-F15;
 the Professor's modelling, for review; nothing adopted): W entries kept as opaque members for standing's membership
 (opaque; designation is the record element's, T10-16 (b)), so a designation may close W entries; W's rule refuses a
 single-use grant as a W basis (an evidence-area entry is not a use) and targets that are not earlier entries;
@@ -1297,14 +1301,19 @@ def append_W(rec, e):
     return True, None
 
 
-def wclass(rec, s, about, purpose=None, producers='authorised'):
+def wclass(rec, s, about, purpose=None, producers='authorised', withdrawers='scope'):
     """The displayed class at the cut of the first s entries (the Professor's rule g0, for review; §9.18):
     an evidence entry is LIVE if its producer is authorised (its atom; producers='any' skips this), it is not annulled
     (correction: standing's annulment, voids from the start), and, for the purpose asked, no withdrawal of it is in effect
     (a withdrawal is in effect if authorised and no authorised restoration citing it is in the cut). Order comes from
     citation, never from act time, so no tie is read. Kleene: refuted if some refutation is surely live; else U if some
     refutation may be live; else supported if some support is surely live; else U if one may be; else not attested.
-    Returns (class, reasons): every evidence entry about the item, its polarity, its state and (v22) its causes."""
+    Returns (class, reasons): every evidence entry about the item, its polarity, its state and (v22) its causes.
+    v23 (T9-16 (b), the Principal, 2026-10-29): withdrawers='scope' (the decided rule): a withdrawal or restoration
+    counts only if it is authorised AND its scope covers the scope of the evidence entry it bears on, i.e. its actor
+    holds a grant over that scope; others are accepted and shown with their cause, not counted. The producer has no
+    special right. withdrawers='any' is v22's rule (any authorised withdrawal, whatever its scope). Not modelled: which
+    act kinds a grant authorises (grants carry no act kind; any grant over the scope suffices)."""
     for test in (in_D_S, in_D_W):                  # v22 (A-02, B F3): the whole record, as ce_star_cut (T1-01)
         ok, why = test(rec)
         if not ok:
@@ -1313,14 +1322,28 @@ def wclass(rec, s, about, purpose=None, producers='authorised'):
     a = wfs(pre)
     def tv(b):
         return b
+    def counts(x, e):                              # v23 (T9-16 (b)): authorised, and over the evidence entry's scope
+        if withdrawers == 'any':
+            return a[x['id']]
+        return k_and(a[x['id']], covers(x['scope'], e['scope'], pre.dom))
     def withdrawn(e):
         ws = [w for w in pre.e if w['kind'] == 'ewdr' and w['target'] == e['id'] and purpose is not None
               and w['purpose'] in (purpose, '*')]
         vals = []
         for w in ws:
             rs = [r for r in pre.e if r['kind'] == 'erst' and r['target'] == w['id']]
-            vals.append(k_and(a[w['id']], k_not(k_or(F, *[a[r['id']] for r in rs]))))
+            vals.append(k_and(counts(w, e), k_not(k_or(F, *[counts(r, e) for r in rs]))))
         return k_or(F, *vals)
+    def not_counted(e):                            # v23: withdrawals and restorations shown but not counted, with cause
+        out = []
+        for w in pre.e:
+            if w['kind'] == 'ewdr' and w['target'] == e['id']:
+                xs = [w] + [r for r in pre.e if r['kind'] == 'erst' and r['target'] == w['id']]
+                for x in xs:
+                    if a[x['id']] != F and counts(x, e) != T:
+                        out.append(f"{x['id']} by {x['actor']}: no grant over the evidence's scope; shown, not counted"
+                                   + ('' if counts(x, e) == F else ' (U)'))
+        return out
     live, reasons = {}, []
     for e in pre.e:
         if e['kind'] != 'evid' or e['about'] != about:
@@ -1340,6 +1363,7 @@ def wclass(rec, s, about, purpose=None, producers='authorised'):
             cause.append(f'withdrawn for {purpose}' + ('' if wd == T else ' (U)'))
         if purpose is None and any(w['kind'] == 'ewdr' and w['target'] == e['id'] for w in pre.e):
             cause.append('withdrawals recorded; none applied (no purpose named)')
+        cause.extend(not_counted(e))
         reasons.append((e['id'], e['polarity'], v, tuple(cause)))
     ref = k_or(F, *[v for p, v in live.values() if p == 'refutes'])
     sup = k_or(F, *[v for p, v in live.values() if p == 'supports'])
@@ -2546,4 +2570,39 @@ if __name__ == '__main__':
     for k_, v_ in res36.items():
         print('(36)', k_, '->', 'PASS' if v_ else 'FAIL')
     assert all(res36.values())
+    # (37) v23: T9-16 (b), who may withdraw or restore reliance (a grant over the evidence's scope; the producer has no
+    # special right); checks 1-36 are unchanged (v22's rule stays available as withdrawers='any')
+    res37 = {}
+    D37 = {('s', 's'), ('s', 's/a'), ('s/a', 's/a'), ('s/a', 's'), ('s', 's/b'), ('s/b', 's/b')}
+    gB = G('gB', 'P', ['r'], 'B', scope='s/a')
+    gA2 = G('gA2', 'P', ['r'], 'A', scope='s/a')
+    def R37(*xs):
+        return Record([dict(ROOT), dict(gA), dict(gB), dict(gA2)] + [dict(x) for x in xs], D37)
+    def wd37(i, actor, cite, scope, target='e2', t=3):
+        return {'id': i, 'kind': 'ewdr', 'actor': actor, 'cites': [cite], 'target': target, 'purpose': 'p', 'scope': scope, 't': t}
+    base = (ev('e1', 'supports'), ev('e2', 'refutes'))
+    r = R37(*base, wd37('w1', 'A', 'gA', 's'))
+    res37['a withdrawal by a holder of a grant over the evidence\'s scope counts: supported for p'] = \
+        wclass(r, len(r.e), 'k', purpose='p')[0] == 'supported'
+    r = R37(*base, wd37('w2', 'B', 'gB', 's/a'))
+    c_, why_ = wclass(r, len(r.e), 'k', purpose='p')
+    res37['a withdrawal authorised only in a narrower scope is shown, not counted: refuted for p, cause named'] = \
+        c_ == 'refuted' and any('w2 by B: no grant over' in c for w in why_ for c in w[3])
+    res37["v22's rule (withdrawers='any') counts it: supported for p (reproducible)"] = \
+        wclass(r, len(r.e), 'k', purpose='p', withdrawers='any')[0] == 'supported'
+    r = R37(*base, wd37('w3', 'A', 'gA2', 's/a'))
+    res37['the producer has no special right: its withdrawal under a narrower grant is not counted'] = \
+        wclass(r, len(r.e), 'k', purpose='p')[0] == 'refuted'
+    rs37 = {'id': 'z2', 'kind': 'erst', 'actor': 'B', 'cites': ['gB', 'w1'], 'target': 'w1', 'scope': 's/a', 't': 4}
+    r = R37(*base, wd37('w1', 'A', 'gA', 's'), rs37)
+    c_, why_ = wclass(r, len(r.e), 'k', purpose='p')
+    res37['a restoration without a grant over the scope does not restore: supported for p, cause named'] = \
+        c_ == 'supported' and any('z2 by B' in c for w in why_ for c in w[3])
+    r = R37(*base, wd37('w4', 'A', 'gA', 's/b'))
+    c_, why_ = wclass(r, len(r.e), 'k', purpose='p')
+    res37['an undefined covers pair between withdrawal and evidence: U for p, cause marked (U)'] = \
+        c_ == 'U' and any('w4' in c and '(U)' in c for w in why_ for c in w[3])
+    for k_, v_ in res37.items():
+        print('(37)', k_, '->', 'PASS' if v_ else 'FAIL')
+    assert all(res37.values())
     print('all assertions passed')
