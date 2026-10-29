@@ -511,3 +511,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 
 ## Entry 2026-10-29: Governance Engineer — a count of hold-out file names (disclosure)
 - While preparing the pilot's deny rule, the Governance Engineer ran `ls docs/knowledgeos/chronological-read/ | grep -c "^P3B-HOLDOUT-"` (result: 3) to confirm the pattern would cover the protected files. **No file was opened and no content or file name was displayed**; only the count. This breaks the letter of mandate §4 ("never count, grep or probe them"). Self-reported; no further probing. The proposed deny rule uses the pattern only.
+
+## Entry 2026-10-29: Lead DDD Architect, part 1 (turn 5 and follow-up 1)
+- **Reports** `review-architecture/SD5-DDD-REVIEW.md` and `SD-FOLLOWUP-1.md` saved by the Governance Engineer; all six entries of `SHA256-SD-REVIEWS.txt` check OK.
+- **Disclosures:** the SD5 settlement (a review folder) not opened; `git show --stat` again printed review-folder file names, none opened; no corpus, Ch. 0/1/8 lines. Assessed: within the mandate.
