@@ -19,6 +19,6 @@ See §8.32.4 (C1 circularity; C2 the looser sense; C5 continuity).
 
 - **Dependencies:** C1: §9.13.2 Inputs, R2; §9.15 K3, G1, G2; §10.5 PL-12; §1.14.1 · C2: §9.10 O2; §9.18; §8.31 C1 · C3: §9.15 G4, R3, L9; §9.16 R3a; §10.5 PL-2, PL-5 · C4: §8.31 C3; K1; §9.17 R4–R5 · C5: §8.30 C5; §9.13 R2; §9.16 R1; §9.14 R1; §9.10 O2; §9.18 · C6: §1.5; §3.4; §9.17 R1; §10.5.0; §9.10 L33; §9.16 R2; T10-10; G10; CON-0120.
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
-- **R2 (§8.32):** no tier A in scope.
+- **R2 (§8.32):** ~~no tier A in scope~~ *corrected at settlement (W-09):* one tier A, "venue", ordinary usage.
 - **Quote check:** 0 in the tool's format; quotes give line numbers in prose.
 - **R3:** C4 corrects §8.31 C3 (settled, C38). The correction is recorded in this window's settlement as a pointer at §8.31 C3, not a rewrite.
