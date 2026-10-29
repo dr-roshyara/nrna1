@@ -11,7 +11,7 @@
 | **Principal** (leads the track) | — | active | — |
 | Governance Engineer (support) | rev. 1 approved | active | `f1575f5d-96b1-404a-af96-797d354857e2` |
 | Lead DDD Architect | rev. 2 approved | part 1 done for turns 1–5 (`149b8d5de`); parts 2–3 not authorised | `94ef3b1c-9499-4412-a177-082445a27076` |
-| Verification Auditor | rev. 1 approved + test-run line | part A done (`441df3b7d`); **part B done; dispositions decided (I-003)**; mandate rev. 2 (class "theory element with no code"); **rerun due** of B-14, PL-0, R0 (T10-16 (b) now applied at `8e4b1a420`) | `76f3445f-0fdb-4fe5-833a-efe25aa62005` |
+| Verification Auditor | rev. 3 approved (decision records readable) | part A done (`441df3b7d`); part B done (I-003); rerun 1 done (I-004); **next: one full rerun after the Ch. 10 revision (T10-17–T10-21)** | `76f3445f-0fdb-4fe5-833a-efe25aa62005` |
 | Implementation Engineer | rev. 2 approved | **inactive** until the stage-1 decision | — |
 
 Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
@@ -33,5 +33,5 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 | # | Owner | Action |
 |---|---|---|
 | 2 | Principal | decide on test findings F2–F4 |
-| 3 | Principal | send the auditor the rerun prompt (B-14, PL-0, R0 against `8e4b1a420`) |
+| 3 | Governance Engineer | at the stage-1 package: hand R1-01 to the Lead DDD Architect as input |
 | 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05 |

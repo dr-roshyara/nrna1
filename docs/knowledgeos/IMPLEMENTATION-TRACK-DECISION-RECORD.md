@@ -55,3 +55,13 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
   4. **For planning:** EKS is a **supporting tool, not the starting point of the kernel**; the stage-1 package plans the reference model as **new**.
 - **Still due:** rerun of B-14 and the PL-0 and R0 comparisons when T10-16 (b) is applied to Ch. 10 (it is applied at the G1 settlement `8e4b1a420`).
 - **Not decided here:** stage 1; any change to EKS.
+
+### I-004 (2026-10-29T11:38:16Z): the auditor may read the decision records; the rerun's findings; one full rerun later
+
+- **Correction (Governance Engineer, self-reported):** the pilot's agent definition `.claude/agents/kos-verification-auditor.md` told the auditor first to read the decision record, which the auditor's mandate (revision 2, §2) forbade; so the rerun could not read entry I-003, which authorised it. The pilot's test T4 listed tools only and did not catch it.
+- **Principal (verbatim):** "yes to all three" — on the Governance Engineer's recommendations after `review-implementation/PART-B-RERUN-1.md` (commit `aee59fc1e`; R1-03 verified independently).
+- **Decided:**
+  1. **Auditor mandate revision 3:** the two decision records (this one and the research record) are readable, read-only; everything else under `docs/knowledgeos/` stays forbidden except the mandate and the report folder. Fingerprint at approval, after the status update: sha256 `0ace7ce8a11344d78a1db6ff432dd475712627cab525790937ad3fefaa5d4e61`. The agent definition now names both records (sha256 `5521bdd66c20c8c02ad5620e5024764fccda9d0b736d3c860c522383e3cb5e95`).
+  2. **Rerun findings:** R1-02, R1-03, R1-04 (the record element, its invariants and R0′, and standing, have no counterpart in the code; class "theory element with no code") **confirm I-003** (the kernel is built new; EKS a supporting tool); no action. **R1-01** (the kind list in theory changes only by an authorised act; EKS's register list changes by editing a configuration file, unrecorded) stays **unresolved** and is **input for the Lead DDD Architect at stage 1**.
+  3. **No partial rerun now** for the other Ch. 10 changes at `8e4b1a420` (R17, the count of conditional relationships, §10.4.4): **one full rerun of part B after the Ch. 10 revision for T10-17–T10-21.**
+- **Not decided here:** stage 1; any change to EKS.

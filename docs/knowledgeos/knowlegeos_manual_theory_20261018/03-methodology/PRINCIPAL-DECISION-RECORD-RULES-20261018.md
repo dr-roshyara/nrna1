@@ -601,3 +601,7 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 ## Addendum (2026-10-29T11:29:23Z): pointer — Verification Auditor mandate revision 2
 
 - Recorded in the implementation-track decision record, entry **I-003**: `MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` revision 2 approved (finding class "theory element with no code"; sha256 at approval `d27135df31672aa0a7338943e212871b2338c91acc50c6e041644ff7852cd17d`). This pointer keeps the mandate's approval history findable here.
+
+## Addendum (2026-10-29T11:38:16Z): pointer — Verification Auditor mandate revision 3
+
+- Recorded in the implementation-track decision record, entry **I-004**: `MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` revision 3 approved (the two decision records readable; sha256 at approval `0ace7ce8a11344d78a1db6ff432dd475712627cab525790937ad3fefaa5d4e61`).

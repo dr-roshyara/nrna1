@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("yes to all four"; implementation-track decision record, entry I-003, 2026-10-29T11:29:23Z): one finding class added (§4b; changes in §8). Revision 1 by the Principal, 2026-10-29, S0200 decision D11 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z): part A may start; part B needs a reviewed baseline and separate authorisation. The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
+| Status | **APPROVED (revision 3)** by the Principal, 2026-10-29 ("yes to all three"; implementation-track decision record, entry I-004, 2026-10-29T11:38:16Z): the two decision records readable (§2; changes in §9). Revision 2 by the Principal, 2026-10-29 ("yes to all four"; implementation-track decision record, entry I-003, 2026-10-29T11:29:23Z): one finding class added (§4b; changes in §8). Revision 1 by the Principal, 2026-10-29, S0200 decision D11 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z): part A may start; part B needs a reviewed baseline and separate authorisation. The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
 | For | a **new, separate AI session**, the Verification Auditor; it has not written the EKS code and does not write theory |
 | Reports to | the **Principal**, through the **Governance Engineer**. **Never to the Professor** |
 | Starts | preparation (part A) on the Principal's approval of this mandate; the audit itself (part B) only once the strategic-design baseline is reviewed **and** the Principal authorises part B explicitly |
@@ -21,7 +21,8 @@ Find out, with evidence, how the existing Engineering Knowledge System (EKS) rel
 ## 2. Access
 
 - **Allowed:** the files of D and C above, read-only; running the existing EKS tests read-only. **This includes tests that read allowed corpus files as fixtures** (for example `Phase0BackTest`, which reads `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` through `git show`), provided the auditor does not view their content and discloses each such test. *(The Principal, 2026-10-29, after part A.)*
-- **Never:** anything under `docs/knowledgeos/` (the research corpus and the theory lane, including its hold-out protections), except this mandate and the report folder below; the book is read **only** through the strategic-design baseline and the kernel sections named in the part-B commission, as copies.
+- **Also allowed (revision 3), read-only:** the two decision records — `docs/knowledgeos/knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECORD-RULES-20261018.md` and `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md` — to confirm what is authorised. They are governance records, not corpus.
+- **Never:** anything else under `docs/knowledgeos/` (the research corpus and the theory lane, including its hold-out protections), except this mandate, the two decision records and the report folder below; the book is read **only** through the strategic-design baseline and the kernel sections named in the part-B commission, as copies.
 - **No changes** to any file outside the auditor's own report folder `docs/knowledgeos/knowlegeos_manual_theory_20261018/review-implementation/` (created for it).
 
 ## 3. Part A, preparation (may start on approval of this mandate)
@@ -113,3 +114,9 @@ A classification can be challenged without losing the observation. A suspected p
 | # | Change | Kind | Reason | Section |
 |---|---|---|---|---|
 | 1 | Finding class **"theory element with no code"** added | substantive | part B, B-01: "standing has no counterpart in the code" fitted none of the seven classes | §4b |
+
+## 9. Revision 3 (2026-10-29, approved): what changed and why
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | The two decision records are readable (read-only) | correction | the agent definition told the auditor to check the decision record, which revision 2 forbade; the rerun of 2026-10-29 could not read the entry that authorised it (I-003) | §2 |
