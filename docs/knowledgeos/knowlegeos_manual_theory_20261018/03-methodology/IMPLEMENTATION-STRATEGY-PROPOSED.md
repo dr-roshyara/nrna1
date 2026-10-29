@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED** (revision 2: roles; stage 0b strategic design and independent verification). Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
+| Status | **APPROVED IN PRINCIPLE** by the Principal, 2026-10-29 (S0200 decisions D7 part A, D8 part B in principle only, D9 role names; decision record, addendum 2026-10-29T02:08:48Z). **Stage 1 is not authorised:** it returns as a separate decision with the implementation-candidates list. Previously PROPOSED (revision 2: roles; stage 0b strategic design and independent verification). Written by the Rule Reviewer, 2026-10-28, on the Principal's request ("we also need the implementation strategy"; scope chosen: "Both, linked") |
 | Decides | the Principal |
 | Changes | nothing in force; Rulebook v1.4 and the research continue as they are until the Principal decides |
 | Revision | 2026-10-28, revision 1: an external review's (ChatGPT) refinements adopted — three kinds of validation; tests never promote a claim; an *unresolved* class in stage 2; the production gate conditional on the existence and uniqueness result; gates are conditions, not dates; a stop condition per stage; the S0200 decision in two parts |

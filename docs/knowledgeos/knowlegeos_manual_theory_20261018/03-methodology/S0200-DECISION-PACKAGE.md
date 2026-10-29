@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **FOR THE PRINCIPAL'S DECISION.** Nothing here is in force until recorded in the decision record on the Principal's explicit words |
+| Status | **DECIDED 2026-10-29:** "accept as recommended" — D1–D11 as recommended (decision record, addendum 2026-10-29T02:08:48Z) |
 | Prepared by | the Governance Engineer, 2026-10-29 |
 | Evidence base | consolidation S0182–S0200: stage 1 `8faab7396`, addendum `1d10e28da`, stage 2 `0ae02e66b`; test result `e5da8af5a`; C32 reconstruction `66241dd81`; mandates revision 1 `64e6e8603` |
 

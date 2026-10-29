@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED.** Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
+| Status | **APPROVED (revision 1)** by the Principal, 2026-10-29, S0200 decision D10 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z). The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
 | For | the **Professor**, reviewed by **Independent Reviewers** under Rulebook v1.4 |
 | Starts | after the S0200 consolidation is settled **and** the Principal approves this mandate |
 | Governing rules | Rulebook v1.4 (theory turns §12b, a chain of critical-path turns, challenge by type, prior work corpus first, the stability of claims). **This mandate adds no rule to the rulebook;** its acceptance criteria (§5) bind this chain only |

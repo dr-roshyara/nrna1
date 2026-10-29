@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED, NOT APPROVED.** Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
+| Status | **APPROVED (revision 1)** by the Principal, 2026-10-29, S0200 decision D11 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z): part A may start; part B needs a reviewed baseline and separate authorisation. The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
 | For | a **new, separate AI session**, the Verification Auditor; it has not written the EKS code and does not write theory |
 | Reports to | the **Principal**, through the **Governance Engineer**. **Never to the Professor** |
 | Starts | preparation (part A) on the Principal's approval of this mandate; the audit itself (part B) only once the strategic-design baseline is reviewed **and** the Principal authorises part B explicitly |
