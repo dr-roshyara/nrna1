@@ -491,3 +491,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Key** outside the workspace until scoring; sha256 `66f6fe0f0a0f692e0c8bab4f8b912f2de3c98b0d197bf5c5d24fa9495f2f0d9b`. **Manifest of the copy** (148 files), outside the workspace; sha256 `43dbced284635594421731d4a5594599ba86427dad2ae5c8d3c14b08370df99f`.
 - **Isolation:** `REVIEWER-NOTE.md` with every commission; file and search lists; transcript audit; reviewers not told. **The preparation's commit subject is neutral** (lesson from `4ab5b3b82`).
 - **The Professor** (`README-PROFESSOR.md`): freezes the working book until scoring; does not compare; settles in two stages.
+
+## Entry 2026-10-29: consolidation S0182–S0200, planted-gap key released after scoring
+- **Released by** the Governance Engineer after stage 1 and its addendum (8faab7396, 1d10e28da): `PLANTED-GAP-ANSWER-KEY.md` (sha256 `66f6fe0f0a0f692e0c8bab4f8b912f2de3c98b0d197bf5c5d24fa9495f2f0d9b`) and `PLANTED-GAP-COPY-MANIFEST.txt` (`43dbced284635594421731d4a5594599ba86427dad2ae5c8d3c14b08370df99f`), both equal to the entry of 2026-10-28T16:44:46Z. Result: `PLANTED-GAP-RESULT.md`.
+- **Exposure in this test:** reviewer A read `README-PROFESSOR.md` (knew a test exists); the integration reviewer learned it through A's file list; B and C blind. Scored both blind and combined (equal: 2 of 4).
