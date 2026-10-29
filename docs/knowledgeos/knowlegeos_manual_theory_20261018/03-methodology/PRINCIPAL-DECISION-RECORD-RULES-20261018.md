@@ -590,3 +590,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   2. **Option (a):** the current Governance Engineer session (`f1575f5d-…`, started in the lane folder, so not covered by the repository's deny rules) continues for now and is **replaced at the next natural break** by a session started at the repository root with `/role-governance-engineer`.
   3. The Part-B verification proceeds (under the implementation track's authorisation).
 - **Not decided here:** anything else.
+
+## Addendum (2026-10-29T11:27:44Z): whose evidence counts towards a knowledge item's class (T9-12)
+
+- **Question** (G1 theory turn, settlement `8e4b1a420`): whose evidence counts towards a knowledge item's class (refuted / not attested / supported)? (a) any producer's; (b) only evidence from producers with authority over the scope is accepted at all, anything else refused at recording; (c) every declared producer's evidence is accepted and shown with its status, but only authorised producers' evidence counts towards refuted or supported.
+- **Principal (verbatim):** "T9-12 (c)".
+- **Decided: (c).** Every declared producer's evidence is **accepted and shown, with its producer and authorisation status**; **only authorised producers' evidence counts towards "refuted" or "supported"**. Stated cost: unauthorised entries stay in the record, and every move of the record must close them.
+- **Not decided here:** who is authorised for which scope (follows with T9-16 and later questions); how support and refutation combine (T9-17); adopting the evidence kinds; any level change.
