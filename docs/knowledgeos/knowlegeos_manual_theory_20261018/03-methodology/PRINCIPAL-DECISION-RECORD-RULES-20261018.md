@@ -497,3 +497,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "approve revision 1 of the governance engineer mandate" (commit `c8d2eddb3`).
 - **Decided:** `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` **revision 1 is approved and in force** (sha256 at approval `0a7f8531ab01983bb5789ae13ee57f9ddb2f3d2cc3b3e664ffaf92f5bbd670bb`), replacing revision 0. Its changes (§13): access limited to the listed lane files, `02-FILES.jsonl` only for lookups of a named allowed ID, unclear files not opened; checklist C1–C6 for the independent check of a test's preparation, anything but PASS blocking the test until the Principal decides; ambiguous approvals recorded only in their clear part; auditor findings kept as verified / reported / pending; three statuses per role; the handover's five-item authorisation report.
 - **Not decided here:** anything else.
+
+## Addendum (2026-10-29T09:34:19Z): a theory turn on G1 after the strategic-design chain
+
+- **Principal (verbatim):** "yes, G1 turn after turn 5" — on the Governance Engineer's recommendation.
+- **Decided:** after strategic-design turn 5 (published language) is settled, and **before reading in index order resumes**, the Professor runs **one theory turn on G1** (T10-06; strategic-design turn 2, `65e332c21`): the record the evaluator reads admits only acts of authority and has no entry type for evidence, although §9.10 O2/Q4 require evidence entries and an evidential grade; so the promise (b) (T10-01) is not yet supported by the record. The turn runs under Rulebook v1.4 §12b (research question first, corpus first, two reviewers on different models), **not** as a sixth turn of the strategic-design chain.
+- **Not decided here:** the turn's result; any change to the kernel's laws (they go through review as usual); stage 1.
