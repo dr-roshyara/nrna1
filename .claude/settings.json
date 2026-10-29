@@ -134,8 +134,8 @@
       "Edit(docs/implementation/PKS_Phase_II_Governance_Baseline_Complete.md)",
       "Edit(docs/implementation/PKS_Phase_II_Baseline_Freeze.md)",
       "Edit(docs/implementation/PKS_BRM_1_Decision.md)",
-      "Write(docs/implementation/PKS_*)",
-      "Write(engineering/governance/*)"
+      "Edit(docs/implementation/PKS_*)",
+      "Edit(engineering/governance/*)"
     ],
     "allow": [
       "Edit(.claude/CONTEXT.md)",
