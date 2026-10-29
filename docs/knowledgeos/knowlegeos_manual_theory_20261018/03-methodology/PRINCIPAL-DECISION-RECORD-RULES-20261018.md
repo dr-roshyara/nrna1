@@ -503,3 +503,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "yes, G1 turn after turn 5" — on the Governance Engineer's recommendation.
 - **Decided:** after strategic-design turn 5 (published language) is settled, and **before reading in index order resumes**, the Professor runs **one theory turn on G1** (T10-06; strategic-design turn 2, `65e332c21`): the record the evaluator reads admits only acts of authority and has no entry type for evidence, although §9.10 O2/Q4 require evidence entries and an evidential grade; so the promise (b) (T10-01) is not yet supported by the record. The turn runs under Rulebook v1.4 §12b (research question first, corpus first, two reviewers on different models), **not** as a sixth turn of the strategic-design chain.
 - **Not decided here:** the turn's result; any change to the kernel's laws (they go through review as usual); stage 1.
+
+## Addendum (2026-10-29T09:36:01Z): when an area counts as a bounded context (T10-05)
+
+- **Question** (strategic-design turn 3, §10.3, settlement `fe67ad7cf`): when should an area count as a bounded context of its own? (A) it owns a rule no other area owns, stated in its own vocabulary; (B) as (A), and it also keeps a record of its own (S0150's "independently owned state"); (C) never by rule.
+- **Principal (verbatim):** "(B), with the K2 condition".
+- **Decided: (B), with a condition.** An area counts as a bounded context when it **owns a rule no other area owns, stated in its own vocabulary, and keeps independently owned state**. **Condition (K2):** turn 4 states what "a record of its own / independently owned state" means and shows that it is compatible with the kernel law of **one designated record** (K2, §9.17 R2; CON-0261) — for example, entries of the one record that only that area may append, not a second record. **If it is not compatible, the question returns to the Principal.**
+- **Consequence (per §10.3, under the condition):** standing and norms qualify now; well-foundedness qualifies once it has an evidence record (G1; the G1 theory turn decided today); the catalogue is doubtful; presentation, method, work management and assessment do not qualify.
+- **Not decided here:** the context map; any level change (rows stay at S0 until review).
