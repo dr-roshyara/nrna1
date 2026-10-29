@@ -98,3 +98,47 @@
   - the content of Ch. 8 §8.07–§8.26 beyond spot-reads (the coverage gap);
   - the v20 run identity (reported by A and B, not re-run by the integration review);
   - whether the working book has the same defects. That is stage 2, after the score.
+
+## 5. Addendum (2026-10-29): reviewer C, Ch. 8 §8.07–§8.26
+
+*The Principal's instruction (2026-10-29): an extra reviewer for the coverage gap. Commission `COMMISSION-C.md` (`7a2a367ba`). Report: `REPORT-C.md`, saved verbatim, sha256 `d48b2512…99e8a7a`. Reviewer C (Opus): harness 830.9 s; transcript 01:24:16Z–01:38:07Z. **Access:** the transcript audit finds no file outside its commission. It opened only `COMMISSION-C.md` and `REVIEWER-NOTE.md` in this folder, nothing in `00-access/`, no item-4 file, and no excluded source; every chapter path it used is inside the copy. C had no other reviewer's report. No integration review was run on C's report: the Professor re-checked its four high findings (V), and its normal findings are accepted on C's reading (R).*
+
+| C-nn | Sev. | Check | Remedy, against the copy's text |
+|---|---|---|---|
+| H1 | high | **V (Professor):** S0138 L106 cites "§4.1 — Phase 7's precondition"; S0164 L2603 renumbers "4.1→4.4, 4.2→4.3 …, with a map in §0.5.2" | §8.7 C2: reclassify the "second case (S0164)" as the map remedy, not an instance of the rule. CON-0129 then rests on one case plus the proof. Register CON-0129: delete "cited identifiers survive a reordering". Align with §8.19 C27 |
+| H2 | high | **V (Professor):** S0117 L213 ("STRUCTURALLY UNSATISFIABLE at establishment") and L225 ("`E10` requires a history that cannot exist at establishment time") | §8.15 C5, §8.15.4 and §8.23 C11: withdraw "source defect" and state C5 as the fork of §8.17 C2 (reading (ii) holds). Register CON-0224: put the fork in the lead sentence. CON-0218: its recorded ground ("permanently" refuted) depends on the fork; record it as conditional |
+| H3 | high | **V (Professor):** copy `08.14` L22 reads "The authority declined to count a decided boundary as an adopted commitment …" | §8.14 heading, plain language and C1 body: state the limb-① reading as the registrar's reading (S0112 L14; S0120 L37), not as the authority's act. §8.15 C1: mark the agreement as coming from the same producer. Index row 8.14 (copy L28): the same |
+| H4 | high | **V (Professor):** "CON-0256 (i)" occurs 4 times in the copy's `08.22` | §8.22 C7 heading, homes row, plain-language point 1 and §8.22.4: remove CON-0256 (i) as a home and state the deduction as following from the definitions. Ch. 8 TODO T8-04: the same |
+| N1 | normal | R | Nine lines citing "§8.14 C1" for "a historical claim is not falsified by later acts" are repointed to §8.14 C3 (CON-0214): §8.18 L19, L158, L194, L196; §8.19 L138; §8.21 L79, L81; §8.22 L22, L90 |
+| N2 | normal | R | §8.15 C2: rewrite the heading and the Int as evidence for neither rule (as §8.16 C2), and drop the layered notes |
+| N3 | normal | R | §8.12 C6 and CON-0201: label the identity of "not established" and "NOT ATTESTED" as Int, and qualify the homonym "established" (S0102 L523) |
+| N4 | normal | R | §8.17 C5: scope the "iff" to D, where every dependency is a citation, or weaken it to "if". §9.15 L74 (out of scope) is noted for stage 2 |
+| N5 | normal | R | §8.18 C4 (a): delete W-07's second horn ("preserve both"); the first horn stands |
+| N6 | normal | R | §8.13 C4 and CON-0207: read "a selection the decider did not make"; the act's text is evidence of that |
+| N7 | normal | R | §8.11 C6 and CON-0181: drop "only"; give a falsifier for the detection claim |
+| N8 | normal | R | §8.7 C2, the Ded: "…no outside reference to i or to j" |
+| N9 | normal | R | §8.7 C3: cite §8.20 C19 and mark "17 of 39" as contested |
+| N10 | normal | R; **merged with I-13 / N-2** | §8.8 C2: the tally is the book's, not the source's (S0075 L212 counts a "Third recurrence"). Together with I-13: "**Nine** cases in one estate (the book's tally)" |
+| N11 | normal | R | §8.9 C2 and CON-0151: separate "empty within the period" from "permanently empty" |
+| N12 | normal | R | §8.21 C1: keep only CON-0257's statement; move the history to §8.21.4 |
+| N13 | normal | R | §8.23.1 and C12: the §8.22 fork was decided on 2026-10-27 (`7ecf5a024`); update both |
+| N14 | normal | R | §8.19.3: keep only the current statement of the designation rule |
+| N15 | normal | R | §8.25 C7: state the object of S0175's ESTABLISHED tag as the source gives it (L102–104, a current-state negation) |
+
+**Out of scope (one line each):** T8-04 lists CON-0256 (i) (covered by H4); §9.15 K1 L74 carries the "iff" (N4); the CON-0151 row's "(VALIDATED as a distinction)" sits inside a PROVISIONAL row; R1's CON-0133 flag.
+
+**Concept verdicts (C, from the text; to enter the register at stage 2):**
+- **VALIDATED, second verdict (11):** 0129 (evidence one case; H1), 0153, 0219, 0220, 0226, 0232, 0239, 0240, 0242, 0245, 0253;
+- **raised to VALIDATED (2):** 0225, 0231;
+- **PROVISIONAL (47):** the rest of the 49, with these restatements: 0151 (N11), 0181 (N7), 0201 (N3), 0207 (N6), 0224 (H2);
+- **INVALID cores confirmed (16):** with 0218's ground conditional on the fork (H2).
+
+The coverage gap of §1 is closed: every concept in scope now has a text-based verdict.
+
+**Measures, updated:**
+
+| Measure | Value |
+|---|---|
+| Review harness, total | A 1,320.6 + B 990.6 + integration 773.4 + C 830.9 = **3,915.5 s (65 min 16 s)** |
+| **Defects in the rotated chapters (confirmed)** | **Ch. 6: 4** (unchanged). **Ch. 8: 41**: 23 from A, B and integration, and 18 from C (C's N10 merged with I-13/N-2) |
+| Overlap | C has no overlap measure with A and B, since its sections were the ones they did not read |
