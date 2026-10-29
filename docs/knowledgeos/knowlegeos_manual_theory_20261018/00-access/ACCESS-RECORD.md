@@ -505,3 +505,6 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 ## Entry 2026-10-29: Lead DDD Architect, part 1 (turns 1–4)
 - **Reports** `review-architecture/SD1–SD4-DDD-REVIEW.md` saved by the Governance Engineer; sha256 checked against `SHA256-SD-REVIEWS.txt` and the Architect's message (equal).
 - **Disclosures:** no corpus source, no Ch. 0/1/6/8 line, no register or theory map opened; the unsettled application commit `f8f6bbb2f` not opened; one `git show 87fbfa2ed --stat` printed the names of the SD4 review files, none opened. §10.3.6 reviewed only at its settled text (87fbfa2ed), as the mandate requires. Assessed: within the mandate.
+
+## Entry 2026-10-29: Governance Engineer, search for role definitions (disclosure)
+- Searching the repository for agent/role definition files (`git ls-files | grep`), the Governance Engineer's output printed the **paths** of about 25 files under `docs/knowledgeos/` whose names contain "independent-review" or "governance-engineering", including some under `chronological-read/` and the corpus folders. **No file was opened**; no sealed or hold-out name (`P3B-HOLDOUT-*`) appeared. Future searches exclude `docs/knowledgeos/` (mandate §4).
