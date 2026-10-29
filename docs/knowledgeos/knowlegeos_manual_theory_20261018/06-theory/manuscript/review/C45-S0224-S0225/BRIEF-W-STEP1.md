@@ -17,7 +17,7 @@ All are on `docs/knowledgeos/knowledgeos-s-series-theory/corpus-access/CORPUS-AL
 
 ## Access (binding)
 - **Allowed:** `03-methodology/REVIEWER-INSTRUCTIONS.md`, this brief, and the sources above. **Nothing else**: not the book, the register, the map, the review folders, or any other corpus file, including files the sources cite. The inventory is blind.
-- **Never open** S0155, S0156, S0157, S0161, S0170 or S0174, and do not rely on anything a source says about them; mark such items "(access)". Never `.env*`, `_batch_input*`, sealed, hold-out or quarantine files, or `docs/knowledgeos/chronological-read/*`. No searches or listings of `docs/knowledgeos/`, except a targeted check of these three paths against the allowed list.
+- **Never open** S0155, S0156, S0157, S0161, S0170 or S0174, and do not rely on anything a source says about them; mark such items "(access)". Never `.env*`, `_batch_input*`, sealed, hold-out or quarantine files, or `docs/knowledgeos/chronological-read/*`. No searches or listings of `docs/knowledgeos/`, except a targeted check of these two paths against the allowed list.
 - If a file is refused or not allowed, do not inspect it another way. Record it and continue.
 - No corpus text to any outside service. Edit nothing. Do not reproduce any private person's name.
 
