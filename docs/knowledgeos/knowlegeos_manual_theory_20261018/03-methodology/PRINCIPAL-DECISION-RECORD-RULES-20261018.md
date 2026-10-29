@@ -605,3 +605,13 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 ## Addendum (2026-10-29T11:38:16Z): pointer — Verification Auditor mandate revision 3
 
 - Recorded in the implementation-track decision record, entry **I-004**: `MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` revision 3 approved (the two decision records readable; sha256 at approval `0ace7ce8a11344d78a1db6ff432dd475712627cab525790937ad3fefaa5d4e61`).
+
+## Addendum (2026-10-29T11:40:06Z): who may withdraw or restore reliance on evidence (T9-16)
+
+- **Question** (the Professor, after the G1 turn; draft of C38 `0612831ad`): who may withdraw reliance on a piece of evidence, or restore it? (a) only the evidence's producer; (b) anyone holding a grant to withdraw or restore reliance over the item's scope — withdrawals by others accepted and shown, but not counted; (c) one designated assessor per item. And: does restoring reliance get its own entry type?
+- **Principal (verbatim):** "T9-16 (b), keep the restore entry".
+- **Decided:**
+  1. **(b).** Withdrawing or restoring reliance on evidence counts only when made by a holder of **a grant to withdraw or restore reliance over the item's scope**. Withdrawals and restorations by others are **accepted and shown, but do not count** (the same principle as T9-12 (c)). The producer has no special right. **Known dependency:** what such a grant covers (the scope relation) is still an open input in the theory and must be stated.
+  2. **Restoring reliance keeps its own entry type**, so that reliance can be restored without standing's authority to annul.
+  3. The present model's acceptance of a withdrawal from **anyone holding any grant** is to be corrected accordingly.
+- **Not decided here:** the scope relation itself; how support and refutation combine (T9-17); adopting the evidence kinds; any level change.
