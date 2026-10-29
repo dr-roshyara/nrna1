@@ -10,7 +10,7 @@
 | Register | 265 concepts: 52 VALIDATED, 117 PROVISIONAL, 96 INVALID | `0ae02e66b` |
 | Consolidation S0182–S0200 | **settled**; test 2 of 4 | `PLANTED-GAP-RESULT.md` (`e5da8af5a`); D1 |
 | S0200 decisions D1–D11 | **recorded** | decision record, addendum 2026-10-29T02:08:48Z (`45c310312`) |
-| Strategic-design mandate (rev. 1) | approved (D10); turns 1 and 2 settled (`20140bce9`, `65e332c21`); promise **(b)** decided (T10-01); turns 1–5 settled (`dca72c57f`); admission rule **(B)**, own state **(1)**: standing admitted, norms and catalogue not; **T10-16 (owner of the record and its kind list) with the Principal**; then **a G1 theory turn (decided 2026-10-29)**, then reading from S0201 | decision record |
+| Strategic-design mandate (rev. 1) | approved (D10); turns 1 and 2 settled (`20140bce9`, `65e332c21`); promise **(b)** decided (T10-01); turns 1–5 settled (`dca72c57f`); admission rule **(B)**, own state **(1)**: standing admitted, norms and catalogue not; record and kind list owned by **no area** (T10-16 (b)); G1 turn started; then **a G1 theory turn (decided 2026-10-29)**, then reading from S0201 | decision record |
 | Verification Auditor mandate (rev. 1) | approved (D11); **part A done**, reports saved (`441df3b7d`); one finding checked (design documents predate the code and never mention it: verified); part B not authorised | `review-implementation/` |
 | Implementation strategy | **revision 3 approved in principle** 2026-10-29; stage 1 not authorised (five separate authorisations, §4) | `IMPLEMENTATION-STRATEGY-PROPOSED.md` §8 |
 | Brief template | in force from the next consolidation | `bf75badfb` |
