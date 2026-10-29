@@ -1,0 +1,10 @@
+{
+  "_comment": "PROPOSAL ONLY (not live). To be MERGED into the existing permissions.deny list of .claude/settings.json on the Principal's approval; nothing else in that file changes. Patterns starting with a single '/' are relative to the project root (the settings file's source). A Read deny also blocks Edit and Write on the same paths, and applies best-effort to Grep and Glob.",
+  "permissions": {
+    "deny": [
+      "Read(/docs/knowledgeos/chronological-read/P3B-HOLDOUT-*)",
+      "Read(**/P3B-HOLDOUT-*)",
+      "Bash(*P3B-HOLDOUT*)"
+    ]
+  }
+}
