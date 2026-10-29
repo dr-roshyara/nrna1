@@ -18,7 +18,7 @@
 | Register | 265 concepts: 52 VALIDATED, 117 PROVISIONAL, 96 INVALID (at S0200) | `0ae02e66b` |
 | Consolidation S0182–S0200 | settled; planted-gap test 2 of 4 | `e5da8af5a`; D1 |
 | Strategic design (Ch. 10) | **turns 1–5 settled** (`dca72c57f`); T10-16 (b) and the routed clarifications applied at the G1 settlement (`8e4b1a420`); all S0 | decision record |
-| G1 theory turn (§9.18) | settled (`8e4b1a420`); evidence kinds are **proposals, not adopted**. **T9-16 (b) applied** (`ed29e5957`): `ce_model.py` v23 re-run by this session: 52 PASS, 0 FAIL, output identical to the saved run; check 37 (six cases) matches the decision; the claim "checks 1–36 identical to v22" not yet confirmed (interrupted by the access incident, 2026-10-29) | `ed29e5957` |
+| G1 theory turn (§9.18) | settled (`8e4b1a420`); evidence kinds are **proposals, not adopted**. **T9-16 (b) applied** (`ed29e5957`): `ce_model.py` v23 re-run by this session: 52 PASS, 0 FAIL, output identical to the saved run; check 37 (six cases) matches the decision; "checks 1–36 identical to v22" **confirmed**: v22 (from `8e4b1a420`) re-run, 46 PASS; its output equals v23's without check 37, line for line | `ed29e5957` |
 | Principal's design decisions | T10-01 (b) promise; T10-05 (B) admission; T10-10 (1) own state; T10-16 (b) record owned by no area (designation with it; removal record-keeping, annulment standing); T9-12 (c) evidence shown, authorised counts; **T9-16 (b) + restore entry** (`4756be2f2`) | decision record |
 | R2 `--scope` (D2) | done by the Professor | `d587cfaf5` |
 | Brief template | in force from the S0225 consolidation | `bf75badfb` |
