@@ -29,9 +29,12 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 
 ## Pending with the Principal (implementation track)
 
-1. The role-environment pilot configuration (`knowlegeos_manual_theory_20261018/03-methodology/role-environment-proposal/README.md`): approve all, named items, or changes.
-2. The stage-1 decision (proposed after the S0225 consolidation), including SD1-05: which reference product governs design investment (KnowledgeOS as its own product, or a supporting subdomain of PublicDigit).
+1. The stage-1 decision (proposed after the S0225 consolidation), including SD1-05: which reference product governs design investment (KnowledgeOS as its own product, or a supporting subdomain of PublicDigit).
 
 ## Entries
 
-*(none yet; the next implementation decision is recorded here)*
+### I-001 (2026-10-29T11:11:48Z): the role-environment pilot configuration approved
+
+- **Principal (verbatim):** "approve the pilot configuration".
+- **Decided:** all six items of `knowlegeos_manual_theory_20261018/03-methodology/role-environment-proposal/README.md` (commit `479ca02e2`) are approved for activation: (1) three deny lines merged into `.claude/settings.json` for the hold-out files; (2) agent `kos-verification-auditor`; (3) agent `kos-lane-reviewer`; (4)–(6) skills `/role-governance-engineer`, `/role-lead-ddd-architect`, `/role-implementation-engineer` (user-invoked only). Activation follows the proposal's §4: copy, then tests T1–T9 (none on the real hold-out files); **a FAIL on T1, T2 or T5 rolls the affected item back** until the Principal decides. KnowledgeOS-only; repository-wide adoption stays a separate decision.
+- **Not decided here:** a role-path hook (would need a grant for `.claude/scripts/`); sandboxing; repository-wide use.
