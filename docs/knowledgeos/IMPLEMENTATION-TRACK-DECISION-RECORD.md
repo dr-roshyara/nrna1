@@ -91,3 +91,9 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 - **Done:** `.claude/skills/role-lead-ddd-architect/SKILL.md`, two lines only (git diff: 2 in, 1 out): the first check now names §5a among the parts to confirm, and the decision record as holding the EKS/PKS file grants; step 3 gains one item: for §5a, check both start conditions (the stage-1 package after S0225; the Principal's purpose statements) and open an EKS or PKS document only if granted by file at its recorded sha256, otherwise stop. sha256 after the change: `b68d036971de0c0b38a1194ba6b8c3274151f85075db20615aaa86a7988d09e5`. The staged copy in `role-environment-proposal/` stays as the historical proposal (as at I-005).
 - **No authority is added:** the skill only checks what mandate revision 4 (I-007) already states.
 - **Not decided here:** any file grant; anything else.
+
+### I-009 (2026-10-29T16:34:45Z): EKS/PKS file access decided file by file at the stage-1 package
+
+- **Principal (verbatim):** "No additional file access is granted by this message. Please retain the correction to I-006 and clearly identify the five candidate files recorded as basis files for Chapters 0–2. When the Stage 1 package is prepared, present the proposed files and the reason each is needed so I can decide access individually. Do not open any currently ungranted files."
+- **Decided:** no file is granted. The I-006 groundwork keeps its correction; the five Ch. 0–2 basis files are marked in its §2 table (rows 1, 2, 3, 10, 11). **At the stage-1 package**, the Governance Engineer presents each proposed file with the reason it is needed; **the Principal decides each individually.** No ungranted file is opened.
+- **Not decided here:** any grant.
