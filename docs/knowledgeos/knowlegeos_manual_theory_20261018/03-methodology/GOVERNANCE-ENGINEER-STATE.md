@@ -19,11 +19,23 @@
 | Lead DDD Architect mandate | **approved (revision 2)** 2026-10-29; part 1 may start (turns 1 and 2 settled) | `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` |
 | Implementation Engineer mandate | **approved (revision 2)** 2026-10-29; inactive until the stage-1 decision | `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` |
 
+## Roles (three statuses, each from the strategy's roles table and the decision record)
+
+| Role | Role defined | Mandate | Activation |
+|---|---|---|---|
+| Principal (human ARB) | yes (§0) | — | active |
+| Governance Engineer | yes (§0) | revision 0 approved; **revision 1 proposed** | active |
+| Professor (Research Lead) | yes (§0) | Rulebook v1.4 + strategic-design mandate rev. 1 (approved, D10) | active: strategic-design turn 3 |
+| Independent Reviewers | yes (§0) | `REVIEWER-INSTRUCTIONS.md` + brief template | per commission |
+| Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B not authorised** |
+| Lead DDD Architect | yes (§0, added 2026-10-29) | rev. 2 approved | **part 1 authorised; session not yet started**; parts 2–3 not authorised |
+| Implementation Engineer | yes (§0) | rev. 2 approved | **inactive** until the stage-1 decision |
+
 ## Pending (owner → action)
 
 | # | Owner | Action |
 |---|---|---|
-| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2) |
+| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2); approve or change revision 1 of the Governance Engineer mandate |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |
