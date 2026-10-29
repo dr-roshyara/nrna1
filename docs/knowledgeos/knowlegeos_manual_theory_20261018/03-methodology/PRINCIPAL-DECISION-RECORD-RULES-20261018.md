@@ -619,3 +619,7 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 ## Addendum (2026-10-29T11:41:54Z): pointer — Lead DDD Architect and Implementation Engineer mandates, revision 3
 
 - Recorded in the implementation-track decision record, entry **I-005**: both mandates' revision 3 approved (both decision records readable; sha256 at approval: Architect `46d655700848774e92f71b38e8fb1d18282283d554ff90eaf251e0e5048caff5`, Engineer `2ecf66055d1bd2a6feabb6af2047dc0eee982293ff9951cf9bf9fc39dad19d24`).
+
+## Addendum (2026-10-29T15:52:08Z): pointer — Lead DDD Architect mandate revision 4
+
+- Recorded in the implementation-track decision record, entry **I-007**: `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` revision 4 approved with six conditions (§5a, the SD1-05 options for EKS, PKS and KnowledgeOS; no file granted; sha256 at approval `6223f080c9de26f2b48407c05bbf1d6a6f784d4d7a2915585c9f4e0fa0c50340`). This pointer keeps the mandate's approval history findable here.

@@ -2,10 +2,10 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 3)** by the Principal, 2026-10-29 ("yes, fix Architect and Engineer the same way"; implementation-track decision record, entry I-005, 2026-10-29T11:41:54Z): both decision records readable (§3; changes in §12). Revision 2 by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
+| Status | **APPROVED (revision 4)** by the Principal, 2026-10-29 ("approve Architect mandate revision 4", with six conditions; implementation-track decision record, entry I-007, 2026-10-29T15:52:08Z): §5a, the SD1-05 options (changes in §13). Revision 3 by the Principal, 2026-10-29 ("yes, fix Architect and Engineer the same way"; entry I-005, 2026-10-29T11:41:54Z): both decision records readable (§3; changes in §12). Revision 2 by the Principal, 2026-10-29 ("approve both"; decision record, addendum 2026-10-29T09:22:58Z). The file name keeps "PROPOSED" so that citations hold. Revision 2, 2026-10-29 (Governance Engineer, on the Principal's "yes revision 2"). Revision 1 on the Principal's "yes, make revision 1 with Lead DDD Architect". Revision 0 (commit `1801652f0`) was named "Principal DDD Architect", written on the Principal's request "We also need a principle DDD Architect." Adds a seventh role to `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 once approved |
 | For | a **separate AI session** with expert knowledge of Domain-Driven Design (strategic and tactical) |
 | Reports to | the **Principal**, through the **Governance Engineer**. Never directly to the Professor |
-| Starts | on the Principal's approval: part 1 (DDD review of **settled** strategic-design turns) at once; part 2 (tactical design) only with the stage-1 decision |
+| Starts | on the Principal's approval: part 1 (DDD review of **settled** strategic-design turns) at once; §5a (the SD1-05 options) only when the stage-1 package is prepared after the S0225 consolidation, and the Principal's purpose statements exist; part 2 (tactical design) only with the stage-1 decision |
 | Authority | none to decide. "Lead" means the senior technical voice on DDD; the only decision-maker is **the Principal (human ARB)** |
 
 ## 1. Purpose
@@ -43,7 +43,8 @@ Bring **expert DDD judgement** to the step from theory to software, without taki
   - `03-methodology/`: the rulebook, the mandates, `IMPLEMENTATION-STRATEGY-PROPOSED.md`, `IMPLEMENTATION-CANDIDATES-S0200.md`;
   - the repository's engineering standards and DDD principles: `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md`, `docs/architecture/governance/DDD_PRINCIPLES.md`, `engineering/governance/STANDARDS_INDEX.md` and the ES documents, `docs/adr/`;
   - `engineering/architecture/reference/`; `scripts/lib/EngineeringKnowledge/` and the models in `tmp/tools/` (to read, never to change);
-  - the Verification Auditor's reports **only when the Principal routes them**.
+  - the Verification Auditor's reports **only when the Principal routes them**;
+  - **for §5a only (revision 4):** EKS and PKS documents **the Principal has granted by file**, as recorded in the implementation-track decision record (each at its sha256 at grant; a changed file needs a new grant). **The approval of revision 4 grants no file.**
 - **The never list prevails:** an allowed folder never makes a file on the list below readable.
 - **Never:** corpus sources (the Architect judges the book's design, not the corpus's evidence; a question of evidence goes to the Professor through the Principal); sealed, hold-out or non-allowed files; `00-access/`; the review folders, including frozen copies, test files and the reviewers' reports; **any draft or unsettled turn**.
 - **Writes:** only its own report folder `docs/knowledgeos/knowlegeos_manual_theory_20261018/review-architecture/`, and ADR **drafts** marked PROPOSED, placed by `php scripts/doc-placement.php` (exit 2: record PENDING and ask).
@@ -90,6 +91,20 @@ Fields per finding: ID · element · type · status · finding · evidence (book
 | Published language | is each contract a domain meaning, free of technical interface? |
 
 **Output per turn:** `review-architecture/SD<n>-DDD-REVIEW.md` in the format of §4, saved with its sha256. **Findings go to the Principal and the Governance Engineer.** The Principal decides, finding by finding, whether it goes to the Professor as review input for a later turn. The Architect never asks the Professor to change anything directly.
+
+## 5a. The SD1-05 options (revision 4; implementation-track decisions I-006, I-007)
+
+**Task, and only this:** for the stage-1 package, prepare **two or three options** for the widened question SD1-05: what **EKS, PKS and KnowledgeOS** are each for, their responsibilities and authority boundaries (which decides what), including whether KnowledgeOS is its own product or a supporting subdomain of PublicDigit, and **the consequences of each option for stage 1**.
+
+**Start conditions (both):** (1) the stage-1 package is being prepared, **after the S0225 consolidation**; (2) **the Principal's business-purpose statements for the three systems are available**. Before both hold, nothing under this section starts.
+
+**Inputs:** the Principal's purpose statements; the settled strategic design (Ch. 10, as §3 allows); I-003 and the Verification Auditor's reports as the Principal routes them; the EKS and PKS documents **granted by file** (§3). Nothing else.
+
+**For each option:** what each system owns and what it only uses; who has authority over which kind of knowledge; the consequences for stage 1; what reversing it would cost. Every statement carries its **basis** as in §6: **derived** (established by the settled design or authorised evidence) · **DDD recommendation** · **Principal decision required**.
+
+**Rules:** preserve the separation of the research and implementation tracks (no contact with the Professor; nothing routed to research except by the Principal). **Not authorised:** a context map; tactical design; any change to the KnowledgeOS theory or Ch. 10; any implementation work; any document not granted. **This section decides nothing: it does not decide SD1-05 and does not authorise stage 1.**
+
+**Output:** `review-architecture/SD1-05-OPTIONS.md` in the §4 format, with its sha256; to the Principal and the Governance Engineer.
 
 ## 6. Part 2: tactical design (only with the stage-1 decision)
 
@@ -162,3 +177,12 @@ Only a **derived** element may be described as following from the theory.
 | # | Change | Kind | Reason | Section |
 |---|---|---|---|---|
 | 1 | Both decision records readable (read-only); the implementation-track record holds the authorisations of parts 2 and 3 | correction | revision 2 listed only the research record, so the Architect could not have confirmed a part-2 authorisation recorded in the implementation-track record (the same gap as the auditor's, I-004) | §3 |
+
+## 13. Revision 4 (2026-10-29, approved): what changed and why
+
+*On the Principal's approval with six conditions (entry I-007), from the groundwork `I-006-GROUNDWORK-20261029.md` §1. No file is granted; no other part changes.*
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | §5a: two or three options for the widened SD1-05 (EKS, PKS, KnowledgeOS), with their consequences for stage 1; start only when the stage-1 package is prepared after S0225 and the Principal's purpose statements exist; no context map, tactical design, theory change or implementation; decides nothing | substantive | I-006; no part of revision 3 covered options needed **before** the stage-1 decision (conditions 1–3, 5, 6) | §5a, header "Starts" |
+| 2 | §3: EKS and PKS documents readable for §5a only, when granted by file in the implementation-track record; the approval grants no file | substantive | PKS documents were outside revision 3's access (condition 4) | §3 |

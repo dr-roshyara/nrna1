@@ -46,7 +46,7 @@
 | Professor (Research Lead) | yes | Rulebook v1.4 + strategic-design mandate rev. 1 | active: reading; evidence questions one at a time |
 | Independent Reviewers | yes | `REVIEWER-INSTRUCTIONS.md` + brief template + agent `kos-lane-reviewer` | per commission |
 | Verification Auditor | yes | revision 3 approved (I-004) | idle |
-| Lead DDD Architect | yes | revision 3 approved (I-005) | part 1 done for turns 1–5; parts 2–3 not authorised |
+| Lead DDD Architect | yes | revision 4 approved (I-007) | part 1 done for turns 1–5; §5a (SD1-05 options) after S0225 with the purpose statements; parts 2–3 not authorised |
 | Implementation Engineer | yes | revision 3 approved (I-005) | inactive until stage 1 |
 
 ## Pending (owner → action)

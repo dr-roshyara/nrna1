@@ -10,7 +10,7 @@
 |---|---|---|---|
 | **Principal** (leads the track) | — | active | — |
 | Governance Engineer (support) | rev. 3 approved | active (handover done; `f1575f5d-…` closed) | `57ddce41-5334-461f-981b-964872674366` (repository root) |
-| Lead DDD Architect | rev. 3 approved (I-005) | part 1 done for turns 1–5 (`149b8d5de`); parts 2–3 not authorised | `94ef3b1c-9499-4412-a177-082445a27076` |
+| Lead DDD Architect | rev. 4 approved (I-007) | part 1 done for turns 1–5 (`149b8d5de`); §5a (SD1-05 options) authorised, starts only with the stage-1 package after S0225 and the Principal's purpose statements; no file granted yet; parts 2–3 not authorised | `94ef3b1c-9499-4412-a177-082445a27076` |
 | Verification Auditor | rev. 3 approved (decision records readable) | part A done (`441df3b7d`); part B done (I-003); rerun 1 done (I-004); **next: one full rerun after the Ch. 10 revision (T10-17–T10-21)** | `76f3445f-0fdb-4fe5-833a-efe25aa62005` |
 | Implementation Engineer | rev. 3 approved (I-005) | **inactive** until the stage-1 decision | — |
 
