@@ -23,7 +23,7 @@
 
 | Role | Session ID | Started (UTC) | Started from | Resume with |
 |---|---|---|---|---|
-| Governance Engineer | `f1575f5d-96b1-404a-af96-797d354857e2` | 2026-10-18/19 | the lane folder | `claude --resume f1575f5d-96b1-404a-af96-797d354857e2` |
+| Governance Engineer | `f1575f5d-96b1-404a-af96-797d354857e2` | (long-running) | the lane folder | `claude --resume f1575f5d-96b1-404a-af96-797d354857e2` |
 | Professor (Research Lead) | `16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` | (long-running) | repository root | `claude --resume 16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` |
 | Verification Auditor | `76f3445f-0fdb-4fe5-833a-efe25aa62005` | 2026-10-29 02:10 | repository root | `claude --resume 76f3445f-0fdb-4fe5-833a-efe25aa62005` |
 | Lead DDD Architect | `94ef3b1c-9499-4412-a177-082445a27076` | 2026-10-29 09:59 | repository root | `claude --resume 94ef3b1c-9499-4412-a177-082445a27076` |
