@@ -1,30 +1,23 @@
-#!/usr/bin/env python3
-"""Save a reviewer's final hand-back text from its transcript (JSONL) to a file (whole-book review S0100).
-
-Usage: python3 -I save_handback.py TRANSCRIPT.jsonl OUT.md "HEADER LINE"
-The final hand-back is the text of the last assistant message that carries text, or the SubagentHandback tool input.
-"""
-import json, sys
-
-src, out, header = sys.argv[1], sys.argv[2], sys.argv[3]
-last = None
+"""Save a subagent's hand-back verbatim: the longest string in its task JSONL that STARTS with the marker
+(after optional whitespace). save_hb.py took the longest string merely CONTAINING it, which picked tool outputs
+that quoted the commission (consolidation S0201-S0225, reports A and C). Usage as save_hb.py."""
+import json, sys, hashlib
+src, marker, out, sha = sys.argv[1:5]
+cands = []
+def walk(o):
+    if isinstance(o, dict):
+        for v in o.values(): walk(v)
+    elif isinstance(o, list):
+        for v in o: walk(v)
+    elif isinstance(o, str) and o.lstrip().startswith(marker):
+        cands.append(o.lstrip())
 for line in open(src, encoding='utf-8'):
-    try:
-        rec = json.loads(line)
-    except ValueError:
-        continue
-    msg = rec.get('message') or {}
-    if msg.get('role') != 'assistant':
-        continue
-    for b in msg.get('content') or []:
-        if not isinstance(b, dict):
-            continue
-        if b.get('type') == 'text' and b.get('text', '').strip():
-            last = b['text']
-        elif b.get('type') == 'tool_use' and 'andback' in (b.get('name') or ''):
-            inp = b.get('input') or {}
-            last = inp.get('report') or inp.get('text') or inp.get('message') or json.dumps(inp, ensure_ascii=False)
-if not last:
-    sys.exit('no hand-back text found')
-open(out, 'w', encoding='utf-8').write(header + '\n\n' + last.strip() + '\n')
-print(out, len(last.split()), 'words')
+    try: walk(json.loads(line))
+    except json.JSONDecodeError: pass
+assert cands, 'no string starts with the marker'
+text = max(cands, key=len)
+if not text.endswith('\n'): text += '\n'
+open(out, 'w', encoding='utf-8').write(text)
+h = hashlib.sha256(text.encode('utf-8')).hexdigest()
+open(sha, 'w').write(f'{h}  {out.split("/")[-1]}\n')
+print(len(cands), 'candidates;', len(text), 'chars;', h)
