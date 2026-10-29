@@ -17,3 +17,4 @@
 | T10-12 | **Law 18 and the direction law**: bears on it only if held acts enter D | open (scoped) | §10.4.3 | a decision on held acts in D |
 | T10-13 | **Model check of the per-kind acceptance rule** ((d1)–(d3) of §10.3.6; analogous to R4a and (c′), which are model-checked) | open | §10.3.6 | a model version, if the rule is kept |
 | T10-14 | **Translation boundaries** for product terms (R18) and for the kernel's inputs (R12): no translator named, no anti-corruption layer | open | §10.4.5 | turn 5 (published language) and T10-11 |
+| T10-15 | **Standing vs current authority in the published language:** promise (b) and the Principal's act say "standing"; CE* computes current authority, which §1.14.1-12 separates from standing. Is standing in that sense answered by anything? | open | §10.5.5; §9.10 L31 | a theory turn, or the Principal on the promise's wording |
