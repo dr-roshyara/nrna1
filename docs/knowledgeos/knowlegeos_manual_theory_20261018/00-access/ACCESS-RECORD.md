@@ -530,3 +530,9 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Exposure assessment:** no corpus, hold-out or sealed content entered the session (verified from the preview shown); a local file may hold such content. The Professor and reviewers are unaffected (nothing was passed on).
 - **Open, for the Principal:** whether to delete that local file; whether the credentials seen should be rotated (the environment file is tracked in git).
 - **Measure:** the Governance Engineer uses `command grep` with explicit file arguments only, never a directory, from now on.
+
+## Entry 2026-10-29T16:03:59Z: the incident output file deleted (follows the entry above)
+- **Principal's decision (pasted, verbatim excerpt):** "Delete the local output file without opening or inspecting it." … "Resume KnowledgeOS window checks: After the output-file deletion is confirmed."
+- **Done:** `~/.claude/projects/…/tool-results/b5vzihgni.txt` deleted with `rm` **without being opened, read or searched**; its absence checked by path only. **Result: deleted.**
+- **Credentials:** the Principal treats them as compromised; rotation, removal of the tracked environment backup from git and the history assessment are **PublicDigit work under its own authority**, not the Governance Engineer's; not done here.
+- **Note:** deleting the file does not undo what entered the session (the ~2 KB preview, credentials only).
