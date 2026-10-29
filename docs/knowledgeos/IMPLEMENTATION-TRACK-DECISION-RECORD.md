@@ -44,3 +44,14 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 - **Principal (verbatim):** "F2 — File-protection rules: I approve correcting the identified ineffective Write(...) rules to the appropriate Edit(...) rules in `.claude/settings.json`. Keep the change limited to the identified rules, validate the configuration, and report the test results."
 - **Done:** exactly two rules in `permissions.ask` changed: `Write(docs/implementation/PKS_*)` → `Edit(docs/implementation/PKS_*)`; `Write(engineering/governance/*)` → `Edit(engineering/governance/*)`. No other line changed (git diff: 2 lines out, 2 in). JSON valid.
 - **Test (headless session at the repository root, `--permission-mode acceptEdits`, so writes are auto-approved unless a rule asks):** a control file outside the protected paths was **created** (then removed); `docs/implementation/PKS_ZZ-ROLEENV-TEST.md` and `engineering/governance/ZZ-ROLEENV-TEST.md` were **stopped by the permission prompt** (not created); Claude Code's warning "is not matched by file permission checks" no longer appears (0 occurrences). **Result: PASS.**
+
+### I-003 (2026-10-29T11:29:23Z): dispositions of the Verification Auditor's part-B findings; one finding class added
+
+- **Principal (verbatim):** "yes to all four" — on the Governance Engineer's four recommendations for `review-implementation/PART-B-REPORT.md` (commit `da0b6aea5`; finding B-01 verified independently by the Governance Engineer).
+- **Decided:**
+  1. **B-04, B-05** ("EKS already refuses to treat missing evidence as positive, and requires evidence for every verdict") are routed to the Professor **for T9-17**, as **labelled implementation evidence (Impl)**, input the Professor may reject; the Professor receives the findings, not the code.
+  2. **B-08, B-10, B-11** to the Ch. 10 open items (for the revision after G1); **B-06** (producer authorisation unsolved in both theory and code) kept as a shared open question; **B-02, B-03, B-12, B-13, B-14, B-15** stay unresolved.
+  3. The Verification Auditor mandate gains the finding class **"theory element with no code"** (revision 2; fingerprint at approval, after the status update: sha256 `d27135df31672aa0a7338943e212871b2338c91acc50c6e041644ff7852cd17d`).
+  4. **For planning:** EKS is a **supporting tool, not the starting point of the kernel**; the stage-1 package plans the reference model as **new**.
+- **Still due:** rerun of B-14 and the PL-0 and R0 comparisons when T10-16 (b) is applied to Ch. 10 (it is applied at the G1 settlement `8e4b1a420`).
+- **Not decided here:** stage 1; any change to EKS.

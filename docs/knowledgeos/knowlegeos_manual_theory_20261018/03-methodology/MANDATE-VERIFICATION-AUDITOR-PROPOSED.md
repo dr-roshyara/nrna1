@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **APPROVED (revision 1)** by the Principal, 2026-10-29, S0200 decision D11 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z): part A may start; part B needs a reviewed baseline and separate authorisation. The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
+| Status | **APPROVED (revision 2)** by the Principal, 2026-10-29 ("yes to all four"; implementation-track decision record, entry I-003, 2026-10-29T11:29:23Z): one finding class added (§4b; changes in §8). Revision 1 by the Principal, 2026-10-29, S0200 decision D11 ("accept as recommended"; decision record, addendum 2026-10-29T02:08:48Z): part A may start; part B needs a reviewed baseline and separate authorisation. The file name keeps "PROPOSED" so that citations hold. Revision 1, 2026-10-29 (Governance Engineer, on the Principal's instruction to prepare revision 1). Revision 0 written 2026-10-28 (commit 066ee3b70) on the Principal's "yes, prepare all three". Part of stage 0b of `IMPLEMENTATION-STRATEGY-PROPOSED.md`; roles as in its §0 |
 | For | a **new, separate AI session**, the Verification Auditor; it has not written the EKS code and does not write theory |
 | Reports to | the **Principal**, through the **Governance Engineer**. **Never to the Professor** |
 | Starts | preparation (part A) on the Principal's approval of this mandate; the audit itself (part B) only once the strategic-design baseline is reviewed **and** the Principal authorises part B explicitly |
@@ -78,6 +78,7 @@ A classification can be challenged without losing the observation. A suspected p
 | **estate defect** | the code follows the estate's records or decisions, and those were wrong |
 | **mapping error** | the comparison itself was wrong (a module misread, a term matched wrongly) |
 | **outside the theory's scope** | the code does something the theory does not address |
+| **theory element with no code** | an element of the strategic design has no counterpart in the code: an absence, not a deviation (revision 2) |
 | **unresolved** | the evidence does not decide |
 
 **Rules for the findings:** a difference is never resolved by assuming the code is right, or that the theory is right. A difference from an element below S2 is **not** a code deviation and not a defect; it is recorded, with the element's level, and not acted on. A context-map relationship marked **conditional** in the baseline (open fork) is compared under each branch, or recorded as unresolved. The auditor recommends nothing to change; it reports. These classes and the meaning of S2 change only by the Principal's decision.
@@ -106,3 +107,9 @@ A classification can be challenged without losing the observation. A suspected p
 | 7 | Below S2: never a code deviation or defect; classes and S2 change only by the Principal | clarification | already implied; made explicit | §4b |
 | 8 | Principal's dispositions listed (research, engineering, more evidence, open, explained) | clarification | the route for each finding made explicit | §5 |
 | 9 | Revision 0's date read "2026-10-29"; it was written 2026-10-28 (commit 066ee3b70) | correction | factual error | header |
+
+## 8. Revision 2 (2026-10-29, approved): what changed and why
+
+| # | Change | Kind | Reason | Section |
+|---|---|---|---|---|
+| 1 | Finding class **"theory element with no code"** added | substantive | part B, B-01: "standing has no counterpart in the code" fitted none of the seven classes | §4b |

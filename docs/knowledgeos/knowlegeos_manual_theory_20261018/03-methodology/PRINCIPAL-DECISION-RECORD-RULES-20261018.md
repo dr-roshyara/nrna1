@@ -597,3 +597,7 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "T9-12 (c)".
 - **Decided: (c).** Every declared producer's evidence is **accepted and shown, with its producer and authorisation status**; **only authorised producers' evidence counts towards "refuted" or "supported"**. Stated cost: unauthorised entries stay in the record, and every move of the record must close them.
 - **Not decided here:** who is authorised for which scope (follows with T9-16 and later questions); how support and refutation combine (T9-17); adopting the evidence kinds; any level change.
+
+## Addendum (2026-10-29T11:29:23Z): pointer — Verification Auditor mandate revision 2
+
+- Recorded in the implementation-track decision record, entry **I-003**: `MANDATE-VERIFICATION-AUDITOR-PROPOSED.md` revision 2 approved (finding class "theory element with no code"; sha256 at approval `d27135df31672aa0a7338943e212871b2338c91acc50c6e041644ff7852cd17d`). This pointer keeps the mandate's approval history findable here.
