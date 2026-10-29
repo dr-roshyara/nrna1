@@ -523,3 +523,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 ## Entry 2026-10-29: Verification Auditor, part-B rerun 1
 - **Report** `review-implementation/PART-B-RERUN-1.md` saved by the Governance Engineer; `SHA256-PART-B-RERUN-1.txt` checks OK; the original `PART-B-REPORT.md` unchanged (its sha256 checks).
 - **Disclosures:** `Phase0BackTest` fixture read (allowed; content not viewed); the implementation-track decision record (entry I-003) not opened, because the auditor's mandate does not allow it. Assessed: within the mandate.
+
+## Entry 2026-10-29: Governance Engineer — an accidental recursive search of the repository (incident, self-reported)
+- **What happened:** while comparing two runs of `ce_model.py` (the T9-16 check), a malformed command passed the repository root as a search target to `grep`. In this shell `grep` is a wrapper that recurses into directories, so the search ran over the **whole repository, including `docs/knowledgeos/`** (possibly hold-out, sealed and non-allowed files). It was a mistake in the command, not a search for anything.
+- **Where the output went:** about 15 MB, written by Claude Code to a local file outside the repository (`~/.claude/projects/…/tool-results/b5vzihgni.txt`). **Only a ~2 KB preview entered the session:** lines of one environment file at the repository root (it holds credentials). **The full file was not opened, read, counted or searched**; whether it contains hold-out content is therefore **unknown**, and it is treated as possibly containing it.
+- **Exposure assessment:** no corpus, hold-out or sealed content entered the session (verified from the preview shown); a local file may hold such content. The Professor and reviewers are unaffected (nothing was passed on).
+- **Open, for the Principal:** whether to delete that local file; whether the credentials seen should be rotated (the environment file is tracked in git).
+- **Measure:** the Governance Engineer uses `command grep` with explicit file arguments only, never a directory, from now on.
