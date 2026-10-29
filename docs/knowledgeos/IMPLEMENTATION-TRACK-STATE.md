@@ -24,11 +24,15 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 | G1 (evidence in the record) | theory turn in progress |
 | Implementation-candidates list | draft (`IMPLEMENTATION-CANDIDATES-S0200.md`), awaiting the Professor's confirmation |
 
+## Role environment (pilot)
+
+**Live since 2026-10-29 (I-001):** deny rules for the hold-out files; agents `kos-verification-auditor`, `kos-lane-reviewer`; skills `/role-governance-engineer`, `/role-lead-ddd-architect`, `/role-implementation-engineer`. Tests T1–T9 PASS (`role-environment-proposal/TEST-RESULTS.md`). **Start role sessions at the repository root** (finding F1).
+
 ## Pending
 
 | # | Owner | Action |
 |---|---|---|
 | 1 | Principal | send the part-B prompt to the auditor (if not yet sent) |
-| 2 | Principal | review the role-environment pilot proposal |
+| 2 | Principal | decide on test findings F2–F4 |
 | 3 | Governance Engineer | receive the part-B report: save, check one finding, route |
 | 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05 |

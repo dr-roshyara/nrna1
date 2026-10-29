@@ -108,7 +108,10 @@
       "Read(**/*.key)",
       "Read(**/*.pem)",
       "Read(**/*credentials*)",
-      "Read(storage/**)"
+      "Read(storage/**)",
+      "Read(/docs/knowledgeos/chronological-read/P3B-HOLDOUT-*)",
+      "Read(**/P3B-HOLDOUT-*)",
+      "Bash(*P3B-HOLDOUT*)"
     ],
     "ask": [
       "Edit(docs/implementation/PKS_Phase_IIB_Architecture_Definition.md)",
