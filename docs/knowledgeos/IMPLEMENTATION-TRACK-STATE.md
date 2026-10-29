@@ -33,4 +33,4 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 | # | Owner | Action |
 |---|---|---|
 | 3 | Governance Engineer | at the stage-1 package: hand R1-01 to the Lead DDD Architect as input |
-| 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05 |
+| 4 | Principal | the stage-1 decision after S0225, with the confirmed candidates list and SD1-05, **widened to EKS and PKS (I-006)**: the Principal states each system's purpose; the Lead DDD Architect sets out options (its part for this checked when the package is prepared); EKS/PKS files only by grant per file |

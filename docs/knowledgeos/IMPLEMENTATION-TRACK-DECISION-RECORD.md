@@ -29,7 +29,7 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 
 ## Pending with the Principal (implementation track)
 
-1. The stage-1 decision (proposed after the S0225 consolidation), including SD1-05: which reference product governs design investment (KnowledgeOS as its own product, or a supporting subdomain of PublicDigit).
+1. The stage-1 decision (proposed after the S0225 consolidation), including SD1-05: which reference product governs design investment (KnowledgeOS as its own product, or a supporting subdomain of PublicDigit); **widened by I-006 to EKS and PKS** (what each of the three systems is for, and which decides what).
 
 ## Entries
 
@@ -72,3 +72,9 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 - **Decided:** the same correction as for the auditor (I-004). `MANDATE-LEAD-DDD-ARCHITECT-PROPOSED.md` **revision 3** and `MANDATE-IMPLEMENTATION-ENGINEER-PROPOSED.md` **revision 3** approved: **both decision records readable, read-only** (the research record and this record, which holds the stage-1 decision and the authorisations of the Architect's parts 2–3 and of each plan). Nothing else changes. Fingerprints at approval, after the status update: Architect `46d655700848774e92f71b38e8fb1d18282283d554ff90eaf251e0e5048caff5`; Engineer `2ecf66055d1bd2a6feabb6af2047dc0eee982293ff9951cf9bf9fc39dad19d24`. The start skills `/role-lead-ddd-architect` and `/role-implementation-engineer` now name both records in their first check.
 - **Why now:** without it, both roles' start checks would fail at the stage-1 decision.
 - **Not decided here:** stage 1.
+
+### I-006 (2026-10-29T15:24:54Z): SD1-05 widened to EKS and PKS, in the stage-1 package
+
+- **Principal (verbatim):** "widen SD1-05 to cover EKS and PKS in the stage-1 package" — on the Governance Engineer's recommendation (no separate cross-system architecture task now).
+- **Decided:** the stage-1 package's question SD1-05 (which reference product governs design investment: KnowledgeOS as its own product, or a supporting subdomain of PublicDigit) is **widened to cover EKS and PKS**: what each of the three systems is for, and which decides what. It stays **one question for the Principal in the stage-1 package**, after the S0225 consolidation as planned; the Principal states each system's business purpose, and the Lead DDD Architect sets out the options and their consequences from the settled strategic design (Ch. 10), I-003 and the audit reports. **EKS and PKS documents are opened only on the Principal's grant per file**, checked against the corpus allowed list.
+- **Not decided here:** the answer to SD1-05; any separate cross-system architecture task or context map (a separate decision, only if the stage-1 decision shows the need); any mandate change (the Architect's part for the package to be checked when the package is prepared); any file grant; stage 1.
