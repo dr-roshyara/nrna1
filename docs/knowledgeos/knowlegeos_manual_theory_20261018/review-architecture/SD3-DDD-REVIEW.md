@@ -1,0 +1,51 @@
+# SD3 — DDD review of strategic-design turn 3 (§10.3 Ownership of invariants)
+
+*Lead DDD Architect, part 1 (review only), under the mandate revision 2 (approved 2026-10-29). Every element reviewed is at S0. Nothing here raises a level, writes theory or decides. **No owner is stated as fact; owners are recommended only, as decisions for the Principal.***
+
+## 1. Baseline
+
+| Item | Content |
+|---|---|
+| Date | 2026-10-29 |
+| Run | new review |
+| Theory and design baseline | `06-theory/manuscript/chapter_10/10.03-ownership-of-invariants.md`, §10.3.0–§10.3.5, at `eefa12a1a` (settled in `fe67ad7cf`). Lines 1–245 are byte-identical at `eefa12a1a` and `87fbfa2ed` (checked with `diff`) |
+| **Scope change, with reason** | **§10.3.6 is not reviewed here.** At `eefa12a1a` it reads "Added 2026-10-29, **before review** (`review/SD4-CONTEXT-MAP/`, which also reviews this subsection)". Mandate §5 forbids reviewing a text under review. The Principal then extended the commission to turn 4 at `87fbfa2ed`, where §10.3.6 is settled and revised. **§10.3.6 is therefore reviewed in SD4, at its settled text** |
+| Decisions applied | decision record at `758f803c4` (T10-05 (B) with K2) and `fe2cbe971` (T10-10 (1)) |
+| Book lines verified | Ch. 9 at `0ae02e66b`: §9.10 L150 (three readings of "owned"); §9.10 L179 (Q3 decided at turn 4; Q4 open); §9.15 L75 (K2), L280; §9.16 R3a (prevent or detect), R4a; §9.17 L33 (record set), (c′) |
+| Implementation baseline | none |
+| Standards | `DDD_Tactical_Governance_Principles.md` at `668cc7b22` (§1; §2's litmus "would a domain expert recognise the rule as business", by analogy); Evans (2003), Vernon (2013) **from the Architect's knowledge, not opened** |
+| Scope | for each invariant: is it clear who is responsible and by which operation; are owner and enforcer kept apart; are owns / enforces / respects / observes / assumes used consistently. Excluded: corpus and Ch. 0–8 lines (not allowed; taken as reported) |
+
+## 2. Summary
+
+- The turn's apparatus is sound DDD and better than common practice. Owner and enforcer are kept apart. The five relations are mutually exclusive. Shared, contested and no-owner are statuses, not relations. L1–L11 are never owned. The **trivial-solution check** (a context that refuses every input satisfies every prohibition) is applied to both 1 and 2.
+- **The owner rule R-b is lexical**: ownership follows the concept list that defines the invariant's terms. The concept lists were assembled in turn 2, so ownership, and through (B) admission, inherits that curation. The book states this as the condition under which the table holds. The DDD risk is circularity (SD3-01, high, recommendation).
+- **The core display invariant has no enforcing context.** "Show both values, unaltered" is owned jointly by 1 and 2 and enforced by 3, which is later "a role". The promise's visible half has no operation that a context performs (SD3-03, high).
+- Row A mixes standing semantics with record integrity (SD3-02, high). This is the same seam as SD2-02.
+- The inventory contains kernel laws and §0.5 rules only, so application areas cannot own anything by construction. Their "not contexts" result is relative to the inventory (SD3-04, high).
+
+## 3. Findings
+
+| ID | Element | Type | Status | Finding | Evidence | What would resolve it | Severity |
+|---|---|---|---|---|---|---|---|
+| SD3-01 | R-b, the owner procedure | recommendation | verified | R-b makes the owner "the candidate whose concept list defines every term of the invariant". The lists are the Professor's selection in §10.2 (corrected once at review, A-13), so ownership is only as firm as that selection. Through (B) ("owns a rule no other area owns"), admission is too. DDD locates ownership with the model that has the **authority and the information to reject**. The book records that test as the rival "single ownership test" (§1.17.2), and its own reading R-a (the amending act) as the one to apply once contexts exist. The book states R-b's agreement with R-a as "untested" (L58), which is honest. The DDD concern is that R-b can make lexical choices look like ownership | §10.3 L55–59, L44; §9.10 L150 | **Recommendation, for the Principal:** before part 2 (tactical design), test the row-A and row-B assignments against the rival test (who has the information to reject) and against R-a once any amending act names a context. Record where the three disagree. *Book work; route via the Principal* | high |
+| SD3-02 | Row A, owned by 1 | DDD assessment | inferred | Row A holds about twenty invariants of two kinds: (i) **standing semantics** (laws 1, 2, 4a, 4b, 5, 7, 8; I-5; the roles law; never-grant) and (ii) **record integrity and mechanics** (law 9a idempotence; law 29 content-derived identity; law 30 merge by union; the designation rule; the carrier-change gate; G6 integrity). By the APP litmus (would a domain expert recognise the rule as business?), group (i) passes plainly; group (ii) mostly describes how a record is kept. Two invariant families with different change drivers in one owner is the usual sign of two models in one context | §10.3 L85–106; DDD_Tactical_Governance_Principles §2 (litmus, by analogy) | as SD2-02 and SD4-01: name the record's integrity rules as either standing's or a shared kernel's, by the Principal's choice | high |
+| SD3-03 | Row C: "show both values, with reasons, unaltered" (promise (b)); I-2; I-4; I-6 | design ambiguity | verified | Owner: shared 1 and 2. Enforcer: "3 enforces for another". After §10.3.6 and §10.4 L18, 3 is "a role that any consumer takes", so **no context performs the enforcing operation**. The relation table defines an enforcer as "the candidate whose operation prevents a violation" (L61). For the visible half of the promise, the enforcer is now every consumer, which DDD cannot hold accountable. The ownership question is answered (shared); the **operation** question is not | §10.3 L61, L124–127; §10.3.6 (87fbfa2ed) L48; §10.4 L18, R3–R4 | **Recommendation, for the Principal (turn 5 input):** have the owners publish a single answer that carries both values and their reasons together (standing with its class). A consumer then cannot receive one without the other, and "unaltered" becomes a conformist obligation on a published language rather than an unenforced duty of every consumer. *A DDD recommendation, not derived* | high |
+| SD3-04 | Inventory selection rule (§10.3.0) and its effect on (B) | design ambiguity | verified | The inventory includes kernel laws, §0.5's design rules, K/L assumptions and validated separations. It **excludes** the review and governance process rules. It does not inventory the own rules of work management (stage, slice, gate, plan), method or assessment. So "7's invariants are contested", "8 owns none" and "not contexts" (§10.3.4, §10.3.6) are results **relative to an inventory that cannot contain their rules**. Under (B), an area can be refused because its rules were never listed | §10.3 L16–30, L154–159; §10.3.4 L218 | state the results for 6, 7 and 8 as "not contexts **relative to the §10.3.0 inventory**", or inventory their own rules before treating the result as final. Book work, via the Principal | high |
+| SD3-05 | Carrier-change gate: "enforcer: an architecture act outside every candidate" | theory consistency | verified | The relation table defines an enforcer as a **candidate's operation** (L61). This row's enforcer is an act outside every candidate, which falls outside the five relations. It is a correct observation, but it needs its own status, like "held by convention" | §10.3 L61, L73, L99 | add the status, or describe the row as "held by an act" | normal |
+| SD3-06 | Shared invariants (I-3, I-1 for content, CON-0063, CON-0150, display rules) | DDD assessment | verified | "Shared" is recorded without saying which of three DDD forms it is: a **shared kernel** (changed only by a joint or third act, as §8.09 C7 states and §10.4 R10/R14 later use), **two invariants under one label** (§6.5.2), or a **missing context**. The book allows both readings (L59). The tactical design cannot proceed on a shared row until it is classified | §10.3 L59, L73, L179; §10.4 R10, R14 | per shared row, a classification (split, or shared kernel with a stated amending act). Before part 2 | normal |
+| SD3-07 | Q6, law 13 (visibility), law 22 HP part, law 20a, law 18's object, Q4, I-8 | open question | verified | **No unique owner is established** for these. The book records each correctly as no owner, contested, or not named. The Architect makes **no** owner recommendation here: the evidence (read visibility orthogonal to standing, §1.7; F36) is outside this review's access | §10.3 L174–180 | the turns the book names (turn 5; the G1 turn for Q4) | normal |
+
+## 4. What holds
+
+- **Owner and enforcer apart.** The mandate's refusal to assume "the place that enforces a rule owns it" is implemented, and "preserves" is split into its two senses (enforces for another; respects) (L53, L63–75). This is sound and precise DDD.
+- **The five relations are exclusive per (candidate, invariant), with four statuses.** They are used consistently across rows A–G. One edge case is SD3-05.
+- **Prevent against detect** follows the Principal's decision 1 (R3a, verified in §9.16 L179): "observes" is used where the book chose detection (law 26; acting under ended authority).
+- **Assumptions are never owned** (L1–L11, K1–K7; law 12 moved to "assumed"). This keeps world facts out of the model.
+- **The trivial-solution check** (L105, L116) is the right guard against vacuous invariants: a context that refuses every input satisfies every prohibition.
+- **Ownerless and contested invariants are recorded as such**, not resolved by choosing the enforcer. This matches the mandate's "no unique owner established" as a valid answer.
+- **The admission test's falsifier** was honestly withdrawn, and the remaining choice was put to the Principal as one question (§10.3.4).
+
+## 5. Files opened and commands run
+
+As listed in SD1 §5. Specific to this report: `git show eefa12a1a:…/10.03-ownership-of-invariants.md | cat -n`; `git diff --stat fe67ad7cf eefa12a1a -- …/10.03…`; `diff` of lines 1–245 at `eefa12a1a` and `87fbfa2ed` (identical). **Not opened:** corpus sources, `00-access/`, `review/` folders, `CONCEPT-REGISTER.tsv`, `THEORY-MAP.md`, `f8f6bbb2f`.

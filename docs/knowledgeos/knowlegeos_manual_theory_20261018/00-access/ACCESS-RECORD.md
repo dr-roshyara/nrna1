@@ -501,3 +501,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Disclosure 1:** running the mandated EKS test suite executed `Phase0BackTest`, which runs `git show` on three historical versions of `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` as fixtures. The auditor did not view the content. **The file is on the allowed list** (checked against `CORPUS-ALLOWED.tsv` by the Governance Engineer). The auditor's findings do not reach the Professor. Assessed: no hold-out exposure; a conflict between the mandate's "run the tests" and "never `docs/knowledgeos/`", for the Principal.
 - **Disclosure 2:** the auditor read no ADR or other `engineering/` document beyond `reference/` (existence checked only).
 - **Disclosure 3:** `tmp/tools/undefined_terms.py` was changed by another session during the audit (the Professor's D2 work); not touched by the auditor.
+
+## Entry 2026-10-29: Lead DDD Architect, part 1 (turns 1–4)
+- **Reports** `review-architecture/SD1–SD4-DDD-REVIEW.md` saved by the Governance Engineer; sha256 checked against `SHA256-SD-REVIEWS.txt` and the Architect's message (equal).
+- **Disclosures:** no corpus source, no Ch. 0/1/6/8 line, no register or theory map opened; the unsettled application commit `f8f6bbb2f` not opened; one `git show 87fbfa2ed --stat` printed the names of the SD4 review files, none opened. §10.3.6 reviewed only at its settled text (87fbfa2ed), as the mandate requires. Assessed: within the mandate.
