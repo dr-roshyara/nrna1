@@ -40,8 +40,8 @@
 | Governance Engineer | yes (§0) | **revision 1 approved** 2026-10-29 | active |
 | Professor (Research Lead) | yes (§0) | Rulebook v1.4 + strategic-design mandate rev. 1 (approved, D10) | active: strategic-design turn 5, then the G1 turn (starting from entry kinds in the one record) |
 | Independent Reviewers | yes (§0) | `REVIEWER-INSTRUCTIONS.md` + brief template | per commission |
-| Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B authorised, starts after turn 5 is settled and SD5 is saved** |
-| Lead DDD Architect | yes (§0, added 2026-10-29) | rev. 2 approved | part 1: **turns 1–4 reviewed** (`514068d6d`), routed A/B/C; turn 5 when settled; parts 2–3 not authorised |
+| Verification Auditor | yes (§0) | rev. 1 approved (D11) + test-run line (2026-10-29) | part A done; **part B may proceed** (conditions met 2026-10-29; baseline `dca72c57f`) |
+| Lead DDD Architect | yes (§0, added 2026-10-29) | rev. 2 approved | part 1: **turns 1–5 reviewed** + follow-up 1 (`149b8d5de`); routed; parts 2–3 not authorised |
 | Implementation Engineer | yes (§0) | rev. 2 approved | **inactive** until the stage-1 decision |
 
 ## Pending (owner → action)
