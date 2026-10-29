@@ -44,7 +44,7 @@ The theory has **a precise but conditional core**, and nearly all of it is still
 | S0150 | 3 of 5 | verified |
 | S0200 | 2 of 4 | verified |
 
-**What keeps being missed:** an ordinary word used as if it were a defined term (missed in every test), and a claim that was removed (seen once, but read as an index error). **Improving:** a stale reference elsewhere in the book was caught for the first time at S0200. Proposals P1–P3 from that test are still open for the Principal.
+**What keeps being missed:** an ordinary word used as if it were a defined term (missed in every test), and a claim that was removed (seen once, but read as an index error). **Improving:** a stale reference elsewhere in the book was caught for the first time at S0200. The test's proposals P1–P3 were **decided as D2–D4** ("accept as recommended", addendum 2026-10-29T02:08:48Z) and are in effect: the R2 tool's `--scope` (`d587cfaf5`), the two lines in `REVIEWER-INSTRUCTIONS.md`, the brief template §1.1. *(Correction, Governance Engineer, 2026-10-29: the first version of this snapshot called them "still open"; that was wrong.)*
 
 ## The Principal's design decisions so far (verified, decision record)
 
