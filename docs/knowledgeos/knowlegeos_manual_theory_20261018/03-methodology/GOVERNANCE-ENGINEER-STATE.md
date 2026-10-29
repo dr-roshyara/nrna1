@@ -12,7 +12,7 @@
 | S0200 decisions D1–D11 | **recorded** | decision record, addendum 2026-10-29T02:08:48Z (`45c310312`) |
 | Strategic-design mandate (rev. 1) | approved (D10); turns 1 and 2 settled (`20140bce9`, `65e332c21`); promise **(b)** decided (T10-01); turns 1–3 settled (`fe67ad7cf`); admission rule decided: **(B) with the K2 condition** (T10-05); turns 4–5 next; then **a G1 theory turn (decided 2026-10-29)**, then reading from S0201 | decision record |
 | Verification Auditor mandate (rev. 1) | approved (D11); **part A done**, reports saved (`441df3b7d`); one finding checked (design documents predate the code and never mention it: verified); part B not authorised | `review-implementation/` |
-| Implementation strategy | approved in principle (D7, D8); stage 1 not authorised | — |
+| Implementation strategy | revision 2 approved in principle (D7, D8); **revision 3 proposed** (consistency corrections); stage 1 not authorised | `IMPLEMENTATION-STRATEGY-PROPOSED.md` §8 |
 | Brief template | in force from the next consolidation | `bf75badfb` |
 | Implementation-candidates list | **draft for the Professor's confirmation** | `IMPLEMENTATION-CANDIDATES-S0200.md` (`15969b047`) |
 | Governance Engineer mandate | **revision 1 approved** 2026-10-29 | decision record |
@@ -35,7 +35,7 @@
 
 | # | Owner | Action |
 |---|---|---|
-| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2) |
+| 0 | Principal | start the Lead DDD Architect session (part 1: turns 1 and 2); approve or change revision 3 of the strategy |
 | 3 | Professor | R2 `--scope` (D2); confirm the candidates list; current window; then strategic-design turn 1 |
 | 4 | Governance Engineer | evaluate each strategic-design turn report (turn 2 next) |
 | 5 | Governance Engineer | check the briefs of the S0225 consolidation (no test there; the next test is at S0250) |
