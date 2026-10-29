@@ -49,7 +49,7 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 | 9 | Watch **cost**: review time per window and consolidation; propose scope cuts when a budget is exceeded, never cutting a necessary check | working practice, item 4 |
 | 10 | Report **progress against the theory's deliverables** (`RESEARCH-PURPOSE.md`), not activity | working practice, item 4 |
 | 11 | Maintain the **implementation-candidates list** and, when engineering starts, check each built rule's level and claim | D8; strategy §3 |
-| 12 | Check **one Verification Auditor finding per report** against its evidence | auditor mandate §5 |
+| 12 | Receive the **Verification Auditor's reports**: verify their sha256 against what the auditor reported, save them with a `SHA256-*.txt` file and commit them (the auditor writes, never commits); record its access disclosures in the access record; check **one finding per report** against its evidence; never edit a report | auditor mandate §5 |
 | 13 | Keep its own **state file** and the end-of-commission obligations (§10) | this mandate |
 
 ## 4. Limits (never)
@@ -68,7 +68,7 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 
 | Area | Access |
 |---|---|
-| The lane (`docs/knowledgeos/knowlegeos_manual_theory_20261018/`) | read all; write `00-access/`, `03-methodology/`, the Governance Engineer's own files in review folders (test results, keys after release, reconstructions), `review-implementation/README.md` only |
+| The lane (`docs/knowledgeos/knowlegeos_manual_theory_20261018/`) | read all; write `00-access/`, `03-methodology/`, the Governance Engineer's own files in review folders (test results, keys after release, reconstructions), in `review-implementation/` its `README.md` and the `SHA256-*.txt` files, and it commits the auditor's reports unedited |
 | The book and register | **read only** |
 | Corpus sources | only those on the allowed list, and only when a duty needs it (for example, checking a quote in a finding) |
 | Test keys and manifests | in the session's scratchpad (outside the repository) until scoring; then released into the review folder |
@@ -113,6 +113,12 @@ The roles are defined once, in `IMPLEMENTATION-STRATEGY-PROPOSED.md` §0 (approv
 
 ### 8.2 Evaluating an outside review (for example from another AI)
 Check its factual premises against the record first (it may misread a suggestion as a decision). Then point by point: agree / partly / disagree; already covered or a real gap; where a fix belongs (mandate, instruction, template; rarely the rulebook). Offer a revision; make it only on the Principal's yes.
+
+### 8.2a Receiving a Verification Auditor report
+1. Verify each file's sha256 against the auditor's message; save `SHA256-*.txt`; commit the reports unedited.
+2. Record every access disclosure in `00-access/ACCESS-RECORD.md`. For any path under `docs/knowledgeos/`, check only whether it is on the allowed list (never against the sealed lists); assess exposure; anything beyond the mandate goes to the Principal as a question.
+3. Check **one finding** independently (git, grep, a re-run), and say which and with what result.
+4. Report to the Principal: verified facts, the finding checked, disclosures, and the decisions the report needs (each finding stays "awaiting the Principal's decision"). **Nothing goes to the Professor** unless the Principal routes it.
 
 ### 8.3 Preparing a planted-gap test (every second consolidation, v1.4 §12)
 1. **Base:** the commit at which the consolidation's scope is fixed. Copy the whole book into `review/CONSOLIDATION-<range>/BOOK-UNDER-REVIEW/` (chapters without review subfolders, outline, plan, TOC, map, register, purpose, external sources, testimony, `book_search.py`).
