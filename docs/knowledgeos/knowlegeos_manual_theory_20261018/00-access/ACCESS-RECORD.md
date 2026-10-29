@@ -519,3 +519,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 ## Entry 2026-10-29: Verification Auditor, part B
 - **Report** `review-implementation/PART-B-REPORT.md` saved by the Governance Engineer; `SHA256-PART-B.txt` checks OK. Baseline T `dca72c57f` (read through `git show`), C `a5416f3be`, D unchanged.
 - **Disclosures:** the fixture-reading test `Phase0BackTest` ran again (allowed since 2026-10-29; content not viewed); outside §10.1–§10.5 nothing under `docs/knowledgeos/` read (Ch. 10 index, change log and TODO excluded). Assessed: within the mandate.
+
+## Entry 2026-10-29: Verification Auditor, part-B rerun 1
+- **Report** `review-implementation/PART-B-RERUN-1.md` saved by the Governance Engineer; `SHA256-PART-B-RERUN-1.txt` checks OK; the original `PART-B-REPORT.md` unchanged (its sha256 checks).
+- **Disclosures:** `Phase0BackTest` fixture read (allowed; content not viewed); the implementation-track decision record (entry I-003) not opened, because the auditor's mandate does not allow it. Assessed: within the mandate.
