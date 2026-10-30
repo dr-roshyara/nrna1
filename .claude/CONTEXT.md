@@ -1,5 +1,11 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-30, F-Series) — KC-1 MADE: option 4 "Add" ADOPTED; E3 r1.4 (F-LOG-0311–0325)
+- External non-Claude check **waived, not satisfied** (0311). KC-1 = option 4 "Add" (0313, 0315), **adopted** (0324): new **cross-module asserted-content rows (E3-REL-AC) 9 / 4** (10 / 5 under D12 (b)) added to E3 (r1.4). E3-REL **13 / 8 unchanged, not re-accepted**; host lists unchanged; hosting method **not ratified**; R80 as written; E2b and T3 unchanged.
+- Records: `analysis/theory/R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md` r7.3 (adopted), `R7/KC-1-ONE-PAGE-CHOICE.md` (+ correction note, addendum, clarification), `R7/KC-1-OPTION4-scripts/recount.py`. Reviews: 0314, 0316, 0318, 0320, 0321, 0323 (all Claude-family, Λ7).
+- **Pending:** the commit of this work awaits explicit human authorization (F-LOG-0325); nothing committed.
+- **Next (human):** the E4/R8 blockers, each its own act — C-γ, D12, spanning rule, C6, K15–K19, R11, (g), (h), H13, A1, A5, CV9/§3b; optionally Approval 3 (r2.2). E4/R8 and E5 not authorized.
+
 ## 📍 UPDATE (2026-10-29, KnowledgeOS theory lane) — consolidation S0201–S0225 under review; T9-17 deferred; implementation not started
 *Written by the Governance Engineer under the Principal's one-time permission (lane decision record, addendum 2026-10-29T16:34:45Z). State only; it creates no authority.*
 - **Research (Professor):** S0001–S0225 read; windows C38–C45 settled (checked by the Governance Engineer). **Consolidation S0201–S0225 under review** (`1a8a4404b`; reviewers A, B, C, then integration) — **not complete**.

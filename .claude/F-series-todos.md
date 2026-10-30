@@ -13,6 +13,10 @@
 
 ---
 
+## STATE 2026-10-30 (F-LOG-0324) — read first
+- R1–R7, E2b, E3b closed. **KC-1 made: option 4 "Add"** — E3-REL-AC (9 / 4) added in E3 r1.4; E3-REL 13 / 8 unchanged; hosting method not ratified; external check waived, not satisfied.
+- **Next (human acts):** E4/R8 blockers — C-γ, D12, spanning rule (F-LOG-0271), C6, K15–K19, R11, (g), (h), H13, A1, A5, CV9/§3b. Then E4/R8 authorization; E5 outside the F-series.
+
 ## CURRENT ROADMAP (2026-10-01; supersedes every ordering table below)
 
 **Position:**

@@ -4357,3 +4357,222 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - "(c) at least 9/4 … 13/8" mixes KC's stipulated parses (lower end) with blind B′ (12/7, 13/8).
 - **Recommendation [REC]:** the evidence is ready only after a bounded validation — one external replication round (T3-with-list, SH, and (c)+K1c; at least 5 encoders per arm across 3 clusters; the REPRODUCED rule fixed in advance). After that round the human decides KC-1. The normative choice (Rq1 vs Rq7c) cannot be settled by more data.
 - **Not affected:** KC-1 stays deferred (F-LOG-0309); nothing is ratified; E4/R8 and E5 are not authorized; every open item stays open.
+
+
+## F-LOG-0311 — **Human direction (Human ARB, 2026-10-30): external round WAIVED; KC-1 to be decided on the existing evidence. Executor: one-page KC-1 choice READY.** Nothing decided on K1; uncommitted
+- **Act (verbatim):** "B, prepare the one-page KC-1 choice". "B" was the option put to the human in plain language: *"You pick the answer to KC-1 on the evidence we have, and we record that it wasn't checked externally."*
+- **Recorded:**
+  - This is reopening route (ii) of `KC-1-VALIDATION/APPROVAL-PACKAGE.md` Approval 5. The deferral of F-LOG-0309 ends when the human makes KC-1.
+  - **The external non-Claude blind round is WAIVED, not satisfied.** Approvals 2 (protocol corrections) and 4 (execution) are not pursued; `external-protocol/` stays as prepared, not frozen, available for later use.
+  - Approval 3 (r2.2 record correction) is not decided; F-LOG-0310 continues to carry defects 3, 4 and 8.
+  - Approval 1 was met in substance by the human's commit `a34a8c0f8` (2026-10-19, a mixed commit; no marker branch).
+- **Executor product:** `R7/KC-1-ONE-PAGE-CHOICE.md` — options (a), (b) SH, (c)+named parse, branch S, per §14.D procedural recommendations; R80 as its own box; K18/K2/Λ7 scope note; positive T3 clause if (a). Numbers taken from readiness audit r2.1 §7/§14.E unchanged. **No K1 recommendation** (outcome (4) stands).
+- **Not affected:** nothing ratified; KC-2 to KC-5, E4/R8 and E5 not authorized; every open item stays open.
+- **Commit discipline (F-LOG-0309):** written, not committed.
+
+
+## F-LOG-0312 — **Human act (Human ARB, 2026-10-30): KC-1 MADE — option 1 = K1 (a), T3 as written; R80 as written.** Deferral (F-LOG-0309) ended; uncommitted
+- **Act (verbatim):** "KC-1: option 1, R80: as written", replying to `R7/KC-1-ONE-PAGE-CHOICE.md` (F-LOG-0311).
+- **Ratified (as stated on the one-page choice):**
+  - **K1 = (a), T3:** a guard row (a row denying a tie or an order) reads the items whose tie or order it denies. Applies to R11, R14–R17 and R21.
+  - **R80 = empty**, by T3's row-specific entry (T3:122, T3:265), not the VC8 / CB23 reading the blind encoders gave.
+  - **Clarifying clause, worded positively** (one-page choice, small box 3; readiness audit §14.D item 2): *"The negation sentence (T3:68) applies only to contrast clauses inside positive statements."* Explanatory; it changes no verdict on any of the 83 rows (§12.3). Included because the page placed it in the option-1 act; the human may strike it.
+  - **Scope conditions carried in the act:** K18 = statement cell (T3:66); K2 (class rule) affects R12's host cell; the hinge was computed on Claude-family encodings (Λ7). External non-Claude round waived, not satisfied (F-LOG-0311).
+- **Not ratified by this act:** rule 2a's reading definitions and the encoding (Λ7) stay [E]; C6's "frozen encoding" is not ratified (KC proposal F6). Neither guiding requirement (Rq1, Rq7c) is adopted. The provisional "single principle" criterion is not decided. **C-γ is not included and stays returned.** No spanning rule is selected (F-LOG-0271).
+- **Consequences (readiness audit r2.1 §7, §14.E branch a-T3; numbers unchanged):**
+  - **No host change.** E3-REL stays **13 / 8** (14 / 9 under D12 b); F-LOG-0297's E3-REL box and cut status **stand**.
+  - **Ordered within KC-1 (KC proposal F6):** a recording that updates the E2b §A2.2 ratification note ("a ratified output of an unratified method") and §A1.10 bullet 1 to reflect that the K-c criterion and rules 1–5 are now ratified, rule 2a and the encoding staying [E]. **Not yet applied.**
+  - **KC-4 (T3), recording only:** record the ratified status in T3 §1a and add the positive clause. Its own act.
+  - **KC-2, KC-3 and KC-5 are not triggered** by K1 (a) under T3.
+- **Still open (separate acts):** C-γ, D12, the spanning rule (F-LOG-0271), C6, K15–K19, R11, (g), (h), H13, A1, A5, CV9/§3b; Approval 3 (r2.2). **E4/R8 and E5 not authorized.**
+- **Standing qualifier:** one corpus; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
+- **Commit discipline (F-LOG-0309):** written, not committed.
+
+
+## F-LOG-0313 — **Human act (Human ARB, 2026-10-30): KC-1 REMADE — option 4 = branch S (split), coupling parse K1c (strict, 9 / 4); R80 as written. Supersedes F-LOG-0312's K1 choice.** Uncommitted
+- **Act:** after a pasted advisory recommending option 4, the human answered two confirmation questions: "Yes, option 4" (supersede F-LOG-0312) and "Strict (K1c): 9 / 4" (the splitting rule). F-LOG-0312 stays as history; its K1 (a)-only ratification and its "no amendment" consequence are superseded.
+- **Decided:**
+  - **Hosting:** host lists stay as under (a) (T3; R11, R14–R17, R21 host what they deny). E3-REL-by-hosting stays **13 / 8**.
+  - **Coupling:** a separate, named coupling measure computed by K1c (asserted parts only): **9 / 4** (10 / 5 under D12 b).
+  - **R80 = empty**, as written (T3:122, T3:265).
+  - The advisory's rationale, recorded as the human's: hosting ("which module is responsible for a rule") and coupling ("which rules actually constrain or connect the two modules") are different questions and are not collapsed.
+- **Human boundary (verbatim, from the adopted advisory):** "This communicates the conceptual decision; it does not authorize committing the uncommitted files. … prepare the required formal amendment, update the affected records and figures, and report the consequences for independent review. The accepted design should not be treated as formally amended until the relevant record is updated and reviewed."
+- **Consequences (readiness audit r2.1 §14.E, branch S):** E3:111 ("host-list subset … and nothing else") must be **amended** to define two measures; the coupling measure is **a new definition (its own act)**; KC-3 with the E3:111 amendment; KC-4 (T3); KC-2 not needed at L; KC-5 not from K1. F-LOG-0297's E3-REL box is **replaced by redefinition** once the amendment is adopted. D1 (crossing) kept.
+- **Not ratified:** rule 2a and the encoding (C6) stay [E]; Rq1/Rq7c not adopted; "single principle" not decided; C-γ stays returned; no spanning rule selected. **Until the amendment is reviewed and adopted, the accepted design is NOT amended.**
+- **Next (Executor, within this act):** amendment proposal + proposed record edits → independent review → report. No adopted record is edited; nothing committed.
+
+
+## F-LOG-0314 — **Executor (2026-10-30): independent review of the option-4 amendment proposal r0 = NEEDS_REVISION; r1 written; corrigendum to F-LOG-0313.** Nothing decided; uncommitted
+- **Review (read-only, Claude-family):** figures confirmed — `ch_rho.py` re-run byte-identical to `ch_rho.out` (sha256 8f137368…); 9 / 4 (S, S′), 4 (S″), 10 / 5 / 5 under D12 (b) computed. No accepted record touched. Findings: 1 BLOCKING (D-3 as written, over all T-A rows, gives 13 / 8 incl. R12, R13, R23, R24), 7 MATERIAL, 6 MINOR; missed sites listed.
+- **r1** (`R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`): D-3 restated as E3-REL ∖ {R14, R15, R16, R21}; six human questions surfaced (§0, HDR-1…6); E2b recording made conditional; no tag inside the verbatim F-LOG-0297 act; reopen trigger for the new measure; missed sites added. **r1 fixes not re-reviewed.**
+- **Corrigendum to F-LOG-0313 (append-only):** its "Consequences" bullet ("F-LOG-0297's E3-REL box is replaced by redefinition"; E3:111 "must be amended") was taken from the audit's branch S, where E3-REL itself becomes the coupling measure. Its "Decided" bullets (E3-REL-by-hosting stays 13 / 8 plus a separate measure) describe a different construction. The executor's rendering therefore conflated two constructions; the human's verbatim act ("Yes, option 4"; "Strict (K1c): 9 / 4") fixes neither. This is now HDR-1 (S-add vs S-redef). F-LOG-0313's statement that rules 1–5 are not listed as ratified is correct; whether option 4 ratifies them is HDR-2.
+- **Not affected:** KC-1 = option 4 with K1c and R80 empty stands; figures unchanged; the accepted design is not amended.
+
+
+## F-LOG-0315 — **Human direction (Human ARB, 2026-10-30): provisional decisions on KC-1 option 4; no application, no commit.** Uncommitted
+- **Direction (summarized; full text in the session):** the human gave decisions labelled "provisional", to be finalized after reviewing the executor's report:
+  - A1 **Add:** keep 13 with its current meaning; add a separate measure; do not redefine 13 as 9; do not reopen or re-accept the existing figure.
+  - A2 **The method is not ratified:** choosing option 4 is "not … formal ratification of the existing rule method". "Do not manufacture ratification to make the records consistent."
+  - A3 **Name:** "cross-module asserted-rule rows", subject to a terminology check, including VP14's "coupling". It is to be described as a count of rule-text rows, not real-world dependencies.
+  - A4 **Placement:** the definition goes in E3. The base model's host lists are not changed. Any conflict is to be reported before editing.
+  - A5 **The clarifying sentence is omitted,** provided the two measures are unambiguous.
+  - A6 **Redefine is not selected;** no conditional Redefine edits; shared-cell values are preserved.
+  - B: a mandatory rule-classification consistency check. C: record-keeping requirements. D: one focused independent re-review. E: no edits to accepted records, no commit, no claim of ratification or of a passed review, before the human's review of the report.
+- **Executor actions:** proposal r2 (`R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`); independent recount `R7/KC-1-OPTION4-scripts/recount.py` (9 / 4; 10 / 5 under D12 (b)). Discrepancy B resolved: the two descriptions apply the same K1c parse to different questions (the hosting side vs the both-sides test). Focused re-review commissioned.
+- **Supersedes:** F-LOG-0314's open questions HDR-1 (→ Add), HDR-2 (→ not ratified), HDR-4 (→ E3), HDR-5 (→ omit) and HDR-6 (→ moot), provisionally.
+- **Not affected:** no accepted record edited; nothing ratified beyond F-LOG-0313's explicit choices; external check waived, not satisfied.
+
+
+## F-LOG-0316 — **Executor + human direction (2026-10-30): focused re-review of proposal r2 = PASS_WITH_LIMITATIONS; human chose the name; proposal r3 written.** Nothing adopted; uncommitted
+- **Re-review (read-only, Claude-family, Λ7):** no BLOCKING; MATERIAL M1–M5, MINOR m1–m10. Figures **recomputed independently from the source files** (E2b:319–320, T3:48–49, KC:228–233): E3-REL 13 / 8, E3-REL-A 9 / 4, S″ = S′, D12 (b) 14 / 9 and 10 / 5. These match `recount.py`, `ch_rho.out` §4 (sha256 8f137368…), KC:63 / :88 and the readiness audit §13.2. Discrepancy explanation: correct. No ratification manufactured. KC-2 to KC-5 consequences: correct.
+- **Human direction (verbatim phrases):**
+  - "Use the proposed name: **Cross-module asserted-content rows (E3-REL-A).**"
+  - "a rule's mention of both item sets is not sufficient to qualify; the label 'definition,' 'lemma,' or 'constraint' is not, by itself, sufficient to qualify."
+  - Uniform test: "Does the rule's asserted content itself state a relation, constraint, typing condition, definition, or proposition involving both item sets?"
+  - "If the source text does not support a clear classification, flag the issue instead of silently resolving it."
+  - The correction note: "Show me the exact proposed note before applying it."
+  - "If the re-review identifies a substantive issue, revise the proposal and arrange the necessary further review rather than treating the issue as editorial."
+- **Supplement to F-LOG-0315 (m10), verbatim phrases of that direction:**
+  - A1: "Preserve the existing figure of 13 with its current meaning … Do not redefine the existing figure as 9 … Do not reopen or re-accept the existing figure merely because the additional measure is introduced."
+  - A2: "Do not interpret my selection of option 4 as formal ratification of the existing rule method … Do not manufacture ratification to make the records consistent."
+  - A4: "Define the additional measure in the design document (E3)."
+  - A5: "Omit it if the two measures and their meanings are stated unambiguously."
+  - A6: "The 'Redefine' alternative is not selected."
+- **Name supersession (M5):** the "coupling" wording for this measure in F-LOG-0313 (heading and "Decided" bullet) is superseded by the name above; the log stays append-only.
+- **r3** (`R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`): all findings applied. Uniform-test classification of every non-guard row: R19 qualifies under S only, through the participant; R22 and R24 are flagged. Open decisions:
+  - HDR-A, R22: 9 / 4, or 8 / 3 if a cross-set relation is required;
+  - HDR-B, R24 (D12 (b) only);
+  - HDR-C, whether F-LOG-0312's scope conditions (K18 = statement cell, K2/R12, Λ7) survive;
+  - HDR-D, symbol E3-REL-AC vs E3-REL-A;
+  - HDR-E, audit C9.
+  The correction note is shown, not applied. **r3 not reviewed;** a further focused review follows the human's answers.
+- **Not affected:** no accepted record edited; external check waived, not satisfied; hosting method not ratified.
+
+
+## F-LOG-0317 — **Human answers (Human ARB, 2026-10-30) to proposal r3 §9; proposal r4 written; correction note applied.** Nothing adopted; uncommitted
+- **Verbatim:** "A qualifies, B assertion (with the ambiguity distinction recorded), C yes, D AC, E met, note approved." and "Please preserve the three scope conditions (K18, K2, and Λ7) explicitly. For R22 and R24, record the source-based rationale for each classification and make clear that the result depends on the selected interpretation." and "Adoption, accepted-record changes, and committing each require my separate explicit approval."
+- **Recorded (decided interpretations, not findings):**
+  - **R22 qualifies.** A uniform identity definition stated for records and for acts and work events (T2:74, T3:103) counts as a "definition … involving both item sets".
+  - **R24 qualifies as an assertion** (relevant under D12 (b) only). It is a positive universal proposition about record–act pairs (T2:76, T3:105). The ambiguity distinction is recorded: its content is a non-determination, unlike the guard rows' denials.
+  - **Resulting figures:** E3-REL-AC = **9 / 4** (D12 (a)), 10 / 5 (D12 (b)). Under the rejected interpretations they would be 8 / 3, and 9 / 4 under D12 (b).
+  - **Scope conditions kept for both figures:** K18 = statement cell, K2 (a), Λ7. This keeps them as conditions; it does not ratify K18 or K2. Under K2 (b) neither figure changes, because R12 lies outside E3-REL.
+  - **Symbol:** E3-REL-AC.
+  - **Audit C9:** ruled met for this amendment.
+- **Applied (not an accepted record):** the approved correction note, appended verbatim to `R7/KC-1-ONE-PAGE-CHOICE.md`. The original text is unchanged.
+- **r4:** `R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`. Reopen triggers (vii) a K2 decision and (viii) an interpretation revision were added. **Not reviewed; a focused review has been commissioned.**
+- **Not affected:** no accepted record edited; nothing adopted or committed; hosting method not ratified; external check waived, not satisfied.
+
+
+## F-LOG-0318 — **Executor (2026-10-30): focused review of proposal r4 = NEEDS_REVISION; r5 written; corrigenda to F-LOG-0317.** Nothing adopted; uncommitted
+- **Review (read-only, Claude-family, Λ7):** no BLOCKING; MATERIAL M1–M3, MINOR m1–m9. **All four interpretation rows were recomputed by hand from the source files** (E2b:319–320, T3:48–49, KC:229–233). Selected: 9 / 4 (D12 (a)), 10 / 5 (D12 (b)), identical to r4. No figure changes under the selected interpretations; no accepted record modified; nothing attributed to the human that they did not decide.
+- **Findings that affect the classification rationale:**
+  - **M1 (R22):** T2:74's "disjoint identifier universes" (Def 1.7a, `FORMAL-THEORY-R4.md:94`, "pairwise disjoint sets of identifiers") is arguably a cross-set relation, so the "8 / 3" alternative may not be live.
+  - **M2 (R24):** R24 asserts no existence; it is conditional and 𝐑₀-scoped. The R24-versus-guard-row difference rests on the strict K1c rule (R14's "f may coincide … in some histories", KC:229), not on content.
+- **Findings that affect the definition text:** M3 (E4/E7 pinned to r3, which left R22/R24 open), m2 (rejected-interpretation figures), m3 (trigger summary; no Λ7 trigger), m6 (set vs cardinality).
+- **Sensitivities disclosed (not proposed):** R14's possibility clause judged by the uniform test → 10 / 5; C1 on both sides not accepted → S = 4.
+- **Corrigenda to F-LOG-0317 (append-only):**
+  - (a) Its rationale "R24 … about pairs" carried no existence claim, but proposal r4 added one ("the pairs exist"). That wording is withdrawn.
+  - (b) Its line "Under K2 (b) neither figure changes, because R12 lies outside E3-REL" is an **executor finding, not a human decision**. It sat under "Recorded (decided interpretations, not findings)". The full basis also needs R24's unchanged X-status (readiness audit ~line 516).
+  - (c) "Under the rejected interpretations they would be 8 / 3, and 9 / 4 under D12 (b)" holds only when R22 alone is rejected. Both rejected → 8 / 3 under D12 (b).
+- **r5** (`R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`): every finding applied. `recount.py --alt` reproduces all four rows. **Two rationale re-confirmations are put to the human (proposal §9 Q1 R22, Q2 R24); the outcomes are unchanged.** An optional addendum to the approved correction note is offered (m8), not applied. **r5 not reviewed;** a short focused check follows the human's answers.
+
+
+## F-LOG-0319 — **Human re-confirmation (Human ARB, 2026-10-30) of the R22 / R24 rationale; addendum approved; proposal r6.** Nothing adopted; uncommitted
+- **Verbatim:**
+  - "Q1: Yes. Record the disjoint-identifier point as a second ground for R22 qualifying. State that R22 qualifies under either interpretation and that the 9 / 4 result therefore does not depend on this particular interpretation of R22."
+  - "Q2: Confirmed. R24 is a conditional 'every pair is ambiguous' statement and makes no existence claim. Its treatment differs from R14 because the strict K1c rule applies to 'no link' rules, not because R24 asserts that pairs exist while R14 does not."
+  - "Addendum: Approved." "Preserve the original correction note and the append-only history. Do not change accepted records or commit/push anything."
+- **Recorded:** R22 qualifies on two grounds (uniform identity definition; pairwise disjoint identifier universes, Def 1.7a). **9 / 4 is independent of the R22 interpretation.** The only remaining interpretation-dependence is R24, under D12 (b) only (10 / 5 vs 9 / 4).
+- **Applied (not an accepted record):** a dated addendum appended to `R7/KC-1-ONE-PAGE-CHOICE.md`. The correction note and the original page text are unchanged.
+- **r6:** `R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md`. **Not reviewed;** a focused check has been commissioned.
+
+
+## F-LOG-0320 — **Executor (2026-10-30): focused check of proposal r6 = NEEDS_REVISION; r7 written.** Nothing adopted; uncommitted
+- **Check (read-only, Claude-family, Λ7):** all figures recomputed by hand and matched `recount.py --alt` for all four interpretation combinations. Selected: 9 / 4 (D12 (a)), 10 / 5 (D12 (b)). All R22 / R24 sources quoted correctly. The addendum meets the three requirements, and the correction note is preserved byte-identically. Every F-LOG-0318 finding is fixed, apart from the residues below.
+- **Findings:**
+  - **MATERIAL:**
+    - (1) Proposal §3 still stated that 9 / 4 "depends on the R22 interpretation", contradicting F-LOG-0319.
+    - (2) The §3 definition row was malformed: the E3-REL-AC definition sat in the E3-REL column, which reads like the rejected Redefine.
+  - **MINOR (3–10):**
+    - 3: wording broader than the human's "this particular interpretation".
+    - 4: E4 lacked "no existence claim".
+    - 5: "content alone" hedge.
+    - 6: (ix) missing from the E3-REL reopen list.
+    - 7: the uniform test was not listed as a human decision.
+    - 8: stale sync lines.
+    - 9: disclosure that disjointness is structurally a non-overlap condition.
+    - 10: see below.
+  - No finding changes a figure or a classification.
+- **r7:** all ten findings applied; the §3 table is verified at three cells per row.
+- **Supersession note (finding 10, append-only):** F-LOG-0317's R24 phrase "unlike the guard rows' denials" is superseded by the human's F-LOG-0319 Q2. R24's treatment differs from R14 "because the strict K1c rule applies to 'no link' rules, not because R24 asserts that pairs exist while R14 does not."
+- **Next:** a spot check of §3 and the r7 edits; then the report to the human, before any separate adoption decision.
+
+
+## F-LOG-0321 — **Executor (2026-10-30): spot check of proposal r7 = PASS_WITH_LIMITATIONS; r7.1 minor edits.** Nothing adopted; uncommitted
+- **Spot check (read-only, Claude-family, Λ7):** no BLOCKING or MATERIAL findings. All ten F-LOG-0320 fixes are present. The §3 table has 3 cells per row. Figures were reproduced against E2b:319–320, T3:48–49 and KC:230–235: 9 / 4 (D12 (a)) and 10 / 5 (D12 (b)), with alternatives as tabled. Greps found no remaining R22-dependence claim, R24 existence claim, current "coupling" name, current "E3-REL-A" symbol or stale revision pointer.
+- **Minor findings, none affecting a figure, the classification or the definition:**
+  - m1: broad "interpretation-independent" wording, in E4, the r6 change row and the session log.
+  - m2: in the approved addendum, item 3's "does not depend on it" can be misread as R22 itself.
+  - m3: the §5 basis for the dual rule should cite F-LOG-0313 and F-LOG-0319 Q2 for the split.
+  - m4: §6.4 omitted the addendum.
+  - m5: KC citations should read KC:228–235 and KC:231.
+- **r7.1:** m1 (E4 and session log), m3, m4 and m5 applied in the proposal; the r6 change row is kept as history. **m2 disclosed, not edited** (human-approved text). **The r7.1 edits are not re-checked.**
+- **Corrigendum (append-only):** the KC line ranges cited in F-LOG-0316 ("KC:228–233") and F-LOG-0318 ("KC:229–233", "KC:229") should read KC:228–235 and KC:231.
+- **Next:** report to the human, then the human's separate adoption decision. Adoption, accepted-record edits (E3 only) and commit each need separate explicit approval.
+
+
+## F-LOG-0322 — **Human direction (Human ARB, 2026-10-30): append the m2 clarification; run one more short check before the adoption decision.** Nothing adopted; uncommitted
+- **Verbatim:** "m2 append clarification; run one more short check first."
+- **Applied:** a dated one-line clarification below addendum item 3 in `R7/KC-1-ONE-PAGE-CHOICE.md`: 9 / 4 does not depend on *which* recorded R22 interpretation is applied, but it is not independent of R22 itself (8 / 3 without it). The addendum and the correction note are unchanged.
+- **Proposal r7.2:** §9 and the change rows updated. **A short final check of r7.1 and r7.2 has been commissioned.**
+
+
+## F-LOG-0323 — **Executor (2026-10-30): final short check of proposal r7.1 / r7.2 = PASS_WITH_LIMITATIONS; r7.3 bookkeeping.** Nothing adopted; uncommitted
+- **Check (read-only, Claude-family, Λ7):**
+  - m1–m5 of F-LOG-0321 are resolved.
+  - The m2 clarification is accurate: `recount.py --alt` gives 9 / 4 with R22 and 8 / 3 without it (D12 (a)).
+  - The correction note is byte-identical to proposal §7 (`cmp`).
+  - The KC citations match KC:228–235 (R14 at 231).
+  - The §3 table has 3 cells per row; E4 is consistent.
+  - Nothing claims more than F-LOG-0313 to F-LOG-0322 decided.
+  - **No figure, classification or definition defect.**
+- **Findings f1–f5 (bookkeeping only):** stale status pointers in the proposal header, §9 and §6.4, and in CONTEXT; and the session-log attribution "Human: m2 clarification appended" (the human directed it; the executor appended it). **All applied as r7.3** (status pointers only; not re-reviewed).
+- **Limitation:** `KC-1-ONE-PAGE-CHOICE.md` is untracked, so there is no git baseline for its original text.
+- **Status:** substance ready for the human's adoption decision. Adoption, accepted-record edits (E3 §6.1 only) and any commit each need separate explicit approval.
+
+
+## F-LOG-0324 — **Human act (Human ARB, 2026-10-30): KC-1 option 4 (Add) amendment ADOPTED (proposal r7.3); E3 edits applied (E3 r1.4); commit authorized, no push**
+- **Act (verbatim):** "Adopt the amendment and apply the E3 edits; commit, no push"
+- **Adopted:** `R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md` **r7.3**. The revision is pinned in E3's E4 / E7 text.
+  - **E3-REL-AC, cross-module asserted-content rows:** 9 / 4 (S / S′ = S″); 10 / 5 under the other D12 reading (D12 not resolved).
+    - "No link" (guard) rows are judged by strict K1c; other rows by the uniform test (F-LOG-0313, F-LOG-0316, F-LOG-0319).
+    - R22 qualifies on two grounds; R24 qualifies as an assertion (F-LOG-0317, F-LOG-0319).
+    - Scope conditions: K18 = statement, K2 (a), Λ7.
+    - Reopen triggers (i)–(ix).
+  - **A set of qualifying rule-text rows, not a measure of real-world module dependency.**
+- **Applied:** E3 `E3-ARCHITECTURE-PROPOSAL.md` r1.3 → **r1.4**, edits E0, E1, E4–E7, E9–E13, E15 and E16, plus change row r1.4 (E17), all tagged in place. **Not edited:** E3-REL's definition (E3:111), the shared and cut-status cells, the verbatim F-LOG-0297 act.
+- **Unchanged and not re-accepted:** E3-REL 13 / 8 (14 / 9); F-LOG-0297's E3-REL box; every accepted output. **Host lists unchanged; hosting method NOT ratified** (E2b:584 stands). R80 as written. External non-Claude check **waived, not satisfied**. Audit C9 ruled met (F-LOG-0317).
+- **KC acts:** KC-3 = this E3 recording. **KC-4: T3 unchanged by KC-1** (method not ratified; R80 unchanged; clarifying clause omitted, F-LOG-0315 A5). KC-2 not needed (no host change); KC-5 not triggered. **E2b unchanged.**
+- **Name supersession (append-only):** the "coupling" wording for this measure in F-LOG-0313 and the symbol "E3-REL-A" in F-LOG-0316 are superseded by "cross-module asserted-content rows (E3-REL-AC)" (F-LOG-0316, F-LOG-0317).
+- **KC-1 status:** **made and recorded.** The deferral of F-LOG-0309 is ended.
+- **Still open (separate acts):** C-γ, D12, the spanning rule (F-LOG-0271), C6, K15–K19, R11, (g), (h), H13, A1, A5, CV9/§3b; Approval 3 (r2.2); ratification of the hosting method (not needed for this amendment). **E4/R8 and E5 not authorized.**
+- **Standing qualifier:** one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
+- **Commit:** authorized, no push.
+
+
+## F-LOG-0325 — **Human direction (Human ARB, 2026-10-30): adoption confirmed; commit NOT yet authorized (supersedes F-LOG-0324's "Commit: authorized").** Uncommitted
+- **Verbatim:** "1. Adoption: Approved. I adopt amendment proposal r7.3 and authorize the design-document edits listed in §6.1." and "2. Commit: Not yet authorized. First apply the approved design-document edits and report the exact resulting diff, working-tree status, and complete list of files proposed for the commit. Do not commit or push until I explicitly authorize the commit."
+- **Correction to F-LOG-0324 (append-only):** its last bullet ("Commit: authorized, no push") is superseded. **Nothing has been committed or pushed.**
+- **Limitations to preserve (human's list), and where each is recorded:**
+  - Claude-only checking (Λ7): in E3's E4 bullet, the proposal and every review entry.
+  - The external check waived, not satisfied: E3's E15 ruling bullet; F-LOG-0311.
+  - The single corpus: the standing qualifier in E3 §10.3 / F-LOG-0256 and in the proposal.
+  - The reading S dependency (R5, R6, R8, R10, R19): E3's E4 bullet.
+  - The structural qualification of R22's second ground (disjointness as a non-overlap condition): proposal r7.3 §2 (pinned by E4); F-LOG-0320.
+  - No git baseline for the one-page choice: F-LOG-0321, F-LOG-0323.
+- **Confirmed constraints:** E2b and T3 are not modified; the hosting method stays unratified; the 13 / 8 figure is preserved without re-acceptance.
+
+
+## F-LOG-0326 — **Executor (2026-10-30): defect in the E3 r1.4 application found and fixed before reporting.** Uncommitted
+- **Defect:** the E10 tags (§9.1 row 1 at E3:385, §9.2 V1 at E3:400) and the E11 tag (§9.3 B1 at E3:416) were appended after their rows' closing `|`, which created a stray fourth table cell.
+- **Fix:** each tag was moved inside the row's last cell. Cell counts now match the neighbouring rows (§7.2: 4; §8.2: 5; §9: 3; §12: 2). No wording changed. The word-level diff of E3 against HEAD still removes only the title token "r1.3", which is kept inside the new title tag.
