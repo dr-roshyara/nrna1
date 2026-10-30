@@ -4576,3 +4576,8 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 ## F-LOG-0326 — **Executor (2026-10-30): defect in the E3 r1.4 application found and fixed before reporting.** Uncommitted
 - **Defect:** the E10 tags (§9.1 row 1 at E3:385, §9.2 V1 at E3:400) and the E11 tag (§9.3 B1 at E3:416) were appended after their rows' closing `|`, which created a stray fourth table cell.
 - **Fix:** each tag was moved inside the row's last cell. Cell counts now match the neighbouring rows (§7.2: 4; §8.2: 5; §9: 3; §12: 2). No wording changed. The word-level diff of E3 against HEAD still removes only the title token "r1.3", which is kept inside the new title tag.
+
+
+## F-LOG-0327 — **Human act (Human ARB, 2026-10-30): commit authorized, no push; executed as `5ce47163a`.**
+- **Verbatim:** "Commit authorized, no push"; then "Add F-LOG-0327 and commit".
+- **Recorded:** supersedes F-LOG-0325's "commit not yet authorized". Commit `5ce47163a` contains exactly the eight F-series files listed in the pre-commit report: F-GOVERNANCE-LOG.md, R7/E3-ARCHITECTURE-PROPOSAL.md (r1.4), R7/KC-1-ONE-PAGE-CHOICE.md, R7/KC-1-OPTION4-AMENDMENT-PROPOSAL.md (r7.3), R7/KC-1-OPTION4-scripts/recount.py, .claude/CONTEXT.md, .claude/F-series-todos.md and .claude/sessions/2026-10-30.md. **Not pushed.** This entry is committed separately, by the same authorization.
