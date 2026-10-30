@@ -15,3 +15,4 @@
 ## Access notes on the reviewers' runs (Professor only)
 - **Reviewer A** (698.7 s, 43 tool uses): every tool call carried `--root` on the copy (the `--help` calls ran the tools on the copy); `corpus_quote_check.py` has no `--root` and was run on copy files; read the folder listing (COMMISSION-B and INTEGRATION-COMMISSION by name, not opened); no file of REVIEWER-NOTE item 4 reached.
 - **Reviewer B** (Sonnet): first `ls`/`wc` attempt used a wrong relative path inside the copy; read `git log` times of two corpus files (S0235, S0236; not manuscript history); an attempt to write a helper script to the scratchpad was denied by the harness, nothing written; no file of REVIEWER-NOTE item 4 reached. Passed to the integration reviewer.
+- **Stage 2 applied and the freeze lifted** (2026-10-30), under the stage-2 guard (`f4cdbe236`) and the Principal's authorisation (`87654b4ed`): `STAGE2-SETTLEMENT.md`.
