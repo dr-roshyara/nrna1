@@ -10,3 +10,4 @@
 - **Reviewers planned:** A (Opus; Ch. 10), B (Sonnet; §8.39–§8.45 and the passages), then the integration reviewer (Opus); all `kos-lane-reviewer`.
 - **The gate:** `close_source.py --position`: 25 of 25 since S0225; S0233 and S0249 not on the allowed list, so the consolidation due at S0250 is held at S0252.
 - **Briefs checked** by the Governance Engineer at `bf5c3fb22`: G1–G7 pass; two fixes applied (SCOPE §2.1: §9.18.5 L192–L201 named; this record: the copy is the Governance Engineer's). Reviewers start only after the Governance Engineer reports the copy in place and its independent check passed.
+- **Reviewers started** 2026-10-30 after the Governance Engineer reported the copy in place (`5e89f9916`) and its independent check passed: A (Opus; Ch. 10) and B (Sonnet; §8.39–§8.45 and the passages), both `kos-lane-reviewer`, each told to read REVIEWER-NOTE first and to run every tool with `--root` on the copy from the first call. No reviewer was told of any test.
