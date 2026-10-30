@@ -550,3 +550,7 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Correction (Governance Engineer, self-reported):** the key's preamble says "only four files differ from the base"; it is **three files** (two plants are in the same file). The plants and their locations are right. The key is not edited (its hash is sealed); this entry is the correction.
 - **Observation for scoring (§8.5 item 3):** files outside the reviewers' folder say that this consolidation is a test (the Governance Engineer's state file; the research record addendum of 16:02:43Z; the rulebook's "every second consolidation"). The commissions do not forbid them. Checked in the blindness audit from the reviewers' file lists.
 - **Correction (Governance Engineer):** this entry's heading time "16:20Z" is wrong; it was written at 2026-10-30T16:05:52Z.
+
+## Entry 2026-10-30T16:31:31Z: consolidation S0226–S0252, planted-gap key released after scoring
+- **Released by** the Governance Engineer after stage 1 (`018569cac`): `PLANTED-GAP-ANSWER-KEY.md` (sha256 `7cd6e745198f615b04b44214a495c7bbc379b494ffa7d2e2dc201f31a4c4c374`) and `PLANTED-GAP-COPY-MANIFEST.txt` (`b3b6396b65a1953c76897a8408f5f30074749fa4f5a40edbb9f56faabab47c1c`), both equal to the entry of 15:44:39Z, into `06-theory/manuscript/review/CONSOLIDATION-S0226-S0252/`; result in `PLANTED-GAP-RESULT.md`.
+- **Exposure in this test:** none. A, B and the integration reviewer blind (file lists; the Professor's access notes). Blind and combined: 4 of 4.
