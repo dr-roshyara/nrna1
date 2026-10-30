@@ -56,8 +56,8 @@
 |---|---|---|
 | 2 | Professor | T9-17 (b) **applied** (`c32ea453e`, v24, checked by the Governance Engineer; the U statement unreviewed — question to the Principal); B-04/B-05 note received (neither used nor rejected; a routing gap, self-reported); then adopting the evidence kinds, naming T10-21, the map's "guard" choice — each to the Principal one at a time; T9-18 (a model check, not for the Principal) |
 | 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
-| 4 | Governance Engineer | **S0226–S0252 consolidation (a test):** briefs checked at `bf5c3fb22`, G1–G7 pass; two fixes applied by the Professor (`adf8f34a3`, verified). Copy with plants prepared (`5e89f9916`; key and manifest hashes in the access record, `4b2316328`); key and manifest in this session's scratchpad `pg2/` |
-| 5 | Principal → separate session | **independent check of the preparation** (mandate §8.3a, C1–C6), reporting to the Principal only; reviewers A and B start only on PASS. Then scoring (§8.5) after every report is saved |
+| 4 | Governance Engineer | **S0226–S0252 test scored** (`f4cdbe236`): blind 4 of 4; key released; stage-2 guard in `PLANTED-GAP-RESULT.md`. Proposals P1–P3 there, for the Principal |
+| 5 | Professor | stage 2 on the working book, on the Principal's go-ahead, applying the stage-2 guard; A-10 settled against the decision record |
 | 6 | Professor | confirm the implementation-candidates list (`IMPLEMENTATION-CANDIDATES-S0200.md`) and answer its §4 point 2 (the estate's record is outside D) — before the stage-1 decision |
 | 7 | Professor | Ch. 10 revision for T10-17–T10-21 (routed C items; naming) before any tactical design; then the Lead DDD Architect's review of it (bundled with the Ch. 10 changes at `8e4b1a420`), then the auditor's full rerun |
 
