@@ -536,3 +536,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Done:** `~/.claude/projects/…/tool-results/b5vzihgni.txt` deleted with `rm` **without being opened, read or searched**; its absence checked by path only. **Result: deleted.**
 - **Credentials:** the Principal treats them as compromised; rotation, removal of the tracked environment backup from git and the history assessment are **PublicDigit work under its own authority**, not the Governance Engineer's; not done here.
 - **Note:** deleting the file does not undo what entered the session (the ~2 KB preview, credentials only).
+
+## Entry 2026-10-30T15:44:39Z: consolidation S0226–S0252, book copy for review, sealed before any reviewer starts
+- **Prepared by** the Governance Engineer (session `57ddce41…`; mandate §8.3, duty 3), on the Principal's "prepare the planted copy" (2026-10-30). Not by the Professor (Rulebook v1.4 §12). Base: commit `98e435c86` (the freeze).
+- **Book under review:** `06-theory/manuscript/review/CONSOLIDATION-S0226-S0252/BOOK-UNDER-REVIEW/` (commit `5e89f9916`, neutral subject): a full copy of the book without the chapters' review subfolders, with its own `book_search.py`; the checks are run with `--root` on it. Which files differ is in the key only.
+- **Key** outside the repository (this session's scratchpad) until scoring; sha256 `7cd6e745198f615b04b44214a495c7bbc379b494ffa7d2e2dc201f31a4c4c374`. **Manifest of the copy** (172 files), outside the repository; sha256 `b3b6396b65a1953c76897a8408f5f30074749fa4f5a40edbb9f56faabab47c1c`. The copy in the repository matched the manifest at commit (`sha256sum -c`).
+- **Risk, recorded:** the scratchpad is temporary; if it is lost before scoring, only these hashes remain and the test cannot be scored.
+- **Before any reviewer starts:** the independent check of the preparation (mandate §8.3a, C1–C6) by a separate session, reporting to the Principal only; FAIL or UNRESOLVED blocks the test.
