@@ -660,3 +660,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **How the check is run:** a fresh, independent subagent session started by the Governance Engineer with the §8.3a checklist, the base commit, the copy, the manifest and the key. **Second deviation:** its report reaches the Principal through the Governance Engineer, relayed verbatim, rather than directly.
 - **If the check is FAIL or UNRESOLVED:** the result is scored with that deviation named, and the Principal decides how to proceed (mandate §8.3a).
 - **The g1 U statement:** the question left open at 2026-10-30T13:53:31Z is overtaken: the statement (§9.18.5 L192–L201) is in reviewer B's scope (`adf8f34a3`). No separate review.
+
+## Addendum 2026-10-30T16:40Z: consolidation S0226–S0252, stage 2 authorised (recorded by the Governance Engineer)
+
+- **Principal (verbatim):** "start stage 2".
+- **Basis:** the planted-gap result (`f4cdbe236`, `PLANTED-GAP-RESULT.md`): blind 4 of 4; stage 1 (`018569cac`) treated all four plants correctly.
+- **Scope:** the Professor applies the stage-1 remedies to the working book, each assessed against the working book on its own evidence, **under the stage-2 guard** of the result file: no new §8.43 C6; no change to the §8.44 C3 quote; A-01's restoration not applied (A-12's other parts assessed on their own); A-13's "part 2" half only. A-10 settled against the decision record.
+- **After stage 2:** the Governance Engineer checks that the guarded items were left alone. Proposals P1–P3 of the result file are **not** decided here.
