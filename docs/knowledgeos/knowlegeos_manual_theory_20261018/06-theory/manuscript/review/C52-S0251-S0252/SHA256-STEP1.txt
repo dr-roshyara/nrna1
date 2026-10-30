@@ -1,0 +1,1 @@
+1d2317bf6b489cc7b82c0206833edd32deec30d96bacfed4def04db71ece6abc  STEP1-INVENTORY.md
