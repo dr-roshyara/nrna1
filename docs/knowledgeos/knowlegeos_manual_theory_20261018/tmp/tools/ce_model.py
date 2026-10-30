@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """A finite model of the evaluator of current authority, CE* (Ch. 9 §9.13, theory turn 4). A toy, not KnowledgeOS:
-it tests the FORM of the repaired definition, not its content. Version 23 (T9-16 (b), the Principal, 2026-10-29;
+it tests the FORM of the repaired definition, not its content. Version 24 (T9-17 (b), the Principal, 2026-10-29;
+the Professor's modelling, for review; nothing adopted): the class rule g1 shows 'contested' while a live support and
+a live refutation both exist; a class is shown only if every two-valued completion of its Kleene inputs agrees,
+otherwise U with the candidate classes named; v23's rule stays available (combine='g0') and checks 34-37 use it, so
+checks 1-37 give output identical to v23; check 38 is new. Version 23 (T9-16 (b), the Principal, 2026-10-29;
 the Professor's modelling, for review; nothing adopted): in g0, a withdrawal or restoration counts only if its actor
 holds a grant over the scope of the evidence entry it bears on; others are shown with their cause, not counted; the
 producer has no special right; v22's rule stays available (withdrawers='any'). Checks 1-36 give output identical to
@@ -1301,7 +1305,25 @@ def append_W(rec, e):
     return True, None
 
 
-def wclass(rec, s, about, purpose=None, producers='authorised', withdrawers='scope'):
+def class_two_valued(ref, sup):
+    """v24 (T9-17 (b)): the class for two-valued inputs."""
+    return {(T, T): 'contested', (T, F): 'refuted', (F, T): 'supported', (F, F): 'not attested'}[(ref, sup)]
+
+
+def class_candidates(ref, sup):
+    """v24: the classes over every two-valued completion of the Kleene inputs, in a fixed order."""
+    order = ['refuted', 'contested', 'supported', 'not attested']
+    got = {class_two_valued(r, s) for r in ((T, F) if ref == U else (ref,)) for s in ((T, F) if sup == U else (sup,))}
+    return [c for c in order if c in got]
+
+
+def class_contested(ref, sup):
+    """v24: the class is shown only if every completion agrees; otherwise U (the candidates go into the reasons)."""
+    c = class_candidates(ref, sup)
+    return c[0] if len(c) == 1 else 'U'
+
+
+def wclass(rec, s, about, purpose=None, producers='authorised', withdrawers='scope', combine='contested'):
     """The displayed class at the cut of the first s entries (the Professor's rule g0, for review; §9.18):
     an evidence entry is LIVE if its producer is authorised (its atom; producers='any' skips this), it is not annulled
     (correction: standing's annulment, voids from the start), and, for the purpose asked, no withdrawal of it is in effect
@@ -1313,7 +1335,12 @@ def wclass(rec, s, about, purpose=None, producers='authorised', withdrawers='sco
     counts only if it is authorised AND its scope covers the scope of the evidence entry it bears on, i.e. its actor
     holds a grant over that scope; others are accepted and shown with their cause, not counted. The producer has no
     special right. withdrawers='any' is v22's rule (any authorised withdrawal, whatever its scope). Not modelled: which
-    act kinds a grant authorises (grants carry no act kind; any grant over the scope suffices)."""
+    act kinds a grant authorises (grants carry no act kind; any grant over the scope suffices).
+    v24 (T9-17 (b), the Principal, 2026-10-29): combine='contested' (the decided rule): with ref = some refutation live
+    and sup = some support live (Kleene values), the class is 'contested' if both are T, 'refuted' if ref = T and
+    sup = F, 'supported' if sup = T and ref = F, 'not attested' if both are F; otherwise U, and the reasons end with
+    the classes the U could resolve to (the Professor's stipulation: a shown class is forced, as CE*'s T and F are).
+    combine='g0' is v23's rule (refutation first)."""
     for test in (in_D_S, in_D_W):                  # v22 (A-02, B F3): the whole record, as ce_star_cut (T1-01)
         ok, why = test(rec)
         if not ok:
@@ -1367,6 +1394,9 @@ def wclass(rec, s, about, purpose=None, producers='authorised', withdrawers='sco
         reasons.append((e['id'], e['polarity'], v, tuple(cause)))
     ref = k_or(F, *[v for p, v in live.values() if p == 'refutes'])
     sup = k_or(F, *[v for p, v in live.values() if p == 'supports'])
+    if combine == 'contested':                     # v24 (T9-17 (b))
+        return (class_contested(ref, sup), reasons if ref in (T, F) and sup in (T, F)
+                else reasons + [('(class)', None, U, ('U: one of ' + ', '.join(class_candidates(ref, sup)),))])
     if ref == T:
         c = 'refuted'
     elif ref == U:
@@ -2480,6 +2510,10 @@ if __name__ == '__main__':
     print(f'(33) a W-clause breach (polarity) leaves standing in D_S and the record outside D_W: {wbreach33} of {n33} (by construction of the two tests)')
     assert n33 > 100 and vals33 == n33 and marks33 == n33 - wout33 and wbreach33 == n33 and min(wvals33.values()) > 0
     # (34) v22: the class rule g0, on fixtures; reasons carry causes
+    # v24: checks 34-37 keep v23's combination rule (refutation first, combine='g0') so that their output is unchanged;
+    # the decided rule (T9-17 (b)) is checked in (38)
+    _wclass_v24 = wclass
+    wclass = lambda *a_, **k_: _wclass_v24(*a_, **{'combine': 'g0', **k_})
     D34 = {('s', 's')}
     gA = G('gA', 'P', ['r'], 'A')
     def ev(i, pol, actor='A', cites=('gA',), about='k', scope='s', t=2):
@@ -2605,4 +2639,46 @@ if __name__ == '__main__':
     for k_, v_ in res37.items():
         print('(37)', k_, '->', 'PASS' if v_ else 'FAIL')
     assert all(res37.values())
+    wclass = _wclass_v24
+    # (38) v24: T9-17 (b), 'contested' while a live support and a live refutation both exist; the U cases (one side surely
+    # live, the other only possibly) give U with the candidate classes named; the no-purpose default is kept
+    res38 = {}
+    table38 = {(r_, s_): class_contested(r_, s_) for r_ in (T, U, F) for s_ in (T, U, F)}
+    expect38 = {(T, T): 'contested', (T, F): 'refuted', (F, T): 'supported', (F, F): 'not attested',
+                (T, U): 'U', (U, T): 'U', (U, U): 'U', (U, F): 'U', (F, U): 'U'}
+    res38['the nine Kleene input pairs give the stated classes'] = table38 == expect38
+    cand38 = {(T, U): ['refuted', 'contested'], (U, T): ['contested', 'supported'], (U, F): ['refuted', 'not attested'],
+              (F, U): ['supported', 'not attested'], (U, U): ['refuted', 'contested', 'supported', 'not attested']}
+    res38['each U names the classes it could resolve to'] = all(class_candidates(*k_) == v_ for k_, v_ in cand38.items())
+    def refines(x, y):
+        return x == y or x == U
+    mono38 = all(class_contested(r1, s1) in ('U', class_contested(r2, s2))
+                 for r1 in (T, U, F) for s1 in (T, U, F) for r2 in (T, U, F) for s2 in (T, U, F)
+                 if refines(r1, r2) and refines(s1, s2))
+    res38['monotone: refining a U input never changes a shown class (a shown class is forced)'] = mono38
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'))
+    c_, why_ = wclass(r, len(r.e), 'k')
+    res38['live support and live refutation: contested, both entries listed (v23 gave refuted)'] = \
+        c_ == 'contested' and {w[0] for w in why_} == {'e1', 'e2'} and wclass(r, len(r.e), 'k', combine='g0')[0] == 'refuted'
+    r = R34(ev('e2', 'refutes'))
+    res38['refutation alone: refuted'] = wclass(r, len(r.e), 'k')[0] == 'refuted'
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'), xa)
+    res38['correction (annulment of the refutation): contested before it, supported after'] = \
+        wclass(r, 4, 'k')[0] == 'contested' and wclass(r, 5, 'k')[0] == 'supported'
+    r = R34(ev('e1', 'supports'), ev('e2', 'refutes'), wd)
+    res38['withdrawal of the refutation for p: supported for p, contested for q and with no purpose named (default kept)'] = \
+        wclass(r, len(r.e), 'k', purpose='p')[0] == 'supported' and wclass(r, len(r.e), 'k', purpose='q')[0] == 'contested' \
+        and wclass(r, len(r.e), 'k')[0] == 'contested'
+    r = R34(ev('e1', 'supports'), ev('e4', 'refutes', scope='s/x'))
+    c_, why_ = wclass(r, len(r.e), 'k')
+    res38['support surely live, refutation possibly (producer authority U): U, candidates supported or contested'] = \
+        c_ == 'U' and ('(class)', None, U, ('U: one of contested, supported',)) in why_
+    r = R34(ev('e2', 'refutes'), ev('e5', 'supports', scope='s/x'))
+    c_, why_ = wclass(r, len(r.e), 'k')
+    res38['refutation surely live, support possibly: U, candidates refuted or contested (v23 gave refuted)'] = \
+        c_ == 'U' and ('(class)', None, U, ('U: one of refuted, contested',)) in why_ \
+        and wclass(r, len(r.e), 'k', combine='g0')[0] == 'refuted'
+    for k_, v_ in res38.items():
+        print('(38)', k_, '->', 'PASS' if v_ else 'FAIL')
+    assert all(res38.values())
     print('all assertions passed')
