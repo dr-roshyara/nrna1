@@ -56,14 +56,15 @@
 |---|---|---|
 | 2 | Professor | T9-17 (b) **applied** (`c32ea453e`, v24, checked by the Governance Engineer; the U statement unreviewed — question to the Principal); B-04/B-05 note received (neither used nor rejected; a routing gap, self-reported); then adopting the evidence kinds, naming T10-21, the map's "guard" choice — each to the Principal one at a time; T9-18 (a model check, not for the Principal) |
 | 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
-| 4 | Governance Engineer | **check the S0225 consolidation briefs** against the template (G1–G7); no test there |
-| 5 | Governance Engineer | **prepare the S0250 planted-gap test** (mandate §8.3), aimed at the classes missed at S0200 (ordinary undefined word; removed claim); its preparation checked by a separate session (§8.3a) before reviewers start |
+| 4 | Governance Engineer | **S0226–S0252 consolidation (a test):** briefs checked at `bf5c3fb22`, G1–G7 pass; two fixes applied by the Professor (`adf8f34a3`, verified). Copy with plants prepared (`5e89f9916`; key and manifest hashes in the access record, `4b2316328`); key and manifest in this session's scratchpad `pg2/` |
+| 5 | Principal → separate session | **independent check of the preparation** (mandate §8.3a, C1–C6), reporting to the Principal only; reviewers A and B start only on PASS. Then scoring (§8.5) after every report is saved |
 | 6 | Professor | confirm the implementation-candidates list (`IMPLEMENTATION-CANDIDATES-S0200.md`) and answer its §4 point 2 (the estate's record is outside D) — before the stage-1 decision |
 | 7 | Professor | Ch. 10 revision for T10-17–T10-21 (routed C items; naming) before any tactical design; then the Lead DDD Architect's review of it (bundled with the Ch. 10 changes at `8e4b1a420`), then the auditor's full rerun |
 
 ## Waiting for
 
-- The T9-17 question; the C45 review and settlement; the S0225 consolidation briefs (Professor), then the Governance Engineer's checks.
+- The §8.3a check of the S0226–S0252 test copy (separate session, to the Principal); then reviewers A, B and the integration review (Professor).
+- **Noted:** windows C46–C52 checked 2026-10-30 (hashes OK; 0 critical; all findings accepted, C51 W-10 in part). The U-case statement of g1 (§9.18.5 L192–L201) is in reviewer B's scope (`adf8f34a3`), which replaces the separate review proposed earlier.
 
 ## Next milestones
 
