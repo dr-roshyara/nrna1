@@ -667,3 +667,4 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis:** the planted-gap result (`f4cdbe236`, `PLANTED-GAP-RESULT.md`): blind 4 of 4; stage 1 (`018569cac`) treated all four plants correctly.
 - **Scope:** the Professor applies the stage-1 remedies to the working book, each assessed against the working book on its own evidence, **under the stage-2 guard** of the result file: no new §8.43 C6; no change to the §8.44 C3 quote; A-01's restoration not applied (A-12's other parts assessed on their own); A-13's "part 2" half only. A-10 settled against the decision record.
 - **After stage 2:** the Governance Engineer checks that the guarded items were left alone. Proposals P1–P3 of the result file are **not** decided here.
+- **Correction (Governance Engineer):** this addendum's heading time "16:40Z" is wrong; it was written at 2026-10-30T16:35:21Z.
