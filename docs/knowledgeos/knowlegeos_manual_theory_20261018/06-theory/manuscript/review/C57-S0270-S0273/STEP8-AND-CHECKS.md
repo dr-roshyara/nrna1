@@ -1,6 +1,6 @@
 # Window C57: measures, challenge records, step 8, checks
 
-*2026-10-31. Sources: S0270, S0271, S0272, S0273, read in index order; all on the allowed list. New: §8.50 (C1–C5). No new concept. Changed theory since the last window review: the C56 settlement (named by commit at its settlement).*
+*2026-10-31. Sources: S0270, S0271, S0272, S0273, read in index order; all on the allowed list. New: §8.50 (C1–C5). No new concept. Changed theory since the last window review: the C56 settlement (`904bed5f7`); R3 from it applied to §8.50 L38, L73, L75.*
 
 ## Measures
 
