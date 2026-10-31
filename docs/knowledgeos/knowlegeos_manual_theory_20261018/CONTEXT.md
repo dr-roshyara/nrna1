@@ -6,7 +6,7 @@
 
 - Reading position **S0302**; consolidation gate 25 of 25. **Consolidation S0278–S0302** (a planted-gap test; Ch. 2 and Ch. 3 rotated): briefs and freeze record at `94183183a`. **Waiting:** the Governance Engineer prepares the copy; the Principal confirms the independent check of the copy; only then are reviewers A (Sonnet, Ch. 2), B (Opus, Ch. 3), C (Opus, §8.52–§8.61 and passages) started. The working book is frozen for the scope.
 - Windows C59–C68 (§8.52–§8.61) settled. Blocker ranking for the Principal: `06-theory/manuscript/review/BLOCKERS-S0278-S0302.md`.
-- Open for the Principal: the book-wide application of the outside-authors rule (the incompleteness theorem's author named about 30 times in 7 files; two names in the T10-03 TODO row), proposed for after the settlement.
+- After the settlement (the Principal's ruling, 2026-10-31): apply the outside-authors rule book-wide, theorem names included (prose "the incompleteness theorem"; quotations "[IT]"); paths and filenames unchanged.
 
 ## The run in progress (the Principal's instruction, 2026-10-19: "continue to S0100, then stop")
 
