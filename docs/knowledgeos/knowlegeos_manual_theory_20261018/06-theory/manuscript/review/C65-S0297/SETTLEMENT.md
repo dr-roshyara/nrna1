@@ -30,5 +30,5 @@
 |---|---|
 | Reviewer W, step 2–3 | 361.8 s (harness, cumulative as reported), 26 tool uses |
 | Findings | 9 (3 high, 6 normal; 0 critical); all accepted, one divergence disclosed |
-| **Professor's effort (wall-clock between tool calls, logged at phase boundaries)** | reading: not measured · drafting: not measured (both before the instruction) · settlement: 21 s (brief, 16:16:37–16:16:58Z) + EFFORT_SETTLE · rework: 1 min 18 s (16:23:10–16:24:28Z: verification, §8.58 restated) |
+| **Professor's effort (wall-clock between tool calls, logged at phase boundaries)** | reading: not measured · drafting: not measured (both before the instruction) · settlement: 21 s (brief, 16:16:37–16:16:58Z) + 1 min 44 s (records and settlement, 16:24:28–16:26:12Z) · rework: 1 min 18 s (16:23:10–16:24:28Z: verification, §8.58 restated) |
 | Method note | as at C63–C64 |
