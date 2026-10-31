@@ -97,3 +97,10 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 - **Principal (verbatim):** "No additional file access is granted by this message. Please retain the correction to I-006 and clearly identify the five candidate files recorded as basis files for Chapters 0–2. When the Stage 1 package is prepared, present the proposed files and the reason each is needed so I can decide access individually. Do not open any currently ungranted files."
 - **Decided:** no file is granted. The I-006 groundwork keeps its correction; the five Ch. 0–2 basis files are marked in its §2 table (rows 1, 2, 3, 10, 11). **At the stage-1 package**, the Governance Engineer presents each proposed file with the reason it is needed; **the Principal decides each individually.** No ungranted file is opened.
 - **Not decided here:** any grant.
+
+### I-010 (2026-10-31T12:28:25Z): a start command for the Verification Auditor
+
+- **Principal (verbatim):** "yes create" — on the Governance Engineer's offer to create `/role-verification-auditor` (after the Principal's "Unknown command: /role-verification-auditor").
+- **Done:** `.claude/skills/role-verification-auditor/SKILL.md` created (sha256 `97cfc6fa57783886304126da0d36b98fdff9ebb9ff39dd30f75d6b578a410ccd`), built like `/role-lead-ddd-architect`: it confirms the approved mandate revision (revision 3, by sha256), reads both decision records, and **stops unless an I-entry authorises the requested run and its commission exists**; then follows the mandate and the commission. User-invoked only.
+- **No authority is added:** the command only checks what mandate revision 3 (I-004) and the decision records already state.
+- **Not decided here:** the timing of part B rerun 2 (I-004 set it after the Ch. 10 revision for T10-17–T10-21; the commission `review-implementation/COMMISSION-PART-B-RERUN-2.md` is written and PROPOSED, not authorised).
