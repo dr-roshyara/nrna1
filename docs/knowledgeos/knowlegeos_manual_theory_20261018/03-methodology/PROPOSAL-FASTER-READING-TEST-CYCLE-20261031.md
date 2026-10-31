@@ -23,7 +23,7 @@
 | Sources per working day, consolidations included | **about 25–30** |
 
 **[I] What the baseline shows:**
-1. **The review is not the time bottleneck:** about 10 minutes of reviewer time per window, against a day that settles 7–9 windows. The Professor's drafting and settlement take most of the day.
+1. **The review is not the time bottleneck:** about 10 minutes of reviewer time per window, against a day that settles 7–9 windows. *Correction (2026-10-31, the same day):* that the Professor's drafting and settlement take most of the day is **inferred, not measured**: the Professor's reading log records bookkeeping times only (e.g. C58: S0274–S0277 "opened" and "closed" within one minute), so **where the time goes is unknown**. See S8.
 2. **Findings per window are nearly constant (about 11) whatever the window size (2–5 sources).** Either the windows have similar numbers of errors, or a review finds about as many as it has attention for. The second reading is the risk of larger windows: **more sources per review could mean the same number of findings and more errors missed.** The test must be able to tell these apart (§4).
 3. **Planted-gap results improved after the S0200 rules:** S0100 4 of 8; S0150 3 of 5; S0200 2 of 4; **S0252 4 of 4** (blind).
 
@@ -53,7 +53,7 @@
 
 ## 4. Success criteria (fixed before the test starts)
 
-*Step 0, before the first test window: the Governance Engineer fixes the baseline values below from the records and commits them with this proposal's approval.*
+*Step 0, before the first test window: the Governance Engineer fixes the baseline values below from the records; the Professor records S8's time split for at least three windows under the present rules; both are committed before the test starts.*
 
 | # | Criterion | Measure | Success |
 |---|---|---|---|
@@ -63,6 +63,7 @@
 | S4 | Planted-error detection | the planted-gap test at the cycle's second consolidation, blind score | **at least 3 of 4** found, with correct stage-1 treatment for each found plant |
 | S5 | Review workload | reviewer harness time per window; per source | per source **not below 60 %** of baseline (a sign of thinner review), and no window review over **30 minutes** without a split |
 | S6 | Coverage | every source in every window in the blind inventory and the per-source coverage table | **100 %** |
+| S8 | Where the time goes (measured, not a pass/fail criterion) | the Professor's harness time per window, split into reading, drafting, settlement and rework (corrections after review, regressions), recorded in each settlement's measures table **from step 0, before the test**, for at least three baseline windows | reported with the result; it decides whether larger windows can help at all, or whether another stage is the bottleneck |
 | S7 | The Professor's own errors | self-caused regressions reported in settlements (e.g. C58: a follow-on edit undoing a settled result) | **not more than** in the 16 baseline windows, scaled to sources |
 
 ## 5. Rollback conditions (the test stops at once, and v1.4 is restored)
