@@ -681,3 +681,14 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Process note (Governance Engineer):** decisions given to the Professor directly reach this record only when the Principal tells the Governance Engineer. From now on the Professor's report of such a decision is answered with a copy-ready line for the Principal to confirm.
 - **Not decided here:** the Verification Auditor's re-run timing (still open); T10-17–T10-20 (open, the Professor's).
 - **The message completed (verbatim, sent separately):** "them", so the full words are "i agree with your suggestion. record the[m]".
+
+## Addendum 2026-10-31T14:56:11Z: consolidation S0253–S0277, part 2 — Q-A, Q-B, Q-C (recorded by the Governance Engineer)
+
+- **Principal (verbatim):** "Q-A: the T9-19 adoption includes W's acceptance rule G8 with (c3) and the two-level domain; Q-B: g1 adopted; Q-C: F's definition renamed 'ended, or not recognized'."
+- **How:** the Principal answered the Professor's three part-2 questions directly; the Professor applied them (part 2, `e8e787e00`) and gave a copy-ready line; the Principal confirmed it to the Governance Engineer in the words above (the practice of 2026-10-31).
+- **Decided:**
+  - **Q-A:** the adoption of the evidence kinds (T9-19) **includes** the evidence area's acceptance rule G8 with clause (c3) and §9.18.6's two-level domain: a breach of W's rule leaves standing's answers untouched (Ch. 10's dependency R6 superseded for such breaches).
+  - **Q-B:** the class rule **g1 is adopted** (no longer only modelled).
+  - **Q-C:** F's **definition** is renamed "ended, or not recognized" (§9.13 and its restatements), in addition to T10-21's display rule (never "refuted").
+- **Verified by the Governance Engineer (2026-10-31):** both settlement commits exist (part 1 `3c7a18f31`, 48 files; part 2 `e8e787e00`, 21 files); "ended, or not recognized" stands in §9.13 and in §8.31, §8.33, §8.40; the R2-03 answer (I-012) stands in §10.3.3 row B (`10.03` L114: "guaranteed by the rule, Ded", enforcement point open); `10.05` L75 and L103 aligned with T9-19.
+- **Not decided here:** where g1 sits (kernel or application; T10-20); the enforcing context of the display duty (PL-14); any mission, kernel specification or Constitution.
