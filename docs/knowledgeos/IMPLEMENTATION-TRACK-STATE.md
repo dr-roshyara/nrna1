@@ -24,7 +24,7 @@ Mandates: `knowlegeos_manual_theory_20261018/03-methodology/MANDATE-*.md`.
 | G1 (evidence in the record) | theory turn settled (`8e4b1a420`); evidence kinds proposed, not adopted; T9-12 (c) and T9-16 (b) decided; T9-17 pending |
 | Implementation-candidates list | draft (`IMPLEMENTATION-CANDIDATES-S0200.md`), awaiting the Professor's confirmation |
 
-**Principal's directions for SD1-05 (2026-10-31, I-013; confirmed directions, not an adopted mission or kernel specification):** D1 EKS is one capability of KnowledgeOS; D2 engineering knowledge is the current domain (PublicDigit now; other software-building organisations later); D3 analysis and recommendations are capabilities around the kernel, not the kernel's. With mission C and the PKS input (I-006 groundwork §3a–§3d). Open: whether these count as §5a's purpose statements (the Principal's to say); the "EKS retired" ruling; formal adoption of the purpose (T0-02).
+**Principal's directions for SD1-05 (2026-10-31, I-013; confirmed directions, not an adopted mission or kernel specification):** D1 EKS is one capability of KnowledgeOS; D2 engineering knowledge is the current domain (PublicDigit now; other software-building organisations later); D3 analysis and recommendations are capabilities around the kernel, not the kernel's. With mission C and the PKS input (I-006 groundwork §3a–§3d). **They count as §5a's purpose statements (I-014); §5a still waits for the stage-1 package.** Open: the "EKS retired" ruling; formal adoption of the purpose (T0-02).
 
 ## Role environment (pilot)
 
