@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | W-01 | high | **V (Professor):** S0296 L18 | Accepted. Handoff 1 = the skipped step, handoff 2 = the catch; "twice" holds under neither reading as two correct routings; my C62 R3 note corrected | §8.57 C4, PL4, §8.57.5; R3 §8.55 C1 |
 | W-02 | high | **V (Professor):** S0296 L14–20, L24–26, L33, L38–45 | Accepted. Agreement limited to the act's content; the record's sentences beyond the act in two readings; §8.41 C2's premise stated | §8.57 C4, PL4, §8.57.5; R3 §8.60 C4 |
-| W-03 | high | **V (Professor):** S0295 L1005, L1117, L1143, L1253–1255, L1462 | Accepted. The settled readings carried; L1255 fits (b)/(i); views (b); the trivial case | §8.57 C3, PL3, challenge, §8.57.5; §8.58 C3 consistent |
+| W-03 | high | **V (Professor):** S0295 L1005, L1117, L1143, L1253–1255, L1462 | Accepted. The settled readings carried; L1255 fits (b)/(i); views (b); the trivial case | §8.57 C3, PL3, challenge, §8.57.5; §8.58 C3 consistent *(did not hold: §8.58 C3 kept two readings; corrected at the C65 settlement, W-02)* |
 | W-04 | high | **V (Professor):** S0295 L639–642; R for S0293 L76, S0292 L11 | Accepted. "Excluded" under the voice reading and the premise on the asker; two more matches added | §8.57 C1, PL1, challenge, §8.57.5; R3 §8.54 C1, §8.55 C3, §8.56 lineage, §8.58 C1, §8.61 C4 |
 | W-05 | normal | **V (Professor):** S0241 L45–47, L100 | Accepted. Confidence as one axis value; Art 2.3 only for a cross-axis aggregate; Art 9.3, §8.31 C1, §8.37 L117 | §8.57 C2, PL2, challenge, §8.57.5; R3 §8.55 C5, §8.58 C3 |
 | W-06 | normal | R | Accepted. Meaning homed in Art 1.1–1.2 and S0294 L1055; Art 1.4 a requirement | §8.57 C3 |
