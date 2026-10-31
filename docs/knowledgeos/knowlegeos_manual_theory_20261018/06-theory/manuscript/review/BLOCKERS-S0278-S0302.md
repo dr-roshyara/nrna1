@@ -4,7 +4,7 @@
 
 ## Method, and its limits
 - **Inputs:** the ten chapter `TODO.md` files (186 rows; 168 not marked Resolved), the map's forks (`THEORY-MAP.md` §7), §10.2's gap list G2–G11, and `tmp/tools/dependency_graph.py`.
-- **Measure:** the number of book sections (of 156) that cite the question by any of its identifiers. Related identifiers are grouped into one question (for example G10, T9-14, T9-18 and "§8.39 C3 (b)" are one question about item identity).
+- **Measure:** the number of book section files that cite (the graph counts 148 sections) the question by any of its identifiers. Related identifiers are grouped into one question (for example G10, T9-14, T9-18 and "§8.39 C3 (b)" are one question about item identity).
 - **Limits:**
   - **The dependency graph does not discriminate here:** `--down` on any of the candidate home sections reaches the same large cluster (299 items from §8.39), as Rulebook §12d warns. The ranking therefore uses direct citations, which count explicit reliance only.
   - Identifier matches can include unrelated uses (two "G" series exist: §9.15's guarantees and §10.2's gaps).
