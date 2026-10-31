@@ -13,22 +13,23 @@
 
 ## Step 8
 
-- **Dependencies:**
-  - C1: §8.50 C3, C4; §8.52 C4; A1; decision C1; §8.36 C1.
-  - C2: decision C1; §8.41 C2; §9.17; §8.19; T9-16; §8.36 C1.
-  - C3: §8.47 C5; §8.48 C4; §8.51 C2; §8.54 C1; S0250 L114.
-  - C4: §8.36 C4 (iii); S0241 Art 1.4, Art 2, Art 8, Art 11.2; §8.35 C4; §1.16.2; §8.54 C3.
-  - C5: S0241 Art 1.1, 1.2; §8.49 C2; CON-0188; §8.39 C3; §8.35 C1; §8.49.3; §8.31 C4; §8.52 C2.
+- **Dependencies (as settled, W-17):**
+  - C1: §8.50 C3, C4; §8.52 C4; A1; decision C1; §8.36 C1; §8.57 C4.
+  - C2: decision C1; §8.41 C2; §9.17; §8.19; §9.18; §8.36 C1.
+  - C3: §8.44 C1; §8.45 C1; §8.47 C1, C5; §8.48 C4; §8.51 C2; §8.54 C1; S0250 L114; S0287 L13; §8.57 C1.
+  - C4: §8.39 C3; §8.36 C4 (iii) (not a home for "stores"); S0241 Art 1.4, Art 2, Art 8.1, Art 11; §8.35 C4 (i-a); CON-0188; §8.54 C3, C4.
+  - C5: S0241 Art 1.1, 1.2, 1.4, 2.3, 3.3; §8.49 C2; CON-0188; §8.39 C3; §8.35 C1; §8.49.3; §8.31 C4; §8.52 C2; §8.57 C2; §8.58 C5.
+  - *Draft list (superseded):* C2 had T9-16; C4 had §8.35 C4, §1.16.2, Art 8, Art 11.2.
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
-- **R2 (§8.55):** one tier A word, "designee" (L25), an ordinary word in its sense (the grant's designated holder); no concept left undefined, so no TODO row.
+- **R2 (§8.55):** at drafting only "designee" was judged; at review W judged all twelve in-scope candidates (`c62-w-r2.txt`): "template" has two senses in the window, and §8.55 C1 now names the agent templates; the others are ordinary words or defined in place. No concept left undefined, so no TODO row.
 - **Quote check:** "(Lx)" citations are not read by the tool; quotes checked by hand.
-- **R3:** no existing claim changed.
+- **R3 (settlement):** §8.57 C4 (W-01) and §8.57 C5 and its homes row (W-04) annotated; §8.58 L65 consistent (W-13).
 
 ## The Principal's directions D1–D3 (I-013): meeting points in this window (for the report; not used as evidence, not written into the book)
 
 | Direction | Where this window meets it | Label |
 |---|---|---|
 | D3 | S0292 L57: "the 'semantic grammar' is the internal language of the *engine*, never a kernel law"; S0290 L33, S0292 L39: mechanism candidates, "none a kernel law" | Src: agrees in wording with D3 |
-| D3 | S0290 L47: "the kernel stores the semantic roots and rules, not the generated expressions" | Src: under one reading (kernel in the book's sense) a content store in the kernel, a difference from D3's "around the Kernel" and from §8.36 C4 (iii); open (§8.55 C4, two readings) |
+| D3 | S0290 L47: "the kernel stores the semantic roots and rules, not the generated expressions" | Src: S0290 uses "kernel" in the narrow sense throughout, so L47 stands against its own L85 ("none enter the kernel"); if a root is an "identity origin" (L33), L47 concerns identity, not stored content, and no difference from D3 is shown; open (§8.55 C4 as settled, W-02) |
 | D1 | S0291 L114: "no `EKS-07` opened"; S0288 L123, S0289 L31 likewise | Src: EKS-07 named as a backlog item; no statement on EKS's relation to KnowledgeOS; open, no difference shown |
 | D2 | not met | — |
