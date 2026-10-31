@@ -20,7 +20,7 @@
   - C4: §9.14; §9.18.6; §10.5 PL-3; §9.13 R3; §8.52.
   - C5: §8.53 C3; §1.14.1; §8.51 C1; §1.17.2; T10-03.
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
-- **R2 (§8.54):** checked at commit (no tier A at a §8.54 line expected).
+- **R2 (§8.54):** checked at commit (no tier A at a §8.54 line expected). *Corrected at the settlement (W-10): the tool gives four tier A words at §8.54 lines (artist, logician, stopper, asker); the first three are role labels the naming rule requires, "asker" is ordinary; "stopper" left the restated title; "local" is glossed by stage in C4.*
 - **R3:** §8.54 C3 finds §8.52 C5 (b) wrong against S0241 Art 1.4; the correction is for the C59 settlement (§8.52 is under review).
 - **Earlier use disclosed:** S0287 in §9.14 (topic-full read, theory turn 5).
 
