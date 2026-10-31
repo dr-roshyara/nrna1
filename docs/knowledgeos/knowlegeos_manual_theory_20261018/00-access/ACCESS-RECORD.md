@@ -562,3 +562,8 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Disclosure 3:** the session's start hook injected repository memory files (outside `docs/knowledgeos/`); not used in any comparison.
 - **Disclosure 4:** the forced write location (above). The fixture test `Phase0BackTest` reads a `docs/knowledgeos/architecture/` file through `git show`, content not viewed (as in part A, disclosure 1).
 - **Checked independently by the Governance Engineer:** R2-01 (well-foundedness has no counterpart in the code): in the 84 production PHP files of `scripts/lib/EngineeringKnowledge/` (tests excluded), polarity, refut, producer, restor, "not attested", "accepted by", tombstone, annul, append, evid, ewdr, erst occur **0** times as words; `Assessment` holds verdict, evidence string and subject only (`Shared/Domain/Assessment.php:29–33`); `git diff f7504c6c9 HEAD` is empty for the library. **Confirmed.**
+
+## Entry 2026-10-31T13:43:48Z: Governance Engineer, corpus lines read for the kernel-aim review
+- **Purpose:** the Principal's request to establish the corpus-native kernel aim (2026-10-31); mandate §5 (corpus access to check quotations). Passages located through the book's citations; each read in the source.
+- **Read (all on the allowed list; lines only):** S0167 L1046–1052, L1137–1141, L1575–1578; S0176 L147–150, L155–158; S0187 L219–222; S0202 L1450–1457; S0218 L760–786; S0237 (search for "constrains", "does not reason"; L271); S0241 L1–13, L49–52, L57–80, L146–155; S0243 L20–32, L72–76, L104–109, L136–142. Nothing beyond S0277; no sealed, hold-out or non-allowed file.
+- **Result:** `03-methodology/KERNEL-AIM-IN-CORPUS-REVIEW-20261031.md`. Nothing passed to the Professor.
