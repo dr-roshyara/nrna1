@@ -187,7 +187,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 
 *Recorded 2026-10-23, at the consolidation due at S0125 (held after C24). Each consolidation reviews one or two older chapters in full, those reviewed longest ago first, so that each chapter is reviewed in full about once per 100–150 sources.*
 
-**Last full review of every chapter:** the whole-book review S0100 (2026-10-19/20). Since then:
+**Last full review of every chapter (as of 2026-10-23; the table below records later rotations; consolidation S0253–S0277, C-15):** the whole-book review S0100 (2026-10-19/20). Since then:
 - Ch. 8 (§8.12–§8.17) and Ch. 9 (§9.8, §9.13–§9.16) were reviewed section by section, in windows, turns and commissions;
 - Ch. 0–6 were changed only at the S0100 stage 2 and by pointers.
 
