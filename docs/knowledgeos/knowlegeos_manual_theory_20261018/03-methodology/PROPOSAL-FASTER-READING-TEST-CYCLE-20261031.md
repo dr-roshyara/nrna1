@@ -40,6 +40,8 @@
 | C3 | Planted-gap test | every second consolidation (every 50 sources) | **unchanged rule** (every second consolidation), so **every 100 sources** — during the test cycle the second consolidation carries a test |
 | C4 | Window review | one reviewer per window | one reviewer per window up to **about 4,000 source lines**; above that, **two commissions** splitting the sources (the rule's existing split for ten) |
 
+**What the test can and cannot show [I] (added 2026-10-31 on an outside review):** C1–C4 are tested **as one bundle**. A result says whether the combined workflow met the criteria; it cannot say which change caused it. If the bundle fails, larger windows with the present 25-source consolidation (C1 alone) remain untested, not rejected; the report says which criteria failed so a narrower test can be proposed.
+
 **Not changed:** the core loop per source (§2), reading depth (§3: full, skim only for purely operational sources), the blind step-1 inventory, the quote check, R1–R3, the two-model consolidation review and its integration, the planted-gap procedure (mandate §8.3, §8.3a), settlement rules (§6.4), the allowed list and access rules (§7).
 
 ## 3. Quality safeguards (required during the test)
@@ -66,6 +68,14 @@
 | S8 | Where the time goes (measured, not a pass/fail criterion) | the Professor's harness time per window, split into reading, drafting, settlement and rework (corrections after review, regressions), recorded in each settlement's measures table **from step 0, before the test**, for at least three baseline windows | reported with the result; it decides whether larger windows can help at all, or whether another stage is the bottleneck |
 | S7 | The Professor's own errors | self-caused regressions reported in settlements (e.g. C58: a follow-on edit undoing a settled result) | **not more than** in the 16 baseline windows, scaled to sources |
 
+**How the criteria are read (added 2026-10-31 on an outside review):**
+- **S2 is a diagnostic, not proof of quality.** Any material fall in findings is explained in the report, with a comparison of the source mix (kinds of source, length, adviser vs record) against the baseline.
+- **S3** states its denominator (sources in order), its severity rules and the exact material counted, the same for baseline and test; it counts **detected** misses, not all misses.
+- **S4** is reported as a raw count with its limit: four plants are a check, not statistical evidence of equal reliability.
+- **S5** is a workload guardrail, read together with S3, S4 and S6; less time per source is not by itself weaker review.
+- **S8** uses fixed, mutually exclusive categories, **active working time** kept apart from elapsed time (waiting for tools or reviewers), and is recorded **throughout the test**, not only for the baseline.
+- **A passed test** means: "the combined workflow met the predefined thresholds for this cycle". It does not mean the method is proven equally reliable for the rest of the corpus; monitoring continues if it is retained.
+
 ## 5. Rollback conditions (the test stops at once, and v1.4 is restored)
 
 1. **A critical finding** in any window or consolidation that the window review should have caught (a source in that window).
@@ -75,7 +85,7 @@
 5. **Three self-caused regressions** by the Professor in the cycle.
 6. **The Principal stops it**, at any time.
 
-On rollback: v1.4's window and consolidation rules apply from the next window; the windows already read are **not** re-read, but the next consolidation re-checks them with the present rules; the result is reported as in §7.
+On rollback: v1.4's window and consolidation rules apply from the next window; the windows already read are **not** re-read, but the next consolidation re-checks them with the present rules, **and every defect found in test-period material goes through the full corrective process** (finding, settlement, R3, change log) like any other; the result is reported as in §7.
 
 ## 6. Rulebook and other documents affected (for the test cycle only)
 
@@ -96,7 +106,7 @@ On rollback: v1.4's window and consolidation rules apply from the next window; t
 
 - **When:** after the consolidation now due (S0278–S0302; the reading tool shows 22 of 25 at S0299). **That consolidation is the second after S0252, so it carries a planted-gap test under the present rules** (the Governance Engineer prepares it). The test cycle starts with the first window after it settles.
 - **Length:** **100 sources read in order** (about S0303–S0405, allowing for non-allowed sources), with two consolidations at 50 and 100; the second carries the planted-gap test.
-- **Report (by the Governance Engineer, after the second consolidation is scored):** each criterion S1–S7 with its measured value and baseline; any rollback; costs (reviewer and Professor harness time); a recommendation to **retain**, **modify** or **reject** the faster method, each as a decision for the Principal.
+- **Report (by the Governance Engineer, after the second consolidation is scored):** each criterion S1–S8 with its measured value and baseline; **theoretical progress in the cycle** (questions resolved, results derived or refuted), reported separately and not a pass/fail criterion; any rollback; costs (reviewer and Professor harness time); a recommendation to **retain**, **modify** or **reject** the faster method, each as a decision for the Principal.
 
 ## 8. Decisions for the Principal
 
