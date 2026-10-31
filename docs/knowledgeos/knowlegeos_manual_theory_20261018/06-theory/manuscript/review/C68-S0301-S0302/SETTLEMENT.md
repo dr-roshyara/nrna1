@@ -32,5 +32,5 @@
 | Reviewer W, step 1 | 64.1 s (harness), 6 tool uses |
 | Reviewer W, steps 2–3 | 371.9 s (harness, cumulative as reported), 24 tool uses |
 | Findings | 11 (5 high, 6 normal; 0 critical); all accepted |
-| **Professor's effort (wall-clock between tool calls, logged at phase boundaries; the first window measured in all four phases)** | reading: 40 s (15:55:27–15:56:07Z) · drafting: 3 min 2 s (15:56:07–15:59:09Z) · settlement: 16 s (re-read, brief, 16:49:16–16:49:32Z) + EFFORT_SETTLE · rework: 3 min 1 s (16:55:46–16:58:47Z: verification, §8.61 restated, R3) |
+| **Professor's effort (wall-clock between tool calls, logged at phase boundaries; the first window measured in all four phases)** | reading: 40 s (15:55:27–15:56:07Z) · drafting: 3 min 2 s (15:56:07–15:59:09Z) · settlement: 16 s (re-read, brief, 16:49:16–16:49:32Z) + 19 s (records and settlement, 16:58:47–16:59:06Z) · rework: 3 min 1 s (16:55:46–16:58:47Z: verification, §8.61 restated, R3) |
 | Method note | as at C63–C67; the drafting span includes the step-1 brief and the launch of W |
