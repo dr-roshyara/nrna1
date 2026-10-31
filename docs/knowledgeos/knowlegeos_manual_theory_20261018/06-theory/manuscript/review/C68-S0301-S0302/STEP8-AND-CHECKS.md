@@ -1,6 +1,6 @@
 # Window C68: measures, challenge records, step 8, checks
 
-*2026-10-31. Sources: S0301, S0302, both on the allowed list. New: §8.61 (C1–C5). No new concept. The consolidation gate is reached with this window (25 of 25 since S0277). Changed theory since the last window review: the C59–C62 settlements; the C63–C67 settlements are pending.*
+*2026-10-31. Sources: S0301, S0302, both on the allowed list. New: §8.61 (C1–C5). No new concept. The consolidation gate is reached with this window (25 of 25 since S0277). Changed theory since the last window review: the C59–C62 settlements; the C63–C67 settlements pending at drafting (settled `1170579e9`, `209347211`, `2f9c57114`, `9b6887ae4`, `c35336d42`; §8.61 re-read at `64bead5c6`).*
 
 ## Measures
 
@@ -14,11 +14,11 @@
 
 ## Step 8
 
-- **Dependencies:** C1: §8.42 C1; §8.31 C4; §8.51 C2. C2: §8.55 C3 (as settled); §8.54 C1; §8.47 C5; S0250 L114. C3: §8.27 C7; §9.8 H2; §9.17 L137. C4: §8.57 C1; §8.58 C1; §8.55 C3; §8.56 lineage; §8.19. C5: §8.60 C3; §8.59 C2, C5; §8.36 C1; CON-0229; §8.55 C2.
+- **Dependencies (as settled):** C1: §8.42 C1; §8.31 C4; §8.51 C2. C2: §8.55 C3; §8.54 C1; §8.47 C5; §8.44 L7–11; S0250 L110–114. C3: §8.44 L84; S0250 L114; §8.27 C7; §8.11 C8; §9.8 H2; §9.17 L137. C4: §8.57 C1; §8.58 C1; §8.55 C3; §8.56 lineage; §8.45 L7–9; §8.19. C5: §8.60 C3; §8.59 C2, C5; S0300 L105, L1398; S0253 L204; §8.36 C1; CON-0229; §8.55 C2. *Draft list (superseded):* C3 lacked §8.44 L84 and S0250 L114.
 - **Taken from W's inventory into the draft before step 2 (disclosed):** the further pre-closure stamps and L75 (C3); #25 counted twice (C1); "modifies no artifact" and the lane closure; the reflexive gap (C5).
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
-- **R2 (§8.61):** tier A 0 in scope; no undefined concept, so no TODO row.
-- **R3:** the draft's proposals on §8.59 C2 and C5 were absorbed by the C66 settlement (`9b6887ae4`): §8.59 C2 cites S0302's third measurement; §8.59 C5 now finds no tension, and §8.61 C5 was annotated to match.
+- **R2 (§8.61):** tier A 0. At review W judged all eighteen tier-D candidates: "research-bearing" replaced by the source's "lens-bearing"; "mtime" glossed; "admit" in the intake sense. No TODO row.
+- **R3 (settlement):** §8.11 C8 (L77, the filename time is the mtime) and §8.57 C4 (the C67 note's clause restated, W-10) annotated. *Earlier:* the draft's proposals on §8.59 C2 and C5 were absorbed by the C66 settlement (`9b6887ae4`): §8.59 C2 cites S0302's third measurement; §8.59 C5 now finds no tension, and §8.61 C5 was annotated to match.
 - **Quote check:** by hand; outside authors' names replaced by roles in quotations ("[a translator's work]").
 
 ## The Principal's directions D1–D3 (I-013): meeting points in this window (for the report; not used as evidence, not written into the book)
