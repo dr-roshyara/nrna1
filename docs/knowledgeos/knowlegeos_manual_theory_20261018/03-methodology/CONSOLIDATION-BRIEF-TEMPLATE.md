@@ -91,7 +91,7 @@ The book is reviewed as a **frozen copy**, so that every reviewer reads the same
 
 1. **The book is `06-theory/manuscript/review/CONSOLIDATION-<Sfirst>-<Slast>/BOOK-UNDER-REVIEW/` only.** Read its sections, map and register there.
 2. **Book search:** `python3 -I <copy>/tmp/tools/book_search.py …` (it searches the copy).
-3. **Mechanical checks, run on the copy:**
+3. **Mechanical checks, run on the copy.** Pass `--root <copy>` from your **first** call of every tool that takes it (the tools' default root is the working book). `corpus_quote_check.py` takes the copy's section files as arguments.
    - `python3 -I tmp/tools/register_home_check.py --root <copy>` (R1);
    - `python3 -I tmp/tools/undefined_terms.py --root <copy> --scope <sections in your commission>` (R2): **judge every candidate it lists for your sections, one by one**; the whole-book list is background. *(Until the tool has `--scope`, run it without and keep the lines whose first use lies in your sections.)*
    - `python3 -I tmp/tools/inbound_citations.py --root <copy> "<claim>"` (R3) for every correction you propose;
@@ -121,6 +121,7 @@ The frozen copy `BOOK-UNDER-REVIEW/` only. You may read any part of the copy tha
 1. **<the sections assigned to you in SCOPE §2.6>**, read in full, section by section: each claim against its cited source lines (allowed list only), its label (Src/Int/Ded), its homes, and the checks of REVIEWER-INSTRUCTIONS step 3. Defects of fact, attribution, label, derivation, scope, stale text, contradictions between sections, SEQ order.
 2. **Concept verdicts** for the concepts in SCOPE §2.2 homed in your sections, by its rule.
 3. **Coverage** against the inventories in SCOPE §2.3, for the windows whose sections you read: each item COVERED, MISSING, DISTORTED or JUSTIFIABLY EXCLUDED; rank the misses.
+   *(For sections no window inventory covers, such as a rotated chapter, use this item instead:)* **Coverage:** <chapter> was last reviewed in full at <consolidation>; no window inventory covers it. Instead, check every pointer from your sections to later chapters, and every TODO row in <chapter>'s `TODO.md`, against the copy: still open, resolved elsewhere (where), or stale.
 4. **R2** with `--scope` on your sections: every candidate judged.
 5. **R3** for each correction you propose; give each inbound line a disposition.
 
@@ -157,6 +158,8 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 4. **Conflicts between reviewers:** resolve each with a reason, including pairs of corrections that touch the same text.
 5. **Defects in the rotated chapters:** list the confirmed ones by reviewer; add any new defect you find while checking.
 6. **Coverage:** list any section in scope that no reviewer read in full, and the concepts left without a verdict. Do not fill the gap.
+7. **Access deviations** *(when any reviewer disclosed one; otherwise omit this item)*: disclosed by the reviewers; weigh them, do not re-run them: <each deviation, by reviewer, from the reports' file lists and the Professor's access notes>. Check a sample of the findings of any reviewer who read outside the copy on the copy, and say whether any rests on such a read.
+8. **Decisions in scope** *(when the scope includes the Principal's decisions; otherwise omit this item)*: the decision record's text for each, quoted: <quotations, with the addendum's date>. Against this text, say for each finding about them what the record decides, what the copy treats as decided beyond it, and what therefore needs a question to the Principal (state it in one sentence, with the options), rather than an edit.
 
 ## Rules (the Principal)
 <the three lines of §4's "Rules (the Principal)", copied verbatim>
@@ -175,3 +178,4 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 | Date | Change | Evidence |
 |---|---|---|
 | 2026-10-29 | First version, from the S0200 briefs (`BRIEF.md`, `SCOPE.md`, `REVIEWER-NOTE.md`, `COMMISSION-C.md`, `INTEGRATION-COMMISSION.md`) with: per-commission file lists and `00-access/` forbidden (D4); Professor-only and test files moved to `00-access/consolidations/` (D4); R2 with `--scope`, every candidate judged (D2); the missing-claim check (D3); a coverage plan before the review | S0200: reviewer A read `README-PROFESSOR.md` in the reviewers' folder; "keel" in R2's unjudged 687 lines; the C7 trace misdiagnosed; Ch. 8 §8.07–§8.26 read in full by no reviewer |
+| 2026-10-31 | REVIEWER-NOTE item 3: `--root <copy>` from the first call, and how `corpus_quote_check.py` is run (change 1); commission item 3: an alternative coverage task for sections no window inventory covers (change 3); integration items 7 (access deviations) and 8 (decisions in scope), each used only when it applies (change 4). **Not adopted:** "or any outside author's name" in the rules line (change 2; the Principal: "I do not confirm this as a Principal rule at this time") | the S0253–S0277 briefs' deviations from the fixed text (Governance Engineer's G7 check, 2026-10-31); the Principal's decision of 2026-10-31 (research record addendum of that date). Evidence: reviewer tool runs without `--root` (S0201–S0225 A; S0253–S0277 B); Ch. 0 and Ch. 1 rotated with no window inventory; S0253–S0277 A's working-book reads; the T9-19 scope question D-02 |
