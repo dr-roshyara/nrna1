@@ -48,3 +48,6 @@
 
 - R1: 241 homes, 1 flag (CON-0133, pre-existing). R2 (`--scope 10`): tier A "appender" (defined at 10.05 L31), "overlapped", "unannotated" (ordinary). Line counts of every edited section unchanged.
 - **The freeze is lifted.** Next: reading in index order resumes at S0253.
+
+## Correction after stage 2 (2026-10-31, C53 review W-05)
+- **B-05 was applied with an error:** 09.00 row 9.18 and map L394 said "T9-12, T9-16 and T9-17 decided (b)". T9-12 was decided **(c)** (`c5ef9de27`; §9.18 L42). Corrected at the C53 settlement. The B-10 note at §8.42–§8.45 L3 had also lost its text (an empty variable in the edit); restored then.
