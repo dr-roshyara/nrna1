@@ -1,6 +1,6 @@
 # Window C61: measures, challenge records, step 8, checks
 
-*2026-10-31. Sources: S0285, S0286, S0287, read in index order; all on the allowed list. New: §8.54 (C1–C5). No new concept. Changed theory since the last window review: the C58 settlement and the consolidation S0253–S0277; the C59 and C60 settlements are pending.*
+*2026-10-31. Sources: S0285, S0286, S0287, read in index order; all on the allowed list. New: §8.54 (C1–C5). No new concept. Changed theory since the last window review: the C58 settlement and the consolidation S0253–S0277; the C59 (`e301dfe66`) and C60 (`cf077b06f`) settlements; R3 from both applied to §8.54.*
 
 ## Measures
 
