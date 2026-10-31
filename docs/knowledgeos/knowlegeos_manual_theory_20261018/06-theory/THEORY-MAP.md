@@ -410,7 +410,7 @@
   - what kind of act a receipt's claim is; the required recorder against S0122's forbidden actor field; semantic vs invariant owner (§8.16).
 - **Open forks from C42–C45 and the consolidation S0201–S0225 (Open, not yet rows; C F-01):**
   - "supported, warrant not recorded" as a display class, or a warrant field (§8.37 C1; with G7 and the reasons gap, §9.13 L166);
-  - **a guard "an adoption cites its warrant, or an identified reliable source"**, against the proposed clause (c2) (§8.37 C1 (ii); §8.38 C1 (ii)): **a choice for the Principal**;
+  - **a guard "an adoption cites its warrant, or an identified reliable source"**, against the proposed clause (c2) (§8.37 C1 (ii); §8.38 C1 (ii)): **decided 2026-10-31: no guard, c2 kept** (T9-20); the display fork ("supported, warrant not recorded", or a warrant field) stays open;
   - what Q4's grading rule reads: source kind or reliability (§8.38 C1), and whether that is §9.9.2's Reliability(a, d, t) through T-a or a combination in T-c (§9.10 C) (A-07);
   - produce vs test reasoning: polarity or a kind of act (§8.36.3);
   - a home for conflicts between non-rule items: neither recorded nor reported today (§8.36 C4 (ii); §8.37 C4; Q5's scope is rules);
