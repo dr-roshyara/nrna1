@@ -18,7 +18,7 @@
 - **Taken from W's inventory into the draft before step 2 (disclosed):** the further pre-closure stamps and L75 (C3); #25 counted twice (C1); "modifies no artifact" and the lane closure; the reflexive gap (C5).
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
 - **R2 (§8.61):** tier A 0 in scope; no undefined concept, so no TODO row.
-- **R3 (proposed for this window's settlement):** §8.59 C2 (the count re-measured a third time, supports reading (a) as reported); §8.59 C5 (the fresh review of the repair optional, supports reading (a)).
+- **R3:** the draft's proposals on §8.59 C2 and C5 were absorbed by the C66 settlement (`9b6887ae4`): §8.59 C2 cites S0302's third measurement; §8.59 C5 now finds no tension, and §8.61 C5 was annotated to match.
 - **Quote check:** by hand; outside authors' names replaced by roles in quotations ("[a translator's work]").
 
 ## The Principal's directions D1–D3 (I-013): meeting points in this window (for the report; not used as evidence, not written into the book)

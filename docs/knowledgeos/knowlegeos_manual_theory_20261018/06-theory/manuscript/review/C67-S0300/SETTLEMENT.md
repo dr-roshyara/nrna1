@@ -1,6 +1,6 @@
 # Window C67: settlement
 
-*2026-10-31. Reviewer W (Opus, `kos-lane-reviewer`). Report: `REVIEW-REPORT.md`, saved verbatim with `tmp/tools/save_handback.py` (sha256 in `SHA256-REVIEW.txt`: `44e9eb80…bb90e69a6fd6a928bfe06e80a49890`). Draft `75d59b483` (re-read at `3c6b54b1c`). Changed theory reviewed: the C66 settlement (`9b6887ae4`), validated as applied; minor: the C66 R3 not applied at §8.60's homes row, and placeholders filled one commit later (W-09).*
+*2026-10-31. Reviewer W (Opus, `kos-lane-reviewer`). Report: `REVIEW-REPORT.md`, saved verbatim with `tmp/tools/save_handback.py` (sha256 in `SHA256-REVIEW.txt`: `44e9eb80…80a49890`). Draft `75d59b483` (re-read at `3c6b54b1c`). Changed theory reviewed: the C66 settlement (`9b6887ae4`), validated as applied; minor: the C66 R3 not applied at §8.60's homes row, and placeholders filled one commit later (W-09).*
 
 | W-nn | Sev. | Professor's check | Disposition | Where applied |
 |---|---|---|---|---|
@@ -29,5 +29,5 @@
 |---|---|
 | Reviewer W, steps 2–3 | 433.1 s (harness, cumulative as reported), 27 tool uses |
 | Findings | 10 (5 high, 5 normal; 0 critical); all accepted |
-| **Professor's effort (wall-clock between tool calls, logged at phase boundaries)** | reading: not measured (S0300 read before the instruction) · drafting: 2 min 54 s (15:52:33–15:55:27Z: W's step-1 items folded into the draft; the first draft was written before the instruction, not measured) · settlement: 26 s (re-read, brief, 16:38:02–16:38:28Z) + EFFORT_SETTLE · rework: 2 min 32 s (16:45:47–16:48:19Z: verification, §8.60 restated, R3 at eleven sites) |
+| **Professor's effort (wall-clock between tool calls, logged at phase boundaries)** | reading: not measured (S0300 read before the instruction) · drafting: 2 min 54 s (15:52:33–15:55:27Z: W's step-1 items folded into the draft; the first draft was written before the instruction, not measured) · settlement: 26 s (re-read, brief, 16:38:02–16:38:28Z) + 28 s (records and settlement, 16:48:19–16:48:47Z) · rework: 2 min 32 s (16:45:47–16:48:19Z: verification, §8.60 restated, R3 at eleven sites) |
 | Method note | as at C63–C66 |
