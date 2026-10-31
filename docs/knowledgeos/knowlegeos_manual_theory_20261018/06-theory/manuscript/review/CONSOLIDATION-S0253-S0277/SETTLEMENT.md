@@ -1,4 +1,4 @@
-# Consolidation S0253–S0277: settlement (part 1)
+# Consolidation S0253–S0277: settlement (parts 1 and 2)
 
 *2026-10-31. The Professor. Not a test consolidation; authorised by the Principal ("as for S0201–S0225; Ch. 0 and Ch. 1 rotated"; the passages of T9-19, T10-21 and T9-20 in scope, each with a full reader). Reviewers A (Sonnet: Ch. 0, Ch. 1 §1.0–§1.13), B (Opus: Ch. 1 §1.14–§1.17, TODO), C (Opus: §8.46–§8.51 and the window-settlement passages), D (Opus: the decision passages); integration (Opus). Reports and sha256 in this folder. Applied in place to the working book; the frozen copy is unchanged.*
 
@@ -52,3 +52,20 @@ A read some working-book files in error and re-read every fact on the copy (eigh
 | Reviewer D (Opus) | 519.5 s, 44 tool uses |
 | Integration (Opus) | 642.1 s, 62 tool uses |
 | Total review time | 3,970.4 s (about 66 minutes) |
+
+## Part 2 (the Principal's answers, 2026-10-31)
+
+| Q | Answer | Applied |
+|---|---|---|
+| Q-A | **Yes, the kinds and the rule:** W's acceptance rule G8 with (c3), and §9.18.6's two-level domain, are adopted with the kinds | §9.18 L107 (D-08), L179, L222, L239, L243, L269, item 4 (D-02); §9.15 G1; §10.3.6 (d3); §10.3.3 row B (O2: W's rule by the kernel's append step); §10.4 R6 superseded for W-clause breaches (L59, L108, L119, L140, L158, L164); §10.5 PL-3, PL-12; map L398, L400; Ch. 9 TODO T9-19 |
+| Q-B | **g1 adopted** with the kinds | §9.18 L209, item 4; map L400 |
+| Q-C | **F renamed in its definition:** "ended, or not recognized" | §9.13 R2a; §10.5 PL-6; §8.31, §8.33, §8.36, §8.37, §8.40, §8.42 restatements; map L399; Ch. 10 TODO T10-21. The question as put (§9.18 L303, TODO T10-21's text) and change logs keep the old words as history |
+
+**Routed with I-012 (the Principal, not an instruction to change the design):**
+- **"An empty record never yields supported" (the Verification Auditor's R2-03).** *Ded:* under g1 (adopted, Q-B), "supported" needs sup = T, i.e. some live support entry about the item; with no evidence entry, sup = F and ref = F, so the class is "not attested". The property is **guaranteed by the rule as stated**. What Ch. 10 lacks is not the guarantee but an **enforcement point**: g1 is "not placed" (kernel or application, §9.18 L273), and the display duty has no enforcing context (PL-14). Recorded at §10.3.3 row B, the row the Auditor read ("one-sidedness … none established"), as: guaranteed by g1 (Ded), enforcement point open (S0, for review). *Not a design change.*
+- **10.05 L75 (PL-0's history of added kinds):** stale; T9-19's three kinds added to the history.
+- **10.05 L103 (PL-1, "The ten admitted kinds"):** stale after T9-19; restated "the ten kinds of D_S", with W's three kinds named as W's language, not listed in standing's or the record's. *Why the consolidation missed both:* SCOPE §2.1 named the lines the decision commits changed; these two lines were not changed by any commit and D's search terms ("proposed", G1, "not adopted") did not reach them. A scope-design limit, the Professor's.
+
+**Not changed (recorded):** the register's CON-0193 meaning still reads "CE* on D" (D-08, a lag, not a contradiction); a register edit is left for the next register pass. Decision record addenda for Q-A, Q-B and Q-C are for the Governance Engineer. Copy-ready line for the Principal to confirm: *"Q-A: the T9-19 adoption includes W's acceptance rule G8 with (c3) and the two-level domain; Q-B: g1 adopted; Q-C: F's definition renamed 'ended, or not recognized'."*
+
+R1 after part 2: 241 homes, 1 flag (CON-0133), unchanged. **The consolidation is settled.** Reading may resume at S0278.
