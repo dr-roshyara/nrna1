@@ -1,0 +1,14 @@
+# Consolidation S0253–S0277: freeze record (Professor only)
+
+*2026-10-31. The Professor. Not a test consolidation. Authorised by the Principal (2026-10-31): "as for S0201–S0225 (not a test; Ch. 0 and Ch. 1 rotated)", with the passages changed by T9-19, T10-21 and T9-20 added to SCOPE §2.1, each with a full reader. The decisions are recorded (research record `23549532a`). The Governance Engineer checks the briefs afterwards (G1–G7).*
+
+- **The object** is `06-theory/manuscript/review/CONSOLIDATION-S0253-S0277/BOOK-UNDER-REVIEW/`, copied by the Professor from the working book after `71ac21919` (map lines C54–C58, position at S0277, rotation table): `06-theory/` top files (register, external sources, testimony, purpose, map), `06-theory/manuscript/` without `review/` (including `BASELINE-REVISIONS.md` and `TODO-TRIAGE-S0100.md`), and `tmp/tools/book_search.py` with its synonyms. Hashes of its 185 files: `frozen-table.txt`. The copy was searched for test, plant and key wording: only the historical C10 test notes in §5.6 and §8.5 (present in every earlier copy).
+- **The copy's files are never edited.** No comparison of the copy with the working book is made by any reviewer.
+- **The decision passages, located by commit (for the Professor's and the Governance Engineer's check; reviewers get line numbers only, not commits):**
+  - T9-19 `a8ff1f4de`: 09.15 L63; 09.18 L45, L76, L107, L243, L295; Ch. 9 TODO L29; 10.00 L8; 10.02 L5, L214; 10.03 L289, L319 (candidate 2); 10.04 L6; map L400; change logs 09.99 L87, 10.99 L20.
+  - T10-21 `c6366b303`: 10.03 L73, L103, L129–130, L154–155, L174, L179, L183, L218, L238; 10.05 L139, L174; 09.18 L302; Ch. 10 TODO L13, L26; map L399–400; 10.99 L21.
+  - T9-20 `8a9134da1`: 09.18 L221; 08.37 L43; 08.42 L51; Ch. 9 TODO L30; map L418; 08.99 L71; 09.99 L89.
+  - Each added line of the three commits was matched to its line in the copy by text; lines changed again later (by the C54 settlement) were located by their hunks.
+- **The window-settlement passages** (C53–C58 settlements `1d18d1900`, `244a2af9a`, `7b30483b9`, `904bed5f7`, `87573cf46`, `b86b76773`): from `git diff -U0 cb513a56b` on the working book at the copy point, outside §8.46–§8.51.
+- **The working book stays open** for work outside the scope. Reading does not resume past S0277 before the settlement.
+- **Reviewers:** A (Sonnet: Ch. 0, Ch. 1 §1.0–§1.13), B (Opus: Ch. 1 §1.14–§1.17, TODO), C (Opus: §8.46–§8.51 and the settlement passages), D (Opus: the decision passages), then the integration reviewer (Opus); all `kos-lane-reviewer`.
