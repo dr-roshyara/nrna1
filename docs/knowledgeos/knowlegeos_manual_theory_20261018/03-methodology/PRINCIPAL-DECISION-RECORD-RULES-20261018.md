@@ -680,3 +680,4 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   - **T9-20 — no guard on adoption; clause (c2) kept:** standing comes from a recorded act by a holder of a grant, not from evidence. Applied at `8a9134da1` (§8.37 C1, §8.42 C2, §9.18 (c2), map). Open: the display fork (a warrant field, or "supported, warrant not recorded"), with G7.
 - **Process note (Governance Engineer):** decisions given to the Professor directly reach this record only when the Principal tells the Governance Engineer. From now on the Professor's report of such a decision is answered with a copy-ready line for the Principal to confirm.
 - **Not decided here:** the Verification Auditor's re-run timing (still open); T10-17–T10-20 (open, the Professor's).
+- **The message completed (verbatim, sent separately):** "them", so the full words are "i agree with your suggestion. record the[m]".
