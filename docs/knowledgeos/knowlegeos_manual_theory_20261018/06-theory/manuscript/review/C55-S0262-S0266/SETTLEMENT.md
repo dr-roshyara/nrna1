@@ -14,7 +14,7 @@
 | W-08 | normal | **V (Professor):** CORPUS-ALLOWED S0281 = the protocol | Accepted. S0281 named; L20 relayed; S0264's uploaded text; the correction reported | §8.48 lineage, plain language 1 |
 | W-09 | normal | R (S0266 L16–57, L82) | Accepted. The exemplar limited to F2; self-review homes §8.18, §8.16 | §8.48 C4 |
 | W-10 | normal | R (S0263 L4, L36, L45, L60; S0262 L3–8) | Accepted. Additions attributed to S0263; Yoga/Buddhism classification; routing | §8.48 lineage, C4, C5 |
-| W-11 | normal | R (grep) | Accepted. T9-20 leftovers annotated: §8.38 L55, L61, L156; §8.37 L129, L19; §8.42 L54, L20; §8.31 L117; §8.36 L21; §8.39 L17, L45; TODO T9-20 row | those sites |
+| W-11 | normal | R (grep) | Accepted. T9-20 leftovers annotated: §8.38 L55, L61, L156; §8.37 L129, L19; §8.42 L53 (written L54 at settlement; corrected at C56, W-08), L20; §8.31 L117; §8.36 L21; §8.39 L17, L45; TODO T9-20 row | those sites |
 | W-12 | normal | R (§1.6 L13) | Accepted. "Confidence" two readings; "acts are people's" marked Int | §8.48 C5 |
 | W-13 | normal | R | Accepted. C3 and C5 rivals added | §8.48.4 |
 | Coverage | normal/low | R | Accepted: S0262 item 12, S0264 items 3, 6, S0266 items 11, 13 added; source defects recorded | §8.48 C1, C4, §8.48.3 |
