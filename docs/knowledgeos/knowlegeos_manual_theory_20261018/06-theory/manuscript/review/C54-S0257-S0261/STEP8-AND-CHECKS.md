@@ -1,6 +1,6 @@
 # Window C54: measures, challenge records, step 8, checks
 
-*2026-10-31. Sources: S0257, S0258, S0259, S0260, S0261, read in index order; all on the allowed list. New: §8.47 (C1–C5). No new concept. Changed theory since the last window review: the C53 settlement and the Principal's decision T9-19 (`a8ff1f4de`); named by commit in the step 2–3 brief.*
+*2026-10-31. Sources: S0257, S0258, S0259, S0260, S0261, read in index order; all on the allowed list. New: §8.47 (C1–C5). No new concept. Changed theory since the last window review: the C53 settlement (`1d18d1900`) and the Principal's decisions T9-19 (`a8ff1f4de`) and T10-21 (`c6366b303`).*
 
 ## Measures
 
