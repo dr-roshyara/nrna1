@@ -69,6 +69,7 @@
 
 ## 2.4 Sources
 - In index order, all on the allowed list: <Sfirst>–<Slast>. Others only from `CORPUS-ALLOWED.tsv`.
+- Outside books and articles the sources cite are not opened; their authors are not reproduced.
 - **Never:** <exposed and non-allowed sources, from 00-access/ACCESS-RECORD.md>; sealed, hold-out or quarantine files.
 
 ## 2.5 Budget
@@ -130,7 +131,7 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 ## Rules (the Principal)
 - A finding is not resolved because code or tests pass. State what the evidence establishes and what remains unproven.
 - Keep verified facts, reported results, interpretations and recommendations apart.
-- Edit nothing in the repository. No corpus or book text to any outside service. Do not reproduce any private person's name.
+- Edit nothing in the repository. No corpus or book text to any outside service. Do not reproduce any private person's name or any outside author's name.
 
 ## Report
 - Tables: findings (ID · section · finding · severity: critical / high / normal · evidence · correction · R3 lines · resolved when); concept verdicts (ID · verdict · reason); coverage (item · status · home); R2 (word · judgement); coverage of sections (read in full / not).
@@ -179,3 +180,4 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 |---|---|---|
 | 2026-10-29 | First version, from the S0200 briefs (`BRIEF.md`, `SCOPE.md`, `REVIEWER-NOTE.md`, `COMMISSION-C.md`, `INTEGRATION-COMMISSION.md`) with: per-commission file lists and `00-access/` forbidden (D4); Professor-only and test files moved to `00-access/consolidations/` (D4); R2 with `--scope`, every candidate judged (D2); the missing-claim check (D3); a coverage plan before the review | S0200: reviewer A read `README-PROFESSOR.md` in the reviewers' folder; "keel" in R2's unjudged 687 lines; the C7 trace misdiagnosed; Ch. 8 §8.07–§8.26 read in full by no reviewer |
 | 2026-10-31 | REVIEWER-NOTE item 3: `--root <copy>` from the first call, and how `corpus_quote_check.py` is run (change 1); commission item 3: an alternative coverage task for sections no window inventory covers (change 3); integration items 7 (access deviations) and 8 (decisions in scope), each used only when it applies (change 4). **Not adopted:** "or any outside author's name" in the rules line (change 2; the Principal: "I do not confirm this as a Principal rule at this time") | the S0253–S0277 briefs' deviations from the fixed text (Governance Engineer's G7 check, 2026-10-31); the Principal's decision of 2026-10-31 (research record addendum of that date). Evidence: reviewer tool runs without `--root` (S0201–S0225 A; S0253–S0277 B); Ch. 0 and Ch. 1 rotated with no window inventory; S0253–S0277 A's working-book reads; the T9-19 scope question D-02 |
+| 2026-10-31 | The outside-authors rule: "or any outside author's name" in the rules line (§4, so also §5), and in SCOPE §2.4 "Outside books and articles the sources cite are not opened; their authors are not reproduced." (change 2 of the S0253 briefs, first not adopted, now confirmed) | the Principal's confirmation, research record addendum of 2026-10-31 ("i accept your recommendation") |
