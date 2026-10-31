@@ -104,3 +104,13 @@ All in `knowlegeos_manual_theory_20261018/03-methodology/PRINCIPAL-DECISION-RECO
 - **Done:** `.claude/skills/role-verification-auditor/SKILL.md` created (sha256 `97cfc6fa57783886304126da0d36b98fdff9ebb9ff39dd30f75d6b578a410ccd`), built like `/role-lead-ddd-architect`: it confirms the approved mandate revision (revision 3, by sha256), reads both decision records, and **stops unless an I-entry authorises the requested run and its commission exists**; then follows the mandate and the commission. User-invoked only.
 - **No authority is added:** the command only checks what mandate revision 3 (I-004) and the decision records already state.
 - **Not decided here:** the timing of part B rerun 2 (I-004 set it after the Ch. 10 revision for T10-17–T10-21; the commission `review-implementation/COMMISSION-PART-B-RERUN-2.md` is written and PROPOSED, not authorised).
+
+### I-011 (2026-10-31T12:43:15Z): part B rerun 2 now; amends I-004's timing
+
+- **Principal (verbatim):** "I-011" — in reply to the Governance Engineer's request to send "run the auditor's full re-run now; partial rerun after T10-17–T10-20" so that I-011 could be recorded. Before it, the Principal had started `/role-verification-auditor part B rerun 2` twice; the auditor stopped both times for lack of this entry.
+- **Taken to mean (the Governance Engineer's reading, stated so the Principal can correct it):** the sentence proposed with I-011, "run the auditor's full re-run now; partial rerun after T10-17–T10-20".
+- **Decided:**
+  1. **Part B rerun 2 runs now**, a full rerun against Ch. 10 at `244a2af9a`, **although T10-17–T10-20 are still open**. This amends I-004 item 3 ("one full rerun of part B after the Ch. 10 revision for T10-17–T10-21"); I-004 stays as written.
+  2. **A partial rerun follows** once T10-17–T10-20 are revised in Ch. 10, covering those changes and any change the consolidation S0253–S0277 makes to Ch. 10.
+  3. **The commission** `docs/knowledgeos/knowlegeos_manual_theory_20261018/review-implementation/COMMISSION-PART-B-RERUN-2.md` is approved; sha256 after the status update: `b76e769f0f84e622610d300eabbb4a66e15551e3c418e36434abc2b1f455d01e`.
+- **Not decided here:** any finding; any change to code or theory; stage 1.
