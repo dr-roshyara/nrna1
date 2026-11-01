@@ -40,7 +40,7 @@
 | 1 | **P1** — extend `corpus_quote_check.py` coverage to the `(L…)` and `Sxxxx Lnn` citation forms, or state its coverage | **open, unapplied.** Verified 2026-11-01: the script is unchanged since 2026-10-23 and still reads no `(L…)` form |
 | 2 | **P2** — forbid `03-methodology/` files in commissions other than `REVIEWER-INSTRUCTIONS.md` and the decision records | **open, unapplied.** Verified 2026-11-01: the S0278–S0302 commissions carry no such prohibition |
 | 3 | Faster-reading test cycle (`PROPOSAL-FASTER-READING-TEST-CYCLE-20261031.md`) | **not approved** |
-| 4 | `03-methodology/METHODOLOGY-EFFICIENCY-REVIEW-20261101.md` (untracked, about 58 KB) | commit-or-not **not answered**; left **uncommitted**; nothing in it is in force |
+| 4 | `03-methodology/METHODOLOGY-EFFICIENCY-REVIEW-20261101.md` | **Committed** on the Principal's instruction at `035f18d81` (addendum 2026-11-01T02:49Z). **Advisory**: nothing in it is in force; it changes no rule, template, brief or research artifact |
 | 5 | `06-theory/RESEARCH-PURPOSE.md` L14 ("organisational knowledge") against the recorded engineering direction (I-013 D2) | **open, and to stay open**; the Req/A turn will carry engineering as a labelled assumption only and will not edit the file |
 | 6 | Stage-1 package and the stage-1 decision | **not to be prepared** until the Principal authorises it (2026-10-31T15:16:17Z, item 5) |
 
