@@ -15,7 +15,7 @@
 | Item | State | Evidence |
 |---|---|---|
 | Reading | **S0302**; gate **DUE** (25 of 25 since S0277); reading does not resume past S0302 before the settlement | `00-access/consolidations/S0278-S0302/FREEZE.md` |
-| Consolidation S0278–S0302 (a planted-gap test) | **In review.** Briefs frozen; copy sealed; the independent §8.3a check is **PASS** at 2026-10-31T17:27:24Z, **before** reviewers started at 17:29Z; A (Sonnet, Ch. 2), B (Opus, Ch. 3), C (Opus, §8.52–§8.61 and the passages) commissioned. **No reviewer report is saved** — the folder holds the briefs and `BOOK-UNDER-REVIEW/` only (verified 2026-11-01T02:30Z) — so **the settlement has not occurred** | briefs and copy `d2065a807`…`8e1ef363f`; ACCESS-RECORD entries 17:18:57Z and 17:27:24Z |
+| Consolidation S0278–S0302 (a planted-gap test) | **In review — interrupted.** Briefs frozen; copy sealed; the independent §8.3a check is **PASS** at 2026-10-31T17:27:24Z, **before** reviewers started at 17:29Z; A (Sonnet, Ch. 2), B (Opus, Ch. 3), C (Opus, §8.52–§8.61 and the passages) were commissioned as subagents of the Professor's session. **All three ended at 17:39Z, ten minutes in, on "You've hit your weekly limit · resets 11am (Europe/Berlin)"; no report was produced and none is saved.** The three reviews must be restarted as fresh, independent runs | ACCESS-RECORD entry 2026-11-01T03:45Z; briefs and copy `d2065a807`…`8e1ef363f` |
 | Sealed key and manifest (outside the repository) | **Intact.** sha256 re-verified 2026-11-01T02:31Z: key `c0427904…`, manifest `6371c741…`, both equal to the values recorded at 2026-10-31T17:18:57Z. **Risk:** they live in a temporary scratchpad; if lost, only the hashes remain | ACCESS-RECORD 17:18:57Z |
 | Req/A theory turn | **Approved for preparation only** (decision record addendum 2026-11-01T02:31:51Z), with seven conditions: issued only after this settlement; engineering as a labelled assumption; audit option (a); bounded scope (primitive set not finalised, T9-02 not absorbed); Rulebook v1.4 only; the prompt presented for the Principal's dispatch; measurement at S0303. **Not issued** | decision record |
 | Time measurement | Authorised (2026-10-31, instruction item 2), split **Reading · Drafting · Settlement · Rework**; **begins at S0303**; no workflow change until the Principal evaluates the results | decision record 2026-10-31T15:53:39Z |
@@ -46,7 +46,7 @@
 
 ## Waiting for
 
-- The three reviewer reports of S0278–S0302 (A, B, C), then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.**
+- The three reviewer reports of S0278–S0302 (A, B, C), **restarted from scratch** after the usage-limit interruption of 2026-10-31T17:39Z, then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.**
 
 ## Next actions (Governance Engineer)
 
