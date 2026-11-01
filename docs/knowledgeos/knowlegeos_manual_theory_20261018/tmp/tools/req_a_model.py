@@ -24,6 +24,13 @@ Checks per pool, over all subsets M:
              unique minimal kernel  <=>  kernel family closed under intersection  (Theorem T3, its finite instance)
   necessity  which mechanisms lie in every kernel; whether every kernel realizes every kind
   trivial    {}, {refuse}, {noop}: P holds, Req fails
+Version 2 (2026-11-01, settlement of the Req/A review; findings B F5, C-04, C-05, A-01, A-12):
+  ALT      FINE plus a_evid2, a second, non-composite appender of evid (guarded by the root): an alternative route.
+  COARSE-T COARSE under a transition invariant "at most one kind added per step" (an input carries one entry).
+  GACT     acts split into grant and establishment kinds; Req_O cut two ways: "an act entry" (one O1) or per kind.
+  HALT     FINE's appenders plus a guard g_halt (blocks every step once evid is present): Req_O (EF) against
+           the enabledness-like condition AG EF(every kind present).
+  The v1 line "every kernel realizes every kind" re-tests Req_O itself (A-12); it is kept as a sanity check, not as support.
 Usage: python3 -I req_a_model.py
 """
 from itertools import chain, combinations
@@ -94,6 +101,18 @@ def reach(trans):
     return seen
 
 
+def reach_from(s0, trans):
+    seen, todo = {s0}, [s0]
+    while todo:
+        s = todo.pop()
+        for t in trans:
+            n = t(s)
+            if n is not BOT and n not in seen:
+                seen.add(n)
+                todo.append(n)
+    return seen
+
+
 def Req(trans):
     r = reach(trans)
     return all(any(k in s for s in r) for k in K)
@@ -130,3 +149,65 @@ w1 = frozenset({'u_act', 'g_root', 'a_evid', 'a_loss', 'a_root'})
 w2 = w1 | {'g_block'}
 print(f'   witness, P not closed under subsets: P({sorted(w1)})={p[w1]}, P(without g_root)={p[w1 - {"g_root"}]}')
 print(f'   witness, Req not monotone: Req({sorted(w1)})={q[w1]}, Req(+g_block)={q[w2]}')
+
+
+# ---- version 2 ----
+print('\n== version 2 ==')
+ALT = dict(FINE, a_evid2=lambda s: (s | {'evid'}) if 'root' in s else BOT)
+analyse('ALT (FINE + a_evid2, no composite)', list(ALT), lambda M: plain_transitions(ALT, M))
+
+
+COARSE_T = {k: f for k, f in COARSE.items() if all(f(s) is BOT or len(f(s) - s) <= 1 for s in S_I)}
+print('COARSE mechanisms meeting the transition invariant:', sorted(COARSE_T))
+analyse('COARSE-T (one kind per step)', list(COARSE_T), lambda M: plain_transitions(COARSE_T, M))
+
+# GACT: kinds grant, estab, evid, loss, root; I: (grant or estab) => root
+K2 = ('grant', 'estab', 'evid', 'loss', 'root')
+ST2 = subsets(K2)
+SI2 = [s for s in ST2 if not ({'grant', 'estab'} & s) or 'root' in s]
+GACT = {'a_grant': lambda s: (s | {'grant'}) if 'root' in s else BOT,
+        'a_estab': lambda s: (s | {'estab'}) if 'root' in s else BOT,
+        'a_evid': add('evid'), 'a_loss': add('loss'), 'a_root': add('root')}
+
+
+def reach2(trans):
+    seen, todo = {S0}, [S0]
+    while todo:
+        s = todo.pop()
+        for t in trans:
+            n = t(s)
+            if n is not BOT and n not in seen:
+                seen.add(n); todo.append(n)
+    return seen
+
+
+for cut_name, reqs in (('O1 = "an act entry"', [{'grant', 'estab'}, {'evid'}, {'loss'}, {'root'}]),
+                       ('O1 per kind', [{'grant'}, {'estab'}, {'evid'}, {'loss'}, {'root'}])):
+    subs = subsets(GACT)
+    ker = []
+    for M in subs:
+        tr = [GACT[m] for m in M]
+        if not all(t(s) is BOT or t(s) in SI2 for t in tr for s in SI2):
+            continue
+        r = reach2(tr)
+        if all(any(s & q for s in r) for q in reqs):
+            ker.append(M)
+    mins = [M for M in ker if not any(N < M for N in ker)]
+    print(f'== GACT, {cut_name}: {len(ker)} kernels; minimal ({len(mins)}): ' + '; '.join('{' + ', '.join(sorted(M)) + '}' for M in mins))
+
+# HALT: guarded semantics over FINE's appenders plus g_halt
+HA = {'a_act': FINE['a_act'], 'a_evid': FINE['a_evid'], 'a_loss': FINE['a_loss'], 'a_root': FINE['a_root']}
+
+
+def halt_trans(M):
+    halt = 'g_halt' in M
+    return [lambda s, f=HA[m]: BOT if (halt and 'evid' in s) else f(s) for m in M if m in HA]
+
+
+for M in (frozenset(HA), frozenset(HA) | {'g_halt'}):
+    tr = halt_trans(M)
+    r = reach(tr)
+    req = all(any(k in s for s in r) for k in K)
+    full = frozenset(K)
+    agef = all(full in reach_from(s, tr) for s in r)
+    print(f'== HALT {sorted(M)}: P={P(tr)} Req_O(EF)={req} AG EF(all kinds)={agef}')

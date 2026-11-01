@@ -1,0 +1,47 @@
+== FINE: 7 mechanisms, 128 subsets, 4 kernels
+   P closed under subsets: True;  Req monotone: True;  kernels closed under intersection: True
+   minimal kernels (1): {a_act, a_evid, a_loss, a_root}
+   in every kernel: ['a_act', 'a_evid', 'a_loss', 'a_root']
+   every kernel realizes every kind: True
+   trivial {}: P=True Req=False
+   trivial ['refuse']: P=True Req=False
+   trivial ['noop']: P=True Req=False
+== COARSE: 9 mechanisms, 512 subsets, 148 kernels
+   P closed under subsets: True;  Req monotone: True;  kernels closed under intersection: False
+   minimal kernels (3): {c_all}; {a_evid, a_loss, c_root_act}; {a_act, a_evid, a_loss, a_root}
+   in every kernel: []
+   every kernel realizes every kind: True
+   trivial {}: P=True Req=False
+   trivial ['refuse']: P=True Req=False
+   trivial ['noop']: P=True Req=False
+== GUARDS: 6 mechanisms, 64 subsets, 1 kernels
+   P closed under subsets: False;  Req monotone: False;  kernels closed under intersection: True
+   minimal kernels (1): {a_evid, a_loss, a_root, g_root, u_act}
+   in every kernel: ['a_evid', 'a_loss', 'a_root', 'g_root', 'u_act']
+   every kernel realizes every kind: True
+   trivial {}: P=True Req=False
+   witness, P not closed under subsets: P(['a_evid', 'a_loss', 'a_root', 'g_root', 'u_act'])=True, P(without g_root)=False
+   witness, Req not monotone: Req(['a_evid', 'a_loss', 'a_root', 'g_root', 'u_act'])=True, Req(+g_block)=False
+
+== version 2 ==
+== ALT (FINE + a_evid2, no composite): 8 mechanisms, 256 subsets, 12 kernels
+   P closed under subsets: True;  Req monotone: True;  kernels closed under intersection: False
+   minimal kernels (2): {a_act, a_evid, a_loss, a_root}; {a_act, a_evid2, a_loss, a_root}
+   in every kernel: ['a_act', 'a_loss', 'a_root']
+   every kernel realizes every kind: True
+   trivial {}: P=True Req=False
+   trivial ['refuse']: P=True Req=False
+   trivial ['noop']: P=True Req=False
+COARSE mechanisms meeting the transition invariant: ['a_act', 'a_evid', 'a_loss', 'a_root', 'b_act', 'noop', 'refuse']
+== COARSE-T (one kind per step): 7 mechanisms, 128 subsets, 4 kernels
+   P closed under subsets: True;  Req monotone: True;  kernels closed under intersection: True
+   minimal kernels (1): {a_act, a_evid, a_loss, a_root}
+   in every kernel: ['a_act', 'a_evid', 'a_loss', 'a_root']
+   every kernel realizes every kind: True
+   trivial {}: P=True Req=False
+   trivial ['refuse']: P=True Req=False
+   trivial ['noop']: P=True Req=False
+== GACT, O1 = "an act entry": 3 kernels; minimal (2): {a_estab, a_evid, a_loss, a_root}; {a_evid, a_grant, a_loss, a_root}
+== GACT, O1 per kind: 1 kernels; minimal (1): {a_estab, a_evid, a_grant, a_loss, a_root}
+== HALT ['a_act', 'a_evid', 'a_loss', 'a_root']: P=True Req_O(EF)=True AG EF(all kinds)=True
+== HALT ['a_act', 'a_evid', 'a_loss', 'a_root', 'g_halt']: P=True Req_O(EF)=True AG EF(all kinds)=False
