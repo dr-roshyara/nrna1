@@ -2,72 +2,70 @@
 
 > **Two tracks (decided 2026-10-29).** This file is the **research track** state and the Governance Engineer's own. The **implementation track** state is `docs/knowledgeos/IMPLEMENTATION-TRACK-STATE.md`; its decisions are in `docs/knowledgeos/IMPLEMENTATION-TRACK-DECISION-RECORD.md`.
 
-*Rewritten 2026-10-29 for the handover (option a); updated 2026-10-29T11:52Z by the successor session, on the Principal's "proceed with the handover housekeeping and the C38 check". Rules: `MANDATE-GOVERNANCE-ENGINEER-PROPOSED.md` (revision 3 in force; sha256 checked against the approval fingerprint). This file is overwritten as the state changes; history is in git.*
+*Rewritten 2026-11-01T02:33Z by session `fb60c45f-93b6-414f-b55c-81cf795ea568`; mandate revision 3 in force, sha256 `6f9640f6afb5287fc45593b7e8e96c932fc3ab4681303635c08d2c73126b8290` re-verified against the approval fingerprint. This file is overwritten as the state changes; history is in git. The 2026-10-29 handover section and the S0201–S0277 rows it carried are in git.*
 
-## Handover (2026-10-29): done
+## Session and deviations
 
-- **Outgoing session** `f1575f5d-96b1-404a-af96-797d354857e2` (started in the lane folder; pilot finding F1): **closed** at the handover.
-- **Successor** `57ddce41-5334-461f-981b-964872674366`, started at the repository root with `/role-governance-engineer` (verified from its transcript's first record, 2026-10-29T11:45:56Z). The five-item report (mandate §11.2) was given to the Principal.
+- **Session** `fb60c45f-93b6-414f-b55c-81cf795ea568`, 2026-11-01. It began **in the lane folder** as an analysis session (the advisory methodology review of 2026-11-01) and took the Governance Engineer role afterwards.
+- **Deviation (mandate rev. 3 §11.0, finding F1): not started at the repository root.** The working directory has since moved to the root, but deny-rule loading for this session is unverifiable. Every file outside the mandate's §4/§5 lists was therefore treated as forbidden by hand. **No non-allowed, sealed or hold-out file was opened.** Recommendation: the next Governance Engineer session starts at the root.
+- **Predecessor** `57ddce41-5334-461f-981b-964872674366`: **not recorded as closed.**
 
 ## Where things stand (research track)
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | S0001–S0223 read and settled (windows C38–C44, §8.31–§8.37); **window C45 (S0224–S0225)** drafted as §8.38, before review; then the **S0225 consolidation** (25 of 25 once C45 settles) | C44 `977cf8038`; C45 draft `5db742c29` |
-| Window checks C38–C44 (Governance Engineer, 2026-10-29) | per window: report and step-1 inventory sha256 OK; every W finding in the report has a settlement row, all **Accepted** (C38 14; C39–C44 9–10 each; 0 critical); each settlement commit changed the section, index and change log. **Noted, no action:** C41 W-01's tie case worked from the text, not run in the model (the settlement says so); C42 C7 (a rival central question) recorded for the Principal, not adopted; C44 W-01 (guard reading) "a choice for the Principal" — to be brought as a question when the Professor asks; C43's settlement also touched §8.35 (settled), §8.37–§8.38 (drafts) and §10.2 G7 (logged in the Ch. 10 change log: source kind of evidence not carried). C38's three minor points stand | `b626c1fba`…`977cf8038` |
-| Consolidation S0201–S0225 (Governance Engineer's checks, 2026-10-29) | **started** (`1a8a4404b`; not a test); reviewers A, B, C running (reported). **Frozen copy:** all 170 files match the Professor's freeze table, same file set (verified). **Briefs G1–G7: PASS** (verified): G1 file lists, `00-access/` forbidden, the copy only; G2 no test/key/plant/comparison wording in the brief files; G3 scope = §8.31–§8.38, the G7 row of §10.2, Ch. 9 rotated, the 40 concepts homed in scope (4 + 23 + 13); G4 every section a named full reader; G5 exclusions match the access record (S0155–S0174 exposed; `docs/knowledge_tranfer/*`); G6 R2 `--scope` in each commission, D3 via REVIEWER-INSTRUCTIONS; G7 the fixed text unchanged (diff against the template: only filled fields differ). **Reported, not checked:** the 12-vs-13 out-of-order count; the reviewers' models. **Noted:** the T9-16 Ch. 10 lines are outside this review (recorded in the freeze); the copy's THEORY-MAP L7 still says "Rule Reviewer" (stale role name, one line) | `1a8a4404b`, `cc9007904` |
-| Register | 265 concepts: 52 VALIDATED, 117 PROVISIONAL, 96 INVALID (at S0200) | `0ae02e66b` |
-| Consolidation S0182–S0200 | settled; planted-gap test 2 of 4 | `e5da8af5a`; D1 |
-| Strategic design (Ch. 10) | **turns 1–5 settled** (`dca72c57f`); T10-16 (b) and the routed clarifications applied at the G1 settlement (`8e4b1a420`); all S0 | decision record |
-| G1 theory turn (§9.18) | settled (`8e4b1a420`); evidence kinds are **proposals, not adopted**. **T9-16 (b) applied** (`ed29e5957`): `ce_model.py` v23 re-run by this session: 52 PASS, 0 FAIL, output identical to the saved run; check 37 (six cases) matches the decision; "checks 1–36 identical to v22" **confirmed**: v22 (from `8e4b1a420`) re-run, 46 PASS; its output equals v23's without check 37, line for line | `ed29e5957` |
-| Principal's design decisions | T10-01 (b) promise; T10-05 (B) admission; T10-10 (1) own state; T10-16 (b) record owned by no area (designation with it; removal record-keeping, annulment standing); T9-12 (c) evidence shown, authorised counts; **T9-16 (b) + restore entry** (`4756be2f2`) | decision record |
-| R2 `--scope` (D2) | done by the Professor | `d587cfaf5` |
-| Brief template | in force from the S0225 consolidation | `bf75badfb` |
-
-## Sessions (Claude Code session IDs; verified 2026-10-29 from each transcript's first message)
-
-| Role | Session ID | Started from | State |
-|---|---|---|---|
-| Governance Engineer | `f1575f5d-96b1-404a-af96-797d354857e2` | the lane folder | closed (handover 2026-10-29) |
-| Governance Engineer (successor) | `57ddce41-5334-461f-981b-964872674366` | repository root | active |
-| Professor (Research Lead) | `16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` | repository root | active |
-| Verification Auditor | `76f3445f-0fdb-4fe5-833a-efe25aa62005` | repository root | idle (next: full rerun after the Ch. 10 revision) |
-| Lead DDD Architect | `94ef3b1c-9499-4412-a177-082445a27076` | repository root | idle |
-| Implementation Engineer | — | — | inactive until stage 1 |
-| Independent Reviewers | — (a fresh `kos-lane-reviewer` per review) | — | per commission |
-
-*Resume with `claude --resume <id>` from the folder the session was started in. A session ID identifies the conversation, not the role.*
+| Reading | **S0302**; gate **DUE** (25 of 25 since S0277); reading does not resume past S0302 before the settlement | `00-access/consolidations/S0278-S0302/FREEZE.md` |
+| Consolidation S0278–S0302 (a planted-gap test) | **In review.** Briefs frozen; copy sealed; the independent §8.3a check is **PASS** at 2026-10-31T17:27:24Z, **before** reviewers started at 17:29Z; A (Sonnet, Ch. 2), B (Opus, Ch. 3), C (Opus, §8.52–§8.61 and the passages) commissioned. **No reviewer report is saved** — the folder holds the briefs and `BOOK-UNDER-REVIEW/` only (verified 2026-11-01T02:30Z) — so **the settlement has not occurred** | briefs and copy `d2065a807`…`8e1ef363f`; ACCESS-RECORD entries 17:18:57Z and 17:27:24Z |
+| Sealed key and manifest (outside the repository) | **Intact.** sha256 re-verified 2026-11-01T02:31Z: key `c0427904…`, manifest `6371c741…`, both equal to the values recorded at 2026-10-31T17:18:57Z. **Risk:** they live in a temporary scratchpad; if lost, only the hashes remain | ACCESS-RECORD 17:18:57Z |
+| Req/A theory turn | **Approved for preparation only** (decision record addendum 2026-11-01T02:31:51Z), with seven conditions: issued only after this settlement; engineering as a labelled assumption; audit option (a); bounded scope (primitive set not finalised, T9-02 not absorbed); Rulebook v1.4 only; the prompt presented for the Principal's dispatch; measurement at S0303. **Not issued** | decision record |
+| Time measurement | Authorised (2026-10-31, instruction item 2), split **Reading · Drafting · Settlement · Rework**; **begins at S0303**; no workflow change until the Principal evaluates the results | decision record 2026-10-31T15:53:39Z |
+| Rulebook | **v1.4 in force**; no v1.5 exists and none is adopted | decision record |
 
 ## Roles (three statuses, from the strategy's roles table and the decision records)
 
 | Role | Role defined | Mandate | Activation |
 |---|---|---|---|
-| Principal (human ARB) | yes | — | active |
-| Governance Engineer | yes | revision 3 approved | active (session `57ddce41…`) |
-| Professor (Research Lead) | yes | Rulebook v1.4 + strategic-design mandate rev. 1 | active: reading; evidence questions one at a time |
-| Independent Reviewers | yes | `REVIEWER-INSTRUCTIONS.md` + brief template + agent `kos-lane-reviewer` | per commission |
-| Verification Auditor | yes | revision 3 approved (I-004) | idle |
-| Lead DDD Architect | yes | revision 4 approved (I-007) | part 1 done for turns 1–5; §5a (SD1-05 options) after S0225 with the purpose statements; parts 2–3 not authorised |
-| Implementation Engineer | yes | revision 3 approved (I-005) | inactive until stage 1 |
+| Principal (human ARB) | yes (strategy §0) | — (decision-maker) | active |
+| Governance Engineer | yes; renamed 2026-10-28 | revision 3 approved (sha256 `6f9640f6…`, re-verified 2026-11-01) | this session holds it; the predecessor `57ddce41-…` is not recorded as closed |
+| Professor (Research Lead) | yes | Rulebook v1.4 + strategic-design mandate rev. 1 | active; reading blocked by its own gate (S0302); consolidation S0278–S0302 in review |
+| Independent Reviewers | yes | `REVIEWER-INSTRUCTIONS.md` + brief template + agent `kos-lane-reviewer` | per commission — A, B, C commissioned for S0278–S0302; no report saved |
+| Verification Auditor | yes | revision 3 (I-004) | idle; next is a full rerun, which waits for the Ch. 10 revision (T10-17–T10-21) |
+| Lead DDD Architect | yes | revision 4 (I-007) | part 1 done for turns 1–5; §5a waits for the stage-1 package; parts 2–3 not authorised |
+| Implementation Engineer | yes | revision 3 (I-005) | inactive until the stage-1 decision |
 
-## Pending (owner → action)
+## Pending with the Principal
 
-| # | Owner | Action |
+| # | Matter | State |
 |---|---|---|
-| 2 | Professor | T9-17 (b) **applied** (`c32ea453e`, v24, checked by the Governance Engineer; the U statement unreviewed — question to the Principal); B-04/B-05 note received (neither used nor rejected; a routing gap, self-reported); then adopting the evidence kinds, naming T10-21, the map's "guard" choice — each to the Principal one at a time; T9-18 (a model check, not for the Principal) |
-| 3 | Governance Engineer | evaluate each question and settlement as it arrives (hashes; model re-run; scope) and explain it to the Principal in business terms |
-| 4 | Governance Engineer | **S0226–S0252 test scored** (`f4cdbe236`): blind 4 of 4; key released; stage-2 guard in `PLANTED-GAP-RESULT.md`. Proposals P1–P3 there, for the Principal |
-| 5 | — | **S0226–S0252 settled:** stage 2 `c5669e8c0`, checked by the Governance Engineer 2026-10-31: guard held (§8.43 C6 present, only its header line changed; §8.44 quote unchanged; §10.2.3 refuted keeps its clause, A-12's other parts added; no "sluice" in the working book); A-10 verified (the T10-16 (b) addendum 10:46:12Z is in `382fa6d85`). Freeze lifted; reading resumes at S0253. Ch. 10 changed again: the auditor's full rerun and the Architect's review of the Ch. 10 changes are owed (#7) |
-| 5a | Professor (next brief) | **S0253–S0277 settled** (`3c7a18f31`, `e8e787e00`); Q-A–Q-C recorded (`b367efea9`). Briefs checked by the Governance Engineer 2026-10-31 (after the review, no test): G1 pass; G2 pass (only the template's fixed lines); G3 pass with the Principal's decisions in scope, **CON-0033 omitted** (self-reported); G4 pass (A Ch. 0 and Ch. 1 to 01.13; B Ch. 1 rest; C Ch. 8; D the decision passages); G5 pass (25 allowed; exclusions as at S0252); G6 pass; **G7: fixed text changed** in four places — REVIEWER-NOTE item 3 (`--root` from the first call), the rules line ("or any outside author's name"), the commissions' coverage task for rotated chapters (no window inventory), INTEGRATION items 7–8 (access deviations; the T9-19 quotation). Each is reasoned; **for the template, each needs a change on evidence (§8.9) or is reverted at the next brief** — a proposal for the Principal |
-| 6 | Professor | confirm the implementation-candidates list (`IMPLEMENTATION-CANDIDATES-S0200.md`) and answer its §4 point 2 (the estate's record is outside D) — before the stage-1 decision |
-| 7 | Professor | Ch. 10 revision for T10-17–T10-21 (routed C items; naming) before any tactical design; then the Lead DDD Architect's review of it (bundled with the Ch. 10 changes at `8e4b1a420`), then the auditor's full rerun |
+| 1 | **P1** — extend `corpus_quote_check.py` coverage to the `(L…)` and `Sxxxx Lnn` citation forms, or state its coverage | **open, unapplied.** Verified 2026-11-01: the script is unchanged since 2026-10-23 and still reads no `(L…)` form |
+| 2 | **P2** — forbid `03-methodology/` files in commissions other than `REVIEWER-INSTRUCTIONS.md` and the decision records | **open, unapplied.** Verified 2026-11-01: the S0278–S0302 commissions carry no such prohibition |
+| 3 | Faster-reading test cycle (`PROPOSAL-FASTER-READING-TEST-CYCLE-20261031.md`) | **not approved** |
+| 4 | `03-methodology/METHODOLOGY-EFFICIENCY-REVIEW-20261101.md` (untracked, about 58 KB) | commit-or-not **not answered**; left **uncommitted**; nothing in it is in force |
+| 5 | `06-theory/RESEARCH-PURPOSE.md` L14 ("organisational knowledge") against the recorded engineering direction (I-013 D2) | **open, and to stay open**; the Req/A turn will carry engineering as a labelled assumption only and will not edit the file |
+| 6 | Stage-1 package and the stage-1 decision | **not to be prepared** until the Principal authorises it (2026-10-31T15:16:17Z, item 5) |
 
 ## Waiting for
 
-- The §8.3a check of the S0226–S0252 test copy (separate session, to the Principal); then reviewers A, B and the integration review (Professor).
-- **Noted:** windows C46–C52 checked 2026-10-30 (hashes OK; 0 critical; all findings accepted, C51 W-10 in part). The U-case statement of g1 (§9.18.5 L192–L201) is in reviewer B's scope (`adf8f34a3`), which replaces the separate review proposed earlier.
+- The three reviewer reports of S0278–S0302 (A, B, C), then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.**
 
-## Next milestones
+## Next actions (Governance Engineer)
 
-- **S0225:** consolidation (Ch. 9 rotated in full); then the Principal's **stage-1 decision** (implementation track).
-- **S0250:** consolidation with a planted-gap test.
+1. **On all three reports saved:** confirm the set is complete, then **open the key**, score blind and combined, write `PLANTED-GAP-RESULT.md`, release key and manifest, and give the Principal the stage-2 prompt.
+2. **After the settlement:** present the **copy-ready Req/A commission prompt** for the Principal's dispatch (decision record 2026-11-01T02:31:51Z, condition 6). It is **not** reported as issued until the Principal has sent it.
+3. **At S0303:** begin the authorised time measurement (Reading · Drafting · Settlement · Rework).
+4. Routine checks as the Professor's questions and settlements arrive (hashes; model re-run; scope), each explained to the Principal in business terms.
+5. My own record-keeping (mandate duty 13, §10) runs throughout.
+
+## Sessions (Claude Code session IDs)
+
+| Role | Session ID | Started from | State |
+|---|---|---|---|
+| Governance Engineer (predecessor) | `57ddce41-5334-461f-981b-964872674366` | repository root | not recorded as closed |
+| Governance Engineer (this session) | `fb60c45f-93b6-414f-b55c-81cf795ea568` | lane folder (deviation F1) | active |
+| Professor (Research Lead) | `16a0ac97-2df1-4d21-8fca-c43f5de5b1e2` | repository root | active |
+| Verification Auditor | `76f3445f-0fdb-4fe5-833a-efe25aa62005` | repository root | idle |
+| Lead DDD Architect | `94ef3b1c-9499-4412-a177-082445a27076` | repository root | idle |
+| Implementation Engineer | — | — | inactive until stage 1 |
+| Independent Reviewers | — (a fresh `kos-lane-reviewer` per review) | — | per commission |
+
+*Resume with `claude --resume <id>` from the folder the session was started in. A session ID identifies the conversation, not the role.*
