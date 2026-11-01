@@ -14,7 +14,7 @@
 ## Step 8
 
 - **Dependencies:** C1: §8.57 C1; §8.55 C3–C4; §8.45 C1, L25; §8.44 C1; §8.61 C4; §8.33. C2: §8.41 C1–C2; §8.50 C3–C4; §8.57 C4; §8.47 C1. C3: §8.61 C5 (W-08); S0300 L1398; S0302 L82, L86, L97; §8.57 C4. C4: §5.4 C2, C9; T5-08; §8.39 C1; §8.51 C1; §1.11; §8.50 C4. C5: §8.44 C4; §8.39 C3; T9-18; T9-21; §9.13 L52; §9.19 U6; §9.10; S0916 L87; §8.56 C1; §8.55 C4, §8.55.3; §8.54 C3; §8.57 C2; §8.45 L64; §9.4.
-- **A line comparison (C1):** S0303 L656–1292 against S0295 L1–640, `difflib.SequenceMatcher` on lines: ratio 0.9977; the only non-equal block is S0295 L638–640 (a blank line and the user's question).
+- **A line comparison (C1):** S0303 L656–1292 against S0295 L1–640, `difflib.SequenceMatcher` on lines: ratio 0.9977; the only non-equal block is S0295 L638–640. *(Corrected at settlement, W-17: L640 is the next answer's first line, not part of the question; over the exact span S0295 L1–637 the ratio is 1.0, W's recomputation.)*
 - **Earlier sources re-opened for checking (already read in order):** S0290 (L3, L4, L11, L47, L85), S0295 (the comparison), S0301 (L43, L95), S0302 (L82, L86, L97).
 - **Taken from W's inventory into the draft before step 2 (disclosed in §8.62.5):** the context/identity tension, "Invariant + Judgment", the case-role drift, S0304's two deadlines, the bar beside "no Phase 5 start", the wisdom equation as a list.
 - **R1:** no new register rows; 241 homes, 1 flag (CON-0133, pre-existing).
