@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PREPARED, NOT ISSUED.** Approved for preparation only (research record, addendum 2026-11-01T02:31:51Z, seven conditions). Issued only when the Principal dispatches it; until then nothing in it is in force |
+| Status | **ISSUED** by the Principal's dispatch, reported to the Governance Engineer 2026-11-01T15:06:25Z ("run the turn before reading resumes; I sent the commission"). **Sequence: the turn runs before reading resumes at S0303.** *(Was: prepared, not issued; approved for preparation only, research record 2026-11-01T02:31:51Z.)* |
 | Prepared by | the Governance Engineer (session `57ddce41…`, the active Governance Engineer under Option A), 2026-11-01, after the consolidation S0278–S0302 was settled (stage 2 `e3ac4df54`; condition 1) |
 | Built from | **repository records only**: the addendum's seven conditions; Rulebook v1.4 §1, §12b; `06-theory/manuscript/chapter_09/09.10-required-capabilities.md`, `09.11-kernel-type-from-req.md`, `09.01-kernel-scaffold.md`; `review/TURN1-REQ/SETTLEMENT.md`; `BOOK-OUTLINE.md` L44, L179; `review/BLOCKERS-S0278-S0302.md`; Ch. 9 `TODO.md` T9-01, T9-02; the advisory review's §6.2 template (`METHODOLOGY-EFFICIENCY-REVIEW-20261101.md`, advisory) and its assessment (`ASSESSMENT-OF-METHODOLOGY-EFFICIENCY-REVIEW-20261101.md`). **The "pre-execution report" named as the approval's basis is not in the repository and was not used** |
 

@@ -45,7 +45,7 @@
 
 ## Waiting for
 
-- **S0278–S0302 scored (2026-11-01):** run 2 complete (A, B, C, integration; stage 1 `2b9441cc9`); blind 3 of 4 (Q4, a stale pointer, missed); key released; stage-2 guard in `PLANTED-GAP-RESULT.md`. Next: the Professor's stage 2 on the Principal's go-ahead; then the copy-ready Req/A commission to the Principal.
+- **S0278–S0302 scored (2026-11-01):** run 2 complete (A, B, C, integration; stage 1 `2b9441cc9`); blind 3 of 4 (Q4, a stale pointer, missed); key released; stage-2 guard in `PLANTED-GAP-RESULT.md`. Stage 2 done (`e3ac4df54`), guard checked; settled. **Req/A theory turn ISSUED 2026-11-01** (commission `03-methodology/COMMISSION-REQ-A-THEORY-TURN-20261101.md`); it runs **before** reading resumes at S0303.
 
 ## Next actions (Governance Engineer)
 
