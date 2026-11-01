@@ -10,7 +10,7 @@
 
 ## 1. Verdict
 
-**[I] A sound, honest review whose main recommendations are right and are already decided.** It keeps facts, inferences and proposals apart, states its own limits (§2.2–§2.3), and withdraws two of its own earlier findings (F8, F9). **Five weaknesses** (§3) do not change its main conclusions but should not be carried forward: one internally inconsistent inference, two overstatements, one outdated recommendation, and a provenance problem in how it was later used.
+**[I] A sound, honest review whose main recommendations are right and are already decided.** It keeps facts, inferences and proposals apart, states its own limits (§2.2–§2.3), and withdraws two of its own earlier findings (F8, F9). **Six weaknesses** (§3) do not change its main conclusions but should not be carried forward: one internally inconsistent inference, two overstatements, one outdated recommendation, and a provenance problem in how it was later used.
 
 ## 2. Factual premises checked
 
@@ -32,6 +32,8 @@
 3. **"150 section-citations" double-counts.** **[I]** It sums the five questions' counts (36 + 31 + 29 + 28 + 26); a section citing several questions is counted several times, and the Professor's file notes that the dependency graph reaches one large cluster from any of them. The number of distinct sections is smaller and unstated.
 4. **I-6 targets classes that are no longer the missed ones.** It proposes plants of "an ordinary word used as a defined term" and "a removed claim read as a pointer error", "missed repeatedly". **[V]** Both were **found** at S0226–S0252 (4 of 4), a result file it lists as read. **[V]** The test of S0278–S0302 (after the review) missed a **stale pointer** instead. If I-6 is ever run, its classes need re-choosing from the latest results.
 5. **§6.3 (d) rests on a reading the Principal has since rejected.** "Under the guard reading, `Req` is not monotone … the existence result of §9.1 C3 fails." **[V]** The Principal decided **T9-20: no guard on adoption** (2026-10-31), before the review. **[I]** (d) does not apply to the decided theory; the review does not mention T9-20.
+
+6. **It treats `Req` as having no production step, and never cites §9.10.** *(Added 2026-11-01 while preparing the Req/A commission.)* **[V]** `Req` was defined at **theory turn 1** (2026-10-20): §9.10, version 2, Req = (Q, O) with Q1–Q4 and O1–O4 and fixed disproof conditions (`review/TURN1-REQ/SETTLEMENT.md`: "Met, with the obstacle documented"); §9.11 derives the kernel type from it. The review's I-2 and §6 cite §9.1 and T9-01 but not §9.10 or turn 1. **[I]** Its recommendation still stands, narrowed: the open work is how §9.10 relates to `BOOK-OUTLINE.md` L179's "missing" item, plus `A` and minimality — not deriving `Req` from scratch. The commission is written that way.
 
 ## 4. A provenance problem in how the review was used (not a defect of the review)
 
