@@ -45,7 +45,7 @@
 
 ## Waiting for
 
-- The three reviewer reports of S0278–S0302 (A, B, C), **restarted from scratch** after the usage-limit interruption of 2026-10-31T17:39Z, then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.** *(2026-11-01T13:55 CET: A's fresh run started; B and C start after A is saved; run 1's report A moved to `00-access/consolidations/S0278-S0302/run1/`, not used — FREEZE.md, `fc43734be`, `8a0417919`.)*
+- **S0278–S0302 scored (2026-11-01):** run 2 complete (A, B, C, integration; stage 1 `2b9441cc9`); blind 3 of 4 (Q4, a stale pointer, missed); key released; stage-2 guard in `PLANTED-GAP-RESULT.md`. Next: the Professor's stage 2 on the Principal's go-ahead; then the copy-ready Req/A commission to the Principal.
 
 ## Next actions (Governance Engineer)
 
