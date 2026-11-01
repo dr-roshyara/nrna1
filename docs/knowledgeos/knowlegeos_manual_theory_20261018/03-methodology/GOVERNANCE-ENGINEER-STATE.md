@@ -6,9 +6,8 @@
 
 ## Session and deviations
 
-- **Session** `fb60c45f-93b6-414f-b55c-81cf795ea568`, 2026-11-01. It began **in the lane folder** as an analysis session (the advisory methodology review of 2026-11-01) and took the Governance Engineer role afterwards.
-- **Deviation (mandate rev. 3 §11.0, finding F1): not started at the repository root.** The working directory has since moved to the root, but deny-rule loading for this session is unverifiable. Every file outside the mandate's §4/§5 lists was therefore treated as forbidden by hand. **No non-allowed, sealed or hold-out file was opened.** Recommendation: the next Governance Engineer session starts at the root.
-- **Predecessor** `57ddce41-5334-461f-981b-964872674366`: **not recorded as closed.**
+- **Active Governance Engineer (Option A, the Principal's decision of 2026-11-01, research record addendum 2026-11-01T13:48:39Z):** session `57ddce41-5334-461f-981b-964872674366` (started at the repository root, 2026-10-29). Updated by it from 2026-11-01T13:48Z.
+- **Session `fb60c45f-93b6-414f-b55c-81cf795ea568`** held the role about 02:31Z–03:45Z on 2026-11-01 (started in the lane folder as an analysis session; its deviation F1 stands as it recorded it). Its records stand as written; **it writes no further canonical record** and may advise only. No handover between the two was recorded before the addendum above, which is that record.
 
 ## Where things stand (research track)
 
@@ -26,7 +25,7 @@
 | Role | Role defined | Mandate | Activation |
 |---|---|---|---|
 | Principal (human ARB) | yes (strategy §0) | — (decision-maker) | active |
-| Governance Engineer | yes; renamed 2026-10-28 | revision 3 approved (sha256 `6f9640f6…`, re-verified 2026-11-01) | this session holds it; the predecessor `57ddce41-…` is not recorded as closed |
+| Governance Engineer | yes; renamed 2026-10-28 | revision 3 approved (sha256 `6f9640f6…`, re-verified 2026-11-01) | **one active session only (Option A, 2026-11-01): `57ddce41-…`**; `fb60c45f-…` advisory only |
 | Professor (Research Lead) | yes | Rulebook v1.4 + strategic-design mandate rev. 1 | active; reading blocked by its own gate (S0302); consolidation S0278–S0302 in review |
 | Independent Reviewers | yes | `REVIEWER-INSTRUCTIONS.md` + brief template + agent `kos-lane-reviewer` | per commission — A, B, C commissioned for S0278–S0302; no report saved |
 | Verification Auditor | yes | revision 3 (I-004) | idle; next is a full rerun, which waits for the Ch. 10 revision (T10-17–T10-21) |
@@ -39,22 +38,24 @@
 |---|---|---|
 | 1 | **P1** — extend `corpus_quote_check.py` coverage to the `(L…)` and `Sxxxx Lnn` citation forms, or state its coverage | **open, unapplied.** Verified 2026-11-01: the script is unchanged since 2026-10-23 and still reads no `(L…)` form |
 | 2 | **P2** — forbid `03-methodology/` files in commissions other than `REVIEWER-INSTRUCTIONS.md` and the decision records | **open, unapplied.** Verified 2026-11-01: the S0278–S0302 commissions carry no such prohibition |
-| 3 | Faster-reading test cycle (`PROPOSAL-FASTER-READING-TEST-CYCLE-20261031.md`) | **not approved** |
+| 3 | Faster-reading test cycle (`PROPOSAL-FASTER-READING-TEST-CYCLE-20261031.md`) | **DEFERRED** (2026-11-01): its threshold lies inside observed variation (25 and 50 sources a day under v1.4); no workflow change without further authorisation |
 | 4 | `03-methodology/METHODOLOGY-EFFICIENCY-REVIEW-20261101.md` | **Committed** on the Principal's instruction at `035f18d81` (addendum 2026-11-01T02:49Z). **Advisory**: nothing in it is in force; it changes no rule, template, brief or research artifact |
 | 5 | `06-theory/RESEARCH-PURPOSE.md` L14 ("organisational knowledge") against the recorded engineering direction (I-013 D2) | **open, and to stay open**; the Req/A turn will carry engineering as a labelled assumption only and will not edit the file |
 | 6 | Stage-1 package and the stage-1 decision | **not to be prepared** until the Principal authorises it (2026-10-31T15:16:17Z, item 5) |
 
 ## Waiting for
 
-- The three reviewer reports of S0278–S0302 (A, B, C), **restarted from scratch** after the usage-limit interruption of 2026-10-31T17:39Z, then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.**
+- The three reviewer reports of S0278–S0302 (A, B, C), **restarted from scratch** after the usage-limit interruption of 2026-10-31T17:39Z, then the integration review. **Nothing proceeds to scoring before every review touching the copy is saved.** *(2026-11-01T13:55 CET: A's fresh run started; B and C start after A is saved; run 1's report A moved to `00-access/consolidations/S0278-S0302/run1/`, not used — FREEZE.md, `fc43734be`, `8a0417919`.)*
 
 ## Next actions (Governance Engineer)
 
 1. **On all three reports saved:** confirm the set is complete, then **open the key**, score blind and combined, write `PLANTED-GAP-RESULT.md`, release key and manifest, and give the Principal the stage-2 prompt.
 2. **After the settlement:** present the **copy-ready Req/A commission prompt** for the Principal's dispatch (decision record 2026-11-01T02:31:51Z, condition 6). It is **not** reported as issued until the Principal has sent it.
-3. **At S0303:** begin the authorised time measurement (Reading · Drafting · Settlement · Rework).
-4. Routine checks as the Professor's questions and settlements arrive (hashes; model re-run; scope), each explained to the Principal in business terms.
-5. My own record-keeping (mandate duty 13, §10) runs throughout.
+3. **After the settlement:** the **review-quality analysis** (authorised 2026-11-01): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
+4. **In the next report to the Professor:** a dated correction note in `METHOD-VERSIONS.md` (L54, "not under version control"), append-only, by the Professor; concept-register changes only once the Professor defines them.
+5. **At S0303:** the authorised time measurement (Reading · Drafting · Settlement · Rework) begins (the Professor's).
+6. Routine checks as the Professor's questions and settlements arrive (hashes; model re-run; scope), each explained to the Principal in business terms.
+7. My own record-keeping (mandate duty 13, §10) runs throughout.
 
 ## Sessions (Claude Code session IDs)
 

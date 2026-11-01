@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **PROPOSED.** Nothing in it is in force. Rulebook v1.4, the window rule, the consolidation schedule and the reading tool stay as they are until the Principal approves this proposal explicitly |
+| Status | **DEFERRED** by the Principal, 2026-11-01 ("Its baseline and success threshold do not distinguish improvement from ordinary variation"; research record addendum of that date). Not run. Rulebook v1.4, the window rule and the consolidation schedule unchanged. *(Was: PROPOSED.)* |
 | Asked by | the Principal, 2026-10-31 ("Prepare a formal proposal for accelerating the Professor's corpus-reading process") |
 | Prepared by | the Governance Engineer (session `57ddce41…`), 2026-10-31; mandate §8.9 (a rule change proposed on evidence) |
 | Evidence base | the settlements of windows C46–C61 (measures tables); the reading tool's position (`close_source.py --position`, 2026-10-31: S0299, 22 of 25 since S0277); the planted-gap results S0100, S0150, S0200, S0252; Rulebook v1.4 §3, §6, §10, §12 |
