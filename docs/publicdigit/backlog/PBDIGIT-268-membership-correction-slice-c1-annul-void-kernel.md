@@ -46,4 +46,12 @@ Contract §14.3, K-A1 … K-X2, and the Definition of Done §15.7, all **TDD-fir
   - **Tests:** three new in `AnnulVoidTest`.
   - **Regression:** Domain 117 OK (differential and golden oracle unchanged); Application 61 OK; Infrastructure 13 OK; Membership architecture tests all OK.
   - **Guide:** `developer_guide/membership/09_v2_annul_requires_decision_provenance.md`.
-- **Next:** Principal Reviewer review of the fix, then the PO reconsiders G3 for C-1.
+- 2026-11-02: **independent review of the V-2 fix** (separate session; report not tracked in git): recommends ACCEPT WITH EXPLICIT RESIDUAL RISKS, subject to D1 (clean-copy run) and D2 (traceability). A recommendation, not acceptance.
+  - **Correction to the entry above** (the entry is kept as written): RED 2 showed the `attested` iteration accepted; the `rule` iteration was not observed, because PHPUnit stops at the first failing assertion. The guard-order test failed with `AnnulOfVoidRefused`, i.e. wrong precedence, not acceptance. The regression counts were from the shared working tree and not tied to a commit.
+  - **D1 done:** clean-copy run at `7f3c9896b`: AnnulVoid 24, Domain 117, Application 61, Infrastructure 13, architecture 51 (7 files), all exit 0. Hashes in the dispositions record §1.
+  - **D2:** dispositions record §1 and contract §16 row done. Contract §14.3 / §15.3 annotations and the V-1 scope extension were first proposed, then decided by the PO on 2026-11-02 (P1 option B, P2, P3) and applied:
+    - acceptance criterion **K-A6** and the §14.3 annotation;
+    - the §15.3 historical annotation;
+    - roadmap R-7 (`768720438`).
+  - **G-8 closed:** D1 evidence archived in `docs/publicdigit/membership/evidence/2026-11-02-v2-clean-copy/` (`5761bee52`).
+- **Next:** the PO reconsiders G3 for C-1. **G3 is still DEFERRED FOR EVIDENCE.**

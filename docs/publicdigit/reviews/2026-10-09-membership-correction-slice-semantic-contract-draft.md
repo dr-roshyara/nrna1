@@ -495,6 +495,7 @@
 | K-A3 | Annul(Void) → `AnnulOfVoidRefused` | R-6 / N-3 | unit |
 | K-A4 | Annul without `decidedAt` → `DecidedAtRequired` | R-16 | unit |
 | K-A5 | Annul(x) with ¬live(x) → `TargetNotLive` | D-COR-2 (PO-approved 2026-10-10; PR concurred 2026-10-10) | unit |
+| K-A6 | *(added 2026-11-02, C-AMEND-2; PO decision P1 option B)* Annul(x) whose **own** provenance is `rule` / `attested` → `AnnulRequiresDecisionProvenance`; nothing appended; checked after K-A4 and before K-A3, K-A2, K-A5 | §3.1 "Resulting fact"; BR-9a; C-AMEND-2 | unit: `AnnulVoidTest::test_an_annul_without_decision_provenance_is_refused_and_changes_nothing`, `…test_an_annul_with_decision_provenance_is_still_accepted`, `…test_annul_provenance_guard_order` (`115e031de`) |
 | K-V1 | Void(x), any live earlier fact (incl. Annul, Void) → accepted; afterwards ¬live(x) | R-4, §14.2 | unit + differential |
 | K-V2 | Void(x) with ¬live(x) → `TargetNotLive` | D-COR-2 (PO-approved 2026-10-10; PR concurred 2026-10-10) | unit |
 | K-R1 | appeal: a, Annul(a), Annul(Annul(a)) → a live again; resolution as F·a | R-3 | unit + property P-APPEAL (§14.4) |
@@ -505,6 +506,13 @@
 | K-E1 | an accepted Annul / Void records `FactAnnulled` / `FactVoided` evidence (the kernel decision carries the event data; emission is the application's job, C-3) | R-15 | unit |
 | K-X1 | Admit / End-only logs resolve exactly as before C-1 (Slice 0 / 1a regression) | — | the existing 93 unit tests + differential |
 | K-X2 | exhaustive differential: verdicts, refusal reasons **and per-period lifetimes** equal the PHP port of g6 (restricted to R-2, D-COR-2) within the stated bounds | — | differential |
+
+**Annotation C-AMEND-2 (2026-11-02, additive; PO decision P1 option B).** The Annul's **own** provenance and its **target's** provenance are separate conditions. No existing criterion is changed.
+- **K-A2** concerns the **target's** provenance (R-2; example T11). In K-A2 the Annul itself carries `decision` provenance.
+- **K-A6** concerns the **Annul's own** provenance: it must be `decision` (§3.1 "Resulting fact"; BR-9a). Otherwise the Annul is refused with `AnnulRequiresDecisionProvenance`, and nothing is appended (C-AMEND-2).
+- **Order:** `DuplicateFactId`, `TargetNotFound` and `DecidedAtRequired` (K-A4) come first. Then K-A6. Then `AnnulOfVoidRefused` (K-A3), `TargetHasNoDecisionProvenance` (K-A2) and `TargetNotLive` (K-A5).
+- So **K-A2, K-A3 and K-A5 hold for an Annul that itself carries `decision` provenance.** An Annul that also lacks it is refused with `AnnulRequiresDecisionProvenance` (K-A6).
+- K-A6 adds no rule beyond C-AMEND-2 (gate decision record, row 7).
 
 ### 14.4 Properties with explicit domains
 
@@ -641,7 +649,7 @@ A PR confirmation of the architecture question **does not decide** the business 
 | Item | Verdict | Class |
 |---|---|---|
 | Annul ≠ Void (meaning, statistics, authority, targets) | holds (§3.1 / §3.2; FP §13.8) | ratified requirement |
-| Annul needs decision provenance + `decidedAt` | holds (R-2, R-16; K-A2, K-A4) | ratified requirement |
+| Annul needs decision provenance + `decidedAt` | holds (R-2, R-16; K-A2, K-A4) *(Annotation 2026-11-02, C-AMEND-2; PO decision P2: this verdict covered the **target's** provenance only. The Annul's **own** provenance was not enforced until `115e031de` (V-2); it is now enforced by `AnnulRequiresDecisionProvenance` (K-A6).)* | ratified requirement |
 | D-COR-2 refuses Annul / Void of a non-live target | stated as **OPEN**, recommendation refuse (§14.2, K-A5, K-V2) | unresolved architecture decision |
 | pre (target live) vs post (target not live) | separated (§14.2) | derived invariant |
 | Annul(Annul) is an appeal, not an ordinary reversal | holds (R-3; P-APPEAL separate from P-REV-A) | ratified requirement |
@@ -767,5 +775,6 @@ The authoritative register is `docs/publicdigit/reviews/2026-10-10-membership-c1
 | this contract | **APPROVED by the PO 2026-10-10** (formal) |
 | C-AMEND-1 | **ADOPTED by the Human PO / ARB 2026-10-10**: additive §14.5 C-3 / C-4 entry criteria; CQ-3 OPEN; plus the status-label corrections (H1, register line, the C-1 row below; G2-b). Register row 5 |
 | C-STATUS-1 | **APPROVED by the Human PO / ARB 2026-10-10** (subject to the Principal Reviewer's wording review): the stale C-1 start-gate statuses (the "Decision register" C-1 row; register row 4) are marked superseded by additive notes: plan approved in principle with conditions → re-evaluation: all applicable conditions closed, eligible to start → implemented (`PBDIGIT-268`) → formal acceptance PENDING (G3). Historical text kept. Register row 6. Condition satisfied and P1 – P6 executed in `76b1192de` (provenance: register row 6); **G3 PENDING** |
+| C-AMEND-2 | **ADOPTED by the Human PO 2026-11-02** (additive, §3.1 "Rejection" row): the Annul **itself** carries `decision` provenance (§3.1 "Resulting fact"; BR-9a; V-2), refused otherwise with `AnnulRequiresDecisionProvenance`. This is separate from the **target's** provenance (`TargetHasNoDecisionProvenance`, R-2). Check order: after `DuplicateFactId`, `TargetNotFound`, `DecidedAtRequired`; before `AnnulOfVoidRefused`, `TargetHasNoDecisionProvenance`, `TargetNotLive`. Void is unaffected. Implemented in `115e031de`; register row 7 (`7f3c9896b`). Acceptance criterion **K-A6** and the §14.3 / §15.3 annotations were added 2026-11-02 (PO decisions P1 option B, P2). **G3 still DEFERRED FOR EVIDENCE** (dispositions record §1) |
 | C-1 | **Implemented, formal acceptance PENDING.** Plan approved and gate re-evaluated 2026-10-10 (gate decision record: start-gate checklist, "C-1: ELIGIBLE TO START", and the "Gate re-evaluation" section, "C-1 is eligible to start"); implemented as `PBDIGIT-268` (`f7c251354` … `5765b9fa3`), acceptance correction `9ae69b7bc` … `d90bf8af9`; independent review: ACCEPT WITH EXPLICIT CONDITIONS (no blocking findings). **Formal acceptance pending G3 (PR, then Human PO / ARB).** Limitations: PostgreSQL persistence unverified; the wider Membership unit suite has errors outside C-1; evidence bounded. *(Corrected 2026-10-10 under C-AMEND-1 / G2-b; the earlier text "BLOCKED until recorded" was stale.)* |
 | C-1 scope (PO) | test-first Annul and Void in the existing Membership kernel only. **Not authorised:** Correct and consequences, application authority changes, persistence changes outside the slice, legacy replacement, cutover, live writes |

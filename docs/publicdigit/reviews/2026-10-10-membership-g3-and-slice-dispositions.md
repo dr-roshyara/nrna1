@@ -21,7 +21,10 @@
 | E-ACC | Acceptance review §11 (correction evidence) and §12 (condition dispositions) | REPORTED (developer) |
 | E-INF | Infection 0.29.10: 129 mutants, 119 killed, MSI 92 %, covered 95 % (scope: Member / Resolution / Annul / VoidFact) | REPORTED (developer only) |
 | E-WIDE | The wider Membership unit directories: Domain 27 errors / 265 tests, Application 29 / 81, in files C-1 did not touch | REPORTED (E-IND C7); not re-investigated |
-| E-REG | Gate decision record rows 1 – 6; contract §16; Human ARB record (ARB-MEM-01, ARB-SEC-01, ARB-DEC-01, ARB-MEM-02, ARB-TEST-01) | DECISION |
+| E-RUN-V2 | Clean-copy rerun of the V-2 fix, 2026-11-02 08:41 +01:00, at commit `7f3c9896b` in a fresh detached worktree (no working-tree changes; dependencies from the committed `composer.lock`, `composer install --no-scripts`). PHP 8.5.11, PHPUnit 11.5.6. Five suites, all **exit 0**; counts and SHA-256 in Section 1, "V-2 fix: evidence and review" | VERIFIED |
+| E-RUN-V2-LOC | The outputs, commands, exit files and `SHA256SUMS` were produced in a session scratchpad (`…/scratchpad/d1-evidence/`). **Archived 2026-11-02 on the PO's G-8 decision** in `docs/publicdigit/membership/evidence/2026-11-02-v2-clean-copy/` (commit `5761bee52`); all hashes verified after copying | VERIFIED; G-8 closed |
+| E-REV-V2 | Independent review of the V-2 fix (`115e031de`) and C-AMEND-2 (`7f3c9896b`), 2026-11-02, by a separate Claude session. The report was supplied in session and is **not tracked in git** | INDEP |
+| E-REG | Gate decision record rows 1 – 7; contract §16; Human ARB record (ARB-MEM-01, ARB-SEC-01, ARB-DEC-01, ARB-MEM-02, ARB-TEST-01) | DECISION |
 
 ---
 
@@ -90,6 +93,52 @@ The recommendation does not mean that the wider Membership suite passes or that 
 **Reason:** defect **V-2**. `decideAnnul` does not check the Annul's own decision provenance (`app/Contexts/Membership/Domain/Organisational/Member.php:156`), against correction contract §3.1 / BR-9a. The defect is confirmed at HEAD in `docs/publicdigit/reviews/2026-11-02-membership-ddd-status.md` §4.
 
 **At the same time, the PO authorised the V-2 fix** (story draft MEM-K1) inside PBDIGIT-268. C-1 acceptance is to be reconsidered on that evidence.
+
+### V-2 fix: evidence and review (2026-11-02)
+
+**This subsection records evidence for the PO's reconsideration of G3. It records no acceptance.** The G3 decision above (DEFER FOR EVIDENCE) stands until the PO decides again.
+
+**Commits:** fix `115e031de` (`Member::decideAnnul` guard, `RefusalReason::AnnulRequiresDecisionProvenance`, three tests, contract §3.1 C-AMEND-2 text); gate register row 7 `7f3c9896b`.
+
+| Criterion | Test(s) in `AnnulVoidTest` (names VERIFIED at `7f3c9896b`) | Label | Limitation |
+|---|---|---|---|
+| C-AMEND-2 / BR-9a: the Annul's **own** provenance must be `decision` (`rule` and `attested` refused with `AnnulRequiresDecisionProvenance`) | `test_an_annul_without_decision_provenance_is_refused_and_changes_nothing` | E-RUN-V2 + E-REV-V2 | the target is decision-provenance `A1`, so a check aimed at the target's provenance would fail it. The "version / log / resolution unchanged" assertions are always true, because `decideAnnul` is pure and the helper does not commit (as for K-A4); the evidence is the refusal |
+| C-AMEND-2: a decision-provenance Annul behaves as before (K-A1 characterisation) | `test_an_annul_with_decision_provenance_is_still_accepted` | E-RUN-V2 + E-REV-V2 | does not assert the accepted fact's provenance (K-E1 covers fact data) |
+| C-AMEND-2 check position: after `DuplicateFactId`, `TargetNotFound`, `DecidedAtRequired`; before `AnnulOfVoidRefused`, `TargetNotLive`, `TargetHasNoDecisionProvenance` | `test_annul_provenance_guard_order` | E-RUN-V2 + E-REV-V2 | precedence is exercised with an `attested` Annul only |
+
+**Reproduced at `7f3c9896b` (E-RUN-V2).** Command form `vendor/bin/phpunit --do-not-cache-result <path>`, run from the worktree root with the worktree's `phpunit.xml` (its bootstrap only pins environment variables; every test in these paths extends `PHPUnit\Framework\TestCase`, so no database is used). Exit code captured from `$?`.
+
+| Suite (path) | Result | Exit | Output SHA-256 |
+|---|---|---|---|
+| `tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php` | OK (24 tests, 159 assertions) | 0 | `b68caddb6f8367af47978ec0d55c37ee6f9d1bbe58ff0ec05407e17b0b3e9da9` |
+| `tests/Unit/Contexts/Membership/Domain/Organisational` | OK (117 tests, 112565 assertions) | 0 | `7ba81fc9cd7b7bdf66668646406f71ef51b16320ec5ad61ad936a82a2943aa8a` |
+| `tests/Unit/Contexts/Membership/Application/Organisational` | OK (61 tests, 226 assertions) | 0 | `1b3838b7c977a1910dbb0c372e380f0a062b42c305bc7de8f58649e33c3f098d` |
+| `tests/Unit/Contexts/Membership/Infrastructure/Organisational` | OK (13 tests, 41 assertions) | 0 | `9a3141ab28a0d19dfd20ba5ae3ba32544c0dde23f1b1f329ef3550457bbf53a5` |
+| the 7 `tests/Architecture/Membership*Test.php` files | OK (51 tests, 62 assertions) | 0 | `5a4c3a1bf2cdecbe0b24d1e441722955d4c9f2d396af9c15d20fbe20465127e1` |
+
+**Historical, not reproduced (shared working tree, before the commit; outputs outside the repository):**
+- `red.txt` (SHA-256 `d9a332e3…`): RED 1. Two tests error because `RefusalReason::AnnulRequiresDecisionProvenance` did not exist yet.
+- `red2.txt` (`3a408bf5…`): RED 2, the reason present and the guard absent. Test 1 fails on its **`attested` iteration** (refusal `null`, i.e. the Annul was accepted). PHPUnit stops at the first failing assertion, so the **`rule` iteration was not observed failing**. Test 3 fails at "before `AnnulOfVoidRefused`": the refusal was `AnnulOfVoidRefused`, i.e. **wrong precedence, not acceptance**.
+- `review-annulvoid.txt` (`3e270d96…`, 24 OK) and `review-domain.txt` (`f4630346…`, 117 OK): GREEN and regression, not tied to a commit. Superseded as evidence by E-RUN-V2. The Application, Infrastructure and architecture runs at commit time were REPORTED only (no output kept); E-RUN-V2 now covers them.
+- No removal mutant was run. The independent review rates it optional: `red2.txt` already shows the tests failing without the guard.
+
+**Independent review (E-REV-V2) rulings:** contract ACCEPTABLE; tests ACCEPTABLE; evidence ACCEPTABLE WITH CONDITIONS (D1); register and contract traceability ACCEPTABLE WITH CONDITIONS (D2); residual conditions ACCEPTABLE WITH CONDITIONS; the 2026-10-10 recommendation maintained with qualification. **Reviewer recommendation (§15.7(7)): ACCEPT WITH EXPLICIT RESIDUAL RISKS, subject to D1 and D2.** A reviewer recommendation, not a Human PO / ARB decision.
+
+**Review conditions:**
+- **D1** (clean-copy run at a named commit, outputs hashed and recorded): **done**, E-RUN-V2 above.
+- **D2** (traceability):
+  - this subsection: **done**;
+  - contract §16 C-AMEND-2 row: **done** (summary of register row 7, no new decision);
+  - contract §14.3 / §15.3 annotations (K-A2 means the **target's** provenance; K-A3 and K-A5 assume a decision-provenance Annul; §15.3 "holds" row): **done 2026-11-02 on the PO's decisions P1 (option B: annotation plus acceptance criterion K-A6) and P2**;
+  - V-1 scope extended to the Annul's own provenance on load (verification plan, COR-4 entry criterion): **done 2026-11-02 on the PO's decision P3**, as roadmap R-7 (`768720438`).
+- **D2 is therefore complete.**
+
+**Residual risks added by V-2 (in addition to the 2026-10-10 list above):**
+- **V-1:** `Member::fromLog` would also load an Annul whose own provenance is not `decision`, so C-AMEND-2 is enforced on the decision path only. No persistence path for Annul exists yet (V-4). The scope extension is recorded (roadmap R-7); **V-1 stays a residual risk until COR-4**;
+- **V-3:** only source-level protection; one `new Annul` site in `app/` today. Stays a COR-3 entry criterion;
+- **V-4:** Annul / Void cannot be stored; deferred to C-4 (C-AMEND-1 F-1);
+- **V-5:** tied `recordedAt` values in KnownAt; assigned to COR-4;
+- the `rule` iteration of RED 2 was not observed (see above).
 
 ---
 
@@ -187,6 +236,7 @@ Each needs its own approved implementation plan. The first is drafted in `docs/p
 | G-5 | E-WIDE errors with no owner | engineering, then a PO owner | a separately authorised read-only triage |
 | G-6 | E-RUN outputs are only in the scratchpad | Human PO / ARB | authorise copying the 3 outputs + `env.txt` into the repository, or accept the hashes as the reference |
 | G-7 | Infection not independently rerun | Principal Reviewer (optional) | — |
+| G-8 | E-RUN-V2 outputs are only in a scratchpad | Human PO / ARB | as G-6: authorise copying the 5 outputs + `SHA256SUMS` into the repository, or accept the hashes as the reference. **CLOSED 2026-11-02:** the PO chose to archive (option B); `docs/publicdigit/membership/evidence/2026-11-02-v2-clean-copy/` (`5761bee52`) |
 
 **Not done here (ARB-MEM-03 §4):**
 - no acceptance;

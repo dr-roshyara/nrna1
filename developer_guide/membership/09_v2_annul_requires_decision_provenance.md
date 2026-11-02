@@ -64,14 +64,19 @@ vendor/bin/phpunit --do-not-cache-result tests/Unit/Contexts/Membership/Domain/O
 | `test_an_annul_with_decision_provenance_is_still_accepted` | characterisation: a decision Annul behaves as before (K-A1) |
 | `test_annul_provenance_guard_order` | the three earlier guards win; the new guard wins over `AnnulOfVoidRefused`, `TargetNotLive` and `TargetHasNoDecisionProvenance` |
 
-**RED was recorded before GREEN (2026-11-02):**
-1. First the reason did not exist.
-2. Then, with the reason present but no guard, both behavioural tests failed: the Annuls were accepted.
+**RED was recorded before GREEN (2026-11-02, shared working tree; tests and fix are one commit):**
+1. First the reason did not exist: two tests errored.
+2. Then the reason existed but the guard did not. Two tests failed:
+   - test 1 failed on its `attested` iteration: the Annul was accepted (refusal `null`). PHPUnit stops at the first failing assertion, so the `rule` iteration was **not observed** failing;
+   - test 3 failed at "before `AnnulOfVoidRefused`": the refusal was `AnnulOfVoidRefused`. That is wrong precedence, not acceptance.
 
-**Regression after GREEN:**
-- the Membership Domain suite: 117 tests, including `C1ExhaustiveDifferentialTest` and `G6CorrectionOracleGoldenTest`, unchanged because the oracle uses decision provenance throughout;
-- Application (61) and Infrastructure (13) suites;
-- all seven `tests/Architecture/Membership*` tests.
+**Regression, reproduced in a clean copy at `7f3c9896b`** (2026-11-02, E-RUN-V2; counts and output hashes in the dispositions record §1, "V-2 fix: evidence and review"; outputs archived in `docs/publicdigit/membership/evidence/2026-11-02-v2-clean-copy/`; acceptance criterion **K-A6**, contract §14.3):
+- `AnnulVoidTest`: 24 tests OK;
+- the Membership Domain suite: 117 tests OK, including `C1ExhaustiveDifferentialTest` and `G6CorrectionOracleGoldenTest`, unchanged because the oracle uses decision provenance throughout;
+- Application `Organisational` (61) and Infrastructure `Organisational` (13): OK;
+- all seven `tests/Architecture/Membership*` files: 51 tests OK.
+
+The earlier GREEN and regression runs in the shared working tree were not tied to a commit; the clean copy supersedes them as evidence.
 
 ## Pitfalls
 
