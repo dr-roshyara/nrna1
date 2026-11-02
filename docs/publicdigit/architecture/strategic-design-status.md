@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | **Status date** | 2026-11-02 |
-| **Verified at** | branch `election-flow-updated`, HEAD `25170720c`. `8dd493d31` and `17ef51c5e` are on `origin`; the branch is 2 commits (other sessions, KnowledgeOS) ahead of `origin`. |
+| **Verified at** | branch `election-flow-updated`, HEAD `532b598cd` (2026-11-02 review). `8dd493d31` and `17ef51c5e` are on `origin`. `a6b3f6ab8` (this record and the register) and three other sessions' KnowledgeOS commits are **not pushed**. The review commit follows (see the session log). |
 | **Full register** | `docs/publicdigit/reviews/2026-11-02-organisation-governance-strategic-design-status-assessment.md` (T-10: every item classified and cited) |
 | **Maintained by** | each strategic-design session, at session close (§8) |
 
@@ -63,6 +63,8 @@ Preserve ratified and accepted decisions.
 
 **Full list:** register §4 (O-1…O-15).
 
+**Dependencies, evidence, next action and hold-backs per blocker:** register §4a.
+
 **Blocking the model:**
 
 | # | Decision | Owner |
@@ -92,7 +94,7 @@ Preserve ratified and accepted decisions.
 
 | # | Task | Depends on | Owner | Done when |
 |---|---|---|---|---|
-| T1 | **Decide K7** (O-1) | — | PO | decision recorded in Decision C / PBDIGIT-30 |
+| T1 | **Decide K7** (O-1). Brief ready: `docs/publicdigit/reviews/2026-11-02-organisation-k7-b1-amendment-decision-brief.md` (options K, B1′, K′; recommendation K′) | — | PO | decision recorded in PBDIGIT-30, BR-12, Decision C §2a, register O-1. PBDIGIT-32 scope re-checked |
 | T2 | **Prepare the DR-07 decision paper** (two readings of ratified §10; options) | — | Claude → PO + ARB | paper ready for the ARB |
 | T3 | **ARB session:** INV-ORG-SCOPE-1 ratification; INV-AFF-1; DR-07; XD-4; vocabulary (O-14) | T2 | ARB | acts recorded |
 | T4 | **Accept S1** (`17ef51c5e`) | — | PO / reviewer | acceptance recorded in PBDIGIT-318 |
@@ -138,10 +140,21 @@ Update this record (and the session log) with:
 - the T-10 status assessment and this record.
 
 **Repository:**
-- the T-10 assessment, its governance-map pointer, this record and the session-log entries are **uncommitted** at the time of writing (see the session log for the commit, if made).
+- the T-10 assessment, its governance-map pointer, this record and the session-log entries were committed in `a6b3f6ab8` (not pushed).
+
+**Principal Reviewer quality review (2026-11-02, later):**
+- Register verified:
+  - one T-10 row (the reported duplicate was a diff excerpt);
+  - S1 implemented, not accepted.
+- R-6 class clarified.
+- Added:
+  - §4a dependency map;
+  - §7 closure path;
+  - the K7 brief.
+- No status changed. Commit: see the session log.
 
 **Next action:**
-- **T1, K7**, a PO decision.
+- **T1, K7:** the PO answers the brief's single question.
 - In parallel, I can prepare **T2** (the DR-07 paper) without any decision.
 
 **Do not:**

@@ -2,7 +2,14 @@
 
 **Date:** 2026-11-02 · **Author:** Claude (DDD architect / requirements engineer; authority: generated)
 **Status:** RESEARCH / REGISTER. It decides nothing and changes no status.
-**Baseline:** branch `election-flow-updated`, HEAD `25170720c`.
+**Baseline:** branch `election-flow-updated`, HEAD `25170720c`. Committed in `a6b3f6ab8`.
+**Reviewed:** 2026-11-02 at HEAD `532b598cd` (the commit after `a6b3f6ab8` is another session's KnowledgeOS commit, which touches no file cited here). The Principal Reviewer quality review led to these changes:
+- R-6 class clarified;
+- O-1 linked to its K7 brief;
+- §4a dependency map added;
+- §7 closure path added.
+
+No status changed.
 **Placement:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0).
 **Fulfils:** backlog T-10 of `2026-11-02-governance-domain-discovery-map-roadmap-and-readiness.md` §10.
 
@@ -48,7 +55,7 @@
 | R-3 | Aggregate boundary | the Membership aggregate must not absorb committee participation | act §10 `:283-304` |
 | R-4 | Vocabulary | EM-VOC-001 (Member aggregate), EM-VOC-002 (affiliation ≠ Membership) | ratified set |
 | R-5 | Anonymity | ADR-T11: no voter ↔ vote linkage | `docs/adr/ADR-T-LOG-Tactical-Implementation.md:18` |
-| R-6 | Working Organisation | B1 (bootstrap PublicDigit, sign-in routing, one Working Organisation per request) and B10, **approved by the PO 2026-08-06** | `docs/publicdigit/backlog/PBDIGIT-30-active-organisation-business-lifecycle-discovery.md` |
+| R-6 | Working Organisation | B1 (bootstrap PublicDigit, sign-in routing, one Working Organisation per request) and B10, **approved by the PO 2026-08-06**. Binding as a **PO approval, not an ARB act**; listed here because it is binding (the summary record lists it as APPROVED). | `docs/publicdigit/backlog/PBDIGIT-30-active-organisation-business-lifecycle-discovery.md` |
 | R-7 | ADR-0001 | committee write model in `app/Contexts/Membership/Domain/Committee` (**Accepted**, March 2025). Its relation to R-3 is open (see O-6). | `docs/adr/ADR-0001-committee-read-write-separation.md:20-21` |
 
 ## 2. APPROVED by the PO (some ARB acts pending)
@@ -80,7 +87,7 @@
 
 | # | Question | Owner | Blocks | Source |
 |---|---|---|---|---|
-| O-1 | **K7:** amend B1 (PublicDigit a real organisation; wording "B1′") or keep it | PO | P-4, BR-12 | Decision C §2a |
+| O-1 | **K7:** amend B1 (PublicDigit a real organisation; wording "B1′") or keep it | PO | P-4, BR-12, PBDIGIT-32 scope | Decision C §2a; **brief** `2026-11-02-organisation-k7-b1-amendment-decision-brief.md` |
 | O-2 | B1.5 vs B1.3: enter a remembered Working Organisation without counting? | PO | INV-AFF-1 cost | evaluation OQ-E-2 |
 | O-3 | Scale figures U-1…U-5 | PO + Ops | A-4 validation, P-5 feasibility | Decision D §11 |
 | O-4 | Isolated test database | PO / Ops | every database test; S2–S4 | ARB-SEC-01 (gate FAIL); T-13 |
@@ -95,6 +102,27 @@
 | O-13 | OQ-PROV-1…9; OQ-3b-2 / 3 / 4; OQ-3a-1 / 2 (legal basis, separate identities) | PO + legal + ARB | P-1, P-2, P-6 | the respective records |
 | O-14 | Vocabulary split: member / role / observer / ElectionMembership (T-04) | ARB | the context map | governance map §2 |
 | O-15 | Forum product choice; BQ-F1…F3, BQ-P9 | PO | Communication | v1.5 `:352-355` |
+
+## 4a. Decision dependency map (blockers only)
+
+This map adds evidence, next action and hold-backs to §4 and §2. **It does not duplicate their sources:** the source of each item is its row there.
+
+| Item | Decision required | Owner | Status | Evidence needed | Next action | Must not proceed before it |
+|---|---|---|---|---|---|---|
+| O-1 K7 | keep B1, amend to B1′, or K′ (separate operator organisation) | PO | OPEN; PO direction 2026-11-01 to amend, **not yet an amendment** | none for the decision; for K′, a read-only check of real data in the platform organisation | PO answers the brief | amending PBDIGIT-30 / BR-12 / Decision C; authorising PBDIGIT-32 |
+| O-6 DR-07 | committee ownership; reading of R-3 (aggregate vs context) against R-7 | PO + ARB | OPEN | ratified act §10 text; ADR-0001; committee code location | **Claude prepares the DR-07 paper (T2)** | Governance contracts; the Membership ↔ Governance relationship (T6); O-8…O-10 modelling |
+| O-7 XD-4 | who owns authorisation decisions | ARB | OPEN | permission model inventory (v1.5 §2) | ARB agenda | the authorisation contract; G-5 remediation design |
+| O-7 XD-5 | geography history and jurisdiction | ARB | OPEN | O-11 answers | ARB agenda, after O-11 | Geography context boundary |
+| O-8 | which positions are incompatible within an organisation | PO | OPEN (scope fixed by BR-14) | statutes | PO, with statutes | Governance invariants |
+| O-9 | Membership ↔ tenure | PO | OPEN | statutes | PO | EffectiveTenure; Membership ↔ Governance contract |
+| O-10 | committee authority, statutes | PO | OPEN | statutes (not in the corpus; not yet requested, T-08) | PO supplies statutes | the business-authority matrix (T-08) |
+| O-14 | vocabulary split | ARB | OPEN | governance map §2 conflicts | ARB agenda | **declaring the context map final** |
+| A-1 ARB act | ratify INV-ORG-SCOPE-1, including O-5 | ARB | APPROVED by PO; ARB pending | Stage 1 investigation | ARB agenda | Stage 2 (G-5) design or tests |
+| P-5 ARB act | INV-AFF-1 | ARB | PROPOSED; referred | V-6 (needs O-3) | ARB agenda | A-4 tenancy validation; D-1 final decision |
+| O-12 / A-6 | S1 acceptance; OQ-ME-1…4 | PO / reviewer; Election owner; ARB | S1 implemented, **not accepted**; OQ-ME open | review of `17ef51c5e` | PO / reviewer accepts S1 | S2 (also: MemberTest change approval, O-4), S3 (contract semantics, Membership-owner agreement), S4 (V-1, OQ-ME-2/3) |
+| O-3 | U-1…U-5 | PO + Ops | OPEN | the figures | PO / Ops supply | A-4 validation; V-6 |
+| O-4 | isolated test database | PO / Ops | OPEN (ARB-SEC-01 FAIL) | database assigned | PO / Ops | any database-touching test (S2–S4, V-5) |
+| PBDIGIT-317 | whether secrets were written and exposed | PO / Ops + Security | **investigation, not a confirmed incident** | V-3 log channel and access | PO / Ops read-only log-access check | nothing waits on strategic design; **independent** |
 
 ## 5. GAP: implementation contradicts a ratified or approved rule
 
@@ -127,17 +155,23 @@
 
 ## 7. Exit criteria for the organisational strategic design
 
-| Criterion | Evidence today | State |
-|---|---|---|
-| Each context has a defined responsibility, authority and boundary | Membership ratified (R-1, R-2); others candidate (P-7, P-8); Governance owner open (O-6) | **not met** |
-| Core vocabulary unambiguous | member / role / observer overloaded (O-14) | **not met** |
-| Business rules have explicit scope | BR-13 / 13a / 13-S / 14 (A-2); incompatibility within an organisation open (O-8) | **partly met** |
-| Context relationships specified (owner, decider, exchange, failure, scope, deletion) | Membership ↔ Election specified as a boundary (A-5); Membership ↔ Governance cycle found, unspecified (governance map §5) | **not met** |
-| No context makes another's decision | ratified (R-2); enforced by S1 for Membership ↔ Election; gaps G-1…G-4 | **partly met** (rule set; gaps tracked) |
-| Assumptions visible with owners | this register | **met** |
-| Decisions distinguishable by status | this register | **met** |
-| Implementation implications recorded | §5, PBDIGIT-266 / 309 / 318 | **met** |
-| Reversal conditions documented | Decision D §4a; individual records | **partly met** |
+| Criterion | Evidence today | State | To close | Closed by (owner) |
+|---|---|---|---|---|
+| Each context has a defined responsibility, authority and boundary | Membership ratified (R-1, R-2); others candidate (P-7, P-8); Governance owner open (O-6) | **not met** | O-6, O-7; ARB adoption of P-8 contexts | ARB act recorded |
+| Core vocabulary unambiguous | member / role / observer overloaded (O-14) | **not met** | O-14 | ARB act recorded |
+| Business rules have explicit scope | BR-13 / 13a / 13-S / 14 (A-2); incompatibility within an organisation open (O-8) | **partly met** | O-1, O-8, O-9, O-10 | PO decisions recorded |
+| Context relationships specified (owner, decider, exchange, failure, scope, deletion) | Membership ↔ Election specified as a boundary (A-5); Membership ↔ Governance cycle found, unspecified (governance map §5) | **not met** | T6 relationship specifications, starting with Membership ↔ Governance (after O-6); OQ-ME-4 contract semantics | ARB review of the specifications |
+| No context makes another's decision | ratified (R-2); S1 **guards against new** Membership ↔ Election violations; existing gaps G-1…G-4 remain at runtime | **partly met** (rule set; gaps tracked) | S1 acceptance; S2–S4 each approved and accepted | PO / reviewer per slice |
+| Assumptions visible with owners | this register | **met** | — | — |
+| Decisions distinguishable by status | this register | **met** | keep at every session close | each session |
+| Implementation implications recorded | §5, PBDIGIT-266 / 309 / 318 | **met** | — | — |
+| Reversal conditions documented | Decision D §4a; individual records | **partly met** | reversal conditions for P-1…P-6 when each is decided | the deciding authority |
+
+**Four separate claims; do not merge them:**
+1. S1 **implemented** (`17ef51c5e`).
+2. S1 **accepted** (not yet).
+3. Runtime boundary **corrected** (G-1…G-4 closed by S2–S4; not yet).
+4. Strategic design **complete** (this section; not yet).
 
 **Conclusion:** the organisational strategic design is **not complete**.
 
