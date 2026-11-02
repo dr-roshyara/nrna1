@@ -1,5 +1,7 @@
 # Membership (organisational) — developer guide index
 
+**Start here:** [10: Membership in business terms: what we are building, what exists, what comes next](10_business_overview_current_state_and_plan.md). It covers the business model, the status of each capability, the gaps and the plan, with the evidence for each.
+
 The ratified Membership architecture is implemented slice by slice under
 `app/Contexts/Membership/Domain/Organisational/`. It is separate from the legacy
 `Member` / `Membership*` classes (see EP-01 §3.9, collisions C-1 / C-2).
@@ -15,6 +17,7 @@ The ratified Membership architecture is implemented slice by slice under
 | 07 | [F-3: key first, and a MemberId collision is an infrastructure failure](07_f3_key_first_and_member_id_collision.md) | `PBDIGIT-264` F-3 | implemented and tested on the double; PostgreSQL unverified (Part 2); not accepted |
 | 08 | [Slice 2a: Admit / End command rules](08_slice2a_admit_end_command_rules.md) | Slice 2a · `PBDIGIT-271` | implemented and hardened (database-free; H1, H2); committed `834a4f65c`, not pushed; not accepted |
 | 09 | [V-2: an Annul must itself carry decision provenance](09_v2_annul_requires_decision_provenance.md) | C-1 fix · `PBDIGIT-268` | implemented 2026-11-02 (database-free); C-1 G3 still deferred |
+| 10 | [Membership in business terms: current state and plan](10_business_overview_current_state_and_plan.md) | overview (no story) | documentation, 2026-11-02 |
 
 **Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 **deferred** for V-2 (guide 09).
 
