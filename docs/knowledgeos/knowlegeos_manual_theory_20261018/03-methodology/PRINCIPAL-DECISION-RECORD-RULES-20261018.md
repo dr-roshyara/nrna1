@@ -821,3 +821,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis:** mandate §8.3 step 7 and §8.3a; base `5a347441e`; copy `66969f253`; key and manifest hashes in the access record (entry 2026-11-02T10:32:26Z, commit `0fc9e1ac7`); brief check G1–G7 passed.
 - **Effect:** a fresh session, not a reviewer of this consolidation, runs C1–C6 and reports to the Principal; the Governance Engineer relays the report unedited. **No reviewer starts** until the Principal confirms PASS to the Professor.
 - **Not yet recorded (the Principal's words not received by the Governance Engineer):** the instructions to the Professor to continue reading through S0352, to include the U1–U6 passages in this consolidation, and to add §9.19.9 L392–397 to reviewer D.
+
+## Addendum 2026-11-02T12:59:13Z: three instructions the Principal gave the Professor directly (recorded by the Governance Engineer)
+
+- **Principal (verbatim):** "I gave the Professor all three instructions."
+- **The three instructions, as the Governance Engineer had offered them:** (1) "Continue the standing instruction for S0328–S0352: read window after window and stop at the consolidation gate after S0352, before starting that consolidation. The Governance Engineer prepares its planted-gap copy at that point." (2) "Review the U1–U6 decision passages (§9.10, §9.18, Ch. 9 TODO and index) at the S0328–S0352 consolidation." (3) "Add §9.19.9 L392–L397 (the six "Decided" entries for U1–U6) to reviewer D's sections, in SCOPE §2.1 and §2.6, COMMISSION-D task 1, and nothing else. Commit it as the new base and tell me its hash. Still no book copy and no reviewer."
+- **Effect, already carried out:** reading S0328–S0352 (C80–C88, settled `f554150e9`); base `a5137a1ef`, then `5a347441e` with §9.19.9.
+- *Correction of the addendum 2026-11-02T12:11:49Z's last line:* those instructions are now recorded here.
