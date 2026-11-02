@@ -47,7 +47,7 @@ S1 changes no product code and no business test.
 | Decision | Reason |
 |---|---|
 | Option A (one application, separate persistence ownership) | decision record, Decision 1 |
-| Static test, not deptrac | `deptrac.yaml` has layers only for Contestation, Adjudication, `app/Contexts/Election` and Shared; it covers neither Membership, `app/Contexts/Elections`, nor the legacy `app/Models`. Deptrac also cannot see table names in raw queries. |
+| Static test, not deptrac | `deptrac.yaml` has layers only for Contestation, Adjudication, `app/Contexts/Election` and Shared; it covers neither Membership, `app/Contexts/Elections`, nor the legacy `app/Models`. Deptrac also cannot see table names in raw queries. **PO, 2026-11-02, option (b):** this deviation from the plan is acknowledged; the static test is the enforcement for this boundary; deptrac layers are the later item PBDIGIT-321 (not authorised). |
 | Net migration state, not "any FK ever added" | the `election_memberships` → `user_organisation_roles` key added in `2026_03_17_213212` is **dropped** by `2026_05_19_000001` `up()`. Reporting it would be wrong (see the V3 correction in the decision record). |
 
 ## How to use and extend

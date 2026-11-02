@@ -78,7 +78,7 @@ The PO deferred S1 acceptance and authorised S1b.
 - the out-of-scope coupling inventory (recorded in PBDIGIT-318);
 - PHP 8.3.
 
-**Deptrac:** the deptrac rule in the S1 row above was not delivered (guide 01 gives the reason). Formal PO acknowledgement of that deviation is **open**.
+**Deptrac:** the deptrac rule in the S1 row above was not delivered (guide 01 gives the reason). **PO decision 2026-11-02, option (b):** deviation acknowledged; deptrac layers are the later item PBDIGIT-321, not authorised.
 
 **Exclusions:**
 - no new scan paths;
@@ -137,9 +137,12 @@ The PO deferred S1 acceptance and authorised S1b.
 - [x] S1 implemented
 - [ ] S1 accepted (PO / reviewer). **Deferred by the PO, 2026-11-02**, pending S1b
 - [x] S1b authorised (PO, 2026-11-02, test-only)
-- [x] S1b implemented (uncommitted at the time of writing)
-- [ ] S1b independently reviewed and accepted (PO)
-- [ ] PO acknowledgement of the deptrac deviation
+- [x] S1b implemented (`3aad77d20`)
+- [x] S1b independently reviewed: recommendation (3), further changes (B2, `foreignIdFor`, `foreign(col, name)`, documentation)
+- [x] S1b follow-up authorised (PO, 2026-11-02) and implemented: occurrence counts, foreign-key forms, self-tests, documentation corrections, PBDIGIT-320
+- [x] S1b follow-up re-reviewed (same reviewer): recommendation (2), accept with the residual risks documented
+- [x] S1b accepted (PO, 2026-11-02, with documented residual risks)
+- [x] PO acknowledgement of the deptrac deviation: **option (b), 2026-11-02**. Acknowledged: the static test is the enforcement for this boundary. Deptrac layers recorded as a later, separately authorised item, PBDIGIT-321
 - [ ] S2 scope extended to V1c and V1d (decided by the PO 2026-11-02; design needs approval)
 - [ ] S2 scope extended to V1b: remove `Member::canVoteInElection`; move the voting-rights rule to Election; change `MemberCanVoteInElectionTest` (needs approval)
 - [ ] OQ-ME-1…4 answered
@@ -183,6 +186,13 @@ The PO deferred S1 acceptance and authorised S1b.
   - New V1c and V1d were baselined by PO decision.
   - Guide 02; inventory in PBDIGIT-318.
   - A project-wide PHP-version mismatch was found and recorded as PBDIGIT-319.
+- **2026-11-02, S1b independent review:** recommendation (3), further changes. B2 (a repeated use of a baselined target) did not meet the acceptance condition; `foreignIdFor` and `foreign(col, name)` were missed; the documentation overclaimed.
+- **PO decision:** a narrow follow-up was authorised; baseline governance documented; X-8 → PBDIGIT-320.
+- **Follow-up implemented:**
+  - occurrence-count ratchet; the two foreign-key forms; self-tests; corrected guide 02 with known limits and false positives.
+  - RED: 7 of 49. GREEN: 49 tests and 64 assertions under PHP 8.5 and 8.3.
+  - Next: re-review by the same reviewer, then the PO.
+- **Strategic criterion "No context decides for another": remains partly met.** S1 and S1b are regression guards; they remove no decision site.
 
 ## Risks
 

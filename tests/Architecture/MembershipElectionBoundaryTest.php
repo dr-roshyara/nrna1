@@ -21,15 +21,22 @@ use RecursiveIteratorIterator;
  *   3. integrity coupling    — the net migration state leaves a foreign key from an
  *                              Election table to a Membership- or affiliation-owned table.
  *
- * S1b (PO, 2026-11-02): violations are tracked per file AND per target ("model:X", "table:y", "namespace:Z"),
- * so a new target cannot hide in an already-baselined file. Table references are anchored (query-builder
- * calls, validation rules, SQL statements), so prose strings and array keys are not reported. The detectors
- * themselves are tested with planted forms (the S1b self-tests below).
+ * S1b (PO, 2026-11-02): violations are tracked per file, per target ("model:X", "table:y", "namespace:Z")
+ * and per OCCURRENCE COUNT. A new target, or one more occurrence of a baselined target, fails the test.
+ * Table references are anchored (query-builder calls, validation rules, `$table` properties, SQL statement
+ * strings), so most prose strings and array keys are not reported. The detectors themselves are tested
+ * with planted forms (the self-tests below). Known limits: developer guide 02.
  *
- * BASELINE: the known violations approved by the PO on 2026-11-02 (V1, V1b, V2, V3′; plan
- * docs/plans/20261102-0339-membership-election-boundary-remediation-plan.md). The baseline may only
- * SHRINK: a baseline entry that no longer violates fails the test, so it must be removed by the slice
- * that fixes it (S2, S3, S4). Adding an entry requires an explicit PO decision.
+ * BASELINE: the known violations V1, V1b, V1c, V1d, V2, V3′ (plan
+ * docs/plans/20261102-0339-membership-election-boundary-remediation-plan.md). The baseline may only SHRINK:
+ * fewer occurrences, or a target that no longer violates, fails the test until the baseline is lowered by
+ * the slice that fixes it (S2, S3, S4).
+ *
+ * BASELINE GOVERNANCE (PO, 2026-11-02):
+ *   - The PO approves routine baseline additions and changes that are consistent with existing architectural decisions.
+ *   - The ARB decides changes to architectural policy and unresolved cross-context ownership questions (e.g. OQ-ME-3, OQ-ME-4).
+ *   - A baseline entry records a KNOWN CONDITION; it does not make the dependency architecturally compliant.
+ *   - No newly discovered violation is added automatically, and no baseline change may settle an open architectural question.
  *
  * Code is scanned with comments removed (PHP tokenizer), so prose in docblocks does not count.
  */
@@ -82,20 +89,32 @@ final class MembershipElectionBoundaryTest extends TestCase
         'MembershipRenewal', 'MembershipType', 'OrganisationUser', 'UserOrganisationRole',
     ];
 
-    /** Approved baseline (PO, 2026-11-02): file => targets. May only shrink. */
+    /**
+     * Approved baseline (PO, 2026-11-02): file => target => occurrence count. May only shrink.
+     * A count records the occurrences that exist today; each import or use counts once (see modelReferences()).
+     * These are KNOWN VIOLATIONS awaiting remediation (S2, S3, S4), not compliant dependencies.
+     */
     private const BASELINE_MEMBERSHIP_TO_ELECTION = [
-        // V1: Member::endMembership writes election_memberships through ElectionMembership (Member.php:184-189) — S2.
-        // V1b: Member::canVoteInElection(Election) decides voting entitlement (Member.php:142-149) — S2.
-        // V1c (PO, 2026-11-02, found by S1b): Member::voters() hasMany(Voter::class) (Member.php:82-85) — S2 (code side of V3′).
-        'app/Models/Member.php' => ['model:Election', 'model:ElectionMembership', 'model:Voter'],
+        'app/Models/Member.php' => [
+            // V1b: canVoteInElection(Election) decides voting entitlement (Member.php:142-149) — S2.
+            // Occurrences: import :13, type hint :142.
+            'model:Election' => 2,
+            // V1: endMembership writes election_memberships (Member.php:184-189) — S2. Occurrence: :187.
+            'model:ElectionMembership' => 1,
+            // V1c (PO, 2026-11-02, found by S1b): voters() hasMany(Voter::class) (Member.php:82-85) — S2 (code side of V3′).
+            'model:Voter' => 1,
+        ],
         // V1d (PO, 2026-11-02, found by S1b): a Membership job soft-deletes Election-owned voter invitations
-        // (CleanupExpiredInvitations.php:38-43) — S2.
-        'app/Contexts/Membership/Infrastructure/Jobs/CleanupExpiredInvitations.php' => ['model:VoterInvitation'],
+        // (CleanupExpiredInvitations.php:38-43) — S2. Occurrences: import :5, VoterInvitation::where :38.
+        'app/Contexts/Membership/Infrastructure/Jobs/CleanupExpiredInvitations.php' => ['model:VoterInvitation' => 2],
     ];
     private const BASELINE_ELECTION_READS = [
-        // V2: Election eligibility adapter reads members / membership_types / organisation_users — replaced by S3.
+        // V2: the Election eligibility adapter reads Membership / affiliation data directly — replaced by S3.
         'app/Contexts/Elections/Infrastructure/Policies/EloquentVoterEligibilityQueryService.php' => [
-            'model:OrganisationUser', 'table:members', 'table:membership_types', 'table:organisation_users',
+            'model:OrganisationUser' => 3,       // import :8, :153, :179
+            'table:members' => 2,                // :108, :197
+            'table:membership_types' => 1,       // :110
+            'table:organisation_users' => 2,     // :91, :109
         ],
     ];
     /** "table(columns) -> target" */
@@ -215,21 +234,67 @@ final class MembershipElectionBoundaryTest extends TestCase
             'raw ALTER TABLE ADD FOREIGN KEY, unnamed' => [$wrap("DB::statement('ALTER TABLE voters ADD FOREIGN KEY (organisation_user_id) REFERENCES organisation_users(id)');"), ['voters(organisation_user_id) -> organisation_users']],
             'raw CREATE TABLE ... REFERENCES' => [$wrap("DB::statement('CREATE TABLE election_probe (id bigint, member_id bigint REFERENCES members(id))');"), ['election_probe(member_id) -> members']],
             'added then dropped' => [$wrap("Schema::table('voters', function (\$t) { \$t->foreign('member_id')->references('id')->on('members'); \$t->dropForeign(['member_id']); });"), []],
+            'foreignIdFor(Model::class)->constrained()' => [$wrap("Schema::table('voters', function (\$t) { \$t->foreignIdFor(\\App\\Models\\Member::class)->constrained(); });"), ['voters(member_id) -> members']],
+            'foreignIdFor with a column name' => [$wrap("Schema::table('voters', function (\$t) { \$t->foreignIdFor(OrganisationUser::class, 'org_user_id')->constrained(); });"), ['voters(org_user_id) -> organisation_users']],
+            'foreignIdFor without constrained() adds no key' => [$wrap("Schema::table('voters', function (\$t) { \$t->foreignIdFor(Member::class); });"), []],
+            'foreign(column, name)' => [$wrap("Schema::table('voters', function (\$t) { \$t->foreign('member_id', 'voters_member_fk')->references('id')->on('members'); });"), ['voters(member_id) -> members']],
         ];
+    }
+
+    /** @return array<string, array{string, string, list<string>}> `$table` property: source, detector, expected targets */
+    public static function plantedTableProperties(): array
+    {
+        return [
+            'Membership class declaring an Election table' => ["<?php\nnamespace App\\Contexts\\Membership;\nclass P extends Model { protected \$table = 'voters'; }\n", 'membership', ['table:voters']],
+            'Election class declaring a Membership table' => ["<?php\nnamespace App\\Contexts\\Elections;\nclass P extends Model { protected \$table = 'members'; }\n", 'election', ['table:members']],
+        ];
+    }
+
+    /** @param list<string> $expected */
+    #[DataProvider('plantedTableProperties')]
+    public function test_table_property_detector(string $source, string $detector, array $expected): void
+    {
+        $targets = $detector === 'membership' ? $this->membershipToElectionTargets($source) : $this->electionToForeignTargets($source);
+        $this->assertSame($expected, array_keys($targets));
+    }
+
+    public function test_an_additional_occurrence_of_a_baselined_target_is_reported(): void
+    {
+        $one = "<?php\nnamespace App\\Models;\nclass M { public function voters() { return \$this->hasMany(Voter::class); } }\n";
+        $two = "<?php\nnamespace App\\Models;\nclass M { public function voters() { return \$this->hasMany(Voter::class); }\n  public function purge() { Voter::query()->delete(); } }\n";
+        $baseline = ['app/Models/M.php' => $this->membershipToElectionTargets($one)];
+
+        $this->assertSame(['app/Models/M.php' => ['model:Voter' => 1]], $baseline, 'precondition: one occurrence');
+        [$increases, $decreases] = $this->baselineDiff(['app/Models/M.php' => $this->membershipToElectionTargets($two)], $baseline);
+        $this->assertSame(['app/Models/M.php: model:Voter occurs 2 times, baseline 1'], $increases);
+        $this->assertSame([], $decreases);
+    }
+
+    public function test_a_removed_occurrence_requires_a_baseline_update(): void
+    {
+        [$increases, $decreases] = $this->baselineDiff(
+            ['app/Models/M.php' => ['model:Voter' => 1]],
+            ['app/Models/M.php' => ['model:Voter' => 2, 'table:voters' => 1]],
+        );
+        $this->assertSame([], $increases);
+        $this->assertSame([
+            'app/Models/M.php: model:Voter occurs 1 times, baseline 2 — lower the baseline',
+            'app/Models/M.php: table:voters no longer present — remove it from the baseline',
+        ], $decreases);
     }
 
     /** @param list<string> $expected */
     #[DataProvider('plantedMembershipViolations')]
     public function test_membership_detector_reports_each_planted_violation(string $source, array $expected): void
     {
-        $this->assertSame($expected, $this->membershipToElectionTargets($source));
+        $this->assertSame($expected, array_keys($this->membershipToElectionTargets($source)));
     }
 
     /** @param list<string> $expected */
     #[DataProvider('plantedElectionReads')]
     public function test_election_detector_reports_each_planted_read(string $source, array $expected): void
     {
-        $this->assertSame($expected, $this->electionToForeignTargets($source));
+        $this->assertSame($expected, array_keys($this->electionToForeignTargets($source)));
     }
 
     #[DataProvider('permittedForms')]
@@ -252,10 +317,12 @@ final class MembershipElectionBoundaryTest extends TestCase
 
     public function test_a_new_target_in_an_already_baselined_file_is_reported(): void
     {
-        $baseline = ['app/Models/Member.php' => ['model:Election', 'model:ElectionMembership']];
-        $found = ['app/Models/Member.php' => ['model:Election', 'model:ElectionMembership', 'table:voters']];
+        $baseline = ['app/Models/Member.php' => ['model:Election' => 2, 'model:ElectionMembership' => 1]];
+        $found = ['app/Models/Member.php' => ['model:Election' => 2, 'model:ElectionMembership' => 1, 'table:voters' => 1]];
 
-        $this->assertSame(['app/Models/Member.php: table:voters'], $this->newAgainstBaseline($found, $baseline));
+        [$increases, $decreases] = $this->baselineDiff($found, $baseline);
+        $this->assertSame(['app/Models/Member.php: table:voters occurs 1 times, not in the baseline'], $increases);
+        $this->assertSame([], $decreases);
     }
 
     public function test_landlord_migrations_are_replayed(): void
@@ -270,59 +337,67 @@ final class MembershipElectionBoundaryTest extends TestCase
 
     // ------------------------------------------------------------------ detectors
 
-    /** @return list<string> targets of Membership code in the Election context */
+    /** @return array<string, int> target => occurrences, for Membership code in the Election context */
     private function membershipToElectionTargets(string $source): array
     {
         $view = $this->views($source);
-        $targets = [];
-        foreach ($this->modelReferences($view, self::ELECTION_MODELS) as $model) {
-            $targets[] = 'model:' . $model;
+        $counts = [];
+        foreach ($this->modelReferences($view, self::ELECTION_MODELS) as $model => $n) {
+            $counts['model:' . $model] = $n;
         }
         foreach ($this->tableReferences($view) as $table) {
             if ($this->isElectionTable($table)) {
-                $targets[] = 'table:' . $table;
+                $counts['table:' . $table] = ($counts['table:' . $table] ?? 0) + 1;
             }
         }
-        if (preg_match('/\\\\Contexts\\\\Elections?\\\\/', $view['code'])) {
-            $targets[] = 'namespace:Election';
+        $n = preg_match_all('/\\\\Contexts\\\\Elections?\\\\/', $view['code']);
+        if ($n > 0) {
+            $counts['namespace:Election'] = $n;
         }
+        ksort($counts);
 
-        return $this->normalise($targets);
+        return $counts;
     }
 
-    /** @return list<string> targets of Election code in Membership- or affiliation-owned data */
+    /** @return array<string, int> target => occurrences, for Election code in Membership- or affiliation-owned data */
     private function electionToForeignTargets(string $source): array
     {
         $view = $this->views($source);
-        $targets = [];
-        foreach ($this->modelReferences($view, self::FOREIGN_MODELS) as $model) {
-            $targets[] = 'model:' . $model;
+        $counts = [];
+        foreach ($this->modelReferences($view, self::FOREIGN_MODELS) as $model => $n) {
+            $counts['model:' . $model] = $n;
         }
         foreach ($this->tableReferences($view) as $table) {
             if (in_array($table, self::FOREIGN_TABLES, true)) {
-                $targets[] = 'table:' . $table;
+                $counts['table:' . $table] = ($counts['table:' . $table] ?? 0) + 1;
             }
         }
-        if (preg_match('/\\\\?App\\\\Contexts\\\\Membership\\\\/', $view['plain'])) {
-            $targets[] = 'namespace:Membership';
+        $n = preg_match_all('/\\\\?App\\\\Contexts\\\\Membership\\\\/', $view['plain']);
+        if ($n > 0) {
+            $counts['namespace:Membership'] = $n;
         }
+        ksort($counts);
 
-        return $this->normalise($targets);
+        return $counts;
     }
 
     /**
-     * Imports (plain, aliased, grouped), fully qualified names and, inside namespace App\Models, bare class names.
+     * Counts model references: each import (plain, aliased, grouped) counts once; each use of the imported
+     * local name, each fully qualified name outside imports and, inside namespace App\Models, each bare
+     * class name counts once more.
      *
      * @param array{code: string, plain: string, strings: list<string>, namespace: string} $view
      * @param list<string> $models
-     * @return list<string>
+     * @return array<string, int> model => occurrences
      */
     private function modelReferences(array $view, array $models): array
     {
-        $found = [];
+        $counts = [];
+        $locals = [];
         $plain = $view['plain'];
+        $usePattern = '/\buse\s+(?!function\b|const\b)([^;(]+);/';
 
-        preg_match_all('/\buse\s+(?!function\b|const\b)([^;(]+);/', $plain, $m);
+        preg_match_all($usePattern, $plain, $m);
         foreach ($m[1] as $clause) {
             $clause = trim($clause);
             if (str_contains($clause, '{')) {
@@ -334,31 +409,40 @@ final class MembershipElectionBoundaryTest extends TestCase
                 $items = explode(',', $clause);
             }
             foreach ($items as $item) {
-                $name = trim((preg_split('/\s+as\s+/i', trim($item)) ?: [''])[0]);
+                $parts = preg_split('/\s+as\s+/i', trim($item)) ?: [''];
+                $name = trim($parts[0]);
                 $fq = ltrim(($prefix !== '' ? $prefix . '\\' : '') . $name, '\\');
                 if (preg_match('/^App\\\\Models\\\\(\w+)$/', $fq, $x) && in_array($x[1], $models, true)) {
-                    $found[] = $x[1];
+                    $counts[$x[1]] = ($counts[$x[1]] ?? 0) + 1;
+                    $locals[isset($parts[1]) ? trim($parts[1]) : $x[1]] = $x[1];
                 }
             }
         }
 
-        preg_match_all('/\\\\?App\\\\Models\\\\(\w+)\b/', $plain, $m);
+        // Everything below looks at the code without its import statements.
+        $body = (string) preg_replace($usePattern, '', $plain);
+
+        preg_match_all('/\\\\?App\\\\Models\\\\(\w+)\b/', $body, $m);
         foreach ($m[1] as $name) {
             if (in_array($name, $models, true)) {
-                $found[] = $name;
+                $counts[$name] = ($counts[$name] ?? 0) + 1;
             }
         }
 
         if ($view['namespace'] === 'App\\Models') {
-            $code = (string) preg_replace('/\bfunction\s+\w+/', 'function _', $plain);
             foreach ($models as $model) {
-                if (preg_match('/(?<![\w\\\\$])(?<!->)(?<!::)' . $model . '\b/', $code)) {
-                    $found[] = $model;
-                }
+                $locals[$model] ??= $model;
+            }
+        }
+        $code = (string) preg_replace('/\bfunction\s+\w+/', 'function _', $body);
+        foreach ($locals as $local => $model) {
+            $n = preg_match_all('/(?<![\w\\\\$])(?<!->)(?<!::)' . preg_quote($local, '/') . '\b/', $code);
+            if ($n > 0) {
+                $counts[$model] = ($counts[$model] ?? 0) + $n;
             }
         }
 
-        return $found;
+        return $counts;
     }
 
     /**
@@ -429,46 +513,51 @@ final class MembershipElectionBoundaryTest extends TestCase
         return ['code' => $code, 'plain' => $plain, 'strings' => $strings, 'namespace' => $namespace];
     }
 
-    /** @param list<string> $targets @return list<string> */
-    private function normalise(array $targets): array
-    {
-        $targets = array_values(array_unique($targets));
-        sort($targets);
-
-        return $targets;
-    }
-
     // ------------------------------------------------------------------ baseline
 
-    /** @param array<string, list<string>> $found @param array<string, list<string>> $baseline */
+    /** @param array<string, array<string, int>> $found @param array<string, array<string, int>> $baseline */
     private function assertAgainstBaseline(array $found, array $baseline, string $rule): void
     {
-        $new = $this->newAgainstBaseline($found, $baseline);
-        $fixed = $this->newAgainstBaseline($baseline, $found);
+        [$increases, $decreases] = $this->baselineDiff($found, $baseline);
 
-        $this->assertSame([], $new, "$rule — violation(s) not in the approved baseline:\n" . implode("\n", $new));
-        $this->assertSame([], $fixed, "$rule — baseline entry no longer violates; remove it from the baseline:\n" . implode("\n", $fixed));
+        $this->assertSame([], $increases, "$rule — violation(s) not covered by the approved baseline (new target or more occurrences):\n" . implode("\n", $increases));
+        $this->assertSame([], $decreases, "$rule — fewer violations than the baseline records; update the baseline:\n" . implode("\n", $decreases));
     }
 
     /**
-     * Entries ("file: target") present in $found but not in $baseline.
+     * Compares occurrence counts per file and target. An increase (a new target, or more occurrences of a
+     * baselined target) is a violation. A decrease requires the baseline to be lowered, so it can only shrink.
      *
-     * @param array<string, list<string>> $found @param array<string, list<string>> $baseline
-     * @return list<string>
+     * @param array<string, array<string, int>> $found @param array<string, array<string, int>> $baseline
+     * @return array{list<string>, list<string>} [increases, decreases]
      */
-    private function newAgainstBaseline(array $found, array $baseline): array
+    private function baselineDiff(array $found, array $baseline): array
     {
-        $new = [];
+        $increases = [];
+        $decreases = [];
         foreach ($found as $file => $targets) {
-            foreach ($targets as $target) {
-                if (!in_array($target, $baseline[$file] ?? [], true)) {
-                    $new[] = "$file: $target";
+            foreach ($targets as $target => $n) {
+                $allowed = $baseline[$file][$target] ?? 0;
+                if ($allowed === 0) {
+                    $increases[] = "$file: $target occurs $n times, not in the baseline";
+                } elseif ($n > $allowed) {
+                    $increases[] = "$file: $target occurs $n times, baseline $allowed";
+                } elseif ($n < $allowed) {
+                    $decreases[] = "$file: $target occurs $n times, baseline $allowed — lower the baseline";
                 }
             }
         }
-        sort($new);
+        foreach ($baseline as $file => $targets) {
+            foreach ($targets as $target => $allowed) {
+                if (!isset($found[$file][$target])) {
+                    $decreases[] = "$file: $target no longer present — remove it from the baseline";
+                }
+            }
+        }
+        sort($increases);
+        sort($decreases);
 
-        return $new;
+        return [$increases, $decreases];
     }
 
     // ------------------------------------------------------------------ foreign keys
@@ -537,7 +626,8 @@ final class MembershipElectionBoundaryTest extends TestCase
                 $segment = $parts[$i + 1];
 
                 $events = [];
-                preg_match_all('/->foreign\(\s*(\[[^\]]*\]|[\'"][^\'"]+[\'"])\s*\)(?:(?!->foreign\().)*?->on\(\s*[\'"](\w+)[\'"]/s', $segment, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
+                // foreign(columns) or foreign(columns, 'constraint_name')
+                preg_match_all('/->foreign\(\s*(\[[^\]]*\]|[\'"][^\'"]+[\'"])\s*(?:,\s*[\'"][^\'"]*[\'"]\s*)?\)(?:(?!->foreign\().)*?->on\(\s*[\'"](\w+)[\'"]/s', $segment, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
                 foreach ($m as $match) {
                     $events[] = [$match[0][1], 'add', $this->columns($match[1][0]), $match[2][0]];
                 }
@@ -545,6 +635,14 @@ final class MembershipElectionBoundaryTest extends TestCase
                 foreach ($m as $match) {
                     $column = $match[1][0];
                     $target = isset($match[2]) && $match[2][0] !== '' ? $match[2][0] : preg_replace('/_id$/', '', $column) . 's';
+                    $events[] = [$match[0][1], 'add', [$column], $target];
+                }
+                // foreignIdFor(Model::class[, 'column'])->constrained([table]): Laravel's conventions for the defaults
+                preg_match_all('/foreignIdFor\(\s*\\\\?(?:[\w\\\\]+\\\\)?(\w+)::class\s*(?:,\s*[\'"](\w+)[\'"])?\s*\)(?:(?!foreignIdFor\(|->foreign\().)*?->constrained\(\s*(?:table\s*:\s*)?(?:[\'"](\w+)[\'"])?/s', $segment, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
+                foreach ($m as $match) {
+                    $snake = $this->snake($match[1][0]);
+                    $column = isset($match[2]) && $match[2][0] !== '' ? $match[2][0] : $snake . '_id';
+                    $target = isset($match[3]) && $match[3][0] !== '' ? $match[3][0] : $this->plural($snake);
                     $events[] = [$match[0][1], 'add', [$column], $target];
                 }
                 preg_match_all('/->dropForeign\(\s*(\[[^\]]*\]|[\'"][^\'"]+[\'"])\s*\)/', $segment, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
@@ -661,6 +759,25 @@ final class MembershipElectionBoundaryTest extends TestCase
         }
 
         return false;
+    }
+
+    /** "OrganisationUser" => "organisation_user" (Laravel's Str::snake for class basenames). */
+    private function snake(string $class): string
+    {
+        return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $class));
+    }
+
+    /** A sufficient subset of Laravel's English pluralisation for model table names. */
+    private function plural(string $word): string
+    {
+        if (preg_match('/[^aeiou]y$/', $word)) {
+            return substr($word, 0, -1) . 'ies';
+        }
+        if (preg_match('/(s|x|ch|sh)$/', $word)) {
+            return $word . 'es';
+        }
+
+        return $word . 's';
     }
 
     private function upBody(string $code): string

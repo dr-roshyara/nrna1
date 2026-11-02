@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `OPEN` · S1 implemented (`17ef51c5e`), **acceptance deferred** (PO 2026-11-02); **S1b authorised (test-only) and implemented**, awaiting independent review and PO acceptance; S2–S4 gated. *(Superseded wording, kept as history: "plan PROPOSED; no slice authorised (S1 is the first candidate)".)* |
+| **Status** | `OPEN` · S1 implemented (`17ef51c5e`), **acceptance deferred** (PO 2026-11-02); **S1b ACCEPTED by the PO 2026-11-02 with documented residual risks** (after two independent reviews); S2–S4 gated. *(Superseded wording, kept as history: "S1b authorised (test-only) and implemented, awaiting independent review and PO acceptance".)* *(Superseded wording, kept as history: "plan PROPOSED; no slice authorised (S1 is the first candidate)".)* |
 | **Classification** | **observed in code** (static, HEAD `ce84016a6`) |
 | **Scope** | V1 Membership writes Election data; V2 Election reads Membership / Organisation tables; V3 cross-context foreign key |
 
@@ -47,7 +47,7 @@
   - OQ-ME-3 and OQ-ME-4 are not resolved by inference;
   - the strategic criterion is not "met" because S1b passes.
 
-**S1b implemented** (uncommitted at the time of writing), developer guide `developer_guide/membership_election_boundary/02_s1b_hardened_boundary_guards.md`:
+**S1b implemented** (committed as `3aad77d20`), developer guide `developer_guide/membership_election_boundary/02_s1b_hardened_boundary_guards.md`:
 - **RED:** 28 of 38 tests failed against stubs.
 - **GREEN:** 41 tests and 52 assertions under PHP 8.5, and under **PHP 8.3** (official `php:8.3-cli` image, platform check disabled in a scratch copy; see PBDIGIT-319).
 
@@ -82,8 +82,48 @@ This is code outside S1's scan paths that touches the other context's data. It w
 | X-9 | `app/Http/Controllers/Membership/OrganisationRoleController.php:6`; `…/OrganisationNewsletterController.php:7` | Membership-folder controllers import `App\Models\Election` (probably read-only listings; ownership open) |
 
 **Recommended, not decided:**
-- a separate backlog item for X-8 rather than extending this story;
+- a separate backlog item for X-8 rather than extending this story (**done:** PBDIGIT-320, by PO decision of 2026-11-02);
 - a path-scope decision before any widening of the scan.
+
+## S1b independent review and follow-up (2026-11-02)
+
+**Independent review of S1b** (`3aad77d20`, fresh session): recommendation **(3) further changes required**. Findings:
+- **B2:** a repeated use of a baselined target could still hide new writes, against the acceptance condition;
+- `foreignIdFor` and `foreign(col, name)` were missed;
+- the documentation overclaimed coverage.
+
+**PO decision (2026-11-02):** a narrow follow-up was authorised:
+- an occurrence-count ratchet, with explicit baseline changes on increase or decrease;
+- the two foreign-key forms;
+- self-tests, including the `$table` property detector;
+- documentation corrections;
+- the residual limits recorded;
+- X-8 as backlog item PBDIGIT-320;
+- the baseline governance documented (PO for routine baseline decisions; ARB for architectural policy and open ownership questions; a baseline entry is a known condition, not compliance).
+
+**Follow-up implemented** (committed together with this record):
+- RED: 7 of 49 against the old API.
+- GREEN: 49 tests and 64 assertions under PHP 8.5 and PHP 8.3.
+- The baseline counts match hand-counted occurrences.
+- Probes:
+  - B2a–B2d (one more occurrence) now **fail**, as they should;
+  - removing an occurrence fails until the baseline is lowered;
+  - `foreignIdFor` and `foreign(col, name)` are detected;
+  - the shrink, landlord and foreign-key checks are unchanged.
+- **Residual limits:** guide 02, "Known limits and false positives".
+
+**Re-review of the follow-up** (same reviewer, 2026-11-02): recommendation **(2) accept with the residual risks documented**. A recommendation, not acceptance.
+- Reproduced: 49 tests and 64 assertions on PHP 8.5.11 and 8.3.36.
+- B2a–d caught; every test mutation killed; baseline counts verified by hand.
+- Residuals added to guide 02: C15 (a count-preserving substitution), and the false positives C09 and F19.
+- Reviewed test file sha256: `d7cb86f4ba0ec23018f4ca7c87fbff1055cc75740ae85bad8eada31be27c5ca1`.
+
+**Status:**
+- S1 deferred;
+- S1b **ACCEPTED by the PO on 2026-11-02, with the documented residual risks** (guide 02, "Known limits and false positives"). The acceptance covers the reviewed test file (sha256 `d7cb86f4…`). It does not make any baselined dependency compliant, and it resolves no ARB question;
+- deptrac deviation **acknowledged by the PO (option (b), 2026-11-02)**: the static test is the enforcement for this boundary; deptrac layers are the later item PBDIGIT-321 (not authorised);
+- OQ-ME-3 and OQ-ME-4 open;
+- the strategic criterion "No context decides for another" **remains partly met**.
 
 ## Not authorised
 
