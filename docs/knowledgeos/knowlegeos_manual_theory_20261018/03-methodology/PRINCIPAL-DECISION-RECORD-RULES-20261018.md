@@ -786,3 +786,31 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Unchanged:** Rulebook v1.4, the window review, the consolidation procedure, the planted-gap schedule, the time measurement; the faster-reading proposal stays deferred. The Governance Engineer checks the windows together at the gate rather than one by one.
 - **Not decided here:** anything past the consolidation carrying the next planted-gap test; T9-21; T9-02.
 - *2026-11-02T01:22:00Z:* **Principal (verbatim):** "I sent the standing instruction to the professor". The standing instruction above is **issued**.
+
+## Addendum 2026-11-02T02:56:29Z: git history is not admissible evidence (recorded by the Governance Engineer)
+
+- **Principal (verbatim):**
+
+> **Principal Ruling — 2026-11-02: Git History and Evidence Boundaries**
+>
+> **Decision: Option (a) — Prohibit the use of git history as evidence.**
+>
+> 1. **Scope of prohibition.** Neither the Professor nor any reviewer may inspect or use the git history of any file as research or review evidence. This prohibition includes `git log`, `git diff`, `git show`, `git blame`, commit listings, commit subjects, and equivalent methods of retrieving historical versions or changes.
+>
+> 2. **Evidence boundary.** Permission to read a file authorizes access only to the approved file content, not to its historical versions or associated repository history. Repository output that exposes names of files outside the permitted list must not be used to inspect, search, or infer the contents of those files.
+>
+> 3. **Finding W-01.** The evidence obtained through the reviewer's historical inspection must remain unused. No conclusion may be drawn from that evidence. Section §8.71 retains its current status: **the question is undecidable from the file's text.** This ruling does not establish any conclusion about the underlying historical question.
+>
+> 4. **Briefs and instructions.** Add the explicit prohibition—"No git history, diffs, blame, historical versions, or commit listings of any file"—to every relevant review brief and the consolidation brief template. The restriction binds the Professor, all reviewers, and subsequent review runs.
+>
+> 5. **Resumption.** Resume at C79 under the existing standing instruction. Preserve the recorded access deviation and document this ruling through the established governance process. Do not reopen or alter settled windows C74–C78 on the basis of W-01.
+>
+> 6. **Separate proposals.** Any future proposal to use historical versions as research evidence must be submitted separately to the Principal, with an explicit access record and defined scope. This ruling does not authorize such access.
+>
+> **Boundary of this decision:** The reported automatic loading of `CLAUDE.md` and its possible effect on blind review and planted-gap testing are not decided here. Investigate that concern through the planned review-quality analysis and bring back evidence and any proposed corrective action separately.
+
+- **Basis:** C78 (`912afc95a`), finding W-01 and `review/C78-S0322-S0324/REVIEW-REPORT.md` §6 (sha256 `ad343cd4…`, matches); the Professor's stop under the standing instruction, conditions (b) and (d). Before this ruling the consolidation template forbade "git history of the manuscript"; the window briefs listed allowed files and forbade listing or searching others, and named no rule on the history of an allowed file.
+- **Effects, by owner:**
+  - Governance Engineer (done with this entry): `CONSOLIDATION-BRIEF-TEMPLATE.md` REVIEWER-NOTE item 4 widened to the ruling's wording, change-log row added; the access deviation recorded in `00-access/ACCESS-RECORD.md` (entry 2026-11-02T02:56:29Z).
+  - The Professor: the prohibition in every window and theory-turn brief from C79; C74–C78 not reopened; §8.71 unchanged on W-01.
+- **Not decided here:** the `CLAUDE.md` concern (to the review-quality analysis); any use of historical versions (a separate proposal only).

@@ -45,12 +45,12 @@
 
 ## Waiting for
 
-- **The Professor:** reading under the standing instruction (Option A, 2026-11-02); C73 settled at S0314 (gate 12 of 25). Stops before the consolidation carrying the next planted-gap test (about S0328).
+- **The Professor:** reading under the standing instruction (Option A, 2026-11-02); C78 settled at S0324 (gate 22 of 25); stopped for the git-history ruling (2026-11-02T02:56:29Z, option a), now resuming at C79. Stops before the consolidation carrying the next planted-gap test (about S0328).
 - **The Governance Engineer, at that stop:** check the windows since C73 and the S0303–S0327 consolidation together; prepare the planted-gap copy (mandate §8.3, §8.3a).
 
 ## Next actions (Governance Engineer)
 
-1. **The review-quality analysis** (authorised 2026-11-01): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
+1. **The review-quality analysis** (authorised 2026-11-01; it also takes up the `CLAUDE.md` concern of 2026-11-02 — automatic loading into reviewer sessions and its effect on blind review and the planted-gap test — evidence and any corrective proposal brought back separately): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
 2. **Check the first windows from S0303** for the time record: four non-overlapping categories, active time apart from waiting time.
 3. **Open for the Principal, one at a time when useful:** P1, P2, P-Q4 (pointer check), I-7 (b), I-3 (after the Professor defines it), I-4; T9-21 and T9-02 need a later authorised turn.
 4. Routine checks as the Professor's questions and settlements arrive (hashes; model re-run; scope), each explained to the Principal in business terms.
