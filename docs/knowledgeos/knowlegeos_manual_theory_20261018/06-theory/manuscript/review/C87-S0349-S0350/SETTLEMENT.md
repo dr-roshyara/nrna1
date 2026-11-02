@@ -8,7 +8,7 @@
 - **§8.78 C4's open question answered** (W-04): yes in design (S0349 L25, L170), and in practice (S0350). The earlier one-writer reason (§8.19, S0139) is relaxed, not answered. R3 on §8.78 C4.
 - **MATCH under premises** (C2, W-02): by construction under (p1)–(p2); on the better-supported branch it holds for any caller presenting the label.
 - **Appointment by role** (C2, W-05): a change over time from appointment by label; §8.79 C4's uncovered case dissolved by design. R3 on §8.79 C4.
-- **The first session** (C3, W-10): no comparison, no human START, no predecessor for its HANDOFF; the root-act question is already §1.14.1 and §8.75 C4, so no new question for the Principal.
+- **The first session** (C3, W-10): nothing earlier to check against, no human START, no predecessor for its HANDOFF; the root-act question is already §1.14.1 and §8.75 C4, so no new question for the Principal.
 - **Formal independence** (C4, W-03, W-07): the bars are the producer's, their passing self-declared; "VERIFIED" exceeds "failed to falsify" for open-world claims only.
 - **Seq 4–7** (C5, W-08): after seq 7 no stale `true`; the interval undetermined. R3 on §8.79 C2.
 
