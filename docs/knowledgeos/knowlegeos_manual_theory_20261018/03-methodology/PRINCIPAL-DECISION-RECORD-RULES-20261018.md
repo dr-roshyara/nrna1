@@ -828,3 +828,34 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **The three instructions, as the Governance Engineer had offered them:** (1) "Continue the standing instruction for S0328–S0352: read window after window and stop at the consolidation gate after S0352, before starting that consolidation. The Governance Engineer prepares its planted-gap copy at that point." (2) "Review the U1–U6 decision passages (§9.10, §9.18, Ch. 9 TODO and index) at the S0328–S0352 consolidation." (3) "Add §9.19.9 L392–L397 (the six "Decided" entries for U1–U6) to reviewer D's sections, in SCOPE §2.1 and §2.6, COMMISSION-D task 1, and nothing else. Commit it as the new base and tell me its hash. Still no book copy and no reviewer."
 - **Effect, already carried out:** reading S0328–S0352 (C80–C88, settled `f554150e9`); base `a5137a1ef`, then `5a347441e` with §9.19.9.
 - *Correction of the addendum 2026-11-02T12:11:49Z's last line:* those instructions are now recorded here.
+
+## Addendum 2026-11-02T15:45:51Z: T9-02 (state space) theory turn — preparation instructed; commission prepared, not issued (recorded by the Governance Engineer)
+
+- **Principal (verbatim, the instruction):**
+
+> **Principal Instruction — KnowledgeOS Research** **Date:** 2026-11-02 **Subject:** Prepare the T9-02 (State Space) Theory Turn
+>
+> ### Decision
+> Prepare a bounded theory-turn commission for T9-02, concerning the state space. The purpose is to investigate the outstanding theoretical question identified in the research-quality assessment. The commission must be prepared from repository records and the existing research methodology. Do not begin the theory work yourself.
+>
+> ### 1. Research objective
+> Prepare a commission that enables the Professor to investigate T9-02 and determine what state space the current theory requires, what evidence supports it, and what remains unresolved. The commission must connect the investigation to the existing theoretical dependencies, especially: The Kernel's type and existence. The candidate primitives and the knowledge-item attribute table associated with F13. The relevant requirements, definitions, laws, and open forks already recorded in the manuscript. These are research dependencies, not assumptions that the corresponding questions have already been resolved.
+>
+> ### 2. Evidence and methodology
+> The commission must require the Professor to: 1. Work from permitted corpus sources and the existing manuscript. 2. Preserve the established distinction between source statements, deductions, interpretations, hypotheses, and external material. 3. Identify the exact source passages supporting each material claim. 4. Test candidate definitions and state spaces against counterexamples and relevant boundary conditions. 5. Preserve unresolved contradictions and normative questions rather than resolving them implicitly. 6. Use the existing theory-turn and independent-review procedures. 7. Keep the chronological reading position unchanged during the theory turn. Do not change the Rulebook, reading depth, review procedure, or access permissions.
+>
+> ### 3. Scope boundaries
+> The commission must explicitly prohibit: Treating the state space as settled before the derivation and review are complete. Treating a candidate primitive as an accepted primitive without the required justification. Assuming that proving the Kernel's existence establishes the minimality of its primitives. Silently resolving F13, U1–U6, or any other open fork beyond what the existing decisions authorize. Beginning the separate derivation-chain theory turn before that work is separately authorized. Implementing or redesigning the architecture as part of this theoretical investigation.
+>
+> ### 4. Required deliverables
+> The commission must ask the Professor to produce: 1. A precise statement of the T9-02 question. 2. The relevant existing definitions, requirements, and dependencies, with manuscript references. 3. The proposed state space and its justification—or an explicit explanation of why the available evidence does not yet support one. 4. Counterexamples and tests of the proposed formulation. 5. The implications for the Kernel's type and existence. 6. The implications for F13 and the knowledge-item attribute table. 7. A list of unresolved questions, assumptions, and decisions that remain with the Principal. 8. A clear account of what has changed in the theory and what remains unproven.
+>
+> ### 5. Review and completion
+> Use the established independent-review procedure. Reviewers must receive the authorized commission and evidence package, work independently, and have their reports preserved before integration. The Governance Engineer must verify procedural compliance, source boundaries, and the completeness of the recorded evidence. The Governance Engineer must not substitute a procedural audit for independent evaluation of the theory. Reading must resume only according to the existing standing instruction and the applicable consolidation gate.
+>
+> ### 6. Return to the Principal
+> Return the prepared commission for review if required by the established process. Do not treat preparing the commission as authorization to change the manuscript, alter the research method, or settle the theoretical question. The immediate task is to prepare the bounded T9-02 theory turn—not to redesign the entire research programme.
+
+- **Principal's commission text:** given to the Governance Engineer in the same session, headed "# KnowledgeOS Theory Commission: T9-02 — State Space"; kept **verbatim as Part 1** of `03-methodology/COMMISSION-T9-02-STATE-SPACE-THEORY-TURN-20261102.md`.
+- **Prepared:** that file, Part 2 (anchors, §12b method, limits, review, report) from repository records; status **PREPARED — NOT ISSUED**. Basis: `03-methodology/ASSESSMENT-RESEARCH-QUALITY-AND-DIRECTION-20261102.md` (`9a90f096a`), recommendation 1.
+- **Open for the Principal:** the reviewer arrangement (two, per §12b, or three, as at the Req/A turn); the dispatch.
