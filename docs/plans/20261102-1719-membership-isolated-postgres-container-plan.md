@@ -175,3 +175,4 @@ This is the P-DB of roadmap W2. I-1 holds by design: the run's credentials exist
   - **Evidence:** `…/2026-11-02-w2-membership-pg/f1-confinement/`.
   - **Docs:** F2 corrected (`pg_control_system()` is not superuser-only on PostgreSQL 15); F7 wording and traceability corrected.
   - **AC-5 is now met as written.**
+- 2026-11-02: **G-ACC: PBDIGIT-324 ACCEPTED WITH EXPLICIT RESIDUAL RISKS** by the PO ("commit and accept"), conditional on W2-2. The review is recorded verbatim, with the verdict, in `docs/publicdigit/reviews/2026-11-02-pbdigit324-independent-review-and-acceptance.md`. F3–F5 → `PBDIGIT-325`. **Plan complete.**

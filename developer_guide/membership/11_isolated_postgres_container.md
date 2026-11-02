@@ -7,7 +7,7 @@
 - two suite runs, 43 tests, 256 assertions, exit 0;
 - evidence: `docs/publicdigit/membership/evidence/2026-11-02-w2-membership-pg/`.
 
-Not yet accepted.
+**Accepted with explicit residual risks** (PO, 2026-11-02, conditional on W2-2), after the independent review and the F1 fix (`e7503f8de`). Follow-ups: `PBDIGIT-325`.
 
 ## Purpose
 
