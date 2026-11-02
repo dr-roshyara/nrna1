@@ -87,7 +87,7 @@ Two Membership implementations exist side by side:
 | Protect the core rules (no overlapping periods; a period is one unbroken episode; corrections never silently remove membership) | the history can never become self-contradictory | **IMPLEMENTED; ACCEPTED** (Slice 0) | `InvariantSet.php`; `RefusalReason` cases |
 | Safe concurrent edits | two administrators acting at once cannot break the rules | **IMPLEMENTED; ACCEPTED** (Slice 1a) | guide 02 |
 | Store memberships in PostgreSQL | keep the history durably | **IMPLEMENTED; only conditionally accepted**; never run on an isolated database | guide 03; ARB-MEM-02; ARB-SEC-01 |
-| Admit/End command rules (basis, dating, ending kinds) | enforce D-1, D-3, D-5 at the entry point | **IMPLEMENTED; in review, not accepted** | guide 08; `PBDIGIT-271` |
+| Admit/End command rules (basis, dating, ending kinds) | enforce D-1, D-3, D-5 at the entry point | **IMPLEMENTED; ACCEPTED with explicit residual risks** (PO, 2026-11-02) | guide 08; `PBDIGIT-271`; review `2026-11-02-membership-slice2a-hardening-independent-review.md` |
 | Annul and Void (kernel only) | set aside or void a recorded fact | **PARTIALLY IMPLEMENTED:** decided in the kernel, **not stored**. Kernel **ACCEPTED with explicit residual risks** (C-1 G3, PO, 2026-11-02) | guides 04, 05, 09 (V-2 fix `115e031de`); `PBDIGIT-268` |
 | Guard the Membership–Election boundary | stop *new* code from making Membership decide votes, or Election reach into Membership's tables | **IMPLEMENTED; ACCEPTED** (S1b); existing violations are baselined, not removed | `developer_guide/membership_election_boundary/02_s1b_hardened_boundary_guards.md`; `tests/Architecture/MembershipElectionBoundaryTest.php` |
 
@@ -145,7 +145,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | Business capability | Intended outcome | Status | Evidence | Remaining work | Dependency | Completion criterion |
 |---|---|---|---|---|---|---|
 | Membership core model | one consistent history per person and organisation | RATIFIED; IMPLEMENTED; ACCEPTED (Slices 0, 1a) | guides 01, 02 | clean-copy evidence (W0) | — | W0 evidence stored |
-| Admission | members admitted with a basis and authority evidence | IMPLEMENTED (kernel + 2a rules); 2a not accepted | guide 08 | acceptance; wiring (W5) | Governance port | 2a accepted; reachable from the application |
+| Admission | members admitted with a basis and authority evidence | IMPLEMENTED (kernel + 2a rules); 2a ACCEPTED (2026-11-02) | guide 08 | wiring (W5) | Governance port | 2a accepted; reachable from the application |
 | Ending | resignation, exclusion, death recorded | PARTIALLY IMPLEMENTED (refused for all actors); rule DECIDED (GOV-END B1) | `InterimRoleAuthority.php`; GOV-END decision record | Slice 2b (port carries End kind and evidence) | W2; DS-4 for exclusion | owner/admin can record resignation and death; exclusion refused with a distinct reason |
 | Lapse and renewal | lapsed ≠ ended; renewals keep the gap | RATIFIED; not implemented | ratified §4 | Slice 4 (W7) | — | Renew stored and tested |
 | Suspension | restriction without loss of membership | RATIFIED; not implemented | ratified §4 | Slice 5 (W7) | BD-SUSP | Suspend/Restore stored and tested |

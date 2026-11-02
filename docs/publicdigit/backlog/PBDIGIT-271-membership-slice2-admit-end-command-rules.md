@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN REVIEW` · **Slice 2a implemented and tested locally (2026-10-11), then hardened after the independent review (H1, H1-b, H2; authorised 2026-10-11); committed 2026-10-11 on the Human PO's instruction (`834a4f65c`, `14f89d18e`), not pushed; not accepted.** Implementation was authorised by the Human PO / ARB on 2026-10-11 (S2-G approved, S2-E closed). Slice 2b stays held. Spin-off: `PBDIGIT-272` |
+| **Status** | **Slice 2a `ACCEPTED WITH EXPLICIT RESIDUAL RISKS`** (PO, 2026-11-02; ACC-271). Independent review of the committed hardening: `docs/publicdigit/reviews/2026-11-02-membership-slice2a-hardening-independent-review.md` (verbatim). Slice 2b entry criteria: F-1, F-2, F-3, F-8, V-7…V-12, plus GOV-END B1 (decided). Slice 2b stays held (W2). *History:* `IN REVIEW` · **Slice 2a implemented and tested locally (2026-10-11), then hardened after the independent review (H1, H1-b, H2; authorised 2026-10-11); committed 2026-10-11 on the Human PO's instruction (`834a4f65c`, `14f89d18e`), not pushed; not accepted.** Implementation was authorised by the Human PO / ARB on 2026-10-11 (S2-G approved, S2-E closed). Slice 2b stays held. Spin-off: `PBDIGIT-272` |
 | **Plan** | `docs/plans/20261011-0010-membership-slice2-command-rules-plan.md` (revision 5; the plan is authoritative for design, tests and acceptance; §15 holds the progress and deviations) |
 | **Decisions** | D-1 … D-5: the single "Decision record" in `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md` (linked, not copied) |
 | **Design** | EP-01 design §18 row 2 and §19 (`2026-10-08-membership-ep01-implementation-readiness-and-design.md:558, 589`) |

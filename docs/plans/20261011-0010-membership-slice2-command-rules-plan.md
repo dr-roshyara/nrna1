@@ -2,6 +2,13 @@
 
 > **Current status (rev. 5, 2026-10-11):** Slice 2a **authorised, implemented and hardened** (H1, H2; §15); **committed 2026-10-11** (`834a4f65c` code and tests, `14f89d18e` documents), not pushed; **not accepted**; Slice 2b held. The status line below is the rev. 4 record, kept unchanged and superseded by §15.
 
+> **Status update (2026-11-02):** Slice 2a **ACCEPTED WITH EXPLICIT RESIDUAL RISKS** by the PO (ACC-271), after an independent review of the committed hardening (`docs/publicdigit/reviews/2026-11-02-membership-slice2a-hardening-independent-review.md`, verbatim).
+> - **Slice 2b entry criteria:** F-1 (per-rule allowlists), F-2 (precedence tests for the remaining finite-date cases), F-3 (a two-file planted scan case), F-8 (R5 onto the parser scan), V-7…V-12. GOV-END is decided (B1).
+> - **Documentation corrections (review findings, recorded here; the text below is kept as written):**
+>   - **F-5:** §4.6 / §4.7 describe per-rule allowlists. The committed scan applies a **per-file union** allowlist (F-1).
+>   - **F-6:** the §4.1 precedence row does not show the finite-date precondition. In committed code, `Member::requireFiniteDates` runs **first** in `decideAdmit` / `decideEnd`, before `DuplicateFactId`, and throws `InvalidArgumentException` (invalid input, not a refusal).
+>   - **F-7:** §15 cites nikic/php-parser 5.4.0 and its PHP 8.5 deprecations. HEAD uses 5.9.0, and the W0 clean-copy run (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`) reports no deprecations. `f311c97c4` deleted `VoterSlugStep.php` together with the named exclusion and its guard test; `PBDIGIT-272` was closed as a duplicate of `PBDIGIT-70`.
+
 **Status:** `revision 4` — S2-A … S2-D, S2-F and Q-E1 (option A) **approved** by the Human ARB on 2026-10-11; S2-E approved in principle with its implementation gate open pending the C-1 reconciliation (§6.1) and the provenance-origin decision S2-G (§4.7). **Implementation of Slice 2a is not authorised.** **Nothing implemented; no test run.** PostgreSQL work is on hold. **This plan authorises nothing.**
 **Story:** `PBDIGIT-271` · **Baseline:** HEAD `aa047ca6b` (decision record `53f19fee7` is an ancestor).
 **Single sources (linked, not copied):** decision record D-1 … D-5 (`docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`, "Decision record"; analysis §86–198; Slice 2 line §254) · EP-01 design §18–§19 · Slice 0 contract · Slice 1a contract (`2026-10-09-membership-slice1a-contract.md`) · ratified architecture (`2026-10-08-membership-architecture-ratified.md`).

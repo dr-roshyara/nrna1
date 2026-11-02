@@ -58,7 +58,8 @@ Shared scanner: `tests/Architecture/Support/MembershipSourceScan` (pure; no Lara
 - `violations()` is a literal text scan; R5 uses it, because table names live in strings.
 - `creationViolations()` (hardening H2) parses with nikic/php-parser and its `NameResolver`, so R7 / R8 see through imports, aliases, grouped imports, qualified and `namespace\` names, `self::` / `static::` / `parent::`, whitespace and PHP's case-insensitivity, and ignore comments and strings.
 - **Not seen (by design):** dynamic class names (`new $c`, `$c::accepted()`), callable arrays / strings (`[Decision::class, 'accepted']`, `call_user_func`), reflection, `class_alias`, `eval`, `unserialize`, code outside `app/`; for R5, table names built at runtime.
-- **Named exclusion:** `app/Http/Middleware/VoterSlugStep.php` is not valid PHP (`PBDIGIT-272`). A guard test fails as soon as it parses, so the exclusion is removed then.
+- **Named exclusion (historical):** `app/Http/Middleware/VoterSlugStep.php` was not valid PHP (`PBDIGIT-272`, closed as a duplicate of `PBDIGIT-70`). **`f311c97c4` deleted the file, the exclusion and its guard test.** `UNPARSABLE_KNOWN` is now empty, and the scan covers all of `app/` with no exclusion. *(Corrected 2026-11-02, review finding F-4.)*
+- **Allowlist granularity (finding F-1, a Slice 2b entry criterion):** the allowlist is a **per-file union**. Each allowlisted file (`Member`, the rehydration decoder, `ProvenanceJson`) may contain **any** of the guarded forms. The per-rule wording in the R7 / R8 row above describes the intent, not what the scan enforces today. *(Added 2026-11-02, finding F-5.)*
 
 ## How to extend
 

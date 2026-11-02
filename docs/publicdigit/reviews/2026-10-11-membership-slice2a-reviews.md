@@ -59,3 +59,20 @@
 Fresh committed-code evidence: `docs/publicdigit/membership/evidence/2026-10-16-a1-evidence-refresh/`, at `83a059f98` plus the delta at `9582de324`. All runs exit 0, database-free only.
 
 **Traceability:** PBDIGIT-271 · plan rev. 5 §15 · session log 2026-10-11 · A1 evidence 2026-10-16 (`f54037f96`).
+
+## 4. Principal-Reviewer-role review of the committed hardening, and the PO verdict (2026-11-02)
+
+- **Review:** an independent, fresh-context review of `834a4f65c` / `14f89d18e` at HEAD `4a3c1ccd5`. It is recorded **verbatim** in `2026-11-02-membership-slice2a-hardening-independent-review.md`. Unlike §1–§2, it is not a reconstruction.
+- **Result:**
+  - H1 / H1-b ACCEPTABLE; H2 and D1–D5 ACCEPTABLE WITH CONDITIONS;
+  - AC-1…AC-10 met, with AC-5 partial (as recorded);
+  - V-7…V-12 still hold (2b / HTTP entry criteria);
+  - findings F-1…F-10, all minor or informational.
+- **Recommendation:** ACCEPT WITH EXPLICIT RESIDUAL RISKS.
+- **PO verdict (2026-11-02, "A, record it and commit"):** **ACC-271 ACCEPTED WITH EXPLICIT RESIDUAL RISKS.**
+  - F-1, F-2, F-3, F-8 and V-7…V-12 become **Slice 2b entry criteria**;
+  - F-4…F-7 are fixed in the documentation in the same commit;
+  - F-9 and F-10 are recorded.
+- **Scope:** database-free Slice 2a only.
+
+The "not an acceptance" status at the top of this document refers to §1–§3. The acceptance is the PO verdict above.
