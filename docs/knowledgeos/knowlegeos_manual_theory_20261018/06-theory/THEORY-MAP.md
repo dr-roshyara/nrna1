@@ -431,3 +431,5 @@
   - a home for conflicts between non-rule items: neither recorded nor reported today (§8.36 C4 (ii); §8.37 C4; Q5's scope is rules);
   - the identity rule used by R2 (T9-18; §9.16 N1);
   - a table comparing the kernel lists of S0205–S0225 (§8.34.3; §9.9.8).
+- **Open forks from C70–C71 (Open, not yet rows):**
+  - the semantic interpreter (compiler): a mechanism (S0303; §8.62 C5) or a Supporting bounded context (S0307 L767; S0308 L9 and L347 hold both); Ch. 10 has none (§8.63.3; §8.64.3).

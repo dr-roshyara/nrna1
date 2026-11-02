@@ -16,5 +16,5 @@
 - **Taken from W's inventory before step 2:** listed in §8.64.5.
 - **R1:** no new rows (241 homes, 1 pre-existing flag).
 - **R2 (§8.64):** tier A 0; tier D judged at review.
-- **R3:** none proposed.
+- **R3:** none proposed. *(At settlement: THEORY-MAP gains an open-fork line for the semantic interpreter; tier C candidates "accuracy" and "parser" are the sources' terms, quoted.)*
 - **Quote check:** no bracket-form quotes; line-cited quotes checked by hand.
