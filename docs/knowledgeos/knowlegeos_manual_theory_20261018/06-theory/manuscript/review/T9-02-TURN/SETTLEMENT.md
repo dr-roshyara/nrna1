@@ -70,6 +70,8 @@
 
 **One, from this turn:** the form of T9-02's deliverable. Keep "one table of attributes, value sets and kinds" per item, or retype it to the entry kinds and their fields plus a derivation for each item attribute (§9.20.7)? The Professor recommends retyping, because 𝒮's fields sit on entries (§9.20.7, "What the table's form shows"). It is the TODO row's deliverable, so it is the Principal's.
 
+**Ruling (the Principal, 2026-11-02, verbatim):** "Retype T9-02's deliverable to the entry kinds and their fields plus a derivation for each item attribute; this decides neither F13 nor F37, and the rows §9.20.7 marks Open stay open. Resume reading at S0367 under the standing instruction." Applied to the TODO row's deliverable column (the old text struck, not deleted), §9.20.7 and §9.20.9 as notes. The decision-record entry is the Governance Engineer's.
+
 **Not new (already the Principal's or routed):** the output forms of Q1's act list, Q2 and Q3, which decide minimality (they belong with the reference definitions); covers and the link (T10-11); F37, F6, T9-14, G7's F13 part, T9-21.
 
 ## 5. Checks
