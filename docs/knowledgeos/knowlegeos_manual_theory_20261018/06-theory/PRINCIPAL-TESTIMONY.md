@@ -31,7 +31,7 @@ The record S0065 says only what follows. The book takes it as the record's state
 **What PT-001 does not change:** the PO/ARB act, which is assessed only as far as the records show it:
 - **who performed it:** the record names "PO/ARB" [S0065 L9]; which person is **not shown**;
 - **whether it was a human act:** the record calls it "the delivered Human/PO/ARB act" [S0065 L3], a recorded claim (Ch. 1 §1.12); an attestation is **not shown**;
-- **its scope:** six words [S0065 L7]. The further content registered as in force comes from the prepared draft and the deliverables' terms (§5.6 C6, F21); that the act itself stated it is **not shown**.
+- **its scope:** four words [S0065 L7]. The further content registered as in force comes from the prepared draft and the deliverables' terms (§5.6 C6, F21); that the act itself stated it is **not shown**.
 
 ## Basis and history
 

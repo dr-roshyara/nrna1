@@ -70,7 +70,7 @@ M1 Req ──► M2 CE (total function) ──► M3 kernel type ──► M4 F2
 - **Why now:** P3-4, P5-2, P5-3, I-03: three incompatible senses; the in-estate notion can never be met.
 - **Blocks:** Promotion of any pattern (n ≥ 2), F32, CON-0151, the meaning of VALIDATED (P3-9).
 - **Next research action:** One graded, factor-relative notion; one E(o) definition; the factor → blind-set bridge as a hypothesis; decision brief DB-2.
-- **Resolved when:** One notion used in §1.14.3-3, §4.1 and §8.6; T4-03 has a criterion that can be met; the register's confirmations re-graded.
+- **Resolved when:** One notion used in §1.14.3-3, §4.1 and §8.6; T4-03 has a criterion that can be met on the record (an instance whose independence is declared with its search stated; the consolidation S0303–S0327, A1); the register's confirmations re-graded.
 
 ### M8. A1's readings and the senses of "authority" (P1-2, P1-4, I-04)
 

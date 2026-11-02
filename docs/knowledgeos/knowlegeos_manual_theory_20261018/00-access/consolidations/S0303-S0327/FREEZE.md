@@ -22,3 +22,7 @@
 - **Reviewer C** (Opus) disclosed, as a breach, that its first `--help` calls of `register_home_check.py`, `undefined_terms.py` and `inbound_citations.py` ran without `--root` on the **working** book; it saw one R1 line (CON-0133), the first 25 R2 tier-A lines and an empty R3 result, and used none of it; every later run used `--root <copy>`. It did not open a harness-saved R3 output and did not use the start-up git status. No git command; nothing in `00-access/`.
 - **Harness time:** A 815 s (66 tool uses), B 738 s (59), C 993 s (66).
 - **Integration reviewer** (Opus) made no `--help` calls and ran every tool with `--root <copy>`. It disclosed that a `grep -rni` over the copy's `manuscript/` printed two lines of the copy's `BASELINE-REVISIONS.md` (not opened; not used). No git command; nothing in `00-access/`.
+
+## Settlement
+- Settled 2026-11-02 (`SETTLEMENT.md` in the reviewers' folder); remedies applied to the working book; the copy unchanged; the freeze lifted. Reading does not resume: S0328 carries the next planted-gap consolidation, prepared by the Governance Engineer.
+
