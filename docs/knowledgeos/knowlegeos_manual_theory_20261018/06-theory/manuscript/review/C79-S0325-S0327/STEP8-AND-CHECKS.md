@@ -23,3 +23,4 @@
   - **§8.71.3 (V-numbers) and §8.71 lineage:** decidable from allowed text (S0325 L26, L73; S0326 L55): S0324 as read contains correction text in §5, §9, §11. W-01's git evidence stays unused.
   - **§8.71 C5 (an act read from a state):** the premise "START is the only transition into ACTIVE" is false (S0325 L40: START/CONTINUATION); the reading is sound under "every path into ACTIVE passes through a START", not stated in the window.
 - **Quote check:** a script compared the quoted spans with S0325–S0327, S0324 and S0320; every source quote matched.
+- **R3 (settlement):** applied to §8.71 (lineage, §8.71.3, C5) as restated at review (W-01, W-04, W-13); see SETTLEMENT.md.
