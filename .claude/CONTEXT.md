@@ -27,6 +27,11 @@
   - OQ-PROV-1…4.
 - **Session log:** `.claude/sessions/2026-11-02.md`.
 - **Next action:** Principal decision on PBDIGIT-317, then the Stage 2 prerequisites (isolated test DB, INV-ORG-SCOPE-1 ARB ratification).
+- **Update (later, 2026-11-02; additive):**
+  - **D-2 answered**: BR-13 / 13a / 14 (no cross-organisation rules; independence default; incompatibility per organisation).
+  - **D-1: option C** selected as the candidate tenancy direction (Decision D §8a; validation against U-1…U-5 and ARB approval of INV-AFF-1 pending).
+  - **Membership–Election:** option A as the first milestone; remediation plan PROPOSED (`docs/plans/20261102-0339-membership-election-boundary-remediation-plan.md`, `PBDIGIT-318`).
+  - **Next:** PO decision on S1; BR-13 scope note; refer INV-AFF-1 to the ARB; PBDIGIT-317.
 
 ## 📍 UPDATE (2026-11-01, KnowledgeOS theory lane) — consolidation S0278–S0302 in review (restarted); faster reading deferred; one Governance Engineer session
 *Written by the Governance Engineer (session `57ddce41…`, active under Option A) on the Principal's instruction of 2026-11-01, item 8. State only; it creates no authority.*

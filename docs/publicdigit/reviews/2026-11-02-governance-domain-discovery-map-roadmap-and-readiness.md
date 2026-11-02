@@ -131,6 +131,20 @@ They are related only through JurisdictionAssignment. The code shows they do not
 | Authorisation → all | policy modules owned by each context | authoritative per context | evaluated per request | U → deny | inside the Working Organisation |
 | Communication → Authorisation | `may(actor, forum.action, forumRef, t)` | decision record | per request | deny | organisation-local |
 
+**Membership ↔ Election coupling in the current code** (added 2026-11-02):
+- **Ratified boundary [R-D]:** "There is no shared persistence and no Membership → entitlement shortcut" (`2026-10-08-membership-final-ratification-verdict.md:46`).
+- **Current code violates it in three places [F]:**
+  1. Membership **writes** Election's table: `Member::endMembership` sets `election_memberships.status = 'removed'` (`app/Models/Member.php:184-189`).
+     - **Verified at `041cd5dd8`: no caller found** in `app/` or `routes/`, so the write is currently unreachable.
+     - The query **is** organisation-filtered through `BelongsToTenant` on `ElectionMembership` (`app/Models/ElectionMembership.php:32`), but by the **request** context, not the member's own organisation. The earlier "no organisation filter" was wrong.
+  2. Election **reads** Membership's and Organisation's data directly in one adapter behind the Election port `VoterEligibilityPolicy`: `DB::table('organisation_users')` `:91`, `DB::table('members')` (joined with `organisation_users`, `membership_types`) `:108-110`, `OrganisationUser::query()` `:153`, `:179`, `DB::table('members')` `:197` (`app/Contexts/Elections/Infrastructure/Policies/EloquentVoterEligibilityQueryService.php`). The queries at `:91` and `:108` carry an explicit organisation predicate (`:93`, `:112`); the others were not checked.
+  3. **Database foreign keys across contexts:**
+     - **On all drivers**, the create migration links `election_memberships (user_id, organisation_id)` → **`user_organisation_roles`** with **ON DELETE CASCADE** (`database/migrations/2026_03_17_213212_create_election_memberships_table.php:39-42`): deleting a role row deletes election participation rows.
+     - Only on **MySQL** does `2026_04_16_063404_add_index_to_organisation_users_table.php:21-30` re-point it to `organisation_users`. **PostgreSQL keeps the cascade to `user_organisation_roles`.**
+     - The deployed schema is **unknown** without a read-only catalog query.
+- **Not yet decided [O]:** the deployment target for separating the contexts (logical only / own databases / independent services).
+- **This is separate from D-1**, which is about isolating organisations from each other. Under D-1's candidate direction C, both contexts would live in each organisation's database, but **not in shared tables**.
+
 **Circular dependency exposed:**
 - Governance consumes Membership (ε, for EffectiveTenure).
 - Membership consumes Governance (which organ may admit, exclude or suspend, CQ-3).
@@ -200,7 +214,7 @@ They are related only through JurisdictionAssignment. The code shows they do not
 
 | ID | Problem | Why it matters | Depends on | Evidence needed | Output | Authority | Acceptance | Status | Next action |
 |---|---|---|---|---|---|---|---|---|---|
-| T-01 | XD-15 tenancy target | foundation for every context | — | this proposal; U-1…U-5 | decision record | PO + ARB | decision fields filled; INV-DB-1 / 2 recorded | proposed | PO decision on D-1 |
+| T-01 | XD-15 tenancy target | foundation for every context | — | this proposal; U-1…U-5 | decision record | PO + ARB | decision fields filled; INV-DB-1 / 2 recorded | **PO direction 2026-11-02: C as the candidate direction** (Decision D §8a); validation and ARB pending | supply U-1…U-5 (PO / Ops); ARB review of INV-AFF-1 |
 | T-02 | cross-organisation business rules? | decides whether any cross-organisation invariant exists | — | statutes / PO knowledge. **Corpus searched 2026-11-02:** no rule found; recorded as missing evidence (`20261010_1212…:34`); open question BQ-INC ("global, per org, per committee kind?") | rule list or "none", plus the BQ-INC answer | PO | answer recorded in BR | **done 2026-11-02: none; incompatibility per organisation (BR-13, BR-14)** | — (next: T-01) |
 | T-03 | DR-07 committee ownership | Governance owner; ADR-0001 vs N-6 | T-01 | decision sheet B-1 | ADR superseding ADR-0001 or a change request | PO + ARB | ADR accepted | open | prepare the decision paper |
 | T-04 | "role", "member" and "observer" vocabulary split; Guest / staff / ElectionMembership definitions (Q1–Q5 of the 2026-11-02 relationship analysis; code evidence in §2) | ambiguity drives defects (C5, C12, F-C-3) | — | §2 | glossary entries | ARB | glossary adopted | in progress | draft after T-03 |

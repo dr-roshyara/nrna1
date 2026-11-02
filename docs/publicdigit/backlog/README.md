@@ -194,6 +194,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-315`](PBDIGIT-315-ip-binding-network-match.md) | **IP binding matches the voter's network** (IPv4 /24, IPv6 /64) instead of the exact address; supersedes PBDIGIT-247 B3 | — | `IMPLEMENTED` · awaiting acceptance and deploy |
 | [`PBDIGIT-316`](PBDIGIT-316-security-unit-tests-failing.md) | **14 voting-security unit tests fail** on the current code (`D5ResolverIntegrationTest` 8, `OverlaySignalTest` 5, `SovereigntyConvergenceFitnessTest` 1) | — | `OPEN` · causes found (stale tests); fix needs authorisation |
 | [`PBDIGIT-317`](PBDIGIT-317-secrets-written-to-application-log.md) | **`APP_KEY` and voters' private keys written to the application log** (`Demo/DemoVoteController.php:4835-4839, 4875-4884`) | — | `OPEN` · priority high · no fix authorised |
+| [`PBDIGIT-318`](PBDIGIT-318-membership-election-boundary-remediation.md) | **Membership–Election boundary remediation**: ratified "no shared persistence"; V1 write, V2 reads, V3 cross-context FK (slices S1–S4) | — | `OPEN` · plan PROPOSED; S1 first candidate; nothing authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

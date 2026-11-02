@@ -196,11 +196,26 @@ This absence is **not** a decision that no such rule exists.
 
 **D-1 should therefore be decided together with, or after, the ARB's view on INV-AFF-1.**
 
+## 8a. PO decision on D-1 (2026-11-02)
+
+> **The PO selects option C (hybrid) as the candidate tenancy direction.**
+> - A minimal shared platform store for common platform functions (identity and accounts, organisation registry, organisation discovery and selection, official reference data).
+> - One database per organisation for that organisation's business data.
+
+**Conditions, all still to be met:**
+1. **Feasibility and data-boundary validation** by the architecture team, against the scale figures U-1…U-5 (§11). The PO and operations must supply those figures.
+2. **ARB approval of INV-AFF-1**, and ARB acts on INV-DB-1 / INV-DB-2, the topology (D-4), the tenancy capability owner (D-5) and the migration policy (D-6).
+3. **No implementation** on the basis of this decision.
+
+**Status:**
+- This is a **PO direction, not a confirmed target architecture**. It becomes the target only when conditions 1 and 2 are met.
+- XD-15 in the decision sheet (`2026-10-11-cross-domain-decision-round-1-sheet.md:63-73`) is not edited by this record.
+
 ## 9. Decisions requiring authority
 
 | # | Decision | Authority |
 |---|---|---|
-| D-1 | XD-15 target = C (hybrid) | **PO** (direction) + ARB |
+| D-1 | XD-15 target = C (hybrid) | **PO** (direction) + ARB. **PO direction given 2026-11-02 (§8a):** C as the candidate direction, pending validation and ARB approval |
 | D-2 | **Cross-organisation business rules: do any exist?** (§5) | **PO**: **answered 2026-11-02: none; incompatibility per organisation** (BR-13, BR-14) |
 | D-3 | record INV-DB-1 / INV-DB-2 | ARB |
 | D-4 | topology (cluster vs separate servers): after the scale figures | ARB + Ops |
