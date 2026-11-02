@@ -1,0 +1,447 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/phpunit.membership-pg.xml
+
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE                       43 / 43 (100%)
+
+Time: 00:01.111, Memory: 22.00 MB
+
+There were 43 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_concurrent_first_admissions_of_one_person_create_one_member_and_one_period
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:32
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_concurrent_different_ends_of_one_period_record_exactly_one_end
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:32
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_concurrent_identical_retries_record_one_fact_and_return_the_same_outcome
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:32
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t2_the_same_member_id_and_person_may_exist_in_two_tenants
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t3_the_database_rejects_a_fact_attached_to_another_tenants_member
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t4_the_three_initial_term_states_round_trip_with_their_meaning
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t5_dates_instants_and_provenance_round_trip_exactly
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+8) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t6_recorded_at_never_decreases_under_a_backward_clock
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+9) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t7_a_failure_inside_append_rolls_everything_back
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+10) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t8_a_duplicate_fact_id_at_the_database_is_an_infrastructure_error
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+11) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t9_the_adapter_offers_no_update_or_delete
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+12) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_t10_a_non_postgresql_connection_fails_fast
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+13) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_created_member_can_be_loaded_and_found_by_holder
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+14) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_unknown_member_is_not_found
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+15) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_one_member_per_person_and_organisation
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+16) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_the_same_person_may_be_a_member_of_another_organisation
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+17) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_tenant_isolation
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+18) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_accepted_decision_is_appended_at_the_next_seq
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+19) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_facts_keep_their_order_and_seq_is_contiguous
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+20) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_decision_based_on_a_stale_version_is_not_appended
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+21) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_refused_decision_cannot_be_appended
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+22) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_retried_key_returns_the_original_outcome_and_appends_nothing
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+23) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_key_reused_for_a_different_command_is_refused
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+24) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_idempotency_keys_are_tenant_scoped_and_unknown_keys_have_no_outcome
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+25) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_recorded_at_never_decreases_even_if_the_clock_goes_back
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+26) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_appending_never_changes_earlier_records
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+27) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_with_an_unstorable_valid_time_is_not_appended with data set "E1a effectiveAt one day before 0001-01-01" (-719163, null)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+28) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_with_an_unstorable_valid_time_is_not_appended with data set "E1b effectiveAt one day after 9999-12-31" (2932897, null)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+29) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_with_an_unstorable_valid_time_is_not_appended with data set "E1c initial term until one day after 9999-12-31" (0, 2932897)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+30) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_end_with_an_unstorable_valid_time_is_not_appended
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+31) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_at_a_storable_boundary_is_appended_and_read_back with data set "E2a effectiveAt 0001-01-01" (-719162, null)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+32) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_at_a_storable_boundary_is_appended_and_read_back with data set "E2b effectiveAt 9999-12-31" (2932896, null)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+33) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_admission_at_a_storable_boundary_is_appended_and_read_back with data set "E2c initial term until 9999-12-31" (0, 2932896)
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+34) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_end_at_the_last_storable_date_is_appended_and_read_back
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+35) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_reused_key_is_answered_before_the_valid_time_is_checked
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+36) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_known_key_with_a_matching_fingerprint_is_answered_without_examining_the_new_decision
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+37) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_unstorable_valid_time_takes_precedence_over_a_stale_version
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+38) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_creating_a_member_id_that_belongs_to_another_holder_fails_without_changing_state
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+39) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_known_key_is_answered_before_the_member_is_looked_up
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+40) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_reused_key_conflict_is_answered_before_the_member_is_looked_up
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+41) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_an_unstorable_valid_time_is_answered_before_the_member_is_looked_up
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+42) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_a_refused_decision_is_rejected_even_under_a_used_key
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+43) Tests\Feature\Contexts\Membership\Organisational\PostgresReferenceModelPropertyTest::test_handlers_and_postgresql_agree_with_the_reference_model
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [system_id_mismatch] Connected to cluster '1', expected '7703619129940693026'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:148
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Support/MembershipPgIsolatedDatabase.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/f1-wt/tests/TestCase.php:73
+
+ERRORS!
+Tests: 43, Assertions: 0, Errors: 43, Deprecations: 1.

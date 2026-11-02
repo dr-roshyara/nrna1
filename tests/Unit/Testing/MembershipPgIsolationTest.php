@@ -139,4 +139,85 @@ final class MembershipPgIsolationTest extends TestCase
         DatabaseIdentityGuard::verifySystemIdentifier('7432001', fn () => '7432001');
         $this->addToAssertionCount(1);
     }
+
+    // ── review finding F1 (2026-11-02): confinement inside the run, before any reset ──
+
+    private const ACTIVE_ENV = ['MEMBERSHIP_PG_TEST_DB' => 'membership_pg_isolated', 'MEMBERSHIP_PG_SYSTEM_ID' => '7432001'];
+
+    /** The booted connections of a Membership run: the three confined ones, plus config/database.php's hard-coded `testing`. */
+    private function bootedConnections(array $override = []): array
+    {
+        $pg = ['driver' => 'pgsql', 'url' => null, 'database' => Membership::APPROVED_NAME];
+
+        return array_replace_recursive([
+            'sqlite' => ['driver' => 'sqlite', 'url' => '', 'database' => ':memory:'],
+            'pgsql' => $pg, 'pgsql_audit' => $pg, 'pgsql_geo' => $pg,
+            'testing' => ['driver' => 'pgsql', 'host' => '127.0.0.1', 'database' => 'nrna_test'],
+        ], $override);
+    }
+
+    private function confined(array $env, array $connections, ?callable $currentDatabase = null, ?callable $systemId = null, array &$asked = []): ?array
+    {
+        return Membership::confinedConnections(
+            $env,
+            $connections,
+            'pgsql',
+            function () use ($currentDatabase, &$asked) { $asked[] = 'current_database'; return $currentDatabase ? $currentDatabase() : Membership::APPROVED_NAME; },
+            function () use ($systemId, &$asked) { $asked[] = 'system_identifier'; return $systemId ? $systemId() : '7432001'; },
+        );
+    }
+
+    public function test_outside_a_membership_run_nothing_changes_and_nothing_is_asked(): void
+    {
+        $asked = [];
+        $this->assertNull($this->confined(['DB_DATABASE' => 'nrna_test'], $this->bootedConnections(), null, null, $asked));
+        $this->assertSame([], $asked, 'the default and CI runs are untouched');
+    }
+
+    public function test_in_a_membership_run_the_unconfined_testing_connection_is_removed(): void
+    {
+        $kept = $this->confined(self::ACTIVE_ENV, $this->bootedConnections());
+
+        $this->assertIsArray($kept);
+        $this->assertArrayNotHasKey('testing', $kept, 'the hard-coded connection to the shared nrna_test must not stay reachable');
+        $this->assertSame(['sqlite', 'pgsql', 'pgsql_audit', 'pgsql_geo'], array_keys($kept));
+    }
+
+    public function test_a_confined_connection_pointing_elsewhere_is_refused_before_the_database_is_asked(): void
+    {
+        $asked = [];
+        $this->assertRefused('not_confined', fn () => $this->confined(
+            self::ACTIVE_ENV, $this->bootedConnections(['pgsql_audit' => ['database' => 'nrna_test']]), null, null, $asked));
+        $this->assertSame([], $asked);
+    }
+
+    public function test_a_url_override_is_refused(): void
+    {
+        $this->assertRefused('not_confined', fn () => $this->confined(self::ACTIVE_ENV, $this->bootedConnections(['pgsql' => ['url' => 'pgsql://u@h/publicdigit']])));
+    }
+
+    public function test_the_live_connection_must_reach_the_same_cluster(): void
+    {
+        $this->assertRefused('system_id_mismatch', fn () => $this->confined(self::ACTIVE_ENV, $this->bootedConnections(), null, fn () => '7432002'));
+        $this->assertRefused('system_id_missing', fn () => $this->confined(['MEMBERSHIP_PG_TEST_DB' => 'membership_pg_isolated'], $this->bootedConnections()));
+    }
+
+    public function test_the_live_connection_must_report_the_approved_database(): void
+    {
+        $this->assertRefused('mismatch', fn () => $this->confined(self::ACTIVE_ENV, $this->bootedConnections(), fn () => 'nrna_test'));
+    }
+
+    public function test_a_wrong_profile_name_is_refused(): void
+    {
+        $this->assertRefused('not_approved', fn () => $this->confined(['MEMBERSHIP_PG_TEST_DB' => 'pbdigit274_isolated_test'] + self::ACTIVE_ENV, $this->bootedConnections()));
+    }
+
+    public function test_every_membership_postgres_test_uses_the_confining_base_class(): void
+    {
+        $files = glob(__DIR__.'/../../Feature/Contexts/Membership/Organisational/Postgres*Test.php');
+        $this->assertCount(4, $files);
+        foreach ($files as $file) {
+            $this->assertMatchesRegularExpression('/\bextends\s+MembershipPostgresTestCase\b/', (string) file_get_contents($file), basename($file));
+        }
+    }
 }

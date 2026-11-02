@@ -22,13 +22,12 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\TestCase;
 
 /**
  * Database-specific invariants of the PostgreSQL adapter (Slice 1b contract §8, T2–T10).
  * PBDIGIT-260. Fresh organisations per test (no per-test transaction on PostgreSQL).
  */
-final class PostgresMemberRepositoryInvariantsTest extends TestCase
+final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTestCase
 {
     private int $now = 1_760_000_000_000_000;   // epoch µs
 

@@ -165,3 +165,13 @@ This is the P-DB of roadmap W2. I-1 holds by design: the run's credentials exist
   - AC-6 is also checked at runtime (the evidence self-check);
   - AC-8: the commit, image digest, `server_version`, `system_identifier`, outputs, exit codes and SHA256SUMS are archived.
 - **Remaining:** G-ACC (independent review, then the PO's acceptance); W2-2 confirmation.
+- 2026-11-02: **Independent review (G-ACC input):** ACCEPT WITH EXPLICIT RESIDUAL RISKS, conditional on W2-2, with **F1 (major): AC-5 partial**. The Membership path did not run `assertConnectionsConfined`, and the `testing` connection stayed reachable. The PO chose **B, fix F1 first**.
+  - **F1 fixed (TDD):** RED was 7 errors and 1 failure; GREEN is 28 tests in `MembershipPgIsolationTest`.
+    - New `MembershipPgIsolatedDatabase::confinedConnections()`.
+    - New base `tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php` (hook in `setUpTraits`; active only when `MEMBERSHIP_PG_TEST_DB` is set). The four PostgreSQL tests extend it.
+  - **Regression (clean worktree):** `tests/Unit/Testing` 168, PBDIGIT-274 85, Membership 117 / 61 / 13 / 97.
+  - **Container run:** 43 / 256, exit 0.
+  - **Sensitivity mutant** (wrong in-run cluster ID): all 43 refused.
+  - **Evidence:** `…/2026-11-02-w2-membership-pg/f1-confinement/`.
+  - **Docs:** F2 corrected (`pg_control_system()` is not superuser-only on PostgreSQL 15); F7 wording and traceability corrected.
+  - **AC-5 is now met as written.**

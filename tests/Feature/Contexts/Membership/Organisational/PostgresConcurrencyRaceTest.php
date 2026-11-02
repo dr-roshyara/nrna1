@@ -13,7 +13,6 @@ use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberReposito
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Group;
-use Tests\TestCase;
 use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthority;
 
 /**
@@ -23,7 +22,7 @@ use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthor
  * for it. PBDIGIT-260.
  */
 #[Group('membership-race')]
-final class PostgresConcurrencyRaceTest extends TestCase
+final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
 {
     private const ROUNDS = 8;
     private const PROCESSES = 4;

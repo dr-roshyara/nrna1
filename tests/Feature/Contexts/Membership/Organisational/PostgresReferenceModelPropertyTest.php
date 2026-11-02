@@ -7,7 +7,6 @@ namespace Tests\Feature\Contexts\Membership\Organisational;
 use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\TestCase;
 use Tests\Unit\Contexts\Membership\Application\Organisational\Support\ReferencePropertyRun;
 
 /**
@@ -15,7 +14,7 @@ use Tests\Unit\Contexts\Membership\Application\Organisational\Support\ReferenceP
  * the independent reference model (the same run as the in-memory adapter, with fewer
  * seeds for speed). Fresh organisations per seed. PBDIGIT-260.
  */
-final class PostgresReferenceModelPropertyTest extends TestCase
+final class PostgresReferenceModelPropertyTest extends MembershipPostgresTestCase
 {
     public function test_handlers_and_postgresql_agree_with_the_reference_model(): void
     {

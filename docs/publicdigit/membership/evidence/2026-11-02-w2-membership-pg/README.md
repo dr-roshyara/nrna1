@@ -61,3 +61,18 @@ Each run is `bash scripts/testing/membership-pg.sh` on a **new** cluster, agains
 cd docs/publicdigit/membership/evidence/2026-11-02-w2-membership-pg
 (cd run1 && sha256sum -c SHA256SUMS); (cd run2 && sha256sum -c SHA256SUMS); (cd proof && sha256sum -c SHA256SUMS)
 ```
+
+## Addendum: review finding F1 fixed (`f1-confinement/`, 2026-11-02)
+
+**Why.** The independent review found that AC-5 named a confinement check (`assertConnectionsConfined`) that the Membership path did not run. The hard-coded `testing` connection to `nrna_test` therefore stayed reachable by name. AC-5 was **partial** in the runs above. The "Supports" claim for AC-5 above refers to pinning only.
+
+**Fix.** `MembershipPostgresTestCase` together with `MembershipPgIsolatedDatabase::confinedConnections()`: in a Membership run, every test removes unconfined connections, checks confinement, and checks the cluster ID and the database on the live Laravel connection. Default and CI runs are unchanged. Tested database-free first (8 new cases).
+
+**Evidence, from a clean worktree at the then-HEAD plus the uncommitted F1 change; same pinned image:**
+
+| Folder | Content | Result |
+|---|---|---|
+| `f1-confinement/run/` | the full suite with the fix | 43 tests, 256 assertions, exit 0. Cluster `7703618967204040738`, PostgreSQL 15.19 |
+| `f1-confinement/mutant-wrong-in-run-system-id/` | sensitivity check, in a scratch copy only: the base class's live lookup made to return a wrong ID | **all 43 tests refused** (`[system_id_mismatch]`), exit 2. This proves the in-run check runs for every test. The mutant was reverted |
+
+Hashes verify. No credential is present. No container is left.

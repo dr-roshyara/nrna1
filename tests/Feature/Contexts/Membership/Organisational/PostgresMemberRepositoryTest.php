@@ -9,7 +9,6 @@ use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberReposito
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\TestCase;
 use Tests\Unit\Contexts\Membership\Application\Organisational\MemberRepositoryContract;
 
 /**
@@ -19,7 +18,7 @@ use Tests\Unit\Contexts\Membership\Application\Organisational\MemberRepositoryCo
  * Isolation: Tests\TestCase skips per-test transactions on PostgreSQL, so every test
  * uses fresh organisations (tenants). All Membership rows are tenant-scoped.
  */
-final class PostgresMemberRepositoryTest extends TestCase
+final class PostgresMemberRepositoryTest extends MembershipPostgresTestCase
 {
     use MemberRepositoryContract;
 
