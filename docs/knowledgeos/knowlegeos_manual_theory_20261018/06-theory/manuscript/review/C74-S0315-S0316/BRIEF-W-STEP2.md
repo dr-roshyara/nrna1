@@ -9,7 +9,7 @@
 
 ## Questions
 1. The REVIEWER-INSTRUCTIONS checks for a transition review: each claim against the cited source and book lines; labels; homes; R2; the quote check by hand; R3 for any correction.
-2. Completeness against your inventory: what did §08.67 leave out, and is any omission a loss of theory?
+2. Completeness against your inventory: what did §8.67 leave out, and is any omission a loss of theory?
 3. C1: is the disagreement on process identities stated exactly, and are the readings and the bearing on §8.06 C3 (CON-0127) right?
 4. C2–C3: the state read as an act (the converse); AMBIGUOUS with a misstated reason; V-2's two readings.
 5. C4: are §8.66 C5's premises correctly taken as supplied (Src), and is the critique of S0316's "supported" fair?
