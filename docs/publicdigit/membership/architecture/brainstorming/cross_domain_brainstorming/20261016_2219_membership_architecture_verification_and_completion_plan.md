@@ -36,7 +36,7 @@ Sources: R = `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratifi
 | BR-13 | Synchronous (transactional) enforcement of INV-9 (BD-SYNC) | R §10 | RATIFIED | — |
 | BR-14 | The resolved lifetime is derived, never stored as truth; projections only | ACT N-2 | RATIFIED | — |
 | BR-15 | Membership grants no voting entitlement; Election consumes predicates and events with (MembershipId, asOf); Election-Only organisations never read the ledger | R §1, §8 (INV-11); CUT-9 | RATIFIED / ADOPTED | DS-2, BD-GVR, DS-5 |
-| BR-16 | Finance owns fees; Membership consumes FeePaid; Membership publishes period events (`PeriodTrimmed`, `TrimRevived`) | R §8; ACT N-5 | RATIFIED | DS-1, DS-5 |
+| BR-16 | Finance owns fees; Membership consumes FeePaid; Membership publishes period events (`PeriodTrimmed`, `TrimRevived`) | R §8; ACT N-5 | RATIFIED | DS-1, DS-5. **R-8 (2026-11-02): E-1 DECIDED by the PO.** "Fees" here means **payment facts** (payment, settlement, refunds, credits, accounting: Finance). The **dues obligation** is Membership's and references the period (`docs/publicdigit/reviews/2026-11-02-membership-e0b-s-decision-record.md` §1). Row text otherwise unchanged |
 | BR-17 | Committee participation is not part of the Membership aggregate; legacy committee code inside `app/Contexts/Membership` is a boundary defect | ACT N-6 | RATIFIED (as a defect) | EP-Q2, DR-07 |
 | BR-18 | Migration normalises representation and never invents truth (no invented dates, no automatic overlap trimming, exceptions reported) | R §11; CUT-7 | RATIFIED | BD-NORM, EP-Q3, EP-Q4 |
 | BR-19 | Correction (COR-1 … COR-4) is accepted before any cutover, migration or live write | ARB-MEM-01 | DECIDED | — |

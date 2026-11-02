@@ -125,6 +125,8 @@ Consistent with the ratified rules. Where it depends on E-1, both branches are s
 
 ### E-1. Who owns the dues obligation?
 
+> **Status update (2026-11-02): DECIDED by the PO, option (a)**, as worded below. Record: `2026-11-02-membership-e0b-s-decision-record.md` §1. The analysis below is unchanged.
+
 **Options:**
 - **(a) Membership** (readiness §21).
   - Pro: obligations follow periods and types directly; Standing needs only Finance's payment facts.
