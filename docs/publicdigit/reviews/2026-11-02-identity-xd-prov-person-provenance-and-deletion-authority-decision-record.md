@@ -155,7 +155,7 @@ An orphaned bare identifier holds no information about anyone.
 |---|---|---|
 | 1 Request | Organisation A | initiates a deletion request for a Person it holds a record of, within its own internal authority (OQ-PROV-4) |
 | 2 Token | Identity | issues a **single-use, expiring confirmation token** bound to the Person and to this request. Identity stores **no contact data**: a never-registered Person is a bare identifier (OQ-3b-1 B). |
-| 3 Delivery | Organisation A | delivers the token to contact details **it already holds**. The message states who initiated the request, what is proposed, the consequences, and how to confirm or reject. |
+| 3 Delivery | Organisation A | delivers the token to a **verified email address it already holds** (refined 2026-11-02; what counts as "verified" is open: OQ-PROV-9). The message states who initiated the request, what is proposed, the consequences, and how to confirm or reject. |
 | 4 Confirmation | the person | must confirm **explicitly**; opening the link deletes nothing. Rejection cancels the request. |
 | 5 Eligibility | Identity | checks that: the token is valid, unexpired and unused; **no account has been registered or linked** to the Person since the request began; **complete** discovery shows no other organisation still recognises the Person (otherwise pending or rejected; protects other organisations' identity links and claim codes); no retention obligation prevents it |
 | 6 Execution | Identity | deletes the global Person and records an audit trail. Organisation A handles its own local records under its retention rules. Other organisations' records and Membership facts are not touched. |
@@ -186,6 +186,8 @@ An orphaned bare identifier holds no information about anyone.
 | OQ-PROV-6 | **Unresolved design proposal, for ARB review:** complete discovery for deletion. Who runs it, timeouts, retry, how long a request may stay pending; the same scale questions as the INV-AFF-1 evaluation (OQ-E-1) | ARB |
 | OQ-PROV-7 | The Person's own deletion lifecycle in Identity: identity verification of the requester, grace period, effect on organisations' references | PO + ARB + legal |
 | OQ-PROV-8 | (AM-1 r2) Confirmation token design: lifetime, number and timing of reminders, rejection handling, audit of request, delivery and confirmation; whether an organisation may resend; message content requirements | ARB + PO + data protection |
+
+| OQ-PROV-9 | (AM-1 r2, refined) **Verified email evidence:** how an organisation establishes that the email address it holds is sufficiently verified, and how unauthorised confirmation is prevented (outdated or shared addresses) | ARB + PO + data protection |
 
 **Note on OQ-PROV-5:** under AM-1 r2 the importer capability is no longer required. OQ-PROV-5 is **largely obsolete**, but stays listed until the ARB confirms r2.
 
@@ -264,6 +266,9 @@ Documentation-only corrections. Status, selection, recommendations and open ques
   - the importing organisation delivers an Identity-issued single-use token to contact details it already holds;
   - reminders, then expiry; silence is never consent.
   - Added: the process, scenarios and caveats; OQ-PROV-8. OQ-PROV-5 is marked largely obsolete.
+- **AM-1 r2, refined (later on 2026-11-02):** delivery to a **verified** email held by the importing organisation; OQ-PROV-9 added.
+  - **Not adopted:** a later workflow proposal's step "verify that the request comes from the original importer" (it would need the superseded importer capability or central provenance, contrary to §1) and "the system sends the notification" (Identity holds no contact data).
+  - **Principal, 2026-11-02: r2 confirmed as recorded.** Organisation A initiates from its own records; Identity issues the token; A delivers it; the person's confirmation authorises; Identity executes. Still PROPOSED pending governance approval.
 
 **All six evidence references in §8 were re-verified unchanged:** `OrganisationUserImportService.php:322`, `VoterImportService.php:274`, `DeleteAccountController.php:30`, `User.php:41`, `create_members_table.php:29`, `create_membership_applications_table.php:17`.
 
