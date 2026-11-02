@@ -814,3 +814,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
   - Governance Engineer (done with this entry): `CONSOLIDATION-BRIEF-TEMPLATE.md` REVIEWER-NOTE item 4 widened to the ruling's wording, change-log row added; the access deviation recorded in `00-access/ACCESS-RECORD.md` (entry 2026-11-02T02:56:29Z).
   - The Professor: the prohibition in every window and theory-turn brief from C79; C74–C78 not reopened; §8.71 unchanged on W-01.
 - **Not decided here:** the `CLAUDE.md` concern (to the review-quality analysis); any use of historical versions (a separate proposal only).
+
+## Addendum 2026-11-02T12:11:49Z: consolidation S0328–S0352, independent check of the preparation authorised (recorded by the Governance Engineer)
+
+- **Principal (verbatim):** "Run the independent check of the S0328–S0352 preparation."
+- **Basis:** mandate §8.3 step 7 and §8.3a; base `5a347441e`; copy `66969f253`; key and manifest hashes in the access record (entry 2026-11-02T10:32:26Z, commit `0fc9e1ac7`); brief check G1–G7 passed.
+- **Effect:** a fresh session, not a reviewer of this consolidation, runs C1–C6 and reports to the Principal; the Governance Engineer relays the report unedited. **No reviewer starts** until the Principal confirms PASS to the Professor.
+- **Not yet recorded (the Principal's words not received by the Governance Engineer):** the instructions to the Professor to continue reading through S0352, to include the U1–U6 passages in this consolidation, and to add §9.19.9 L392–397 to reviewer D.
