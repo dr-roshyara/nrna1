@@ -608,3 +608,10 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Observation:** the book's own text mentions the planted-gap method in two rotated sections (§8.05 L62, §8.20 L32); this is base text, the same in every copy, and carries no signal about this consolidation.
 - **Risk, recorded:** the scratchpad is temporary; if the key is lost before scoring, only these hashes remain.
 - **Before any reviewer starts:** the independent check (mandate §8.3a, C1–C6), reporting to the Principal; the Principal confirms PASS to the Professor.
+
+## Entry 2026-11-02T12:14:40Z: consolidation S0328–S0352, independent check of the preparation (mandate §8.3a): PASS
+- **Run** on the Principal's "Run the independent check of the S0328–S0352 preparation." (research record addendum 2026-11-02T12:11:49Z), **before any reviewer started**, by a fresh subagent session started by the Governance Engineer; its report relayed to the Principal unedited.
+- **Result:** C1–C6 all yes; **PASS**. Copy = manifest (211/211; path sets identical); manifest and key hashes equal the entry of 2026-11-02T10:32:26Z; base `5a347441e` is the copy commit's parent; exactly four files differ from the base, one line each, each matching a key entry, line counts unchanged; no signal in the reviewers' folder (template text only); preparation commit subjects neutral; every commission lists its files and forbids `00-access/`, the working book forbidden through REVIEWER-NOTE item 4.
+- **Checker's own deviation (disclosed):** told to write nothing, it wrote path lists (no key text) to this session's scratchpad (`chk_copy.txt`, `chk_man.txt`, an emptied `chkbase/`), outside the repository. No effect on the copy, the key or the repository.
+- **Observations (not deviations):** the routes for three plants are general method text and decision-record text committed before the copy; an unrelated product commit (`3aad77d20`) whose subject contains "test" lies between the scope commit and the base; the checker did not verify the copy's intended composition, only equality with the base.
+- **Next:** the Principal confirms PASS to the Professor; reviewers may then start.
