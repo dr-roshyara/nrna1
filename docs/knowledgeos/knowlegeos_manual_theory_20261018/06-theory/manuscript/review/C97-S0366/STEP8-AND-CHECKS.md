@@ -16,3 +16,8 @@
 - **R2 (`undefined_terms.py --scope 08.90`):** tiers A–C: none in scope. Tier D judged as ordinary English or the source's sense: adviser agree create evaluate irreversible (the source's word, L45) keep recoverable (L31) remain retracted (the source's state, L45).
 - **R3 (proposed):** none.
 - **Quote check:** a script checked every quoted span against S0366 (and S0363, S0365 for the headings); every quote matched after seven paraphrases and one capitalisation were corrected before the draft's commit.
+
+**At settlement (v2).**
+- **R2 (`undefined_terms.py --scope 08.90`, v2):** tiers A–C: none in scope (one tier-A word, "tombstoned", reworded). W-10's judgement of the unjudged tier-D words is adopted: ordinary English, except "stripping", glossed in C4 as RESEARCH-PURPOSE's test 1, and "reply", defined in the lineage as (B).
+- **Quote check (`qc.py`, v2, against S0366, S0363, S0365, §9.16 and the register):** 74 checked. The misses are quotations of the withdrawn draft in §8.90.5 and the "(W, step 1)" marker; none is a source quotation.
+- **R3:** none (`inbound_citations.py` for §8.90 C1–C5: none outside §8.90; W).
