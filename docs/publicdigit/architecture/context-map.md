@@ -2,7 +2,7 @@
 
 **Status:** **PROPOSED.** Its **location and role as the consolidation point were approved by the PO on 2026-11-02**. Not ratified, not authoritative, and it replaces no existing map. It consolidates evidence from existing records and decides nothing.
 - The relationships in it carry their own statuses; the approval of the document is not a ratification of any of them.
-- Superseding governance map §5 is **not** decided (§14).
+- It **supersedes governance map §5** as the place where these relationships are maintained (PO, 2026-11-02; §14). This changes the place of maintenance, not any status.
 **Date:** 2026-11-02 · **Author:** Claude (DDD architect; authority: generated) · **Drafted at:** branch `election-flow-updated`, HEAD `6b912b6aa`.
 **Independent review:** 2026-11-02 at HEAD `0985739fc` (authority: generated; a review, not an approval). Corrections from the review are applied in place and listed in §15. **The status stays PROPOSED.**
 **Placement:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0). It sits next to the resumption record `strategic-design-status.md`.
@@ -269,7 +269,7 @@ The registered questions live in their existing records. This list only maps the
 | C-6 | Audit and Authorization classification: the act §11 groups Audit among "these bounded contexts"; BDR-09 classifies Audit as "Infrastructure / Platform Capability" and BDR-07 Authorization as "Supporting Subdomain / Domain Service"; the C4 view marks both "not a bounded context per BDR" | act §11, BDR-07, BDR-09, C4 legend | ARB (BDR re-issue via ADR if needed) | none here; the relationship R-06 is unaffected |
 | C-7 | C4 shows "Appointment [designed]" (white = designed only); BDR-03 classifies Appointment (Authority) as "Confirmed BC — **Operational**" | C4 map vs BDR-03 | C4 is documentation; the frozen BDR wins | correct the C4 view only in a versioned regeneration (§14 option C) |
 | C-8 | R-04 temporal reference: the ratified contract outline names "(MembershipId, asOf) references"; OQ-ME-4 lists "current vs as-of" as open for V2's contract | `…-ratified.md:154` vs separation decision record `:80` | ARB + Membership owner (OQ-ME-4) | consider when OQ-ME-4 is answered; not resolved here |
-| C-9 | PBDIGIT-320 `:20` says "OQ-ME-4 (ARB): who owns `organisation_users` and `user_organisation_roles`"; OQ-ME-4's recorded wording is contract semantics. The ownership question is recorded as BR-9 / OQ-C-5 | PBDIGIT-320 vs separation decision record `:80`, Decision C `:124` | PO (backlog wording) | none here; this map routes ownership to BR-9 / OQ-C-5 |
+| C-9 | PBDIGIT-320 `:20` says "OQ-ME-4 (ARB): who owns `organisation_users` and `user_organisation_roles`"; OQ-ME-4's recorded wording is contract semantics. The ownership question is recorded as BR-9 / OQ-C-5 | PBDIGIT-320 vs separation decision record `:80`, Decision C `:124` | PO (backlog wording) | **resolved 2026-11-02 (PO):** PBDIGIT-320 now routes ownership to BR-9 / OQ-C-5, with history kept |
 
 ## 12. Enforcement and backlog references
 
@@ -307,16 +307,15 @@ The register (§7) is the record of these assessments. This table repeats its st
     - location and role as the consolidation point **approved**;
     - Q-new-1 and Q-new-2 **routed to the ARB**;
     - C4 treatment **option A** (below).
-  - **Still with the PO:**
-    - superseding governance map §5 (below);
-    - the PBDIGIT-320 wording (C-9);
-    - routing the FeePaid direction question (R-05).
+  - **Later the same day:** supersession of governance map §5 decided (below); PBDIGIT-320 wording corrected (C-9).
+  - **Still with the PO:** routing the FeePaid direction question (R-05).
 - **ARB is required** for:
   - any ratification of this map;
   - extending EPIC-002's authority;
   - a versioned re-issue of the BDR (e.g. ARB-8; C-6);
   - the questions in §10 marked ARB.
-- **Proposed, not effective:** this document **supersedes governance map §5** as the place where organisation and governance relationships are maintained (the history of §5 stays). This needs the PO's approval; the governance map is itself PROPOSED (P-8) with the ARB.
+- **Decided by the PO, 2026-11-02:** this document **supersedes governance map §5** as the place where organisation and governance relationships are maintained. §5 stays as history, with a pointer here.
+  - This changes *where* relationships are maintained, not their status. The governance map (P-8) and this map both remain PROPOSED with the ARB.
 - **C4 `ContextMap.puml` (C-1, C-2, C-7): option A decided by the PO, 2026-11-02.** The C4 view stays unchanged; this map states its scope. Option C (a versioned regeneration after the ARB rulings) remains the recommended later step and needs its own decision.
   - **A. Leave the C4 view unchanged** and state its scope here: the Membership box is as-is (legacy) and not target; the legend's event-only sentence is loop- / greenfield-scoped (§7). No authority needed beyond approving this draft. **Decided (PO, 2026-11-02).**
   - **B. Documentation-only clarification of the view** (e.g. a note "Membership box = as-is legacy; legend rule scoped to the Push B loop"). Governing rule: C4 views are documentation and "the artifact wins and the diagram is corrected" (`docs/architecture/c4/README.md:3`; `.claude/MEMORY.md:12`); README `:40` says diagrams are updated in the ticket that touches them. Needs PO approval and a versioned edit with history kept; the legend wording would pre-empt Q-new-2, so B should be limited to the Membership box.

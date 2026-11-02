@@ -122,6 +122,8 @@ They are related only through JurisdictionAssignment. The code shows they do not
 
 ## 5. Context map (draft; dependency direction = consumer → provider)
 
+> **Superseded as the place of maintenance (PO, 2026-11-02).** Organisation and governance relationships are now maintained in `docs/publicdigit/architecture/context-map.md`, which also corrects this section against the ratified record. This section is kept unchanged below as history. Its status (PROPOSED, P-8) is not changed by this note.
+
 | Downstream (consumer) → Upstream (provider) | Contract (published language) | Authoritative or projection | Consistency | Failure behaviour | Boundary |
 |---|---|---|---|---|---|
 | Organisation, Membership, Governance → Identity | `PersonRef` (per organisation, preferred direction); claim-binding | authoritative in Identity | eventual (Δ) across databases | UNKNOWN → deny (XD-7 K2 [P]) | platform ↔ organisation |

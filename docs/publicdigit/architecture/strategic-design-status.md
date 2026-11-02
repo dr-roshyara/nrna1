@@ -177,10 +177,10 @@ Update this record (and the session log) with:
 - **The consolidation point for strategic relationships** is `docs/publicdigit/architecture/context-map.md`. It is PROPOSED; its location and role were approved by the PO; it was independently reviewed and corrected. It is not ratified.
 - **Q-new-1 and Q-new-2** were routed to the ARB (ARB pack items 6–7; register O-17, O-18).
 - **C4:** option A (unchanged; scope stated in the map).
-- **Still with the PO:**
-  - whether the map supersedes governance map §5;
-  - the PBDIGIT-320 wording (C-9);
-  - the FeePaid direction question.
+- **Decided later the same day (PO):**
+  - the map **supersedes governance map §5** as the place where these relationships are maintained (§5 kept as history, with a pointer);
+  - **PBDIGIT-320** wording corrected: ownership goes to BR-9 / OQ-C-5; persistence to OQ-ME-3 and Q-new-1.
+- **Still with the PO:** the FeePaid direction question.
 - **When resuming:** read the context map §10 (open questions) and §14 (change control) after this record.
 - Independent of both: the PBDIGIT-317 log-access check.
 
