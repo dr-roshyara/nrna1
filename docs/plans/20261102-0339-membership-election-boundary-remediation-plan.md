@@ -107,8 +107,10 @@ Three verified violations (decision record §3):
 
 - [x] Verify V1–V3 (static)
 - [x] Record Decision 1 and Decision 2
-- [ ] PO approval of S1
-- [ ] S1 implemented and accepted
+- [x] PO approval of S1 (baseline V1, V1b, V2, V3′)
+- [x] S1 implemented
+- [ ] S1 accepted (PO / reviewer)
+- [ ] S2 scope extended to V1b: remove `Member::canVoteInElection`; move the voting-rights rule to Election; change `MemberCanVoteInElectionTest` (needs approval)
 - [ ] OQ-ME-1…4 answered
 - [ ] Isolated test database available (T-13)
 - [ ] S2, S3, S4 each approved and done
@@ -124,6 +126,23 @@ Three verified violations (decision record §3):
 - **The pre-implementation scan found the V3 correction** (above). Membership → Election references: only V1. Election → Membership / affiliation data: only V2.
 - **S1 is paused, not started:** its approved baseline names the wrong V3. It needs re-approval with the baseline V1, V2, V3′.
 - **The PO re-approved S1 with the baseline V1, V2, V3′ (2026-11-02).** S1 may start; S2–S4 remain unapproved.
+- **S1 RED run** (static test written with empty baselines) reports exactly:
+  - V1 (`app/Models/Member.php`);
+  - V2 (the Election adapter);
+  - V3′ (`voters(member_id) -> members`).
+  - The dropped `election_memberships` key is correctly not reported.
+- **The same run found V1b:**
+  - `Member::canVoteInElection(Election $election)` (`app/Models/Member.php:142-149`), a **Membership → entitlement shortcut**;
+  - no production caller;
+  - specified by `tests/Feature/Membership/Domain/MemberCanVoteInElectionTest.php`.
+  - **Not in the approved baseline:** S1 paused again; the unfinished test was moved out of the repository (not committed). It needs a PO decision on V1b.
+- **The PO added V1b to the baseline (V1, V1b, V2, V3′) and extended S2's scope to V1b (2026-11-02).**
+- **S1 implemented:** `tests/Architecture/MembershipElectionBoundaryTest.php`.
+  - GREEN: 3 tests, 6 assertions; no database.
+  - Mutation checks passed.
+  - Guide: `developer_guide/membership_election_boundary/01_s1_static_boundary_guards.md`.
+  - **Status: implemented, awaiting acceptance** (engineering does not accept its own work).
+  - Deviation from the plan: no deptrac rule, because deptrac's layers do not cover Membership, `app/Contexts/Elections` or `app/Models`. The static test covers all three rules (reason recorded in the guide).
 
 ## Risks
 

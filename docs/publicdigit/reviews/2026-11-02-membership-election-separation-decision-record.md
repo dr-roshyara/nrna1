@@ -58,6 +58,12 @@ This record does not re-ratify that rule. It decides how the rule is enforced in
 
 The original V3 text is kept above as history.
 
+### Addition V1b (2026-11-02, found by the S1 RED run)
+
+- **Finding:** `Member::canVoteInElection(Election $election)` (`app/Models/Member.php:142-149`) decides voting entitlement in Membership, a **Membership → entitlement shortcut** that the ratified rule forbids.
+- No production caller; specified by `tests/Feature/Membership/Domain/MemberCanVoteInElectionTest.php`.
+- **PO decision (2026-11-02):** add V1b to the S1 baseline and to S2's scope.
+
 ## 4. Open items
 
 | # | Question | Owner |

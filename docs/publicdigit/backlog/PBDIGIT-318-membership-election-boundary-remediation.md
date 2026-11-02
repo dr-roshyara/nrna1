@@ -21,6 +21,10 @@
 
 - **V3 corrected:** the `election_memberships` foreign key is dropped by `2026_05_19_000001_…` `up()`. The real integrity coupling is **V3′ `voters.member_id` → `members` ON DELETE CASCADE** (`2026_03_07_145529_create_voters_table.php:30`).
 - **S1:** approved by the PO with the baseline V1–V3; paused; **re-approved by the PO with the baseline V1, V2, V3′ (2026-11-02).**
+- **V1b found by the S1 RED run:** `Member::canVoteInElection` (`app/Models/Member.php:142-149`), a Membership → entitlement shortcut. **The PO added it to the baseline** (V1, V1b, V2, V3′) and to S2's scope.
+- **S1 implemented**, awaiting acceptance:
+  - `tests/Architecture/MembershipElectionBoundaryTest.php` (GREEN, no database);
+  - guide `developer_guide/membership_election_boundary/`.
 
 ## Not authorised
 
