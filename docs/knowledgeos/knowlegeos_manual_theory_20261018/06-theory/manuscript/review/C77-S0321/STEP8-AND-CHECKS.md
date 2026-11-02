@@ -22,3 +22,4 @@
 - **R3:** none proposed. C4 narrows §8.65 C3 / §8.68 C3's gap only conditionally; their text is unchanged.
 - **Quote check:** a script compared the quoted spans with S0321. Every prose quote matched; the formulas (L190, L510–521, L630–633, L751–760, L816–817, L1059) are transcriptions from the source's LaTeX, noted in §8.70.3.
 - **THEORY-MAP §7:** the interpreter-fork line to be annotated at settlement (C5, placement).
+- **R3 (settlement):** none; see SETTLEMENT.md.
