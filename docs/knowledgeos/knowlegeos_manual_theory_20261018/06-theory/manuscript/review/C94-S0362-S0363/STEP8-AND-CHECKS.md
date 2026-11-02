@@ -15,3 +15,8 @@
 - **R2 (`undefined_terms.py --scope 08.87`):** tier A–C: none in scope. Tier D judged as ordinary English or the source's sense: adviser agree belief beyond creation essential filename govern philosophy small 
 - **R3 (proposed):** none.
 - **Quote check:** a script compared every quoted span with S0362–S0363; every source quote matched after two were reworded before the draft's commit; the remaining miss is a quotation of the book (§9.18).
+
+**At settlement (v2).**
+- **R2 (`undefined_terms.py --scope 08.87`, v2):** tiers A–C: none in scope. W's tier-D note on "confidence" is settled by W-04: C4 now states that the book has no such concept.
+- **Quote check (`qc.py`, v2, against S0362, S0363, RESEARCH-PURPOSE and §1.6):** 71 checked. The 7 misses are quotations of the withdrawn draft in §8.87.5 and the "(W, step 1)" marker; none is a source quotation.
+- **R3 (`inbound_citations.py "§8.87 C1"…"C5"`):** no concept-level inbound citations. The only section-level hits are this window's own change-log row and map line.
