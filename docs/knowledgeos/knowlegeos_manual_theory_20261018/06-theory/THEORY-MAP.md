@@ -432,4 +432,4 @@
   - the identity rule used by R2 (T9-18; §9.16 N1);
   - a table comparing the kernel lists of S0205–S0225 (§8.34.3; §9.9.8).
 - **Open forks from C70–C71 (Open, not yet rows):**
-  - the semantic interpreter (compiler): a mechanism (S0303; §8.62 C5) or a Supporting bounded context (S0307 L767; S0308 L9 and L347 hold both); Ch. 10 has none (§8.63.3; §8.64.3). *C72 (§8.65 C5): S0310 L1203 cites "the v1.1 DDD decision" placing it outside the core as "a candidate adapter"; compatible with both branches; the decision is not in the window read.*
+  - the semantic interpreter (compiler): a mechanism (S0303; §8.62 C5) or a Supporting bounded context (S0307 L767; S0308 L9 and L347 hold both); Ch. 10 has none (§8.63.3; §8.64.3). *C72 (§8.65 C5): S0310 L1203 cites "the v1.1 DDD decision" placing it outside the core as "a candidate adapter"; compatible with both branches; the decision is not in the window read.* *C73 (§8.66 C1): S0312 places it outside the constitutional kernel, "Not proven", and "can be replaced": a generic-class reading (§10.1).*
