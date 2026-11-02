@@ -21,3 +21,4 @@
 - **R2 (§8.73):** `undefined_terms.py --scope 08.73`: no tier A, B or C flag names §8.73.
 - **R3 proposed:** §8.72 C4: the end of the author's work was later recorded by the HANDOFF (seq 5), appended by the verifier acting as Governance (§8.73 C5); §8.72 C4's deduction stands for its time.
 - **Quote check:** a script compared the quoted spans with S0327–S0330; every source quote matched; quotes of S0190 and §8.27 are taken through §8.72 and §8.27.
+- **R3 (settlement):** applied to §8.72 C4 as restated (W-05). **R2:** W judged 28 tier-D tokens; "witness" qualified (W-16).
