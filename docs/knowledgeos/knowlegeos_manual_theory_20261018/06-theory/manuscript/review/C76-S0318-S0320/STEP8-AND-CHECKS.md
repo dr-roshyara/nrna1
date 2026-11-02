@@ -12,12 +12,12 @@
 
 - **Dependencies:**
   - C1: §8.67 C1; §8.06 C3; §8.10 C5.
-  - C2: §1.14.1; §8.51 C1; T1-17; N4-15; §9.17 R1; §1.14.3; §9.16 R6; §8.65 C4.
+  - C2: §1.14.1 L161, L164; §8.51 C1; N4-15; §9.17 R1; §1.14.3; §9.16 R6; §8.62 C4 (W-15) (corrected at settlement: draft had T1-17 and §8.65 C4, W-03, W-05).
   - C3: A1; §1.12; §8.40 C4; T9-20; §8.67 C1.
   - C4: §1.13; INV-ATTR (§9.4 L21; §8.06 C3); §8.67 C1.
   - C5: §8.42 C1; H1′; §8.50 C4; §9.17 R1; §1.14.3.
 - **Taken from W's inventory before step 2:** listed in §8.69.5.
 - **R1:** no new rows (241 homes, 1 pre-existing flag).
 - **R2 (§8.69):** to be judged at review.
-- **R3 (proposed for settlement):** §8.67 C1 — reading (a) gains support from S0319 L57 and S0320 L32. S0318 L72–73 supports S0316's verifier.
+- **R3:** none. *(The draft proposed an R3 on §8.67 C1; withdrawn at settlement, W-01: the rulings follow their registrars; §8.67 C1 unchanged.)*
 - **Quote check:** no bracket-form quotes; the line-cited quotes were checked by hand.
