@@ -13,7 +13,7 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | **S0352**, stopped; consolidation S0328–S0352 settled. Resumes at S0353 only on the Principal's instruction | decision record |
+| Reading | Resumed at S0353 under the standing instruction (about S0363 on 2026-11-02); **pauses for the T9-02 theory turn** after the window in progress settles; next stop the gate after S0402 | decision record |
 | Consolidation S0278–S0302 (a planted-gap test) | **Settled.** Run 2 (fresh) scored blind 3 of 4 (Q4, a stale pointer, missed); stage 1 `2b9441cc9`; stage 2 `e3ac4df54`, guard checked | `review/CONSOLIDATION-S0278-S0302/PLANTED-GAP-RESULT.md` (`6844d88e5`) |
 | Sealed key and manifest | **Released** after scoring (key `c0427904…`, manifest `6371c741…`, both unchanged) | `PLANTED-GAP-RESULT.md`; ACCESS-RECORD |
 | Req/A theory turn | **Settled; U1–U6 decided** (§9.19 v2, `fb146c3a6`; rulings confirmed, decision record 2026-11-01T17:32:50Z). U5 (a) EF; U6 (a) O1 per act kind, D clauses later (T9-21); U2 (a) g1's class, kernel; U1 (b) T9-02 later; U3 (b) unfixed, scoped; U4 (d) deferred. No minimal kernel of KnowledgeOS stated; uniqueness after U6 holds in the toy model only. **T9-21 and T9-02 wait for a later authorised turn** | decision record; `review/REQ-A-TURN/SETTLEMENT.md` |
@@ -45,8 +45,8 @@
 
 ## Waiting for
 
-- **Consolidation S0328–S0352: settled** (stage 2 `87ce85f47`, freeze lifted). Planted-gap test blind 3 of 4. Stage-2 guard checked by the Governance Engineer (2026-11-02T13:40Z): A-02, D-01, F-01 not applied; the four working lines read as the base; no planted text in the working book; no reference-table source row removed without re-adding. *The Principal's words authorising stage 2 were not given to the Governance Engineer.*
-- **The Principal:** whether reading resumes at S0353, and under what instruction (the standing instruction's extension ended at S0352). Next planted-gap test: the consolidation S0378–S0402.
+- **T9-02 (state space) theory turn: ISSUED 2026-11-02**, reviewers (b) (two `kos-lane-reviewer` on different models + one `kos-theory-reviewer`). Starts after the window in progress settles; reading position frozen during the turn; then reading resumes under the standing instruction to the gate after S0402.
+- **On the turn's report, the Governance Engineer checks procedure only:** question and disproof conditions committed before any model or draft; ≤ 8 sources, allowed list, predictions for branch consults; reading position unchanged; blind step-1 answers and reports saved with sha256; no git history; every finding dispositioned with R3; TODO changes stated as consequences; RESEARCH-PURPOSE untouched; F13, F37, U1–U6 not decided beyond the record; questions to the Principal with copy-ready lines. Not the theory itself.
 
 ## Next actions (Governance Engineer)
 

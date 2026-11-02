@@ -859,3 +859,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal's commission text:** given to the Governance Engineer in the same session, headed "# KnowledgeOS Theory Commission: T9-02 — State Space"; kept **verbatim as Part 1** of `03-methodology/COMMISSION-T9-02-STATE-SPACE-THEORY-TURN-20261102.md`.
 - **Prepared:** that file, Part 2 (anchors, §12b method, limits, review, report) from repository records; status **PREPARED — NOT ISSUED**. Basis: `03-methodology/ASSESSMENT-RESEARCH-QUALITY-AND-DIRECTION-20261102.md` (`9a90f096a`), recommendation 1.
 - **Open for the Principal:** the reviewer arrangement (two, per §12b, or three, as at the Req/A turn); the dispatch.
+
+## Addendum 2026-11-02T15:46:33Z: T9-02 theory turn issued, reviewers (b) (recorded by the Governance Engineer)
+
+- **Principal (verbatim):** "Issued with reviewers (b)"
+- **Decided:** `03-methodology/COMMISSION-T9-02-STATE-SPACE-THEORY-TURN-20261102.md` (Parts 1 and 2) is **issued**. **Reviewers (b):** two `kos-lane-reviewer` on different models plus one `kos-theory-reviewer`, blind-first and independent. The turn starts after the window in progress settles; the reading position does not move until the turn is settled; reading then resumes under the standing instruction (next stop: the gate after S0402).
+- **Unchanged:** Rulebook v1.4; reading depth; review procedure; access permissions; the git-history ban. Not authorised: the derivation-chain turn, T9-21, architecture or implementation work.

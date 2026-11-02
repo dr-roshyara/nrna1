@@ -1,8 +1,8 @@
-# Commission: theory turn T9-02, the state space (PREPARED — NOT ISSUED)
+# Commission: theory turn T9-02, the state space (ISSUED)
 
 | Field | Value |
 |---|---|
-| Status | **PREPARED — NOT ISSUED.** Prepared on the Principal's instruction "Prepare the T9-02 (State Space) Theory Turn" (2026-11-02; research record addendum of that date). It is issued only when the Principal dispatches it and tells the Governance Engineer so |
+| Status | **ISSUED** by the Principal's dispatch, reported to the Governance Engineer 2026-11-02T15:46:33Z ("Issued with reviewers (b)"): **three reviewers**, two `kos-lane-reviewer` on different models plus one `kos-theory-reviewer`. *(Was: PREPARED — NOT ISSUED.)* Prepared on the Principal's instruction "Prepare the T9-02 (State Space) Theory Turn" (2026-11-02; research record addendum of that date). It is issued only when the Principal dispatches it and tells the Governance Engineer so |
 | Prepared by | the Governance Engineer (session `57ddce41…`), 2026-11-02 |
 | Built from | **Part 1:** the Principal's own commission text, verbatim. **Part 2:** repository records only — Ch. 9 `TODO.md` T9-01–T9-04 (L11–14); `THEORY-MAP.md` F13 (L134), F13a (L136), F37 (L156); §9.1 L7–9, L22–27, L92–94; §9.10 L13, L201 (§9.10.5); §9.19 L28–35, L72, L159–174, L223, L231, §9.19.8; the U1–U6 rulings (research record 2026-11-01T17:32:50Z); `RESEARCH-PURPOSE.md` deliverables 1 and 5; Rulebook v1.4 §12b; the Principal's instruction of 2026-11-02, §§2–6 |
 
