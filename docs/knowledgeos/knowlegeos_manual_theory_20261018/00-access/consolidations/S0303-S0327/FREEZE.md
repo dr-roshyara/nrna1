@@ -17,3 +17,4 @@
 
 ## Access notes on the reviewers' runs (Professor only)
 *(filled in after the reports)*
+- **Reviewer B** (Opus) disclosed that its first `--help` calls of `undefined_terms.py` and `register_home_check.py` ran without `--root` (working book), and that `inbound_citations.py --help` defaulted to the working book (0 hits); all output discarded and re-run on the copy. A `grep CON-0127` on the copy's register printed two neighbouring rows. No git command; nothing in `00-access/` opened. A harness-saved R3 output under `~/.claude/projects/…/tool-results/` was not opened.
