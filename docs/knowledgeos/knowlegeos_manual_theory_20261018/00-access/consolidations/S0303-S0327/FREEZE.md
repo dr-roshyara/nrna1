@@ -17,4 +17,5 @@
 
 ## Access notes on the reviewers' runs (Professor only)
 *(filled in after the reports)*
+- **Reviewer A** (Sonnet) disclosed no read outside the copy: tools run from the working `tmp/tools` with `--root <copy>`; a listing of the working `tmp/tools` (names only); `corpus_quote_check.py` takes no `--root` and reads the corpus. No git command; nothing in `00-access/`.
 - **Reviewer B** (Opus) disclosed that its first `--help` calls of `undefined_terms.py` and `register_home_check.py` ran without `--root` (working book), and that `inbound_citations.py --help` defaulted to the working book (0 hits); all output discarded and re-run on the copy. A `grep CON-0127` on the copy's register printed two neighbouring rows. No git command; nothing in `00-access/` opened. A harness-saved R3 output under `~/.claude/projects/…/tool-results/` was not opened.
