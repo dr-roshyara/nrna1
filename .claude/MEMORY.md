@@ -3,6 +3,7 @@
 > Repo is the single source of truth. This file holds durable facts only — no tasks, no daily progress (those live in CONTEXT.md / sessions/).
 
 ## Authoritative documents (read before working)
+- **Strategic DDD, organisation and governance domain: resume here.** `docs/publicdigit/architecture/strategic-design-status.md` (progress and resumption record: settled / open / next action; points to the full register `docs/publicdigit/reviews/2026-11-02-organisation-governance-strategic-design-status-assessment.md`). EPIC-002 is a separate, accepted scope (evidence and integrity contexts).
 - **Implementation process (FROZEN):** `docs/implementation/Implementation_Process_v1.0.md` — 15-step workflow, 14-box DoD, lifecycle≠progress, derived-% rule. No ticket skips it.
 - **Architecture (FROZEN):** `docs/implementation/PushB_Architecture_Blueprint.md` v1.0 (changes only via v1.1) · ADR-T log (`docs/adr/ADR-T-LOG-Tactical-Implementation.md`) · `docs/implementation/Canonical_Event_Catalog_v1.0.md` · Round 50 docs (`docs/architecture/design/Round50-*`).
 - **Work management:** `docs/implementation/backlog/BACKLOG.md` (program) → `EPIC-001_Greenfield_Core.md` (tickets) → `PB-xxx_PROGRESS.md` (WBS). One-pager: `docs/implementation/PROGRAM_STATUS.md`.

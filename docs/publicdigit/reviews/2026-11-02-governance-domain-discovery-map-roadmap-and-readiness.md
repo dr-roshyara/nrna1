@@ -226,7 +226,7 @@ They are related only through JurisdictionAssignment. The code shows they do not
 | T-07 | XD-4 authorisation ownership | permission model | T-03 (content: T-05, T-06) | v1.5 §2 | decision record | ARB | recorded | open | with T-03 |
 | T-08 | committee business authority (CQ-2 / 3 / 4 / 10) | who may do what | T-03 | statutes | authority matrix | PO | matrix approved | open | request statutes |
 | T-09 | forum product choice and BQ-F1…F3, BQ-P9 | Communication context | T-07 | forum docs | decision | PO | recorded | open | later |
-| T-10 | consolidated decision and risk register | one source of status | — | all records | register document | ARB | adopted | not started | after T-01 |
+| T-10 | consolidated decision and risk register | one source of status | — | all records | register document | ARB | adopted | **drafted 2026-11-02:** `2026-11-02-organisation-governance-strategic-design-status-assessment.md` | ARB review |
 | T-11 | ARB ratification of INV-ORG-SCOPE-1; review of the PROPOSED records | governance | — | records | ARB acts | ARB | acts recorded | pending | schedule an ARB session |
 | T-12 | **PBDIGIT-317 secrets in logs** | security | — | backlog item | PO / Security decision | PO + Security | logs handled; fix authorised | open | **independent, urgent** |
 | T-13 | isolated test database | prerequisite for any test | — | ARB-SEC-01 | database assigned | PO / Ops | gate PASS | open | PO / Ops |
