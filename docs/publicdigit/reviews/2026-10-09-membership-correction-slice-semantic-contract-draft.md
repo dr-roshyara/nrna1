@@ -201,6 +201,8 @@
 
 ## 9. Open decisions (not decided by this contract)
 
+> **Status annotation (2026-11-02): BD-REV-ER DECIDED by the PO, option (b) refuse.** Record: `2026-11-02-membership-bd-rev-er-decision-record.md`. The ER guard and `PeriodAbsorbed` are therefore in scope for C-2. The table row below is kept as written. All other rows remain open.
+
 | ID | Question | Evidence | Options | Recommendation [PROP] | Decider | Blocks |
 |---|---|---|---|---|---|---|
 | **BD-REV-ER** | may a correction absorb a whole live period (live Admit, empty resolved lifetime)? | [MODEL] 35 / 14,365 histories. Minimal: `Admit(p0@0), End(p0@1), Admit(p1@1), Correct(Admit p1 → 0)` erases p0 while its Admit and End stay live | (a) allow; (b) refuse until that period's Admit is annulled or voided (decision register :146) | **(b) refuse**: otherwise an implicit set-aside without Annul / Void, authority or reason; refusing changed nothing else in the bounded space | PO (business policy, register :155) | C-2 (Correct) |

@@ -31,7 +31,7 @@ Sources: R = `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratifi
 | BR-8 | Backdating allowed within invariants; future-dated admissions and endings refused; technical range 0001-01-01…9999-12-31 | DR D-5(b)(c) | DECIDED | D-5(a) "today" left to engineering (Z1) |
 | BR-9 | Correction algebra: Annul targets decision-provenance facts (incl. Annul); Void targets any fact; Annul(Void) refused; Annul(Annul) and Void(Annul) restore subject to G\*; Annul and Void create no consequences | R §2, §9; ACT N-3; CC (D-COR-5 = A) | RATIFIED / DECIDED | CQ-9 appeal process (PO + Legal) |
 | BR-10 | Correct targets value-bearing facts and Corrects only; Correct of an annulled fact is inert, of a voided fact refused | ACT N-3 | RATIFIED | — |
-| BR-11 | May a correction absorb a whole period (BD-REV-ER)? Recommended: refuse | ACT N-4; CC §9 | **OPEN** | PO; blocks COR-2 |
+| BR-11 | May a correction absorb a whole period (BD-REV-ER)? Recommended: refuse | ACT N-4; CC §9 | **OPEN** → **R-9 (2026-11-02): DECIDED by the PO, (b) refuse** (`docs/publicdigit/reviews/2026-11-02-membership-bd-rev-er-decision-record.md`) | ~~PO; blocks COR-2~~ no longer blocks COR-2 (D-COR-3 still does) |
 | BR-12 | Concurrency: read v → resolve → G\* → commit(expected v); on conflict reload, recompute, re-run G\* | R §6; ACT §13 | RATIFIED | — |
 | BR-13 | Synchronous (transactional) enforcement of INV-9 (BD-SYNC) | R §10 | RATIFIED | — |
 | BR-14 | The resolved lifetime is derived, never stored as truth; projections only | ACT N-2 | RATIFIED | — |
