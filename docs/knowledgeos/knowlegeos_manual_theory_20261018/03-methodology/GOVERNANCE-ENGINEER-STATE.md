@@ -13,7 +13,7 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | **Resumes at S0303** (decision record 2026-11-01T17:32:50Z); position S0302 until the next source is closed | decision record |
+| Reading | **In progress from S0303 under a standing instruction** (Option A, decision record 2026-11-02): window after window without a per-window go-ahead, through the S0303–S0327 consolidation (no planted-gap test); stops before the consolidation carrying the next test (about S0328), or earlier for a Principal question, a critical finding, an access problem or a tool failure | decision record |
 | Consolidation S0278–S0302 (a planted-gap test) | **Settled.** Run 2 (fresh) scored blind 3 of 4 (Q4, a stale pointer, missed); stage 1 `2b9441cc9`; stage 2 `e3ac4df54`, guard checked | `review/CONSOLIDATION-S0278-S0302/PLANTED-GAP-RESULT.md` (`6844d88e5`) |
 | Sealed key and manifest | **Released** after scoring (key `c0427904…`, manifest `6371c741…`, both unchanged) | `PLANTED-GAP-RESULT.md`; ACCESS-RECORD |
 | Req/A theory turn | **Settled; U1–U6 decided** (§9.19 v2, `fb146c3a6`; rulings confirmed, decision record 2026-11-01T17:32:50Z). U5 (a) EF; U6 (a) O1 per act kind, D clauses later (T9-21); U2 (a) g1's class, kernel; U1 (b) T9-02 later; U3 (b) unfixed, scoped; U4 (d) deferred. No minimal kernel of KnowledgeOS stated; uniqueness after U6 holds in the toy model only. **T9-21 and T9-02 wait for a later authorised turn** | decision record; `review/REQ-A-TURN/SETTLEMENT.md` |
@@ -45,7 +45,8 @@
 
 ## Waiting for
 
-- **The Professor:** reading from S0303 with the time measurement running; the next consolidation gate at 25 sources after S0302.
+- **The Professor:** reading under the standing instruction (Option A, 2026-11-02); C73 settled at S0314 (gate 12 of 25). Stops before the consolidation carrying the next planted-gap test (about S0328).
+- **The Governance Engineer, at that stop:** check the windows since C73 and the S0303–S0327 consolidation together; prepare the planted-gap copy (mandate §8.3, §8.3a).
 
 ## Next actions (Governance Engineer)
 
