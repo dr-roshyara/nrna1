@@ -15,12 +15,18 @@ content, and a finite check proves no general claim. Labels: every assertion is 
       later annulment of its grant, which voids the grant from the start.
   M5  two records that differ only in the recorder field give equal Q1 answers at every cut and after each appended
       entry of a small alphabet; they differ as entries (Q2 returns entries).
+  (v2, settlement of the turn: reviewers A, B, C)
+  M5b with authentication status signed-as-other, the same pair differs in Q1's marks ('inconsistent recording
+      status'): M5 is a statement about Q1's values only (A-06, C F-8).
+  M6  two records that differ only in the act time of the root (0 vs -3) or of a grant (1 vs 0) give equal Q1
+      values at every cut, item and act time tried, after none or one of five appended entries (A-03): a
+      DC-2 pair for Q1's values on entries about no item.
 """
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ce_model import Record, ce_star, ce_star_cut, in_D, G, T, F, U  # noqa: E402
+from ce_model import Record, ce_star, ce_star_cut, in_D, marks, G, T, F, U  # noqa: E402
 
 DOM = {('s', 's')}
 
@@ -110,6 +116,31 @@ def main():
     out.append(f'M5 recorder A vs Z: Q1 equal on {same} of {total} (item, t, cut, extension) cases; '
                f'entries differ: {entries_differ}')
     assert same == total and entries_differ
+    # M5b (v2)
+    m8 = marks(R([ROOT, G('g', 'P', ['r'], 'A'), dict(AD('a', 'A', ['g'], 'k'), recorder='A', auth='signed-as-other')]), 'k', 5)
+    m9 = marks(R([ROOT, G('g', 'P', ['r'], 'A'), dict(AD('a', 'A', ['g'], 'k'), recorder='Z', auth='signed-as-other')]), 'k', 5)
+    out.append(f'M5b signed-as-other, recorder A vs Z: marks differ: {m8 != m9}')
+    assert m8 != m9
+    # M6 (v2)
+    def base(rt=0, gt=1):
+        return [dict(ROOT, t=rt), G('g', 'P', ['r'], 'A', t=gt), AD('a', 'A', ['g'], 'k')]
+    alpha6 = [None, ANN('x1', 'P', ['r'], 'g'), REV('v1', 'P', ['r'], 'k', 4), AD('b', 'A', ['g'], 'k', t=4),
+              G('h', 'P', ['r'], 'B', t=3), AD('c', 'B', ['h'], 'k', t=5)]
+    for name, (p, q) in (('root act time 0 vs -3', (base(0, 1), base(-3, 1))),
+                         ('grant act time 1 vs 0', (base(0, 1), base(0, 0)))):
+        same6 = tot6 = 0
+        for e in alpha6:
+            s1, s2 = R(p + ([e] if e else [])), R(q + ([e] if e else []))
+            if not (in_D(s1)[0] and in_D(s2)[0]):   # an extension citing an absent grant leaves D: not counted
+                assert in_D(s1)[0] == in_D(s2)[0]
+                continue
+            for item in ('k', 'g'):
+                for t in range(-3, 8):
+                    for s in range(1, len(s1.e) + 1):
+                        tot6 += 1
+                        same6 += ce_star_cut(s1, s, item, t) == ce_star_cut(s2, s, item, t)
+        out.append(f'M6 {name}: Q1 values equal on {same6} of {tot6} cases')
+        assert same6 == tot6
     for line in out:
         print(line)
     print('all assertions passed')
