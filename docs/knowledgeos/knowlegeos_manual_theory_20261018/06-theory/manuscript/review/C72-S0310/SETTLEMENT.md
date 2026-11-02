@@ -56,3 +56,7 @@
   | Waiting (W step 2) | 00:22:46–00:28:30 |
   | Rework | 00:28:30 onwards |
   | Settlement | this file, logged at commit |
+
+## Correction after commit
+
+`5a89cdbb3` committed this settlement with the **draft** §8.65. The v2 write had been refused because the file had changed since it was last read, and I did not check the tool result before committing. §8.65 v2 is in the next commit. The index, the map and this file already described v2.
