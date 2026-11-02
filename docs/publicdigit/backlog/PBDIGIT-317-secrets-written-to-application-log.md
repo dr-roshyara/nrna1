@@ -32,5 +32,23 @@
 2. Must `APP_KEY` be rotated? Rotation invalidates sessions and encrypted values, and changes receipt-hash verification. That needs its own plan.
 3. Authorise a minimal slice that removes the secret values from these log statements.
 
+## Triage authorised (PO, 2026-11-02)
+
+**Independent security triage is authorised.** Steps:
+1. establish facts;
+2. assess exposure;
+3. contain if needed;
+4. remediate (a separately authorised slice);
+5. verify;
+6. record closure evidence.
+
+**Known statically [F]:**
+- The lines use the default log channel (`Log::info`). By default that is `stack` → `single` → **`storage/logs/laravel.log`** (`config/logging.php:20,40,46`).
+- **Unknown:** whether the environment overrides `LOG_CHANNEL`; whether the lines ran in production; who can or could read the logs.
+
+**First step, for the PO / Ops (not Claude):** read-only check of log location, retention and access in each environment.
+- Claude does not read logs or `.env`.
+- No secret values may be copied into any record.
+
 ## Traceability
 - `docs/publicdigit/reviews/2026-11-02-inv-org-scope-1-stage1-static-investigation.md` (S-1).

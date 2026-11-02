@@ -50,6 +50,14 @@ This record does not re-ratify that rule. It decides how the rule is enforced in
 - Re-pointed to `organisation_users` only on MySQL (`2026_04_16_063404_…:21-30`).
 - The deployed state is unknown.
 
+### Correction to V3 (2026-11-02, found while preparing S1)
+
+**The V3 finding above was incomplete. In the migration source it is wrong.**
+- `database/migrations/2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` **drops** that foreign key in `up()` (`:16-18`, `:40-43`: "The database FK is gone. Integrity is now application responsibility"). It re-adds it only in `down()`. In the migration end state, `election_memberships` has **no** foreign key to `user_organisation_roles` or `organisation_users`. The deployed state remains unknown.
+- **The actual integrity coupling found instead (V3′):** `voters.member_id` → **`members`** with **ON DELETE CASCADE** (`database/migrations/2026_03_07_145529_create_voters_table.php:30`). No later migration changes it. Deleting a Membership row deletes Election-side voter rows.
+
+The original V3 text is kept above as history.
+
 ## 4. Open items
 
 | # | Question | Owner |

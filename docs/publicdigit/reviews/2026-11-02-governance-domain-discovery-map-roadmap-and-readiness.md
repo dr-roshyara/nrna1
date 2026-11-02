@@ -142,6 +142,9 @@ They are related only through JurisdictionAssignment. The code shows they do not
      - **On all drivers**, the create migration links `election_memberships (user_id, organisation_id)` → **`user_organisation_roles`** with **ON DELETE CASCADE** (`database/migrations/2026_03_17_213212_create_election_memberships_table.php:39-42`): deleting a role row deletes election participation rows.
      - Only on **MySQL** does `2026_04_16_063404_add_index_to_organisation_users_table.php:21-30` re-point it to `organisation_users`. **PostgreSQL keeps the cascade to `user_organisation_roles`.**
      - The deployed schema is **unknown** without a read-only catalog query.
+     - **Correction (2026-11-02):**
+       - `2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` **drops** this foreign key in `up()`, so it is absent in the migration end state.
+       - The integrity coupling actually present is **`voters.member_id` → `members` ON DELETE CASCADE** (`2026_03_07_145529_create_voters_table.php:30`).
 - **Not yet decided [O]:** the deployment target for separating the contexts (logical only / own databases / independent services).
 - **This is separate from D-1**, which is about isolating organisations from each other. Under D-1's candidate direction C, both contexts would live in each organisation's database, but **not in shared tables**.
 

@@ -1,7 +1,7 @@
 # INV-AFF-1: organisation-owned affiliation with central discovery, decision record
 
 **Date:** 2026-11-01 · **Recorded by:** Claude (DDD architect / requirements engineer, strategic discovery)
-**Status:** **PROPOSED.** The Principal said "yes, with boundaries" on 2026-11-01. Approval by PO + ARB, and data-protection review, are still required.
+**Status:** **PROPOSED; referred to the ARB by the PO on 2026-11-02; ARB decision pending.** The referral is not a ratification and not permission to implement. The Principal said "yes, with boundaries" on 2026-11-01. Approval by PO + ARB, and data-protection review, are still required.
 - It is not ratified, and **feasibility is not established**: see the evaluation report.
 - It is not an approval to implement anything.
 

@@ -23,6 +23,8 @@ Three verified violations (decision record §3):
 | V2 | read coupling | Election adapter reads `members`, `organisation_users`, `membership_types` directly (5 sites) |
 | V3 | integrity coupling | foreign key `election_memberships` → `user_organisation_roles` with ON DELETE CASCADE (PostgreSQL); deployed state unknown |
 
+**Correction (2026-11-02):** V3 as listed is **removed** in the migration source by `2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` `up()`; the deployed state is unknown. The integrity coupling actually present is **V3′: `voters.member_id` → `members` ON DELETE CASCADE** (`2026_03_07_145529_create_voters_table.php:30`). S4 now targets V3′ (and verifies the deployed state of both).
+
 ## Scope
 
 **In:**
@@ -116,6 +118,12 @@ Three verified violations (decision record §3):
 2026-11-02:
 - plan created as PROPOSED;
 - nothing implemented.
+
+2026-11-02 (later):
+- **The PO approved S1** with a baseline of "exactly V1–V3".
+- **The pre-implementation scan found the V3 correction** (above). Membership → Election references: only V1. Election → Membership / affiliation data: only V2.
+- **S1 is paused, not started:** its approved baseline names the wrong V3. It needs re-approval with the baseline V1, V2, V3′.
+- **The PO re-approved S1 with the baseline V1, V2, V3′ (2026-11-02).** S1 may start; S2–S4 remain unapproved.
 
 ## Risks
 
