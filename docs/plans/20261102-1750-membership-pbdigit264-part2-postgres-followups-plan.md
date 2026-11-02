@@ -170,3 +170,18 @@ All container runs use the pinned image through `bash scripts/testing/membership
     - the cluster run: **47 tests, 325 assertions, exit 0**.
   - **Regression (database-free):** Domain 117, Application 61, Infrastructure 22, Architecture 97, MembershipPgIsolation 28.
   - **Guide 03** states the enforced level, N1 and the classifier. **AC-2 and AC-3 met.**
+- 2026-11-02: **Step 3 done (TDD, on the cluster; fresh clean worktree at `1e16d89c7` plus the change).**
+  - **Deviation:** the first RED run was invalid. The reused scratch worktree could not move to the new HEAD because of an untracked file copied in step 2, so it ran the old state (43 tests). `git clean` was refused by permissions, so a fresh worktree was created instead. The invalid run is not used as evidence.
+  - **RED (valid):** 52 tests.
+    - 2 errors: the migration was absent.
+    - 2 failures: the columns were present, and the orphan insert failed with a NOT NULL error instead of 23503.
+    - The characterisation test passed, as expected.
+  - **GREEN:**
+    - migration `2026_11_02_180000_normalise_org_membership_commands.php`, per §10.2: FK first, abort on mismatch, drop columns; `down()` re-adds, backfills and restores NOT NULL, then drops the FK;
+    - `appliedCommand()` joins the fact; the write path no longer copies the values;
+    - R5 (`MembershipLedgerIsolationTest`) allowlist + the new migration (a deliberate change: it is the ledger's own migration);
+    - the DB-1 PostgreSQL-only rule now covers both migrations;
+    - the cluster run: **52 tests, 343 assertions, exit 0**.
+  - **Regression (database-free):** Domain 117, Application 61, Infrastructure 22, Architecture 97.
+  - **Guide 03** updated. **AC-4 and AC-5 met.**
+  - **The release gate stays open:** OQ-01 plus the §10.2 preflight before the migration reaches any persistent database.

@@ -20,6 +20,8 @@ final class MembershipSlice1bPersistenceBoundaryTest extends TestCase
     private const APPLICATION = 'app/Contexts/Membership/Application/Organisational';
     private const KERNEL = 'app/Contexts/Membership/Domain/Organisational';
     private const MIGRATION = 'database/migrations/2026_10_09_100000_create_org_membership_tables.php';
+    /** PBDIGIT-264 F-4b (2026-11-02): the ledger's second migration, held to the same DB-1 rule. */
+    private const F4B_MIGRATION = 'database/migrations/2026_11_02_180000_normalise_org_membership_commands.php';
 
     /** @return array<string, string> file => code without comments */
     private static function code(string $dir): array
@@ -75,8 +77,10 @@ final class MembershipSlice1bPersistenceBoundaryTest extends TestCase
 
     public function test_the_migration_is_postgresql_only(): void
     {
-        $code = self::code(self::MIGRATION)[basename(self::MIGRATION)];
+        foreach ([self::MIGRATION, self::F4B_MIGRATION] as $migration) {
+            $code = self::code($migration)[basename($migration)];
 
-        $this->assertDoesNotMatchRegularExpression('/getDriverName|mysql|sqlite|app\(\)->environment|env\(/i', $code, 'DB-1, and no environment-dependent tricks');
+            $this->assertDoesNotMatchRegularExpression('/getDriverName|mysql|sqlite|app\(\)->environment|env\(/i', $code, "DB-1, and no environment-dependent tricks: {$migration}");
+        }
     }
 }

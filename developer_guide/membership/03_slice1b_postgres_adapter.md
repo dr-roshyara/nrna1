@@ -34,6 +34,11 @@ PostgresMemberRepository                                          (Infrastructur
 - **Enforced isolation (`PBDIGIT-264` F-5, 2026-11-02):**
   - the first statement of every append transaction is `SET TRANSACTION ISOLATION LEVEL READ COMMITTED`. The re-read after a waited compare-and-set (IDEM-3) depends on it, so it is enforced rather than inherited from the session;
   - **N1:** an append inside an already open transaction (`transactionLevel() > 0`) is refused with `AppendInsideTransactionRefused` before any statement. `Appended` therefore always means durably committed, and the SET can always be the first statement.
+- **Normalised command rows (`PBDIGIT-264` F-4b, 2026-11-02):**
+  - `org_membership_commands` no longer copies `fact_id` / `recorded_at`. A row names its fact by `(organisation_id, membership_id, seq)`, enforced by the composite FK `org_membership_commands_fact_fk` → facts PK;
+  - `appliedCommand()` reads `fact_id` and `recorded_at` from the fact by join, so the idempotency answer can never disagree with the stored fact;
+  - migration `database/migrations/2026_11_02_180000_normalise_org_membership_commands.php`: `up()` adds the FK first, aborts on any copied-value mismatch, then drops the columns; `down()` re-adds them, backfills by join, sets NOT NULL, drops the FK;
+  - **Release gate:** before this migration reaches any persistent database where the 1b tables exist, run the operator preflight (ratification pack §10.2) and answer OQ-01.
 - **Key-collision classification (`PBDIGIT-264` F-5):** a concurrent registration of the same key is recognised by `PgUniqueViolation::isConstraint()`: SQLSTATE 23505 plus the constraint named on the first line of the driver's error. Never by searching the exception message, which carries bindings and key values.
 - **Only port outcomes are translated.** A duplicate fact id at the database is an infrastructure error, by design (B-1).
 - **No Eloquent models.** Facts are inserted through the query builder only; there is no update or delete path.
@@ -67,6 +72,15 @@ F-5 tests (2026-11-02):
 - `…InvariantsTest::test_f5_*`: N1 refusal before any statement, with nothing written; READ COMMITTED as the first statement;
 - `…RaceTest::test_f5_*`: different Ends and identical retries under a REPEATABLE READ session default, 8 rounds;
 - `tests/Unit/…/Infrastructure/Organisational/PgUniqueViolationTest`: the classifier, including the decoy.
+
+F-4b tests (2026-11-02), all in `…InvariantsTest::test_f4b_*`:
+- no copied columns;
+- an orphan command is rejected (23503);
+- `appliedCommand` answers come from the fact;
+- the migration's `up → down → up` on a populated schema preserves every row and answer;
+- `up()` aborts on a planted mismatch and changes nothing.
+
+These tests call the migration directly inside `DB::transaction` and **always restore the migrated schema**, because RefreshDatabase migrates only once per process on PostgreSQL.
 
 ## Pitfalls
 

@@ -234,4 +234,119 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
         $this->assertSame(AppendOutcome::Appended, $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k-rc'), 'fp')->outcome());
         $this->assertSame('SET TRANSACTION ISOLATION LEVEL READ COMMITTED', $statements[0] ?? null, 'the adapter enforces its isolation assumption');
     }
+
+    // ── PBDIGIT-264 F-4b (Part 2 plan step 3; PR disposition 2026-10-09 + §10.2 migration requirements) ──
+
+    private const F4B_MIGRATION = 'database/migrations/2026_11_02_180000_normalise_org_membership_commands.php';
+
+    /** @return list<string> */
+    private static function commandColumns(): array
+    {
+        return array_map(static fn ($r) => $r->column_name, DB::select(
+            "SELECT column_name FROM information_schema.columns WHERE table_name = 'org_membership_commands' ORDER BY ordinal_position",
+        ));
+    }
+
+    private static function f4bMigration(): object
+    {
+        return require base_path(self::F4B_MIGRATION);
+    }
+
+    /** @return array<string, array{string, string, int, int}> key → [memberId, factId, seq, recordedAt µs], as appliedCommand answers */
+    private function answers(PostgresMemberRepository $repo, TenantId $t, array $keys): array
+    {
+        $out = [];
+        foreach ($keys as $key) {
+            $a = $repo->appliedCommand($t, IdempotencyKey::fromString($key))->appended();
+            $out[$key] = [$a->memberId()->value(), $a->factId()->value(), $a->seq(), $a->recordedAt()->ordinal()];
+        }
+
+        return $out;
+    }
+
+    public function test_f4b_the_commands_table_holds_no_copy_of_the_fact(): void
+    {
+        $columns = self::commandColumns();
+
+        $this->assertNotContains('fact_id', $columns, 'derivable from the fact (F-4b)');
+        $this->assertNotContains('recorded_at', $columns, 'derivable from the fact (F-4b)');
+        $this->assertSame(['organisation_id', 'idempotency_key', 'fingerprint', 'membership_id', 'seq'], $columns);
+    }
+
+    public function test_f4b_a_command_naming_a_fact_that_does_not_exist_is_rejected(): void
+    {
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $this->admitted($repo, $t, 'M1', null);
+
+        try {
+            DB::table('org_membership_commands')->insert([
+                'organisation_id' => $t->value(), 'idempotency_key' => 'k-orphan', 'fingerprint' => 'fp', 'membership_id' => 'M1', 'seq' => 99,
+            ]);
+            $this->fail('an orphan command row must be rejected');
+        } catch (QueryException $e) {
+            $this->assertSame('23503', $e->errorInfo[0] ?? null, 'foreign_key_violation (commands → facts)');
+        }
+    }
+
+    public function test_f4b_applied_command_answers_come_from_the_fact(): void
+    {
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $this->admitted($repo, $t, 'M1', null);
+        $fact = DB::table('org_membership_facts')->where('organisation_id', $t->value())->where('membership_id', 'M1')
+            ->select(['fact_id', 'seq', DB::raw(\App\Contexts\Membership\Infrastructure\Organisational\InstantMicros::selectExpression('recorded_at') . ' AS recorded_us')])->first();
+
+        $this->assertSame(['k-M1' => ['M1', $fact->fact_id, (int) $fact->seq, (int) $fact->recorded_us]], $this->answers($repo, $t, ['k-M1']));
+    }
+
+    public function test_f4b_the_migration_round_trips_on_a_populated_schema(): void
+    {
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $this->admitted($repo, $t, 'M1', null);
+        $this->admitted($repo, $t, 'M2', TimePoint::of(20_100));
+        $before = $this->answers($repo, $t, ['k-M1', 'k-M2']);
+        $migration = self::f4bMigration();
+
+        try {
+            DB::transaction(fn () => $migration->down());
+            $this->assertContains('fact_id', self::commandColumns(), 'down() restores the columns');
+            $backfilled = DB::table('org_membership_commands as c')
+                ->join('org_membership_facts as f', fn ($j) => $j->on('f.organisation_id', '=', 'c.organisation_id')->on('f.membership_id', '=', 'c.membership_id')->on('f.seq', '=', 'c.seq'))
+                ->where('c.organisation_id', $t->value())
+                ->whereRaw('c.fact_id = f.fact_id AND c.recorded_at = f.recorded_at')->count();
+            $this->assertSame(2, $backfilled, 'down() backfills the exact values');
+        } finally {
+            DB::transaction(fn () => $migration->up());
+        }
+
+        $this->assertNotContains('fact_id', self::commandColumns());
+        $this->assertSame($before, $this->answers($repo, $t, ['k-M1', 'k-M2']), 'up → down → up preserves every answer');
+        $this->assertSame(2, DB::table('org_membership_commands')->where('organisation_id', $t->value())->count(), 'and every row');
+    }
+
+    public function test_f4b_the_migration_aborts_on_a_copied_value_that_disagrees_with_the_fact(): void
+    {
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $this->admitted($repo, $t, 'M1', null);
+        $migration = self::f4bMigration();
+
+        DB::transaction(fn () => $migration->down());
+        try {
+            DB::table('org_membership_commands')->where('organisation_id', $t->value())->update(['fact_id' => 'NOT-THE-FACT']);
+            try {
+                DB::transaction(fn () => $migration->up());
+                $this->fail('up() must abort on a mismatch (§10.2)');
+            } catch (\RuntimeException $e) {
+                $this->assertStringContainsString('mismatch', $e->getMessage());
+            }
+            $this->assertContains('fact_id', self::commandColumns(), 'the aborted up() changed nothing');
+        } finally {
+            DB::table('org_membership_commands')->where('organisation_id', $t->value())->update(['fact_id' => 'A-M1']);
+            DB::transaction(fn () => $migration->up());
+        }
+        $this->assertNotContains('fact_id', self::commandColumns());
+    }
 }

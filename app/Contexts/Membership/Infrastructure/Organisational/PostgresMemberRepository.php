@@ -115,10 +115,17 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
     public function appliedCommand(TenantId $tenant, IdempotencyKey $key): ?AppliedCommand
     {
-        $row = $this->db->table('org_membership_commands')
-            ->select(['fingerprint', 'membership_id', 'fact_id', 'seq', $this->db->raw(InstantMicros::selectExpression('recorded_at') . ' AS recorded_us')])
-            ->where('organisation_id', $tenant->value())
-            ->where('idempotency_key', $key->value())
+        // F-4b: the command row names its fact by (organisation, membership, seq); fact_id and recorded_at are read
+        // from the fact itself, so they cannot disagree with it.
+        $row = $this->db->table('org_membership_commands as c')
+            ->join('org_membership_facts as f', function ($join): void {
+                $join->on('f.organisation_id', '=', 'c.organisation_id')
+                    ->on('f.membership_id', '=', 'c.membership_id')
+                    ->on('f.seq', '=', 'c.seq');
+            })
+            ->select(['c.fingerprint', 'c.membership_id', 'f.fact_id', 'c.seq', $this->db->raw(InstantMicros::selectExpression('f.recorded_at') . ' AS recorded_us')])
+            ->where('c.organisation_id', $tenant->value())
+            ->where('c.idempotency_key', $key->value())
             ->first();
 
         return $row === null ? null : new AppliedCommand(
@@ -206,9 +213,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             'idempotency_key' => $key->value(),
             'fingerprint' => $fingerprint,
             'membership_id' => $id->value(),
-            'fact_id' => $fact->id()->value(),
-            'seq' => $seq,
-            'recorded_at' => InstantMicros::toTimestamp($recordedAt),
+            'seq' => $seq,   // F-4b: references the fact just inserted (composite FK); no copied fact_id / recorded_at
         ]);
 
         return AppendResult::success(new Appended($id, $fact->id(), $seq, $recordedAt));

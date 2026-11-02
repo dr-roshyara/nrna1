@@ -16,7 +16,11 @@ final class MembershipLedgerIsolationTest extends TestCase
 {
     private const SCANNED = ['app', 'routes', 'config', 'database'];
     private const EXCLUDED = ['app/Contexts/Membership/'];
-    private const ALLOWLIST = ['database/migrations/2026_10_09_100000_create_org_membership_tables.php'];
+    /** The ledger's own migrations: creation (Slice 1b) and the F-4b normalisation (PBDIGIT-264, 2026-11-02). */
+    private const ALLOWLIST = [
+        'database/migrations/2026_10_09_100000_create_org_membership_tables.php',
+        'database/migrations/2026_11_02_180000_normalise_org_membership_commands.php',
+    ];
     private const FORBIDDEN = [
         'App\\Contexts\\Membership\\Domain\\Organisational',
         'App\\Contexts\\Membership\\Application\\Organisational',
