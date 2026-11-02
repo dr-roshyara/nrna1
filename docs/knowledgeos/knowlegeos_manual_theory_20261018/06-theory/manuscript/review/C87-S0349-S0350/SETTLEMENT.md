@@ -38,7 +38,7 @@
 ## Checks at settlement
 
 - Quote check on v2 against S0344, S0348, S0349, S0350: 112 fragments; every miss is a quotation of the book (§8.19, §8.29 C1, §1.14.1), a draft quotation (§8.80.5), the defined term, or the disclosure marker.
-- R2 (`undefined_terms.py --scope 08.80`) on v2: tier A–C 0 in scope; tier D judged as ordinary English or the source's sense: answered appender appointment because commission comparison direct-write once predecessor quoted witness 
+- R2 (`undefined_terms.py --scope 08.80`) on v2: tier A–C 0 in scope; tier D judged as ordinary English or the source's sense: answered appender appointment because commission, a word naming a check, direct-write once predecessor quoted witness 
 
 ## Procedure
 
