@@ -17,3 +17,9 @@
 - **R2 (`undefined_terms.py --scope 08.91`):** tier A "retyped" (ordinary English, as in §9.20); tier C "protect" (the source's word). Tier D judged as ordinary English.
 - **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0367 with "[IT]" substituted, S0365, §9.20, §9.18, §1.6):** 84 checked; every quote matched after four quotations of paraphrase or wrong case were corrected and one span of the Professor's wording was unquoted, before the draft's commit.
+
+**At settlement (v2).**
+- **R2:** the Professor's run (corpus tiers on) gave tier A "retyped" and tier C "protect", both ordinary English; W's run with `--no-corpus` on the scratch copy gave no tier-A or tier-C candidates and 32 tier-D, judged ordinary English or homed (W's appendix); the difference is the corpus tiering, which `--no-corpus` turns off. v2 adds no term outside those judgements.
+- **Quote check (`qc.py`, v2, against S0367 and S0365 with "[IT]" substituted, S0366, §9.10, §9.13, §9.15, §9.16, §9.18, §9.20, §1.6):** 130 checked. The misses are quotations of the withdrawn draft in §8.91.5, W's unfound citation quoted there as such, and the "(W, step 1)" marker; none is a source or book quotation.
+- **R3:** none (`inbound_citations.py` for §8.91 C1–C6: none outside §8.91; W).
+- **W's procedure:** W copied the 249 files on the copy list by path (no directory copy). Two `--help` runs on scratch tools read no repository file (one failed for want of CORPUS-ALLOWED.tsv under the scratch root, so no corpus file was read); one scratch script was not named `c98-w-*`. No access problem.
