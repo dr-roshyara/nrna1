@@ -142,6 +142,22 @@ trait MemberRepositoryContract
         $this->assertSame(['A1', 'E1'], array_map(static fn ($r) => $r->fact()->id()->value(), $log));
     }
 
+    public function test_every_key_is_answered_with_its_own_fact_not_only_the_first(): void
+    {
+        // PBDIGIT-264 Part 2 review condition C1 (finding R-1): the answer for a key must be the fact that key
+        // appended, also after seq 1. Pins the seq term of the PostgreSQL commands → facts join (F-4b).
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $admitted = $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1')->appended();
+        $member = $repo->load($this->tenant(), $member->id());
+        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $ended = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2')->appended();
+
+        $this->assertEquals($ended, $repo->appliedCommand($this->tenant(), self::key('k2'))->appended(), 'the End key answers with the End');
+        $this->assertSame(['E1', 2], [$ended->factId()->value(), $ended->seq()]);
+        $this->assertEquals($admitted, $repo->appliedCommand($this->tenant(), self::key('k1'))->appended(), 'the Admit key still answers with the Admit');
+    }
+
     public function test_a_decision_based_on_a_stale_version_is_not_appended(): void
     {
         // R-1a-1 / R-1a-2: a stale decision cannot be reused.

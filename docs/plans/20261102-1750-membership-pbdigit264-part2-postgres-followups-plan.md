@@ -197,7 +197,7 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - No schema change.
 - 2026-11-02: **Step 4a done.** `create()` uses `ON CONFLICT DO NOTHING` (no target), with the explicit F-3 branch `MemberIdHeldByAnotherHolder`. The cluster: **54 tests, 423 assertions, exit 0** (F-2(a) 8 rounds, F-2(b), the F-3 contract test). Database-free regression green. Guide 03 updated.
 - 2026-11-02: **Step 4 sensitivity** (scratch worktree only; restored and checked with `cmp`):
-  - **mutant (a)**, no key re-read after a domain refusal: **caught** by the existing identical-retries race (round 4), but **not** by F-2(a) alone (2 × 8 rounds green). Recorded as a limitation of F-2(a);
+  - **mutant (a)**, no key re-read after a domain refusal: **caught** by the existing identical-retries race (round 4), but **not** by F-2(a) alone (2 × 8 rounds green). Recorded as a limitation of F-2(a). *(Corrected 2026-11-02, review R-5: the PostgreSQL detection is probabilistic, 1 of 3 in the reviewer's runs; the deterministic catch is the database-free `ConcurrencyAndRaceTest`.)*;
   - **mutant (b)**, the commands-PK collision not answered: **caught** by F-2(b) (round 0).
 - 2026-11-02: **Step 5 done.** Three consecutive full runs on fresh clusters: **54 / 423, exit 0 × 3**. Evidence archived in `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/` (14 runs, hashes verified, no credentials, the invalid run excluded). Guide 03 F-1 note corrected (fixed 2026-10-10).
 - **AC status:**
@@ -205,3 +205,12 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - **AC-6 met with one qualification:** both mutants are detected by the race group; mutant (a) is detected by the identical-retries race, not by F-2(a).
   - **Not accepted:** an independent review, then the PO's verdict on PBDIGIT-264, then ACC-260.
   - **Release gate still open.**
+- 2026-11-02: **Independent review:** ACCEPT WITH CONDITIONS (C1 test, C2 contracts, C3 release gate; findings R-1…R-10). **PO: "A, fix C1 and C2 first".**
+  - **C1 (done):**
+    - the shared-contract test `test_every_key_is_answered_with_its_own_fact_not_only_the_first` (Admit then End; each key answers with its own fact; in-memory 62 OK);
+    - a new `recorded_at`-only case in the F-4b abort test (R-4); its `finally` now restores both copied values from the fact;
+    - the tests pass at the committed code (cluster 56 tests, 431 assertions, exit 0);
+    - **RED proof by the reviewer's surviving mutants:** M6 (join without `seq`) is now caught by the C1 test; M1 (no `recorded_at` clause) is now caught by the R-4 case. Scratch worktree only, restored.
+  - **C2 (done):** amendments appended to the Slice 1b contract (§5 / §6 pointers plus "Amendment (2026-11-02)") and the Slice 1a contract (the F-3 PostgreSQL mechanism).
+  - **R-5:** wording corrected in this plan, the evidence README and guide 03.
+  - **Gap found while doing C2 (not part of the review):** the **PostgreSQL E4-L** test (approved 2026-10-10 as R3 / P2-4, "Part 2 scope, its own commit") was **omitted from this plan** and is still unwritten. It is raised to the PO; not done silently.

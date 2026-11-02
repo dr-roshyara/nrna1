@@ -21,10 +21,13 @@
 | `step3-f4b-green` | 3 GREEN | no copied columns; orphan rejected (23503); answers from the fact; migration `up → down → up` preserves rows and answers; `up()` aborts on a planted mismatch | 52 OK |
 | `step4-f2-red-f2a-defect` | 4 | **defect found:** F-2(a), 4 identical Admits for a new person, gives a `UniqueConstraintViolationException` on `org_memberships_pkey` from `create()`. F-2(b) green | 1 failure (2 tests) |
 | `step4a-green` | 4a (R1) | `create()` with `ON CONFLICT DO NOTHING` plus the explicit F-3 branch; F-2(a), F-2(b) and the F-3 contract test green | 54 OK |
-| `step4-mutant-a-race-group` | 4 sensitivity | mutant (a): no key re-read after a domain refusal (`DecideAndAppend`). **Caught** by the existing identical-retries race (round 4) | 1 failure |
+| `step4-mutant-a-race-group` | 4 sensitivity | mutant (a): no key re-read after a domain refusal (`DecideAndAppend`). **Caught** by the existing identical-retries race (round 4) **in this run**. *(Review R-5, 2026-11-02: the PostgreSQL detection is probabilistic, caught in 1 of 3 of the reviewer's runs; the deterministic catch is the database-free `ConcurrencyAndRaceTest`.)* | 1 failure |
 | `step4-mutant-a-f2a-only-1`, `-2` | 4 sensitivity | the same mutant, F-2(a) only: **not caught** in 2 × 8 rounds (its losers resolve through the in-transaction key check). Recorded as a limitation of F-2(a) | 1 OK each |
 | `step4-mutant-b-f2b` | 4 sensitivity | mutant (b): the commands-PK collision is no longer answered. **Caught** by F-2(b) (round 0: unique-violation errors) | 1 failure |
 | `step5-final-run1..3` | 5 | three consecutive full runs on fresh clusters (IDs `…894370`, `…366626`, `…528610`) | 54 OK × 3 |
+| `c1-green` | review condition C1 | a fresh worktree at `444414e3d` with the C1 / R-4 tests copied in: a later fact's key answers with its own fact; a `recorded_at`-only mismatch aborts `up()` | 56 OK |
+| `c1-mutant-m6-caught` | C1 sensitivity | the reviewer's surviving mutant M6 (join without `seq`) is now **caught** by the C1 contract test | 1 failure |
+| `c1-mutant-m1-caught` | C1 sensitivity | the reviewer's surviving mutant M1 (mismatch check without `recorded_at`) is now **caught** by the R-4 case | 1 error |
 
 **Mutants** were applied only in the scratch worktree, restored by copy and checked with `cmp`. **Excluded:** one invalid RED run for step 3 (the reused worktree ran the old state: 43 tests); it is not evidence (plan §11).
 

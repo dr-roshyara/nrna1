@@ -326,7 +326,17 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
         $this->assertSame(2, DB::table('org_membership_commands')->where('organisation_id', $t->value())->count(), 'and every row');
     }
 
-    public function test_f4b_the_migration_aborts_on_a_copied_value_that_disagrees_with_the_fact(): void
+    public static function copiedValueMismatches(): array
+    {
+        // Review finding R-4: each copied column is checked on its own.
+        return [
+            'fact_id differs'          => ["fact_id = 'NOT-THE-FACT'"],
+            'only recorded_at differs' => ["recorded_at = recorded_at + interval '1 microsecond'"],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('copiedValueMismatches')]
+    public function test_f4b_the_migration_aborts_on_a_copied_value_that_disagrees_with_the_fact(string $mismatch): void
     {
         $repo = $this->repo();
         $t = $this->organisation();
@@ -335,7 +345,7 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
 
         DB::transaction(fn () => $migration->down());
         try {
-            DB::table('org_membership_commands')->where('organisation_id', $t->value())->update(['fact_id' => 'NOT-THE-FACT']);
+            DB::update("UPDATE org_membership_commands SET {$mismatch} WHERE organisation_id = ?", [$t->value()]);
             try {
                 DB::transaction(fn () => $migration->up());
                 $this->fail('up() must abort on a mismatch (§10.2)');
@@ -344,7 +354,14 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
             }
             $this->assertContains('fact_id', self::commandColumns(), 'the aborted up() changed nothing');
         } finally {
-            DB::table('org_membership_commands')->where('organisation_id', $t->value())->update(['fact_id' => 'A-M1']);
+            // Restore both copied values from the fact, then re-apply up() so later tests see the migrated schema.
+            DB::update(<<<'SQL'
+                UPDATE org_membership_commands c
+                   SET fact_id = f.fact_id, recorded_at = f.recorded_at
+                  FROM org_membership_facts f
+                 WHERE f.organisation_id = c.organisation_id AND f.membership_id = c.membership_id AND f.seq = c.seq
+                   AND c.organisation_id = ?
+                SQL, [$t->value()]);
             DB::transaction(fn () => $migration->up());
         }
         $this->assertNotContains('fact_id', self::commandColumns());

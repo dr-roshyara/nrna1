@@ -1,0 +1,51 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/phpunit.membership-pg.xml
+
+DE                                                                  2 / 2 (100%)
+
+Time: 00:07.303, Memory: 22.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f4b_the_migration_aborts_on_a_copied_value_that_disagrees_with_the_fact with data set "only recorded_at differs" ('recorded_at = recorded_at + i...econd'')
+Illuminate\Database\QueryException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "fact_id" of relation "org_membership_commands" does not exist
+LINE 2:    SET fact_id = f.fact_id, recorded_at = f.recorded_at
+               ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43251, Database: membership_pg_isolated, SQL: UPDATE org_membership_commands c
+   SET fact_id = f.fact_id, recorded_at = f.recorded_at
+  FROM org_membership_facts f
+ WHERE f.organisation_id = c.organisation_id AND f.membership_id = c.membership_id AND f.seq = c.seq
+   AND c.organisation_id = c6e178d2-1fed-4267-a2f7-9fed168dd8a0)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:358
+
+Caused by
+PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "fact_id" of relation "org_membership_commands" does not exist
+LINE 2:    SET fact_id = f.fact_id, recorded_at = f.recorded_at
+               ^
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:609
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:358
+
+Caused by
+the aborted up() changed nothing
+Failed asserting that an array contains 'fact_id'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:355
+
+ERRORS!
+Tests: 2, Assertions: 8, Errors: 1, Deprecations: 1.

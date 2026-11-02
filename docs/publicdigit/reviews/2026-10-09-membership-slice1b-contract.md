@@ -66,6 +66,8 @@
 
 ## 5. Schema (one migration, PostgreSQL)
 
+> **Amended 2026-11-02 (PBDIGIT-264 Part 2, F-4b):** `org_membership_commands` no longer stores `fact_id` / `recorded_at` and references its fact by a composite FK. See "Amendment (2026-11-02)" at the end. The text below is the 2026-10-09 baseline.
+
 Ids are caller-supplied opaque strings in the domain (Slice 0), hence `text`. `organisation_id` is the real `organisations.id` (uuid).
 
 ```text
@@ -122,6 +124,8 @@ org_membership_commands                              — idempotency (IDEM-1…4
   - it **must not yet be run against development or production**. That rollout is a separate, later step, outside Slice 1b.
 
 ## 6. Operations
+
+> **Amended 2026-11-02 (PBDIGIT-264 Part 2):** `create`, `appliedCommand`, `append` (N1, enforced READ COMMITTED) and the key-collision classification changed. See "Amendment (2026-11-02)" at the end.
 
 | Operation | Implementation |
 |---|---|
@@ -204,3 +208,51 @@ During implementation, the real-process race test (T12) found an IDEM-3 defect i
 - **Delivery P1:** the adapter check is implemented (`PostgresMemberRepository::appendInTransaction`, after `answerFromKey`, before the compare-and-set). **Its PostgreSQL behaviour is unverified until Part 2**; until then the adapter is not accepted, integrated or used in production.
 - **Parity scope:** the date contract only; the test double's `MemberNotFound`-before-key ordering remains `PBDIGIT-264` F-3. See Slice 1a R-1a-6 for the adapter-specific `MemberNotFound` precedence *(added 2026-10-10, R1)*. **Superseded by F-3 (2026-10-10, PO decisions F3-1 … F3-4):** the double checks the key first and throws on a MemberId collision; R-1a-6 precedence over `MemberNotFound` is universal again. The PostgreSQL adapter was not changed by F-3; its conformance is expected from the code and verified only in Part 2 (F3a–c).
 - **E4-L on PostgreSQL (Human PO / ARB R3, 2026-10-10: in Part 2 scope; Part 2 execution not authorised by it):** raw-insert a pre-F-1 fact row dated `10000-01-01` plus its key row; replay the same decision, key and fingerprint; assert `AlreadyApplied` with the original outcome and no new fact **through `append` and `appliedCommand` only** (`load()` cannot read year 10000, the original F-1 defect).
+
+## Amendment (2026-11-02): PBDIGIT-264 Part 2 (F-5, F-4b, step 4a)
+
+**Authority:**
+- Principal Reviewer dispositions of 2026-10-09: F-4b, F-5 N1, F-3 (`2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §10);
+- the PO's approval of the Part 2 plan, with P2-0 and revision R1 = step 4a (`docs/plans/20261102-1750-membership-pbdigit264-part2-postgres-followups-plan.md`).
+
+This section records review condition **C2** (independent review, 2026-11-02). The baseline text above is kept.
+
+**§5 Schema: `org_membership_commands` (F-4b):**
+
+```text
+org_membership_commands
+  organisation_id  uuid  NOT NULL
+  idempotency_key  text  NOT NULL
+  fingerprint      text  NOT NULL
+  membership_id    text  NOT NULL
+  seq              integer NOT NULL
+  PRIMARY KEY (organisation_id, idempotency_key)
+  FOREIGN KEY (organisation_id, membership_id) REFERENCES org_memberships (organisation_id, id) ON DELETE RESTRICT
+  FOREIGN KEY (organisation_id, membership_id, seq) REFERENCES org_membership_facts (organisation_id, membership_id, seq)
+    ON DELETE RESTRICT                                  — org_membership_commands_fact_fk
+```
+
+`fact_id` and `recorded_at` are **removed**: they are derivable from the fact.
+
+**Migration:** `database/migrations/2026_11_02_180000_normalise_org_membership_commands.php`.
+- `up()` adds the FK first, aborts on any copied-value mismatch, then drops the columns.
+- `down()` re-adds the columns, backfills them, restores NOT NULL, and drops the FK.
+- **Like the 2026-10-09 migration, it must not yet run against development or production.** Before it reaches any persistent database: OQ-01; the operator preflight of ratification pack §10.2 (orphans and mismatches, expected 0 / 0 / 0); and `SHOW lc_messages` (see F-5 below).
+
+**§6 Operations:**
+
+| Operation | Amended implementation |
+|---|---|
+| `create(t, id, p)` | `INSERT … ON CONFLICT DO NOTHING RETURNING id` (**no conflict target**, step 4a). If nothing is inserted and the person has a Member → `HolderExists(id)`. If the person has none, the id belongs to another holder → `MemberIdHeldByAnotherHolder` (a `RuntimeException`, no state change; F-3). This absorbs a concurrent identical creation, whose conflict PostgreSQL may report on the primary key |
+| `appliedCommand(t, k)` | the command row by its primary key, **joined to its fact** on `(organisation_id, membership_id, seq)`; `fact_id` and `recorded_at` come from the fact |
+| `append(…)` | **N1:** refused with `AppendInsideTransactionRefused` before any statement if called inside an open transaction. Otherwise one top-level transaction whose **first statement is `SET TRANSACTION ISOLATION LEVEL READ COMMITTED`** (enforced, not assumed). The command row stores `seq`, not copies of the fact |
+
+**Error mapping, key collision (F-5):** a concurrent registration of the same key is recognised by `PgUniqueViolation::isConstraint()`: SQLSTATE `23505` **and** the constraint `org_membership_commands_pkey` named on the first line of the driver's error. The exception message, the bound SQL and DETAIL are never read. **Known limitation (independent review R-3):** the parse expects the server's English message text. Under a non-English `lc_messages`, a real collision surfaces as an exception (fail-closed, no bad data) instead of `AlreadyApplied` / `IdempotencyKeyConflict`. Tracked as a release-preflight check and a backlog item.
+
+**Tests that pin the amendments:**
+- `PostgresMemberRepositoryInvariantsTest::test_f5_*` and `test_f4b_*`;
+- `PostgresConcurrencyRaceTest::test_f5_*` and `test_f2a_*` / `test_f2b_*`;
+- `PgUniqueViolationTest`;
+- the shared contract `MemberRepositoryContract::test_every_key_is_answered_with_its_own_fact_not_only_the_first` (C1).
+
+Evidence: `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/`.

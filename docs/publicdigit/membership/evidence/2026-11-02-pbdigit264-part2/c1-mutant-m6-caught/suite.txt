@@ -1,0 +1,32 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/phpunit.membership-pg.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:06.283, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_every_key_is_answered_with_its_own_fact_not_only_the_first
+the End key answers with the End
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+ App\Contexts\Membership\Application\Organisational\Appended Object (
+     'memberId' => App\Contexts\Membership\Domain\Organisational\MemberId Object (...)
+     'factId' => App\Contexts\Membership\Domain\Organisational\FactId Object (
+-        'value' => 'E1'
++        'value' => 'A1'
+     )
+     'seq' => 2
+     'recordedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+ )
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/c1-wt/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:156
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1, Deprecations: 1.

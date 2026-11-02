@@ -90,7 +90,7 @@ The port has no update and no delete.
 - **Out:** database tables / Eloquent (Slice 1b); Correct / Annul / Void / Renew / ChangeType / Suspend / Restore; number; type; standing; finance; election; governance; committees; UI / API; migration; event sourcing; CQRS / projection / message bus.
 
 **F-3 clarification (Principal Reviewer disposition, 2026-10-09; adopted by the PO and implemented 2026-10-10, decisions F3-1 … F3-4 in the plan's F-3 gate register; shared contract tests F3a, F3b-1, F3b-2, F3c):**
-- `create` with a MemberId that already belongs to **another** holder is an **infrastructure failure** (an exception, no state change), not a port outcome. Both adapters throw a `RuntimeException` (PostgreSQL: the primary-key violation; the test double: an explicit `RuntimeException`).
+- `create` with a MemberId that already belongs to **another** holder is an **infrastructure failure** (an exception, no state change), not a port outcome. Both adapters throw a `RuntimeException` (PostgreSQL: the primary-key violation; the test double: an explicit `RuntimeException`). *(Amended 2026-11-02, PBDIGIT-264 step 4a: PostgreSQL now throws the explicit `MemberIdHeldByAnotherHolder`, also a `RuntimeException`; see the amendment at the end.)*
 - In `append`, the **idempotency-key lookup precedes every other outcome-producing check**: `AlreadyApplied` / `IdempotencyKeyConflict` come before `ValidTimeNotStorable`, `MemberNotFound` and `ConcurrencyConflict`. The **accepted-decision precondition** (port `@throws \InvalidArgumentException when the decision was refused`; Slice 1b §6) is call validation, not an outcome, and precedes the key lookup in every adapter: a refused decision is rejected even under a used key (test F3d). *(clarified 2026-10-10, K-1)*
 - Source: `2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §10. The port file is unchanged.
 
@@ -109,3 +109,12 @@ The port has no update and no delete.
 - **Commands:** `AdmitMember` and `EndMembership` gain a required `int $decisionDate` (after `effectiveAt`): the decision's calendar date, supplied by the caller; a UI default is computed in the organisation's time zone (D-5(a) Z1). It is part of the fingerprint. The ordinary `AdmitMember` builds only declaration-based provenance (no statutory or migration admission, LQ-1 / Slice 13).
 - **Refusals (§5):** four rows added; IDEM-1 … IDEM-4 unchanged (refusals are not remembered; a corrected retry under the same key may append).
 - **Authority (§6):** an interim adapter (`Infrastructure/Organisational/InterimRoleAuthority`) grants Admit to owner / admin (mirroring the legacy `approveApplication` rule) and **denies every End** until G-1 is decided; it records `AuthorityEvidence` and is replaced under DS-4. It is **not bound** in the container (Slice 2b, held).
+
+## Amendment (2026-11-02): F-3 on PostgreSQL after PBDIGIT-264 step 4a
+
+**Authority:** the PO's approval of revision R1 (step 4a) of `docs/plans/20261102-1750-membership-pbdigit264-part2-postgres-followups-plan.md`. Recorded as review condition **C2**.
+
+- **The F-3 clause is unchanged in meaning:** `create` with a MemberId that already belongs to another holder is an infrastructure failure (a `RuntimeException`, no state change), not a port outcome.
+- **What changed is how PostgreSQL raises it.** `create()` now inserts with `ON CONFLICT DO NOTHING` (no target), so it can absorb a concurrent **identical** creation (same id, same person). That creation used to escape as a primary-key violation (found by race test F-2(a)).
+- When nothing is inserted and the person has no Member, the adapter throws `MemberIdHeldByAnotherHolder`. Shared contract test F3a passes on both adapters.
+- **Parity:** the test double already checks the holder first (independent review 2026-11-02, finding R-8).

@@ -91,7 +91,7 @@ F-2 races (2026-11-02), `…RaceTest::test_f2a_*` / `test_f2b_*`, 8 rounds:
 - **(b)** 4 persons, one key, different fingerprints → 1 fact, 3 × `idempotency_key_conflict`, the losers stay at version 0.
 
 **Sensitivity limits:**
-- removing the key re-read after a domain refusal (`DecideAndAppend`) is caught by the identical-retries race, **not** by F-2(a);
+- removing the key re-read after a domain refusal (`DecideAndAppend`) is caught **deterministically** by the database-free `ConcurrencyAndRaceTest`, and only **probabilistically** by the PostgreSQL identical-retries races (the review caught it in 1 of 3 runs); F-2(a) does not catch it. *(Wording corrected 2026-11-02, review finding R-5.)*
 - removing the commands-PK catch is caught by F-2(b).
 
 Evidence: `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/`.
