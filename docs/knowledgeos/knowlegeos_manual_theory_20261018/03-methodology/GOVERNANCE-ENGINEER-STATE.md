@@ -46,7 +46,7 @@
 ## Waiting for
 
 - **The Principal's ruling on T9-02's deliverable form** (retype to entry kinds and fields plus derivations, or keep the per-item table). The turn is **settled, partially resolved** (`b9a7e2a54` → `2b204b003`, 2026-11-02 17:18–17:45 local). GE procedure check done 2026-11-02 (no theory judged): order kept; step-1 and report hashes match; reading position unchanged; no corpus source; RESEARCH-PURPOSE and THEORY-MAP untouched by the turn; TODO T9-02–T9-04 changes worded as consequences; three reviewers on different models. Minor deviations disclosed by reviewer C (tools with `--root` on the working book; a step-1 glob line count touching `09.00-index.md`); to go into the access record.
-- **The Principal's confirmation** of the C97 line, for the decision record.
+- C97 line confirmed and recorded (decision record addendum 2026-11-02T17:38:57Z).
 
 ## Next actions (Governance Engineer)
 
