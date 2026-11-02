@@ -153,3 +153,8 @@ All container runs use the pinned image through `bash scripts/testing/membership
 
 - 2026-11-02: plan prepared; awaiting G-PLAN and P2-0. PBDIGIT-324 G-ACC review in progress.
 - 2026-11-02: PBDIGIT-324 accepted (`1d8f670fc`). **G-PLAN and P2-0 approved by the PO.** The release gate (OQ-01 plus the §10.2 preflight before the F-4b migration reaches any persistent database) stays open.
+- 2026-11-02: **Step 0 done.** A `--testdox` run on the cluster (clean worktree at `f9455ee96`, pinned image): 43 OK, and the names confirm that the F-1 / Option E cases (E1a–c, E2a–c, the End boundary) and the F-3 cases (the other-holder collision, key-first) ran on PostgreSQL. **F7 is confirmed.** The output is kept for the step-5 evidence.
+- 2026-11-02: **Step 1 done (TDD).**
+  - RED: `PgUniqueViolationTest`, 8 errors (class absent) and 1 failure (the repository still read `getMessage()`). The decoy's precondition shows the old substring test would have matched.
+  - GREEN: `Infrastructure/Organisational/PgUniqueViolation::isConstraint()` (SQLSTATE 23505 plus the first-line constraint name); `append()` uses it. 9 tests.
+  - Regression: Domain 117, Application 61, Infrastructure 22, Architecture 97. **AC-1 met.**

@@ -137,7 +137,8 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             return $this->db->transaction(fn (): AppendResult => $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint));
         } catch (UniqueConstraintViolationException $e) {
             // The same key was registered concurrently (for another Member of the tenant): answer from the key row.
-            if (!str_contains($e->getMessage(), self::COMMANDS_PKEY)) {
+            // F-5: classified by SQLSTATE and the constraint named on the driver's first error line, never by the message.
+            if (!PgUniqueViolation::isConstraint($e, self::COMMANDS_PKEY)) {
                 throw $e;
             }
 
