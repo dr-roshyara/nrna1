@@ -132,9 +132,19 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         if (!$accepted->isAccepted()) {
             throw new \InvalidArgumentException('Only accepted decisions can be appended.');
         }
+        // F-5 / N1: no nested use. Checked before any statement; Appended means durably committed.
+        if ($this->db->transactionLevel() > 0) {
+            throw AppendInsideTransactionRefused::atLevel($this->db->transactionLevel());
+        }
 
         try {
-            return $this->db->transaction(fn (): AppendResult => $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint));
+            return $this->db->transaction(function () use ($tenant, $id, $accepted, $key, $fingerprint): AppendResult {
+                // F-5: the IDEM-3 wait-then-reread below relies on READ COMMITTED; enforce it rather than inherit the
+                // session default (under REPEATABLE READ a waiting writer fails with SQLSTATE 40001 instead).
+                $this->db->statement('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');
+
+                return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint);
+            });
         } catch (UniqueConstraintViolationException $e) {
             // The same key was registered concurrently (for another Member of the tenant): answer from the key row.
             // F-5: classified by SQLSTATE and the constraint named on the driver's first error line, never by the message.

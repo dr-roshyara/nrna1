@@ -158,3 +158,15 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - RED: `PgUniqueViolationTest`, 8 errors (class absent) and 1 failure (the repository still read `getMessage()`). The decoy's precondition shows the old substring test would have matched.
   - GREEN: `Infrastructure/Organisational/PgUniqueViolation::isConstraint()` (SQLSTATE 23505 plus the first-line constraint name); `append()` uses it. 9 tests.
   - Regression: Domain 117, Application 61, Infrastructure 22, Architecture 97. **AC-1 met.**
+- 2026-11-02: **Step 2 done (TDD, on the cluster; clean worktree at `820ae5a52` plus the change).**
+  - **RED:** 4 failures, as predicted.
+    - The two REPEATABLE READ race variants hit `SQLSTATE[40001] could not serialize access` (errors, not contract outcomes).
+    - The nested append was not refused.
+    - The first statement was not the SET.
+    - 43 existing tests stayed green.
+  - **GREEN:**
+    - `append()` refuses `transactionLevel() > 0` with the new `AppendInsideTransactionRefused`, before any statement (N1);
+    - `SET TRANSACTION ISOLATION LEVEL READ COMMITTED` is the first statement in the transaction;
+    - the cluster run: **47 tests, 325 assertions, exit 0**.
+  - **Regression (database-free):** Domain 117, Application 61, Infrastructure 22, Architecture 97, MembershipPgIsolation 28.
+  - **Guide 03** states the enforced level, N1 and the classifier. **AC-2 and AC-3 met.**

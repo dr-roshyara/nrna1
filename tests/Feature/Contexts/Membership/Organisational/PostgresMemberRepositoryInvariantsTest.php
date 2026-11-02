@@ -15,6 +15,7 @@ use App\Contexts\Membership\Domain\Organisational\PeriodId;
 use App\Contexts\Membership\Domain\Organisational\PersonRef;
 use App\Contexts\Membership\Domain\Organisational\Provenance;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
+use App\Contexts\Membership\Infrastructure\Organisational\AppendInsideTransactionRefused;
 use App\Contexts\Membership\Infrastructure\Organisational\DateOrdinal;
 use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
 use App\Contexts\Membership\Infrastructure\Organisational\UnsupportedMembershipDatabaseDriver;
@@ -186,5 +187,51 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
         $this->expectException(UnsupportedMembershipDatabaseDriver::class);
         $this->expectExceptionMessage("requires PostgreSQL (DB-1); connection 'membership_sqlite_probe' uses 'sqlite'");
         new PostgresMemberRepository(DB::connection('membership_sqlite_probe'), fn (): int => 0);
+    }
+
+    // ── PBDIGIT-264 F-5 (Part 2 plan step 2; PR disposition N1, 2026-10-09) ──
+
+    /** @return array{0: PostgresMemberRepository, 1: TenantId, 2: \App\Contexts\Membership\Domain\Organisational\Member, 3: \App\Contexts\Membership\Domain\Organisational\Decision} */
+    private function freshAdmission(): array
+    {
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+        $d = $m->decideAdmit(FactId::fromString('A-1'), TimePoint::of(20_000), TimePoint::of(20_000), null, Provenance::decision('registrar', null, 'decl-fixture'));
+
+        return [$repo, $t, $m, $d];
+    }
+
+    public function test_f5_an_append_inside_an_open_transaction_is_refused_before_any_statement_and_writes_nothing(): void
+    {
+        // N1: "Appended" must mean durably committed, and SET TRANSACTION must be the transaction's first statement.
+        [$repo, $t, $m, $d] = $this->freshAdmission();
+        $statements = [];
+
+        DB::beginTransaction();
+        try {
+            DB::listen(function ($query) use (&$statements): void { $statements[] = $query->sql; });
+            try {
+                $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k-nested'), 'fp');
+                $this->fail('an append inside an open transaction must be refused');
+            } catch (AppendInsideTransactionRefused) {
+                $this->assertSame([], $statements, 'refused before any statement');
+            }
+        } finally {
+            DB::rollBack();
+        }
+
+        $this->assertSame(0, DB::table('org_membership_facts')->where('organisation_id', $t->value())->count());
+        $this->assertSame(0, DB::table('org_membership_commands')->where('organisation_id', $t->value())->count());
+    }
+
+    public function test_f5_read_committed_is_enforced_as_the_first_statement_of_an_append(): void
+    {
+        [$repo, $t, $m, $d] = $this->freshAdmission();
+        $statements = [];
+        DB::listen(function ($query) use (&$statements): void { $statements[] = $query->sql; });
+
+        $this->assertSame(AppendOutcome::Appended, $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k-rc'), 'fp')->outcome());
+        $this->assertSame('SET TRANSACTION ISOLATION LEVEL READ COMMITTED', $statements[0] ?? null, 'the adapter enforces its isolation assumption');
     }
 }

@@ -149,4 +149,50 @@ final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
             $this->assertSame(array_fill(0, self::PROCESSES, ['appended', 'M1', 2]), $results, "round $round: every caller gets the original Appended");
         }
     }
+
+    // ── PBDIGIT-264 F-5 (Part 2 plan step 2, AC-3): the adapter's READ COMMITTED assumption is enforced, not inherited ──
+
+    /** Each child's session defaults to REPEATABLE READ before it works; the adapter must still behave per contract. */
+    private static function underRepeatableRead(\Closure $work): \Closure
+    {
+        return static function (int $c) use ($work) {
+            DB::statement('SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL REPEATABLE READ');
+
+            return $work($c);
+        };
+    }
+
+    public function test_f5_concurrent_different_ends_under_a_repeatable_read_session_still_record_exactly_one_end(): void
+    {
+        for ($round = 0; $round < self::ROUNDS; $round++) {
+            $org = $this->organisation();
+            (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
+                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-admit'));
+
+            $results = $this->race(self::underRepeatableRead(fn (int $c) => (new EndMembershipHandler(self::repository(), new FakeAuthority()))
+                ->handle(new EndMembership($org, 'M1', "E-$c", 'A1', 200 + $c, 200 + $c, 'resignation', 'registrar', null, "k-end-$c"))));
+
+            $this->assertSame([], array_values(array_filter($results, static fn ($r) => $r[0] === 'error')), "round $round: errors " . json_encode($results));
+            $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->where('kind', 'end')->count(), "round $round: one End");
+            $this->assertCount(1, array_filter($results, static fn ($r) => $r[0] === 'appended'), "round $round: " . json_encode($results));
+            foreach (array_filter($results, static fn ($r) => $r[0] !== 'appended') as $r) {
+                $this->assertContains($r, [['refused', 'period_already_ended'], ['refused', 'concurrent_modification']], "round $round");
+            }
+        }
+    }
+
+    public function test_f5_concurrent_identical_retries_under_a_repeatable_read_session_return_the_same_outcome(): void
+    {
+        for ($round = 0; $round < self::ROUNDS; $round++) {
+            $org = $this->organisation();
+            (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
+                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-admit'));
+
+            $results = $this->race(self::underRepeatableRead(fn (int $c) => (new EndMembershipHandler(self::repository(), new FakeAuthority()))
+                ->handle(new EndMembership($org, 'M1', 'E1', 'A1', 200, 200, 'resignation', 'registrar', null, 'same-key'))));
+
+            $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->where('kind', 'end')->count(), "round $round");
+            $this->assertSame(array_fill(0, self::PROCESSES, ['appended', 'M1', 2]), $results, "round $round: every caller gets the original Appended " . json_encode($results));
+        }
+    }
 }
