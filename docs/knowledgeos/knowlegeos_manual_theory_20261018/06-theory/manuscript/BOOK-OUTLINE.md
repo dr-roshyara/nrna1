@@ -183,7 +183,7 @@ The fork table lives in `06-theory/THEORY-MAP.md` (F1 … F37, F13a; F35–F37 a
 - **Ch. 0** foundations (§0.1–0.9) and **Ch. 8** validation (§8.1–8.45; its scope, validation or assurance governance, is decision brief DB-4): how the theory is tested. §8.5 (verification by a different method, CON-0121 ✓; calibration of grades); §8.6 independence of a check and §8.7 correction chains (T3, provisional).
 - **Ch. 5 §5.1–5.3** decisions and deferral: how decisions about knowledge are prepared.
 
-## Rotation of older chapters (Rulebook v1.3 §12, entry 57)
+## Rotation of older chapters (Rulebook v1.3 §12, entry 57; v1.4 §12 in force since 2026-10-24)
 
 *Recorded 2026-10-23, at the consolidation due at S0125 (held after C24). Each consolidation reviews one or two older chapters in full, those reviewed longest ago first, so that each chapter is reviewed in full about once per 100–150 sources.*
 
@@ -204,7 +204,7 @@ All chapters therefore tie on their last full review. The order breaks the tie b
 | S0275 (held at S0277: the tool's gate counts allowed sources) | Ch. 0, Ch. 1 | **done** (consolidation S0253–S0277; defects: Ch. 0 6, Ch. 1 29, union of A and B; settled in two parts with the Principal's answers Q-A, Q-B, Q-C; the second cycle: those reviewed longest ago first; Ch. 0 and Ch. 1 at S0125) |
 | S0300 (held at S0302: the tool's gate counts allowed sources) | Ch. 2, Ch. 3 | **done** (consolidation S0278–S0302, a planted-gap test, blind 3 of 4; defects: Ch. 2 17, Ch. 3 17; settled in two stages; CON-0001 → PROVISIONAL) |
 | S0325 (held at S0327: the tool's gate counts allowed sources) | Ch. 4, Ch. 5 | **done** (consolidation S0303–S0327; defects: Ch. 4 11, Ch. 5 12, reviewer A, confirmed by the integration; no register status change) |
-| S0350 (held at S0352: the tool's gate counts allowed sources) | Ch. 6, Ch. 8 §8.00–§8.30 | **in review** (consolidation S0328–S0352; the second cycle continues with the chapters rotated together at S0200; Ch. 8's rotated part is the span reviewed at S0200, its later sections having been reviewed at their own consolidations) |
+| S0350 (held at S0352: the tool's gate counts allowed sources) | Ch. 6, Ch. 8 §8.00–§8.30 | **done** (consolidation S0328–S0352; defects: Ch. 6 8, Ch. 8 §8.00–§8.30 36 (A 11, B 10, C 15), plus 6 found by the integration review; the second cycle continues with the chapters rotated together at S0200; Ch. 8's rotated part is the span reviewed at S0200, its later sections having been reviewed at their own consolidations) |
 
 Ch. 7 is retired (DB-6). The inherited quote failures of the baseline are worked through with the chapter of their rotation (entry 60). Ch. 1 had six (in §1.2, §1.6, §1.8, §1.11); at the consolidation S0201–S0225 the quote check finds none left there (§1.2 7/0, §1.6 3/0, §1.8 9/0, §1.11 6/0; C F-05).
 
