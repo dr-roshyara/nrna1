@@ -88,7 +88,7 @@ Two Membership implementations exist side by side:
 | Safe concurrent edits | two administrators acting at once cannot break the rules | **IMPLEMENTED; ACCEPTED** (Slice 1a) | guide 02 |
 | Store memberships in PostgreSQL | keep the history durably | **IMPLEMENTED; only conditionally accepted**; never run on an isolated database | guide 03; ARB-MEM-02; ARB-SEC-01 |
 | Admit/End command rules (basis, dating, ending kinds) | enforce D-1, D-3, D-5 at the entry point | **IMPLEMENTED; in review, not accepted** | guide 08; `PBDIGIT-271` |
-| Annul and Void (kernel only) | set aside or void a recorded fact | **PARTIALLY IMPLEMENTED:** decided in the kernel, **not stored**; acceptance deferred for evidence | guides 04, 05, 09 (V-2 fix `115e031de`); `PBDIGIT-268` |
+| Annul and Void (kernel only) | set aside or void a recorded fact | **PARTIALLY IMPLEMENTED:** decided in the kernel, **not stored**. Kernel **ACCEPTED with explicit residual risks** (C-1 G3, PO, 2026-11-02) | guides 04, 05, 09 (V-2 fix `115e031de`); `PBDIGIT-268` |
 | Guard the Membership–Election boundary | stop *new* code from making Membership decide votes, or Election reach into Membership's tables | **IMPLEMENTED; ACCEPTED** (S1b); existing violations are baselined, not removed | `developer_guide/membership_election_boundary/02_s1b_hardened_boundary_guards.md`; `tests/Architecture/MembershipElectionBoundaryTest.php` |
 
 **Test evidence, as recorded:**
@@ -149,7 +149,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | Ending | resignation, exclusion, death recorded | PARTIALLY IMPLEMENTED (refused for all actors); rule DECIDED (GOV-END B1) | `InterimRoleAuthority.php`; GOV-END decision record | Slice 2b (port carries End kind and evidence) | W2; DS-4 for exclusion | owner/admin can record resignation and death; exclusion refused with a distinct reason |
 | Lapse and renewal | lapsed ≠ ended; renewals keep the gap | RATIFIED; not implemented | ratified §4 | Slice 4 (W7) | — | Renew stored and tested |
 | Suspension | restriction without loss of membership | RATIFIED; not implemented | ratified §4 | Slice 5 (W7) | BD-SUSP | Suspend/Restore stored and tested |
-| Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 | C-1 acceptance (BD-REV-ER: refuse; D-COR-3: dates only) | ARB-MEM-01 met |
+| Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 (C-1 accepted 2026-11-02; COR-2's decisions taken: BD-REV-ER refuse, D-COR-3 dates only) | COR-2 story and authorisation; COR-4 needs W2 | ARB-MEM-01 met |
 | Types, obligations, Standing | dues compliance derived from Finance facts; types classify, never grant votes | **DECIDED** (E-1…E-5); not implemented | E0b-S decision record 2026-11-02 | type model, obligations, Standing in the kernel (W7, W8) | DS-1 (Finance); Finance contract (W8) | Standing computed from stored obligations and Finance payment facts, tested |
 | Membership–Election boundary | no Membership vote logic; no direct reads | IMPLEMENTED (guards, S1b ACCEPTED); existing violations baselined | election-boundary guide 02 | S2–S4 | OQ-ME-1…4 | baseline counts reach zero |
 | Persistence on PostgreSQL | durable, isolated storage | IMPLEMENTED; conditionally accepted only | guide 03 | isolated database; Part 2 | P-DB (W2) | suite green on an isolated database |

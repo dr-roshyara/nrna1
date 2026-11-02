@@ -140,6 +140,35 @@ The recommendation does not mean that the wider Membership suite passes or that 
 - **V-5:** tied `recordedAt` values in KnownAt; assigned to COR-4;
 - the `rule` iteration of RED 2 was not observed (see above).
 
+### G3 reconsidered (2026-11-02): ACCEPTED WITH EXPLICIT RESIDUAL RISKS
+
+**Human PO / ARB G3 decision: ACCEPTED WITH EXPLICIT RESIDUAL RISKS.** Decided by the PO on 2026-11-02, in session ("A", on the C-1 verdict note). It supersedes the DEFER FOR EVIDENCE above, which stays as history.
+
+**Basis:**
+- the V-2 fix `115e031de` and C-AMEND-2 (`7f3c9896b`);
+- independent review E-REV-V2, with conditions D1 and D2 complete (above);
+- clean-copy evidence E-RUN-V2 at `7f3c9896b` (`docs/publicdigit/membership/evidence/2026-11-02-v2-clean-copy/`) and **E-RUN-W0** at `a0d9d16bb` (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`, commit `592a94d4b`): AnnulVoid 24, Domain 117, Application 61, Infrastructure 13, Architecture 97 tests, all exit 0;
+- the Principal Reviewer's recommendation (§15.7(7)), ACCEPT WITH EXPLICIT RESIDUAL RISKS: on file since 2026-10-10 and maintained by E-REV-V2.
+
+**Residual risks accepted and carried forward:**
+
+| # | Risk | Carried to |
+|---|---|---|
+| 1 | bounded evidence, not a proof | as recorded |
+| 2 | D-COR-2 not in the independent oracle | as recorded |
+| 3 | equal `recordedAt` not enumerated (V-5) | COR-4 |
+| 4 | Infection developer-only; runner weaknesses | PBDIGIT-269 |
+| 5 | **E-WIDE** errors in other Membership unit directories (27 / 265 Domain, 29 / 81 Application; files C-1 did not touch) | **PBDIGIT-323**, a separate item, not a C-1 condition (closes the owner part of gap G-5) |
+| 6 | persistence unverified (V-4) | COR-4 |
+| 7 | V-1 (load does not re-check an Annul's own provenance) | COR-4 entry criterion (R-7) |
+| 8 | V-3 (source-level protection only) | COR-3 entry criterion |
+| 9 | RED-2 `rule` iteration not observed | as recorded |
+| 10 | the E-REV-V2 report is not tracked in git; its rulings are transcribed above | as recorded |
+
+**Scope of the acceptance:** the kernel only (Annul / Void in `app/Contexts/Membership/Domain/Organisational/`). **No** persistence, application, authority or cutover claim. ARB-MEM-01 (correction before cutover) still requires COR-2…COR-4.
+
+**Consequence:** COR-2 (Correct + consequences) may be prepared. Its decisions (BD-REV-ER, D-COR-3) are taken. It still needs its own story, a plan and authorisation.
+
 ---
 
 ## Section 2: Slice 0 (PBDIGIT-258)
