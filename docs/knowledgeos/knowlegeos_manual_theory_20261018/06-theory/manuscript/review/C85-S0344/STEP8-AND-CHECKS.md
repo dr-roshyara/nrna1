@@ -13,6 +13,6 @@
 - **Dependencies:** C1: §8.77 C6; §8.75 C1; §8.27 C2; §9.15 R4. C2: §8.75 C1; §8.66 C5. C3: A1; §8.71 C1; §9.19 T7; §8.73 C4; §8.74 C4. C4: §8.73 C1; §8.76 C1; §8.77 C3. C5: §8.76 C4; §8.06 C1; §8.71 C4; §8.74 C1; §8.72 C5; §9.13.
 - **Taken from W's inventory before step 2:** listed in §8.78.5.
 - **R1:** no new rows.
-- **R2 (`undefined_terms.py --scope 08.78`):** 2 tier A–C lines name §8.78. Tier D in scope, judged: activate agree appoint comparison contradiction determined doer escalate escalator hand inaction must-never problem quoted  — ordinary English or the source's own sense.
+- **R2 (`undefined_terms.py --scope 08.78`):** tier A "escalator" (first use in the title): glossed in the section head before dispatch. Tier D in scope, judged: activate, agree, appoint, determined, doer, escalate, hand, inaction, must-never, problem, quoted, and one word naming the MATCH check: ordinary English or the source's own sense; "must-never" is the book's term for a prohibition (§9.19 T7).
 - **R3:** none proposed.
 - **Quote check:** a script compared the quoted spans with S0344 (and S0343); every source quote matched (multi-line quotes joined with "·").
