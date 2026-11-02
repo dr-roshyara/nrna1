@@ -255,3 +255,89 @@ The oracle-and-parity mechanism (B) addresses the last risk.
 T6 starts only after DR-07a is decided.
 
 **Naming note:** DR-07a / DR-07b avoid confusion with options A / B / C above, where B is the cutover mechanism.
+
+---
+
+## 15. PO business decision PO-DR07-01 (2026-11-02)
+
+**Authority:** the PO, in this session, 2026-11-02. This is a **PO business ruling**, separate from the Principal's architectural position (§14).
+
+1. **Governance committees are constituted governance organs** with positions, appointments and governance authority.
+2. **Organisational units** (branches, chapters, wings) are a distinct domain concept and must not be conflated with governance organs.
+3. The distinction **does not classify existing committee records**. Classification is an evidence-based task (O-16).
+4. The meaning of `CommitteeAssociation` is **unresolved** pending the Membership owner (OQ-DR07-1).
+
+**Effect:**
+- OQ-DR07-0 (the premise) is **answered**.
+- DR-07a proceeds to the Membership owner and the ARB.
+- DR-07b stays open under O-16.
+
+**Not resolved by this ruling:**
+- O-6 (DR-07 stays **OPEN**);
+- O-16;
+- G-7;
+- T6.
+
+**Not authorised by this ruling:** any implementation.
+
+**Status of each authority, updating §14:**
+
+| Act | Status |
+|---|---|
+| Principal architectural position (BOTH; A + B for organs) | recorded 2026-11-02 |
+| **PO business decision PO-DR07-01** | **recorded 2026-11-02** |
+| Membership owner position | **pending** (§16) |
+| ARB ruling | **pending** (§17) |
+| Implementation authorisation | **none** |
+
+## 16. Decision request to the Membership owner (DR-07a, DR-07b)
+
+**Context:**
+- PO-DR07-01 confirms that governance committees are organs.
+- The recommendation for organs is **A + B**: Governance owns them, and the legacy Membership committee write model is frozen as the behavioural reference until a Governance model reaches verified parity.
+- **Your answer is recorded as given. Nothing is assumed.**
+
+| # | Question | Evidence to check |
+|---|---|---|
+| M-1 | Is §4's inventory of the committee write model in `app/Contexts/Membership` complete and correct? Which invariants does it enforce today? | `Domain/Committee/*`, `Application/Committee*`, `Infrastructure/Repositories/EloquentCommitteeRepository.php` |
+| M-2 | What does `CommitteeAssociation` mean: membership through an organisational unit, or participation in an organ? | `Domain/Membership/CommitteeAssociation.php`, `CommitteeAssociationLifecyclePolicy.php`, `MembershipApplication.php`, `ReviewMembershipApplicationHandler.php:27-38` |
+| M-3 | Do you agree that Governance owns governance organs (option A)? If not, why? | ratified §11; PO-DR07-01 |
+| M-4 | Do you agree to freeze the legacy committee write model (security and bug fixes only) and keep it as the behavioural reference until verified parity (B)? Proposed freeze wording? | B-1; plan `20261011-0103…:83` |
+| M-5 | Operational risks or objections to resolve before any cutover: live users of the legacy endpoints, the `committee_assignments` history, the G-9 end-date defect | register §5 |
+
+## 17. Decision request to the ARB (DR-07a)
+
+| # | Item | Ask |
+|---|---|---|
+| ARB-1 | Ratified §10 | confirm the reading: an **aggregate** boundary (the Membership aggregate must not absorb committee participation), not a context-ownership rule |
+| ARB-2 | Ratified §11 | confirm the reading: "Governance owns … organs" is the **context-ownership** rule; with PO-DR07-01 it places governance organs in Governance; **no amendment** of the ratified act is needed |
+| ARB-3 | PO-DR07-01 | take note of the business premise |
+| ARB-4 | ADR-0001 CQRS principle | confirm it remains valid (one write model as the source of truth; read models never write) |
+| ARB-5 | ADR-0001 location clause | rule on it: under A, a **new ADR** supersedes only this clause. ADR-0001's status is **not** changed until that act exists |
+| ARB-6 | Freeze and behavioural reference (B) | adopt the freeze rule and the parity criteria (characterisation tests over the legacy model; shadow; reconciliation) |
+| ARB-7 | Conditions before implementation and cutover | at least: Membership owner position (M-1…M-5); G-7 production use verified; store classification (O-16) sufficient for the migration scope; isolated test database (O-4); T6 contract for membership facts |
+
+**Inputs:** this paper §3–§8, §14–§15; register §5 (G-7, G-9, C4).
+
+## 18. DR-07b evidence plan (register O-16)
+
+| # | Question | Evidence needed | Owner | Not to be done |
+|---|---|---|---|---|
+| U-Q1 | Which context owns organisational units and their lifecycle? | business lifecycle of a unit (create, merge, close), from the PO; relation to geography (Geography / XD-5) and to membership (Membership owner); candidate: Organisation (`OrganisationalUnit`, v1.5, PROPOSED) | PO; ARB for ownership | assuming Organisation owns it |
+| U-Q2 | Meaning of `CommitteeAssociation` | Membership owner's answer M-2; the membership-application workflow | Membership owner + PO | inferring it from the class name |
+| U-Q3 | Which existing committee records are units and which are organs? | the business definition per type: `CommitteeType` has `central`, `province`, `district`, `ward`, `youth_wing`, `women_wing`, `student_wing`, `diaspora`, `geographic` (`app/Contexts/Membership/Domain/ValueObjects/CommitteeType.php:27-35`); whether a record has positions or assignments; read-only counts per type and environment (**needs authorisation**, like V-7) | PO + Membership owner; Ops for counts | classifying by name or table alone. Types are a hint only: e.g. a `ward` committee may be an organ with a jurisdiction, while a branch in the same ward is a unit |
+
+---
+
+## 19. Addendum: frozen boundary register not cited before (2026-11-02)
+
+**Correction to §3:** §3 omitted a canonical record. The **frozen Round 49-06 Boundary Decision Register** (`docs/architecture/design/Round49-06_Boundary_Decision_Register.md`):
+- **BDR-03:** "Appointment (Authority)" is a Confirmed BC that "owns Mandate truth".
+- **BDR-07:** Authorization owns no truth and consumes Mandate.
+
+Round 50 (frozen) makes Appointment the producer of `MandateGranted` / `MandateRevoked`.
+
+**Effect:**
+- Option A must state its relation to BDR-03. That is ARB-8 in the ARB pack (`2026-11-02-organisation-governance-arb-decision-pack.md` §3).
+- Recommendation: Governance is the context BDR-03 names "Appointment (Authority)", re-issued via ADR.
+- The recommendation A + B is otherwise unchanged.

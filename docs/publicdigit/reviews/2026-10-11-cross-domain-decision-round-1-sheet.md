@@ -53,6 +53,12 @@ These protect the running application today. **The single highest-priority prere
 > **Pointer (2026-11-02):** never decided here. It is deepened by `2026-11-02-governance-dr07-committee-ownership-decision-paper.md`, which carries the decision form (§13).
 > - The conflict is grounded in ratified §11 ("organs"), not in the non-binding N-6.
 > - B is a cutover mechanism, not an ownership option.
+>
+> **Update (2026-11-02):** PO business decision **PO-DR07-01**:
+> - governance committees are organs;
+> - organisational units are a separate concept.
+>
+> DR-07 is split into DR-07a (organs; A + B recommended) and DR-07b (units, register O-16). The Membership owner and ARB are pending, and **DR-07 stays OPEN** (paper §14–§18).
 
 | | |
 |---|---|

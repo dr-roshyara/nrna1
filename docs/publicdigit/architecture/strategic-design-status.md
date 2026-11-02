@@ -96,7 +96,7 @@ Preserve ratified and accepted decisions.
 |---|---|---|---|---|
 | T1 | ~~Decide K7~~ **DONE 2026-11-02: K′**, recorded in PBDIGIT-30, BR-12, Decision C §2a, register O-1. PBDIGIT-32 is unaffected. Follow-ups: naming (PO); DC-R9 placement (D-1 / ARB); a read-only platform-organisation data check (needs authorisation) | — | PO | done |
 | T2 | ~~Prepare the DR-07 decision paper~~ **DONE 2026-11-02:** `docs/publicdigit/reviews/2026-11-02-governance-dr07-committee-ownership-decision-paper.md`. **DR-07 itself stays OPEN.** Next: PO answers §13 (premise OQ-DR07-0, then A or C) → Membership owner → ARB | — | Claude → PO + ARB | paper ready ✔; decision pending |
-| T3 | **ARB session:** INV-ORG-SCOPE-1 ratification; INV-AFF-1; DR-07; XD-4; vocabulary (O-14) | T2 | ARB | acts recorded |
+| T3 | **ARB session:** INV-ORG-SCOPE-1 ratification; INV-AFF-1; DR-07; XD-4; vocabulary (O-14). **Pack prepared 2026-11-02:** `docs/publicdigit/reviews/2026-11-02-organisation-governance-arb-decision-pack.md`. Readiness: INV-ORG-SCOPE-1 and O-14 **READY**; DR-07a (incl. ARB-8 / BDR-03), XD-4 and INV-AFF-1 (target only) **READY WITH CONDITIONS**. Hold it after the Membership owner answers DR-07 paper §16 | T2; Membership owner for DR-07a | ARB | acts recorded |
 | T4 | **Accept S1** (`17ef51c5e`) | — | PO / reviewer | acceptance recorded in PBDIGIT-318 |
 | T5 | Governance business rules O-8, O-9, O-10 (statutes) | statutes available | PO | rules recorded |
 | T6 | Relationship specifications for the context map (start: Membership ↔ Governance cycle) | T3 (DR-07) | Claude → ARB | register exit criterion "relationships specified" met |
@@ -160,11 +160,17 @@ Update this record (and the session log) with:
 - **Principal architectural position (2026-11-02): BOTH** (paper §14):
   - **DR-07a** governance organs: recommend A + B;
   - **DR-07b** organisational units → register O-16.
-- **Next:**
-  1. PO business confirmation of the two concepts;
-  2. the Membership owner on `CommitteeAssociation` and on A + B;
-  3. ARB act.
-- DR-07 stays OPEN.
+- **PO business decision PO-DR07-01 (2026-11-02):** governance committees are organs; organisational units are a separate concept; existing records are unclassified; `CommitteeAssociation` is unresolved (paper §15).
+- **ARB pack prepared** (T3, above).
+  - It adds **ARB-8**: the relation of DR-07a to the frozen Round 49-06 **BDR-03** "Appointment (Authority)", which owns Mandate. The DR-07 paper had not cited it (paper §19).
+  - XD-4 consumes frozen **BDR-07** (Authorisation owns no truth).
+- **Committee statutes:** **not yet requested**. The PO sends the request text in pack §6 to a recipient the PO names.
+- **Next (exact):**
+  1. **PO:** send paper §16 (M-1…M-5) to the Membership owner, and send the statutes request (pack §6).
+  2. **ARB:** schedule the session on pack §0. Items 1–2 can go first.
+  3. O-16 evidence per paper §18.
+- DR-07 stays OPEN. T6 waits for the DR-07a ARB act and O-8…O-10.
+- **Uncommitted:** the PO-DR07-01 updates and the ARB pack (2026-11-02, HEAD `54cc0af63`).
 - **T4:** S1 acceptance (PO / reviewer).
 - Independent of both: the PBDIGIT-317 log-access check.
 
