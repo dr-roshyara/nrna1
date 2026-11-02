@@ -18,7 +18,7 @@
   - C5: A1; §1.12; §8.27 C1; §8.28 C3; §8.66 C4; §8.06 C1; §8.71 C1; §8.67 C1, C5; §9.19 T7.
 - **Taken from W's inventory before step 2:** listed in §8.72.5.
 - **R1:** no new rows.
-- **R2 (§8.72):** `undefined_terms.py --scope 08.72`: no tier A, B or C flag names §8.72.
+- **R2 (§8.72):** `undefined_terms.py --scope 08.72`: no tier A or B flag names §8.72; tier C "start" (4 uses: ordinary sense, and START the transition, written in capitals).
 - **R3 proposed:**
   - **§8.71.3 (V-numbers) and §8.71 lineage:** decidable from allowed text (S0325 L26, L73; S0326 L55): S0324 as read contains correction text in §5, §9, §11. W-01's git evidence stays unused.
   - **§8.71 C5 (an act read from a state):** the premise "START is the only transition into ACTIVE" is false (S0325 L40: START/CONTINUATION); the reading is sound under "every path into ACTIVE passes through a START", not stated in the window.
