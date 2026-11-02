@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `APPROVED`: plan approved by the PO, 2026-11-02 (G-PLAN). **Steps 1–5 (database-free) authorised**; step 6 (container run) needs G-RUN and W2-2. Nothing implemented yet |
+| **Status** | `IN PROGRESS`: **steps 1–5 implemented, 2026-11-02** (database-free TDD; plan §9). Step 6 (container run) needs G-RUN and W2-2. Not accepted. Guide: `developer_guide/membership/11_isolated_postgres_container.md` |
 | **Plan** | `docs/plans/20261102-1719-membership-isolated-postgres-container-plan.md` |
 | **Decision** | **W2-1 = C** (PO, 2026-11-02): P-DB is a throwaway PostgreSQL container per run (rootless podman, bound to 127.0.0.1), guarded with the existing PBDIGIT-274 / PBDIGIT-283 rules. **No second guard.** |
 | **Depends on** | PBDIGIT-283 (DONE: reset guard); the PBDIGIT-274 isolated-database pattern (`phpunit.pbdigit274.xml`, `tests/bootstrap-isolated-database.php`, `DatabaseIdentityGuard`) |

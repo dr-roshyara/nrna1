@@ -16,8 +16,11 @@ use Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard;
  */
 final class TestDatabaseSafety
 {
-    /** The only databases a test may reset: phpunit.xml / phpunit-pgsql.xml, and the PBDIGIT-274 isolated database. */
-    public const RESETTABLE = ['nrna_test', DatabaseIdentityGuard::APPROVED_NAME];
+    /**
+     * The only databases a test may reset: phpunit.xml / phpunit-pgsql.xml, the PBDIGIT-274 isolated database, and
+     * (PBDIGIT-324) the throwaway Membership cluster's database (phpunit.membership-pg.xml). Exact names only.
+     */
+    public const RESETTABLE = ['nrna_test', DatabaseIdentityGuard::APPROVED_NAME, MembershipPgIsolatedDatabase::APPROVED_NAME];
 
     public static function assertResettable(string $driver, ?string $database): void
     {
@@ -27,7 +30,7 @@ final class TestDatabaseSafety
 
         throw new RuntimeException(sprintf(
             'Refusing to reset database "%s" (driver %s): tests may only reset %s. Nothing was changed. '
-            .'Run tests through phpunit.xml (vendor/bin/phpunit) or phpunit.pbdigit274.xml, never with --no-configuration '
+            .'Run tests through phpunit.xml (vendor/bin/phpunit), phpunit.pbdigit274.xml or phpunit.membership-pg.xml, never with --no-configuration '
             .'for tests that extend Tests\TestCase.',
             $database ?? '(unknown)',
             $driver,

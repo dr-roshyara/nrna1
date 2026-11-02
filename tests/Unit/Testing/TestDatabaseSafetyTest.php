@@ -34,6 +34,30 @@ final class TestDatabaseSafetyTest extends TestCase
         yield 'another driver' => ['sqlite', 'nrna_test'];
         yield 'a sqlite file' => ['sqlite', '/tmp/app.sqlite'];
         yield 'mysql' => ['mysql', 'nrna_test'];
+        // PBDIGIT-324: only the exact Membership container name is added
+        yield 'the Membership name with a suffix' => ['pgsql', 'membership_pg_isolated_x'];
+        yield 'the Membership name, prefix only' => ['pgsql', 'membership_pg'];
+        yield 'the Membership name, other case' => ['pgsql', 'Membership_PG_Isolated'];
+        yield 'the Membership name, another driver' => ['sqlite', 'membership_pg_isolated'];
+    }
+
+    public function test_the_membership_container_database_may_be_reset(): void
+    {
+        // PBDIGIT-324 §3.3: the throwaway cluster's database (scripts/testing/membership-pg.sh), exact name only.
+        TestDatabaseSafety::assertResettable('pgsql', 'membership_pg_isolated');
+
+        $this->addToAssertionCount(1);
+    }
+
+    public function test_the_refusal_names_the_membership_configuration(): void
+    {
+        try {
+            TestDatabaseSafety::assertResettable('pgsql', 'publicdigit');
+            $this->fail('expected a refusal');
+        } catch (RuntimeException $e) {
+            $this->assertStringContainsString('membership_pg_isolated', $e->getMessage());
+            $this->assertStringContainsString('phpunit.membership-pg.xml', $e->getMessage());
+        }
     }
 
     /** @dataProvider refused */

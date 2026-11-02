@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PBDIGIT-324 (roadmap W2, decision W2-1 = C): the Membership PostgreSQL suite ONLY, on a throwaway PostgreSQL
+  cluster. Plan: docs/plans/20261102-1719-membership-isolated-postgres-container-plan.md.
+
+  Do not run this file directly. Run scripts/testing/membership-pg.sh, which starts the container (127.0.0.1,
+  random port, random password), captures the cluster's system_identifier, sets MEMBERSHIP_PG_TEST_DB,
+  MEMBERSHIP_PG_DB_* and MEMBERSHIP_PG_SYSTEM_ID, runs this configuration and removes the container.
+
+  The bootstrap refuses to start unless the name is membership_pg_isolated, the credentials come from
+  MEMBERSHIP_PG_DB_* (never DB_* or .env), no configuration is cached, and a raw connection reports the
+  expected system_identifier and current_database(). No DB_* value is set here on purpose.
+  APP_KEY is the repository's existing test key (the same as phpunit.xml).
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap-membership-pg.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="MembershipPostgres">
+            <directory suffix="Test.php">./tests/Feature/Contexts/Membership/Organisational</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="APP_KEY" value="base64:hI6EHt29D8WPl/MQdFYSg6uE/MK/5j5n5Rj7+OXK8QI="/>
+        <server name="APP_DEBUG" value="false"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>

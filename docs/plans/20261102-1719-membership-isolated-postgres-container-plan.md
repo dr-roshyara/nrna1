@@ -131,3 +131,24 @@ This is the P-DB of roadmap W2. I-1 holds by design: the run's credentials exist
 
 - 2026-11-02: plan prepared; awaiting G-PLAN.
 - 2026-11-02: **G-PLAN approved by the PO.** Steps 1–5 are authorised (database-free). Step 6 still needs G-RUN and W2-2.
+- 2026-11-02: **Steps 1–5 implemented (TDD, database-free).**
+  - **Step 1** (guard profile):
+    - RED: the profile class was missing, so 20 errors. With the class in place: 3 assertion failures (message names, credential prefix) plus 11 errors for step 2;
+    - `approvedName` already took the approved name as a parameter, so those cases were characterisations;
+    - GREEN: optional `$envName` / `$prefix` parameters whose defaults are PBDIGIT-274's.
+  - **Step 2** (`verifySystemIdentifier` + `pdoSystemIdentifier`): GREEN; 20 tests in `MembershipPgIsolationTest`.
+  - **Step 3** (reset allow-list): RED 1 error + 1 failure; GREEN; +6 cases in `TestDatabaseSafetyTest`.
+  - **Step 4** (`phpunit.membership-pg.xml`, `tests/bootstrap-membership-pg.php`): RED 15 failures; GREEN 15 (`MembershipPgBootstrapTest`).
+  - **Step 5** (`scripts/testing/membership-pg.sh`): RED 8 failures; GREEN 8 (`MembershipPgScriptTest`).
+- **Deviations:**
+  - (a) `chmod +x` was refused by the session's permission settings. The script is run as `bash scripts/testing/membership-pg.sh`, and the executable-bit check was dropped from the test.
+  - (b) The test helper was first named `run()`, which collides with PHPUnit's final method; renamed `runScript()`.
+  - (c) The first loopback regex also matched `pg_isready -p 5432` inside the container; narrowed to publish mappings `…:5432`.
+  - (d) A self-check found the "never printed" regex did not cover `$SECRET`; tightened, and a planted `echo "$SECRET"` mutant is now caught (in a scratch copy).
+  - (e) The main working tree has a cached Laravel configuration (`bootstrap/cache/config.php`, dated 2026-10-19, git-ignored, not created by this work). The bootstrap tests and some existing PBDIGIT-283 boot tests therefore report `[config_cached]` there. All evidence below was taken in a **clean worktree**. The cache file was **not** removed (not this work's to remove).
+- **Regression, in a clean detached worktree at `009691140` with the changed files copied in:**
+  - `tests/Unit/Testing` 160 OK (HEAD alone: 111; the same pre-existing deprecations);
+  - PBDIGIT-274 guard 85 OK (85 before and after the change, AC-1);
+  - Membership Domain 117, Application 61, Infrastructure 13, architecture 97: all OK.
+  - No container was started (`podman ps -a`: none).
+- **AC status:** AC-1, AC-2, AC-4 and AC-6 (static) met. AC-3, AC-5, AC-7 and AC-8 need step 6. AC-9 is met (only the §3 files plus tests and docs changed).

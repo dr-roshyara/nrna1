@@ -38,13 +38,16 @@ final class DatabaseIdentityGuard
     /**
      * Syntax only: present, not blank, a plain identifier, not a reserved word (the shared rules,
      * DatabaseTargetRules::identifierProblem, PBDIGIT-283), then this suite's own forbidden list.
+     *
+     * $envName only labels the messages: the PBDIGIT-274 default, or another suite's profile
+     * (PBDIGIT-324: Tests\Support\MembershipPgIsolatedDatabase). The rules are the same for every profile.
      */
-    public static function wellFormedName(mixed $raw): string
+    public static function wellFormedName(mixed $raw, string $envName = self::ENV_NAME): string
     {
         match (DatabaseTargetRules::identifierProblem($raw)) {
-            'missing' => throw new IsolatedDatabaseRefused('missing', self::ENV_NAME.' is not set.'),
-            'empty' => throw new IsolatedDatabaseRefused('empty', self::ENV_NAME.' is empty.'),
-            'malformed' => throw new IsolatedDatabaseRefused('malformed', self::ENV_NAME.' must be a plain PostgreSQL identifier (letters, digits, underscore; at most 63).'),
+            'missing' => throw new IsolatedDatabaseRefused('missing', $envName.' is not set.'),
+            'empty' => throw new IsolatedDatabaseRefused('empty', $envName.' is empty.'),
+            'malformed' => throw new IsolatedDatabaseRefused('malformed', $envName.' must be a plain PostgreSQL identifier (letters, digits, underscore; at most 63).'),
             'reserved' => throw new IsolatedDatabaseRefused('reserved', "'{$raw}' is a word Laravel's env() reinterprets; it is never a database name here."),
             null => null,
         };
@@ -56,9 +59,9 @@ final class DatabaseIdentityGuard
     }
 
     /** Well formed AND exactly the approved name. With nothing approved (before G4) every name is refused. */
-    public static function approvedName(mixed $raw, string $approvedName = self::APPROVED_NAME): string
+    public static function approvedName(mixed $raw, string $approvedName = self::APPROVED_NAME, string $envName = self::ENV_NAME): string
     {
-        $name = self::wellFormedName($raw);
+        $name = self::wellFormedName($raw, $envName);
         if ($approvedName === '') {
             throw new IsolatedDatabaseRefused('not_approved', 'No database is approved yet (gate G4); every name is refused.');
         }
@@ -84,20 +87,21 @@ final class DatabaseIdentityGuard
     }
 
     /**
-     * Credentials come only from the dedicated PBDIGIT274_DB_* variables, never from DB_* or .env.
+     * Credentials come only from the profile's dedicated variables (default PBDIGIT274_DB_*; PBDIGIT-324:
+     * MEMBERSHIP_PG_DB_*), never from DB_* or .env.
      *
      * @return array{host: string, port: string, username: string, password: string}
      */
-    public static function connectionSettings(array $env): array
+    public static function connectionSettings(array $env, string $prefix = 'PBDIGIT274_DB_'): array
     {
-        $host = trim((string) ($env['PBDIGIT274_DB_HOST'] ?? ''));
-        $username = trim((string) ($env['PBDIGIT274_DB_USERNAME'] ?? ''));
-        $port = (string) ($env['PBDIGIT274_DB_PORT'] ?? '5432');
+        $host = trim((string) ($env[$prefix.'HOST'] ?? ''));
+        $username = trim((string) ($env[$prefix.'USERNAME'] ?? ''));
+        $port = (string) ($env[$prefix.'PORT'] ?? '5432');
         if ($host === '' || $username === '' || preg_match('/^[0-9]{1,5}$/', $port) !== 1) {
-            throw new IsolatedDatabaseRefused('credentials_missing', 'PBDIGIT274_DB_HOST and PBDIGIT274_DB_USERNAME are required; PBDIGIT274_DB_PORT must be numeric.');
+            throw new IsolatedDatabaseRefused('credentials_missing', "{$prefix}HOST and {$prefix}USERNAME are required; {$prefix}PORT must be numeric.");
         }
 
-        return ['host' => $host, 'port' => $port, 'username' => $username, 'password' => (string) ($env['PBDIGIT274_DB_PASSWORD'] ?? '')];
+        return ['host' => $host, 'port' => $port, 'username' => $username, 'password' => (string) ($env[$prefix.'PASSWORD'] ?? '')];
     }
 
     /** @param callable(): mixed $currentDatabase returns the result of SELECT current_database() */
@@ -118,16 +122,47 @@ final class DatabaseIdentityGuard
     /** @return callable(): mixed a raw PDO lookup, made before Laravel boots */
     public static function pdoCurrentDatabase(string $approved, array $settings): callable
     {
-        return static function () use ($approved, $settings) {
-            $pdo = new PDO(
-                "pgsql:host={$settings['host']};port={$settings['port']};dbname={$approved}",
-                $settings['username'],
-                $settings['password'],
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5],
-            );
+        return static fn () => self::pdo($approved, $settings)->query('SELECT current_database()')->fetchColumn();
+    }
 
-            return $pdo->query('SELECT current_database()')->fetchColumn();
-        };
+    /**
+     * PBDIGIT-324 §3.2 (optional step; PBDIGIT-274 does not use it): the connection reached the cluster whose
+     * system_identifier the caller captured when that cluster started, not merely a database with the right name.
+     * The expected value must be present and plain digits; otherwise nothing is asked of the database.
+     *
+     * @param callable(): mixed $actualSystemIdentifier returns SELECT system_identifier::text FROM pg_control_system()
+     */
+    public static function verifySystemIdentifier(mixed $expected, callable $actualSystemIdentifier): void
+    {
+        if (!is_string($expected) || preg_match('/^[0-9]{1,20}$/', $expected) !== 1) {
+            throw new IsolatedDatabaseRefused('system_id_missing', 'The expected cluster system_identifier is missing or not plain digits.');
+        }
+        try {
+            $actual = $actualSystemIdentifier();
+        } catch (Throwable $e) {
+            // The driver's message may echo connection details, so only the exception class is reported.
+            throw new IsolatedDatabaseRefused('connection_failed', 'Could not read system_identifier ('.$e::class.').');
+        }
+        if (!is_string($actual) || $actual !== $expected) {
+            $shown = is_string($actual) ? "'{$actual}'" : get_debug_type($actual);
+            throw new IsolatedDatabaseRefused('system_id_mismatch', "Connected to cluster {$shown}, expected '{$expected}'.");
+        }
+    }
+
+    /** @return callable(): mixed a raw PDO lookup of the cluster's system_identifier, made before Laravel boots */
+    public static function pdoSystemIdentifier(string $approved, array $settings): callable
+    {
+        return static fn () => self::pdo($approved, $settings)->query('SELECT system_identifier::text FROM pg_control_system()')->fetchColumn();
+    }
+
+    private static function pdo(string $approved, array $settings): PDO
+    {
+        return new PDO(
+            "pgsql:host={$settings['host']};port={$settings['port']};dbname={$approved}",
+            $settings['username'],
+            $settings['password'],
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5],
+        );
     }
 
     /**
