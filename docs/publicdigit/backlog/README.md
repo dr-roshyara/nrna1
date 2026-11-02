@@ -198,6 +198,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-319`](PBDIGIT-319-composer-lock-requires-php-8-4-but-ci-uses-8-3.md) | **`composer.lock` requires PHP ≥ 8.4.1, but `composer.json` and CI declare 8.3** (Symfony 8.1 packages); found verifying PBDIGIT-318 S1b | — | `OPEN — technical debt` · not authorised |
 | [`PBDIGIT-320`](PBDIGIT-320-voter-import-writes-organisation-affiliation-data.md) | **Voter import writes organisation-affiliation data** (`VoterImportService:284-299`; PBDIGIT-318 X-8); classification depends on OQ-ME-3 / OQ-ME-4 | — | `OPEN` · tracked only; no behaviour change authorised |
 | [`PBDIGIT-321`](PBDIGIT-321-deptrac-layers-for-membership-and-elections-contexts.md) | **Deptrac layers for the Membership and Elections contexts**: the later item from the PO's acknowledgement (option (b)) of the PBDIGIT-318 deptrac deviation | — | `OPEN` · not authorised |
+| [`PBDIGIT-322`](PBDIGIT-322-legacy-fee-status-writers-and-annual-fee-job-inconsistent-with-schema.md) | **Legacy fee-status writers and the annual-fee job disagree with the schema**: `unpaid`/`partial` written against the PostgreSQL CHECK on `members.fees_status`; `GenerateAnnualMembershipFees` uses a non-existent `annual_fee` and omits `fee_amount_at_time` (E0b-S discovery §F) | — | `OPEN` · tracked only; not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
