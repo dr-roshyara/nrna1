@@ -1,7 +1,13 @@
 # 11: The isolated PostgreSQL container for the Membership suite (PBDIGIT-324, W2)
 
 **Story:** `PBDIGIT-324` · **Plan:** `docs/plans/20261102-1719-membership-isolated-postgres-container-plan.md` (approved 2026-11-02) · **Decision:** W2-1 = C
-**Status:** steps 1–5 implemented (database-free, TDD). **Step 6, the first container run, is not done.** It needs G-RUN (pull a pinned image) and W2-2 (the production PostgreSQL major version).
+**Status:** steps 1–5 implemented (database-free, TDD). **Step 6 done on 2026-11-02:**
+- image `postgres:15@sha256:7da5d534…a822`, PostgreSQL 15.19; **W2-2 provisional** (15 matches CI; production not yet confirmed);
+- the live fail-closed proof passed;
+- two suite runs, 43 tests, 256 assertions, exit 0;
+- evidence: `docs/publicdigit/membership/evidence/2026-11-02-w2-membership-pg/`.
+
+Not yet accepted.
 
 ## Purpose
 
@@ -60,7 +66,9 @@ Then every PostgreSQL connection is pinned to the container database.
 - **writes** `run.txt`, `suite.txt`, `suite.exit` and `SHA256SUMS`;
 - **removes** the container on every exit (`trap cleanup EXIT`).
 
-## How to use (after G-RUN)
+## How to use
+
+The pinned image used on 2026-11-02 was `docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6e466a7a29ff89eefd611c7b50c4d69aa77fd4a822`. If the main tree has a cached configuration, run from a clean worktree (`git worktree add --detach <dir> HEAD`, then `composer install --no-scripts` there).
 
 ```bash
 MEMBERSHIP_PG_IMAGE='docker.io/library/postgres:<major>@sha256:<digest>' \

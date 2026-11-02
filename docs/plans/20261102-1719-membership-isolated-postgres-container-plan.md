@@ -152,3 +152,16 @@ This is the P-DB of roadmap W2. I-1 holds by design: the run's credentials exist
   - Membership Domain 117, Application 61, Infrastructure 13, architecture 97: all OK.
   - No container was started (`podman ps -a`: none).
 - **AC status:** AC-1, AC-2, AC-4 and AC-6 (static) met. AC-3, AC-5, AC-7 and AC-8 need step 6. AC-9 is met (only the §3 files plus tests and docs changed).
+- 2026-11-02: **Step 6 done** (PO: "run step 6 from a clean copy").
+  - **Version:** W2-2 = **PostgreSQL 15, provisional** (the PO's choice; it matches CI; open until Ops confirms production).
+  - **Image:** `postgres:15@sha256:7da5d534…a822`, PostgreSQL 15.19.
+  - **Clean worktree:** at `f84653283`, with no config cache.
+  - **Fail-closed proof (live):** a wrong system ID gives `[system_id_mismatch]` (after connecting, before migration); a wrong name gives `[not_approved]`; correct values are confirmed.
+  - **Suite runs:** run1 and run2 on fresh clusters, **43 tests, 256 assertions, exit 0**. One deprecation, not Membership (`config/database.php:66`, `PDO::MYSQL_ATTR_SSL_CA`, PHP 8.5).
+  - **Hygiene:** no credential in the evidence; no leftover container; worktree removed.
+  - **Evidence:** `docs/publicdigit/membership/evidence/2026-11-02-w2-membership-pg/`.
+- **AC status after step 6:**
+  - AC-1…AC-9 met, with W2-2 provisional;
+  - AC-6 is also checked at runtime (the evidence self-check);
+  - AC-8: the commit, image digest, `server_version`, `system_identifier`, outputs, exit codes and SHA256SUMS are archived.
+- **Remaining:** G-ACC (independent review, then the PO's acceptance); W2-2 confirmation.
