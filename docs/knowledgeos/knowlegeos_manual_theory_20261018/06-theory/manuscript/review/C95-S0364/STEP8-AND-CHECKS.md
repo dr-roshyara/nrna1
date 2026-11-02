@@ -15,3 +15,8 @@
 - **R2 (`undefined_terms.py --scope 08.88`):** tier A–C: none in scope. Tier D judged as ordinary English or the source's sense: adjudication (the source's word, L832) adviser agree answered apply create machine precede reconciled (the source's state name) serialised (§9.15 K6) weight.
 - **R3 (proposed):** none.
 - **Quote check:** a script checked every quoted span against S0364; every source quote matched after three paraphrases were reworded before the draft's commit; the two remaining misses are quotations of the book (§9.18 "not attested"; §1.6 L41).
+
+**At settlement (v2).**
+- **R2 (`undefined_terms.py --scope 08.88`, v2):** tiers A–C: none in scope. W's tier-D notes on "state", "contested", "withdrawal" and "adjudication" are settled by W-01, W-06, W-08 and W-11.
+- **Quote check (`qc.py`, v2, against S0364, §1.6 and §1.2):** 97 checked. The 7 misses are quotations of the withdrawn draft in §8.88.5 and the "(W, step 1)" marker; none is a source quotation.
+- **R3:** one, on §8.87 C4 (scoped to D; W-01). `inbound_citations.py` for §8.88 C1–C5: none outside §8.88 (W).
