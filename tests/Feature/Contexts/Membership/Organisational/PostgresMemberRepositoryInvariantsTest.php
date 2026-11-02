@@ -235,6 +235,40 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
         $this->assertSame('SET TRANSACTION ISOLATION LEVEL READ COMMITTED', $statements[0] ?? null, 'the adapter enforces its isolation assumption');
     }
 
+    // ── PBDIGIT-264 step 4b: E4-L on PostgreSQL (Option E R3 / P2-4, 2026-10-10; Part 2 plan revision R2) ──
+
+    public function test_e4l_a_legacy_record_with_an_unstorable_valid_time_is_replayed_before_the_valid_time_is_checked(): void
+    {
+        // A record written before R-1a-6 existed holds a valid time the check would now refuse (year 10000, the
+        // original F-1 defect). New writes cannot create it, so it is planted raw. A genuinely identical retry (same
+        // decision, key and fingerprint) must still receive the original outcome (IDEM-1 / IDEM-3): the key lookup
+        // precedes R-1a-6. Asserted through append() and appliedCommand() only, because load() cannot read year 10000.
+        $repo = $this->repo();
+        $t = $this->organisation();
+        $member = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+        DB::table('org_membership_facts')->insert([
+            'organisation_id' => $t->value(), 'membership_id' => 'M1', 'seq' => 1, 'fact_id' => 'A1', 'kind' => 'admit',
+            'effective_at' => '10000-01-01', 'initial_term' => 'unlimited', 'recorded_at' => '2026-01-01 00:00:00+00', 'provenance' => '{}',
+        ]);
+        DB::table('org_membership_commands')->insert([
+            'organisation_id' => $t->value(), 'idempotency_key' => 'k1', 'fingerprint' => 'fp1', 'membership_id' => 'M1', 'seq' => 1,
+        ]);
+        DB::table('org_memberships')->where('organisation_id', $t->value())->where('id', 'M1')->update(['version' => 1]);
+        $recordedUs = (int) DB::table('org_membership_facts')->where('organisation_id', $t->value())
+            ->value(DB::raw(\App\Contexts\Membership\Infrastructure\Organisational\InstantMicros::selectExpression('recorded_at')));
+        $legacy = $member->decideAdmit(FactId::fromString('A1'), TimePoint::of(2_932_897), TimePoint::of(2_932_897), TimePoint::infinity(), Provenance::decision('registrar', null, 'decl-fixture'));
+
+        $retry = $repo->append($t, MemberId::fromString('M1'), $legacy, IdempotencyKey::fromString('k1'), 'fp1');
+
+        $this->assertSame(AppendOutcome::AlreadyApplied, $retry->outcome());
+        $expected = ['M1', 'A1', 1, $recordedUs];
+        $appended = $retry->appended();
+        $this->assertSame($expected, [$appended->memberId()->value(), $appended->factId()->value(), $appended->seq(), $appended->recordedAt()->ordinal()], 'exactly the original outcome');
+        $this->assertSame($expected, $this->answers($repo, $t, ['k1'])['k1'], 'appliedCommand unchanged');
+        $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $t->value())->count(), 'no additional fact');
+        $this->assertSame(1, DB::table('org_memberships')->where('organisation_id', $t->value())->where('id', 'M1')->value('version'), 'the sequence did not advance');
+    }
+
     // ── PBDIGIT-264 F-4b (Part 2 plan step 3; PR disposition 2026-10-09 + §10.2 migration requirements) ──
 
     private const F4B_MIGRATION = 'database/migrations/2026_11_02_180000_normalise_org_membership_commands.php';

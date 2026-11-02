@@ -27,6 +27,8 @@
 | `step5-final-run1..3` | 5 | three consecutive full runs on fresh clusters (IDs `…894370`, `…366626`, `…528610`) | 54 OK × 3 |
 | `c1-green` | review condition C1 | a fresh worktree at `444414e3d` with the C1 / R-4 tests copied in: a later fact's key answers with its own fact; a `recorded_at`-only mismatch aborts `up()` | 56 OK |
 | `c1-mutant-m6-caught` | C1 sensitivity | the reviewer's surviving mutant M6 (join without `seq`) is now **caught** by the C1 contract test | 1 failure |
+| `step4b-e4l-green` | 4b (R2) | E4-L on PostgreSQL: a legacy `10000-01-01` Admit and its key row; the identical replay → `AlreadyApplied` with the original fact id, seq and recordedAt; one fact; version 1. A fresh worktree at `b3b05c616` with the test copied in | 57 OK |
+| `step4b-e4l-mutant-date-check-first` | 4b sensitivity | the R-1a-6 date check moved before the key lookup (scratch) → E4-L **fails** (`ValidTimeNotStorable` instead of `AlreadyApplied`) | 1 failure |
 | `c1-mutant-m1-caught` | C1 sensitivity | the reviewer's surviving mutant M1 (mismatch check without `recorded_at`) is now **caught** by the R-4 case | 1 error |
 
 **Mutants** were applied only in the scratch worktree, restored by copy and checked with `cmp`. **Excluded:** one invalid RED run for step 3 (the reused worktree ran the old state: 43 tests); it is not evidence (plan §11).

@@ -86,6 +86,8 @@ F-4b tests (2026-11-02), all in `…InvariantsTest::test_f4b_*`:
 
 These tests call the migration directly inside `DB::transaction` and **always restore the migrated schema**, because RefreshDatabase migrates only once per process on PostgreSQL.
 
+E4-L on PostgreSQL (2026-11-02, step 4b): `…InvariantsTest::test_e4l_*` plants a legacy `10000-01-01` Admit with its key row. The identical replay is answered `AlreadyApplied` with the original outcome, because the key lookup precedes the R-1a-6 date check. It is asserted through `append` / `appliedCommand` only (`load()` cannot read year 10000).
+
 F-2 races (2026-11-02), `…RaceTest::test_f2a_*` / `test_f2b_*`, 8 rounds:
 - **(a)** 4 identical Admits for a new person → 1 Member, 1 fact, and identical `Appended` (member, seq, fact, recordedAt) for all;
 - **(b)** 4 persons, one key, different fingerprints → 1 fact, 3 × `idempotency_key_conflict`, the losers stay at version 0.

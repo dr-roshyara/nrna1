@@ -214,3 +214,14 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - **C2 (done):** amendments appended to the Slice 1b contract (§5 / §6 pointers plus "Amendment (2026-11-02)") and the Slice 1a contract (the F-3 PostgreSQL mechanism).
   - **R-5:** wording corrected in this plan, the evidence README and guide 03.
   - **Gap found while doing C2 (not part of the review):** the **PostgreSQL E4-L** test (approved 2026-10-10 as R3 / P2-4, "Part 2 scope, its own commit") was **omitted from this plan** and is still unwritten. It is raised to the PO; not done silently.
+- **Revision R2 (PO, 2026-11-02: "commit, then add E4-L as step 4b"): new step 4b.**
+  - **What:** the PostgreSQL E4-L test from the 2026-10-10 task definition (`docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md` §"PostgreSQL E4-L (P2-4)").
+  - **Adapted to F-4b:** the key row now carries `seq` only; `fact_id` and `recorded_at` come from the fact.
+  - **The test:** a legacy Admit row dated `10000-01-01` plus its key row, version 1. The identical replay (same decision, key and fingerprint) → `AlreadyApplied` with the original fact id, seq and recordedAt; `appliedCommand` unchanged; one fact; version 1. **No `load()`.**
+  - **Sensitivity:** the R-1a-6 date check moved before the key lookup (scratch only) → the test must fail.
+  - **Its own commit.**
+- 2026-11-02: **Step 4b done.**
+  - `PostgresMemberRepositoryInvariantsTest::test_e4l_…` passes at the committed code: the cluster runs **57 tests, 436 assertions, exit 0** (fresh worktree at `b3b05c616`).
+  - **Sensitivity:** the date check moved before the key lookup (scratch only, restored) → the test fails (`ValidTimeNotStorable`).
+  - Evidence `step4b-*`.
+  - **The E4-L gap is closed.**
