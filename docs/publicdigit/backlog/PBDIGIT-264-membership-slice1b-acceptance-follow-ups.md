@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS` · F-1 (with Option E) and F-3 implemented and tested on the test double; PostgreSQL unverified (Part 2 held); F-2, F-4, F-5 held; not accepted *(synced 2026-10-11; see "Progress")* |
+| **Status** | `IN PROGRESS` · **Part 2 (F-5 → F-4b → F-2) plan APPROVED 2026-11-02** with P2-0 (`docs/plans/20261102-1750-membership-pbdigit264-part2-postgres-followups-plan.md`; runs on the PBDIGIT-324 cluster). *Earlier:* F-1 (with Option E) and F-3 implemented and tested on the test double; PostgreSQL unverified (Part 2 held); F-2, F-4, F-5 held; not accepted *(synced 2026-10-11; see "Progress")* |
 | **Found in** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md` §2 (an independent review of `PBDIGIT-260`) |
 | **Depends on** | `PBDIGIT-260` acceptance decision |
 | **Business decisions needed** | none (F-3 needs a port-contract clarification by the Principal Reviewer) |

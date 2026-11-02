@@ -63,6 +63,8 @@ So the run would have hit the **shared** `nrna_test`. Revision 1 **enforces** is
 
 ### Part 2: PostgreSQL verification (only after the isolated database exists and is verified)
 
+> **P2-0 (PO, 2026-11-02):** for runs on the PBDIGIT-324 throwaway cluster, the PV, role-R / I-1 and resolver-hook requirements below are **superseded**. Their evidence is the PBDIGIT-324 fail-closed proof, the in-run confinement and the run records (`docs/publicdigit/reviews/2026-11-02-pbdigit324-independent-review-and-acceptance.md`). They **remain applicable** to any future run on a shared server. Part 2 now proceeds under `docs/plans/20261102-1750-membership-pbdigit264-part2-postgres-followups-plan.md`. The gate text below is kept as written.
+
 **Gate:** no Part 2 command (and therefore no `migrate:fresh`) may run until P-DB is provisioned, the PV output is accepted (ChatGPT review plus Human PO / ARB acceptance), I-1 is decided, and Part 2 is separately approved.
 
 **Role R in the isolated database (what the run needs).** Inspected: `database/migrations` contains no `CREATE EXTENSION`, no other schema and no other connection; every pgsql connection uses `'schema' => 'public'` (`config/database.php` lines 81, 109, 123, 149). So R needs, **only in `nrna_test_membership`**:
