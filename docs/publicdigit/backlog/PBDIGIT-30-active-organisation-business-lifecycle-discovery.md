@@ -123,6 +123,17 @@ Everything else — redirects, sessions, URLs, middleware — is a *consequence*
 
 **Why this rule is strong:** it is **deterministic**. `Login → ignore PublicDigit → count real organisations → 0 / 1 / 2+ → act.` No ambiguity, and **no "last writer wins."**
 
+**K7 confirmation (PO, 2026-11-02): B1 is not amended.**
+- A proposed amendment ("B1′": PublicDigit as a real organisation counted at sign-in) was considered and **not adopted**.
+- The PO chose option K′:
+  - the bootstrap PublicDigit organisation stays exactly as B1 defines it;
+  - PublicDigit's real organisational life is held in a separate, ordinary organisation, which B1.3 counts like any other.
+- Records:
+  - BR-12 in `docs/publicdigit/business_rules/20261101_1739_person_account_affiliation_business_rules.md`;
+  - Decision C §2a;
+  - brief `docs/publicdigit/reviews/2026-11-02-organisation-k7-b1-amendment-decision-brief.md`.
+- PBDIGIT-32's scope is unaffected.
+
 ---
 
 ## B2 — When does the Working Organisation change? — ⬜ **NEXT**

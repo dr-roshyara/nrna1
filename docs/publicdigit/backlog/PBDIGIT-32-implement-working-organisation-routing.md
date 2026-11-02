@@ -52,6 +52,11 @@ Make the routing mechanism answer the question B1 asks: **ignore the bootstrap o
 * [ ] A user with **exactly 1 real organisation** enters it without being asked.
 * [ ] A user with **2+ real organisations** is **asked which one** — and the system never guesses (B1.4).
 * [ ] The **bootstrap organisation is excluded** from every count *(already partly implemented — `handleMissingOrganisation`, `hasOwnOrganisation()`; consolidate onto **one** definition of "real organisation", `PBDIGIT-31` I-3)*.
+  * *K7 note (PO, 2026-11-02; B1 not amended):*
+    * the scope is unchanged;
+    * PublicDigit's real organisational life lives in a separate operator organisation, which is counted like any other;
+    * the "real organisation" definition must therefore exclude only the bootstrap organisation (`type = 'platform'`, `is_default`), and the operator organisation must not carry those markers;
+    * see `docs/publicdigit/reviews/2026-11-02-organisation-k7-b1-amendment-decision-brief.md` §7a.
 * [ ] After creating an organisation, the user is **inside it** (B1.2).
 * [ ] The Working Organisation **holds for the whole session** — it changes only by an act B3 authorises, never as a side effect of navigation, rendering or caching (B1.5 / B2).
 * [ ] After logout → login, the user is routed by **B1.3 applied afresh** (`0 → Create or Join` · `1 → enter it` · `2+ → ask`). **Resuming the previously chosen organisation is NOT a criterion** — B4 was withdrawn and cross-login memory is `PBDIGIT-34`.

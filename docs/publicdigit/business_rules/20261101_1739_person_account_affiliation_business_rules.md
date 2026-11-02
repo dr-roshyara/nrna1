@@ -31,7 +31,8 @@
 | BR-9 | The target storage and ownership of OrganisationAffiliation. | **Open.** Proposed direction (2026-11-01, INV-AFF-1, PROPOSED): organisation-local storage, with discovery at sign-in and no persisted central register. Mechanism and feasibility not established (`docs/publicdigit/reviews/2026-11-01-identity-affiliation-discovery-evaluation.md`). |
 | BR-10 | When an organisation imports a person who has not registered, Identity creates or resolves the Person and issues the reference for the organisation's record. **No User affiliation with PublicDigit is created at import.** | PO direction 2026-11-01. Conflicts with an XD-3b condition (K4, open) |
 | BR-11 | Independent imports of the same human by two organisations are **not** automatically assumed to be the same person. Resolution and merging follow an explicit Identity process with sufficient verification, with special care for election-related records. | PO direction 2026-11-01 |
-| BR-12 | PublicDigit is a **real organisation** and the default organisation, not merely a bootstrap organisation. It has its own Users, Members, Workers, Guests and other legitimate relationships. Demo stays distinguishable from its real data. | PO direction 2026-11-01. **Requires formal amendment of approved PBDIGIT-30 B1** (K7); until then B1 stands |
+| — | *BR-12 as directed 2026-11-01 (kept as history):* PublicDigit is a **real organisation** and the default organisation, not merely a bootstrap organisation. It has its own Users, Members, Workers, Guests and other legitimate relationships. Demo stays distinguishable from its real data. | superseded by BR-12 (K7, 2026-11-02) |
+| BR-12 | **PublicDigit has a real organisational life, held in its own ordinary organisation.** That organisation has its own Members, Workers, Guests and committees and is counted at sign-in like any other organisation. **The default (bootstrap) PublicDigit organisation stays as PBDIGIT-30 B1 defines it:** infrastructure, never a Working Organisation, holding the User affiliation created at registration (BR-2, BR-8). Registrants are **not** affiliated with the operator organisation by registering. Demo stays distinguishable from both. | **Decided by the PO, 2026-11-02 (K7, option K′).** B1 unchanged. Brief: `docs/publicdigit/reviews/2026-11-02-organisation-k7-b1-amendment-decision-brief.md` |
 | BR-13 | **There are no business rules that must hold across organisations.** No exclusivity of association or office between organisations or parties is required. | **Confirmed by the PO, 2026-11-02** (answer to D-2 of the Decision D proposal) |
 | — | *Scope note on BR-13 (as originally proposed, kept as history):* BR-13 concerns **organisational business rules** (membership, office, governance). Platform mechanisms that consult several organisations without making one organisation's facts depend on another's are not covered by it: sign-in discovery (approved PBDIGIT-30 B1.3; INV-AFF-1) and the deletion-eligibility precondition (XD-PROV AM-1 r2). | superseded by BR-13-S |
 | BR-13-S | **BR-13 scope (confirmed wording):** BR-13 governs organisational business rules (membership, office, governance). It does not cover platform mechanisms that ask organisations whether they recognise a person, namely organisation discovery and the deletion-eligibility check. These mechanisms receive no organisation-specific person data beyond that yes / no answer (INV-ORG-SCOPE-1; INV-AFF-1). **Open:** the deletion-eligibility check is not yet among INV-ORG-SCOPE-1 §1a's permitted platform-level operations; it must either be classified as a form of discovery or §1a must be amended (PO + ARB). | **Confirmed by the PO, 2026-11-02**; the §1a gap remains open |
@@ -75,6 +76,11 @@ BR-3 refines B1.1's informal word "membership" ("that membership is infrastructu
 - **PO direction, 2026-11-01:** amend B1 (BR-12).
 - The candidate amendment wording "B1′" is in the Decision C record, §2a.
 - PBDIGIT-30 is not changed by this file. B1 stands until the amendment is approved.
+
+**Resolved, 2026-11-02 (K7):** the PO chose option **K′**:
+- **B1 is not amended.**
+- PublicDigit's real organisational life lives in a separate, ordinary organisation (BR-12 as decided).
+- The conflict above is resolved without changing B1.
 
 ## 4. Consequences for BR-9 (inputs only; nothing decided)
 

@@ -91,6 +91,29 @@
 
 Until that amendment is approved, B1 remains the approved rule.
 
+**PO decision, 2026-11-02 (K7 / OQ-C-7): option K′. B1′ is not adopted; B1 stands unchanged.**
+
+**Rationale:**
+- K′ separates **platform participation** (an account) from **organisational membership**.
+- Creating an account does not, by itself, make anyone a member of the organisation that operates PublicDigit.
+- B1′ was rejected because it would need a visibility exception to compensate for that coupling.
+- The default (bootstrap) PublicDigit organisation remains infrastructure and is never a Working Organisation. DC-R1 and DC-R2 apply to it: registration creates the User affiliation there, never Membership.
+- PublicDigit's real organisational life (Members, Workers, Guests, committees) is held in a **separate, ordinary organisation**, counted at sign-in under B1.3 like any other.
+- The Worker / Member examples for PublicDigit in §1 and DC-R5 now refer to that operator organisation.
+- OQ-C-6 moves to the operator organisation.
+- Brief and rationale: `2026-11-02-organisation-k7-b1-amendment-decision-brief.md`.
+
+**Consequences recorded, not decided:**
+- DC-R9 (User affiliation in "PublicDigit's organisation database"): whether the bootstrap relationship is a platform-store fact (Decision D §3, "the platform service relationship") or lives in an organisation database is now a D-1 / ARB question.
+- Naming of the two entities in the UI: PO.
+
+**Not authorised by this decision:**
+- creating the operator organisation;
+- any data move;
+- any code change.
+
+**Verification still required:** a read-only check of whether the production platform organisation holds real (non-registration) member or worker data. This needs PO / Ops authorisation.
+
 ## 3. Open questions
 
 | # | Question | Owner |
@@ -99,7 +122,7 @@ Until that amendment is approved, B1 remains the approved rule.
 | OQ-C-2 | Does ending a User affiliation affect anything else? It must not end the account (XD-3c). | PO + ARB |
 | OQ-C-4 | How demo and the fallback are separated (DC-R6). [R]: a separate demo organisation; the fallback's data connects to multi-database decision D4. | PO + ARB |
 | OQ-C-5 | Which affiliation store, or new store, represents roles consistently, including several roles per person per organisation (see F-C-2). Goes with OQ-3a-3. | ARB |
-| OQ-C-6 | PublicDigit's own membership rules (eligibility, approval) | PO |
+| OQ-C-6 | PublicDigit's own membership rules (eligibility, approval). Since K7 (K′), these are the rules of the **operator organisation**. | PO |
 | OQ-3a-4 (unchanged) | **May one person belong to several organisations in the future?** Not resolved here. | PO |
 
 ## 4. Evidence: how registration and login create, read and check the affiliation today

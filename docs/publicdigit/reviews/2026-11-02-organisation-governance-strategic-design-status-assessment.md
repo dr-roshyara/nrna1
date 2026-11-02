@@ -77,7 +77,7 @@ No status changed.
 | P-1 | XD-3a: one platform Person; preferred direction a per-organisation `PersonRef` | PO + ARB + data protection | `2026-11-01-identity-xd3a-…-decision-record.md` |
 | P-2 | XD-3b: Person ≠ Account (B2); personal data organisation-local; claim-code linking | ARB | `…-xd3b-…` |
 | P-3 | XD-3c: account lifecycle (option C) | PO + ARB | `…-xd3c-…` |
-| P-4 | Decision C: PublicDigit default organisation, User role | PO + ARB; **conflicts with R-6** (O-1) | `2026-11-01-organisation-dc-…-decision-record.md` |
+| P-4 | Decision C: PublicDigit default organisation, User role | PO + ARB; the conflict with R-6 was **resolved by K7 (K′)**, so B1 stands | `2026-11-01-organisation-dc-…-decision-record.md` |
 | P-5 | INV-AFF-1: organisation-owned affiliation, discovery without a register | **referred to the ARB**; feasibility not established | `2026-11-01-organisation-inv-aff-1-…`; evaluation `2026-11-01-identity-affiliation-discovery-evaluation.md` |
 | P-6 | XD-PROV, with AM-1 r2 (deletion by confirmed request) | PO + ARB | `2026-11-02-identity-xd-prov-…-decision-record.md` |
 | P-7 | Governance vocabulary (Committee as organ, Position, Appointment, Tenure, Mandate, JurisdictionAssignment, Forum) | ARB (CANDIDATE) | `…/cross_domain_brainstorming/20261011_0008_cross_domain_discovery_package_v1.5.md:60-100` |
@@ -87,7 +87,7 @@ No status changed.
 
 | # | Question | Owner | Blocks | Source |
 |---|---|---|---|---|
-| O-1 | **K7:** amend B1 (PublicDigit a real organisation; wording "B1′") or keep it | PO | P-4, BR-12, PBDIGIT-32 scope | Decision C §2a; **brief** `2026-11-02-organisation-k7-b1-amendment-decision-brief.md` |
+| O-1 | ~~**K7:** amend B1 (PublicDigit a real organisation; wording "B1′") or keep it~~ **RESOLVED 2026-11-02, PO: K′.** B1 stands; the real organisational life is in a separate operator organisation; BR-12 reworded. Follow-ups: naming (PO); DC-R9 placement (D-1 / ARB); read-only check of real data in the platform organisation (VERIFY, needs authorisation) | PO | P-4, BR-12, PBDIGIT-32 scope (unaffected) | Decision C §2a; **brief** `2026-11-02-organisation-k7-b1-amendment-decision-brief.md` |
 | O-2 | B1.5 vs B1.3: enter a remembered Working Organisation without counting? | PO | INV-AFF-1 cost | evaluation OQ-E-2 |
 | O-3 | Scale figures U-1…U-5 | PO + Ops | A-4 validation, P-5 feasibility | Decision D §11 |
 | O-4 | Isolated test database | PO / Ops | every database test; S2–S4 | ARB-SEC-01 (gate FAIL); T-13 |
@@ -109,7 +109,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 
 | Item | Decision required | Owner | Status | Evidence needed | Next action | Must not proceed before it |
 |---|---|---|---|---|---|---|
-| O-1 K7 | keep B1, amend to B1′, or K′ (separate operator organisation) | PO | OPEN; PO direction 2026-11-01 to amend, **not yet an amendment** | none for the decision; for K′, a read-only check of real data in the platform organisation | PO answers the brief | amending PBDIGIT-30 / BR-12 / Decision C; authorising PBDIGIT-32 |
+| O-1 K7 | keep B1, amend to B1′, or K′ (separate operator organisation) | PO | **RESOLVED 2026-11-02: K′** | a read-only check of real data in the platform organisation (authorisation needed) | creating the operator organisation is **not authorised**; it needs its own story | any data move or code change for the operator organisation |
 | O-6 DR-07 | committee ownership; reading of R-3 (aggregate vs context) against R-7 | PO + ARB | OPEN | ratified act §10 text; ADR-0001; committee code location | **Claude prepares the DR-07 paper (T2)** | Governance contracts; the Membership ↔ Governance relationship (T6); O-8…O-10 modelling |
 | O-7 XD-4 | who owns authorisation decisions | ARB | OPEN | permission model inventory (v1.5 §2) | ARB agenda | the authorisation contract; G-5 remediation design |
 | O-7 XD-5 | geography history and jurisdiction | ARB | OPEN | O-11 answers | ARB agenda, after O-11 | Geography context boundary |
@@ -152,6 +152,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | V-4 | S1 acceptance | review of `17ef51c5e` | PO / reviewer |
 | V-5 | PBDIGIT-266 items (static findings) | feature tests | needs O-4 |
 | V-6 | INV-AFF-1 discovery at the target scale | the evaluation with U-1…U-5 | after O-3 |
+| V-7 | real organisational data in the production platform organisation (before any operator-organisation creation or migration; K7) | read-only queries Q0–Q3, K7 brief §7b | PO / Ops authorisation |
 
 ## 7. Exit criteria for the organisational strategic design
 
@@ -176,7 +177,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 **Conclusion:** the organisational strategic design is **not complete**.
 
 **The blocking decisions for completion:**
-- O-1 (K7);
+- ~~O-1 (K7)~~ resolved 2026-11-02 (K′);
 - O-6 (DR-07);
 - O-7 (XD-4 / XD-5);
 - O-8, O-9, O-10 (governance business rules);

@@ -69,7 +69,7 @@ Preserve ratified and accepted decisions.
 
 | # | Decision | Owner |
 |---|---|---|
-| O-1 | **K7:** amend B1 (PublicDigit a real organisation) or keep it | PO |
+| ~~O-1~~ | ~~**K7**~~ **resolved 2026-11-02: K′** (B1 stands; operator organisation separate; BR-12 reworded) | PO |
 | O-6 | **DR-07:** committee ownership; the reading of ratified act §10; ADR-0001 | PO + ARB |
 | O-7 | **XD-4** authorisation ownership; **XD-5** geography history | ARB |
 | O-8 | which positions are incompatible within an organisation (BQ-P1, CQ-7) | PO |
@@ -94,7 +94,7 @@ Preserve ratified and accepted decisions.
 
 | # | Task | Depends on | Owner | Done when |
 |---|---|---|---|---|
-| T1 | **Decide K7** (O-1). Brief ready: `docs/publicdigit/reviews/2026-11-02-organisation-k7-b1-amendment-decision-brief.md` (options K, B1′, K′; recommendation K′) | — | PO | decision recorded in PBDIGIT-30, BR-12, Decision C §2a, register O-1. PBDIGIT-32 scope re-checked |
+| T1 | ~~Decide K7~~ **DONE 2026-11-02: K′**, recorded in PBDIGIT-30, BR-12, Decision C §2a, register O-1. PBDIGIT-32 is unaffected. Follow-ups: naming (PO); DC-R9 placement (D-1 / ARB); a read-only platform-organisation data check (needs authorisation) | — | PO | done |
 | T2 | **Prepare the DR-07 decision paper** (two readings of ratified §10; options) | — | Claude → PO + ARB | paper ready for the ARB |
 | T3 | **ARB session:** INV-ORG-SCOPE-1 ratification; INV-AFF-1; DR-07; XD-4; vocabulary (O-14) | T2 | ARB | acts recorded |
 | T4 | **Accept S1** (`17ef51c5e`) | — | PO / reviewer | acceptance recorded in PBDIGIT-318 |
@@ -153,9 +153,12 @@ Update this record (and the session log) with:
   - the K7 brief.
 - No status changed. Commit: see the session log.
 
+**K7 decided (2026-11-02):** **K′**. B1 stands, and PublicDigit's real organisational life is in a separate operator organisation. Nothing is implemented.
+
 **Next action:**
-- **T1, K7:** the PO answers the brief's single question.
-- In parallel, I can prepare **T2** (the DR-07 paper) without any decision.
+- **T2:** Claude prepares the DR-07 decision paper.
+- **T4:** S1 acceptance (PO / reviewer).
+- Independent of both: the PBDIGIT-317 log-access check.
 
 **Do not:**
 - restart EPIC-002 discovery;

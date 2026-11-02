@@ -2,6 +2,11 @@
 
 **Date:** 2026-11-02 · **Author:** Claude (DDD architect / requirements engineer; authority: generated)
 **Status:** BRIEF FOR A PO DECISION. It decides nothing. B1, Decision C and BR-12 are unchanged by this file.
+**Outcome, 2026-11-02:** the PO chose **K′**. It is recorded in:
+- PBDIGIT-30 B1 (confirmation, not amended);
+- BR-12 (reworded);
+- Decision C §2a;
+- register O-1.
 **Register item:** O-1 (`2026-11-02-organisation-governance-strategic-design-status-assessment.md` §4).
 **Placement:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0).
 
@@ -108,3 +113,73 @@ Re-check PBDIGIT-32's acceptance criteria. No code change follows from the decis
 ## 6. The decision requested
 
 > **Which applies: K′ (keep B1; PublicDigit's real organisational life in its own ordinary organisation), B1′ with the User-only visibility rule, or K (keep B1, withdraw BR-12)?**
+
+---
+
+## 7. Decision recorded (PO, 2026-11-02): K′
+
+**Rationale (PO):**
+- K′ separates **platform participation** (a person has an account and uses PublicDigit) from **organisational membership** (a person belongs to an organisation and takes part in its life).
+- Creating a PublicDigit account does not, by itself, establish membership in the operator organisation.
+- Account, affiliation and membership remain distinct concepts with their own lifecycle and ownership rules.
+- B1′ was not selected because it would have needed a visibility exception to compensate for coupling registration to a real organisation.
+
+**What it does not authorise:**
+- schema changes;
+- production data changes;
+- creating the operator organisation;
+- the Membership–Election slices S2–S4.
+
+### 7a. Target behaviour and affected code paths (recorded; nothing implemented)
+
+| Concern | Target under K′ | Today | Code path |
+|---|---|---|---|
+| Registration (password) | User affiliation in the bootstrap organisation; never Membership (DC-R1, DC-R2) | role `member` (gap G-6, independent of K7) | `app/Http/Controllers/Auth/RegisterController.php:60-64` |
+| Registration (Google) | the same | no affiliation (F-C-5) | Decision C §4, E-5 |
+| Identifying the bootstrap organisation | `type = 'platform'` and `is_default` | the same | `app/Models/Organisation.php:193-198`; `app/Services/DashboardResolver.php:904-906` |
+| Sign-in counting (B1.3) | exclude the bootstrap organisation only; count the operator organisation like any other | the same | `DashboardResolver.php:756-762, 925-933` |
+| **Constraint** | the operator organisation must **not** carry `type = 'platform'` or `is_default`, or routing would exclude it | — | — |
+| Fallback | no silent substitution (INV-ORG-SCOPE-1) | `?? Organisation::first()` | `app/Services/OrganisationUserImportService.php:39` (PBDIGIT-309) |
+
+**PBDIGIT-32:**
+- Its scope stays valid: "ignore the bootstrap organisation, count the real ones" is unchanged.
+- Its "one definition of real organisation" (acceptance criterion, `:54`) must keep the constraint above.
+- No rewrite is needed.
+
+### 7b. Verification prerequisite: read-only production check
+
+**Question.** Does the production platform organisation hold real organisational data that would have to be preserved or moved to the operator organisation? That means anything beyond the `member` rows that registration writes automatically.
+
+**Authorisation.**
+- PO and Ops.
+- A read-only connection, for each environment checked.
+- **Not run by Claude without that authorisation.** No writes.
+
+**Evidence to capture.**
+- Counts only; no personal data.
+- Environment name, timestamp, and who ran it.
+
+```sql
+-- Q0: identify the bootstrap organisation exactly as the code does (slug differs by seed, PBDIGIT-309)
+SELECT id, slug, type, is_default FROM organisations WHERE type = 'platform';
+
+-- Q1: role distribution in it. Anything other than 'member' indicates real use.
+SELECT role, COUNT(*) FROM user_organisation_roles
+WHERE organisation_id = :pid GROUP BY role;
+
+-- Q2: 'member' rows not created together with the account (possible real assignments)
+SELECT COUNT(*) FROM user_organisation_roles r JOIN users u ON u.id = r.user_id
+WHERE r.organisation_id = :pid AND r.role = 'member'
+  AND ABS(EXTRACT(EPOCH FROM (r.created_at - u.created_at))) > 60;
+
+-- Q3: every organisation-scoped table, then a row count per table for :pid
+SELECT table_name FROM information_schema.columns
+WHERE column_name = 'organisation_id' AND table_schema = 'public';
+-- for each table t:  SELECT COUNT(*) FROM t WHERE organisation_id = :pid;
+-- (of interest: members, membership_*, committee_*, elections, voters, organisation_users, election_memberships)
+```
+
+**Reading the results.**
+- **No data to preserve:** Q1 shows only `member`, Q2 = 0, and Q3 shows no rows outside `user_organisation_roles` / `users`.
+- **Otherwise:** a preservation and migration decision is needed before the operator organisation is created.
+- **Do not infer the result from the target design.**
