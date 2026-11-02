@@ -62,7 +62,7 @@ None substitutes for another.
 | the PublicDigit **User** affiliation | the PublicDigit organisation; created by **registration**, never by import | **no**: A is not the owning organisation | BR-2, BR-10, Decision C DC-R1; INV-ORG-SCOPE-1 |
 | another organisation's records | that organisation | **no** | INV-ORG-SCOPE-1 |
 | the login account | Identity | **no**: an organisation may at most *request* review or suspension | XD-3c R-XD3c-1, R-XD3c-3 |
-| the global Person | Identity | **no** | Person owned by Identity (ratified `2026-10-08-membership-architecture-ratified.md:41`; XD-3b); XD-3c R-XD3c-4 (account changes never delete the Person). XD-3a C-5 governs **merges** only. |
+| the global Person | Identity | **no** (*amended by AM-1, §5a: the original importer may ask Identity to delete a never-registered Person under strict conditions*) | Person owned by Identity (ratified `2026-10-08-membership-architecture-ratified.md:41`; XD-3b); XD-3c R-XD3c-4 (account changes never delete the Person). XD-3a C-5 governs **merges** only. |
 
 **Consequence:** A ending its relationship with a person never changes the PublicDigit User affiliation, the account or the global Person.
 
@@ -103,11 +103,97 @@ None substitutes for another.
 
 An orphaned bare identifier holds no information about anyone.
 
+## 5a. Amendment AM-1 (Principal, 2026-11-02): who may delete a global Person (PROPOSED)
+
+**Principal's selection:** "A + B with rule 1 narrowed".
+
+**What it changes:**
+- It amends §3 (row "the global Person") and §5 ("never deleted as a side effect of an organisation's action") with **one narrow importer exception**.
+- It adds the person's own rights.
+- It is a **change to Identity's deletion authority**, so it needs **ARB approval**. The selection alone does not settle it.
+
+| # | Who | May do what | Conditions |
+|---|---|---|---|
+| AM-1.1 | **The person** | end their own membership or affiliation in **any** organisation | through each organisation's process. For Membership this is the ratified ending kind `resignation` (`app/Contexts/Membership/Domain/Organisational/EndKind.php:15`), recorded as a new fact (§4). **Membership's ending model is not assumed for affiliation**: each context owns its own lifecycle rules. Ending one relationship deletes nothing else. |
+| AM-1.2 | **The person** | ask Identity to delete their **own** account and global Person, **regardless of who imported them** | Identity executes it; erasure and retention rules apply (OQ-3b-2, OQ-PROV-2); consistent with XD-3c |
+| AM-1.3 | **The original importing organisation** | ask Identity to delete an imported global Person | **all** of: (a) the Person **never registered**, i.e. has no account (otherwise R-XD3c-1 and XD-3b apply); (b) the importer proves its status with an **importer capability** (below); (c) **complete** discovery confirms that no organisation still recognises the Person. **If any organisation cannot be checked, the request stays pending or is rejected; it never proceeds on the assumption that no affiliation remains** (fail closed; INV-AFF-1); (d) no retention obligation prevents it; (e) the organisation's internal authority and audit requirements are met (OQ-PROV-4) |
+| AM-1.4 | **Any other organisation** | nothing beyond its own records | INV-ORG-SCOPE-1; §3 |
+| AM-1.5 | **Identity** | validate and **execute** authorised lifecycle operations on accounts and global Persons | the only executor. It preserves account–Person consistency (XD-3b: every account belongs to exactly one Person) and records an audit trail. **The right to request a deletion (AM-1.2, AM-1.3) is not the authority to execute it.** No organisation deletes a global Person directly. |
+
+> **Superseded in part by AM-1 r2 (below):** in AM-1.3, condition (b) "importer capability" is replaced by the person's explicit confirmation. The capability text below is kept as history.
+
+**Importer capability (mechanism direction [R], needs design and ARB approval):**
+- At import, Identity issues the importing organisation a one-time secret, which that organisation stores **in its own database**.
+- Identity keeps only a **fingerprint** linked to the Person, **never to an organisation**.
+- Presenting the secret proves "I am the importer" without Identity ever recording who imported the Person. Organisation-local provenance (§1) and the XD-3b §2 condition stay intact.
+
+**In every case:**
+- Identity executes the deletion and records it in the audit trail.
+- Records under continuing obligations (election evidence, Membership facts, audit) stay under their owners' rules (§4).
+- Deleting the bare Person leaves organisations' own records as references to no one.
+- The original importer is **not** the owner of the Person; AM-1.3 is a conditional right only.
+
+**Why option C (only the importer may delete) was not selected:**
+- A self-registered Person has no importer, so under C nobody, the person included, could ever delete them.
+- It would also deny a registered person a route to erase their own identity (OQ-3b-2; XD-3c).
+
+### AM-1 r2 (Principal, 2026-11-02): deletion by confirmed request (PROPOSED)
+
+**Principal's selection:** the recommended set.
+1. The person's confirmation **replaces** the importer capability.
+2. The confirmation link is delivered by the **importing organisation** to contact details it already holds.
+3. If the person does not respond: **reminders, then expiry; silence is never consent**.
+
+**Where the authority now comes from:**
+- For a never-registered imported Person, the deletion is authorised by **the person's explicit confirmation**. In substance it is the person's own decision (AM-1.2).
+- The original importing organisation only **initiates** the request. It must hold a record of the Person in its own database (INV-ORG-SCOPE-1). Identity still never records which organisation imported the Person (§1).
+- **Identity alone executes** (AM-1.5).
+
+**Process** (a deletion-request process, not a direct deletion command):
+
+| Step | Actor | What happens |
+|---|---|---|
+| 1 Request | Organisation A | initiates a deletion request for a Person it holds a record of, within its own internal authority (OQ-PROV-4) |
+| 2 Token | Identity | issues a **single-use, expiring confirmation token** bound to the Person and to this request. Identity stores **no contact data**: a never-registered Person is a bare identifier (OQ-3b-1 B). |
+| 3 Delivery | Organisation A | delivers the token to contact details **it already holds**. The message states who initiated the request, what is proposed, the consequences, and how to confirm or reject. |
+| 4 Confirmation | the person | must confirm **explicitly**; opening the link deletes nothing. Rejection cancels the request. |
+| 5 Eligibility | Identity | checks that: the token is valid, unexpired and unused; **no account has been registered or linked** to the Person since the request began; **complete** discovery shows no other organisation still recognises the Person (otherwise pending or rejected; protects other organisations' identity links and claim codes); no retention obligation prevents it |
+| 6 Execution | Identity | deletes the global Person and records an audit trail. Organisation A handles its own local records under its retention rules. Other organisations' records and Membership facts are not touched. |
+
+**Scenarios:**
+
+| Scenario | Outcome |
+|---|---|
+| A imported P; P never registered; P confirms; all checks pass | deletion may proceed |
+| A imported P; P is also known to Organisation B | blocked while B still recognises P |
+| A imported P; P registers (before or during the request) | this path no longer applies; P's own deletion request follows Identity's rules (AM-1.2) |
+| P does not respond | reminders, then expiry; the Person remains |
+| P rejects | request cancelled; no deletion |
+| an organisation cannot be checked | blocked: eligibility unproven |
+| P has records under mandatory retention | only legally permissible deletion or anonymisation; confirmation does not override retention |
+
+**Caveats:**
+- **Control of an email address is not proof of identity.** If Organisation A holds outdated contact details, someone else could confirm. For a never-registered bare identifier the harm is limited, but it is not zero (it breaks future claim-binding).
+- **The person's confirmation does not override legal retention obligations**, and does not guarantee that every record can be erased (OQ-PROV-1, OQ-PROV-2, OQ-3b-2).
+
+**Status:** the process is a **business-policy proposal**. The token, delivery, reminders, expiry and the complete-discovery check are **unresolved design proposals for ARB review**.
+
+**Open, added by AM-1:**
+
+| # | Question | Owner |
+|---|---|---|
+| OQ-PROV-5 | **Unresolved design proposal, for ARB review:** the importer capability. Issuance, storage, loss, rotation, revocation when the Person registers, expiry, retries, audit. Can a transferred or replayed capability allow unauthorised deletion? **Possession of a secret proves possession only, not that deletion is still appropriate.** | ARB + Security |
+| OQ-PROV-6 | **Unresolved design proposal, for ARB review:** complete discovery for deletion. Who runs it, timeouts, retry, how long a request may stay pending; the same scale questions as the INV-AFF-1 evaluation (OQ-E-1) | ARB |
+| OQ-PROV-7 | The Person's own deletion lifecycle in Identity: identity verification of the requester, grace period, effect on organisations' references | PO + ARB + legal |
+| OQ-PROV-8 | (AM-1 r2) Confirmation token design: lifetime, number and timing of reminders, rejection handling, audit of request, delivery and confirmation; whether an organisation may resend; message content requirements | ARB + PO + data protection |
+
+**Note on OQ-PROV-5:** under AM-1 r2 the importer capability is no longer required. OQ-PROV-5 is **largely obsolete**, but stays listed until the ARB confirms r2.
+
 ## 6. Scenarios (from the 2026-11-02 analysis)
 
 | Scenario | Result under this record |
 |---|---|
-| A: imported voter, never registers | A may end or remove its own eligible records; the bare global Person remains unless removed by an explicit Identity act |
+| A: imported voter, never registers | A may end or remove its own eligible records; the bare global Person remains unless removed by an explicit Identity act. *Under AM-1.3 (§5a), A may ask Identity for that deletion if the conditions are met.* |
 | B: imported voter, later registers | A's provenance record unchanged; A may end its relationship; account, User affiliation and Person untouched |
 | C: person also affiliated with B | A acts only on its own records; B's records untouched |
 | D: only the PublicDigit User affiliation remains | A has **no authority over the User affiliation** merely because it imported the person. A's own remaining eligible records (e.g. its provenance record) follow §4. The User affiliation belongs to PublicDigit; the account and Person follow Identity's rules (XD-3c; §5). |
@@ -162,6 +248,22 @@ Documentation-only corrections. Status, selection, recommendations and open ques
 - §2: explicit rejection of a global `is_imported` flag and of `imported_by_organisation_id`.
 - §6: Scenario E (imported by A → registers → leaves A → joins B). Its pseudocode uses separate per-organisation references, as the preferred direction records.
 - No status, selection or open question changed.
+
+**Amendment AM-1 (2026-11-02, Principal: "A + B with rule 1 narrowed", PROPOSED):**
+- §5a added; §3 row and Scenario A annotated.
+- The original §5 text is kept as history; AM-1 narrows it.
+- New open questions: OQ-PROV-5, -6, -7.
+- **Refined the same day (Principal Reviewer safeguards):**
+  - request ≠ execution (AM-1.5);
+  - incomplete discovery → the request stays pending or is rejected;
+  - Membership's ending model is not assumed for affiliation;
+  - the importer capability and complete discovery are explicitly **unresolved design proposals for ARB review**;
+  - OQ-3b-2 and the retention questions stay open.
+- **AM-1 r2 (Principal accepted the recommended set):**
+  - the person's confirmation replaces the importer capability;
+  - the importing organisation delivers an Identity-issued single-use token to contact details it already holds;
+  - reminders, then expiry; silence is never consent.
+  - Added: the process, scenarios and caveats; OQ-PROV-8. OQ-PROV-5 is marked largely obsolete.
 
 **All six evidence references in §8 were re-verified unchanged:** `OrganisationUserImportService.php:322`, `VoterImportService.php:274`, `DeleteAccountController.php:30`, `User.php:41`, `create_members_table.php:29`, `create_membership_applications_table.php:17`.
 
