@@ -1,5 +1,33 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-11-02, PublicDigit strategic DDD discovery): Person / Account / Organisation / Affiliation; INV-ORG-SCOPE-1 Stage 1 done; PBDIGIT-317 opened
+*Written by Claude (DDD architect / requirements engineer session) on the Principal's instruction of 2026-11-02. State only; it creates no authority. Additive; the blocks below are unchanged.*
+- **Decision records (all `docs/publicdigit/reviews/`; PROPOSED unless stated):**
+  - XD-3a person identity scope (option A, a platform Person; preferred direction: an internal `person_id` plus a per-organisation `PersonRef`);
+  - XD-3b Person vs Account (B2; personal data organisation-local; claim-code linking);
+  - XD-3c account lifecycle (C);
+  - Decision C: PublicDigit default organisation, User role. **Conflicts with approved PBDIGIT-30 B1 (K7); B1 still stands.**
+  - INV-AFF-1: organisation-owned affiliation with central discovery. Feasibility not established (evaluation + model g15).
+  - **INV-ORG-SCOPE-1: principle approved by the PO 2026-11-01; ARB ratification pending.**
+  - XD-PROV: organisation-local provenance, deletion authority.
+- **Business rules:** BR-1…BR-12 in `docs/publicdigit/business_rules/20261101_1739_person_account_affiliation_business_rules.md`; BR-9 open.
+- **Stage 1 static investigation done** (`docs/publicdigit/reviews/2026-11-02-inv-org-scope-1-stage1-static-investigation.md` + appendix):
+  - 379 bypass sites classified;
+  - PBDIGIT-266 extended (items 6–11);
+  - PBDIGIT-309 extended;
+  - **new PBDIGIT-317 (APP_KEY and voters' private keys written to the log; priority high).**
+- **Not authorised:** Stage 2 (tests, implementation); any product-code change.
+- **Open with the Principal:**
+  - PBDIGIT-317 (log access, APP_KEY rotation, minimal fix);
+  - published results visible across organisations? (OQ-S1-1);
+  - K7 (B1′ amendment);
+  - B1.5 vs B1.3;
+  - scale figures for INV-AFF-1 (organisation count, topology, peak sign-ins);
+  - claim-binding vs duplicate merge;
+  - OQ-PROV-1…4.
+- **Session log:** `.claude/sessions/2026-11-02.md`.
+- **Next action:** Principal decision on PBDIGIT-317, then the Stage 2 prerequisites (isolated test DB, INV-ORG-SCOPE-1 ARB ratification).
+
 ## 📍 UPDATE (2026-11-01, KnowledgeOS theory lane) — consolidation S0278–S0302 in review (restarted); faster reading deferred; one Governance Engineer session
 *Written by the Governance Engineer (session `57ddce41…`, active under Option A) on the Principal's instruction of 2026-11-01, item 8. State only; it creates no authority.*
 - **Research (Professor):** S0001–S0302 read. **Consolidation S0278–S0302** (planted-gap test; Ch. 2 and Ch. 3 rotated): copy sealed, independent check PASS before reviewers started; first runs stopped by the usage limit (2026-10-31T17:39Z); **reviewer A restarted fresh 2026-11-01 13:55 CET; B and C follow**. Reading resumes at S0303 only after the settlement, with the authorised time measurement.
