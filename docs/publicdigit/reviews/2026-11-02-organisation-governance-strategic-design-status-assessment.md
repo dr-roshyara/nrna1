@@ -67,7 +67,7 @@ No status changed.
 | A-3 | BR-10, BR-11, BR-12 | PO direction (BR-12 needs the B1 amendment, O-1) | same |
 | A-4 | D-1 tenancy direction: option C as **candidate** | conditional on validation (U-1…U-5) and the ARB (INV-AFF-1 etc.) | `2026-11-02-organisation-xd15-tenancy-and-data-ownership-decision-proposal.md` §8a |
 | A-5 | Membership–Election: option A as the first milestone | decided; the plan is accepted only as PROPOSED | `2026-11-02-membership-election-separation-decision-record.md` |
-| A-6 | PBDIGIT-318 S1 (static guards, baseline V1, V1b, V2, V3′) | approved and **implemented** (`17ef51c5e`); **awaiting acceptance** | plan `docs/plans/20261102-0339-…-plan.md` |
+| A-6 | PBDIGIT-318 S1 (static guards, baseline V1, V1b, V2, V3′) | approved and **implemented** (`17ef51c5e`); **awaiting acceptance**. *Status update (2026-11-02, source PBDIGIT-318 and plan):* S1 **closed as superseded by S1b** (`712bf8930`). **S1b accepted** by the PO with documented residual risks (`95dcdb62b`; baseline V1, V1b, V1c, V1d, V2, V3′). The baselined violations remain known violations, not compliance | plan `docs/plans/20261102-0339-…-plan.md` |
 | A-7 | PBDIGIT-317 triage | authorised; first step for the PO / Ops | `docs/publicdigit/backlog/PBDIGIT-317-…md` |
 
 ## 3. PROPOSED (awaiting approval)
@@ -157,7 +157,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | V-1 | deployed foreign keys and indexes (V3′; C11 unique indexes) | read-only catalog query | PO / Ops authorisation |
 | V-2 | production platform-organisation slug (fallback path a or b) | read-only query | Ops (PBDIGIT-309) |
 | V-3 | `LOG_CHANNEL` override; log access (PBDIGIT-317) | environment check | PO / Ops |
-| V-4 | S1 acceptance | review of `17ef51c5e` | PO / reviewer |
+| V-4 | S1 acceptance | review of `17ef51c5e` | PO / reviewer. *Closed 2026-11-02:* S1 superseded; S1b accepted after two independent reviews (PBDIGIT-318) |
 | V-5 | PBDIGIT-266 items (static findings) | feature tests | needs O-4 |
 | V-6 | INV-AFF-1 discovery at the target scale | the evaluation with U-1…U-5 | after O-3 |
 | V-7 | real organisational data in the production platform organisation (before any operator-organisation creation or migration; K7) | read-only queries Q0–Q3, K7 brief §7b | PO / Ops authorisation |
