@@ -17,3 +17,10 @@
 - **R2 (`undefined_terms.py --scope 08.92`):** tiers A–C: none in scope. Tier D judged as ordinary English or the source's sense.
 - **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0368 with "[IT]" substituted, S0365 likewise, §9.18, §9.16):** 99 checked; every quote matched after one unverified book reference was removed and three spans of the Professor's wording were unquoted, before the draft's commit.
+
+**At settlement (v2).**
+- **R2:** W's run (`--no-corpus`, scratch copy): tiers A–C none in scope; 33 tier D judged ordinary English or the source's sense. v2 adds no term outside those judgements.
+- **Quote check (`qc.py`, v2, against S0368 and S0365 with "[IT]" substituted, §9.16, §9.18, §9.19, §9.20):** 130 checked. The misses are quotations of the withdrawn draft in §8.92.5 and the "(W, step 1)" marker.
+- **R3:** none (`inbound_citations.py` for §8.92 C1–C6: none outside §8.92 and the index row; W).
+- **Book item for the consolidation (W-12):** §9.18.5 L151 ("The rule is W's (version g)") is stale since U2 (§9.19 L396).
+- **W's procedure:** copies by path from the list (250 files); tools on the scratch copy; §8.92 and the S0365/S0367 lines read in the repository (allowed, read-only); `--help` on four scratch tools; one harness file holding W's own printed output of the brief and copy list was read back. No access problem.
