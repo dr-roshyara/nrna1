@@ -1,5 +1,6 @@
 # Membership Architecture Verification and Completion Plan
 
+**Status update (2026-11-02): ADOPTED by the PO** as the single Membership delivery roadmap (G-A7), with corrections **R-1 to R-6** applied below and marked "R-n (2026-11-02)". The corrections came from the Membership next-step review of 2026-11-02, which rests on `docs/publicdigit/reviews/2026-11-02-membership-ddd-status.md`. Adoption fixes the sequence and gates. It accepts no slice and authorises no implementation; each wave still needs its own authorisation. The original status line follows, unchanged.
 **Author:** Session 1 (Architecture and Requirements Authority). **Status:** PROPOSED. This plan decides nothing and approves nothing; every decision and acceptance it names belongs to the owner listed. It reopens no ratified decision (§3.3).
 **Baseline:** branch `election-flow-updated`, HEAD `ebdfee484` (2026-10-16). Working tree contains other sessions' uncommitted changes (§8), which are not part of the baseline.
 **Method:** requirements extracted from the ratified and decided records (§1); two independent read-only conformance reviews (C-1 against its approved contract, Slice 2a against its approved plan), each finding with `file:line`; the material findings re-read in the code by Session 1. **No test was run, no database was used, no code was changed.** Test results cited are REPORTED, not observed.
@@ -124,7 +125,7 @@ None of V-1 … V-12 changes a ratified or decided rule. V-1, V-3, V-4, V-9, V-1
 | **G-A6** | Authority model incomplete: D-4 approved an interim mirror for "admit **and** end", but legacy has no ending policy (Slice 2 plan §2 F9), so End is denied; who may Annul / Void / Correct (CQ-3) and hear appeals (CQ-9) is open | DR D-4; plan F9; CC CQ-3/CQ-9 | no ending and no correction can go live | **one Governance decision package**: GOV-END + CQ-3 + CQ-9 + DS-4 + the G-AUTH-1 port extension |
 | **G-A7** | Roadmap drift: EP-01 placed Correct/Annul/Void in Slice 7 after queries and segments; ARB-MEM-01 pulled correction forward as COR-1…4 | EP01 §18; ARB-MEM-01 | two roadmaps in circulation | adopt §5 below as the single sequence (PO sequencing act) |
 | **G-A8** | Queries and projections (EP-01 Slice 3) not started; Election, UI and the legacy reverse projection (CUT-5) depend on them | EP01 §18 | integration and cutover have nothing to read | W6 |
-| **G-A9** | Committee code inside Membership; seat-vs-membership rule (XC-3, XC-9) unresolved; a cascade from End into Committee would conflict with COR-1 (an annulled End does not restore a cascaded vacate) | ACT N-6; Round 2 report | inconsistent committee rosters | out of Membership scope; prerequisite: the Membership query port (W6). Recommendation for the owners: derived effectiveness (R3), no cascade |
+| **G-A9** | Committee code inside Membership; seat-vs-membership rule (XC-3, XC-9) unresolved; a cascade from End into Committee would conflict with COR-1 (an annulled End does not restore a cascaded vacate) | ACT N-6; Round 2 report | inconsistent committee rosters | out of Membership scope; prerequisite: the Membership query port (W6). Recommendation for the owners: derived effectiveness (R3), no cascade. **R-5 (2026-11-02):** ownership of the committee code is decided under **DR-07a**. The sequence is the Membership owner's answers M-1…M-5, then the ARB (`docs/publicdigit/reviews/2026-11-02-governance-dr07-committee-ownership-decision-paper.md` §16–§17). PO-DR07-01: governance committees are organs |
 | **G-A10** | No append-only guarantee in the database (only by code convention) | B-11 M-11 (proposal) | INV-6 depends on every writer behaving | decide with B-11 (Membership owner) |
 | **G-A11** | Naming collisions (C-n, G-1) | this document's header | wrong gate cited in a decision | adopt COR / CUT / XC / GOV-END prefixes (PO) |
 
@@ -133,7 +134,10 @@ None of V-1 … V-12 changes a ratified or decided rule. V-1, V-3, V-4, V-9, V-1
 | ID | Question | Options (consequence) | Session 1 recommendation | Owner | Blocks |
 |---|---|---|---|---|---|
 | ACC-258/259 | Slice 0 / 1a verdicts | accept / defer | accept after W0 | Human PO / ARB | W0 exit |
+| | **2026-11-02: both ACCEPTED by the PO** (dispositions record §2–§3), before the W0 clean-copy run (see R-6) | | | | |
 | ACC-268 (G3) | COR-1 verdict | accept with residual risks / defer / reject | accept with V-1…V-5 as recorded conditions | Human PO / ARB | COR-2…4 |
+| | **R-1 (2026-11-02):** G3 **deferred for evidence** by the PO (V-2). **V-2 fixed inside PBDIGIT-268** (`115e031de`; C-AMEND-2, gate register row 7). Next: Principal Reviewer review of the fix, then the PO verdict. MEM-K1's "depends on ACC-268" is **superseded** | | | | |
+| **OQ-01** | **R-2 (2026-11-02):** do the kernel tables (`2026_10_09_100000_create_org_membership_tables`) already exist in production, i.e. was CUT-10 passed out of order? | confirm with `migrate:status` per environment (read-only, authorised) | confirm before any schema change | Ops / PO | W2 schema work; W9 |
 | ACC-271 | Slice 2a verdict | accept / defer | accept with V-7…V-12 as Slice 2b / HTTP entry criteria, after PR review | PR, then PO / ARB | Slice 2b |
 | ACC-260 | Slice 1b | stays DEFERRED until Part 2 evidence | — | PO / ARB | Slice 2b |
 | BD-REV-ER | may a correction absorb a whole period? | allow (implicit set-aside) / refuse | refuse | PO | COR-2 |
@@ -160,22 +164,23 @@ None of V-1 … V-12 changes a ratified or decided rule. V-1, V-3, V-4, V-9, V-1
 ```
 W0 evidence + verdicts ─┬─► W2 PostgreSQL foundation ─► W4 COR-2 → COR-4 → COR-3 ─┐
 W1 decision packages ───┤                                                         ├─► W5 Slice 2b ─► W6 outbox + queries ─► W7 slices 4,5,6,8,9 ─► W8 Election/Finance/Audit ─► W9 migration, cutover, UI, retirement
-                        └─► W3 kernel hardening (V-1, V-2, V-3, V-8) ─────────────┘
+                        └─► W3 kernel hardening (V-1, V-3, V-8; V-2 done, R-1) ───┘
 Security track (parallel, must close before any HTTP exposure): PBDIGIT-266, PBDIGIT-270, PBDIGIT-292
 ```
 
 | Wave | Content | Entry criteria | Exit criteria | Who acts |
 |---|---|---|---|---|
 | **W0** | database-free re-run at HEAD (clean export, not the shared tree); PR review of 2a hardening; verdicts ACC-258/259/268/271 | authorisation of the run | outputs + exit codes + hashes stored as evidence; verdicts recorded with conditions | implementer runs; PR reviews; PO / ARB decides |
+| | **R-6 (2026-11-02):** ACC-258 and ACC-259 were accepted by the PO. The 2026-11-02 re-runs used the shared working tree, so the **clean-copy run is still outstanding** (it needs authorisation); it does not reopen those acceptances. C-1 waits on the V-2 review (R-1). | | | |
 | **W1** | decision packages: Governance (GOV-END, CQ-3, CQ-9, DS-4); PO (BD-REV-ER, V-7, V-8, naming); PR (V-5, D-COR-3/4, G-A1 design) | — | decisions recorded in the decision register | owners in §4.2 |
-| **W2** | P-DB + I-1 + provisioning evidence; Part 2 plan reconciled with PBDIGIT-283; fail-closed proof; E4-L; the Membership PostgreSQL suite; then PBDIGIT-264 F-5 → F-4b → F-2 | P-DB provisioned; PV accepted; Part 2 approved | 1b re-entry criteria 1–4 met; ACC-260 decided | infrastructure; implementer; PR; PO / ARB |
-| **W3** | kernel hardening story: V-1 (load validation), V-2, V-3, and V-8 per decision | W0 verdicts; V-8 decided; authorisation | RED → GREEN per item; COR-1 differential still 0 mismatches; golden hash unchanged | implementer; Session 1 conformance review |
+| **W2** | P-DB + I-1 + provisioning evidence; Part 2 plan reconciled with PBDIGIT-283; fail-closed proof; E4-L; the Membership PostgreSQL suite; then PBDIGIT-264 F-5 → F-4b → F-2 | P-DB provisioned; PV accepted; Part 2 approved; **OQ-01 answered (R-2)** | 1b re-entry criteria 1–4 met; ACC-260 decided | infrastructure; implementer; PR; PO / ARB |
+| **W3** | kernel hardening story: V-1 (load validation), ~~V-2~~, V-3, and V-8 per decision. **R-1 (2026-11-02):** V-2 is done inside PBDIGIT-268 (`115e031de`); its review and the C-1 verdict are W0 gates. **R-3 (2026-11-02), parallel:** PBDIGIT-267 (kernel test gaps TG-1…TG-5), separate and separately authorised (ARB-TEST-01); not a W3 exit criterion | W0 verdicts; V-8 decided; authorisation | RED → GREEN per item; COR-1 differential still 0 mismatches; golden hash unchanged | implementer; Session 1 conformance review |
 | **W4** | COR-2 (Correct, g2, CFC+, BD-REV-ER guard) → COR-4 (schema incl. target column and same-Member FK, encode/decode of all fact kinds, load validation, PG race tests) → COR-3 (commands, authority evidence, event emission) | COR-2: BD-REV-ER, D-COR-3. COR-4: W2 done, D-COR-4, V-5. COR-3: CQ-3 / G-AUTH-1, G-A1, COR-4 accepted | CC §14.5 criteria + C-AMEND-1; every kernel-acceptable fact round-trips; no handler bound before COR-4 | as above |
 | **W5** | Slice 2b: container bindings; Eloquent role reader; End authority per GOV-END; trusted envelope (V-7, V-9); `end_kind` CHECK + load checks (V-11); scanner hardening (V-10); handler + adapter integration test | W2 accepted; GOV-END decided; V-7, V-8, V-11 decided; authorisation | AC-11…AC-13 + the criteria in §6 | implementer; Session 1 review; PO / ARB |
 | **W6** | event publication (G-A1); Slice 3 queries / projections (GetMember, Timeline, History, KnownAt) | G-A1 decided; W5 | projections rebuild = incremental; events emitted in the append transaction | as above |
 | **W7** | Slices 4 (Renew / ChangeType), 5 (Suspend / Restore), 6 (numbering), 8 (application → Admit), 9 (Governance port) | per-slice BD decisions; DS-4 for 9 | per-slice ACs | as above |
-| **W8** | Slices 10 (Election, incl. PBDIGIT-265), 11 (Finance), 12 (Audit); committee seat rule (G-A9) through the query port | DS-1/2/5, BD-GVR; owners' contract agreement | parity tests; Election sign-off | context owners |
-| **W9** | Slice 13 migration under CUT-1…CUT-10 and BQ-P; Slice 14 API/UI; Slice 15 retirement | ARB-MEM-01 (COR-1…4 accepted); security track closed; BD-NORM, EP-Q3/Q4 | CUT-1…CUT-10 evidenced; parity 100 % or signed exceptions; rehearsed rollback | PO, Ops, owners |
+| **W8** | Slices 10 (Election, incl. PBDIGIT-265), 11 (Finance), 12 (Audit); committee seat rule (G-A9) through the query port. **R-4 (2026-11-02):** includes the Membership–Election boundary remediation **PBDIGIT-318**. S1 static guards are implemented (`17ef51c5e`) but not accepted; S2–S4 are each separately gated (plan `docs/plans/20261102-0339-membership-election-boundary-remediation-plan.md`) | DS-1/2/5, BD-GVR; owners' contract agreement | parity tests; Election sign-off | context owners |
+| **W9** | Slice 13 migration under CUT-1…CUT-10 and BQ-P; Slice 14 API/UI; Slice 15 retirement | ARB-MEM-01 (COR-1…4 accepted); security track closed; BD-NORM, EP-Q3/Q4; **OQ-01 answered (R-2)** | CUT-1…CUT-10 evidenced; parity 100 % or signed exceptions; rehearsed rollback | PO, Ops, owners |
 
 ---
 
@@ -212,7 +217,7 @@ Security track (parallel, must close before any HTTP exposure): PBDIGIT-266, PBD
 | **Governance owner** | GOV-END, CQ-3, DS-4 | — |
 | **Legal** | LQ-1, D-3-L, CQ-9 / LQ-2 | — |
 | **Infrastructure / Ops** | P-DB, I-1, provisioning evidence; CUT-8, CUT-10 | — |
-| **Election, Finance, Committee owners** | DS-1/2/5, BD-GVR, PBDIGIT-265, G-A9 | — |
+| **Election, Finance, Committee owners** | DS-1/2/5, BD-GVR, PBDIGIT-265, G-A9 (**R-5 (2026-11-02):** G-A9 → DR-07a: the Membership owner, then the ARB) | — |
 
 ---
 

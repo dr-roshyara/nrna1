@@ -178,6 +178,6 @@ This report is a snapshot; its §4 and §6 describe the state before these decis
 | PBDIGIT-268 (C-1), G3 | **DEFERRED FOR EVIDENCE** (V-2) | dispositions §1; backlog 268; README |
 | V-2 fix (story draft MEM-K1) | **authorised**, inside PBDIGIT-268 | same |
 
-**Roadmap:** the delivery roadmap is `docs/publicdigit/membership/architecture/brainstorming/cross_domain_brainstorming/20261016_2219_membership_architecture_verification_and_completion_plan.md` (W0–W9). It is still PROPOSED.
+**Roadmap:** the delivery roadmap is `docs/publicdigit/membership/architecture/brainstorming/cross_domain_brainstorming/20261016_2219_membership_architecture_verification_and_completion_plan.md` (W0–W9). **ADOPTED by the PO on 2026-11-02, with corrections R-1 to R-6** (header status update in that file).
 
 **Test run caveat:** the test run in §3 used the shared working tree. It does not satisfy the roadmap's W0 clean-copy evidence requirement.
