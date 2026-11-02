@@ -115,7 +115,7 @@ Two Membership implementations exist side by side:
 **Still-open Membership business policies:** BD-1, BD-2, BD-SUSP, BD-TERM4, BD-TEN, BD-NU, BD-NORM. *(BD-TYPE and BD-GVR were answered on 2026-11-02 by E0b-S E-3 and E-4: `docs/publicdigit/reviews/2026-11-02-membership-e0b-s-decision-record.md`. BD-REV-ER was decided "refuse" on 2026-11-02: `docs/publicdigit/reviews/2026-11-02-membership-bd-rev-er-decision-record.md`.)*
 - Their questions and recommended answers are in `2026-10-08-membership-final-decision-register.md:36-48`.
 - **They are not decided by this guide.**
-- None of the remaining ones blocks a slice. BD-REV-ER, which blocked COR-2, is decided; COR-2 still waits on D-COR-3.
+- None of the remaining ones blocks a slice. BD-REV-ER ("refuse") and D-COR-3 ("dates only in the first Correct slice"), which blocked COR-2, were decided on 2026-11-02. COR-2 still needs C-1 accepted and its own authorisation.
 
 ## E. What we plan to do next
 
@@ -134,7 +134,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 |---|---|---|---|---|
 | 1 Document the current state | make the business model and status readable | (documentation) | — | this guide exists and is kept current |
 | 2 Membership discovery: types, obligations, dues, Standing (E0b-S) | define what a type obliges, which Finance facts Membership needs, how "good standing" is derived, and how a type classification avoids granting a vote | not a named stage; feeds W7 and W8 | ratified boundary only; no Finance direction needed | a business-rule document with evidence and open questions (BD-TYPE, BD-GVR, DS-1, DS-5). **Done 2026-11-02:** discovery report and decision record E-1…E-5; DS-1 stays with Finance |
-| 3 Complete the lifecycle | Renew, Suspend/Restore, ChangeType, Correct, stored Annul/Void | W4, W7 | W0–W2; D-COR-3 (BD-REV-ER decided: refuse) | every fact kind is decidable, storable and tested; the lapsed/ended distinction is visible |
+| 3 Complete the lifecycle | Renew, Suspend/Restore, ChangeType, Correct, stored Annul/Void | W4, W7 | W0–W2; C-1 accepted (BD-REV-ER and D-COR-3 decided) | every fact kind is decidable, storable and tested; the lapsed/ended distinction is visible |
 | 4 Integration boundaries | Identity, affiliation, Election, Finance, Governance | W5, W6, W8 | GOV-END; OQ-ME-4; fee direction; K3/K4 | published contracts; baselined violations removed |
 | 5 Legacy alignment | migrate without inventing truth | W9 | ARB-MEM-01; CUT-1…CUT-10; OQ-01 | parity evidenced; legacy retired |
 
@@ -149,7 +149,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | Ending | resignation, exclusion, death recorded | PARTIALLY IMPLEMENTED (refused for all actors) | `InterimRoleAuthority.php` | GOV-END | Governance | an authorised actor can end a period |
 | Lapse and renewal | lapsed ≠ ended; renewals keep the gap | RATIFIED; not implemented | ratified §4 | Slice 4 (W7) | — | Renew stored and tested |
 | Suspension | restriction without loss of membership | RATIFIED; not implemented | ratified §4 | Slice 5 (W7) | BD-SUSP | Suspend/Restore stored and tested |
-| Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 | D-COR-3 (BD-REV-ER decided: refuse) | ARB-MEM-01 met |
+| Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 | C-1 acceptance (BD-REV-ER: refuse; D-COR-3: dates only) | ARB-MEM-01 met |
 | Types, obligations, Standing | dues compliance derived from Finance facts; types classify, never grant votes | **DECIDED** (E-1…E-5); not implemented | E0b-S decision record 2026-11-02 | type model, obligations, Standing in the kernel (W7, W8) | DS-1 (Finance); Finance contract (W8) | Standing computed from stored obligations and Finance payment facts, tested |
 | Membership–Election boundary | no Membership vote logic; no direct reads | IMPLEMENTED (guards, S1b ACCEPTED); existing violations baselined | election-boundary guide 02 | S2–S4 | OQ-ME-1…4 | baseline counts reach zero |
 | Persistence on PostgreSQL | durable, isolated storage | IMPLEMENTED; conditionally accepted only | guide 03 | isolated database; Part 2 | P-DB (W2) | suite green on an isolated database |

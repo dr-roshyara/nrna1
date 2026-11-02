@@ -202,6 +202,8 @@
 ## 9. Open decisions (not decided by this contract)
 
 > **Status annotation (2026-11-02): BD-REV-ER DECIDED by the PO, option (b) refuse.** Record: `2026-11-02-membership-bd-rev-er-decision-record.md`. The ER guard and `PeriodAbsorbed` are therefore in scope for C-2. The table row below is kept as written. All other rows remain open.
+>
+> **Status annotation (2026-11-02): D-COR-3 DECIDED by the PO: dates only in the first slice** (Admit and End `effectiveAt`); the initial term, End kind, provenance and authority evidence stay OPEN. Record: `2026-11-02-membership-d-cor-3-decision-record.md`. No decision listed for C-2 (`§10`) remains open; C-2 still depends on C-1.
 
 | ID | Question | Evidence | Options | Recommendation [PROP] | Decider | Blocks |
 |---|---|---|---|---|---|---|
