@@ -30,6 +30,7 @@ Three verified violations (decision record §3):
 **In:**
 - architecture guard rules;
 - V1, V2, V3;
+- *(updated 2026-11-02:* the known violations are now V1, V1b, V1c, V1d, V2 and V3′; V3 was corrected to V3′*)*;
 - the tests that prove the rule.
 
 **Out:**
@@ -61,6 +62,31 @@ Three verified violations (decision record §3):
 - the checks **prevent new violations** of the same three kinds;
 - static only; no database.
 
+### S1b: hardened guard rules (authorised by the PO, 2026-11-02; test-only)
+
+**Why:** the independent review of S1 found two shortfalls:
+- the "static scan for writes to Election tables" covered only `election_memberships`;
+- new violations could hide in baselined files.
+
+The PO deferred S1 acceptance and authorised S1b.
+
+**Scope:**
+- write and reference detection for all Election-owned models and tables, using anchored patterns;
+- a per-file, per-target ratchet;
+- detector self-tests;
+- more foreign-key forms, including landlord migrations;
+- the out-of-scope coupling inventory (recorded in PBDIGIT-318);
+- PHP 8.3.
+
+**Deptrac:** the deptrac rule in the S1 row above was not delivered (guide 01 gives the reason). Formal PO acknowledgement of that deviation is **open**.
+
+**Exclusions:**
+- no new scan paths;
+- no automatic baseline growth;
+- OQ-ME-3 and OQ-ME-4 are not resolved;
+- no runtime change.
+
+**Acceptance:** an independent review of S1b, then the PO.
 ### S2: remove V1 (pending; gated)
 
 **Gates:**
@@ -109,7 +135,12 @@ Three verified violations (decision record §3):
 - [x] Record Decision 1 and Decision 2
 - [x] PO approval of S1 (baseline V1, V1b, V2, V3′)
 - [x] S1 implemented
-- [ ] S1 accepted (PO / reviewer)
+- [ ] S1 accepted (PO / reviewer). **Deferred by the PO, 2026-11-02**, pending S1b
+- [x] S1b authorised (PO, 2026-11-02, test-only)
+- [x] S1b implemented (uncommitted at the time of writing)
+- [ ] S1b independently reviewed and accepted (PO)
+- [ ] PO acknowledgement of the deptrac deviation
+- [ ] S2 scope extended to V1c and V1d (decided by the PO 2026-11-02; design needs approval)
 - [ ] S2 scope extended to V1b: remove `Member::canVoteInElection`; move the voting-rights rule to Election; change `MemberCanVoteInElectionTest` (needs approval)
 - [ ] OQ-ME-1…4 answered
 - [ ] Isolated test database available (T-13)
@@ -143,6 +174,15 @@ Three verified violations (decision record §3):
   - Guide: `developer_guide/membership_election_boundary/01_s1_static_boundary_guards.md`.
   - **Status: implemented, awaiting acceptance** (engineering does not accept its own work).
   - Deviation from the plan: no deptrac rule, because deptrac's layers do not cover Membership, `app/Contexts/Elections` or `app/Models`. The static test covers all three rules (reason recorded in the guide).
+- **2026-11-02, S1 review:**
+  - evidence pack (author) and an independent review (fresh session) both found that S1 does not meet the write-detection promise;
+  - the "Mutation checks passed" line above covers only the baseline ratchet, not detection coverage.
+- **PO decision:** S1 deferred; S1b authorised (scope in "S1b" above).
+- **S1b implemented:**
+  - RED: 28 of 38 against stubs. GREEN: 41 tests and 52 assertions under PHP 8.5 and PHP 8.3.
+  - New V1c and V1d were baselined by PO decision.
+  - Guide 02; inventory in PBDIGIT-318.
+  - A project-wide PHP-version mismatch was found and recorded as PBDIGIT-319.
 
 ## Risks
 

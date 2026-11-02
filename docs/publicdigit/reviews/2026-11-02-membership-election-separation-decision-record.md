@@ -64,6 +64,12 @@ The original V3 text is kept above as history.
 - No production caller; specified by `tests/Feature/Membership/Domain/MemberCanVoteInElectionTest.php`.
 - **PO decision (2026-11-02):** add V1b to the S1 baseline and to S2's scope.
 
+### Additions V1c and V1d (2026-11-02, found by the S1b RED run)
+
+- **V1c:** `Member::voters()` → `hasMany(Voter::class, 'member_id')` (`app/Models/Member.php:82-85`). A Membership model relation into Election's `voters` table; the code side of V3′.
+- **V1d:** the Membership job `CleanupExpiredInvitations` soft-deletes Election-owned `VoterInvitation` records (`app/Contexts/Membership/Infrastructure/Jobs/CleanupExpiredInvitations.php:38-43`; `voter_invitations` is keyed by `election_id`). A Membership → Election write of the V1 kind.
+- **PO decision (2026-11-02):** add V1c and V1d to the baseline and to S2's scope.
+
 ## 4. Open items
 
 | # | Question | Owner |
