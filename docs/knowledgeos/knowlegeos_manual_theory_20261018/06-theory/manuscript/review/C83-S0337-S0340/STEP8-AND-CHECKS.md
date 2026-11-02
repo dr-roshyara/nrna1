@@ -21,3 +21,4 @@
 - **R2 (`undefined_terms.py --scope 08.76`):** no tier A, B or C line names §8.76. Tier D in scope, judged: appointment, continue, create, created, freedom, quoted, reviewer: ordinary English or the sources' own sense; "freedom" is quoted from the resolver's message (S0337 L34).
 - **R3:** none proposed.
 - **Quote check:** a script compared the quoted spans with S0337–S0340 (and S0336, S0322 for the cross-quotes); every source quote matched.
+- **R3 (settlement):** §8.75 C5, §8.71 C2. **R2:** "subagent", "session label" defined (W-16); "sanctioned" removed (W-08).
