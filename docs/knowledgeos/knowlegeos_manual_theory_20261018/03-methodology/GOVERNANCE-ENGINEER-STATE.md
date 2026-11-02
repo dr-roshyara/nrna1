@@ -13,7 +13,7 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | **S0352**; consolidation S0328–S0352 in review (planted-gap test scored 3 of 4; stage 2 awaits the Principal). The standing instruction (Option A) and its extension through S0352 are recorded | decision record |
+| Reading | **S0352**, stopped; consolidation S0328–S0352 settled. Resumes at S0353 only on the Principal's instruction | decision record |
 | Consolidation S0278–S0302 (a planted-gap test) | **Settled.** Run 2 (fresh) scored blind 3 of 4 (Q4, a stale pointer, missed); stage 1 `2b9441cc9`; stage 2 `e3ac4df54`, guard checked | `review/CONSOLIDATION-S0278-S0302/PLANTED-GAP-RESULT.md` (`6844d88e5`) |
 | Sealed key and manifest | **Released** after scoring (key `c0427904…`, manifest `6371c741…`, both unchanged) | `PLANTED-GAP-RESULT.md`; ACCESS-RECORD |
 | Req/A theory turn | **Settled; U1–U6 decided** (§9.19 v2, `fb146c3a6`; rulings confirmed, decision record 2026-11-01T17:32:50Z). U5 (a) EF; U6 (a) O1 per act kind, D clauses later (T9-21); U2 (a) g1's class, kernel; U1 (b) T9-02 later; U3 (b) unfixed, scoped; U4 (d) deferred. No minimal kernel of KnowledgeOS stated; uniqueness after U6 holds in the toy model only. **T9-21 and T9-02 wait for a later authorised turn** | decision record; `review/REQ-A-TURN/SETTLEMENT.md` |
@@ -45,7 +45,8 @@
 
 ## Waiting for
 
-- **Consolidation S0328–S0352 (a planted-gap test):** all five reports saved; **scored blind 3 of 4** (Q2, a stale pointer within Ch. 8, missed); key released; stage-2 guard in `review/CONSOLIDATION-S0328-S0352/PLANTED-GAP-RESULT.md`. **Stage 2 waits for the Principal's authorisation.** Reading stays at S0352 until the consolidation settles.
+- **Consolidation S0328–S0352: settled** (stage 2 `87ce85f47`, freeze lifted). Planted-gap test blind 3 of 4. Stage-2 guard checked by the Governance Engineer (2026-11-02T13:40Z): A-02, D-01, F-01 not applied; the four working lines read as the base; no planted text in the working book; no reference-table source row removed without re-adding. *The Principal's words authorising stage 2 were not given to the Governance Engineer.*
+- **The Principal:** whether reading resumes at S0353, and under what instruction (the standing instruction's extension ended at S0352). Next planted-gap test: the consolidation S0378–S0402.
 
 ## Next actions (Governance Engineer)
 
