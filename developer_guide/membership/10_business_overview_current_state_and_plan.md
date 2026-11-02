@@ -103,7 +103,7 @@ Two Membership implementations exist side by side:
 | Renew, Suspend/Restore, ChangeType are not built | missing capability | the new kernel cannot yet show "lapsed", "suspended" or a type change | roadmap W7 (Slices 4, 5) |
 | Correct is not built; Annul/Void are not stored | missing capability | errors cannot yet be fixed end to end. **No cutover or live write before correction is complete** (DECIDED, ARB-MEM-01) | roadmap W4 (COR-2 → COR-4 → COR-3) |
 | Who may end a membership | open decision (GOV-END, Governance) | ending through the new kernel is impossible | roadmap W1/W5 |
-| Membership types, obligations, dues and "good standing" | missing capability **and** an undiscovered business area (E0b-S) | the new kernel has no type model and cannot say whether dues are met | proposed discovery (§E) |
+| Membership types, obligations, dues and "good standing" | missing capability. The business rules are **DECIDED** (E0b-S E-1…E-5, 2026-11-02): Membership owns the dues obligation; Finance owns payments; Standing = every obligation due is paid, waived or exempted, within a grace period | the new kernel has no type, obligation or Standing model yet | roadmap W7 (types, ChangeType) and W8 (Finance) |
 | Legacy: "expired" mixes lapsed and ended; rows updated in place | confirmed deviation | history and the lapsed/ended distinction are lost in production data | migration W9 (never invent truth, BR-18) |
 | Legacy: membership logic answers voting questions (`Member::canVoteInElection`; the `grants_voting_rights` type flag; Election reads Membership tables) | confirmed deviation (baselined V1, V1b, V2, V3′) | membership can silently act as a vote | `PBDIGIT-318` S2–S4 (roadmap W8); BD-GVR open |
 | Legacy: Membership marks fees "paid" and tells Finance | confirmed deviation (direction reversed) | payment truth sits in the wrong place | Finance integration (W8); direction to be decided |
@@ -112,7 +112,7 @@ Two Membership implementations exist side by side:
 | How the person reference is produced; where affiliation is stored; the Election contract; physical persistence | open integration decisions (K3/K4, BR-9, OQ-ME-4, D-1/Q-new-1) | affect only Membership's edges, **not** its core | foundation audit §6–§7 |
 | Production state of the kernel tables (OQ-01) | evidence needed | unknown whether the migration already ran in production | W2 (read-only check, needs authorisation) |
 
-**Still-open Membership business policies:** BD-1, BD-2, BD-SUSP, BD-TERM4, BD-TEN, BD-NU, BD-TYPE, BD-GVR, BD-NORM, BD-REV-ER.
+**Still-open Membership business policies:** BD-1, BD-2, BD-SUSP, BD-TERM4, BD-TEN, BD-NU, BD-NORM, BD-REV-ER. *(BD-TYPE and BD-GVR were answered on 2026-11-02 by E0b-S E-3 and E-4: `docs/publicdigit/reviews/2026-11-02-membership-e0b-s-decision-record.md`.)*
 - Their questions and recommended answers are in `2026-10-08-membership-final-decision-register.md:36-48`.
 - **They are not decided by this guide.**
 - Only BD-REV-ER blocks a slice (COR-2).
@@ -133,7 +133,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | Step | Objective | Roadmap stage | Depends on | Done when |
 |---|---|---|---|---|
 | 1 Document the current state | make the business model and status readable | (documentation) | — | this guide exists and is kept current |
-| 2 Membership discovery: types, obligations, dues, Standing (E0b-S) | define what a type obliges, which Finance facts Membership needs, how "good standing" is derived, and how a type classification avoids granting a vote | not a named stage; feeds W7 and W8 | ratified boundary only; no Finance direction needed | a business-rule document with evidence and open questions (BD-TYPE, BD-GVR, DS-1, DS-5) |
+| 2 Membership discovery: types, obligations, dues, Standing (E0b-S) | define what a type obliges, which Finance facts Membership needs, how "good standing" is derived, and how a type classification avoids granting a vote | not a named stage; feeds W7 and W8 | ratified boundary only; no Finance direction needed | a business-rule document with evidence and open questions (BD-TYPE, BD-GVR, DS-1, DS-5). **Done 2026-11-02:** discovery report and decision record E-1…E-5; DS-1 stays with Finance |
 | 3 Complete the lifecycle | Renew, Suspend/Restore, ChangeType, Correct, stored Annul/Void | W4, W7 | W0–W2; BD-REV-ER | every fact kind is decidable, storable and tested; the lapsed/ended distinction is visible |
 | 4 Integration boundaries | Identity, affiliation, Election, Finance, Governance | W5, W6, W8 | GOV-END; OQ-ME-4; fee direction; K3/K4 | published contracts; baselined violations removed |
 | 5 Legacy alignment | migrate without inventing truth | W9 | ARB-MEM-01; CUT-1…CUT-10; OQ-01 | parity evidenced; legacy retired |
@@ -150,7 +150,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | Lapse and renewal | lapsed ≠ ended; renewals keep the gap | RATIFIED; not implemented | ratified §4 | Slice 4 (W7) | — | Renew stored and tested |
 | Suspension | restriction without loss of membership | RATIFIED; not implemented | ratified §4 | Slice 5 (W7) | BD-SUSP | Suspend/Restore stored and tested |
 | Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 | BD-REV-ER | ARB-MEM-01 met |
-| Types, obligations, Standing | dues compliance derived from Finance facts; types classify, never grant votes | OPEN (undiscovered) | e0b `:68, :351` | discovery (Step 2) | BD-TYPE, BD-GVR, DS-1, DS-5 | business rules documented |
+| Types, obligations, Standing | dues compliance derived from Finance facts; types classify, never grant votes | **DECIDED** (E-1…E-5); not implemented | E0b-S decision record 2026-11-02 | type model, obligations, Standing in the kernel (W7, W8) | DS-1 (Finance); Finance contract (W8) | Standing computed from stored obligations and Finance payment facts, tested |
 | Membership–Election boundary | no Membership vote logic; no direct reads | IMPLEMENTED (guards, S1b ACCEPTED); existing violations baselined | election-boundary guide 02 | S2–S4 | OQ-ME-1…4 | baseline counts reach zero |
 | Persistence on PostgreSQL | durable, isolated storage | IMPLEMENTED; conditionally accepted only | guide 03 | isolated database; Part 2 | P-DB (W2) | suite green on an isolated database |
 | Legacy cutover | one Membership implementation | OPEN | CUT-1…CUT-10 | W9 | ARB-MEM-01, OQ-01 | legacy retired |

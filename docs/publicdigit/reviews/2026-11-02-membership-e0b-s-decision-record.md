@@ -1,7 +1,7 @@
 # Membership E0b-S: decision record (types, obligations, dues, Standing)
 
 **Date:** 2026-11-02 · **Recorded by:** Claude (DDD architect), on the PO's instruction
-**Status:** **E-1 DECIDED by the PO (2026-11-02).** E-2…E-5 are prepared and OPEN. E-6 belongs to Finance.
+**Status:** **E-1 DECIDED by the PO (2026-11-02). E-2…E-5 DECIDED by the PO (2026-11-02).** E-6 belongs to Finance.
 **Evidence:** `docs/publicdigit/reviews/2026-11-02-membership-e0b-s-types-obligations-dues-standing-discovery.md` (the discovery report; its §B sets out the conflict, its §E the options).
 **Placement:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0); `reviews/*-decision-record.md` convention.
 
@@ -44,17 +44,54 @@
 - Finance consumes obligation facts in order to book them; the contract is part of the Finance integration (roadmap W8, slice 11);
 - DS-1 (fees for trimmed periods) stays Finance's policy. Membership supplies `PeriodTrimmed` / `TrimRevived`.
 
-## 2. Prepared, not decided (E-2…E-5)
+## 2. E-2…E-5: DECIDED (PO, 2026-11-02)
 
-The exact proposed wording is in the discovery report §E. Status of each: **OPEN**.
+**PO words:** "accept E-2 to E-5, record them and commit".
 
-| # | Question | Recommendation (PROPOSED) |
-|---|---|---|
-| E-2 | What "in good standing" means | met when every obligation due by t is paid, waived or exempted, within the organisation's grace period; partial payment does not meet an obligation |
-| E-3 | Type change within a period (BD-TYPE), and dues | yes; a new type segment from its effective date; dues follow the new type; proration per the organisation's dues rule |
-| E-4 | The voting label on a type (BD-GVR) | a classification only; Election alone decides whether its voter list requires it |
-| E-5 | Lifetime and dues-free types | lifetime never lapses; no dues means no obligations, so Standing is trivially met |
-| E-6 | Fees for trimmed periods (DS-1) | Finance's policy; no Membership decision |
+Each decision is the wording proposed in the discovery report §E, accepted unchanged.
+
+### E-2. What "in good standing" means
+
+> "Standing(t) is met when every dues obligation due on or before t is paid, waived or exempted, allowing the organisation's grace period. Partial payment does not meet an obligation."
+
+- The grace period is an organisation setting; its value is not decided here.
+- Standing stays derived, never stored (canonical §4).
+
+### E-3. Type change within a period (answers BD-TYPE)
+
+> "Yes. A type change starts a new type segment from its effective date. Dues follow the new type from that date; proration is part of the organisation's dues rule."
+
+- This answers BD-TYPE (`2026-10-08-membership-final-decision-register.md:46`) with its recommended answer.
+- ChangeType facts are therefore in scope for roadmap W7, Slice 4.
+
+### E-4. The voting label on a type (answers BD-GVR)
+
+> "A type may carry a voting classification label. It is published as a classification only. Election alone decides whether its voter list requires it. Membership never derives voting rights."
+
+- This answers BD-GVR (register `:47`) with its recommended answer ("classification").
+- The legacy derivation (`Member::getVotingRightsAttribute`; the Election queries on `grants_voting_rights`) stays a **recorded deviation**, removed under PBDIGIT-318 S2/S3. It is not changed by this decision.
+
+### E-5. Lifetime and dues-free types
+
+> "A type without a term (lifetime) never lapses. A type without dues creates no obligations, so Standing is trivially met."
+
+### E-6. Fees for trimmed periods (DS-1)
+
+Finance's policy. **No Membership decision.** DS-1 stays OPEN with Finance.
+
+### What E-2…E-5 do not change or authorise
+
+- No change to ratified text, INV-11 or D-3.
+- No code, schema or data change. No change to the legacy fee columns or jobs (PBDIGIT-322; roadmap W8/W9).
+- The organisation-level settings these rules need (grace period, dues rule, proration) are named, not designed.
+
+### E0b-S status after this record
+
+- The business model for types, obligations, dues and Standing is **decided**: E-1…E-5, with the discovery report §D as the model.
+- Remaining open:
+  - DS-1 (Finance);
+  - the Finance integration contract for obligation and payment facts (roadmap W8, slice 11);
+  - the separate FeePaid-direction question.
 
 ## 3. Traceability
 
