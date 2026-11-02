@@ -92,7 +92,7 @@ No status changed.
 | O-3 | Scale figures U-1…U-5 | PO + Ops | A-4 validation, P-5 feasibility | Decision D §11 |
 | O-4 | Isolated test database | PO / Ops | every database test; S2–S4 | ARB-SEC-01 (gate FAIL); T-13 |
 | O-5 | INV-ORG-SCOPE-1 §1a: deletion-eligibility check not a permitted platform operation | PO + ARB | P-6 | BR-13-S |
-| O-6 | **DR-07:** committee ownership, the reading of R-3 (aggregate vs context), ADR-0001 | PO + ARB | Governance contracts, F, G, H | decision sheet `2026-10-11-…:51-61` |
+| O-6 | **DR-07:** committee ownership, the reading of R-3 (aggregate vs context), ADR-0001. **OPEN; decision paper prepared 2026-11-02** (`2026-11-02-governance-dr07-committee-ownership-decision-paper.md`, recommends A with B cutover). Premise question OQ-DR07-0 (are committees organs?) goes to the PO | PO + ARB + Membership owner | Governance contracts, F, G, H | decision sheet `2026-10-11-…:51-61`; paper |
 | O-7 | XD-4 authorisation ownership; XD-5 geography history; XD-12 write guard | ARB | H, G | decision sheet |
 | O-8 | BQ-P1 / CQ-7: which positions are incompatible within an organisation | PO | Governance invariants | v1.5 `:344`; committee discovery `:195` |
 | O-9 | BQ-P2 / P3: Membership ↔ tenure | PO | EffectiveTenure | v1.5 `:345-346` |
@@ -110,7 +110,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | Item | Decision required | Owner | Status | Evidence needed | Next action | Must not proceed before it |
 |---|---|---|---|---|---|---|
 | O-1 K7 | keep B1, amend to B1′, or K′ (separate operator organisation) | PO | **RESOLVED 2026-11-02: K′** | a read-only check of real data in the platform organisation (authorisation needed) | creating the operator organisation is **not authorised**; it needs its own story | any data move or code change for the operator organisation |
-| O-6 DR-07 | committee ownership; reading of R-3 (aggregate vs context) against R-7 | PO + ARB | OPEN | ratified act §10 text; ADR-0001; committee code location | **Claude prepares the DR-07 paper (T2)** | Governance contracts; the Membership ↔ Governance relationship (T6); O-8…O-10 modelling |
+| O-6 DR-07 | committee ownership; reading of R-3 (aggregate vs context) against R-7 | PO + ARB | OPEN | gathered in the paper (§3–§4) | **PO answers paper §13**, then Membership owner, then ARB | Governance contracts; the Membership ↔ Governance relationship (T6); O-8…O-10 modelling |
 | O-7 XD-4 | who owns authorisation decisions | ARB | OPEN | permission model inventory (v1.5 §2) | ARB agenda | the authorisation contract; G-5 remediation design |
 | O-7 XD-5 | geography history and jurisdiction | ARB | OPEN | O-11 answers | ARB agenda, after O-11 | Geography context boundary |
 | O-8 | which positions are incompatible within an organisation | PO | OPEN (scope fixed by BR-14) | statutes | PO, with statutes | Governance invariants |
@@ -134,6 +134,11 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | G-4 | R-2 | V3′: `voters.member_id` → `members` ON DELETE CASCADE | `database/migrations/2026_03_07_145529_create_voters_table.php:30` | S4 |
 | G-5 | A-1 | missing context silently substituted; 379 bypass sites (18 potential defects); cross-organisation role cache; unvalidated `X-Tenant-Id` | `2026-11-02-inv-org-scope-1-stage1-static-investigation.md`; PBDIGIT-266 items 5–11; PBDIGIT-309 | Stage 2 (not authorised) |
 | G-6 | R-6 / A-2 | registration creates role `member` instead of User; non-atomic; Google sign-up creates no affiliation (F-C-2…F-C-5) | Decision C §6 | not planned |
+
+**Gap against accepted ADR-0001 (R-7), found by the DR-07 paper §4:**
+- **G-7:** a second committee-membership write path in Governance (`POST` / `DELETE api/v1/governance/committees/{id}/members`). Its aggregate is loaded blank (`app/Contexts/Governance/Infrastructure/Repositories/EloquentCommitteeRepository.php:31-48`), so two contexts write committee membership through different stores.
+- Production use is unverified.
+- Remediation: not planned; follows DR-07.
 
 **Defects against proposed (not ratified) rules, recorded separately:**
 - the committee repository rewrites ended assignment dates (`app/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepository.php:142-149`), against candidate invariant G-9;

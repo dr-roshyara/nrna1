@@ -50,6 +50,10 @@ These protect the running application today. **The single highest-priority prere
 
 ### B-1 · DR-07: who owns the Committee write model?
 
+> **Pointer (2026-11-02):** never decided here. It is deepened by `2026-11-02-governance-dr07-committee-ownership-decision-paper.md`, which carries the decision form (§13).
+> - The conflict is grounded in ratified §11 ("organs"), not in the non-binding N-6.
+> - B is a cutover mechanism, not an ownership option.
+
 | | |
 |---|---|
 | **Facts** | ADR-0001 is **Accepted** and places the write model in `Membership/Domain/Committee` (`docs/adr/ADR-0001-committee-read-write-separation.md:20-21`; ADR index :24). The ratified Membership act note **N-6** calls it a legacy defect, to be placed in Governance (`2026-10-08-membership-architecture-ratification-act.md:19`). The current Governance `Committee` is a stub loaded blank (C-03); the richest behaviour is legacy model B in Membership |

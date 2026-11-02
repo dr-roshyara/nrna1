@@ -95,7 +95,7 @@ Preserve ratified and accepted decisions.
 | # | Task | Depends on | Owner | Done when |
 |---|---|---|---|---|
 | T1 | ~~Decide K7~~ **DONE 2026-11-02: K′**, recorded in PBDIGIT-30, BR-12, Decision C §2a, register O-1. PBDIGIT-32 is unaffected. Follow-ups: naming (PO); DC-R9 placement (D-1 / ARB); a read-only platform-organisation data check (needs authorisation) | — | PO | done |
-| T2 | **Prepare the DR-07 decision paper** (two readings of ratified §10; options) | — | Claude → PO + ARB | paper ready for the ARB |
+| T2 | ~~Prepare the DR-07 decision paper~~ **DONE 2026-11-02:** `docs/publicdigit/reviews/2026-11-02-governance-dr07-committee-ownership-decision-paper.md`. **DR-07 itself stays OPEN.** Next: PO answers §13 (premise OQ-DR07-0, then A or C) → Membership owner → ARB | — | Claude → PO + ARB | paper ready ✔; decision pending |
 | T3 | **ARB session:** INV-ORG-SCOPE-1 ratification; INV-AFF-1; DR-07; XD-4; vocabulary (O-14) | T2 | ARB | acts recorded |
 | T4 | **Accept S1** (`17ef51c5e`) | — | PO / reviewer | acceptance recorded in PBDIGIT-318 |
 | T5 | Governance business rules O-8, O-9, O-10 (statutes) | statutes available | PO | rules recorded |
@@ -156,7 +156,7 @@ Update this record (and the session log) with:
 **K7 decided (2026-11-02):** **K′**. B1 stands, and PublicDigit's real organisational life is in a separate operator organisation. Nothing is implemented.
 
 **Next action:**
-- **T2:** Claude prepares the DR-07 decision paper.
+- ~~T2~~ **The DR-07 paper is ready** (not a decision). **Next:** the PO answers paper §13.
 - **T4:** S1 acceptance (PO / reviewer).
 - Independent of both: the PBDIGIT-317 log-access check.
 
