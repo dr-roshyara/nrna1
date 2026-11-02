@@ -216,3 +216,42 @@ The oracle-and-parity mechanism (B) addresses the last risk.
 > **Are committees organs of governance and, if so, does Governance own the Committee, its positions, appointments and tenure (A: ADR-0001's location clause superseded; legacy code frozen as the behavioural oracle until a Governance model reaches parity), or does the Membership context keep them (C: ADR-0001 unchanged; a Change Request against ratified §11)?**
 
 **Decision:** ☐ A (with B cutover) ☐ C ☐ other: ____ · decided by: ____ · date: ____ · ARB act: ____
+
+---
+
+## 14. Premise: Principal architectural position (2026-11-02)
+
+**Recorded:** the Principal's architectural position on OQ-DR07-0 is **BOTH**. Two different concepts are represented today by committee code, and they must be modelled separately:
+
+| | **DR-07a: governance organs** | **DR-07b: organisational units** |
+|---|---|---|
+| Meaning | constituted bodies with positions, appointments, tenure and authority within a mandate | structure (branch, chapter, wing) through which membership is held |
+| Ownership candidate | Governance (ratified §11 "organs") | Organisation structure (`OrganisationalUnit`, v1.5 candidate; governance map `:57, :87, :115`) |
+| Relation to persons | appointment or position, under governance rules | membership through the unit, under membership rules |
+| Recommendation | **A + B** (unchanged; C not recommended on current evidence) | resolve in the organisation-structure design; no context name, aggregate or store decided |
+| Open | PO confirmation that governance committees are organs | OQ-DR07-1: meaning of `CommitteeAssociation` (Membership owner + PO) |
+
+**Rules recorded with the position:**
+- A membership relationship is not a governance appointment.
+- An organisational unit is not a governance organ merely because both are represented by a `Committee` model.
+- `app/Contexts/Committee/` is a read-model folder; it does not establish a context.
+- The evidence suggests the split; it does not classify individual committee records. That needs domain clarification and later data reconciliation.
+
+**Status of each authority:**
+
+| Act | Status |
+|---|---|
+| Principal architectural position (BOTH; A + B for organs) | **recorded 2026-11-02** |
+| PO business confirmation (governance committees are organs; units are a separate concept) | **pending** |
+| Membership owner: meaning of `CommitteeAssociation`; position on A + B, freeze and reference rule | **pending** |
+| ARB act (Governance ownership of organs; ADR-0001 location clause) | **pending** |
+
+**DR-07 stays OPEN.** Nothing here authorises:
+- code or schema changes;
+- store reconciliation;
+- production queries or data changes;
+- migration.
+
+T6 starts only after DR-07a is decided.
+
+**Naming note:** DR-07a / DR-07b avoid confusion with options A / B / C above, where B is the cutover mechanism.

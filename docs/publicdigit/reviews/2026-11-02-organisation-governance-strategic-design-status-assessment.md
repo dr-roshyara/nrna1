@@ -92,7 +92,7 @@ No status changed.
 | O-3 | Scale figures U-1…U-5 | PO + Ops | A-4 validation, P-5 feasibility | Decision D §11 |
 | O-4 | Isolated test database | PO / Ops | every database test; S2–S4 | ARB-SEC-01 (gate FAIL); T-13 |
 | O-5 | INV-ORG-SCOPE-1 §1a: deletion-eligibility check not a permitted platform operation | PO + ARB | P-6 | BR-13-S |
-| O-6 | **DR-07:** committee ownership, the reading of R-3 (aggregate vs context), ADR-0001. **OPEN; decision paper prepared 2026-11-02** (`2026-11-02-governance-dr07-committee-ownership-decision-paper.md`, recommends A with B cutover). Premise question OQ-DR07-0 (are committees organs?) goes to the PO | PO + ARB + Membership owner | Governance contracts, F, G, H | decision sheet `2026-10-11-…:51-61`; paper |
+| O-6 | **DR-07:** committee ownership, the reading of R-3 (aggregate vs context), ADR-0001. **OPEN; decision paper prepared 2026-11-02** (`2026-11-02-governance-dr07-committee-ownership-decision-paper.md`, recommends A with B cutover). Premise question OQ-DR07-0 (are committees organs?) goes to the PO. **Principal architectural position 2026-11-02: BOTH** (paper §14). DR-07 splits: **DR-07a** governance organs (recommend A + B; PO confirmation, Membership owner, ARB pending); **DR-07b** organisational units → O-16 | PO + ARB + Membership owner | Governance contracts, F, G, H | decision sheet `2026-10-11-…:51-61`; paper |
 | O-7 | XD-4 authorisation ownership; XD-5 geography history; XD-12 write guard | ARB | H, G | decision sheet |
 | O-8 | BQ-P1 / CQ-7: which positions are incompatible within an organisation | PO | Governance invariants | v1.5 `:344`; committee discovery `:195` |
 | O-9 | BQ-P2 / P3: Membership ↔ tenure | PO | EffectiveTenure | v1.5 `:345-346` |
@@ -102,6 +102,7 @@ No status changed.
 | O-13 | OQ-PROV-1…9; OQ-3b-2 / 3 / 4; OQ-3a-1 / 2 (legal basis, separate identities) | PO + legal + ARB | P-1, P-2, P-6 | the respective records |
 | O-14 | Vocabulary split: member / role / observer / ElectionMembership (T-04) | ARB | the context map | governance map §2 |
 | O-15 | Forum product choice; BQ-F1…F3, BQ-P9 | PO | Communication | v1.5 `:352-355` |
+| O-16 | **DR-07b: organisational units** (branch, chapter, wing) now represented as committees. Questions: their ownership (candidate: Organisation, `OrganisationalUnit` v1.5); the meaning of `CommitteeAssociation` (OQ-DR07-1); later, which existing committee records are units and which are organs | PO + Membership owner; ARB for ownership | store reconciliation; DR-07a migration scope | DR-07 paper §14; governance map `:57, :87, :115` |
 
 ## 4a. Decision dependency map (blockers only)
 

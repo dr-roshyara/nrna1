@@ -70,7 +70,7 @@ Preserve ratified and accepted decisions.
 | # | Decision | Owner |
 |---|---|---|
 | ~~O-1~~ | ~~**K7**~~ **resolved 2026-11-02: K′** (B1 stands; operator organisation separate; BR-12 reworded) | PO |
-| O-6 | **DR-07:** committee ownership; the reading of ratified act §10; ADR-0001 | PO + ARB |
+| O-6 | **DR-07:** committee ownership; the reading of ratified act §10 (aggregate) and **§11 (context: "organs")**; ADR-0001's location clause. Paper ready; premise OQ-DR07-0 with the PO | PO + Membership owner + ARB |
 | O-7 | **XD-4** authorisation ownership; **XD-5** geography history | ARB |
 | O-8 | which positions are incompatible within an organisation (BQ-P1, CQ-7) | PO |
 | O-9 | Membership ↔ tenure (BQ-P2 / P3) | PO |
@@ -156,7 +156,15 @@ Update this record (and the session log) with:
 **K7 decided (2026-11-02):** **K′**. B1 stands, and PublicDigit's real organisational life is in a separate operator organisation. Nothing is implemented.
 
 **Next action:**
-- ~~T2~~ **The DR-07 paper is ready** (not a decision). **Next:** the PO answers paper §13.
+- ~~T2~~ **The DR-07 paper is ready** (not a decision).
+- **Principal architectural position (2026-11-02): BOTH** (paper §14):
+  - **DR-07a** governance organs: recommend A + B;
+  - **DR-07b** organisational units → register O-16.
+- **Next:**
+  1. PO business confirmation of the two concepts;
+  2. the Membership owner on `CommitteeAssociation` and on A + B;
+  3. ARB act.
+- DR-07 stays OPEN.
 - **T4:** S1 acceptance (PO / reviewer).
 - Independent of both: the PBDIGIT-317 log-access check.
 
