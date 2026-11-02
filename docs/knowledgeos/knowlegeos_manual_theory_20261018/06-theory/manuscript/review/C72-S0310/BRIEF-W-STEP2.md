@@ -9,7 +9,7 @@
 
 ## Questions
 1. The REVIEWER-INSTRUCTIONS checks for a transition review: each claim against the cited source and book lines; labels; homes; R2; the quote check by hand; R3 for any correction.
-2. Completeness against your inventory: what did §8.62 leave out, and is any omission a loss of theory?
+2. Completeness against your inventory: what did §8.65 leave out, and is any omission a loss of theory?
 3. C1: the arithmetic of the middle answer; the grading of the first answer's "demonstrated" against §8.64 C3.
 4. C2: is the agreement (semantic accuracy vs epistemic correctness) stated with the right qualification (standing and grade bundled)?
 5. C3: "KnowledgeOS can decide"; the admission status set; the trivial abstainer.
