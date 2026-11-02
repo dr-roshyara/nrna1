@@ -1,0 +1,10 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/78dc543b-80f0-4acf-bfa2-2a36be84d3db/scratchpad/d1-wt-7f3c9896b/phpunit.xml
+
+...................................................               51 / 51 (100%)
+
+Time: 00:01.381, Memory: 30.00 MB
+
+OK (51 tests, 62 assertions)

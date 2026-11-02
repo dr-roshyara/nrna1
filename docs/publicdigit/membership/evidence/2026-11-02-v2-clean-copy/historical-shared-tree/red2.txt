@@ -1,0 +1,30 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+F.F                                                                 3 / 3 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\AnnulVoidTest::test_an_annul_without_decision_provenance_is_refused_and_changes_nothing
+attested
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php:316
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\AnnulVoidTest::test_annul_provenance_guard_order
+before AnnulOfVoidRefused
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #363 (AnnulRequiresDecisionProvenance, 'annul_requires_decision_provenance')
++App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #347 (AnnulOfVoidRefused, 'annul_of_void_refused')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php:348
+
+FAILURES!
+Tests: 3, Assertions: 13, Failures: 2.
