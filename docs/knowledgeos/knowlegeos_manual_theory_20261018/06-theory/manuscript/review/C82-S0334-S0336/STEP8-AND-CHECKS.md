@@ -20,4 +20,5 @@
 - **R1:** no new rows.
 - **R2 (`undefined_terms.py --scope 08.75`):** no tier A, B or C line names §8.75. Tier D in scope, judged: appointed, stopped, refute, commissioned, problem, standard, asked, plus, create, quoted, commission, agree, because: ordinary English or the sources' own sense; "standard" is used for S0336's precondition (C4–C5), in its ordinary sense.
 - **R3:** none proposed.
-- **Quote check:** a script compared the quoted spans with S0334–S0336; every source quote matched (multi-line quotes joined with "·").
+- **Quote check:** a script compared the quoted spans with S0334–S0336; one paraphrase was shown as a quotation of S0336 L56 (corrected at settlement, W-09); the others matched.
+- **R3 (settlement):** §8.74 C4 scoped to this work item (W-07).
