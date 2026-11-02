@@ -865,3 +865,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim):** "Issued with reviewers (b)"
 - **Decided:** `03-methodology/COMMISSION-T9-02-STATE-SPACE-THEORY-TURN-20261102.md` (Parts 1 and 2) is **issued**. **Reviewers (b):** two `kos-lane-reviewer` on different models plus one `kos-theory-reviewer`, blind-first and independent. The turn starts after the window in progress settles; the reading position does not move until the turn is settled; reading then resumes under the standing instruction (next stop: the gate after S0402).
 - **Unchanged:** Rulebook v1.4; reading depth; review procedure; access permissions; the git-history ban. Not authorised: the derivation-chain turn, T9-21, architecture or implementation work.
+
+## Addendum 2026-11-02T17:38:57Z: C97 settled on the saved report; T9-02 turn started (recorded by the Governance Engineer)
+
+- **Principal (verbatim, the line sent to the Professor between 2026-11-02T16:00:24Z and 16:09:26Z, as quoted in the Professor's session log `sessions/2026-11-02.md` L244):** "Settle C97 on the saved report; from C98 every commission lists the files that may be copied to scratch. Then do not start C98: start the T9-02 theory turn (03-methodology/COMMISSION-T9-02-STATE-SPACE-THEORY-TURN-20261102.md, issued 2026-11-02, reviewers (b)). Reading stays at S0366 until the turn is settled; it then resumes under the standing instruction."
+- **Principal's confirmation to the Governance Engineer (verbatim):** "I sent that C97 line"
+- **Decided:** C97 (§8.90, S0366) settled on its saved step-2 report despite reviewer W's scratch-copy deviation (`review/C97-S0366/ACCESS-DEVIATION.md`, `e6436fd5d`); settled at `9c2809ffc`. **From C98, every commission lists the files that may be copied to a scratch directory.** Reading held at S0366 for the T9-02 turn (settled `2b204b003`).
+- **Unchanged:** Rulebook v1.4; reading depth; review procedure otherwise; access permissions; the git-history ban.
