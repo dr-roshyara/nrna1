@@ -16,3 +16,9 @@
 - **R2 (`undefined_terms.py --scope 08.89`):** tiers A–B: none in scope. Tier C: "essential", "receive", "protect": the source's words in their ordinary sense. Tier D judged as ordinary English or the source's sense: means-of-knowledge observation-to-integration discrimination (lens labels from the source) eponymou(s) atomically coherence coherent incompleteness (§8.51) receive warn just replaced everything specification nine admit beyond adviser.
 - **R3 (proposed):** none.
 - **Quote check:** a script checked every quoted span against S0365; every source quote matched after four paraphrases were reworded before the draft's commit; the two remaining misses are quotations of the book (§9.18 "not attested", "refuted").
+
+**At settlement (v2).**
+- **Names (restated at review, W-13):** the names rule is applied to persons only; the lens names (Nyāya, Viveka, Ṛta, Dharma, Gaṇeśa, Pāṇinian) stay as the source gives them; the incompleteness theorem's author is "[IT]", including in the quoted heading of L1299 (marked as replaced). The draft's "Names" line above is superseded.
+- **R2 (`undefined_terms.py --scope 08.89`, v2):** see SETTLEMENT.md, Checks.
+- **Quote check (`qc.py`, v2, against S0365, S0363, §1.6 and §9.18):** 112 checked. The 11 misses are quotations of the withdrawn draft in §8.89.5, the Professor's new wording quoted there, and the "(W, step 1)" marker; none is a source quotation.
+- **R3:** none (`inbound_citations.py` for §8.89 C1–C5: none outside §8.89; W).
