@@ -170,8 +170,18 @@ Update this record (and the session log) with:
   2. **ARB:** schedule the session on pack §0. Items 1–2 can go first.
   3. O-16 evidence per paper §18.
 - DR-07 stays OPEN. T6 waits for the DR-07a ARB act and O-8…O-10.
-- **Uncommitted:** the PO-DR07-01 updates and the ARB pack (2026-11-02, HEAD `54cc0af63`).
-- **T4:** S1 acceptance (PO / reviewer).
+- **Uncommitted:** the PO-DR07-01 updates and the ARB pack (2026-11-02, HEAD `54cc0af63`). *(Later committed; see the session log.)*
+- **T4:** S1 acceptance (PO / reviewer). *(Superseded: S1 closed as superseded by S1b; S1b accepted 2026-11-02, PBDIGIT-318.)*
+
+**Context map (2026-11-02, later):**
+- **The consolidation point for strategic relationships** is `docs/publicdigit/architecture/context-map.md`. It is PROPOSED; its location and role were approved by the PO; it was independently reviewed and corrected. It is not ratified.
+- **Q-new-1 and Q-new-2** were routed to the ARB (ARB pack items 6–7; register O-17, O-18).
+- **C4:** option A (unchanged; scope stated in the map).
+- **Still with the PO:**
+  - whether the map supersedes governance map §5;
+  - the PBDIGIT-320 wording (C-9);
+  - the FeePaid direction question.
+- **When resuming:** read the context map §10 (open questions) and §14 (change control) after this record.
 - Independent of both: the PBDIGIT-317 log-access check.
 
 **Do not:**

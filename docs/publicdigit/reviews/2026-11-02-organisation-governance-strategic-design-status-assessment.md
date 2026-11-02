@@ -103,6 +103,8 @@ No status changed.
 | O-14 | Vocabulary split: member / role / observer / ElectionMembership (T-04) | ARB | the context map | governance map §2 |
 | O-15 | Forum product choice; BQ-F1…F3, BQ-P9 | PO | Communication | v1.5 `:352-355` |
 | O-16 | **DR-07b: organisational units** (branch, chapter, wing) now represented as committees. Questions: their ownership (candidate: Organisation, `OrganisationalUnit` v1.5); the meaning of `CommitteeAssociation` (OQ-DR07-1); later, which existing committee records are units and which are organs | PO + Membership owner; ARB for ownership | store reconciliation; DR-07a migration scope | DR-07 paper §14, §15 (PO-DR07-01: units are a separate concept), **evidence plan §18**; governance map `:57, :87, :115` |
+| O-17 | **Q-new-1:** does a direct cross-context **read** count as shared persistence? (OQ-ME-3 covers foreign keys only) | ARB (routed by the PO 2026-11-02) | V2, X-1…X-8; S3; the relationships specification | context map `docs/publicdigit/architecture/context-map.md` §8, §10; ARB pack item 6 |
+| O-18 | **Q-new-2:** is event-only integration meant for the greenfield core, platform-wide, or per relationship? | ARB (routed by the PO 2026-11-02) | ports such as AuthorityCheck / MembershipQueryPort; the C4 legend | context map §7, §10; ARB pack item 7 |
 
 ## 4a. Decision dependency map (blockers only)
 
