@@ -1,0 +1,7 @@
+commit: 1c8611a8634d2a0f1baab206ce90d96eb4d02d3f
+image: docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6e466a7a29ff89eefd611c7b50c4d69aa77fd4a822
+image_digest: sha256:7da5d534f1ffcdb2f69efa6e466a7a29ff89eefd611c7b50c4d69aa77fd4a822
+server_version: 15.19 (Debian 15.19-1.pgdg13+2)
+system_identifier: 7703626511520149538
+host: 127.0.0.1 (port published at random)
+started: 2026-11-02T18:25:21+01:00

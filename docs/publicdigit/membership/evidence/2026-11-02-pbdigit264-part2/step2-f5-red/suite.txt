@@ -1,0 +1,100 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/phpunit.membership-pg.xml
+
+DDDFFDDDDDDDDDFFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
+D                   47 / 47 (100%)
+
+Time: 00:23.109, Memory: 26.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_f5_concurrent_different_ends_under_a_repeatable_read_session_still_record_exactly_one_end
+round 0: errors [["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n             RETURNING version)"],["appended","M1",2],["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n             RETURNING version)"],["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n             RETURNING version)"]]
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => Array &1 [
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n
++             RETURNING version)',
++    ],
++    1 => Array &2 [
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n
++             RETURNING version)',
++    ],
++    2 => Array &3 [
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = aedc14de-22e8-4e9c-96c9-9e7834d5f700 AND id = M1 AND version = 1\n
++             RETURNING version)',
++    ],
++]
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:175
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_f5_concurrent_identical_retries_under_a_repeatable_read_session_return_the_same_outcome
+round 0: every caller gets the original Appended [["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n             RETURNING version)"],["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n             RETURNING version)"],["error","Illuminate\\Database\\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n             RETURNING version)"],["appended","M1",2]]
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => Array &1 [
+-        0 => 'appended',
+-        1 => 'M1',
+-        2 => 2,
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n
++             RETURNING version)',
+     ],
+     1 => Array &2 [
+-        0 => 'appended',
+-        1 => 'M1',
+-        2 => 2,
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n
++             RETURNING version)',
+     ],
+     2 => Array &3 [
+-        0 => 'appended',
+-        1 => 'M1',
+-        2 => 2,
++        0 => 'error',
++        1 => 'Illuminate\Database\QueryException: SQLSTATE[40001]: Serialization failure: 7 ERROR:  could not serialize access due to concurrent update (Connection: pgsql, Host: 127.0.0.1, Port: 32933, Database: membership_pg_isolated, SQL: UPDATE org_memberships SET version = version + 1\n
++             WHERE organisation_id = 20030e5e-3748-49b9-b6ca-90d0a2297216 AND id = M1 AND version = 1\n
++             RETURNING version)',
+     ],
+     3 => Array &4 [
+         0 => 'appended',
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:195
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f5_an_append_inside_an_open_transaction_is_refused_before_any_statement_and_writes_nothing
+an append inside an open transaction must be refused
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:216
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f5_read_committed_is_enforced_as_the_first_statement_of_an_append
+the adapter enforces its isolation assumption
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'SET TRANSACTION ISOLATION LEVEL READ COMMITTED'
++'select "fingerprint", "membership_id", "fact_id", "seq", (extract(epoch from recorded_at) * 1000000)::bigint AS recorded_us from "org_membership_commands" where "organisation_id" = ? and "idempotency_key" = ? limit 1'
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:235
+
+FAILURES!
+Tests: 47, Assertions: 262, Failures: 4, Deprecations: 1.

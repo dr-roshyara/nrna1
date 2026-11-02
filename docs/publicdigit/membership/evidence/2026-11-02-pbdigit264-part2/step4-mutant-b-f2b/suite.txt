@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/phpunit.membership-pg.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:07.440, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_f2b_concurrent_admissions_of_different_persons_under_one_key_append_once_and_refuse_the_rest
+round 0: no errors [["appended","M-0",1],["error","Illuminate\\Database\\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint \"org_membership_commands_pkey\"\nDETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into \"org_membership_commands\" (\"organisation_id\", \"idempotency_key\", \"fingerprint\", \"membership_id\", \"seq\") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:cf59d4d8951ddd83786db119141924657360f5241f3d43c1d14744f031d2be26, M-1, 1))"],["error","Illuminate\\Database\\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint \"org_membership_commands_pkey\"\nDETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into \"org_membership_commands\" (\"organisation_id\", \"idempotency_key\", \"fingerprint\", \"membership_id\", \"seq\") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:52e06a97326c4d85478ed82d8971d7884e8a8cf34f3bd3bccf9effa0a4ca7255, M-2, 1))"],["error","Illuminate\\Database\\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint \"org_membership_commands_pkey\"\nDETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into \"org_membership_commands\" (\"organisation_id\", \"idempotency_key\", \"fingerprint\", \"membership_id\", \"seq\") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:ccc7f150264fcb5a465943c00142bfc1bbb3d4d553eb929e67f7c9fb2cf5945b, M-3, 1))"]]
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => Array &1 [
++        0 => 'error',
++        1 => 'Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "org_membership_commands_pkey"\n
++DETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into "org_membership_commands" ("organisation_id", "idempotency_key", "fingerprint", "membership_id", "seq") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:cf59d4d8951ddd83786db119141924657360f5241f3d43c1d14744f031d2be26, M-1, 1))',
++    ],
++    1 => Array &2 [
++        0 => 'error',
++        1 => 'Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "org_membership_commands_pkey"\n
++DETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into "org_membership_commands" ("organisation_id", "idempotency_key", "fingerprint", "membership_id", "seq") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:52e06a97326c4d85478ed82d8971d7884e8a8cf34f3bd3bccf9effa0a4ca7255, M-2, 1))',
++    ],
++    2 => Array &3 [
++        0 => 'error',
++        1 => 'Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "org_membership_commands_pkey"\n
++DETAIL:  Key (organisation_id, idempotency_key)=(d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 44961, Database: membership_pg_isolated, SQL: insert into "org_membership_commands" ("organisation_id", "idempotency_key", "fingerprint", "membership_id", "seq") values (d2ee5b28-0785-4f32-98f8-4fea5ad71b8d, k-shared, admit:ccc7f150264fcb5a465943c00142bfc1bbb3d4d553eb929e67f7c9fb2cf5945b, M-3, 1))',
++    ],
++]
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:191
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1, Deprecations: 1.

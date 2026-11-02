@@ -39,6 +39,10 @@ PostgresMemberRepository                                          (Infrastructur
   - `appliedCommand()` reads `fact_id` and `recorded_at` from the fact by join, so the idempotency answer can never disagree with the stored fact;
   - migration `database/migrations/2026_11_02_180000_normalise_org_membership_commands.php`: `up()` adds the FK first, aborts on any copied-value mismatch, then drops the columns; `down()` re-adds them, backfills by join, sets NOT NULL, drops the FK;
   - **Release gate:** before this migration reaches any persistent database where the 1b tables exist, run the operator preflight (ratification pack §10.2) and answer OQ-01.
+- **Concurrent identical creation (`PBDIGIT-264` step 4a, 2026-11-02):**
+  - `create()` inserts with `ON CONFLICT DO NOTHING` and **no conflict target**. A concurrent identical creation (same id, same person) may conflict on the primary key instead of the person index; before, that escaped as a unique violation (found by race test F-2(a)).
+  - If nothing was inserted and the person has a Member → `holderExists` (unchanged).
+  - If the person has none, the id belongs to **another** holder → `MemberIdHeldByAnotherHolder` (F-3: an infrastructure failure, no state change).
 - **Key-collision classification (`PBDIGIT-264` F-5):** a concurrent registration of the same key is recognised by `PgUniqueViolation::isConstraint()`: SQLSTATE 23505 plus the constraint named on the first line of the driver's error. Never by searching the exception message, which carries bindings and key values.
 - **Only port outcomes are translated.** A duplicate fact id at the database is an infrastructure error, by design (B-1).
 - **No Eloquent models.** Facts are inserted through the query builder only; there is no update or delete path.
@@ -82,13 +86,23 @@ F-4b tests (2026-11-02), all in `…InvariantsTest::test_f4b_*`:
 
 These tests call the migration directly inside `DB::transaction` and **always restore the migrated schema**, because RefreshDatabase migrates only once per process on PostgreSQL.
 
+F-2 races (2026-11-02), `…RaceTest::test_f2a_*` / `test_f2b_*`, 8 rounds:
+- **(a)** 4 identical Admits for a new person → 1 Member, 1 fact, and identical `Appended` (member, seq, fact, recordedAt) for all;
+- **(b)** 4 persons, one key, different fingerprints → 1 fact, 3 × `idempotency_key_conflict`, the losers stay at version 0.
+
+**Sensitivity limits:**
+- removing the key re-read after a domain refusal (`DecideAndAppend`) is caught by the identical-retries race, **not** by F-2(a);
+- removing the commands-PK catch is caught by F-2(b).
+
+Evidence: `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/`.
+
 ## Pitfalls
 
-- **Known defect (`PBDIGIT-264` F-1, open):** valid-time dates must stay within 0001-01-01 … 9999-12-31. `DateOrdinal::toDate` writes a later date as `10000-01-01`, which `fromDate` cannot read back, and the Member becomes unloadable. Until the guard lands, callers must not pass such dates.
+- **Valid-time range (`PBDIGIT-264` F-1, fixed 2026-10-10; guide 06):** dates outside 0001-01-01 … 9999-12-31 are refused before any write (`ValidTimeNotStorable`). They used to make a Member unloadable. *(Was listed here as an open defect; corrected 2026-11-02. Its PostgreSQL run was confirmed in Part 2 step 0.)*
 - **Isolation level:** the idempotency and conflict answers assume READ COMMITTED. **Since F-5 (2026-11-02) the adapter enforces it per transaction.** With the session default at REPEATABLE READ, the race tests now return contract outcomes; before, a waiting writer failed with SQLSTATE 40001.
 - **Do not call `append()` inside your own transaction:** it is refused (N1). If `PBDIGIT-263` ever restores per-test transactions on PostgreSQL, these adapter test classes must opt out.
 - **Test isolation:** `Tests\TestCase` does **not** wrap PostgreSQL tests in transactions (`PBDIGIT-263`). Always create fresh organisations per test, as these tests do.
 - **Forked tests:** call `DB::disconnect()` before `pcntl_fork`. Children must open their own connection and end with `SIGKILL`, so that no PHPUnit shutdown runs in them.
-- **Never run the migration on the development database in this slice** (CLAUDE.md database rules).
+- **Never run these migrations on the development database or any persistent database** (CLAUDE.md database rules). The F-4b migration also waits on the release gate: OQ-01 plus the §10.2 operator preflight.
 
-**Traceability:** PBDIGIT-260 · contract §1–§10 · EP-Q6 · DB-1 · implementation review `2026-10-09-membership-slice1b-implementation-review.md`.
+**Traceability:** PBDIGIT-260 · PBDIGIT-264 (F-1, F-3, F-5, F-4b, F-2, step 4a; plan `docs/plans/20261102-1750-membership-pbdigit264-part2-postgres-followups-plan.md`) · contract §1–§10 · EP-Q6 · DB-1 · implementation review `2026-10-09-membership-slice1b-implementation-review.md`.

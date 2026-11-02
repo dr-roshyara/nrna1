@@ -1,0 +1,64 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
+D                       43 / 43 (100%)
+
+Time: 00:22.685, Memory: 26.00 MB
+
+Postgres Concurrency Race (Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRace)
+ ✔ Concurrent first admissions of one person create one member and one period
+ ✔ Concurrent different ends of one period record exactly one end
+ ✔ Concurrent identical retries record one fact and return the same outcome
+
+Postgres Member Repository (Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepository)
+ ✔ A created member can be loaded and found by holder
+ ✔ An unknown member is not found
+ ✔ One member per person and organisation
+ ✔ The same person may be a member of another organisation
+ ✔ Tenant isolation
+ ✔ An accepted decision is appended at the next seq
+ ✔ Facts keep their order and seq is contiguous
+ ✔ A decision based on a stale version is not appended
+ ✔ A refused decision cannot be appended
+ ✔ A retried key returns the original outcome and appends nothing
+ ✔ A key reused for a different command is refused
+ ✔ Idempotency keys are tenant scoped and unknown keys have no outcome
+ ✔ Recorded at never decreases even if the clock goes back
+ ✔ Appending never changes earlier records
+ ✔ An admission with an unstorable valid time is not appended with data set "E1a effectiveAt one day before 0001-01-01"
+ ✔ An admission with an unstorable valid time is not appended with data set "E1b effectiveAt one day after 9999-12-31"
+ ✔ An admission with an unstorable valid time is not appended with data set "E1c initial term until one day after 9999-12-31"
+ ✔ An end with an unstorable valid time is not appended
+ ✔ An admission at a storable boundary is appended and read back with data set "E2a effectiveAt 0001-01-01"
+ ✔ An admission at a storable boundary is appended and read back with data set "E2b effectiveAt 9999-12-31"
+ ✔ An admission at a storable boundary is appended and read back with data set "E2c initial term until 9999-12-31"
+ ✔ An end at the last storable date is appended and read back
+ ✔ A reused key is answered before the valid time is checked
+ ✔ A known key with a matching fingerprint is answered without examining the new decision
+ ✔ An unstorable valid time takes precedence over a stale version
+ ✔ Creating a member id that belongs to another holder fails without changing state
+ ✔ A known key is answered before the member is looked up
+ ✔ A reused key conflict is answered before the member is looked up
+ ✔ An unstorable valid time is answered before the member is looked up
+ ✔ A refused decision is rejected even under a used key
+
+Postgres Member Repository Invariants (Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariants)
+ ✔ T2 the same member id and person may exist in two tenants
+ ✔ T3 the database rejects a fact attached to another tenants member
+ ✔ T4 the three initial term states round trip with their meaning
+ ✔ T5 dates instants and provenance round trip exactly
+ ✔ T6 recorded at never decreases under a backward clock
+ ✔ T7 a failure inside append rolls everything back
+ ✔ T8 a duplicate fact id at the database is an infrastructure error
+ ✔ T9 the adapter offers no update or delete
+ ✔ T10 a non postgresql connection fails fast
+
+Postgres Reference Model Property (Tests\Feature\Contexts\Membership\Organisational\PostgresReferenceModelProperty)
+ ✔ Handlers and postgresql agree with the reference model
+
+OK, but there were issues!
+Tests: 43, Assertions: 256, Deprecations: 1.

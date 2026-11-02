@@ -95,10 +95,13 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
     public function create(TenantId $tenant, MemberId $id, PersonRef $holder): CreateResult
     {
+        // PBDIGIT-264 step 4a (F-2(a), plan revision R1): no conflict target, so a concurrent identical creation
+        // (same id, same person) is absorbed whichever unique index (PK or person) reports it, instead of escaping as
+        // a unique violation on org_memberships_pkey.
         $inserted = $this->db->selectOne(
             'INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
              VALUES (?, ?, ?, 0, now())
-             ON CONFLICT (organisation_id, person_ref) DO NOTHING
+             ON CONFLICT DO NOTHING
              RETURNING id',
             [$tenant->value(), $id->value(), $holder->value()],
         );
@@ -109,6 +112,11 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             ->where('organisation_id', $tenant->value())
             ->where('person_ref', $holder->value())
             ->value('id');
+        if ($existing === null) {
+            // Nothing inserted and this person has no Member: the id is held by ANOTHER holder. F-3 (PR disposition
+            // 2026-10-09): an infrastructure failure, no state change.
+            throw MemberIdHeldByAnotherHolder::of($id);
+        }
 
         return CreateResult::holderExists(MemberId::fromString($existing));
     }

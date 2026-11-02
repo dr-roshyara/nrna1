@@ -1,0 +1,42 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/phpunit.membership-pg.xml
+
+FD                                                                  2 / 2 (100%)
+
+Time: 00:08.847, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_f2a_concurrent_identical_admissions_of_a_new_person_create_one_member_and_one_fact_and_answer_alike
+round 0: every caller is answered with Appended [["appended","M1",1,"A1",1793640160737769],["error","Illuminate\\Database\\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint \"org_memberships_pkey\"\nDETAIL:  Key (organisation_id, id)=(e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 40197, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)\n             VALUES (e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1, P1, 0, now())\n             ON CONFLICT (organisation_id, person_ref) DO NOTHING\n             RETURNING id)"],["error","Illuminate\\Database\\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint \"org_memberships_pkey\"\nDETAIL:  Key (organisation_id, id)=(e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 40197, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)\n             VALUES (e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1, P1, 0, now())\n             ON CONFLICT (organisation_id, person_ref) DO NOTHING\n             RETURNING id)"],["appended","M1",1,"A1",1793640160737769]]
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => Array &1 [
++        0 => 'error',
++        1 => 'Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "org_memberships_pkey"\n
++DETAIL:  Key (organisation_id, id)=(e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 40197, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)\n
++             VALUES (e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1, P1, 0, now())\n
++             ON CONFLICT (organisation_id, person_ref) DO NOTHING\n
++             RETURNING id)',
++    ],
++    1 => Array &2 [
++        0 => 'error',
++        1 => 'Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "org_memberships_pkey"\n
++DETAIL:  Key (organisation_id, id)=(e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 40197, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)\n
++             VALUES (e8174a36-1834-4ded-9dd4-a6350d4edb2b, M1, P1, 0, now())\n
++             ON CONFLICT (organisation_id, person_ref) DO NOTHING\n
++             RETURNING id)',
++    ],
++]
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:171
+
+FAILURES!
+Tests: 2, Assertions: 41, Failures: 1, Deprecations: 1.

@@ -9,7 +9,10 @@ use App\Contexts\Membership\Application\Organisational\AdmitMemberHandler;
 use App\Contexts\Membership\Application\Organisational\CommandOutcome;
 use App\Contexts\Membership\Application\Organisational\EndMembership;
 use App\Contexts\Membership\Application\Organisational\EndMembershipHandler;
+use App\Contexts\Membership\Domain\Organisational\MemberId;
+use App\Contexts\Membership\Domain\Organisational\PersonRef;
 use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Group;
@@ -52,9 +55,10 @@ final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
      * Runs $work in PROCESSES forked children released together; returns each child's normalised outcome.
      *
      * @param \Closure(int $child): CommandOutcome $work
+     * @param bool $full also record the Appended fact id and recordedAt (F-2: identical outcomes, not just seq)
      * @return list<array>
      */
-    private function race(\Closure $work): array
+    private function race(\Closure $work, bool $full = false): array
     {
         $dir = sys_get_temp_dir() . '/m1b-race-' . Str::random(8);
         mkdir($dir);
@@ -75,6 +79,10 @@ final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
                     $result = $o->isAppended()
                         ? ['appended', $o->appended()->memberId()->value(), $o->appended()->seq()]
                         : ['refused', ($o->domainRefusal() ?? $o->applicationRefusal())->value];
+                    if ($full && $o->isAppended()) {
+                        $result[] = $o->appended()->factId()->value();
+                        $result[] = $o->appended()->recordedAt()->ordinal();
+                    }
                 } catch (\Throwable $e) {
                     $result = ['error', $e::class . ': ' . $e->getMessage()];
                 }
@@ -147,6 +155,44 @@ final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
 
             $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->where('kind', 'end')->count(), "round $round");
             $this->assertSame(array_fill(0, self::PROCESSES, ['appended', 'M1', 2]), $results, "round $round: every caller gets the original Appended");
+        }
+    }
+
+    // ── PBDIGIT-264 F-2 (Part 2 plan step 4, AC-6; ratification pack §2 "F-2"): coverage, expected to pass ──
+
+    public function test_f2a_concurrent_identical_admissions_of_a_new_person_create_one_member_and_one_fact_and_answer_alike(): void
+    {
+        for ($round = 0; $round < self::ROUNDS; $round++) {
+            $org = $this->organisation();
+
+            $results = $this->race(fn (int $c) => (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
+                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-same')), true);
+
+            $this->assertSame([], array_values(array_filter($results, static fn ($r) => $r[0] !== 'appended')), "round $round: every caller is answered with Appended " . json_encode($results));
+            $this->assertSame(1, DB::table('org_memberships')->where('organisation_id', $org)->count(), "round $round: one Member");
+            $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->count(), "round $round: one fact");
+            $this->assertSame(['appended', 'M1', 1, 'A1'], array_slice($results[0], 0, 4), "round $round");
+            $this->assertSame(array_fill(0, self::PROCESSES, $results[0]), $results, "round $round: identical Appended (member, seq, fact, recordedAt) for all");
+        }
+    }
+
+    public function test_f2b_concurrent_admissions_of_different_persons_under_one_key_append_once_and_refuse_the_rest(): void
+    {
+        for ($round = 0; $round < self::ROUNDS; $round++) {
+            $org = $this->organisation();
+            $repo = self::repository();
+            for ($c = 0; $c < self::PROCESSES; $c++) {
+                $repo->create(TenantId::fromString($org), MemberId::fromString("M-$c"), PersonRef::fromString("P-$c"));
+            }
+
+            $results = $this->race(fn (int $c) => (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
+                ->handle(new AdmitMember($org, "P-$c", "M-$c", "A-$c", 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-shared')));
+
+            $this->assertSame([], array_values(array_filter($results, static fn ($r) => $r[0] === 'error')), "round $round: no errors " . json_encode($results));
+            $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->count(), "round $round: exactly one fact in the tenant");
+            $this->assertCount(1, array_filter($results, static fn ($r) => $r[0] === 'appended'), "round $round: " . json_encode($results));
+            $this->assertCount(self::PROCESSES - 1, array_filter($results, static fn ($r) => $r === ['refused', 'idempotency_key_conflict']), "round $round: " . json_encode($results));
+            $this->assertSame(self::PROCESSES - 1, DB::table('org_memberships')->where('organisation_id', $org)->where('version', 0)->count(), "round $round: the losers' versions stay 0");
         }
     }
 

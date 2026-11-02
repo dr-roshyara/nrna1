@@ -185,3 +185,23 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - **Regression (database-free):** Domain 117, Application 61, Infrastructure 22, Architecture 97.
   - **Guide 03** updated. **AC-4 and AC-5 met.**
   - **The release gate stays open:** OQ-01 plus the §10.2 preflight before the migration reaches any persistent database.
+- 2026-11-02: **Step 4 stopped on a surprise (EP-01).**
+  - **Defect found.** F-2(a), which was expected to pass, failed: 4 identical concurrent Admits for a new person, and at least one gets `UniqueConstraintViolationException … "org_memberships_pkey"` from `create()`.
+  - **Root cause:** `INSERT … ON CONFLICT (organisation_id, person_ref) DO NOTHING` does not cover the primary key, so a concurrent identical row can conflict on the PK.
+  - **Effect:** a quick retry can get an infrastructure error instead of the idempotent answer (IDEM-1). No duplicate data is created.
+  - F-2(b) passed.
+- **Revision R1 (PO, 2026-11-02, "approve step 4a"): new step 4a.** `create()` uses `ON CONFLICT DO NOTHING` without a target.
+  - If nothing was inserted and a row exists for the person → `holderExists`, unchanged.
+  - If no row exists for the person → the conflict was a `MemberId` held by another holder → an infrastructure exception (the **F-3 decision is kept**).
+  - RED = F-2(a). AC-6 now reads "F-2(a) green after 4a".
+  - No schema change.
+- 2026-11-02: **Step 4a done.** `create()` uses `ON CONFLICT DO NOTHING` (no target), with the explicit F-3 branch `MemberIdHeldByAnotherHolder`. The cluster: **54 tests, 423 assertions, exit 0** (F-2(a) 8 rounds, F-2(b), the F-3 contract test). Database-free regression green. Guide 03 updated.
+- 2026-11-02: **Step 4 sensitivity** (scratch worktree only; restored and checked with `cmp`):
+  - **mutant (a)**, no key re-read after a domain refusal: **caught** by the existing identical-retries race (round 4), but **not** by F-2(a) alone (2 × 8 rounds green). Recorded as a limitation of F-2(a);
+  - **mutant (b)**, the commands-PK collision not answered: **caught** by F-2(b) (round 0).
+- 2026-11-02: **Step 5 done.** Three consecutive full runs on fresh clusters: **54 / 423, exit 0 × 3**. Evidence archived in `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/` (14 runs, hashes verified, no credentials, the invalid run excluded). Guide 03 F-1 note corrected (fixed 2026-10-10).
+- **AC status:**
+  - AC-1…AC-5, AC-7, AC-8, AC-9 met;
+  - **AC-6 met with one qualification:** both mutants are detected by the race group; mutant (a) is detected by the identical-retries race, not by F-2(a).
+  - **Not accepted:** an independent review, then the PO's verdict on PBDIGIT-264, then ACC-260.
+  - **Release gate still open.**

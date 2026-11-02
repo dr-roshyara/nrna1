@@ -1,0 +1,33 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/phpunit.membership-pg.xml
+
+FDDD                                                                4 / 4 (100%)
+
+Time: 00:11.448, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresConcurrencyRaceTest::test_concurrent_identical_retries_record_one_fact_and_return_the_same_outcome
+round 4: every caller gets the original Appended
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+         2 => 2,
+     ],
+     3 => Array &4 [
+-        0 => 'appended',
+-        1 => 'M1',
+-        2 => 2,
++        0 => 'refused',
++        1 => 'duplicate_fact_id',
+     ],
+ ]
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt4/tests/Feature/Contexts/Membership/Organisational/PostgresConcurrencyRaceTest.php:157
+
+FAILURES!
+Tests: 4, Assertions: 106, Failures: 1, Deprecations: 1.

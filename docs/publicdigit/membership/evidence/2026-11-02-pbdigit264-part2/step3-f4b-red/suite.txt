@@ -1,0 +1,52 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDFFDEEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
+D              52 / 52 (100%)
+
+Time: 00:25.145, Memory: 26.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f4b_the_migration_round_trips_on_a_populated_schema
+ErrorException: require(/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/database/migrations/2026_11_02_180000_normalise_org_membership_commands.php): Failed to open stream: No such file or directory
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:252
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:252
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:310
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f4b_the_migration_aborts_on_a_copied_value_that_disagrees_with_the_fact
+ErrorException: require(/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/database/migrations/2026_11_02_180000_normalise_org_membership_commands.php): Failed to open stream: No such file or directory
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:252
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:252
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:334
+
+--
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f4b_the_commands_table_holds_no_copy_of_the_fact
+derivable from the fact (F-4b)
+Failed asserting that an array does not contain 'fact_id'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:271
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryInvariantsTest::test_f4b_a_command_naming_a_fact_that_does_not_exist_is_rejected
+foreign_key_violation (commands → facts)
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23503'
++'23502'
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/p2-wt3/tests/Feature/Contexts/Membership/Organisational/PostgresMemberRepositoryInvariantsTest.php:288
+
+ERRORS!
+Tests: 52, Assertions: 333, Errors: 2, Failures: 2, Deprecations: 1.
