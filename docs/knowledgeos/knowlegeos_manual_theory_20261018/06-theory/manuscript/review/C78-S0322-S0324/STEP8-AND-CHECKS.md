@@ -18,6 +18,7 @@
   - C5: §8.66 C5; §8.67.3 (L118); §8.67 C2; §8.69 C5; §1.12; §1.14.2-1; §8.50 C4; §3.9 C6.
 - **Taken from W's inventory before step 2:** listed in §8.71.5.
 - **R1:** no new rows.
-- **R2 (§8.71):** see the run below; no tier A or B flags in scope.
+- **R2 (§8.71):** `undefined_terms.py --scope 08.71` (whole-book run: tier A 89 · B 145 · C 19 · D 625): no tier A, B or C flag names §8.71 (corrected at settlement, W-13: the draft promised a run it did not attach). W's run found 9 tier-D words; "registration" is qualified in v2 (W-13).
 - **R3:** none proposed. C4 continues §8.69 C4 (the ordering gap dissolved by the ruling); §8.69's text is unchanged.
 - **Quote check:** a script compared the quoted spans with S0322–S0324. Every source quote matched; "must not appoint my own judge" and "the reviewer must not be its own registrar" are §8.27 C2's (S0184, S0185, in meaning).
+- **R3 (settlement):** none; see SETTLEMENT.md. §8.69 C4 stays open, unchanged.
