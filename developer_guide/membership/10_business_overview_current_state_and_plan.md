@@ -82,7 +82,7 @@ Two Membership implementations exist side by side:
 | Capability | What it lets the business do | Status | Evidence |
 |---|---|---|---|
 | Admit a person (open a period) | record a membership start with its basis and authority evidence | **IMPLEMENTED; ACCEPTED** (Slice 0) | `Member::decideAdmit`; guide 01; PO acceptance 2026-11-02 |
-| End a period | record resignation, exclusion, death | **IMPLEMENTED in the kernel; refused for every actor** until GOV-END decides who may end a membership | `Member::decideEnd`; `InterimRoleAuthority.php:18-19` |
+| End a period | record resignation, exclusion, death | **IMPLEMENTED in the kernel; still refused for every actor in the code.** GOV-END was decided on 2026-11-02 (B1, interim): owner/admin may record resignation and death with evidence; exclusion stays refused until Governance's competence check exists. The code change belongs to Slice 2b | `Member::decideEnd`; `InterimRoleAuthority.php:18-19` |
 | Calculate the current state at any date, and "what we knew on date X" | answer "was this person a member on 3 May?" reproducibly | **IMPLEMENTED; ACCEPTED** (Slice 0) | `Resolution.php`; `Member::knownAt` |
 | Protect the core rules (no overlapping periods; a period is one unbroken episode; corrections never silently remove membership) | the history can never become self-contradictory | **IMPLEMENTED; ACCEPTED** (Slice 0) | `InvariantSet.php`; `RefusalReason` cases |
 | Safe concurrent edits | two administrators acting at once cannot break the rules | **IMPLEMENTED; ACCEPTED** (Slice 1a) | guide 02 |
@@ -102,7 +102,7 @@ Two Membership implementations exist side by side:
 |---|---|---|---|
 | Renew, Suspend/Restore, ChangeType are not built | missing capability | the new kernel cannot yet show "lapsed", "suspended" or a type change | roadmap W7 (Slices 4, 5) |
 | Correct is not built; Annul/Void are not stored | missing capability | errors cannot yet be fixed end to end. **No cutover or live write before correction is complete** (DECIDED, ARB-MEM-01) | roadmap W4 (COR-2 → COR-4 → COR-3) |
-| Who may end a membership | open decision (GOV-END, Governance) | ending through the new kernel is impossible | roadmap W1/W5 |
+| Who may end a membership | **decided (GOV-END B1, interim, 2026-11-02)**; exclusion authority still open (DS-4, D-3-L) | ending through the new kernel stays impossible until Slice 2b; exclusion stays impossible until Governance provides the competence check | roadmap W5 (Slice 2b); Governance (DS-4) |
 | Membership types, obligations, dues and "good standing" | missing capability. The business rules are **DECIDED** (E0b-S E-1…E-5, 2026-11-02): Membership owns the dues obligation; Finance owns payments; Standing = every obligation due is paid, waived or exempted, within a grace period | the new kernel has no type, obligation or Standing model yet | roadmap W7 (types, ChangeType) and W8 (Finance) |
 | Legacy: "expired" mixes lapsed and ended; rows updated in place | confirmed deviation | history and the lapsed/ended distinction are lost in production data | migration W9 (never invent truth, BR-18) |
 | Legacy: membership logic answers voting questions (`Member::canVoteInElection`; the `grants_voting_rights` type flag; Election reads Membership tables) | confirmed deviation (baselined V1, V1b, V2, V3′) | membership can silently act as a vote | `PBDIGIT-318` S2–S4 (roadmap W8); BD-GVR open |
@@ -135,7 +135,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 | 1 Document the current state | make the business model and status readable | (documentation) | — | this guide exists and is kept current |
 | 2 Membership discovery: types, obligations, dues, Standing (E0b-S) | define what a type obliges, which Finance facts Membership needs, how "good standing" is derived, and how a type classification avoids granting a vote | not a named stage; feeds W7 and W8 | ratified boundary only; no Finance direction needed | a business-rule document with evidence and open questions (BD-TYPE, BD-GVR, DS-1, DS-5). **Done 2026-11-02:** discovery report and decision record E-1…E-5; DS-1 stays with Finance |
 | 3 Complete the lifecycle | Renew, Suspend/Restore, ChangeType, Correct, stored Annul/Void | W4, W7 | W0–W2; C-1 accepted (BD-REV-ER and D-COR-3 decided) | every fact kind is decidable, storable and tested; the lapsed/ended distinction is visible |
-| 4 Integration boundaries | Identity, affiliation, Election, Finance, Governance | W5, W6, W8 | GOV-END; OQ-ME-4; fee direction; K3/K4 | published contracts; baselined violations removed |
+| 4 Integration boundaries | Identity, affiliation, Election, Finance, Governance | W5, W6, W8 | DS-4 (exclusion authority); OQ-ME-4; fee direction; K3/K4 | published contracts; baselined violations removed |
 | 5 Legacy alignment | migrate without inventing truth | W9 | ARB-MEM-01; CUT-1…CUT-10; OQ-01 | parity evidenced; legacy retired |
 
 **What is authorised now:** nothing beyond the recorded authorisations. Each stage still needs its own authorisation.
@@ -146,7 +146,7 @@ The five steps proposed on 2026-11-02 map onto it as follows. **Only the roadmap
 |---|---|---|---|---|---|---|
 | Membership core model | one consistent history per person and organisation | RATIFIED; IMPLEMENTED; ACCEPTED (Slices 0, 1a) | guides 01, 02 | clean-copy evidence (W0) | — | W0 evidence stored |
 | Admission | members admitted with a basis and authority evidence | IMPLEMENTED (kernel + 2a rules); 2a not accepted | guide 08 | acceptance; wiring (W5) | Governance port | 2a accepted; reachable from the application |
-| Ending | resignation, exclusion, death recorded | PARTIALLY IMPLEMENTED (refused for all actors) | `InterimRoleAuthority.php` | GOV-END | Governance | an authorised actor can end a period |
+| Ending | resignation, exclusion, death recorded | PARTIALLY IMPLEMENTED (refused for all actors); rule DECIDED (GOV-END B1) | `InterimRoleAuthority.php`; GOV-END decision record | Slice 2b (port carries End kind and evidence) | W2; DS-4 for exclusion | owner/admin can record resignation and death; exclusion refused with a distinct reason |
 | Lapse and renewal | lapsed ≠ ended; renewals keep the gap | RATIFIED; not implemented | ratified §4 | Slice 4 (W7) | — | Renew stored and tested |
 | Suspension | restriction without loss of membership | RATIFIED; not implemented | ratified §4 | Slice 5 (W7) | BD-SUSP | Suspend/Restore stored and tested |
 | Corrections | errors fixed without deleting history | PARTIALLY IMPLEMENTED (Annul/Void kernel only) | guides 04, 05, 09 | COR-2…COR-4 | C-1 acceptance (BD-REV-ER: refuse; D-COR-3: dates only) | ARB-MEM-01 met |

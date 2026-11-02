@@ -104,6 +104,12 @@ The decision pack's Slice 2 line (§254) lists the PostgreSQL binding inside Sli
 
 ### 4.4 D-4 / G-1: interim authority
 
+> **Status annotation (2026-11-02): G-1 (GOV-END) DECIDED by the PO, option B1, interim.**
+> - Resignation and death may be recorded by owner/admin, with an evidence reference.
+> - Exclusion is refused until Governance's competence check exists (DS-4).
+> - Record: `docs/publicdigit/reviews/2026-11-02-membership-gov-end-decision-record.md`.
+> - The bullets below describe the 2a state and are kept as written. The End change belongs to Slice 2b.
+
 - **[R] A1:** interim, replaceable, recording `AuthorityEvidence`: actor, role as `capacity`, policy source as `ruleRef`, `policyVersion`, result, `checkedAt`, `competenceVerified`.
 - **Admit [E]:** owner / admin, mirroring `approveApplication` (F9). `ruleRef = interim:legacy-MembershipPolicy:approveApplication`, `policyVersion = interim-1`, `competenceVerified = false`, `checkedAt` from an injected clock.
 - **End [Q]:** **G-1 is unresolved.** The adapter denies every End, with `ruleRef = interim:unresolved:G-1`. No mapping to `manageMembership` is implemented or documented as policy.
