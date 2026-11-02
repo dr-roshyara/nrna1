@@ -83,7 +83,13 @@ The residual risks recorded by the reviewer:
 
 The recommendation does not mean that the wider Membership suite passes or that persistence is proven.
 
-**Human PO / ARB G3 decision** (accept with explicit residual risks / defer for evidence / reject with reasons): _[to be completed by the Human PO / ARB]_
+**Human PO / ARB G3 decision** (accept with explicit residual risks / defer for evidence / reject with reasons):
+
+**DEFER FOR EVIDENCE.** Decided by the PO (Human PO / ARB role) on 2026-11-02, in session.
+
+**Reason:** defect **V-2**. `decideAnnul` does not check the Annul's own decision provenance (`app/Contexts/Membership/Domain/Organisational/Member.php:156`), against correction contract §3.1 / BR-9a. The defect is confirmed at HEAD in `docs/publicdigit/reviews/2026-11-02-membership-ddd-status.md` §4.
+
+**At the same time, the PO authorised the V-2 fix** (story draft MEM-K1) inside PBDIGIT-268. C-1 acceptance is to be reconsidered on that evidence.
 
 ---
 
@@ -100,7 +106,13 @@ The recommendation does not mean that the wider Membership suite passes or that 
 
 **Proposed disposition:** ACCEPT. No open condition remains (PROPOSED).
 
-**Human PO / ARB verdict:** _[to be completed]_
+**Human PO / ARB verdict: ACCEPTED.** Decided by the PO (Human PO / ARB role) on 2026-11-02, in session. This is the formal acceptance act for PBDIGIT-258.
+
+**Evidence available at the decision:**
+- this section;
+- the database-free re-run on 2026-11-02 at HEAD `85f3bb746`: Domain suite 114 tests OK, `MembershipSemanticKernelPurityTest` OK (`docs/publicdigit/reviews/2026-11-02-membership-ddd-status.md` §3).
+
+That run used the shared working tree; it is not the roadmap's W0 clean-copy run.
 
 ---
 
@@ -129,7 +141,13 @@ What is confirmed:
 
 The confirmation rests on the reviewer's reading of the contract and review, not on passing tests alone.
 
-**Human PO / ARB verdict:** _[to be completed]_
+**Human PO / ARB verdict: ACCEPTED, option (a)** (S1-1 / S1-3 confirmed under ARB-MEM-04). Decided by the PO (Human PO / ARB role) on 2026-11-02, in session. This is the formal acceptance act for PBDIGIT-259.
+
+**Evidence available at the decision:**
+- this section;
+- the database-free re-run on 2026-11-02 at HEAD `85f3bb746`: Application suite 61 tests OK, `MembershipSlice1aBoundaryTest` OK (`docs/publicdigit/reviews/2026-11-02-membership-ddd-status.md` §3).
+
+That run used the shared working tree.
 
 ---
 

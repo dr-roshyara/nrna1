@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟢 **GREEN WITH CONDITIONS** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1a-implementation-review.md`); awaiting Principal Reviewer acceptance (confirm S1-1, S1-3). Authorised 2026-10-09; Slice 1a only |
+| **Status** | ✅ **ACCEPTED by the PO (Human PO / ARB), 2026-11-02,** option (a), S1-1 / S1-3 confirmed. The formal act is in `docs/publicdigit/reviews/2026-10-10-membership-g3-and-slice-dispositions.md` §3. *History:* 🟢 **GREEN WITH CONDITIONS** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1a-implementation-review.md`); awaiting Principal Reviewer acceptance (confirm S1-1, S1-3). Authorised 2026-10-09; Slice 1a only |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-slice1a-contract.md` |
 | **Depends on** | `PBDIGIT-258` (Slice 0). D-1 confirmed as INV-FID by the instruction |
 
