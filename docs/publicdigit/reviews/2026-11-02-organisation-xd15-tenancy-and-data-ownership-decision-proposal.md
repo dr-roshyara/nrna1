@@ -104,7 +104,17 @@ Ratings: ✓ supports · ~ partly / with conditions · ✗ conflicts. Each ratin
 | **Security / operational risks** | one breach exposes all; scoping defects leak across organisations | duplicated identity; per-organisation account recovery | platform store is a single point for sign-in; N-database migrations; logs must not recreate the register |
 | **Unresolved decisions that could change the outcome** | INV-AFF-1 rejected → A viable | BR-4 / XD-3a reversed → B viable | **D-2** (a cross-organisation write invariant would need an exception to INV-AFF-1); topology; scale |
 
-## 5. A question decisive for D, not yet asked
+## 5. A question decisive for D
+
+> **Answered by the PO, 2026-11-02:** **no cross-organisation business rules; position incompatibility is per organisation** (BR-13, BR-14 in `docs/publicdigit/business_rules/20261101_1739_person_account_affiliation_business_rules.md`).
+>
+> **Consequences:**
+> - Under C, every business rule can be enforced inside one organisation's database.
+> - No exception to INV-AFF-1 is needed.
+> - The only cross-database interactions are the reads and preconditions listed below (sign-in discovery, deletion eligibility, identity claim-binding).
+> - **The main open condition that could have overturned C is gone.** D-1 still awaits the PO decision and the ARB's view on INV-AFF-1.
+>
+> The analysis below is kept as it was written before the answer.
 
 **Are there business rules that span organisations?**
 
@@ -191,7 +201,7 @@ This absence is **not** a decision that no such rule exists.
 | # | Decision | Authority |
 |---|---|---|
 | D-1 | XD-15 target = C (hybrid) | **PO** (direction) + ARB |
-| D-2 | **Cross-organisation business rules: do any exist?** (§5) | **PO** (statute / business) |
+| D-2 | **Cross-organisation business rules: do any exist?** (§5) | **PO**: **answered 2026-11-02: none; incompatibility per organisation** (BR-13, BR-14) |
 | D-3 | record INV-DB-1 / INV-DB-2 | ARB |
 | D-4 | topology (cluster vs separate servers): after the scale figures | ARB + Ops |
 | D-5 | owner of the tenancy capability (multi-database D3: infrastructure capability vs Platform context) | ARB |
