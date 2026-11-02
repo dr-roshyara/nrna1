@@ -785,3 +785,4 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis:** Rulebook v1.4 requires no Principal go-ahead between windows; the consolidation gate (every 25 sources, `close_source.py`) and the planted-gap test at every second consolidation (S0278–S0302 carried one, so S0303–S0327 does not) are unchanged.
 - **Unchanged:** Rulebook v1.4, the window review, the consolidation procedure, the planted-gap schedule, the time measurement; the faster-reading proposal stays deferred. The Governance Engineer checks the windows together at the gate rather than one by one.
 - **Not decided here:** anything past the consolidation carrying the next planted-gap test; T9-21; T9-02.
+- *2026-11-02T01:22:00Z:* **Principal (verbatim):** "I sent the standing instruction to the professor". The standing instruction above is **issued**.
