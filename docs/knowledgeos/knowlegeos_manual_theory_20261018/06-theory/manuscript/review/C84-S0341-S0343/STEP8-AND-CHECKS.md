@@ -23,3 +23,4 @@
   - **§8.67 C3 and §8.73.3:** the live `a8ce5a39` AMBIGUOUS is, by S0341's reading, one assignment and one mention; the corrected explanation is truthful about the extractor's match set, not about assignments.
   - **§8.74 C3:** a fourth mechanism (a label captured with a trailing period) by which a lane on record can resolve UNRESOLVED.
 - **Quote check:** a script compared the quoted spans with S0341–S0343 (and S0324, S0327–S0333 for the cross-quotes); every source quote matched.
+- **R3 (settlement):** §8.67 C3, §8.72 C4, §8.72.3, §8.73.3, §8.74 C3; §8.67.3 pointer corrections (W-15).
