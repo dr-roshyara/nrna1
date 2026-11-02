@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IMPLEMENTED, AWAITING REVIEW` (2026-10-10). Plan steps 0 – 15 done, kernel only. **TDD-first except K-R1 / K-R2 / K-R3 / K-G1 / K-H1, which had no RED phase** (behaviour preceded the tests; the deviation was accepted as documented, H-2; see the acceptance review §4); **not accepted**: acceptance belongs to the PR / PO (EP-02). Review: `docs/publicdigit/reviews/2026-10-10-membership-c1-implementation-review.md` (decisions requested: F-1 adapter typing / C-4 dependency, F-2 `VoidFact` name) |
+| **Status** | **G3: DEFERRED FOR EVIDENCE** by the PO, 2026-11-02 (dispositions record §1). Reason: V-2, where the Annul's own decision provenance is not checked (contract §3.1, BR-9a). **The V-2 fix (MEM-K1) is authorised by the PO, 2026-11-02, inside this story**; acceptance is to be reconsidered on its evidence. *History:* `IMPLEMENTED, AWAITING REVIEW` (2026-10-10). Plan steps 0 – 15 done, kernel only. **TDD-first except K-R1 / K-R2 / K-R3 / K-G1 / K-H1, which had no RED phase** (behaviour preceded the tests; the deviation was accepted as documented, H-2; see the acceptance review §4); **not accepted**: acceptance belongs to the PR / PO (EP-02). Review: `docs/publicdigit/reviews/2026-10-10-membership-c1-implementation-review.md` (decisions requested: F-1 adapter typing / C-4 dependency, F-2 `VoidFact` name) |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-correction-slice-semantic-contract-draft.md`: **APPROVED by the PO 2026-10-10** |
 | **Gate** | `docs/publicdigit/reviews/2026-10-10-membership-c1-gate-decision-record.md` |
 | **Plan** | `docs/plans/20261010-1009-membership-c1-annul-void-tdd-plan.md` (approved in principle by the PO 2026-10-10, with conditions) |
@@ -35,3 +35,15 @@ Contract §14.3, K-A1 … K-X2, and the Definition of Done §15.7, all **TDD-fir
 - Developer guide: `developer_guide/membership/04_correction_c1_annul_void.md`.
 - 2026-10-10: **independent review of the correction: ACCEPT WITH EXPLICIT CONDITIONS** (`2026-10-10-membership-c1-correction-independent-review.md`). Conditions recorded (acceptance review §12): kit deviations acknowledged, hardening proposed as `PBDIGIT-269`; C-3 / C-4 entry criteria adopted as C-AMEND-1 (contract §14.5; register row 5). **Formal acceptance PENDING (G3).**
 - **Next:** PR review, then PO acceptance. C-2 / C-3 / C-4 need separate authorisation.
+
+- 2026-11-02: **PO decisions:** G3 deferred for evidence (V-2); the V-2 fix (MEM-K1) authorised inside this story. Fix details adopted as proposed (contract amendment **C-AMEND-2**):
+  - refusal `AnnulRequiresDecisionProvenance`;
+  - checked after `DecidedAtRequired`, before the target rules;
+  - Void out of scope.
+- 2026-11-02: **V-2 fix implemented, test-first** (uncommitted at the time of writing):
+  - **RED:** first, the reason missing; then the behaviour, with the reason added but no guard: attested and rule Annuls accepted.
+  - **GREEN:** one guard in `Member::decideAnnul`.
+  - **Tests:** three new in `AnnulVoidTest`.
+  - **Regression:** Domain 117 OK (differential and golden oracle unchanged); Application 61 OK; Infrastructure 13 OK; Membership architecture tests all OK.
+  - **Guide:** `developer_guide/membership/09_v2_annul_requires_decision_provenance.md`.
+- **Next:** Principal Reviewer review of the fix, then the PO reconsiders G3 for C-1.

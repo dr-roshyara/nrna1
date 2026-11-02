@@ -303,6 +303,56 @@ final class AnnulVoidTest extends TestCase
         $this->assertSame(RefusalReason::TargetHasNoDecisionProvenance, $h->annul('X1', 'A1')->refusal());
     }
 
+    // V-2 / MEM-K1 (BR-9a, CC §3.1): the Annul itself is a decision. Rule or attested provenance on the Annul is refused.
+    public function test_an_annul_without_decision_provenance_is_refused_and_changes_nothing(): void
+    {
+        foreach (['attested' => Provenance::attested('legacy-import', 'importer-1'), 'rule' => Provenance::rule('statute-7', 'v1')] as $kind => $provenance) {
+            $h = self::admitted();
+            $logBefore = $h->member->log();
+            $versionBefore = $h->member->version();
+
+            $decision = $h->annul('X1', 'A1', 900, $provenance);
+
+            $this->assertSame(RefusalReason::AnnulRequiresDecisionProvenance, $decision->refusal(), $kind);
+            $this->assertSame($versionBefore, $h->member->version(), "$kind: nothing appended");
+            $this->assertSame($logBefore, $h->member->log(), "$kind: log unchanged");
+            $this->assertTrue($h->member->resolve()->isMember(TimePoint::of(1)), "$kind: the admission still holds");
+        }
+    }
+
+    // V-2 / MEM-K1 characterisation: an Annul carrying decision provenance behaves as before (K-A1).
+    public function test_an_annul_with_decision_provenance_is_still_accepted(): void
+    {
+        $h = self::admitted();
+
+        $decision = $h->annul('X1', 'A1', 900, Provenance::decision('registrar-2'));
+
+        $this->assertTrue($decision->isAccepted());
+        $h->commit($decision);
+        $this->assertSame([], $h->member->resolve()->periods());
+    }
+
+    // V-2 / MEM-K1 guard order: DuplicateFactId, TargetNotFound and DecidedAtRequired precede the new guard;
+    // the new guard precedes the target rules (AnnulOfVoidRefused, TargetHasNoDecisionProvenance, TargetNotLive).
+    public function test_annul_provenance_guard_order(): void
+    {
+        $attested = Provenance::attested('legacy-import', 'importer-1');
+
+        $h = self::admitted();
+        $this->assertSame(RefusalReason::DuplicateFactId, $h->annul('A1', 'A1', 900, $attested)->refusal(), 'duplicate id first');
+        $this->assertSame(RefusalReason::TargetNotFound, $h->annul('X1', 'ZZ', 900, $attested)->refusal(), 'missing target before provenance');
+        $this->assertSame(RefusalReason::DecidedAtRequired, $h->annul('X1', 'A1', null, $attested)->refusal(), 'decidedAt before provenance');
+
+        $voided = self::admitted();
+        $voided->commit($voided->void('V1', 'A1'));
+        $this->assertSame(RefusalReason::AnnulRequiresDecisionProvenance, $voided->annul('X1', 'V1', 900, $attested)->refusal(), 'before AnnulOfVoidRefused');
+        $this->assertSame(RefusalReason::AnnulRequiresDecisionProvenance, $voided->annul('X2', 'A1', 900, $attested)->refusal(), 'before TargetNotLive');
+
+        $attestedTarget = MemberHistory::start();
+        $attestedTarget->commit($attestedTarget->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), TimePoint::infinity(), $attested));
+        $this->assertSame(RefusalReason::AnnulRequiresDecisionProvenance, $attestedTarget->annul('X1', 'A1', 900, $attested)->refusal(), 'before TargetHasNoDecisionProvenance');
+    }
+
     // P-KNOWN / K-H1 (R-12): a reversal never rewrites what was known before it was recorded.
     public function test_a_reversal_leaves_earlier_knowledge_unchanged(): void
     {

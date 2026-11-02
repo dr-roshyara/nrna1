@@ -151,6 +151,10 @@ final readonly class Member
         if ($decidedAt === null) {
             return Decision::refused(RefusalReason::DecidedAtRequired);
         }
+        // V-2 (CC §3.1, BR-9a): the Annul is itself a decision; rule or attested provenance cannot set a decision aside.
+        if ($provenance->kind() !== ProvenanceKind::Decision) {
+            return Decision::refused(RefusalReason::AnnulRequiresDecisionProvenance);
+        }
         if ($targetFact instanceof VoidFact) {
             return Decision::refused(RefusalReason::AnnulOfVoidRefused);
         }

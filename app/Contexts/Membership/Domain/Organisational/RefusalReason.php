@@ -48,6 +48,9 @@ enum RefusalReason: string
     /** Guard (correction contract §3.1, R-2): Annul applies only to facts with decision provenance. */
     case TargetHasNoDecisionProvenance = 'target_has_no_decision_provenance';
 
+    /** Guard (correction contract §3.1, BR-9a; V-2): the Annul itself is a decision and carries decision provenance. */
+    case AnnulRequiresDecisionProvenance = 'annul_requires_decision_provenance';
+
     /** Guard (D-1 = C1): an Admit decided by an actor carries a declaration reference (one recognised basis). */
     case AdmissionBasisMissing = 'admission_basis_missing';
 

@@ -71,7 +71,7 @@
 | Resulting fact | `Annul{factId, target, provenance(decision, authority, reason), decidedAt}`. **No value; no consequences** (R-7) |
 | Effect | `live(target)` becomes false; liveness propagates per R-10. Superseded consequences may revive (R-7). An Annul of an Annul revives the original (R-3) |
 | Invariants | G\* on the post-state (R-11). A revival that would violate an invariant is **refused** (FP §16.4 F) |
-| Rejection | `TargetNotFound`, `TargetHasNoDecisionProvenance`, `AnnulOfVoidRefused` (R-6), `DecidedAtRequired`, [OPEN] `TargetNotLive`, plus the invariant refusals (`OverlappingMembershipPeriods`, `PeriodLifetimeNotContiguous`, `MembershipCoverageLost`) |
+| Rejection | `TargetNotFound`, `TargetHasNoDecisionProvenance`, `AnnulOfVoidRefused` (R-6), `DecidedAtRequired`, [OPEN] `TargetNotLive`, plus the invariant refusals (`OverlappingMembershipPeriods`, `PeriodLifetimeNotContiguous`, `MembershipCoverageLost`). **C-AMEND-2 (additive; adopted by the PO 2026-11-02):** `AnnulRequiresDecisionProvenance`. The Annul's own provenance must be `decision` ("Resulting fact" row; BR-9a; V-2). It is checked after `DecidedAtRequired` and before the target rules (`AnnulOfVoidRefused`, `TargetHasNoDecisionProvenance`, `TargetNotLive`). Void is unaffected |
 | Temporal | no valid-time value of its own. `decidedAt` is required; `recordedAt` and `seq` are assigned at append. TrueAt changes; KnownAt(τ < recordedAt) is unchanged (R-12) |
 | Events | `FactAnnulled`; `TrimRevived` for each consequence revived (R-15). **`TrimRevived` arises only once Correct exists (C-2)** |
 

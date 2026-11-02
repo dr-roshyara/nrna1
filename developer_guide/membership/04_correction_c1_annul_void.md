@@ -47,10 +47,11 @@ Infrastructure     ← C-4 (persisting Annul / Void)
 | 1. `DuplicateFactId` (the new fact's id) | 1. `DuplicateFactId` |
 | 2. `TargetNotFound` | 2. `TargetNotFound` |
 | 3. `DecidedAtRequired` | — |
-| 4. `AnnulOfVoidRefused` | — |
-| 5. `TargetHasNoDecisionProvenance` (R-2) | — (Void accepts any provenance) |
-| 6. `TargetNotLive` (D-COR-2) | 3. `TargetNotLive` |
-| 7. G\*: `OverlappingMembershipPeriods`, … | 4. G\* |
+| 4. `AnnulRequiresDecisionProvenance` (the Annul's **own** provenance; V-2, added 2026-11-02, see guide 09) | — |
+| 5. `AnnulOfVoidRefused` | — |
+| 6. `TargetHasNoDecisionProvenance` (R-2) | — (Void accepts any provenance) |
+| 7. `TargetNotLive` (D-COR-2) | 3. `TargetNotLive` |
+| 8. G\*: `OverlappingMembershipPeriods`, … | 4. G\* |
 
 ## How it works
 

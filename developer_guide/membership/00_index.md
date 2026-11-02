@@ -14,6 +14,9 @@ The ratified Membership architecture is implemented slice by slice under
 | 06 | [Option E: storable valid time (R-1a-6)](06_option_e_storable_valid_time.md) | Slice 1a/1b amendment · `PBDIGIT-264` | implemented and locally tested; PostgreSQL unverified (Part 2); not accepted |
 | 07 | [F-3: key first, and a MemberId collision is an infrastructure failure](07_f3_key_first_and_member_id_collision.md) | `PBDIGIT-264` F-3 | implemented and tested on the double; PostgreSQL unverified (Part 2); not accepted |
 | 08 | [Slice 2a: Admit / End command rules](08_slice2a_admit_end_command_rules.md) | Slice 2a · `PBDIGIT-271` | implemented and hardened (database-free; H1, H2); committed `834a4f65c`, not pushed; not accepted |
+| 09 | [V-2: an Annul must itself carry decision provenance](09_v2_annul_requires_decision_provenance.md) | C-1 fix · `PBDIGIT-268` | implemented 2026-11-02 (database-free); C-1 G3 still deferred |
+
+**Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 **deferred** for V-2 (guide 09).
 
 **Governing documents:**
 - architecture (ratified): `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratified.md`;
