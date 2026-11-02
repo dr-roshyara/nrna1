@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `OPEN` · S1 implemented (`17ef51c5e`), **acceptance deferred** (PO 2026-11-02); **S1b ACCEPTED by the PO 2026-11-02 with documented residual risks** (after two independent reviews); S2–S4 gated. *(Superseded wording, kept as history: "S1b authorised (test-only) and implemented, awaiting independent review and PO acceptance".)* *(Superseded wording, kept as history: "plan PROPOSED; no slice authorised (S1 is the first candidate)".)* |
+| **Status** | `OPEN` · S1 (`17ef51c5e`) **CLOSED as superseded by S1b** (PO 2026-11-02; earlier deferred); **S1b ACCEPTED by the PO 2026-11-02 with documented residual risks** (after two independent reviews); S2–S4 gated. *(Superseded wording, kept as history: "S1b authorised (test-only) and implemented, awaiting independent review and PO acceptance".)* *(Superseded wording, kept as history: "plan PROPOSED; no slice authorised (S1 is the first candidate)".)* |
 | **Classification** | **observed in code** (static, HEAD `ce84016a6`) |
 | **Scope** | V1 Membership writes Election data; V2 Election reads Membership / Organisation tables; V3 cross-context foreign key |
 
@@ -119,7 +119,7 @@ This is code outside S1's scan paths that touches the other context's data. It w
 - Reviewed test file sha256: `d7cb86f4ba0ec23018f4ca7c87fbff1055cc75740ae85bad8eada31be27c5ca1`.
 
 **Status:**
-- S1 deferred;
+- S1 **closed as superseded by S1b** (PO, 2026-11-02). Not accepted on its own; its guarantees are the accepted S1b's. *(History: deferred earlier the same day.)*
 - S1b **ACCEPTED by the PO on 2026-11-02, with the documented residual risks** (guide 02, "Known limits and false positives"). The acceptance covers the reviewed test file (sha256 `d7cb86f4…`). It does not make any baselined dependency compliant, and it resolves no ARB question;
 - deptrac deviation **acknowledged by the PO (option (b), 2026-11-02)**: the static test is the enforcement for this boundary; deptrac layers are the later item PBDIGIT-321 (not authorised);
 - OQ-ME-3 and OQ-ME-4 open;

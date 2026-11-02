@@ -135,7 +135,7 @@ The PO deferred S1 acceptance and authorised S1b.
 - [x] Record Decision 1 and Decision 2
 - [x] PO approval of S1 (baseline V1, V1b, V2, V3′)
 - [x] S1 implemented
-- [ ] S1 accepted (PO / reviewer). **Deferred by the PO, 2026-11-02**, pending S1b
+- [x] S1: **CLOSED as superseded by S1b** (PO, 2026-11-02). Not accepted on its own; its scope is covered by the accepted S1b. *(History: deferred by the PO, 2026-11-02, pending S1b.)*
 - [x] S1b authorised (PO, 2026-11-02, test-only)
 - [x] S1b implemented (`3aad77d20`)
 - [x] S1b independently reviewed: recommendation (3), further changes (B2, `foreignIdFor`, `foreign(col, name)`, documentation)
