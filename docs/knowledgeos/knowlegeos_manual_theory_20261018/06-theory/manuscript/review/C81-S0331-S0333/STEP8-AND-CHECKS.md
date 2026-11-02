@@ -22,3 +22,4 @@
 - **R3 proposed:** §8.73 C1: the recorder field of seq 4–5 is now reported as `governance` (S0331 L34–35; S0332 L31–32; S0333 L34–35); the "false attribution" point still turns on reading (ii).
 - **Quote check:** a script compared the quoted spans with S0328–S0333; every source quote matched.
 - **R2 run:** `undefined_terms.py --scope 08.74`: 0 tier A–C lines name §8.74.
+- **R3 (settlement):** applied to §8.73 C1. **R2:** tier D judged by W (W-10); terms defined in §8.74's head.
