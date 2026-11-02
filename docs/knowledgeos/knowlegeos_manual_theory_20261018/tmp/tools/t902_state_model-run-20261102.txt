@@ -1,0 +1,6 @@
+M1 vectors equal: True (('T', ('A',), 'not attested')); after annul(g1): r1 -> F, r2 -> T
+M2 final vectors equal: True; Q1 at cut 3 (k, k2): r4 -> ('T', 'F'), r5 -> ('F', 'T')
+M3 same positions, revocation at act time 2 vs 4: r6 -> T, r7 -> F
+M4 stored at append: T; CE* after annul(g1), t=5: F; at t=2: F
+M5 recorder A vs Z: Q1 equal on 322 of 322 (item, t, cut, extension) cases; entries differ: True
+all assertions passed
