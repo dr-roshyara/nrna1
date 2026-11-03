@@ -15,7 +15,7 @@
 | 6 | Evidence entries, withdrawal, restoration, annulment; the sink property | §9.18 L111–113, §9.18.6; CON-0214; §8.91 C4; §8.92 C5; §8.96 C5 | the source kind of evidence content: G7 |
 | 7 | A claim without evidence | §8.87 C2 (shown as not attested; agreement only for promotion along an evidence ladder); §8.92 C1; §8.94 C2; §8.96 C3 | — |
 | 8 | Justification and confidence | no book concept: §8.89 C2 (the register); §8.87 C4 | confidence: G7 (F13 part) |
-| 9 | Absence: no claim, unknown, refusal, not attested | §8.89 C5; §8.91 C6; §8.95 C6; §8.96 C6; CON-0221; §9.15 G1, G6 | a refusal leaves no trace: observation on T0-07 and G8 (§8.91 C6, §8.96 C3), not opened |
+| 9 | Absence: no claim, unknown, refusal, not attested | §8.89 C5; §8.91 C6; §8.90.3 (F-01, consolidation S0353–S0377); §8.95 C6; §8.96 C6; CON-0221; §9.15 G1, G6 | a refusal leaves no trace: observation on T0-07 and G8 (§8.91 C6, §8.96 C3), not opened |
 | 10 | The incompleteness lens ("cannot verify its own invariants") | §8.51 C1; §8.89 C4; §8.91 C5; §8.92 C6; §8.96 C6 | — |
 | 11 | Independence of a check, of a reviewer, of a fresh session | §8.06 C1, C3 (CON-0125, CON-0127); §8.27 C3; §8.75 C5; §8.76 C4; §8.97 C2, C3; §8.98 C1 | review independence: the Principal's open question (§8.76 C4; §8.78 C5) |
 | 12 | Lanes recorded by the process they appoint | §8.71 C3; §8.73 C1; §8.79 C3; §8.98 C3 | — |
@@ -23,3 +23,4 @@
 | 14 | History and the store that carries it | §8.91 C1; §9.20 L155; §8.94 C3 (K2) | history as a primitive: T9-03 |
 | 15 | Lenses as sources of questions | §8.93 C5; §8.89 C4; §8.51 C1; §8.33 | — |
 | 16 | A guard on a documented path as evidence for the practised path | §8.98 C5; §8.29 C5 | observation, no map home (§8.98 C5) |
+| 17 | Merging records of several applications: in D only if the union also meets D's designation clauses | §9.16 R2 (a) (restated at the consolidation S0353–S0377, C-F2); §9.17 R3 (c) | T9-18 (identity used by R2) |

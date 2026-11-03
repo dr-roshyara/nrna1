@@ -13,3 +13,4 @@
 |---|---|---|---|---|
 | 2026-11-03 | C103 | §8.96 C3, §8.91 C6 | Record a refusal at the gate as an entry of its own (a refusal kind, with the reason), so the record can tell "refused" from "no claim". Whether the kernel should do this is the open observation on T0-07 and G8. | brainstorm, not evidence |
 | 2026-11-03 | C105 | §8.98 C4, §8.82 C2 | Record the producer's runtime identity for every repository change made under a work item, even without a lane, so that a producer bar can later be checked against the record. | brainstorm, not evidence |
+| 2026-11-03 | consolidation S0353–S0377 | §9.16 R2 (a) (C-F2) | Run D's designation clauses on the merged record as the merge's last step, and refuse it (or mark it outside D) before any Q1 read, instead of trusting each side's own membership. | brainstorm, not evidence |
