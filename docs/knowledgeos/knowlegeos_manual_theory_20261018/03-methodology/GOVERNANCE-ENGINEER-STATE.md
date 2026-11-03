@@ -45,7 +45,8 @@
 
 ## Waiting for
 
-- **The Principal's report** that the window-grouping ruling (decision record, 2026-11-03) reached the Professor.
+- Window-grouping ruling **in effect**: §8.94 (C101, S0370) cites it.
+- **Brainstorm** `BRAINSTORM-CHAPTER-SUMMARIES-SPLITTING-CH10-20261103.md` rev. 2 (`5913fb98f`): three decisions for the Principal, one at a time; none taken.
 - Reading at S0369 (C100 in review); the S0353–S0377 consolidation (no planted-gap test) after S0377, with findings and misses per window.
 
 ## Next actions (Governance Engineer)
