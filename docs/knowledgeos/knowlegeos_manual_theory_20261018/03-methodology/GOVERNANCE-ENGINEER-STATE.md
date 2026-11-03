@@ -13,7 +13,7 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | **Held at S0366** (last read 2026-11-02T15:48:03Z). C97 settled on the saved report (`9c2809ffc`; the Principal's line as quoted in the Professor's log, sessions/2026-11-02.md L244, not yet confirmed to the GE). T9-02 turn settled (`2b204b003`); reading resumes at S0367 only on the Principal's ruling on the deliverable's form (stop (b)); next stop the gate after S0402 | read log; session log |
+| Reading | Resumed at S0367 after the T9-02 ruling; last read S0369 (C100 in review, 2026-11-03). From C101 sibling answers to one prompt share a window (≤ 5 sources, each full; Principal 2026-11-03). Next: the S0353–S0377 consolidation, then the gate after S0402 | read log; decision record |
 | Consolidation S0278–S0302 (a planted-gap test) | **Settled.** Run 2 (fresh) scored blind 3 of 4 (Q4, a stale pointer, missed); stage 1 `2b9441cc9`; stage 2 `e3ac4df54`, guard checked | `review/CONSOLIDATION-S0278-S0302/PLANTED-GAP-RESULT.md` (`6844d88e5`) |
 | Sealed key and manifest | **Released** after scoring (key `c0427904…`, manifest `6371c741…`, both unchanged) | `PLANTED-GAP-RESULT.md`; ACCESS-RECORD |
 | Req/A theory turn | **Settled; U1–U6 decided** (§9.19 v2, `fb146c3a6`; rulings confirmed, decision record 2026-11-01T17:32:50Z). U5 (a) EF; U6 (a) O1 per act kind, D clauses later (T9-21); U2 (a) g1's class, kernel; U1 (b) T9-02 later; U3 (b) unfixed, scoped; U4 (d) deferred. No minimal kernel of KnowledgeOS stated; uniqueness after U6 holds in the toy model only. **T9-21 and T9-02 wait for a later authorised turn** | decision record; `review/REQ-A-TURN/SETTLEMENT.md` |
@@ -45,8 +45,9 @@
 
 ## Waiting for
 
-- **The Principal's ruling on T9-02's deliverable form** (retype to entry kinds and fields plus derivations, or keep the per-item table). The turn is **settled, partially resolved** (`b9a7e2a54` → `2b204b003`, 2026-11-02 17:18–17:45 local). GE procedure check done 2026-11-02 (no theory judged): order kept; step-1 and report hashes match; reading position unchanged; no corpus source; RESEARCH-PURPOSE and THEORY-MAP untouched by the turn; TODO T9-02–T9-04 changes worded as consequences; three reviewers on different models. Minor deviations disclosed by reviewer C (tools with `--root` on the working book; a step-1 glob line count touching `09.00-index.md`); to go into the access record.
-- C97 line confirmed and recorded (decision record addendum 2026-11-02T17:38:57Z).
+- **The Principal's confirmation** that the T9-02 deliverable line was sent (applied by the Professor at `2620c585d`, quoting it); then the decision-record entry.
+- **The Principal's report** that the window-grouping ruling (decision record, 2026-11-03) reached the Professor.
+- Reading at S0369 (C100 in review); the S0353–S0377 consolidation (no planted-gap test) after S0377, with findings and misses per window.
 
 ## Next actions (Governance Engineer)
 

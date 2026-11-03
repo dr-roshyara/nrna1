@@ -872,3 +872,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal's confirmation to the Governance Engineer (verbatim):** "I sent that C97 line"
 - **Decided:** C97 (§8.90, S0366) settled on its saved step-2 report despite reviewer W's scratch-copy deviation (`review/C97-S0366/ACCESS-DEVIATION.md`, `e6436fd5d`); settled at `9c2809ffc`. **From C98, every commission lists the files that may be copied to a scratch directory.** Reading held at S0366 for the T9-02 turn (settled `2b204b003`).
 - **Unchanged:** Rulebook v1.4; reading depth; review procedure otherwise; access permissions; the git-history ban.
+
+## Addendum 2026-11-03T01:32:13Z: sibling answers grouped into one window from C101 (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "Group sibling answers to one prompt into one window from C101 on, within Rulebook v1.4 §3 (at most five sources in index order, each read full); report findings and misses per window at the S0353–S0377 consolidation."
+- **Basis:** the Professor's proposal of 2026-11-03 (sources S0363–S0369 are sibling answers to the same prompts; review cost per window rising, no new concept since C94); the Governance Engineer's check: Rulebook v1.4 §3 defines a window as the next 5 sources in index order, windows have run at 1–3 sources since about C63 with no recorded decision, sources in this stretch are 983–2,506 lines each.
+- **Decided:** from C101, sibling answers to one prompt may share one window; at most five sources in index order; every source read full (no skim for repetition, §3). The S0353–S0377 consolidation reports findings and misses per window.
+- **Unchanged:** Rulebook v1.4 (no rule changed; this applies §3 as written); review procedure; the consolidation gate; access permissions; the git-history ban; copy lists in every commission.
+- **Sent to the Professor:** not yet reported to the Governance Engineer.
