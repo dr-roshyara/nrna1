@@ -62,4 +62,16 @@ enum RefusalReason: string
 
     /** Guard (D-5(b)): an Admit or End may not take effect after its caller-supplied decision date. */
     case EffectiveDateAfterDecisionDate = 'effective_date_after_decision_date';
+
+    /** Guard (correction contract §10a Correct (3), N-3): an Annul or a Void carries no date to correct. */
+    case CorrectionOfAnnulOrVoidRefused = 'correction_of_annul_or_void_refused';
+
+    /** Guard (correction contract §10a Correct (4); P-1): the target, or the root of its chain, is voided. */
+    case CorrectOfVoidedFact = 'correct_of_voided_fact';
+
+    /** Guard (P-3): the corrected date equals the target's current value. */
+    case ValueUnchanged = 'value_unchanged';
+
+    /** Guard (BD-REV-ER = refuse): a correction may not leave a live admission with an empty lifetime. */
+    case PeriodAbsorbed = 'period_absorbed';
 }

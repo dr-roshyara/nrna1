@@ -124,3 +124,25 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
   - **GREEN:** the new port `Support/G6C2CorrectionOracle.php` (a transcription; no production code shared) reproduces the listing, the per-depth counts and the stream sha256 on the first run, in 2.7 s.
   - **The C-1 port and fixture are untouched.**
   - **Regression:** Domain 118, Application 62, Infrastructure 22, Architecture 97.
+- 2026-11-03: **Step 3 done (the Correct decision: refusals and guard order).**
+  - **RED:** `CorrectDecisionTest` (18 tests): 18 errors, `Member::decideCorrect()` undefined. The test helper `MemberHistory::correct()` was added.
+  - **GREEN:**
+    - the new fact `Correct` (target, value, provenance, `decidedAt`);
+    - the four `RefusalReason` cases of §4. `PeriodAbsorbed` is declared now, but has no behaviour until step 6;
+    - `Resolution::valueOf()` / `rootOf()` / `isVoided()`;
+    - `Member::decideCorrect()`.
+  - **Guard order, as pinned pairwise by the tests:**
+    1. finite dates;
+    2. `DuplicateFactId`;
+    3. `TargetNotFound`;
+    4. `CorrectionOfAnnulOrVoidRefused`;
+    5. `CorrectOfVoidedFact` (direct, or via the root: P-1);
+    6. an annulled target is not refused;
+    7. `ValueUnchanged`;
+    8. `EndNotAfterPeriodStart` (P-4, both sides);
+    9. `EffectiveDateAfterDecisionDate`;
+    10. G\* (unchanged `accept()`).
+  - **`TargetNotLive` never applies to Correct:** a target that is not live is either voided (→ 5) or annulled (→ accepted inert). This matches the oracle.
+  - **Not yet in effect:** an accepted Correct does not change the resolved state until step 4 (value precedence in `Resolution::of`). It creates no consequences until step 5.
+  - **Deviation, recorded:** `Correct` does **not** implement `EffectiveDatedFact`. `MembershipStorableValidTimeCoverageTest` pins the dated facts to Admit and End. The storable-range part of P-5 (R-1a-6) is checked at the persistence port, so it moves to **COR-4**, which must extend `StorableValidTime`. The kernel applies the finite and dating parts of P-5.
+  - **Regression:** Domain 136, Application 62, Infrastructure 22, Architecture 97.

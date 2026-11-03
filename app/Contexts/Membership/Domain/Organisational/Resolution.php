@@ -54,6 +54,73 @@ final class Resolution
     }
 
     /**
+     * Voided (correction contract §10a Correct (4)): a live Void targets the fact. A Void that is itself voided no
+     * longer voids its target.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function isVoided(array $facts, FactId $id): bool
+    {
+        foreach (self::live($facts) as $fact) {
+            if ($fact instanceof VoidFact && $fact->target()->equals($id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * The root of a correction chain: the Admit or End that a Correct (of a Correct …) ultimately corrects;
+     * any other fact is its own root.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function rootOf(array $facts, FactId $id): Fact
+    {
+        $fact = self::find($facts, $id);
+
+        return $fact instanceof Correct ? self::rootOf($facts, $fact->target()) : $fact;
+    }
+
+    /**
+     * Stage 3, value (contract §10a Correct (2)): the value of the latest live Correct of the fact, by seq and
+     * recursively along the chain; without one, the fact's own date. Defined for Admit, End and Correct.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function valueOf(array $facts, FactId $id): TimePoint
+    {
+        $latest = null;
+        foreach (self::live($facts) as $fact) {
+            if ($fact instanceof Correct && $fact->target()->equals($id)) {
+                $latest = $fact;
+            }
+        }
+        if ($latest !== null) {
+            return self::valueOf($facts, $latest->id());
+        }
+        $fact = self::find($facts, $id);
+
+        return match (true) {
+            $fact instanceof Correct => $fact->value(),
+            $fact instanceof EffectiveDatedFact => $fact->effectiveAt(),
+            default => throw new \LogicException('Only an Admit, End or Correct has a value.'),
+        };
+    }
+
+    /** @param list<Fact> $facts */
+    private static function find(array $facts, FactId $id): Fact
+    {
+        foreach ($facts as $fact) {
+            if ($fact->id()->equals($id)) {
+                return $fact;
+            }
+        }
+        throw new \LogicException('The fact is not in the log.');
+    }
+
+    /**
      * Stage 1, liveness (FP §16.3): live(f) ⇔ no later live Annul / Void targets f.
      * A reversal can only target an earlier fact, so one backward pass decides every fact.
      *

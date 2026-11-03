@@ -184,6 +184,79 @@ final readonly class Member
         return $this->accept(new VoidFact($id, $target, $provenance, $decidedAt));
     }
 
+    /**
+     * Correction contract §3.3 (C-2, PBDIGIT-327): replace the date of an earlier Admit, End or Correct (D-COR-3:
+     * dates only). An annulled target is accepted and stays inert until revived (§10a Correct (5); P-6).
+     *
+     * @param TimePoint $decisionDate as in decideAdmit (D-5(a) Z1); P-5 applies the dating rule to the corrected date
+     * @throws \InvalidArgumentException when the corrected date or the decision date is ∞ (invalid input, not a refusal)
+     */
+    public function decideCorrect(FactId $id, FactId $target, TimePoint $value, TimePoint $decisionDate, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    {
+        self::requireFiniteDates($value, $decisionDate);
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        $targetFact = $this->fact($target);
+        if ($targetFact === null) {
+            return Decision::refused(RefusalReason::TargetNotFound);
+        }
+        if ($targetFact instanceof ReversalFact) {
+            return Decision::refused(RefusalReason::CorrectionOfAnnulOrVoidRefused);
+        }
+        $facts = $this->facts();
+        $root = Resolution::rootOf($facts, $target);
+        // §10a Correct (4) and P-1: a voided target, or a chain whose root is voided, never reflected reality.
+        if (Resolution::isVoided($facts, $target) || Resolution::isVoided($facts, $root->id())) {
+            return Decision::refused(RefusalReason::CorrectOfVoidedFact);
+        }
+        if ($value->equals(Resolution::valueOf($facts, $target))) {
+            return Decision::refused(RefusalReason::ValueUnchanged);
+        }
+        if (!$this->keepsPeriodOrdered($facts, $root, $value)) {
+            return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
+        }
+        if ($value->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
+        }
+
+        return $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt));
+    }
+
+    /**
+     * P-4: a corrected End stays after its period's current start (C-S0-1 carried over); a corrected Admit stays
+     * before its period's live End, if it has one (the latest by seq; current value).
+     *
+     * @param list<Fact> $facts
+     */
+    private function keepsPeriodOrdered(array $facts, Fact $root, TimePoint $value): bool
+    {
+        if ($root instanceof End) {
+            return Resolution::valueOf($facts, $this->admissionOf($root->period())->id())->isBefore($value);
+        }
+        if (!$root instanceof Admit) {
+            throw new \LogicException('The root of a correction chain is an Admit or an End.');
+        }
+        $liveEnd = null;
+        foreach ($facts as $fact) {
+            if ($fact instanceof End && $fact->period()->equals($root->periodId()) && Resolution::isLive($facts, $fact->id())) {
+                $liveEnd = $fact;
+            }
+        }
+
+        return $liveEnd === null || $value->isBefore(Resolution::valueOf($facts, $liveEnd->id()));
+    }
+
+    private function admissionOf(PeriodId $period): Admit
+    {
+        foreach ($this->facts() as $fact) {
+            if ($fact instanceof Admit && $fact->periodId()->equals($period)) {
+                return $fact;
+            }
+        }
+        throw new \LogicException('An End names the period of an Admit in the same log.');
+    }
+
     /** G*: resolve the candidate F·f and accept iff no invariant is violated (contract §15). */
     private function accept(Fact $fact): Decision
     {

@@ -80,6 +80,19 @@ final class MemberHistory
         return $this->member->decideVoid(FactId::fromString($id), FactId::fromString($target), Provenance::decision('registrar-1'), $decidedAt === null ? null : Instant::of($decidedAt));
     }
 
+    /** Correction contract §3.3 (C-2, PBDIGIT-327): Correct replaces the date of an Admit, End or Correct. */
+    public function correct(string $id, string $target, int $value, ?int $decisionDate = null, ?int $decidedAt = 900): Decision
+    {
+        return $this->member->decideCorrect(
+            FactId::fromString($id),
+            FactId::fromString($target),
+            TimePoint::of($value),
+            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate),
+            self::provenance(),
+            $decidedAt === null ? null : Instant::of($decidedAt),
+        );
+    }
+
     /** Appends an accepted decision; fails the test if it was refused. */
     public function commit(Decision $decision, ?int $recordedAt = null): self
     {
