@@ -15,3 +15,5 @@
 - **Quote check (`corpus_quote_check.py`):** 0 bracketed quotations; every quotation is marked "in meaning" with its line reference, checked against the source while drafting.
 - **Self-check:** 9 flags, all homonym reminders.
 - **Outside authors:** the books' authors, their commentators and the philosophers they discuss are not named; eponymous terms (E = K, Fitch's argument) and the Sanskrit technical terms stay; session identifiers quoted as identifiers.
+
+**At settlement (v2).** Quote check: 0 bracketed quotations (all "in meaning"). Self-check: 8 flags, all homonym reminders. R2: tiers A–C, none first used in 08.105. R/N: R 14, N 7. No R3 notes needed (inbound citations to §8.105: 0, per W).
