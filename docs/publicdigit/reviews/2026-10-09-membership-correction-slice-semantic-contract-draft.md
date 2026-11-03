@@ -201,6 +201,15 @@
 
 ## 9. Open decisions (not decided by this contract)
 
+> **Status annotation (2026-11-03): COR-2 design points decided by the PO** with the COR-2 plan (`docs/plans/20261103-0222-membership-cor2-correct-and-consequences-tdd-plan.md` §3), all as recommended:
+> - **P-1 (m5):** a Correct whose chain root is voided is refused (`CorrectOfVoidedFact`).
+> - **P-2:** trims are represented **relatively** (FP §12.4).
+> - **P-3:** a no-op correction is refused (`ValueUnchanged`).
+> - **P-4:** a corrected End at or before the period start (or a corrected Admit at or after its live End) is refused (`EndNotAfterPeriodStart`).
+> - **P-5:** the corrected value obeys the dating rules (finite; no future date, D-5(b); the R-1a-6 range).
+> - **P-6 (D-COR-1):** the act governs; the register is annotated.
+> - The table below is kept as written.
+
 > **Status annotation (2026-11-02): BD-REV-ER DECIDED by the PO, option (b) refuse.** Record: `2026-11-02-membership-bd-rev-er-decision-record.md`. The ER guard and `PeriodAbsorbed` are therefore in scope for C-2. The table row below is kept as written. All other rows remain open.
 >
 > **Status annotation (2026-11-02): D-COR-3 DECIDED by the PO: dates only in the first slice** (Admit and End `effectiveAt`); the initial term, End kind, provenance and authority evidence stay OPEN. Record: `2026-11-02-membership-d-cor-3-decision-record.md`. No decision listed for C-2 (`§10`) remains open; C-2 still depends on C-1.

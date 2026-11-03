@@ -89,6 +89,7 @@ The fact table shape (Annul, Void and Correct may share it) · the seq assignmen
 - **INV-SHAPE** is renamed **INV-EP** (definitional: an episode is contiguous).
 - **G\*** is reclassified as an **enforcement mechanism** (domain service); the invariants are the domain truth.
 - **Correct requires a live target.**
+  - *Annotation (D-COR-1, confirmed by the PO 2026-11-03 with the COR-2 plan, P-6): **the act governs.** Per act §4 and note N-3 (canonical §9), Correct of an **annulled** target is accepted and inert until the target is revived; Correct of a **voided** target is refused. "Requires an active target" in canonical §9 is a policy (BD-REV), not a safety rule. This bullet is kept as written; no behaviour changes.*
 - **The previous "RATIFIED" is withdrawn and re-established:** CX found (420 / 120,000) → fixed → 0.
 
 ### Requirements traceability (final)
