@@ -17,3 +17,10 @@
 - **R1:** no new rows.
 - **R2 (`undefined_terms.py --scope 08.96`):** tiers A–C: none in scope.
 - **Quote check (`qc.py` against S0372, S0371, S0370 with "[IT]" substituted, S0367, §1.10, §9.18):** 77 checked; every quote matched after three spans were corrected (a filename quoted as words, a capitalisation, a paraphrase), before the draft's commit.
+
+**At settlement (v2), on the saved report (the Principal's ruling of 2026-11-03).**
+- **R2:** W's run (`--no-corpus`): tiers A–C none in scope; 29 tier D judged acceptable.
+- **Quote check (`qc.py`, v2, against S0369–S0372 with "[IT]" substituted, S0367, the register, §1.10, §9.18):** 89 checked; the misses are quotations of the withdrawn draft in §8.96.5 and the "(W, step 1)" marker.
+- **R3:** §8.95 lineage extended (S0371's restatement of S0372 (B), W-05); THEORY-MAP's C102 line corrected ("the adviser's own formulations" → S0372 (A) and (B), with the remaining items the adviser's). §8.96 has no inbound citations beyond §8.95 and the index row (W).
+- **Book item for the consolidation (W, appendix):** §8.91 C6 cites §9.10 L37 for Q1's scope; the scope line is L35.
+- **Access deviation:** `ACCESS-DEVIATION.md` (W's glob grep matched S0365 and S0368). Ruling: settle on the saved report; from C104 briefs forbid globs (`mkbrief1.py`, `mkbrief2.py` now carry the line).
