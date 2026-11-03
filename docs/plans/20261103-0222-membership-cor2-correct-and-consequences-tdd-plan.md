@@ -1,6 +1,6 @@
 # Plan: COR-2: Correct and its consequences in the Membership kernel (PBDIGIT-327, roadmap W4)
 
-**Status:** **APPROVED by the PO, 2026-11-03 (G-PLAN: "approve the COR-2 plan with P-1…P-6 as recommended").** Steps 1–7 are authorised (kernel only, database-free). Nothing is implemented yet. *(Was: PROPOSED.)* Approval authorises steps 1–7, which are kernel-only and database-free. It does **not** authorise persistence (COR-4), application commands (COR-3), or any database run.
+**Status:** **COMPLETED: PBDIGIT-327 ACCEPTED by the PO, 2026-11-03** (kernel only; record `docs/publicdigit/reviews/2026-11-03-pbdigit327-cor2-independent-review-and-acceptance.md` §4.1). *(Earlier:)* **APPROVED by the PO, 2026-11-03 (G-PLAN: "approve the COR-2 plan with P-1…P-6 as recommended").** Steps 1–7 are authorised (kernel only, database-free). Nothing is implemented yet. *(Was: PROPOSED.)* Approval authorises steps 1–7, which are kernel-only and database-free. It does **not** authorise persistence (COR-4), application commands (COR-3), or any database run.
 **Story:** `docs/publicdigit/backlog/PBDIGIT-327-membership-correction-c2-correct-and-consequences.md`
 **Template:** the C-1 plan `docs/plans/20261010-1009-membership-c1-annul-void-tdd-plan.md` (same oracle-port, golden and differential method).
 **Baseline:** HEAD `8e180bd96`.
@@ -256,3 +256,10 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
   - **C-3 (F-6, F-7, F-8):** recorded as **COR-4 entry criteria V-13…V-15** in the roadmap verification table (`…20261016_2219_…_completion_plan.md` §3.2), next to V-1 / V-4. Guide 13 points to them.
   - **Regression:** Domain **171**, Application 62, Infrastructure 22, Architecture 97. No change under `app/`.
   - **Next:** the PO's acceptance verdict on PBDIGIT-327. It decides the P-2 reading, the ER scope, guide 12, and F-3 / F-4 as contract questions.
+  - Committed `9173c841f`.
+- 2026-11-03: **PBDIGIT-327 ACCEPTED by the PO** ("accept PBDIGIT-327; 1–3 as recommended; F-3/F-4 as contract questions").
+  - P-2: absolute representation; the distinction is nominal.
+  - ER on every decision: annotated in the BD-REV-ER record.
+  - Guide 12 → PBDIGIT-328.
+  - OQ-C2-1 / OQ-C2-2: open in contract §9.
+  - **This plan is complete.** Next in W4: the COR-4 plan, which needs its own story and approval; entry criteria V-1, V-4, V-13…V-15 and ACC-260 K-2.

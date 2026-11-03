@@ -201,6 +201,17 @@
 
 ## 9. Open decisions (not decided by this contract)
 
+> **Status annotation (2026-11-03): COR-2 (PBDIGIT-327) ACCEPTED by the PO.** Record: `2026-11-03-pbdigit327-cor2-independent-review-and-acceptance.md` §4.1.
+> - **P-2 clarified:** a trim is stored as the removed interval in **absolute** valid-time dates, as stated by the decision, and clipped at resolution to the cause's current BaseClaim. "Relative" vs "absolute" is **nominal** in this implementation. The P-2 line below is kept as written.
+> - **ER scope:** ER is a G\* invariant on every decision (Correct, End, reversals). See the BD-REV-ER record annotation.
+> - **New contract questions (OPEN, owner PO; they do not block C-2):**
+>   - **OQ-C2-1 (review F-3):** P-4 / C-S0-1 hold only when a decision is made. An Annul of a Correct can leave a live period whose End is before its start (an empty BaseClaim; e.g. `A0@0 E0@2 C(E0→4) C(A0→3) Annul(C(E0→4))`). Kernel and oracle accept this. That state also enables a two-period trim (review F-1). Question: should a reversal that produces it be refused (a G\* invariant), or is it acceptable?
+>   - **OQ-C2-2 (review F-4):** P-1 refuses a Correct whose direct target or chain **root** is voided. It accepts, inert:
+>     - a Correct of a chain whose **intermediate** link is voided;
+>     - a Correct(End) whose period's **Admit** is voided.
+>
+>     Question: should P-1's "never happened" rationale extend to these?
+
 > **Status annotation (2026-11-03): COR-2 design points decided by the PO** with the COR-2 plan (`docs/plans/20261103-0222-membership-cor2-correct-and-consequences-tdd-plan.md` §3), all as recommended:
 > - **P-1 (m5):** a Correct whose chain root is voided is refused (`CorrectOfVoidedFact`).
 > - **P-2:** trims are represented **relatively** (FP §12.4).

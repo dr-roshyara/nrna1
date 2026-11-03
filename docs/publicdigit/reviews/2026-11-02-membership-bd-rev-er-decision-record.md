@@ -2,6 +2,12 @@
 
 **Date:** 2026-11-02 · **Recorded by:** Claude (DDD architect), on the PO's instruction
 **Status:** **DECIDED by the PO (2026-11-02): option (b), refuse.**
+
+> **Scope annotation (PO, 2026-11-03, with the COR-2 acceptance):**
+> - ER is enforced as a **G\* invariant on every decision**, as §3 places it in the enforcement set. That covers a Correct, an End (e.g. an End dated inside its own period's existing trim) and a reversal (e.g. an appeal Annul(Annul) that would leave a live period absorbed).
+> - This **explicitly extends** the §2 wording "a correction is refused if …".
+> - Evidence: the oracle and golden at L = 5 give 616 `period_absorbed` refusals (Correct 595, End 21).
+> - Record: `2026-11-03-pbdigit327-cor2-independent-review-and-acceptance.md` §4.1. The §2 text is kept as written.
 **Placement:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0); `reviews/*-decision-record.md` convention.
 
 ## 1. The question (as recorded)

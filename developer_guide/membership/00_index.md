@@ -19,7 +19,7 @@ The ratified Membership architecture is implemented slice by slice under
 | 09 | [V-2: an Annul must itself carry decision provenance](09_v2_annul_requires_decision_provenance.md) | C-1 fix · `PBDIGIT-268` | implemented 2026-11-02 (database-free); C-1 G3 still deferred |
 | 10 | [Membership in business terms: current state and plan](10_business_overview_current_state_and_plan.md) | overview (no story) | documentation, 2026-11-02 |
 | 11 | [The isolated PostgreSQL container for the Membership suite](11_isolated_postgres_container.md) | W2 · `PBDIGIT-324` | implemented: steps 1–5 (TDD) and step 6 (first container run: 43 tests OK on PostgreSQL 15.19, W2-2 provisional), 2026-11-02; **accepted with explicit residual risks** (PO, 2026-11-02, conditional on W2-2) |
-| 13 | [Correction C-2: Correct and its consequences in the kernel](13_cor2_correct_and_consequences.md) | C-2 · `PBDIGIT-327` | implemented 2026-11-03 (kernel only, database-free; steps 1–7); independent review and PO verdict pending |
+| 13 | [Correction C-2: Correct and its consequences in the kernel](13_cor2_correct_and_consequences.md) | C-2 · `PBDIGIT-327` | implemented 2026-11-03 (kernel only, database-free; steps 1–7); **accepted** (PO, 2026-11-03, after an independent review and conditions C-1…C-3; residual risks recorded) |
 
 **Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 first **deferred** for V-2 (guide 09), then **accepted with explicit residual risks** the same day, after the V-2 fix and the W0 clean-copy run (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`). Slice 2a (`PBDIGIT-271`) **accepted with explicit residual risks** on 2026-11-02, after an independent review of the committed hardening.
 

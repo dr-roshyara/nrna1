@@ -3,7 +3,7 @@
 **Status:**
 - §2 is the review report, recorded **verbatim** as returned (2026-11-03).
 - §3 is the commissioning session's spot-check.
-- §4 is the PO's verdict: **PENDING**.
+- §4 is the PO's verdict: **ACCEPTED** (2026-11-03, after the conditions were closed; §4.1).
 
 **Reviewer:** a fresh general-purpose Claude sub-agent, commissioned on 2026-11-03 by session `93000efc-ad03-4c1d-9b3f-40966981efc3`, on the PO's instruction "commission the COR-2 review". Brief: `2026-11-03-pbdigit327-cor2-independent-review-brief.md` (`09e89f3df`).
 - It was read-only on the repository.
@@ -255,7 +255,36 @@ Spot check: at seed 21 (H = 10, 300 walks), the same random harness detected all
 | C-2 | ER also refuses reversals: recorded in plan §10 step 6 and guide 13. The ER scope is confirmed by the PO with the acceptance below |
 | C-3 | COR-4 entry criteria V-13 (R-1a-6), V-14 (INV-TGT at decode), V-15 (decoded-consequence validation) in the roadmap verification table §3.2; guide 13 points to them |
 
-**Acceptance: PENDING.** It follows on the PO's word, after the conditions are committed. The decisions still needed at acceptance:
+The conditions were committed in `9173c841f`.
+
+### 4.1 Acceptance (PO, 2026-11-03)
+
+**PO words:** "accept PBDIGIT-327; 1–3 as recommended; F-3/F-4 as contract questions".
+
+**PBDIGIT-327 (COR-2) is ACCEPTED, kernel only.** The decisions:
+1. **P-2 reading, as recommended.**
+   - The representation is recorded as *the removed interval in absolute valid-time dates, as stated by the decision, clipped at resolution to the cause's current BaseClaim*.
+   - The relative / absolute distinction is **nominal** in this implementation.
+   - A cause-relative meaning, if ever wanted, would be a new decision for COR-4. The FP `multicause*.py` scripts are not in the repository.
+2. **ER scope, as recommended.**
+   - ER stays a G\* invariant on **every** decision: Correct, End and reversals.
+   - This explicitly extends the PO's 2026-11-02 wording ("a correction …"). Recorded in the BD-REV-ER decision record.
+3. **Guide 12, as recommended.** A separate backlog item: **PBDIGIT-328**.
+4. **F-3 and F-4 become contract questions** (contract §9): **OQ-C2-1** (F-3) and **OQ-C2-2** (F-4), both OPEN, owner PO. They do not block this acceptance.
+
+**Residual risks accepted with it** (review §F):
+- single-session authorship of the kernel, the port and the P-1 / P-3 / P-4 restriction layer;
+- exhaustive evidence only to L = 6 (H ≤ 5), random sampling beyond;
+- reachable degenerate states (OQ-C2-1, OQ-C2-2);
+- the COR-4 guards V-13…V-15 not yet built;
+- repeated resolution (performance; COR-3 / COR-4).
+
+**What this acceptance does not do:**
+- It authorises no persistence (COR-4), application command (COR-3) or event emission.
+- The ARB-MEM-01 gate stays: correction COR-1…COR-4 must be accepted before any cutover, migration or live write.
+- The release gate for the ledger migrations is unchanged.
+
+*(Superseded wording: "Acceptance: PENDING. It follows on the PO's word, after the conditions are committed." The list of decisions needed at acceptance is kept below as history.)*
 1. the verdict (the reviewer recommends ACCEPT WITH CONDITIONS C-1…C-3);
 2. P-2 reading;
 3. ER scope (it now also covers reversals, F-5);

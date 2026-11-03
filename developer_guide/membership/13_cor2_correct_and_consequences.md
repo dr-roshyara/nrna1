@@ -45,6 +45,8 @@ Infrastructure     ← COR-4 (storing Correct and its consequences; StorableVali
   - a value after the decision date → `EffectiveDateAfterDecisionDate`;
   - ∞ → `InvalidArgumentException`.
 - **Trim on the cause (FP §12.4 C; P-2).** g2 runs **once, at decision time**, and its result is frozen on the `Correct`. Resolution never replays the policy. That keeps `knownAt` deterministic and makes CFC a matter of liveness.
+- **Representation (P-2, as clarified at acceptance):** the removed interval in **absolute** valid-time dates, as stated by the decision, clipped at resolution to the cause's current BaseClaim. "Relative" vs "absolute" is nominal here.
+- **Open contract questions (they do not change the code):** OQ-C2-1, whether an Annul may leave a live period with an empty BaseClaim; OQ-C2-2, whether P-1 should extend to a voided intermediate link or a voided Admit (contract §9).
 - **ER is an invariant of G\* (BD-REV-ER record §3, canonical §6).** It is checked for **every** decision, last. So an End dated inside its own period's existing trim is refused too, and so is a **reversal** that would leave a live period absorbed, e.g. an appeal Annul(Annul) (review F-5). This reading is flagged to the PO in the plan.
 - **One Correct can trim several periods** (FP §13.6 case B; review F-1). For example, after an Annul leaves a period with an empty BaseClaim, a correction can extend it on both sides. g2 keeps every consequence, one per trimmed period.
 - **Not an `EffectiveDatedFact`.** `MembershipStorableValidTimeCoverageTest` pins the dated facts to Admit and End. The storable-range check for the corrected value (R-1a-6) belongs to COR-4.
