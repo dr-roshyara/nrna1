@@ -208,6 +208,23 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **The two round-trip tests passed on the double at once**, as expected: it stores fact objects. **They are the RED tests for the PostgreSQL adapter (step 5).**
   - **GREEN (double):** `recordedAt = max(clock, last + 1 µs)`.
   - **Regression:** Domain 189, Application 75, Infrastructure 22, Architecture 98.
+  - Committed `5572ce595`.
+- 2026-11-03: **Step 4 done (the migration; Q-1, Q-4, Q-5).** Every PostgreSQL run used the pinned image (15.19, W2-2 provisional) via `scripts/testing/membership-pg.sh`, from a fresh clean worktree with the uncommitted files copied in. Each worktree was removed afterwards. Evidence lives in the scratchpad `cor4-ev/`; it is archived in step 8.
+  - **RED** (`cor4-ev/s4-red`, commit `5572ce595`): `PostgresCorrectionSchemaTest`, 19 tests: **17 failures + 2 errors**, all SQLSTATE `42703` (no `target_fact_id` column) or the missing migration.
+  - **GREEN:**
+    - migration `2026_11_03_120000_extend_org_membership_facts_for_corrections.php`:
+      - renames `period_fact_id` → `target_fact_id`, with its FK (Q-1);
+      - makes `effective_at` nullable (Q-4);
+      - adds `consequences jsonb` + `g2_version smallint` (Q-5);
+      - adds one five-branch kind CHECK, a `g2_version >= 1` CHECK and a no-self-target CHECK;
+      - `down()` refuses while any annul / void / correct row exists, and otherwise restores the 1b shape;
+    - **the column rename is carried into the adapter** (4 references in `PostgresMemberRepository.php`, edited by hand), so the existing PostgreSQL suite stays green between steps. The new kinds remain step 5.
+  - **Test defect found and fixed (my test, not the migration):** the first `down()` test assumed an empty table. The suite does not wrap tests in transactions (F-5), so the "well-formed rows" test leaves 4 committed correction rows, and `down()` correctly refused. This showed only in the full run; in isolation the test passed.
+    - The restore half now runs in one outer transaction (delete correction rows and their command rows → `down()` → `up()` → rollback; PostgreSQL DDL is transactional).
+    - Diagnosed by printing the masked exception in a scratch worktree copy only. The debug runs (`s4-debug`, `s4-debug2`) are excluded from the evidence.
+  - **Full PostgreSQL suite after the fix** (`cor4-ev/s4-green2`): 81 tests; **the only 3 errors are the step 5 RED**. The new contract tests (strict `recordedAt`, every-kind round trip, `appliedCommand`) hit `Call to undefined method Correct::effectiveAt()` at `PostgresMemberRepository.php:247`: **K-2 itself, reproduced.** Every pre-existing PostgreSQL test and all 19 schema tests pass. 1 deprecation, pre-existing (`config/database.php` on PHP 8.5).
+  - **Architecture:** `MembershipLedgerIsolationTest` flagged the new migration as touching the ledger from outside Membership. It is added to the exact-path allowlist, as F-4b's migration was.
+  - **Regression (database-free):** Domain 189, Application 75, Infrastructure 22, Architecture 98.
 
 ## 11. Open questions (outside this plan's decisions)
 

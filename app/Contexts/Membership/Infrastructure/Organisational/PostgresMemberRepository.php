@@ -64,7 +64,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
         $facts = $this->db->table('org_membership_facts')
             ->select([
-                'seq', 'fact_id', 'kind', 'initial_term', 'period_fact_id', 'end_kind', 'provenance',
+                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance',
                 $this->db->raw('effective_at::text AS effective_date'),
                 $this->db->raw('initial_term_until::text AS initial_term_until_date'),
                 $this->db->raw(InstantMicros::selectExpression('decided_at') . ' AS decided_us'),
@@ -256,7 +256,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
                 'kind' => 'admit',
                 'initial_term' => $until === null ? 'none' : ($until->isInfinite() ? 'unlimited' : 'until'),
                 'initial_term_until' => $until === null || $until->isInfinite() ? null : DateOrdinal::toDate($until),
-                'period_fact_id' => null,
+                'target_fact_id' => null,
                 'end_kind' => null,
             ];
         }
@@ -265,7 +265,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
                 'kind' => 'end',
                 'initial_term' => null,
                 'initial_term_until' => null,
-                'period_fact_id' => $fact->period()->value(),
+                'target_fact_id' => $fact->period()->value(),   // Q-1 (D-COR-4): an End's period is its target
                 'end_kind' => $fact->kind()->value(),
             ];
         }
@@ -293,7 +293,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             ),
             'end' => new End(
                 FactId::fromString($f->fact_id),
-                PeriodId::fromString($f->period_fact_id),
+                PeriodId::fromString($f->target_fact_id),
                 $effective,
                 EndKind::fromString($f->end_kind),
                 $provenance,
