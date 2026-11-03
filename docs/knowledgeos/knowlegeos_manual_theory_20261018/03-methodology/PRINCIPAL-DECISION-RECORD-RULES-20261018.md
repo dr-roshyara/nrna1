@@ -898,3 +898,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Status:** working instructions under Rulebook v1.4; **no rule changed**. Chapter 10 is the strategic design (derived), not implementation; the stage-1 prohibition (2026-10-31, item 5) stands.
 - **Applied by the Governance Engineer:** `CONSOLIDATION-BRIEF-TEMPLATE.md` — SCOPE §2.1 lists the chapter summaries in scope (others unchecked); commission task 6 checks them (from the S0378–S0402 consolidation).
 - **Sent to the Professor:** not yet reported to the Governance Engineer.
+
+## Addendum 2026-11-03T02:42:46Z: S2 and S3 of the time analysis accepted (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "I accept your suggestions"
+- **Read as [I]:** acceptance of both copy-ready decisions in `03-methodology/ANALYSIS-WINDOW-TIMES-AND-SAVINGS-20261103.md` §5 (`41f38ce47`), the two suggestions put to the Principal; to be corrected if the Principal meant otherwise:
+  1. **S2:** "From the S0378–S0402 consolidation, the Governance Engineer prepares the planted-gap design and the independent-check brief before the gate, builds and seals the copy at the gate, and runs the independent check without a separate go-ahead; I am told the result before reviewers start."
+  2. **S3:** "A reviewer's access deviation that is disclosed, touches only lane book files or allowed corpus files already read, is not relied on by any finding, and whose checks were rerun or are not needed, is recorded in the window's ACCESS-DEVIATION.md and the window settles without a stop; it is listed at the next consolidation and in the access record. Sealed, hold-out, quarantine, 00-access/ material or git history remains stop (d)."
+- **Status:** working instructions under Rulebook v1.4; no rule changed. S2 binds the Governance Engineer from now. **S3 binds the Professor only once sent** (not yet reported).
