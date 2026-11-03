@@ -53,6 +53,7 @@
 
 ## Next actions (Governance Engineer)
 
+0. **Reading-strategy paper** (Principal, 2026-11-03): after the S0353–S0377 consolidation settles — measured pace; remaining 2,366 sources by series and type (metadata only); options: in order vs targeted reading.
 1. **The review-quality analysis** (authorised 2026-11-01; it also takes up the `CLAUDE.md` concern of 2026-11-02 — automatic loading into reviewer sessions and its effect on blind review and the planted-gap test — evidence and any corrective proposal brought back separately): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
 2. **Check the first windows from S0303** for the time record: four non-overlapping categories, active time apart from waiting time.
 3. **Open for the Principal, one at a time when useful:** P1, P2, P-Q4 (pointer check), I-7 (b), I-3 (after the Professor defines it), I-4; T9-21 and T9-02 need a later authorised turn.
