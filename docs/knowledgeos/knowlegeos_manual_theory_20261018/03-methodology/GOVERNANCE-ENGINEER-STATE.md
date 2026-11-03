@@ -53,6 +53,7 @@
 
 ## Next actions (Governance Engineer)
 
+- **At the S0378–S0402 consolidation:** confirm the §8.10/§8.100 test exists and passes before any 08.1xx file enters the frozen copy; `02-FILES.jsonl` ruling (do-not-open) **not yet given**.
 0. **Reading-strategy paper** (Principal, 2026-11-03): **now due** (the consolidation settled `58f56cffc`); include the restatement counts (`RN-COUNTS.md`: 176 of 229 findings R; 19 of 22 consolidation misses R) — measured pace; remaining 2,366 sources by series and type (metadata only); options: in order vs targeted reading.
 1. **The review-quality analysis** (authorised 2026-11-01; it also takes up the `CLAUDE.md` concern of 2026-11-02 — automatic loading into reviewer sessions and its effect on blind review and the planted-gap test — evidence and any corrective proposal brought back separately): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
 2. **Check the first windows from S0303** for the time record: four non-overlapping categories, active time apart from waiting time.

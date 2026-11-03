@@ -949,3 +949,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis:** `review/CONSOLIDATION-S0353-S0377/CH10-PROPOSAL.md` (consequences 1–5 from U2, 6 from U6 and T9-21; step 1 closes T10-20 as answered by U2; step 2 qualifies T10-19).
 - **Decided:** those Ch. 10 changes are made now and reviewed at the S0378–S0402 consolidation; the T10-15 turn is **prepared**, not run (running it needs a separate dispatch). Reading resumes at S0378 under the standing instruction; next stop the gate after S0402.
 - **Unchanged:** the stage-1 prohibition; Rulebook v1.4.
+
+## Addendum 2026-11-03T03:58:14Z: Ch. 8 sections numbered §8.100 onward, with tool fixes and a test (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent" — for the line the Governance Engineer gave for sending: "Number the next Ch. 8 sections §8.100 onward (files 08.100-…); 08.99 stays the change log. Before the first 08.100 file is written, adjust every lane tool to parse two- or three-digit section numbers, sort sections numerically, and match citations only at a number boundary; add a test showing §8.10 and §8.100 are distinct (parse, order and citation search), and run it. Then resume reading at S0378."
+- **Basis:** the Professor's stop (b) (NN.99 reserved for the change log; DB-7 forbids renumbering) and its option (a); the GE's check of the tools: `dependency_graph.py` parses `(\d\d)\.(\d\d)` (08.100 → §8.10), several tools sort file names alphabetically (08.100 between 08.10 and 08.11).
+- **Unchanged:** DB-7 (no renumbering); Rulebook v1.4. The GE checks the test at the S0378–S0402 consolidation before any three-digit section enters the frozen copy.
