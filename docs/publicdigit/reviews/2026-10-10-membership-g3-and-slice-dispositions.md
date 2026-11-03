@@ -250,6 +250,12 @@ That run used the shared working tree.
 
 Each needs its own approved implementation plan. The first is drafted in `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md` and awaits review and approval.
 
+**Status of the re-entry criteria (2026-11-03, recorded; no verdict):**
+1. **Met:** PBDIGIT-324 runs and PBDIGIT-264 Part 2 evidence (`docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/`).
+2. **Met:** F-1 / Option E, with the PostgreSQL run confirmed in the Part 2 step 0 testdox.
+3. **Met:** PBDIGIT-264 accepted with explicit residual risks (PO, 2026-11-03).
+4. **Not met:** security (`PBDIGIT-266`) is open; C-1 F-1 (`encode()` typing) is assigned to COR-4.
+
 **Human PO / ARB verdict (when reconsidered):** _[to be completed]_
 
 ---

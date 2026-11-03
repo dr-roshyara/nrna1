@@ -225,3 +225,8 @@ All container runs use the pinned image through `bash scripts/testing/membership
   - **Sensitivity:** the date check moved before the key lookup (scratch only, restored) → the test fails (`ValidTimeNotStorable`).
   - Evidence `step4b-*`.
   - **The E4-L gap is closed.**
+- 2026-11-03: **PBDIGIT-264 ACCEPTED WITH EXPLICIT RESIDUAL RISKS** by the PO ("accept PBDIGIT-264").
+  - Review and verdict recorded in `docs/publicdigit/reviews/2026-11-02-pbdigit264-part2-independent-review-and-acceptance.md`.
+  - R-3 and R-7 → `PBDIGIT-326`.
+  - **Release gate (C3) stays open:** OQ-01; the §10.2 preflight (0 / 0 / 0); `SHOW lc_messages` = an English locale; code and migration deployed together.
+  - **Plan complete.** Next: ACC-260 (Slice 1b); re-entry criterion 4 (PBDIGIT-266 security; C-1 F-1 assigned to COR-4) is still open.

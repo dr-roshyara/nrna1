@@ -38,7 +38,9 @@ PostgresMemberRepository                                          (Infrastructur
   - `org_membership_commands` no longer copies `fact_id` / `recorded_at`. A row names its fact by `(organisation_id, membership_id, seq)`, enforced by the composite FK `org_membership_commands_fact_fk` → facts PK;
   - `appliedCommand()` reads `fact_id` and `recorded_at` from the fact by join, so the idempotency answer can never disagree with the stored fact;
   - migration `database/migrations/2026_11_02_180000_normalise_org_membership_commands.php`: `up()` adds the FK first, aborts on any copied-value mismatch, then drops the columns; `down()` re-adds them, backfills by join, sets NOT NULL, drops the FK;
-  - **Release gate:** before this migration reaches any persistent database where the 1b tables exist, run the operator preflight (ratification pack §10.2) and answer OQ-01.
+  - **Release gate:** before this migration reaches any persistent database where the 1b tables exist, run the operator preflight (ratification pack §10.2) and answer OQ-01. Also (PBDIGIT-264 acceptance, 2026-11-03):
+    - `SHOW lc_messages` must be an English locale, because the key-collision classifier reads the English message (R-3, `PBDIGIT-326`);
+    - deploy and roll back code and migration together (R-10).
 - **Concurrent identical creation (`PBDIGIT-264` step 4a, 2026-11-02):**
   - `create()` inserts with `ON CONFLICT DO NOTHING` and **no conflict target**. A concurrent identical creation (same id, same person) may conflict on the primary key instead of the person index; before, that escaped as a unique violation (found by race test F-2(a)).
   - If nothing was inserted and the person has a Member → `holderExists` (unchanged).
