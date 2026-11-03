@@ -919,3 +919,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim, to the Governance Engineer):** "sent"
 - **Sent:** one message, "From the Principal — working instructions under Rulebook v1.4 (no rule changed)", items 1–6 as recorded in the three addenda above (chapter summaries; logical split; Chapter 10 proposal; windows by conversation from C106, ≤ 5 sources, ≈ 4,000 lines; themes list and restatement count at S0353–S0377; minor access deviations without a stop), plus "Your self-check before each draft and the record templates (your points 1 and 2) need no ruling; start them now."
 - **In force for the Professor from receipt.**
+
+## Addendum 2026-11-03T02:57:42Z: implementation-ideas log during extraction (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "my idea is while extracting the theory , Professor can suggest how to implement and we record the idea as brainstomring for later implementation phase." Then, on the proposed line: "approve"
+- **Approved line (for the Professor):** "While extracting the theory, you may note implementation ideas as they arise in 07-implementation-ideas/IDEAS-LOG.md (outside the book): date and window, the section that prompted it, the idea in 1–3 lines, labelled \"brainstorm, not evidence\". No entry is required per window and the log is not reviewed. The book never cites it and no chapter changes because of it. It authorises nothing; the stage-1 prohibition stands; it is kept for the later implementation phase."
+- **Status:** a working instruction under Rulebook v1.4; no rule changed; the stage-1 prohibition (2026-10-31, item 5) stands. The Governance Engineer checks at each consolidation that no book section cites the log. **Binding on the Professor once sent** (not yet reported).
