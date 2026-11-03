@@ -23,8 +23,26 @@ final class InvariantSet
         if (self::coverageLost($resolved)) {
             $violations[] = RefusalReason::MembershipCoverageLost;
         }
+        if (self::somePeriodIsAbsorbed($resolved)) {
+            $violations[] = RefusalReason::PeriodAbsorbed;
+        }
 
         return $violations;
+    }
+
+    /**
+     * ER (BD-REV-ER = refuse, PO 2026-11-02; canonical §6): no live admission has a non-empty BaseClaim and an empty
+     * lifetime. Checked last, as in the oracle (refuse_absorption after the other invariants).
+     */
+    private static function somePeriodIsAbsorbed(ResolvedMember $resolved): bool
+    {
+        foreach ($resolved->periods() as $period) {
+            if (!$period->baseClaim()->isEmpty() && $period->lifetime()->isEmpty()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /** INV-9: for q ≠ q′, lifetime(q) ∩ lifetime(q′) = ∅. */

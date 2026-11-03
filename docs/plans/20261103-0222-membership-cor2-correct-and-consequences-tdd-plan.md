@@ -174,3 +174,16 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
   - **P-2 reading, for the PO to confirm at review:** the plan defines "relative" as "the removed interval as stated by the decision". That is what is stored. Like the oracle, it is clipped to the cause's current BaseClaim at resolution. Any difference from the oracle's "absolute" representation is therefore one of naming; the observable lifetimes are identical by construction.
   - **Interim, until step 6:** an absorbing correction (a live period left with an empty lifetime) is still accepted.
   - **Regression:** Domain 154, Application 62, Infrastructure 22, Architecture 97.
+  - Committed `e5836a816`.
+- 2026-11-03: **Step 6 done (BD-REV-ER guard, `PeriodAbsorbed`).**
+  - **Oracle probe first** (port, L = 5):
+    - the 616 `period_absorbed` refusals come from **Correct (595) and End (21)**;
+    - no reachable state violates both another invariant and ER, so their relative order is only pinned at the unit level.
+    - The fixture outcomes were also checked against the port, including the minimal case.
+  - **RED:** `CorrectAbsorptionTest`, 6 tests: 4 failures. The other 2 pass already; they pin acceptances (annul-then-correct; an empty claim is not absorbed).
+  - **GREEN:** ER is added to `InvariantSet` as the last check: a live period with a non-empty BaseClaim and an empty lifetime → `PeriodAbsorbed`.
+  - **Reading for the PO to confirm at review (ER scope):**
+    - The decision record §3 places ER in the enforcement set of G\* (canonical §6), so it applies to every decision, as in the oracle.
+    - Its visible effect beyond corrections: an **End** dated inside its own period's existing trim is refused, because it would leave that period with a claim but no lifetime (21 cases at L = 5).
+    - The PO's words were "a correction is refused if … another period … would have an empty resolved lifetime". The alternative, ER for Correct only, would accept those Ends, and then diverge from the golden oracle.
+  - **Regression:** Domain 160, Application 62, Infrastructure 22, Architecture 97.
