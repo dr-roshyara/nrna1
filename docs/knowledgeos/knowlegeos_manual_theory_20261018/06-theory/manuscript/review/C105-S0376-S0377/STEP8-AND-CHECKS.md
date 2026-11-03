@@ -15,3 +15,12 @@
 - **S0377's header** reports acts recorded in S0378–S0379 (after the gate, not read): reported, not shown.
 - **R1:** no new rows. **R2 (`undefined_terms.py --scope 08.98`):** tiers A–C: none in scope. **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0376, S0377, the register):** 51 checked, all matched; one line reference corrected (S0344 L558 → L557).
+
+**At settlement (v2).**
+- **R2:** W's run (`--no-corpus`): tier A 0; 40 tier D, glossed or ordinary. "appointment" in two senses (an act, a registration document): C3.
+- **Quote check (`qc.py`, v2, against S0344, S0375, S0376, S0377, §8.73, §8.79, the register):** 69 checked; the misses are quotations of the withdrawn draft in §8.98.5.
+- **Self-check (`selfcheck.py`) on v2:** every claim heading scoped "within the estate"; the remaining flags are homonym reminders, each split in the text.
+- **R3:** §8.82 C2 (W-01), §8.78 C1 (W-02), §8.73 C1 (W-08): additive notes; W lists the citing lines (§8.78 C1, 11; §8.73 C1, 33), none changed.
+- **R/N (the Principal, 2026-11-03):** R 7 (W-01, 04, 05, 06, 09, 11, 12), N 5 (W-02, 03, 07, 08, 10).
+- **Observation for the map (W):** whether a guard on a documented path counts as evidence for the invariant on the practised path (§8.29 C5); recorded, not opened.
+- **W's procedure:** no globs; 258 files copied by path; its tools glob internally over the scratch copy (copy-list files only); one `ls -la` on two copied scratch files. No access problem.
