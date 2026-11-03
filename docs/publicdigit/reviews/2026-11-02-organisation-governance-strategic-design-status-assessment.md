@@ -122,7 +122,7 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | O-14 | vocabulary split | ARB | OPEN | governance map §2 conflicts | ARB agenda | **declaring the context map final** |
 | A-1 ARB act | ratify INV-ORG-SCOPE-1, including O-5 | ARB | APPROVED by PO; ARB pending | Stage 1 investigation | ARB agenda | Stage 2 (G-5) design or tests |
 | P-5 ARB act | INV-AFF-1 | ARB | PROPOSED; referred | V-6 (needs O-3) | ARB agenda | A-4 tenancy validation; D-1 final decision |
-| O-12 / A-6 | S1 acceptance; OQ-ME-1…4 | PO / reviewer; Election owner; ARB | S1 implemented, **not accepted**; OQ-ME open | review of `17ef51c5e` | PO / reviewer accepts S1 | S2 (also: MemberTest change approval, O-4), S3 (contract semantics, Membership-owner agreement), S4 (V-1, OQ-ME-2/3) |
+| O-12 / A-6 | S1 acceptance; OQ-ME-1…4 | PO / reviewer; Election owner; ARB | S1 implemented, **not accepted**; OQ-ME open. *Status update (2026-11-03): S1 closed as superseded by S1b; **S1b accepted** (PO 2026-11-02, `95dcdb62b`); the acceptance part of this row is closed. OQ-ME-1…4 remain open* | review of `17ef51c5e` | PO / reviewer accepts S1 | S2 (also: MemberTest change approval, O-4), S3 (contract semantics, Membership-owner agreement), S4 (V-1, OQ-ME-2/3) |
 | O-3 | U-1…U-5 | PO + Ops | OPEN | the figures | PO / Ops supply | A-4 validation; V-6 |
 | O-4 | isolated test database | PO / Ops | OPEN (ARB-SEC-01 FAIL) | database assigned | PO / Ops | any database-touching test (S2–S4, V-5) |
 | PBDIGIT-317 | whether secrets were written and exposed | PO / Ops + Security | **investigation, not a confirmed incident** | V-3 log channel and access | PO / Ops read-only log-access check | nothing waits on strategic design; **independent** |
@@ -170,15 +170,15 @@ This map adds evidence, next action and hold-backs to §4 and §2. **It does not
 | Core vocabulary unambiguous | member / role / observer overloaded (O-14) | **not met** | O-14 | ARB act recorded |
 | Business rules have explicit scope | BR-13 / 13a / 13-S / 14 (A-2); incompatibility within an organisation open (O-8) | **partly met** | O-1, O-8, O-9, O-10 | PO decisions recorded |
 | Context relationships specified (owner, decider, exchange, failure, scope, deletion) | Membership ↔ Election specified as a boundary (A-5); Membership ↔ Governance cycle found, unspecified (governance map §5) | **not met** | T6 relationship specifications, starting with Membership ↔ Governance (after O-6); OQ-ME-4 contract semantics | ARB review of the specifications |
-| No context makes another's decision | ratified (R-2); S1 **guards against new** Membership ↔ Election violations; existing gaps G-1…G-4 remain at runtime | **partly met** (rule set; gaps tracked) | S1 acceptance; S2–S4 each approved and accepted | PO / reviewer per slice |
+| No context makes another's decision | ratified (R-2); **S1b** (accepted, `95dcdb62b`) **guards against new** Membership ↔ Election violations; the baselined violations and the runtime gaps G-1…G-4 remain. *(Was: "S1 guards against new … violations"; corrected 2026-11-03, see A-6 / V-4)* | **partly met** (rule set; gaps tracked) | S2–S4, each approved and accepted. *(Was: "S1 acceptance; S2–S4 …". S1 closed as superseded by S1b, and S1b was accepted by the PO 2026-11-02, PBDIGIT-318)* | PO / reviewer per slice |
 | Assumptions visible with owners | this register | **met** | — | — |
 | Decisions distinguishable by status | this register | **met** | keep at every session close | each session |
 | Implementation implications recorded | §5, PBDIGIT-266 / 309 / 318 | **met** | — | — |
 | Reversal conditions documented | Decision D §4a; individual records | **partly met** | reversal conditions for P-1…P-6 when each is decided | the deciding authority |
 
 **Four separate claims; do not merge them:**
-1. S1 **implemented** (`17ef51c5e`).
-2. S1 **accepted** (not yet).
+1. S1 **implemented** (`17ef51c5e`); later **closed as superseded by S1b** (`712bf8930`).
+2. S1b **accepted** (PO 2026-11-02, `95dcdb62b`, with documented residual risks). *(Was: "S1 accepted (not yet)"; corrected 2026-11-03.)*
 3. Runtime boundary **corrected** (G-1…G-4 closed by S2–S4; not yet).
 4. Strategic design **complete** (this section; not yet).
 
