@@ -14,3 +14,5 @@
 - **R1:** no new rows. **R2 (`undefined_terms.py --no-corpus --scope 08.103`):** tiers A–C: none first used in 08.103. **R3 (proposed):** none.
 - **Quote check (`corpus_quote_check.py`):** 12 found, 0 not found (one cross-line block quotation turned into "in meaning" before commit).
 - **Outside authors:** persons named as people in S0393–S0396 are not reproduced; schools and eponymous lens names stay.
+
+**At settlement (v2).** Quote check: 12 found, 0 not found. Self-check: remaining flags are homonym reminders. R1: 0 flags. R/N: R 11, N 6. Line counts corrected (S0393 442, S0394 921, S0395 753, S0396 640; 2,756).
