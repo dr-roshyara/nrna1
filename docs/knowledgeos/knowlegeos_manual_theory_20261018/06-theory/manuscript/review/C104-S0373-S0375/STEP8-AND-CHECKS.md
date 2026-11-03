@@ -16,3 +16,11 @@
 - **R2 (`undefined_terms.py --scope 08.97`):** tiers A–C: none in scope.
 - **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0373, S0374, S0375, §8.06, §8.27):** 67 checked; every quote matched after six spans were corrected (paraphrases unquoted, a capitalisation, nested quotation marks), before the draft's commit.
+
+**At settlement (v2).**
+- **R2:** W's run (`--no-corpus`): tier A 0; 28 tier D judged. "orientation" is the source's word, and its classification is left open (C3). "converse" was removed (W-09). "subagent": §8.76 L11.
+- **Quote check (`qc.py`, v2, against S0372–S0375, §8.06, §8.27, §8.79, §8.80, §8.82, the register):** 93 checked; the misses are quotations of the withdrawn draft in §8.97.5.
+- **R3:** §8.82 C3 (W-04): the open point on `next-actor` after a CONTINUATION is answered by S0374 L24–34. §8.78 C5 (W-06): a case that crosses its line between actors and reviews. Citing lines per W's report (§8.82 C3: §8.84 L12, L57; §8.78 C5: §8.76 L80, §8.80 L16, L88); none relies on the changed point.
+- **For the Principal's open question (§8.76 C4):** this lane's reviewers are subagents; S0374 applies the subagent bar to a review role. Recorded, not decided.
+- **Search defect (the Professor's):** the draft's book search did not reach §8.71–§8.82, this work item's earlier sections. For the consolidation (homes list).
+- **W's procedure:** no globs; 256 files copied by path from the list; tools on the scratch copy; `--help` on four scratch tools. No access problem.
