@@ -20,6 +20,8 @@ use App\Contexts\Membership\Domain\Organisational\Provenance;
 use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\C2Histories;
+use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\MemberHistory;
 
 /**
  * Reusable contract for every MemberRepositoryPort adapter (Slice 1a contract §3–§4).
@@ -318,6 +320,52 @@ trait MemberRepositoryContract
             $this->assertSame($appended->seq(), $answer->appended()->seq(), $key);
             $this->assertSame($appended->recordedAt()->ordinal(), $answer->appended()->recordedAt()->ordinal(), $key);
         }
+    }
+
+    /** COR-4 step 7: which bounded histories the reload differential checks: every n-th (1 = all). */
+    protected function reloadDifferentialStride(): int
+    {
+        return 1;
+    }
+
+    /**
+     * COR-4 step 7 (PBDIGIT-329, AC-8): every C-2 history the kernel accepts (H = 5, L <= 4; `C2Histories`) is
+     * replayed through the repository, one decision at a time on the freshly loaded Member, then reloaded. Facts,
+     * seq and resolve() must equal the in-memory original: no fact kind, consequence or order is lost or changed by
+     * storage. Status of a pass: VERIFIED WITHIN BOUNDS (and, with a stride, within the sample).
+     */
+    public function test_every_bounded_c2_history_survives_storage_and_reload_unchanged(): void
+    {
+        $repo = $this->repo();
+        $tenant = $this->tenant();
+        $n = 0;
+        $checked = 0;
+        foreach (C2Histories::accepted(5, 4) as [$log, $ids, $original]) {
+            if ($log === [] || $n++ % $this->reloadDifferentialStride() !== 0) {
+                continue;
+            }
+            $memberId = MemberId::fromString("D$n");
+            $repo->create($tenant, $memberId, PersonRef::fromString("P-D$n"));
+            $replayedIds = [];
+            foreach ($log as $k => $f) {
+                $view = MemberHistory::start();
+                $view->member = $repo->load($tenant, $memberId);
+                [$id, $decision] = C2Histories::decide($view, $f, $replayedIds, $k);
+                $this->assertTrue($decision->isAccepted(), "D$n step $k: " . ($decision->refusal()?->value ?? ''));
+                $this->assertSame(AppendOutcome::Appended, $repo->append($tenant, $memberId, $decision, self::key("D$n-$k"), "fp-D$n-$k")->outcome());
+                $replayedIds[] = $id;
+            }
+
+            $loaded = $repo->load($tenant, $memberId);
+            $this->assertEquals(
+                array_map(static fn ($r) => [$r->seq(), $r->fact()], $original->member->log()),
+                array_map(static fn ($r) => [$r->seq(), $r->fact()], $loaded->log()),
+                "D$n: facts and seq after reload ($ids[0]…)",
+            );
+            $this->assertEquals($original->member->resolve(), $loaded->resolve(), "D$n: resolve() after reload");
+            $checked++;
+        }
+        $this->assertGreaterThan(0, $checked);
     }
 
     public function test_appending_never_changes_earlier_records(): void

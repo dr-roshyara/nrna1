@@ -254,6 +254,16 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **Result** (`cor4-ev/s6-a`): **3 tests, 340 assertions, exit 0 on the first run**, as the plan expected ("none expected"). These are verification tests.
   - **Sensitivity** (`cor4-ev/s6-mutant-er-off`): with ER disabled in a scratch worktree copy only, the lost-update test **fails**. Round 0 stored both `C-1` and `E-3`. Its refusals (`value_unchanged`, `period_already_ended`) show the processes genuinely interleaved. The worktree was removed.
   - **No production change in this step.**
+  - Committed `5304aaab7`.
+- 2026-11-03: **Step 7 done (reload differential; AC-8).** `MemberRepositoryContract::test_every_bounded_c2_history_survives_storage_and_reload_unchanged`:
+  - **Method:** every C-2 history the kernel accepts (H = 5, L ≤ 4; `C2Histories`) is replayed through the repository, one decision at a time on the freshly loaded Member, then reloaded. Facts with seq, and `resolve()`, must equal the in-memory original.
+  - **Double:** all 7,470 non-empty histories, 81,051 assertions, 5 s, **0 mismatches**. Near-trivial, because the double stores objects.
+  - **PostgreSQL:** every 10th history (`reloadDifferentialStride()` = 10, the runtime budget recorded in the test), about 750 histories, **14,827 assertions, 44 s, 0 mismatches** (`cor4-ev/s7-a`).
+  - **Sensitivity on PostgreSQL** (scratch worktree copy only, then removed):
+    - a mutant in which `ConsequencesJson::decode()` drops every stored trim **fails** (history D541: facts differ after reload; `cor4-ev/s7-mutant-drop-trims`);
+    - **an earlier "mutant" run was invalid, my mistake:** `return [] ?: array_map(…)` still returns the real result, so it changed nothing and passed (`cor4-ev/s7-mutant-noop`, excluded from the evidence).
+  - **No production change in this step.**
+  - **Regression (database-free):** Domain 189, Application 76, Infrastructure 22, Architecture 98.
 
 ## 11. Open questions (outside this plan's decisions)
 

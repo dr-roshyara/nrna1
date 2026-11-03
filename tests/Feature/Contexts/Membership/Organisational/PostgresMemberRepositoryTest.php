@@ -30,6 +30,15 @@ final class PostgresMemberRepositoryTest extends MembershipPostgresTestCase
         return new PostgresMemberRepository(DB::connection(), $clock);
     }
 
+    /**
+     * COR-4 step 7 runtime budget: every append is a real transaction, so PostgreSQL checks every 10th bounded
+     * history (about 750 of 7,470, about 2,900 appends); the in-memory double checks all of them.
+     */
+    protected function reloadDifferentialStride(): int
+    {
+        return 10;
+    }
+
     protected function tenantFor(string $label): TenantId
     {
         if (!isset($this->tenants[$label])) {
