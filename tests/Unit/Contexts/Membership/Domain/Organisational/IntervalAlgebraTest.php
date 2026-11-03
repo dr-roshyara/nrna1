@@ -107,6 +107,9 @@ final class IntervalAlgebraTest extends TestCase
         $this->assertTrue(IntervalSet::of(self::iv(1, 5), self::iv(5, 9))->equals(IntervalSet::of(self::iv(1, 9))));
         $this->assertFalse(IntervalSet::of(self::iv(1, 5))->equals(IntervalSet::of(self::iv(1, 6))));
         $this->assertTrue(IntervalSet::empty()->equals(IntervalSet::of(self::iv(3, 3))));
+        // COR-2 mutation finding (IntervalSet::equals count guard): a different number of pieces is a different set.
+        $this->assertFalse(IntervalSet::of(self::iv(1, 3), self::iv(5, 9))->equals(IntervalSet::of(self::iv(1, 3))));
+        $this->assertFalse(IntervalSet::empty()->equals(IntervalSet::of(self::iv(1, 3))));
     }
 
     public function test_an_interval_set_can_be_truncated(): void

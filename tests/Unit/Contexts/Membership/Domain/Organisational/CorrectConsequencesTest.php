@@ -197,6 +197,40 @@ final class CorrectConsequencesTest extends TestCase
         $this->assertSame(RefusalReason::PeriodLifetimeNotContiguous, $h->correct('C2', 'A1', 2)->refusal());
     }
 
+    // TrimRevived is exact (COR-2 mutation findings): with two causes in force, restoring the second reports only the
+    // second; a trim already in force is never reported as revived. Lifetimes checked against the oracle port (H = 10).
+    public function test_only_the_restored_trim_is_reported_as_revived(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->admit('A0', 0, null, true));
+        $h->commit($h->end('E0', 'A0', 2));
+        $h->commit($h->admit('A1', 2, null, true));
+        $h->commit($h->end('E1', 'A1', 6));
+        $h->commit($h->admit('A2', 6, null, true));
+        $h->commit($h->correct('C5', 'E0', 3));   // trims A1 by [2, 3)
+        $h->commit($h->correct('C6', 'E1', 7));   // trims A2 by [6, 7)
+        $h->commit($h->annul('X7', 'C6'));
+
+        $decision = $h->annul('X8', 'X7');
+        $this->assertSame([['C6', 'A2']], self::revived($decision), 'C5 was in force throughout');
+        $this->assertSame([0], array_keys($decision->revivedTrims()), 'a list');
+        $h->commit($decision);
+        self::assertLifetimes($h, ['A0' => [0, 3], 'A1' => [3, 7], 'A2' => [7, null]], 'both trims in force');
+    }
+
+    // Stage 2 (COR-2 mutation finding): a Correct whose target is set aside is inactive, so its trims stop applying.
+    // Here C2's inherited trim would otherwise hide an overlap; the oracle port refuses the Annul the same way.
+    public function test_the_trims_of_a_correction_whose_target_is_annulled_stop_applying(): void
+    {
+        $h = self::adjacentPeriods();
+        $h->commit($h->correct('C3', 'E0', 4));   // A0 = [0, 4); trims A1 by [2, 4)
+        $h->commit($h->correct('C4', 'C3', 3));   // inherits [2, 3); C3 superseded
+        $h->commit($h->correct('C5', 'E0', 5));   // the latest direct correction of E0: A0 = [0, 5); trims A1 by [3, 5)
+
+        // Annul(C3) makes C4 inactive: A1 would be [2, 3) ∪ [5, ∞) and overlap A0 = [0, 5).
+        $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X6', 'C3')->refusal());
+    }
+
     // Decisions other than reversals revive nothing.
     public function test_end_and_correct_decisions_revive_nothing(): void
     {

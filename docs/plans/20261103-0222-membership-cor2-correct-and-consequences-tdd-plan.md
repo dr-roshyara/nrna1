@@ -187,3 +187,51 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
     - Its visible effect beyond corrections: an **End** dated inside its own period's existing trim is refused, because it would leave that period with a claim but no lifetime (21 cases at L = 5).
     - The PO's words were "a correction is refused if … another period … would have an empty resolved lifetime". The alternative, ER for Correct only, would accept those Ends, and then diverge from the golden oracle.
   - **Regression:** Domain 160, Application 62, Infrastructure 22, Architecture 97.
+  - Committed `01fcbc9e3`.
+- 2026-11-03: **Step 7 done (exhaustive differential, properties, mutation, developer guide 13).**
+  - **AC-3, `C2ExhaustiveDifferentialTest`:**
+    - compares the verdict, the reason, the per-period lifetimes and the consequences of every accepted Correct (removed points per trimmed period) with the port;
+    - covers **277,835 decisions, 139,722 accepted (H = 5, L = 5), 0 mismatches**; both counts equal the golden fixture and are asserted;
+    - runs in 12 s.
+  - **AC-4, `C2PropertyTest`** (H = 5, L = 4, every kernel-accepted history; generator `Support/C2Histories`):
+    - §5 (b) P-REV-V / P-REV-A, Correct included;
+    - §5 (c) P-APPEAL;
+    - §5 (d) a repeated correction → `ValueUnchanged`;
+    - §5 (e) P-CFC by fact deletion with the recorded consequences, accepted iff F ∖ D(c) satisfies G\*, else the same reason; exercised on histories with consequences;
+    - P-EQ;
+    - §5 (a) P-KNOWN against the port;
+    - 289,726 assertions, 9 s.
+  - **AC-6, mutation** (Infection 0.29.10 + pcov; scratch configuration only, as for C-1; tests = the kernel suite):
+    - **Scope:** `--filter=Member.php,Resolution.php,Correct.php,TrimConsequence.php,TrimRevival.php,IntervalSet.php,InvariantSet.php,Decision.php` (the `Member.php` filter also matches `ResolvedMember.php`).
+    - **First run:** 408 mutants, 358 killed, 33 escaped, 15 not covered, 2 errors; MSI 88 %, covered-code MSI 91 %.
+    - **Real gaps:** 9 mutants. Each got a killing test, confirmed by running the mutant directly (a mutated kernel copy loaded ahead of the real one; the tree was never edited):
+      - the `Correct` / `TrimConsequence` constructor guards → `test_a_correct_and_a_trim_reject_invalid_parts_when_constructed`;
+      - `revivedTrims` exactness (`Member.php:327`, `:329`; `Resolution.php:82`) → `test_only_the_restored_trim_is_reported_as_revived`;
+      - **stage 2 (`Resolution.php:216`, a Correct is active iff its target is active)** → `test_the_trims_of_a_correction_whose_target_is_annulled_stop_applying`. It needs 7 facts, so it survived the L = 5 differential. The oracle port refuses the case identically;
+      - `IntervalSet::equals` with a different number of pieces (Slice 0 code) → `IntervalAlgebraTest`.
+    - **Final run:** 408 mutants, **368 killed, 2 errored (detected: `Resolution.php:153` negations make `value()` recurse without end), 26 escaped, 12 not covered; MSI 90 %, mutation code coverage 97 %, covered-code MSI 93 %.**
+    - **Survivors, classified:**
+      - **equivalent:**
+        - `isset()` true for `false` (`Resolution.php:197`, `:219`, `:257`);
+        - `array_values` on lists that are already lists, or only iterated (`IntervalSet.php:25`, `Resolution.php:261`, `Member.php:39`, `:82`);
+        - the defensive / unreachable `match` arms and throws (`Resolution.php:161`, `:163`, `:164`, `:176`, `:323`, `:325`, `:326`; `Member.php:283`, `:284`, `:303`);
+        - the revival key's separator and order (`Member.php:326`);
+      - **equivalent under the ≤ 1-consequence observation:** `Member.php:269` and `Resolution.php:302` (break after a foreign period). Every accepted Correct carries consequences on at most one period: 0 counterexamples at L = 5. The argument: under ER, a correction's contiguous extension cannot partially trim two periods without wholly absorbing one between them. **This is an argument, not a proof**; it is flagged for the review;
+      - **coverage artefacts:** `continue` / `match (true)` reported as not covered but killed when run directly (`Member.php:251`, `Resolution.php:161`, `:217` (the full suite), `:323`);
+      - **pre-existing, as classified for C-1:**
+        - `Decision.php:45` (message text), `:50`;
+        - `Member.php:26`, `:28`, `:31` (TG R-1a-3);
+        - `Resolution.php:30`, `:193`;
+        - `ResolvedMember.php:74`.
+  - **AC-7 regression:**
+    - main tree: Domain **169**, Application 62, Infrastructure 22, Architecture 97;
+    - `tests/Unit/Testing`: **168 OK**, run in a clean scratch worktree with the step 7 files copied in, because the main tree's cached config makes its boot guards refuse, as known. The worktree was removed afterwards;
+    - 2 pre-existing deprecations: `config/database.php:66` `PDO::MYSQL_ATTR_SSL_CA` on PHP 8.5, and doc-comment metadata in `TestDatabaseSafetyTest`.
+  - **AC-8:** changes confined to the kernel namespace, its tests, the test support and the fixture. No persistence, application or schema change; the architecture tests are green.
+  - **AC-9:** developer guide `developer_guide/membership/13_cor2_correct_and_consequences.md` plus the index entry. Contract annotations for P-1…P-6 were done at G-PLAN. **Open:** the independent review, then the PO's verdict.
+  - **For the PO at the verdict:**
+    1. the P-2 reading (step 5);
+    2. ER for every decision, including an End inside its own trim (step 6);
+    3. the ≤ 1-consequence argument (above);
+    4. **found out of scope:** guide `12_pbdigit264_part2.md`, promised by the PBDIGIT-264 Part 2 plan (`:99`), was never written; Part 2 updated guide 03 instead. Recommend a backlog item rather than extending COR-2.
+  - **Status:** steps 1–7 done; **STOP for the independent review.**
