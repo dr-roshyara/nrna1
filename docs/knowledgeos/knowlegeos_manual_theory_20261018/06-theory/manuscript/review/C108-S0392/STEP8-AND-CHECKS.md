@@ -13,3 +13,5 @@
 - **Procedure:** brief committed first (`c6eff246a`), then reading and drafting, the draft committed, then W dispatched. **Self-check applied:** book search for "first transition", "God Aggregate", "enforcement mechanism", "lifecycle", "contradiction", "identity overloaded", "established facts", "confidence assigned"; homes used: §8.88 C1, C4, §8.87 C5 (God Aggregate), §8.95 C4, §8.92 C4, §8.93 C2, C3, §8.91 C1, C2. Headings of the likely homes read before citing.
 - **R1:** no new rows. **R2 (`undefined_terms.py --no-corpus --scope 08.102`):** tiers A–C: none first used in 08.102. **R3 (proposed):** none.
 - **Quote check (`corpus_quote_check.py`):** 13 found, 0 not found.
+
+**At settlement (v2).** Quote check: 13 found, 0 not found; §8.88 after its R3 note: no bracketed quotation changed. Self-check: remaining flags are homonym reminders. R1: 0 flags. R/N: R 11, N 6.
