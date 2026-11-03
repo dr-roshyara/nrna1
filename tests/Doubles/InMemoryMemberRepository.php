@@ -124,7 +124,8 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
         }
         $now = ($this->clock)();
         $last = $log === [] ? null : end($log)->recordedAt()->ordinal();
-        $recordedAt = Instant::of($last === null ? $now : max($now, $last));
+        // COR-4 Q-2 (V-5): strictly increasing per Member (1 µs after the last), so no two facts share a recordedAt.
+        $recordedAt = Instant::of($last === null ? $now : max($now, $last + 1));
         $seq = count($log) + 1;
         $this->members[$tenant->value()][$id->value()]['log'][] = RecordedFact::of($seq, $recordedAt, $accepted->fact());
         $appended = new Appended($id, $accepted->fact()->id(), $seq, $recordedAt);

@@ -200,6 +200,14 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **Note:** through `decide*`, a trim bound is always an earlier stored date or ∞. An out-of-range bound therefore implies an out-of-range value; the bound check is defence in depth.
   - **The PostgreSQL run of the new contract test is due in step 5:** it answers before encoding, so it should already pass there.
   - **Regression:** Domain 189, Application 72, Infrastructure 22, Architecture 98.
+  - Committed `5b134f033`.
+- 2026-11-03: **Step 3 done (double parity; Q-2, V-5).** Three new `MemberRepositoryContract` tests, run on the double now and on PostgreSQL in step 5:
+  - `test_recorded_at_strictly_increases_even_with_a_frozen_or_backward_clock` (clock 500, 500, 300 → recordedAt 500, 501, 502): **RED, 1 failure** (a tie at 500);
+  - `test_every_fact_kind_round_trips_identically`: a 10-step history built through `decide*` with Admit, End, Correct (including the COR-2 review F-1 **two-period** Correct), Annul of a Correct and Void of an Annul. Facts, seq and `resolve()` must be equal after reload;
+  - `test_applied_command_answers_correction_facts_with_their_own_fact`: Correct, Annul, Void.
+  - **The two round-trip tests passed on the double at once**, as expected: it stores fact objects. **They are the RED tests for the PostgreSQL adapter (step 5).**
+  - **GREEN (double):** `recordedAt = max(clock, last + 1 µs)`.
+  - **Regression:** Domain 189, Application 75, Infrastructure 22, Architecture 98.
 
 ## 11. Open questions (outside this plan's decisions)
 

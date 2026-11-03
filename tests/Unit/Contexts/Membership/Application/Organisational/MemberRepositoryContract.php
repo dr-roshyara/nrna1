@@ -7,9 +7,11 @@ namespace Tests\Unit\Contexts\Membership\Application\Organisational;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
 use App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\FactId;
+use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\Member;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
 use App\Contexts\Membership\Domain\Organisational\PeriodId;
@@ -233,6 +235,89 @@ trait MemberRepositoryContract
         $second = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
 
         $this->assertGreaterThanOrEqual(500, $second->appended()->recordedAt()->ordinal());
+    }
+
+    // COR-4 step 3 (PBDIGIT-329, Q-2, V-5): recordedAt strictly increases per Member, even with a frozen or backward
+    // clock, so KnownAt can observe the state between any two facts.
+    public function test_recorded_at_strictly_increases_even_with_a_frozen_or_backward_clock(): void
+    {
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $this->now = 500;
+        $instants = [];
+        foreach ([500, 500, 300] as $k => $clock) {
+            $this->now = $clock;
+            $decision = $k === 0
+                ? self::admit($member, 'A1', 1)
+                : $member->decideCorrect(FactId::fromString("C$k"), FactId::fromString('A1'), TimePoint::of(1 + $k), TimePoint::of(10), Provenance::decision('registrar'));
+            $instants[] = $repo->append($this->tenant(), $member->id(), $decision, self::key("k$k"), "fp$k")->appended()->recordedAt()->ordinal();
+            $member = $repo->load($this->tenant(), $member->id());
+        }
+
+        $this->assertSame([500, 501, 502], $instants);
+        $this->assertSame([500, 501, 502], array_map(static fn ($r): int => $r->recordedAt()->ordinal(), $member->log()));
+    }
+
+    /**
+     * COR-4 (PBDIGIT-329, AC-1): every fact kind round-trips identically, including a Correct with consequences on two
+     * periods (COR-2 review F-1 history) and Annul / Void of a Correct. Facts, seq, recordedAt and resolve() equal.
+     */
+    public function test_every_fact_kind_round_trips_identically(): void
+    {
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $p = Provenance::decision('registrar');
+        $steps = [
+            fn (Member $m) => self::admit($m, 'A0', 0),
+            fn (Member $m) => $m->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A0'), TimePoint::of(2), TimePoint::of(2), EndKind::fromString('resignation'), $p),
+            fn (Member $m) => self::admit($m, 'A1', 9),
+            fn (Member $m) => $m->decideCorrect(FactId::fromString('C3'), FactId::fromString('A1'), TimePoint::of(4), TimePoint::of(9), $p, Instant::of(901)),
+            fn (Member $m) => $m->decideEnd(FactId::fromString('E4'), PeriodId::fromString('A1'), TimePoint::of(6), TimePoint::of(9), EndKind::fromString('resignation'), $p),
+            fn (Member $m) => self::admit($m, 'A2', 8),
+            fn (Member $m) => $m->decideAnnul(FactId::fromString('X6'), FactId::fromString('C3'), $p, Instant::of(902)),
+            fn (Member $m) => $m->decideCorrect(FactId::fromString('C7'), FactId::fromString('A2'), TimePoint::of(2), TimePoint::of(9), $p),
+            fn (Member $m) => $m->decideCorrect(FactId::fromString('C8'), FactId::fromString('A1'), TimePoint::of(1), TimePoint::of(9), $p),
+            fn (Member $m) => $m->decideVoid(FactId::fromString('V9'), FactId::fromString('X6'), $p),
+        ];
+        $expected = [];
+        foreach ($steps as $k => $step) {
+            $decision = $step($member);
+            $this->assertTrue($decision->isAccepted(), "step $k: " . ($decision->refusal()?->value ?? ''));
+            $expected[] = $decision->fact();
+            $repo->append($this->tenant(), $member->id(), $decision, self::key("k$k"), "fp$k");
+            $member = $repo->load($this->tenant(), $member->id());
+        }
+
+        $twoPeriods = $member->log()[8]->fact();
+        $this->assertInstanceOf(Correct::class, $twoPeriods);
+        $this->assertCount(2, $twoPeriods->consequences(), 'the two-period Correct keeps both consequences');
+        $this->assertEquals($expected, array_map(static fn ($r) => $r->fact(), $member->log()), 'every fact as decided');
+        $this->assertSame(range(1, count($steps)), array_map(static fn ($r): int => $r->seq(), $member->log()));
+        $rebuilt = Member::fromLog($member->id(), $member->holder(), $member->organisation(), ...$member->log());
+        $this->assertEquals($rebuilt->resolve(), $member->resolve());
+    }
+
+    // COR-4 (PBDIGIT-329): appliedCommand answers a key of every new kind with that fact (F-4b join unchanged).
+    public function test_applied_command_answers_correction_facts_with_their_own_fact(): void
+    {
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $p = Provenance::decision('registrar');
+        $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
+        foreach ([
+            'k2' => fn (Member $m) => $m->decideCorrect(FactId::fromString('C2'), FactId::fromString('A1'), TimePoint::of(0), TimePoint::of(9), $p),
+            'k3' => fn (Member $m) => $m->decideAnnul(FactId::fromString('X3'), FactId::fromString('C2'), $p, Instant::of(900)),
+            'k4' => fn (Member $m) => $m->decideVoid(FactId::fromString('V4'), FactId::fromString('X3'), $p),
+        ] as $key => $decide) {
+            $member = $repo->load($this->tenant(), $member->id());
+            $appended = $repo->append($this->tenant(), $member->id(), $decide($member), self::key($key), "fp-$key")->appended();
+
+            $answer = $repo->appliedCommand($this->tenant(), self::key($key));
+            $this->assertNotNull($answer, $key);
+            $this->assertSame($appended->factId()->value(), $answer->appended()->factId()->value(), $key);
+            $this->assertSame($appended->seq(), $answer->appended()->seq(), $key);
+            $this->assertSame($appended->recordedAt()->ordinal(), $answer->appended()->recordedAt()->ordinal(), $key);
+        }
     }
 
     public function test_appending_never_changes_earlier_records(): void
