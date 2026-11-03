@@ -38,7 +38,12 @@ scope_spec = a[a.index('--scope') + 1] if '--scope' in a else None
 T = root / '06-theory'
 M = T / 'manuscript'
 REPO = pathlib.Path(__file__).resolve().parents[5]
-secs = [f for f in sorted(M.glob('chapter_*/*.md')) if re.match(r'\d\d\.\d\d', f.name)]
+# Section numbers are NN.MM or NN.MMM (the Principal, 2026-11-03: §8.100 onward; NN.99 stays the change log).
+# Parse with SECNO, compare and sort with sec_key: numerically, never as strings (08.100 after 08.99, not before 08.11).
+SECNO = re.compile(r'(\d\d)\.(\d{2,3})(?!\d)')
+secno = lambda name: (lambda m: f'{m.group(1)}.{m.group(2)}' if m else None)(SECNO.match(name))
+sec_key = lambda sec: tuple(int(x) for x in sec.split('.')[:2])
+secs = sorted((f for f in M.glob('chapter_*/*.md') if secno(f.name)), key=lambda f: sec_key(secno(f.name)))
 aux = [p for p in (T / 'THEORY-MAP.md', T / 'CONCEPT-REGISTER.tsv') if p.exists()]
 ID = re.compile(r'(?<![\w-])([A-Z][A-Za-z]{0,6}-\d+[a-z]?|[A-Z]{2,}\d+[a-z]?)(?![\w-])')
 WD = re.compile(r'(?<![\w-])([a-z]{4,})(?![\w-])')
@@ -75,10 +80,10 @@ for f, t in texts.items():
         x = m.group(1)
         if FAM.match(x):
             continue
-        ids[x] += 1; id_secs[x].add(f.name[:5]); first.setdefault(x, f'{f.name[:5]} L{t[:m.start()].count(chr(10)) + 1}')
+        ids[x] += 1; id_secs[x].add(secno(f.name)); first.setdefault(x, f'{secno(f.name)} L{t[:m.start()].count(chr(10)) + 1}')
     for m in WD.finditer(t):
         x = fold(m.group(1))
-        words[x] += 1; w_secs[x].add(f.name[:5]); first.setdefault(x, f'{f.name[:5]} L{t[:m.start()].count(chr(10)) + 1}')
+        words[x] += 1; w_secs[x].add(secno(f.name)); first.setdefault(x, f'{secno(f.name)} L{t[:m.start()].count(chr(10)) + 1}')
 
 cand_ids = [x for x in ids if not defined(x)]
 cand_words = [x for x in words if not defined(x)]
@@ -122,7 +127,7 @@ for f, t in texts.items():
         for m in DWORD.finditer(s):
             w = fold(m.group(1))
             if w not in DSTOP and not defined(w):
-                d_locs[w].append(f'{f.name[:5]} L{i}')
+                d_locs[w].append(f'{secno(f.name)} L{i}')
 d_files, d_marked = collections.Counter(), collections.Counter()
 
 corpus_files, corpus_term = collections.Counter(), collections.Counter()
@@ -190,8 +195,8 @@ for f, t in texts.items():
         k = len(re.findall(r'\b' + w + r's?\b', src))
         mark = len(re.findall(r'[`*]{1,2}' + w + r's?[`*]{1,2}', src))
         if k >= 5 * len(cited) and mark >= 1:
-            rowsC.append(('C', w, n, f.name[:5]))
-rowsC.sort(key=lambda r: (r[3], -r[2]))
+            rowsC.append(('C', w, n, secno(f.name)))
+rowsC.sort(key=lambda r: (sec_key(r[3]), -r[2]))
 # Tier D kept: a word the allowed corpus never uses (invented in the book), or one the corpus marks as a term
 # (backticked or bold) at least twice (a source's term carried into a head or definition undefined). Without the corpus
 # (--no-corpus) every scope-line word undefined by the forms is listed.
@@ -204,7 +209,7 @@ def in_scope_sec(sec):
         item = item.strip()
         if '-' in item:
             lo, hi = item.split('-', 1)
-            if lo.strip() <= sec <= hi.strip():
+            if sec_key(lo.strip()) <= sec_key(sec) <= sec_key(hi.strip()):
                 return True
         elif sec == item or (len(item) == 2 and sec.startswith(item + '.')):
             return True

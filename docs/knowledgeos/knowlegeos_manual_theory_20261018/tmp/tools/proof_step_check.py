@@ -16,6 +16,10 @@ the object may be defined elsewhere, or the step may be justified in prose the h
 Limits: only explicit "not yet defined"-type declarations in the same section; symbols are matched literally.
 """
 import pathlib, re, sys
+# Section files are NN.MM-… or NN.MMM-… (the Principal, 2026-11-03: §8.100 onward); sort numerically, never as strings.
+def file_key(p):
+    m = re.match(r'(\d\d)\.(\d{2,3})(?!\d)', pathlib.Path(p).name)
+    return (str(pathlib.Path(p).parent), int(m.group(1)), int(m.group(2))) if m else (str(pathlib.Path(p).parent), 999, 999, pathlib.Path(p).name)
 
 a = sys.argv[1:]
 root = pathlib.Path(a[a.index('--root') + 1]) if '--root' in a else pathlib.Path(__file__).resolve().parents[2]
@@ -24,7 +28,7 @@ M = root / '06-theory' / 'manuscript'
 UNDEF = re.compile(r'not yet defined|is undefined|not a function|not established', re.I)
 n_flags = n_lemmas = 0
 for g in globs:
-    for f in sorted(M.glob(g)):
+    for f in sorted(M.glob(g), key=file_key):
         lines = f.read_text(encoding='utf-8').split('\n')
         undefined = set()
         for l in lines:
@@ -45,6 +49,6 @@ for g in globs:
                     for obj in undefined:
                         if re.search(rf'\b{obj}\b', s) and '(premise)' not in s and not re.search(rf'\b{obj}\b', hyp):
                             n_flags += 1
-                            print(f'{f.name[:5]} | {m.group(1)} {m.group(2).strip()} | step "{s.strip()[:4]}" | {obj} declared undefined in this section | {s.strip()[:150]}')
+                            print(f'{re.match(r"[\d.]+", f.name).group(0).rstrip(".")} | {m.group(1)} {m.group(2).strip()} | step "{s.strip()[:4]}" | {obj} declared undefined in this section | {s.strip()[:150]}')
                 j += 1
 print(f'# lemmas/theorems scanned: {n_lemmas}; flags: {n_flags}')

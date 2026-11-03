@@ -24,6 +24,10 @@ Usage:
 """
 import csv, difflib, glob, math, pathlib, re, sys
 from collections import Counter, defaultdict
+# Section files are NN.MM-… or NN.MMM-… (the Principal, 2026-11-03: §8.100 onward); sort numerically, never as strings.
+def file_key(p):
+    m = re.match(r'(\d\d)\.(\d{2,3})(?!\d)', pathlib.Path(p).name)
+    return (str(pathlib.Path(p).parent), int(m.group(1)), int(m.group(2))) if m else (str(pathlib.Path(p).parent), 999, 999, pathlib.Path(p).name)
 
 W = pathlib.Path(__file__).resolve().parents[2]
 T = W / '06-theory'
@@ -49,7 +53,7 @@ def args():
 
 
 def sections():
-    for f in sorted(glob.glob(str(T / 'manuscript/chapter_*/*.md'))):
+    for f in sorted(glob.glob(str(T / 'manuscript/chapter_*/*.md')), key=file_key):
         p = pathlib.Path(f)
         if p.name == 'TODO.md':
             continue

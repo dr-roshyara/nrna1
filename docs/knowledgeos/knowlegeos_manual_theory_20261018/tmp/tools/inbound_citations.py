@@ -13,19 +13,23 @@ Limits: explicit citations only. Paraphrase without a citation is not found; "C3
 earlier in the paragraph is found only as section-only. The output is a list to read, not a verdict.
 """
 import pathlib, re, sys
+# Section files are NN.MM-… or NN.MMM-… (the Principal, 2026-11-03: §8.100 onward); sort numerically, never as strings.
+def file_key(p):
+    m = re.match(r'(\d\d)\.(\d{2,3})(?!\d)', pathlib.Path(p).name)
+    return (str(pathlib.Path(p).parent), int(m.group(1)), int(m.group(2))) if m else (str(pathlib.Path(p).parent), 999, 999, pathlib.Path(p).name)
 
 a = sys.argv[1:]
 root = pathlib.Path(a[a.index('--root') + 1]) if '--root' in a else pathlib.Path(__file__).resolve().parents[2]
 targets = [x for i, x in enumerate(a) if x != '--root' and (i == 0 or a[i - 1] != '--root')]
 T = root / '06-theory'
 M = T / 'manuscript'
-files = sorted(M.glob('chapter_*/*.md')) + [T / 'CONCEPT-REGISTER.tsv', T / 'THEORY-MAP.md', M / 'BOOK-OUTLINE.md', T / 'BOOK-OUTLINE.md']
+files = sorted(M.glob('chapter_*/*.md'), key=file_key) + [T / 'CONCEPT-REGISTER.tsv', T / 'THEORY-MAP.md', M / 'BOOK-OUTLINE.md', T / 'BOOK-OUTLINE.md']
 files = [f for f in files if f.exists()]
 
 
 def home(sec):
     ch, s = sec.split('.')[:2]
-    hits = list(M.glob(f'chapter_{int(ch):02d}/{int(ch):02d}.{int(s):02d}-*.md'))
+    hits = [h for h in M.glob(f'chapter_{int(ch):02d}/{int(ch):02d}.{int(s):02d}-*.md')]
     return hits[0] if hits else None
 
 

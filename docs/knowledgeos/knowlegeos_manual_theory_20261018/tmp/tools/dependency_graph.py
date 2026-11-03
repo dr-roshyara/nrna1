@@ -29,6 +29,10 @@ Usage:
 """
 import csv, glob, pathlib, re, sys
 from collections import defaultdict, deque
+# Section files are NN.MM-… or NN.MMM-… (the Principal, 2026-11-03: §8.100 onward); sort numerically, never as strings.
+def file_key(p):
+    m = re.match(r'(\d\d)\.(\d{2,3})(?!\d)', pathlib.Path(p).name)
+    return (str(pathlib.Path(p).parent), int(m.group(1)), int(m.group(2))) if m else (str(pathlib.Path(p).parent), 999, 999, pathlib.Path(p).name)
 
 W = pathlib.Path(__file__).resolve().parents[2]
 if '--root' in sys.argv:
@@ -37,15 +41,15 @@ if '--root' in sys.argv:
     del sys.argv[_i:_i + 2]
 T = W / '06-theory'
 M = T / 'manuscript'
-SEC = re.compile(r'(?:Ch(?:apter)?\.?\s*\d+\s*)?§\s?(\d+)\.(\d+)(?:\.(\d+[a-z]?))?')
+SEC = re.compile(r'(?:Ch(?:apter)?\.?\s*\d+\s*)?§\s?(\d+)\.(\d+)(?!\d)(?:\.(\d+[a-z]?))?')
 CON = re.compile(r'\bCON-(\d{4})\b')
 
 
 def section_files():
     out = {}
-    for f in sorted(glob.glob(str(M / 'chapter_*/[0-9][0-9].[0-9][0-9]*-*.md'))):
+    for f in sorted(glob.glob(str(M / 'chapter_*/[0-9][0-9].[0-9][0-9]*-*.md')), key=file_key):
         p = pathlib.Path(f)
-        m = re.match(r'(\d\d)\.(\d\d)', p.name)
+        m = re.match(r'(\d\d)\.(\d{2,3})(?!\d)', p.name)
         if not m or m.group(2) in ('00', '99'):
             continue
         out[f'§{int(m.group(1))}.{int(m.group(2))}'] = p
@@ -76,7 +80,7 @@ def build():
                 edges[s].setdefault(c, 'cites')
     for c, r in reg.items():
         loc = r[5] if len(r) > 5 else ''
-        fm = re.search(r'chapter_\d\d/(\d\d)\.(\d\d)', loc)
+        fm = re.search(r'chapter_\d\d/(\d\d)\.(\d{2,3})(?!\d)', loc)
         if fm:
             host = f'§{int(fm.group(1))}.{int(fm.group(2))}'
             if host in secs:
