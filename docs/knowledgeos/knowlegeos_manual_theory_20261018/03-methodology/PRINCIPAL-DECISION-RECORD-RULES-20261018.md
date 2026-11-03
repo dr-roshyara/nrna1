@@ -997,3 +997,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "At the S0378–S0402 consolidation, propose a role classification for the book's ideas — core theory, supporting device (lens, viewpoint, notation, example), application, record of the estate — with a test for each. Once I approve it, new windows tag their items by role, supporting items get one line with their home, and the themes list and chapter summaries mark roles. No change to the concept register until the classification is approved."
 - **Basis (GE check):** the book separates lenses case by case (§8.101 C1, "observation instruments"; §5.4 Z2), labels claims Src/Int/…, and marks kernel/application for some Ch. 8 sections; it has **no book-wide role classification**, the register has no role column, and Ch. 8 mixes the roles.
 - **Status:** a working instruction under Rulebook v1.4; no rule changed; the register unchanged until the classification is approved (precedent: I-3, 2026-11-01). **Binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-03T06:55:02Z: an index of working instructions in force (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "do we need to note down the rule in v1.4 ?" Then, on the proposed line: "approve"
+- **Approved line:** "The Governance Engineer keeps a one-page index of the working instructions in force under Rulebook v1.4 (each with its date and decision-record entry); the Professor and every brief cite it. Folding them into a Rulebook v1.5 is decided after the theory-turn chain."
+- **Applied:** `03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md` (first version). It has no authority of its own; the record wins. **The Professor's citing it binds once the Principal tells the Professor** (not yet reported).
