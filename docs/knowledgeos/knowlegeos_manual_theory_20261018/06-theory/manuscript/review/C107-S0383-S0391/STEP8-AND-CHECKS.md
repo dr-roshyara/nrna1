@@ -14,3 +14,10 @@
 - **R1:** no new rows. **R2 (`undefined_terms.py --no-corpus --scope 08.101`):** tier A in scope: ASD-001 (glossed in the lineage note as the defect record); others first used elsewhere. **R3 (proposed):** none.
 - **Quote check (`corpus_quote_check.py`):** 50 found, 0 not found (one line reference corrected before commit: S0389 L22 → L21).
 - **Outside authors:** lens names that are eponymous stay; no person is named as a person; "[IT]" for the incompleteness theorem's author in the lens names.
+
+**At settlement (v2).**
+- **Quote check (`corpus_quote_check.py`, v2):** 50 found, 0 not found. §8.100 after its R3 note: 36 found, 0 not found.
+- **Self-check (`selfcheck.py`) on v2:** claim headings scoped; remaining flags are homonym reminders, each split in the text.
+- **R1:** 0 flags. **R3:** §8.100 C4 (WA W-08).
+- **R/N:** WA R 12, N 8; WB R 4, N 9.
+- **Reviewers' procedure:** both copied the copy list by path; neither could run `undefined_terms.py` or `corpus_quote_check.py` on the scratch copy (their inputs are not on the copy list); both checked quotations by hand (WA 26, WB 24). WA did not open S0388–S0389 (outside its commission). No access problem beyond S0386 (ruled).
