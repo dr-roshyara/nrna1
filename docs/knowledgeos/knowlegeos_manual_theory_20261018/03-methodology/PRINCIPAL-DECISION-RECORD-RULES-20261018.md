@@ -942,3 +942,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 
 - **Principal (verbatim, to the Governance Engineer):** "my plan is at least 100 files a day"
 - **Recorded as:** a target for the reading-strategy paper (addendum above), which will state what reaching it requires and at what cost to review quality. **No rule, procedure or instruction to the Professor changes by this entry.**
+
+## Addendum 2026-11-03T03:54:51Z: Chapter 10 consequences applied; T10-15 turn prepared (recorded by the Governance Engineer)
+
+- **Principal (verbatim, sent to the Professor after the S0353–S0377 settlement `58f56cffc`; seen by the Governance Engineer in the Professor's session transcript pasted by the Principal, 2026-11-03):** "Apply the Ch. 10 consequences 1–6 and plan steps 1–2 after the S0353–S0377 settlement, for review at the next consolidation; prepare the T10-15 turn as step 3."
+- **Basis:** `review/CONSOLIDATION-S0353-S0377/CH10-PROPOSAL.md` (consequences 1–5 from U2, 6 from U6 and T9-21; step 1 closes T10-20 as answered by U2; step 2 qualifies T10-19).
+- **Decided:** those Ch. 10 changes are made now and reviewed at the S0378–S0402 consolidation; the T10-15 turn is **prepared**, not run (running it needs a separate dispatch). Reading resumes at S0378 under the standing instruction; next stop the gate after S0402.
+- **Unchanged:** the stage-1 prohibition; Rulebook v1.4.
