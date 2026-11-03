@@ -173,6 +173,22 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - Q-5: `consequences jsonb` + `g2_version`;
   - Q-6: `StoredMemberLogInvalid`;
   - Q-7: the corrected value and every finite trim bound.
+  - Committed `660fc03a9`.
+- 2026-11-03: **Step 1 done (load validation in `Member::fromLog`; V-1, V-14, V-15).**
+  - **RED:** `MemberLogValidationTest`:
+    - 17 invalid stored logs (a data provider) were all accepted: **17 failures**;
+    - one valid log of every kind already loaded. It is a characterisation test: a log that G\* would refuse today still loads, because guards are not re-run.
+  - **GREEN:** `Member::requireStructurallyValid()`, called from the constructor, so it runs on **every** load path (`fromLog`, the adapter, the double). It refuses with `\InvalidArgumentException`:
+    - a duplicate fact id;
+    - an End whose period is not an **earlier Admit**;
+    - an Annul, Void or Correct whose target is not an **earlier** fact; this rules out self-targets and so the `rootOf` loop of V-14;
+    - an Annul of a Void (N-3);
+    - an Annul without decision provenance (R-7);
+    - a Correct of an Annul or Void (N-3);
+    - a Correct trimming one period twice, or trimming something that is not an earlier Admit (V-15).
+  - **Not re-checked, as approved:** G\*, and the guards that depend on time or authority.
+  - **The wrapping into `StoredMemberLogInvalid` (Q-6) is in the adapter (step 5).** The kernel throws a plain `\InvalidArgumentException`, keeping the Domain free of infrastructure types.
+  - **Regression:** Domain 189, Application 62 (the shared repository contract on the double runs through the new validation), Infrastructure 22, Architecture 97.
 
 ## 11. Open questions (outside this plan's decisions)
 

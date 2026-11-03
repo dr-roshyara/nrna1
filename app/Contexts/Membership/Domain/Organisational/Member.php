@@ -32,6 +32,70 @@ final readonly class Member
             }
             $previous = $recorded->recordedAt();
         }
+        self::requireStructurallyValid(array_map(static fn (RecordedFact $r): Fact => $r->fact(), $log));
+    }
+
+    /**
+     * COR-4 load validation (PBDIGIT-329, Q-3; roadmap V-1, V-14, V-15): the log must be one the kernel could have
+     * decided, structurally. Every reference points to an earlier fact of this log and has the right kind; N-3 and
+     * R-7 hold; a Correct's consequences name earlier admissions, one each. G* and the guards that depend on time
+     * or authority are not re-run: a stored history is the record (R-12).
+     *
+     * @param list<Fact> $facts in seq order
+     * @throws \InvalidArgumentException when the log is structurally invalid
+     */
+    private static function requireStructurallyValid(array $facts): void
+    {
+        /** @var array<string, Fact> $earlier */
+        $earlier = [];
+        foreach ($facts as $fact) {
+            $id = $fact->id()->value();
+            if (isset($earlier[$id])) {
+                throw new \InvalidArgumentException("Stored log: fact id {$id} is used twice.");
+            }
+            if ($fact instanceof End) {
+                self::requireEarlier($earlier, $fact->period()->admitFactId(), $id, Admit::class);
+            }
+            if ($fact instanceof ReversalFact) {
+                $target = self::requireEarlier($earlier, $fact->target(), $id, Fact::class);
+                if ($fact instanceof Annul && $target instanceof VoidFact) {
+                    throw new \InvalidArgumentException("Stored log: Annul {$id} targets a Void (N-3).");
+                }
+                if ($fact instanceof Annul && $fact->provenance()->kind() !== ProvenanceKind::Decision) {
+                    throw new \InvalidArgumentException("Stored log: Annul {$id} has no decision provenance (R-7).");
+                }
+            }
+            if ($fact instanceof Correct) {
+                $target = self::requireEarlier($earlier, $fact->target(), $id, Fact::class);
+                if ($target instanceof ReversalFact) {
+                    throw new \InvalidArgumentException("Stored log: Correct {$id} targets an Annul or a Void (N-3).");
+                }
+                $trimmed = [];
+                foreach ($fact->consequences() as $consequence) {
+                    $period = $consequence->period()->admitFactId();
+                    if (isset($trimmed[$period->value()])) {
+                        throw new \InvalidArgumentException("Stored log: Correct {$id} trims period {$period->value()} twice.");
+                    }
+                    $trimmed[$period->value()] = true;
+                    self::requireEarlier($earlier, $period, $id, Admit::class);
+                }
+            }
+            $earlier[$id] = $fact;
+        }
+    }
+
+    /**
+     * @param array<string, Fact> $earlier
+     * @param class-string<Fact> $kind
+     */
+    private static function requireEarlier(array $earlier, FactId $reference, string $by, string $kind): Fact
+    {
+        $fact = $earlier[$reference->value()] ?? null;
+        if (!$fact instanceof $kind) {
+            throw new \InvalidArgumentException("Stored log: {$by} refers to {$reference->value()}, which is not an earlier fact of the required kind.");
+        }
+
+        return $fact;
     }
 
     public static function fromLog(MemberId $id, PersonRef $holder, TenantId $organisation, RecordedFact ...$log): self
