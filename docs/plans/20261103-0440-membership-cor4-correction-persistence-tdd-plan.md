@@ -239,6 +239,21 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **Existing test updated because of an approved behaviour change:** `test_t6_recorded_at_never_decreases_under_a_backward_clock` pinned the old tie value (`last`); it now expects `last + 1`, annotated with Q-2. This was its only failure in the first GREEN run (`cor4-ev/s5-green`, 1 failure of 88).
   - **Full PostgreSQL suite** (`cor4-ev/s5-green2`): **88 tests, 515 assertions, exit 0** (1 pre-existing deprecation).
   - **Regression (database-free):** Domain 189, Application 75, Infrastructure 22, Architecture 98.
+  - Committed `144f1e947`.
+- 2026-11-03: **Step 6 done (PostgreSQL race tests; AC-7).** `PostgresCorrectionRaceTest`: 3 cases × 8 rounds × 4 forked processes, through `DecideAndAppend::run` with explicit decide closures.
+  - **No COR-3 handler is written or bound.** The `MembershipAct` passed is a **placeholder** (`End`): `MembershipAct` has no correction acts yet (COR-3: "`MembershipAct` extension"), and `FakeAuthority` grants every act. Authorisation is not under test.
+  - **Properties checked every round:**
+    - no child errors; every refusal is a contract reason;
+    - the stored history reloads (step 1 validation), with contiguous seq;
+    - **every stored Correct's consequences equal a fresh `decideCorrect` on its stored prefix** (g2 recomputed by re-decide, never by the adapter);
+    - every appended outcome names a stored fact.
+  - **The cases:**
+    - Annul vs Correct of the same correction: exactly one Annul stored, at most one Correct;
+    - two Corrects of the same fact with different values: at least one stored, each with recomputed consequences;
+    - **Correct vs End on the adjacent period (FP §16.10 lost update): exactly one of the four stored.**
+  - **Result** (`cor4-ev/s6-a`): **3 tests, 340 assertions, exit 0 on the first run**, as the plan expected ("none expected"). These are verification tests.
+  - **Sensitivity** (`cor4-ev/s6-mutant-er-off`): with ER disabled in a scratch worktree copy only, the lost-update test **fails**. Round 0 stored both `C-1` and `E-3`. Its refusals (`value_unchanged`, `period_already_ended`) show the processes genuinely interleaved. The worktree was removed.
+  - **No production change in this step.**
 
 ## 11. Open questions (outside this plan's decisions)
 
