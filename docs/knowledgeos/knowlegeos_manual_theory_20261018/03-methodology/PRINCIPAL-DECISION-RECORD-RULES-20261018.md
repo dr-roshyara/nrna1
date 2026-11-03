@@ -937,3 +937,8 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 
 - **Principal (verbatim, to the Governance Engineer):** "sent"
 - **Sent:** the approved line of the addendum "implementation-ideas log during extraction" (above), unchanged. **In force for the Professor from receipt.**
+
+## Addendum 2026-11-03T03:43:38Z: the Principal's throughput target (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "my plan is at least 100 files a day"
+- **Recorded as:** a target for the reading-strategy paper (addendum above), which will state what reaching it requires and at what cost to review quality. **No rule, procedure or instruction to the Professor changes by this entry.**
