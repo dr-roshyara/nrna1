@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IMPLEMENTED — AWAITING INDEPENDENT REVIEW` (2026-11-03). Steps 1–7 done, kernel only, database-free (commits `abb81b1c5`, `58b89ab44`, `739875e1c`, `e5836a816`, `01fcbc9e3`, plus step 7). Evidence: plan §10. **Not accepted**: next are the independent review, then the PO verdict. *(Was: `APPROVED` (PO, 2026-11-03), plan approved, P-1…P-6 decided as recommended.)* |
+| **Status** | `REVIEWED — CONDITIONS CLOSED, AWAITING PO ACCEPTANCE` (2026-11-03). The independent review recommended ACCEPT WITH CONDITIONS C-1…C-3 and found no production defect. PO: option (A). The conditions are closed by tests and records only. Record: `docs/publicdigit/reviews/2026-11-03-pbdigit327-cor2-independent-review-and-acceptance.md`. *(Was: `IMPLEMENTED — AWAITING INDEPENDENT REVIEW` (2026-11-03).)* Steps 1–7 done, kernel only, database-free (commits `abb81b1c5`, `58b89ab44`, `739875e1c`, `e5836a816`, `01fcbc9e3`, plus step 7). Evidence: plan §10. **Not accepted**: next are the independent review, then the PO verdict. *(Was: `APPROVED` (PO, 2026-11-03), plan approved, P-1…P-6 decided as recommended.)* |
 | **Plan** | `docs/plans/20261103-0222-membership-cor2-correct-and-consequences-tdd-plan.md` |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-correction-slice-semantic-contract-draft.md` (APPROVED by the PO 2026-10-10): §3.3 Correct, §4, §9, §10 (C-2 row), §10a Correct 1–10, §14.5 (C-2 criteria), §14.7 |
 | **Decisions already taken** | **BD-REV-ER = refuse** (`2026-11-02-membership-bd-rev-er-decision-record.md`); **D-COR-3 = dates only in the first slice** (`2026-11-02-membership-d-cor-3-decision-record.md`); D-COR-2 = refuse (reversal of a non-live target); D-COR-5 (A) (Annul / Void carry no consequences) |

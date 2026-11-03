@@ -78,6 +78,20 @@ final class CorrectAbsorptionTest extends TestCase
         $this->assertTrue($h->end('E1', 'A1', 5)->isAccepted());
     }
 
+    // Review F-1 (condition C-1): a correction whose g2 trims two periods, absorbing one of them, is refused for the
+    // absorption. Keeping only one of the two trims would report an overlap instead. Oracle port and Python: period_absorbed.
+    public function test_a_correction_that_trims_two_periods_and_absorbs_one_is_refused_as_absorption(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->admit('A0', 1, null, true));
+        $h->commit($h->end('E1', 'A0', 3));
+        $h->commit($h->admit('A1', 3, null, true));
+        $h->commit($h->end('E3', 'A1', 4));
+        $h->commit($h->admit('A2', 4, null, true));
+
+        $this->assertSame(RefusalReason::PeriodAbsorbed, $h->correct('C5', 'A2', 2)->refusal());
+    }
+
     // ER is checked last: on a state that also violates INV-9, INV-EP or INV-COV, those are reported first.
     // (No such state is reachable in the bounded space; this pins the order of the enforcement set itself.)
     public function test_absorption_is_reported_after_the_other_invariants(): void

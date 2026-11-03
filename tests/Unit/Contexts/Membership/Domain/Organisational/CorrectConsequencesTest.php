@@ -231,6 +231,35 @@ final class CorrectConsequencesTest extends TestCase
         $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X6', 'C3')->refusal());
     }
 
+    // One Correct can trim two periods (review F-1, condition C-1; FP §13.6 case B "one cause → several trims").
+    // Annulling C3 leaves A1 with an empty BaseClaim (start 9 after its End 6, review F-3); correcting A1 to 1 then
+    // extends it on both sides. Every consequence must be kept and applied. Expected values from the oracle port (H = 10).
+    public function test_one_correction_can_trim_two_live_periods(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->admit('A0', 0, null, true));
+        $h->commit($h->end('E1', 'A0', 2));
+        $h->commit($h->admit('A1', 9, null, true));
+        $h->commit($h->correct('C3', 'A1', 4));
+        $h->commit($h->end('E4', 'A1', 6));
+        $h->commit($h->admit('A2', 8, null, true));
+        $h->commit($h->annul('X6', 'C3'));
+        $h->commit($h->correct('C7', 'A2', 2));
+
+        $decision = $h->correct('C8', 'A1', 1);
+        $this->assertTrue($decision->isAccepted());
+        $trimmed = [];
+        foreach (self::consequences($decision) as $consequence) {
+            $trimmed[$consequence->period()->admitFactId()->value()] = $consequence->removed();
+        }
+        $this->assertSame(['A0', 'A2'], array_keys($trimmed), 'both periods are trimmed');
+        $this->assertTrue($trimmed['A0']->equals(self::set(1, 2)));
+        $this->assertTrue($trimmed['A2']->equals(self::set(2, 6)));
+
+        $h->commit($decision);
+        self::assertLifetimes($h, ['A0' => [0, 1], 'A1' => [1, 6], 'A2' => [6, null]], 'both trims apply');
+    }
+
     // Decisions other than reversals revive nothing.
     public function test_end_and_correct_decisions_revive_nothing(): void
     {

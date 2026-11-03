@@ -185,6 +185,7 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
   - **Reading for the PO to confirm at review (ER scope):**
     - The decision record §3 places ER in the enforcement set of G\* (canonical §6), so it applies to every decision, as in the oracle.
     - Its visible effect beyond corrections: an **End** dated inside its own period's existing trim is refused, because it would leave that period with a claim but no lifetime (21 cases at L = 5).
+    - *Added 2026-11-03 (review F-5, condition C-2):* it also refuses **reversals** that would leave a live period absorbed, e.g. an appeal Annul(Annul A1) refused `PeriodAbsorbed` (review F-1, 10-fact history).
     - The PO's words were "a correction is refused if … another period … would have an empty resolved lifetime". The alternative, ER for Correct only, would accept those Ends, and then diverge from the golden oracle.
   - **Regression:** Domain 160, Application 62, Infrastructure 22, Architecture 97.
   - Committed `01fcbc9e3`.
@@ -216,7 +217,12 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
         - `array_values` on lists that are already lists, or only iterated (`IntervalSet.php:25`, `Resolution.php:261`, `Member.php:39`, `:82`);
         - the defensive / unreachable `match` arms and throws (`Resolution.php:161`, `:163`, `:164`, `:176`, `:323`, `:325`, `:326`; `Member.php:283`, `:284`, `:303`);
         - the revival key's separator and order (`Member.php:326`);
-      - **equivalent under the ≤ 1-consequence observation:** `Member.php:269` and `Resolution.php:302` (break after a foreign period). Every accepted Correct carries consequences on at most one period: 0 counterexamples at L = 5. The argument: under ER, a correction's contiguous extension cannot partially trim two periods without wholly absorbing one between them. **This is an argument, not a proof**; it is flagged for the review;
+      - ~~**equivalent under the ≤ 1-consequence observation:** `Member.php:269` and `Resolution.php:302` …~~ **WITHDRAWN 2026-11-03 (independent review F-1, condition C-1).** The argument was false:
+        - it considered only accepted decisions with a non-degenerate BaseClaim;
+        - its evidence was "0 counterexamples at L = 5", but the smallest counterexample needs 6 facts;
+        - a 6-fact refused case and a 9-fact accepted case (two live periods trimmed) kill both mutants.
+
+        They were a **test gap**, now closed by two killing tests (see the review-conditions entry below);
       - **coverage artefacts:** `continue` / `match (true)` reported as not covered but killed when run directly (`Member.php:251`, `Resolution.php:161`, `:217` (the full suite), `:323`);
       - **pre-existing, as classified for C-1:**
         - `Decision.php:45` (message text), `:50`;
@@ -235,3 +241,18 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
     3. the ≤ 1-consequence argument (above);
     4. **found out of scope:** guide `12_pbdigit264_part2.md`, promised by the PBDIGIT-264 Part 2 plan (`:99`), was never written; Part 2 updated guide 03 instead. Recommend a backlog item rather than extending COR-2.
   - **Status:** steps 1–7 done; **STOP for the independent review.**
+  - Committed `763a47cf3`. Review brief `09e89f3df`.
+- 2026-11-03: **Independent review returned: ACCEPT WITH CONDITIONS C-1…C-3, no production defect.**
+  - Record: `docs/publicdigit/reviews/2026-11-03-pbdigit327-cor2-independent-review-and-acceptance.md`.
+  - **PO: option (A), close the conditions first, then accept.**
+- 2026-11-03: **Review conditions closed (tests and records only; no `app/` change).**
+  - **C-1 (F-1):**
+    - `CorrectConsequencesTest::test_one_correction_can_trim_two_live_periods`: the reviewer's 9-fact history, accepted with trims A0 [1, 2) and A2 [2, 6), lifetimes A0 [0, 1), A1 [1, 6), A2 [6, ∞);
+    - `CorrectAbsorptionTest::test_a_correction_that_trims_two_periods_and_absorbs_one_is_refused_as_absorption`: the 6-fact history, `PeriodAbsorbed`.
+    - Expected values from the oracle port (H = 10 and H = 5).
+    - Both tests pass on the kernel, and **both fail against each of the mutants `Member.php:269` and `Resolution.php:302`**, run directly with mutated kernel copies loaded first.
+    - The "equivalent" classification is withdrawn above.
+  - **C-2 (F-5):** ER is a G\* invariant, so it also refuses **reversals**. Example (review F-1, 10 facts): an appeal Annul(Annul A1) refused `PeriodAbsorbed`. Recorded in the step-6 reading here and in guide 13. **The PO confirms the ER scope at the verdict.**
+  - **C-3 (F-6, F-7, F-8):** recorded as **COR-4 entry criteria V-13…V-15** in the roadmap verification table (`…20261016_2219_…_completion_plan.md` §3.2), next to V-1 / V-4. Guide 13 points to them.
+  - **Regression:** Domain **171**, Application 62, Infrastructure 22, Architecture 97. No change under `app/`.
+  - **Next:** the PO's acceptance verdict on PBDIGIT-327. It decides the P-2 reading, the ER scope, guide 12, and F-3 / F-4 as contract questions.

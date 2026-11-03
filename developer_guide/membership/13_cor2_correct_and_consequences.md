@@ -45,7 +45,8 @@ Infrastructure     ← COR-4 (storing Correct and its consequences; StorableVali
   - a value after the decision date → `EffectiveDateAfterDecisionDate`;
   - ∞ → `InvalidArgumentException`.
 - **Trim on the cause (FP §12.4 C; P-2).** g2 runs **once, at decision time**, and its result is frozen on the `Correct`. Resolution never replays the policy. That keeps `knownAt` deterministic and makes CFC a matter of liveness.
-- **ER is an invariant of G\* (BD-REV-ER record §3, canonical §6).** It is checked for **every** decision, last. So an End dated inside its own period's existing trim is refused too. This reading is flagged to the PO in the plan.
+- **ER is an invariant of G\* (BD-REV-ER record §3, canonical §6).** It is checked for **every** decision, last. So an End dated inside its own period's existing trim is refused too, and so is a **reversal** that would leave a live period absorbed, e.g. an appeal Annul(Annul) (review F-5). This reading is flagged to the PO in the plan.
+- **One Correct can trim several periods** (FP §13.6 case B; review F-1). For example, after an Annul leaves a period with an empty BaseClaim, a correction can extend it on both sides. g2 keeps every consequence, one per trimmed period.
 - **Not an `EffectiveDatedFact`.** `MembershipStorableValidTimeCoverageTest` pins the dated facts to Admit and End. The storable-range check for the corrected value (R-1a-6) belongs to COR-4.
 
 ## How it works
@@ -126,16 +127,20 @@ $restore = $h->annul('X2', 'X1');            // revivedTrims() = [(C1, A1)]  →
 - **Persistence (COR-4):**
   - store `target`, `value` and the consequences (period + removed intervals) with the Correct;
   - extend `StorableValidTime` (and `MembershipStorableValidTimeCoverageTest`) for the corrected value;
-  - **never recompute g2 on load**: the frozen consequences are the record.
+  - **never recompute g2 on load**: the frozen consequences are the record;
+  - meet the COR-4 entry criteria **V-13…V-15** in the roadmap verification table (`…20261016_2219_…_completion_plan.md` §3.2):
+    - R-1a-6 for the corrected value;
+    - INV-TGT at decode: a Correct that targets itself would make `Resolution::rootOf` recurse without end;
+    - validation of the decoded consequences, including the two-period case.
 
 ## Testing
 
 | Test | What it pins |
 |---|---|
-| `CorrectDecisionTest` (18) | refusals, P-1 / P-3 / P-4 / P-5, the annulled-inert acceptance, guard order pairwise |
+| `CorrectDecisionTest` (19) | refusals, P-1 / P-3 / P-4 / P-5, the annulled-inert acceptance, guard order pairwise, constructor guards |
 | `CorrectResolutionTest` (8) | the corrected start or end, latest-wins and revert, chains, inert then revived, the term start, P-KNOWN |
-| `CorrectConsequencesTest` (10) | g2 Δ and inheritance, clipping, CFC removal and revival, `TrimRevived`, CX-B (INV-EP) |
-| `CorrectAbsorptionTest` (6) | BD-REV-ER: the minimal case, the End-correction case, the End inside its own trim, annul-first acceptance, the order in the enforcement set |
+| `CorrectConsequencesTest` (13) | g2 Δ and inheritance, clipping, CFC removal and revival, `TrimRevived` exactness, stage-2 activeness, **one Correct trimming two periods**, CX-B (INV-EP) |
+| `CorrectAbsorptionTest` (7) | BD-REV-ER: the minimal case, the End-correction case, the End inside its own trim, a two-period trim that absorbs one, annul-first acceptance, the order in the enforcement set |
 | `G6C2CorrectionOracleGoldenTest` | the PHP port reproduces the Python C-2 oracle stream (H = 5, L = 5) |
 | `C2ExhaustiveDifferentialTest` | verdict, reason, lifetimes and consequences equal the port on all **277,835** decisions (139,722 accepted), 0 mismatches |
 | `C2PropertyTest` | P-REV-V / P-REV-A, P-APPEAL, §5 (d), P-CFC by deletion (+ P-EQ), P-KNOWN vs the port; L = 4 |
@@ -151,7 +156,8 @@ vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit
 - **`isMember` means "in force"** (lifetime **and** term). A fixture admitted without a term is never a member. Use `admit('A1', $at, null, true)` for an open-ended term, or assert on `inLifetime`.
 - **Live, not active, decides a value.** `valueOf` counts live corrections, so a correction of an annulled fact is already visible to the `ValueUnchanged` guard while it is inert.
 - **A trim is clipped to its cause's current claim, not its own period's claim.** Do not subtract `lifetime` from `baseClaim` to get LiveCut; use `Resolution::liveCutOf()`.
-- **An End can be refused as `PeriodAbsorbed`.** That is ER as a G\* invariant, not a bug.
+- **An End or a reversal can be refused as `PeriodAbsorbed`.** That is ER as a G\* invariant, not a bug.
+- **Bounded evidence has limits.** Both a stage-2 defect class (7 facts) and the two-period trim (6 facts) lie beyond the L = 5 differential. When you change g2 or LiveCut, add a targeted unit test from the oracle port; do not rely on the exhaustive test alone.
 - **No future dates through a correction.** The decision date comes from the caller (D-5(a) Z1); the domain reads no clock.
 
 ## Traceability
