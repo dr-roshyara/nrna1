@@ -887,3 +887,14 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal's confirmation to the Governance Engineer (verbatim):** "I sent that T9-02 line"
 - **Decided:** Ch. 9 `TODO.md` T9-02's deliverable is "the entry kinds and their fields plus a derivation for each item attribute" (was "one table of attributes, value sets and kinds"). **Not decided by it:** F13, F37; the rows §9.20.7 marks Open stay open; T9-02 stays open (partially resolved). Reading resumed at S0367 under the standing instruction (applied by the Professor, `2620c585d`; C98 started 2026-11-02T17:42Z).
 - **Unchanged:** Rulebook v1.4; review procedure; access permissions; the git-history ban.
+
+## Addendum 2026-11-03T01:59:49Z: chapter summaries, logical split of Ch. 8 and Ch. 9, Chapter 10 proposal (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve 1–3"
+- **What was approved:** the three copy-ready decisions in `03-methodology/BRAINSTORM-CHAPTER-SUMMARIES-SPLITTING-CH10-20261103.md`, revision 2 (`5913fb98f`, §5), as worded in the combined message the Governance Engineer gave for sending:
+  1. **Chapter summaries:** "Each live chapter (0–6, 8–10) gets a summary file in 06-theory/manuscript/SUMMARIES/NN.SUMMARY.md (establishes · failed or restated · open · changed), restating settled sections only, with section numbers and their own labels, no new claims; the section wins over the summary. A summary is metadata, not book text, and is never cited. You write and update them at each consolidation and after each theory turn; consolidation reviewers check them only for chapters in scope, the rest recorded as unchecked. Start at the S0378–S0402 consolidation."
+  2. **Splitting:** "Ch. 8 and Ch. 9 are split logically, not physically: no renumbering, no file moves (DB-7). One block summary for S0001–S0035, then one per consolidation, for Ch. 8 and Ch. 9 alike, in SUMMARIES/, linked from the chapter summary."
+  3. **Chapter 10:** "At the S0353–S0377 consolidation, write a proposal: (1) which Ch. 10 rows the Ch. 9 results since its last revision change, as consequences; (2) a plan for closing T10-15 and T10-17–T10-21; (3) the conditions on Ch. 10's theory content before a stage-1 package could be authorised, leaving tactical-design readiness to the Lead DDD Architect's §5a. No change to Ch. 10 and no implementation work until I approve."
+- **Status:** working instructions under Rulebook v1.4; **no rule changed**. Chapter 10 is the strategic design (derived), not implementation; the stage-1 prohibition (2026-10-31, item 5) stands.
+- **Applied by the Governance Engineer:** `CONSOLIDATION-BRIEF-TEMPLATE.md` — SCOPE §2.1 lists the chapter summaries in scope (others unchecked); commission task 6 checks them (from the S0378–S0402 consolidation).
+- **Sent to the Professor:** not yet reported to the Governance Engineer.

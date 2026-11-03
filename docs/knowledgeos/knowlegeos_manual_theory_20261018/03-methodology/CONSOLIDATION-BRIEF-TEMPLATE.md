@@ -57,6 +57,7 @@
 - **Changed by the settlements of <Cfirst>–<Clast>, only the passages changed:** <file: passage>   ← from the settlements' "where applied" columns
 - **Rotated, in full:** <chapters>   ← the rotation in BOOK-OUTLINE.md
 - **Also:** `BOOK-OUTLINE.md` (the rotation section) and `THEORY-MAP.md` (position, counts, the lines for <Cfirst>–<Clast>).
+- **Chapter summaries** *(from the S0378–S0402 consolidation; Principal 2026-11-03, decision 1)*: `SUMMARIES/NN.SUMMARY.md` and the block summaries for the chapters in scope above, copied into the frozen copy; **summaries of chapters not in scope: unchecked** (listed by name).
 - **SEQ order** of the chapters the windows touched: <chapters>. The question is whether each chapter's sections and index follow a reading order in which nothing is used before it is introduced.
 
 ## 2.2 Concepts (only these)
@@ -125,6 +126,7 @@ The frozen copy `BOOK-UNDER-REVIEW/` only. You may read any part of the copy tha
    *(For sections no window inventory covers, such as a rotated chapter, use this item instead:)* **Coverage:** <chapter> was last reviewed in full at <consolidation>; no window inventory covers it. Instead, check every pointer from your sections to later chapters, and every TODO row in <chapter>'s `TODO.md`, against the copy: still open, resolved elsewhere (where), or stale.
 4. **R2** with `--scope` on your sections: every candidate judged.
 5. **R3** for each correction you propose; give each inbound line a disposition.
+6. **Chapter summaries** (when SCOPE §2.1 lists them) for the chapters of your sections: each summary line against the settled sections it cites. Defects: a claim no section makes, a wrong section number or label, a result stated more strongly or more widely than its section, a settled change missing. The section wins; a summary is never evidence.
 
 Nothing outside your sections is in scope; note out-of-scope observations as one line each. If you cannot cover something, say so rather than skimming it.
 
@@ -182,3 +184,4 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 | 2026-10-31 | REVIEWER-NOTE item 3: `--root <copy>` from the first call, and how `corpus_quote_check.py` is run (change 1); commission item 3: an alternative coverage task for sections no window inventory covers (change 3); integration items 7 (access deviations) and 8 (decisions in scope), each used only when it applies (change 4). **Not adopted:** "or any outside author's name" in the rules line (change 2; the Principal: "I do not confirm this as a Principal rule at this time") | the S0253–S0277 briefs' deviations from the fixed text (Governance Engineer's G7 check, 2026-10-31); the Principal's decision of 2026-10-31 (research record addendum of that date). Evidence: reviewer tool runs without `--root` (S0201–S0225 A; S0253–S0277 B); Ch. 0 and Ch. 1 rotated with no window inventory; S0253–S0277 A's working-book reads; the T9-19 scope question D-02 |
 | 2026-10-31 | The outside-authors rule: "or any outside author's name" in the rules line (§4, so also §5), and in SCOPE §2.4 "Outside books and articles the sources cite are not opened; their authors are not reproduced." (change 2 of the S0253 briefs, first not adopted, now confirmed) | the Principal's confirmation, research record addendum of 2026-10-31 ("i accept your recommendation") |
 | 2026-11-02 | REVIEWER-NOTE item 4: "git history of the manuscript" widened to "No git history, diffs, blame, historical versions, or commit listings of any file", with the evidence boundary | Principal ruling 2026-11-02 (research record addendum 2026-11-02T02:56:29Z), after C78 W-01 |
+| 2026-11-03 | SCOPE §2.1: chapter summaries in scope, the rest unchecked; commission task 6: check summaries against settled sections | Principal, 2026-11-03, "approve 1–3" (decision 1; brainstorm rev. 2 `5913fb98f`); applies from the S0378–S0402 consolidation |
