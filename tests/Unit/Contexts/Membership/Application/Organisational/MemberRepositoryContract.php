@@ -329,6 +329,34 @@ trait MemberRepositoryContract
         $this->assertSame($until, $fact->initialTermUntil()->isInfinite() ? null : $fact->initialTermUntil()->ordinal());
     }
 
+    /** @return array<string, array{int}> */
+    public static function unstorableCorrections(): array
+    {
+        return [
+            'V-13a corrected to one day before 0001-01-01' => [-719_163],
+            'V-13b corrected to one day after 9999-12-31' => [2_932_897],
+        ];
+    }
+
+    // COR-4 step 2 (PBDIGIT-329, Q-7, V-13): a Correct whose value cannot be stored is not appended (R-1a-6).
+    #[\PHPUnit\Framework\Attributes\DataProvider('unstorableCorrections')]
+    public function test_a_correction_with_an_unstorable_value_is_not_appended(int $value): void
+    {
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 0, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $correct = $member->decideCorrect(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::of($value), TimePoint::of(max($value, 0)), Provenance::decision('registrar'));
+        $this->assertTrue($correct->isAccepted(), 'the kernel accepts it; only storage cannot hold it');
+
+        $result = $repo->append($this->tenant(), $member->id(), $correct, self::key('k2'), 'fp2');
+
+        $this->assertSame('valid_time_not_storable', $result->outcome()->value);
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+        $this->assertNull($repo->appliedCommand($this->tenant(), self::key('k2')));
+    }
+
     public function test_an_end_at_the_last_storable_date_is_appended_and_read_back(): void
     {
         // E2d

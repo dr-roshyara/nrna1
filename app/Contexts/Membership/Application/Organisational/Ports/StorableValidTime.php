@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational\Ports;
 
 use App\Contexts\Membership\Domain\Organisational\Admit;
+use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\EffectiveDatedFact;
 use App\Contexts\Membership\Domain\Organisational\Fact;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
@@ -27,6 +28,16 @@ final class StorableValidTime
         $points = $fact instanceof EffectiveDatedFact ? [$fact->effectiveAt()] : [];
         if ($fact instanceof Admit && $fact->initialTermUntil() !== null) {
             $points[] = $fact->initialTermUntil();
+        }
+        // COR-4 (PBDIGIT-329, Q-7, V-13): a Correct's value and every bound of its frozen consequences are stored too.
+        if ($fact instanceof Correct) {
+            $points[] = $fact->value();
+            foreach ($fact->consequences() as $consequence) {
+                foreach ($consequence->removed()->intervals() as $interval) {
+                    $points[] = $interval->start();
+                    $points[] = $interval->until();
+                }
+            }
         }
         foreach ($points as $point) {
             if (!self::storable($point)) {

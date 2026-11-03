@@ -189,6 +189,17 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **Not re-checked, as approved:** G\*, and the guards that depend on time or authority.
   - **The wrapping into `StoredMemberLogInvalid` (Q-6) is in the adapter (step 5).** The kernel throws a plain `\InvalidArgumentException`, keeping the Domain free of infrastructure types.
   - **Regression:** Domain 189, Application 62 (the shared repository contract on the double runs through the new validation), Infrastructure 22, Architecture 97.
+  - Committed `6da2594b3`.
+- 2026-11-03: **Step 2 done (R-1a-6 for Correct; Q-7, V-13, review F-7).**
+  - **RED:**
+    - `MembershipStorableValidTimeCoverageTest::test_every_fact_carrying_a_time_point_is_handled_by_storable_valid_time`: a new **property** test (every kernel fact whose constructor takes a `TimePoint` must be handled by name in `StorableValidTime`, unless `effectiveAt()` is its only one). 1 failure, naming `Correct`;
+    - `StorableValidTimeTest` (8 cases): 4 failures (value or trim bound out of range); the 4 in-range cases already passed;
+    - `MemberRepositoryContract::test_a_correction_with_an_unstorable_value_is_not_appended` (2 cases): 2 failures on the double.
+  - **Test correction during RED:** the first version of the property test also flagged `End`, a false positive, because `End` is covered generically through `EffectiveDatedFact`. The rule was narrowed before any production code: name-handling is required unless `effectiveAt()` is the only `TimePoint`. `Correct` stays flagged.
+  - **GREEN:** `StorableValidTime::admits()` checks a Correct's value and both bounds of every interval of every consequence (∞ passes).
+  - **Note:** through `decide*`, a trim bound is always an earlier stored date or ∞. An out-of-range bound therefore implies an out-of-range value; the bound check is defence in depth.
+  - **The PostgreSQL run of the new contract test is due in step 5:** it answers before encoding, so it should already pass there.
+  - **Regression:** Domain 189, Application 72, Infrastructure 22, Architecture 98.
 
 ## 11. Open questions (outside this plan's decisions)
 
