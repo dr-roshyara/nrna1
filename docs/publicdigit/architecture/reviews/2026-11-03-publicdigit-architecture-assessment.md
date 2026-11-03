@@ -4,7 +4,7 @@
 **Status:** **REPORT.** It records evidence. It accepts, decides and authorises nothing.
 **Snapshot:** branch `election-flow-updated`, HEAD `2b89829cc` (2026-11-03).
 **Method:** static inspection of the repository at HEAD; every claim traced to a file, line or recorded act. **No test suite was run; no database was accessed; no deployment was observed; no domain expert was interviewed.**
-**Placement:** derived with `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit`.
+**Placement:** `docs/publicdigit/architecture/reviews/`, per the Product Owner's instruction (2026-11-03). `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` resolves the domain root to `docs/publicdigit`.
 
 **Classification vocabulary — never interchanged.**
 
