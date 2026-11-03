@@ -970,3 +970,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "Keep at most five sources per window as the general rule; where sources form a coherent series of short documents, windows may hold up to ten under Rulebook v1.4 §3, with the review split into two commissions and the 4,000-line cap kept. Window size is reviewed at the S0378–S0402 consolidation with per-window findings and misses."
 - **Basis:** Rulebook v1.4 §3 (five; ten only for a coherent series of short documents, review split in two); Trial T3 (S0056–S0065, ten sources, about 1,050 lines: review missed 6, settlement introduced 3; not adopted as default, METHOD-VERSIONS entry 51); C104–C105 at about 16 min per window; C106 (S0378–S0382, five sources, 630 lines) the first five-source window.
 - **Status:** applies §3 as written; no rule changed. **Binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-03T04:10:18Z: trial of ten-source windows, S0383–S0402 (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "so cant we enlarge the window size and verify the result", then, on the proposed line: "approve"
+- **Approved line (for the Professor):** "Trial: windows S0383–S0392 and S0393–S0402 hold up to ten sources each (each read full; the 4,000-line cap kept; review split into two commissions). At the S0378–S0402 consolidation report, per window, the misses per source, errors introduced by the window settlements, findings per 1,000 lines and minutes per source, against C89–C105. I decide the window size after that report; until then other windows hold at most five."
+- **Supersedes** the addendum "up to ten sources for coherent short series" of earlier today, which was approved but not sent; that line is **withdrawn** and was not sent to the Professor.
+- **Basis and limits:** Rulebook v1.4 §3 (ten with the review split in two); Trial T3's negative result (METHOD-VERSIONS entry 51); comparison baseline C89–C105 (22 consolidation misses in 25 sources); C106 (five sources) as the in-block comparison. Two windows: indicative, not proof. A trial authorised by the Principal, judged at the next fixed point; no rule text changed.
+- **Binding on the Professor once sent** (not yet reported).
