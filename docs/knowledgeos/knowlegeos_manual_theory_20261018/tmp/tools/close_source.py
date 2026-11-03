@@ -40,6 +40,11 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))   # python3 -I 
 import consolidation_gate
 import allowed_order
 ALLOWED = allowed_order.load_allowed(W.parent / 'knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv')
+# The allowed list's sha256 and disk status per path (the Principal, 2026-11-03, after C107's S0386: a source whose
+# listed status is not "match", or whose disk bytes differ from the listed sha256, is flagged at --start and refused
+# at closing unless --disk-deviation "<ruling>" names the Principal's ruling on it).
+with open(W.parent / 'knowledgeos-s-series-theory/corpus-access/CORPUS-ALLOWED.tsv', encoding='utf-8') as _fh:
+    LISTED = {r['path']: (r.get('sha256', ''), r.get('disk', '')) for r in csv.DictReader(_fh, delimiter='\t') if r.get('path')}
 PATH = {r['source_id']: r['path'] for r in INDEX}
 
 
@@ -148,6 +153,11 @@ if sys.argv[1:2] == ['--start']:
     assert sid in ORDER, f'unknown source {sid}'
     if PATH[sid] not in ALLOWED:
         sys.exit(f'REFUSED: {sid} ({PATH[sid]}) is NOT on the allowed list; do not open it (no start recorded)')
+    _lsha, _ldisk = LISTED.get(PATH[sid], ('', ''))
+    _dsha = hashlib.sha256((REPO / PATH[sid]).read_bytes()).hexdigest()
+    if _ldisk != 'match' or (_lsha and _lsha != _dsha):
+        print(f'WARNING: {sid} disk status on the allowed list is {_ldisk!r}; listed sha256 {_lsha[:12]}…, on disk {_dsha[:12]}…. '
+              f'Stop (d): put it to the Principal before using it; closing needs --disk-deviation "<ruling>"')
     with open(STARTS, 'a', encoding='utf-8') as fh:
         fh.write(f'{sid}\t{utcnow()}\n')
     print(f'{sid} start recorded')
@@ -173,7 +183,7 @@ if sys.argv[1:] == ['--open']:
 argv = sys.argv[1:]
 dry = '--dry' in argv
 opts = {}
-for flag in ('--passages', '--depth', '--topic'):
+for flag in ('--passages', '--depth', '--topic', '--disk-deviation'):
     if flag in argv:
         k = argv.index(flag); opts[flag] = argv[k + 1]; del argv[k:k + 2]
 passages, topic = opts.get('--passages'), opts.get('--topic')
@@ -216,6 +226,10 @@ if path not in ALLOWED:                                              # exact pat
     data = b''
 else:
     data = (REPO / path).read_bytes()
+_lsha, _ldisk = LISTED.get(path, ('', ''))
+if data and (_ldisk != 'match' or (_lsha and _lsha != hashlib.sha256(data).hexdigest())) and not opts.get('--disk-deviation'):
+    errors.append(f'{path}: allowed-list disk status {_ldisk!r} or sha256 differs from the listed {_lsha[:12]}…; '
+                  f'close only with --disk-deviation "<the Principal\'s ruling>"')
 sha, nlines = hashlib.sha256(data).hexdigest(), data.count(b'\n') + (1 if data and not data.endswith(b'\n') else 0)  # 2026-10-27: a last line without a newline counts (C31: S0166 L1332, S0168 L1612 were missed)
 src_lines = data.decode('utf-8', errors='replace').split('\n')
 

@@ -647,3 +647,6 @@ Earlier the same day: option B (bounded exception for the Zero/Gap pilot) author
 - **Tools [V]:** `branch_search.py`, `close_source.py`, `corpus_quote_check.py`, `form_rewrite.py` read `02-FILES.jsonl`; moving it would break them.
 - **Professor's git log (disclosed, corrected at `e74c2184d`):** `git log --oneline` run twice during the settlement; nothing used. A departure from the ruling of 2026-11-02 by the Professor itself.
 - **Open for the Principal:** whether `02-FILES.jsonl` is added to every commission's "do not open" list (and the brief template).
+
+## Entry 2026-11-03T05:40:18Z: C107, S0386 read with allowed-list status "changed" (ruled)
+- S0386's listed sha256 `c5abdae5…` and status `changed`; on disk `95c6113…` (read by the Professor and reviewer WA). The Principal (2026-11-03): "Use S0386 as read on disk (sha256 95c6113…, recorded in the READ-LOG) with the deviation recorded; the Governance Engineer checks what differs from the listed version; add a disk-status check to source closing; then continue C107." Record: `06-theory/manuscript/review/C107-S0383-S0391/ACCESS-NOTE-S0386.md`. **Open:** the Governance Engineer's check.

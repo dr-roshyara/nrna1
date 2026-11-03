@@ -7,3 +7,7 @@
 - **What differs is not known.** The recorded version is not accessible without git history, which the lane does not use. One visible sign on disk: a stray "aa" at L10.
 - **Use in the book.** §8.101 (draft, `9879a379b`) cites S0386 in C4 (L15, L36, L42, L52, L67, L79–85, L105) and its lineage; nothing else in the book cites S0386.
 - **Held:** C107's step 2 (both commissions) is not sent until the Principal rules.
+
+**Ruling (the Principal, 2026-11-03), verbatim:** "Use S0386 as read on disk (sha256 95c6113…, recorded in the READ-LOG) with the deviation recorded; the Governance Engineer checks what differs from the listed version; add a disk-status check to source closing; then continue C107."
+- **Applied:** S0386 is used as read (sha256 `95c6113986727b2071b3e3bd6ce5af6a7378726725d7b05613e43965783d2a74`); §8.101's lineage note records the deviation. **Open for the Governance Engineer:** what differs from the listed version (`c5abdae5…`). The other `changed` row on the list is S2444, not yet reached.
+- **Tool:** `close_source.py` now reads the allowed list's sha256 and disk status: `--start` warns (stop (d)) when the status is not `match` or the disk bytes differ from the listed sha256, and closing is refused unless `--disk-deviation "<ruling>"` names the Principal's ruling. Checked on S0386 (flagged) and S0390 (passes).
