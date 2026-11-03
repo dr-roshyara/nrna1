@@ -22,18 +22,64 @@ final class Resolution
     {
         $live = self::live($facts);
         $active = self::active($live);
+        $claims = self::baseClaims($active, $live);
 
         $periods = [];
         foreach ($active as $fact) {
             if (!$fact instanceof Admit) {
                 continue;
             }
-            $baseClaim = self::baseClaim($fact, $active, $live);
-            $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $active));
+            $baseClaim = $claims[$fact->periodId()->value()];
+            $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $facts, $active, $live, $claims));
             $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime));
         }
 
         return new ResolvedMember($periods);
+    }
+
+    /**
+     * The period's BaseClaim as a set: empty when its admission is not live.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function baseClaimOf(array $facts, PeriodId $period): IntervalSet
+    {
+        $resolved = self::of($facts)->period($period);
+
+        return $resolved === null ? IntervalSet::empty() : IntervalSet::of($resolved->baseClaim());
+    }
+
+    /**
+     * Stage 5 for one period: the union of the trims in force on it, each clipped to its cause's current BaseClaim.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function liveCutOf(array $facts, PeriodId $period): IntervalSet
+    {
+        $live = self::live($facts);
+        $active = self::active($live);
+
+        return self::liveCuts($period, $facts, $active, $live, self::baseClaims($active, $live));
+    }
+
+    /**
+     * The trims in force, by identity (cause, period): recorded on an active Correct that no live Correct supersedes.
+     * Used to derive TrimRevived data (CFC+).
+     *
+     * @param list<Fact> $facts in seq order
+     * @return list<TrimRevival>
+     */
+    public static function trimsInForce(array $facts): array
+    {
+        $live = self::live($facts);
+        $inForce = [];
+        foreach (self::causesInForce(self::active($live), $live) as $cause) {
+            foreach ($cause->consequences() as $consequence) {
+                $inForce[] = new TrimRevival($cause->id(), $consequence->period());
+            }
+        }
+
+        return $inForce;
     }
 
     /**
@@ -156,14 +202,66 @@ final class Resolution
     }
 
     /**
-     * Stage 2, activeness. Slice 0 has no Correct, so every live fact is active.
+     * Stage 2, activeness: a live Correct is active iff its target is active; every other live fact is active.
+     * A Correct targets an earlier fact, so one forward pass decides every fact.
      *
      * @param list<Fact> $live
      * @return list<Fact>
      */
     private static function active(array $live): array
     {
-        return $live;
+        $activeIds = [];
+        $active = [];
+        foreach ($live as $fact) {
+            if ($fact instanceof Correct && !isset($activeIds[$fact->target()->value()])) {
+                continue;
+            }
+            $activeIds[$fact->id()->value()] = true;
+            $active[] = $fact;
+        }
+
+        return $active;
+    }
+
+    /**
+     * Stage 4 for every active admission, keyed by period.
+     *
+     * @param list<Fact> $active
+     * @param list<Fact> $live
+     * @return array<string, Interval>
+     */
+    private static function baseClaims(array $active, array $live): array
+    {
+        $claims = [];
+        foreach ($active as $fact) {
+            if ($fact instanceof Admit) {
+                $claims[$fact->periodId()->value()] = self::baseClaim($fact, $active, $live);
+            }
+        }
+
+        return $claims;
+    }
+
+    /**
+     * The causes whose trims are in force: active Corrects that no live Correct supersedes.
+     *
+     * @param list<Fact> $active
+     * @param list<Fact> $live
+     * @return list<Correct>
+     */
+    private static function causesInForce(array $active, array $live): array
+    {
+        $superseded = [];
+        foreach ($live as $fact) {
+            if ($fact instanceof Correct) {
+                $superseded[$fact->target()->value()] = true;
+            }
+        }
+
+        return array_values(array_filter(
+            $active,
+            static fn (Fact $f): bool => $f instanceof Correct && !isset($superseded[$f->id()->value()]),
+        ));
     }
 
     /**
@@ -187,23 +285,52 @@ final class Resolution
     }
 
     /**
-     * Stage 5, LiveCut. No Slice 0 fact carries consequences (contract §8), so it is empty.
+     * Stage 5, LiveCut: the union of the trims in force on the period, each clipped to the current BaseClaim of its
+     * cause's period (the period of the chain root); a cause whose admission is not live clips to nothing.
      *
+     * @param list<Fact> $facts
      * @param list<Fact> $active
+     * @param list<Fact> $live
+     * @param array<string, Interval> $claims
      */
-    private static function liveCuts(PeriodId $period, array $active): IntervalSet
+    private static function liveCuts(PeriodId $period, array $facts, array $active, array $live, array $claims): IntervalSet
     {
-        return IntervalSet::empty();
-    }
-
-    /** Stage 6, lifetime = BaseClaim − LiveCut. */
-    private static function lifetime(Interval $baseClaim, IntervalSet $cuts): IntervalSet
-    {
-        if (!$cuts->isEmpty()) {
-            throw new \LogicException('Consequences do not exist before Slice 7.');
+        $cuts = IntervalSet::empty();
+        foreach (self::causesInForce($active, $live) as $cause) {
+            foreach ($cause->consequences() as $consequence) {
+                if (!$consequence->period()->equals($period)) {
+                    continue;
+                }
+                $causeClaim = $claims[self::periodOfChain($facts, $cause)->value()] ?? null;
+                if ($causeClaim !== null) {
+                    $cuts = $cuts->union($consequence->removed()->intersectedWith(IntervalSet::of($causeClaim)));
+                }
+            }
         }
 
-        return IntervalSet::of($baseClaim);
+        return $cuts;
+    }
+
+    /**
+     * The period a correction chain belongs to: that of its root Admit or End.
+     *
+     * @param list<Fact> $facts
+     */
+    public static function periodOfChain(array $facts, Correct $correct): PeriodId
+    {
+        $root = self::rootOf($facts, $correct->target());
+
+        return match (true) {
+            $root instanceof Admit => $root->periodId(),
+            $root instanceof End => $root->period(),
+            default => throw new \LogicException('The root of a correction chain is an Admit or an End.'),
+        };
+    }
+
+    /** Stage 6, lifetime = BaseClaim − LiveCut (it may fragment; G* refuses that, INV-EP). */
+    private static function lifetime(Interval $baseClaim, IntervalSet $cuts): IntervalSet
+    {
+        return IntervalSet::of($baseClaim)->without($cuts);
     }
 
     /**

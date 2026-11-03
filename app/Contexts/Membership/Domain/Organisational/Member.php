@@ -220,7 +220,53 @@ final readonly class Member
             return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
         }
 
-        return $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt));
+        $candidate = new Correct($id, $target, $value, $provenance, $decidedAt);
+
+        return $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt, $this->trimConsequences($facts, $targetFact, $candidate)));
+    }
+
+    /**
+     * g2, the trim policy (BD-REV = trim; contract §10a Correct (8)), frozen on the Correct (FP §12.4 option C):
+     * - Δ: what the correction adds to its period's BaseClaim, less the cuts already on that period, is removed from
+     *   every other period's current lifetime;
+     * - inherited: a Correct of a Correct takes over its target's trims, clipped to the new BaseClaim.
+     * At most one consequence per trimmed period (the union of both parts).
+     *
+     * @param list<Fact> $facts the log before the decision
+     * @return list<TrimConsequence>
+     */
+    private function trimConsequences(array $facts, Fact $target, Correct $candidate): array
+    {
+        $after = [...$facts, $candidate];
+        $period = Resolution::periodOfChain($after, $candidate);
+        $claimAfter = Resolution::baseClaimOf($after, $period);
+        $delta = $claimAfter
+            ->without(Resolution::baseClaimOf($facts, $period))
+            ->without(Resolution::liveCutOf($facts, $period));
+
+        /** @var array<string, array{PeriodId, IntervalSet}> $removed */
+        $removed = [];
+        foreach (Resolution::of($facts)->periods() as $other) {
+            if ($other->id()->equals($period)) {
+                continue;
+            }
+            $removed[$other->id()->value()] = [$other->id(), $delta->intersectedWith($other->lifetime())];
+        }
+        if ($target instanceof Correct) {
+            foreach ($target->consequences() as $inherited) {
+                $key = $inherited->period()->value();
+                $removed[$key] = [$inherited->period(), ($removed[$key][1] ?? IntervalSet::empty())->union($inherited->removed()->intersectedWith($claimAfter))];
+            }
+        }
+
+        $consequences = [];
+        foreach ($removed as [$trimmed, $interval]) {
+            if (!$interval->isEmpty()) {
+                $consequences[] = new TrimConsequence($trimmed, $interval);
+            }
+        }
+
+        return $consequences;
     }
 
     /**
@@ -260,12 +306,30 @@ final readonly class Member
     /** G*: resolve the candidate F·f and accept iff no invariant is violated (contract §15). */
     private function accept(Fact $fact): Decision
     {
-        $candidate = Resolution::of([...$this->facts(), $fact]);
-        $violations = InvariantSet::violations($candidate);
+        $after = [...$this->facts(), $fact];
+        $violations = InvariantSet::violations(Resolution::of($after));
 
         return $violations === []
-            ? Decision::accepted($fact, $this->version())
+            ? Decision::accepted($fact, $this->version(), $this->revivedTrims($after, $fact))
             : Decision::refused($violations[0]);
+    }
+
+    /**
+     * CFC+ (contract §10a Correct (10)): the trims in force after the fact that were not in force before it, other than
+     * the fact's own trims (those are PeriodTrimmed, not revivals). Identity is (cause, period).
+     *
+     * @param list<Fact> $after
+     * @return list<TrimRevival>
+     */
+    private function revivedTrims(array $after, Fact $fact): array
+    {
+        $key = static fn (TrimRevival $t): string => $t->cause()->value() . "\0" . $t->period()->value();
+        $before = array_flip(array_map($key, Resolution::trimsInForce($this->facts())));
+
+        return array_values(array_filter(
+            Resolution::trimsInForce($after),
+            static fn (TrimRevival $t): bool => !isset($before[$key($t)]) && !$t->cause()->equals($fact->id()),
+        ));
     }
 
     /** @return list<Fact> */

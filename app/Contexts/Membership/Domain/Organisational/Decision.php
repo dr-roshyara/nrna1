@@ -13,13 +13,21 @@ namespace App\Contexts\Membership\Domain\Organisational;
  */
 final readonly class Decision
 {
-    private function __construct(private ?Fact $fact, private ?int $basedOnVersion, private ?RefusalReason $refusal)
+    /** @param list<TrimRevival> $revivedTrims */
+    private function __construct(private ?Fact $fact, private ?int $basedOnVersion, private ?RefusalReason $refusal, private array $revivedTrims = [])
     {
     }
 
-    public static function accepted(Fact $fact, int $basedOnVersion): self
+    /** @param list<TrimRevival> $revivedTrims earlier trims this fact makes apply again (CFC+; TrimRevived data) */
+    public static function accepted(Fact $fact, int $basedOnVersion, array $revivedTrims = []): self
     {
-        return new self($fact, $basedOnVersion, null);
+        return new self($fact, $basedOnVersion, null, $revivedTrims);
+    }
+
+    /** @return list<TrimRevival> empty for a refusal */
+    public function revivedTrims(): array
+    {
+        return $this->revivedTrims;
     }
 
     public static function refused(RefusalReason $reason): self

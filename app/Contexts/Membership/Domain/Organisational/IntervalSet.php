@@ -65,6 +65,38 @@ final readonly class IntervalSet
         return self::of(...$this->intervals, ...$other->intervals);
     }
 
+    public function intersectedWith(self $other): self
+    {
+        $pieces = [];
+        foreach ($this->intervals as $a) {
+            foreach ($other->intervals as $b) {
+                $pieces[] = $a->intersectedWith($b);
+            }
+        }
+
+        return self::of(...$pieces);
+    }
+
+    /** The points of this set that are not in $other. */
+    public function without(self $other): self
+    {
+        $remaining = $this->intervals;
+        foreach ($other->intervals as $cut) {
+            $next = [];
+            foreach ($remaining as $interval) {
+                // [a, b) − [c, d) = [a, min(b, c)) ∪ [max(a, d), b); the right part is empty when d = ∞.
+                $next[] = Interval::of($interval->start(), TimePoint::max($interval->start(), TimePoint::min($interval->until(), $cut->start())));
+                if (!$cut->until()->isInfinite()) {
+                    $from = TimePoint::max($interval->start(), $cut->until());
+                    $next[] = Interval::of($from, TimePoint::max($from, $interval->until()));
+                }
+            }
+            $remaining = self::of(...$next)->intervals;
+        }
+
+        return self::of(...$remaining);
+    }
+
     public function truncatedAt(TimePoint $e): self
     {
         return self::of(...array_map(static fn (Interval $i): Interval => $i->truncatedAt($e), $this->intervals));

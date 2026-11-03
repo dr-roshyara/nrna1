@@ -157,3 +157,20 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
     - for a live root, live and active corrections coincide, so `active()` stays the identity.
   - **Interim, until step 5:** a correction that would overlap another period is refused by G\* (`OverlappingMembershipPeriods`). Step 5's trim consequences replace this.
   - **Regression:** Domain 144, Application 62, Infrastructure 22, Architecture 97.
+  - Committed `739875e1c`.
+- 2026-11-03: **Step 5 done (consequences: g2 Δ + inherited clipping, LiveCut, CFC+, event data).**
+  - **Expected values computed first** by the oracle port (`G6C2CorrectionOracle::decide` / `resolve`, H = 10) for all ten histories in the test, including FP §12.1 CX-B (refused `period_lifetime_not_contiguous`).
+  - **RED:** `CorrectConsequencesTest`, 10 tests: 3 errors (no `consequences()` / `revivedTrims()`) and 7 failures (the step-4 overlap refusal; no trims).
+  - **GREEN:**
+    - `TrimConsequence` (trimmed period + removed interval), frozen on `Correct::consequences()`; each one is the data of one `PeriodTrimmed`;
+    - `TrimRevival` (cause, period); `Decision::revivedTrims()` carries the `TrimRevived` data, i.e. the trims in force after the fact but not before it, excluding the fact's own;
+    - `IntervalSet::intersectedWith()` / `without()`;
+    - in `Resolution`:
+      - stage 2 is real: a Correct is active iff its target is active;
+      - stage 5: LiveCut is the union of the trims in force (on an active, non-superseded Correct), each clipped to the cause's period's current BaseClaim;
+      - stage 6: lifetime = BaseClaim − LiveCut;
+      - public `baseClaimOf()`, `liveCutOf()`, `trimsInForce()`, `periodOfChain()`;
+    - in `Member`: g2 (Δ = BaseClaim after − before − LiveCut before, against every other period's lifetime; plus the target's trims clipped to the new BaseClaim), merged to at most one consequence per trimmed period.
+  - **P-2 reading, for the PO to confirm at review:** the plan defines "relative" as "the removed interval as stated by the decision". That is what is stored. Like the oracle, it is clipped to the cause's current BaseClaim at resolution. Any difference from the oracle's "absolute" representation is therefore one of naming; the observable lifetimes are identical by construction.
+  - **Interim, until step 6:** an absorbing correction (a live period left with an empty lifetime) is still accepted.
+  - **Regression:** Domain 154, Application 62, Infrastructure 22, Architecture 97.

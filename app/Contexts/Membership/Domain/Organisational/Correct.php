@@ -14,16 +14,29 @@ namespace App\Contexts\Membership\Domain\Organisational;
  */
 final readonly class Correct implements Fact
 {
+    /** @param list<TrimConsequence> $consequences frozen at decision time (g2, FP §12.4 option C) */
     public function __construct(
         private FactId $id,
         private FactId $target,
         private TimePoint $value,
         private Provenance $provenance,
         private ?Instant $decidedAt = null,
+        private array $consequences = [],
     ) {
         if ($value->isInfinite()) {
             throw new \InvalidArgumentException('A corrected date is a finite time.');
         }
+        foreach ($consequences as $consequence) {
+            if (!$consequence instanceof TrimConsequence) {
+                throw new \InvalidArgumentException('A consequence is a TrimConsequence.');
+            }
+        }
+    }
+
+    /** @return list<TrimConsequence> at most one per trimmed period; each is one PeriodTrimmed (§10a Correct (10)) */
+    public function consequences(): array
+    {
+        return $this->consequences;
     }
 
     public function id(): FactId
