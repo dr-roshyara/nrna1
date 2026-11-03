@@ -25,6 +25,7 @@
 ### 1.2 Before any reviewer starts
 
 1. Fill in `SCOPE.md` (§2), copy `REVIEWER-NOTE.md` (§3), write each commission (§4) and the integration commission (§5).
+   Check every brief against `03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md` (the index of instructions in force under v1.4) and cite it in `SCOPE.md`.
 2. Check the **coverage plan** (§2.6): every section in scope is read in full by at least one named reviewer. If one reviewer cannot cover a long chapter, plan a split commission now, not after the review (S0200: Ch. 8, about 4,100 lines, was read in full by neither A nor B, and needed reviewer C).
 3. Commit the briefs with a neutral subject, and report the commit to the Principal for the Governance Engineer.
 4. **Test consolidation** (every second): reviewers start only after the Governance Engineer has seen the briefs (the Governance Engineer prepares the copy anyway). **Other consolidations:** reviewers may start at once; the Governance Engineer checks the briefs afterwards, and any defect found is corrected in the next brief.
@@ -186,3 +187,4 @@ Nothing outside your sections is in scope; note out-of-scope observations as one
 | 2026-11-02 | REVIEWER-NOTE item 4: "git history of the manuscript" widened to "No git history, diffs, blame, historical versions, or commit listings of any file", with the evidence boundary | Principal ruling 2026-11-02 (research record addendum 2026-11-02T02:56:29Z), after C78 W-01 |
 | 2026-11-03 | SCOPE §2.1: chapter summaries in scope, the rest unchecked; commission task 6: check summaries against settled sections | Principal, 2026-11-03, "approve 1–3" (decision 1; brainstorm rev. 2 `5913fb98f`); applies from the S0378–S0402 consolidation |
 | 2026-11-03 | REVIEWER-NOTE item 4: `02-FILES.jsonl` added to "Do not open" (it names 58 non-allowed sources with summaries) | Principal, 2026-11-03 (sent with the ten-source trial line); access record entry of 2026-11-03 |
+| 2026-11-03 | §1.2 item 1: briefs checked against and citing `WORKING-INSTRUCTIONS-IN-FORCE.md` | Principal, 2026-11-03 ("approve", the index of working instructions) |
