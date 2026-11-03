@@ -231,7 +231,7 @@ That run used the shared working tree.
 
 ## Section 4: Slice 1b (PBDIGIT-260 / ARB-MEM-02)
 
-**Status: DEFERRED** (ARB-MEM-03 §3; DECISION). It stays conditionally accepted under ARB-MEM-02 and must not be described as formally accepted.
+**Status: CONDITIONALLY ACCEPTED (ACC-260, PO, 2026-11-03)**; see the verdict at the end of this section. *History:* **DEFERRED** (ARB-MEM-03 §3; DECISION). It stayed conditionally accepted under ARB-MEM-02 and was not to be described as formally accepted.
 
 | Item | Evidence | Label |
 |---|---|---|
@@ -256,7 +256,28 @@ Each needs its own approved implementation plan. The first is drafted in `docs/p
 3. **Met:** PBDIGIT-264 accepted with explicit residual risks (PO, 2026-11-03).
 4. **Not met:** security (`PBDIGIT-266`) is open; C-1 F-1 (`encode()` typing) is assigned to COR-4.
 
-**Human PO / ARB verdict (when reconsidered):** _[to be completed]_
+**Human PO / ARB verdict (reconsidered 2026-11-03): ACC-260 CONDITIONALLY ACCEPTED** (PO, "ACC-260: conditional acceptance (a)"). It supersedes the DEFERRED status above, which stays as history.
+
+**Accepted:** the Slice 1b PostgreSQL adapter and schema **as amended by PBDIGIT-264**:
+- F-1 / Option E, F-3, F-5, F-4b, F-2, step 4a, E4-L;
+- the contract amendments of 2026-11-02;
+
+on the evidence of re-entry criteria 1–3:
+- the PBDIGIT-324 cluster runs, and the Part 2 evidence `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/` (57 tests green);
+- PBDIGIT-264 accepted (2026-11-03).
+
+**Conditions (re-entry criterion 4, open). Until both are met, Slice 1b must not be described as unconditionally accepted:**
+
+| # | Condition | Where |
+|---|---|---|
+| K-1 | the security tests of `PBDIGIT-266` run and are dispositioned. The ARB-SEC-01 gate (an isolated, identity-verified test database) can now be met on the PBDIGIT-324 cluster; the run needs its own authorisation | `PBDIGIT-266` |
+| K-2 | C-1 F-1 (`encode()` typing) resolved | assigned to COR-4 (roadmap W4) |
+
+**Still applies:**
+- **Release gate:** OQ-01; the §10.2 preflight; `lc_messages`; code and migration deployed together. **Neither ledger migration may run on a persistent database yet.**
+- **Residual risks** as accepted in PBDIGIT-264.
+
+**Not authorised by this verdict:** wiring the adapter (Slice 2b, W5), any migration rollout, production use.
 
 ---
 

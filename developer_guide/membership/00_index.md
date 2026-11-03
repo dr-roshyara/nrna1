@@ -10,7 +10,7 @@ The ratified Membership architecture is implemented slice by slice under
 |---|---|---|---|
 | 01 | [Slice 0: the semantic kernel](01_slice0_semantic_kernel.md) | Slice 0 · `PBDIGIT-258` | implemented |
 | 02 | [Slice 1a: repository port, concurrency and idempotency](02_slice1a_repository_and_concurrency.md) | Slice 1a · `PBDIGIT-259` | implemented |
-| 03 | [Slice 1b: PostgreSQL adapter](03_slice1b_postgres_adapter.md) | Slice 1b · `PBDIGIT-260` | implemented (migration not yet rolled out) |
+| 03 | [Slice 1b: PostgreSQL adapter](03_slice1b_postgres_adapter.md) | Slice 1b · `PBDIGIT-260` | **conditionally accepted** (ACC-260, PO, 2026-11-03; conditions: PBDIGIT-266, C-1 F-1); migrations not rolled out |
 | 04 | [Correction C-1: Annul and Void in the kernel](04_correction_c1_annul_void.md) | C-1 · `PBDIGIT-268` | implemented; **accepted with explicit residual risks** (PO, 2026-11-02; kernel only) |
 | 05 | [C-1 acceptance evidence and the sensitivity kit](05_c1_acceptance_evidence_and_sensitivity_kit.md) | C-1 · `PBDIGIT-268` | test-only correction done; formal acceptance deferred (H-6) |
 | 06 | [Option E: storable valid time (R-1a-6)](06_option_e_storable_valid_time.md) | Slice 1a/1b amendment · `PBDIGIT-264` | implemented and locally tested; PostgreSQL unverified (Part 2); not accepted |

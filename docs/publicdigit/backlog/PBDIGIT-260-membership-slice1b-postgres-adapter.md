@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟢 **GREEN** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1b-implementation-review.md`); awaiting Principal Reviewer acceptance. **Independent review (2026-10-09): ACCEPT WITH CONDITIONS recommended**, one low-severity defect (F-1) and follow-ups in `PBDIGIT-264` (`docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`). Migration not yet rolled out (dev / prod) |
+| **Status** | **CONDITIONALLY ACCEPTED (ACC-260, PO, 2026-11-03)**, as amended by PBDIGIT-264. Conditions: K-1 PBDIGIT-266 security tests; K-2 C-1 F-1 in COR-4 (dispositions record §4). Migrations **not rolled out** (release gate). *History:* 🟢 **GREEN** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1b-implementation-review.md`); awaiting Principal Reviewer acceptance. **Independent review (2026-10-09): ACCEPT WITH CONDITIONS recommended**, one low-severity defect (F-1) and follow-ups in `PBDIGIT-264` (`docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`). Migration not yet rolled out (dev / prod) |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-contract.md` |
 | **Decisions** | EP-Q6 = T1 (calendar dates) · DB-1 = PostgreSQL only (PO, 2026-10-09) |
 | **Depends on** | `PBDIGIT-259` (Slice 1a) |
