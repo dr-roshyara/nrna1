@@ -24,4 +24,4 @@
 
 **R3:** §8.100 C4 (WA W-08), additive. §8.95 C6 (WA W-04, optional) not changed. WB's R3 lines are within §8.101 and the index row (changed).
 
-**For the consolidation (the window-size trial):** nine sources, 3,426 lines, two commissions; 33 findings (9.6 per 1,000 lines); misses per source: S0383 9 (WA W-01–W-04, W-12, W-13, W-19, W-20, W-03), S0384 5, S0385 5, S0386 3, S0387 2, S0388 3, S0389 1, S0390 5, S0391 1 (approximate, by the finding's main source); errors introduced at this settlement: none known. Missed homes again (nine), and a metadata list cited as a home (the Principal's rule). Access: S0386's `changed` status (ruled).
+**For the consolidation (the window-size trial):** nine sources, 3,426 lines, two commissions; 33 findings (9.6 per 1,000 lines); misses per source: to be counted at the S0378–S0402 consolidation from the two reports, finding by finding (not estimated here); errors introduced at this settlement: none known. Missed homes again (nine), and a metadata list cited as a home (the Principal's rule). Access: S0386's `changed` status (ruled).
