@@ -62,6 +62,15 @@
             "statusMessage": "Loading project context (.claude/CONTEXT.md)"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-id-log.sh start 2>/dev/null || true",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "Stop": [
@@ -78,6 +87,17 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/dev-guide-reminder.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-id-log.sh end 2>/dev/null || true",
+            "timeout": 10
           }
         ]
       }
