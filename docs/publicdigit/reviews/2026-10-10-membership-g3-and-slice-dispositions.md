@@ -271,10 +271,10 @@ on the evidence of re-entry criteria 1–3:
 | # | Condition | Where |
 |---|---|---|
 | K-1 | the security tests of `PBDIGIT-266` run and are dispositioned. The ARB-SEC-01 gate (an isolated, identity-verified test database) can now be met on the PBDIGIT-324 cluster; the run needs its own authorisation | `PBDIGIT-266` |
-| K-2 | C-1 F-1 (`encode()` typing) resolved | assigned to COR-4 (roadmap W4) |
+| K-2 | C-1 F-1 (`encode()` typing) resolved | assigned to COR-4 (roadmap W4). **MET 2026-11-03:** `encode()` branches per kind before any date accessor; COR-4 (PBDIGIT-329) accepted by the PO (`2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md` §4.1). K-1 remains open |
 
 **Still applies:**
-- **Release gate:** OQ-01; the §10.2 preflight; `lc_messages`; code and migration deployed together. **Neither ledger migration may run on a persistent database yet.**
+- **Release gate:** OQ-01; the §10.2 preflight; `lc_messages`; code and migration deployed together. **Neither ledger migration may run on a persistent database yet.** *(2026-11-03: there are now three ledger migrations; the COR-4 migration `2026_11_03_120000_…` joins the same gate.)*
 - **Residual risks** as accepted in PBDIGIT-264.
 
 **Not authorised by this verdict:** wiring the adapter (Slice 2b, W5), any migration rollout, production use.

@@ -108,6 +108,16 @@ Sources: R = `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratifi
 | **V-14** | COR-2 | `Member::fromLog` accepts a `Correct` that targets itself, or a fact not earlier in the log. `Resolution::rootOf` (`Resolution.php:125-130`) then recurses without end; `decideCorrect` on such a log did not terminate (review F-6). Not reachable through `decide*` | INV-TGT, INV-1 | medium (latent) | **COR-4 entry criterion:** load-time validation that every Correct / Annul / Void targets an **earlier** fact of the same Member (or an equivalent DB constraint), with decode tests. Extends V-1 | PR (architecture); implementer builds |
 | **V-15** | COR-2 | `Correct::consequences()` documents "at most one per trimmed period, non-empty", but the constructor checks only the type and (via `TrimConsequence`) non-emptiness. Duplicate or unknown periods from storage would be accepted (review F-8). A Correct may legitimately trim **two** periods (review F-1) | FP §12.4 option C (frozen consequences) | low | **COR-4 entry criterion:** validate the decoded consequences (one per period; period ids of the same Member). **Never recompute g2 on load.** Round-trip tests including a two-period Correct | implementer (COR-4) |
 
+> **Status annotation (2026-11-03, PBDIGIT-329 COR-4 accepted by the PO):** the COR-4 entry criteria are met.
+> - **V-1, V-14, V-15:** load validation in `Member::fromLog` (one rule for every load path).
+> - **V-4:** the schema and adapter store Annul, Void and Correct.
+> - **V-5:** strictly increasing `recordedAt`.
+> - **V-13:** R-1a-6 covers a Correct's value and its trims.
+> - **Gap G-A2 is closed.**
+> - **Still open:** V-11 (Slice 2b). G-A3 stays open only for V-11.
+>
+> Record: `docs/publicdigit/reviews/2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md` §4.1. The rows above are kept as written.
+
 ### 3.3 Ratified decisions not reopened
 
 None of V-1 … V-12 changes a ratified or decided rule. V-1, V-3, V-4, V-9, V-10 and V-11 are enforcement obligations of existing invariants. V-2 implements an existing contract sentence. V-5 clarifies INV-14. V-7 and V-8 identify where D-5(b) and D-2 are not yet guaranteed end to end; the rules themselves stand. *Added 2026-11-03 (PBDIGIT-327 review condition C-3):* V-13 … V-15 are likewise enforcement obligations at the persistence boundary, R-1a-6, INV-TGT and the frozen consequences of FP §12.4; they change no rule.

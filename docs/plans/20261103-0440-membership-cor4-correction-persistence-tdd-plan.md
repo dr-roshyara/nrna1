@@ -1,6 +1,6 @@
 # Membership COR-4 (PBDIGIT-329): persisting Annul, Void and Correct, TDD plan
 
-**Status:** **APPROVED by the PO, 2026-11-03 (G-PLAN: "approve the COR-4 plan with Q-1…Q-7 as recommended").** Steps 1–8 are authorised within the limits below. Nothing is implemented yet. *(Was: PROPOSED, awaiting G-PLAN and Q-1…Q-7.)*
+**Status:** **COMPLETED: PBDIGIT-329 ACCEPTED by the PO, 2026-11-03** (record `docs/publicdigit/reviews/2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md` §4.1). *(Earlier:)* **APPROVED by the PO, 2026-11-03 (G-PLAN: "approve the COR-4 plan with Q-1…Q-7 as recommended").** Steps 1–8 are authorised within the limits below. Nothing is implemented yet. *(Was: PROPOSED, awaiting G-PLAN and Q-1…Q-7.)*
 - Approval would authorise steps 1–8 (§5) only: kernel load validation, the port helper, the test double, **one new migration exercised only in the pinned throwaway container**, the adapter, the tests and the docs.
 - It authorises **no** migration on any persistent database, no application command (COR-3) and no event emission.
 
@@ -331,6 +331,11 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
     - The rest are as classified in step 8.
   - **Regression (database-free):** Domain 194, Application 76, Infrastructure 61, Architecture 98.
   - **Status:** conditions closed; **awaiting the PO's acceptance.**
+  - Committed `a803b100a`.
+- 2026-11-03: **PBDIGIT-329 ACCEPTED by the PO** ("accept PUBDIGIT-329", recorded as PBDIGIT-329), with the residual risks in record §4.1.
+  - **Closes:** K-2, V-1, V-4, V-5, V-13, V-14, V-15 and G-A2.
+  - **This plan is complete.**
+  - **Next in W4:** COR-3. It needs CQ-3, CQ-9 and G-A1, and its own story and approval.
 
 ## 11. Open questions (outside this plan's decisions)
 

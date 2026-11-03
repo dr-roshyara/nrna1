@@ -3,7 +3,7 @@
 **Status:**
 - §2 is the review report, recorded **verbatim** as returned (2026-11-03).
 - §3 is the commissioning session's spot-check.
-- §4 is the PO's verdict: **PENDING**.
+- §4 is the PO's verdict: **ACCEPTED** (2026-11-03, after the conditions were closed; §4.1).
 
 **Reviewer:** a fresh general-purpose Claude sub-agent, commissioned on 2026-11-03 by session `93000efc-ad03-4c1d-9b3f-40966981efc3`, on the PO's instruction "Commission the COR-4 review". Brief: `2026-11-03-pbdigit329-cor4-independent-review-brief.md` (`42a8bbf04`).
 - It was read-only on the repository.
@@ -303,7 +303,35 @@ All database-free scratch scripts at `f2920dd90`; no tree file was edited.
 
 **Conditions closed (2026-11-03; plan §10 "Review conditions closed"; evidence `cond-red`, `cond-green`):** C-1 (shape-checked `ProvenanceJson`; RED on PostgreSQL reproduced the review exactly), C-2 (message without payload, exact message pinned), C-3 (deploy-together clause in all three places), C-4 (killing test; the separator mutant fails it), F-3 (three structural rules), F-7 (∞ trim round trip). Full PostgreSQL suite 96 OK; regression green.
 
-**Acceptance: PENDING.** It follows on the PO's word, after the conditions are committed. *(The original list of decisions needed is kept below.)*
+The conditions were committed in `a803b100a`.
+
+### 4.1 Acceptance (PO, 2026-11-03)
+
+**PO words (verbatim):** "accept PUBDIGIT-329". Recorded as **PBDIGIT-329**: there is no "PUBDIGIT" prefix, and PBDIGIT-329 is the only story the instruction can refer to.
+
+**PBDIGIT-329 (COR-4) is ACCEPTED, with the documented residual risks.**
+
+**It closes:**
+- ACC-260 condition **K-2** (C-1 F-1, `encode()` typing);
+- roadmap entry criteria **V-1, V-4, V-5, V-13, V-14, V-15**, and gap **G-A2**;
+- the persistence part of correction (COR-4).
+
+**Residual risks accepted with it** (review §F, after the conditions):
+- **Single-version evidence:** all PostgreSQL evidence is on 15.19 only (W2-2 provisional; OQ-01 open). The migration has never run outside the throwaway cluster.
+- **Unpinned design choices:** the Q-6 catch list and the order of the `recorded_at` read are not pinned by tests (F-5, F-8). Both are correct today.
+- **Thin PostgreSQL coverage** of two-period and open-ended trims: one test each (F-7).
+- **The race tests** use a placeholder `MembershipAct` until COR-3 adds the correction acts; COR-3 re-runs them with the real acts.
+- **`PostgresMemberRepository` was not in a mutation run** (it needs a database). It is covered by the PostgreSQL suite and by targeted mutants (the reviewer's M1–M8; ER-off; drop-trims).
+- **Inherited from COR-2:** single-session authorship of the kernel, the port and the restriction layer.
+
+**What this acceptance does not do:**
+- **No migration may run on any persistent database.** The release gate stands for all three ledger migrations:
+  - OQ-01;
+  - the §10.2 preflight;
+  - `lc_messages`;
+  - code and migration deployed together.
+- **ARB-MEM-01 is still open:** COR-3 is not done.
+- It authorises no COR-3 handler, no event emission, and no wiring of the adapter (Slice 2b). *(The original list of decisions needed is kept below.)*
 
 The decisions needed (as listed before the PO's decision):
 1. the verdict (the reviewer recommends ACCEPT WITH CONDITIONS C-1…C-4);

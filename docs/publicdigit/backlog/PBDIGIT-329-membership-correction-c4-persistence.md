@@ -4,7 +4,8 @@
 
 | | |
 |---|---|
-| **Status** | `REVIEWED — CONDITIONS CLOSED, AWAITING PO ACCEPTANCE` (2026-11-03). The independent review recommended ACCEPT WITH CONDITIONS C-1…C-4 and found no path that lets a damaged history resolve. PO: option (A), C-2 as recommended, plus F-3 and F-7. The conditions are closed. Record: `docs/publicdigit/reviews/2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md`. |
+| **Status** | **`ACCEPTED`** (PO, 2026-11-03: "accept PUBDIGIT-329", recorded as PBDIGIT-329), with the documented residual risks. It closes ACC-260 K-2 and roadmap V-1, V-4, V-5, V-13…V-15 and G-A2. No migration on any persistent database (release gate); ARB-MEM-01 still needs COR-3. Record §4.1. |
+| *(history)* | `REVIEWED — CONDITIONS CLOSED, AWAITING PO ACCEPTANCE` (2026-11-03). The independent review recommended ACCEPT WITH CONDITIONS C-1…C-4 and found no path that lets a damaged history resolve. PO: option (A), C-2 as recommended, plus F-3 and F-7. The conditions are closed. Record: `docs/publicdigit/reviews/2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md`. |
 | *(history)* | `IMPLEMENTED — AWAITING INDEPENDENT REVIEW` (2026-11-03): steps 1–8 done (commits `6da2594b3` … `96d71183e`, plus step 8). PostgreSQL only in the throwaway container; the migration is not rolled out (release gate). Evidence: plan §10 and `docs/publicdigit/membership/evidence/2026-11-03-pbdigit329-cor4/`. **Not accepted.** *(Was: `APPROVED` (PO, 2026-11-03), plan approved with Q-1…Q-7.)* |
 | **Plan** | `docs/plans/20261103-0440-membership-cor4-correction-persistence-tdd-plan.md` |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-correction-slice-semantic-contract-draft.md` §8 (persistence obligations), §10 (C-4 row), §14.5 (C-4 criteria and C-AMEND-1 F-1) |
