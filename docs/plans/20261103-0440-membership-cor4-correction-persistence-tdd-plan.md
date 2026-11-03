@@ -1,0 +1,181 @@
+# Membership COR-4 (PBDIGIT-329): persisting Annul, Void and Correct, TDD plan
+
+**Status:** **APPROVED by the PO, 2026-11-03 (G-PLAN: "approve the COR-4 plan with Q-1…Q-7 as recommended").** Steps 1–8 are authorised within the limits below. Nothing is implemented yet. *(Was: PROPOSED, awaiting G-PLAN and Q-1…Q-7.)*
+- Approval would authorise steps 1–8 (§5) only: kernel load validation, the port helper, the test double, **one new migration exercised only in the pinned throwaway container**, the adapter, the tests and the docs.
+- It authorises **no** migration on any persistent database, no application command (COR-3) and no event emission.
+
+**Story:** `docs/publicdigit/backlog/PBDIGIT-329-membership-correction-c4-persistence.md` · **Placement:** ES-004.2 (`docs/plans/`).
+
+## 1. Objective
+
+Make every kernel fact kind storable and reloadable exactly as decided:
+- Admit, End, Annul, Void, Correct, with a Correct's frozen consequences;
+- on PostgreSQL and on the in-memory double, with identical observable behaviour.
+
+Also:
+- refuse structurally invalid stored histories on load (V-1, V-14, V-15);
+- close the ACC-260 condition K-2.
+
+## 2. Background and inputs (decided or ratified)
+
+| Input | Status | Source |
+|---|---|---|
+| Fact shape: `kind` extended to annul / void / correct; a target reference; the Correct value in `effective_at`; `consequences jsonb` + `g2_version` on the fact row; a same-Member composite FK; kind-specific CHECKs; **an additive migration (the 1b migration is not edited)** | contract obligations (RAT direction; schema details PROP) | contract §8 |
+| g2 lives in the kernel; the adapter stores and never recomputes it. The `DecideAndAppend` re-decide loop recomputes g2 on conflict | contract §8 [PROP] + FP §12.4 option C | contract §8; COR-2 guide 13 |
+| P-2: consequences are absolute valid-time intervals, clipped at resolution | PO, 2026-11-03 | COR-2 acceptance §4.1 |
+| Idempotency IDEM-1…4 unchanged; fingerprints are COR-3 | contract §8 | — |
+| Entry criteria | V-1, V-4, V-5, V-13, V-14, V-15 (roadmap §3.2); K-2 (ACC-260); D-COR-4 | roadmap `…20261016_2219_…_completion_plan.md`; dispositions §4 |
+| **Current state, VERIFIED** | `org_membership_facts`: `kind` CHECK admits only admit / end; `effective_at date NOT NULL`; `period_fact_id` with a same-Member FK (`org_membership_facts_period_fk`) (`2026_10_09_100000_…:38-72`). `encode()` reads `effectiveAt()` before branching on the kind (`PostgresMemberRepository.php:247`, K-2) and throws for other kinds (`:273`). Adapter and double record `recordedAt = max(clock, last)` (`:209`; double `:127`), so ties are possible (V-5). `Member::fromLog` checks only seq and recordedAt order (V-1) | code |
+| Release gate (unchanged) | No ledger migration on any persistent database before: OQ-01; the §10.2 operator preflight (0 / 0 / 0); `SHOW lc_messages` English; code and migration deployed together | PBDIGIT-264 acceptance; ACC-260 |
+| W3 (the separate kernel-hardening story for V-1) | **never started**; no story exists | roadmap W3; backlog |
+
+## 3. Design points for the PO (decide with the approval)
+
+| # | Question | Options | Recommendation |
+|---|---|---|---|
+| **Q-1** (D-COR-4) | The target reference column | (a) **rename** `period_fact_id` → `target_fact_id` in the additive migration (End, Annul, Void and Correct all use it); (b) keep `period_fact_id` and widen its meaning; (c) add a second column `target_fact_id` next to `period_fact_id` | **(a) rename**, as the contract proposes (`:238`). One reference with one meaning, "the fact this fact refers to". The table is unreleased (release gate), so the rename costs nothing outside the code. The FK constraint is renamed with it |
+| **Q-2** (V-5) | Ties in `recordedAt` (KnownAt cannot observe the state between tied facts) | (a) **strictly increasing** `recordedAt` per Member: `max(clock, last + 1 µs)`, in the adapter and the double; (b) define KnownAt over seq (a domain change) | **(a)**. Adapter-local, with no change to the domain or to INV-14's meaning. The existing "never decreases" contract test still holds |
+| **Q-3** (V-1, V-14, V-15) | Where load validation lives, and whether COR-4 takes over W3's V-1 | (a) **in the kernel, `Member::fromLog`**: one rule for every load path (G-A3 / AO-1), and COR-4 absorbs V-1; (b) in the adapter decode only; (c) DB constraints only; (d) a separate W3 story first | **(a)**. Corrections must not be stored before invalid histories are refused, and W3 never started. DB constraints (step 4) are a second line, not the rule |
+| **Q-4** | `effective_at` for Annul and Void (they have no valid time) | (a) **nullable**, with a kind CHECK (NULL iff annul / void); (b) a sentinel date | **(a)**. No invented valid time (C-1 P-1) |
+| **Q-5** | Storage of a Correct's consequences | (a) **`consequences jsonb` on the fact row** + `g2_version smallint` (contract §8, EP-01 R4); (b) a child table `org_membership_trims` | **(a)**. A trim has no life apart from its cause (FP §12.4 C). Format: `[{"period":"<admit fact id>","removed":[["YYYY-MM-DD","YYYY-MM-DD"\|null], …]}, …]`, where null = ∞ and dates go through `DateOrdinal`. `g2_version = 1`; decode refuses an unknown version |
+| **Q-6** | What a load failure is | (a) **an infrastructure failure**: a dedicated `StoredMemberLogInvalid` (a `RuntimeException`, rule 8: not a user refusal), raised on decode or by `fromLog` validation; (b) skip the bad fact | **(a)**. Fail closed; never resolve a damaged history (V-1's risk) |
+| **Q-7** (V-13) | The extent of the R-1a-6 storable range | (a) **the corrected value and every finite trim bound** checked by `StorableValidTime` before append; (b) the corrected value only | **(a)**. Every date written must be storable, or the Member becomes unloadable (PBDIGIT-264 F-1's lesson) |
+
+## 4. Design
+
+### Kernel, step 1
+
+`Member::fromLog` additionally refuses (`\InvalidArgumentException`, wrapped by the adapter in `StoredMemberLogInvalid`):
+
+| Rule | Covers |
+|---|---|
+| every `target` (Annul, Void, Correct) and every End's period names an **earlier** fact of the same log; an End's period names an Admit | V-1, V-14: rules out self-targets and so the `rootOf` loop |
+| an Annul does not target a Void (N-3), and carries decision provenance (R-7 / C-AMEND-2) | V-1 |
+| a Correct targets an Admit, an End or a Correct (N-3) | — |
+| a Correct's consequences: one per period, each naming an Admit earlier in the log, each removing a non-empty set | V-15 |
+| duplicate fact ids | today only `decide*` checks them |
+
+Not re-checked on load, as a deliberate choice: the **G\* invariants and the guards that depend on time or authority**. A stored history is the record (R-12). Re-running guards on load would rewrite the past, contrary to the CFC "no re-execution" principle.
+
+### Port, step 2
+
+`StorableValidTime::admits()` covers:
+- the Correct value;
+- every finite bound of every consequence (Q-7).
+
+The architecture test `MembershipStorableValidTimeCoverageTest` is extended so that a Correct cannot escape the check.
+
+### Double, step 3
+
+`InMemoryMemberRepository` stores every kind (it holds objects already), applies Q-2, and passes the extended `MemberRepositoryContract`.
+
+### Schema, step 4
+
+New migration `2026_11_03_xxxxxx_extend_org_membership_facts_for_corrections.php`, additive, with a `down()`:
+- rename the column (Q-1) and its FK;
+- `effective_at` nullable;
+- `consequences jsonb NULL`, `g2_version smallint NULL`;
+- replace `org_membership_facts_kind_check` with five kind-specific branches:
+
+  | Kind | Date | Target | Other |
+  |---|---|---|---|
+  | admit | yes | no | initial term set |
+  | end | yes | yes | end kind set |
+  | annul / void | no | yes | no consequences |
+  | correct | yes | yes | consequences and `g2_version` set |
+
+### Adapter, step 5
+
+- `encode()` branches per kind **before** touching any date (K-2).
+- `decode()` handles all kinds.
+- Consequences go through `DateOrdinal`; `g2_version` is checked.
+- Every decode or `fromLog` failure becomes `StoredMemberLogInvalid`.
+- Q-2: `recorded_at = max(clock, last + 1 µs)`.
+- `appliedCommand` (F-4b join) is unchanged for the new kinds; a test pins it.
+
+### Races, step 6
+
+PostgreSQL race tests through `DecideAndAppend::run` with explicit decide closures. **No COR-3 handler is written or bound** (roadmap V-4 sequencing rule). Cases:
+- Annul vs Correct on the same target;
+- two Corrects of the same fact;
+- a Correct vs an End on the adjacent period (FP §16.10 lost-update case).
+
+Each must end in exactly one contract outcome. The loser re-decides, with g2 recomputed.
+
+## 5. Steps (strict TDD: RED recorded before production code; PostgreSQL only in the pinned container from a clean worktree)
+
+| # | Step | RED | GREEN in |
+|---|---|---|---|
+| 1 | **Load validation** (Q-3): the rules in §4, each with a test that builds the invalid log through `Member::fromLog`. Existing generators must still build only valid logs | kernel unit tests | `Member.php` |
+| 2 | **R-1a-6 for Correct** (Q-7): unstorable corrected value or trim bound → `AppendOutcome` "unstorable valid time" on both repositories; boundary values accepted; the architecture test extended | contract + architecture tests | `StorableValidTime.php` |
+| 3 | **Double parity + Q-2:** contract tests for round trips of Annul, Void and Correct (including a two-period Correct, the COR-2 review F-1 history), strictly increasing `recordedAt`, `appliedCommand` for new kinds | `MemberRepositoryContract` (double run) | `InMemoryMemberRepository.php` |
+| 4 | **Migration** (Q-1, Q-4, Q-5): schema tests in the container. Each CHECK branch refuses malformed rows (direct inserts); the target FK refuses a cross-Member target; `down()` restores the 1b shape | `PostgresMemberRepositoryInvariantsTest` additions | new migration |
+| 5 | **Adapter encode / decode** (K-2, Q-2, Q-6): the same contract tests on PostgreSQL; decode-failure tests (unknown `g2_version`, malformed `consequences`, a stored self-target, an Annul of a Void) → `StoredMemberLogInvalid` | `PostgresMemberRepositoryTest` (contract run) | `PostgresMemberRepository.php` (+ `ConsequencesJson` helper) |
+| 6 | **Race tests** (§4) | `PostgresConcurrencyRaceTest` additions | none expected; any fix is reported first |
+| 7 | **Differential reload:** for a bounded set of C-2 histories (`C2Histories`, L ≤ 4), append every fact through each repository, reload, and compare `resolve()` and every fact with the in-memory original (double: always; PostgreSQL: a sampled subset, budget recorded) | new test | none expected |
+| 8 | **Verify and document:** full regression (database-free suites + `tests/Unit/Testing` in a clean worktree); the PostgreSQL suite × 3 on fresh clusters, evidence archived with hashes; Infection scoped to the changed files; developer guide `14_cor4_correction_persistence.md`; Slice 1b contract amended for the schema; the release gate's migration list updated | — | docs |
+
+**After every step:** the database-free Membership regression, with no regression in Slices 0, 1a, 1b, 2a, C-1 or C-2.
+
+## 6. Acceptance criteria
+
+| AC | Criterion |
+|---|---|
+| AC-1 | every fact kind round-trips identically on both repositories (facts, consequences, `recordedAt`, `resolve()`), including a two-period Correct |
+| AC-2 | V-1, V-14, V-15: every rule in §4 refuses on load, through `fromLog` and through the adapter (`StoredMemberLogInvalid`) |
+| AC-3 | V-13: no unstorable date is appended (corrected value, trim bounds); boundaries are accepted |
+| AC-4 | V-4 / K-2: `encode()` never calls a date accessor on a fact without a valid time; Annul / Void rows have a NULL date |
+| AC-5 | the schema: every CHECK branch and the same-Member target FK refuse malformed rows; the migration is additive, the 1b migration untouched, `down()` reversible |
+| AC-6 | V-5 (Q-2): `recordedAt` strictly increases per Member on both repositories |
+| AC-7 | the race cases end in contract outcomes; g2 is recomputed by the re-decide loop, never by the adapter |
+| AC-8 | the differential reload (step 7) shows 0 mismatches within the stated bounds |
+| AC-9 | regression green; the PostgreSQL suite green × 3 in fresh pinned clusters, evidence archived; mutation reported with scope and classified survivors |
+| AC-10 | no COR-3 handler, no event storage, no migration on a persistent database; the release gate updated to include the new migration |
+| AC-11 | developer guide 14; Slice 1b contract amendment; an independent review, then the PO's verdict |
+
+## 7. Risks
+
+| Risk | Mitigation |
+|---|---|
+| Load validation rejects histories that existing tests or generators build | step 1 runs every existing suite; a generator producing invalid logs is a finding, reported, not patched silently |
+| The column rename (Q-1) breaks F-4b or other queries | contract and PostgreSQL suites run after step 4; `appliedCommand` pinned for every kind |
+| The jsonb shape drifts from the domain | one helper (`ConsequencesJson`) used by encode and decode; round-trip tests plus decode-failure tests; `g2_version` checked |
+| PostgreSQL runs depend on the provisional image (W2-2: 15.19) and OQ-01 is open | all evidence states the pinned image; no claim beyond it |
+| `+1 µs` (Q-2) moves `recordedAt` ahead of the clock under bursts | bounded by appends per Member; documented; the clock-going-back test kept |
+| Main tree's cached config | every database-backed or boot-guarded run uses a fresh clean worktree (PBDIGIT-324 guide 11) |
+
+## 8. Gates
+
+| Gate | Owner |
+|---|---|
+| G-PLAN: approve this plan + Q-1…Q-7 | PO |
+| the PostgreSQL runs use only the pinned container (already authorised infrastructure, PBDIGIT-324) | — |
+| the independent review, then acceptance | reviewer → PO |
+| any migration on a persistent database: **not part of COR-4**; release gate + ARB-MEM-01 | PO / Ops / ARB |
+
+## 9. Traceability
+
+- contract §8, §10, §14.5 (C-4 row, C-AMEND-1 F-1);
+- roadmap W4 and V-1, V-4, V-5, V-13…V-15, G-A2, G-A3;
+- ACC-260 K-2 (dispositions §4);
+- COR-2 acceptance §4.1 (P-2);
+- FP §12.4, §16.10;
+- PBDIGIT-264 / 324 acceptance records (release gate; container).
+
+## 10. Progress
+
+- 2026-11-03: plan prepared; awaiting G-PLAN and Q-1…Q-7.
+- 2026-11-03: **G-PLAN approved; Q-1…Q-7 decided as recommended:**
+  - Q-1: rename to `target_fact_id`;
+  - Q-2: strictly increasing `recordedAt`;
+  - Q-3: load validation in `Member::fromLog`; COR-4 absorbs V-1;
+  - Q-4: nullable `effective_at` for Annul / Void;
+  - Q-5: `consequences jsonb` + `g2_version`;
+  - Q-6: `StoredMemberLogInvalid`;
+  - Q-7: the corrected value and every finite trim bound.
+
+## 11. Open questions (outside this plan's decisions)
+
+- OQ-01 and W2-2 (Ops): unchanged, and not needed for container runs.
+- OQ-C2-1 / OQ-C2-2 (PO): kernel semantics, not persistence; untouched.
+- V-11 (`end_kind` CHECK): Slice 2b.
