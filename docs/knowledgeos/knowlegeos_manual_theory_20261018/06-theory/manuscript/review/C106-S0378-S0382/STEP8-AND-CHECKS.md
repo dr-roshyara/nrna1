@@ -13,3 +13,10 @@
 - **Procedure:** brief committed first (`a8580bf7c`, with the copy list, the no-globs rule and the allowed list's full path), then reading and drafting, the draft committed, then W dispatched. No item from W's inventory. **Self-check applied:** the book searched for "provenance attribution", "four states", "eligible pool", "transcript", "subagent", "names a role", "freshness", "authorized for future", "holder field", "attributed authorship"; homes found and used: CON-0179, CON-0196, CON-0151, §6.06 C4, §8.76 C4, §8.74 C5. `selfcheck.py`: claim headings scoped; two plain-language flags are case false positives ("Within …" at the item's start); "identity" glossed as session identity in the lineage note.
 - **R1:** no new rows. **R2 (`undefined_terms.py --no-corpus --scope 08.100`):** tiers A–C: none in scope; tier D ordinary or the sources' own terms (candidate-declaration, status-supersession, renderer). **R3 (proposed):** none.
 - **Quote check (`corpus_quote_check.py`):** 32 found, 0 not found (one line range corrected before commit: S0381 L174 → L174–175).
+
+**At settlement (v2).**
+- **Quote check (`corpus_quote_check.py`, v2):** 36 found, 0 not found (one quotation split around an inline code span). §8.82, §8.98 R3 notes carry no bracketed quotation.
+- **Self-check (`selfcheck.py`) on v2:** claim headings scoped; remaining flags are homonym reminders ("identity", glossed in the lineage note) and case false positives.
+- **R1:** 0 flags. **R3:** §8.82 C2 (W-05), §8.98 C4 (W-05), §8.98 C6 (W-16): additive notes.
+- **R/N:** R 9 (W-01, 02, 04, 07, 08, 10, 11, 15, 16), N 7 (W-03, 05, 06, 09, 12, 13, 14).
+- **W's procedure:** copy by path from the copy list; no globs; `--help` runs of two tools on the scratch copy failed for missing files and were not used. No access problem.
