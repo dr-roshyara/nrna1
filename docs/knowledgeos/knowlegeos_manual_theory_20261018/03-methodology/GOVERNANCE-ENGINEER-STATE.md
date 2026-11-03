@@ -46,7 +46,7 @@
 ## Waiting for
 
 - Window-grouping ruling **in effect**: §8.94 (C101, S0370) cites it.
-- **Approved, sending not yet reported (one combined message, items 1–6):** chapter summaries (from S0378–S0402); logical split; Ch. 10 proposal and themes list and restatement count at S0353–S0377; windows by conversation from C106 (≤ 5 sources, ≈ 4,000 lines); minor access deviations without a stop (S3). **S2** (planted-gap prep before the gate) binds the GE from the S0378–S0402 consolidation: design plants and the check brief while C106 onward run.
+- **In force (sent to the Professor, decision record 2026-11-03):** chapter summaries (from S0378–S0402); logical split; Ch. 10 proposal and themes list and restatement count at S0353–S0377; windows by conversation from C106 (≤ 5 sources, ≈ 4,000 lines); minor access deviations without a stop (S3). **S2** (planted-gap prep before the gate) binds the GE from the S0378–S0402 consolidation: design plants and the check brief while C106 onward run.
 - **C103 ruling** (the Professor settled on 'the Principal's ruling'): words not yet given to the GE.
 - Reading at S0369 (C100 in review); the S0353–S0377 consolidation (no planted-gap test) after S0377, with findings and misses per window.
 

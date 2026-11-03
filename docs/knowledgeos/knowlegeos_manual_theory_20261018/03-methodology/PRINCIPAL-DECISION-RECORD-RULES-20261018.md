@@ -913,3 +913,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **What was approved:** the line put to the Principal on the Professor's proposals of 2026-11-03 (its points 3 and 5; point 4 deferred to evidence): "From C106, windows may hold up to five adjacent sources from one conversation (v1.4 §3), at most about 4,000 lines per window. At the S0353–S0377 consolidation, write a list of where each recurring theme is settled, in SUMMARIES/THEMES.md (metadata, citing sections; drafts cite the sections, never the list); report how many of each window's findings concern restatement items, so that a lighter step 2 can be decided on evidence." Together with S3 (addendum above), sent as items 4–6 of one combined message with decisions 1–3.
 - **Not decided:** the Professor's point 4 (a lighter step 2 for restatement items), deferred until the consolidation's count. Points 1 (self-check) and 2 (record templates) need no ruling.
 - **Status:** working instructions under Rulebook v1.4; no rule changed. **Binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-03T02:52:37Z: combined working instructions 1–6 sent to the Professor (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent"
+- **Sent:** one message, "From the Principal — working instructions under Rulebook v1.4 (no rule changed)", items 1–6 as recorded in the three addenda above (chapter summaries; logical split; Chapter 10 proposal; windows by conversation from C106, ≤ 5 sources, ≈ 4,000 lines; themes list and restatement count at S0353–S0377; minor access deviations without a stop), plus "Your self-check before each draft and the record templates (your points 1 and 2) need no ruling; start them now."
+- **In force for the Professor from receipt.**
