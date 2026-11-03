@@ -117,3 +117,10 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
 
 - 2026-11-03: plan prepared; awaiting G-PLAN and P-1…P-6.
 - 2026-11-03: **G-PLAN approved; P-1…P-6 decided as recommended.** Recorded as annotations in the correction contract §9 and, for P-6, in the decision register.
+- 2026-11-03: **Steps 1–2 done (oracle port + golden fixture, test support only).**
+  - **Generator** `docs/publicdigit/membership/architecture/models/g6_c2_golden.py`: it runs the **unchanged** `g6_correction_oracle.py` (sha256 `1e05fb98…`) on the C-2 fragment with D-COR-2, P-1, P-3, P-4 and BD-REV-ER (`refuse_absorption`). P-5 is not modelled (no decision date). The line format adds the consequences of the decided fact, so the port's g2 is checked too, not only the lifetimes.
+  - **Bound measured:** L = 4 → 14,230 decisions at depth 4 (35 `period_absorbed`, matching contract §9); **L = 5 → 262,600 decisions at depth 5**, with INV-EP now reachable (57 `period_lifetime_not_contiguous`) and INV-COV never firing. Python 7.8 s. **The fixture uses L = 5** (`Fixtures/g6_c2_golden.json`, sha256 `7f44bd9b…`).
+  - **RED:** `G6C2CorrectionOracleGoldenTest`, class absent (1 error).
+  - **GREEN:** the new port `Support/G6C2CorrectionOracle.php` (a transcription; no production code shared) reproduces the listing, the per-depth counts and the stream sha256 on the first run, in 2.7 s.
+  - **The C-1 port and fixture are untouched.**
+  - **Regression:** Domain 118, Application 62, Infrastructure 22, Architecture 97.
