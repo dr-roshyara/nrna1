@@ -880,3 +880,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Decided:** from C101, sibling answers to one prompt may share one window; at most five sources in index order; every source read full (no skim for repetition, §3). The S0353–S0377 consolidation reports findings and misses per window.
 - **Unchanged:** Rulebook v1.4 (no rule changed; this applies §3 as written); review procedure; the consolidation gate; access permissions; the git-history ban; copy lists in every commission.
 - **Sent to the Professor:** not yet reported to the Governance Engineer.
+
+## Addendum 2026-11-03T01:43:42Z: T9-02 deliverable retyped; reading resumed at S0367 (recorded by the Governance Engineer)
+
+- **Principal (verbatim, the line sent to the Professor on 2026-11-02 after the T9-02 settlement `2b204b003`, as quoted in `review/T9-02-TURN/SETTLEMENT.md` at `2620c585d`):** "Retype T9-02's deliverable to the entry kinds and their fields plus a derivation for each item attribute; this decides neither F13 nor F37, and the rows §9.20.7 marks Open stay open. Resume reading at S0367 under the standing instruction."
+- **Principal's confirmation to the Governance Engineer (verbatim):** "I sent that T9-02 line"
+- **Decided:** Ch. 9 `TODO.md` T9-02's deliverable is "the entry kinds and their fields plus a derivation for each item attribute" (was "one table of attributes, value sets and kinds"). **Not decided by it:** F13, F37; the rows §9.20.7 marks Open stay open; T9-02 stays open (partially resolved). Reading resumed at S0367 under the standing instruction (applied by the Professor, `2620c585d`; C98 started 2026-11-02T17:42Z).
+- **Unchanged:** Rulebook v1.4; review procedure; access permissions; the git-history ban.

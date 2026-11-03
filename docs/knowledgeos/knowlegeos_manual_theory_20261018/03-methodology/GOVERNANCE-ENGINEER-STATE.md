@@ -45,7 +45,6 @@
 
 ## Waiting for
 
-- **The Principal's confirmation** that the T9-02 deliverable line was sent (applied by the Professor at `2620c585d`, quoting it); then the decision-record entry.
 - **The Principal's report** that the window-grouping ruling (decision record, 2026-11-03) reached the Professor.
 - Reading at S0369 (C100 in review); the S0353–S0377 consolidation (no planted-gap test) after S0377, with findings and misses per window.
 
