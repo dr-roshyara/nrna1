@@ -1,0 +1,29 @@
+# C105, the window commission: step 2 (review)
+
+*2026-11-02. Window reviewer W (Opus), after your step-1 inventory was saved with its sha256 (`SHA256-STEP1.txt`). Rulebook v1.4; `03-methodology/REVIEWER-INSTRUCTIONS.md` (transition review). Re-read your saved inventory first (`STEP1-INVENTORY.md` in this folder).*
+
+## The object
+- `06-theory/manuscript/chapter_08/08.98-a-review-that-re-executes-a-pass-the-book-rules-out-a-producer-the-record-cannot-bar-and-an-adoption-reported-before-its-record.md` (new, draft) and its row in `chapter_08/08.00-index.md`.
+- `STEP8-AND-CHECKS.md` in this folder (dependencies, the line checks, the checks, the proposed R3).
+- Changed theory since the last window review: the C104 settlement (`d92306faf`; §8.97 v2; R3 on §8.82 C3 and §8.78 C5). The draft was committed before your step-1 dispatch.
+
+## Questions
+1. The REVIEWER-INSTRUCTIONS checks for a transition review: each claim against the cited source and book lines; labels; homes; R2; the quote check by hand; R3 for any correction.
+2. Completeness against your inventory: what did §8.98 leave out, and is any omission a loss of theory?
+3. C1–C2: the independence PASS against CON-0127, §8.06 C1, C3, §8.27 C3 and §8.97 C3; re-execution against §8.06 C4 and C6.
+4. C3–C4: the self-recorded REGISTER and HANDOFF against §8.71 C3, §8.79 C3 and §8.78 C1; F-3's Ded from CON-0127.
+5. C5–C6: F-4 and F-6 against §8.28 C6, §8.79 C2 and §8.97 C5; S0377 as S0344 rendered (§8.78) and its header reporting S0378–S0379; scope (within D, the estate, or the whole book) of every claim.
+6. Lineage: S0376–S0377 in the line of §8.71–§8.82 and §8.97; S0377 against S0344.
+7. Anything presented as decided that is the Principal's.
+
+## Access (binding)
+- **Allowed:** this brief, your saved inventory, `STEP8-AND-CHECKS.md`; `03-methodology/REVIEWER-INSTRUCTIONS.md`; the working book (the top-level files in `06-theory/manuscript/chapter_*/`, never a `review/` subfolder; `06-theory/CONCEPT-REGISTER.tsv`, `06-theory/THEORY-MAP.md`, `06-theory/manuscript/BOOK-OUTLINE.md`, `06-theory/RESEARCH-PURPOSE.md`); W's tools (`tmp/tools/`, run on a scratch copy only); the window sources S0376 and S0377; and, for checking only, S0344, S0374 and S0375 (on the allowed list; check each path there first).
+- **No git history:** do not run `git log`, `git show`, `git diff`, `git blame` or any other command that reads earlier versions of a file or lists a commit's files. Read each allowed file as it is on disk.
+- **No globs (the Principal, 2026-11-03):** every search, listing, read or copy names its files one by one, by full path; no wildcard (`*`, `?`, `[...]`), no recursive search (`grep -r`, `find`), and no directory listing over corpus or book folders.
+- **A file you may not open, you may not search either.** Restrict every search to the files above; do not search `06-theory/manuscript/` recursively (it holds review folders).
+- **Copy list (the Principal, 2026-11-02):** to run a tool on a scratch copy, copy only the files in `COPY-LIST-STEP2.txt` in this folder, each by its own path (for example `while read f; do mkdir -p "$SCR/$(dirname "$f")"; cp "$f" "$SCR/$f"; done < docs/knowledgeos/knowlegeos_manual_theory_20261018/06-theory/manuscript/review/C105-S0376-S0377/COPY-LIST-STEP2.txt`, run from the repository root). No directory copy: no `cp -r`, `rsync`, or glob of `06-theory/` or `manuscript/`. Copy nothing else; if a tool needs a file not on the list, do not run it, and record that. Run `undefined_terms.py` with `--no-corpus` (corpus files are not on the list).
+- **Never:** any other review folder; `00-access/`; any other file under `03-methodology/`; S0155, S0156, S0157, S0161, S0170, S0174; `.env*`, `_batch_input*`, sealed, hold-out or quarantine files, `docs/knowledgeos/chronological-read/*`. If a file is refused or not allowed, record it and continue.
+- Scratch files: `c105-w-*.txt`, in your scratch directory. Edit nothing. No corpus text to any outside service. Do not reproduce any private person's name; the outside-authors rule (persons by role; eponymous terms and bibliographic citations unchanged; paths unchanged).
+
+## Report
+Begin "C105 REVIEW REPORT". Findings table (W-nn · severity · R/N · claim · evidence · correction · R3 lines), where R/N marks whether the finding concerns a restatement item (R: the source restates what the book already settled, and the finding is about how the draft maps it) or new theory (N) (the Principal, 2026-11-03); give the R and N counts after the table; a verdict per claim (C1–C6); coverage; at most 10 lines of summary. End with every file opened and every command and search run.
