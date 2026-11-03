@@ -215,7 +215,9 @@ final class MembershipPgIsolationTest extends TestCase
     public function test_every_membership_postgres_test_uses_the_confining_base_class(): void
     {
         $files = glob(__DIR__.'/../../Feature/Contexts/Membership/Organisational/Postgres*Test.php');
-        $this->assertCount(4, $files);
+        // Reviewed list (a new file must be reviewed here): Concurrency, Invariants, Repository, ReferenceModelProperty;
+        // COR-4 (PBDIGIT-329, 2026-11-03): CorrectionSchema, CorrectionDecode, CorrectionRace. (Was: 4.)
+        $this->assertCount(7, $files);
         foreach ($files as $file) {
             $this->assertMatchesRegularExpression('/\bextends\s+MembershipPostgresTestCase\b/', (string) file_get_contents($file), basename($file));
         }

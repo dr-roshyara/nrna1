@@ -1,0 +1,57 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s5-red/phpunit.membership-pg.xml
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:08.105, Memory: 24.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "an unknown g2_version" ([[1, 'A1', 'admit', '2026-01-01', 'none'], [2, 2, 'C2', 'correct', '2025-12-01', 'A1', '[]']])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "consequences that are not trims" ([[1, 'A1', 'admit', '2026-01-01', 'none'], ['[{"period":5}]', 2, 'C2', 'correct', '2025-12-01', 'A1', 1]])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "a trim with a malformed date" ([[1, 'A1', 'admit', '2026-01-01', 'none'], ['[{"period":"A1","removed":[["...ll]]}]', 2, 'C2', 'correct', '2025-12-01', 'A1', 1]])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "a trim that removes nothing" ([[1, 'A1', 'admit', '2026-01-01', 'none'], ['[{"period":"A1","removed":[]}]', 2, 'C2', 'correct', '2025-12-01', 'A1', 1]])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "an Annul of a Void (N-3)" ([[1, 'A1', 'admit', '2026-01-01', 'none'], [2, 'V2', 'void', null, 'A1'], [3, 'X3', 'annul', null, 'V2']])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "a reversal of a later fact (stored out of order)" ([[1, 'A1', 'admit', '2026-01-01', 'none'], [3, 'C3', 'correct', '2025-12-01', 'A1', '[]', 1], [2, 'X2', 'annul', null, 'C3']])
+PHPUnit\Framework\Exception: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid" does not exist
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_a_valid_stored_history_with_every_new_kind_loads
+UnhandledMatchError: Unhandled match case of type string
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s5-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:282
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s5-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:80
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s5-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionDecodeTest.php:86
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7, Deprecations: 1.

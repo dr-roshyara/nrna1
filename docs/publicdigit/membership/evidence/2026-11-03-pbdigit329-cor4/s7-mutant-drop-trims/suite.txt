@@ -1,0 +1,31 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s7/phpunit.membership-pg.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:08.411, Memory: 38.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_every_bounded_c2_history_survives_storage_and_reload_unchanged
+D541: facts and seq after reload (A0…)
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+             'provenance' => App\Contexts\Membership\Domain\Organisational\Provenance Object (...)
+             'decidedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+             'consequences' => Array (
+-                0 => App\Contexts\Membership\Domain\Organisational\TrimConsequence Object (...)
+             )
+         )
+     )
+ )
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s7/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:360
+
+FAILURES!
+Tests: 1, Assertions: 7905, Failures: 1, Deprecations: 1.

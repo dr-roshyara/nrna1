@@ -1,0 +1,159 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/phpunit.membership-pg.xml
+
+FEFFFFFFFFFFFFFFFFE                                               19 / 19 (100%)
+
+Time: 00:08.401, Memory: 26.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_well_formed_rows_of_every_new_kind_are_accepted
+Illuminate\Database\QueryException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "target_fact_id" of relation "org_membership_facts" does not exist
+LINE 1: ...facts" ("seq", "fact_id", "kind", "effective_at", "target_fa...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 42257, Database: membership_pg_isolated, SQL: insert into "org_membership_facts" ("seq", "fact_id", "kind", "effective_at", "target_fact_id", "consequences", "g2_version", "organisation_id", "membership_id", "recorded_at", "provenance") values (2, C2, correct, 2025-12-01, A1, [], 1, f93c719f-0f16-4b10-b09d-fae96f0b07ac, M1, 2026-01-01 00:00:00+00, {"kind":"decision","actor":"registrar"}))
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:39
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:70
+
+Caused by
+PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "target_fact_id" of relation "org_membership_facts" does not exist
+LINE 1: ...facts" ("seq", "fact_id", "kind", "effective_at", "target_fa...
+                                                             ^
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:39
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:70
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_down_refuses_to_drop_stored_corrections_and_round_trips_otherwise
+ErrorException: require(/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php): Failed to open stream: No such file or directory
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:132
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:132
+
+--
+
+There were 17 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_the_schema_has_the_target_column_and_the_correction_columns
+Q-1: renamed
+Failed asserting that an array contains 'target_fact_id'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:59
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "unknown kind" (['renew', 'X2', null, 'A1'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "annul with a valid time" (['2026-01-01', 'X2', 'annul', 'A1'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "annul without a target" ([null, 'X2', 'annul', null])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "annul with consequences" (['[]', 'X2', 'annul', null, 'A1'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "void with an end kind" (['void', 'resignation', 'X2', null, 'A1'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct without a value" ([null, 'C2', 'correct', 'A1', '[]', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+8) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct without a target" ([null, 'C2', 'correct', '2025-12-01', '[]', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+9) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct without consequences" ([null, 'C2', 'correct', '2025-12-01', 'A1', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+10) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct whose consequences are not an array" (['{"period":"A1"}', 'C2', 'correct', '2025-12-01', 'A1', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+11) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct without g2_version" ([null, 'C2', 'correct', '2025-12-01', 'A1', '[]'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+12) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct with g2_version 0" ([0, 'C2', 'correct', '2025-12-01', 'A1', '[]'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+13) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "correct with an initial term" (['none', 'C2', 'correct', '2025-12-01', 'A1', '[]', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+14) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "end with consequences" (['E2', 'end', '2026-06-01', 'A1', 'resignation', '[]'])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+15) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "admit with a g2_version" (['A2', 'admit', '2026-06-01', 'none', 1])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+16) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_malformed_row_is_refused_by_a_check with data set "a fact targeting itself" (['X2', 'X2', 'annul', null])
+check_violation (or, for a self-target, the FK first)
+Failed asserting that an array contains '42703'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:113
+
+17) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_a_target_of_another_member_is_refused_by_the_same_member_fk
+foreign_key_violation (same-Member target FK)
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23503'
++'42703'
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:126
+
+ERRORS!
+Tests: 19, Assertions: 17, Errors: 2, Failures: 17, Deprecations: 1.

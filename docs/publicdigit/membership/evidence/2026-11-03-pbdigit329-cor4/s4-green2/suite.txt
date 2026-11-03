@@ -1,0 +1,46 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEEEDDDD 65 / 81 ( 80%)
+DDDDDDDDDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
+D                                                  81 / 81 (100%)
+
+Time: 00:26.988, Memory: 26.00 MB
+
+There were 3 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_recorded_at_strictly_increases_even_with_a_frozen_or_backward_clock
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Correct::effectiveAt()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:247
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:217
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:161
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:156
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:253
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_every_fact_kind_round_trips_identically
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Correct::effectiveAt()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:247
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:217
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:161
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:156
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:287
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresMemberRepositoryTest::test_applied_command_answers_correction_facts_with_their_own_fact
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Correct::effectiveAt()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:247
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:217
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:161
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:156
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s4-green2/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:313
+
+ERRORS!
+Tests: 81, Assertions: 483, Errors: 3, Deprecations: 1.

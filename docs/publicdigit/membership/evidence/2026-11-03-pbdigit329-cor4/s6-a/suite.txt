@@ -1,0 +1,12 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-s6/phpunit.membership-pg.xml
+
+DDD                                                                 3 / 3 (100%)
+
+Time: 00:11.259, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 3, Assertions: 340, Deprecations: 1.

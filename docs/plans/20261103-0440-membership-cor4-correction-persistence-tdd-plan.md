@@ -264,6 +264,44 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
     - **an earlier "mutant" run was invalid, my mistake:** `return [] ?: array_map(…)` still returns the real result, so it changed nothing and passed (`cor4-ev/s7-mutant-noop`, excluded from the evidence).
   - **No production change in this step.**
   - **Regression (database-free):** Domain 189, Application 76, Infrastructure 22, Architecture 98.
+  - Committed `96d71183e`.
+- 2026-11-03: **Step 8 done (verification and documentation).**
+  - **PostgreSQL × 3 on fresh clusters at the committed `96d71183e`** (`final-run1..3`, system ids `…638818`, `…160738`, `…672034`): **92 tests each, exit 0**. The assertion counts vary slightly (15,674 / 15,674 / 15,678) because race winners vary. `podman ps -a` is empty afterwards.
+  - **Evidence archived:** `docs/publicdigit/membership/evidence/2026-11-03-pbdigit329-cor4/` holds 12 runs, each `SHA256SUMS` verified, no credential-shaped token. Excluded and listed in its README: `s4-debug`, `s4-debug2` and `s7-mutant-noop`.
+  - **`tests/Unit/Testing`** (clean worktree, step 8 files copied in):
+    - first 1 failure: `MembershipPgIsolationTest::test_every_membership_postgres_test_uses_the_confining_base_class` pins the **number** of Membership PostgreSQL test files (4) as a review tripwire;
+    - the 3 new classes all extend `MembershipPostgresTestCase` (the property it guards); the count was raised to 7 with the reviewed file list in the test;
+    - then **168 OK** (2 pre-existing deprecations).
+  - **Mutation** (Infection 0.29.10 + pcov; scratch config):
+    - **Scope:** `--filter=Member.php,StorableValidTime.php,ConsequencesJson.php` (the `Member.php` filter also matches `ResolvedMember.php`). Tests: the three database-free Membership suites.
+    - **Not covered: `PostgresMemberRepository`**, which needs PostgreSQL. It is covered instead by the PostgreSQL suite and two targeted sensitivity mutants (`s6-mutant-er-off`, `s7-mutant-drop-trims`).
+    - **New test first:** `ConsequencesJsonTest` (database-free; a characterisation of the step 5 codec), so the codec is mutation-testable.
+    - **Runs, in order, with the reason for each re-run:**
+      1. out of memory in the initial pass (128 MB): measured nothing (`run-oom.out`);
+      2. `memory_limit=2G`, timeout 120 s: **90 mutants skipped**, because `Member.php`'s covering tests (the exhaustive differentials) exceed 120 s. Its MSI of 93 % therefore did **not** measure `Member.php` and is not reported as the figure;
+      3. timeout 900 s: everything measured, but I added 3 `ConsequencesJson` cases while it ran (`…-mid-edit`);
+      4. **the clean run on the fixed test set: 322 mutants, 305 killed, 12 escaped, 5 not covered, 0 skipped; MSI 94 %, mutation code coverage 98 %, covered-code MSI 96 %.**
+    - **Real gaps found and closed:** 3 in `ConsequencesJson`: a keyed object of valid trims, a scalar, and a pair given as an object with keys out of order were accepted by mutants of the list / pair checks (`:43`, `:44`, `:55`). Three new cases kill each mutant, verified directly with a mutated copy loaded first.
+    - **Survivors, classified:**
+      - **equivalent:**
+        - `Member.php:79` (`isset` true for `false`);
+        - `ConsequencesJson.php:42` ±1 (decode depth 8 vs 7 / 9; the format's depth is 4);
+        - `Member.php:390` × 4 (the revival key: all trims of one cause share their in-force status, so the key's separator, order or period part cannot change the result, also for two-period Corrects);
+      - **unreachable defensive checks:**
+        - `Member.php:347` / `:348` (COR-2);
+        - `Member.php:367` (`admissionOf`): now unreachable, because step 1 guarantees an End names an earlier Admit;
+      - **coverage artefact:** `Member.php:315` (`continue`; killed directly at COR-2);
+      - **pre-existing (C-1 classification):**
+        - `Member.php:26`, `:28`, `:31` (TG R-1a-3);
+        - `:103`, `:146` (`array_values` on lists);
+        - `ResolvedMember.php:74`.
+    - **No killable survivor remains in COR-4's new code.**
+  - **Documentation:**
+    - developer guide `14_cor4_correction_persistence.md` and its index entry;
+    - Slice 1b contract "Amendment (2026-11-03)" plus pointers at §5 and §6.
+    - **The release gate**, which this migration joins, is recorded in the migration docblock, the story, that amendment and guide 14.
+  - **Regression (database-free):** Domain 189, Application 76, Infrastructure **42**, Architecture 98.
+  - **Status:** steps 1–8 done; **STOP for the independent review.**
 
 ## 11. Open questions (outside this plan's decisions)
 

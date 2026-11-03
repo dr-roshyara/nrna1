@@ -66,6 +66,8 @@
 
 ## 5. Schema (one migration, PostgreSQL)
 
+> **Amended 2026-11-03 (COR-4, PBDIGIT-329):** `org_membership_facts` stores the five fact kinds (`period_fact_id` renamed `target_fact_id`, nullable `effective_at`, `consequences` + `g2_version`, a five-branch kind CHECK). See "Amendment (2026-11-03)" at the end.
+>
 > **Amended 2026-11-02 (PBDIGIT-264 Part 2, F-4b):** `org_membership_commands` no longer stores `fact_id` / `recorded_at` and references its fact by a composite FK. See "Amendment (2026-11-02)" at the end. The text below is the 2026-10-09 baseline.
 
 Ids are caller-supplied opaque strings in the domain (Slice 0), hence `text`. `organisation_id` is the real `organisations.id` (uuid).
@@ -125,6 +127,8 @@ org_membership_commands                              — idempotency (IDEM-1…4
 
 ## 6. Operations
 
+> **Amended 2026-11-03 (COR-4, PBDIGIT-329):** `append` encodes all five kinds with strictly increasing `recorded_at`; `load` raises `StoredMemberLogInvalid`. See "Amendment (2026-11-03)" at the end.
+>
 > **Amended 2026-11-02 (PBDIGIT-264 Part 2):** `create`, `appliedCommand`, `append` (N1, enforced READ COMMITTED) and the key-collision classification changed. See "Amendment (2026-11-02)" at the end.
 
 | Operation | Implementation |
@@ -256,3 +260,54 @@ org_membership_commands
 - the shared contract `MemberRepositoryContract::test_every_key_is_answered_with_its_own_fact_not_only_the_first` (C1).
 
 Evidence: `docs/publicdigit/membership/evidence/2026-11-02-pbdigit264-part2/`.
+
+## Amendment (2026-11-03): COR-4, correction fact kinds (PBDIGIT-329)
+
+**Authority:**
+- the PO's approval of the COR-4 plan with Q-1…Q-7 as recommended (2026-11-03; `docs/plans/20261103-0440-membership-cor4-correction-persistence-tdd-plan.md` §3);
+- correction contract §8.
+
+The baseline text and the earlier amendments are kept.
+
+**§5 Schema: `org_membership_facts` stores the five fact kinds:**
+
+```text
+org_membership_facts (changes only)
+  target_fact_id   text  NULL        — renamed from period_fact_id (Q-1, D-COR-4): "the fact this fact refers to"
+  effective_at     date  NULL        — was NOT NULL; NULL exactly for annul / void (Q-4); a Correct's value is stored here
+  consequences     jsonb NULL        — a Correct's frozen trims (Q-5): [{"period": "<admit fact id>", "removed": [["YYYY-MM-DD", "YYYY-MM-DD" | null], …]}, …]
+  g2_version       smallint NULL     — 1 for every Correct (Q-5); decode refuses any other value
+  FOREIGN KEY (organisation_id, membership_id, target_fact_id) REFERENCES org_membership_facts (…, fact_id)
+                                                        — renamed org_membership_facts_target_fk (same-Member target)
+  CHECK org_membership_facts_kind_check:
+    admit:          effective_at, initial_term set;  no target, end_kind, consequences, g2_version
+    end:            effective_at, target, end_kind set;  no initial term, consequences, g2_version
+    annul | void:   target set;  no effective_at, initial term, end_kind, consequences, g2_version
+    correct:        effective_at, target, consequences (a jsonb array), g2_version set;  no initial term, end_kind
+  CHECK org_membership_facts_g2_version_check        (g2_version IS NULL OR g2_version >= 1)
+  CHECK org_membership_facts_target_not_self_check   (target_fact_id IS NULL OR target_fact_id <> fact_id)
+```
+
+"The target is an **earlier** fact" is not a database constraint. It is enforced on load by `Member::fromLog` (Q-3; roadmap V-1, V-14, V-15).
+
+**Migration:** `database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php` (additive; the 2026-10-09 migration is not edited).
+- `down()` refuses while any annul / void / correct row exists. Otherwise it restores the 1b shape exactly.
+- **It joins the ledger-migration release gate:** it must not run on any persistent database before:
+  - OQ-01;
+  - the §10.2 operator preflight;
+  - the `lc_messages` check;
+  - ARB-MEM-01 (COR-1…COR-4 accepted).
+
+**§6 Operations:**
+
+| Operation | Amended implementation |
+|---|---|
+| `append(…)` | `encode()` branches per fact kind before reading any date (ACC-260 K-2). `recorded_at = max(clock, last + 1 µs)`: strictly increasing per Member (Q-2, V-5). R-1a-6 covers a Correct's value and every finite trim bound (Q-7, V-13) |
+| `load(t, id)` | decodes all five kinds; a decode failure, or a log `Member::fromLog` refuses, raises **`StoredMemberLogInvalid`** (an infrastructure failure, Q-6) |
+
+**Tests that pin the amendment:**
+- `PostgresCorrectionSchemaTest`, `PostgresCorrectionDecodeTest`, `PostgresCorrectionRaceTest`;
+- the shared contract: strict `recordedAt`, every-kind round trip, `appliedCommand` for the new kinds, the reload differential;
+- `MemberLogValidationTest`, `StorableValidTimeTest`, `ConsequencesJsonTest`.
+
+Evidence: `docs/publicdigit/membership/evidence/2026-11-03-pbdigit329-cor4/`.
