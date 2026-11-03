@@ -17,3 +17,10 @@
 - **R2 (`undefined_terms.py --scope 08.94`):** tier A "hundredth": ordinary English. No tier B or C in scope.
 - **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0370 with "[IT]" substituted, §9.20):** 84 checked; every quote matched after two spans of the Professor's wording were unquoted, before the draft's commit.
+
+**At settlement (v2).**
+- **R2:** W's run (`--no-corpus`): no tier A in scope; 28 tier D judged. "hundredth" (tier A in the Professor's run with the corpus) is ordinary English; the difference is corpus tiering.
+- **Quote check (`qc.py`, v2, against S0370, S0368 and S0369 with "[IT]" substituted, §9.13, §9.15, §9.20):** 106 checked; the misses are quotations of the withdrawn draft in §8.94.5 and the "(W, step 1)" marker.
+- **R3:** none for §8.94 (no inbound citations beyond the index row; W). **Book item for the consolidation (W-10):** the pointer "no justification concept (§8.87 C4)" in §8.90 L44, §8.91 L62, L109, §8.92 L34, L35, L93 is stale (§8.87 C4 states only the absence of a confidence concept); the ground is the register (§8.89 C2). Fixed in §8.94 only.
+- **Lineage (W-18):** S0370 L1–104 = S0368 L955–1079 (W's normalised comparison; the Professor's diff of L7–104 against L961–1079 agreed).
+- **W's procedure:** copies by path from the list (251 files); tools on the scratch copy; `--help` on four scratch tools; one run failed for want of `02-FILES.jsonl` (not on the list) and was not used. No access problem.
