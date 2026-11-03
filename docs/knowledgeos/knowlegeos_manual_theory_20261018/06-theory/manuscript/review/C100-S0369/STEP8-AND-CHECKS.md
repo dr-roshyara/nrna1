@@ -17,3 +17,10 @@
 - **R2 (`undefined_terms.py --scope 08.93`):** tier C "determination", "contestation": the source's words. No tier A or B in scope.
 - **R3 (proposed):** none.
 - **Quote check (`qc.py` against S0369 and S0365 with "[IT]" substituted, S0366, §9.15, §9.16, §9.18):** 104 checked; every quote matched after five spans of the Professor's wording were unquoted, before the draft's commit.
+
+**At settlement (v2).**
+- **R2:** W's run (`--no-corpus`): no tier A or B; "determination" and "contestation" tier D there, tier C in the Professor's run with the corpus (corpus tiering). W's judgements adopted: "admit" qualified as "admit (a claim)" / "admitted (to D)"; "determination" split in C3; "material" refers to §8.91 C4.
+- **Quote check (`qc.py`, v2, against S0369 and S0365 with "[IT]" substituted, §9.4, §9.15, §9.16, §9.18, the register):** 125 checked; the misses are quotations of the withdrawn draft in §8.93.5 and the "(W, step 1)" marker.
+- **R3:** none (`inbound_citations.py`: no inbound citations of §8.93 C1–C6 beyond the index row; W).
+- **Fork candidate for the map (W-13):** content mutability (amending a claim against a new item); not opened.
+- **W's procedure:** copies by path from the list (252 files); tools on the scratch copy; `--help` on two scratch tools (no repository file read). No access problem.
