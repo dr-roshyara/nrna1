@@ -13,6 +13,8 @@ use App\Contexts\Membership\Application\Organisational\Ports\CreateResult;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\StorableValidTime;
 use App\Contexts\Membership\Domain\Organisational\Admit;
+use App\Contexts\Membership\Domain\Organisational\Annul;
+use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\End;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
@@ -25,6 +27,7 @@ use App\Contexts\Membership\Domain\Organisational\PeriodId;
 use App\Contexts\Membership\Domain\Organisational\PersonRef;
 use App\Contexts\Membership\Domain\Organisational\RecordedFact;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
+use App\Contexts\Membership\Domain\Organisational\VoidFact;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\Connection;
 use Illuminate\Database\UniqueConstraintViolationException;
@@ -64,7 +67,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
         $facts = $this->db->table('org_membership_facts')
             ->select([
-                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance',
+                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version',
                 $this->db->raw('effective_at::text AS effective_date'),
                 $this->db->raw('initial_term_until::text AS initial_term_until_date'),
                 $this->db->raw(InstantMicros::selectExpression('decided_at') . ' AS decided_us'),
@@ -75,12 +78,19 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             ->orderBy('seq')
             ->get();
 
-        $log = [];
-        foreach ($facts as $f) {
-            $log[] = RecordedFact::of((int) $f->seq, Instant::of((int) $f->recorded_us), $this->decode($f));
-        }
+        // COR-4 Q-6: a row that cannot be decoded, or a log Member::fromLog refuses (load validation, V-1 / V-14 /
+        // V-15), is an infrastructure failure. The failures caught are the decoders' and the kernel's validation
+        // exceptions only; any other \Error (a programming defect) still propagates unchanged.
+        try {
+            $log = [];
+            foreach ($facts as $f) {
+                $log[] = RecordedFact::of((int) $f->seq, Instant::of((int) $f->recorded_us), $this->decode($f));
+            }
 
-        return Member::fromLog($id, PersonRef::fromString($row->person_ref), $tenant, ...$log);
+            return Member::fromLog($id, PersonRef::fromString($row->person_ref), $tenant, ...$log);
+        } catch (\InvalidArgumentException | \UnexpectedValueException | \JsonException | \UnhandledMatchError | \ValueError $e) {
+            throw StoredMemberLogInvalid::because($tenant->value(), $id->value(), $e);
+        }
     }
 
     public function findByHolder(TenantId $tenant, PersonRef $holder): ?Member
@@ -206,7 +216,8 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         $last = $this->db->table('org_membership_facts')
             ->where('organisation_id', $tenant->value())->where('membership_id', $id->value())
             ->max($this->db->raw(InstantMicros::selectExpression('recorded_at')));
-        $recordedAt = Instant::of(max(($this->clock)(), $last === null ? PHP_INT_MIN : (int) $last));
+        // COR-4 Q-2 (V-5): strictly increasing per Member (1 µs after the last), so no two facts share a recordedAt.
+        $recordedAt = Instant::of(max(($this->clock)(), $last === null ? PHP_INT_MIN : (int) $last + 1));
 
         $fact = $accepted->fact();
         $this->db->table('org_membership_facts')->insert([
@@ -239,50 +250,56 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             : AppendResult::failed(AppendOutcome::IdempotencyKeyConflict);
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * One branch per fact kind; no date accessor is called before the kind is known (ACC-260 K-2, C-1 F-1: `Fact`
+     * declares no `effectiveAt()`). Every row sets every kind-specific column, so the five-branch CHECK decides.
+     *
+     * @return array<string, mixed>
+     */
     private function encode(Fact $fact): array
     {
         $common = [
             'fact_id' => $fact->id()->value(),
-            'effective_at' => DateOrdinal::toDate($fact->effectiveAt()),
             'decided_at' => $fact->decidedAt() === null ? null : InstantMicros::toTimestamp($fact->decidedAt()),
             'provenance' => ProvenanceJson::encode($fact->provenance()),
         ];
+        $none = ['effective_at' => null, 'initial_term' => null, 'initial_term_until' => null, 'target_fact_id' => null, 'end_kind' => null, 'consequences' => null, 'g2_version' => null];
 
         if ($fact instanceof Admit) {
             $until = $fact->initialTermUntil();
 
-            return $common + [
-                'kind' => 'admit',
+            return ['kind' => 'admit', 'effective_at' => DateOrdinal::toDate($fact->effectiveAt()),
                 'initial_term' => $until === null ? 'none' : ($until->isInfinite() ? 'unlimited' : 'until'),
-                'initial_term_until' => $until === null || $until->isInfinite() ? null : DateOrdinal::toDate($until),
-                'target_fact_id' => null,
-                'end_kind' => null,
-            ];
+                'initial_term_until' => $until === null || $until->isInfinite() ? null : DateOrdinal::toDate($until)] + $common + $none;
         }
         if ($fact instanceof End) {
-            return $common + [
-                'kind' => 'end',
-                'initial_term' => null,
-                'initial_term_until' => null,
-                'target_fact_id' => $fact->period()->value(),   // Q-1 (D-COR-4): an End's period is its target
-                'end_kind' => $fact->kind()->value(),
-            ];
+            // Q-1 (D-COR-4): an End's period is its target.
+            return ['kind' => 'end', 'effective_at' => DateOrdinal::toDate($fact->effectiveAt()),
+                'target_fact_id' => $fact->period()->value(), 'end_kind' => $fact->kind()->value()] + $common + $none;
+        }
+        if ($fact instanceof Annul || $fact instanceof VoidFact) {
+            // Q-4: no valid time.
+            return ['kind' => $fact instanceof Annul ? 'annul' : 'void', 'target_fact_id' => $fact->target()->value()] + $common + $none;
+        }
+        if ($fact instanceof Correct) {
+            // Q-5: the frozen consequences are stored as decided; g2 is never recomputed here.
+            return ['kind' => 'correct', 'effective_at' => DateOrdinal::toDate($fact->value()), 'target_fact_id' => $fact->target()->value(),
+                'consequences' => ConsequencesJson::encode($fact->consequences()), 'g2_version' => ConsequencesJson::G2_VERSION] + $common + $none;
         }
 
-        throw new \LogicException('Unsupported fact kind for Slice 1b: ' . $fact::class);
+        throw new \LogicException('Unsupported fact kind: ' . $fact::class);
     }
 
     private function decode(object $f): Fact
     {
+        $id = FactId::fromString($f->fact_id);
         $decidedAt = $f->decided_us === null ? null : Instant::of((int) $f->decided_us);
         $provenance = ProvenanceJson::decode($f->provenance);
-        $effective = DateOrdinal::fromDate($f->effective_date);
 
         return match ($f->kind) {
             'admit' => new Admit(
-                FactId::fromString($f->fact_id),
-                $effective,
+                $id,
+                DateOrdinal::fromDate($f->effective_date),
                 match ($f->initial_term) {
                     'none' => null,
                     'unlimited' => TimePoint::infinity(),
@@ -291,13 +308,16 @@ final class PostgresMemberRepository implements MemberRepositoryPort
                 $provenance,
                 $decidedAt,
             ),
-            'end' => new End(
-                FactId::fromString($f->fact_id),
-                PeriodId::fromString($f->target_fact_id),
-                $effective,
-                EndKind::fromString($f->end_kind),
+            'end' => new End($id, PeriodId::fromString($f->target_fact_id), DateOrdinal::fromDate($f->effective_date), EndKind::fromString($f->end_kind), $provenance, $decidedAt),
+            'annul' => new Annul($id, FactId::fromString($f->target_fact_id), $provenance, $decidedAt),
+            'void' => new VoidFact($id, FactId::fromString($f->target_fact_id), $provenance, $decidedAt),
+            'correct' => new Correct(
+                $id,
+                FactId::fromString($f->target_fact_id),
+                DateOrdinal::fromDate($f->effective_date),
                 $provenance,
                 $decidedAt,
+                ConsequencesJson::decode($f->consequences, (int) $f->g2_version),
             ),
         };
     }

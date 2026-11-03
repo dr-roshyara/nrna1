@@ -225,6 +225,20 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
   - **Full PostgreSQL suite after the fix** (`cor4-ev/s4-green2`): 81 tests; **the only 3 errors are the step 5 RED**. The new contract tests (strict `recordedAt`, every-kind round trip, `appliedCommand`) hit `Call to undefined method Correct::effectiveAt()` at `PostgresMemberRepository.php:247`: **K-2 itself, reproduced.** Every pre-existing PostgreSQL test and all 19 schema tests pass. 1 deprecation, pre-existing (`config/database.php` on PHP 8.5).
   - **Architecture:** `MembershipLedgerIsolationTest` flagged the new migration as touching the ledger from outside Membership. It is added to the exact-path allowlist, as F-4b's migration was.
   - **Regression (database-free):** Domain 189, Application 75, Infrastructure 22, Architecture 98.
+  - Committed `8dfc363b6`.
+- 2026-11-03: **Step 5 done (adapter encode / decode for every kind; K-2, Q-2, Q-6).**
+  - **RED:**
+    - the three contract tests from step 3 on PostgreSQL (`cor4-ev/s4-green2`): `Correct::effectiveAt()` undefined, which is K-2 reproduced;
+    - `PostgresCorrectionDecodeTest` (`cor4-ev/s5-red`), 7 tests: **7 errors**. Six invalid stored histories have no `StoredMemberLogInvalid` yet; one valid history with every new kind cannot be decoded.
+  - **GREEN:**
+    - `encode()`: one branch per kind; no date accessor is called before the kind is known (**K-2 closed**). Every row sets every kind-specific column, so the CHECK decides. Annul / Void have a NULL date. A Correct stores its value, its consequences and `g2_version = 1`;
+    - `decode()`: all five kinds;
+    - `ConsequencesJson`: the Q-5 format. Its strict decoder compares keys as a set, because `jsonb` does not keep key order; it refuses an unknown `g2_version`;
+    - `StoredMemberLogInvalid` (a `RuntimeException`): `load()` wraps decode and `Member::fromLog` failures (`InvalidArgumentException`, `UnexpectedValueException`, `JsonException`, `UnhandledMatchError`, `ValueError` only; any other `\Error` propagates);
+    - Q-2: `recorded_at = max(clock, last + 1 µs)`.
+  - **Existing test updated because of an approved behaviour change:** `test_t6_recorded_at_never_decreases_under_a_backward_clock` pinned the old tie value (`last`); it now expects `last + 1`, annotated with Q-2. This was its only failure in the first GREEN run (`cor4-ev/s5-green`, 1 failure of 88).
+  - **Full PostgreSQL suite** (`cor4-ev/s5-green2`): **88 tests, 515 assertions, exit 0** (1 pre-existing deprecation).
+  - **Regression (database-free):** Domain 189, Application 75, Infrastructure 22, Architecture 98.
 
 ## 11. Open questions (outside this plan's decisions)
 

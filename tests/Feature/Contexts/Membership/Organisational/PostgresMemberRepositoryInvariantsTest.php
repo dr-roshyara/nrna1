@@ -134,7 +134,9 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
 
         $appended = $repo->append($t, $m->id(), $end, IdempotencyKey::fromString('k2'), 'fp2')->appended();
 
-        $this->assertSame(2_000_000_000_000_000, $appended->recordedAt()->ordinal());
+        // COR-4 Q-2 (V-5, PO 2026-11-03): recordedAt now strictly increases, 1 µs after the last fact.
+        // (Was: equal to the last fact's instant, 2_000_000_000_000_000.)
+        $this->assertSame(2_000_000_000_000_001, $appended->recordedAt()->ordinal());
     }
 
     public function test_t7_a_failure_inside_append_rolls_everything_back(): void
