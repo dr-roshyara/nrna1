@@ -15,3 +15,4 @@
 - **Quote check (`corpus_quote_check.py`):** 3 found, 0 not found; the other quotations are marked "in meaning", with line references checked against the source.
 - **Self-check:** 17 flags, all homonym reminders (admission, identity, admit); each use read against §8.95 C4 and §8.93 C2.
 - **Outside authors:** persons named as people in S0397 (classical authors, bibliography authors) are not reproduced; schools, traditions and providers stay.
+- **Deviation (recorded, not a stop):** both C110 briefs (step 1 committed `f2920dd90`; step 2 committed `884f979c1` and sent to W) were issued before the Principal's instruction of 2026-11-03 to cite `03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md` in every commission and brief. Neither brief cites it, and they were not reissued during the review. The brief generators were changed so that every brief from C111 on cites the index, and allows it to be read, with the line "the record wins where they differ".
