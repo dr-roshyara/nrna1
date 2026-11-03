@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\DB;
  * PostgreSQL only (DB-1). Runs inside the migrator's transaction, so an abort changes nothing.
  *
  * RELEASE GATE: this migration joins the ledger-migration release gate. It must not run on any persistent database
- * before OQ-01, the §10.2 operator preflight, the lc_messages check and ARB-MEM-01 (COR-1…COR-4 accepted). Until
- * then it runs only on the PBDIGIT-324 throwaway test cluster.
+ * before OQ-01, the §10.2 operator preflight, the lc_messages check and ARB-MEM-01 (COR-1…COR-4 accepted), and
+ * code and migration must be deployed together: after the column rename, code that reads period_fact_id breaks
+ * (COR-4 review condition C-3). Until then it runs only on the PBDIGIT-324 throwaway test cluster.
  */
 return new class extends Migration
 {

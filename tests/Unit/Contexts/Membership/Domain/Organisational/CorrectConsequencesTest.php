@@ -260,6 +260,26 @@ final class CorrectConsequencesTest extends TestCase
         self::assertLifetimes($h, ['A0' => [0, 1], 'A1' => [1, 6], 'A2' => [6, null]], 'both trims apply');
     }
 
+    // COR-4 review F-4 / condition C-4: the trim identity (cause, period) must not collide as a string. Cause "C" trimming
+    // period "1A" is in force when C1's trim of "A" is revived; without the key's separator both read "C1A".
+    public function test_a_revived_trim_is_not_confused_with_a_different_trim_whose_ids_concatenate_alike(): void
+    {
+        $h = MemberHistory::start();
+        foreach ([
+            fn (MemberHistory $h) => $h->admit('A', 0, null, true), fn (MemberHistory $h) => $h->end('EA', 'A', 10),
+            fn (MemberHistory $h) => $h->admit('Y', 10, null, true), fn (MemberHistory $h) => $h->end('EY', 'Y', 20),
+            fn (MemberHistory $h) => $h->admit('Z', 30, null, true), fn (MemberHistory $h) => $h->end('EZ', 'Z', 40),
+            fn (MemberHistory $h) => $h->admit('1A', 40, null, true),
+            fn (MemberHistory $h) => $h->correct('C', 'EZ', 42),    // trims 1A
+            fn (MemberHistory $h) => $h->correct('C1', 'Y', 8),     // trims A
+            fn (MemberHistory $h) => $h->annul('X', 'C1'),
+        ] as $step) {
+            $h->commit($step($h));
+        }
+
+        $this->assertSame([['C1', 'A']], self::revived($h->void('V', 'X')));
+    }
+
     // Decisions other than reversals revive nothing.
     public function test_end_and_correct_decisions_revive_nothing(): void
     {

@@ -108,6 +108,11 @@ final class MemberLogValidationTest extends TestCase
             'consequence on an unknown period (V-15)' => [[self::admit('A0', 0), self::end('E0', 'A0', 2), self::correct('C1', 'E0', 4, [self::trim('A9', 2, 4)])]],
             'consequence on a period admitted later (V-15)' => [[self::admit('A0', 0), self::end('E0', 'A0', 2), self::correct('C1', 'E0', 4, [self::trim('A1', 2, 4)]), self::admit('A1', 2)]],
             'consequence on a non-Admit (V-15)' => [[self::admit('A0', 0), self::end('E0', 'A0', 2), self::correct('C1', 'E0', 4, [self::trim('E0', 2, 4)])]],
+            // Review F-3 (PO 2026-11-03, option A): structural, independent of time and authority.
+            'Annul without decidedAt (F-3)' => [[self::admit('A1'), new Annul(self::id('X1'), self::id('A1'), self::decision())]],
+            'Annul of a target without decision provenance (F-3)' => [[new Admit(self::id('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::rule('statute-7', 'v1')), self::annul('X1', 'A1')]],
+            'Correct trimming its own period (F-3)' => [[self::admit('A0', 0), self::end('E0', 'A0', 2), self::correct('C1', 'E0', 4, [self::trim('A0', 2, 4)])]],
+            'Correct of a Correct trimming the chain root period (F-3)' => [[self::admit('A0', 0), self::end('E0', 'A0', 2), self::correct('C1', 'E0', 3), self::correct('C2', 'C1', 4, [self::trim('A0', 1, 2)])]],
         ];
     }
 

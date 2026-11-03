@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/phpunit.membership-pg.xml
+
+DDDDDFFFDDD                                                       11 / 11 (100%)
+
+Time: 00:06.156, Memory: 26.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "provenance without its actor" ([['{"kind":"decision"}', 1, 'A1', 'admit', '2026-01-01', 'none']])
+Failed asserting that exception of type "ErrorException" matches expected exception "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid". Message was: "Undefined array key "actorOrSource"" at
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/ProvenanceJson.php:45
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:297
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:87
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionDecodeTest.php:78
+.
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "provenance whose actor is a number" ([['{"kind":"decision","actorOrSo...:null}', 1, 'A1', 'admit', '2026-01-01', 'none']])
+Failed asserting that exception of type "TypeError" matches expected exception "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid". Message was: "App\Contexts\Membership\Domain\Organisational\Provenance::decision(): Argument #1 ($actor) must be of type string, int given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/ProvenanceJson.php on line 44" at
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Domain/Organisational/Provenance.php:32
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/ProvenanceJson.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:297
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:87
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionDecodeTest.php:78
+.
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionDecodeTest::test_an_invalid_stored_history_fails_to_load_as_stored_member_log_invalid with data set "provenance that is a list" ([['[1,2]', 1, 'A1', 'admit', '2026-01-01', 'none']])
+Failed asserting that exception of type "ErrorException" matches expected exception "App\Contexts\Membership\Infrastructure\Organisational\StoredMemberLogInvalid". Message was: "Undefined array key "kind"" at
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/ProvenanceJson.php:43
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:297
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:87
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/93000efc-ad03-4c1d-9b3f-40966981efc3/scratchpad/cor4-cond-red/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionDecodeTest.php:78
+.
+
+FAILURES!
+Tests: 11, Assertions: 13, Failures: 3, Deprecations: 1.

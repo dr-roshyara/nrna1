@@ -26,6 +26,8 @@
 | `s7-a` | 7 | the reload differential on PostgreSQL (every 10th bounded C-2 history) | 1 OK (14,827 assertions, 44 s) |
 | `s7-mutant-drop-trims` | 7 sensitivity | `ConsequencesJson::decode()` drops every trim (scratch copy): the differential **fails** (history D541) | 1 failure |
 | `final-run1..3` | 8 | three full runs on fresh clusters at `96d71183e` (system ids `…638818`, `…160738`, `…672034`) | 92 OK × 3 |
+| `cond-red` | review C-1 RED | the new damaged-provenance cases against the **unfixed** code (worktree at `884f979c1`; code identical to `acdedf1cd` for Membership, plus the decode test copied in): `ErrorException` / `TypeError` instead of `StoredMemberLogInvalid`, as the review found (F-1). The ∞-trim test (F-7) passes already, because it closes a coverage gap, not a defect | 3 failures (11) |
+| `cond-green` | review conditions GREEN | the full suite with C-1, C-2, F-3, C-4 and F-7 in place (`884f979c1` plus the uncommitted fixes) | 96 OK |
 
 **Mutants** were applied only in scratch worktree copies, which were then removed.
 

@@ -58,6 +58,10 @@ final class PostgresCorrectionDecodeTest extends MembershipPostgresTestCase
             'an Annul of a Void (N-3)' => [[self::ADMIT,
                 ['seq' => 2, 'fact_id' => 'V2', 'kind' => 'void', 'effective_at' => null, 'target_fact_id' => 'A1'],
                 ['seq' => 3, 'fact_id' => 'X3', 'kind' => 'annul', 'effective_at' => null, 'target_fact_id' => 'V2']]],
+            // Review condition C-1 (F-1): damaged provenance must fail as StoredMemberLogInvalid, not ErrorException / TypeError.
+            'provenance without its actor' => [[['provenance' => '{"kind":"decision"}'] + self::ADMIT]],
+            'provenance whose actor is a number' => [[['provenance' => '{"kind":"decision","actorOrSource":5,"declarationRef":null,"ruleRef":null,"ruleVersion":null,"importer":null,"note":null,"authorityEvidence":null}'] + self::ADMIT]],
+            'provenance that is a list' => [[['provenance' => '[1,2]'] + self::ADMIT]],
             'a reversal of a later fact (stored out of order)' => [[self::ADMIT,
                 ['seq' => 3, 'fact_id' => 'C3', 'kind' => 'correct', 'effective_at' => '2025-12-01', 'target_fact_id' => 'A1', 'consequences' => '[]', 'g2_version' => 1],
                 ['seq' => 2, 'fact_id' => 'X2', 'kind' => 'annul', 'effective_at' => null, 'target_fact_id' => 'C3']]],
@@ -72,6 +76,27 @@ final class PostgresCorrectionDecodeTest extends MembershipPostgresTestCase
 
         $this->expectException(StoredMemberLogInvalid::class);
         $this->repo()->load($t, MemberId::fromString('M1'));
+    }
+
+    // Review F-7 (PO 2026-11-03, option A): an open-ended (∞) trim bound is stored as null and reloads as ∞, exactly.
+    public function test_an_open_ended_trim_round_trips_through_the_database(): void
+    {
+        $t = $this->stored([
+            ['seq' => 1, 'fact_id' => 'A0', 'kind' => 'admit', 'effective_at' => '2025-01-01', 'initial_term' => 'none'],
+            ['seq' => 2, 'fact_id' => 'E1', 'kind' => 'end', 'effective_at' => '2025-06-01', 'target_fact_id' => 'A0', 'end_kind' => 'resignation'],
+            ['seq' => 3, 'fact_id' => 'A1', 'kind' => 'admit', 'effective_at' => '2025-06-01', 'initial_term' => 'none'],
+            ['seq' => 4, 'fact_id' => 'C4', 'kind' => 'correct', 'effective_at' => '2025-12-01', 'target_fact_id' => 'E1',
+                'consequences' => '[{"period":"A1","removed":[["2025-06-01",null]]}]', 'g2_version' => 1],
+        ]);
+
+        $correct = $this->repo()->load($t, MemberId::fromString('M1'))->log()[3]->fact();
+
+        $this->assertInstanceOf(\App\Contexts\Membership\Domain\Organisational\Correct::class, $correct);
+        $removed = $correct->consequences()[0]->removed();
+        $this->assertTrue($removed->equals(\App\Contexts\Membership\Domain\Organisational\IntervalSet::of(
+            \App\Contexts\Membership\Domain\Organisational\Interval::from(\App\Contexts\Membership\Infrastructure\Organisational\DateOrdinal::fromDate('2025-06-01')),
+        )), 'removed = [2025-06-01, ∞)');
+        $this->assertTrue($removed->intervals()[0]->isOpenEnded());
     }
 
     public function test_a_valid_stored_history_with_every_new_kind_loads(): void

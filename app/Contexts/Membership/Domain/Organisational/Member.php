@@ -64,12 +64,25 @@ final readonly class Member
                 if ($fact instanceof Annul && $fact->provenance()->kind() !== ProvenanceKind::Decision) {
                     throw new \InvalidArgumentException("Stored log: Annul {$id} has no decision provenance (R-7).");
                 }
+                // Review F-3 (PO 2026-11-03): an Annul carries its decision instant (P-2) and sets aside only a decision (R-2).
+                if ($fact instanceof Annul && $fact->decidedAt() === null) {
+                    throw new \InvalidArgumentException("Stored log: Annul {$id} has no decidedAt.");
+                }
+                if ($fact instanceof Annul && $target->provenance()->kind() !== ProvenanceKind::Decision) {
+                    throw new \InvalidArgumentException("Stored log: Annul {$id} targets a fact without decision provenance (R-2).");
+                }
             }
             if ($fact instanceof Correct) {
                 $target = self::requireEarlier($earlier, $fact->target(), $id, Fact::class);
                 if ($target instanceof ReversalFact) {
                     throw new \InvalidArgumentException("Stored log: Correct {$id} targets an Annul or a Void (N-3).");
                 }
+                // Review F-3: g2 never trims the correction's own period (the period of its chain root).
+                $root = $target;
+                while ($root instanceof Correct) {
+                    $root = $earlier[$root->target()->value()];
+                }
+                $ownPeriod = $root instanceof End ? $root->period()->admitFactId() : $root->id();
                 $trimmed = [];
                 foreach ($fact->consequences() as $consequence) {
                     $period = $consequence->period()->admitFactId();
@@ -78,6 +91,9 @@ final readonly class Member
                     }
                     $trimmed[$period->value()] = true;
                     self::requireEarlier($earlier, $period, $id, Admit::class);
+                    if ($period->equals($ownPeriod)) {
+                        throw new \InvalidArgumentException("Stored log: Correct {$id} trims its own period {$period->value()}.");
+                    }
                 }
             }
             $earlier[$id] = $fact;

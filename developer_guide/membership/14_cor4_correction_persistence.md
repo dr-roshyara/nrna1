@@ -54,14 +54,14 @@ if ($fact instanceof End) {
 }
 if ($fact instanceof ReversalFact) {          // Annul, Void
     $target = self::requireEarlier($earlier, $fact->target(), $id, Fact::class);
-    // Annul of a Void → refused (N-3); Annul without decision provenance → refused (R-7)
+    // Annul: not of a Void (N-3); has decision provenance (R-7), a decidedAt, and a decision-provenance target (R-2)
 }
-if ($fact instanceof Correct) {               // targets an Admit, End or Correct; one consequence per earlier Admit
-    …
+if ($fact instanceof Correct) {               // targets an Admit, End or Correct; one consequence per earlier Admit;
+    …                                        // never a consequence on its own (chain-root) period
 }
 ```
 
-That also rules out a fact targeting itself, which would make `Resolution::rootOf` recurse without end (V-14).
+That also rules out a fact targeting itself, which would make `Resolution::rootOf` recurse without end (V-14). The three rules added after the review (F-3: an Annul's `decidedAt`, an Annul's target provenance, a Correct trimming its own period) are structural too: no `decide*` path can produce such a log, and none of them depends on time or authority.
 
 ### Writing a fact (`encode`)
 
@@ -97,7 +97,11 @@ try {
 }
 ```
 
-Only the decoders' and the kernel's validation failures are wrapped; any other `\Error` (a programming defect) propagates.
+Only the decoders' and the kernel's validation failures are wrapped; any other `\Error` (a programming defect) propagates. For that to hold, **every decoder must fail with one of the wrapped types**:
+- `ProvenanceJson::decode` checks every field's presence and type (review C-1), so damaged provenance fails with `UnexpectedValueException`, never with a warning, `ErrorException` or `TypeError`;
+- `ConsequencesJson::decode` and `DateOrdinal::fromDate` already did.
+
+**The message names only the Member, the organisation and the cause's class** (review C-2). The cause's own message can echo stored data, so it stays only in `getPrevious()`.
 
 ### The schema
 
@@ -123,11 +127,12 @@ The table and its CHECKs are in the Slice 1b contract, "Amendment (2026-11-03)".
 
 | Test | What it pins |
 |---|---|
-| `MemberLogValidationTest` (18) | the 17 structurally invalid logs are refused; a valid log of every kind loads, guards not re-run |
+| `MemberLogValidationTest` (22) | the 21 structurally invalid logs (incl. the three F-3 rules) are refused; a valid log of every kind loads, guards not re-run |
+| `ProvenanceJsonTest` (18), `StoredMemberLogInvalidTest` (1) | damaged provenance → `UnexpectedValueException` (C-1); the message never carries stored payload (C-2) |
 | `StorableValidTimeTest` (8), the architecture property test | R-1a-6 for Correct and its trim bounds; no dated fact escapes `StorableValidTime` |
 | `MemberRepositoryContract` (double and PostgreSQL) | unstorable corrections refused; strictly increasing `recordedAt`; every-kind round trip (incl. a two-period Correct); `appliedCommand` for new kinds; the **reload differential** over every bounded C-2 history (double: all; PostgreSQL: every 10th) |
 | `PostgresCorrectionSchemaTest` (19) | columns, every CHECK branch, the same-Member target FK, `down()` refusal and round trip |
-| `PostgresCorrectionDecodeTest` (7) | damaged stored histories → `StoredMemberLogInvalid` |
+| `PostgresCorrectionDecodeTest` (11) | damaged stored histories, incl. damaged provenance (C-1) → `StoredMemberLogInvalid`; an open-ended (∞) trim round-trips (F-7) |
 | `PostgresCorrectionRaceTest` (3 × 8 rounds × 4 processes) | Annul vs Correct; two Corrects; Correct vs End (never both); stored consequences = g2 on the stored prefix |
 | `ConsequencesJsonTest` (20) | the jsonb format, round trip, key order, every malformed shape, including the three that mutation testing found (a keyed object of valid trims, a scalar, a pair given as an object) |
 
@@ -148,7 +153,9 @@ MEMBERSHIP_PG_IMAGE=docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6
 
 ## Pitfalls
 
-- **Never run this migration on a persistent database.** It joins the release gate: OQ-01, the §10.2 preflight, `lc_messages` and ARB-MEM-01.
+- **Never run this migration on a persistent database.** It joins the release gate:
+  - OQ-01, the §10.2 preflight, `lc_messages` and ARB-MEM-01;
+  - **code and migration deployed together** (review C-3). After the rename, code that reads `period_fact_id` breaks.
 - **The PostgreSQL suite does not wrap tests in transactions** (F-5: `append` refuses inside one). Rows from earlier tests stay committed, so a test that needs an empty table must create that state inside its own transaction and roll it back. `PostgresCorrectionSchemaTest`'s `down()` test does.
 - **Do not catch `\Throwable` in `load()`.** A programming defect must not be reported as damaged data.
 - **The double is near-trivially right** (it stores objects). Only the PostgreSQL runs prove the encoding.

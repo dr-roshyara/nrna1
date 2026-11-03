@@ -296,7 +296,8 @@ org_membership_facts (changes only)
   - OQ-01;
   - the §10.2 operator preflight;
   - the `lc_messages` check;
-  - ARB-MEM-01 (COR-1…COR-4 accepted).
+  - ARB-MEM-01 (COR-1…COR-4 accepted);
+  - **code and migration deployed together.** After the column rename, code that reads `period_fact_id` breaks. *(Added 2026-11-03, COR-4 review condition C-3.)*
 
 **§6 Operations:**
 

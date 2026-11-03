@@ -301,6 +301,8 @@ All database-free scratch scripts at `f2920dd90`; no tree file was edited.
 | F-3 | three structural load rules added: an Annul has `decidedAt`; an Annul's target has decision provenance; a Correct does not trim its own chain period |
 | F-7 | a PostgreSQL test storing and reloading an open-ended (∞) trim |
 
+**Conditions closed (2026-11-03; plan §10 "Review conditions closed"; evidence `cond-red`, `cond-green`):** C-1 (shape-checked `ProvenanceJson`; RED on PostgreSQL reproduced the review exactly), C-2 (message without payload, exact message pinned), C-3 (deploy-together clause in all three places), C-4 (killing test; the separator mutant fails it), F-3 (three structural rules), F-7 (∞ trim round trip). Full PostgreSQL suite 96 OK; regression green.
+
 **Acceptance: PENDING.** It follows on the PO's word, after the conditions are committed. *(The original list of decisions needed is kept below.)*
 
 The decisions needed (as listed before the PO's decision):

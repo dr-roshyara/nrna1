@@ -302,6 +302,35 @@ Each must end in exactly one contract outcome. The loser re-decides, with g2 rec
     - **The release gate**, which this migration joins, is recorded in the migration docblock, the story, that amendment and guide 14.
   - **Regression (database-free):** Domain 189, Application 76, Infrastructure **42**, Architecture 98.
   - **Status:** steps 1–8 done; **STOP for the independent review.**
+  - Committed `acdedf1cd`. Review brief `42a8bbf04`.
+- 2026-11-03: **Independent review returned: ACCEPT WITH CONDITIONS C-1…C-4, no path found that lets a damaged history resolve.**
+  - Record: `docs/publicdigit/reviews/2026-11-03-pbdigit329-cor4-independent-review-and-acceptance.md` (`43b80fc23`).
+  - **PO: option (A), C-2 as recommended**, with F-3 and F-7 included.
+- 2026-11-03: **Review conditions closed.**
+  - **Withdrawn in step 8's classification:** `Member.php:390` "the key's separator … cannot change the result" is **wrong for the separator** (review F-4). The period-part and order variants stay equivalent.
+  - **C-1 (F-1):** `ProvenanceJson::decode` checks every field's presence and type and throws `UnexpectedValueException` (malformed JSON: `JsonException`).
+    - **Database-free:** `ProvenanceJsonTest`, 18 tests. RED: 13 failures (`TypeError` / `ValueError`, plus 7 PHP warnings); the 4 round trips already passed.
+    - **PostgreSQL:** 3 damaged-provenance cases in `PostgresCorrectionDecodeTest`. RED `cond-red` against the unfixed code: 3 failures (`ErrorException` / `TypeError`), exactly as the review found.
+    - `ProvenanceJson` predates COR-4; the fix also protects Admit / End loads.
+  - **C-2 (F-2):** `StoredMemberLogInvalid`'s message names the Member, the organisation and the cause's class only. The cause stays as `getPrevious()`. `StoredMemberLogInvalidTest`: RED, 1 failure (the payload was echoed); the exact message is now pinned.
+  - **C-3 (F-6):** "code and migration deployed together" added to the migration docblock, the Slice 1b amendment and guide 14.
+  - **C-4 (F-4):** `CorrectConsequencesTest::test_a_revived_trim_is_not_confused_with_a_different_trim_whose_ids_concatenate_alike` (the reviewer's 11-fact history). It passes on the kernel and **fails on the separator-free key mutant** (verified with a mutated copy loaded first).
+  - **F-3:** `Member::requireStructurallyValid` additionally refuses:
+    - an Annul without `decidedAt`;
+    - an Annul of a target without decision provenance (R-2);
+    - a Correct trimming its own chain-root period.
+
+    `MemberLogValidationTest` + 4 cases: RED, 4 failures. All exhaustive and property suites (which build logs through `fromLog`) stay green, so no kernel-produced log trips the new rules.
+  - **F-7:** `PostgresCorrectionDecodeTest::test_an_open_ended_trim_round_trips_through_the_database`, `[2025-06-01, ∞)` stored as `null`. It passed already against the unfixed code: a coverage gap, not a defect.
+  - **PostgreSQL** (`cond-green`, at `884f979c1`, whose code is identical to `acdedf1cd`; verified by an empty `git diff` over app / database / tests / routes / config): **96 tests, exit 0**. `tests/Unit/Testing` 168 OK. Both runs are archived in the evidence folder.
+  - **Mutation, targeted** (`--filter=Member.php,ProvenanceJson.php,StoredMemberLogInvalid.php`, timeout 900 s): 309 mutants, 288 killed, 16 escaped, 5 not covered, 0 skipped; MSI 93 %, covered 94 %.
+    - **New survivors:**
+      - `ProvenanceJson:46` (depth ±1): equivalent;
+      - `ProvenanceJson:90` × 2 (the object check weakened): equivalent in effect, because a list never holds the required `kind` key and fails one line later with the same `UnexpectedValueException`;
+      - `StoredMemberLogInvalid:20` × 5: the message ordering mutants (3) are now **killed** by the exact-message assertion (verified directly); the exception-code mutants (0 → ±1) are not contractual.
+    - The rest are as classified in step 8.
+  - **Regression (database-free):** Domain 194, Application 76, Infrastructure 61, Architecture 98.
+  - **Status:** conditions closed; **awaiting the PO's acceptance.**
 
 ## 11. Open questions (outside this plan's decisions)
 
