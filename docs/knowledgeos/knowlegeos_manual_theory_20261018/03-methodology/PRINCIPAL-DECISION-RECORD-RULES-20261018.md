@@ -932,3 +932,8 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis:** 2,366 of 2,734 allowed sources remain after S0377 (read log and `CORPUS-ALLOWED.tsv`, checked 2026-11-03); observed pace 25–62 sources a day (read log, 2026-10-29 to 11-02); no new concept in about 200 sources (register at 265 since 2026-10-26).
 - **Authorised:** the Governance Engineer prepares, after the S0353–S0377 consolidation is settled, a decision paper: (1) the measured pace under the new windows; (2) the remaining sources by series and type, and which series are likely to bear on the open deliverables (primitives; the derivation chain); (3) options: continue in index order, or targeted reading (§12b search and branch consult) for low-yield stretches. From repository records and source metadata only (paths, sizes, series); **no corpus source is opened** by the Governance Engineer.
 - **Not decided:** any change to reading order, depth or the Rulebook. Nothing is required of the Professor.
+
+## Addendum 2026-11-03T03:38:47Z: implementation-ideas log line sent to the Professor (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent"
+- **Sent:** the approved line of the addendum "implementation-ideas log during extraction" (above), unchanged. **In force for the Professor from receipt.**
