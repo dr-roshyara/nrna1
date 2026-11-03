@@ -13,7 +13,7 @@
 
 | Item | State | Evidence |
 |---|---|---|
-| Reading | Resumed at S0367 after the T9-02 ruling; last read S0369 (C100 in review, 2026-11-03). From C101 sibling answers to one prompt share a window (≤ 5 sources, each full; Principal 2026-11-03). Next: the S0353–S0377 consolidation, then the gate after S0402 | read log; decision record |
+| Reading | S0353–S0377 consolidation **settled** (`58f56cffc`); Ch. 10 consequences 1–6 and plan steps 1–2 applied on the Principal's ruling; reading resumes at S0378; next stop the gate after S0402 (**planted-gap test**: GE prepares plants and the check brief now, S2) | decision record; read log |
 | Consolidation S0278–S0302 (a planted-gap test) | **Settled.** Run 2 (fresh) scored blind 3 of 4 (Q4, a stale pointer, missed); stage 1 `2b9441cc9`; stage 2 `e3ac4df54`, guard checked | `review/CONSOLIDATION-S0278-S0302/PLANTED-GAP-RESULT.md` (`6844d88e5`) |
 | Sealed key and manifest | **Released** after scoring (key `c0427904…`, manifest `6371c741…`, both unchanged) | `PLANTED-GAP-RESULT.md`; ACCESS-RECORD |
 | Req/A theory turn | **Settled; U1–U6 decided** (§9.19 v2, `fb146c3a6`; rulings confirmed, decision record 2026-11-01T17:32:50Z). U5 (a) EF; U6 (a) O1 per act kind, D clauses later (T9-21); U2 (a) g1's class, kernel; U1 (b) T9-02 later; U3 (b) unfixed, scoped; U4 (d) deferred. No minimal kernel of KnowledgeOS stated; uniqueness after U6 holds in the toy model only. **T9-21 and T9-02 wait for a later authorised turn** | decision record; `review/REQ-A-TURN/SETTLEMENT.md` |
@@ -53,7 +53,7 @@
 
 ## Next actions (Governance Engineer)
 
-0. **Reading-strategy paper** (Principal, 2026-11-03): after the S0353–S0377 consolidation settles — measured pace; remaining 2,366 sources by series and type (metadata only); options: in order vs targeted reading.
+0. **Reading-strategy paper** (Principal, 2026-11-03): **now due** (the consolidation settled `58f56cffc`); include the restatement counts (`RN-COUNTS.md`: 176 of 229 findings R; 19 of 22 consolidation misses R) — measured pace; remaining 2,366 sources by series and type (metadata only); options: in order vs targeted reading.
 1. **The review-quality analysis** (authorised 2026-11-01; it also takes up the `CLAUDE.md` concern of 2026-11-02 — automatic loading into reviewer sessions and its effect on blind review and the planted-gap test — evidence and any corrective proposal brought back separately): detection vs correct, partial and wrong treatment, severity, unresolved findings, limits of the evidence; concept development measured, reading depth unchanged; no reviewer ranking beyond the data.
 2. **Check the first windows from S0303** for the time record: four non-overlapping categories, active time apart from waiting time.
 3. **Open for the Principal, one at a time when useful:** P1, P2, P-Q4 (pointer check), I-7 (b), I-3 (after the Professor defines it), I-4; T9-21 and T9-02 need a later authorised turn.
