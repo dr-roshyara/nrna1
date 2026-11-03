@@ -28,9 +28,9 @@ final class Resolution
             if (!$fact instanceof Admit) {
                 continue;
             }
-            $baseClaim = self::baseClaim($fact, $active);
+            $baseClaim = self::baseClaim($fact, $active, $live);
             $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $active));
-            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $lifetime));
+            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime));
         }
 
         return new ResolvedMember($periods);
@@ -91,16 +91,26 @@ final class Resolution
      */
     public static function valueOf(array $facts, FactId $id): TimePoint
     {
+        return self::value(self::live($facts), self::find($facts, $id));
+    }
+
+    /**
+     * Stage 3 over the live facts. Only live corrections count, so a correction of an annulled fact stays inert
+     * until that fact is live again (§10a Correct (5)); for a live root, live and active corrections coincide.
+     *
+     * @param list<Fact> $live
+     */
+    private static function value(array $live, Fact $fact): TimePoint
+    {
         $latest = null;
-        foreach (self::live($facts) as $fact) {
-            if ($fact instanceof Correct && $fact->target()->equals($id)) {
-                $latest = $fact;
+        foreach ($live as $candidate) {
+            if ($candidate instanceof Correct && $candidate->target()->equals($fact->id())) {
+                $latest = $candidate;
             }
         }
         if ($latest !== null) {
-            return self::valueOf($facts, $latest->id());
+            return self::value($live, $latest);
         }
-        $fact = self::find($facts, $id);
 
         return match (true) {
             $fact instanceof Correct => $fact->value(),
@@ -157,21 +167,23 @@ final class Resolution
     }
 
     /**
-     * Stages 3–4, values and BaseClaim: [start, max(start, end)), or [start, ∞) without an End.
+     * Stages 3–4, values and BaseClaim: [value(Admit), max(start, value(End))), or [start, ∞) without an End.
      * Totality on logs unreachable through decide(): the latest End on the period (by seq) counts.
      *
      * @param list<Fact> $active
+     * @param list<Fact> $live
      */
-    private static function baseClaim(Admit $admit, array $active): Interval
+    private static function baseClaim(Admit $admit, array $active, array $live): Interval
     {
+        $start = self::value($live, $admit);
         $end = TimePoint::infinity();
         foreach ($active as $fact) {
             if ($fact instanceof End && $fact->period()->equals($admit->periodId())) {
-                $end = $fact->effectiveAt();
+                $end = self::value($live, $fact);
             }
         }
 
-        return Interval::of($admit->effectiveAt(), TimePoint::max($admit->effectiveAt(), $end));
+        return Interval::of($start, TimePoint::max($start, $end));
     }
 
     /**
@@ -194,14 +206,17 @@ final class Resolution
         return IntervalSet::of($baseClaim);
     }
 
-    /** Stage 7, term segments: the initial term [start, until), clipped to the lifetime; empty without one (C-S0-2). */
-    private static function term(Admit $admit, IntervalSet $lifetime): IntervalSet
+    /**
+     * Stage 7, term segments: the initial term [start, until), clipped to the lifetime; empty without one (C-S0-2).
+     * The start is the period's resolved (possibly corrected) start; until is not correctable (D-COR-3).
+     */
+    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime): IntervalSet
     {
         $until = $admit->initialTermUntil();
         if ($until === null) {
             return IntervalSet::empty();
         }
-        $term = Interval::of($admit->effectiveAt(), $until);
+        $term = Interval::of($start, TimePoint::max($start, $until));
 
         return IntervalSet::of(...array_map(static fn (Interval $l): Interval => $l->intersectedWith($term), $lifetime->intervals()));
     }

@@ -146,3 +146,14 @@ Contract §3.3, §4, §7, §9, §10, §10a, §14.5, §14.7; BD-REV-ER and D-COR-
   - **Not yet in effect:** an accepted Correct does not change the resolved state until step 4 (value precedence in `Resolution::of`). It creates no consequences until step 5.
   - **Deviation, recorded:** `Correct` does **not** implement `EffectiveDatedFact`. `MembershipStorableValidTimeCoverageTest` pins the dated facts to Admit and End. The storable-range part of P-5 (R-1a-6) is checked at the persistence port, so it moves to **COR-4**, which must extend `StorableValidTime`. The kernel applies the finite and dating parts of P-5.
   - **Regression:** Domain 136, Application 62, Infrastructure 22, Architecture 97.
+  - Committed `58b89ab44`.
+- 2026-11-03: **Step 4 done (value precedence, chains, annulled target inert then revived).**
+  - **RED:** `CorrectResolutionTest`, 8 tests, 8 failures. Every one failed first on the stale recorded date (e.g. "got [3, ∞)").
+  - **Test defect found after GREEN (fixture, not code):** three tests asked `isMember`, which means "in force" (lifetime ∧ term). Their admits had no term. They now admit with an open-ended term, as the existing tests do.
+  - **GREEN, in `Resolution`:**
+    - the start of the BaseClaim is `value(Admit)` and its end is `value(latest live End)`; stage 3 runs before stage 4;
+    - the term starts at the resolved start (its until date is not correctable, D-COR-3);
+    - `value` counts only **live** corrections, so a correction of an annulled fact is inert until the fact is live again (via Annul(Annul) or Void(Annul)), with no special case;
+    - for a live root, live and active corrections coincide, so `active()` stays the identity.
+  - **Interim, until step 5:** a correction that would overlap another period is refused by G\* (`OverlappingMembershipPeriods`). Step 5's trim consequences replace this.
+  - **Regression:** Domain 144, Application 62, Infrastructure 22, Architecture 97.
