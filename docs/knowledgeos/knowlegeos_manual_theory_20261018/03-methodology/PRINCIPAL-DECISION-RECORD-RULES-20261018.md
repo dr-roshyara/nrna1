@@ -984,3 +984,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim, to the Governance Engineer):** "sent" — for the two-item message the Governance Engineer gave: (1) the ten-source trial line (addendum above, unchanged); (2) "02-FILES.jsonl is added to every commission's \"do not open\" list and to the brief template; tools may keep reading it. Reviewer C's exposure at S0353–S0377 is recorded; no further action."
 - **Decided by sending (2):** `02-FILES.jsonl` (lane root; 58 rows name non-allowed sources with content summaries, access record entry of 2026-11-03) may not be opened by any reviewer; tools may keep reading it. Applied by the Governance Engineer to `CONSOLIDATION-BRIEF-TEMPLATE.md` (REVIEWER-NOTE item 4).
 - **In force for the Professor from receipt.**
+
+## Addendum 2026-11-03T05:40:25Z: S0386 used as on disk; disk-status check at source closing (recorded by the Governance Engineer)
+
+- **Principal (verbatim, sent to the Professor during C107; seen by the Governance Engineer in the Professor's transcript pasted by the Principal, 2026-11-03):** "Use S0386 as read on disk (sha256 95c6113…, recorded in the READ-LOG) with the deviation recorded; the Governance Engineer checks what differs from the listed version; add a disk-status check to source closing; then continue C107."
+- **Decided:** S0386 is used as on disk; the deviation is recorded; the Professor adds a check of `CORPUS-ALLOWED.tsv`'s disk-status column to source closing; the Governance Engineer's check is in the access record (entry of this time).
+- **Also observed (not recorded as a ruling):** C107 runs as S0383–S0391 with two commissions, consistent with the trial split line of option 1; the Principal has not yet confirmed to the Governance Engineer that the split line, with its S0403–S0427 clause, was sent.
