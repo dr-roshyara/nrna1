@@ -978,3 +978,9 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Supersedes** the addendum "up to ten sources for coherent short series" of earlier today, which was approved but not sent; that line is **withdrawn** and was not sent to the Professor.
 - **Basis and limits:** Rulebook v1.4 §3 (ten with the review split in two); Trial T3's negative result (METHOD-VERSIONS entry 51); comparison baseline C89–C105 (22 consolidation misses in 25 sources); C106 (five sources) as the in-block comparison. Two windows: indicative, not proof. A trial authorised by the Principal, judged at the next fixed point; no rule text changed.
 - **Binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-03T04:11:03Z: trial and 02-FILES.jsonl lines sent; 02-FILES.jsonl not to be opened by reviewers (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent" — for the two-item message the Governance Engineer gave: (1) the ten-source trial line (addendum above, unchanged); (2) "02-FILES.jsonl is added to every commission's \"do not open\" list and to the brief template; tools may keep reading it. Reviewer C's exposure at S0353–S0377 is recorded; no further action."
+- **Decided by sending (2):** `02-FILES.jsonl` (lane root; 58 rows name non-allowed sources with content summaries, access record entry of 2026-11-03) may not be opened by any reviewer; tools may keep reading it. Applied by the Governance Engineer to `CONSOLIDATION-BRIEF-TEMPLATE.md` (REVIEWER-NOTE item 4).
+- **In force for the Professor from receipt.**
