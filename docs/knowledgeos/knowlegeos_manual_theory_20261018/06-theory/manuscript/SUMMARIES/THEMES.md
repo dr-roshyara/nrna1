@@ -2,7 +2,7 @@
 
 *Metadata, not book text (the Principal, 2026-11-03, decision 5).*
 - It lists sections and never states a result of its own; the sections win, and drafts cite the sections, never this list.
-- First version written at the consolidation S0353–S0377, for the themes that recur in S0353–S0377 (windows C89–C105).
+- First version written at the consolidation S0353–S0377, for the themes that recur in S0353–S0377 (windows C89–C105); updated at the settlement of the consolidation S0378–S0402 (rows 11, 15 extended; 18, 19 added).
 - Sections settled at that consolidation may restate the entries below; this list is updated at its settlement.
 
 | # | Theme | Settled in (sections, with their own labels) | Open, and where |
@@ -17,10 +17,12 @@
 | 8 | Justification and confidence | no book concept: §8.89 C2 (the register); §8.87 C4 | confidence: G7 (F13 part) |
 | 9 | Absence: no claim, unknown, refusal, not attested | §8.89 C5; §8.91 C6; §8.90.3 (F-01, consolidation S0353–S0377); §8.95 C6; §8.96 C6; CON-0221; §9.15 G1, G6 | a refusal leaves no trace: observation on T0-07 and G8 (§8.91 C6, §8.96 C3), not opened |
 | 10 | The incompleteness lens ("cannot verify its own invariants") | §8.51 C1; §8.89 C4; §8.91 C5; §8.92 C6; §8.96 C6 | — |
-| 11 | Independence of a check, of a reviewer, of a fresh session | §8.06 C1, C3 (CON-0125, CON-0127); §8.27 C3; §8.75 C5; §8.76 C4; §8.97 C2, C3; §8.98 C1 | review independence: the Principal's open question (§8.76 C4; §8.78 C5) |
+| 11 | Independence of a check, of a reviewer, of a fresh session | §8.06 C1, C3 (CON-0125, CON-0127); §8.27 C3; §8.75 C5; §8.76 C4; §8.97 C2, C3; §8.98 C1; §8.11 C1–C2, §8.12 C1 (estate answers by participation); §8.100 C3; §8.105 C3 (a restart: participation, not identifier; one slice, no rule) | review independence: the Principal's open question (§8.76 C4; §8.78 C5) |
 | 12 | Lanes recorded by the process they appoint | §8.71 C3; §8.73 C1; §8.79 C3; §8.98 C3 | — |
 | 13 | Rules decided outside the kernel | §8.94 C6; §9.13 L48, L58 | — |
 | 14 | History and the store that carries it | §8.91 C1; §9.20 L155; §8.94 C3 (K2) | history as a primitive: T9-03 |
-| 15 | Lenses as sources of questions | §8.93 C5; §8.89 C4; §8.51 C1; §8.33 | — |
+| 15 | Lenses as sources of questions | §8.93 C5; §8.89 C4; §8.51 C1; §8.33; §8.101 C1; §8.103 C1; §8.105 C1 | — |
 | 16 | A guard on a documented path as evidence for the practised path | §8.98 C5; §8.29 C5 | observation, no map home (§8.98 C5) |
 | 17 | Merging records of several applications: in D only if the union also meets D's designation clauses | §9.16 R2 (a) (restated at the consolidation S0353–S0377, C-F2); §9.17 R3 (c) | T9-18 (identity used by R2) |
+| 18 | Agreement counted as convergence within one commission or one adviser | §8.33 C3 (both halves); §8.31 C4; §8.101 C1; §8.103 C1, C3; §8.104 C1 (one commission; topics are its agenda, positions partly led); §8.105 C4 (artificial coherence) | — |
+| 19 | Hidden interpretation in the kernel: enforced over recorded fields, an unrecorded input, or not built | §8.94 C6; §8.103 C3; §8.104 C3 (three classes); §9.13.2; §9.18.2 | the identity link's supplier (§9.13 L327) |
