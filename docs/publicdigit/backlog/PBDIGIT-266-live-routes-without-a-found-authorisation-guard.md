@@ -61,3 +61,20 @@ Source: `docs/publicdigit/reviews/2026-10-09-membership-audit-challenge-and-pbdi
 | side | Invitation `accept` may not compare the user's email with the invitation (`OrganisationMemberInvitationController.php:110-228`) [H]. |
 
 **Separate item:** secrets written to the log, `PBDIGIT-317`.
+
+## Principal decisions on items 2 and 3 (2026-11-03): SEC-DEC-01
+
+**Record:** `docs/publicdigit/reviews/2026-11-03-pbdigit266-sec-dec-01-security-decision-record.md`. Evidence: IR-SEC-01 (`docs/publicdigit/architecture/reviews/2026-11-03-ir-sec-01-independent-review.md`, "CONFIRMED WITH CORRECTIONS", static only).
+
+- **Item 3 (R-1):** prioritised.
+  - Interim guard on **both** POST and DELETE via the existing `manageCommittee` policy (an interim platform-access restriction, not constitutional authority).
+  - IR-SEC-01: POST is a working unauthorised write. DELETE is currently blocked by a non-existent `MemberId` import (as recorded 2026-10-09), so it is latent.
+- **Item 2 (R-2):** prioritised.
+  - R2-a: organisation membership, interim owner / admin, no self-review.
+  - Fallback: deliberate, tested feature-off.
+  - IR-SEC-01: review currently cannot persist (the repository INSERTs an existing ULID key), so the gap is latent.
+- **Ordering constraints:**
+  - no R-2 persistence repair before verified R2-a or deliberate feature-off;
+  - no DELETE import repair before the `destroy` guard.
+- **Not authorised:** tests (P5(a): first an isolated database assigned to this item and confirmed against ARB-SEC-01); containment code (P5(b)); persistence repairs; production checks (P5(c), separate).
+- **Status of this story:** unchanged (`OPEN — investigation` · not authorised). Items 1 and 4 are outside this decision.
