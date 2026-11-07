@@ -9,6 +9,17 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-11-07): **Social Contribution initiative: Phase 0 approved; `PBDIGIT-335` BLOCKED; no product code changed; S-1 security observation awaits a separate assessment**
+*Written by Claude (Session A) on the Principal's instruction of 2026-11-07. State only; it creates no authority. Additive; the blocks below are unchanged. Full initiative state: `.claude/CONTEXT.md` (UPDATE 2026-11-07).*
+- **Scope:** documentation and backlog only (`docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-*`, `PBDIGIT-331`…`335`). **No change under `app/`, `routes/`, `database/` or `resources/`.**
+- **Product facts found (static reading, not run):**
+  - the April 2026 Contribution Points module is partial: `ContributionPointsService::awardPoints()` has no production caller; no verify or approve route. Status: historical experiment pending PO (`PBDIGIT-332`).
+  - `EloquentCommitteeRepository` save path overwrites `left_date` of already-inactive assignments (corroborates GMAP G-9). No ticket yet; needs separate authorisation.
+- **S-1 (security, outside the initiative):**
+  - the legacy route `/user/{profile}` (`routes/user/userRoutes.php:54`, outside the auth groups) passes the `password` hash and contact fields via `UserController::show`. Not in `PBDIGIT-266`; the `X-Tenant-Id` item already is.
+  - The detail is in local commit `43624fe1c`. **Do not push `election-flow-updated` until the Principal decides on the basis of a separate security assessment (R-05/R-06).** No route change and no ticket so far.
+- **Next:** Principal decisions R-03 (Product Owner), R-05/R-06 (S-1 assessment), R-08 (data-protection advice), then R-04 (Phase 1).
+
 ## 📍 UPDATE (2026-10-26, later): **PBDIGIT-315 implemented: IP binding matches the voter's network (IPv4 /24, IPv6 /64), not the exact address**; awaiting PO acceptance; additive
 - **Done:**
   - new pure `IpBindingNetwork`, used by `TrustLegitimacySecurityVerdict::ipBindingSatisfied()`;
