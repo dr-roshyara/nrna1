@@ -1,10 +1,10 @@
-# PBDIGIT-333: generalising the individual contribution profile to political-party members (discovery)
+# PBDIGIT-333: generalising the individual social contribution capability to political-party members (discovery)
 
 **Type:** Strategic discovery · **Created:** 2026-11-07 · **Raised by:** the Principal (Decision A, 2026-11-07: "after understanding this individual requirement, investigate whether the capability can be reused for all members"). Recorded by Claude, Session A.
 
 | | |
 |---|---|
-| **Status** | `BLOCKED` on `PBDIGIT-331` (the individual case must be understood first) · **implementation not authorised** |
+| **Status** | `BLOCKED` until the individual-case interviews of `PBDIGIT-331` (W1–W3) are complete. Its findings feed the final synthesis and anchor-decision package of 331 (W4b). **Implementation not authorised.** *(C-9, 2026-11-07)* |
 | **Workstream / Epic** | none assigned |
 
 ## 1. Question

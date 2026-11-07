@@ -533,6 +533,7 @@ This report does not recommend merging projects or moving code.
 1. **Business-capability statement first (Operating Loop phase 1).** The Principal or PO states which business need(s) in OQ-1 are in scope. Without it, ownership cannot be resolved, and the loop says to stop and ask rather than infer.
 2. **PO decision on the status of the existing nrna1 Contribution Points module (OQ-4)**, recorded as a decision, before any discovery treats it as either a foundation or legacy.
 3. **Run this subject as part of, or explicitly beside, PBDIGIT-330 discovery.** Do not open a parallel one, because both concern activity, evidence, verification and history.
+   **[Superseded 2026-11-07, C-10]** Principal ruling: the individual social contribution discovery (`PBDIGIT-331`) is kept separate from `PBDIGIT-330`. Shared concepts may be investigated; purposes and ownership are not merged.
 4. **A ubiquitous-language workshop** separating: activity performed · contribution claimed · contribution verified · recognition granted · outcome achieved · impact demonstrated · financial contribution · forum contribution. Record the resulting glossary, then a context-map question.
 5. **Resolve the dependency chain already on record** (ARB-8 Appointment / Tenure ownership; G-9 append-only history) before discovery on candidate 7 (participation history) can conclude.
 

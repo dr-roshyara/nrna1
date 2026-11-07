@@ -42,7 +42,7 @@
 | ID | Decision | Authority |
 |---|---|---|
 | [D] Direction | `nrna1` is the current active project and the only target for Social Contribution. `public-digit` and `election` are old projects and reference sources only. No future development is planned in them. | Principal, 2026-11-07 |
-| [D] Decision A | Start with Komal Oli's individual social contribution profile. Afterwards, investigate reuse for all party members. This does not authorise a general platform. | Principal, 2026-11-07 |
+| [D] Decision A | Start with Komal Oli's individual social contribution profile. Afterwards, investigate reuse for all party members. This does not authorise a general platform. *(Note, 2026-11-07, C-6: "profile" is the discovery framing, i.e. a candidate solution, not a validated product form; see §3.)* | Principal, 2026-11-07 |
 | [D] Decision B | The nrna1 Contribution Points module is a historical experiment, pending formal PO confirmation (`PBDIGIT-332`). Its formula is not approved business logic. It is not modified or retired. | Principal, 2026-11-07 |
 | [D] Sequence | Verify → Extract → Evaluate → Adapt or rewrite → Design and develop in nrna1. Strategic DDD design starts only after this plan is approved. | Principal, 2026-11-07 |
 
@@ -81,6 +81,14 @@ Nothing further is attributed to her.
 
 **Boundary on value [D/P].** The platform must not imply that a number represents the full value of a person's social contribution.
 
+**Need versus candidate solution [D, Principal ruling 2026-11-07].**
+- **Business need [R/H]:** consolidate, substantiate, understand ("calculate") and present social contributions.
+- **Initial discovery case:** Komal Oli.
+- **Candidate solution [H]:** an individual contribution profile.
+- **Unresolved:** whether the right form is a profile, portfolio, documented history, report or dossier, or a combination.
+
+"Profile" is the discovery framing. It must not predetermine the domain model.
+
 ---
 
 ## 4. Project positioning
@@ -92,8 +100,8 @@ Nothing further is attributed to her.
 | election | Reference: workflow, approval and history patterns | [F] HEAD `50bb80e49` (2025-10-30). Database-per-tenant Laravel 12. No social-contribution feature. |
 
 **Why nrna1 is the right target [I], beyond the Principal's direction:**
-1. It is the only project with a live, governed domain model for the concepts this capability depends on: person, membership and organisation (§7.2).
-2. It has the only **ratified** append-only, provenance-bearing decision ledger (§7.5).
+1. It is the only project with a live, governed model of **organisation membership** (ratified Membership architecture), together with **governance records that state the intended person-identity direction** (XD-3a, XD-3b: PROPOSED). A Person identity capability is **not** implemented (§7.2).
+2. It has the only **ratified** append-only, provenance-bearing decision ledger (§7.5). This is a Membership kernel, isolated by `MembershipLedgerIsolationTest` and not wired to HTTP. Its migrations sit under the open ledger-migration release gate (PBDIGIT-264; migration header `2026_11_03_120000…` L22-26).
 3. It has an approved cross-context integration mechanism: outbox and inbox with correlation and causation (§7.6).
 4. Its architecture is enforced by tests (deptrac and `tests/Architecture/*`), so a new capability can be guarded from its first day.
 5. The two old projects contradict themselves on identity and lifecycle (§5.1, §5.3), so they cannot serve as a baseline.
@@ -114,7 +122,7 @@ Nothing further is attributed to her.
 
 | # | Finding | Source | Status | Original intention | Value for nrna1 | Change before reuse | Class |
 |---|---|---|---|---|---|---|---|
-| PD-1 | User (authentication) ≠ Member (standing): "Never put political logic on User"; "Membership IS NOT … a document store … a leaderboard entry" | `architecture/backend/membership-context/brainstorming/20260101_2309_architecture_review.md` §4 L97-128; `20260101_2313_membership_related_stuff.md` L29-40 | documented | Separate login from political standing | Contribution must not hang off a login account | **ALREADY EXISTS** in nrna1 as the XD-3b Person ≠ Account direction (§7.2) | ALREADY EXISTS |
+| PD-1 | User (authentication) ≠ Member (standing): "Never put political logic on User"; "Membership IS NOT … a document store … a leaderboard entry" | `architecture/backend/membership-context/brainstorming/20260101_2309_architecture_review.md` §4 L97-128; `20260101_2313_membership_related_stuff.md` L29-40 | documented | Separate login from political standing | Contribution must not hang off a login account | Consistent with nrna1's **proposed** XD-3b Person ≠ Account direction (§7.2). That direction is an existing architectural proposal, not an implemented capability. | REUSE (principle) |
 | PD-2 | Three incompatible User/Member cardinalities | `2313` L102-107; `20260101_2340_what_is_member_and_what_is_not.md` L28; tenant-templates doc L414 | documented, contradictory | — | Shows the question is hard | nrna1 settles it differently (XD-3b, BR-5) | REJECT |
 | PD-3 | No cross-organisation person. The older doc assumes one global login with tenant selection; newer docs assume per-tenant users | `architecture/design/ddd_bounded_contexts/boundaries/20251115_1627_boundaries.md` L52-85; `…/20251213_1213_claude_instructions_intigration_of_template_into_tenant.md` L16, L40-50 | proposed / obsolete | — | Confirms the gap a person-scoped profile would hit | nrna1 has its own (PROPOSED) XD-3a | REWRITE |
 | PD-4 | Scope-based membership (geographic / functional / diaspora; "Identity + Affiliation + Scope"); geography optional via a `LocationAssignment` value object | `…/brainstorming/scopebased_concept/20260102_1111_scopebased_membership_context.md` L1-60, L283 | proposed | Diaspora and functional membership | Contributions are located somewhere; diaspora is relevant to NRN | Express as a location or scope value on the contribution, not a hard geography foreign key | ADAPT |
@@ -148,7 +156,7 @@ Nothing further is attributed to her.
 | PD-17 | Rank tiers, badges, "+50 Leadership Points", ward/district leaderboards, spendable `contribution_balances` | `20251217_1634_political_parties_schema.md` L604-680; `frontend_view.md`; `20251217_1852…` L218-256 | documented | — | Conflicts with PD-21 and the initiative boundary | REJECT |
 | PD-18 | Four competing visibility models (`public / members / unit_only / private`, `is_public`, mobile `privacy_level`, document `visibility` + `access_level`); "comply with Nepal's privacy laws", never analysed | `20251217_1728…` L495; `20251217_1634` L545, L578; `apps/mobile/…/member.models.ts` L186 | documented / types only | Per-item visibility, separate from profile visibility; default private | nrna1 design plus a data-protection analysis | ADAPT |
 | PD-19 | "Members: view own ledger only" (the owner always sees their full history) | `20251217_1712…` L683 | documented | Self-view rule | — | REUSE |
-| PD-20 | `membership_history` (old/new, actor, reason, snapshot); card lifecycle audit separating `occurred_at` from `recorded_at`, typed actor | `20250612…` L601-633; DigitalCard doc L135-165 | documented | History and provenance shape | **nrna1's ratified ledger already models this better** (§7.5) | ALREADY EXISTS (concept) |
+| PD-20 | `membership_history` (old/new, actor, reason, snapshot); card lifecycle audit separating `occurred_at` from `recorded_at`, typed actor | `20250612…` L601-633; DigitalCard doc L135-165 | documented | History and provenance shape | **nrna1's ratified ledger already models this better** (§7.5) | ALREADY EXISTS as a ratified pattern inside Membership (kernel code; isolated by `MembershipLedgerIsolationTest`; not wired to HTTP). Only the pattern transfers. |
 | PD-21 | "Leadership Score must be Derived, Explainable, Non-transferable … purely analytical, never authoritative"; bad inputs include payments alone and popularity | `20260101_2309` L273-298 (verified) | documented | A principle consistent with PBDIGIT-330 L109-110 | — | REUSE (principle) |
 | PD-22 | Financial neutrality: Membership reacts to payment events and does not calculate payments | `2313` Invariant 4; `2309` §9 | documented | Keeps money ≠ social contribution | — | REUSE (principle) |
 | PD-23 | Geography snapshot "preserve historical truth" (`geography_path_snapshot`) | `2309` §8 L211-227 | documented | Snapshot location and organisation at the time of the activity | Check against nrna1 XD-5 (geography history, open) | ADAPT |
@@ -156,6 +164,42 @@ Nothing further is attributed to her.
 | PD-25 | `member_activities` (type, date, hours, `verified_by`, `verification_status`, `points_awarded`) | tenant-templates L575-596 (verified) | documented | Closest "contribution claim" shape | Drop points; split activity from claim; add evidence, outcome, reach and visibility | ADAPT |
 | PD-26 | NGO `project_beneficiaries` stores named beneficiaries with **no consent** | `developer_guide/laravel-backend/multi-tenancy/02-template-system.md` L60-115 | example | Only beneficiary model anywhere | Counts and categories by default; named individuals only with consent | REWRITE |
 | PD-27 | Proposed context maps (Identity, Geography and Document Vault feeding Membership; Verification/Trust; LeadershipScore downstream). **No map has a Contribution, Recognition or Evidence context.** | `architecture/design/ddd_bounded_contexts/context_map/20260101_1154_…`; `2309` §3 L70-95; `2313` L360-380 | proposed | Upstream/downstream intuition | nrna1 has its own PROPOSED context map (§7.4) | INVESTIGATE |
+
+### 5.5 Source document register and transfer method (C-12)
+
+**Method [P]: Reference → Extract → Classify → Evaluate → Rewrite in nrna1 at the authorised phase.**
+1. **Reference.** Cite the old document by path at `public-digit@a766ef5f2`. Never copy code or schemas.
+2. **Do not bulk-copy documents into nrna1.** They contradict each other (§5.1, §5.3) and would look authoritative there. **public-digit documents are not authoritative for nrna1.**
+3. **Extract** each idea as a short written statement with its source citation.
+4. **Classify** it per §9 (REUSE / ADAPT / REWRITE / REJECT / INVESTIGATE).
+5. **Evaluate** it against the nrna1 model (PersonRef, `organisation_id`, the ledger pattern, governance records).
+6. **Rewrite** it in nrna1 **only when the consuming phase is authorised**:
+   - glossary and interview material → Phase 1 documents;
+   - capability and context ideas → Phase 2 documents;
+   - data shapes → Phase 4 tactical design only.
+7. Every rewritten item carries `Source: public-digit@a766ef5f2:<path>#L<a>-<b> · class <X>`, so a reviewer can trace it back.
+8. Placement in nrna1 follows `php scripts/doc-placement.php`. Each register row below names the artefact *type*; the concrete file is created only in the authorised phase.
+9. **No frozen snapshot** of public-digit is made without explicit Principal approval.
+
+The `chatgpt/` duplicate documents in public-digit are deliberately excluded. Line ranges were verified on 2026-11-07 (validation report `2026-11-07-social-contribution-phase-0-correction-validation-report.md` §4).
+
+| # | Path (repository-relative, at `a766ef5f2`) | Range(s) | What it describes | Maturity | Class | Target phase / nrna1 artefact type |
+|---|---|---|---|---|---|---|
+| S1 | `architecture/backend/tenant_database/architectural_discussion/20251211_2056_tenant_templates_poltical_parties_nepal.md` | L575-596 · L799-850 · L1013-1030 · L1065-1085 · L187-205 · L465 | member activities with verification; campaign activities and volunteers; meeting attendance; event volunteers; media files; honorary type | documented | ADAPT (activity, attendance) · REJECT (points, rating, media files, honorary) | Phase 1 glossary; Phase 4 tactical design |
+| S2 | `architecture/backend/tenant_database/political_parties_nepal/20250612_0847_all_political_parties_scheme.md` | L1087-1141 · L519-529 · L601-633 | evidence documents with hash and verification; verification method and level; membership history | documented (filename date unreliable; first committed 2025-12-11) | ADAPT · history superseded by the nrna1 ledger pattern | Phase 2 capability notes; Phase 4 |
+| S3 | `architecture/backend/membership-context/brainstorming/20260101_2309_architecture_review.md` | L97-128 · L180-209 · L211-227 · L273-298 | Identity ≠ Membership; immutable versioned documents; snapshot at activity time; derived/explainable score principle | documented | REUSE (principles) | Phase 1 constraints; Phase 2 |
+| S4 | `architecture/backend/membership-context/brainstorming/20260101_2313_membership_related_stuff.md` | L29-40 · L121-126 | "IS NOT" list; Invariant 4 financial neutrality | documented | REUSE (principle) | Phase 2 |
+| S5 | `architecture/backend/membership-context/brainstorming/20260101_1536_memership_extension.md` | L37 · L43 · L518-519 · L619 · L539 | pre-signed upload; 60-second viewing link; pre-signed pattern and AES-256 server-side encryption; secure viewer; proposer/seconder | documented | ADAPT | Phase 1 attestation question; Phase 4 evidence access |
+| S6 | `architecture/backend/digitcalcard_contexts/phase_1/20251225_2316_tables_necessary_for_digitalcard_context.md` | L47-77 · L121-122 · L224-260 | hashed QR and revocation lifecycle; retention category; signed validation bundles | documented (implementation claimed, unverifiable) | ADAPT (recognition records) | Phase 2; Phase 4 |
+| S7 | `architecture/backend/tenant_database/political_parties_nepal/20251217_1712_claude_cli_instructions_for_membership_digitilazation.md` | L360-440 · L683 | initiatives with target outcome; owner views own ledger | proposed | ADAPT · REUSE | Phase 1 glossary; Phase 2 |
+| S8 | `architecture/backend/tenant_database/political_parties_nepal/20251217_1728_sql_schema_prompt_instructions.md` | L495 · L501-511 · L515-560 | profile visibility; skill verification; points tables | documented | ADAPT · REJECT (points) | Phase 1 visibility questions |
+| S9 | `architecture/backend/tenant_database/political_parties_nepal/20251217_1634_political_parties_schema.md` | L524-548 · L604-680 | member profiles and visibility; activity logs, balances, rank tiers | documented | ADAPT (visibility idea) · REJECT | reference only |
+| S10 | `architecture/scoring/` (four files, first committed 2026-01-02) | `scoring_algorithm.md` L13-37 · `20260101_1206_score_idea.md` L11-42 · `dashboard.md` L11-53 · `scoring_algorithm_01.md` L17, L49-53 | weighted scores, time decay, penalties; four pillars; leaderboard and promotion bonus; points for verifying others; escrow/cooldown | documented | **REJECT** (cited only as anti-examples) | Phase 2 note only |
+| S11 | `developer_guide/laravel-backend/multi-tenancy/02-template-system.md` | L60-115 | NGO projects; named beneficiaries without consent; donors | example | REWRITE | Phase 1 beneficiary questions; Phase 4 |
+| S12 | `developer_guide/laravel-backend/membership-context/20260104_0028_member_approval_rejection_system.md` | L59-87 · L298-324 · L423 | approve/reject with actor and reason (events at L71, L85); authorisation gate `can:manage-members` and per-decision audit fields; auto-approval idea | unverifiable | ADAPT · REJECT (auto-approval) | Phase 4 |
+| S13 | `architecture/backend/membership-context/brainstorming/scopebased_concept/20260102_1111_scopebased_membership_context.md` | L1-60 · L283 | scope-based membership; diaspora scope | proposed | ADAPT | Phase 2 |
+| S14 | `architecture/backend/membership-context/brainstorming/geography_ready_concept/20260102_0146_geography_ready_membership_architecture_from_simple_to_complex_geography.md` | L316-345 | verification method (field visit, testimony), `verified_by` | documented | ADAPT | Phase 1 question; Phase 2 |
+| S15 | `apps/mobile/src/app/features/membership/models/member.models.ts` | L16-55 · L87-94 · L186 | profile with bio; verification request with document URLs; privacy level | TypeScript types, no consumer | INVESTIGATE | reference only |
 
 ---
 
@@ -207,6 +251,15 @@ Nothing further is attributed to her.
 - `members` is **organisation-scoped** (`2026_03_07_145529_create_members_table.php:14-36`; `app/Models/Member.php:17`). Chain: "User → OrganisationUser → Member → Voter" (`User.php:225`).
 - **There is no Person table or Identity context.** The ratified kernel has only a `PersonRef` value object (`app/Contexts/Membership/Domain/Organisational/PersonRef.php`). `org_memberships.person_ref` is unique per organisation (`2026_10_09_100000_create_org_membership_tables.php:28,33`).
 
+**Maturity of person identity (C-4)**
+
+| Level | What it is | State in nrna1 | Source |
+|---|---|---|---|
+| 1 | `PersonRef` value object | **Exists** (Membership kernel) | `app/Contexts/Membership/Domain/Organisational/PersonRef.php` |
+| 2 | Proposed Person identity model (Person ≠ Account; one platform-wide Person) | **Proposed** | XD-3a, XD-3b (PROPOSED) |
+| 3 | Identity bounded context | Ownership of person identity **assigned** by the ratified Membership architecture (ratification act L313: "Owns Person identity and identity equivalence"); **the context is not implemented** | Membership architecture, ratified |
+| 4 | Platform-wide person identity capability | **Not implemented** | — |
+
 **Governing rules**
 
 | Rule | Status | Effect on a contribution profile |
@@ -218,7 +271,7 @@ Nothing further is attributed to her.
 | INV-ORG-SCOPE-1 §1a: platform-level operations "must not access organisation-specific person records" | [D] APPROVED principle | A platform-level profile cannot read organisation person data without an amendment |
 | PO-ORG-MEM-01: "The Organisation owns its Membership domain"; technical platform roles ≠ organisational authority | [D] APPROVED by PO, ARB validation pending | Verification authority inside an organisation is organisational, not a platform admin flag |
 
-**[I] Consequence: the identity anchor is the gating decision for the whole initiative.**
+**[I] Consequence: the identity anchor decides who owns the contribution history. It must be resolved before strategic context ownership and the strategic model are finalised. It is not a prerequisite for business discovery, which should establish the intended ownership and audience.** All three options remain open; none is selected (Principal ruling, 2026-11-07).
 
 | Option | Fit with current decisions | Tension |
 |---|---|---|
@@ -227,6 +280,21 @@ Nothing further is attributed to her.
 | O-3 **Person as their own organisation**: the individual is the organisation in which their profile lives, and parties are audiences | Reuses existing tenancy without cross-organisation reads | Stretches "organisation" semantics; needs PO acceptance; audience access across organisations still needs a rule |
 
 These are options for the PO and ARB. **This document chooses none.**
+
+**Business implications of the options (C-1; analysis only, no option selected)**
+
+| Implication | O-1 Member-scoped | O-2 Person-scoped | O-3 Person as own organisation |
+|---|---|---|---|
+| Who owns the history | The organisation (its record about its member) | The individual | The individual, as an organisation |
+| Who controls visibility | The organisation under its rules; the individual's say depends on its policy [OQ] | The individual | The individual, within their own organisation |
+| Individual consent | The organisation processes the data; consent rules [OQ] | The individual is the source; third-party data still needs consent | The individual; third-party data still needs consent |
+| Portability to another party | None by design; export only by organisation decision [OQ] | Inherent | Inherent (independent of any party) |
+| Access by several parties | Each party keeps its own separate record; no sharing (BR-13a) | Parties as audiences; needs an exception to BR-13a and INV-AFF-1, and XD-3a C-1 | Party members must be given access to her organisation, or a published view; mechanism undefined |
+| Who may verify | Organisational organs or office holders (PO-ORG-MEM-01); their competence over activities outside the party is questionable [OQ] | Verifiers from several organisations and institutions; no cross-organisation authority model exists | External verifiers would act inside her organisation; the authority meaning is stretched [OQ] |
+| When membership ends | The record stays with the organisation; visibility afterwards undefined [OQ] | Unaffected | Unaffected |
+| Cross-organisation information access | None; INV-ORG-SCOPE-1 §1a respected | Required; needs Identity (XD-3a/3b), a §1a amendment and data-protection review; political-affiliation risk (XD-3a L84) | Avoided if audiences join or a public view is used; stretches the meaning of "organisation" (ODA-01 §11.2); PO acceptance needed |
+
+**Constraints kept under all three options:** BR-13a, INV-ORG-SCOPE-1 §1a, XD-3a, XD-3b and the ratified Membership architecture remain unchanged. The options differ only in which of them would need new decisions.
 
 ### 7.3 Tenancy [F]
 
@@ -243,7 +311,7 @@ These are options for the PO and ARB. **This document chooses none.**
 
 | Mechanism | Source | Nature |
 |---|---|---|
-| **Ratified organisational fact ledger**: append-only facts with `effective_at` / `decided_at` / `recorded_at`, JSONB provenance (decision / rule / attested), `AuthorityEvidence` {actor, capacity, ruleRef, policyVersion, result, checkedAt} with `competenceVerified`; corrections Annul / Void / Correct (COR-4, PBDIGIT-327/329) | `database/migrations/2026_10_09_100000_create_org_membership_tables.php` L25-88; `…/2026_11_03_120000_extend_org_membership_facts_for_corrections.php`; `app/Contexts/Membership/Domain/Organisational/AuthorityEvidence.php` L13-26; ratified doc L54-72, L159-164 | **The only ratified model of a correctable, provenance-bearing decision history.** Membership-internal; isolated by `tests/Architecture/MembershipLedgerIsolationTest.php`. It is not wired to HTTP, and its migrations are release-gated. |
+| **Ratified organisational fact ledger**: append-only facts with `effective_at` / `decided_at` / `recorded_at`, JSONB provenance (decision / rule / attested), `AuthorityEvidence` {actor, capacity, ruleRef, policyVersion, result, checkedAt} with `competenceVerified`; corrections Annul / Void / Correct (COR-4, PBDIGIT-327/329) | `database/migrations/2026_10_09_100000_create_org_membership_tables.php` L25-88; `…/2026_11_03_120000_extend_org_membership_facts_for_corrections.php`; `app/Contexts/Membership/Domain/Organisational/AuthorityEvidence.php` L13-26; ratified doc L54-72, L159-164 | **The only ratified model of a correctable, provenance-bearing decision history.** Membership-internal; isolated by `tests/Architecture/MembershipLedgerIsolationTest.php`. It is not wired to HTTP. Its migrations sit under the open ledger-migration release gate (PBDIGIT-264; migration header `2026_11_03_120000…` L22-26). |
 | Membership applications | `2026_04_03_155710_…`; `app/Models/MembershipApplication.php` L75-120; `app/Policies/MembershipPolicy.php` L33-43 | Mutable status row, optimistic lock, platform-role approval, no history |
 | Committee associations | `2026_05_14_000001_…` | Actor and reason columns, updated in place |
 | Candidacy review | `CandidacyReviewController.php` L60-108 | Transactional, reviewer recorded, no history |
@@ -264,7 +332,7 @@ These are options for the PO and ARB. **This document chooses none.**
 - There is no sanctioned profile surface. `/user/profile` is a placeholder (`routes/web.php:175-177`).
 - `member_directories` is a per-organisation projection with no biography.
 - The only visibility setting is `users.leaderboard_visibility`, which belongs to the experiment.
-- The legacy public `/user/{profile}` endpoint is precedent to avoid (§12, S-1).
+- There is no sanctioned profile surface; legacy profile routes are not a precedent.
 
 ### 7.8 Conventions to follow [F]
 
@@ -281,8 +349,8 @@ These are options for the PO and ARB. **This document chooses none.**
 | 1 | Contribution documentation | `member_activities` (PD-25), initiatives with target outcome (PD-24) | — | Experiment `contributions` keyed on `user_id`, one status field (XPD §4.1) | **REWRITE**, with PD-24/25 ideas **ADAPTED** | Split activity / participation / claim; anchor per §7.2 decision, never on the account (XD-3b) |
 | 2 | Evidence management | Immutable versioned documents with hash and visibility (PD-5, PD-6, PD-7) | CSV upload only (EL-7) | Private-disk upload pattern, no hash, no download (§7.6) | **ADAPT** (PD-5/6/7 + nrna1 newsletter pattern) | No project has evidence-grade storage; the principles exist |
 | 3 | Verification | Method + level + mandatory reason (PD-10, PD-11); attestation (PD-12) | Review lifecycle + required reasons (EL-1); third-party consent (EL-5) | Ratified ledger with AuthorityEvidence (§7.5); Governance Approval domain | **ADAPT** the ledger concept + EL-1 / EL-5 shapes | The ledger already separates decision, rule and attested provenance; authority source is ARB-8 |
-| 4 | Recognition | DigitalCard issue / revoke / verify (PD-15); honorary type (PD-16) | Email prose only | None | **ADAPT** PD-15 · **REJECT** PD-16 | Recognition is a record of an issuer's act; certificates also act as evidence (PH2 §6) |
-| 5 | Individual profile | Mobile `MemberProfile.bio` (types only); `member_profiles` design | Starter profile | None sanctioned; legacy `/user/{profile}` unsafe | **REWRITE** | Must follow from the anchor decision and visibility model |
+| 4 | Recognition | DigitalCard issue / revoke / verify (PD-15); honorary type (PD-16) | Email prose only | None | **ADAPT** PD-15 · **REJECT** PD-16 | Recognition is a record of an issuer's act; certificates also act as evidence **of the recognition**, not automatically of the claimed activity, outcome or impact (Principal ruling; PH2 §5.4) |
+| 5 | Individual profile | Mobile `MemberProfile.bio` (types only); `member_profiles` design | Starter profile | None sanctioned | **REWRITE** | Must follow from the anchor decision and visibility model |
 | 6 | Beneficiaries and reach | Named beneficiaries without consent (PD-26); estimated vs actual attendance (PD-24) | — | None | **REWRITE** (PD-26) · **ADAPT** (estimated vs actual) | Default to counts and categories; personal data of third parties needs consent |
 | 7 | Outcomes and impact | Free-text `outcome_notes`, `target_outcome` | — | `outcome_bonus` integer (experiment) | **INVESTIGATE** | No credible model anywhere; depends on Komal Oli's intent (PH2 OQ-C1, OQ-I1) |
 | 8 | Measurement | Many competing formulas (PD-17) + anti-gamification principle (PD-21) | Advisory risk score (EL-6) | `GaneshStandardFormula` (Decision B) | **REJECT** all formulas and rankings · **REUSE** PD-21 · **ADAPT** EL-6 for triage only | PBDIGIT-330 L109-110; Decision B; PH2 §9 multi-dimensional account |
@@ -295,12 +363,12 @@ These are options for the PO and ARB. **This document chooses none.**
 
 | Class | Items |
 |---|---|
-| **REUSE** (principles and ideas) | PD-6 immutable versioned evidence · PD-19 owner self-view · PD-21 derived/explainable/never-authoritative · PD-22 financial neutrality · EL-10 hash-not-secret |
+| **REUSE** (principles and ideas) | PD-1 User ≠ Member principle (consistent with the proposed XD-3b) · PD-6 immutable versioned evidence · PD-19 owner self-view · PD-21 derived/explainable/never-authoritative · PD-22 financial neutrality · EL-10 hash-not-secret |
 | **ADAPT** | PD-4 scope/location value · PD-5 evidence record · PD-7 temporary-link access · PD-10 decision with mandatory reason · PD-11 verification method + level · PD-12 attestation (unrewarded) · PD-15 DigitalCard lifecycle for recognition records · PD-18 per-item visibility · PD-23 snapshot at activity time · PD-24 initiative with target outcome and estimated/actual reach · PD-25 activity/claim split · EL-1 review lifecycle shape · EL-4 batch pipeline shape · EL-5 third-party corroboration · EL-6 triage-only advisory signals |
 | **REWRITE** | PD-3 cross-organisation identity · PD-26 beneficiaries · EL-3 state-machine engine · EL-7 file handling · contribution documentation · individual profile |
 | **REJECT** | PD-2 · PD-8 · PD-9 · PD-14 · PD-16 · PD-17 · EL-4 provenance approach · EL-9 code · EL-11 · EL-12 · every scoring formula and leaderboard |
 | **INVESTIGATE** | PD-13 verifier authority (ARB-8) · PD-27 old context maps · EL-9 tamper-evidence idea · outcomes and impact · data protection for political-affiliation exposure |
-| **ALREADY EXISTS in nrna1** | PD-1 (XD-3b direction) · PD-20 / EL-2 (ratified ledger pattern) · EL-8 (outbox/inbox) · EL-13 (i18n) · architecture-test enforcement |
+| **ALREADY EXISTS in nrna1** | PD-20 / EL-2 (ratified ledger pattern inside Membership; kernel code, not wired to HTTP; only the pattern transfers) · EL-8 (outbox/inbox) · EL-13 (i18n) · architecture-test enforcement |
 
 ---
 
@@ -314,7 +382,7 @@ These are options for the PO and ARB. **This document chooses none.**
    - en/de/np i18n;
    - governance records for identity and tenancy.
 2. **[F] Missing for this capability:** person identity (no Identity context; XD-3a/3b PROPOSED); evidence-grade file storage (hash, download policy, retention); a profile or visibility model; a recognition concept.
-3. **[I] The identity anchor (§7.2) must be decided before strategic DDD can name an owner.** It is a PO and ARB decision because it touches RATIFIED and APPROVED rules (BR-13a, INV-ORG-SCOPE-1 §1a).
+3. **[I] The identity anchor (§7.2) must be decided before strategic context ownership is finalised. Discovery, and the exploration of alternative models in Phase 2, may proceed before it.** It is a PO and ARB decision because it touches RATIFIED and APPROVED rules (BR-13a, INV-ORG-SCOPE-1 §1a).
 4. **[I] The experiment is architecturally misaligned**, independent of its formula: it is keyed on the account (contrary to XD-3b), sits outside any context, has no tests at the HTTP level, and its developer guide overstates it. This informs, but does not decide, `PBDIGIT-332`.
 5. **[I] Constraints for any future design:**
    - Shared hosts no business concepts.
@@ -329,14 +397,12 @@ These are options for the PO and ARB. **This document chooses none.**
 | Phase | Content | Entry gate | Output | Status |
 |---|---|---|---|---|
 | **0 Cross-project verification and plan** | This document | Principal instruction | Initiative story, transfer inventory, baseline, plan | **Delivered; awaiting approval** |
-| **1 Business discovery** | Consent and scope (PH2 W0); interviews with Komal Oli (PH2 §7: W1 story, **W2 walkthrough of real certificates**, W3 measurement and visibility); synthesis (W4) | Phase 0 approved; consent confirmed | Validated problem, real use cases, requirements, open questions; **an anchor decision package (O-1/O-2/O-3) for the PO and ARB** | Prepared in PH2 |
-| **2 Strategic DDD** | Ubiquitous Language v2; capabilities; subdomain classification; bounded-context candidates; responsibilities and relationships; dependencies on Membership, Governance, Identity and PBDIGIT-330; context-map impact | Phase 1 synthesis; **anchor decision taken** | Strategic model, context proposals, decisions for the Principal | Not authorised |
+| **1 Business discovery** | Consent and scope (PH2 W0); Komal Oli interview (W1); **real evidence and certificate walkthrough (W2)**; meaning of measurement, visibility and audience (W3); individual-case synthesis (W4a); **generalisation investigation for other party members (W5, `PBDIGIT-333`), after the individual case**; final business-problem synthesis (W4b, after W5). **Alternative ownership models (O-1, O-2, O-3) are explored, not selected.** | Phase 0 approved; consent confirmed | Validated problem, real use cases, requirements, open questions; **an anchor decision package (O-1/O-2/O-3) for the PO and ARB** | Prepared in PH2 |
+| **2 Strategic DDD** (separately authorised) | Validated Ubiquitous Language; business capabilities; subdomain assessment; candidate bounded contexts; responsibilities and context relationships; dependencies and authority boundaries (Membership, Governance, Identity, PBDIGIT-330); context-map impact | Phase 1 synthesis approved. **Alternative models may be documented. The identity anchor must be resolved before context ownership and the strategic model are finalised.** | Strategic model, context proposals, decisions for the Principal | Not authorised |
 | **3 Strategic architecture review** | Independent review of boundaries, ownership, authority, consistency with ratified architecture | Phase 2 output | Findings, corrections, Principal and ARB decisions; ADRs if warranted | Not authorised |
 | **4 Tactical design** | Aggregates, value objects, commands, events, policies, invariants; evidence and verification responsibilities; the §9 ADAPT items realised as nrna1 designs | Phase 3 approval | Tactical design and EP-01 plan | Not authorised |
 | **5 Product planning** | Confirm PO; prioritise; epics, stories, acceptance criteria and increments | Phase 4 approval | Implementation backlog | Not authorised |
 | **6 Implementation** | Approved designs only, with TDD, architecture tests and developer guides. The experiment is migrated or replaced only under an approved migration plan (`PBDIGIT-332`) | Phase 5 approval | Working capability | Not authorised |
-
-**Generalisation (`PBDIGIT-333`)** runs as a separate pass after Phase 1, before Phase 2 concludes, so that the strategic model is not shaped by one case alone.
 
 ---
 
@@ -364,13 +430,13 @@ These are options for the PO and ARB. **This document chooses none.**
 | R-6 | Vocabulary collision with "Trust", "Verification" and "Contribution" (forum, finance) | UL v2 in Phase 2; check against `VocabularyProhibitionTest` |
 | R-7 | Copying old schemas by convenience | §9 transfer classes; the no-code-copy rule |
 
-**Out-of-scope observations (security, verified statically, not run).** Under this instruction no ticket was created. They need separate authorisation.
+*Security observations found during this work are outside this initiative. They were escalated separately to the Principal on 2026-11-07. Removal from this document does not resolve or downgrade them.*
+
+**Out-of-scope architecture observation.** No ticket was created; it needs separate authorisation.
 
 | ID | Observation | Evidence | Tracking |
 |---|---|---|---|
-| **S-1** | **The legacy public route `/user/{profile}` passes the `password` field (hash) and contact data of any user to the page, with no authentication middleware.** | `routes/user/userRoutes.php:54` is outside the `auth:sanctum` groups (which close at L47); included by `routes/web.php:440`; `app/Http/Controllers/UserController.php` `show()` `->only([... 'telephone','email','password', ...])` | **Not found in PBDIGIT-266.** Recommend urgent triage. |
-| S-2 | `X-Tenant-Id` header sets the tenant before any membership check | `app/Http/Middleware/TenantContext.php:50-55` | Already tracked: `PBDIGIT-266` item 5 |
-| S-3 | Committee-assignment history overwrite | XPD §4.2 | Awaiting separate authorisation (PH2 §14 #8) |
+| X-1 | Committee-assignment history overwrite | XPD §4.2 | Awaiting separate authorisation (PH2 §14 #8) |
 
 ---
 
@@ -386,7 +452,6 @@ These are options for the PO and ARB. **This document chooses none.**
 | 6 | Whether office, tenure or political participation appears on a social profile (PH2 OQ-B1) | PO, after Phase 1 | Phase 2 |
 | 7 | Measurement stance after Komal Oli's answer (PH2 OQ-C1) | PO | Phase 2 |
 | 8 | Priority against WP-7C → WP-8 → EPIC-005 | PO | Phase 1 scheduling |
-| 9 | **Triage authorisation for S-1** (and S-3) | Principal | Independent of this initiative; S-1 is urgent |
 
 ---
 
@@ -399,4 +464,5 @@ Phase 0 ends with this document. **No strategic DDD design, bounded-context prop
 **Traceability.**
 - Principal direction and Decisions A and B (2026-11-07) · `PBDIGIT-330` · `331` · `332` · `333` · `334` · XPD · PH2.
 - Governance and architecture records cited in §7: `2026-10-08-membership-architecture-ratified.md`; XD-3a; XD-3b; `20261101_1739_person_account_affiliation_business_rules.md`; INV-ORG-SCOPE-1; XD-15; `strategic-design-status.md`; `context-map.md`; ADR-T11.
-- Reference-project evidence: three read-only verification passes on 2026-11-07, with spot checks re-run in session (PD gitlink, PD-6, PD-14, PD-15, PD-21; EL-2 cascade and reader; EL-8 relay; S-1; S-2).
+- Reference-project evidence: three read-only verification passes on 2026-11-07, with spot checks re-run in session (PD gitlink, PD-6, PD-14, PD-15, PD-21; EL-2 cascade and reader; EL-8 relay).
+- Corrections C-1 to C-13 applied as amended in `2026-11-07-social-contribution-phase-0-correction-validation-report.md` (Principal approval, 2026-11-07).

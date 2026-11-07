@@ -33,6 +33,18 @@ Produce an evidence-based initiative story and development plan for Social Contr
 
 The Principal approves the milestone "Social Contribution Initiative Story and Development Plan — Principal Approved". Strategic DDD design (plan Phase 2) starts only after that approval.
 
+## 5. Source documents (public-digit)
+
+15 source documents at `public-digit@a766ef5f2` are registered in the plan §5.5. Each entry gives its content, line ranges, maturity, transfer class, and the nrna1 phase and artefact type that will consume it.
+
+Transfer method: **Reference → Extract → Classify → Evaluate → Rewrite in nrna1 at the authorised phase.**
+- No code or schema copying.
+- No bulk document copy.
+- public-digit documents are not authoritative for nrna1.
+- No frozen snapshot without Principal approval.
+
+Every transferred idea carries `Source: public-digit@a766ef5f2:<path>#L<a>-<b> · class <X>`. *(C-12, 2026-11-07)*
+
 ## Traceability
 
 Principal Decisions A and B (2026-11-07) · Principal direction "nrna1 is the target" (2026-11-07) · `PBDIGIT-331` · `PBDIGIT-332` · `PBDIGIT-333` · cross-project discovery 2026-11-07 · Phase 2 preparation package 2026-11-07.

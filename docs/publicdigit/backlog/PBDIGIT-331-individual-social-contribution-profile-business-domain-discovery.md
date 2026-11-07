@@ -1,4 +1,4 @@
-# PBDIGIT-331: individual social contribution profile (business-domain discovery)
+# PBDIGIT-331: individual social contribution history and its presentation (business-domain discovery)
 
 **Type:** Strategic discovery / business-domain discovery · **Created:** 2026-11-07 · **Raised by:** the Principal (Principal DDD Architect review and Phase 2 instruction, 2026-11-07). Recorded by Claude, Session A.
 
@@ -38,6 +38,8 @@ Doing this without reducing the person to an unexplained number is part of the p
 
 This is a hypothesis until validated with the business domain expert. The initial discovery concerns **one individual**. Generalisation to party members is `PBDIGIT-333`.
 
+A profile is a **candidate solution**, not a validated requirement. The presentation form (profile, portfolio, history, report, dossier or a combination) is to be discovered. *(C-6, 2026-11-07. The filename keeps "profile" so that the ID and links are preserved.)*
+
 ## 4. Discovery scope
 
 - The ubiquitous language: activity, contribution claim, verification, recognition, outcome, impact, and the financial, organisational, political and deliberative senses of "contribution".
@@ -48,6 +50,7 @@ This is a hypothesis until validated with the business domain expert. The initia
 
 **Working package:** `docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-domain-discovery-phase-2.md`.
 **Evidence base:** `docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-cross-project-discovery.md`.
+**Source register (public-digit):** `docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-initiative-story-and-development-plan.md` §5.5.
 
 ## 5. Constraints
 
@@ -63,7 +66,7 @@ This is a hypothesis until validated with the business domain expert. The initia
 1. Interview(s) with the initial case held, and her answers recorded with her consent.
 2. Glossary v2 validated, or amended, by the business domain expert.
 3. Conceptual relationship model v2, with ambiguities closed or recorded as open questions.
-4. A decision package for the PO covering: product-scope fit, the identity anchor (person or member), visibility and consent, verification authority, and the measurement stance.
+4. A decision package for the PO covering: product-scope fit, the identity anchor (person or member), visibility and consent, verification authority, and the measurement stance, taking into account the generalisation findings of `PBDIGIT-333` (workshop W4b).
 5. Only then: strategic design (context ownership, context map) as a separate, authorised step.
 
 ## 7. Dependencies and open decisions

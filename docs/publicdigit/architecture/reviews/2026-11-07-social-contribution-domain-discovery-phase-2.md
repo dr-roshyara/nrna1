@@ -1,4 +1,4 @@
-# Social contribution domain discovery, Phase 2: business-domain discovery preparation
+# Social contribution domain discovery: Phase 1 preparation package (originally issued as "Phase 2")
 
 > **This is a workshop preparation package. It does not establish a bounded context, an aggregate, a state machine, an owner, a scoring method or an implementation plan.** Every model in it is a hypothesis for discussion with the business domain expert.
 
@@ -7,10 +7,10 @@
 | **Status** | DISCOVERY PREPARATION, DRAFT. Not independently reviewed. Waiting for the Principal's review. |
 | **Authority** | generated (Claude, Session A; Principal DDD Discovery Architect role). Not authoritative without human review. |
 | **Authorisation** | Principal Decisions A and B (2026-11-07), and the Principal instruction "Social Contribution Discovery — Phase 2" (2026-11-07). Creation of this document at this path was authorised. |
-| **Backlog** | `PBDIGIT-331` (this discovery) · `PBDIGIT-332` (PO decision on the existing module) · `PBDIGIT-333` (generalisation, blocked on 331) |
+| **Backlog** | `PBDIGIT-331` (this discovery) · `PBDIGIT-332` (PO decision on the existing module) · `PBDIGIT-333` (generalisation, blocked until the individual-case interviews W1–W3 of 331 are complete) |
 | **Evidence base** | `docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-cross-project-discovery.md` (hereafter **XPD**) |
 | **Date** | 2026-11-07 |
-| **Relation to the initiative plan** | The Principal's "Social Contribution — Initiative Story and Strategic Design Plan" (proposed, 2026-11-07; not yet persisted) numbers its phases differently. **This document's "Phase 2" is that plan's Phase 0 and Phase 1 preparation.** Its glossary (§5) and capability map (§10) are *pre-interview drafts* of that plan's Phases 2 and 3, labelled [H]. |
+| **Relation to the initiative plan** | **The authoritative phase numbering is `2026-11-07-social-contribution-initiative-story-and-development-plan.md` §11.** In that numbering this document is the **Phase 1 preparation package**. Its glossary (§5) and capability map (§10) are *pre-interview drafts* for Phase 2 (strategic DDD, separately authorised), labelled [H]. The filename keeps "phase-2" because committed documents link to it. *(Corrected 2026-11-07, C-8.)* |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --maturity=research --domain=publicdigit` → `docs/publicdigit` (exit 0). Path as instructed. |
 
 **Labels.**
@@ -39,6 +39,7 @@ The Principal's review is accepted. The following points depart from, or sharpen
    - [F] Platform data is separated per organisation (`organisation_id`; XPD §2).
    - [H] An individual's social-contribution history is anchored to a person. It may span several organisations or none ("contributions made independently of party activities"), and it may be public.
    - [OQ-S1] Whether this is in product scope, and whether the profile is anchored to a person or to an organisation member, is a **PO decision**. It is not a modelling detail.
+   - **Partly answered 2026-11-07 (C-13):** nrna1 is the product home (Principal direction). Open: the identity anchor (initiative plan §7.2, O-1/O-2/O-3) and whether a person-scoped capability is within product scope.
 4. **"Recognition granted."**
    - [I] In the initial case, the certificates were issued by third parties. The platform would *hold a record of* recognition received; it would not *grant* it.
    - The glossary therefore separates **Recognition** (the issuer's act) from the **recognition record** (what the platform holds).
@@ -98,6 +99,14 @@ The Principal's review is accepted. The following points depart from, or sharpen
 | Document | Record what was done and in what role | *What happened, and what was this person's part?* |
 | Substantiate | Attach evidence; possibly obtain verification | *Why should a reader believe it?* |
 | Present | Curate a profile for an audience under visibility rules | *Who sees what, and what can they conclude?* |
+
+**Need versus candidate solution [D, Principal ruling 2026-11-07; C-6].**
+- **Business need [R/H]:** consolidate, substantiate, understand ("calculate") and present social contributions.
+- **Initial discovery case:** Komal Oli.
+- **Candidate solution [H]:** an individual contribution profile.
+- **Unresolved:** whether the right form is a profile, portfolio, documented history, report or dossier, or a combination.
+
+"Profile" is the discovery framing. It must not predetermine the domain model.
 
 **[I] The hypothesis is silent on:**
 - the identity anchor (person versus member, §0.3);
@@ -172,7 +181,7 @@ Each term is a candidate meaning, not a definition approved by the business.
   - Cites evidence.
   - Can be negative (rejected) or contested.
 - **Ambiguities.**
-  - Is a certificate itself a verification?
+  - Which claims, if any, may a particular certificate substantiate, and to what extent? (See the §5.4 ruling: not automatically all claims.)
   - Is peer attestation verification?
   - Is "verified" binary, or does it come in kinds (by organiser, by beneficiary, by institution)?
 - **Validate.** Whom would a sceptical party member trust?
@@ -184,8 +193,13 @@ Each term is a candidate meaning, not a definition approved by the business.
   - Issued by an issuer (an external or internal body) to a person.
   - May reference specific activities, or none (for example a lifetime honour).
   - The certificate artefact is also evidence (see §6, the double role).
+- **Principal ruling (2026-11-07) [D]:**
+  - Recognition is an act by an issuing institution or organisation.
+  - A certificate can serve as evidence **of that recognition**.
+  - A certificate does **not** automatically verify every claim about the underlying activity.
+  - Recognition does **not** automatically demonstrate an outcome or social impact.
 - **Ambiguities.**
-  - Does recognition prove that the activity happened, or only that the issuer acknowledged it?
+  - Does recognition prove that the activity happened, or only that the issuer acknowledged it? (Open for the business; the ruling above sets the default: not automatically.)
   - Are all certificates equal in standing?
   - Can the platform's own organisation grant recognition?
 - **Validate.** What exactly does each of her certificates say it recognises?
@@ -270,7 +284,8 @@ Each term is a candidate meaning, not a definition approved by the business.
      └──< receives ── Recognition (Issuer, reason) ─── artefact: certificate ─┘
                          │ may reference 0..n Activities
 
-  Profile = a curated presentation of a person's records, for an audience, under visibility rules.
+  Presentation (candidate forms: profile, portfolio, history, report, dossier)
+            = a curated presentation of a person's records, for an audience, under visibility rules.
             It is a view: it owns no facts.
 ```
 
@@ -282,7 +297,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 - An impact claim usually concerns an initiative, not a person.
 
 **Three observations that matter for the model [I]:**
-1. **A certificate plays two roles.** It is a *recognition* (the issuer acknowledged her) and an *artefact of evidence*, possibly of an activity. For the initial case, certificates are likely to be the main raw material. The model must not collapse "has a certificate" into "activity verified" or "impact achieved".
+1. **A certificate plays two roles.** It is a *recognition* (the issuer acknowledged her) and an *artefact of evidence*, possibly of an activity. For the initial case, certificates are likely to be the main raw material. The model must not collapse "has a certificate" into "activity verified" or "impact achieved". This is a Principal ruling (§5.4), carried into all later phases.
 2. **The lifecycle is not linear.** Recognition can exist without a recorded activity, and an activity without any claim. Outcomes may be documented years later. A single status field (as in the nrna1 experiment, XPD §8) cannot represent this.
 3. **Provenance is part of the meaning.** For every record, a reader needs to know *who asserted it* (self, organiser, issuer, verifier) and *when*. This matches PBDIGIT-330 L110: "self-reported, verified evidence and formal review decisions must remain distinguishable".
 
@@ -319,6 +334,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 - For a few certificates: who issued it, and what exactly did it recognise?
 - Should a certificate be shown on its own, or together with the activity it refers to?
 - Are some recognitions more significant to you than others? Why?
+- Does this certificate describe what you did, or does it express thanks or honour without describing the activity?
 
 **E. Visibility**
 - Who should be able to see your contribution profile?
@@ -326,6 +342,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 - Which evidence should be visible, and which should remain confidential (for example, photographs of beneficiaries)?
 
 **F. Expected value**
+- If you wanted to demonstrate your social contribution to another person today, what information and evidence would you show them, and what is missing from that picture? *(Principal's central question, 2026-11-07; C-6. It names no presentation form.)*
 - What question should a person be able to answer by looking at your profile?
 - What would make you consider the profile complete and useful?
 - Who would maintain it: you, an assistant, or the party?
@@ -382,7 +399,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 | Verification | Decide on claims with stated authority | None implemented; election registration state machine (pattern for study only) | About claims; uses Evidence | Organiser · party · issuer · peers: **undecided** | ARB-8 for official roles | Who has standing? Disputes: kept separate from Adjudication unless decided otherwise |
 | Recognition | Record recognitions received; possibly grant own | None (docs only) | References activities; is also evidence | Record-keeping only, or granting: **undecided** | Decision A scope | Can the platform's organisation grant recognition? |
 | Impact Assessment | Methodical claims of difference made | None | Uses outcomes and evidence | Possibly outside the platform (external evaluators) | Competence, method | Is it in scope at all for an individual? |
-| Individual Contribution Profile | Curated, audience-specific presentation | None (no biography or public profile anywhere) | Reads all of the above | Read model / presentation: owner of the *curation* undecided | OQ-S1, consent, visibility | Who curates: the person or the party? |
+| Individual Contribution Presentation (candidate form: profile) | Curated, audience-specific presentation | None (no biography or public profile anywhere) | Reads all of the above | Read model / presentation: owner of the *curation* undecided | OQ-S1, consent, visibility | Who curates: the person or the party? |
 | Organisational Participation History | Posts held and terms | nrna1 `committee_assignments` (P, history defect); GMAP Tenure (D); PBDIGIT-330 (B) | Possible input to Profile | **ARB-8 (open)** | ARB-8, GMAP G-9 | Does party office belong on a *social* profile? |
 
 ---
@@ -409,7 +426,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 
 | ID | Question | Owner |
 |---|---|---|
-| OQ-S1 | Is an individual (person-scoped, possibly cross-organisation, possibly public) contribution profile within PublicDigit's product scope? Is it anchored to a person or to an organisation member? | PO |
+| OQ-S1 | Is an individual (person-scoped, possibly cross-organisation, possibly public) contribution profile within PublicDigit's product scope? Is it anchored to a person or to an organisation member? **Partly answered 2026-11-07 (C-13):** nrna1 is the product home (Principal direction); the identity anchor (initiative plan §7.2) and person-scoped scope remain open. | PO |
 | OQ-S2 | Has the initial case consented to be the discovery subject and to be named in project documents? | Principal |
 | OQ-C1 | What does "calculate / measure her contribution" mean to her: an account of extent, or a single figure? | Komal Oli (interview §7C) |
 | OQ-C2 | Which dimensions (§9) matter, and to whom? | Komal Oli; party representatives |
@@ -431,9 +448,10 @@ Each term is a candidate meaning, not a definition approved by the business.
 | W1 | The individual story | Komal Oli, Principal | §7 parts 0, A, F | Her contributions, in her words; her expected value |
 | W2 | Artefact walkthrough | Komal Oli (with 3–5 real certificates or records) | §7 parts B, D; §6 | Classification of real artefacts into activity, recognition and evidence; glossary corrections |
 | W3 | Measurement and visibility | Komal Oli | §7 parts C, E; §9 | Her measurement intent (OQ-C1); visibility rules (OQ-P1) |
-| W4 | Synthesis | Session A, Principal | W1–W3 notes | Glossary v2, relationship model v2, decision package for the PO |
-| W5 | Party representatives | Representatives | §8 | Generalisation evidence (`PBDIGIT-333`) |
-| W6 | Strategic design (separately authorised) | Principal, ARB | W4, W5 | Capability ownership options, context-map impact, ADR if warranted |
+| W4a | Individual-case synthesis (Phase 1) | Session A, Principal | W1–W3 notes | Glossary v2 draft, relationship model v2 draft |
+| W5 | Party representatives (Phase 1; after W1–W3) | Representatives | §8 | Generalisation evidence (`PBDIGIT-333`) |
+| W4b | Final business-problem synthesis (Phase 1; after W5) | Session A, Principal | W4a, W5 | Glossary v2, relationship model v2, anchor decision package (O-1/O-2/O-3) for the PO and ARB |
+| W6 | **Phase 2: strategic DDD, separately authorised; not part of Phase 1** | Principal, ARB | W4b | Capability ownership options, context-map impact, ADR if warranted |
 
 W2 matters most. Working with real artefacts shows the double role of certificates (§6) and the actual evidence landscape faster than abstract questions can.
 
@@ -443,8 +461,8 @@ W2 matters most. Working with real artefacts shows the double role of certificat
 
 | # | Decision | Authority |
 |---|---|---|
-| 1 | Product-scope fit of an individual social contribution profile (OQ-S1) | PO |
-| 2 | Identity anchor (person or member) | PO / ARB, after W4 |
+| 1 | Product-scope fit of an individual social contribution profile (OQ-S1). **Partly answered 2026-11-07 (C-13):** nrna1 is the product home; the identity anchor and person-scoped scope remain open. | PO |
+| 2 | Identity anchor (person or member) | PO / ARB, after W4b |
 | 3 | Confirmation of the Contribution Points module status (`PBDIGIT-332`) | PO |
 | 4 | Consent and naming of the initial case (OQ-S2) | Principal |
 | 5 | Authorisation of interviews W1–W3 | Principal |
