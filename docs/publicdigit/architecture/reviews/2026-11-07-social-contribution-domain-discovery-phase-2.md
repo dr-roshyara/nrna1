@@ -445,7 +445,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 
 | # | Workshop | Participants | Input | Output |
 |---|---|---|---|---|
-| W0 | Scope and consent | Principal, PO | §0, OQ-S1, OQ-S2 | Decision on product-scope fit (at least provisional); consent confirmed |
+| W0 | Scope and consent | Principal, PO | §0, OQ-S1, OQ-S2 | Decision on product-scope fit (at least provisional); Komal Oli's agreement to take part and to the use of her information in discovery confirmed (per the decision-package §4 checklist and specialist advice); Product Owner named |
 | W1 | The individual story | Komal Oli, Principal | §7 parts 0, A, F | Her contributions, in her words; her expected value |
 | W2 | Artefact walkthrough | Komal Oli (with 3–5 real certificates or records) | §7 parts B, D; §6 | Classification of real artefacts into activity, recognition and evidence; glossary corrections |
 | W3 | Measurement and visibility | Komal Oli | §7 parts C, E; §9 | Her measurement intent (OQ-C1); visibility rules (OQ-P1) |
