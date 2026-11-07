@@ -47,7 +47,7 @@ After business discovery has established what social contribution means, how it 
 | E-4 | Phase 1 individual discovery complete (W0–W3, W4a) | **Not met**: not started; Phase 1 not yet authorised | Principal (authorisation) |
 | E-5 | Generalisation investigation complete (`PBDIGIT-333`, W5) | **Not met**: blocked on W1–W3 | Principal |
 | E-6 | Final Phase 1 synthesis (W4b) complete **and approved by the Principal** | **Not met** | Principal |
-| E-7 | A decision, or an authorised governance path, for the identity anchor (O-1 / O-2 / O-3) **before** context ownership and the strategic model are finalised | **Not met**; alternatives may be documented earlier | PO + architecture governance (ARB) |
+| E-7 | A decision, or an authorised governance path, for the identity anchor (O-1 / O-2 / O-3) **before** context ownership and the strategic model are finalised | **Not met**; alternatives may be documented earlier | **Product Owner** decides the business requirement; **ARB** assesses architectural consequences and ownership boundaries within its mandate; **Principal** authorises finalisation of Phase 2 *(R-01c, 2026-11-07)* |
 
 The story moves from `BLOCKED` to ready only when E-2 to E-6 are met and the Principal explicitly authorises Phase 2. E-7 gates finalisation, not the start.
 
@@ -150,7 +150,7 @@ Identify the legitimate authority for submitting, verifying, granting recognitio
 
 ### G. Identity and ownership boundary
 - O-1 (member-scoped), O-2 (person-scoped) and O-3 (person as own organisation) stay open. They are compared using the plan §7.2 implications table and Phase 1 evidence. **None is selected.**
-- The anchor decision belongs to the PO and architecture governance (E-7).
+- The business ownership decision belongs to the Product Owner, after Phase 1 evidence. The ARB assesses its architectural consequences within its mandate (E-7; R-01c, 2026-11-07).
 - The ratified Membership architecture is not reopened.
 - The Identity context is not assumed to be implemented.
 
