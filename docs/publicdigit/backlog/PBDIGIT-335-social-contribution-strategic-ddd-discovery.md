@@ -47,7 +47,7 @@ After business discovery has established what social contribution means, how it 
 | E-4 | Phase 1 individual discovery complete (W0–W3, W4a) | **Not met**: not started; Phase 1 not yet authorised | Principal (authorisation) |
 | E-5 | Generalisation investigation complete (`PBDIGIT-333`, W5) | **Not met**: blocked on W1–W3 | Principal |
 | E-6 | Final Phase 1 synthesis (W4b) complete **and approved by the Principal** | **Not met** | Principal |
-| E-7 | A decision, or an authorised governance path, for the identity anchor (O-1 / O-2 / O-3) **before** context ownership and the strategic model are finalised | **Not met**; alternatives may be documented earlier | **Product Owner** decides the business requirement; **ARB** assesses architectural consequences and ownership boundaries within its mandate; **Principal** authorises finalisation of Phase 2 *(R-01c, 2026-11-07)* |
+| E-7 | A decision, or an authorised governance path, for the identity anchor (O-1 / O-2 / O-3) **before** context ownership and the strategic model are finalised | **Not met**; alternatives may be documented earlier | **Product Owner** decides the business requirement; **ARB** assesses architectural consequences and ownership boundaries within its mandate; **Principal** authorises Phase 2 (L52) and takes the Principal decisions in the strategic architecture review (PLAN §11, Phase 3) *(R-01c, R-01c′, 2026-11-07)* |
 
 The story moves from `BLOCKED` to ready only when E-2 to E-6 are met and the Principal explicitly authorises Phase 2. E-7 gates finalisation, not the start.
 
@@ -132,12 +132,12 @@ Do not create a context per capability. Check against the existing contexts (Mem
 - consistency requirements.
 
 ### E. Governance and authority
-**Principle [D]: technical platform access does not create organisational authority** (PO-ORG-MEM-01).
+**Principle: technical platform access does not create organisational authority.** Within Membership: [D] PO-ORG-MEM-01 (Principal / PO, 2026-11-03). For Social Contribution: [PD] adopted by the Principal, 2026-11-07 ("Prepare Strategic DDD Discovery for Social Contribution" §6.E; reaffirmed in "Complete Social Contribution Governance Readiness" §6). The rule excludes the platform administrator as an authority; it does not determine who holds authority for each action.
 
 Identify the legitimate authority for submitting, verifying, granting recognition, correcting, setting visibility and deciding ownership. A platform administrator is never assumed to hold organisational authority.
 
 ### F. Data protection (strategic risk)
-**Political-affiliation exposure is a named strategic risk** (XD-3a L84). Investigate:
+**Political-affiliation exposure is a named strategic risk** [I]: by inference from XD-3a L95 (central access index), XD-PROV L27 and XD-15 L27; not an established legal or business requirement. Investigate:
 - who can see contribution histories;
 - whether visibility is organisation-specific or cross-organisational;
 - consent and its withdrawal;

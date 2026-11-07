@@ -343,6 +343,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 
 **F. Expected value**
 - If you wanted to demonstrate your social contribution to another person today, what information and evidence would you show them, and what is missing from that picture? *(Principal's central question, 2026-11-07; C-6. It names no presentation form.)*
+- Who should decide what is shown about your contributions, and should that change if you joined a different organisation? *(Endorsed by the Principal, 2026-11-07.)*
 - What question should a person be able to answer by looking at your profile?
 - What would make you consider the profile complete and useful?
 - Who would maintain it: you, an assistant, or the party?

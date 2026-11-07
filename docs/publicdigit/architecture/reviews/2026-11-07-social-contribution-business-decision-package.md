@@ -78,7 +78,7 @@
 | 7 | Decide on a correction | [OQ] unresolved; the Membership correction pattern does **not** apply automatically [I] |
 | 8 | Set visibility | [OQ] unresolved; depends on the anchor and on consent |
 | 9 | Withdraw consent or request restriction | [OQ] specialist assessment needed |
-| 10 | Associate a contribution with a person, membership or organisation | Model level: the **Product Owner** decides the business requirement; the **ARB** assesses its architectural consequences within its mandate; the **Principal** authorises the phase (§5a; differs from `PBDIGIT-335` E-7 as currently worded, see the §5a note). Per record: [OQ] |
+| 10 | Associate a contribution with a person, membership or organisation | Model level: the **Product Owner** decides the business requirement; the **ARB** assesses its architectural consequences within its mandate; the **Principal** authorises the phase (§5a; `PBDIGIT-335` E-7 aligned by R-01c in `436d5f4ea`). Per record: [OQ] |
 
 ---
 
@@ -176,7 +176,7 @@ The Principal is not asked to decide R-02 (Komal Oli's), R-09 or R-12 to R-15 (t
 | Organisational organs and authorised office holders | Authority established by their organisation's governance ([RD] Governance owns competence and authority, act §11) | — |
 | Data-protection specialist | Independent advice | Product ownership; business decisions |
 
-*Note:* `PBDIGIT-335` E-7 names "PO + architecture governance (ARB)" as decision-maker. Aligning it with this table is a separate correction. It is not applied here.
+*Note:* `PBDIGIT-335` E-7 and §5.G were aligned with this table by R-01c (`436d5f4ea`, 2026-11-07).
 
 ---
 
