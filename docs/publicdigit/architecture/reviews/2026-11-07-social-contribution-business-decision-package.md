@@ -6,7 +6,7 @@
 |---|---|
 | **Status** | DECISION PACKAGE, for Principal review. Not independently reviewed. |
 | **Authority** | generated (Claude, Session A; Principal DDD Architect role). Not authoritative without human review. |
-| **Commissioned by** | Principal Instruction "Refine the Social Contribution Business Decision Package" (2026-11-07, analysis only). The user then asked for the package to be written "as written document in proper folder" (2026-11-07). This file is the only change; no existing file, backlog item, plan, Git state or log was changed. |
+| **Commissioned by** | Principal Instruction "Refine the Social Contribution Business Decision Package" (2026-11-07, analysis only). The user then asked for the package to be written "as written document in proper folder" (2026-11-07). This file was the only change **at the time of writing**; no existing file, backlog item, plan, Git state or log was changed. It was committed as `5b1a9f81b` on the Principal's explicit instruction (2026-11-07). |
 | **Backlog** | `PBDIGIT-335` (Phase 2, BLOCKED) · related `PBDIGIT-331` … `PBDIGIT-334` |
 | **Date** | 2026-11-07 |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --maturity=research --domain=publicdigit` → `docs/publicdigit` (exit 0) |
@@ -30,9 +30,9 @@
 
 ## 0. Points where this package departs from its instructions
 
-1. **Writing this file.** The Principal instruction says "analysis only; do not edit files". The user then explicitly asked for the package to be written as a document. This **new** file is the only change. No existing file was edited and nothing was staged or committed.
+1. **Writing this file.** The Principal instruction says "analysis only; do not edit files". The user then explicitly asked for the package to be written as a document. This **new** file is the only change. No existing file was edited, and the file was committed only on the Principal's later explicit instruction (`5b1a9f81b`).
 2. **Backlog stories and strategic design.** The user's standing request to "write stories and start strategic design" was **not** followed. The Principal instruction forbids both, and Phase 1 evidence does not yet exist.
-3. **Where the authority principle comes from.** `PBDIGIT-335` §5.E labels the principle "[D] … (PO-ORG-MEM-01)". That label was written by Session A. The Principal's adoption of the principle for Social Contribution comes from the Principal's instruction of 2026-11-07 ("Remember: platform access does not create organisational authority"; "Preserve the principle"), not from PO-ORG-MEM-01. §2 records the corrected traceability. Correcting the story's label is proposed as R-01b; it is not applied here.
+3. **Where the authority principle comes from.** `PBDIGIT-335` §5.E labels the principle "[D] … (PO-ORG-MEM-01)". That label was written by Session A. The Principal's adoption of the principle for Social Contribution comes from the Principal's instructions of 2026-11-07, not from PO-ORG-MEM-01. The sources are "Prepare Strategic DDD Discovery for Social Contribution" §6.E ("Preserve the principle: Technical platform access does not create organisational authority"), reaffirmed in "Complete Social Contribution Governance Readiness" §6 ("Remember: platform access does not create organisational authority"). §2 records the corrected traceability. Correcting the story's label is proposed as R-01b; it is not applied here.
 
 ---
 
@@ -40,7 +40,7 @@
 
 | Item | Finding |
 |---|---|
-| **Git** | [F] Branch `election-flow-updated`, HEAD `c4b05d54c`. Social Contribution commits in history: `43624fe1c`, `6beef7a6a`, `0fa62cd8f`, `edefe49e2`, `c4b05d54c`. None pushed. 38 unrelated uncommitted entries, untouched. |
+| **Git** | [F] **At the time of writing:** branch `election-flow-updated`, HEAD `c4b05d54c`. Social Contribution commits in history: `43624fe1c`, `6beef7a6a`, `0fa62cd8f`, `edefe49e2`, `c4b05d54c`. None pushed. 38 unrelated uncommitted entries, untouched. |
 | **Backlog statuses** | [F] `PBDIGIT-331` PROPOSED · `332` PROPOSED (awaiting PO) · `333` BLOCKED until 331's W1–W3 · `334` DONE · `335` BLOCKED. `331`–`333` unchanged since `edefe49e2`; `334` changed only in its status line (`c4b05d54c`). |
 | **PO-ORG-MEM-01** (`docs/publicdigit/reviews/2026-11-03-organisation-po-org-mem-01-membership-ownership-decision-record.md`) | [D] "APPROVED by the Principal / PO, 3 November 2026"; ARB validation of consequences pending. **Scope: Membership.** "PublicDigit's technical ownership and platform access permissions do not constitute organisational authority." |
 | **Ratified Membership** (`docs/publicdigit/reviews/2026-10-08-membership-architecture-ratified.md` L41-52; ratification act §11 L309-322) | [RD] Person → Identity; Organisation Membership "one per (Person, Organisation)"; a Membership Period is "one legal membership episode"; Governance "owns competence, organs, authority and organisational governance rules". |
@@ -57,15 +57,15 @@
 | Layer | Status | Source |
 |---|---|---|
 | Within **Membership** | [D] Approved (Principal / PO, 2026-11-03); ARB validation pending | PO-ORG-MEM-01 §1 |
-| Extended to **Social Contribution** | [PD] Adopted by the Principal for Social Contribution, 2026-11-07 | Principal instruction "Prepare Strategic DDD Discovery for Social Contribution" §6.E, §6 ("Remember: platform access does not create organisational authority") |
-| Authority for **each individual action** (§5 of the earlier package; matrix below) | [OQ] **Unresolved.** The rule excludes one source of authority (the platform administrator). It does **not** say who holds authority. | — |
+| Extended to **Social Contribution** | [PD] Adopted by the Principal for Social Contribution, 2026-11-07 | Principal instruction "Prepare Strategic DDD Discovery for Social Contribution" §6.E ("Preserve the principle: Technical platform access does not create organisational authority"), reaffirmed in "Complete Social Contribution Governance Readiness" §6 ("Remember: platform access does not create organisational authority") |
+| Authority for **each individual action** (earlier session package, given in session and not persisted, §2; matrix below) | [OQ] **Unresolved.** The rule excludes one source of authority (the platform administrator). It does **not** say who holds authority. | — |
 
 **Three things kept apart:**
 - **Technical permission:** what a system account can do. It confers no business authority.
 - **Organisational mandate:** what an organ or office holder is empowered to do. Under [RD], Governance owns competence and authority.
 - **Decision-making authority for a particular action:** to be discovered per action and per organisation.
 
-**Authority matrix (status only; details as in the earlier session package):**
+**Authority matrix (status only; details as in the earlier session package, given in session and not persisted, §2):**
 
 | # | Action | Authority status |
 |---|---|---|
@@ -78,7 +78,7 @@
 | 7 | Decide on a correction | [OQ] unresolved; the Membership correction pattern does **not** apply automatically [I] |
 | 8 | Set visibility | [OQ] unresolved; depends on the anchor and on consent |
 | 9 | Withdraw consent or request restriction | [OQ] specialist assessment needed |
-| 10 | Associate a contribution with a person, membership or organisation | Model level: the **Product Owner** decides the business requirement; the **ARB** assesses its architectural consequences within its mandate; the **Principal** authorises the phase (§5a; `PBDIGIT-335` E-7). Per record: [OQ] |
+| 10 | Associate a contribution with a person, membership or organisation | Model level: the **Product Owner** decides the business requirement; the **ARB** assesses its architectural consequences within its mandate; the **Principal** authorises the phase (§5a; differs from `PBDIGIT-335` E-7 as currently worded, see the §5a note). Per record: [OQ] |
 
 ---
 
@@ -113,7 +113,7 @@
 | K-2 | Use of her name in internal project documents | Naming her in discovery documents | Yes: she can be pseudonymised ("the initial case") | Yes |
 | K-3 | Use of her story | Her account of her contributions as discovery material | Partially: aspects may be excluded | Yes |
 | K-4 | Examination of certificates and other evidence | Looking at real artefacts (W2) | Yes: discovery can use descriptions instead | Yes |
-| K-5 | Photographs or information involving third parties | Material showing other people (e.g. beneficiaries) | Yes: such items are excluded or redacted | **Yes** (third parties' own consent) |
+| K-5 | Photographs or information involving third parties | Material showing other people (e.g. beneficiaries) | Yes: such items are excluded or redacted | **Yes** (third parties' own agreement, or another basis the specialist confirms) |
 | K-6 | Internal analysis | Using the material to build the model | Whether internal analysis needs separate agreement, or another basis, is for the specialist to advise. It is **not** assumed to be a separate consent. | Yes |
 | K-7 | Presentation to party members | Any members-only showing | **Yes** | **Yes** |
 | K-8 | Public presentation | Any public showing | **Yes** | **Yes** |
@@ -124,7 +124,7 @@
 - **No legal conclusion is drawn here.**
 
 **A sensitive interview question.** The earlier package proposed "Which contributions were connected to your party, and which were independent of it?" [I] Its answer can reveal political affiliation and organisational relationships.
-- [P] Ask it only where it is genuinely necessary (it affects R-10 and R-15), and only after K-1/K-3 consent has been given.
+- [P] Ask it only where it is genuinely necessary (it affects R-10 and R-15), and only after K-1 and K-3 agreement has been given.
 - [P] Make declining easy. Suggested neutral wording: "Were any of these activities organised by or through an organisation? You don't have to say which."
 
 ---
@@ -204,9 +204,9 @@ The Principal is not asked to decide R-02 (Komal Oli's), R-09 or R-12 to R-15 (t
 |---|---|---|
 | R-01, R-01a, R-01b | Approve | The plan and story become accurate; no new work is authorised |
 | R-05 / R-06 | Approve the separate assessment; keep the branch unpushed | The branch can be shared later on an informed basis |
-| R-07 | Confirm | Administrators stay technical; business authority is discovered |
+| R-07 | **Record** (already decided) | Administrators stay technical; business authority is discovered |
 | R-08 | Approve | Better consent and visibility questions; lower risk in Phase 1 |
-| R-02 | Request Komal Oli's consent, permission by permission | She can take part without agreeing to publication |
+| R-02 | Request Komal Oli's agreement, permission by permission | She can take part without agreeing to publication |
 | R-03 | Name a Product Owner from the business side | Clear acceptance of discovery outcomes |
 | R-04 | Authorise only after R-02 (K-1, and agreement to the use of her information on the basis the specialist confirms) and R-03 | Discovery starts on a sound basis |
 | Group C | Do not decide now | Avoids turning assumptions into architecture |
