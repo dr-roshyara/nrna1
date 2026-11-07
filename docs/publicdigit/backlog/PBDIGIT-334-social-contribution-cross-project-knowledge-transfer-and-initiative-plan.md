@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `PROPOSED` · Phase 0 authorised (verification and planning only) · **strategic DDD design not authorised · implementation not authorised** |
+| **Status** | **`DONE`: milestone approved by the Principal, 2026-11-07** (plan corrected by C-1 to C-13; commits `0fa62cd8f`, `edefe49e2` confirmed by the Principal). **Phase 1, strategic DDD design and implementation not authorised.** *(Was: `PROPOSED` · Phase 0 authorised.)* |
 | **Target project [D]** | `nrna1` (PublicDigit), the only target. `public-digit` and `election` are reference sources only. |
 | **Workstream / Epic** | none assigned |
 

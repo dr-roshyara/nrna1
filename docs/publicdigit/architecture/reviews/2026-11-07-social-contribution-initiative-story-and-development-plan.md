@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | PROPOSED, for Principal review. Not independently reviewed. |
+| **Status** | **APPROVED by the Principal, 2026-11-07: milestone "Social Contribution Initiative Story and Development Plan — Principal Approved"** (after corrections C-1 to C-13, commits `0fa62cd8f` and `edefe49e2`, both confirmed by the Principal). Not independently reviewed. **This approval closes Phase 0 only. It does not authorise Phase 1 (consent, Product Owner and an explicit Phase 1 authorisation are still required), strategic DDD design or implementation.** *(Was: PROPOSED, for Principal review.)* |
 | **Authority** | generated (Claude, Session A). Not authoritative without human review. |
 | **Story** | `PBDIGIT-334` (Phase 0). Related: `PBDIGIT-331` (business discovery), `PBDIGIT-332` (PO decision on the existing module), `PBDIGIT-333` (generalisation, blocked) |
 | **Authorisation** | Principal instruction "Social Contribution: Cross-Project Knowledge Transfer and Initiative Planning" (2026-11-07). Read all three projects; create this document. No code, schema, ADR, PBDIGIT-330, ODA-01, Membership-architecture or Contribution Points change. No implementation tickets. No commit. |
@@ -396,7 +396,7 @@ These are options for the PO and ARB. **This document chooses none.**
 
 | Phase | Content | Entry gate | Output | Status |
 |---|---|---|---|---|
-| **0 Cross-project verification and plan** | This document | Principal instruction | Initiative story, transfer inventory, baseline, plan | **Delivered; awaiting approval** |
+| **0 Cross-project verification and plan** | This document | Principal instruction | Initiative story, transfer inventory, baseline, plan | **Approved (Principal, 2026-11-07)** |
 | **1 Business discovery** | Consent and scope (PH2 W0); Komal Oli interview (W1); **real evidence and certificate walkthrough (W2)**; meaning of measurement, visibility and audience (W3); individual-case synthesis (W4a); **generalisation investigation for other party members (W5, `PBDIGIT-333`), after the individual case**; final business-problem synthesis (W4b, after W5). **Alternative ownership models (O-1, O-2, O-3) are explored, not selected.** | Phase 0 approved; consent confirmed | Validated problem, real use cases, requirements, open questions; **an anchor decision package (O-1/O-2/O-3) for the PO and ARB** | Prepared in PH2 |
 | **2 Strategic DDD** (separately authorised) | Validated Ubiquitous Language; business capabilities; subdomain assessment; candidate bounded contexts; responsibilities and context relationships; dependencies and authority boundaries (Membership, Governance, Identity, PBDIGIT-330); context-map impact | Phase 1 synthesis approved. **Alternative models may be documented. The identity anchor must be resolved before context ownership and the strategic model are finalised.** | Strategic model, context proposals, decisions for the Principal | Not authorised |
 | **3 Strategic architecture review** | Independent review of boundaries, ownership, authority, consistency with ratified architecture | Phase 2 output | Findings, corrections, Principal and ARB decisions; ADRs if warranted | Not authorised |
@@ -444,7 +444,7 @@ These are options for the PO and ARB. **This document chooses none.**
 
 | # | Decision | Authority | Needed before |
 |---|---|---|---|
-| 1 | **Approve this initiative story and development plan** (milestone) | Principal | Phase 1 |
+| 1 | **Approve this initiative story and development plan** (milestone). **Decided: approved by the Principal, 2026-11-07.** | Principal | Phase 1 |
 | 2 | Consent and naming of the initial case | Principal | Phase 1 interviews |
 | 3 | Confirm the Product Owner for this initiative | Principal | Phase 1 |
 | 4 | **Identity anchor: member-scoped / person-scoped / person-as-organisation (§7.2)** | PO + ARB (+ data protection) | Phase 2 conclusion |
