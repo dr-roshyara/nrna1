@@ -1,5 +1,39 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-11-07, PublicDigit Social Contribution initiative): Phase 0 approved; PBDIGIT-335 BLOCKED; decision package committed; Phase 1 not authorised
+*Written by Claude (Session A, DDD architect) on the Principal's instruction of 2026-11-07. State only; it creates no authority. Additive; the blocks below are unchanged.*
+- **Target [PD]:** `nrna1` only. `public-digit` and `election` are reference sources (register S1–S15, plan §5.5; method Reference → Extract → Classify → Evaluate → Rewrite at the authorised phase).
+- **Documents** (all `docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-*`):
+  - cross-project discovery;
+  - Phase 1 preparation package (filename `…phase-2.md`);
+  - initiative story and development plan (**Phase 0 APPROVED** by the Principal);
+  - correction validation report;
+  - business decision package;
+  - remaining-governance-corrections review.
+- **Backlog:**
+  - `PBDIGIT-331` PROPOSED (individual history and its presentation);
+  - `332` PROPOSED (Contribution Points module = historical experiment pending PO);
+  - `333` BLOCKED until 331's W1–W3;
+  - `334` DONE (Phase 0);
+  - **`335` BLOCKED** (Phase 2 strategic DDD; entry conditions E-2…E-7).
+- **Decided [PD]:**
+  - Decisions A (Komal Oli's case first) and B (points module = experiment);
+  - the authority rule "technical platform access does not create organisational authority" adopted for Social Contribution;
+  - certificate ruling (evidence of recognition, not automatically of activity, outcome or impact).
+- **Open, kept open:**
+  - identity anchor O-1/O-2/O-3: the PO decides the business requirement, the ARB assesses (E-7);
+  - verification authority; visibility; measurement.
+  - No bounded context approved. No score or leaderboard.
+- **Not authorised:** Phase 1 interviews, strategic or tactical DDD, implementation.
+- **Open with the Principal:**
+  - R-03 name a Product Owner;
+  - R-05/R-06 separate S-1 security assessment (legacy `/user/{profile}` route; detail in commit `43624fe1c`) — **do not push the branch until decided**;
+  - R-08 data-protection advice before interviews;
+  - R-04 authorise Phase 1 after R-02 (Komal Oli's own agreement) and R-03.
+- **Commits (local, not pushed):** `43624fe1c` … `486a14806`, session log `53674e5ac`.
+- **Session log:** `.claude/sessions/2026-11-07.md`.
+- **Next action:** Principal decisions R-03, R-05/R-06, R-08; then R-04.
+
 ## 📍 UPDATE (2026-11-02, PublicDigit strategic DDD discovery): Person / Account / Organisation / Affiliation; INV-ORG-SCOPE-1 Stage 1 done; PBDIGIT-317 opened
 *Written by Claude (DDD architect / requirements engineer session) on the Principal's instruction of 2026-11-02. State only; it creates no authority. Additive; the blocks below are unchanged.*
 - **Decision records (all `docs/publicdigit/reviews/`; PROPOSED unless stated):**
