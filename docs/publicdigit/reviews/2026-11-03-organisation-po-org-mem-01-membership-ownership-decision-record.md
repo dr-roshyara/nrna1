@@ -83,3 +83,7 @@ Nab, as sole developer of PublicDigit, holds the DR-07 **technical Membership ow
 - Preparation: `docs/publicdigit/architecture/reviews/2026-11-03-organisation-membership-constitutional-authority-discovery-preparation.md` (§3, §4).
 - Discovery authorised by Decision B: `docs/publicdigit/architecture/reviews/2026-11-03-dr07a-membership-technical-discovery-m1-m5.md`.
 - Ratified frame: `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratification-act.md` §10–§11.
+
+## 5. Linked records
+
+- **Principal clarifications J-1, J-3, J-4 (2026-11-07):** `docs/publicdigit/reviews/2026-11-07-organisation-po-org-mem-01-principal-clarifications-j1-j3-j4-decision-record.md`. J-1 confirms that Decision A applies to Membership decisions only. J-3 confirms that Decision B, the Constraints and the final status line above are authentic and accurately reproduced. J-4 corrects who decided D-4 and in which capacity. §1 above is unchanged.

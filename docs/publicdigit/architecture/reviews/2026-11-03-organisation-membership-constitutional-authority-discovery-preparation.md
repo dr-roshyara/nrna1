@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | docs/publicdigit/architecture/reviews/2026-11-03-organisation-membership-constitutional-authority-discovery-preparation.md.pDECISION PREPARATION AND DISCOVERY DESIGN.** It prepares a PO decision, a discovery method and open questions. It decides, approves, ratifies and authorises nothing, and changes no status in any other record. |
+| **Status** | **DECISION PREPARATION AND DISCOVERY DESIGN.** It prepares a PO decision, a discovery method and open questions. It decides, approves, ratifies and authorises nothing, and changes no status in any other record. |
 | **Authority** | generated (Claude; DDD, business architecture, requirements and governance roles). Reviewer: the Principal DDD Architect. |
 | **Date** | 2026-11-03 |
 | **Snapshot** | branch `election-flow-updated`, HEAD `f61553a5d` (2 commits after `19b3082a3`; none touches product, decision or architecture records). |
@@ -21,7 +21,7 @@
 1. [P] The business ownership principle (§3) is written as a decision-ready PO proposal. It is consistent with what is ratified: Governance owns "competence, organs, authority and organisational governance rules" (ACT §11 `:319-321`), and Membership stores authority evidence only (RAT §8 `:156`). It is **not approved**. After PO confirmation, the ARB must validate it before it constrains context responsibilities, interfaces or permissions.
 2. [F] Four existing constraints shape the discovery:
    - **Retroactive effect via new authorised facts is allowed; retroactive recomputation is not.** Annul is "a valid decision set aside (ex tunc)" (RAT `:63`); facts are append-only; decisions carry `ruleRef` and `policyVersion` (RAT `:72`).
-   - **CQ-10 is not a blank slate.** The PO has already fixed several platform-wide Membership rules (D-1, D-2, D-3, D-4 interim, D-5(b), E-1…E-5, GOV-END B1, BD-REV-ER). Constitutions must be checked against them (§7.3).
+   - **CQ-10 is not a blank slate.** Several platform-wide Membership rules are already fixed: by the PO (D-1, D-2, D-3, D-5(b), E-1…E-5, GOV-END B1, BD-REV-ER) and by the Human ARB, as or on behalf of the Governance owner (D-4, interim). Constitutions must be checked against them (§7.3).
    - **Membership's invariants bind even a competent organ's decision.** G\* accepts a fact only if the invariants hold (RAT §6 `:127-136`).
    - **"Constitution" is already used in code for four other things** (§7.4). The new concept needs a qualified term.
 3. Discovery is designed as an evidence collection from **several** organisations, with a questionnaire (§5) and a comparison template (§6). Silence in a constitution is recorded as silence, never as a default.
@@ -36,7 +36,7 @@
 |---|---|
 | Branch / HEAD | [F] `election-flow-updated` / `f61553a5d` |
 | Commits since the action package snapshot (`19b3082a3`) | [F] 2; no changes under `docs/publicdigit`, `docs/implementation`, `docs/adr`, `app`, `database` |
-| Decisions relied on (re-read at HEAD) | [D] ACT §11 Governance and Membership boundaries; RAT §2, §3, §6, §8 (provenance, purity, G\*, contracts); PO-DR07-01 (DR-07 paper `:261-281`); D-1…D-5 (R/`2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:290-296`, rows marked "PO DECIDED", D-5(a) "OPEN (engineering)"); E-1…E-5 (R/`2026-11-02-membership-e0b-s-decision-record.md:4`); GOV-END B1 (R/`2026-11-02-membership-gov-end-decision-record.md:4`); BR-13, BR-13a, BR-14 (`docs/publicdigit/business_rules/20261101_1739_person_account_affiliation_business_rules.md:36-40`) |
+| Decisions relied on (re-read at HEAD) | [D] ACT §11 Governance and Membership boundaries; RAT §2, §3, §6, §8 (provenance, purity, G\*, contracts); PO-DR07-01 (DR-07 paper `:261-281`); D-1…D-5 (R/`2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:290-296`; D-1, D-2, D-3, D-5(b), D-5(c) marked "PO DECIDED"; D-4 "DECIDED (by the Human ARB as, or on behalf of, the Governance owner)"; D-5(a) "OPEN (engineering)"); E-1…E-5 (R/`2026-11-02-membership-e0b-s-decision-record.md:4`); GOV-END B1 (R/`2026-11-02-membership-gov-end-decision-record.md:4`); BR-13, BR-13a, BR-14 (`docs/publicdigit/business_rules/20261101_1739_person_account_affiliation_business_rules.md:36-40`) |
 | Other sessions' work | [F] uncommitted changes in `.claude/`, `developer_guide/election/ip_voting/*`, KnowledgeOS scratch; untracked `tests/Isolated/Pbdigit274/...`. Not touched |
 | The action package | [F] unchanged since written; its §3.5 is a proposal |
 
@@ -89,7 +89,7 @@ Only (a) and (b) produce authority for a Membership decision. Not every authorit
 
 1. The principle in §3.1, as worded or amended.
 2. That **business ownership** (the Organisation) and **technical context ownership** (DR-07 "Membership owner") are different roles, and that M-1…M-5 stay with the technical owner.
-3. That PublicDigit records organisational authority as **evidence** and never treats its own platform state (e.g. an access role) as the source of that authority. *Note:* the PO-decided interim adapter D-4 (owner/admin) is explicitly "interim and replaceable by the Governance-owned implementation" (R/`…slice2-decision-closure.md:293`); the principle would make that interim nature binding, not remove D-4.
+3. That PublicDigit records organisational authority as **evidence** and never treats its own platform state (e.g. an access role) as the source of that authority. *Note:* the interim adapter D-4 (owner/admin), decided by the Human ARB as or on behalf of the Governance owner, is explicitly "interim and replaceable by the Governance-owned implementation" (R/`…slice2-decision-closure.md:293`); the principle would make that interim nature binding, not remove D-4.
 4. Which organisations serve as reference organisations for discovery (§5), and that the PO, not engineering, names their authorised representatives.
 5. The role model of §3.2: in particular, that operational responsibility (the Organisational Membership Responsible Person) and platform access (owner / admin) are each distinct from constitutional decision authority.
 6. That each Organisation appoints or authorises its own Membership Responsible Person, and that PublicDigit does not assume which office holds it.
@@ -101,7 +101,7 @@ Only (a) and (b) produce authority for a Membership decision. Not every authorit
 | Does the principle add anything to ACT §11, or is it the business reading of it? | to avoid a silent amendment of the ratified act |
 | Where is the Organisation Constitution represented: Governance (ACT §11 "organisational governance rules"), Organisation (candidate), or elsewhere? | context ownership is the ARB's (no context created here) |
 | What is the minimum authority evidence Membership must record (§10)? | R-08 / AuthorityCheck contract (P11) |
-| Does the principle change any existing PO platform rule (D-1…D-5, E-1…E-5, GOV-END B1)? | §7.3 conflicts must be ruled, not assumed |
+| Does the principle change any existing platform rule: the PO decisions (D-1…D-3, D-5, E-1…E-5, GOV-END B1) or D-4 (Human ARB)? | §7.3 conflicts must be ruled, not assumed |
 
 ### 3.5 What the decision does not do
 
@@ -296,7 +296,7 @@ Discovery must check each organisation's statutes against these. A conflict goes
 | D-1 | every admission carries exactly one recognised basis (declaration, statutory-rule reference, or attested historical evidence for migration only) | PO DECIDED (legal confirmation noted) | statutes allowing admission without declaration (e.g. automatic, ex officio) |
 | D-2 | no pending Member: the application stays outside the Member aggregate; approval records Admit | PO DECIDED | statutes with a probationary or candidate-member status |
 | D-3 | ending acts are a closed list: resignation, exclusion, death; `legacy` for migration; non-payment is a ground for exclusion, term expiry is derived | PO DECIDED | statutes with automatic lapse, other ending acts |
-| D-4 | interim authority mirrors owner/admin; marked interim and replaceable by Governance | PO DECIDED (interim) | **any** statute that assigns admission or ending to an organ (expected to differ) |
+| D-4 | interim authority mirrors owner/admin; marked interim and replaceable by Governance | Human ARB DECIDED (interim), as or on behalf of the Governance owner (corrected 2026-11-07, see note) | **any** statute that assigns admission or ending to an organ (expected to differ) |
 | D-5(b) | backdating allowed; future-dated admissions and endings refused | PO DECIDED | statutes with future effective dates (e.g. end of term, notice periods) |
 | E-1…E-5 | dues obligation in Membership, payment in Finance; Standing; type change in a period allowed; voting label on a type is a classification only; lifetime and dues-free types | PO DECIDED | statutes tying rights to fee status differently |
 | GOV-END B1 | resignation and death recordable by owner/admin with evidence; exclusion refused until Governance can check competence | PO DECIDED (interim) | statutes defining who excludes |
@@ -304,6 +304,8 @@ Discovery must check each organisation's statutes against these. A conflict goes
 | BR-13, BR-13a | no cross-organisation business rules | Confirmed | federations, umbrella statutes |
 | BR-14 | position incompatibility per organisation | Confirmed | — |
 | Ratified invariants (INV-M, INV-9, INV-11 …) | RAT §5 | RATIFIED | statutes allowing two simultaneous memberships in one organisation (ACT §14: the only parameter that would reopen the ontology) |
+
+**Correction note (2026-11-07), D-4 authority.** This row originally read "PO DECIDED (interim)". That attribution was wrong. The authoritative source, `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:293`, records D-4 as "**DECIDED** (by the Human ARB as, or on behalf of, the Governance owner)". The Principal clarified on 7 November 2026 (J-4) that the PO and the Human ARB were the same person acting in two capacities, and that D-4 was decided in the Human ARB capacity. Record: `docs/publicdigit/reviews/2026-11-07-organisation-po-org-mem-01-principal-clarifications-j1-j3-j4-decision-record.md`. Only the authority cell is corrected. D-4's wording, scope, conditions and consequences are unchanged, and D-4 is not extended to any other authority. Other places in this document that called D-4 a PO decision (§1, §3 twice, §11 OQ-7, Traceability) were corrected on the same date on the Principal's approval; only the authority attribution changed. The §2 "Decisions relied on" row, which grouped D-4 among the rows marked "PO DECIDED", was corrected on a further Principal approval of the same date, in the same way. The header Status cell, corrupted in commit `ed8d572dc`, was restored to its Markdown formatting at the same time.
 
 Open platform decisions still relevant [OQ] (FBA `:294`): BD-1, BD-2, BD-SUSP, BD-TERM4, BD-TEN, BD-NU, BD-NORM.
 
@@ -446,7 +448,7 @@ Ratified contract: {actor, capacity, ruleRef, policyVersion, result, checkedAt} 
 | OQ-4 | Where the Organisation Constitution is represented | ARB |
 | OQ-5 | Version identity and retention (§8.3) | ARB |
 | OQ-6 | Minimum authority evidence; can `capacity` name an organ? | ARB (P11 / R-08) |
-| OQ-7 | Conflicts between statutes and D-1…D-5, E-1…E-5, GOV-END B1 (§7.3) | PO |
+| OQ-7 | Conflicts between statutes and D-1…D-5, E-1…E-5, GOV-END B1 (§7.3) | PO for the PO decisions; Human ARB (as or on behalf of the Governance owner) for D-4 |
 | OQ-8 | Qualified term for "Organisation Constitution"; add to O-14 | ARB |
 | OQ-9 | `constitutional_committees` has no `organisation_id`: tenant scope of this table | ARB / INV-ORG-SCOPE-1 owners |
 | OQ-10 | Bulk execution of transitional provisions | statutes; ARB (form) |
@@ -535,7 +537,8 @@ ML was not used. Deterministic searches were sufficient.
 ## Traceability
 
 - Ratified: RAT §2, §3, §5, §6, §8 (`:56-74, :78-92, :112-125, :127-136, :152-157`); ACT §10–§14.
-- PO decisions: D-1…D-5 (R/`2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:290-296`); E-1…E-5 (R/`2026-11-02-membership-e0b-s-decision-record.md`); GOV-END B1 (R/`2026-11-02-membership-gov-end-decision-record.md`); BD-REV-ER (R/`2026-11-02-membership-bd-rev-er-decision-record.md`); PO-DR07-01 (DR-07 paper §15); BR-13, BR-13a, BR-14.
+- Human ARB decision (as or on behalf of the Governance owner): D-4 (R/`2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:293`).
+- PO decisions: D-1…D-3, D-5 (R/`2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md:290-292`, `:294-296`; D-5(a) is OPEN); E-1…E-5 (R/`2026-11-02-membership-e0b-s-decision-record.md`); GOV-END B1 (R/`2026-11-02-membership-gov-end-decision-record.md`); BD-REV-ER (R/`2026-11-02-membership-bd-rev-er-decision-record.md`); PO-DR07-01 (DR-07 paper §15); BR-13, BR-13a, BR-14.
 - Preparation documents: action package §3.5, §6; baseline-stabilisation review §4, §8.
 - Code precedents: `app/Domain/Election/Constitution/ElectionConstitution.php`; `docs/publicdigit/adr/ADR_20261014_1138_Constitutional_Policy_Frozen_Record.md`; `app/Contexts/Governance/Domain/ValueObjects/ConstitutionalBasis.php`; `app/Contexts/Membership/Infrastructure/Database/Migrations/Tenant/2026_05_12_000001_create_constitutional_committees_table.php`.
 - No code, schema, test, ADR, business rule, decision record, context map, BDR, Platform Rules Index or ratified document was changed. Nothing was committed.
