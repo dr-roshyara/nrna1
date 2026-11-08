@@ -384,6 +384,12 @@ Exact wording as typed, in order (typos preserved). These are the primary eviden
 | V-46 | Is the number of places on a committee set by the rules? | "(1) set by rules; each place can be vacant" |
 | V-47 | Is the chair its own place, or an office added to a member's place? | "(a) own place, elected directly into it" |
 | V-48 | Can a committee be dissolved while its unit continues? | "(3) both, by organisation rules" |
+| V-49 | When a district moves to another province, is it the same district? | "(a) same district; committee continues" |
+| V-50 | When two districts merge: a new district, absorption, or the decision says which? | "(c) the decision says which; organisation rules decide" |
+| V-51 | When a dissolved district is brought back: same district, a new one, or the decision says which? | "(c) the decision says which; organisation rules decide" |
+| V-52 | When a province is dissolved, what happens to its districts? | "(c) move up to next higher level until reassigned" |
+| V-53 | Can a member belong to more than one wing at a time? | "(c) organisation rules decide" |
+| V-54 | Can a person be staff, or a guest, in more than one unit at a time? | "(c) organisation rules decide" |
 
 **Wording caveats.**
 - V-7 answers the lowest-level question indirectly, through convention participation. "Members are assigned at the lowest level" (§2.5) is an [I] from V-7, qualified by "normally". It is not a confirmed rule.
@@ -456,3 +462,55 @@ Conversation: Architecture Session A, 8 November 2026 (one question per turn). L
 R-14 Membership → Governance (inferred, contract not validated) · observers on committees · change of committee size mid-term · RuleSet–Decision integration design · meaning of `GovernanceDecision` `Legitimacy` and `DecisionTrace` · event-flow and failure testing of the Organ → Position → tenure ending chain (effective date, safe to repeat, correct "as at" read models) · whether Finance consumes `ActRatified` · B-4 (Change Request authority for new consumers of Membership events) · C5 as its own bounded context · Organisation vs Working Organisation naming · vocabulary O-14.
 
 **Linked:** `docs/publicdigit/reviews/2026-11-08-strategic-context-map-and-governance-tactical-model.md` (PROPOSED).
+
+## 9. Continuation: Session B, 8 November 2026 (Organisation tactical model, cross-context contracts)
+
+**Status.** PROPOSED discovery evidence, like the rest of this record. Working decisions only; none is ratified, none changes a ratified or frozen record, and none authorises implementation. Source labels as in §8: *(direct)*, *(via paste, accepted)* — a recommendation in a pasted analysis that the Principal accepted —, and *(as reported)* — a decision that reached the recorder only through a pasted analysis, then endorsed by "I accept the recommendation".
+
+### 9.1 Working decisions
+
+| # | Decision | Source |
+|---|---|---|
+| D-13 | Fallbacks (V-5, V-6, V-52) and merger successors (V-50) are worked out "as at" a date from the structure and the decisions; they are never written as changes to members' or units' records. | direct: "Yes, I accept the derived fallback principle" |
+| D-14 | When a dissolved unit is brought back as the same unit, the decision bringing it back states whether former members and child units that were never reassigned return. If it says nothing, nobody returns. | via paste, accepted |
+| D-15 | Successor continuity: child units and members of a unit that ends with a declared successor follow the successor, including through its later moves and its own later successor or fallback. A newer explicit reassignment takes precedence. | as reported |
+| D-16 | Division: the division decision sets the general allocation of child units and members and is the authoritative basis; later decisions handle exceptions as newer records. | as reported |
+| D-17 | A member belonging directly to a divided unit and not allocated falls back temporarily to the nearest active higher unit until a decision places them (consistent with V-5, V-6, V-23). | as reported |
+| D-18 | A division may take effect with child units unallocated; they keep their identity and fall back temporarily to the nearest active higher unit. | as reported |
+| D-19 | A fallback may skip a level. Confirms V-52; an organisation's rules forbidding this remain possible [OQ]. | via paste, accepted |
+| D-20 | D-13 to D-19 are the working Organisation domain baseline; the aggregates stay under validation; R-15's direction is accepted, its contract open. | via paste, accepted |
+| D-21 | Only the Highest Committee makes formal structural changes (create, change, move, merge, divide, dissolve units); lower committees may propose. Describes the organisations under discovery, not a platform rule (D-1). | as reported |
+| D-22 | Organisation's working tactical model: aggregates Organisation (registry), Unit, PersonBelonging (per person and organisation); tree consistency by change sets and a tree version (option C); R-15 outline. | direct: "Yes, I accept the Organisation tactical model" |
+| D-23 | R-6c: Governance owns the competence to appoint election officials and the appointment decision; Election owns its committee, officer roles and seats; four exchanges; EM-OPEN-066 and EM-OPEN-049 answered in form (the organ the organisation's rules make competent). | direct: "Yes, I accept the R-6c contract as a working decision" |
+| D-24 | A position becomes vacant only by a formal decision of the competent organ; a later annulment of the holder's membership End does not give the seat back. | as reported |
+| D-25 | B-4: the Principal approves Change Requests to the ratified Membership architecture; the Principal Reviewer is advisory. | as reported |
+| D-26 | An appointment stays valid as made when Membership later corrects or voids the facts it relied on; neither it nor the decisions the appointee took part in are invalidated automatically; further action needs a formal Governance decision. | as reported |
+| D-27 | After an exclusion is annulled, Organisation recalculates whether existing member belongings are effective from the corrected coverage; an earlier belonging may become effective again for the regained coverage; a later explicit belonging stays effective from its own date and takes precedence. No record is rewritten, no later decision cancelled. | via paste, accepted |
+
+### 9.2 Findings and inferences (summary; §6 wording governs)
+
+- [I] Division ends the original unit; its child units are moved (V-49) and keep their identity, so members belonging to them need no individual allocation. Only members belonging directly to the divided unit do.
+- [I] A boundary adjustment never moves members automatically: belonging is fixed by an organisational act, not by residence (§2.5).
+- [I] V-25 answered "Does reversing a structural resolution reverse its consequences?" (§6). It governs organisational decisions; a Membership annulment and Organisation's recalculation under D-13 and D-27 are not such a reversal.
+- [I] Under D-12 and D-26, each context judges another context's facts as known when it acts, and never rewrites its own history afterwards.
+- [I] A lapse is not an ending (ratified INV-3); a lapsed member's unit belonging continues.
+
+### 9.3 Evidence found (Session B, continued)
+
+- [F] Ratified Membership: one aggregate per (Person, Organisation); `seq` is "a total recording order per Membership"; a fact and its consequences commit atomically; every fact carries `effectiveAt`, `decidedAt`, `recordedAt`, `seq`; "deterministic and stable KnownAt" (`docs/publicdigit/reviews/2026-10-08-membership-architecture-ratified.md` §2, §5–§7).
+- [F] Ratified Membership facts can change the past: Annul (ex tunc), Void, Correct (same document, §2).
+- [F] Ratified §8 lists Election as the only consumer of Membership facts; "Changes only via an Architecture Decision / Change Request" (`:3`).
+- [F] The only code event, `MembershipTerminated`, carries `committeeId` and no `PeriodId` (`app/Contexts/Membership/Domain/Membership/Events/MembershipTerminated.php`); it is not a suitable contract.
+- [F] Election rules: EM-GOV-028 (appointing authority), EM-GOV-026, EM-GOV-029, EM-GOV-033, EM-GOV-056, EM-GOV-064 (closed list of vacancy grounds); EM-OPEN-049, EM-OPEN-066 (`docs/publicdigit/reviews/2026-08-16-EM-OPEN-049-authority-over-the-chief.md`; `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`).
+- [F] B-4 is registered as open: "Which authority may approve a Change Request to the ratified Membership architecture?" (`docs/publicdigit/architecture/reviews/2026-11-07-oda-01-v1.3-correction-plan-approval-package.md:248`).
+
+### 9.4 Superseded statements in this record (not edited; superseded here)
+
+- §8.3, "Membership supplies only *membership ended*, which closes belongings whose capacity requires membership": the mechanism is superseded by the R-3 coverage contract (no closing record; effectiveness worked out from coverage, D-27). The business rule (V-36, V-37) is unchanged.
+- §8.6, "R-14 Membership → Governance (inferred, contract not validated)": now a designed query contract (model document §12), still subject to the Change Request.
+
+### 9.5 Open items carried forward
+
+Observers' starting act · deadline for reassigning after a fallback · body that engages staff · lifecycle when an organisation ends · whether the single geographic member limit becomes an organisation rule · a seat filled on an appointment later found invalid and not ratified · vocabulary CQ-1 ("Election Committee") and O-14 · eligibility for election committee seats (EM-OPEN-069) · contracts R-1, R-2, R-5, R-6a, R-6b, R-7, R-8, R-10, R-11 · Organisation vs Working Organisation naming.
+
+**Linked:** model document `docs/publicdigit/reviews/2026-11-08-strategic-context-map-and-governance-tactical-model.md` §9–§13 (PROPOSED).

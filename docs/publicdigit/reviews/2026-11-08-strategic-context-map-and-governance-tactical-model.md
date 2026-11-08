@@ -103,3 +103,95 @@ As in the discovery record §8.6.
 ## Traceability
 
 Conversation: Architecture Session B, 8 November 2026 (one question per turn). Decisions: discovery record §8.1. Frozen sources read: `docs/architecture/design/Round49-06_Boundary_Decision_Register.md`, `Round49-04_Behavioral_Evidence_Dossier.md`, `Round50-01_Aggregate_Discovery.md`, `Round50-02_Aggregate_Review.md`, `Round50-05_Event_Catalogue.md`. Also: ARB decision pack `docs/publicdigit/reviews/2026-11-02-organisation-governance-arb-decision-pack.md`; DR-07 paper; context map; ratified Membership act and canonical artefact.
+
+---
+
+## 9. Organisation tactical model [D] D-22
+
+**Status:** working baseline accepted by the Principal; not ratified; authorises no implementation. Decisions D-13 to D-22 (discovery record §9.1).
+
+| Aggregate | Identity | Protects | Concurrency |
+|---|---|---|---|
+| **Organisation** (registry) | OrganisationId | Identity, name and legal details, top unit; exists before its structure | Own version |
+| **Unit** | UnitId | Active periods with ending kinds (dissolved, merged into s, became new unit s, divided); dated parent records anchored to the parent's active period; successor links; continuation declarations (D-14); level; tree (geographic or wing) | Own version, plus the tree version for structural change |
+| **PersonBelonging** (per person and organisation) | PersonRef + OrganisationId | Belongings with capacity, unit, basis act, period, anchor. Exactly one geographic member belonging (V-24); other limits per capacity from the organisation's rules (V-53, V-54); never carries authority; no suspended state | Own version |
+
+**Structure rules [P]:** S-1 one active parent on any date (the top unit has none) · S-2 no cycles · S-3 levels fit, except recorded exceptions (V-17) and the temporary fallback, which may skip levels (V-52, D-19) · S-4 no removing a level in use · S-5 each wing is its own tree with a structure mode (V-21).
+
+**Identity outcomes:** move keeps the unit (V-49); renaming and boundary adjustment keep it [P]; division ends it and creates new units [I]; merger and bringing back are stated by the decision (V-50, V-51).
+
+**R-15 [P]:** Organisation keeps an immutable copy of each published Governance rule version it uses (RuleSet identity, version identity, resolution reference, effective from, content hash, relevant provisions: recognised capacities, which require membership, limits per capacity, wing joining, wing structure mode). The version in force on a belonging's start date applies and is referenced by the belonging. A rule change does not end existing belongings. No run-time call to Governance.
+
+## 10. Working out "as at" a date [D] D-13 to D-19, D-27
+
+**Recorded:** units with active periods and ending kinds; recorded parents and recorded belongings, each anchored to the active period (for belongings: the membership coverage interval, §12) in which it started; continuation declarations; successor links. Explicit allocations and reassignments are new records with their decision as basis.
+
+**`resolve(x, D, anchor)` [P]:**
+1. If x is active on D in the anchored period, or in a later period declared to continue this record, the answer is x.
+2. Otherwise, if the anchored period ended with a single successor s, resolve s on D, anchored to s's period at that time (D-15).
+3. Otherwise (dissolved or divided, no newer record), resolve x's parent as at the day before x ended (fallback; D-17, D-18, D-19).
+
+The latest record valid on D wins. Effective unit, effective parent and higher-level belonging follow. Every step goes to a successor period starting no earlier or to an ancestor in a finite tree, so resolution terminates [I].
+
+**Tests (all resolved from accepted rules):** move · dissolution with no successor · reassignment after fallback · member's later assignment · merger into a new unit · absorption · successor moves · successor dissolved · division with allocation · division omitting a direct member · division omitting a child unit · bringing back with no returns declared · bringing back with returns declared · reassignment before bringing back · several active periods · P1/P2 annulment after re-admission (D-27).
+
+Read models walking the tree as at a date are rebuildable projections labelled with the tree version; never the source of truth.
+
+## 11. Applying a structural decision (option C) [D] D-21, D-22
+
+- A Highest Committee resolution's structural content becomes one or more **change sets**, one effective date each.
+- `ApplyStructuralChangeSet` (decision reference, rule version, effective date, operations, idempotency key = decision + change set number), all or nothing in one transaction:
+  1. already applied → return the earlier result;
+  2. basis check: a recorded Governance structural decision exists (competence is not rechecked; D-12);
+  3. load only affected units, their ancestors, and changes already recorded for later dates that touch them;
+  4. check S-1 to S-5 **for every date from the effective date onwards** (for a ratified act, from the act date);
+  5. write new records only;
+  6. advance the tree version; if another change set got in first, start again from step 3.
+- On failure: nothing written; an "inapplicable" fact is recorded and sent to Governance (C-4); the decision is not thereby invalid (D-12).
+- A later decision may pre-empt an earlier one not yet in effect; both stay on record [I].
+- Events: `UnitCreated`, `UnitMoved`, `UnitEnded` (kind), `SuccessorDeclared`, `UnitResumed`, `LevelDefined`; integration `StructuralChangeSetApplied` / `StructuralChangeSetInapplicable`; `BelongingChanged`.
+
+## 12. Cross-context contracts
+
+### 12.1 R-6c Governance ⇄ Election [D] D-23
+
+Governance owns the competence to appoint election officials and fill election committee seats (the organ named by the organisation's rules) and the appointment decision. Election owns `ElectionCommittee`, officer roles, seats, vacancies and seat history, and checks independence from candidates (EM-GOV-029).
+
+| Direction | Exchange |
+|---|---|
+| Election → Governance | `AppointmentsAwaited` (election, roles and seats needed) |
+| Election → Governance | `CommitteeSeatVacated` (seat, ground under EM-GOV-064) |
+| Governance → Election | `ElectionAppointmentDecided` (decision ID, organisation, election, role or seat, person, effective from, decision date, rule version) → Election's adapter for `OrganisationalAppointmentAuthority` issues `RecordCommitteeConstitutionCommand` / `FillCommitteeSeatCommand` |
+| Election → Governance | `ElectionAppointmentApplied` / `ElectionAppointmentRejected` (reason); a rejection is "inapplicable" in Governance, never an invalid decision |
+
+Keyed by decision ID. A Governance "removal" decision is rejected by Election unless it records an EM-GOV-064 ground. Open: a seat filled on an appointment later found invalid and never ratified [OQ].
+
+### 12.2 R-3 Membership → Organisation [P], [D] D-27
+
+`MembershipCoverageResolved(organisationId, personRef, membershipId, seq, coverage, schemaVersion)`, published per Membership commit whenever coverage changes. `seq` is the per-Membership total order (ratified §2); `coverage` is the contiguous lifetime intervals as now known (INV-COV). Organisation keeps the highest `seq` per membership; lower = stale, equal = repeat, equal with different content = integrity error; a snapshot query per membership returns `(seq, coverage)`.
+
+A member belonging is anchored to the coverage interval in which it started. Effective on D ⇔ belonging valid on D ∧ D within that interval ∧ capacity requires membership under the recorded rule version ∧ latest valid record. An annulled End merges intervals (the belonging revives); a real re-admission starts a new interval (no revival, V-36). Organisation never interprets Admit, End, Annul, Void or Correct, and never depends on Membership's period attribution. `typeSegments` omitted until an Organisation rule needs membership type.
+
+Supersedes the earlier `MembershipPeriodResolved` proposal and anchoring to `PeriodId`.
+
+### 12.3 R-14 Membership → Governance [P], [D] D-24, D-26
+
+Needed only for appointments outside elections (V-29, V-42, V-43). Query `(organisationId, personRef, asOf, predicates, knownAtSeq optional)` over the ratified predicates (`IsMember`, `CurrentType`, `Suspended`, `CumulativeMembershipDuration` / `Continuous…`). Response: QUALIFIED, NOT_QUALIFIED or INDETERMINATE, values, periodId, `seq` used, contract version. INDETERMINATE is never read as either answer. Governance stores the response in the decision's basis next to the RuleSet version. No general event subscription; a future notice about a holder's membership would change nothing (D-24). "As known then" is reproducible from `seq` (ratified INV-14).
+
+### 12.4 Change Request to Membership §8 (scope; **not approved**)
+
+Under D-25 the Principal approves it. Scope: (1) Organisation as consumer of `MembershipCoverageResolved` and the per-membership snapshot query; (2) Governance as consumer of the ratified predicates through an asOf / knownAt query; (3) Election's contract unchanged; (4) no change to the Membership aggregate, correction algebra or policy switches; no shared storage or transaction.
+
+## 13. ARB acts still to be done (additions to §7)
+
+- Change Request to Membership §8 (§12.4), approval by the Principal (D-25).
+- Update of Election's open-question register for EM-OPEN-066 and EM-OPEN-049 (answered in form by D-23); not done here.
+- §7's acts stand: ADR + BDR v1.x for D-4; ADR superseding Round 50-01 `AGG — Mandate`; DR-07b act for C8; O-14 vocabulary (add: unit belonging, capacity, coverage interval, change set, staff engagement; CQ-1 "Election Committee"); Context Map update under change control.
+
+## 14. Superseded statements in this document (not edited; superseded here)
+
+- §2, R-3 row ("ends only belongings whose capacity requires membership"): mechanism superseded by §12.2; the business rule is unchanged.
+- §2, R-14 row ("[I] inferred; contract not validated"): superseded by §12.3.
+- §2, R-6c row ("Missing; first to build"): superseded by §12.1.
+
+**Traceability (§9–§14):** Architecture Session B, 8 November 2026, continued. Decisions: discovery record §9.1. Sources read: ratified Membership architecture (§2–§8); `docs/publicdigit/reviews/2026-08-16-EM-OPEN-049-authority-over-the-chief.md`; `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`; `app/Contexts/Election/Domain/OperatingCore/Committee/ElectionCommittee.php`; `app/Contexts/Election/Domain/OperatingCore/Port/OrganisationalAppointmentAuthority.php`; `app/Contexts/Membership/Domain/Membership/Events/MembershipTerminated.php`; `docs/publicdigit/architecture/reviews/2026-11-07-oda-01-v1.3-correction-plan-approval-package.md:248`.
