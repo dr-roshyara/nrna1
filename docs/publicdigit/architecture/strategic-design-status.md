@@ -6,8 +6,8 @@
 
 | | |
 |---|---|
-| **Status date** | 2026-11-02 |
-| **Verified at** | branch `election-flow-updated`, HEAD `532b598cd` (2026-11-02 review). `8dd493d31` and `17ef51c5e` are on `origin`. `a6b3f6ab8` (this record and the register) and three other sessions' KnowledgeOS commits are **not pushed**. The review commit follows (see the session log). |
+| **Status date** | 2026-11-08 (Organisation-baseline update, §9a). Previous: 2026-11-02 |
+| **Verified at** | branch `election-flow-updated`, HEAD `6052206be` (2026-11-08, before the commit that adds §9a; not pushed). Earlier: HEAD `532b598cd` (2026-11-02 review). `8dd493d31` and `17ef51c5e` are on `origin`. `a6b3f6ab8` (this record and the register) and three other sessions' KnowledgeOS commits are **not pushed**. The review commit follows (see the session log). |
 | **Full register** | `docs/publicdigit/reviews/2026-11-02-organisation-governance-strategic-design-status-assessment.md` (T-10: every item classified and cited) |
 | **Maintained by** | each strategic-design session, at session close (§8) |
 
@@ -58,6 +58,9 @@ Preserve ratified and accepted decisions.
 | Membership–Election: option A first milestone; plan PROPOSED | **APPROVED** (`8dd493d31`) | `docs/publicdigit/reviews/2026-11-02-membership-election-separation-decision-record.md`; plan `docs/plans/20261102-0339-membership-election-boundary-remediation-plan.md` |
 | PBDIGIT-318 S1 static guards (baseline V1, V1b, V2, V3′) | **APPROVED and implemented** (`17ef51c5e`); **acceptance pending** | `tests/Architecture/MembershipElectionBoundaryTest.php`; `developer_guide/membership_election_boundary/` |
 | Identity / affiliation / provenance proposals (XD-3a, XD-3b, XD-3c, Decision C, INV-AFF-1 **referred to the ARB**, XD-PROV with AM-1 r2) | **PROPOSED** | `docs/publicdigit/reviews/2026-11-0[12]-*-decision-record.md` |
+| PO-DR07-01: governance committees are organs; organisational units are a distinct concept; existing records are not classified; `CommitteeAssociation` unresolved | **APPROVED** (PO business decision, 2026-11-02) | `docs/publicdigit/reviews/2026-11-02-governance-dr07-committee-ownership-decision-paper.md` §15 |
+| PO-ORG-MEM-01 Decision A (the Organisation owns its Membership domain; a competent organ or authorised office holder makes Membership decisions; administrative responsibility and platform permissions are not organisational authority) and Decision B (DR-07a M-1…M-5 authorised; findings must be independently reviewed before use) | **APPROVED** (Principal / PO, 2026-11-03); ARB validation of its consequences **pending** | `docs/publicdigit/reviews/2026-11-03-organisation-po-org-mem-01-membership-ownership-decision-record.md` (commit `c632fe45d`) |
+| PO-ORG-MEM-01-J1 (Decision A applies to Membership decisions only), -J3 (Decision B, Constraints and final status line authentic), -J4 (PO and Human ARB were one person in two capacities; D-4 decided as Human ARB, as or on behalf of the Governance owner) | **DECIDED** (Principal, 2026-11-07) | `docs/publicdigit/reviews/2026-11-07-organisation-po-org-mem-01-principal-clarifications-j1-j3-j4-decision-record.md` (commit `78f87094c`, with the D-4 attribution corrections in the constitutional-authority preparation document) |
 
 ## 4. Open: the decisions that block completion
 
@@ -70,7 +73,7 @@ Preserve ratified and accepted decisions.
 | # | Decision | Owner |
 |---|---|---|
 | ~~O-1~~ | ~~**K7**~~ **resolved 2026-11-02: K′** (B1 stands; operator organisation separate; BR-12 reworded) | PO |
-| O-6 | **DR-07:** committee ownership; the reading of ratified act §10 (aggregate) and **§11 (context: "organs")**; ADR-0001's location clause. Paper ready; premise OQ-DR07-0 with the PO | PO + Membership owner + ARB |
+| O-6 | **DR-07:** committee ownership; the reading of ratified act §10 (aggregate) and **§11 (context: "organs")**; ADR-0001's location clause. Paper ready. **Updated 2026-11-08:** premise OQ-DR07-0 answered by **PO-DR07-01** (2026-11-02, paper §15). DR-07a technical discovery M-1…M-5 is written (`docs/publicdigit/architecture/reviews/2026-11-03-dr07a-membership-technical-discovery-m1-m5.md`, commit `ed8d572dc`); under PO-ORG-MEM-01 Decision B its findings **must be independently reviewed before use**, and that review has not been done. ARB-1…ARB-8 remain pending. DR-07 stays **OPEN** | PO + Membership owner + ARB |
 | O-7 | **XD-4** authorisation ownership; **XD-5** geography history | ARB |
 | O-8 | which positions are incompatible within an organisation (BQ-P1, CQ-7) | PO |
 | O-9 | Membership ↔ tenure (BQ-P2 / P3) | PO |
@@ -183,6 +186,42 @@ Update this record (and the session log) with:
 - **Still with the PO:** the FeePaid direction question.
 - **When resuming:** read the context map §10 (open questions) and §14 (change control) after this record.
 - Independent of both: the PBDIGIT-317 log-access check.
+
+## 9a. Session A, Organisation baseline (ODA-01), 2026-11-03 to 2026-11-08
+
+**Completed** (documentation and decision records only; nothing implemented):
+- ODA-01 Organisation domain architecture baseline: v1.0 and v1.1 (commit `f6471aaf0`); v1.2 (`docs/publicdigit/architecture/reviews/2026-11-06-organisation-domain-architecture-baseline-oda-01-v1.2.md`). All are **PROPOSED**.
+- Reviews of ODA-01, all **Claude-family, therefore not independent**:
+  - IR-ODA-01 (`f6471aaf0`);
+  - the Claude subagent review of v1.1 (`ffcee7b8a`);
+  - the Claude subagent review of v1.2 (CSR12);
+  - a fresh-session Claude review of v1.2 (IR12, held outside the repository at `~/ir-oda-01-v1.2-review-handover/`).
+- ODA-01 v1.3 correction plan (`docs/plans/20261107-0239-oda-01-v1.3-traceability-and-correction-plan.md`) and its approval package (`docs/publicdigit/architecture/reviews/2026-11-07-oda-01-v1.3-correction-plan-approval-package.md`):
+  - the Principal approved documentary decisions 1–6 on 2026-11-07, then A-12 (as decision 5, option b) and I-2…I-8 on 2026-11-08;
+  - these approvals cover **the wording of the plan only**. They are not approval of ODA-01 or of any architecture.
+
+**Decisions:** PO-ORG-MEM-01 A / B (`c632fe45d`) and J1 / J3 / J4 (`78f87094c`), see §3.
+
+**Still open:**
+- ODA-01 v1.3 is **not created** (needs a separate authorisation).
+- **Gate F** (independent review by a human architect or a different model family, per `docs/publicdigit/architecture/reviews/2026-11-06-ir-oda-01-v1.2-review-commission.md`) is **open**. The Principal's 2026-11-07 acceptance of residual risk covers the Claude reviews only, not Gate F.
+- The definition of Organisation (ODA-M-2) is open. No constitutional source material or authoritative appointment / delegation evidence is on file.
+- Change Request authority for the ratified Membership architecture (B-4 / ODA-M-19) is open.
+- Whether the ARB and the Human ARB are the same authority is open.
+- Who may extend, replace or supersede D-4 is open.
+- B-8 (a durable record of Principle A) is open.
+- The Organisation context is a **Candidate** only (ADR-004); none is established.
+
+**Repository:**
+- The ODA-01 working documents and this update are committed together. See the session log of 2026-11-08 for the commit.
+- Not pushed.
+
+**Next action:**
+1. Arrange the Gate F independent review under the v1.2 review commission.
+2. The Principal decides on its findings and on creating v1.3 (gate D).
+3. Then accept or reject the organisational baseline.
+
+**Strategic DDD discovery has not started** and must not start before the organisational baseline is accepted.
 
 **Do not:**
 - restart EPIC-002 discovery;
