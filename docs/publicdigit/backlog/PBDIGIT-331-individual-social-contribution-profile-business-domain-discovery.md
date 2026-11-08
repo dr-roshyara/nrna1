@@ -63,7 +63,7 @@ A profile is a **candidate solution**, not a validated requirement. The presenta
 
 ## 6. Definition of done for the discovery
 
-1. Interview(s) with the initial case held, and her answers recorded with her consent.
+1. Interview(s) with the initial case held, and her answers recorded on the basis she agreed to (decision-package §4; specialist advice, R-08) *(F-3, 2026-11-08)*.
 2. Glossary v2 validated, or amended, by the business domain expert.
 3. Conceptual relationship model v2, with ambiguities closed or recorded as open questions.
 4. A decision package for the PO covering: product-scope fit, the identity anchor (person or member), visibility and consent, verification authority, and the measurement stance, taking into account the generalisation findings of `PBDIGIT-333` (workshop W4b).
@@ -72,7 +72,7 @@ A profile is a **candidate solution**, not a validated requirement. The presenta
 ## 7. Dependencies and open decisions
 
 - **Product-scope fit [OQ, PO].** The backlog defines the product as an Organisation Governance Platform. An individual, person-scoped and possibly public profile may extend that scope.
-- **Consent [OQ].** Consent of the initial case to be the discovery subject and to be named in project documents.
+- **Agreement of the initial case [OQ].** Her agreement to be the discovery subject and to the use of her information, on the basis confirmed through specialist advice; being named is a separate, optional permission (decision-package §4, K-1…K-8). Decided by Komal Oli (R-02) *(F-3, 2026-11-08)*.
 - **`PBDIGIT-330`.** Shares activity and evidence concepts; ARB-8 is open.
 - **`PBDIGIT-332`.** The PO decision on the existing module.
 

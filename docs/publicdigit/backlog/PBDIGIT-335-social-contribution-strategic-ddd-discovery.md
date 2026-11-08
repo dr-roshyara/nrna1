@@ -42,7 +42,7 @@ After business discovery has established what social contribution means, how it 
 | | Condition | Status (2026-11-07) | Decision-maker |
 |---|---|---|---|
 | E-1 | Phase 0 milestone approval | **Met**: approved by the Principal, 2026-11-07 (recorded in plan status, §11, §13 and `PBDIGIT-334`) | Principal |
-| E-2 | Komal Oli's consent to participate and to be named in project documents | **Not met**: no record | Principal (with Komal Oli) |
+| E-2 | Komal Oli's agreement to take part (K-1) and to the use of her information in discovery, on the basis confirmed through specialist advice (decision-package §4; R-08). Being named in project documents is a separate, optional permission (K-2) *(F-1, 2026-11-08)* | **Not met**: no record | **Komal Oli** decides (R-02); the Principal requests it |
 | E-3 | A named Product Owner | **Not met**: no record | Principal |
 | E-4 | Phase 1 individual discovery complete (W0–W3, W4a) | **Not met**: not started; Phase 1 not yet authorised | Principal (authorisation) |
 | E-5 | Generalisation investigation complete (`PBDIGIT-333`, W5) | **Not met**: blocked on W1–W3 | Principal |

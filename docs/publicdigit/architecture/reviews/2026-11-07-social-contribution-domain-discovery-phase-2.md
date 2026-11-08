@@ -428,7 +428,7 @@ Each term is a candidate meaning, not a definition approved by the business.
 | ID | Question | Owner |
 |---|---|---|
 | OQ-S1 | Is an individual (person-scoped, possibly cross-organisation, possibly public) contribution profile within PublicDigit's product scope? Is it anchored to a person or to an organisation member? **Partly answered 2026-11-07 (C-13):** nrna1 is the product home (Principal direction); the identity anchor (initiative plan §7.2) and person-scoped scope remain open. | PO |
-| OQ-S2 | Has the initial case consented to be the discovery subject and to be named in project documents? | Principal |
+| OQ-S2 | Has the initial case consented to be the discovery subject and to be named in project documents? | Decided by Komal Oli (R-02); the Principal requests it (decision-package §4) *(F-2, 2026-11-08)* |
 | OQ-C1 | What does "calculate / measure her contribution" mean to her: an account of extent, or a single figure? | Komal Oli (interview §7C) |
 | OQ-C2 | Which dimensions (§9) matter, and to whom? | Komal Oli; party representatives |
 | OQ-V1 | Who has standing to verify a claim? Is a certificate a verification? | Business domain expert |
@@ -465,7 +465,7 @@ W2 matters most. Working with real artefacts shows the double role of certificat
 | 1 | Product-scope fit of an individual social contribution profile (OQ-S1). **Partly answered 2026-11-07 (C-13):** nrna1 is the product home; the identity anchor and person-scoped scope remain open. | PO |
 | 2 | Identity anchor (person or member) | PO / ARB, after W4b |
 | 3 | Confirmation of the Contribution Points module status (`PBDIGIT-332`) | PO |
-| 4 | Consent and naming of the initial case (OQ-S2) | Principal |
+| 4 | Consent and naming of the initial case (OQ-S2) | Decided by Komal Oli (R-02); the Principal requests it *(F-2, 2026-11-08)* |
 | 5 | Authorisation of interviews W1–W3 | Principal |
 | 6 | Measurement stance: a multi-dimensional account versus anything aggregated (after OQ-C1) | PO |
 | 7 | Priority relative to WP-7C → WP-8 → EPIC-005 | PO |

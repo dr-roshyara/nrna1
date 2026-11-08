@@ -415,7 +415,7 @@ These are options for the PO and ARB. **This document chooses none.**
 | DEP-1 | Identity anchor decision (§7.2; XD-3a/3b; BR-13a; INV-ORG-SCOPE-1 §1a) | Open: PO + ARB + data protection |
 | DEP-2 | `PBDIGIT-332`, status of the experiment | Open: PO |
 | DEP-3 | ARB-8 / O-9 / DR-07 (authority, tenure), only if office or tenure content or authority-based verification is in scope | Open |
-| DEP-4 | Consent of the initial case (PH2 OQ-S2) | Open: Principal |
+| DEP-4 | Agreement of the initial case to take part and to the use of her information (PH2 OQ-S2; decision-package §4) | Open: decided by Komal Oli (R-02); the Principal requests it *(F-2, 2026-11-08)* |
 | DEP-5 | Priority against the delivery focus WP-7C → WP-8 → EPIC-005 | Open: PO |
 
 **Risks**
@@ -445,7 +445,7 @@ These are options for the PO and ARB. **This document chooses none.**
 | # | Decision | Authority | Needed before |
 |---|---|---|---|
 | 1 | **Approve this initiative story and development plan** (milestone). **Decided: approved by the Principal, 2026-11-07.** | Principal | Phase 1 |
-| 2 | Consent and naming of the initial case | Principal | Phase 1 interviews |
+| 2 | Agreement and naming of the initial case (decision-package §4, K-1…K-8) | Decided by Komal Oli (R-02); the Principal requests it *(F-2, 2026-11-08)* | Phase 1 interviews |
 | 3 | Confirm the Product Owner for this initiative | Principal | Phase 1 |
 | 4 | **Identity anchor: member-scoped / person-scoped / person-as-organisation (§7.2)** | PO + ARB (+ data protection) | Phase 2 conclusion |
 | 5 | Status of the Contribution Points experiment (`PBDIGIT-332`) | PO | Phase 4 |

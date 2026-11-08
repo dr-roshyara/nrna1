@@ -30,7 +30,7 @@
   - R-05/R-06 separate S-1 security assessment (legacy `/user/{profile}` route; detail in commit `43624fe1c`) — **do not push the branch until decided**;
   - R-08 data-protection advice before interviews;
   - R-04 authorise Phase 1 after R-02 (Komal Oli's own agreement) and R-03.
-- **Commits (local, not pushed):** `43624fe1c` … `486a14806`, session log `53674e5ac`.
+- **Commits (local, not pushed):** `43624fe1c` … `486a14806`, session log `53674e5ac`; context `9ec97dbec`, `56496c06a`; record fixes F-1…F-6 (2026-11-08) *(F-5, 2026-11-08)*.
 - **Session log:** `.claude/sessions/2026-11-07.md`.
 - **Next action:** Principal decisions R-03, R-05/R-06, R-08; then R-04.
 
