@@ -368,6 +368,22 @@ Exact wording as typed, in order (typos preserved). These are the primary eviden
 | V-31 | General rules or specific grants? | (reported only through a pasted analysis; the Principal's own wording not available to the recorder) |
 | V-32 | Does moving unit change the membership itself? | "Same member; only the territorial assignment changes" |
 | V-21 | Do wing committees sit on the geographic units or on their own divisions? | "this should be defined in the central committee rule book" — then, correcting the term: "highest committee rule book" |
+| V-33 | Can a non-member belong to a unit? (holding an office or mandate excluded) | "yes as guest , worker/staff , observer etc but not as member." |
+| V-34 | Who decides that a non-member belongs to a unit? | "depends on the capacity; staff formally appointed, guests just recorded" |
+| V-35 | Does a staff appointment carry authority? | "depends on the position; some staff can sign, most cannot" |
+| V-36 | What happens to unit belonging when membership ends? | "ends completely; a new act is needed, e.g. recorded as guest" |
+| V-37 | Does a suspended member still belong to their unit? | "yes, still belongs to unit; suspension restricts rights only" |
+| V-38 | Is joining a wing like unit belonging, or a separate admission? | "depends on the wing; organisation rules decide" |
+| V-39 | Membership types; organisation-wide membership; higher-level committee service | **Reported summary, not a quotation.** A pasted analysis summarised the Principal's answer as: General Member and Active Member are membership types; membership is organisation-wide; the member belongs to the lowest unit; serving on a higher committee creates no second membership. The Principal's own wording is not available to the recorder |
+| V-40 | How does an ordinary committee member get their place? (first answer) | **Reported, not directly verified.** A pasted analysis quotes the Principal as: "The General Assembly of Active Members elects the committee members or office holders". Practice of the organisations described; not a rule for all PublicDigit organisations |
+| V-41 | Eligibility for higher-level committees | **Reported, not directly verified.** A pasted analysis gives example criteria: "at least 5 years as an Active Member" and "at least 2 years of service as a committee member or office holder at the lowest organisational level", stated there as illustrative. Examples of organisation-specific criteria; not a rule for all PublicDigit organisations |
+| V-42 | Can a committee fill a place without an office (an "ordinary seat") itself? | "(b) committee appoints a replacement, like office holders" — after asking "what you mean by an ordinary seat ?" |
+| V-43 | Does authority always come from a position? | "(3) positions created when needed, like acting coordinator." |
+| V-44 | What can be ratified after the fact? | "both; individual actions as B-light" |
+| V-45 | When a ratified appointment takes effect | **Reported, not typed directly.** A pasted analysis records the Principal's choice as option (c), "rule-governed case-by-case effect of appointment ratification" |
+| V-46 | Is the number of places on a committee set by the rules? | "(1) set by rules; each place can be vacant" |
+| V-47 | Is the chair its own place, or an office added to a member's place? | "(a) own place, elected directly into it" |
+| V-48 | Can a committee be dissolved while its unit continues? | "(3) both, by organisation rules" |
 
 **Wording caveats.**
 - V-7 answers the lowest-level question indirectly, through convention participation. "Members are assigned at the lowest level" (§2.5) is an [I] from V-7, qualified by "normally". It is not a confirmed rule.
@@ -379,3 +395,64 @@ The eleven findings presented in conversation map to §2 as follows: 1 → §2.1
 ## 7. Traceability
 
 Conversation: Architecture Session A, 8 November 2026 (one question per turn). Linked: roadmap plan `docs/plans/20261108-0303-organisational-baseline-to-tactical-design-roadmap-plan.md`; status record `docs/publicdigit/architecture/strategic-design-status.md`; PO-DR07-01; PO-ORG-MEM-01 and J-rec; context map R-16, O-16 / DR-07b, EM-VOC-002.
+
+## 8. Continuation: Session B, 8 November 2026 (C8, ARB-8, consolidated map, Governance tactical model)
+
+**Status.** PROPOSED discovery evidence, like the rest of this record. The working decisions below are the Principal's **working** decisions. None is ratified. None changes a ratified or frozen record. Each ARB act named here is still to be done.
+
+**Source quality.** As in §0: *(direct)* means the Principal typed the answer in the conversation; *(as reported)* means it reached the recorder only through a pasted analysis. Several decisions were given as "I accept the recommendation" in reply to a pasted analysis; they are marked *(via paste, accepted)*.
+
+### 8.1 Working decisions
+
+| # | Decision | Source | Notes |
+|---|---|---|---|
+| D-2 | The roadmap's phase order stands. §2.7–2.9 of this record are provisional Phase 5 material until Phases 3 and 4 are accepted. | via paste, accepted | The roadmap's own status remains PROPOSED |
+| D-3 | **Organisation owns C8** (belonging to units and wing branches, in every capacity), with the exclusions in §8.3. | via paste, accepted | Working decision; formal DR-07b act later |
+| D-4 | **ARB-8 option (i):** Governance is the context BDR-03 calls "Appointment (Authority)". It owns positions and tenures, and therefore mandate truth. | direct: "Yes, I accept option (i) as a working decision." | BDR-03 explicitly confirmed a bounded context ("Confirmed BC — Operational", `docs/architecture/design/Round49-06_Boundary_Decision_Register.md:16`). This is therefore a **consolidation of bounded contexts**, to be recorded later by ADR, with a BDR v1.x addition and a Boundary Evolution History row. The v1.0 table keeps its wording |
+| D-5 | Governance stays **one bounded context**, with internal modules for Rules, Organs and positions, and Decisions and competence. Rules is reconsidered only if rule interpretation develops its own lifecycle. | via paste, accepted | — |
+| D-6 | **Retrospective effect is limited to ratification** (option C). Ordinary decisions take effect no earlier than the date they are made. | via paste, accepted | Act date and ratification date both kept; no separate "ratification effective date" |
+| D-7 | **Mandate merge test (Round 50-02, open) settled:** no Mandate aggregate. Authority is held through the Position aggregate and its tenure history. `MandateGranted` / `MandateRevoked` stay unchanged, as integration events derived from tenures. Organ-to-organ delegation stays `AuthorityAssignment`. | direct: "Yes, I accept the Mandate merge test resolution." | Round 50-01 to be superseded later by ADR, with a note and its original text kept |
+| D-8 | Both organ decisions and individual actions can be ratified; individual actions are recorded only when brought for ratification (B-light). | direct (V-44) | — |
+| D-9 | When an appointment is ratified, the ratifying organ decides its effect each time, within the organisation's rules (RA-6a–RA-6d). | as reported (V-45) | — |
+| D-10 | The **Governance tactical model** is accepted as the working baseline: aggregates RuleSet, Decision, Organ, Position, AuthorityAssignment. | direct: "Yes, I accept the Governance tactical model." | Qualifications in §8.6 stay in force. No implementation authorised |
+| D-11 | Record the decisions in the repository before Organisation's tactical model. | Recommended by the recorder; endorsed by the Principal through a pasted analysis | A decision about **sequence** only. Permission to write these records and any commit or push are separate approvals |
+| D-12 | A decision's **competence** is checked on its **decision date**, under the rules and structure in force that day; its **content** must be applicable on its **effective date**, otherwise it is recorded as inapplicable (which does not invalidate it) and a new decision follows. | direct: "(a) decision date." | Consistent with RA-3 (competence to ratify on the ratification date) |
+
+### 8.2 Findings from V-33 to V-48 (summary; §6 wording governs)
+
+- [PK] A person belongs to a unit **in a capacity**: member, staff, guest, observer, and wing member where the wing works that way (V-33, V-38). Non-members never belong as members.
+- [PK] How a belonging starts depends on the capacity: members by admission, staff by formal engagement, guests by being recorded (V-34). Observers: [OQ].
+- [PK] Whether a staff member has authority depends on the post (V-35). [P] Belonging and authority are separate facts; a post with powers is a Governance position, a post without powers is only a staff belonging with a job title.
+- [PK] Member belonging ends completely when membership ends; anything further needs a new act (V-36). It is unaffected by suspension (V-37).
+- [PK] How people join a wing is a property of the wing, set by the organisation's rules (V-38). [I] Under I5 (`…-membership-architecture-ratified.md:150`) a wing with its own admission is "another relationship", not a second membership.
+- [PK, as reported] General Member and Active Member are membership types; membership is organisation-wide; higher-level committee service creates no second membership (V-39, reported summary). In the organisations described, places on committees are elected by the General Assembly of Active Members (V-40). Organisations set their own eligibility criteria for higher committees; the 5-year and 2-year figures are examples (V-41). None of V-39 to V-41 is a rule for all PublicDigit organisations.
+- [PK] Committees fill vacancies in places without an office the same way as offices (V-42). No co-option of extra members.
+- [PK] Authority always comes from a position; positions are created when needed, such as acting coordinator (V-43).
+- [PK] Committee size is set by rules; each place can be vacant (V-46). The chair is its own place, elected directly (V-47). A committee can be dissolved while its unit continues, where the organisation's rules allow (V-48).
+
+### 8.3 C8 (unit belonging), working model
+
+- [P] One relationship: person, unit or wing branch, capacity, basis act, period. It never carries authority and never copies membership status.
+- [P] Membership supplies only *membership ended*, which closes belongings whose capacity requires membership. Staff, guest and observer belongings are unaffected.
+- [I] Restructuring: individual reassignment needs a decision; the temporary fallback to the higher unit (V-5, V-6) and higher-level belonging follow from the structure.
+- Excluded from C8: membership truth, authority and mandates, competence and approval rules, voting rights, platform access.
+
+### 8.4 Superseded statements in this record (not edited; superseded here)
+
+- §2.5, the [I] at the V-23 bullet ("territorial assignment is part of the membership fact"): superseded by §2.8 correction 1 and D-3.
+- §2.7, the table row "Membership: C8a, C8b, C11": C8 is superseded by D-3.
+- W-1 "territorial assignment": **provisional** proposed replacement **"unit belonging"** (it covers wings and non-members; "affiliation" clashes with EM-VOC-002). W-1 stays in use until vocabulary decision O-14 is made; this is not a vocabulary decision.
+
+### 8.5 Evidence found during Session B
+
+- [F] BDR-03's evidence (EV-050/051) is Governance code: `Authority/…DelegationStatus`, `DelegationLifecyclePolicy`, `RemoveCommitteeMemberCommand`/`Handler` (`docs/architecture/design/Round49-04_Behavioral_Evidence_Dossier.md:35`). Governance was not a candidate in that register.
+- [F] Round 50-01 `AGG — Mandate` takes its lifecycle from `DelegationStatus` (organ-to-organ delegation); Round 50-02 left its merge test "OPEN … NOT finalized" (`docs/architecture/design/Round50-02_Aggregate_Review.md:26`).
+- [F] Election declares `OrganisationalAppointmentAuthority` as an external port, deliberately unimplemented (EM-OPEN-049). `ElectionCommittee` is Election's own aggregate; its seats are filled only through that authority (I-4, I-5).
+- [F] `RemoveCommitteeMemberCommand` deletes an entry from the Governance `Committee` member→role map, with no basis, effective date or history.
+- [F] `CommitteeAssociation` carries its own `MembershipStatus` with `suspend`/`restore`/`terminate`, and enforces no "one geographic unit" rule.
+
+### 8.6 Open items carried forward
+
+R-14 Membership → Governance (inferred, contract not validated) · observers on committees · change of committee size mid-term · RuleSet–Decision integration design · meaning of `GovernanceDecision` `Legitimacy` and `DecisionTrace` · event-flow and failure testing of the Organ → Position → tenure ending chain (effective date, safe to repeat, correct "as at" read models) · whether Finance consumes `ActRatified` · B-4 (Change Request authority for new consumers of Membership events) · C5 as its own bounded context · Organisation vs Working Organisation naming · vocabulary O-14.
+
+**Linked:** `docs/publicdigit/reviews/2026-11-08-strategic-context-map-and-governance-tactical-model.md` (PROPOSED).
