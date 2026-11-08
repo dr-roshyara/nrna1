@@ -390,6 +390,11 @@ Exact wording as typed, in order (typos preserved). These are the primary eviden
 | V-52 | When a province is dissolved, what happens to its districts? | "(c) move up to next higher level until reassigned" |
 | V-53 | Can a member belong to more than one wing at a time? | "(c) organisation rules decide" |
 | V-54 | Can a person be staff, or a guest, in more than one unit at a time? | "(c) organisation rules decide" |
+| V-55 | At a delegate convention, does anyone take part by virtue of an office, without being elected? | "(c) organisation rules decide" |
+| V-56 | When an elected delegate leaves before the higher convention, how is the place filled? | "(d) organisation rules decide" |
+| V-57 | How long does a delegate hold the place? | (via paste, accepted) the pasted analysis recommended "Option C — Organisation rules decide"; the Principal answered "I accept the recommendation" |
+| V-58 | When a represented unit is divided, merged or dissolved, what happens to its delegates' mandates? | "organisation rule decides" |
+| V-59 | Who may enter an organ's decision into PublicDigit? | "(c) organisation rules decide" |
 
 **Wording caveats.**
 - V-7 answers the lowest-level question indirectly, through convention participation. "Members are assigned at the lowest level" (§2.5) is an [I] from V-7, qualified by "normally". It is not a confirmed rule.
@@ -514,3 +519,56 @@ R-14 Membership → Governance (inferred, contract not validated) · observers o
 Observers' starting act · deadline for reassigning after a fallback · body that engages staff · lifecycle when an organisation ends · whether the single geographic member limit becomes an organisation rule · a seat filled on an appointment later found invalid and not ratified · vocabulary CQ-1 ("Election Committee") and O-14 · eligibility for election committee seats (EM-OPEN-069) · contracts R-1, R-2, R-5, R-6a, R-6b, R-7, R-8, R-10, R-11 · Organisation vs Working Organisation naming.
 
 **Linked:** model document `docs/publicdigit/reviews/2026-11-08-strategic-context-map-and-governance-tactical-model.md` §9–§13 (PROPOSED).
+
+## 10. Continuation: Session B, 8 November 2026 (remaining cross-context contracts)
+
+**Status.** PROPOSED discovery evidence. Working decisions only; none is ratified or authorises implementation. Source labels as in §9.
+
+### 10.1 Working decisions
+
+| # | Decision | Source |
+|---|---|---|
+| D-28 | An elected person's tenure begins at the start of the working period after the result is published. A later successful challenge is a new change from its own effective date; it does not erase the tenure or invalidate what was done in it. Publication finality and adjudicative finality are distinct. | as reported |
+| D-29 | R-1 (Governance → Organisation: `StructuralChangeSetsDecided`, `BelongingAllocationsDecided`) and R-2 (Organisation → Governance: `StructureAsAt`, `BelongingAsAt`, tree version recorded) are working designs. | direct: "Yes, I accept R-1 and R-2 as working designs." |
+| D-30 | Within one resolution, each structural change set stands or falls on its own, unless the resolution declares a group of change sets indivisible; a division remains one change set. | direct: "(b) independent change sets unless declared indivisible" |
+| D-31 | Official geography is its own platform-level bounded context (Reference Geography): official units, revisions, approval of submitted missing units. The organisation's own units are Organisation's. | direct: "(a) its own platform-level bounded context" |
+| D-32 | The Election contract set R-5, R-6a, R-6b, R-7, R-8 is accepted as working designs, with four qualifications: taking part is not voting; one ballot per person is current software, not a platform rule (weighting [OQ]); a replacement delegate's mandate follows the applicable rule; restructuring consequences for delegates follow V-58. | direct: "yes i accept" (to the pasted recommendation with these qualifications) |
+
+### 10.2 Findings and inferences
+
+- [I] D-28's open question "is the published result itself the basis for holding office?": §2.4 records "The elected office holders take over automatically; no Highest Committee decision is needed" (as reported), and the convention elects while Election conducts (§2.6). So the published result is the convention's decision; Governance records it, and no separate act is needed unless an organisation's rules require one.
+- [I] Who approves Election-side changes: Election's rules were adopted by "PO/ARB adoption acts" (`docs/publicdigit/reviews/2026-08-16-adoption-act-v3.md`), so the Principal, as PO and human ARB Chief.
+- [E] Election predicates: "`Eligibility` — Election's (not a Membership predicate)" (ratified Membership architecture §4); supports Election applying candidacy criteria.
+- [I] V-58 is applied by Governance once Organisation confirms a structural change set (R-1 reply).
+- [F] BDR-08 freezes "Election Lifecycle" as a supporting subdomain; Election's boundaries come from the Membership act (§11, §12) and the adopted EM-GOV rules.
+
+### 10.3 Evidence found
+
+- [F] `VoterSourceStrategy` has two sources only, platform users (`election_only`) and the `Member` table (`full_membership`); "Election snapshot is sovereign … IMMUTABLE at election level" (`app/Domain/Election/Enum/VoterSourceStrategy.php`).
+- [F] `ResultsPublishedEvent` carries `electionId, publishedBy, publishedAt, state` only (`app/Contexts/Elections/Domain/Events/ResultsPublishedEvent.php`).
+- [F] No convention, delegate or candidacy-eligibility concept exists in Election code; regional voting matches `user.region` text (project `CLAUDE.md`).
+- [F] `GovernanceDecision::record` rejects an effective date after the decision date and accepts earlier ones (`app/Contexts/Governance/Domain/GovernanceDecision.php`) — the inverse of D-6 and D-28.
+- [F] `GeoAdministrativeUnit` has a fixed `parentId` and one `validFrom`/`validTo`; `GovernanceGeoUnitQueryService` reads unit tables directly.
+- [F] Reference geography: landlord master, tenant copy with remapped IDs, `landlord_geo_id`, `is_official`, `code`; levels 6–8 are organisations' custom units in the same table; daily sync of "approved geography"; `GeographyCandidateService::submitMissingGeography` (`app/Contexts/Geography/`).
+- [F] Authorization today: Laravel policies in `app/Policies` over platform roles; the D-4 adapter marks competence unverified.
+
+### 10.4 Superseded statements (not edited; superseded here)
+
+- §9.5's open item "contracts R-1, R-2, R-5, R-6a, R-6b, R-7, R-8, R-10, R-11" now has this status:
+
+| Contract | Status |
+|---|---|
+| R-1, R-2 | Working designs [D] D-29, D-30 |
+| R-5, R-6a, R-6b, R-7, R-8 | Working designs [D] D-32 |
+| R-10 | Proposed [P]. D-31 settles the context boundary only; identity and temporal semantics open |
+| R-11 | Proposed [P]. BDR-07 and V-59 set its constraints |
+| R-3, R-14 | Proposed [P]; depend on the Membership §8 Change Request (not approved) |
+| R-15 | Proposed [P] |
+
+Accepting a bounded context (D-31) does not accept the contracts connecting to it.
+
+### 10.5 Open items carried forward
+
+A cancelled convention and delegate mandates · weighted votes through two participation routes · who keeps a person's residence · whether an ex officio seat carries a vote (organisation rule) · how an observer's belonging starts · deadline for reassigning after a fallback · body that engages staff · lifecycle when an organisation ends · vocabulary CQ-1 and O-14 · the Election-side changes and their PO/ARB act (model document §17).
+
+**Linked:** model document §15–§19.

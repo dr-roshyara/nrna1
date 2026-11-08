@@ -195,3 +195,101 @@ Under D-25 the Principal approves it. Scope: (1) Organisation as consumer of `Me
 - §2, R-6c row ("Missing; first to build"): superseded by §12.1.
 
 **Traceability (§9–§14):** Architecture Session B, 8 November 2026, continued. Decisions: discovery record §9.1. Sources read: ratified Membership architecture (§2–§8); `docs/publicdigit/reviews/2026-08-16-EM-OPEN-049-authority-over-the-chief.md`; `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`; `app/Contexts/Election/Domain/OperatingCore/Committee/ElectionCommittee.php`; `app/Contexts/Election/Domain/OperatingCore/Port/OrganisationalAppointmentAuthority.php`; `app/Contexts/Membership/Domain/Membership/Events/MembershipTerminated.php`; `docs/publicdigit/architecture/reviews/2026-11-07-oda-01-v1.3-correction-plan-approval-package.md:248`.
+
+---
+
+## 15. Consolidated context map (working baseline)
+
+**Status:** This section consolidates the current working context map and the working decisions relevant to it (discovery record §8.1, §9.1, §10.1). It does not supersede, amend or unfreeze separately ratified architecture, including the Membership architecture. No implementation is authorised by it. It brings §1, §2 and §12 up to date; where they differ, this section governs (see §19).
+
+| Context | Owns | Excludes | Status |
+|---|---|---|---|
+| **Governance** (incl. BDR-03's Appointment (Authority)) | Rules (versioned) incl. convention rules, participation routes and their rights, candidacy criteria, delegate rules, recording rules; competence and delegation; decisions (decision date, effective date, basis, evidence); organs incl. conventions; positions incl. delegate places; position tenures | Structure, belonging, membership, voting entitlement, candidacy decisions, election committee seats, access | [D] D-4, D-5, D-10 |
+| **Organisation** | Registry; units and the tree over time; unit belonging | Organs, positions, membership, authority, official geography | [D] D-3, D-22 |
+| **Membership** | Membership periods, types, facts, correction; predicates | Units, positions, entitlements | Ratified, frozen |
+| **Election** | Election lifecycle; electorate and voting entitlement; candidacy and its decisions, **applying** candidacy criteria that Governance's rules define, with evidence from Membership (R-4) and Governance (R-6b); `ElectionCommittee`, officer roles, seats; results; snapshots | The criteria themselves, belonging, membership, tenures, authority | Ratified boundaries; Election-side changes pending (§17) |
+| **Reference Geography** (platform level, generic) | Official units, revisions, approval of submitted missing units | Any organisation's structure | [D] D-31 |
+| **Authorization** (service, BDR-07) | Nothing; read models of its inputs (§16, "R-11 inputs") | Any business truth | Frozen BDR-07; V-59 |
+| Identity, Platform / tenancy, Finance | Unchanged | Unchanged | Unchanged |
+
+Outside this map, unchanged: Voting, Evidence, Contestation, Adjudication, Audit.
+
+**Patterns [P]:** a context deriving its own facts from another's keeps a rebuildable copy of published complete state (R-3, R-10); a context deciding on another's facts queries "as at" a date and stores the answer and version marker in the decision's basis (R-2, R-6b, R-14); Election takes everything through a snapshot at the cut-off, with each source's marker, and the snapshot never changes.
+
+## 16. Contracts (working designs)
+
+| # | Direction | Form | Content | Marker | Source |
+|---|---|---|---|---|---|
+| R-1 | Governance → Organisation | Events `StructuralChangeSetsDecided`, `BelongingAllocationsDecided` | decisionId, organisation, decision date, rule version; change sets (number, effective date, operations, ratification flag with act date, indivisible-group membership); allocations (person, unit, capacity, effective date, dependent change sets) | decisionId + set / allocation number | [D] D-29, D-30 |
+| R-1 reply | Organisation → Governance | Events `StructuralChangeSetApplied` / `…Inapplicable`, `BelongingAllocationApplied` / `…Inapplicable` | Outcome per change set or allocation, with reasons; an indivisible group as one outcome; an inapplicable dependency makes dependants inapplicable | same | [D] D-29, D-30 |
+| R-2 | Organisation → Governance | Queries `StructureAsAt(organisation, date)`, `BelongingAsAt(unit, date, capacity)` | Units, effective parents, levels; belongings | tree version (+ membership `seq`) recorded in the decision's basis | [D] D-29 |
+| R-3 | Membership → Organisation | Event `MembershipCoverageResolved` + snapshot | §12.2 | `seq` | **Proposed [P]**, D-27; depends on the Membership §8 Change Request (not approved) |
+| R-4 | Membership → Election | Ratified predicates and events | — | (MembershipId, asOf) | Ratified §8 |
+| R-5 | Organisation → Election | Query `EffectiveMembersAsAt(unit, cut-off)` (on `BelongingAsAt`) | People whose effective member belonging is in the unit or below | tree version + `seq` | [D] D-32 |
+| R-6a | Governance → Election | Query `ElectionRulesAsAt(organisation, convention, date)` | Rule version; direct or delegate electorate (V-8); participation routes and their rights (V-55); voter criteria; candidacy criteria; positions and delegate places to fill (posts carry `positionRef`) | rule version | [D] D-32 |
+| R-6b | Governance → Election | Query `PositionTenuresOf(person, asOf, filter)` | Tenures with period, position kind, organ, and the organ's level on those dates (via R-2) | decision-log position | [D] D-32 |
+| R-6c | Governance ⇄ Election | §12.1 | — | decisionId | [D] D-23 |
+| R-7 | Election → Governance | Event `ElectionResultDeclared` | electionId, convention; per post: `positionRef`, elected people, optional ranked substitutes; publication date; working-period start; result version. No finality field; an overturn is a later separate fact | result version | [D] D-32, D-28 |
+| R-8 | Governance → Election | Queries `DelegatesAsAt(convention, cut-off)`, `PositionHoldersAsAt(positions, cut-off)` (ex officio) | Holders with tenure references | decision-log position | [D] D-32 |
+| R-10 | Reference Geography → Organisation (and Membership where rules use residence) | Event `OfficialUnitRevised`; query `OfficialUnitsAsAt(country, date, knownAtRevision?)` | See "R-10 identity and time" below | revision sequence | **Proposed [P]**; D-31 settles the boundary only |
+| R-11 | Platform, Governance, Election → Authorization | See "R-11 inputs" below | Authorization's answer: allow or deny, rule applied, sources and markers, evaluation time; missing or uncertain source → deny (fail closed, INV-ORG-SCOPE-1) | sources' markers | **Proposed [P]**; BDR-07, V-59 |
+| R-12, R-13 | Platform, Identity → … | Access roles; `PersonRef` | — | — | Existing |
+| R-14 | Membership → Governance | §12.3 | — | `seq` | **Proposed [P]**, D-24, D-26; depends on the Membership §8 Change Request (not approved) |
+| R-15 | Governance → Organisation | §9 | — | rule version | **Proposed [P]** |
+
+**R-10 identity and time [P], open for tactical validation:**
+
+| Concept | Meaning |
+|---|---|
+| Official identity | The stable identity of an official unit. Candidate: the landlord identifier, **if its stability is guaranteed** [OQ] |
+| Official code | The government-assigned code (e.g. `NP-DIST-01`). An attribute that may change; **not** the identity |
+| Revision | One published state of the unit, with a revision sequence and an effective date |
+| Tenant row id | Local storage only; never used between contexts |
+
+A correction recorded later may describe an earlier effective date. So `OfficialUnitsAsAt` must separate the **effective date** asked about from **what was known**, given by the revision sequence (`knownAtRevision`), so that a past answer can be reproduced. "Keep only the highest revision" is enough for a current copy, not for history. Open [OQ]: the scope and ordering of `knownAtRevision` (per unit, per country, or platform-wide) must be defined in tactical design; no global comparability across countries or units is assumed.
+
+**R-11 inputs [P]:**
+
+| Input | Owner | Purpose |
+|---|---|---|
+| Platform access | Platform (R-12) | May the user perform this software operation? |
+| Mandate from a position | Governance (`MandateGranted` / `MandateRevoked`) | Does the actor hold the relevant authority in the organisation? |
+| Election officer role | Election (`ElectionOfficerRoleAssigned` / `…Ended`, new) | Does the actor hold the relevant Election role? |
+| Applicable requirements for the action | The context that owns the procedure: Governance for organisational procedure (e.g. recording an organ's decision, V-59); Election for election operations (e.g. opening an election, publishing a result, voter verification, under the adopted EM-GOV rules); Platform for platform access policy | Which of the three above this action requires |
+
+Three sources of facts about the actor, and requirements owned by whichever context owns the procedure. V-59 is a Governance rule for recording decisions; it is not a general rule for every protected action. Authorization may keep read models of all of them, resolves the applicable requirements, and owns none of them.
+
+**Later corrections:** a later correction to the evidence behind an actor's permission to **record** something does not automatically invalidate a decision already recorded. The decision's validity in the organisation remains governed by Governance competence (D-12), the applicable rules and any relevant adjudication. Permission to record never establishes validity.
+
+**Delegates [P]:** a delegate place is a Governance position representing a lower unit; its tenure starts from the lower convention's result (R-7); how long it lasts, how a vacancy is filled (new election, appointment, or next substitute as a rule-based decision) and what restructuring does follow the organisation's rules (V-56 to V-58). Under a one-convention mandate the mandate is tied to that convention's identity, so a postponed or reconvened sitting is still covered; a cancelled convention is [OQ].
+
+**Election snapshot [P]:** for a direct convention R-5 + R-4 + R-6a; for a delegate convention R-8 (delegates and ex officio holders) + R-4 + R-6a; each with its marker. Upstream changes after the cut-off never alter it; correcting a held election belongs to Adjudication. Open for tactical design [OQ]: how the markers from Organisation, Membership and Governance are obtained together as one consistent snapshot, and what happens when a source is incomplete or unavailable at the cut-off.
+
+**Results and tenure:** Election publishes the convention's result. Governance records the resulting tenure in accordance with the applicable organisation's rules. Where those rules require a separate confirming act, its relationship to the tenure commencement date must follow the rule. D-28 remains applicable: a later successful challenge does not automatically erase the previously established tenure or invalidate actions taken during it.
+
+**Recording a decision [P]:** each Governance decision records who entered it and, where the rules require (V-59), the mandate relied on, using the ratified authority-evidence shape {actor, capacity, ruleRef, policyVersion, result, checkedAt}. Entering a decision never makes it valid (D-12).
+
+## 17. Election-side changes needing a PO/ARB act
+
+Approval authority: the Principal as PO and human ARB Chief ([I] from the PO/ARB adoption acts).
+
+1. Voter sources by unit (R-5) and by delegates and ex officio holders (R-8).
+2. Posts linked to Governance positions (R-6a), replacing `user.region` matching.
+3. Applying candidacy criteria with evidence from R-4 and R-6b.
+4. `ElectionResultDeclared` naming winners and optional substitutes (R-7).
+5. `ElectionOfficerRoleAssigned` / `…Ended` for Authorization (R-11).
+
+None is approved.
+
+## 18. Where the code differs (additions to §6; [F]; no action now)
+
+`GovernanceDecision`'s inverted date rule · `GeoAdministrativeUnit`'s fixed `parentId` · direct table reads by `GovernanceGeoUnitQueryService` and `VoterSourceStrategy` · official and organisational units in one table · tenant row ids instead of official identity · `user.region` matching · authorization by platform-role policies with competence unverified.
+
+## 19. Superseded statements in this document (not edited; superseded here)
+
+- §1 (Contexts) and §2 (Relationships): superseded by §15 and §16 where they differ (Geography row; R-1, R-2, R-5, R-6a, R-6b, R-7, R-8, R-10, R-11 rows).
+- §11: add indivisible groups of change sets (D-30); the rest stands.
+
+**ARB acts (additions to §13):** the Election-side PO/ARB act (§17); Context Map update now also covering Reference Geography (D-31) and the narrowed Geography row.
+
+**Traceability (§15–§19):** Architecture Session B, 8 November 2026, continued. Decisions: discovery record §10.1. Sources read: `app/Domain/Election/Enum/VoterSourceStrategy.php`; `app/Contexts/Elections/Domain/Events/ResultsPublishedEvent.php`; `app/Contexts/Governance/Domain/GovernanceDecision.php`; `app/Contexts/Geography/` (mirror, sync, candidate services, unit entity, migration); `app/Contexts/Governance/Application/Services/GovernanceGeoUnitQueryService.php`; `app/Policies/`; `docs/publicdigit/reviews/2026-08-16-adoption-act-v3.md`; `docs/architecture/design/Round49-06_Boundary_Decision_Register.md` (BDR-05, BDR-07, BDR-08).
