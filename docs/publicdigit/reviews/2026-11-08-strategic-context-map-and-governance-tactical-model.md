@@ -476,3 +476,20 @@ Every event carries decision reference, effective date and log position; consume
 - **GrantDelegation** is refused (inapplicable, with reason) unless the grant is delegable under the rule version in force on the grant's effective date, the scope ⊆ the delegator's effective powers, and, for a delegator who is itself a delegatee, both the rules and the source delegation permit further delegation.
 - A **rule change** that withdraws delegability ends affected delegations from its effective date (DelegationEnded → MandateRevoked); past acts stand.
 - §33.6's open item "default delegability" is closed by D-76.
+
+## 35. Deliberation (member forums): status on 2026-11-09
+
+**Strategic design: complete as a working design** (D-50 to D-56; §23). A later review paste proposing a fresh strategic round for "Member Communication & Deliberation" was reconciled against these records; no new strategic round is needed.
+
+**Settled:**
+- **Two contexts, not one:** Deliberation (forums, supports, motions) and Communication (delivery, §24). The name "Member Communication & Deliberation" is not used for one context.
+- **Two forum dimensions, not one tree:** geographic forums (ward, municipality, district, province, national) scoped by a unit; committee forums scoped by their owner's committee (Governance organ or Election committee, X-7).
+- **Participation is automatic and derived from belonging**, never from manually maintained lists. A member **reads** their own unit's forum and every forum above it (D-56 default) and **writes** in every forum whose scope contains their belonging (D-56: writing within the forum's scope). Restructuring follows the successor unit; leaving a unit ends access, while the person's own contributions stay visible to them.
+- One support per entitled person per item, withdrawal allowed (DL-1, DL-10); support visibility per D-52; rank never decides and minority ideas keep visibility (DL-2); referrals keep their origin and support counts per scope (DL-4); motions with named co-signatures pass to Governance on submission (D-51, DL-5); duty to respond only by rule (D-54); moderation from positions or rules, reviewed by the tribunal by default (DL-3, D-53); posting identity per D-55.
+
+**Open, for Deliberation's tactical design (no Principal decision needed now):**
+- **Ranking [P]:** several views side by side ("most supported", "new", "contested", "recently active"), no single universal score.
+- **Duplicates [P]:** moderators may **link** ideas as duplicates; supports are never merged automatically; recorded and reviewable (DL-3).
+- **Who besides members may write** (staff, guests, observers): organisation rule ("depends on the capacity").
+
+**Order:** tactical design after Governance (§33) and Membership/Organisation, because it depends on sittings, positions, submissions and belonging.
