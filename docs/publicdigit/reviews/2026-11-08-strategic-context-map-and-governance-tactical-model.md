@@ -601,3 +601,81 @@ It returns `PersonRef`s plus τ, both sources' `closedThrough` and the tree vers
 ### 40.3 Open: existing delegations when the rules withdraw delegability
 
 Principal question (organisation rule), §40 conversation, 2026-11-09. Until decided, the model does not end existing delegations automatically, and does not let them create new authority either: use-time evaluation follows the Principal's ruling once made.
+
+## 41. Governance tactical review, round 6 (PROPOSED; incorporates D-78)
+
+### 41.1 Three levels of a delegation
+
+1. **Record:** the AuthorityAssignment as granted (history, never deleted).
+2. **Validity per power over time (derived):** for each delegated power item, the intervals in which it is valid = grant period ∩ delegable under the rule version in force (D-76) ∩ any D-78 transition ∩ not revoked or expired ∩ within the delegator's effective powers.
+3. **Authority for an act (derived, at use):** the valid power items at the act's effective time, minus restrictions and recusals (§20.3, D-69).
+
+A record never confers authority by existing. **Partial withdrawal** ends only the affected power items; the rest of the assignment continues.
+
+**Transition provisions:** a RuleProvision version may carry a `TransitionProvision` (affected powers or position kinds; existing delegations continue until a date, until original expiry, or as stated). Absent → end at the version's effective date (D-78). When the version is published, Governance computes the affected delegations and emits `DelegationScopeEnded(assignment, powers, effectiveFrom)` and the corresponding `MandateRevoked` with `revokedAt` = that date [I: `revokedAt` read as effective time; to be confirmed in Authorization's tactical design].
+
+### 41.2 Position and Tenure: boundary compared
+
+| | A. Position owns its tenures | B. Tenure independent |
+|---|---|---|
+| One holder at a time | Checked inside one aggregate (optimistic version) | Needs a cross-tenure mechanism |
+| Concurrent appointments | Second fails on version, retries, sees the first | Needs a lock or constraint |
+| History, corrections, remedies | One place per office | Spread across aggregates |
+
+**Recommended: A**, plus **defence in depth in storage**: tenure rows carry an exclusion constraint on (position, effective period) so that overlapping holders are refused even by a write that bypasses the aggregate. Incompatibility across positions stays with the guard (rules vary, so no static constraint expresses it).
+
+**Guard guarantees:** the clearance is written in the same transaction as the tenure change (an abort leaves no orphan); single use; bound to person, position, interval and operation. The guard **reads the Positions** under the person lock; the index is only an accelerator and is **never used to evaluate authority**, so a missing or stale index can neither grant nor remove authority. Rebuild from Positions.
+
+### 41.3 Other aggregates
+
+- **AuthorityAssignment:** granted → (per power) valid / ended by revocation, expiry, transition, or loss of the delegator's power. Invariants at grant: D-76 delegability, scope ⊆ delegator's powers on the effective date, further-delegation flags.
+- **RuleProvision:** versions with effective dates; for an evaluation at (t, τ) the version in force at t **as known at τ** (DecisionLog). Transition provisions belong to the amending version.
+- **GroupApplication:** needed only for groups spanning contexts; indivisible groups within Governance are applied in one local transaction.
+
+### 41.4 Basis, refined
+
+One mandatory, typed **Basis envelope** per change (replaces §40.1's "exactly one basis"):
+
+| Field | Content |
+|---|---|
+| `kind` | Part · DeterminationRemedy · RecordedFact · RuleEffect · Expiry · Correction |
+| `source` | Part ref · (determination, remedy part, instance) · fact type with evidence and recorder authority (V-59) · amending rule version and transition · originating period · corrected record and correcting evidence |
+| `supportingProvisions[]` | Every `(ruleRef, ruleVersion)` relied on, each with its evaluated conditions (so D-69 cumulative conditions keep their meaning) |
+| `logPosition` | When Governance recorded it |
+
+A `RecordedFact` without a fact type, evidence and recorder authority is refused.
+
+### 41.5 Remedy application
+
+- **Key:** (determination, remedy part, instance). Governance stores one **RemedyApplication** per key with its outcome: `Applied`, `AppliedNoChange` (target already in the required state), `Inapplicable(reason)`.
+- **Duplicate or lost response:** a repeat returns the stored outcome; nothing is applied twice.
+- **Target changed:** the remedy names its target (a specific tenure or assignment); evaluated against current facts; if no longer applicable → `Inapplicable` with reason.
+- **Several parts:** each part has its own outcome; parts declared indivisible across contexts use GroupApplication.
+- **Concurrency:** applied under the target aggregate's version (and the person lock for tenures).
+- **Out of order:** a later remedy part for the same determination waits until earlier ones have outcomes.
+- **Reporting:** every outcome is sent to Adjudication (`RemedyApplicationReported`); Inapplicable outcomes always.
+- **Interim measures:** Governance's own acts re-check immediately (G-I4). For operations gated only by Authorization, the remaining window is delivery lag of `MandateRevoked`: an **accepted limitation** unless Authorization queries Governance's effective powers synchronously for designated sensitive operations [P, to be settled in Authorization's tactical design].
+
+### 41.6 Invariants and enforcement
+
+| Invariant | Enforcement |
+|---|---|
+| One holder per exclusive position | Position aggregate + storage exclusion constraint |
+| No incompatible overlapping tenures | Guard under person lock + single-use clearance reference |
+| Delegated scope ⊆ delegator's powers; D-76 | AuthorityAssignment at grant; power service at use |
+| D-78 transitions | RuleProvision transition + per-power validity; scope-ended events |
+| No act on stale authority | Governance re-checks its facts on every authority-sensitive write |
+| Traceable basis | Basis envelope required on every command |
+| Resolutions immutable; remedies never Resolutions | GD-1; RemedyApplication |
+| History reconstructable | Append-only facts, log positions, rule versions as known at τ |
+| Mandate never treated as Governance fact | Mandates derived only; Governance never reads them |
+
+### 41.7 Scenarios (all pass on this model)
+
+Normal appointment · two concurrent appointments (version conflict, retry) · incompatible positions (guard → inapplicable) · valid delegation · delegation without permission (refused, D-76) · further delegation without permission in the assignment (refused) · rule withdraws all delegability (all power items end at effective date) · withdraws one power (only that item ends) · express transition (ends on the stated date) · silent rule (ends at effective date, D-78) · revocation before expiry · determination ends a tenure (RemedyApplication, EndTenure with DeterminationRemedy basis) · interim restriction (RestrictPowers) · duplicate remedy (stored outcome) · remedy after target changed (Inapplicable or AppliedNoChange) · authority-sensitive act during a rule change (evaluated against the version in force at the act's effective time) · reconstruction before and after a D-78 termination (per-power validity intervals).
+
+### 41.8 Remaining
+
+- **Technical proofs:** the exclusion constraint, the guard and the barrier need database-level tests.
+- **Authorization:** reading `revokedAt` as effective time, and a synchronous effective-powers query for sensitive operations.
+- **No Principal decision remains** for Governance's tactical model.

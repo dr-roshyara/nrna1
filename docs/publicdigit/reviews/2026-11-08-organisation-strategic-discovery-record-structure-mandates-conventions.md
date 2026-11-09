@@ -680,3 +680,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-77 | **ARB.** C2 (`CoverageKnownAt`, CR-01 / D-73) also accepts `personRefs[]` as an alternative key. Additive, meaning unchanged. Noted on CR-01 §10 and in the ratified artifact's CR-01 amendment. | direct: "i accept our recommendtation" |
+
+### 11.12 Decision D-78
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-78 | When a rule withdraws permission to delegate an authority, **the rule-changing organ may specify the transition** for existing delegations (a defined period, until original expiry, or another stated transition). **If it is silent, affected delegations end on the new rule's effective date.** A delegation stays valid until then (subject to earlier expiry or revocation); acts validly done before termination stay valid. From termination the former delegate cannot exercise the withdrawn authority on that delegation; any continuing authority needs an independent basis. Only the affected powers are affected; unaffected scope of the same delegation continues. D-76 unchanged. Answers the open question in model document §37. | as reported (option C; accepted review, 2026-11-09) |
