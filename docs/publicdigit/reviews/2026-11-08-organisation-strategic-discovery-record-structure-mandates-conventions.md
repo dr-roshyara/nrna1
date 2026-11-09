@@ -638,3 +638,9 @@ A cancelled convention and delegate mandates · weighted votes through two parti
 Organisation rules: ex officio rights of a suspended holder; joint organs when one unit ends; transfer of submissions after restructuring; withdrawal after submission; candidates messaging during campaigns. Legal: subscription default, electronic convocation, retention, GDPR Art. 9. Technical: Record-Fixing key management; the Level A security review; RFC 9474 feasibility in the stack.
 
 **Linked:** model document §20–§26.
+
+### 11.5 Decision D-71 (answers §11.3)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-71 | Between filing and determination, a challenged decision stays effective unless the organisation's rules provide otherwise. Only the tribunal can suspend it, by an interim measure. Applies to decisions effective under D-65 and D-70, to moderation decisions (D-53) and to election results. | direct: "(c) organisation rules decide, stays effective by default" |
