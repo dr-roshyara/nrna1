@@ -90,3 +90,22 @@ A **migration design** from the Committee model in Membership to the accepted Or
 ## Principal Decisions Required
 
 **One decision is already pending (Organisation question 1):** is a member placed in a unit **by an act**, **automatically from residence**, or **by the organisation's rules with placement by act and an address-based suggestion as default**? The current code does the second (D5); the accepted design does not settle it. All other findings are technical or follow from accepted decisions.
+
+## Addendum (2026-11-09): all creation paths, and the central distinction
+
+**Creation paths inspected [E]:**
+
+| Layer | Path | Geography |
+|---|---|---|
+| Application | `app/Contexts/Membership/Application/Committee/CreateCommittee.php:44-63`; `InternalCreateCommittee.php:64-73` | **Optional:** `geoReference` may be null; checked by `CommitteeCreationPolicy` only where the level's `geo_policy` requires it; the port then permits everything |
+| HTTP 1 | `CommitteeManagementController::store` with `StoreCommitteeRequest` (`geoUnitId` required, `exists:geo_administrative_units`) | **Required and must exist** |
+| HTTP 2 | `CreateCommitteeController::store` (route `routes/organisations.php:409`) with `CreateCommitteeRequest:21` (`geoUnitId` required) | **Required**; the committee's level is set equal to the geography level ("diagonal seed: geoLevel == governanceLevel", `CreateCommitteeController.php:28-31`) |
+| Also | `app/Contexts/Governance/Infrastructure/Repositories/EloquentCommitteeRepository.php:45` | Reconstruction, not creation |
+
+**The central distinction asked for:** *does Geography provide facts from which Organisation builds its own structure, or does Organisation depend on Geography to create units?*
+
+- **The domain and application layers implement the first:** levels defined by the organisation, geography optional per level, a port between contexts, a natural-key reference without a foreign key.
+- **Both inspected entry points implement the second:** a geography unit is required for every committee, and HTTP 2 even derives the committee's level from the geography level.
+- **Member classification also implements the second:** residence geography, not an organisational act.
+
+**Conclusion:** the intended design is sound; the dependency is introduced at the **entry points and the read side**, not in the domain model. Correcting D2, D5 and the HTTP 2 level coupling is therefore mostly tactical, while D1 (structure inside Membership) remains the strategic correction.
