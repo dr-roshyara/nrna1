@@ -760,3 +760,11 @@ Sita moves from District X to District Y: her belonging stays in X until a basis
 | Residence alone does not create belonging | **True** | D-22 (every belonging has a basis); Organisation question 1 open |
 | Naming a level does not require a committee at that level | **True** | Units and organs arise only from decisions (D-21, D-24) |
 | Open question: more than one unit at the same level? | **Already answered** | V-24 (direct): "One geographic unit only; wings in addition"; V-53 wings and V-54 staff/guest: organisation rules; V-15: several positions allowed, restricted by Central Committee rules |
+
+## 44. D-79 applied to the Organisation baseline (§42)
+
+- **Basis of a belonging** (D-22): `Act` (allocation, transfer decision, admission naming the unit) by default; `RuleEffect` (rule reference and version) **only** where the organisation's rules expressly adopt a residence rule.
+- **Suggestions** (from an address via Reference Geography and coverage) are a read model; they never create, end or move a belonging.
+- **A residence change** produces at most a proposed transfer; by default nothing changes until confirmed.
+- **Code conformance:** today's classification by residence geography (`SessionMemberGeoPathProvider`, `NearbyCommitteesQueryService`; investigation D5) contradicts the D-79 default.
+- §42.8's open Principal question is closed.

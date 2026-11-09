@@ -686,3 +686,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-78 | When a rule withdraws permission to delegate an authority, **the rule-changing organ may specify the transition** for existing delegations (a defined period, until original expiry, or another stated transition). **If it is silent, affected delegations end on the new rule's effective date.** A delegation stays valid until then (subject to earlier expiry or revocation); acts validly done before termination stay valid. From termination the former delegate cannot exercise the withdrawn authority on that delegation; any continuing authority needs an independent basis. Only the affected powers are affected; unaffected scope of the same delegation continues. D-76 unchanged. Answers the open question in model document §37. | as reported (option C; accepted review, 2026-11-09) |
+
+### 11.13 Decision D-79
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-79 | How members are placed in, or transferred between, units is decided by the organisation's rules. **By default, only individual acts** (an allocation, a transfer decision, or an admission naming the unit) create or change a belonging; an address may produce a **suggestion**, which creates nothing until a responsible person or organ confirms it. Placement by a residence rule is possible only where the organisation's rules expressly adopt it, and that rule is then recorded as the basis. (Organisation question 1.) | direct: "(c) organisation rules decide, individual acts by default" |
