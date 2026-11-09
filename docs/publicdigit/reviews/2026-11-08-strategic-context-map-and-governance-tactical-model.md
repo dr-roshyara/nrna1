@@ -679,3 +679,72 @@ Normal appointment · two concurrent appointments (version conflict, retry) · i
 - **Technical proofs:** the exclusion constraint, the guard and the barrier need database-level tests.
 - **Authorization:** reading `revokedAt` as effective time, and a synchronous effective-powers query for sensitive operations.
 - **No Principal decision remains** for Governance's tactical model.
+
+## 42. Organisation strategic baseline, consolidated (PROPOSED; reconciles the 2026-11-09 investigation)
+
+**Status:** consolidation of accepted working decisions (D-3, D-13 to D-22, D-27, D-29 to D-31, D-73, D-75, D-77) plus proposals for the gaps found by `docs/publicdigit/architecture/reviews/2026-11-09-geography-organisation-relationship-investigation.md`. Not ratified; no implementation, no migration design.
+
+### 42.1 Purpose and classification
+
+Organisation records **how the organisation is structured and who belongs where, over time, on the basis of the organisation's own acts and rules**. Supporting subdomain (§3): essential to every core capability (elections, governance, deliberation), but not where PublicDigit differentiates.
+
+**Owns:** the organisation registry; units, their levels, trees (geographic and wings), parents over time, successors; each person's belongings (capacity, unit, basis, period); geographical coverage links; restructuring outcomes applied from Governance decisions (R-1). **Never owns:** membership truth (Membership), official geography (Reference Geography, D-31), organs, positions, tenures, authority (Governance, D-4, D-5), person data beyond the organisation-specific `PersonRef` (D-75), entitlement (Election).
+
+### 42.2 The investigation's "Committee" is three concepts
+
+| In code (`Membership/Domain/Committee`) | Target concept | Owner |
+|---|---|---|
+| The district, ward, province itself | **OrganisationalUnit** | Organisation |
+| "District Committee" as a decision-making body | **Organ** attached to that unit (§5) | Governance |
+| `CommitteeAssignment` (roles), role limits | **Position and tenure** | Governance |
+| A member's place (today: residence geography) | **PersonBelonging** | Organisation |
+
+### 42.3 Ubiquitous language
+
+| Term | Meaning | Is not | Owner · kind |
+|---|---|---|---|
+| Organisation | The registered body with its constitution | A tenant or account | Organisation · fact |
+| OrganisationalUnit | A place in the party's structure (ward, zone, district, chapter, wing branch) | An official geographic unit; an organ | Organisation · fact |
+| OrganisationalLevel | A level the organisation defines for a tree | A geographic admin level | Organisation · policy (from rules, R-15) |
+| OrganisationalHierarchy | Units and their parents over time, per tree | The geographic hierarchy | Organisation · derived view |
+| PersonBelonging | A person's place in a unit, in a capacity, with a basis and period | Membership; a position | Organisation · fact |
+| BelongingAssignment | The act that creates a belonging (allocation, decision, admission naming a unit, rule) | — | Basis of a belonging |
+| BelongingTransfer | Ending one belonging and starting another, by one basis | A residence change | Organisation · decision applied |
+| OrganisationalRestructuring | Change sets (create, move, divide, merge, dissolve) | Geographic revisions | Governance decides, Organisation applies (R-1, D-21, D-30) |
+| UnitSuccession | Successor declared by a restructuring | — | Organisation · fact (D-15) |
+| GeographicalCoverage | The set of official units a unit covers | Belonging; authority | Organisation · relationship (proposed) |
+| GeographicalReference | A stable reference to one official unit and revision | A copied hierarchy | Reference Geography supplies; Organisation stores the reference |
+| MembershipCoverage | Periods in which Membership covers a person (C1, C2) | Belonging | Membership · fact; Organisation · copy |
+
+### 42.4 Hierarchy and geography [P]
+
+- **Principle:** the party's structure is an organisational fact. Geography may inform or constrain it; **it never creates, changes or removes units or belongings.**
+- **Units need no geography.** Coverage is **0..n** official units, each held as `(officialUnitRef, revision)`; a zone may cover parts of several districts; a diaspora chapter may cover several countries.
+- **No unit for every official unit, and no shared parents:** an organisational parent is set by the organisation (S-1), independently of official parents.
+- **Wings and diaspora:** separate trees (S-5) or units in the geographic tree, as the organisation's rules say.
+- **Missing official unit:** the organisational unit is created anyway; its coverage stays empty or pending until the official unit exists (candidate submission, D-31).
+- **Official changes** (renaming, division): Organisation receives `OfficialUnitRevised` (R-10), marks affected coverage for review, and **never moves belongings**; any organisational change goes through Governance (R-1).
+- **Unavailable Geography:** structure and belonging keep working; only coverage display and suggestions wait.
+
+### 42.5 Relationships
+
+| Relationship | Pattern | Exchanged | Must not |
+|---|---|---|---|
+| Reference Geography → Organisation | Published language; Organisation keeps a rebuildable copy behind an anti-corruption layer (R-10) | Official units, revisions | Geography decides structure or belonging; direct table reads |
+| Membership → Organisation | Published language (C1, C2; D-73, D-77) | Coverage | A second membership truth; reading Membership tables |
+| Identity → Organisation | Published language (D-75) | Organisation-specific `PersonRef` | Cross-organisation discovery; personal data in Organisation |
+| Governance → Organisation | Customer–supplier, Governance upstream for decisions (R-1) | Structural change sets, allocations | Organisation judging competence |
+| Organisation → Governance | Organisation upstream for facts (R-2) | Structure and belonging as at a date | Governance copying structure |
+| Organisation → Election | Organisation upstream (R-5) | Effective members as at (asOf, τ) | Election owning belonging |
+
+### 42.6 Invariants
+
+From accepted decisions: one active parent per date, no cycles, levels fit (S-1 to S-5); exactly one geographic member belonging per person (V-24); every belonging has a basis (D-22); history append-only, fallbacks derived (D-13 to D-19); a member belonging counts only while membership covers it (D-27); a belonging never carries authority (D-22). Derived: a belonging never creates membership; geographic coverage never establishes belonging; a residence change never changes belonging without a basis.
+
+### 42.7 Scenarios
+
+Sita moves from District X to District Y: her belonging stays in X until a basis moves it (outcome of question 1 decides what counts as a basis). A Europe chapter covering Germany, Austria and Switzerland: one unit, coverage of three official countries. A zone across two districts: coverage of the parts' official units. Province absent from Geography: the province unit and its organ exist; coverage pending. Official district divided: coverage marked for review; belongings unchanged until the Highest Committee decides (D-21).
+
+### 42.8 Open
+
+**Organisation question 1** (Principal): may an organisation's rule be the basis that places or transfers members automatically, and what is the default? Also open: whether wings are trees or unit types per organisation (organisation rules, earlier answer "depends on the wing").
