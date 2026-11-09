@@ -386,3 +386,7 @@ The §26 act "BDR-03 v1.x" is done: ADR accepted, register `Round49-06` amended 
 ## 29. ARB act done: Membership Change Request CR-01 (D-73)
 
 The §26 act "Membership §8 Change Request" is done: CR-01 revision 2 accepted; amendments appended to `2026-10-08-membership-architecture-ratified.md` (after §8) and `2026-10-08-membership-architecture-ratification-act.md` (after §11). §12.3's QUALIFIED/NOT_QUALIFIED response is superseded by C3 (facts only). **Both acts that blocked closure are now done** (D-72, D-73). Still open: the ADR on Round 50-01 `AGG — Mandate` / D-7, X-10, ADR-UL `TargetType`, XD-3, recording notes for D-67 and D-68.
+
+## 30. ARB act done: Mandate aggregate superseded (D-74)
+
+ADR accepted; append-only notes in `Round50-01_Aggregate_Discovery.md` (after `AGG — Mandate`) and `Round50-02_Aggregate_Review.md` (after the merge test). Still open, in order: XD-3a/b/c (Identity: `PersonRef`, Person ≠ Account, contact details), ADR-UL with ADR-PL (`TargetType`, `DeterminationIssued v2`), X-10 (Audit precedence), recording notes for D-67 and D-68.

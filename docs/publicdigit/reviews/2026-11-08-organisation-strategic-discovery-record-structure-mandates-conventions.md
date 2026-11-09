@@ -656,3 +656,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-73 | **ARB.** Membership Change Request CR-01 revision 2 accepted under D-25: C0 (Organisation boundary), C1 (`MembershipCoverageResolved`, complete coverage), C2 (`CoverageKnownAt` with τ), C3 (membership facts for Governance; Governance decides qualification), C4 (τ for Election's predicate queries). Appended to the ratified documents by addition only. The `closedThrough` proof and one shared τ per multi-context operation are mandatory technical requirements. | as reported (accepted review, 2026-11-09) |
+
+### 11.8 Decision D-74 (ARB)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-74 | **ARB.** Round 50-01 `AGG — Mandate` is superseded: there is no Mandate aggregate. Authority is held through Position (tenures, restrictions) and AuthorityAssignment (delegation); `MandateGranted` / `MandateRevoked` are derived by Governance's Appointment capability. Round 50-02's merge test is closed (neither; composition is a read model). Round 50-05 unchanged. Formalises D-7. Act: `docs/adr/ADR_20261109_1024_Supersede_Round50-01_Mandate_Aggregate.md`. | direct: "Yes, I accept superseding the Mandate aggregate" |

@@ -24,6 +24,7 @@
 - **Decision:** who holds delegated authority, active? **Invariant:** valid transitions only (`ACTIVE→REVOKED`; `REVOKED` terminal). **Transaction:** one transition atomic. **Lifecycle:** Granted(ACTIVE)→Revoked. **Consistency:** immediate.
 - **Command→Policy→Event:** `GrantMandate → (DelegationPolicy) → Mandate active → MandateGranted`; `RevokeMandate → (DelegationLifecyclePolicy) → Mandate revoked → MandateRevoked`.
 - **External deps:** appointment source. **Split:** no. **⚠ Merge Test — OPEN:** does `Mandate` own Committee Membership, or is it `Committee → Mandate` / `Mandate → CommitteeMembership`? **NOT finalized** — resolve before Mandate implementation. **Repository:** TBD post-resolution. **Testability:** *fitness test — no `REVOKED→ACTIVE` transition.*
+- **Merge test closed (2026-11-09, D-74; append-only note, text above unchanged):** neither. No Mandate aggregate; committee composition is a derived read model (composition of an organ on a date); Election committees are Election's (R-6c). A re-grant is a new `mandateId`, so no `REVOKED→ACTIVE` transition can occur. ADR: `docs/adr/ADR_20261109_1024_Supersede_Round50-01_Mandate_Aggregate.md`.
 
 ## Determination  *(greenfield)*
 - **Decision:** is a contested outcome constitutionally valid → binding finality. **Invariant:** **final once issued** (S-2) · reasoned · evidence-traced · **issued under valid authority** (correction below). **Transaction:** one Determination atomic. **Lifecycle:** Drafted→**Issued(final)**. **Consistency:** immediate.

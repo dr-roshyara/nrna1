@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | ⚠️ **PROPOSED — awaiting the Principal's ruling as human ARB Chief.** Round 50-01, Round 50-02 and Release 1.0 are not changed until accepted |
+| **Status** | ✅ **ACCEPTED — ruling by the Principal as human ARB Chief, 2026-11-09** ("Yes, I accept superseding the Mandate aggregate"). Recorded as D-74. Supersession notes appended to Round 50-01 and Round 50-02; their original text is unchanged |
 | **Class** | Tactical boundary decision: supersedes one aggregate in the frozen Release 1.0 (`docs/architecture/design/Round50-09_Architecture_Decision_Verification.md:38`) |
 | **Formalises** | Working decision **D-7** (direct, 2026-11-08: "Yes, I accept the Mandate merge test resolution"), discovery record §8.1 |
 | **Depends on** | D-72 (BDR-03 v1.2: Appointment within Governance), D-68 (mandate basis: tenure or delegation), D-38, D-39 |

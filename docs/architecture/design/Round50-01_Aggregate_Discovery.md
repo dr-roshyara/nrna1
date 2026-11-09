@@ -34,6 +34,7 @@
 4. **Transaction:** one Mandate transition = one txn.
 5. **Aggregate root:** `Mandate` (holds `DelegationStatus`).
 - *events:* `MandateGranted`, `MandateRevoked`. *consumes:* appointment source/eligibility (external/Appointment). *app service:* `GrantMandate`/`RevokeMandate`. *repository:* `MandateRepository`. *split?* **No.**
+- **Superseded (2026-11-09, D-74; append-only note, text above unchanged):** there is no Mandate aggregate. Authority is held through Governance's Position (tenures, restrictions) and AuthorityAssignment (delegation); `MandateGranted` / `MandateRevoked` are derived from them by Governance's Appointment capability (BDR-03 v1.2, D-72), with Round 50-05 unchanged. ADR: `docs/adr/ADR_20261109_1024_Supersede_Round50-01_Mandate_Aggregate.md`.
 
 ## AGG — Determination  *(Adjudication BC — Greenfield)*
 1. **Decision:** is a contested outcome constitutionally valid → issue a **binding Determination**.
