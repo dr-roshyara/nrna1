@@ -507,3 +507,70 @@ Every event carries decision reference, effective date and log position; consume
 **Consistent:** forums never check user accounts (D-75); announcements from a central committee map to Communication official messages or notices (D-59), shown in forums.
 
 **New candidate rule [OQ, organisation rules]:** only active members write; members whose membership is pending read only. Related open point: whether a suspended member may write (the Principal answered earlier that suspension restricts rights while the person still belongs).
+
+## 37. Corrections to §33–§34 (review, 2026-11-09)
+
+- **§34, third bullet, withdrawn as a decision:** "a rule change that withdraws delegability ends affected delegations" is **not** entailed by D-76, which governs only whether a delegation may be granted. Whether an existing delegation ends, or only new ones are prevented, is an **open organisation-rule question [OQ]**, to be brought to the Principal during the Governance review.
+- **§33.3:** recording the Governance part of a final determination as a Resolution (method "determination") must record **the application of the remedy**, never a second determination; to be validated in the next Governance round.
+- **Context naming:** "Deliberation" stays provisional pending the Principal's choice (§36).
+
+## 38. Membership and Organisation tactical model (PROPOSED)
+
+**Status:** architect's proposal; not accepted; no implementation authorised. Membership's ratified aggregate, correction algebra, policy switches and invariants are unchanged.
+
+### 38.1 Responsibilities
+
+- **Membership** answers *is this person a member, of what type, suspended, since when, and what was known when*. Aggregate (ratified): one **Membership** per (Person, Organisation), an append-only fact log ordered by `seq`, with `effectiveAt`, `decidedAt`, `recordedAt`.
+- **Organisation** answers *which units exist, and who belongs where, in which capacity, over time*. Aggregates (D-22): **Unit** (tree with change sets and tree version) and **PersonBelonging** (person, unit, capacity, period, basis). Belonging facts are append-only with `recordedAt`.
+- **Join key:** both use the **organisation-specific `PersonRef`** (D-75); nothing crosses organisations.
+
+### 38.2 Knowledge barrier and `closedThrough` (each source: Membership, Organisation, Governance)
+
+1. Every fact-writing transaction takes a **shared** per-organisation lock, then takes `recordedAt` from the **database clock**, as `max(clock_timestamp(), closedThrough + 1 µs, last per stream + 1 µs)`, and holds the lock until commit.
+2. **Closing to τ:** a short transaction takes the **exclusive** lock (waiting for every in-flight writer to commit or abort), checks `clock_timestamp() ≥ τ`, and records `closedThrough = τ`.
+3. **Proof:** a writer that assigned `recordedAt ≤ τ` held the shared lock before closing started, so it has committed or aborted. A writer that commits later obtained its lock after closing and, by rule 1, has `recordedAt > closedThrough`. So no fact with `recordedAt ≤ closedThrough` can appear later. This does not depend on clock monotonicity across servers: there is one database clock, and the `max(…)` rule also prevents a backward-moving clock from re-entering a closed interval.
+4. **On demand:** a query with `τ > closedThrough` first attempts to close to τ (if τ is not in the future). It is refused with `BOUNDARY_NOT_CLOSED` only if closing cannot complete (for example, a lock timeout). Answers are read in a snapshot taken after `closedThrough` committed.
+5. **A maximum observed `seq` is never treated as completeness.** Completeness is a property of the source's barrier, not of any consumer's events.
+
+### 38.3 One shared τ per operation
+
+A multi-context operation (for example fixing an electorate) **chooses τ once** (the cut-off instant T, D-42), passes the same τ to every query, and **stores it** with the result. Each source closes to τ before answering. **Projections never answer τ queries**: they serve current views only.
+
+### 38.4 Coverage event, projection, rebuild
+
+- `MembershipCoverageResolved` (D-73, C1) is written to Membership's **transactional outbox in the same transaction** as the fact that changes coverage.
+- **Organisation's inbox:** records the event id; applies it only if `seq` is higher than the stored one for that stream; same `seq` with different content is an integrity alarm. Recording receipt and updating the projection happen **in one transaction**, so "received" and "applied" cannot diverge.
+- **Missing or late events** do not corrupt the projection, because each event carries full state; the next event heals it. A **reconciliation** pass compares the projection's `seq` per membership with C2 at `closedThrough` and repairs differences.
+- **Rebuild:** seed from C2 at `τ = closedThrough`, then apply events with higher `seq`.
+
+### 38.5 Effective member belonging (R-5)
+
+`EffectiveMembersAsAt(scopeUnit, asOf, τ)` is answered by Organisation from:
+- the tree **as known at τ** and as at `asOf` (units at or below the scope);
+- belongings with capacity *member*, valid at `asOf`, **as known at τ**;
+- coverage from **C2 at τ** (never from the projection), with §12.2's anchoring (belonging anchored to the coverage interval in which it started; an annulled End merges intervals and revives it; a real re-admission does not).
+
+It returns `PersonRef`s plus τ, both sources' `closedThrough` and the tree version. **Election** combines this with the C4 predicates (type, suspension) **at the same τ**, and decides entitlement itself.
+
+### 38.6 Scenarios
+
+| # | Scenario | Owner and event | Result |
+|---|---|---|---|
+| 1 | Becomes a member | Membership: Admit → coverage event | Member belonging counts from the covered date |
+| 2 | Suspended | Membership: Suspend | Belonging unchanged (still belongs); Election's rules decide entitlement via C4 |
+| 3 | Membership ends | Membership: End → coverage event | Member belonging stops counting from the End's effective date |
+| 4 | Changes ward | Organisation: new belonging, old ends | History kept; R-5 as at a date picks the right ward |
+| 5 | District restructured | Organisation: change set | Belonging resolves through D-13 to D-19 |
+| 6 | Belonging corrected retrospectively | Organisation: correction fact | "As known now" changes; "as known at τ" unchanged |
+| 7 | Related changes arrive at different times | Both | τ queries go to sources, so lag does not matter |
+| 8 | Event twice | Inbox | Ignored by id and `seq` |
+| 9 | Out of order | Inbox | Older `seq` ignored |
+| 10 | Missing, recovered later | Reconciliation | Healed from C2 |
+| 11 | Electorate query while the projection lags | R-5 uses C2 | Correct; projection not used |
+| 12 | Reconstruct a past decision | Stored τ and markers | Same answers (P3 plus barrier) |
+
+### 38.7 Findings
+
+- **Contract gap in C2 [requires an ARB note]:** C2 is keyed by `membershipIds[]`, but Organisation may not yet know the membership id of a person admitted just before τ (its projection can lag). Because Membership is unique per (Person, Organisation) (ratified), C2 should also accept **`personRefs[]`**. Additive; no change in meaning.
+- **Implementation defect:** `recordedAt` taken from the application clock before commit (`app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:219`) violates §38.2 rule 1.
+- **Technical uncertainty:** cost of C2 for large electorates (batching).
