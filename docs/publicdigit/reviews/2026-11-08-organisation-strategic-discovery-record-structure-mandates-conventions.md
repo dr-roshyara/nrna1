@@ -750,3 +750,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-87 | **Display names of countries and areas (L-4b, option C).** The name shown to users for a country or area is the **Unicode CLDR** territory display name **in the user's language**: CLDR's standard form, with CLDR's short form only where space is tight. Official source names (ISO 3166-1, UN M49 and others) are kept as **attributed alternative names** visible in the place's details. PublicDigit authors no names and settles no naming dispute itself; a new CLDR release is evidence for a name revision, a non-structural change under D-84. Organisations continue to name their own units freely (D-82). Any exception to the CLDR rule requires a further explicit Principal decision. | direct: "I accept L-4b option C" |
+
+### 11.23 Decision D-88 (interpretation of D-84)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-88 | **Second person under D-84 (interpretation T).** D-84's "second, independent natural person" is second to **the steward who prepared and assessed the change**. From the appointment of a second steward, a structural change requires approval by a natural person (a steward or a matter reviewer under D-84a, a distinct canonical person) **other than the steward who prepared and assessed it**. The preparer can never approve their own structural change; two persons suffice. D-84 and D-84a are otherwise unchanged. | direct: "I accept option T" |
