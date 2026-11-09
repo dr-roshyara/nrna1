@@ -674,3 +674,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-76 | Whether a power may be delegated is decided by the organisation's rules; **when they are silent, it may not**. A delegated power may be delegated further only if both the rules and the delegation itself permit it. Absences are covered by acting posts or organ decisions. | direct: "i accept your recommendation" (option c) |
+
+### 11.11 Decision D-77 (ARB)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-77 | **ARB.** C2 (`CoverageKnownAt`, CR-01 / D-73) also accepts `personRefs[]` as an alternative key. Additive, meaning unchanged. Noted on CR-01 §10 and in the ratified artifact's CR-01 amendment. | direct: "i accept our recommendtation" |

@@ -574,3 +574,7 @@ It returns `PersonRef`s plus τ, both sources' `closedThrough` and the tree vers
 - **Contract gap in C2 [requires an ARB note]:** C2 is keyed by `membershipIds[]`, but Organisation may not yet know the membership id of a person admitted just before τ (its projection can lag). Because Membership is unique per (Person, Organisation) (ratified), C2 should also accept **`personRefs[]`**. Additive; no change in meaning.
 - **Implementation defect:** `recordedAt` taken from the application clock before commit (`app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:219`) violates §38.2 rule 1.
 - **Technical uncertainty:** cost of C2 for large electorates (batching).
+
+## 39. D-77 applied to §38
+
+§38.5 and §38.4 use `CoverageKnownAt(organisationId, personRefs[], τ)` for R-5, so a person admitted just before τ is never missed because Organisation's projection lags. §38.7's contract gap is closed.

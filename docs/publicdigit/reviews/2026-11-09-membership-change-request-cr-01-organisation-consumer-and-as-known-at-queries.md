@@ -93,3 +93,7 @@ All three contexts use the same `τ` for a given decision and store it with the 
 ## 9. Ruling
 
 **Accepted, 2026-11-09 (D-73).** Mandatory technical requirements carried into tactical design (not proven by acceptance): one knowledge boundary `τ` selected and propagated across a multi-context operation; the `closedThrough` guarantee proved by transaction ordering, not by moving timestamp generation; reliable ordering, duplicates, corrections and rebuilds for the coverage event; exact list of ratified predicates exposed by C3 (membership-tenure predicates only, never office tenure) and of Election queries extended by C4.
+
+## 10. Note (D-77, 2026-11-09): additional key for C2
+
+Accepted by the Principal as human ARB Chief: **C2 also accepts `personRefs[]`** as an alternative key, `CoverageKnownAt(organisationId, membershipIds[] | personRefs[], τ)`. Additive; meaning unchanged, because there is exactly one Membership per (Person, Organisation) (ratified). Reason: Organisation's projection can lag, so it may not yet know the membership id of a person admitted just before τ.
