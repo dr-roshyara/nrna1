@@ -768,3 +768,97 @@ Sita moves from District X to District Y: her belonging stays in X until a basis
 - **A residence change** produces at most a proposed transfer; by default nothing changes until confirmed.
 - **Code conformance:** today's classification by residence geography (`SessionMemberGeoPathProvider`, `NearbyCommitteesQueryService`; investigation D5) contradicts the D-79 default.
 - §42.8's open Principal question is closed.
+
+## 45. Organisation tactical design (PROPOSED; builds on D-22 and §9–§11, §38, §42–§44)
+
+**Status:** architect's proposal; not accepted; no implementation, no migration. Decisions preserved with their scope: D-3, D-13 to D-22, D-27, D-29 to D-31, D-73, D-75, D-77, **D-79** (direct), **V-24** (direct: "One geographic unit only; wings in addition"), **V-53**, **V-54** (organisation rules), **V-15** (several positions; Central Committee rules restrict), **V-16**, **V-17** (Highest Committee defines levels; exceptions in its rule log).
+
+### 45.1 Business explanation
+
+Organisation records the party's own map of itself: the **levels** it uses, the **units** it has set up, which **official areas** each unit serves, and **where each person belongs**, always on the basis of the party's acts and rules. It uses Geography as a reference atlas, Membership as the register of who is a member, and Governance as the source of decisions; it owns none of their facts.
+
+### 45.2 Geography levels: numbers versus types [E]
+
+`geo_administrative_units.admin_level` is a **number per country** (`Landlord/2025_01_01_000002_create_geo_administrative_units_table.php:28`: "1=province/state, 2=district, 3=local level, 4=ward"; range 0–10). `GeoLevelType` is a **semantic label** mapped to that number per country by `GeoLevelMappingResolver::resolve(countryCode, type)`. **Organisation links a level to `(countryCode, adminLevel)`**; the type is a derived label for display. Geography is unchanged.
+
+### 45.3 Ubiquitous language
+
+| Term | Definition | Owner · kind | Not to confuse with |
+|---|---|---|---|
+| **Tree** | One structure of the organisation: the geographic tree, or one wing's tree (S-5) | Organisation · aggregate | Geography hierarchy |
+| **OrganisationalLevel** | A level in a tree: order, current label, label history, optional geography link `(countryCode, adminLevel)` per country, geographic or non-geographic | Organisation · entity inside Tree | Geography level; a unit |
+| **OrganisationalUnit** | A place in a tree (ward, zone, district, chapter, wing branch), with level, parents over time, periods, successors | Organisation · aggregate | An organ (Governance); an official unit |
+| **Coverage** | The official units a unit serves, each `(officialUnitRef, knownRevision, period, status)` | Organisation · value objects inside Unit | Belonging |
+| **PersonBelonging** | All of one person's belongings in one organisation | Organisation · aggregate (per organisation and `PersonRef`) | Membership; position |
+| **Belonging** | One placement: tree, unit, capacity, period, basis, anchor | Organisation · entity inside PersonBelonging | Wing belonging is a Belonging in a wing tree |
+| **Capacity** | member · staff · guest · observer (as the rules recognise) | Organisation · value object from rule copies | Membership type |
+| **BelongingBasis** | `Act` (allocation, transfer decision, admission naming the unit, Governance allocation part) or `RuleEffect` (rule reference and version) | Organisation · value object | Residence |
+| **Transfer** | Ending one belonging and starting another on one basis, same effective date | Organisation · command outcome | A move of residence |
+| **PlacementSuggestion** | Unit proposed from an address via coverage | Organisation · read model | A belonging |
+| **RuleCopy** | Immutable copy of a published Governance rule version used by Organisation (R-15): capacities, limits, placement rule, level authority | Organisation · value object | Governance's rule (the original) |
+
+### 45.4 Aggregates
+
+| Aggregate | Owns | Invariants | Concurrency |
+|---|---|---|---|
+| **Organisation** (registry) | Identity, legal details, the top unit | Exists before its structure | Own version |
+| **Tree** (per organisation and tree kind) | Levels and their history; **tree version** | Levels ordered; a level in use cannot be removed (S-4); level-order changes keep every unit's level valid (S-3); label changes do not change level identity | Tree version (D-22 option C) |
+| **OrganisationalUnit** | Periods, parents over time, successors, continuation declarations (D-14), coverage | One active parent per date (S-1), no cycles (S-2), level fit (S-3, exceptions per rule log V-17) | Own version **plus** the tree version for structural change sets |
+| **PersonBelonging** (organisation, `PersonRef`) | All belongings with basis, period, anchor; record corrections | **At most one active geographic member belonging per date (V-24)**; wing, staff, guest limits from RuleCopy (V-53, V-54); every belonging has a basis (D-22); `RuleEffect` only if a RuleCopy expressly adopts it (D-79); never carries authority | Own version: two concurrent transfers → one wins, the other re-evaluates |
+
+**Change sets** (R-1, D-30): structural changes are applied in one local transaction across the Tree and the affected Units, checked against the tree version; belonging allocations decided with them are applied to PersonBelonging aggregates afterwards, keyed by allocation.
+
+### 45.5 Commands and events
+
+| Aggregate | Commands | Events |
+|---|---|---|
+| Tree | DefineLevel, RenameLevel, LinkLevelToGeography, RetireLevel | LevelDefined, LevelRenamed, LevelLinked, LevelRetired |
+| Unit (mostly through change sets) | EstablishUnit, MoveUnit, EndUnit(kind), BringBack, SetCoverage, MarkCoverageForReview | UnitEstablished, UnitMoved, UnitEnded, UnitBroughtBack, CoverageChanged, CoverageReviewNeeded |
+| PersonBelonging | EstablishBelonging, TransferBelonging, EndBelonging, ApplyAllocation, CorrectBelongingRecord | BelongingEstablished, BelongingTransferred, BelongingEnded, BelongingRecordCorrected |
+
+Every command carries a basis (Act or RuleEffect, §41.4 envelope); every event carries effective date and log position. **No event comes from an address change.**
+
+### 45.6 Contracts
+
+| With | Contract | Rule |
+|---|---|---|
+| Reference Geography | R-10 copy behind an anti-corruption layer; `OfficialUnitRevised` → `CoverageReviewNeeded` only | Never changes units or belongings |
+| Membership | C1 (current projection), C2 by `personRefs[]` at τ (D-77) | Member capacity effective only while coverage covers it (D-27); no membership types in Organisation (types are Membership's; needed only if a RuleCopy makes capacity depend on type) |
+| Identity | Organisation-specific `PersonRef` (D-75) | No personal data |
+| Governance | R-1 in (change sets, allocations, rule copies R-15); R-2 out (`StructureAsAt`, `BelongingAsAt`); unit lifecycle events out | An organ references a `UnitId`; a unit may exist without an organ; organs end when their unit ends under Governance's rules (V-3, V-4, V-48) |
+| Election | R-5 `EffectiveMembersAsAt(scope, asOf, τ)` | Belongings and tree as known at τ, coverage from C2 at τ (§38.5) |
+
+### 45.7 Temporal model
+
+Append-only facts with effective date and record time (barrier §38.2); fallbacks and successors derived (D-13 to D-19); a **record correction** changes what was known, a **new act** changes what is true; "as at (asOf, τ)" reconstructs tree, levels (label in force), coverage and belongings; current residence never rewrites history.
+
+### 45.8 Scenarios
+
+| # | Scenario | Context · aggregate | Outcome |
+|---|---|---|---|
+| 1 | Levels 0–4 only | Tree | Five levels defined; 5–10 unused |
+| 2 | Same geography level, different names | Tree (per organisation) | Each organisation's own label |
+| 3 | Level renamed | Tree | New label version; units and Geography unchanged |
+| 4 | Central unit, no coverage | Unit | Coverage empty |
+| 5 | District before the official district exists | Unit | Created; coverage pending |
+| 6 | Unit covering two districts | Unit | Two coverage entries |
+| 7 | Diaspora across countries | Unit (non-geographic level) | Coverage entries in several countries |
+| 8 | Ward 5, no position | PersonBelonging | Belonging only; positions are Governance's |
+| 9 | Moves residence, stays | — | At most a suggestion; nothing recorded (D-79) |
+| 10 | Authorised transfer | PersonBelonging | One transfer, basis Act |
+| 11 | Geographic plus wing | PersonBelonging | Two belongings in two trees (V-24, V-53) |
+| 12 | Several positions | Governance | Not Organisation's (V-15) |
+| 13 | Official unit divided or renamed | Unit | CoverageReviewNeeded; changes only by change set (D-21) |
+| 14 | Membership ends | PersonBelonging (derived) | Member belonging stops counting; record kept (D-27) |
+| 15 | Type change near cut-off | Membership | Answered "as known at τ" by Membership; Organisation not involved |
+| 16 | Rule permitting residence placement changes | RuleCopy + PersonBelonging | New placements follow the rule version in force; existing belongings unchanged (no retroactive basis) |
+| 17 | Two concurrent transfers | PersonBelonging | Version conflict; the second is re-evaluated |
+
+### 45.9 Open
+
+- **No Principal decision.** Organisation-rule matters already marked: wings as trees or unit types ("depends on the wing"), ex officio rights while suspended.
+- **Technical:** the R-15 rule-copy contract; whether level links are per country or per tree; scaling of PersonBelonging per organisation (one aggregate per person is small).
+
+### 45.10 Assessment
+
+Sufficiently defined for Principal/ARB review as a tactical design. Not proven against code; the current implementation conforms in none of the belonging capabilities (conformance report, rows 10–13).
