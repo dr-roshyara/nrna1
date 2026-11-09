@@ -698,3 +698,55 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-80 | A person's address and the committee structure are two different things. An address in District X does not associate the person with the unit or committee of District X. A unit's coverage says nothing about who lives there. Consistent with D-79: an address may at most produce a suggestion. | direct: "make sure that address of a person and committee structure is two different things. having address in District X does not mean , it is associated with the same committee." |
+
+### 11.15 Decision D-81
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-81 | **Geographical levels (L-1, option B).** Levels 0 (World), 1 (continent / region) and 2 (country) are global. Levels 3–10 are **classification positions in each country's dated profile**: the profile assigns each class of that country one position, positions strictly increase along containment and may be skipped, and a level is never computed by counting parents. **Addresses and committees read the same profile;** within one country and date no position has two meanings. Profile contents (for example what "5 = Bezirk, 6 = Street" means for Germany) are set per country and are not decided by this ruling. | direct: "I accept L-1 option B" |
+
+### 11.16 Decision D-82
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-82 | **Official Geography and organisation-defined local areas (Geography Question 1, option A + C).** Reference Geography publishes only geographical facts supported by competent official sources. An organisation may define its own local areas (toles, settlements, neighbourhoods) as organisation-owned facts where official subdivisions are insufficient. Such areas are not official geographical units, receive no Reference Geography identity, are not platform-wide provisional references, belong to the organisation that defines them, are governed by its rules, may be used for organisational structure and committee coverage, and never by themselves determine member belonging or electoral entitlement (D-79, D-80). | via paste, accepted: the Principal's ruling "Geography Question 1 — Option A + C" as recorded in the Principal DDD Architect's note of 2026-11-09, accepted by the Principal in this session ("I accept the recommendations written in the document") |
+
+**D-82 provenance corrected (append-only note, 2026-11-09):** **direct**. The Principal states: "The Principal explicitly ruled Option A+C in the conversation on 9 November 2026. Record this as a direct Principal ruling." The table text above is unchanged.
+
+### 11.17 Decision D-83
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-83 | **Streets as address components (L-2, option ii).** Streets are address components where relevant, not official Reference Geography units. PublicDigit does not maintain a global street register. Street precision does not establish official street identity. Organisations may describe street-based areas under D-82. | **direct**, ruling of 9 November 2026 (the Principal: "Record D-83 as the Principal's direct ruling of 9 November 2026") |
+
+### 11.18 Decision D-84
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-84 | **Publication governance of Reference Geography (S-1, option C, rule as worded):** "The platform owner appoints Geography stewards. A steward assesses and publishes official geographical references on recorded evidence: instrument, authenticity, covering mandate, applicability, and any precedence rule applied. Publication never creates official status. While only one steward exists, that steward may publish all changes, with a recorded conflict-of-interest declaration. From the appointment of a second steward, every structural change requires approval by a second, independent natural person; if none is available, the change waits. Organisations may object to a published fact with counter-evidence; the fact changes only by a correction or a recorded dispute." | direct: "I accept S-1 option C with the rule as worded" |
+
+**Note (2026-11-09, not part of the decision):** the Principal DDD Architect's review submitted with the ruling proposes a conflict-of-interest amendment (a declaration does not resolve a material conflict). Put to the Principal as a separate question; D-84 stands as worded unless amended.
+
+### 11.19 Amendment D-84a (conflict of interest)
+
+| # | Amendment | Provenance |
+|---|---|---|
+| D-84a | **Amends D-84** (D-84's text above is unchanged and remains the record of the original ruling). **Reason:** a conflict-of-interest declaration makes a conflict visible but does not make the declarer impartial; D-84 as worded let a conflicted sole steward decide alone. **Rule:** a Geography steward must not decide a matter in which they have a **material conflict**, meaning a direct organisational interest (holding office in, acting for, or having submitted for an organisation that brought the matter or whose position the outcome favours) **combined with a judgment between competing positions** (an objection, a missing-unit submission, a dispute, a precedence question, an assessment between competing instruments). Such a matter waits for a non-conflicted steward or for an **independent reviewer appointed by the platform owner for that matter alone**: a different natural person with no material connection to the organisations or parties concerned, who declares independence; the appointment, declaration and decision are recorded. The reviewer has authority for that matter only, holds no standing publication authority, and never creates official status. **Mere association with an organisation does not prevent routine publication:** an uncontested official instrument whose mandate, authenticity and applicability are not in question, or a routine correction with no competing claim, may be published by the steward with the recorded evidence and declaration. | via paste, accepted: the Principal DDD Architect's commission states "The Principal has accepted the recommendations in the latest review, including the proposed conflict-of-interest refinement to D-84", accepted by the Principal ("I accept the recommendations written in the document"), answering the explicit question "amend D-84 or keep it as worded" |
+
+### 11.20 Decision D-85
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-85 | **Level 1 regions (L-3, option A).** Level 1 holds the five UN M49 regions: Africa, Americas, Asia, Europe, Oceania. They are **statistical groupings**; their authority is the UN Statistics Division's competence in statistical classification, not territorial or political. They imply no political affiliation, sovereignty or legal boundary. PublicDigit defines no competing continent classification. Organisation-defined international regions remain the organisations' own (D-82). M49 sub-regions are **not** part of level 1; they may be considered later as a separately identified grouping. D-81 is unchanged. | **direct**, 2026-11-09: the ruling "L-3, Option A" given in the Principal DDD Architect's session, recorded as direct at the Principal's instruction ("The provenance should be recorded as a direct Principal ruling"), accepted in this session |
+
+### 11.21 Decision D-86
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-86 | **Countries and areas at level 2 (L-4, policy A′).** (1) Level 2 holds neutral **"country or area"** entries; an entry asserts no sovereignty, recognition or political status. (2) PublicDigit owns each entry's identity; ISO 3166-1 and M49 codes are external identifiers only. (3) **ISO 3166-1 entries are admitted by default** under platform policy; admission permits an entry to exist and is not recognition; changes to the ISO list are handled through governed publication (D-84, D-84a) and never silently rewrite history. (4) **Any other entry is admitted only by an explicit, recorded Principal decision.** (5) Level-1 region membership (D-85) only from allowed evidence (a published M49 row, a verified special-purpose code recorded as such, or an explicit platform-policy assignment); never by inference. (6) No relationship between level-2 entries is recorded in the baseline; future relations must be typed and sourced, never classification containment. Display names (L-4b) and region assignment where no M49 row exists (L-4c) remain separate questions. | direct: "yes i accept option A." clarified as "yes A'" |
+
+### 11.22 Decision D-87
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-87 | **Display names of countries and areas (L-4b, option C).** The name shown to users for a country or area is the **Unicode CLDR** territory display name **in the user's language**: CLDR's standard form, with CLDR's short form only where space is tight. Official source names (ISO 3166-1, UN M49 and others) are kept as **attributed alternative names** visible in the place's details. PublicDigit authors no names and settles no naming dispute itself; a new CLDR release is evidence for a name revision, a non-structural change under D-84. Organisations continue to name their own units freely (D-82). Any exception to the CLDR rule requires a further explicit Principal decision. | direct: "I accept L-4b option C" |
