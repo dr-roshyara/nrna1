@@ -748,3 +748,15 @@ Sita moves from District X to District Y: her belonging stays in X until a basis
 ### 42.8 Open
 
 **Organisation question 1** (Principal): may an organisation's rule be the basis that places or transfers members automatically, and what is the default? Also open: whether wings are trees or unit types per organisation (organisation rules, earlier answer "depends on the wing").
+
+## 43. Check of a reviewer model "Geography – Organisation – Membership" (2026-11-09)
+
+| Claim | Verdict | Evidence |
+|---|---|---|
+| Geography has levels 0–10 | **True** | `app/Contexts/Geography/Infrastructure/Database/Migrations/Landlord/2026_01_14_000003_extend_level_range_add_continents.php:34` (`CHECK (admin_level BETWEEN 0 AND …)`); tenant migration `2026_01_14_000001_extend_admin_level_range_to_0_10.php`; `TenantGeographyProfile` (root and leaf levels 0–10). But `GeoLevelType` is a fixed enum of seven named levels (finding C-a) |
+| The organisation names the geographic levels it uses | **Partly true in code; too narrow as a model** | Code: committee-structure levels carry a name, `geo_policy` and `geo_scope` (`2026_05_06_000001_create_committee_structures_tables.php`). Accepted: **organisational levels are defined by the Highest Committee and need not match geographic levels** (V-16: NRNA "internal committee … zero level, then continents, then countries, then states and then city, … defined by the highest committee"; V-17 exceptions in the rule log; §42.4). Mapping a level to a geographic level is optional, never the definition |
+| "Organisation's units **and committees**" owned by Organisation | **False as worded** | Units: Organisation (D-3). Committees as decision-making bodies: **organs, owned by Governance** (§5, §42.2) |
+| A member "belongs to the Ward Committee" | **Terminology to correct** | A member belongs to the **ward (unit)**; the ward committee's members are **position holders** (Governance) |
+| Residence alone does not create belonging | **True** | D-22 (every belonging has a basis); Organisation question 1 open |
+| Naming a level does not require a committee at that level | **True** | Units and organs arise only from decisions (D-21, D-24) |
+| Open question: more than one unit at the same level? | **Already answered** | V-24 (direct): "One geographic unit only; wings in addition"; V-53 wings and V-54 staff/guest: organisation rules; V-15: several positions allowed, restricted by Central Committee rules |
