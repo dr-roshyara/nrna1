@@ -55,3 +55,12 @@
 3. Each item enters EP-01: plan → approval → RED → GREEN.
 
 **This investigation does not transition into implementation without explicit authorisation.**
+
+## Decision note (2026-11-09): D-2 decided
+**D-2: the Principal agreed with the recommendation** ("I agree with your recommendation", 2026-11-09): the Angular/Ionic plan and `/mapi` design of `public-digit` are recorded as **historical**, kept as a reference source only, and **not continued** in nrna1. The decision history was reconciled first, as the correction above required: `../reviews/2026-11-09-public-digit-mobile-strategy-cross-project-assessment.md` (A-1…A-6 apply as principles; N-1…N-8 do not apply). The technology for any future app is **not** decided by this note; it waits for MP-1 (`../reviews/2026-11-09-mobile-application-strategic-ddd-baseline.md` §11). Working decision; not a ratification act. Text above unchanged.
+
+## Decision note (2026-11-09): D-1 for now
+**D-1 (channel strategy): responsive web only, for now.** From the Principal's answer to MP-1 ("a)": nothing is needed from an installed app that the phone browser cannot do). No PWA and no store app are planned now; D-4, D-5, D-6 are not needed. Reopen when a named business outcome requires an installed app. Basis: `../reviews/2026-11-09-mobile-application-strategic-ddd-baseline.md` (decision section). Working decision; not a ratification act. Text above unchanged.
+
+## Decision note (2026-11-09, later): D-1 staged
+The Principal revised D-1: responsive web first, then a PWA (installation at least for participant use such as membership), then evaluate a standalone app. The earlier "responsive web only for now" note is superseded in that respect. PWA scope is open (PD-PWA-1). Detail: `../reviews/2026-11-09-mobile-application-strategic-ddd-baseline.md`, last section.

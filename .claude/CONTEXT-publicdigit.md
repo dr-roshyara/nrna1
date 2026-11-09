@@ -9,6 +9,15 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-11-09): **Mobile channel: staged direction; PBDIGIT-338 and 339 verified (339 RED→GREEN; signed-in journey on a throwaway DB), uncommitted; Identity discovery done; PBDIGIT-340/341 raised**
+
+| | |
+|---|---|
+| Direction | Principal: responsive web → one PublicDigit PWA → store app only on evidence. Mobile is a channel, not a context. Baseline (PROPOSED): `docs/publicdigit/architecture/reviews/2026-11-09-mobile-application-strategic-ddd-baseline.md` |
+| PBDIGIT-338 | header, menu, member links, `dvh` layouts; browser-probed at six widths; vitest +12, no new failures; **not committed** (signed-in journey not browser-verified) |
+| PBDIGIT-339 | member self-view was cached per organisation and role, not per user. Fix in `MembershipDashboardController` (self-view read per request) and 2 regression tests in `MembershipDashboardTest`. **Not run:** the main tree has a cached config (PBDIGIT-283 guard refuses); the clean worktree needs `.env`, which the agent may not link. Script: scratchpad `run-339-red-green.sh` |
+| Next | Principal accepts 339, 338, docs → three separate commits → Identity participant-access tactical design (P-1 decided), after P-I1 (K4) and P-I5 (social sign-in) where needed. New: `PBDIGIT-340` (Google live path), `PBDIGIT-341` (e-mail account matching) |
+
 ## 📍 UPDATE (2026-11-07): **Social Contribution initiative: Phase 0 approved; `PBDIGIT-335` BLOCKED; no product code changed; S-1 security observation awaits a separate assessment**
 *Written by Claude (Session A) on the Principal's instruction of 2026-11-07. State only; it creates no authority. Additive; the blocks below are unchanged. Full initiative state: `.claude/CONTEXT.md` (UPDATE 2026-11-07).*
 - **Scope:** documentation and backlog only (`docs/publicdigit/architecture/reviews/2026-11-07-social-contribution-*`, `PBDIGIT-331`…`335`). **No change under `app/`, `routes/`, `database/` or `resources/`.**
@@ -31,6 +40,34 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 - **Done:** the `Login` listener `RecordLastLoginTimestamp` now writes `users.current_ip`. It was the invitation-link login that left it NULL (ONF East Asia: 46 of 51 logged-in voters). The duplicate write in `LoginController` was removed. RED → GREEN. Guide `developer_guide/election/voter_admission/10_…`.
 - **Operational:** the fix covers future logins only. Affected voters must log out and log in again before the officer can capture their IP; no backfill is possible.
 - **Next:** PO acceptance; deploy (`php artisan optimize`); tell the officer. **PBDIGIT-308:** 27 related and 93 `tests/Feature/Auth` failures exist without this change (stale fixtures).
+
+## 📍 UPDATE (2026-10-16): **Laravel 12 upgrade ACCEPTED by the PO (EP-02) and merged into `election-flow-updated` (`ebdfee484`, not pushed)**; additive, the blocks below are unchanged
+- **Done:**
+  - Laravel 11.41.3 → **12.70.0**; Laravel-Excel 3.1 → 4.0.4 (PhpSpreadsheet 1 → 5); PHP floor `^8.3`.
+  - Targeted update only; 5 commits `2bd6240a5`…`00db6eb40` on `feature/laravel-12-upgrade`.
+  - ADR `docs/publicdigit/adr/ADR_20261015_2346_Laravel_12_And_Excel_4_Upgrade.md` (ACCEPTED); guide `developer_guide/framework_upgrade/`.
+- **Evidence (against the Laravel 11 baseline):**
+  - full suite: same 6,373 passing; 15 order-dependent regressions (PBDIGIT-295), 1 fixed (K7 decoder);
+  - import tests: no PASS → FAIL after the Excel 4 `Import` marker fix;
+  - deptrac 0 violations; tenant gate pass; PHPStan +1 known false positive;
+  - `composer audit` 65 → 12.
+- **Behaviour change accepted:** the `image` rule now rejects SVG (organisation and election logos, `StoreImage`). Audit of stored SVGs: PBDIGIT-299.
+- **Not done:**
+  - not pushed, not deployed;
+  - the election-flow WIP (PBDIGIT-286 work, `VoterSlugStep` middleware removal) is **not yet re-verified on Laravel 12** beyond the import and anonymity tests.
+- **Next:**
+  - verify the WIP stories on Laravel 12 before committing them;
+  - production rollout is a separate authorised task (PHP ≥ 8.3 on the server, staging first, never during an open election);
+  - backlog: **PBDIGIT-300** (vote ids encode creation time, priority raised), 301 (12 advisories), 302 (mail TLS), 299 (SVG audit).
+- **Branch switching:**
+  - Laravel 12 branches: `composer install`.
+  - Laravel 11 branches on PHP 8.5: `composer install --ignore-platform-req=php`.
+  - After either, revert permission-only changes in `bootstrap/cache`.
+
+## 📍 UPDATE (2026-10-15, later): **PBDIGIT-286 P5/P6 ACCEPTED by the Principal as a bounded implementation milestone; production release on hold**
+- Recorded in the decision record (status annotation) with the residual risks. Commits `2f998b8ae`, `153ad7bf6` (not pushed).
+- **Next:** O-3 (the Principal sends the operations request) → G-ADR-A for approval → P1/P2. No push, merge or deployment authorised.
+- **O-3: BLOCKED — awaiting Operations evidence** (effective isolation in the app's session; default and source; overrides; pooler; version; who and when). Also outstanding: the ADR-A-T write-control confirmation. **G-ADR-A: PROPOSED r2.** The P5/P6 repository-verifiable items are closed (evidence `29`: 32 database-free files at `153ad7bf6`).
 
 ## 📍 UPDATE (2026-10-15): **PBDIGIT-286 P5 + P6 committed `2f998b8ae` (not pushed); awaiting Principal acceptance**
 - **Done:** trust level from verification evidence (P5); refusal at `>=`, minimum 1, count via `IpVoteLimit::votesFrom` (P6). Evidence `docs/publicdigit/election/evidence/2026-10-15-pbdigit286-p6-evidence/`; guides 07, 08.
