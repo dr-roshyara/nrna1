@@ -402,3 +402,70 @@ ADR accepted; append-only notes in `Round50-01_Aggregate_Discovery.md` (after `A
 ## 32. ARB act done: XD-3 Identity (D-75)
 
 `PersonRef` everywhere in this document means **the organisation-specific opaque reference** issued by Identity. The Google sign-in email takeover (`app/Http/Controllers/GoogleController.php:44`) is a **security blocker**. Remaining ARB acts: ADR-UL with ADR-PL (`TargetType`, `DeterminationIssued v2`), X-10, INV-AFF-1, recording notes for D-67 and D-68.
+
+## 33. Governance tactical model, round 4 (PROPOSED; consolidates §20 under D-72, D-74, D-75)
+
+**Status:** architect's proposal, not accepted; no implementation authorised.
+
+### 33.1 Aggregates and why each boundary exists
+
+| Aggregate | Owns | Invariant that needs this boundary | Atomic within | Rejected alternative |
+|---|---|---|---|---|
+| **Position** (tenures, restrictions) | The office and its holders over time | One holder at a time (V-46); outgoing holder continues only on succession or expiry (V-12); restrictions belong to one tenure | One Position | Tenure as its own aggregate: V-46 would span aggregates |
+| **AuthorityAssignment** | One delegation: delegator (organ or tenure), delegatee (organ or tenure), delegated powers, period, re-delegation flag | Scope ⊆ delegator's effective powers **at grant**; one active assignment per (delegator, delegatee, power) | One assignment | Delegation inside Position: a delegation outlives neither, but belongs to neither alone |
+| **Organ** | Body, attachments (own / joint), lifecycle | One active **own** organ per unit and kind | One Organ | Composition stored in Organ: duplicates tenures |
+| **RuleProvision** | One provision's versions and its grants of power | Versions never overlap | One provision | One RuleSet aggregate: every rule change would lock all rules |
+| **Resolution** (parts) | What an organ decided, once | Never changed (GD-1); one decider; competence per part | One Resolution | — |
+| **Submission**, **Sitting** | Matter before an organ; a meeting | One outcome (PR-5); minutes lifecycle | Each | Inside Resolution: they exist before and without it |
+| **GroupApplication** | Indivisible group across contexts | One outcome | One group | — |
+| **DecisionLog** (per organisation) | Knowledge positions | GD-11, GD-12 | One log | — |
+| *(consistency guard)* **OfficeholdingIndex** | Nothing (derived) | Incompatibility (person-level serialisation + clearance) | With the Position change | An aggregate: it would own facts |
+| ~~Mandate~~ | — | — | — | **Superseded (D-74)** |
+
+### 33.2 Authority: where the truth is checked
+
+- **Effective powers** (§20.3, D-69) are worked out by a domain service from Position, AuthorityAssignment and RuleProvision **at the moment of use**. A delegation's validity is therefore always evaluated against its source tenure **as it stands**, so a delegation can never be used after its basis ends, even before any event is delivered.
+- **Mandate events** are derived in the **same transaction** as the change that causes them (outbox), so Authorization learns of a revocation as soon as delivery allows.
+- **Two checks, one owner of truth:** Authorization gates operations from mandates (fast, possibly lagging by delivery time). **Every authority-sensitive act that Governance records** (a decision part, an appointment, a signature recorded as an act) is **re-checked by Governance** against its own facts when recorded (G-6). The delivery lag can therefore never create a valid Governance act.
+- **Organ competence** is a separate service (D-8, D-65, D-70); D-69 never applies to organs.
+
+### 33.3 Decisions, challenges and remedies inside Governance
+
+- A part is applied after recording, in its own transaction, by the aggregate it targets (Position, AuthorityAssignment, Organ, RuleProvision), keyed by part; outcome recorded (applied / inapplicable with reason).
+- **A pending challenge changes nothing** (D-71).
+- **An interim measure** addressed to Governance becomes a **RestrictionOfPowers** on the tenure (source: the Determination), with Mandate revoked and re-granted for the remaining scope.
+- **A final determination's Governance part** is recorded as a **Resolution with method "determination"**, decider = the tribunal (a Governance organ, R-13), referencing the Determination. Governance applies it like any part; Adjudication never writes Governance facts.
+
+### 33.4 Commands and events (proposals)
+
+| Aggregate | Commands | Events (authoritative unless noted) |
+|---|---|---|
+| Position | CreatePosition, AbolishPosition, StartTenure (needs clearance), EndTenure(reason), RestrictPowers, LiftRestriction, RecordResignationSubmitted, RecordDeath | PositionCreated, PositionAbolished, TenureStarted, TenureEnded, PowersRestricted, RestrictionLifted, ResignationSubmitted, DeathRecorded |
+| AuthorityAssignment | GrantDelegation, RevokeDelegation, ExpireDelegation | DelegationGranted, DelegationRevoked, DelegationEnded |
+| Organ | EstablishOrgan, DissolveOrgan, AttachUnit, DetachUnit | OrganEstablished, OrganEnded, OrganAttachmentChanged |
+| RuleProvision | PublishVersion | RuleVersionPublished |
+| Resolution | RecordResolution | ResolutionRecorded(P), PartApplied, PartInapplicable |
+| *(derived)* | — | **MandateGranted, MandateRevoked** (Round 50-05; derived, not authoritative) |
+
+Every event carries decision reference, effective date and log position; consumers are idempotent on event id; corrections are new events, never edits.
+
+### 33.5 Scenarios
+
+| # | Scenario | Outcome |
+|---|---|---|
+| 1 | One person, two positions | Allowed unless an incompatibility rule applies; guard checks overlapping effective periods |
+| 2 | Occupied position abolished | D-66: tenure ends on the abolition date unless rules protect; dependent delegations end; mandates revoked |
+| 3 | Delegation becomes invalid | RevokeDelegation or expiry → DelegationRevoked → MandateRevoked; use-time check already refuses |
+| 4 | Delegator loses the power (rule change or restriction) | Power service reassesses; delegation scope ∩ delegator powers → MandateRevoked + MandateGranted for any remaining scope |
+| 5 | Conflicting individual grants | D-69: all applicable conditions; contradiction diagnostic |
+| 6 | Conflicting organ competence rules | D-70: effective until challenged; diagnostic |
+| 7 | Result challenged, still effective | D-71: tenure and mandates unchanged |
+| 8 | Interim measure restricts some powers | RestrictionOfPowers; partial mandate re-grant |
+| 9 | Final determination across contexts | Election and Governance parts; Governance part recorded as Resolution (method determination); acts before the effective date stand |
+| 10 | Two concurrent incompatible appointments | Person lock; second sees the first; inapplicable |
+
+### 33.6 Open
+
+- **Default delegability of powers when the rules are silent** (Principal question, §33.7 of the conversation).
+- Sitting content (quorum, minutes) pending statute evidence (PR-7).
+- Legacy `GovernanceDecision`, `Legitimacy`, "ICC" in `AuthorityPath`: code conformance, not model questions.
