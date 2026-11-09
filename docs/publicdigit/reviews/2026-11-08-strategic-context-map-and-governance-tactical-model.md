@@ -866,3 +866,10 @@ Sufficiently defined for Principal/ARB review as a tactical design. Not proven a
 ## 46. Status of §45 after the foundation reassessment (2026-11-09)
 
 §45 (Organisation tactical design) is **held, not withdrawn**, pending the Reference Geography baseline (identity, revision, succession; R-10, XD-5). Corrections: Geography's `version` column is optimistic locking, not a revision (reassessment G-1); the level link `(countryCode, adminLevel)` is retained on business grounds (levels are per country) but was first derived from code (G-8); scenario "member without belonging" is excluded by V-23. Reassessment: `docs/publicdigit/architecture/reviews/2026-11-09-strategic-foundation-reassessment-geography-organisation-membership.md`.
+
+## 47. Corrections accepted from the Principal DDD Architect review (2026-11-09)
+
+- The foundation reassessment's Decision 1 (a/b/c) is **withdrawn and reframed** (Geography discovery §9).
+- G-7's "Organisation records the belonging eventually" is **withdrawn as a resolution**: it does not show that V-23 holds. The invariant stands: Membership owns admission, Organisation owns belonging, and the platform never presents an effective admission without a unit belonging. Mechanism: Membership–Organisation tactical contract.
+- Membership needs a **tactical conformance design**, not rediscovery. §45 stays a proposal.
+- Geography strategic discovery: `docs/publicdigit/architecture/reviews/2026-11-09-reference-geography-strategic-discovery.md`.
