@@ -30,6 +30,8 @@
 6. **If postponed:** Phases 0b–2 can still start, because they are needed in every option. Only Phase 4+ waits.
 
 ### D-2: The documented Angular/Ionic plan and `/mapi/v1` (blocks the start of Phase 1)
+
+> **Correction (2026-11-09, after Principal review):** the statement "neither is implemented" holds for **this repository only**. The sibling project `personal/public-digit` contains a binding-style rule set for an Angular mobile app on `/mapi` (`public-digit/CLAUDE.md:545-632`, e.g. "MUST treat Angular Mobile as additive", "Angular Mobile → /mapi/ ONLY") and an Angular + Capacitor app (`apps/mobile`, last commit 2026-01-09; cross-project discovery `../reviews/2026-11-07-social-contribution-cross-project-discovery.md:18,64`). No record found supersedes that direction, and whether nrna1 succeeds public-digit is UNKNOWN. **D-2 must not be decided on this report alone**; the decision history must be reconciled first.
 1. **What:** retire or keep the business-case statement "Vue 3 (Desktop), Angular/Ionic (Mobile)" with a separate `/mapi/v1` (`docs/publicdigit/business_case/BUSINESS_CASE.md:221-248`; `FEATURE_MATRIX.md:158-167` marks native apps as "Current"). Neither is implemented in this repository.
 2. **Why:** it contradicts the reuse goal and misstates the status ("Current") in a product document.
 3. **Alternatives:** (a) supersede it with Vue + Capacitor (this report's direction); (b) keep Angular/Ionic; (c) leave it open.

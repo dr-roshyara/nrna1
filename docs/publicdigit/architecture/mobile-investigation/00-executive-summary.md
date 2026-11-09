@@ -79,7 +79,7 @@ This report is a **technical (implementation-level) assessment**. It does not es
 **12. What must the Principal decide?** Three decisions block the next step (`10`):
 - **D-0** Triage the security findings S-1 to S-6 into backlog items.
 - **D-1** Channel strategy: web/PWA only, or also store apps.
-- **D-2** Retire or keep the documented Angular/Ionic plan and `/mapi/v1` (`docs/publicdigit/business_case/BUSINESS_CASE.md:221-248`, `FEATURE_MATRIX.md:158-167`). These are documented but not implemented anywhere in the repository (FACT: no `mapi` route, no Angular project).
+- **D-2** Retire or keep the documented Angular/Ionic plan and `/mapi/v1` (`docs/publicdigit/business_case/BUSINESS_CASE.md:221-248`, `FEATURE_MATRIX.md:158-167`). These are not implemented in **this** repository (FACT: no `mapi` route, no Angular project). **Correction (2026-11-09):** the sibling project `personal/public-digit` does implement an Angular + Capacitor app under binding-style `/mapi` rules (`public-digit/CLAUDE.md:545-632`), and no superseding record was found. D-2 needs that history reconciled first (see `10`).
 
 
 Needed later:
