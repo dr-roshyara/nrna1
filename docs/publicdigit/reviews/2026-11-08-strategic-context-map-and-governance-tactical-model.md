@@ -378,3 +378,7 @@ Capabilities: newsletter (optional, editor designated by the committee in a meet
 ## 27. Effect of a pending challenge (D-71)
 
 A challenge does not change the effect of what it challenges. The challenged decision, moderation decision or result stays effective from filing until determination, unless the organisation's rules provide a suspensive effect for specific cases. The tribunal may suspend it by an **interim measure** (a remedy type in the Determination, applied by the owning context and citing it). An upheld determination ends the effect from the date it sets; acts done before then stand (D-28, G-2). "Effective until challenged" (D-65, D-70) therefore means "effective until a determination or interim measure says otherwise".
+
+## 28. ARB act done: BDR-03 v1.2 (D-72)
+
+The §26 act "BDR-03 v1.x" is done: ADR accepted, register `Round49-06` amended append-only (Boundary Evolution History row; BDR v1.2 delta). Still pending from §26: the Membership §8 Change Request (blocks closure), the ADR on Round 50-01 `AGG — Mandate` / D-7, X-10, ADR-UL `TargetType`, XD-3, recording notes for D-67 and D-68.

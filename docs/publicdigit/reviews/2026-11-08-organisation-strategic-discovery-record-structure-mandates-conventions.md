@@ -644,3 +644,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-71 | Between filing and determination, a challenged decision stays effective unless the organisation's rules provide otherwise. Only the tribunal can suspend it, by an interim measure. Applies to decisions effective under D-65 and D-70, to moderation decisions (D-53) and to election results. | direct: "(c) organisation rules decide, stays effective by default" |
+
+### 11.6 Decision D-72 (ARB)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-72 | **ARB.** BDR-03 v1.2: Appointment (Authority) is a capability within Governance, not a separate bounded context. Governance owns the authoritative facts (positions, tenures, delegations, effective powers) and, through its Appointment capability, derives and publishes `MandateGranted` / `MandateRevoked`. Round 50-05, R-11, D-68 and BDR-07 unchanged. The Mandate aggregate question (Round 50-01, Round 50-02, D-7) is not decided by this act. Act: `docs/adr/ADR_20261109_0833_Appointment_Authority_Consolidated_into_Governance.md`; register `Round49-06` amended append-only. | direct: "Yes, I accept the BDR-03 v1.2 act" |

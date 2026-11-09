@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | ⚠️ **PROPOSED — awaiting the Principal's ruling as human ARB Chief.** Nothing here takes effect until accepted. The frozen register (`docs/architecture/design/Round49-06_Boundary_Decision_Register.md`) is **not** amended until then |
+| **Status** | ✅ **ACCEPTED — ruling by the Principal as human ARB Chief, 2026-11-09** ("Yes, I accept the BDR-03 v1.2 act"). Recorded as D-72. Register amended append-only (`docs/architecture/design/Round49-06_Boundary_Decision_Register.md`: Boundary Evolution History row and BDR v1.2 delta) |
 | **Class** | Boundary decision: versioned re-issue of BDR-03, as Round 49-06 requires ("changes only by a versioned re-issue (BDR v1.x / v2.0) via ADR") |
 | **Supersedes** | BDR-03 v1.0 *as a boundary decision only*. The v1.0 row stays unchanged in the register |
 | **Decision drivers** | Working decisions D-4, D-5, D-38, D-39, D-68 (`docs/publicdigit/reviews/2026-11-08-organisation-strategic-discovery-record-structure-mandates-conventions.md` §8.1, §11.1) |

@@ -46,6 +46,7 @@
 |------|-----|-----------|--------|
 | 2026-06-26 | all | — → **v1.0 baseline** | initial EBSD verdicts (this register) |
 | 2026-06-26 | BDR-05 | Unrealized (scope open) → **Architectural (Greenfield)**, scope RESOLVED → **BDR v1.1** | election-determination path read (below) |
+| 2026-11-09 | BDR-03 | Confirmed BC — Operational → **capability within Governance** → **BDR v1.2** | authority held through Governance positions, tenures and delegations; one invariant for effective authority (`docs/adr/ADR_20261109_0833_Appointment_Authority_Consolidated_into_Governance.md`; D-4, D-72) |
 | *(future)* | BDR-06 | Application Capability → ? | only if Replay is shown to own a domain decision (post-impl) |
 | *(future)* | BDR-07/08 | Service/Supporting → ? | only on new evidence (e.g. Authorization acquires state) |
 
@@ -55,6 +56,12 @@
 - **Resolution:** certified **Adjudication** (adjudicate a contested outcome → binding determination) is **Architectural (Greenfield)** — paired with **Contestation** as the **unbuilt core of the correction loop**. The existing `ResultsPublished` is publication-finality (Lifecycle); jurisdiction-arbitration is separate.
 - **BDR-05 Evidence-Sufficiency: Yes** (was No). **Confidence: Medium-High.**
 - **Architectural significance:** the trustworthiness *differentiator* — **adjudicating a contested election with binding finality — is NOT implemented.** Adjudication+Contestation are the genuine greenfield Core to build.
+
+### BDR v1.2 delta — BDR-03 (Appointment (Authority)) consolidated into Governance *(append-only; v1.0 table unchanged)*
+- **Ruling:** the Principal as human ARB Chief, 2026-11-09 (D-72). ADR: `docs/adr/ADR_20261109_0833_Appointment_Authority_Consolidated_into_Governance.md`.
+- **Decision:** Appointment (Authority) is a **capability within Governance**, not a separate bounded context. Governance owns the authoritative facts (positions, tenures, delegations, effective powers) and, through its Appointment capability, derives and publishes `MandateGranted` / `MandateRevoked`.
+- **Basis:** working decisions D-4, D-5, D-38, D-39, D-68.
+- **Unchanged:** Round 50-05 event definitions and consumer sets (producer "Appointment" = Governance's capability); BDR-07 (Authorization consumes mandates, owns no authority facts); the Mandate aggregate question (Round 50-01 `AGG — Mandate`, Round 50-02 merge test, D-7) remains for its own ADR.
 
 ---
 
