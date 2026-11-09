@@ -578,3 +578,26 @@ It returns `PersonRef`s plus τ, both sources' `closedThrough` and the tree vers
 ## 39. D-77 applied to §38
 
 §38.5 and §38.4 use `CoverageKnownAt(organisationId, personRefs[], τ)` for R-5, so a person admitted just before τ is never missed because Organisation's projection lags. §38.7's contract gap is closed.
+
+## 40. Governance tactical review, round 5 (PROPOSED)
+
+### 40.1 Determination remedies: application facts, not Resolutions (supersedes §33.3's last bullet)
+
+- **Rejected:** recording a final determination's Governance part as a Resolution with method "determination". A Resolution is an act of a Governance organ; the tribunal's act is the **Determination**, owned by Adjudication (D-67). A Resolution would create a second record of the same act.
+- **Adopted [P]:** every change to a Governance aggregate carries a **Basis** value object, one of: `PartRef` (a Resolution part), `DeterminationRemedyRef` (determination id, remedy-part id, instance), or `RecordedFact` (death, resignation submitted). Governance applies a remedy part **directly** to the target aggregate (for example `EndTenure(reason = determination, basis = DeterminationRemedyRef, effectiveFrom = date set)`), records **`RemedyApplied` / `RemedyInapplicable`** in the decision log with its own log position, and reports the outcome to Adjudication. Interim measures follow the same path (`RestrictPowers`, basis = DeterminationRemedyRef).
+- **Consequences:** one record per act; the decision log still shows when Governance learnt and applied it; idempotent per remedy-part id.
+
+### 40.2 Invariants re-checked
+
+| # | Invariant | Enforced by |
+|---|---|---|
+| G-I1 | One holder at a time per position | Position |
+| G-I2 | Incompatibility over overlapping effective periods | Guard clearance (§33.1, storage-level reference) |
+| G-I3 | Delegation scope ⊆ delegator's effective powers; delegable under the rules (D-76) | AuthorityAssignment at grant; power service at use |
+| G-I4 | No authority-sensitive Governance act on a stale mandate | Governance re-checks its own facts when recording (§33.2) |
+| G-I5 | Every change has exactly one Basis | Value object, required on every command |
+| G-I6 | Resolutions never change; remedies never become Resolutions | GD-1; §40.1 |
+
+### 40.3 Open: existing delegations when the rules withdraw delegability
+
+Principal question (organisation rule), §40 conversation, 2026-11-09. Until decided, the model does not end existing delegations automatically, and does not let them create new authority either: use-time evaluation follows the Principal's ruling once made.
