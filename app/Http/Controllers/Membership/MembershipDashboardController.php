@@ -31,6 +31,12 @@ class MembershipDashboardController extends Controller
             fn () => $this->buildDashboardData($organisation, $role)
         );
 
+        // The member's own record is personal. The cache above is shared by everyone with the
+        // same role in this organisation, so the self-view is read fresh per request (PBDIGIT-339).
+        if ($role === 'member') {
+            $data['memberSelf'] = $this->getMemberData($organisation);
+        }
+
         return Inertia::render('Organisations/Membership/Dashboard/Index', array_merge(
             ['organisation' => $organisation, 'role' => $role],
             $data
@@ -95,7 +101,7 @@ class MembershipDashboardController extends Controller
                 'applications'    => null,
                 'expiringMembers' => collect(),
                 'recentActivity'  => [],
-                'memberSelf'      => $this->getMemberData($organisation),
+                'memberSelf'      => null, // filled per request in index(), never cached
             ],
 
             default => abort(403),

@@ -199,4 +199,71 @@ class MembershipDashboardTest extends TestCase
                  ->where('memberSelf.has_membership', true)
         );
     }
+
+    // ── Privacy between members (PBDIGIT-339) ─────────────────────────────────
+
+    /** @test */
+    public function a_member_never_sees_another_members_own_membership_data(): void
+    {
+        // Member A has a membership with an expiry date; member B has none.
+        $orgUserA = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id'         => $this->member->id,
+            'role'            => 'member',
+            'status'          => 'active',
+            'joined_at'       => now(),
+        ]);
+        $memberA = Member::create([
+            'organisation_id'       => $this->org->id,
+            'organisation_user_id'  => $orgUserA->id,
+            'status'                => 'active',
+            'membership_expires_at' => now()->addDays(200),
+        ]);
+
+        $memberB = User::factory()->create();
+        $this->assignRole($memberB, $this->org, 'member');
+
+        // A opens the page first.
+        $this->actingAs($this->member)
+            ->get(route('organisations.membership.dashboard', $this->org->slug))
+            ->assertInertia(fn ($page) => $page
+                ->where('memberSelf.has_membership', true)
+                ->where('memberSelf.member_id', $memberA->id)
+            );
+
+        // B opens it next, within the old cache lifetime: B must see only B's own state.
+        $this->actingAs($memberB)
+            ->get(route('organisations.membership.dashboard', $this->org->slug))
+            ->assertInertia(fn ($page) => $page
+                ->where('role', 'member')
+                ->where('memberSelf.has_membership', false)
+                ->missing('memberSelf.member_id')
+                ->missing('memberSelf.expires_at')
+            );
+    }
+
+    /** @test */
+    public function a_member_sees_their_own_change_without_waiting_for_a_cache(): void
+    {
+        $this->actingAs($this->member)
+            ->get(route('organisations.membership.dashboard', $this->org->slug))
+            ->assertInertia(fn ($page) => $page->where('memberSelf.has_membership', false));
+
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id'         => $this->member->id,
+            'role'            => 'member',
+            'status'          => 'active',
+            'joined_at'       => now(),
+        ]);
+        Member::create([
+            'organisation_id'      => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status'               => 'active',
+        ]);
+
+        $this->actingAs($this->member)
+            ->get(route('organisations.membership.dashboard', $this->org->slug))
+            ->assertInertia(fn ($page) => $page->where('memberSelf.has_membership', true));
+    }
 }
