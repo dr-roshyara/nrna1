@@ -572,3 +572,69 @@ Accepting a bounded context (D-31) does not accept the contracts connecting to i
 A cancelled convention and delegate mandates · weighted votes through two participation routes · who keeps a person's residence · whether an ex officio seat carries a vote (organisation rule) · how an observer's belonging starts · deadline for reassigning after a fallback · body that engages staff · lifecycle when an organisation ends · vocabulary CQ-1 and O-14 · the Election-side changes and their PO/ARB act (model document §17).
 
 **Linked:** model document §15–§19.
+
+## 11. Continuation: Session B, 8–9 November 2026 (Governance tactical design, cross-context consistency, Election and Voting, Deliberation, Communication, Evidence integration)
+
+**Status.** PROPOSED discovery evidence. Working decisions only. None is ratified or authorises implementation, except where marked **ARB** (rulings by the Principal as human ARB Chief, which still need recording in their own governed artifacts; see model document §26). **Provenance:** *direct* = the Principal typed the answer · *via paste, accepted* = the Principal accepted a pasted review that recommended the option · *as reported* = a pasted review reported the Principal's choice and the Principal accepted that review.
+
+### 11.1 Working decisions
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-33 | PublicDigit records evidence of how a decision was reached (meeting date, attendance, votes for, against, abstaining, minutes reference). It does not validate quorum or majority. Which evidence applies depends on the method of decision. | direct: "I accept option B." |
+| D-34 | Every part of a resolution stands or falls on its own unless the resolution declares parts indivisible; a part depending on a failed part fails. Extends D-30 beyond structural change sets. | direct: "I accept option A" |
+| D-35 | The Resolution is the unit of recording (one decider, one decision date, procedure evidence); the Part is the unit of validity and application. A part without competence is a recorded act, not an effective decision, until ratified. The decision log position records when PublicDigit learnt of a decision. | via paste, accepted |
+| D-36 | When a resignation takes effect is decided by the organisation's rules; the rule version applied is identified. | as reported |
+| D-37 | When a holder's death ends a tenure is decided by the organisation's rules. | direct: "organisation rule decide" |
+| D-38 | A position's powers are held in the rules; Position references the provision defining them. A change of powers is a new rule version. | direct: "(b) keep powers in RuleSet, reference from Position" |
+| D-39 | Position (with tenure history) is an aggregate referring to its powers provision; RuleProvision is the rule aggregate; RuleSet is a catalogue read model. | direct: "Yes, I accept the Position and RuleSet design" |
+| D-40 | An indivisible group completed after its declared effective date still takes effect from the date the organ decided. A technical delay changes only knowledge time. | as reported (option A) |
+| D-41 | Election does not fix an electorate while a pending indivisible restructuring affects its units and takes effect on or before the cut-off. It proceeds once the restructuring is completed or authoritatively settled. No timeout releases it. | as reported (option B) |
+| D-42 | A snapshot built after its cut-off uses only facts recorded by the cut-off, plus the outcomes of restructuring decisions already recorded by then. | via paste, accepted (option A) |
+| D-43 | A restructuring decided before the cut-off and still pending keeps blocking. If it completes, it enters the snapshot from its decided date; if a later competent decision pre-empts it, it is left out and the wait ends. A timeout, failed message or operator action is never pre-emption. | as reported (option A) |
+| D-44 | Secret elections are in the current baseline; motion voting is a later, separate capability. | as reported (option C) |
+| D-45 | Staged secret-ballot assurance: Level A (stored-data unlinkability) now; Level B (secrecy not depending on the operator) later. Level A is never presented as Level B. | as reported (option C) |
+| D-46 | The per-network vote limit applies when voting rights are issued, inside Election. Voting holds no IP address. | via paste, accepted (option A) |
+| D-47 | Replacement of a lost voting right follows the organisation's rules; default: no replacement. Where allowed: by election committee decision, with the number of replacements published with the result. | via paste, accepted (option D) |
+| D-48 | The official result of every race is always published. Optional breakdowns only for groups at least as large as the organisation's rules set; none until a minimum is set. | via paste, accepted (option B) |
+| D-49 | Escrow of the combined-ballot key for the challenge period follows the organisation's rules; default: destroyed at close. Escrow needs a stated purpose, dual control, fixed expiry and disclosure. | via paste, accepted (option C) |
+| D-50 | Member deliberation is part of PublicDigit now (HD-P1). | direct: "option a" |
+| D-51 | Governance owns a motion from the moment it is submitted (HD-P2). Before submission, Deliberation owns drafting, discussion and co-signatures. | direct: "(a) Governance owns it from submission" |
+| D-52 | Whether supports are visible by name is decided by the organisation's rules per forum; default: counted only. Co-signatures are always named. | direct |
+| D-53 | Whether and by whom a moderation decision is reviewed is decided by the organisation's rules; default: the independent tribunal through Contestation and Adjudication, with recusal of moderators in their own matters. | direct |
+| D-54 | An organ must respond to a highly supported idea only where the organisation's rules set a duty; default: no duty. | direct |
+| D-55 | Posting under real names or pseudonyms is decided by the organisation's rules per forum. Default real names (taken from the option text; not stated separately). | direct: "organisation's rule decide" |
+| D-56 | Read access to geographic forums is decided by the organisation's rules per forum; default: own unit and the units above. Writing stays within the forum's scope; committee forums stay confidential. | direct |
+| D-57 | Newsletters reach members and other known participants now; outside subscribers come later as a separate capability. | direct: "(c) members now, outside subscribers later" |
+| D-58 | When the rules are silent, nobody may send newsletters in an organisation's name until a competent Governance organ designates an editor for the series and scope. | direct: "I accept option A" |
+| D-59 | A newsletter is for official purposes only, never for advertising a candidacy. | direct |
+| D-60 | Who may send newsletters is decided by the committee in a meeting (a decision at a sitting). | direct |
+| D-61 | An editor who is a candidate is not restricted; protection comes from D-59. | direct: "I accept option A" |
+| D-62 | PublicDigit has a personal-messaging capability; each organisation decides whether to use it. | direct |
+| D-63 | Private messages not reported by a participant can be read only by order of the independent tribunal in a case, limited to what the order names, with every access recorded. | via paste, accepted (option C) |
+| D-64 | The organisation's rules decide which organ switches messaging on and how; default: the committee at a formal sitting. | as reported (option C) |
+| D-65 | When competence genuinely cannot be determined from the organisation's rules (a declared gap, not missing platform data), the organisation's rules decide; default: effective until challenged. | via paste, accepted (option C) |
+| D-66 | When an occupied position is abolished, the organisation's rules decide; if silent, the tenure ends on the abolition's effective date. History is kept. | via paste, accepted (option C) |
+| D-67 | **ARB.** EPIC-001's and EPIC-002's Adjudication are one bounded context; EPIC-001's Determination is extended with EPIC-002's inputs (COL-1 to COL-3), outputs (COL-5a/b) and D1. Closes the reconciliation deferred on 2026-07-25. | direct: "I accept your recommendation" (option b) |
+| D-68 | **ARB.** In R-11, `termRef` identifies the basis of a mandate: a tenure or an AuthorityAssignment (delegation). R-11 is not amended. Governance revokes when the delegation, the underlying authority or the delegator's supporting powers end. | as reported (option A) |
+| D-69 | When two rules grant an individual the same power under different conditions, the organisation's rules decide precedence; if none is declared, every applicable condition must be met. Uncertainty never creates authority for an individual. | as reported (option D) |
+| D-70 | When the rules on an organ's competence contradict each other, the organisation's rules decide precedence; if none is declared, the decision is effective until challenged, and the contradiction goes to the rule-making organ. | via paste, accepted (option C) |
+
+### 11.2 Findings that are evidence, not decisions
+
+- [E] The current vote-casting code links voters to ballots in fourteen ways (F1 to F14): vote ID in the voter's step record; vote ID logged with the slug; a receipt hash of vote ID, user ID and election ID; a vote hash recomputable from the code row; identical timestamps; time-ordered vote UUIDs; cast IP on the code row; code update and vote insert in one transaction (same `xmin`); per-voter audit file; queued emails; adjacent access-log entries; a receipt that reveals ballot content; unencrypted receipt codes. F1 and F2 were already recorded as known gaps (`tests/Feature/Characterization/Phase1/BallotAnonymityCharacterizationTest.php:145-176`). Backlog item `PBDIGIT-337`.
+- [E] The membership newsletter audiences include `election_voted` and `election_not_voted` and read other contexts' tables directly (`app/Services/NewsletterService.php:34-36, 113-132`).
+- [E] The ratified Membership documents contain no contact details; the ratified Identity scope is person identity and identity equivalence only.
+- [E] Membership's ratified KnownAt is defined over `recordedAt ≤ τ`, but the code takes `recordedAt` from the application clock before commit (`PostgresMemberRepository.php:219`), which can break ratified property P3 for queries just after τ.
+- [E] No rule anywhere states whether filing a challenge suspends the challenged decision.
+- [E] Round 50-05 defines `MandateGranted(mandateId · holderId · scope · termRef · grantedAt)`, producer Appointment, consumers Authorization and Audit; `termRef` has no further definition.
+
+### 11.3 Open question awaiting the Principal
+
+**Adjudication question 1:** between filing and determination, does a challenged decision stay effective, with only the tribunal able to suspend it by interim measure (recommended, as the default under the organisation's rules), or is it suspended automatically?
+
+### 11.4 Open items carried forward
+
+Organisation rules: ex officio rights of a suspended holder; joint organs when one unit ends; transfer of submissions after restructuring; withdrawal after submission; candidates messaging during campaigns. Legal: subscription default, electronic convocation, retention, GDPR Art. 9. Technical: Record-Fixing key management; the Level A security review; RFC 9474 feasibility in the stack.
+
+**Linked:** model document §20–§26.

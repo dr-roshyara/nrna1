@@ -1164,3 +1164,6 @@ Evidence → Reconstruction → Hypothesis → Derivation → Validation → Can
 - **`Tests\TestCase` on PostgreSQL has NO per-test transaction: `RefreshDatabase` runs `migrate:fresh` (drops every table) on whatever database is connected.** On 2026-10-13 two `phpunit --no-configuration` runs that included a `Tests\TestCase` test wiped the development database `publicdigit` (the app's `.env` database; there is no `nrna` database).
 - **Guard:** `tests/Support/TestDatabaseSafety` + `Tests\TestCase::setUpTraits()` refuse to reset anything but `nrna_test` or `pbdigit274_isolated_test`; `tests/Architecture/DatabaseResetIsGuardedTest` keeps every resetting test behind a guarded base.
 - **Rule for assistants:** run database tests only through `phpunit.xml` or `phpunit.pbdigit274.xml`. Use `--no-configuration` only for files individually verified to extend plain `PHPUnit\Framework\TestCase` (or a dead-socket `BaseTestCase`) — never for a folder.
+
+## Record agreements at every refinement step (Principal instruction, 2026-11-09)
+Whatever the Principal agrees in an architecture or discovery conversation is written into the governing records **in the same turn**, not held in conversation until later. Review prompts that exclude "recording drafts" do not override this.

@@ -293,3 +293,84 @@ None is approved.
 **ARB acts (additions to §13):** the Election-side PO/ARB act (§17); Context Map update now also covering Reference Geography (D-31) and the narrowed Geography row.
 
 **Traceability (§15–§19):** Architecture Session B, 8 November 2026, continued. Decisions: discovery record §10.1. Sources read: `app/Domain/Election/Enum/VoterSourceStrategy.php`; `app/Contexts/Elections/Domain/Events/ResultsPublishedEvent.php`; `app/Contexts/Governance/Domain/GovernanceDecision.php`; `app/Contexts/Geography/` (mirror, sync, candidate services, unit entity, migration); `app/Contexts/Governance/Application/Services/GovernanceGeoUnitQueryService.php`; `app/Policies/`; `docs/publicdigit/reviews/2026-08-16-adoption-act-v3.md`; `docs/architecture/design/Round49-06_Boundary_Decision_Register.md` (BDR-05, BDR-07, BDR-08).
+
+---
+
+## 20. Governance tactical design (working; decisions in discovery record §11)
+
+**Status:** working design accepted in conversation; not ratified; no implementation authorised. Refines §5; where they differ, this section governs.
+
+### 20.1 Decision-making lifecycle
+
+| Concept | Meaning | Invariants |
+|---|---|---|
+| **Sitting** (aggregate) | A formal meeting of one organ: invitation, agenda items, attendance, record of proceedings, minutes | Consistent agenda, attendance and minutes of one sitting; minutes attached later and approved as a part at a later sitting; corrections are new facts |
+| **Submission** (aggregate) | A matter before an organ (D-51): received → admitted / inadmissible → on agenda → exactly one outcome (adopted, amended, rejected, referred, deferred, withdrawn, **lapsed**) | Admissibility as at the submission date (PR-3); one outcome (PR-5); passes to a named successor organ, otherwise lapses ([I] by analogy with D-15) |
+| **Resolution** (aggregate) | Recorded once, never changed (GD-1): decider, decision date, method (D-33), procedure evidence, parts | One decider; competence per part; dependencies, including across resolutions (joint organs) |
+| **Part** | Type, content, effective date, dependencies, indivisible group, competence evaluation | Status is derived, never stored |
+| **GroupApplication** (aggregate) | Application of an indivisible group across contexts: Prepared → Completed → Visible; or Inapplicable / Pre-empted | One outcome; never Completed after Pre-empted; never sets validity or dates |
+| **DecisionLog** (aggregate, per organisation) | When PublicDigit learnt of each fact | Positions without gaps (GD-11); record time from the database clock, never decreasing with position (GD-12) |
+
+**Competence evaluation (value object):** kinds *worked out* (structured provision), *asserted* (recorder cites the provision; marked not machine-checked), *gap declared* (D-65), *contradiction* (D-70). A record needs one of them; missing platform data never becomes a constitutional gap. Evaluated per part on the decision date under the rules in force then, as known at recording; never re-run automatically (G-1); a different view only through ratification, determination or a new decision (G-2).
+
+**Failure kinds kept apart (G-5):** competence (Governance) · procedure (evidence, not validated) · applicability (consumer, C-4) · technical authorisation (Authorization; never affects validity). Recording needs recording authority (V-59), and recording is not deciding (G-6).
+
+### 20.2 Organ, Position, Tenure
+
+| Aggregate | Invariant |
+|---|---|
+| **Organ** | Attached to a set of units: own or joint. At most one active **own** organ per unit and kind. Composition on a date is derived (holders plus ex officio by rule). Election committees are Election's; the tribunal is a Governance organ (R-13) |
+| **Position** (tenures and restrictions inside) | One holder at a time (V-46); outgoing holder continues until the successor starts **only for succession and expiry of a term** (V-12); other ends follow D-66, D-37, D-24, D-28 or the organ's end. Co-chairs are two positions; joint exercise is a condition on a power |
+| **RuleProvision** | Versions do not overlap; contains **grants of power** (target position or kind, scope, conditions) |
+| **AuthorityAssignment** | Delegation; delegator and delegatee may be an organ or a tenure (extends the organ-to-organ meaning; no second authority model) |
+
+**Acting posts:** a separate position linked to the substantive one ("acts for P"), started by decision or a rule trigger. **Restrictions:** suspension, partial restriction (inside the tenure); recusal attaches to a matter, not a tenure.
+
+**Incompatibility guard:** Position accepts tenure changes only with a `TenureChangeClearance` created by the guard service under a per-person lock (`FOR UPDATE`), after re-reading the Positions. Each tenure change references exactly one clearance (person, position, interval; single use). Imports and late corrections record conflicts as marked, never refused or ended automatically. The index holds no facts and is rebuilt from Positions. Bypass is possible only by direct database manipulation (accepted limitation).
+
+### 20.3 Powers and mandates
+
+- **Effective powers of a tenure for an act:** grants whose scope covers the act → declared precedence / "or" / "and"; **no declaration → all applicable conditions (D-69)**; unsatisfiable → unusable plus contradiction diagnostic → minus restrictions and recusals; delegation ∩ the delegator's effective powers; acting post = substantive powers minus exclusions.
+- **Organ competence** follows D-65 and D-70; D-69 is never applied to organs, D-70 never to individuals. Separate domain services.
+- **Mandates (R-11, D-68):** granted when the basis takes effect (`mandateId` = basis × powers version); on any change of rule, restriction or delegator's powers: revoked and granted again, dated from the effective date; on the end of the basis: revoked, with a cascade over dependent delegations. Appointment (Authority) is the producer, as a capability within Governance (BDR-03 v1.x pending).
+
+## 21. Cross-context consistency (D-40 to D-43)
+
+- **Indivisible groups across contexts:** consumers prepare hidden final records that count in later checks; Governance records Completed when every part is Prepared; contexts show records once they receive Completed. Combined views check the group's status. Only delivery lag of the completion fact remains.
+- **Electorate readiness:** readiness queries to Organisation and Governance answer READY with markers or BLOCKED with group identities; "affects the electorate" is computed by comparing the electorate with and without the group's held records.
+- **Knowledge boundary at cut-off T:** each source closes its boundary by a write barrier (shared lock for writers, exclusive lock for closing, database clock); Election records T, P_G, the tree version and Membership's T. Membership is queried "as known at T" through `CoverageKnownAt(organisation, memberships, τ)` (Change Request, not approved).
+- **Change Request to Membership §8, revised scope:** Organisation consumes `MembershipCoverageResolved` unchanged; the coverage query takes τ; R-14's `knownAtSeq` becomes τ; Election's predicate queries take τ. No change to the aggregate, the correction algebra, policy switches or invariants.
+
+## 22. Election and Voting (D-44 to D-49)
+
+- **Boundary:** Election knows the person and records **"right issued"** (never "has voted"); Voting knows ballots and consumed credentials, never persons. Only totals return after close.
+- **Credential:** a blind signature (RSABSSA, RFC 9474) under one published key per election and ballot style; Voting accepts no other key. Issuing time recorded to the day only.
+- **Ballots (M3):** one credential, one atomic sealed submission per voter, encrypted under a Voting key; at close, split per race, shuffled, counted; digests H_sealed and H_r published. Key destroyed at close unless escrowed under D-49.
+- **Reconciliation:** N_C,s ≤ N_I,s; B_r = Σ N_C,s over styles containing race r; T_r = B_r; duplicates max(0, N_C − P_I) ≤ D ≤ R; rejected attempts consume nothing.
+- **Level A proof obligations:** separate storage; random IDs; no cast time; no identity on the cast path; no ballot-related emails, queue entries or files; no receipt that unlocks a ballot; independent security review.
+- **Publication (D-48):** breakdowns computed once at publication, every cell ≥ the organisation's minimum, with secondary suppression across tables; national race records from small styles carry no style label.
+- **Aggregates:** Election, ElectorateSnapshot, RightIssuance, NetworkIssuanceQuota (Election); BallotBox, SealedSubmission (Voting); Tally is a result, not an aggregate.
+
+## 23. Deliberation (D-50 to D-56)
+
+Forums are scopes: a unit (geographic) or an owner's committee (Governance organ or Election committee). Participation and reading are derived from belonging and tenures. Support (signal) and co-signature (formal, named) are distinct. Rules DL-1 to DL-17: one support per entitled person; rank never decides; no privileges from points (moderators come from positions or rules); rules in force when a support or post is made apply to it permanently; names under "counted only" visible to no role; disclosures only by Adjudication order; widening read access applies only to later posts; no `Decision` aggregate in Deliberation. Hand-over: `ProposalSubmitted`, `SupportThresholdReached` with a support certificate (count, tree version, Merkle root over salted entries).
+
+## 24. Communication (D-57 to D-64)
+
+Capabilities: newsletter (optional, editor designated by the committee in a meeting, official purpose only), formal notice, operational notice, candidate presentation (owned by Election), personal message and official message (sent in a role; threads belong to the office; muted, not blocked), forum notifications. Audiences are resolved by their owners; Communication stores the resolved snapshot with the basis of each inclusion; no "has voted" audiences. Contact details: Identity, within the XD-3 account area (not Membership; no Membership Change Request). Delivery evidence proves an attempt or acceptance, not receipt, awareness or valid convocation. Private messages: D-63.
+
+## 25. Contestation, Adjudication and Evidence (D-67)
+
+- **Adjudication (one context):** AdjudicationProcess (routing, evidence requests, COL-5a/b, deadlines; closes when every remedy has an outcome) and Determination (draft → issued → final; never changed once issued; one per challenge and instance; appeal is a new challenge at a higher instance; D1 automation record per step; issuing organ with its composition on the date). Remedy parts are applied by their owners, stand independently unless declared indivisible (then GroupApplication).
+- **Evidence contexts (EPIC-002, accepted):** owners keep their facts; Record-Fixing attests; Integrity protects; Collection assembles only for a case. Streams: resolutions, minutes, snapshots, delivery evidence and determinations custodial; the closing digest self-verifying. `FixRecord(sourceRef, contentHash, actTime)` → receipt with Record-Fixing's own time: proves the content existed no later than then; `actTime` stays the owner's claim. Contemporaneous fixing only where fixing is part of the act (live sitting capture, digest publication). Minutes written later are a different artifact under D2, a violation only where the rules require timeliness. Aggregates: EvidenceBody (references only; content fetched and hash-checked, not stored), FixedRecord, CustodyTrail, PublicCommitment.
+- **Audit** is a platform log, never evidence by itself.
+
+## 26. ARB acts pending, superseded statements, code differences
+
+**ARB acts pending:** BDR-03 v1.x (Appointment within Governance; blocks closure) · Membership §8 Change Request (§21; blocks closure; D-25) · X-10 interpretation ("later frozen records govern: Audit is a platform capability, consumes all events, other consumers per allowed sets; Round 35C describes its time") · ADR-UL extending Contestation `TargetType` (governance decision part, moderation decision, newsletter edition, official message) · XD-3 Identity (account, `PersonRef`, contact details) · recording D-67 and D-68 in their governed artifacts (EPIC-002 map annotation; Round 50-05 interpretation note).
+
+**Superseded in this document:** §5 "Decision aggregate" → Resolution with parts (§20.1); §5 "RuleSet aggregate" → RuleProvision with RuleSet read model; Position's "powers versioned" → reference to grants; AuthorityAssignment "organ-to-organ" → organ or tenure; "the outgoing holder continues" → scoped to succession and expiry; the earlier statement that the decision log is the fixing → Record-Fixing attests independently.
+
+**Code differences ([F]; no action now):** VO-1 links F1 to F14 (`PBDIGIT-337`); `GovernanceDecision` backwards date rule, untested; `Legitimacy` stored on the decision; no rule version in `ConstitutionalBasis`; "ICC" hard-coded in `AuthorityPath`; three `GovernanceDecision` models; no Sitting, Submission, Position, Tenure, RuleProvision or decision log; Membership `recordedAt` taken before commit; Audit consumes no events; newsletter audiences query other contexts directly.
+
+**Traceability (§20–§26):** Architecture Session B, 8–9 November 2026. Decisions: discovery record §11. Sources read: `app/Contexts/Governance/Domain/`; `app/Http/Controllers/VoteController.php`; `app/Services/VoterStepTrackingService.php`; `app/Models/BaseVote.php`; `app/Services/ElectionAuditService.php`; `app/Services/NewsletterService.php`; `app/Http/Controllers/NewsletterUnsubscribeController.php`; `app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php`; `app/Contexts/Membership/Domain/Organisational/Member.php`; `app/Contexts/Contestation/Domain/`; `app/Contexts/Adjudication/Domain/`; `docs/implementation/EPIC-002_Canonical_Context_Map.md`; `docs/implementation/EPIC-002_Relationship_Pattern_Selection.md`; `docs/architecture/design/Round50-05_Event_Catalogue.md`; `docs/architecture/design/Round49-06_Boundary_Decision_Register.md`; `docs/publicdigit/reviews/2026-10-08-membership-architecture-final.md`; `docs/publicdigit/reviews/2026-10-08-membership-final-decision-register.md`.
