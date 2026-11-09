@@ -692,3 +692,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-79 | How members are placed in, or transferred between, units is decided by the organisation's rules. **By default, only individual acts** (an allocation, a transfer decision, or an admission naming the unit) create or change a belonging; an address may produce a **suggestion**, which creates nothing until a responsible person or organ confirms it. Placement by a residence rule is possible only where the organisation's rules expressly adopt it, and that rule is then recorded as the basis. (Organisation question 1.) | direct: "(c) organisation rules decide, individual acts by default" |
+
+### 11.14 Decision D-80
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-80 | A person's address and the committee structure are two different things. An address in District X does not associate the person with the unit or committee of District X. A unit's coverage says nothing about who lives there. Consistent with D-79: an address may at most produce a suggestion. | direct: "make sure that address of a person and committee structure is two different things. having address in District X does not mean , it is associated with the same committee." |

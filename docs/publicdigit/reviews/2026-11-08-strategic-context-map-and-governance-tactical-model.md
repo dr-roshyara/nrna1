@@ -873,3 +873,8 @@ Sufficiently defined for Principal/ARB review as a tactical design. Not proven a
 - G-7's "Organisation records the belonging eventually" is **withdrawn as a resolution**: it does not show that V-23 holds. The invariant stands: Membership owns admission, Organisation owns belonging, and the platform never presents an effective admission without a unit belonging. Mechanism: Membership–Organisation tactical contract.
 - Membership needs a **tactical conformance design**, not rediscovery. §45 stays a proposal.
 - Geography strategic discovery: `docs/publicdigit/architecture/reviews/2026-11-09-reference-geography-strategic-discovery.md`.
+
+## 48. D-80 and Geography revision 2 (2026-11-09)
+
+- **D-80** (direct): address and committee structure are separate; an address in District X never associates a person with District X's unit or committee (discovery record §11.14). Applies to §42–§45: an address is never a belonging, basis or composition rule; at most a suggestion (D-79).
+- Geography strategic discovery revision 2 appended (`docs/publicdigit/architecture/reviews/2026-11-09-reference-geography-strategic-discovery.md`): Nepal example corrected from the constitution's text; statuses split into five dimensions; schemes instead of one tree; five dates; Question 1 dossier.
