@@ -662,3 +662,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-74 | **ARB.** Round 50-01 `AGG — Mandate` is superseded: there is no Mandate aggregate. Authority is held through Position (tenures, restrictions) and AuthorityAssignment (delegation); `MandateGranted` / `MandateRevoked` are derived by Governance's Appointment capability. Round 50-02's merge test is closed (neither; composition is a read model). Round 50-05 unchanged. Formalises D-7. Act: `docs/adr/ADR_20261109_1024_Supersede_Round50-01_Mandate_Aggregate.md`. | direct: "Yes, I accept superseding the Mandate aggregate" |
+
+### 11.9 Decision D-75 (ARB)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-75 | **ARB.** XD-3 Identity act: one canonical Person owned by Identity (bare `PersonId`); a different opaque `PersonRef` per organisation, resolvable only by Identity; no cross-organisation disclosure; names and contact details organisation-local (owner per INV-AFF-1); Person ≠ Account, no linking or takeover by matching email or name; membership end, access removal, suspension and deletion are separate acts; C-1 to C-5 bind every mechanism. Open: L1 / L2, K4, legal questions, INV-AFF-1. Act: `2026-11-09-identity-xd3-arb-act.md`. | direct: "Yes I accept XD-3" |

@@ -398,3 +398,7 @@ ADR accepted; append-only notes in `Round50-01_Aggregate_Discovery.md` (after `A
 **Evidence [E]:** XD-3b §2a (`2026-11-01-identity-xd3b-person-vs-account-decision-record.md`, OQ-3b-1, answered 2026-11-01, PROPOSED): "The central Identity record of a Person is a **bare `PersonId`**. Name, contact details and other descriptive data live in **each organisation's database**. An Account holds only its own credential data (e.g. a login email)." Option A (central name and contact) "is not selected: it conflicts with conditions C-2 and C-4 of XD-3a".
 
 **Corrected design [P]:** contact endpoints belong to the **organisation-local person profile**, owned within the organisation (the affiliation owner under INV-AFF-1, proposed: Organisation). Communication resolves endpoints from that owner; the Account's login email is a credential, not an organisational contact endpoint. Membership still owns no contact details. No Membership Change Request is needed either way.
+
+## 32. ARB act done: XD-3 Identity (D-75)
+
+`PersonRef` everywhere in this document means **the organisation-specific opaque reference** issued by Identity. The Google sign-in email takeover (`app/Http/Controllers/GoogleController.php:44`) is a **security blocker**. Remaining ARB acts: ADR-UL with ADR-PL (`TargetType`, `DeterminationIssued v2`), X-10, INV-AFF-1, recording notes for D-67 and D-68.

@@ -100,3 +100,7 @@ All five are binding conditions of this decision:
 - `docs/publicdigit/reviews/2026-10-11-cross-domain-decision-round-1-sheet.md` (XD-3, XD-15).
 - `docs/publicdigit/brainstorming/multi-database-system/` (investigations #1 and #2; read only).
 - `docs/publicdigit/membership/reports/20261101-1642-membership-current-status-report.md`.
+
+---
+
+**Accepted (append-only note, 2026-11-09):** accepted by the Principal as human ARB Chief through the XD-3 Identity ARB act (`2026-11-09-identity-xd3-arb-act.md`, D-75), with its eight conditions. The text above is unchanged. Still open as stated in the act: the reference mechanism (L1 / L2), K4, the legal basis, separate identity domains, retention and erasure, the account-security policy, and INV-AFF-1.

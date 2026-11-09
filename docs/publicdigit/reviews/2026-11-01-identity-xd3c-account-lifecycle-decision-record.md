@@ -85,3 +85,7 @@ Under option C, an account, and therefore a Person, may exist with **no** organi
 - Strategic discovery conversation, 2026-11-01:
   - the Principal Reviewer's account-authority analysis;
   - the Principal's selection of option C and instruction to record XD-3c.
+
+---
+
+**Accepted (append-only note, 2026-11-09):** accepted by the Principal as human ARB Chief through the XD-3 Identity ARB act (`2026-11-09-identity-xd3-arb-act.md`, D-75), with its eight conditions. The text above is unchanged. Still open as stated in the act: the reference mechanism (L1 / L2), K4, the legal basis, separate identity domains, retention and erasure, the account-security policy, and INV-AFF-1.

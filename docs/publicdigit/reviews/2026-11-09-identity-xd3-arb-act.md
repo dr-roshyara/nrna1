@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | ⚠️ **PROPOSED — awaiting the Principal's explicit ruling as human ARB Chief.** XD-3a, XD-3b and XD-3c stay PROPOSED until then |
+| **Status** | ✅ **ACCEPTED — explicit ruling by the Principal as human ARB Chief, 2026-11-09** ("Yes I accept XD-3"). Recorded as D-75. XD-3a, XD-3b and XD-3c accepted by append-only notes |
 | **Formalises** | `2026-11-01-identity-xd3a-person-identity-scope-decision-record.md` (option A; C-1…C-5) · `2026-11-01-identity-xd3b-person-vs-account-decision-record.md` (B2; §2a option B) · `2026-11-01-identity-xd3c-account-lifecycle-decision-record.md` (option C; R-XD3c-1…5) |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --maturity=research --domain=publicdigit` → `docs/publicdigit` (exit 0) |
 
@@ -41,4 +41,4 @@ Cross-organisation correlation and inference; unauthorised resolution of referen
 
 ## 6. Ruling
 
-*(to be completed on the Principal's explicit ruling)*
+**Accepted, 2026-11-09 (D-75).** Carried into tactical design: account linking and recognising two organisations' references as one Person are separate operations (a claim code from one organisation never reveals another's affiliation); the bar on resolving references is enforced technically across APIs, events, logs and error messages.
