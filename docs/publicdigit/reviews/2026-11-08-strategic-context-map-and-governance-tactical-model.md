@@ -862,3 +862,7 @@ Append-only facts with effective date and record time (barrier §38.2); fallback
 ### 45.10 Assessment
 
 Sufficiently defined for Principal/ARB review as a tactical design. Not proven against code; the current implementation conforms in none of the belonging capabilities (conformance report, rows 10–13).
+
+## 46. Status of §45 after the foundation reassessment (2026-11-09)
+
+§45 (Organisation tactical design) is **held, not withdrawn**, pending the Reference Geography baseline (identity, revision, succession; R-10, XD-5). Corrections: Geography's `version` column is optimistic locking, not a revision (reassessment G-1); the level link `(countryCode, adminLevel)` is retained on business grounds (levels are per country) but was first derived from code (G-8); scenario "member without belonging" is excluded by V-23. Reassessment: `docs/publicdigit/architecture/reviews/2026-11-09-strategic-foundation-reassessment-geography-organisation-membership.md`.
