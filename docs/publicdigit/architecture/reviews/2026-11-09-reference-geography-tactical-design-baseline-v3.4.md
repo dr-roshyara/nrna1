@@ -1,0 +1,429 @@
+# Reference Geography: tactical DDD design baseline, version 3.4 (proposed)
+
+| | |
+|---|---|
+| **Status** | PROPOSED, for the Principal DDD Architect's independent assessment. Self-contained (v1 to v3.2 not needed). No code, schemas or tickets. Not committed |
+| **Supersedes** | v3.3 (kept as design evidence) |
+| **Companion** | `2026-11-09-reference-geography-tactical-design-v3.4-assessment.md` |
+| **Changed in v3.4** | §6 **refuse, don't bump:** `recordedAt` is the database clock reading, never adjusted; completeness proved by transaction ordering (D-73) · §6 close through a **requested** τ · §5 **piecewise before-images** over valid-time segments; one revision may not claim one slot twice over overlapping time · §5.2 exact queries per invariant |
+| **Previously (v3.3)** | Within-kind slot uniqueness; set-valued names; first before-images; invariant-to-dependency matrix; governance per D-88 |
+| **Binding** | D-31, D-73 / CR-01, D-75, D-79, D-80, D-81, D-82, D-83, D-84, D-84a, D-85, D-86, D-87, **D-88** |
+| **Labels** | [AD] accepted · [BF] fact · [AC] architectural conclusion · [TD] tactical recommendation · [TU] technical uncertainty · [OQ] Principal decision |
+
+## 1. Purpose and scope [AC]
+
+Reference Geography is PublicDigit's governed record of official geographical knowledge over time.
+- **It answers:** what exists; on what authority; what was valid at a date (`t`); what PublicDigit knew and had published at a knowledge point (`τ`); who approved each change.
+- **It never decides:**
+  - membership, belonging or entitlement (D-79, D-80);
+  - sovereignty (D-86);
+  - organisation areas or coverage (D-82; Organisation's);
+  - addresses or streets (D-83).
+
+## 2. Entities and identity
+
+| Entity type | Meaning | Admitted by |
+|---|---|---|
+| World | The single level-0 entry | D-81 |
+| Statistical region | One of the five M49 regions | [AD] D-85 |
+| Country or area | Neutral level-2 entry; asserts no status | [AD] D-86: ISO 3166-1 listing, or an explicit Principal decision |
+| Territorial unit | An official place below level 2 in a country's designated scheme | A territorial claim with territorial competence |
+
+**Six things kept apart [TD]:**
+1. **PublicDigit identity** (`ReferenceUnitId`): minted once, never deleted or reused.
+2. **The real-world geographical entity** it represents: **the geographical entity as established or characterised by the competent instrument.** It **need not have separate legal personality** (a ward or a statistical district may have none). [corrected from v3]
+3. **The competent instrument** that establishes or characterises it.
+4. **External identifiers**, each in a **namespace** (issuing body, standard, code type, scope). Examples: (ISO 3166 MA, 3166-1, alpha-2, global); (UNSD, M49, numeric, global); (Statistisches Bundesamt, AGS, DE).
+5. **Source-attributed names.**
+6. **CLDR display names** (countries and areas only, D-87).
+
+**Enforced rules:**
+- **I-1:** within a namespace, at any valid instant, a value identifies at most one live subject.
+- **I-2:** a subject holds at most one value per namespace at any valid instant.
+- **I-3:** an identity is never deleted or reused.
+- **I-4:** every *establish* claim cites an establishing instrument, or a recorded duplicate-search assessment.
+
+**Code reuse** (ISO "CS": Czechoslovakia to 1993, then Serbia and Montenegro about 2003 to 2006 [BF, secondary sources; primary: ISO newsletters]) means two subjects with disjoint intervals; I-1 holds.
+
+**Reconciliation [TD]:**
+- A *reconcile* revision states, with evidence, that B denotes the same entity as A, and gives the merged value for each conflicting slot.
+- From its position onwards, belief resolves B → A. **B's claims and identity remain; earlier τ still shows B separately.** `RevisionPublished` carries the mapping, so consumers holding B can resolve it.
+- **Correcting a wrong reconciliation:** a *separate* revision ends the mapping from its own position. Consumers that resolved B → A in the meantime receive the reverse mapping.
+  - **Their earlier decisions are not rewritten.** Each recorded the Geography τ it used, so it stays explainable.
+- **Human judgement:** whether two identities denote one entity. The system guarantees only accountability and repairability.
+
+## 3. Claims and slots [TD]
+
+A claim is an insert-only assertion about one **slot**, with a value, a valid interval `[from, to)` (`from` inclusive, `to` exclusive; no `to` = until further notice) and a basis.
+- **Claims in one slot supersede each other, and only for the valid time they cover. Claims in different slots never interact.**
+- **A slot key always begins with the claim kind** [corrected in v3.2: v3.1 gave containment and classification the same key, so one could have superseded the other].
+
+| Kind | Slot key = (kind, …) | Basis (competence kind) |
+|---|---|---|
+| Existence | (EXISTENCE, unit) | Territorial |
+| Containment | (CONTAINMENT, unit, scheme) | Territorial |
+| Classification (territorial tiers only, D-83) | (CLASSIFICATION, unit, scheme) | Territorial |
+| Boundary description | (BOUNDARY, unit, source) | Territorial, or a cartographic source attributed as such |
+| Succession | (SUCCESSION, predecessor, succession event) | Territorial |
+| Identifier | (IDENTIFIER, subject, namespace) | Identifier assignment by the namespace's issuer |
+| Statistical grouping | (GROUPING, entry, grouping scheme) | Statistical (D-85), D-86 evidence types |
+| Admission | (ADMISSION, entry) | PublicDigit policy (D-86) or a Principal decision record |
+| Source name, single-valued (official, short) | (SOURCE_NAME, subject, source, language, name type) | Attribution |
+| Source name, **set-valued** (alternative, former) [v3.3] | (SOURCE_NAME, subject, source, language, name type, **value**) | Attribution: each alternative is its own slot, so several coexist |
+| CLDR display name | (CLDR_NAME, entry, CLDR locale, form ∈ {standard, short}) | Display names (CLDR release), D-87 |
+| CLDR locale inheritance | (CLDR_INHERITANCE, CLDR release) | CLDR supplemental data (parent locales) |
+| Registry: issuer | (ISSUER, issuer) | — |
+| Registry: mandate | (MANDATE, mandate) | Its legal basis **as the jurisdiction provides it** (constitution, statute, delegated act, municipal statute); optional delegation link to a parent mandate |
+| Registry: non-territorial competence | (COMPETENCE, issuer, competence kind) | The issuer's stated scope |
+| Registry: precedence rule | (PRECEDENCE, rule) | Its legal basis and scope |
+| Dispute state | (DISPUTE, target claim) | Assessment |
+| Withdrawal | **The target's slot, with the target's kind** (a withdrawal of a name is a SOURCE_NAME claim with value "none") | Instrument or correction |
+
+**Collision proof** [extended in v3.3]:
+- **Between kinds:** every key starts with its kind, so containment cannot supersede classification, and source names cannot supersede CLDR names.
+- **Within each kind:** the key must name **exactly what can hold only one value at a time**.
+
+| Kind | What holds one value at a time | Coexisting facts | Supersedes |
+|---|---|---|---|
+| EXISTENCE | A unit's existence | — | Its own earlier existence claims |
+| CONTAINMENT | A unit's parent **per scheme** | Parents in different schemes (Q-2, later) | Earlier parent claims in that scheme |
+| CLASSIFICATION | A unit's class **per scheme** | Classes in different schemes | Same scheme only |
+| BOUNDARY | A boundary representation **per source** | Several sources' representations | Same source only |
+| SUCCESSION | One succession **event** of a predecessor | Several events (a partial split, then an ending) | Corrections of that event |
+| IDENTIFIER | One value **per namespace** (I-2) | Several namespaces | Same namespace only |
+| GROUPING | One region **per grouping scheme** | — | Same scheme |
+| ADMISSION | Admission of one entry | — | Its own earlier claims |
+| SOURCE_NAME, single | One name **per source, language and type** | Other sources, languages, types | Same key |
+| SOURCE_NAME, set | Presence of **one value** | Many alternatives | Only that value (presence or withdrawal) |
+| CLDR_NAME | One name **per locale and form** | Locales, forms | Same locale and form |
+| CLDR_INHERITANCE | One parent map **per release** | Releases | Corrections of that release's map |
+| ISSUER, MANDATE, PRECEDENCE | One record per registry item | Many items | That item |
+| COMPETENCE | One competence statement **per issuer and kind** | Kinds | That pair |
+| DISPUTE | The dispute state of **one claim** | Disputes on other claims | Earlier states of that claim's dispute |
+
+- **A withdrawal is a claim in exactly the target's slot**, with value "none" over its interval. For set-valued names, it withdraws exactly that value.
+- **A dispute is keyed by the target claim, not the target's slot**, so it can never supersede a value.
+
+**Kept apart:**
+- (1) source identity and **authenticity**: a provenance check, recorded as an assessment; a fingerprint shows only **integrity**;
+- (2) the source's **competence for this claim kind**;
+- (3) legal or statistical authority;
+- (4) PublicDigit **admission** policy;
+- (5) PublicDigit **publication approval**.
+
+**An authentic source whose competence or applicability is disputed:**
+- authenticity positive, applicability unresolved → **the revision cannot be approved**;
+- if a claim is already published, the matter goes through an objection and may lead to a dispute marker.
+
+## 4. Knowledge, belief and disputes [TD]
+
+- **Knowledge token:** the **publication position** *p* (§6). A claim is **known at p** if its revision's publication position ≤ p.
+- **Belief(slot, t, p)** = the value of the claim with the **highest publication position ≤ p** among claims in that slot whose interval contains t. A withdrawal gives "none".
+- **Dispute state(claim, p)** = the latest dispute-state claim on that claim with position ≤ p. Its values:
+  - **disputed** (with the competing instruments);
+  - **cleared** (with the reason: a precedence rule now recorded, a competent resolution, or the conflicting instrument withdrawn).
+
+  **A dispute never changes the target's value.** If a correction supersedes the target, the marker stays with the superseded claim (historical). The new claim has no marker unless one is published for it.
+- **Correction of a correction:** another claim in the slot, with a higher position.
+
+## 5. Validation (derived read set) [TD]
+
+**Revision scope** = the claims it adds. **Validation read set** = derived from those claims, never chosen:
+
+| From the revision's claims | Also read |
+|---|---|
+| Any claim on unit U over interval V | All published claims of U overlapping V |
+| Containment or existence of U | U's parents and children in the scheme over V |
+| Classification | The profile over V; parents and children over V |
+| Identifier (namespace, value) | All subjects holding that value in that namespace over overlapping intervals, **in any partition** |
+| Succession | Predecessors and successors |
+| Grouping, admission | The entry's identifiers; D-86 evidence types |
+| Evidence citing mandates and rules | Those registry claims at the claim's valid time |
+| Dispute or supersession targets | Their current state |
+
+**Invariants checked over the read set and every affected interval:**
+- G-4: tiers strictly increase along containment;
+- G-5: successors named;
+- G-6: one meaning per tier; no class ends while units carry it;
+- I-1, I-2;
+- D-83: classification only on territorial tiers;
+- D-82: territorial claims need territorial competence.
+
+### 5.1 Dependencies that catch gains and losses [corrected in v3.3]
+
+v3.2 marked a revision stale only when a **new** claim matched a predicate. **That missed removals.** If C moves from A to B, the new claim says "parent = B" and no longer matches "children of A". v3.3 closes the gap with **before-images**.
+
+**Before-image, piecewise [TD, refined in v3.4]:** a claim over interval I in slot s carries **a partition of I into segments, each with the effective value it replaced there**: `[(I₁, v₁), (I₂, v₂), …]`.
+- Each `vᵢ = belief(s, t, p₀)` for every t in Iᵢ. A segment boundary falls wherever the prior effective value changes.
+- **Three kinds of prior value are distinguished:**
+  - a **value**;
+  - **NONE**: a prior withdrawal was in force;
+  - **ABSENT**: no claim had ever covered that time in that slot.
+- **Example:** C belonged to A over [Jan, Jul) and to B from Jul. A correction over [Mar, Sep) to parent D carries `[([Mar, Jul), A), ([Jul, Sep), B)]`. It is therefore a **loss** for "children of A" over March–June **and** for "children of B" over July–August, and a **gain** for "children of D".
+- **Partial replacement:** a claim covering part of an earlier claim's interval supersedes it **only there** (§4). Its before-image covers only its own interval.
+- **Withdrawal:** a claim with value NONE over its interval; its before-image shows what was withdrawn.
+- **One slot, one revision [new invariant R-1]:** a revision may not contain two claims for the same slot with overlapping intervals. So each claim's before-image is computed against p₀ alone, never against a sibling claim. Disjoint claims in one slot are allowed.
+- **Computed at validation against p₀; protected** by the revision's slot dependencies on its own target slots over their intervals. Any intervening claim there makes the revision stale, and the before-images are recomputed on re-preparation.
+- **Stored with the claim forever.** **Invariant for implementation tests:** a stored before-image equals the belief at the position immediately before its publication, so it can always be checked against history.
+
+**Two dependency forms**, recorded at validation with the position p₀:
+
+| Form | Meaning | Invalidated by any claim published after p₀ that… |
+|---|---|---|
+| **Slot dependency** (a named slot over an interval) | "Mandate M at t", "the dispute state of claim X", "(EXISTENCE, P) over V" | …is **in that slot** with an overlapping interval, **whatever its value** |
+| **Family dependency** (all slots of one kind, with a value condition φ, over an interval) | "children of A in S over V" = slots (CONTAINMENT, *, S) with value A; "holders of X in namespace N" = (IDENTIFIER, *, N) with value X | …is **in the family**, and **within its interval ∩ V either its new value satisfies φ, or some before-image segment overlapping V has a value satisfying φ** |
+
+**Why gains and losses are both caught:** a family predicate's result changes over V only if some slot in the family changes its effective value somewhere in V, **either into the condition (gain) or out of it (loss).**
+- Every effective-value change is made by some published claim in that slot over that time.
+- That claim's new value is the value after the change; its before-image is the value before it.
+- **One of the two satisfies φ.**
+
+**The cases the review names:**
+
+| Change since p₀ | Caught by |
+|---|---|
+| C moves from A to B | Before-image A satisfies "value = A" |
+| A new sixth child of A | New value A |
+| A code holder relinquishes X | Before-image X |
+| A new holder takes X | New value X |
+| A unit leaves or enters a class | Before-image or new value |
+| A mandate withdrawn or rescoped | Slot dependency on the mandate |
+| A claim withdrawn or superseded | It is a claim in the slot: slot or family dependency |
+| A dispute-state change on relied-upon evidence | Slot dependency on (DISPUTE, claim) |
+| A valid-time interval changed so that a fact no longer matches | The shortening is a claim (or a withdrawal) over the removed interval; its before-image matches |
+
+**Gains and losses by kind (v3.4):**
+
+| Kind | Gain detected by | Loss detected by |
+|---|---|---|
+| Containment | New value = A | Before-image segment = A |
+| Classification | New value = c | Before-image segment = c |
+| Identifier | New value = X | Before-image segment = X |
+| Mandate, competence | **Slot dependency: any claim in the slot** (creation, rescoping, withdrawal) | Same |
+| Source name, set-valued | A new presence claim in the value's slot | A withdrawal (NONE) whose before-image shows presence |
+| Dispute state | Slot dependency on (DISPUTE, claim): raised or cleared | Same |
+
+**Not stale:** claims after p₀ in other families, or outside the dependency intervals. For example, a publication in another country, or an unrelated slot of the same unit.
+
+### 5.2 Invariant-to-dependency matrix
+
+| Invariant | Information read | Dependencies recorded | Phantom gain or loss caught by |
+|---|---|---|---|
+| **G-4** tiers strictly increase along containment | For each containment claim u → P over V: (CLASSIFICATION, u) and (CLASSIFICATION, P) over V. For each classification change of u: u's parent's classification and **u's children's** classifications over V | Slots: those classification slots. Family: (CONTAINMENT, *, S) with value = u | Family before-image or new value = u |
+| **G-5** ended places name successors; no live child under an ended parent | (EXISTENCE, successors); children of the ended unit over the ended range | Slots: successors' existence. Family: children of the ended unit | Family |
+| **G-6** one meaning per tier; no class ends while units carry it | Profile slots; units with class c over V | Slots: profile. Family: (CLASSIFICATION, *, S) with value = c | Family |
+| **I-1** one holder per (namespace, value) | Holders of X in N over V | Family: (IDENTIFIER, *, N) with value = X | Family |
+| **I-2** one value per (subject, namespace) | (IDENTIFIER, subject, N) | Slot | Slot |
+| **I-4** establish needs an instrument or a duplicate search | Recorded in the revision | None (internal to the revision) | — |
+| **Existence of parents and successors** | (EXISTENCE, P) | Slot | Slot |
+| **Admission before grouping** (D-86) | (ADMISSION, entry) | Slot | Slot |
+| **Evidence basis** | (MANDATE, m), (PRECEDENCE, r), (COMPETENCE, issuer, kind), (DISPUTE, relied-upon claim) | Slots | Slots |
+| **Reconciliation** | All slots of subjects A and B | Family: every kind with subject ∈ {A, B} (a subject family) | Family |
+| **D-83, D-82** (tier kind, territorial competence) | The revision's own claims and the competence registry | Slots (competence) | Slot |
+
+**Exact queries (v3.4).** Each is a dependency-recording read over valid interval V at p₀:
+
+| Invariant | Query | Dependency recorded |
+|---|---|---|
+| G-4 (new containment u → P over V) | `classOf(u, S, V)`, `classOf(P, S, V)` | Slots (CLASSIFICATION, u, S) and (CLASSIFICATION, P, S) over V |
+| G-4 (classification change of u over V) | `parentOf(u, S, V)` and its class; `childrenOf(u, S, V)` and their classes | Slots: (CONTAINMENT, u, S), the parent's classification. Family: (CONTAINMENT, *, S) = u over V. Slots: each child's classification |
+| G-5 (end of u at d) | `childrenOf(u, S, [d, ∞))`; `exists(successor)` | Family (CONTAINMENT, *, S) = u over [d, ∞); slots (EXISTENCE, successor) |
+| G-6 (end of class c) | `unitsOfClass(c, S, V)` | Family (CLASSIFICATION, *, S) = c over V |
+| I-1 (u takes X in N) | `holdersOf(N, X, V)` | Family (IDENTIFIER, *, N) = X over V |
+| I-2 | `valueOf(u, N, V)` | Slot (IDENTIFIER, u, N) over V |
+| Evidence | `mandate(m, t)`, `competence(issuer, kind, t)`, `rule(r, t)`, `dispute(y)` | Slots |
+| Reconciliation of A, B | `allSlots(A)`, `allSlots(B)` | Subject families for A and B over all time |
+| Multi-country | The union of the above for every claim, in every partition touched | — |
+
+**A phantom insertion is a gain and a phantom removal is a loss of a family result. Both are caught by the family rule.**
+
+**Where the proof stops [TU]:** completeness holds **if** every invariant check is implemented exactly through the dependencies in this matrix. **Implementation must enforce it structurally**: the validator may read published state only through a dependency-recording query interface, and tests assert that no other read path exists.
+
+### 5.3 Stale means re-prepare
+
+A stale revision is never re-validated silently. A human reconsiders it (for example, to include a newly arrived child).
+
+## 6. Publication ordering and `closedThrough` [TD]
+
+**Mechanism:** one **sequence row** (a single row holding the last committed position), not a PostgreSQL sequence object.
+
+**The publication transaction:**
+1. **Lock** the sequence row (`SELECT … FOR UPDATE`). The lock is held **until commit or rollback**.
+2. Re-check governance (§8).
+3. **Staleness check (§5):** published claims with position in (p₀, row value] matching the revision's predicates. Full validation already ran before the lock.
+4. Set `p = value + 1`.
+5. Read `c = clock_timestamp()` (the database clock). **If `c ≤ W` or `c < previous recordedAt`: refuse.** Roll back with `CLOCK_NOT_PAST_BOUNDARY` and retry later. **Otherwise** insert the publication entry (p, revision, `recordedAt = c`). [v3.4: **the timestamp is never adjusted**]
+6. Update the row to p.
+7. Commit; the lock is released.
+
+**Properties:**
+- **Positions are allocated only while holding the lock** and become visible only at commit. A waiting publisher acquires the lock after the commit and reads the **committed** value, so **a lower position can never commit after a higher one, and there are no gaps.**
+  - [TU] This assumes the `READ COMMITTED` behaviour of `FOR UPDATE` re-reading the latest committed row. Under stricter isolation, the waiter would receive a serialization failure and must retry. **Verify during implementation.**
+- **Rollback:** the row update rolls back; the position is **reused** by the next publication. A position has meaning only once committed; no one ever saw the failed one.
+- **Rejected: a PostgreSQL sequence object.** It is non-transactional: it leaves gaps, and values can commit out of order.
+
+**`closedThrough`:**
+- = the sequence row's committed value.
+- **Guarantee:** every publication with position ≤ `closedThrough` is committed and visible, and **no future publication can obtain a position ≤ `closedThrough`.**
+
+**Consistent historical queries:** a reader, within **one snapshot** (one statement, or a `REPEATABLE READ` read-only transaction):
+1. reads `closedThrough`;
+2. answers from entries with position ≤ the requested p, **which must be ≤ `closedThrough`**, otherwise the query is refused (CR-01 §3).
+
+Because there are no gaps below `closedThrough`, the answer is complete. An uncommitted publication is invisible.
+
+**Work before and under the lock** [clarified in v3.2]:
+
+| Phase | Work |
+|---|---|
+| **Before the lock** (any duration) | Evidence, authenticity and applicability assessments; approvals; **full validation** against the published state at p₀; recording of the dependency predicates |
+| **Under the lock** (short) | Re-check governance (roster, threshold, conflict declarations, §8) · **staleness check:** claims with position in (p₀, current] matching the predicates · if stale, roll back and mark `Stale` · otherwise append the entry, advance the row, commit |
+
+- **The critical section contains only the delta check**, so a large revision (Nepal 2015) validates for as long as it needs before the lock, and holds the lock only briefly.
+- **A long-running preparation never blocks other countries.** Under the lock, unrelated revisions only queue for the duration of a delta check.
+- **Several partitions:** the predicates span every partition the revision touches. **An invariant violation in any partition rejects the whole revision** (all or nothing).
+
+**Knowledge tokens: position and time** [corrected in v3.2]
+
+v3.1 compared `closedThrough` (a position) with τ (a time). **That compared two different kinds of value.**
+
+- **Inside Geography, the authoritative token is the position.**
+- **Across contexts, D-73 requires "one shared τ per multi-context operation", and CR-01 defines τ as a time:** knowledge = facts with `recordedAt ≤ τ`; `closedThrough` is a time beyond which queries are refused. Geography must therefore also offer **completeness as a time.**
+- **Mechanism: a time watermark W, inclusive, proved by transaction ordering** [corrected in v3.4]. W is kept in the sequence row and **changed only under the publication lock**.
+- **What D-73 requires (verified wording):** "the `closedThrough` guarantee **proved by transaction ordering, not by moving timestamp generation**" (CR-01 §9).
+- **v3.3 moved timestamps** (`max(clock, previous + δ, W + δ)`). Under the strict reading of D-73 that is not allowed. **v3.4 therefore never moves a timestamp.** It **refuses** a write whose clock reading would fall at or below the boundary.
+
+**Rules:**
+
+| Operation | Rule |
+|---|---|
+| **Publication** | Under the lock: `c = clock_timestamp()`; **refuse if `c ≤ W` or `c < previous recordedAt`**; otherwise `recordedAt = c`. Equal readings at successive positions are allowed: **positions order them** |
+| **Close through a requested τ** | (1) If `τ ≤ W` already: **confirmed**, no lock needed (W only grows and is committed). (2) Otherwise take the lock, which waits for any in-flight publication to commit or abort. Read `c = clock_timestamp()`. **If `c < τ`: refuse** (`BOUNDARY_NOT_CLOSED`: τ is in the future), and the caller retries later. Otherwise set `W = τ`, commit, **confirmed**. **A close that rolls back confirms nothing** |
+| **Close through now** | Close through τ = the clock reading taken under the lock |
+| **Query at τ** | If `τ ≤ W` (in the reader's snapshot): answer from entries with `recordedAt ≤ τ`; Geography maps τ to the highest position with `recordedAt ≤ τ`. **Otherwise** attempt to close through τ; refuse if that fails (CR-01 §3) |
+
+**Proof by transaction ordering (inclusive guarantee):**
+- (1) **Every publication with `recordedAt ≤ W` is committed:** a publication holds the lock from reading its clock until it commits, and the close took the same lock afterwards. So every publication that read a clock before the close committed or aborted before W was set.
+- (2) **No later publication can get `recordedAt ≤ W`:** it takes the lock after the close committed, sees W, and **is refused unless its clock reading is greater than W.**
+- (3) **No timestamp is ever adjusted.** `recordedAt` is the database clock reading taken inside the serialised publication step, immediately before commit.
+- **The order of `recordedAt` values matches commit order:** steps are serialised and readings are non-decreasing, or the write is refused.
+- [TU] **Literal commit time:** PostgreSQL's actual commit timestamp cannot be read inside the committing transaction (`track_commit_timestamp` is only available afterwards). "Database clock at commit" is therefore realised as **the reading inside the serialised step that commits**. This is the faithful realisation available; v3.4 states it rather than assuming it.
+
+**The clock moving backwards:**
+- Publications are **refused** until the clock passes max(W, last `recordedAt`).
+- **Completeness is never violated; availability is reduced during the step.**
+- [TU] An operational requirement: the database host keeps time by **slewing**, never by stepping backwards (normal NTP practice), so refusals stay rare and brief.
+
+**A multi-context operation at τ (D-73):**
+1. the coordinator chooses **one τ** that is not in the future;
+2. **asks every context to close through that same τ**: no context may substitute its own time;
+3. if **any** context refuses, the operation waits and retries, or reports `BOUNDARY_NOT_CLOSED`. **It never proceeds with a partial set;**
+4. each context then answers at τ.
+
+**What D-73 then guarantees:** **each context's answer is complete for facts it recorded at or before τ.** It does **not** guarantee causal consistency between contexts (for example, that a Membership fact recorded at 11:59:59 "saw" a Geography fact recorded at 11:59:58). v3.4 claims no more.
+
+**Platform knowledge-time contract** (a platform-architecture requirement; Geography meets it but cannot impose it) [AC]. Every context that offers knowledge "as at τ" for D-73 operations must provide:
+1. **`recordedAt` = the platform database clock reading** taken inside the writing transaction while holding the context's writer lock; **never adjusted**;
+2. **writes refused** whose reading is at or below the context's confirmed boundary;
+3. **an inclusive `closedThrough` time**, advanced only by a close that excludes in-flight writers (waits for them), with CR-01's meaning;
+4. **"close through τ" for a requested τ**, refusing if τ is in the future or the close cannot commit;
+5. **refusal** of a query beyond `closedThrough`.
+
+**Geography satisfies 1–5.**
+
+**Finding for the platform [AC]:** the proposed barrier for Membership, Organisation and Governance (model document §38.2 rule 1) takes `recordedAt` as `max(clock_timestamp(), closedThrough + 1 µs, last per stream + 1 µs)`. **That moves timestamps**, the same pattern v3.4 withdraws for Geography.
+- **Under the strict reading of D-73 it would need the same "refuse, don't bump" correction.**
+- **This review does not change Membership's design** (out of scope; ratified architecture untouched). It **records the inconsistency for the Membership tactical work.**
+- **Clock moving backwards between contexts:** each context refuses writes below its own boundary, so completeness holds in each. Only the cross-context order of near-simultaneous facts is unspecified, and D-73 does not promise it.
+
+## 7. Boundaries: ordering versus consistency [TD]
+
+| Concern | Element | Kind |
+|---|---|---|
+| Platform-wide knowledge order | **Publication sequencer** (sequence row plus the append-only publication stream) | Technical coordination mechanism: **its only invariant is gap-free, ordered positions** |
+| Geographical invariants | **Partitions:** each **country** (its scheme, national namespaces, its mandates) and **global** (World, regions, level-2 entries, global namespaces ISO/M49, global registry, CLDR) | **Consistency scopes**, validated read-only during publication. **No mutable state of their own:** published claims and their positions are the state |
+| A proposed change | **`Revision`** | **Aggregate:** internal completeness; frozen at submission for publication; holds its dependency predicates and p₀ |
+| Inputs | `Candidate`, `Objection` | Aggregates |
+| Governance | `StewardRoster` | Aggregate |
+| Publishing | **`Publish` application service** | Takes the lock, validates the affected partitions, appends |
+
+**What a publication writes:** the sequence row and one entry. **The revision's claims were already written as a draft;** "Published" is derived from the entry. **So no domain aggregate is modified across partitions.**
+
+**Consequences:**
+
+| Change | Validation reads | Writes |
+|---|---|---|
+| One country | That partition (+ global namespaces if identifiers) | One entry |
+| Several countries (a border change) | Those partitions | **One entry** (atomic) |
+| Global registry | Global partition | One entry |
+| Unrelated countries concurrently | Each its own partition | **No domain coupling**; only queueing for the short lock |
+| Historical reconstruction across partitions | One position | — |
+
+**Rejected:**
+- one domain aggregate containing all geography (v3 wording);
+- per-partition sequences (they would need a cross-sequence watermark).
+
+## 8. Governance (D-84, D-84a) [TD]
+
+**Two roles, as D-84 and [AD] D-88 define them:**
+
+| Role | Rule |
+|---|---|
+| **Assessing steward** | Prepares and assesses the revision; **submitting it freezes the content**. While only one steward exists, publishes alone, with a recorded conflict declaration (D-84) |
+| **Second person** | Required for **structural** revisions when two or more stewards are appointed **at publication time** (D-84). **A natural person other than the assessing steward** (D-88), checked as a distinct canonical person; a steward, or a matter reviewer where D-84a applies |
+| Matter reviewer | Appointed for one matter only (D-84a) |
+
+**Checks:**
+
+| When | Check |
+|---|---|
+| At submission and at the second person's approval | The acting person is appointed now; conflict declaration recorded; D-84a test (interest **and** judgment between competing positions) for **that person** |
+| At publication | **Threshold** (two or more stewards now → structural needs the second person); **conflict declarations re-checked**; second person ≠ assessing steward (D-88) |
+| Appointment ended after submission or approval | The act stands (it was valid when given) |
+| New steward appointed after submission | A second person's approval is needed for structural revisions |
+
+**Conflict found after publication**, three separate steps:
+1. **Did a material conflict exist?** Decided by a non-conflicted steward or a matter reviewer.
+2. **If it did, is the published decision substantively supportable?** An independent reassessment, recorded as an assessment (audit, not consumer-visible).
+3. **If not supportable, a correction revision is published** through normal governance.
+
+**The finding of conflict alone changes no fact.**
+
+## 9. CLDR (D-87) [TD]
+
+| Concern | Design |
+|---|---|
+| Source of a value | Display-name claim per (entry, **CLDR locale where the value is defined**, form), recording the **CLDR release** |
+| Inheritance | Resolved at display time using **that release's** parent-locale data (stored as a claim) |
+| Short form missing | Use the standard form |
+| Requested locale and its chain have no value | **Root is not assumed to be English.** If the chain ends without a value, a **platform default locale** is used. This is a **presentation default** (D-87 yields nothing there) [TD]; the platform default is configuration |
+| Returned to the caller | `{ value, origin ∈ {CLDR, PLATFORM_FALLBACK}, requested locale, resolved CLDR locale (if CLDR), CLDR release (if CLDR), form used, short form fell back to standard (yes/no) }`. **A platform fallback is never presented as a CLDR result** [v3.2] |
+| History | Belief at p over display-name and inheritance slots gives exactly what was shown then |
+| CLDR update | A name revision; non-structural (D-84); one steward |
+
+**Not decided (kept open):** names of the five regions; names of territorial units (§11).
+
+## 10. Contexts [AC]
+
+| Capability | Owner |
+|---|---|
+| Published places, claims, history; browse and search (entity type, tier kind, live at t, p); **`PlaceLookup`** (stateless match of name, alias or code to places, with match quality; **no address parsing, street matching or validation**) | Geography |
+| Coverage selection and rules; organisation areas | **Organisation** |
+| Address records, parsing, street matching, stored results with the Geography p used | Address owner; **Organisation's person profile recommended, not ratified** |
+| Belonging, entitlement, sovereignty | Not Geography |
+
+**Events:** `RevisionPublished` (position, revision, kinds, partitions, subjects, reconciliation mappings), one per position; `CandidateDecided`; `ObjectionDecided`.
+
+**Geography read models** (all parameterised by t and p): browse and search; profile; hierarchy; belief; display-name resolution; partition views.
+
+## 11. Open items
+
+| Item | Kind |
+|---|---|
+| Names of the five level-1 regions | [OQ] |
+| Names of territorial units below level 2 | [OQ] |
+| L-4c; Japanese blocks | [OQ], later |
+| **Q-2 (recorded, not lost):** should Geography represent official schemes other than the administrative one, such as electoral constituencies? (Geography discovery revision 2, §9 question 2 and R2-13) | [OQ], later; does not affect the baseline |
+| Address owner | Recommendation |
+| `FOR UPDATE` re-read under the chosen isolation; structural enforcement that the validator reads only through dependency-recording queries (§5.2); host time kept by slewing, not backward steps (refusal frequency); literal commit time not readable inside the transaction (§6); Membership's conformance to the platform knowledge-time contract (§6) | [TU] |
+| Primary verification of historical examples | Evidence |
