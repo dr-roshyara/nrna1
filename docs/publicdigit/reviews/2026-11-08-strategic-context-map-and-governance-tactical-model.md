@@ -469,3 +469,10 @@ Every event carries decision reference, effective date and log position; consume
 - **Default delegability of powers when the rules are silent** (Principal question, §33.7 of the conversation).
 - Sitting content (quorum, minutes) pending statute evidence (PR-7).
 - Legacy `GovernanceDecision`, `Legitimacy`, "ICC" in `AuthorityPath`: code conformance, not model questions.
+
+## 34. Delegability (D-76), added to §33
+
+- **RuleProvision grants** carry a **delegability** attribute: delegable / delegable further / not stated. *Not stated* means **not delegable** (D-76).
+- **GrantDelegation** is refused (inapplicable, with reason) unless the grant is delegable under the rule version in force on the grant's effective date, the scope ⊆ the delegator's effective powers, and, for a delegator who is itself a delegatee, both the rules and the source delegation permit further delegation.
+- A **rule change** that withdraws delegability ends affected delegations from its effective date (DelegationEnded → MandateRevoked); past acts stand.
+- §33.6's open item "default delegability" is closed by D-76.

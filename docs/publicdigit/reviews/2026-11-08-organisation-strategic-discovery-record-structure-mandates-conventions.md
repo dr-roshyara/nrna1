@@ -668,3 +668,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-75 | **ARB.** XD-3 Identity act: one canonical Person owned by Identity (bare `PersonId`); a different opaque `PersonRef` per organisation, resolvable only by Identity; no cross-organisation disclosure; names and contact details organisation-local (owner per INV-AFF-1); Person ≠ Account, no linking or takeover by matching email or name; membership end, access removal, suspension and deletion are separate acts; C-1 to C-5 bind every mechanism. Open: L1 / L2, K4, legal questions, INV-AFF-1. Act: `2026-11-09-identity-xd3-arb-act.md`. | direct: "Yes I accept XD-3" |
+
+### 11.10 Decision D-76
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-76 | Whether a power may be delegated is decided by the organisation's rules; **when they are silent, it may not**. A delegated power may be delegated further only if both the rules and the delegation itself permit it. Absences are covered by acting posts or organ decisions. | direct: "i accept your recommendation" (option c) |
