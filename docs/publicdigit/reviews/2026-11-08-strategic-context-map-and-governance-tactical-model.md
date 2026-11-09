@@ -382,3 +382,7 @@ A challenge does not change the effect of what it challenges. The challenged dec
 ## 28. ARB act done: BDR-03 v1.2 (D-72)
 
 The §26 act "BDR-03 v1.x" is done: ADR accepted, register `Round49-06` amended append-only (Boundary Evolution History row; BDR v1.2 delta). Still pending from §26: the Membership §8 Change Request (blocks closure), the ADR on Round 50-01 `AGG — Mandate` / D-7, X-10, ADR-UL `TargetType`, XD-3, recording notes for D-67 and D-68.
+
+## 29. ARB act done: Membership Change Request CR-01 (D-73)
+
+The §26 act "Membership §8 Change Request" is done: CR-01 revision 2 accepted; amendments appended to `2026-10-08-membership-architecture-ratified.md` (after §8) and `2026-10-08-membership-architecture-ratification-act.md` (after §11). §12.3's QUALIFIED/NOT_QUALIFIED response is superseded by C3 (facts only). **Both acts that blocked closure are now done** (D-72, D-73). Still open: the ADR on Round 50-01 `AGG — Mandate` / D-7, X-10, ADR-UL `TargetType`, XD-3, recording notes for D-67 and D-68.

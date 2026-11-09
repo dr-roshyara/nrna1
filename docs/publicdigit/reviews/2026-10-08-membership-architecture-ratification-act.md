@@ -540,3 +540,11 @@ The next architectural deliverable is **EP-01 — Membership Implementation Desi
 
 **Principal Reviewer Decision: APPROVED FOR IMPLEMENTATION.**
 ~~~~
+
+## Amendment CR-01 (D-73, 2026-11-09): addition to §11 "Ratified Context Boundaries"
+
+*Appended by Change Request CR-01 revision 2 (`2026-11-09-membership-change-request-cr-01-organisation-consumer-and-as-known-at-queries.md`), accepted by the Principal as human ARB Chief under D-25. Addition only; §11 above and this act's ratification are unchanged.*
+
+### Organisation
+
+Owns organisational structure and person-to-unit belonging. It consumes Membership coverage and **never owns membership truth**.

@@ -650,3 +650,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-72 | **ARB.** BDR-03 v1.2: Appointment (Authority) is a capability within Governance, not a separate bounded context. Governance owns the authoritative facts (positions, tenures, delegations, effective powers) and, through its Appointment capability, derives and publishes `MandateGranted` / `MandateRevoked`. Round 50-05, R-11, D-68 and BDR-07 unchanged. The Mandate aggregate question (Round 50-01, Round 50-02, D-7) is not decided by this act. Act: `docs/adr/ADR_20261109_0833_Appointment_Authority_Consolidated_into_Governance.md`; register `Round49-06` amended append-only. | direct: "Yes, I accept the BDR-03 v1.2 act" |
+
+### 11.7 Decision D-73 (ARB)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-73 | **ARB.** Membership Change Request CR-01 revision 2 accepted under D-25: C0 (Organisation boundary), C1 (`MembershipCoverageResolved`, complete coverage), C2 (`CoverageKnownAt` with τ), C3 (membership facts for Governance; Governance decides qualification), C4 (τ for Election's predicate queries). Appended to the ratified documents by addition only. The `closedThrough` proof and one shared τ per multi-context operation are mandatory technical requirements. | as reported (accepted review, 2026-11-09) |

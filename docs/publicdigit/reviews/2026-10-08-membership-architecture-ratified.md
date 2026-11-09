@@ -189,3 +189,12 @@ All other parameters (BD-REV-ER, BD-1, BD-2, BD-NU, BD-REC0, BD-CONSENT, BD-TYPE
 | contracts | §8 | high |
 | migration | normalise representation; never invent truth | high |
 | readiness | CONDITIONAL GO (administrative conditions) | — |
+
+## Amendment CR-01 (D-73, 2026-11-09): additions to §8 "Context contracts"
+
+*Appended by Change Request CR-01 revision 2 (`2026-11-09-membership-change-request-cr-01-organisation-consumer-and-as-known-at-queries.md`), accepted by the Principal as human ARB Chief under D-25. Additions only; §8 above is unchanged.*
+
+- **Organisation (C1, C2):** the event `MembershipCoverageResolved(eventId, organisationId, membershipId, personRef, seq, coverage, recordedAt, schemaVersion)` carrying the **complete** coverage as Membership resolves it (INV-COV), `seq` strictly increasing per membership; the query `CoverageKnownAt(organisationId, membershipIds[], τ)` over `Res(F_τ)` with `closedThrough`. Organisation never interprets Membership facts.
+- **Governance (C3):** the query `MembershipFactsAsAt(organisationId, personRef, asOf, τ, predicates[])` over the ratified predicates, returning values or INDETERMINATE. **Membership returns facts only; qualification is Governance's.** "Tenure predicates" means membership-tenure predicates (`CumulativeMembershipDuration`, `ContinuousMembershipDuration`, …), never office tenure.
+- **Election (C4):** the predicate queries above accept the knowledge boundary `τ` in addition to `asOf`.
+- **Time:** `asOf` = business date; `τ` = knowledge boundary (`recordedAt ≤ τ`); every answer is `KnownAt(φ, asOf, τ)` as defined in this architecture. Queries with `τ` beyond `closedThrough` are refused, never answered partially.

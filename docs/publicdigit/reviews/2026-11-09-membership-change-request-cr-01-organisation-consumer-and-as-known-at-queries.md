@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | ⚠️ **PROPOSED (revision 2).** The Principal supports the direction in principle (accepted review recommendation, 2026-11-09) and asked for four contract clarifications before ruling. **Not accepted; the ratified documents are not changed until the Principal's ruling under D-25** |
+| **Status** | ✅ **ACCEPTED (revision 2) — ruling by the Principal as human ARB Chief under D-25, 2026-11-09** (as reported in the Principal DDD review and accepted by the Principal). Recorded as D-73. C0–C4 appended to the ratified documents by addition only |
 | **Changes, on acceptance** | `2026-10-08-membership-architecture-ratified.md` §8 "Context contracts" and `2026-10-08-membership-architecture-ratification-act.md` §11 "Ratified Context Boundaries", **by addition only** |
 | **Route** | "Further changes require an explicit Architecture Decision / Change Request" (`…ratification-act.md:480`) |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --maturity=research --domain=publicdigit` → `docs/publicdigit` (exit 0) |
@@ -92,4 +92,4 @@ All three contexts use the same `τ` for a given decision and store it with the 
 
 ## 9. Ruling
 
-*(to be completed on the Principal's ruling)*
+**Accepted, 2026-11-09 (D-73).** Mandatory technical requirements carried into tactical design (not proven by acceptance): one knowledge boundary `τ` selected and propagated across a multi-context operation; the `closedThrough` guarantee proved by transaction ordering, not by moving timestamp generation; reliable ordering, duplicates, corrections and rebuilds for the coverage event; exact list of ratified predicates exposed by C3 (membership-tenure predicates only, never office tenure) and of Election queries extended by C4.
