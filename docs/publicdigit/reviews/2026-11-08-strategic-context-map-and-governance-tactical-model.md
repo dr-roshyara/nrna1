@@ -390,3 +390,11 @@ The §26 act "Membership §8 Change Request" is done: CR-01 revision 2 accepted;
 ## 30. ARB act done: Mandate aggregate superseded (D-74)
 
 ADR accepted; append-only notes in `Round50-01_Aggregate_Discovery.md` (after `AGG — Mandate`) and `Round50-02_Aggregate_Review.md` (after the merge test). Still open, in order: XD-3a/b/c (Identity: `PersonRef`, Person ≠ Account, contact details), ADR-UL with ADR-PL (`TargetType`, `DeterminationIssued v2`), X-10 (Audit precedence), recording notes for D-67 and D-68.
+
+## 31. Correction: contact details are organisation-local, not Identity's
+
+**Superseded:** §24's "Contact details: Identity, within the XD-3 account area" and finding CF-1 (Identity grows to cover contact details). They were made without reading XD-3b §2a.
+
+**Evidence [E]:** XD-3b §2a (`2026-11-01-identity-xd3b-person-vs-account-decision-record.md`, OQ-3b-1, answered 2026-11-01, PROPOSED): "The central Identity record of a Person is a **bare `PersonId`**. Name, contact details and other descriptive data live in **each organisation's database**. An Account holds only its own credential data (e.g. a login email)." Option A (central name and contact) "is not selected: it conflicts with conditions C-2 and C-4 of XD-3a".
+
+**Corrected design [P]:** contact endpoints belong to the **organisation-local person profile**, owned within the organisation (the affiliation owner under INV-AFF-1, proposed: Organisation). Communication resolves endpoints from that owner; the Account's login email is a credential, not an organisational contact endpoint. Membership still owns no contact details. No Membership Change Request is needed either way.
