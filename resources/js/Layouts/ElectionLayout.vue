@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-dvh flex flex-col">
         <!-- Header - sticks to top -->
         <!-- Note: Not passing :locale prop allows language preference to persist from localStorage -->
         <PublicDigitHeader />

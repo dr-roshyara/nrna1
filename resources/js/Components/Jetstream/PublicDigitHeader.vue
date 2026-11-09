@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-40 bg-gradient-to-br from-primary-800 via-primary-950 to-primary-900 text-neutral-100 shadow-lg border-b border-brand-gold-500/40 relative"
+    class="sticky top-0 z-40 bg-gradient-to-br from-primary-800 to-primary-900 text-neutral-100 shadow-lg border-b border-accent-500/40"
     :class="electionMode ? 'font-serif' : 'font-sans'"
   >
     <div class="container mx-auto px-3 md:px-6 lg:px-8 relative">
@@ -25,7 +25,7 @@
             >
               {{ $t('platform.name') }}
             </h1>
-            <span class="text-xs md:text-sm font-normal text-brand-gold-400/80 truncate hidden sm:block">
+            <span class="text-xs md:text-sm font-normal text-accent-400/80 truncate hidden sm:block">
               {{ $t('platform.tagline') }}
             </span>
           </div>
@@ -33,6 +33,23 @@
 
         <!-- Right Controls: Language + Auth + Mobile Menu -->
         <div class="flex items-center gap-2 md:gap-3 shrink-0">
+          <!-- Member links (desktop): shown only to signed-in users. Each page still checks access on the server. -->
+          <nav
+            v-if="memberLinks.length"
+            class="hidden lg:flex items-center gap-1"
+            :aria-label="$t('navigation.member_area', 'Member area')"
+          >
+            <Link
+              v-for="item in memberLinks"
+              :key="item.key"
+              :href="item.href"
+              data-nav="member"
+              class="px-3 py-2 text-neutral-50 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-md transition-colors duration-200 text-sm font-semibold whitespace-nowrap"
+            >
+              {{ item.label }}
+            </Link>
+          </nav>
+
           <!-- Language Selector + Reset Button -->
           <div v-if="!disableLanguageSelector" class="flex items-center gap-1">
             <!-- Language Dropdown -->
@@ -40,14 +57,14 @@
               <select
                 :value="currentLocale"
                 @change="handleLanguageChange"
-                class="appearance-none bg-white/5 border border-brand-gold-500/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-neutral-200 hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:border-transparent cursor-pointer transition-all"
+                class="appearance-none bg-white/5 border border-accent-500/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-neutral-200 hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent cursor-pointer transition-all"
                 :aria-label="$t('common.select_language')"
               >
                 <option value="de" class="bg-white text-neutral-800">DE</option>
                 <option value="en" class="bg-white text-neutral-800">EN</option>
                 <option value="np" class="bg-white text-neutral-800">NP</option>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-brand-gold-500">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-accent-500">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -59,7 +76,7 @@
               @click="resetLanguagePreferences"
               type="button"
               title="Clear saved language preference and detect your location automatically"
-              class="px-2 py-2 text-brand-gold-400 hover:text-brand-gold-400 hover:bg-neutral-50/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gold-500"
+              class="px-2 py-2 text-accent-400 hover:text-accent-400 hover:bg-neutral-50/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500"
               aria-label="Reset language to auto-detect"
             >
               🔄
@@ -71,7 +88,7 @@
             <a
               v-if="!isLoggedIn"
               :href="route('login')"
-              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-primary-900 font-semibold text-xs md:text-sm rounded-md hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group"
+              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-primary-900 font-semibold text-xs md:text-sm rounded-md hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group"
             >
               <svg class="w-4 h-4 mr-1 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -85,7 +102,7 @@
               type="button"
               @click="logout"
               :disabled="isLoggingOut"
-              class="inline-flex items-center px-3 md:px-4 py-2 border border-brand-gold-500 text-brand-gold-500 font-semibold text-xs md:text-sm rounded-md hover:bg-brand-gold-500 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+              class="inline-flex items-center px-3 md:px-4 py-2 border border-accent-500 text-accent-500 font-semibold text-xs md:text-sm rounded-md hover:bg-accent-500 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -96,10 +113,13 @@
 
           <!-- Mobile Menu Toggle Button -->
           <button
+            ref="menuToggle"
+            type="button"
             @click="toggleMobileMenu"
             :aria-expanded="showMobileMenu"
+            aria-controls="pd-mobile-menu"
             :aria-label="showMobileMenu ? $t('common.close_menu') : $t('common.open_menu')"
-            class="md:hidden p-2 rounded-md hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 transition-all duration-200"
+            class="lg:hidden p-2.5 rounded-md hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200"
           >
             <svg v-if="!showMobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -113,57 +133,57 @@
 
       <!-- Navigation Row - Desktop Only -->
       <nav
-        class="hidden md:flex items-center justify-between py-3 border-t border-brand-gold-500/20"
+        class="hidden lg:flex flex-wrap items-center justify-between gap-y-2 py-3 border-t border-accent-500/20"
         role="navigation"
         :aria-label="$t('common.main_navigation')"
       >
-        <div class="flex items-center gap-1">
+        <div class="flex flex-wrap items-center gap-1">
           <Link
             href="/"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.home') }}
           </Link>
           <Link
             href="/about"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.about') }}
           </Link>
           <Link
             href="/faq"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.faq') }}
           </Link>
           <Link
             href="/security"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.security') }}
           </Link>
           <Link
             :href="route('public.election-architecture')"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.election_architecture', 'Architecture') }}
           </Link>
           <Link
             v-if="$page.props.user"
             :href="route('demo-result.index', { organisation_slug: $page.props.user.organisation?.slug })"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.demo_result') }}
           </Link>
           <Link
             :href="route('public-demo.guide')"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.demo_guide') }}
           </Link>
           <Link
             :href="route('tutorials.hub')"
-            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.tutorials') }}
           </Link>
@@ -180,7 +200,7 @@
         <!-- Demo Link - Gold CTA -->
         <Link
           :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-success-600 hover:bg-success-700 text-neutral-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-success-400 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-success-600 hover:bg-success-500 text-neutral-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-success-400 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -193,7 +213,7 @@
       <!-- Breadcrumb Navigation with JSON-LD Schema -->
       <nav
         v-if="breadcrumbs && breadcrumbs.length > 0"
-        class="border-t border-brand-gold-500/20 py-2"
+        class="border-t border-accent-500/20 py-2"
         aria-label="Breadcrumb"
       >
         <ol class="container mx-auto px-3 md:px-6 flex flex-wrap items-center gap-1 text-xs md:text-sm">
@@ -201,14 +221,14 @@
             <a
               v-if="index < breadcrumbs.length - 1"
               :href="item.url"
-              class="text-brand-gold-400 hover:text-brand-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 px-1 py-0.5 rounded"
+              class="text-accent-400 hover:text-accent-400 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500/50 px-1 py-0.5 rounded"
             >
               {{ item.label }}
             </a>
             <span v-else class="text-neutral-400 px-1 py-0.5 font-medium">
               {{ item.label }}
             </span>
-            <span v-if="index < breadcrumbs.length - 1" class="text-brand-gold-500/50 mx-1" aria-hidden="true">/</span>
+            <span v-if="index < breadcrumbs.length - 1" class="text-accent-500/50 mx-1" aria-hidden="true">/</span>
           </li>
         </ol>
       </nav>
@@ -219,10 +239,30 @@
       <!-- Mobile Menu - Dropdown for small screens -->
       <div
         v-if="showMobileMenu"
-        class="md:hidden absolute top-full left-0 right-0 bg-primary-900 border-t border-accent-400/20 shadow-2xl py-4 px-0 space-y-2 z-50"
+        id="pd-mobile-menu"
+        class="lg:hidden absolute top-full left-0 right-0 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-primary-900 border-t border-accent-400/20 shadow-2xl py-4 px-0 space-y-2 z-50"
         role="region"
         :aria-label="$t('common.mobile_navigation')"
       >
+        <!-- Member links first: these are the tasks a member opens the menu for on a phone. -->
+        <div
+          v-if="memberLinks.length"
+          class="space-y-1 px-3 pb-3 border-b border-accent-400/20"
+          role="group"
+          :aria-label="$t('navigation.member_area', 'Member area')"
+        >
+          <Link
+            v-for="item in memberLinks"
+            :key="item.key"
+            :href="item.href"
+            data-nav="member"
+            @click="closeMobileMenu"
+            class="block px-4 py-3 text-neutral-50 hover:text-accent-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-semibold min-h-[44px] flex items-center"
+          >
+            {{ item.label }}
+          </Link>
+        </div>
+
         <!-- Mobile Navigation Links -->
         <div class="space-y-1 px-3">
           <Link href="/" @click="closeMobileMenu"
@@ -272,7 +312,7 @@
           <Link
             :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
             @click="closeMobileMenu"
-            class="block px-4 py-3  text-neutral-50  bg-success-600 font-semibold text-sm rounded-lg hover:from-gold-gold hover:to-white active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            class="block px-4 py-3  text-neutral-50  bg-success-600 font-semibold text-sm rounded-lg hover:bg-success-500 active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
           </Link>
@@ -342,7 +382,41 @@ const currentLocale = ref(getInitialLocale())
 const showMobileMenu = ref(false)
 const isLoggingOut = ref(false)
 
+const menuToggle = ref(null)
+
 const isLoggedIn = computed(() => !!page.props.user)
+
+// The organisation comes only from the current URL. We do not guess one from the
+// user's record and offer no switcher (organisation selection belongs to the Identity design, D-75).
+const currentOrganisationSlug = computed(() => {
+  void page.url // re-evaluate after every Inertia visit
+  try {
+    const params = route().params || {}
+    if (typeof params.organisation === 'string' && params.organisation !== '') return params.organisation
+    if (route().current('organisations.show') && typeof params.slug === 'string') return params.slug
+  } catch (e) {
+    // the current URL matches no named route
+  }
+  return null
+})
+
+// Member destinations: existing participant pages only. Showing a link grants nothing;
+// every destination enforces authentication and authorisation on the server.
+// "My membership" needs PBDIGIT-339 (the self-view is no longer served from a shared cache).
+const memberLinks = computed(() => {
+  if (!isLoggedIn.value) return []
+  const links = [
+    { key: 'my_organisations', href: route('organisations.index'), label: t('navigation.my_organisations', 'My organisations') },
+  ]
+  const slug = currentOrganisationSlug.value
+  if (slug) {
+    links.push({ key: 'my_membership', href: route('organisations.membership.dashboard', { organisation: slug }), label: t('navigation.my_membership', 'My membership') })
+    links.push({ key: 'elections', href: route('organisations.elections.index', { organisation: slug }), label: t('navigation.elections', 'Elections') })
+    links.push({ key: 'candidacy', href: route('organisations.candidacy.create', { organisation: slug }), label: t('navigation.candidacy', 'Candidacy') })
+  }
+  return links
+})
+
 const breadcrumbs = computed(() => props.breadcrumbs || page.props.breadcrumbs || [])
 
 // JSON-LD BreadcrumbList schema for SEO
@@ -425,6 +499,7 @@ function logout() {
 
 let handleEscapeKey = null
 let handleResize = null
+let removeNavigateListener = null
 
 onMounted(() => {
   if (locale && currentLocale.value !== locale.value) {
@@ -432,19 +507,27 @@ onMounted(() => {
   }
 
   handleEscapeKey = (event) => {
-    if (event.key === 'Escape' && showMobileMenu.value) closeMobileMenu()
+    if (event.key === 'Escape' && showMobileMenu.value) {
+      closeMobileMenu()
+      menuToggle.value?.focus()
+    }
   }
   document.addEventListener('keydown', handleEscapeKey)
 
+  // 1024 px = Tailwind `lg`, where the desktop navigation row takes over.
   handleResize = () => {
-    if (window.innerWidth >= 768 && showMobileMenu.value) closeMobileMenu()
+    if (window.innerWidth >= 1024 && showMobileMenu.value) closeMobileMenu()
   }
   window.addEventListener('resize', handleResize)
+
+  // Inertia fires `navigate` for every visit, including browser back/forward.
+  removeNavigateListener = router.on('navigate', () => closeMobileMenu())
 })
 
 onBeforeUnmount(() => {
   if (handleEscapeKey) document.removeEventListener('keydown', handleEscapeKey)
   if (handleResize) window.removeEventListener('resize', handleResize)
+  if (removeNavigateListener) removeNavigateListener()
 })
 
 watch(() => props.locale, (newLocale) => {

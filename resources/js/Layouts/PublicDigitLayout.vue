@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-dvh flex flex-col">
         <public-digit-header :canRegister="canRegister" :canLogin="canLogin">
         </public-digit-header>
         
@@ -37,10 +37,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-/* Layout specific styles */
-.min-h-screen {
-    min-height: 100vh;
-}
-</style>
