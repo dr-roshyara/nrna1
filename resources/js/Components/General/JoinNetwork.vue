@@ -219,10 +219,6 @@ export default {
                     // Alt+L for direct login
                     window.location.href = '/login';
                 }
-                if (e.altKey && e.key === 'g') {
-                    // Alt+G for Google login
-                    window.location.href = '/login/google';
-                }
             });
         }
     }

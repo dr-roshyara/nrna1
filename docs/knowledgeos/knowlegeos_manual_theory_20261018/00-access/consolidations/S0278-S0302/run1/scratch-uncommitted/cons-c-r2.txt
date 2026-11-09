@@ -1,0 +1,1044 @@
+# IN SCOPE (08.52-08.61,08.11,08.18-08.21,08.46,08.50,08.99): judge every candidate below (decision D2)
+A | serialised | book 14 | sections 7 | corpus files 0 | first 08.19 L27
+A | registrant | book 5 | sections 3 | corpus files 0 | first 08.50 L67
+A | canonicaliser | book 2 | sections 2 | corpus files 0 | first 08.18 L43
+A | artist | book 5 | sections 1 | corpus files 0 | first 08.54 L7
+A | logician | book 5 | sections 1 | corpus files 0 | first 08.54 L29
+A | tamperer | book 3 | sections 1 | corpus files 0 | first 08.53 L25
+A | foreclosure | book 1 | sections 1 | corpus files 0 | first 08.11 L64
+A | quiescence | book 1 | sections 1 | corpus files 0 | first 08.19 L57
+A | unhomed | book 1 | sections 1 | corpus files 0 | first 08.20 L230
+B | DV-7 | book 12 | sections 7 | corpus files 29 | first 08.20 L135
+B | RV-1 | book 14 | sections 6 | corpus files 13 | first 08.46 L96
+B | RV-7 | book 10 | sections 6 | corpus files 12 | first 08.46 L96
+B | P-1 | book 8 | sections 5 | corpus files 43 | first 08.18 L217
+B | Track-2 | book 8 | sections 5 | corpus files 14 | first 08.20 L139
+B | C-4 | book 6 | sections 4 | corpus files 57 | first 08.20 L54
+B | P-4 | book 10 | sections 3 | corpus files 21 | first 08.18 L123
+B | RV-5 | book 10 | sections 3 | corpus files 4 | first 08.46 L56
+B | RD-3 | book 9 | sections 3 | corpus files 16 | first 08.20 L42
+B | AMD2 | book 8 | sections 3 | corpus files 35 | first 08.11 L69
+B | DI-3 | book 6 | sections 3 | corpus files 9 | first 08.19 L149
+B | DI-5 | book 5 | sections 3 | corpus files 9 | first 08.20 L150
+B | RD-9 | book 4 | sections 3 | corpus files 8 | first 08.19 L238
+B | Phase-4 | book 3 | sections 3 | corpus files 11 | first 08.18 L202
+B | C-08 | book 3 | sections 3 | corpus files 5 | first 08.50 L63
+B | UM-45 | book 3 | sections 3 | corpus files 6 | first 08.55 L57
+C | marker | in section 08.19: 14 uses | corpus files 86
+C | demotion | in section 08.19: 3 uses | corpus files 39
+C | exactly | in section 08.20: 3 uses | corpus files 1613
+C | commission | in section 08.21: 7 uses | corpus files 314
+C | exactly | in section 08.21: 4 uses | corpus files 1613
+C | wisdom | in section 08.50: 6 uses | corpus files 118
+C | commission | in section 08.59: 3 uses | corpus files 314
+D | copybecome | book 0 | heads/defs 1 | corpus files 0 marked 0 | at 08.60 L59
+D | absorbing | book 1 | heads/defs 1 | corpus files 17 marked 5 | at 08.20 L42
+D | accretive | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.56 L7
+D | cross-axi | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.57 L46
+D | evidence-to-the-leader | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L92
+D | foreclosure | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.11 L64
+D | karaka | book 1 | heads/defs 1 | corpus files 19 marked 5 | at 08.58 L75
+D | misnamed | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.58 L1
+D | post-commit | book 1 | heads/defs 1 | corpus files 5 marked 2 | at 08.61 L66
+D | quantifier-scope | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.54 L80
+D | quiescence | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.19 L57
+D | rewritable | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.21 L169
+D | succeeded | book 1 | heads/defs 1 | corpus files 49 marked 4 | at 08.19 L40
+D | three-condition | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.53 L57
+D | unhomed | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L230
+D | unstable | book 1 | heads/defs 1 | corpus files 68 marked 3 | at 08.46 L98
+D | canonicaliser | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.19 L132
+D | cost-optimisation | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L205
+D | graphic | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.54 L7; 08.54 L25
+D | outside-research | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.50 L92
+D | self-including | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.20 L99; 08.20 L263
+D | triple | book 2 | heads/defs 2 | corpus files 160 marked 8 | at 08.20 L49
+D | governance-state-durability | book 3 | heads/defs 3 | corpus files 0 marked 0 | at 08.46 L6; 08.59 L6; 08.60 L6
+D | relocated | book 3 | heads/defs 3 | corpus files 28 marked 2 | at 08.18 L95
+D | test-oracle | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 08.21 L59
+D | thirteen | book 3 | heads/defs 1 | corpus files 40 marked 6 | at 08.56 L7
+D | unconditionally | book 3 | heads/defs 1 | corpus files 23 marked 2 | at 08.19 L132
+D | clean | book 4 | heads/defs 1 | corpus files 432 marked 9 | at 08.20 L173
+D | likelihood | book 4 | heads/defs 2 | corpus files 131 marked 3 | at 08.19 L108
+D | positively | book 4 | heads/defs 1 | corpus files 29 marked 2 | at 08.20 L155
+D | absorbed | book 5 | heads/defs 1 | corpus files 75 marked 4 | at 08.11 L42
+D | artist | book 5 | heads/defs 5 | corpus files 0 marked 0 | at 08.54 L7; 08.54 L7; 08.54 L7; 08.54 L25; 08.54 L34
+D | byte-verified | book 5 | heads/defs 1 | corpus files 15 marked 3 | at 08.19 L256
+D | epistemology | book 5 | heads/defs 1 | corpus files 240 marked 11 | at 08.46 L8
+D | ignore | book 5 | heads/defs 2 | corpus files 81 marked 2 | at 08.58 L30
+D | registrant | book 5 | heads/defs 1 | corpus files 0 marked 0 | at 08.55 L38
+D | scalar | book 5 | heads/defs 2 | corpus files 335 marked 2 | at 08.57 L46; 08.57 L46
+D | swing | book 5 | heads/defs 1 | corpus files 0 marked 0 | at 08.46 L42
+D | meta | book 7 | heads/defs 2 | corpus files 50 marked 2 | at 08.58 L53; 08.58 L61
+D | philosophy | book 8 | heads/defs 2 | corpus files 204 marked 4 | at 08.54 L6
+D | retraction | book 8 | heads/defs 2 | corpus files 218 marked 11 | at 08.19 L181
+D | reversed | book 8 | heads/defs 1 | corpus files 36 marked 3 | at 08.46 L104
+D | stopped | book 8 | heads/defs 2 | corpus files 113 marked 47 | at 08.54 L6
+D | validating | book 8 | heads/defs 2 | corpus files 57 marked 2 | at 08.58 L97
+D | introduce | book 9 | heads/defs 2 | corpus files 605 marked 3 | at 08.50 L45
+D | participant | book 9 | heads/defs 2 | corpus files 154 marked 6 | at 08.58 L75
+D | span | book 9 | heads/defs 2 | corpus files 74 marked 2 | at 08.61 L8
+D | unresolvable | book 9 | heads/defs 2 | corpus files 66 marked 37 | at 08.19 L83; 08.19 L83
+D | interpret | book 10 | heads/defs 1 | corpus files 321 marked 51 | at 08.18 L122
+D | irreducible | book 10 | heads/defs 1 | corpus files 232 marked 6 | at 08.20 L69
+D | post-condition | book 10 | heads/defs 1 | corpus files 17 marked 2 | at 08.60 L34
+D | encoding | book 11 | heads/defs 1 | corpus files 120 marked 3 | at 08.53 L26
+D | horizon | book 11 | heads/defs 2 | corpus files 97 marked 3 | at 08.57 L46
+D | read-only | book 11 | heads/defs 1 | corpus files 145 marked 12 | at 08.19 L87
+D | bring | book 12 | heads/defs 3 | corpus files 103 marked 6 | at 08.11 L8; 08.19 L197
+D | rename | book 12 | heads/defs 1 | corpus files 147 marked 23 | at 08.61 L6
+D | uncited | book 12 | heads/defs 1 | corpus files 57 marked 26 | at 08.20 L77
+D | fingerprint | book 13 | heads/defs 2 | corpus files 41 marked 2 | at 08.53 L37; 08.53 L79
+D | less | book 13 | heads/defs 2 | corpus files 183 marked 5 | at 08.20 L60
+D | mtime | book 13 | heads/defs 2 | corpus files 26 marked 2 | at 08.61 L1; 08.61 L49
+D | granularity | book 14 | heads/defs 6 | corpus files 71 marked 5 | at 08.19 L257
+D | invisible | book 14 | heads/defs 1 | corpus files 81 marked 2 | at 08.20 L197
+D | parsing | book 14 | heads/defs 6 | corpus files 80 marked 5 | at 08.19 L78; 08.19 L78; 08.56 L1; 08.56 L32
+D | claimant | book 15 | heads/defs 4 | corpus files 20 marked 6 | at 08.21 L167; 08.21 L167; 08.21 L168; 08.21 L169
+D | unregistered | book 15 | heads/defs 2 | corpus files 55 marked 8 | at 08.60 L71
+D | equality | book 16 | heads/defs 2 | corpus files 556 marked 35 | at 08.53 L79
+D | implicit | book 16 | heads/defs 3 | corpus files 195 marked 9 | at 08.11 L64
+D | refined | book 16 | heads/defs 2 | corpus files 199 marked 12 | at 08.56 L61
+D | establishe | book 17 | heads/defs 3 | corpus files 680 marked 3 | at 08.18 L198
+D | land | book 17 | heads/defs 3 | corpus files 397 marked 5 | at 08.20 L54
+D | sixth | book 17 | heads/defs 3 | corpus files 98 marked 10 | at 08.46 L59; 08.46 L68; 08.52 L48
+D | just | book 18 | heads/defs 2 | corpus files 408 marked 5 | at 08.20 L54
+D | reproduce | book 18 | heads/defs 2 | corpus files 182 marked 4 | at 08.20 L77
+D | restatement | book 18 | heads/defs 4 | corpus files 83 marked 7 | at 08.56 L60
+D | reviewing | book 18 | heads/defs 3 | corpus files 60 marked 2 | at 08.50 L6; 08.50 L8; 08.50 L45
+D | self-declaration | book 18 | heads/defs 2 | corpus files 17 marked 2 | at 08.11 L32
+D | implement | book 19 | heads/defs 3 | corpus files 513 marked 16 | at 08.18 L58
+D | consulted | book 20 | heads/defs 1 | corpus files 42 marked 2 | at 08.56 L7
+D | continue | book 21 | heads/defs 7 | corpus files 386 marked 6 | at 08.52 L6; 08.57 L11
+D | ordering | book 22 | heads/defs 3 | corpus files 426 marked 4 | at 08.57 L52
+D | slot | book 22 | heads/defs 3 | corpus files 137 marked 3 | at 08.58 L75; 08.58 L75
+D | delta | book 23 | heads/defs 2 | corpus files 475 marked 3 | at 08.18 L206; 08.21 L89
+D | pipeline | book 23 | heads/defs 8 | corpus files 410 marked 2 | at 08.52 L77; 08.53 L82
+D | honest | book 24 | heads/defs 4 | corpus files 247 marked 2 | at 08.19 L112
+D | marker | book 24 | heads/defs 2 | corpus files 86 marked 2 | at 08.19 L119; 08.19 L181
+D | reconciled | book 24 | heads/defs 3 | corpus files 184 marked 24 | at 08.52 L80
+D | heading | book 25 | heads/defs 2 | corpus files 76 marked 4 | at 08.56 L56
+D | parser | book 25 | heads/defs 5 | corpus files 81 marked 2 | at 08.56 L38; 08.56 L85; 08.57 L94; 08.58 L30; 08.58 L95
+D | renamed | book 25 | heads/defs 1 | corpus files 103 marked 3 | at 08.57 L60
+D | site | book 25 | heads/defs 5 | corpus files 61 marked 4 | at 08.59 L45; 08.59 L46; 08.59 L50; 08.61 L65; 08.61 L68
+D | uncertainty | book 25 | heads/defs 3 | corpus files 915 marked 48 | at 08.57 L46; 08.58 L31
+D | classified | book 26 | heads/defs 6 | corpus files 353 marked 3 | at 08.20 L112
+D | interpreter | book 26 | heads/defs 3 | corpus files 57 marked 3 | at 08.18 L213; 08.19 L92; 08.60 L40
+D | template | book 26 | heads/defs 5 | corpus files 80 marked 4 | at 08.46 L7; 08.50 L72; 08.55 L41
+D | channel | book 27 | heads/defs 5 | corpus files 105 marked 3 | at 08.11 L75; 08.11 L75
+D | assign | book 29 | heads/defs 3 | corpus files 212 marked 3 | at 08.56 L35; 08.58 L57
+D | circular | book 29 | heads/defs 3 | corpus files 178 marked 8 | at 08.46 L6
+D | replaced | book 31 | heads/defs 3 | corpus files 176 marked 9 | at 08.55 L7
+D | convergence | book 35 | heads/defs 4 | corpus files 343 marked 14 | at 08.52 L96
+D | synthesi | book 36 | heads/defs 6 | corpus files 418 marked 2 | at 08.56 L56
+D | warrant | book 36 | heads/defs 9 | corpus files 148 marked 6 | at 08.56 L1; 08.56 L60; 08.56 L99
+D | onto | book 38 | heads/defs 5 | corpus files 241 marked 2 | at 08.46 L61
+D | commissioned | book 39 | heads/defs 4 | corpus files 217 marked 2 | at 08.20 L205; 08.55 L62
+D | claimed | book 41 | heads/defs 10 | corpus files 371 marked 2 | at 08.18 L92; 08.20 L60
+D | erratum | book 41 | heads/defs 5 | corpus files 27 marked 4 | at 08.11 L32
+D | identical | book 42 | heads/defs 3 | corpus files 609 marked 31 | at 08.54 L6
+D | matche | book 42 | heads/defs 4 | corpus files 195 marked 4 | at 08.58 L38
+D | processe | book 42 | heads/defs 9 | corpus files 190 marked 2 | at 08.60 L1; 08.60 L50; 08.60 L100; 08.60 L100
+D | violate | book 42 | heads/defs 2 | corpus files 245 marked 2 | at 08.18 L234
+D | wisdom | book 44 | heads/defs 3 | corpus files 118 marked 27 | at 08.50 L26
+D | consume | book 45 | heads/defs 4 | corpus files 281 marked 12 | at 08.46 L7
+D | narrow | book 45 | heads/defs 7 | corpus files 186 marked 8 | at 08.55 L67
+D | opposite | book 45 | heads/defs 6 | corpus files 204 marked 2 | at 08.19 L165
+D | passed | book 46 | heads/defs 7 | corpus files 165 marked 10 | at 08.20 L193; 08.57 L88; 08.59 L51; 08.61 L1; 08.61 L65
+D | discovery | book 47 | heads/defs 3 | corpus files 725 marked 5 | at 08.20 L230
+D | original | book 47 | heads/defs 5 | corpus files 560 marked 2 | at 08.57 L55; 08.60 L6
+D | problem | book 47 | heads/defs 8 | corpus files 1202 marked 8 | at 08.18 L160; 08.21 L59
+D | reliability | book 47 | heads/defs 3 | corpus files 230 marked 19 | at 08.46 L110
+D | dropped | book 48 | heads/defs 8 | corpus files 172 marked 9 | at 08.21 L75
+D | enumeration | book 48 | heads/defs 7 | corpus files 142 marked 2 | at 08.20 L187; 08.46 L47; 08.59 L56; 08.59 L59; 08.60 L43
+D | local | book 48 | heads/defs 11 | corpus files 287 marked 3 | at 08.54 L1; 08.54 L65; 08.54 L65; 08.54 L98
+D | prove | book 49 | heads/defs 8 | corpus files 591 marked 5 | at 08.18 L87; 08.21 L1; 08.21 L164; 08.21 L168
+D | expression | book 50 | heads/defs 3 | corpus files 273 marked 10 | at 08.46 L104
+D | frozen | book 50 | heads/defs 2 | corpus files 488 marked 69 | at 08.19 L224
+D | data | book 52 | heads/defs 5 | corpus files 531 marked 8 | at 08.20 L73
+D | drift | book 52 | heads/defs 11 | corpus files 236 marked 10 | at 08.52 L48; 08.61 L66
+D | asked | book 53 | heads/defs 8 | corpus files 339 marked 4 | at 08.11 L64; 08.61 L27
+D | material | book 53 | heads/defs 11 | corpus files 709 marked 6 | at 08.55 L93; 08.61 L1; 08.61 L26; 08.61 L40; 08.61 L45; 08.61 L86; 08.61 L98
+D | self-declared | book 53 | heads/defs 4 | corpus files 125 marked 3 | at 08.21 L170; 08.57 L96
+D | gaps | book 54 | heads/defs 13 | corpus files 474 marked 70 | at 08.60 L41
+D | falsifier | book 55 | heads/defs 11 | corpus files 32 marked 3 | at 08.21 L57; 08.21 L200
+D | protect | book 55 | heads/defs 5 | corpus files 336 marked 3 | at 08.20 L103
+D | route | book 55 | heads/defs 8 | corpus files 254 marked 4 | at 08.20 L221; 08.61 L6
+D | asserted | book 56 | heads/defs 10 | corpus files 369 marked 15 | at 08.52 L1; 08.52 L61
+D | contradict | book 57 | heads/defs 8 | corpus files 477 marked 80 | at 08.19 L256
+D | violation | book 57 | heads/defs 12 | corpus files 264 marked 8 | at 08.18 L52; 08.20 L42
+D | occurred | book 59 | heads/defs 7 | corpus files 194 marked 4 | at 08.50 L73
+D | stronger | book 59 | heads/defs 8 | corpus files 958 marked 8 | at 08.21 L102
+D | nine | book 62 | heads/defs 5 | corpus files 248 marked 13 | at 08.46 L90
+D | evaluate | book 63 | heads/defs 7 | corpus files 517 marked 13 | at 08.56 L55
+D | specification | book 64 | heads/defs 10 | corpus files 441 marked 3 | at 08.20 L103
+D | apply | book 67 | heads/defs 12 | corpus files 376 marked 12 | at 08.21 L170; 08.55 L62; 08.56 L6
+D | fourth | book 68 | heads/defs 11 | corpus files 296 marked 11 | at 08.54 L25
+D | beyond | book 69 | heads/defs 9 | corpus files 350 marked 3 | at 08.54 L85; 08.57 L1; 08.57 L63; 08.58 L59
+D | eight | book 71 | heads/defs 8 | corpus files 359 marked 15 | at 08.46 L90; 08.58 L75
+D | exclude | book 73 | heads/defs 7 | corpus files 155 marked 5 | at 08.11 L75; 08.54 L65; 08.55 L62; 08.56 L6
+D | possible | book 74 | heads/defs 10 | corpus files 1041 marked 10 | at 08.20 L99; 08.20 L263; 08.60 L55
+D | plus | book 76 | heads/defs 5 | corpus files 457 marked 17 | at 08.19 L57
+D | repository | book 77 | heads/defs 10 | corpus files 478 marked 2 | at 08.21 L169
+D | admit | book 81 | heads/defs 11 | corpus files 172 marked 3 | at 08.54 L25; 08.61 L1; 08.61 L40
+D | produced | book 81 | heads/defs 10 | corpus files 672 marked 8 | at 08.20 L217; 08.21 L168; 08.61 L27; 08.61 L88
+D | workflow | book 82 | heads/defs 12 | corpus files 414 marked 27 | at 08.46 L6; 08.50 L101; 08.52 L28; 08.57 L84
+D | comparison | book 84 | heads/defs 16 | corpus files 502 marked 12 | at 08.20 L118; 08.46 L55; 08.53 L79; 08.56 L56; 08.59 L1; 08.59 L27; 08.59 L27; 08.59 L28; 08.59 L56; 08.59 L64
+D | qualified | book 85 | heads/defs 7 | corpus files 203 marked 12 | at 08.54 L80; 08.58 L72
+D | built | book 86 | heads/defs 20 | corpus files 270 marked 2 | at 08.50 L84; 08.53 L69; 08.57 L46
+D | adopt | book 90 | heads/defs 9 | corpus files 312 marked 14 | at 08.56 L50
+D | person | book 91 | heads/defs 12 | corpus files 248 marked 3 | at 08.46 L8
+D | preserve | book 99 | heads/defs 4 | corpus files 1213 marked 45 | at 08.19 L132
+D | next | book 116 | heads/defs 19 | corpus files 1463 marked 4 | at 08.52 L81; 08.55 L1; 08.55 L32; 08.55 L33; 08.55 L35; 08.55 L40; 08.59 L74; 08.59 L79; 08.61 L65; 08.61 L70
+D | ground | book 122 | heads/defs 18 | corpus files 265 marked 5 | at 08.52 L37; 08.52 L94; 08.53 L69
+D | beside | book 123 | heads/defs 19 | corpus files 67 marked 2 | at 08.46 L67; 08.46 L97; 08.52 L80; 08.54 L80; 08.56 L78; 08.57 L46
+D | quoted | book 123 | heads/defs 18 | corpus files 142 marked 2 | at 08.20 L187; 08.21 L202; 08.46 L35; 08.50 L64; 08.52 L8; 08.52 L42; 08.55 L36; 08.57 L31; 08.60 L26; 08.61 L6
+D | topic-full | book 124 | heads/defs 1 | corpus files 0 marked 0 | at 08.54 L8
+D | registration | book 128 | heads/defs 15 | corpus files 166 marked 7 | at 08.11 L6; 08.50 L29; 08.50 L71; 08.50 L93; 08.52 L63; 08.55 L6; 08.56 L35; 08.57 L11
+D | once | book 135 | heads/defs 18 | corpus files 518 marked 8 | at 08.20 L77; 08.46 L42; 08.55 L100
+D | commission | book 167 | heads/defs 30 | corpus files 314 marked 50 | at 08.11 L64; 08.20 L37; 08.20 L85; 08.20 L124; 08.21 L39; 08.54 L25; 08.54 L33; 08.54 L92; 08.55 L62; 08.60 L71; 08.60 L71; 08.60 L71; 08.61 L6; 08.61 L26; 08.61 L27; 08.61 L50; 08.61 L62; 08.61 L62
+D | above | book 168 | heads/defs 13 | corpus files 460 marked 3 | at 08.52 L64; 08.58 L57; 08.58 L95
+D | start | book 218 | heads/defs 8 | corpus files 555 marked 241 | at 08.56 L50; 08.57 L31
+D | reviewer | book 222 | heads/defs 18 | corpus files 276 marked 4 | at 08.19 L144; 08.20 L83; 08.21 L39; 08.59 L25; 08.61 L62
+D | agree | book 235 | heads/defs 45 | corpus files 413 marked 12 | at 08.18 L126; 08.21 L71; 08.46 L1; 08.46 L29; 08.46 L72; 08.50 L30; 08.52 L29; 08.53 L29; 08.55 L28; 08.56 L28; 08.56 L78; 08.57 L32; 08.59 L29; 08.60 L28
+D | because | book 262 | heads/defs 19 | corpus files 1773 marked 5 | at 08.20 L112; 08.20 L226; 08.60 L24
+D | rival | book 286 | heads/defs 161 | corpus files 128 marked 3 | at 08.46 L104; 08.46 L106; 08.46 L108; 08.46 L110; 08.50 L106; 08.50 L108; 08.50 L110; 08.50 L112; 08.50 L114; 08.52 L94; 08.52 L96; 08.52 L98; 08.52 L100; 08.52 L102; 08.53 L94; 08.53 L96; 08.53 L98; 08.53 L100; 08.54 L65; 08.54 L78; 08.54 L92; 08.54 L94; 08.54 L96; 08.54 L98; 08.54 L100; 08.55 L98; 08.55 L100; 08.55 L102; 08.56 L85; 08.56 L87; 08.56 L89; 08.56 L91; 08.57 L88; 08.57 L90; 08.57 L92; 08.57 L94; 08.57 L96; 08.58 L89; 08.58 L91; 08.58 L93; 08.58 L95; 08.58 L97; 08.58 L99; 08.59 L91; 08.59 L93; 08.59 L95; 08.59 L97; 08.59 L99; 08.60 L92; 08.60 L94; 08.60 L96; 08.60 L98; 08.60 L100; 08.60 L102; 08.60 L104; 08.61 L84; 08.61 L86; 08.61 L88; 08.61 L90; 08.61 L92
+D | keep | book 293 | heads/defs 36 | corpus files 565 marked 19 | at 08.11 L64; 08.46 L55; 08.53 L55
+# in scope: tier A 9
+# also used in scope, first used elsewhere (for information): A unattested (first 05.07 L74); A adviser (first 08.00 L55); A swing (first 08.00 L60); A misrouted (first 08.00 L69); A asker (first 08.00 L71); A revocable (first 08.35 L49); B A-01 (first 00.01 L30); B B-11 (first 00.01 L30); B C-1 (first 00.01 L32); B A-02 (first 00.02 L9); B A-05 (first 00.08 L18); B B-05 (first 01.00 L27); B C-07 (first 01.01 L26); B F-01 (first 01.02 L95); B R-34 (first 01.06 L48); B A-08 (first 01.06 L51); B A-11 (first 01.08 L27); B C-2 (first 01.13 L124); B B-06 (first 01.14 L200); B B-01 (first 01.14 L234); B B-07 (first 01.14 L311); B B-08 (first 01.14 L361); B B-09 (first 01.17 L10); B B-10 (first 01.17 L111); B A-09 (first 01.99 L54); B B-03 (first 01.99 L54); B C-05 (first 02.02 L7); B DP-1 (first 02.09 L79); B C-06 (first 02.99 L9); B F-11 (first 03.01 L102); B RD-1 (first 04.02 L36); B RD-7 (first 04.02 L36); B RD-4 (first 05.00 L33); B G-2 (first 05.05 L5); B V-1 (first 05.06 L68); B P-2 (first 05.06 L69); B C-3 (first 06.05 L52); B DP-3 (first 06.05 L60); B G-1 (first 06.05 L64); B C-04 (first 08.00 L60); B AMD3 (first 08.00 L74); B CL-4 (first 08.00 L74); B C-14 (first 08.00 L77); B AMD6 (first 08.07 L5); B AMD5 (first 08.07 L36); B DI-1 (first 08.07 L36); B AMD4 (first 08.07 L40); B C-10 (first 08.12 L5); B AMD1 (first 08.15 L101); B I-07 (first 08.17 L69); B D-04 (first 08.31 L117); B C-8 (first 08.31 L142); B UM-35 (first 08.42 L58); B UM-46 (first 08.42 L58)
+# BACKGROUND: the whole book
+A | adviser | book 75 | sections 16 | corpus files 0 | first 08.00 L55
+A | annulled | book 27 | sections 10 | corpus files 0 | first 01.14 L195
+A | annulling | book 19 | sections 10 | corpus files 0 | first 01.14 L200
+A | pinning | book 17 | sections 10 | corpus files 0 | first 01.14 L438
+A | serialised | book 14 | sections 7 | corpus files 0 | first 08.19 L27
+A | unattested | book 9 | sections 7 | corpus files 0 | first 05.07 L74
+A | sequitur | book 7 | sections 7 | corpus files 0 | first 08.30 L38
+A | mover | book 11 | sections 6 | corpus files 0 | first 09.00 L37
+A | unforgeable | book 9 | sections 6 | corpus files 0 | first 08.28 L20
+A | answerer | book 6 | sections 5 | corpus files 0 | first 08.35 L109
+A | KT-8 | book 5 | sections 4 | corpus files 0 | first 00.06 L14
+A | swing | book 5 | sections 4 | corpus files 0 | first 08.00 L60
+A | asker | book 5 | sections 3 | corpus files 0 | first 08.00 L71
+A | registrant | book 5 | sections 3 | corpus files 0 | first 08.50 L67
+A | antitone | book 3 | sections 3 | corpus files 0 | first 09.01 L117
+A | realisability | book 7 | sections 2 | corpus files 0 | first 02.03 L68
+A | defaulted | book 4 | sections 2 | corpus files 0 | first 08.00 L37
+A | LA-4 | book 3 | sections 2 | corpus files 0 | first 01.08 L27
+A | RK-1 | book 3 | sections 2 | corpus files 0 | first 01.99 L46
+A | undeterminable | book 3 | sections 2 | corpus files 0 | first 01.14 L123
+A | voided | book 3 | sections 2 | corpus files 0 | first 02.05 L21
+A | subtree | book 3 | sections 2 | corpus files 0 | first 02.08 L105
+A | hyperproperty | book 3 | sections 2 | corpus files 0 | first 09.00 L21
+A | unended | book 3 | sections 2 | corpus files 0 | first 09.10 L60
+A | crowded | book 3 | sections 2 | corpus files 0 | first 09.13 L26
+A | worksheet | book 2 | sections 2 | corpus files 0 | first 01.14 L263
+A | preventable | book 2 | sections 2 | corpus files 0 | first 01.99 L17
+A | recasting | book 2 | sections 2 | corpus files 0 | first 02.09 L69
+A | lexicographically | book 2 | sections 2 | corpus files 0 | first 05.04 L115
+A | misrouted | book 2 | sections 2 | corpus files 0 | first 08.00 L69
+A | attestor | book 2 | sections 2 | corpus files 0 | first 08.06 L26
+A | canonicaliser | book 2 | sections 2 | corpus files 0 | first 08.18 L43
+A | venue | book 2 | sections 2 | corpus files 0 | first 08.32 L136
+A | revocable | book 2 | sections 2 | corpus files 0 | first 08.35 L49
+A | unfaithful | book 2 | sections 2 | corpus files 0 | first 09.09 L91
+A | laminar | book 6 | sections 1 | corpus files 0 | first 03.10 L103
+A | artist | book 5 | sections 1 | corpus files 0 | first 08.54 L7
+A | logician | book 5 | sections 1 | corpus files 0 | first 08.54 L29
+A | alternation | book 4 | sections 1 | corpus files 0 | first 02.03 L73
+A | mechanizing | book 3 | sections 1 | corpus files 0 | first 01.14 L59
+A | snap | book 3 | sections 1 | corpus files 0 | first 01.16 L65
+A | limitor | book 3 | sections 1 | corpus files 0 | first 08.40 L36
+A | tamperer | book 3 | sections 1 | corpus files 0 | first 08.53 L25
+A | truster | book 3 | sections 1 | corpus files 0 | first 09.09 L26
+A | tombstoned | book 3 | sections 1 | corpus files 0 | first 09.16 L84
+A | wclass | book 3 | sections 1 | corpus files 0 | first 09.18 L107
+A | unminted | book 2 | sections 1 | corpus files 0 | first 01.13 L126
+A | fetche | book 2 | sections 1 | corpus files 0 | first 01.17 L95
+A | rater | book 2 | sections 1 | corpus files 0 | first 06.04 L18
+A | straggler | book 2 | sections 1 | corpus files 0 | first 08.41 L41
+A | polyhedra | book 2 | sections 1 | corpus files 0 | first 09.14 L101
+A | appender | book 2 | sections 1 | corpus files 0 | first 10.05 L100
+A | KBI-1 | book 1 | sections 1 | corpus files 0 | first 00.09 L8
+A | ALLOC-4 | book 1 | sections 1 | corpus files 0 | first 01.17 L95
+A | SE-3 | book 1 | sections 1 | corpus files 0 | first 09.01 L156
+A | TURN8 | book 1 | sections 1 | corpus files 0 | first 09.17 L326
+A | viewer | book 1 | sections 1 | corpus files 0 | first 00.01 L30
+A | codified | book 1 | sections 1 | corpus files 0 | first 00.07 L41
+A | blamed | book 1 | sections 1 | corpus files 0 | first 01.08 L80
+A | misdescribing | book 1 | sections 1 | corpus files 0 | first 01.10 L7
+A | unpoliced | book 1 | sections 1 | corpus files 0 | first 01.14 L408
+A | dialog | book 1 | sections 1 | corpus files 0 | first 01.14 L433
+A | mechanize | book 1 | sections 1 | corpus files 0 | first 01.14 L482
+A | unexplainable | book 1 | sections 1 | corpus files 0 | first 01.16 L119
+A | initio | book 1 | sections 1 | corpus files 0 | first 02.05 L29
+A | obedient | book 1 | sections 1 | corpus files 0 | first 04.01 L57
+A | staffing | book 1 | sections 1 | corpus files 0 | first 05.07 L50
+A | workbenche | book 1 | sections 1 | corpus files 0 | first 06.07 L36
+A | idealisation | book 1 | sections 1 | corpus files 0 | first 08.06 L43
+A | undercounting | book 1 | sections 1 | corpus files 0 | first 08.06 L69
+A | undeclarable | book 1 | sections 1 | corpus files 0 | first 08.08 L68
+A | foreclosure | book 1 | sections 1 | corpus files 0 | first 08.11 L64
+A | quiescence | book 1 | sections 1 | corpus files 0 | first 08.19 L57
+A | unhomed | book 1 | sections 1 | corpus files 0 | first 08.20 L230
+A | garble | book 1 | sections 1 | corpus files 0 | first 08.39 L113
+A | forgery | book 1 | sections 1 | corpus files 0 | first 09.12 L70
+A | iterating | book 1 | sections 1 | corpus files 0 | first 09.13 L178
+A | uncoupled | book 1 | sections 1 | corpus files 0 | first 09.14 L30
+A | cofinite | book 1 | sections 1 | corpus files 0 | first 09.14 L91
+A | overlapped | book 1 | sections 1 | corpus files 0 | first 10.03 L63
+A | unannotated | book 1 | sections 1 | corpus files 0 | first 10.99 L19
+B | A-01 | book 37 | sections 19 | corpus files 1 | first 00.01 L30
+B | C-1 | book 28 | sections 19 | corpus files 112 | first 00.01 L32
+B | A-05 | book 24 | sections 17 | corpus files 1 | first 00.08 L18
+B | A-02 | book 26 | sections 15 | corpus files 1 | first 00.02 L9
+B | C-10 | book 45 | sections 14 | corpus files 76 | first 08.12 L5
+B | A-04 | book 30 | sections 14 | corpus files 1 | first 00.06 L18
+B | A-03 | book 21 | sections 14 | corpus files 1 | first 00.06 L5
+B | B-11 | book 18 | sections 14 | corpus files 3 | first 00.01 L30
+B | B-05 | book 18 | sections 12 | corpus files 11 | first 01.00 L27
+B | B-10 | book 17 | sections 12 | corpus files 8 | first 01.17 L111
+B | A-06 | book 21 | sections 11 | corpus files 1 | first 01.01 L32
+B | B-04 | book 20 | sections 11 | corpus files 7 | first 01.14 L208
+B | B-03 | book 20 | sections 11 | corpus files 10 | first 01.99 L54
+B | A-07 | book 18 | sections 11 | corpus files 1 | first 01.02 L49
+B | B-09 | book 16 | sections 11 | corpus files 7 | first 01.17 L10
+B | A-10 | book 14 | sections 11 | corpus files 1 | first 01.08 L20
+B | A-11 | book 12 | sections 11 | corpus files 3 | first 01.08 L27
+B | B-01 | book 24 | sections 10 | corpus files 8 | first 01.14 L234
+B | A-09 | book 17 | sections 10 | corpus files 1 | first 01.99 L54
+B | A-08 | book 16 | sections 10 | corpus files 1 | first 01.06 L51
+B | B-06 | book 14 | sections 10 | corpus files 10 | first 01.14 L200
+B | B-12 | book 13 | sections 10 | corpus files 2 | first 01.00 L27
+B | B-08 | book 13 | sections 10 | corpus files 7 | first 01.14 L361
+B | CV-1 | book 11 | sections 9 | corpus files 3 | first 00.02 L47
+B | A-12 | book 18 | sections 8 | corpus files 2 | first 01.99 L54
+B | B-07 | book 13 | sections 8 | corpus files 8 | first 01.14 L311
+B | B-18 | book 9 | sections 8 | corpus files 1 | first 01.14 L130
+B | AMD3 | book 34 | sections 7 | corpus files 27 | first 08.00 L74
+B | W-1 | book 16 | sections 7 | corpus files 13 | first 08.10 L89
+B | B-02 | book 13 | sections 7 | corpus files 7 | first 01.16 L112
+B | DV-7 | book 12 | sections 7 | corpus files 29 | first 08.20 L135
+B | B-13 | book 11 | sections 7 | corpus files 1 | first 01.14 L173
+B | B-17 | book 9 | sections 7 | corpus files 1 | first 01.14 L530
+B | B-16 | book 8 | sections 7 | corpus files 2 | first 01.14 L165
+B | B-14 | book 7 | sections 7 | corpus files 1 | first 01.99 L54
+B | AMD6 | book 56 | sections 6 | corpus files 31 | first 08.07 L5
+B | RV-1 | book 14 | sections 6 | corpus files 13 | first 08.46 L96
+B | C-2 | book 13 | sections 6 | corpus files 75 | first 01.13 L124
+B | W-5 | book 11 | sections 6 | corpus files 7 | first 08.08 L84
+B | G-2 | book 10 | sections 6 | corpus files 78 | first 05.05 L5
+B | C-14 | book 10 | sections 6 | corpus files 36 | first 08.00 L77
+B | RV-7 | book 10 | sections 6 | corpus files 12 | first 08.46 L96
+B | F-07 | book 9 | sections 6 | corpus files 1 | first 00.02 L51
+B | F-01 | book 9 | sections 6 | corpus files 1 | first 01.02 L95
+B | B-15 | book 9 | sections 6 | corpus files 1 | first 01.99 L54
+B | D-04 | book 9 | sections 6 | corpus files 6 | first 08.31 L117
+B | D-1 | book 8 | sections 6 | corpus files 84 | first 03.05 L17
+B | N-1 | book 7 | sections 6 | corpus files 56 | first 00.02 L67
+B | DP-2 | book 7 | sections 6 | corpus files 7 | first 01.14 L384
+B | W-3 | book 14 | sections 5 | corpus files 11 | first 08.12 L134
+B | W-2 | book 13 | sections 5 | corpus files 12 | first 08.12 L58
+B | W-4 | book 13 | sections 5 | corpus files 8 | first 08.12 L115
+B | RD-1 | book 12 | sections 5 | corpus files 13 | first 04.02 L36
+B | R-34 | book 9 | sections 5 | corpus files 151 | first 01.06 L48
+B | R-6 | book 8 | sections 5 | corpus files 18 | first 04.01 L42
+B | W-6 | book 8 | sections 5 | corpus files 8 | first 08.12 L64
+B | P-1 | book 8 | sections 5 | corpus files 43 | first 08.18 L217
+B | Track-2 | book 8 | sections 5 | corpus files 14 | first 08.20 L139
+B | N-10 | book 7 | sections 5 | corpus files 14 | first 00.05 L57
+B | AP-1 | book 6 | sections 5 | corpus files 15 | first 01.00 L25
+B | F-11 | book 6 | sections 5 | corpus files 4 | first 03.01 L102
+B | G-1 | book 6 | sections 5 | corpus files 57 | first 06.05 L64
+B | H-08 | book 5 | sections 5 | corpus files 1 | first 01.00 L29
+B | C-06 | book 5 | sections 5 | corpus files 7 | first 02.99 L9
+B | AMD5 | book 30 | sections 4 | corpus files 21 | first 08.07 L36
+B | AMD4 | book 21 | sections 4 | corpus files 23 | first 08.07 L40
+B | D-03 | book 16 | sections 4 | corpus files 6 | first 10.03 L79
+B | RD-7 | book 15 | sections 4 | corpus files 16 | first 04.02 L36
+B | SD-1 | book 11 | sections 4 | corpus files 14 | first 05.02 L20
+B | H-3 | book 10 | sections 4 | corpus files 5 | first 01.11 L79
+B | R-1 | book 10 | sections 4 | corpus files 117 | first 05.06 L68
+B | D-01 | book 10 | sections 4 | corpus files 12 | first 10.03 L258
+B | DP-3 | book 9 | sections 4 | corpus files 7 | first 06.05 L60
+B | PM-1 | book 8 | sections 4 | corpus files 8 | first 01.02 L67
+B | DI-1 | book 8 | sections 4 | corpus files 16 | first 08.07 L36
+B | P-2 | book 7 | sections 4 | corpus files 105 | first 05.06 L69
+B | P-7 | book 6 | sections 4 | corpus files 9 | first 01.06 L46
+B | I-05 | book 6 | sections 4 | corpus files 4 | first 01.16 L143
+B | V-1 | book 6 | sections 4 | corpus files 31 | first 05.06 L68
+B | I-09 | book 6 | sections 4 | corpus files 5 | first 08.00 L42
+B | CL-4 | book 6 | sections 4 | corpus files 3 | first 08.00 L74
+B | C-4 | book 6 | sections 4 | corpus files 57 | first 08.20 L54
+B | UM-46 | book 6 | sections 4 | corpus files 8 | first 08.42 L58
+B | D-06 | book 6 | sections 4 | corpus files 5 | first 09.18 L302
+B | N-2 | book 5 | sections 4 | corpus files 30 | first 01.00 L25
+B | C-07 | book 5 | sections 4 | corpus files 4 | first 01.01 L26
+B | F-03 | book 5 | sections 4 | corpus files 1 | first 01.06 L46
+B | F-14 | book 5 | sections 4 | corpus files 2 | first 01.99 L40
+B | F-10 | book 5 | sections 4 | corpus files 5 | first 03.01 L101
+B | F-09 | book 5 | sections 4 | corpus files 1 | first 03.01 L104
+B | G-3 | book 5 | sections 4 | corpus files 118 | first 06.01 L89
+B | I-07 | book 5 | sections 4 | corpus files 8 | first 08.17 L69
+B | C-05 | book 4 | sections 4 | corpus files 4 | first 02.02 L7
+B | Tier-1 | book 4 | sections 4 | corpus files 22 | first 03.06 L110
+B | P-4 | book 10 | sections 3 | corpus files 21 | first 08.18 L123
+B | RV-5 | book 10 | sections 3 | corpus files 4 | first 08.46 L56
+B | LCOM4 | book 9 | sections 3 | corpus files 20 | first 06.07 L68
+B | RD-3 | book 9 | sections 3 | corpus files 16 | first 08.20 L42
+B | AMD2 | book 8 | sections 3 | corpus files 35 | first 08.11 L69
+B | R-2 | book 8 | sections 3 | corpus files 58 | first 08.32 L10
+B | F-06 | book 7 | sections 3 | corpus files 1 | first 00.02 L48
+B | UM-35 | book 7 | sections 3 | corpus files 3 | first 08.42 L58
+B | AMD1 | book 6 | sections 3 | corpus files 36 | first 08.15 L101
+B | DI-3 | book 6 | sections 3 | corpus files 9 | first 08.19 L149
+B | D-3 | book 5 | sections 3 | corpus files 64 | first 01.11 L70
+B | B-20 | book 5 | sections 3 | corpus files 3 | first 02.09 L73
+B | T-1b | book 5 | sections 3 | corpus files 4 | first 05.07 L70
+B | I-02 | book 5 | sections 3 | corpus files 5 | first 08.00 L28
+B | DI-5 | book 5 | sections 3 | corpus files 9 | first 08.20 L150
+B | C-8 | book 5 | sections 3 | corpus files 48 | first 08.31 L142
+B | F-02 | book 4 | sections 3 | corpus files 1 | first 01.99 L51
+B | C-3 | book 4 | sections 3 | corpus files 71 | first 06.05 L52
+B | C-04 | book 4 | sections 3 | corpus files 4 | first 08.00 L60
+B | RD-9 | book 4 | sections 3 | corpus files 8 | first 08.19 L238
+B | F-04 | book 3 | sections 3 | corpus files 1 | first 00.02 L74
+B | H-01 | book 3 | sections 3 | corpus files 1 | first 00.03 L38
+B | I-01 | book 3 | sections 3 | corpus files 10 | first 01.14 L202
+B | H-02 | book 3 | sections 3 | corpus files 1 | first 02.00 L54
+B | DP-1 | book 3 | sections 3 | corpus files 12 | first 02.09 L79
+B | H-04 | book 3 | sections 3 | corpus files 1 | first 02.10 L15
+B | MM-1 | book 3 | sections 3 | corpus files 10 | first 03.00 L8
+B | RD-4 | book 3 | sections 3 | corpus files 9 | first 05.00 L33
+B | F-08 | book 3 | sections 3 | corpus files 1 | first 05.02 L35
+B | BC-5 | book 3 | sections 3 | corpus files 10 | first 06.05 L31
+B | OQ-10 | book 3 | sections 3 | corpus files 39 | first 06.05 L62
+B | I-06 | book 3 | sections 3 | corpus files 4 | first 08.06 L34
+B | Phase-4 | book 3 | sections 3 | corpus files 11 | first 08.18 L202
+B | X-2 | book 3 | sections 3 | corpus files 12 | first 08.32 L124
+B | Pramana-001 | book 3 | sections 3 | corpus files 4 | first 08.37 L99
+B | C-08 | book 3 | sections 3 | corpus files 5 | first 08.50 L63
+B | UM-45 | book 3 | sections 3 | corpus files 6 | first 08.55 L57
+B | SD4 | book 3 | sections 3 | corpus files 1 | first 10.00 L10
+C | action | in section 03.09: 12 uses | corpus files 1157
+C | stewardship | in section 08.10: 4 uses | corpus files 37
+C | discovery | in section 08.10: 3 uses | corpus files 725
+C | original | in section 08.12: 4 uses | corpus files 560
+C | marker | in section 08.19: 14 uses | corpus files 86
+C | demotion | in section 08.19: 3 uses | corpus files 39
+C | exactly | in section 08.20: 3 uses | corpus files 1613
+C | commission | in section 08.21: 7 uses | corpus files 314
+C | exactly | in section 08.21: 4 uses | corpus files 1613
+C | commission | in section 08.29: 3 uses | corpus files 314
+C | expression | in section 08.32: 3 uses | corpus files 273
+C | workflow | in section 08.41: 3 uses | corpus files 414
+C | wisdom | in section 08.50: 6 uses | corpus files 118
+C | commission | in section 08.59: 3 uses | corpus files 314
+C | start | in section 09.05: 3 uses | corpus files 555
+C | registration | in section 09.10: 5 uses | corpus files 166
+D | copybecome | book 0 | heads/defs 1 | corpus files 0 marked 0 | at 08.60 L59
+D | entrya | book 0 | heads/defs 1 | corpus files 0 marked 0 | at 09.13 L48
+D | kernelguard | book 0 | heads/defs 1 | corpus files 0 marked 0 | at 09.13 L48
+D | absorbing | book 1 | heads/defs 1 | corpus files 17 marked 5 | at 08.20 L42
+D | accretive | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.56 L7
+D | actor-shaped | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.49 L33
+D | already-listed | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.45 L98
+D | authority-body | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.02 L87
+D | authority-field | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.02 L83
+D | authority-pair | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.02 L84
+D | chain-vs-act | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.14 L402
+D | coherence | book 1 | heads/defs 1 | corpus files 170 marked 17 | at 02.08 L112
+D | complicate | book 1 | heads/defs 1 | corpus files 8 marked 5 | at 06.03 L23
+D | compose | book 1 | heads/defs 1 | corpus files 116 marked 2 | at 02.08 L110
+D | context-ward | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.06 L196
+D | cross-axi | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.57 L46
+D | dependency-identifiable | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 06.07 L55
+D | discrete | book 1 | heads/defs 1 | corpus files 65 marked 4 | at 09.14 L157
+D | domain-knowledge | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 03.10 L116
+D | empty-intersection | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.14 L247
+D | evidence-area | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.18 L220
+D | evidence-labelled | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.32 L95
+D | evidence-to-the-leader | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L92
+D | foreclosure | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.11 L64
+D | high-grade | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.05 L33
+D | higher-order | book 1 | heads/defs 1 | corpus files 64 marked 3 | at 08.39 L98
+D | ideal | book 1 | heads/defs 1 | corpus files 267 marked 3 | at 03.10 L137
+D | karaka | book 1 | heads/defs 1 | corpus files 19 marked 5 | at 08.58 L75
+D | linkable | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.13 L89
+D | mechanism-minimal | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.01 L85
+D | misnamed | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.58 L1
+D | misplacement | book 1 | heads/defs 1 | corpus files 6 marked 4 | at 06.03 L53
+D | mistyped | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.13 L64
+D | model-checked | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 10.03 L282
+D | model-to-platform | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 00.03 L46
+D | motto | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.34 L31
+D | must-contain | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.47 L100
+D | neat | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.30 L28
+D | need-driven | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 01.04 L8
+D | outlast | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.17 L1
+D | plane-ward | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.06 L195
+D | platform-service | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 03.09 L88
+D | post-commit | book 1 | heads/defs 1 | corpus files 5 marked 2 | at 08.61 L66
+D | produce-vs-test | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.37 L119
+D | prohibitions-only | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.41 L125
+D | quantifier-scope | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.54 L80
+D | question-specific | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.09 L27
+D | quiescence | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.19 L57
+D | record-relative | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.10 L32
+D | recursive | book 1 | heads/defs 1 | corpus files 110 marked 10 | at 09.08 L29
+D | reification | book 1 | heads/defs 1 | corpus files 8 marked 2 | at 08.39 L98
+D | rewritable | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.21 L169
+D | role-and-cost | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.23 L10
+D | second-person | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.47 L36
+D | self-asserted | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.12 L175
+D | serialise | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.01 L101
+D | single-owned | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 10.03 L238
+D | single-write-path | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.06 L168
+D | source-project | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 03.06 L110
+D | succeeded | book 1 | heads/defs 1 | corpus files 49 marked 4 | at 08.19 L40
+D | technical-service | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 03.09 L88
+D | three-condition | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.53 L57
+D | throw-away | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 00.07 L13
+D | thumb | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 02.08 L208
+D | trust-weighted | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.09 L61
+D | unhomed | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L230
+D | unstable | book 1 | heads/defs 1 | corpus files 68 marked 3 | at 08.46 L98
+D | valid-from | book 1 | heads/defs 1 | corpus files 8 marked 2 | at 08.39 L59
+D | valid-until | book 1 | heads/defs 1 | corpus files 8 marked 2 | at 08.39 L59
+D | value-returning | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.10 L22
+D | variable-based | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 09.14 L192
+D | vendor | book 1 | heads/defs 1 | corpus files 61 marked 4 | at 08.06 L35
+D | well-kept | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 08.49 L100
+D | within-rater | book 1 | heads/defs 1 | corpus files 0 marked 0 | at 06.02 L18
+D | aggregate-boundarie | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 01.16 L3
+D | band | book 2 | heads/defs 1 | corpus files 97 marked 2 | at 09.15 L180
+D | branching-time | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.10 L207
+D | calculated | book 2 | heads/defs 1 | corpus files 57 marked 5 | at 08.33 L55
+D | canonicaliser | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.19 L132
+D | class-wide | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.09 L44
+D | composed-system | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.16 L405
+D | conformant | book 2 | heads/defs 1 | corpus files 69 marked 17 | at 08.12 L111
+D | consumed-act | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.10 L128
+D | contract-time | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.08 L30
+D | cost-optimisation | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.20 L205
+D | counter-practice | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 06.01 L91
+D | defeater | book 2 | heads/defs 1 | corpus files 35 marked 8 | at 08.48 L7
+D | design-policy | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 02.09 L78
+D | despite | book 2 | heads/defs 1 | corpus files 101 marked 2 | at 09.06 L146
+D | disanalogie | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.51 L89
+D | distinguished | book 2 | heads/defs 1 | corpus files 207 marked 2 | at 01.13 L86
+D | downgraded | book 2 | heads/defs 1 | corpus files 58 marked 3 | at 06.02 L18
+D | fetche | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 01.17 L97
+D | graphic | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.54 L7; 08.54 L25
+D | integrating | book 2 | heads/defs 1 | corpus files 29 marked 2 | at 08.22 L49
+D | lexicographically | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 05.04 L115
+D | outside-research | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.36 L10; 08.50 L92
+D | polyhedra | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.14 L247
+D | polynomial-time | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 02.03 L73
+D | premature | book 2 | heads/defs 1 | corpus files 210 marked 11 | at 05.03 L41
+D | preventable | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 10.05 L278
+D | reconstruct | book 2 | heads/defs 1 | corpus files 365 marked 4 | at 09.08 L31
+D | revocable | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 08.35 L49
+D | self-including | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.20 L99; 08.20 L263
+D | specificity | book 2 | heads/defs 1 | corpus files 28 marked 2 | at 02.05 L3
+D | statistic | book 2 | heads/defs 1 | corpus files 249 marked 6 | at 01.10 L5
+D | store-known | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.18 L298
+D | survivor-derived | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.17 L229
+D | triple | book 2 | heads/defs 2 | corpus files 160 marked 8 | at 08.20 L49; 09.01 L94
+D | unfaithful | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.09 L91
+D | unfaithfulness | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 09.09 L125
+D | unfalsifiability | book 2 | heads/defs 1 | corpus files 0 marked 0 | at 00.08 L25
+D | unformalized | book 2 | heads/defs 1 | corpus files 8 marked 2 | at 05.04 L54
+D | unminted | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 01.13 L126; 01.13 L126
+D | venue | book 2 | heads/defs 2 | corpus files 0 marked 0 | at 08.32 L136; 08.35 L6
+D | antitone | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.11 L105
+D | appender | book 3 | heads/defs 2 | corpus files 0 marked 0 | at 10.05 L100; 10.05 L137
+D | author-assigned | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 02.05 L1
+D | classing | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 08.30 L62
+D | containable | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.18 L232
+D | decrease | book 3 | heads/defs 1 | corpus files 55 marked 2 | at 09.08 L28
+D | duress | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.15 L184
+D | falsifiable | book 3 | heads/defs 1 | corpus files 96 marked 8 | at 04.02 L34
+D | governance-state-durability | book 3 | heads/defs 3 | corpus files 0 marked 0 | at 08.46 L6; 08.59 L6; 08.60 L6
+D | hyperproperty | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.11 L23
+D | inquiry | book 3 | heads/defs 1 | corpus files 434 marked 46 | at 08.37 L120
+D | institutional | book 3 | heads/defs 1 | corpus files 84 marked 6 | at 09.15 L191
+D | limitor | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 08.40 L36
+D | magnitude | book 3 | heads/defs 1 | corpus files 43 marked 2 | at 08.05 L43
+D | marginal | book 3 | heads/defs 1 | corpus files 22 marked 2 | at 08.44 L32
+D | ought | book 3 | heads/defs 1 | corpus files 27 marked 2 | at 01.06 L16
+D | receiving | book 3 | heads/defs 1 | corpus files 53 marked 2 | at 10.04 L154
+D | redundancy | book 3 | heads/defs 1 | corpus files 77 marked 12 | at 09.10 L13
+D | reflect | book 3 | heads/defs 1 | corpus files 56 marked 3 | at 09.10 L110
+D | relocated | book 3 | heads/defs 3 | corpus files 28 marked 2 | at 08.18 L95; 09.06 L113; 09.06 L151
+D | self-counted | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 08.02 L19
+D | space-in-space | book 3 | heads/defs 2 | corpus files 0 marked 0 | at 03.10 L19; 03.10 L141
+D | subfamilie | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.14 L34
+D | test-oracle | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 08.21 L59
+D | thirteen | book 3 | heads/defs 1 | corpus files 40 marked 6 | at 08.56 L7
+D | truster | book 3 | heads/defs 1 | corpus files 0 marked 0 | at 09.09 L143
+D | unconditionally | book 3 | heads/defs 1 | corpus files 23 marked 2 | at 08.19 L132
+D | unended | book 3 | heads/defs 2 | corpus files 0 marked 0 | at 09.10 L60; 10.05 L195
+D | well-defined | book 3 | heads/defs 1 | corpus files 134 marked 4 | at 00.04 L14
+D | write-capable | book 3 | heads/defs 1 | corpus files 6 marked 2 | at 06.05 L63
+D | alternation | book 4 | heads/defs 3 | corpus files 0 marked 0 | at 02.03 L73; 02.03 L73; 02.03 L73
+D | back-flow | book 4 | heads/defs 3 | corpus files 0 marked 0 | at 01.08 L77; 01.08 L77; 01.08 L81
+D | clean | book 4 | heads/defs 1 | corpus files 432 marked 9 | at 08.20 L173
+D | colliding | book 4 | heads/defs 1 | corpus files 32 marked 9 | at 08.02 L15
+D | convergent | book 4 | heads/defs 1 | corpus files 43 marked 5 | at 08.04 L29
+D | crowded | book 4 | heads/defs 1 | corpus files 0 marked 0 | at 09.16 L129
+D | defaulted | book 4 | heads/defs 1 | corpus files 0 marked 0 | at 08.23 L1
+D | discrepancy | book 4 | heads/defs 1 | corpus files 177 marked 4 | at 10.03 L295
+D | empirically | book 4 | heads/defs 1 | corpus files 262 marked 2 | at 01.08 L25
+D | explained | book 4 | heads/defs 1 | corpus files 86 marked 3 | at 08.25 L61
+D | irreversible | book 4 | heads/defs 1 | corpus files 41 marked 4 | at 09.17 L227
+D | likelihood | book 4 | heads/defs 2 | corpus files 131 marked 3 | at 08.06 L66; 08.19 L108
+D | mechanizing | book 4 | heads/defs 2 | corpus files 0 marked 0 | at 01.14 L482; 01.14 L512
+D | positively | book 4 | heads/defs 1 | corpus files 29 marked 2 | at 08.20 L155
+D | recoverability | book 4 | heads/defs 1 | corpus files 31 marked 5 | at 09.11 L22
+D | underdetermined | book 4 | heads/defs 1 | corpus files 162 marked 58 | at 06.02 L18
+D | vacuity | book 4 | heads/defs 2 | corpus files 40 marked 2 | at 09.10 L14; 09.13 L254
+D | absorbed | book 5 | heads/defs 1 | corpus files 75 marked 4 | at 08.11 L42
+D | artist | book 5 | heads/defs 5 | corpus files 0 marked 0 | at 08.54 L7; 08.54 L7; 08.54 L7; 08.54 L25; 08.54 L34
+D | audience | book 5 | heads/defs 1 | corpus files 26 marked 6 | at 08.47 L90
+D | balance | book 5 | heads/defs 2 | corpus files 78 marked 7 | at 08.17 L66; 08.39 L50
+D | byte-verified | book 5 | heads/defs 1 | corpus files 15 marked 3 | at 08.19 L256
+D | computability | book 5 | heads/defs 2 | corpus files 201 marked 71 | at 01.14 L455; 08.51 L88
+D | corroborated | book 5 | heads/defs 1 | corpus files 111 marked 6 | at 08.12 L106
+D | degree | book 5 | heads/defs 2 | corpus files 104 marked 2 | at 00.01 L28; 08.31 L49
+D | discharged | book 5 | heads/defs 1 | corpus files 62 marked 2 | at 09.04 L29
+D | discriminate | book 5 | heads/defs 1 | corpus files 146 marked 82 | at 08.17 L48
+D | epistemology | book 5 | heads/defs 1 | corpus files 240 marked 11 | at 08.46 L8
+D | formalize | book 5 | heads/defs 1 | corpus files 262 marked 13 | at 00.07 L24
+D | generalize | book 5 | heads/defs 1 | corpus files 73 marked 3 | at 06.05 L62
+D | ignore | book 5 | heads/defs 2 | corpus files 81 marked 2 | at 05.05 L56; 08.58 L30
+D | metaphor | book 5 | heads/defs 1 | corpus files 185 marked 3 | at 08.40 L6
+D | outbox | book 5 | heads/defs 1 | corpus files 23 marked 2 | at 08.22 L137
+D | predict | book 5 | heads/defs 1 | corpus files 110 marked 2 | at 08.05 L39
+D | progress | book 5 | heads/defs 1 | corpus files 171 marked 3 | at 05.04 L139
+D | registrant | book 5 | heads/defs 1 | corpus files 0 marked 0 | at 08.55 L38
+D | replication | book 5 | heads/defs 1 | corpus files 55 marked 3 | at 08.05 L27
+D | reusability | book 5 | heads/defs 1 | corpus files 7 marked 2 | at 08.01 L1
+D | scalar | book 5 | heads/defs 2 | corpus files 335 marked 2 | at 08.57 L46; 08.57 L46
+D | sharper | book 5 | heads/defs 1 | corpus files 113 marked 3 | at 01.05 L7
+D | swing | book 5 | heads/defs 1 | corpus files 0 marked 0 | at 08.46 L42
+D | touch | book 5 | heads/defs 1 | corpus files 65 marked 2 | at 01.17 L29
+D | activate | book 6 | heads/defs 1 | corpus files 57 marked 28 | at 08.24 L50
+D | activated | book 6 | heads/defs 1 | corpus files 29 marked 15 | at 05.07 L36
+D | assess | book 6 | heads/defs 1 | corpus files 220 marked 42 | at 10.01 L86
+D | avacchedaka | book 6 | heads/defs 2 | corpus files 24 marked 3 | at 08.37 L72; 08.39 L70
+D | calibrated | book 6 | heads/defs 1 | corpus files 67 marked 2 | at 08.05 L1
+D | compliant | book 6 | heads/defs 1 | corpus files 72 marked 6 | at 09.10 L82
+D | cyclic | book 6 | heads/defs 3 | corpus files 38 marked 3 | at 03.08 L46; 09.14 L138; 09.14 L170
+D | decline | book 6 | heads/defs 1 | corpus files 83 marked 2 | at 08.12 L177
+D | earned | book 6 | heads/defs 1 | corpus files 74 marked 2 | at 01.06 L37
+D | expresse | book 6 | heads/defs 1 | corpus files 82 marked 2 | at 09.11 L27
+D | falsify | book 6 | heads/defs 1 | corpus files 118 marked 4 | at 08.22 L69
+D | interpretive | book 6 | heads/defs 1 | corpus files 120 marked 4 | at 05.06 L20
+D | investigate | book 6 | heads/defs 1 | corpus files 511 marked 18 | at 08.38 L85
+D | learn | book 6 | heads/defs 1 | corpus files 150 marked 12 | at 10.05 L137
+D | modal | book 6 | heads/defs 3 | corpus files 54 marked 5 | at 08.33 L33; 08.33 L106; 08.34 L104
+D | overall | book 6 | heads/defs 2 | corpus files 220 marked 5 | at 05.02 L35; 09.18 L265
+D | ranking | book 6 | heads/defs 1 | corpus files 101 marked 2 | at 06.03 L34
+D | recovery | book 6 | heads/defs 1 | corpus files 92 marked 2 | at 08.32 L128
+D | rejecting | book 6 | heads/defs 1 | corpus files 44 marked 2 | at 06.03 L39
+D | secondary | book 6 | heads/defs 1 | corpus files 91 marked 3 | at 05.04 L78
+D | trap | book 6 | heads/defs 1 | corpus files 43 marked 3 | at 09.11 L105
+D | atomically | book 7 | heads/defs 1 | corpus files 46 marked 3 | at 09.10 L110
+D | capacity | book 7 | heads/defs 1 | corpus files 137 marked 17 | at 09.15 L184
+D | circularity | book 7 | heads/defs 2 | corpus files 112 marked 3 | at 08.36 L61; 08.36 L69
+D | collection | book 7 | heads/defs 1 | corpus files 264 marked 3 | at 08.34 L32
+D | contribution | book 7 | heads/defs 1 | corpus files 400 marked 7 | at 09.17 L244
+D | equivalence | book 7 | heads/defs 1 | corpus files 536 marked 5 | at 08.22 L101
+D | gone | book 7 | heads/defs 1 | corpus files 38 marked 6 | at 08.44 L88
+D | idempotent | book 7 | heads/defs 2 | corpus files 80 marked 11 | at 08.22 L134; 08.23 L54
+D | meta | book 7 | heads/defs 2 | corpus files 50 marked 2 | at 08.58 L53; 08.58 L61
+D | null | book 7 | heads/defs 1 | corpus files 130 marked 54 | at 05.07 L26
+D | overloaded | book 7 | heads/defs 1 | corpus files 121 marked 16 | at 00.02 L58
+D | overwrite | book 7 | heads/defs 1 | corpus files 81 marked 3 | at 08.38 L89
+D | realisability | book 7 | heads/defs 1 | corpus files 0 marked 0 | at 09.14 L37
+D | recoverable | book 7 | heads/defs 1 | corpus files 104 marked 4 | at 09.08 L40
+D | regression | book 7 | heads/defs 1 | corpus files 102 marked 16 | at 08.07 L36
+D | sequitur | book 7 | heads/defs 1 | corpus files 0 marked 0 | at 08.36 L56
+D | unreachable | book 7 | heads/defs 1 | corpus files 51 marked 4 | at 08.15 L38
+D | adequate | book 8 | heads/defs 1 | corpus files 237 marked 16 | at 08.07 L70
+D | adjudication | book 8 | heads/defs 2 | corpus files 279 marked 27 | at 01.16 L3; 09.06 L196
+D | admissibility | book 8 | heads/defs 3 | corpus files 241 marked 11 | at 08.48 L1; 08.48 L68; 08.48 L69
+D | answerability | book 8 | heads/defs 1 | corpus files 21 marked 2 | at 08.12 L114
+D | composed | book 8 | heads/defs 2 | corpus files 89 marked 3 | at 09.11 L23; 09.11 L23
+D | compression | book 8 | heads/defs 1 | corpus files 123 marked 3 | at 08.42 L88
+D | contest | book 8 | heads/defs 2 | corpus files 63 marked 8 | at 08.39 L48; 08.39 L50
+D | contradictory | book 8 | heads/defs 1 | corpus files 441 marked 49 | at 03.10 L109
+D | incompleteness | book 8 | heads/defs 1 | corpus files 119 marked 2 | at 08.51 L26
+D | larger | book 8 | heads/defs 3 | corpus files 188 marked 2 | at 03.10 L47; 03.10 L71; 05.04 L139
+D | meaningful | book 8 | heads/defs 1 | corpus files 447 marked 2 | at 05.03 L32
+D | overstated | book 8 | heads/defs 2 | corpus files 43 marked 2 | at 00.08 L23; 10.05 L84
+D | philosophy | book 8 | heads/defs 2 | corpus files 204 marked 4 | at 08.38 L6; 08.54 L6
+D | retraction | book 8 | heads/defs 2 | corpus files 218 marked 11 | at 08.13 L58; 08.19 L181
+D | reversed | book 8 | heads/defs 1 | corpus files 36 marked 3 | at 08.46 L104
+D | saturation | book 8 | heads/defs 1 | corpus files 24 marked 2 | at 08.42 L1
+D | stopped | book 8 | heads/defs 2 | corpus files 113 marked 47 | at 08.48 L70; 08.54 L6
+D | unaffected | book 8 | heads/defs 1 | corpus files 82 marked 4 | at 10.03 L258
+D | validating | book 8 | heads/defs 2 | corpus files 57 marked 2 | at 08.01 L36; 08.58 L97
+D | formalization | book 9 | heads/defs 1 | corpus files 285 marked 4 | at 02.08 L163
+D | higher | book 9 | heads/defs 1 | corpus files 167 marked 4 | at 08.44 L30
+D | introduce | book 9 | heads/defs 2 | corpus files 605 marked 3 | at 08.43 L34; 08.50 L45
+D | monotonicity | book 9 | heads/defs 1 | corpus files 130 marked 3 | at 01.14 L232
+D | natural | book 9 | heads/defs 1 | corpus files 251 marked 2 | at 01.14 L111
+D | participant | book 9 | heads/defs 2 | corpus files 154 marked 6 | at 08.58 L75; 10.04 L10
+D | span | book 9 | heads/defs 2 | corpus files 74 marked 2 | at 08.61 L8; 09.06 L196
+D | trivial-solution | book 9 | heads/defs 1 | corpus files 0 marked 0 | at 08.12 L152
+D | tuple | book 9 | heads/defs 2 | corpus files 301 marked 4 | at 01.16 L63; 01.16 L63
+D | unassigned | book 9 | heads/defs 1 | corpus files 18 marked 2 | at 10.04 L153
+D | unattested | book 9 | heads/defs 3 | corpus files 0 marked 0 | at 06.05 L63; 08.12 L99; 09.08 L94
+D | unrelated | book 9 | heads/defs 2 | corpus files 127 marked 4 | at 01.10 L3; 01.10 L5
+D | unresolvable | book 9 | heads/defs 2 | corpus files 66 marked 37 | at 08.19 L83; 08.19 L83
+D | vacuously | book 9 | heads/defs 1 | corpus files 37 marked 7 | at 09.17 L124
+D | whole-or-nothing | book 9 | heads/defs 1 | corpus files 0 marked 0 | at 08.37 L72
+D | child | book 10 | heads/defs 2 | corpus files 21 marked 2 | at 01.13 L135; 08.35 L58
+D | computable | book 10 | heads/defs 1 | corpus files 329 marked 28 | at 02.05 L26
+D | doing | book 10 | heads/defs 1 | corpus files 210 marked 2 | at 05.02 L8
+D | interpret | book 10 | heads/defs 1 | corpus files 321 marked 51 | at 08.18 L122
+D | irreducible | book 10 | heads/defs 1 | corpus files 232 marked 6 | at 08.20 L69
+D | matching | book 10 | heads/defs 1 | corpus files 98 marked 6 | at 08.22 L111
+D | once-only | book 10 | heads/defs 2 | corpus files 0 marked 0 | at 09.16 L166; 09.16 L458
+D | post-condition | book 10 | heads/defs 1 | corpus files 17 marked 2 | at 08.60 L34
+D | qualify | book 10 | heads/defs 2 | corpus files 333 marked 567 | at 01.09 L55; 03.09 L163
+D | ratio | book 10 | heads/defs 4 | corpus files 105 marked 2 | at 08.02 L26; 08.06 L66; 08.06 L66; 08.06 L68
+D | rejection | book 10 | heads/defs 3 | corpus files 293 marked 19 | at 00.03 L57; 01.17 L60; 10.02 L21
+D | restriction | book 10 | heads/defs 3 | corpus files 109 marked 3 | at 01.07 L10; 03.10 L48; 09.01 L97
+D | believed | book 11 | heads/defs 2 | corpus files 92 marked 5 | at 08.41 L28; 09.08 L30
+D | demonstrated | book 11 | heads/defs 1 | corpus files 397 marked 3 | at 08.04 L22
+D | denied | book 11 | heads/defs 3 | corpus files 55 marked 2 | at 08.31 L1; 08.31 L85; 08.38 L34
+D | determined | book 11 | heads/defs 1 | corpus files 412 marked 17 | at 09.09 L60
+D | discover | book 11 | heads/defs 1 | corpus files 441 marked 3 | at 08.48 L99
+D | encoding | book 11 | heads/defs 1 | corpus files 120 marked 3 | at 08.53 L26
+D | equivalent | book 11 | heads/defs 1 | corpus files 550 marked 14 | at 06.03 L49
+D | expired | book 11 | heads/defs 2 | corpus files 134 marked 12 | at 01.14 L136; 02.11 L13
+D | explanation | book 11 | heads/defs 4 | corpus files 305 marked 5 | at 00.02 L54; 04.01 L57; 08.25 L6; 08.47 L6
+D | genuine | book 11 | heads/defs 3 | corpus files 600 marked 2 | at 01.05 L53; 08.22 L136; 08.42 L112
+D | horizon | book 11 | heads/defs 2 | corpus files 97 marked 3 | at 00.02 L61; 08.57 L46
+D | read-only | book 11 | heads/defs 1 | corpus files 145 marked 12 | at 08.19 L87
+D | save | book 11 | heads/defs 1 | corpus files 46 marked 5 | at 08.44 L84
+D | tactical | book 11 | heads/defs 4 | corpus files 60 marked 2 | at 01.16 L3; 01.17 L3; 03.06 L110; 06.05 L49
+D | around | book 12 | heads/defs 3 | corpus files 398 marked 2 | at 06.02 L32; 06.05 L92; 10.04 L1
+D | bring | book 12 | heads/defs 3 | corpus files 103 marked 6 | at 08.11 L8; 08.19 L197; 08.51 L26
+D | byte-identical | book 12 | heads/defs 1 | corpus files 128 marked 24 | at 08.22 L6
+D | caution | book 12 | heads/defs 1 | corpus files 161 marked 2 | at 03.10 L78
+D | clear | book 12 | heads/defs 2 | corpus files 269 marked 13 | at 01.01 L3; 09.18 L261
+D | combined | book 12 | heads/defs 2 | corpus files 197 marked 2 | at 08.06 L66; 09.12 L79
+D | constrained | book 12 | heads/defs 6 | corpus files 150 marked 2 | at 00.08 L26; 03.01 L88; 08.12 L93; 08.12 L113; 08.12 L113; 08.12 L175
+D | filter | book 12 | heads/defs 2 | corpus files 84 marked 3 | at 01.17 L128; 01.17 L128
+D | incomparable | book 12 | heads/defs 3 | corpus files 78 marked 19 | at 05.04 L112; 09.07 L143; 09.14 L137
+D | investigation | book 12 | heads/defs 3 | corpus files 409 marked 7 | at 08.31 L6; 08.33 L30; 08.33 L30
+D | likely | book 12 | heads/defs 1 | corpus files 235 marked 23 | at 08.06 L53
+D | mathematic | book 12 | heads/defs 3 | corpus files 454 marked 7 | at 08.32 L1; 08.32 L34; 08.51 L7
+D | overstate | book 12 | heads/defs 2 | corpus files 58 marked 3 | at 08.27 L59; 08.51 L76
+D | rationale | book 12 | heads/defs 1 | corpus files 173 marked 5 | at 08.16 L67
+D | ready | book 12 | heads/defs 1 | corpus files 223 marked 23 | at 06.03 L53
+D | rename | book 12 | heads/defs 1 | corpus files 147 marked 23 | at 08.61 L6
+D | smaller | book 12 | heads/defs 1 | corpus files 136 marked 2 | at 09.13 L248
+D | smallest | book 12 | heads/defs 2 | corpus files 332 marked 2 | at 02.08 L232; 09.13 L166
+D | structurally | book 12 | heads/defs 1 | corpus files 400 marked 6 | at 08.43 L51
+D | tags | book 12 | heads/defs 2 | corpus files 19 marked 2 | at 08.26 L37; 08.26 L37
+D | uncited | book 12 | heads/defs 1 | corpus files 57 marked 26 | at 08.20 L77
+D | upstream | book 12 | heads/defs 3 | corpus files 112 marked 2 | at 10.04 L12; 10.04 L23; 10.04 L78
+D | classify | book 13 | heads/defs 1 | corpus files 455 marked 2 | at 03.03 L25
+D | combination | book 13 | heads/defs 1 | corpus files 246 marked 3 | at 08.12 L114
+D | connect | book 13 | heads/defs 1 | corpus files 584 marked 5 | at 00.08 L23
+D | enable | book 13 | heads/defs 1 | corpus files 120 marked 5 | at 03.08 L97
+D | fingerprint | book 13 | heads/defs 2 | corpus files 41 marked 2 | at 08.53 L37; 08.53 L79
+D | formally | book 13 | heads/defs 1 | corpus files 716 marked 3 | at 01.08 L25
+D | knowing | book 13 | heads/defs 1 | corpus files 264 marked 4 | at 08.34 L52
+D | less | book 13 | heads/defs 2 | corpus files 183 marked 5 | at 01.17 L128; 08.20 L60
+D | mtime | book 13 | heads/defs 2 | corpus files 26 marked 2 | at 08.61 L1; 08.61 L49
+D | responsibilitie | book 13 | heads/defs 1 | corpus files 202 marked 3 | at 08.44 L60
+D | worse | book 13 | heads/defs 2 | corpus files 123 marked 4 | at 01.13 L79; 01.16 L179
+D | converge | book 14 | heads/defs 2 | corpus files 189 marked 4 | at 08.48 L6; 08.48 L25
+D | goal | book 14 | heads/defs 1 | corpus files 325 marked 14 | at 00.08 L19
+D | granularity | book 14 | heads/defs 6 | corpus files 71 marked 5 | at 01.15 L14; 08.19 L257; 08.39 L89; 09.01 L84; 09.12 L37; 09.12 L39
+D | grounding | book 14 | heads/defs 1 | corpus files 93 marked 4 | at 08.51 L1
+D | important | book 14 | heads/defs 1 | corpus files 1370 marked 3 | at 02.08 L75
+D | instrument | book 14 | heads/defs 1 | corpus files 267 marked 9 | at 10.02 L159
+D | invisible | book 14 | heads/defs 1 | corpus files 81 marked 2 | at 08.20 L197
+D | must-never | book 14 | heads/defs 1 | corpus files 0 marked 0 | at 05.04 L169
+D | parsing | book 14 | heads/defs 6 | corpus files 80 marked 5 | at 08.19 L78; 08.19 L78; 08.23 L10; 08.23 L108; 08.56 L1; 08.56 L32
+D | plausible | book 14 | heads/defs 2 | corpus files 238 marked 10 | at 08.32 L33; 08.32 L79
+D | publication | book 14 | heads/defs 1 | corpus files 55 marked 2 | at 08.24 L114
+D | security | book 14 | heads/defs 1 | corpus files 225 marked 5 | at 09.09 L27
+D | wait | book 14 | heads/defs 1 | corpus files 108 marked 8 | at 08.34 L1
+D | weakened | book 14 | heads/defs 3 | corpus files 96 marked 3 | at 08.43 L29; 08.43 L40; 09.16 L410
+D | claimant | book 15 | heads/defs 4 | corpus files 20 marked 6 | at 08.21 L167; 08.21 L167; 08.21 L168; 08.21 L169
+D | determination | book 15 | heads/defs 1 | corpus files 810 marked 255 | at 08.49 L98
+D | hand | book 15 | heads/defs 2 | corpus files 102 marked 2 | at 03.09 L135; 10.02 L195
+D | population | book 15 | heads/defs 1 | corpus files 131 marked 4 | at 09.08 L16
+D | seventh | book 15 | heads/defs 1 | corpus files 79 marked 6 | at 08.38 L74
+D | unregistered | book 15 | heads/defs 2 | corpus files 55 marked 8 | at 01.13 L103; 08.60 L71
+D | unsupported | book 15 | heads/defs 1 | corpus files 247 marked 21 | at 03.08 L34
+D | authenticity | book 16 | heads/defs 2 | corpus files 38 marked 2 | at 09.09 L68; 09.09 L125
+D | equality | book 16 | heads/defs 2 | corpus files 556 marked 35 | at 08.53 L79; 09.18 L227
+D | falsified | book 16 | heads/defs 2 | corpus files 162 marked 44 | at 06.03 L68; 08.14 L1
+D | generalization | book 16 | heads/defs 2 | corpus files 68 marked 3 | at 01.08 L77; 01.09 L47
+D | implicit | book 16 | heads/defs 3 | corpus files 195 marked 9 | at 08.11 L64; 09.05 L23; 09.17 L16
+D | memory | book 16 | heads/defs 1 | corpus files 277 marked 10 | at 06.06 L60
+D | port | book 16 | heads/defs 2 | corpus files 153 marked 3 | at 03.09 L39; 03.09 L69
+D | provided | book 16 | heads/defs 3 | corpus files 156 marked 3 | at 09.07 L110; 10.01 L37; 10.03 L305
+D | rank | book 16 | heads/defs 1 | corpus files 127 marked 7 | at 02.05 L13
+D | receive | book 16 | heads/defs 5 | corpus files 347 marked 2 | at 01.17 L93; 08.12 L177; 09.01 L93; 09.10 L110; 10.02 L15
+D | refined | book 16 | heads/defs 2 | corpus files 199 marked 12 | at 08.23 L39; 08.56 L61
+D | skill | book 16 | heads/defs 1 | corpus files 27 marked 3 | at 03.09 L94
+D | small | book 16 | heads/defs 3 | corpus files 335 marked 3 | at 00.04 L14; 00.07 L18; 01.02 L48
+D | unbounded | book 16 | heads/defs 3 | corpus files 135 marked 6 | at 03.10 L72; 03.10 L127; 05.04 L92
+D | weaken | book 16 | heads/defs 3 | corpus files 92 marked 2 | at 08.35 L44; 08.36 L115; 08.43 L112
+D | contradicted | book 17 | heads/defs 2 | corpus files 219 marked 34 | at 06.05 L106; 08.33 L47
+D | establishe | book 17 | heads/defs 3 | corpus files 680 marked 3 | at 08.10 L1; 08.18 L198; 09.04 L55
+D | hypothetical | book 17 | heads/defs 4 | corpus files 78 marked 4 | at 02.11 L34; 03.07 L19; 09.10 L62; 10.05 L195
+D | land | book 17 | heads/defs 3 | corpus files 397 marked 5 | at 02.06 L5; 05.06 L25; 08.20 L54
+D | proved | book 17 | heads/defs 1 | corpus files 110 marked 4 | at 02.07 L3
+D | reconcile | book 17 | heads/defs 1 | corpus files 182 marked 4 | at 08.26 L10
+D | saying | book 17 | heads/defs 3 | corpus files 347 marked 5 | at 08.37 L91; 08.42 L72; 09.16 L461
+D | sixth | book 17 | heads/defs 3 | corpus files 98 marked 10 | at 08.46 L59; 08.46 L68; 08.52 L48
+D | suspension | book 17 | heads/defs 3 | corpus files 27 marked 3 | at 01.14 L240; 01.14 L508; 09.13 L52
+D | addressed | book 18 | heads/defs 1 | corpus files 156 marked 35 | at 09.16 L443
+D | combine | book 18 | heads/defs 1 | corpus files 209 marked 3 | at 09.18 L294
+D | good | book 18 | heads/defs 1 | corpus files 459 marked 5 | at 08.05 L52
+D | just | book 18 | heads/defs 2 | corpus files 408 marked 5 | at 00.03 L65; 08.20 L54
+D | precede | book 18 | heads/defs 2 | corpus files 159 marked 3 | at 01.14 L408; 03.06 L79
+D | relevance | book 18 | heads/defs 2 | corpus files 351 marked 16 | at 01.17 L128; 01.17 L128
+D | reproduce | book 18 | heads/defs 2 | corpus files 182 marked 4 | at 08.20 L77; 08.33 L66
+D | restatement | book 18 | heads/defs 4 | corpus files 83 marked 7 | at 08.32 L89; 08.44 L90; 08.56 L60; 09.17 L87
+D | restored | book 18 | heads/defs 2 | corpus files 59 marked 4 | at 08.07 L39; 09.13 L47
+D | reviewing | book 18 | heads/defs 3 | corpus files 60 marked 2 | at 08.50 L6; 08.50 L8; 08.50 L45
+D | self-declaration | book 18 | heads/defs 2 | corpus files 17 marked 2 | at 08.11 L32; 08.49 L66
+D | strengthen | book 18 | heads/defs 2 | corpus files 282 marked 31 | at 08.43 L1; 08.43 L38
+D | validate | book 18 | heads/defs 1 | corpus files 451 marked 86 | at 01.16 L175
+D | annulling | book 19 | heads/defs 1 | corpus files 0 marked 0 | at 09.18 L246
+D | better | book 19 | heads/defs 2 | corpus files 739 marked 6 | at 08.05 L28; 08.51 L95
+D | constitutive | book 19 | heads/defs 1 | corpus files 64 marked 3 | at 09.15 L260
+D | hard | book 19 | heads/defs 2 | corpus files 186 marked 4 | at 08.06 L53; 08.43 L112
+D | implement | book 19 | heads/defs 3 | corpus files 513 marked 16 | at 08.18 L58; 09.00 L34; 09.13 L76
+D | pairwise | book 19 | heads/defs 1 | corpus files 99 marked 2 | at 02.03 L64
+D | pinning | book 19 | heads/defs 1 | corpus files 0 marked 0 | at 01.16 L121
+D | querie | book 19 | heads/defs 2 | corpus files 117 marked 2 | at 09.08 L30; 09.10 L22
+D | signal | book 19 | heads/defs 3 | corpus files 158 marked 5 | at 08.03 L43; 08.51 L61; 09.03 L40
+D | timestamp | book 19 | heads/defs 1 | corpus files 310 marked 7 | at 09.09 L125
+D | verifie | book 19 | heads/defs 4 | corpus files 116 marked 4 | at 08.17 L49; 09.15 L49; 09.15 L50; 09.15 L51
+D | withdraw | book 19 | heads/defs 1 | corpus files 125 marked 27 | at 09.18 L288
+D | consulted | book 20 | heads/defs 1 | corpus files 42 marked 2 | at 08.56 L7
+D | explain | book 20 | heads/defs 4 | corpus files 544 marked 13 | at 00.01 L3; 06.03 L25; 08.02 L23; 08.49 L25
+D | logical | book 20 | heads/defs 2 | corpus files 435 marked 8 | at 01.16 L140; 09.14 L37
+D | separated | book 20 | heads/defs 2 | corpus files 328 marked 4 | at 01.02 L31; 06.02 L18
+D | similarity | book 20 | heads/defs 2 | corpus files 177 marked 9 | at 08.44 L88; 08.44 L88
+D | available | book 21 | heads/defs 2 | corpus files 660 marked 6 | at 08.47 L81; 09.09 L46
+D | continue | book 21 | heads/defs 7 | corpus files 386 marked 6 | at 08.32 L6; 08.38 L126; 08.41 L37; 08.49 L6; 08.51 L6; 08.52 L6; 08.57 L11
+D | deleted | book 21 | heads/defs 1 | corpus files 151 marked 9 | at 08.37 L80
+D | derivable | book 21 | heads/defs 2 | corpus files 283 marked 17 | at 09.01 L85; 09.01 L85
+D | framing | book 21 | heads/defs 4 | corpus files 225 marked 2 | at 08.22 L81; 08.22 L83; 08.45 L46; 08.45 L98
+D | issued | book 21 | heads/defs 5 | corpus files 66 marked 2 | at 01.14 L138; 02.02 L36; 02.09 L13; 09.10 L136; 09.13 L211
+D | linear | book 21 | heads/defs 3 | corpus files 110 marked 2 | at 09.16 L104; 09.16 L105; 09.16 L106
+D | query | book 21 | heads/defs 6 | corpus files 285 marked 20 | at 06.05 L64; 06.05 L72; 06.05 L72; 08.24 L94; 09.07 L139; 09.10 L54
+D | reporting | book 21 | heads/defs 1 | corpus files 122 marked 8 | at 02.09 L65
+D | reproducible | book 21 | heads/defs 3 | corpus files 167 marked 31 | at 06.02 L18; 06.04 L17; 06.05 L62
+D | useful | book 21 | heads/defs 4 | corpus files 1003 marked 9 | at 02.01 L3; 02.06 L15; 05.02 L35; 09.14 L191
+D | addition | book 22 | heads/defs 1 | corpus files 238 marked 2 | at 01.10 L33
+D | admissible | book 22 | heads/defs 1 | corpus files 412 marked 59 | at 01.14 L435
+D | classifie | book 22 | heads/defs 5 | corpus files 105 marked 2 | at 05.02 L35; 06.03 L40; 08.45 L43; 08.48 L6; 09.04 L55
+D | conceptual | book 22 | heads/defs 2 | corpus files 836 marked 9 | at 01.14 L359; 08.08 L82
+D | node | book 22 | heads/defs 4 | corpus files 249 marked 2 | at 03.08 L21; 03.08 L21; 03.08 L21; 06.06 L53
+D | ordering | book 22 | heads/defs 3 | corpus files 426 marked 4 | at 01.16 L94; 08.30 L77; 08.57 L52
+D | slot | book 22 | heads/defs 3 | corpus files 137 marked 3 | at 00.07 L38; 08.58 L75; 08.58 L75
+D | topic | book 22 | heads/defs 3 | corpus files 69 marked 4 | at 03.06 L79; 08.23 L10; 08.47 L6
+D | weight | book 22 | heads/defs 2 | corpus files 240 marked 8 | at 05.04 L165; 08.04 L40
+D | delta | book 23 | heads/defs 2 | corpus files 475 marked 3 | at 08.18 L206; 08.21 L89
+D | evolution | book 23 | heads/defs 2 | corpus files 486 marked 80 | at 00.04 L20; 08.02 L14
+D | fifth | book 23 | heads/defs 4 | corpus files 147 marked 4 | at 02.09 L55; 08.45 L1; 08.45 L28; 08.45 L64
+D | lose | book 23 | heads/defs 2 | corpus files 258 marked 2 | at 00.01 L3; 05.04 L112
+D | methodology | book 23 | heads/defs 1 | corpus files 243 marked 8 | at 02.05 L23
+D | pipeline | book 23 | heads/defs 8 | corpus files 410 marked 2 | at 08.34 L61; 08.36 L122; 08.38 L175; 08.40 L30; 08.40 L78; 08.40 L79; 08.52 L77; 08.53 L82
+D | procedure | book 23 | heads/defs 5 | corpus files 352 marked 6 | at 01.14 L251; 01.14 L502; 10.02 L170; 10.03 L8; 10.03 L57
+D | select | book 23 | heads/defs 3 | corpus files 423 marked 76 | at 08.13 L8; 09.10 L33; 09.15 L222
+D | warn | book 23 | heads/defs 2 | corpus files 217 marked 25 | at 08.36 L54; 09.07 L68
+D | honest | book 24 | heads/defs 4 | corpus files 247 marked 2 | at 08.19 L112; 08.34 L108; 08.44 L104; 09.15 L181
+D | marker | book 24 | heads/defs 2 | corpus files 86 marked 2 | at 08.19 L119; 08.19 L181
+D | mixed | book 24 | heads/defs 3 | corpus files 90 marked 5 | at 08.24 L64; 08.26 L81; 08.45 L7
+D | reconciled | book 24 | heads/defs 3 | corpus files 184 marked 24 | at 08.41 L90; 08.52 L80; 09.16 L456
+D | verify | book 24 | heads/defs 1 | corpus files 430 marked 13 | at 05.06 L60
+D | heading | book 25 | heads/defs 2 | corpus files 76 marked 4 | at 08.32 L136; 08.56 L56
+D | intact | book 25 | heads/defs 1 | corpus files 127 marked 11 | at 09.17 L244
+D | measure | book 25 | heads/defs 5 | corpus files 509 marked 20 | at 04.01 L65; 04.03 L31; 08.01 L38; 08.35 L136; 08.44 L32
+D | parser | book 25 | heads/defs 5 | corpus files 81 marked 2 | at 08.56 L38; 08.56 L85; 08.57 L94; 08.58 L30; 08.58 L95
+D | renamed | book 25 | heads/defs 1 | corpus files 103 marked 3 | at 08.57 L60
+D | site | book 25 | heads/defs 5 | corpus files 61 marked 4 | at 08.59 L45; 08.59 L46; 08.59 L50; 08.61 L65; 08.61 L68
+D | uncertainty | book 25 | heads/defs 3 | corpus files 915 marked 48 | at 08.45 L83; 08.57 L46; 08.58 L31
+D | warning | book 25 | heads/defs 6 | corpus files 308 marked 5 | at 01.14 L422; 08.40 L55; 08.41 L6; 08.41 L91; 10.02 L180; 10.04 L136
+D | classified | book 26 | heads/defs 6 | corpus files 353 marked 3 | at 05.02 L35; 05.03 L32; 06.05 L40; 08.02 L31; 08.20 L112; 09.11 L29
+D | interpreter | book 26 | heads/defs 3 | corpus files 57 marked 3 | at 08.18 L213; 08.19 L92; 08.60 L40
+D | template | book 26 | heads/defs 5 | corpus files 80 marked 4 | at 08.39 L8; 08.39 L94; 08.46 L7; 08.50 L72; 08.55 L41
+D | title | book 26 | heads/defs 1 | corpus files 148 marked 5 | at 08.44 L38
+D | annulled | book 27 | heads/defs 7 | corpus files 0 marked 0 | at 08.35 L46; 08.35 L47; 08.43 L85; 09.13 L91; 09.13 L204; 09.16 L318; 10.02 L195
+D | channel | book 27 | heads/defs 5 | corpus files 105 marked 3 | at 08.06 L101; 08.10 L86; 08.11 L75; 08.11 L75; 08.12 L186
+D | reachable | book 27 | heads/defs 3 | corpus files 134 marked 2 | at 08.10 L91; 09.10 L204; 09.11 L22
+D | incomplete | book 28 | heads/defs 2 | corpus files 512 marked 26 | at 08.12 L134; 09.08 L92
+D | observable | book 28 | heads/defs 1 | corpus files 361 marked 6 | at 09.10 L14
+D | registry | book 28 | heads/defs 1 | corpus files 407 marked 11 | at 08.38 L57
+D | accepting | book 29 | heads/defs 2 | corpus files 87 marked 4 | at 08.07 L65; 08.36 L131
+D | assign | book 29 | heads/defs 3 | corpus files 212 marked 3 | at 08.56 L35; 08.58 L57; 09.10 L93
+D | circular | book 29 | heads/defs 3 | corpus files 178 marked 8 | at 08.31 L149; 08.32 L148; 08.46 L6
+D | mechanically | book 29 | heads/defs 1 | corpus files 160 marked 5 | at 08.12 L106
+D | edit | book 30 | heads/defs 4 | corpus files 107 marked 5 | at 00.04 L16; 02.10 L7; 02.11 L10; 08.04 L45
+D | empirical | book 30 | heads/defs 4 | corpus files 564 marked 11 | at 01.06 L25; 02.10 L11; 09.09 L27; 09.18 L227
+D | ever | book 30 | heads/defs 4 | corpus files 251 marked 2 | at 01.08 L63; 01.08 L81; 01.11 L77; 08.43 L29
+D | intended | book 30 | heads/defs 1 | corpus files 328 marked 10 | at 08.22 L96
+D | primary | book 30 | heads/defs 4 | corpus files 429 marked 8 | at 00.02 L52; 01.02 L60; 01.02 L69; 05.02 L35
+D | proven | book 30 | heads/defs 3 | corpus files 464 marked 69 | at 00.07 L24; 02.07 L3; 08.41 L41
+D | selected | book 30 | heads/defs 1 | corpus files 407 marked 4 | at 08.04 L29
+D | derive | book 31 | heads/defs 4 | corpus files 606 marked 31 | at 01.14 L161; 08.34 L82; 09.12 L64; 10.02 L190
+D | duty | book 31 | heads/defs 7 | corpus files 108 marked 14 | at 05.07 L24; 05.07 L28; 05.07 L30; 05.07 L102; 08.43 L54; 09.18 L176; 10.05 L279
+D | message | book 31 | heads/defs 3 | corpus files 106 marked 3 | at 05.06 L49; 05.07 L56; 09.17 L158
+D | nobody | book 31 | heads/defs 2 | corpus files 100 marked 13 | at 01.14 L443; 02.00 L23
+D | replaced | book 31 | heads/defs 3 | corpus files 176 marked 9 | at 01.14 L128; 08.55 L7; 09.17 L282
+D | snapshot | book 31 | heads/defs 2 | corpus files 138 marked 5 | at 08.05 L47; 08.17 L36
+D | approve | book 32 | heads/defs 2 | corpus files 202 marked 17 | at 05.06 L70; 08.23 L93
+D | exercised | book 32 | heads/defs 2 | corpus files 70 marked 6 | at 01.08 L15; 08.15 L32
+D | immutable | book 32 | heads/defs 2 | corpus files 234 marked 5 | at 01.13 L87; 04.03 L19
+D | legitimate | book 32 | heads/defs 4 | corpus files 498 marked 2 | at 00.06 L8; 00.07 L23; 08.35 L127; 09.08 L30
+D | necessity | book 32 | heads/defs 3 | corpus files 207 marked 5 | at 02.10 L6; 08.44 L29; 10.01 L106
+D | recommend | book 32 | heads/defs 3 | corpus files 453 marked 6 | at 02.09 L65; 08.31 L13; 09.13 L212
+D | unauthorized | book 32 | heads/defs 4 | corpus files 141 marked 3 | at 01.14 L133; 01.14 L135; 01.17 L89; 09.13 L47
+D | unique | book 32 | heads/defs 4 | corpus files 290 marked 10 | at 01.10 L26; 09.01 L86; 09.10 L93; 09.16 L168
+D | weaker | book 32 | heads/defs 7 | corpus files 199 marked 4 | at 00.03 L57; 02.00 L3; 05.05 L41; 08.16 L67; 08.31 L49; 09.13 L212; 09.14 L37
+D | annotation | book 33 | heads/defs 5 | corpus files 87 marked 2 | at 02.05 L13; 05.06 L48; 08.02 L11; 08.12 L164; 08.30 L62
+D | confirmed | book 33 | heads/defs 2 | corpus files 512 marked 117 | at 08.22 L43; 09.13 L212
+D | correctly | book 33 | heads/defs 1 | corpus files 681 marked 3 | at 09.14 L207
+D | created | book 33 | heads/defs 2 | corpus files 331 marked 51 | at 06.05 L35; 08.29 L38
+D | revoked | book 33 | heads/defs 6 | corpus files 44 marked 4 | at 01.14 L239; 01.14 L246; 01.14 L248; 01.14 L248; 01.14 L252; 08.35 L46
+D | safety | book 33 | heads/defs 3 | corpus files 207 marked 5 | at 02.03 L77; 09.01 L97; 09.11 L18
+D | universal | book 33 | heads/defs 3 | corpus files 578 marked 10 | at 02.08 L163; 08.14 L67; 08.48 L25
+D | deterministic | book 34 | heads/defs 3 | corpus files 606 marked 18 | at 08.12 L112; 08.22 L49; 09.08 L50
+D | recommended | book 34 | heads/defs 2 | corpus files 291 marked 2 | at 03.05 L54; 08.44 L7
+D | convergence | book 35 | heads/defs 4 | corpus files 343 marked 14 | at 08.08 L99; 08.44 L1; 08.44 L36; 08.52 L96
+D | database | book 35 | heads/defs 2 | corpus files 473 marked 3 | at 08.39 L37; 08.44 L88
+D | refute | book 35 | heads/defs 3 | corpus files 213 marked 13 | at 00.05 L21; 09.08 L110; 09.18 L129
+D | schema | book 35 | heads/defs 3 | corpus files 372 marked 5 | at 01.02 L3; 01.02 L31; 01.02 L83
+D | directly | book 36 | heads/defs 2 | corpus files 1023 marked 2 | at 01.14 L429; 06.02 L19
+D | filename | book 36 | heads/defs 1 | corpus files 115 marked 2 | at 08.27 L78
+D | intersection | book 36 | heads/defs 8 | corpus files 94 marked 4 | at 02.08 L179; 04.01 L69; 08.06 L53; 09.14 L34; 09.14 L34; 09.14 L34; 09.14 L34; 09.14 L115
+D | nowhere | book 36 | heads/defs 2 | corpus files 156 marked 9 | at 08.22 L63; 08.51 L101
+D | synthesi | book 36 | heads/defs 6 | corpus files 418 marked 2 | at 05.07 L64; 08.25 L12; 08.34 L37; 08.41 L1; 08.41 L63; 08.56 L56
+D | warrant | book 36 | heads/defs 9 | corpus files 148 marked 6 | at 08.37 L1; 08.37 L37; 08.37 L37; 08.37 L38; 08.37 L40; 08.37 L40; 08.56 L1; 08.56 L60; 08.56 L99
+D | compute | book 37 | heads/defs 10 | corpus files 251 marked 2 | at 01.01 L22; 08.31 L147; 08.38 L115; 09.07 L98; 09.07 L110; 09.09 L126; 09.10 L31; 09.12 L11; 10.05 L34; 10.05 L170
+D | disagree | book 37 | heads/defs 9 | corpus files 224 marked 5 | at 01.01 L34; 01.08 L63; 01.11 L43; 04.01 L73; 06.07 L30; 08.40 L37; 09.06 L146; 09.09 L27; 09.16 L394
+D | stable | book 37 | heads/defs 5 | corpus files 413 marked 12 | at 08.07 L1; 08.07 L46; 08.40 L37; 08.48 L34; 09.13 L233
+D | strongest | book 37 | heads/defs 8 | corpus files 959 marked 3 | at 08.33 L106; 08.34 L141; 08.38 L66; 09.14 L176; 09.14 L180; 09.15 L178; 09.16 L390; 10.04 L153
+D | weak | book 37 | heads/defs 6 | corpus files 379 marked 42 | at 00.08 L24; 01.13 L80; 05.02 L35; 09.03 L40; 09.05 L28; 09.10 L42
+D | collapse | book 38 | heads/defs 1 | corpus files 633 marked 7 | at 08.33 L114
+D | onto | book 38 | heads/defs 5 | corpus files 241 marked 2 | at 03.08 L50; 08.33 L136; 08.46 L61; 08.51 L28; 08.51 L87
+D | understanding | book 38 | heads/defs 1 | corpus files 339 marked 18 | at 08.48 L25
+D | commissioned | book 39 | heads/defs 4 | corpus files 217 marked 2 | at 05.07 L26; 08.20 L205; 08.42 L7; 08.55 L62
+D | gain | book 39 | heads/defs 3 | corpus files 180 marked 3 | at 01.14 L332; 01.14 L397; 10.03 L270
+D | presuppose | book 39 | heads/defs 4 | corpus files 136 marked 4 | at 01.14 L406; 01.14 L461; 05.01 L37; 09.17 L88
+D | satisfied | book 40 | heads/defs 4 | corpus files 339 marked 26 | at 02.03 L3; 05.04 L31; 05.04 L32; 05.04 L42
+D | claimed | book 41 | heads/defs 10 | corpus files 371 marked 2 | at 01.05 L25; 08.02 L50; 08.02 L50; 08.04 L17; 08.12 L111; 08.18 L92; 08.20 L60; 09.09 L68; 09.17 L88; 10.02 L147
+D | erratum | book 41 | heads/defs 5 | corpus files 27 marked 4 | at 08.05 L65; 08.11 L32; 08.29 L60; 08.41 L7; 08.41 L81
+D | everything | book 41 | heads/defs 6 | corpus files 779 marked 2 | at 01.05 L53; 08.14 L67; 08.43 L100; 08.49 L26; 08.51 L26; 09.05 L40
+D | identical | book 42 | heads/defs 3 | corpus files 609 marked 31 | at 08.22 L43; 08.23 L9; 08.54 L6
+D | matche | book 42 | heads/defs 4 | corpus files 195 marked 4 | at 00.07 L23; 08.58 L38; 09.09 L92; 09.13 L98
+D | processe | book 42 | heads/defs 9 | corpus files 190 marked 2 | at 03.09 L85; 03.09 L86; 05.05 L64; 08.22 L135; 08.27 L72; 08.60 L1; 08.60 L50; 08.60 L100; 08.60 L100
+D | violate | book 42 | heads/defs 2 | corpus files 245 marked 2 | at 08.18 L234; 09.11 L19
+D | completion | book 43 | heads/defs 3 | corpus files 190 marked 2 | at 08.31 L13; 08.43 L98; 09.13 L233
+D | critical | book 43 | heads/defs 1 | corpus files 848 marked 57 | at 10.02 L97
+D | return | book 43 | heads/defs 6 | corpus files 536 marked 2 | at 08.40 L55; 09.07 L44; 09.10 L127; 09.10 L136; 09.18 L222; 09.18 L261
+D | attack | book 44 | heads/defs 1 | corpus files 260 marked 2 | at 01.16 L145
+D | axiom | book 44 | heads/defs 3 | corpus files 234 marked 9 | at 01.14 L449; 02.08 L31; 09.09 L125
+D | reconstruction | book 44 | heads/defs 4 | corpus files 568 marked 4 | at 08.05 L1; 08.27 L11; 08.41 L7; 08.41 L30
+D | wisdom | book 44 | heads/defs 3 | corpus files 118 marked 27 | at 08.49 L38; 08.49 L92; 08.50 L26
+D | consume | book 45 | heads/defs 4 | corpus files 281 marked 12 | at 08.30 L58; 08.46 L7; 09.01 L101; 09.13 L34
+D | narrow | book 45 | heads/defs 7 | corpus files 186 marked 8 | at 01.07 L1; 03.10 L120; 08.36 L58; 08.55 L67; 09.09 L27; 09.09 L51; 10.01 L44
+D | opposite | book 45 | heads/defs 6 | corpus files 204 marked 2 | at 02.08 L17; 02.08 L37; 03.08 L58; 06.02 L18; 08.19 L165; 08.37 L84
+D | answered | book 46 | heads/defs 5 | corpus files 293 marked 2 | at 06.05 L64; 09.13 L69; 09.13 L212; 09.16 L354; 10.05 L170
+D | passed | book 46 | heads/defs 7 | corpus files 165 marked 10 | at 08.20 L193; 08.57 L88; 08.59 L51; 08.61 L1; 08.61 L65; 09.13 L53; 09.16 L318
+D | standard | book 46 | heads/defs 4 | corpus files 424 marked 16 | at 02.04 L50; 03.06 L110; 08.24 L8; 09.14 L247
+D | discovery | book 47 | heads/defs 3 | corpus files 725 marked 5 | at 03.06 L27; 08.20 L230; 10.02 L159
+D | knower | book 47 | heads/defs 5 | corpus files 413 marked 55 | at 08.49 L1; 08.49 L44; 08.49 L46; 08.51 L61; 08.51 L64
+D | original | book 47 | heads/defs 5 | corpus files 560 marked 2 | at 08.07 L46; 08.12 L8; 08.57 L55; 08.60 L6; 09.13 L233
+D | problem | book 47 | heads/defs 8 | corpus files 1202 marked 8 | at 00.01 L1; 00.01 L20; 02.10 L11; 05.04 L77; 08.18 L160; 08.21 L59; 08.23 L59; 08.51 L89
+D | reliability | book 47 | heads/defs 3 | corpus files 230 marked 19 | at 08.38 L153; 08.46 L110; 09.09 L27
+D | dropped | book 48 | heads/defs 8 | corpus files 172 marked 9 | at 05.06 L61; 08.21 L75; 08.36 L1; 08.36 L99; 08.39 L108; 08.44 L90; 08.45 L83; 09.16 L352
+D | enumeration | book 48 | heads/defs 7 | corpus files 142 marked 2 | at 01.09 L62; 08.20 L187; 08.46 L47; 08.59 L56; 08.59 L59; 08.60 L43; 09.01 L114
+D | local | book 48 | heads/defs 11 | corpus files 287 marked 3 | at 00.05 L42; 03.10 L47; 03.10 L71; 06.05 L104; 08.54 L1; 08.54 L65; 08.54 L65; 08.54 L98; 09.14 L191; 09.14 L192; 09.14 L192
+D | prove | book 49 | heads/defs 8 | corpus files 591 marked 5 | at 02.01 L21; 02.07 L3; 08.18 L87; 08.21 L1; 08.21 L164; 08.21 L168; 08.28 L31; 08.30 L26
+D | expression | book 50 | heads/defs 3 | corpus files 273 marked 10 | at 08.32 L1; 08.34 L62; 08.46 L104
+D | frozen | book 50 | heads/defs 2 | corpus files 488 marked 69 | at 08.19 L224; 10.05 L26
+D | data | book 52 | heads/defs 5 | corpus files 531 marked 8 | at 03.09 L49; 03.09 L119; 04.02 L27; 08.16 L45; 08.20 L73
+D | drift | book 52 | heads/defs 11 | corpus files 236 marked 10 | at 01.16 L112; 01.17 L133; 08.08 L51; 08.24 L93; 08.35 L95; 08.43 L93; 08.48 L94; 08.49 L1; 08.49 L44; 08.52 L48; 08.61 L66
+D | asked | book 53 | heads/defs 8 | corpus files 339 marked 4 | at 03.10 L46; 08.11 L64; 08.37 L72; 08.47 L96; 08.61 L27; 09.06 L113; 09.10 L22; 09.18 L59
+D | material | book 53 | heads/defs 11 | corpus files 709 marked 6 | at 08.09 L37; 08.33 L123; 08.45 L26; 08.55 L93; 08.61 L1; 08.61 L26; 08.61 L40; 08.61 L45; 08.61 L86; 08.61 L98; 09.04 L18
+D | self-declared | book 53 | heads/defs 4 | corpus files 125 marked 3 | at 08.12 L110; 08.14 L64; 08.21 L170; 08.57 L96
+D | gaps | book 54 | heads/defs 13 | corpus files 474 marked 70 | at 02.08 L176; 04.02 L27; 05.02 L41; 05.04 L99; 05.04 L138; 05.04 L174; 05.07 L45; 08.02 L50; 08.02 L50; 08.02 L50; 08.30 L26; 08.60 L41; 10.02 L210
+D | machine | book 54 | heads/defs 7 | corpus files 316 marked 2 | at 01.02 L92; 01.16 L63; 02.10 L6; 03.07 L59; 03.09 L26; 03.09 L139; 03.09 L165
+D | delegation | book 55 | heads/defs 2 | corpus files 74 marked 7 | at 01.13 L83; 09.07 L68
+D | falsifier | book 55 | heads/defs 11 | corpus files 32 marked 3 | at 08.21 L57; 08.21 L200; 09.12 L89; 10.03 L6; 10.03 L195; 10.03 L236; 10.04 L90; 10.04 L92; 10.04 L96; 10.04 L98; 10.04 L100
+D | generated | book 55 | heads/defs 3 | corpus files 411 marked 9 | at 06.03 L66; 06.03 L67; 08.51 L72
+D | protect | book 55 | heads/defs 5 | corpus files 336 marked 3 | at 01.14 L482; 03.06 L79; 08.09 L36; 08.20 L103; 08.43 L112
+D | route | book 55 | heads/defs 8 | corpus files 254 marked 4 | at 01.14 L162; 01.14 L437; 02.01 L21; 05.02 L39; 08.12 L113; 08.20 L221; 08.41 L81; 08.61 L6
+D | asserted | book 56 | heads/defs 10 | corpus files 369 marked 15 | at 08.07 L31; 08.30 L1; 08.30 L32; 08.31 L1; 08.31 L85; 08.52 L1; 08.52 L61; 09.04 L16; 09.04 L25; 09.16 L459
+D | contradict | book 57 | heads/defs 8 | corpus files 477 marked 80 | at 00.02 L57; 00.03 L46; 01.14 L108; 08.19 L256; 08.36 L1; 08.36 L30; 08.36 L53; 08.44 L52
+D | impossible | book 57 | heads/defs 5 | corpus files 250 marked 3 | at 08.40 L89; 08.40 L93; 08.43 L51; 08.43 L94; 10.05 L278
+D | violation | book 57 | heads/defs 12 | corpus files 264 marked 8 | at 02.10 L22; 08.08 L82; 08.08 L83; 08.18 L52; 08.20 L42; 08.33 L98; 08.34 L85; 09.10 L57; 09.14 L42; 09.16 L277; 10.03 L61; 10.05 L196
+D | declare | book 58 | heads/defs 5 | corpus files 456 marked 7 | at 02.07 L3; 02.10 L6; 06.07 L25; 08.28 L11; 08.34 L32
+D | occurred | book 59 | heads/defs 7 | corpus files 194 marked 4 | at 01.06 L19; 08.50 L73; 08.51 L42; 09.08 L41; 09.10 L38; 09.10 L111; 09.13 L290
+D | stronger | book 59 | heads/defs 8 | corpus files 958 marked 8 | at 00.05 L20; 03.09 L137; 08.17 L67; 08.21 L102; 08.31 L48; 08.34 L27; 08.51 L89; 09.15 L176
+D | resolve | book 60 | heads/defs 4 | corpus files 677 marked 67 | at 01.08 L15; 02.07 L3; 03.01 L24; 09.18 L200
+D | nine | book 62 | heads/defs 5 | corpus files 248 marked 13 | at 00.03 L52; 08.02 L11; 08.02 L50; 08.39 L96; 08.46 L90
+D | evaluate | book 63 | heads/defs 7 | corpus files 517 marked 13 | at 08.32 L1; 08.33 L56; 08.44 L79; 08.56 L55; 09.13 L39; 09.13 L48; 09.18 L187
+D | specification | book 64 | heads/defs 10 | corpus files 441 marked 3 | at 01.01 L45; 03.09 L139; 08.20 L103; 08.22 L101; 08.22 L111; 08.22 L111; 08.22 L111; 09.10 L22; 09.10 L207; 09.13 L166
+D | challenge | book 65 | heads/defs 10 | corpus files 453 marked 120 | at 00.07 L41; 08.37 L83; 08.38 L70; 09.06 L107; 09.06 L144; 09.06 L180; 09.07 L70; 09.07 L96; 09.07 L118; 09.08 L106
+D | uniqueness | book 65 | heads/defs 8 | corpus files 142 marked 2 | at 09.01 L97; 09.04 L1; 09.06 L123; 09.06 L201; 09.07 L80; 09.07 L132; 09.13 L170; 09.16 L202
+D | action | book 66 | heads/defs 5 | corpus files 1157 marked 87 | at 03.09 L44; 05.04 L41; 08.35 L60; 08.36 L50; 08.40 L105
+D | body | book 66 | heads/defs 3 | corpus files 291 marked 10 | at 08.28 L8; 08.37 L88; 08.48 L26
+D | apply | book 67 | heads/defs 12 | corpus files 376 marked 12 | at 02.03 L3; 02.06 L5; 02.08 L139; 03.09 L26; 03.09 L165; 08.21 L170; 08.55 L62; 08.56 L6; 09.10 L33; 09.10 L83; 09.11 L103; 10.03 L57
+D | fourth | book 68 | heads/defs 11 | corpus files 296 marked 11 | at 00.05 L57; 00.07 L22; 01.17 L40; 02.04 L30; 03.05 L20; 06.07 L38; 08.08 L46; 08.27 L6; 08.32 L60; 08.54 L25; 09.17 L262
+D | beyond | book 69 | heads/defs 9 | corpus files 350 marked 3 | at 05.04 L111; 08.54 L85; 08.57 L1; 08.57 L63; 08.58 L59; 09.09 L58; 09.13 L70; 10.05 L198; 10.05 L255
+D | define | book 69 | heads/defs 6 | corpus files 1254 marked 13 | at 01.17 L35; 08.42 L89; 08.42 L92; 09.08 L99; 09.10 L31; 09.16 L210
+D | know | book 69 | heads/defs 4 | corpus files 874 marked 52 | at 01.17 L1; 01.17 L128; 08.22 L127; 08.49 L59
+D | eight | book 71 | heads/defs 8 | corpus files 359 marked 15 | at 00.02 L55; 00.02 L55; 00.03 L46; 08.31 L36; 08.46 L90; 08.48 L94; 08.58 L75; 10.03 L224
+D | together | book 71 | heads/defs 14 | corpus files 374 marked 3 | at 00.08 L23; 01.06 L27; 01.14 L379; 08.06 L53; 08.33 L82; 08.34 L63; 08.34 L108; 08.36 L11; 08.41 L116; 09.01 L101; 09.11 L104; 09.12 L11; 09.14 L120; 10.05 L275
+D | exclude | book 73 | heads/defs 7 | corpus files 155 marked 5 | at 08.11 L75; 08.44 L1; 08.44 L46; 08.51 L42; 08.54 L65; 08.55 L62; 08.56 L6
+D | possible | book 74 | heads/defs 10 | corpus files 1041 marked 10 | at 01.17 L97; 02.03 L3; 02.04 L52; 02.07 L3; 08.20 L99; 08.20 L263; 08.60 L55; 09.06 L123; 09.07 L85; 09.10 L141
+D | adviser | book 75 | heads/defs 21 | corpus files 0 marked 0 | at 08.22 L8; 08.22 L9; 08.22 L10; 08.22 L113; 08.23 L6; 08.23 L7; 08.23 L8; 08.23 L9; 08.23 L10; 08.23 L81; 08.24 L9; 08.25 L6; 08.25 L7; 08.25 L8; 08.30 L9; 08.41 L1; 08.41 L35; 08.41 L41; 08.41 L112; 08.44 L1; 08.44 L36
+D | merged | book 75 | heads/defs 10 | corpus files 156 marked 2 | at 06.02 L36; 08.34 L41; 08.37 L90; 08.41 L116; 09.13 L278; 09.16 L88; 09.16 L104; 09.18 L217; 10.03 L258; 10.03 L258
+D | edge | book 76 | heads/defs 9 | corpus files 392 marked 8 | at 00.03 L53; 00.04 L16; 03.08 L22; 03.08 L58; 03.08 L64; 04.01 L48; 08.22 L111; 09.13 L193; 10.05 L175
+D | plus | book 76 | heads/defs 5 | corpus files 457 marked 17 | at 01.17 L60; 08.19 L57; 08.26 L6; 09.06 L82; 10.03 L7
+D | repository | book 77 | heads/defs 10 | corpus files 478 marked 2 | at 01.02 L3; 01.08 L31; 05.03 L41; 08.01 L66; 08.02 L24; 08.21 L169; 08.26 L36; 08.27 L72; 08.44 L88; 08.44 L88
+D | create | book 80 | heads/defs 2 | corpus files 1015 marked 14 | at 08.25 L63; 08.41 L6
+D | admit | book 81 | heads/defs 11 | corpus files 172 marked 3 | at 06.01 L36; 08.35 L48; 08.39 L64; 08.40 L85; 08.43 L1; 08.43 L58; 08.47 L24; 08.54 L25; 08.61 L1; 08.61 L40; 10.05 L73
+D | produced | book 81 | heads/defs 10 | corpus files 672 marked 8 | at 03.03 L30; 05.02 L41; 05.07 L72; 08.12 L112; 08.13 L7; 08.20 L217; 08.21 L168; 08.24 L8; 08.61 L27; 08.61 L88
+D | workflow | book 82 | heads/defs 12 | corpus files 414 marked 27 | at 01.10 L43; 05.05 L37; 08.38 L71; 08.38 L85; 08.38 L157; 08.45 L7; 08.45 L88; 08.46 L6; 08.50 L101; 08.52 L28; 08.57 L84; 09.04 L16
+D | comparison | book 84 | heads/defs 16 | corpus files 502 marked 12 | at 02.06 L3; 05.04 L110; 06.07 L37; 08.20 L118; 08.31 L149; 08.42 L95; 08.45 L46; 08.46 L55; 08.53 L79; 08.56 L56; 08.59 L1; 08.59 L27; 08.59 L27; 08.59 L28; 08.59 L56; 08.59 L64
+D | qualified | book 85 | heads/defs 7 | corpus files 203 marked 12 | at 01.02 L82; 08.12 L123; 08.23 L73; 08.54 L80; 08.58 L72; 09.09 L30; 10.03 L280
+D | built | book 86 | heads/defs 20 | corpus files 270 marked 2 | at 02.08 L110; 02.08 L110; 03.08 L21; 05.03 L41; 05.03 L47; 08.25 L6; 08.26 L62; 08.39 L64; 08.40 L85; 08.50 L84; 08.51 L75; 08.51 L76; 08.53 L69; 08.57 L46; 09.06 L82; 09.06 L157; 09.06 L168; 09.06 L170; 09.09 L126; 09.13 L48
+D | cost | book 86 | heads/defs 13 | corpus files 328 marked 8 | at 01.14 L482; 02.06 L3; 06.05 L52; 08.08 L64; 08.23 L108; 09.13 L39; 09.13 L70; 09.15 L122; 09.16 L228; 09.16 L322; 09.16 L323; 09.18 L155; 09.18 L244
+D | adopt | book 90 | heads/defs 9 | corpus files 312 marked 14 | at 01.06 L16; 01.14 L129; 03.04 L7; 03.09 L162; 08.17 L34; 08.22 L77; 08.22 L111; 08.56 L50; 09.09 L126
+D | person | book 91 | heads/defs 12 | corpus files 248 marked 3 | at 01.08 L15; 01.14 L320; 01.14 L321; 01.17 L89; 02.05 L3; 08.01 L28; 08.12 L110; 08.34 L61; 08.44 L7; 08.45 L88; 08.46 L8; 08.47 L6
+D | govern | book 98 | heads/defs 14 | corpus files 344 marked 9 | at 01.07 L3; 01.08 L15; 01.14 L162; 01.17 L99; 02.00 L3; 02.02 L31; 03.08 L58; 05.02 L39; 05.06 L60; 08.03 L1; 08.12 L165; 08.17 L102; 08.43 L100; 08.49 L94
+D | preserve | book 99 | heads/defs 4 | corpus files 1213 marked 45 | at 06.05 L29; 08.19 L132; 09.01 L34; 09.06 L151
+D | stop | book 106 | heads/defs 10 | corpus files 645 marked 66 | at 00.03 L40; 01.14 L161; 01.17 L35; 03.03 L28; 05.03 L32; 06.06 L78; 08.14 L67; 08.28 L11; 09.05 L40; 09.18 L121
+D | next | book 116 | heads/defs 19 | corpus files 1463 marked 4 | at 04.02 L22; 08.07 L70; 08.12 L10; 08.12 L51; 08.36 L34; 08.42 L104; 08.48 L42; 08.49 L26; 08.51 L88; 08.52 L81; 08.55 L1; 08.55 L32; 08.55 L33; 08.55 L35; 08.55 L40; 08.59 L74; 08.59 L79; 08.61 L65; 08.61 L70
+D | ground | book 122 | heads/defs 18 | corpus files 265 marked 5 | at 08.12 L100; 08.15 L92; 08.15 L94; 08.17 L34; 08.17 L36; 08.17 L48; 08.51 L34; 08.51 L36; 08.51 L41; 08.51 L42; 08.51 L63; 08.52 L37; 08.52 L94; 08.53 L69; 09.10 L149; 10.03 L63; 10.03 L244; 10.05 L370
+D | beside | book 123 | heads/defs 19 | corpus files 67 marked 2 | at 01.13 L115; 01.14 L420; 02.03 L77; 03.03 L29; 03.09 L170; 05.04 L173; 08.13 L82; 08.35 L85; 08.40 L37; 08.46 L67; 08.46 L97; 08.49 L77; 08.52 L80; 08.54 L80; 08.56 L78; 08.57 L46; 09.05 L35; 09.09 L27; 09.09 L95
+D | quoted | book 123 | heads/defs 18 | corpus files 142 marked 2 | at 00.07 L38; 01.14 L521; 08.20 L187; 08.21 L202; 08.22 L9; 08.33 L8; 08.37 L91; 08.42 L39; 08.44 L84; 08.44 L86; 08.46 L35; 08.50 L64; 08.52 L8; 08.52 L42; 08.55 L36; 08.57 L31; 08.60 L26; 08.61 L6
+D | topic-full | book 124 | heads/defs 1 | corpus files 0 marked 0 | at 08.54 L8
+D | contradiction | book 127 | heads/defs 18 | corpus files 1059 marked 59 | at 00.02 L64; 01.15 L9; 02.04 L1; 02.05 L3; 03.09 L79; 03.10 L108; 05.02 L35; 08.12 L90; 08.14 L65; 08.22 L134; 08.32 L100; 08.32 L162; 08.35 L1; 08.35 L74; 08.35 L78; 08.40 L97; 08.45 L64; 08.51 L76
+D | registration | book 128 | heads/defs 15 | corpus files 166 marked 7 | at 08.07 L69; 08.11 L6; 08.12 L10; 08.17 L36; 08.41 L47; 08.41 L106; 08.50 L29; 08.50 L71; 08.50 L93; 08.52 L63; 08.55 L6; 08.56 L35; 08.57 L11; 09.07 L52; 09.10 L93
+D | once | book 135 | heads/defs 18 | corpus files 518 marked 8 | at 01.02 L93; 01.14 L260; 01.17 L60; 02.00 L22; 02.04 L51; 02.10 L44; 05.02 L41; 05.03 L41; 08.10 L67; 08.20 L77; 08.33 L53; 08.43 L90; 08.46 L42; 08.55 L100; 09.01 L84; 09.07 L110; 09.11 L23; 09.16 L353
+D | remain | book 145 | heads/defs 14 | corpus files 1714 marked 2 | at 00.02 L64; 00.05 L38; 01.14 L233; 01.17 L128; 03.04 L7; 08.07 L31; 08.32 L91; 09.13 L256; 09.15 L124; 09.15 L139; 09.15 L173; 09.16 L216; 10.02 L235; 10.03 L224
+D | exactly | book 165 | heads/defs 16 | corpus files 1613 marked 25 | at 00.04 L8; 00.07 L24; 01.13 L136; 01.14 L233; 01.16 L139; 05.05 L61; 08.06 L58; 08.22 L135; 08.47 L102; 08.51 L99; 09.10 L60; 09.13 L233; 09.13 L233; 09.13 L235; 09.14 L47; 09.14 L49
+D | commission | book 167 | heads/defs 30 | corpus files 314 marked 50 | at 01.13 L103; 01.13 L126; 05.03 L47; 06.06 L12; 08.11 L64; 08.13 L6; 08.20 L37; 08.20 L85; 08.20 L124; 08.21 L39; 08.43 L75; 08.43 L98; 08.47 L1; 08.47 L24; 08.47 L24; 08.47 L32; 08.47 L96; 08.54 L25; 08.54 L33; 08.54 L92; 08.55 L62; 08.60 L71; 08.60 L71; 08.60 L71; 08.61 L6; 08.61 L26; 08.61 L27; 08.61 L50; 08.61 L62; 08.61 L62
+D | above | book 168 | heads/defs 13 | corpus files 460 marked 3 | at 01.06 L17; 01.14 L437; 02.00 L22; 02.05 L28; 05.07 L64; 06.02 L18; 08.35 L85; 08.51 L63; 08.52 L64; 08.58 L57; 08.58 L95; 10.05 L20; 10.05 L130
+D | start | book 218 | heads/defs 8 | corpus files 555 marked 241 | at 01.14 L325; 08.01 L27; 08.01 L28; 08.35 L50; 08.37 L46; 08.56 L50; 08.57 L31; 09.15 L84
+D | reviewer | book 222 | heads/defs 18 | corpus files 276 marked 4 | at 01.14 L324; 08.19 L144; 08.20 L83; 08.21 L39; 08.22 L43; 08.28 L11; 08.32 L92; 08.49 L98; 08.59 L25; 08.61 L62; 09.04 L25; 09.06 L107; 09.06 L144; 09.06 L180; 09.07 L70; 09.07 L96; 09.07 L118; 09.08 L106
+D | agree | book 235 | heads/defs 45 | corpus files 413 marked 12 | at 02.09 L65; 03.07 L24; 05.03 L45; 05.06 L78; 08.18 L126; 08.21 L71; 08.32 L34; 08.32 L91; 08.32 L105; 08.33 L29; 08.34 L61; 08.37 L75; 08.38 L83; 08.39 L35; 08.40 L92; 08.41 L29; 08.42 L32; 08.43 L33; 08.44 L31; 08.45 L29; 08.46 L1; 08.46 L29; 08.46 L72; 08.47 L27; 08.47 L98; 08.48 L29; 08.49 L27; 08.49 L28; 08.50 L30; 08.51 L30; 08.51 L89; 08.52 L29; 08.53 L29; 08.55 L28; 08.56 L28; 08.56 L78; 08.57 L32; 08.59 L29; 08.60 L28; 09.07 L44; 09.13 L48; 09.13 L63; 09.17 L75; 09.17 L76; 10.05 L123
+D | because | book 262 | heads/defs 19 | corpus files 1773 marked 5 | at 01.01 L34; 01.14 L162; 02.05 L3; 02.07 L3; 05.01 L32; 05.04 L114; 08.06 L57; 08.09 L61; 08.12 L177; 08.16 L73; 08.20 L112; 08.20 L226; 08.32 L97; 08.43 L90; 08.47 L98; 08.60 L24; 09.07 L68; 09.13 L53; 09.14 L195
+D | rival | book 286 | heads/defs 161 | corpus files 128 marked 3 | at 00.02 L16; 00.02 L54; 03.06 L27; 04.01 L57; 08.02 L24; 08.27 L74; 08.31 L147; 08.31 L149; 08.31 L152; 08.31 L153; 08.32 L108; 08.32 L148; 08.32 L150; 08.32 L152; 08.33 L127; 08.33 L129; 08.33 L130; 08.33 L131; 08.34 L139; 08.34 L141; 08.34 L142; 08.34 L143; 08.34 L144; 08.35 L58; 08.35 L80; 08.35 L103; 08.35 L123; 08.35 L125; 08.35 L127; 08.35 L137; 08.36 L131; 08.36 L133; 08.36 L135; 08.36 L137; 08.37 L84; 08.37 L128; 08.37 L130; 08.37 L132; 08.37 L134; 08.38 L153; 08.38 L155; 08.38 L157; 08.38 L159; 08.38 L161; 08.38 L163; 08.39 L119; 08.39 L121; 08.39 L123; 08.39 L125; 08.40 L114; 08.40 L116; 08.40 L118; 08.40 L120; 08.41 L112; 08.41 L114; 08.41 L116; 08.41 L125; 08.42 L108; 08.42 L110; 08.42 L112; 08.43 L112; 08.43 L114; 08.43 L116; 08.43 L118; 08.44 L102; 08.44 L104; 08.44 L106; 08.45 L96; 08.45 L98; 08.45 L100; 08.45 L102; 08.46 L104; 08.46 L106; 08.46 L108; 08.46 L110; 08.47 L96; 08.47 L98; 08.47 L100; 08.47 L102; 08.47 L104; 08.48 L99; 08.48 L101; 08.48 L103; 08.48 L105; 08.48 L107; 08.49 L92; 08.49 L94; 08.49 L96; 08.49 L98; 08.49 L100; 08.50 L106; 08.50 L108; 08.50 L110; 08.50 L112; 08.50 L114; 08.51 L93; 08.51 L95; 08.51 L97; 08.51 L99; 08.51 L101; 08.51 L103; 08.52 L94; 08.52 L96; 08.52 L98; 08.52 L100; 08.52 L102; 08.53 L94; 08.53 L96; 08.53 L98; 08.53 L100; 08.54 L65; 08.54 L78; 08.54 L92; 08.54 L94; 08.54 L96; 08.54 L98; 08.54 L100; 08.55 L98; 08.55 L100; 08.55 L102; 08.56 L85; 08.56 L87; 08.56 L89; 08.56 L91; 08.57 L88; 08.57 L90; 08.57 L92; 08.57 L94; 08.57 L96; 08.58 L89; 08.58 L91; 08.58 L93; 08.58 L95; 08.58 L97; 08.58 L99; 08.59 L91; 08.59 L93; 08.59 L95; 08.59 L97; 08.59 L99; 08.60 L92; 08.60 L94; 08.60 L96; 08.60 L98; 08.60 L100; 08.60 L102; 08.60 L104; 08.61 L84; 08.61 L86; 08.61 L88; 08.61 L90; 08.61 L92; 09.00 L35; 09.09 L95; 09.12 L89; 09.13 L211; 09.13 L212; 09.16 L142; 09.16 L459; 09.17 L108; 09.18 L152
+D | keep | book 293 | heads/defs 36 | corpus files 565 marked 19 | at 00.04 L15; 01.06 L53; 01.08 L15; 01.14 L125; 02.03 L75; 03.09 L162; 05.04 L45; 05.04 L122; 08.11 L64; 08.17 L48; 08.30 L74; 08.32 L32; 08.34 L1; 08.34 L32; 08.34 L36; 08.35 L1; 08.35 L42; 08.35 L50; 08.36 L67; 08.38 L83; 08.39 L65; 08.39 L83; 08.40 L92; 08.43 L83; 08.43 L86; 08.45 L28; 08.46 L55; 08.49 L76; 08.53 L55; 09.01 L9; 09.06 L201; 09.10 L37; 09.10 L127; 09.18 L121; 10.03 L219; 10.05 L123
+# candidates: tier A 81 · tier B 132 · tier C 16 · tier D 605 (from 602 identifiers and 5384 word types; 533 ids and 3980 words undefined by the forms)

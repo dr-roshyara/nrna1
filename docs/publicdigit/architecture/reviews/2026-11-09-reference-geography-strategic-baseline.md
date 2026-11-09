@@ -5,8 +5,129 @@
 | **Status** | PROPOSED baseline for Principal/ARB review. Not ratified. No code, migrations, schemas or APIs |
 | **Purpose of this document** | **One consolidated reference** that a domain expert can read and a solo developer can implement from, without the revision history. It **supersedes as working text** the proposals in `2026-11-09-reference-geography-strategic-discovery.md`, `…-level-framework-strategic-discovery.md` and `…-baseline-closure-and-tactical-design.md`, which stay as the record of how it was reached |
 | **Commission** | "Reference Geography: Revision 3 Review, Strategic Baseline Completion and Tactical DDD Validation" (Principal, 2026-11-09); updated for "D-83 Integration, Strategic Baseline Completion and Tactical DDD Validation" (Principal, 2026-11-09) |
-| **Accepted decisions integrated** | D-31, D-73 / CR-01, D-75, D-79, D-80, **D-81, D-82, D-83** |
+| **Accepted decisions integrated** | D-3, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81, D-82, D-83, **D-84, D-84a, D-85, D-86, D-87, D-88, D-89** (consolidated in §C below) |
+| **Read first** | **§C, the consolidated strategic baseline (2026-11-09).** Where §C differs from a later section or dossier, **§C governs**; the sections after it are kept as the record of how it was reached |
 | **Labels** | **[AD]** accepted decision · **[BF]** established fact (cited) · **[E]** implementation fact · **[SI]** strategic interpretation · **[R]** recommendation · **[TD]** proposed tactical design · **[OQ]** open Principal decision · **[TU]** unresolved technical uncertainty |
+
+---
+
+## C. Consolidated strategic baseline (2026-11-09) — read this first
+
+*Business language. No knowledge of Laravel, PostgreSQL or aggregates needed. Tactical expression: `2026-11-09-reference-geography-tactical-design-baseline-v3.8.md`. Coherence check: `2026-11-09-reference-geography-baseline-coherence-assessment.md`.*
+
+### C.1 Business purpose
+
+Reference Geography is **PublicDigit's register of official geographical references**. For a political party this matters because committees, local branches, members' addresses and electoral rules all refer to places, and **those places change**: districts merge, municipalities are re-parented, names and codes change, sometimes with retroactive effect.
+
+**Consumers may rely on:**
+- **one permanent identity per entry**, never reused, even when names, codes or parents change;
+- **officially asserted facts** (names, classification, containment, codes), each with its **evidence** and its **valid period**;
+- the **full history**: nothing is overwritten;
+- **historical answers** to two separate questions: *what was valid on a date* (valid time) and *what PublicDigit had recorded by a moment* (knowledge time); **once given, an answer never changes**;
+- **complete answers or a refusal, never a partial answer.**
+
+**Consumers must not assume:**
+- that a published fact is **true**: it is **officially asserted by a competent source, with authenticity verified, and accepted by PublicDigit's governed process**. **Publication never creates official status** (D-84);
+- **sovereignty or recognition** from a country-or-area entry (D-86);
+- **anyone's belonging, membership, coverage or vote** from a place or an address;
+- that a level number means the same thing in two countries (D-81).
+
+### C.2 Bounded contexts and ownership
+
+| Context | Decides and owns | Consumes | Never decides |
+|---|---|---|---|
+| **Reference Geography** | Official geographical references: identity, claims, evidence, assessment, publication, history, country profiles, reconciliation, objections and disputes about its facts; the steward roster | Nothing from other contexts (platform-level, D-31) | Sovereignty; organisation areas; coverage; belonging; membership; electorates |
+| **Organisation** | **Belonging** to units and wing branches, in every capacity (D-3, D-22); organisation-defined areas (D-82); unit coverage (D-80); address-to-area suggestions | Published Geography | Official geography; anything for another organisation |
+| **Membership** | Membership facts and their processes (ratified architecture) | Person references (D-75); Organisation's facts where its rules require | Belonging (Organisation's); official geography |
+| **Election** | The **electorate** under its rules | Organisation's belonging and Membership's facts **at one shared τ** (D-73); Geography only through those | Belonging; geography |
+| **Governance** | Organs, positions, tenures (D-4, D-5) | Organisation's units | Territory |
+| **Address / person-profile** | Address as supplied, components (streets, D-83) and their resolution | Geography's resolution | Belonging; official identities. **Owner is a recommendation (Organisation's person-profile capability, §2a), not a ratified decision** |
+
+**Context map (direction of flow):**
+
+```
+                 Reference Geography  (publishes; platform-level)
+                   │ published facts, resolution, historical queries
+     ┌─────────────┼──────────────────────┐
+     ▼             ▼                      ▼
+ Organisation   Address / person-profile  (other consumers)
+ belonging,     (owner: recommendation)
+ areas, coverage
+     │ belonging at τ
+     ▼
+  Election  ◄── Membership facts at τ
+```
+
+- **Only Geography publishes geographical facts.** Every other context **consumes them read-only** and applies them under **its own** rules.
+- **Collaboration across contexts uses one shared τ per operation** (D-73). **No cross-context cause-and-effect order is claimed.**
+
+### C.3 Ubiquitous language (consolidated)
+
+| Term | Meaning | Not to be confused with |
+|---|---|---|
+| **Official geographical reference** (entry) | Anything in the register: the World, an M49 region (D-85), a country or area (D-86), a territorial unit. Replaces "official place" where a region or country-or-area is meant | An organisation area; a street |
+| **ReferenceUnitId** | PublicDigit's **permanent, never-reused** identity for one entry | A code; a name; the real-world entity |
+| **Real-world geographical entity** | What the instrument establishes or describes | PublicDigit's identity for it |
+| **Instrument** | The official act or publication that establishes or describes a fact | The evidence record about it |
+| **External identifier** | A code in a namespace (ISO 3166-1, M49, national codes) | The identity |
+| **Claim** | One asserted fact (name, parent, classification, code) with a **valid period** and evidence | A truth; an edit |
+| **Evidence** | The recorded instrument, authenticity, covering mandate, applicability and any precedence rule (D-84) | A link to a website |
+| **Assessment** | The steward's recorded judgement of that evidence | Publication |
+| **Revision** | A coherent set of claims proposed and published together | A database update |
+| **Publication** | The governed step that makes a revision part of PublicDigit's record | Official status |
+| **Valid time** | When a fact holds in the world | Knowledge time |
+| **Knowledge time** | When PublicDigit recorded it | Valid time |
+| **Country profile** | A dated mapping of a country's classes to positions 3–10 (D-81) | Tree depth |
+| **Territorial tier** | A position that holds official units | An address-component tier |
+| **Address component** | Street, house number, postal code: describes address precision; **no identity** (D-83) | An official unit |
+| **Organisation area** | A territory an organisation defines for its own purposes (D-82) | An official reference |
+| **Reconciliation** | A published finding that two identities denote one entity; the old identity stays and resolves to the canonical one; reversible | A deletion |
+| **Objection** | An organisation's challenge to a published fact, with counter-evidence (D-84) | A dispute |
+| **Dispute** | A recorded unresolved conflict between instruments or claims | An objection pending assessment |
+| **Correction** | A new revision replacing a wrong fact; the old one stays in history | An overwrite |
+| **Geography steward** | A person appointed by the platform owner to **assess and publish** (D-84) | A source of official status |
+| **Matter reviewer** | A person appointed for **one matter only** (D-84a); no standing publication authority | A steward |
+
+### C.4 Lifecycle in business terms
+
+1. **Prepare:** evidence is collected and the proposed facts are drafted. **Anyone preparing decides nothing.**
+2. **Assess:** a non-conflicted steward judges the evidence (D-84a) and **submits** the revision.
+3. **Check consequences:** the register refuses a revision that would create contradictions (two parents in one scheme, one code for two live entries, a parent ending under live children, a classification out of order).
+4. **Second person, if required:** for a **structural** change, **once a second steward has ever been appointed** (D-89), a second, independent natural person approves: not the preparer and not the assessor (D-88). If none is available, **the change waits.**
+5. **Publish:** the revision becomes part of PublicDigit's record, **all of it at once.**
+
+**Afterwards:**
+- **Correction:** a new revision; history is kept.
+- **Objection:** an organisation challenges a fact with counter-evidence; the fact changes **only** by a correction or a recorded dispute (D-84).
+- **Reconciliation:** two identities found to be one entity; both remain explainable; reversible by a later publication.
+
+### C.5 Strategic invariants
+
+1. **Permanent identity:** a ReferenceUnitId is never reused or deleted.
+2. **No silent rewriting:** every change is a new publication; earlier answers stay reproducible.
+3. **One publisher:** only Geography publishes geographical facts (D-31).
+4. **Evidence and competence:** every published fact names its instrument and the competence behind it; publication never creates official status (D-84).
+5. **Dated, country-specific classification** (D-81); streets are address components (D-83).
+6. **Official and organisation geography stay separate** (D-82).
+7. **No belonging, membership, coverage or entitlement is inferred from geography** (D-79, D-80).
+8. **Governance:** D-84, D-84a, D-88, **D-89** (the second-person threshold, once active, stays active).
+9. **Historical queries are complete or refused** (D-73 / CR-01).
+10. **Neutrality:** no sovereignty asserted (D-86); CLDR display names, sources attributed (D-87); M49 regions only (D-85).
+
+### C.6 Accepted decisions and deferred discovery
+
+- **Accepted, integrated, not reopened:** D-3, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81 to D-89, D-84a.
+- **Architectural classifications by analogy (not Principal decisions):** ADMISSION of a country-or-area is **structural**; GROUPING into an M49 region is **non-structural**.
+- **Deferred, not blocking the baseline:**
+
+  | Item | Business question |
+  |---|---|
+  | Q-2 | Should other official schemes (e.g. electoral constituencies) be represented? |
+  | L-4c | How to assign a region where M49 evidence does not cover an entry |
+  | Japanese classification | The actual positions and classes |
+  | Names below level 2 | Display-name policy for territorial units |
+  | Level-1 region names | Naming policy for the five regions |
+  | Address ownership | Whether Organisation's person-profile capability owns addresses (recommendation only) |
 
 ---
 

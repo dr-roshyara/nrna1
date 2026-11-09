@@ -30,7 +30,14 @@
       "WebFetch(domain:electionguard-python.readthedocs.io)",
       "WebFetch(domain:eprint.iacr.org)",
       "WebFetch(domain:electionguard.vote)",
-      "Bash(git commit -m 'chore\\(state\\): Session 3 readiness gate — one GREEN row; no ticket passes the six-condition gate *)"
+      "Bash(git commit -m 'chore\\(state\\): Session 3 readiness gate — one GREEN row; no ticket passes the six-condition gate *)",
+      "Bash(head -1 CONCEPT-REGISTER.tsv)",
+      "Bash(wc -l CONCEPT-REGISTER.tsv)",
+      "Bash(awk -F'\\\\t' 'NR>1{print $4}' CONCEPT-REGISTER.tsv)",
+      "Bash(ls -la 06-theory/manuscript/chapter_09/)",
+      "Bash(ls -la tmp/tools/)",
+      "Bash(head -60 06-theory/THEORY-MAP.md)",
+      "Bash(grep -n \"^### F\\\\|^## F\" 06-theory/THEORY-MAP.md)"
     ]
   },
   "plansDirectory": "./.claude/plans"

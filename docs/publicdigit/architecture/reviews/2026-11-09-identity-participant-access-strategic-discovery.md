@@ -102,7 +102,7 @@ In a political party this matters more than usual: membership of a party, factio
 | **P-I2** | **INV-AFF-1:** who owns affiliation discovery, and with which mechanism (L1 stored mapping, L2 keyed derivation)? | ARB (referred) | decides A-2 | the 2026-11-01 evaluation holds the analysis | before A-2 is built |
 | **P-I3** | **Account-security policy:** recovery without e-mail, second factor for officers, session length on shared phones | PO (OQ-3c-1, OQ-3c-2) | decides A-5, A-6 | organisation-assisted re-claim when the e-mail is lost; shorter participant sessions | before A-5, A-6 |
 | P-I4 | Legal basis, controllers and processors (OQ-3a-1) | PO + data protection | — | carried | before production use |
-| **P-I5** | Does social sign-in (Google) stay? | PO | keep → `PBDIGIT-340` fixes, link only from a signed-in account; remove → simpler, fewer paths | remove until the claim flow exists, or fix `PBDIGIT-340` first | soon |
+| ~~P-I5~~ | **Decided 2026-11-09: remove social sign-in** (Google and Facebook; "they are out of date"). Done in `PBDIGIT-340`. | — | — | — | — |
 | P-I6 | Append a correction note to the XD-3 act §4 (the takeover route is unrouted; the live path has other defects)? | Principal (ARB record) | note / leave | append a note; the decision itself is unaffected | any time |
 
 ## 7. Readiness for tactical DDD design

@@ -1,6 +1,6 @@
 # 08: No vote beyond the limit: the System B boundary (PBDIGIT-286 P6)
 
-**Story:** `PBDIGIT-286` phase P6 (AC-11; decisions D7, D7a) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** boundary step (D7, D7a) and count step (D6) implemented and tested 2026-10-15; committed `2f998b8ae` (not pushed); **not accepted**; not released.
+**Story:** `PBDIGIT-286` phase P6 (AC-11; decisions D7, D7a) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** boundary step (D7, D7a) and count step (D6) implemented and tested 2026-10-15; committed `2f998b8ae`, `153ad7bf6` (not pushed); **accepted by the Principal 2026-10-15 as a bounded implementation milestone**; **production release on hold**.
 
 **Code:**
 - `app/Domain/Election/Security/NetworkTrustEvidence.php`: `exceedsLimit()` uses `>=`
@@ -123,6 +123,6 @@ vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit
 **Limitations:**
 - not run: the full isolated suite, and anything on `nrna_test`;
 - production enforcement not verified (the commit is not pushed, the deployment route is unknown);
-- not accepted by the Principal.
+- these limitations are the residual risks the Principal accepted with P5/P6 on 2026-10-15 (decision record); production release stays on hold.
 
 **Traceability:** `PBDIGIT-286` P6, 2026-10-15; decision record §3.2 D6, D7, D7a; ADR-C §3.2; plan AC-10, AC-11. Not done: P7, P8, G-REL; the `nrna_test` tests (G-AUTH-T).

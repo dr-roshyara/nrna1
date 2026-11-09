@@ -1,10 +1,10 @@
-# PBDIGIT-340: Google sign-in: plain-text constant password, raw error shown to visitors, takeover code still present
+# PBDIGIT-340: Social sign-in (Google, Facebook): plain-text constant password, raw errors shown to visitors, takeover code still present
 
 **Type:** Security defect · **Epic:** none · **Created:** 2026-11-09 · **Raised by:** found by Claude during the Identity participant-access discovery.
 
 | | |
 |---|---|
-| **Status** | `OPEN` · not authorised |
+| **Status** | `IMPLEMENTED` (working tree, not committed) · **removal** decided by the Principal (P-I5, 2026-11-09: "remove google sign-in"; Facebook: "also remove it. they are out of date") · RED → GREEN verified |
 | **Classification** | **observed in code** (static, HEAD `e2051cbbe`); not run |
 | **Analysis** | `docs/publicdigit/architecture/reviews/2026-11-09-identity-participant-access-strategic-discovery.md` §0.2, §4 A-8 |
 
@@ -22,3 +22,19 @@ Depends on the Principal's choice P-I5 (keep or remove social sign-in). If kept:
 
 ## Related
 D-75 (XD-3 act §2.6, §4: correction proposed); `PBDIGIT-341`.
+
+## Decision and resolution (2026-11-09)
+- **P-I5 decided: remove social sign-in**, Google and Facebook.
+- **Additional evidence:** the current `users` table (UUID, `2026_03_05_000002_create_uuid_users_table.php`) has **no `google_id` and no `facebook_id` column**. Both callbacks failed on their first query and printed the SQL error through `dd()`; neither could have signed anyone in since March 2026. Development database: 0 accounts with the plain-text constant password. Facebook (`SocialController`) had the same defects (`:48`, `:60`).
+- **Removed:**
+  - `GoogleLoginController`, `GoogleController`, `SocialController`;
+  - routes `login/google`, `login/google/callback`, `login/facebook`, `login/facebook/callback`, and the commented `auth/google` lines;
+  - the Google button in `resources/js/Components/Auth/Login.vue` (an orphan component, no importer);
+  - the Alt+G shortcut in `resources/js/Components/General/JoinNetwork.vue`.
+- **Kept:** the Google Calendar integration (`google`, `google/oauth`, `google/webhook`; `GoogleAccountController`, `GoogleWebhookController`).
+- **Left as is (out of scope):**
+  - the `laravel/socialite` package (no remaining user found; removing it changes `composer.lock`, so a separate chore);
+  - the generated, unimported `resources/js/ziggy.js`, which still names the old routes.
+- **Test:** `tests/Feature/Routes/SocialSignInRemovedTest.php` (database-free). RED on HEAD `7a8f35f17` (2 failures), GREEN with the removal (3 tests, 16 assertions), in a clean worktree.
+- **No regression:** `tests/Feature/Routes` has 9 problems on HEAD vs 7 after (the 2 RED tests now pass; the 7 need a database the worktree could not reach); vitest 12 failed / 592 passed (unchanged); design-check 91.
+- **Deployment note:** run `composer dump-autoload` (or the normal `composer install`) so the class map drops the deleted controllers.

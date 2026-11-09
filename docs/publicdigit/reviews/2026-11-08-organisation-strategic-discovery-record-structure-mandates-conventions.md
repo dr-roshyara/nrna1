@@ -756,3 +756,9 @@ Organisation rules: ex officio rights of a suspended holder; joint organs when o
 | # | Decision | Provenance |
 |---|---|---|
 | D-88 | **Second person under D-84 (interpretation T).** D-84's "second, independent natural person" is second to **the steward who prepared and assessed the change**. From the appointment of a second steward, a structural change requires approval by a natural person (a steward or a matter reviewer under D-84a, a distinct canonical person) **other than the steward who prepared and assessed it**. The preparer can never approve their own structural change; two persons suffice. D-84 and D-84a are otherwise unchanged. | direct: "I accept option T" |
+
+### 11.24 Decision D-89 (interpretation of D-84: the second-person threshold)
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-89 | **Option L (latching).** From the **first appointment of a second steward**, the requirement that every structural change be approved by a second, independent natural person (D-84, as interpreted by D-88) **remains permanently active**. It does not cease when the second steward's appointment ends. Consequences: a sole remaining steward cannot publish a structural change alone; a structural change waits until an eligible independent second person is available; a matter reviewer appointed under D-84a may provide that review for the particular matter; non-structural changes remain governed by D-84; the governance record must show when the threshold first activated. Resolves the divergence between D-84's clauses "while only one steward exists…" and "from the appointment of a second steward…". | via paste, accepted: "Principal ruling accepted — D-84 Option L", recorded in the Principal DDD Architect's note of 2026-11-09 and accepted by the Principal in this session ("I accept the recommendations written in the document") |

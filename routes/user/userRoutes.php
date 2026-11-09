@@ -2,7 +2,6 @@
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -64,7 +63,3 @@ Route::put('/users/update/{id}', [UserController::class, 'update'])
         ->name('user.update')->where('id', '[0-9]+');
 
 Route::get('/feed', [UserController::class, 'create'])->name('feed');
-
-//facebook routes
-Route::get('/login/facebook', [SocialController::class, 'facebookRedirect'])->name('login.facebook-redirect');
-Route::get('/login/facebook/callback', [SocialController::class, 'loginWithFacebook']);

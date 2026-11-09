@@ -119,13 +119,6 @@
                     आफुलाई रजिस्टर गर्नुहोला।
                 </p>
             </div>
-            <div class="mt-4 flex items-center justify-end">
-                <a href="/login/google">
-                    <img
-                        src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
-                    />
-                </a>
-            </div>
         </jet-authentication-card>
     </div>
 </template>

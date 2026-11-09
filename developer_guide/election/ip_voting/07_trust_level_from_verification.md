@@ -1,6 +1,6 @@
 # 07: The trust level comes from real verification evidence (PBDIGIT-286 P5)
 
-**Story:** `PBDIGIT-286` phase P5 (AC-10; decisions D3, D3a, D3-E, D3-P, D4) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** implemented 2026-10-14; committed `2f998b8ae` (not pushed); **not accepted** (awaiting the Principal's decision); not released
+**Story:** `PBDIGIT-286` phase P5 (AC-10; decisions D3, D3a, D3-E, D3-P, D4) · **Plan:** `docs/plans/20261014-1038-pbdigit286-constitutional-ip-limit-plan.md` · **Status:** implemented 2026-10-14; committed `2f998b8ae` (not pushed); **accepted by the Principal 2026-10-15 as a bounded implementation milestone** (decision record, status annotation); **production release on hold**
 
 **Code:**
 - `app/Application/Election/Security/VoterAttestationEvidence.php`: the trust-only read port (new)

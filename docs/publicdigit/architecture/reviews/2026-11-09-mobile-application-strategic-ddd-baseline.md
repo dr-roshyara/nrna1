@@ -218,7 +218,7 @@ These affect member instructions, not the architecture.
 - **Must be completed before Membership is a reliable phone journey:**
   1. **PBDIGIT-339** fixed, with a regression test (authorised).
   2. **Account access by claim code** instead of e-mail reuse: Identity participant access (D-75; G-2). Until then, step O-1a is unreliable and conflicts with an accepted decision.
-  3. **G-1** (`PBDIGIT-340`, Google sign-in defects) fixed, or social sign-in removed (P-I5).
+  3. ~~G-1~~ resolved: social sign-in removed (`PBDIGIT-340`, P-I5 decided).
   4. A **signed-in browser check** of the journey with synthetic data (throwaway database).
   5. **One application operation** behind both paths (M-TDD-01; kernel Slice 3–4). This is driven by cutover, not by the phone.
 - **Not now:** renewal (PD-M3; kernel Renew slice), payment (Finance), contact changes (INV-AFF-1).
@@ -251,7 +251,7 @@ These affect member instructions, not the architecture.
   - D-47 (lost right) set per organisation;
   - service-worker exclusion (§5.3 rule 3) verified;
   - no push linked to voting;
-  - G-1 (`PBDIGIT-340`) resolved.
+  - ~~G-1~~ resolved (social sign-in removed, `PBDIGIT-340`).
 - **No redesign of Voting for the PWA.** The PWA is a window onto the same operation.
 - **J-8 consequence (P):** under D-44 the voter's device takes part in the protocol (blind signatures, RFC 9474). Shared and lost devices become voting business rules (O-20), whatever the channel.
 
