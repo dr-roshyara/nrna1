@@ -493,3 +493,17 @@ Every event carries decision reference, effective date and log position; consume
 - **Who besides members may write** (staff, guests, observers): organisation rule ("depends on the capacity").
 
 **Order:** tactical design after Governance (§33) and Membership/Organisation, because it depends on sittings, positions, submissions and belonging.
+
+## 36. Cross-project reconciliation: public-digit's forum design (2026-11-09)
+
+**Source [E]** (`/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/public-digit`, brainstorming of Nov 2025 – Jan 2026; not governed, not ratified). Two names are used there: **"Discussion Forum Context"** (`architecture/backend/membership-context/brainstorming/20260101_2309_architecture_review.md:253`; `…/20260101_2313_membership_related_stuff.md:686`; `architecture/design/20251115_1438_architecture_boundies_and_routing_policy.md:890`) and **"MembershipForum Context"** (`architecture/backend/moduleregistry_context/phase_1/20251228_0131_starting_point_message.md:13`; `…/claude_analysis/MODULEREGISTRY_CONTEXT_PROFESSIONAL_PROMPT.md:22`). **The context name in nrna1 ("Deliberation") is open until the Principal chooses [OQ].**
+
+**Conflicts with the accepted baseline (the baseline governs):**
+1. "Bubbling" district view including ward posts conflicts with the D-56 default (own unit and above); allowed only where the organisation's rules open it.
+2. Subscribing directly to Membership events conflicts with ratified Membership partners (D-25, D-73) and X-8; participation is derived through Organisation's member belonging.
+3. Moderation by "District/Province Admin" role conflicts with DL-3 and D-1a; walking up the tree is possible only as a rule over positions.
+4. A "Leadership Score Context" using individual upvotes conflicts with D-52 (counted only) and DL-3 (no privileges from points); scoring belongs to the separate social-contribution discovery (PBDIGIT-331/335), analytical only.
+
+**Consistent:** forums never check user accounts (D-75); announcements from a central committee map to Communication official messages or notices (D-59), shown in forums.
+
+**New candidate rule [OQ, organisation rules]:** only active members write; members whose membership is pending read only. Related open point: whether a suspended member may write (the Principal answered earlier that suspension restricts rights while the person still belongs).
