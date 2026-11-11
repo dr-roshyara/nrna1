@@ -1051,3 +1051,8 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (item 2, for the Professor):** "Run theory turn 2 (the derivation chain, unit of derivation first) as written in 03-methodology/COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md, with its common method and three reviewers (two kos-lane-reviewer on different models, one kos-theory-reviewer; none on an outside service). Build on §9.21 and Question O (c); the origin rule (§9.1 L96) is a premise, not decided. Name every section file in the briefs. Reading stays paused at S0403. After turn 2 settles, stop and report."
 - **Item 1:** Question O (c), addendum above, unchanged.
 - **Status:** turn 2 is **issued only when sent**; not yet reported sent.
+
+## Addendum 2026-11-11T16:36:26Z: Question O (c) and theory turn 2 sent (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent" — for the two-item message (Question O (c); theory turn 2), unchanged.
+- **In force for the Professor from receipt. Theory turn 2 is issued.**

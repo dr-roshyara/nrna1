@@ -47,7 +47,7 @@
 | # | Instruction | In force since | Record |
 |---|---|---|---|
 | T1 | **Ch. 10:** consequences 1–6 and plan steps 1–2 applied, reviewed at S0378–S0402; T10-15 prepared, not run; **stage 1 not prepared** | 2026-11-03 | 2026-11-03T03:54:51Z; 2026-10-31T15:16:17Z |
-| T2 | **Chain after the S0378–S0402 consolidation:** turn 1 (A and output forms, T9-22), then turn 2 (derivation chain); reading pauses; commissions `COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md` (prepared, not issued). **Turn 1 issued 2026-11-11 (sent), three Claude reviewers, none on an outside service; turn 1 settled 2026-11-11 (`98bf4789a`); Question O (c) decided; turn 2 approved for dispatch 2026-11-11, not yet reported sent** | after S0402 | 2026-11-03T04:02:46Z |
+| T2 | **Chain after the S0378–S0402 consolidation:** turn 1 (A and output forms, T9-22), then turn 2 (derivation chain); reading pauses; commissions `COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md` (prepared, not issued). **Turn 1 issued 2026-11-11 (sent), three Claude reviewers, none on an outside service; turn 1 settled 2026-11-11 (`98bf4789a`); Question O (c) decided; turn 2 issued 2026-11-11 (sent)** | after S0402 | 2026-11-03T04:02:46Z |
 
 ## Change log of this index
 
@@ -60,3 +60,4 @@
 | 2026-11-11 | T2: turn 1 approved for dispatch |
 | 2026-11-11 | W3, W8, T2 marked sent (the Principal: "sent") |
 | 2026-11-11 | T2: turn 1 settled; Question O (c); turn 2 approved for dispatch |
+| 2026-11-11 | T2: turn 2 issued (the Principal: "sent") |
