@@ -1011,3 +1011,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Basis (GE check of `review/CONSOLIDATION-S0378-S0402/SETTLEMENT.md` §3):** misses per source 0.92 (C106–C111) against 0.88 (C89–C105); per 1,000 lines 1.6 against 1.1, driven by C106 (short sources, 6.3); the longest windows C107 and C110 at or below baseline; the Professor's own minutes per source 1.5 against 4.6. Limits: one 25-source span; planted gaps measure consolidation reviewers, not window reviews; hence the re-check.
 - **Also verified:** stage 2 settled at `7ce95bffc` (2026-11-06); the guard held (the four plant lines unchanged in the working book; A-01, D-01 not applied).
 - **Status:** a working instruction under Rulebook v1.4 (index W2/W3); **binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-11T15:46:09Z: role classification approved (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the line proposed by the Governance Engineer.
+- **Approved line (for the Professor):** "Role classification approved as proposed in ROLE-CLASSIFICATION-PROPOSAL.md, from the next window: items tagged by role; supporting devices and records of the estate get one line with their home; themes list and summaries mark roles; the register's role column is filled only when a concept is next reviewed. Reviewers check the role tags, and a wrong tag counts as a miss. Report the effect on restatement findings at the S0403–S0427 consolidation."
+- **Basis:** `review/CONSOLIDATION-S0378-S0402/ROLE-CLASSIFICATION-PROPOSAL.md` (four roles, ordered criteria, tie rule "core wins", marks K?/A-O/D mapped, no retro-tagging); the reviewer check of tags added by the Governance Engineer.
+- **Status:** a working instruction under Rulebook v1.4 (index W8); **binding on the Professor once sent** (not yet reported).

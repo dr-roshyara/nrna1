@@ -18,7 +18,7 @@
 | W5 | **Changed sources:** source closing checks the allowed list's disk status; S0386 used as on disk; **S2444 needs a ruling before it is opened** (access record) | 2026-11-03 | 2026-11-03T05:40:25Z |
 | W6 | **Time records:** Reading · Drafting · Waiting · Settlement · Rework, non-overlapping | 2026-11-01 | 2026-11-01T17:32:50Z |
 | W7 | **Implementation ideas** may be noted in `07-implementation-ideas/IDEAS-LOG.md` (outside the book; never cited; not reviewed) | 2026-11-03 | 2026-11-03T02:57:42Z; 03:38:47Z |
-| W8 | **Role classification:** proposed at the S0378–S0402 consolidation; window tagging only after approval | 2026-11-03 (sent, reported by the Professor) | 2026-11-03T06:53:59Z |
+| W8 | **Role classification:** approved 2026-11-11 as in `ROLE-CLASSIFICATION-PROPOSAL.md` (not yet reported sent): items tagged by role from the next window; supporting devices and estate records one line with their home; themes and summaries mark roles; register role column filled on next review; reviewers check tags (a wrong tag is a miss); effect reported at S0403–S0427 | 2026-11-03 (sent, reported by the Professor) | 2026-11-03T06:53:59Z |
 
 ## Review and access
 
@@ -56,3 +56,4 @@
 | 2026-11-03 | First version |
 | 2026-11-03 | W3 clause and W8 marked sent (the Professor's gate report: "You sent both today"); the index citation in force from C111's briefs |
 | 2026-11-11 | W3: window size after the trial approved (record 2026-11-11T15:45:26Z) |
+| 2026-11-11 | W8: role classification approved |
