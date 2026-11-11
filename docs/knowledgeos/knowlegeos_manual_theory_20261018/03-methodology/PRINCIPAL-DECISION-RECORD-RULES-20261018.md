@@ -1037,3 +1037,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 
 - **Principal (verbatim, to the Governance Engineer):** "sent" — for the combined message the Governance Engineer gave: items 1–4 as in the four addenda above, unchanged, with "Do 4 and 3 now. 1 and 2 apply when reading resumes at S0403. The index of working instructions (03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md) is updated; cite it in every brief."
 - **In force for the Professor from receipt:** A-02 (c) and theory turn 1 now; window size and role classification when reading resumes at S0403. **Theory turn 1 is issued.**
+
+## Addendum 2026-11-11T16:35:10Z: Question O (T9-22), option (c) (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the line proposed by the Governance Engineer after theory turn 1 (`review/T9-22-TURN/SETTLEMENT.md`; §9.21.5).
+- **Approved line (for the Professor):** "Question O (T9-22): option (c), Req's core outputs can return every entry, the record cut at s, as §9.10 L186/L194 already use it. B-07 is repaired at §9.16 R2's next restatement; if (c) turns out to depend on B-07's reading, stop and report. Question G is not needed now."
+- **Basis (GE):** (c) changes no settled text (§9.10 L50, L186, L194); consistent with the T9-02 deliverable ruling (the record is the state); the record is then minimal over the tested fields (§9.21.5). The Professor made no recommendation. Not decided: who may see which entries.
+- **Status:** a decision of a theory question; **binding on the Professor once sent** (not yet reported). Question G open, not needed now.
