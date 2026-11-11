@@ -1018,3 +1018,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "Role classification approved as proposed in ROLE-CLASSIFICATION-PROPOSAL.md, from the next window: items tagged by role; supporting devices and records of the estate get one line with their home; themes list and summaries mark roles; the register's role column is filled only when a concept is next reviewed. Reviewers check the role tags, and a wrong tag counts as a miss. Report the effect on restatement findings at the S0403–S0427 consolidation."
 - **Basis:** `review/CONSOLIDATION-S0378-S0402/ROLE-CLASSIFICATION-PROPOSAL.md` (four roles, ordered criteria, tie rule "core wins", marks K?/A-O/D mapped, no retro-tagging); the reviewer check of tags added by the Governance Engineer.
 - **Status:** a working instruction under Rulebook v1.4 (index W8); **binding on the Professor once sent** (not yet reported).
+
+## Addendum 2026-11-11T15:46:40Z: theory turn 1 approved for dispatch (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the line proposed by the Governance Engineer.
+- **Approved line (for the Professor):** "Run theory turn 1 (A and the output forms, T9-22) as written in 03-methodology/COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md, with its common method and three reviewers (two kos-lane-reviewer on different models, one kos-theory-reviewer; none on an outside service). Reading stays paused at S0403. After turn 1 settles, stop and report; I will send turn 2."
+- **Decided:** the commission's DeepSeek option is not taken (standing rule: no book or corpus text to outside services).
+- **Status:** turn 1 is **issued only when sent**; not yet reported sent. Turn 2 remains prepared, not issued (index T2).
