@@ -5,7 +5,7 @@
 | Status | **Index, maintained by the Governance Engineer** (the Principal, 2026-11-03: "approve" — "The Governance Engineer keeps a one-page index of the working instructions in force under Rulebook v1.4 (each with its date and decision-record entry); the Professor and every brief cite it. Folding them into a Rulebook v1.5 is decided after the theory-turn chain.") |
 | Authority | **None of its own.** Each instruction's authority is its entry in `PRINCIPAL-DECISION-RECORD-RULES-20261018.md` (cited by addendum time). If this index and the record differ, the record wins and this index is corrected |
 | Rulebook | v1.4 in force; **no v1.5** |
-| Updated | 2026-11-03 |
+| Updated | 2026-11-11 |
 
 ## Reading and windows
 
@@ -13,7 +13,7 @@
 |---|---|---|---|
 | W1 | **Standing instruction:** the Professor reads without a per-window go-ahead, stopping at each consolidation gate and on stop conditions | 2026-11-02 | 2026-11-02T01:21:05Z |
 | W2 | **Window size:** at most 5 sources in index order (v1.4 §3), from one conversation (siblings first), ≈ 4,000 lines max; every source read full | 2026-11-03 (C101, C106) | 2026-11-03T01:32:13Z; 2026-11-03T02:51:10Z |
-| W3 | **Trial:** S0383–S0402 windows up to 10 sources within the 4,000-line cap, review split into two commissions; trial measures reported at the S0378–S0402 consolidation. *Split as C107 S0383–S0391, C108 S0392, C109 S0393–S0396, C110 S0397, C111 S0398–S0402 (applied); the S0403–S0427 clause (up to ten within the cap) **sent** (reported by the Professor, 2026-11-03)* | 2026-11-03 | 2026-11-03T04:10:18Z; 04:11:03Z |
+| W3 | **Window size after the trial (approved, not yet reported sent):** up to ten sources per window within the 4,000-line cap for coherent series, review split into two commissions above five; other windows at most five; re-checked at the S0403–S0427 consolidation. *Supersedes W2's limit of five for coherent series.* Earlier trial: S0383–S0402 windows up to 10 sources S0383–S0402 windows up to 10 sources within the 4,000-line cap, review split into two commissions; trial measures reported at the S0378–S0402 consolidation. *Split as C107 S0383–S0391, C108 S0392, C109 S0393–S0396, C110 S0397, C111 S0398–S0402 (applied); the S0403–S0427 clause (up to ten within the cap) **sent** (reported by the Professor, 2026-11-03)* | 2026-11-03; 2026-11-11 | 2026-11-03T04:10:18Z; 04:11:03Z; 2026-11-11T15:45:26Z |
 | W4 | **Section numbers:** Ch. 8 continues §8.100 onward (08.100-…); 08.99 stays the change log; tools parse 2–3 digits, sort numerically; test `tmp/tools/test_section_numbers.py` | 2026-11-03 | 2026-11-03T03:58:14Z |
 | W5 | **Changed sources:** source closing checks the allowed list's disk status; S0386 used as on disk; **S2444 needs a ruling before it is opened** (access record) | 2026-11-03 | 2026-11-03T05:40:25Z |
 | W6 | **Time records:** Reading · Drafting · Waiting · Settlement · Rework, non-overlapping | 2026-11-01 | 2026-11-01T17:32:50Z |
@@ -55,3 +55,4 @@
 |---|---|
 | 2026-11-03 | First version |
 | 2026-11-03 | W3 clause and W8 marked sent (the Professor's gate report: "You sent both today"); the index citation in force from C111's briefs |
+| 2026-11-11 | W3: window size after the trial approved (record 2026-11-11T15:45:26Z) |

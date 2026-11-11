@@ -1003,3 +1003,11 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Principal (verbatim, to the Governance Engineer):** "do we need to note down the rule in v1.4 ?" Then, on the proposed line: "approve"
 - **Approved line:** "The Governance Engineer keeps a one-page index of the working instructions in force under Rulebook v1.4 (each with its date and decision-record entry); the Professor and every brief cite it. Folding them into a Rulebook v1.5 is decided after the theory-turn chain."
 - **Applied:** `03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md` (first version). It has no authority of its own; the record wins. **The Professor's citing it binds once the Principal tells the Professor** (not yet reported).
+
+## Addendum 2026-11-11T15:45:26Z: window size after the trial (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the line proposed by the Professor at the S0378–S0402 gate and recommended by the Governance Engineer.
+- **Approved line (for the Professor):** "Window size: up to ten sources per window within the 4,000-line cap for coherent series, review split into two commissions above five; other windows at most five; checked again at the S0403–S0427 consolidation."
+- **Basis (GE check of `review/CONSOLIDATION-S0378-S0402/SETTLEMENT.md` §3):** misses per source 0.92 (C106–C111) against 0.88 (C89–C105); per 1,000 lines 1.6 against 1.1, driven by C106 (short sources, 6.3); the longest windows C107 and C110 at or below baseline; the Professor's own minutes per source 1.5 against 4.6. Limits: one 25-source span; planted gaps measure consolidation reviewers, not window reviews; hence the re-check.
+- **Also verified:** stage 2 settled at `7ce95bffc` (2026-11-06); the guard held (the four plant lines unchanged in the working book; A-01, D-01 not applied).
+- **Status:** a working instruction under Rulebook v1.4 (index W2/W3); **binding on the Professor once sent** (not yet reported).
