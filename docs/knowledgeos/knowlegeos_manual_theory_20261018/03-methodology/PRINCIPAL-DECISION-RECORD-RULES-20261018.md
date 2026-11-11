@@ -1025,3 +1025,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "Run theory turn 1 (A and the output forms, T9-22) as written in 03-methodology/COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md, with its common method and three reviewers (two kos-lane-reviewer on different models, one kos-theory-reviewer; none on an outside service). Reading stays paused at S0403. After turn 1 settles, stop and report; I will send turn 2."
 - **Decided:** the commission's DeepSeek option is not taken (standing rule: no book or corpus text to outside services).
 - **Status:** turn 1 is **issued only when sent**; not yet reported sent. Turn 2 remains prepared, not issued (index T2).
+
+## Addendum 2026-11-11T15:48:20Z: A-02, option (c) (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the line proposed by the Governance Engineer (the Professor's recommendation, `review/CONSOLIDATION-S0378-S0402/SETTLEMENT.md` §4 item 1).
+- **Approved line (for the Professor):** "A-02: option (c). T10-20's closure decided g1's placement (U2), not its subdomain class; \"the class of g1\" is added to T10-21 (5), to be decided with the display question before part 2."
+- **Decided:** g1's subdomain class is **not decided**; it joins T10-21 (5). The 2026-11-03 closure of T10-20 is read as deciding placement only.
+- **Status:** binding on the Professor once sent (not yet reported). The four gate decisions of S0378–S0402 (this and the three addenda above) go to the Professor as one message.
