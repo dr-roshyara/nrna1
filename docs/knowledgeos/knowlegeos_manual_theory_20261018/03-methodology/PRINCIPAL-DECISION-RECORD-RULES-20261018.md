@@ -1044,3 +1044,10 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "Question O (T9-22): option (c), Req's core outputs can return every entry, the record cut at s, as §9.10 L186/L194 already use it. B-07 is repaired at §9.16 R2's next restatement; if (c) turns out to depend on B-07's reading, stop and report. Question G is not needed now."
 - **Basis (GE):** (c) changes no settled text (§9.10 L50, L186, L194); consistent with the T9-02 deliverable ruling (the record is the state); the record is then minimal over the tested fields (§9.21.5). The Professor made no recommendation. Not decided: who may see which entries.
 - **Status:** a decision of a theory question; **binding on the Professor once sent** (not yet reported). Question G open, not needed now.
+
+## Addendum 2026-11-11T16:36:03Z: theory turn 2 approved for dispatch (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "approve" — on the two-item message proposed by the Governance Engineer.
+- **Approved line (item 2, for the Professor):** "Run theory turn 2 (the derivation chain, unit of derivation first) as written in 03-methodology/COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md, with its common method and three reviewers (two kos-lane-reviewer on different models, one kos-theory-reviewer; none on an outside service). Build on §9.21 and Question O (c); the origin rule (§9.1 L96) is a premise, not decided. Name every section file in the briefs. Reading stays paused at S0403. After turn 2 settles, stop and report."
+- **Item 1:** Question O (c), addendum above, unchanged.
+- **Status:** turn 2 is **issued only when sent**; not yet reported sent.
