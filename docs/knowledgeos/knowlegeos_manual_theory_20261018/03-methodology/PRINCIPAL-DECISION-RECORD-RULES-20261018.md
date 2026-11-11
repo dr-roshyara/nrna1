@@ -1032,3 +1032,8 @@ The brief also recommended answers to D-R2…D-R10. Several of them **expand per
 - **Approved line (for the Professor):** "A-02: option (c). T10-20's closure decided g1's placement (U2), not its subdomain class; \"the class of g1\" is added to T10-21 (5), to be decided with the display question before part 2."
 - **Decided:** g1's subdomain class is **not decided**; it joins T10-21 (5). The 2026-11-03 closure of T10-20 is read as deciding placement only.
 - **Status:** binding on the Professor once sent (not yet reported). The four gate decisions of S0378–S0402 (this and the three addenda above) go to the Professor as one message.
+
+## Addendum 2026-11-11T15:49:07Z: the four S0378–S0402 gate decisions sent (recorded by the Governance Engineer)
+
+- **Principal (verbatim, to the Governance Engineer):** "sent" — for the combined message the Governance Engineer gave: items 1–4 as in the four addenda above, unchanged, with "Do 4 and 3 now. 1 and 2 apply when reading resumes at S0403. The index of working instructions (03-methodology/WORKING-INSTRUCTIONS-IN-FORCE.md) is updated; cite it in every brief."
+- **In force for the Professor from receipt:** A-02 (c) and theory turn 1 now; window size and role classification when reading resumes at S0403. **Theory turn 1 is issued.**

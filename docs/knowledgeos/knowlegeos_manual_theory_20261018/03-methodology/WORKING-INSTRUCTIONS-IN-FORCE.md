@@ -13,12 +13,12 @@
 |---|---|---|---|
 | W1 | **Standing instruction:** the Professor reads without a per-window go-ahead, stopping at each consolidation gate and on stop conditions | 2026-11-02 | 2026-11-02T01:21:05Z |
 | W2 | **Window size:** at most 5 sources in index order (v1.4 §3), from one conversation (siblings first), ≈ 4,000 lines max; every source read full | 2026-11-03 (C101, C106) | 2026-11-03T01:32:13Z; 2026-11-03T02:51:10Z |
-| W3 | **Window size after the trial (approved, not yet reported sent):** up to ten sources per window within the 4,000-line cap for coherent series, review split into two commissions above five; other windows at most five; re-checked at the S0403–S0427 consolidation. *Supersedes W2's limit of five for coherent series.* Earlier trial: S0383–S0402 windows up to 10 sources S0383–S0402 windows up to 10 sources within the 4,000-line cap, review split into two commissions; trial measures reported at the S0378–S0402 consolidation. *Split as C107 S0383–S0391, C108 S0392, C109 S0393–S0396, C110 S0397, C111 S0398–S0402 (applied); the S0403–S0427 clause (up to ten within the cap) **sent** (reported by the Professor, 2026-11-03)* | 2026-11-03; 2026-11-11 | 2026-11-03T04:10:18Z; 04:11:03Z; 2026-11-11T15:45:26Z |
+| W3 | **Window size after the trial (approved 2026-11-11; sent; applies when reading resumes at S0403):** up to ten sources per window within the 4,000-line cap for coherent series, review split into two commissions above five; other windows at most five; re-checked at the S0403–S0427 consolidation. *Supersedes W2's limit of five for coherent series.* Earlier trial: S0383–S0402 windows up to 10 sources S0383–S0402 windows up to 10 sources within the 4,000-line cap, review split into two commissions; trial measures reported at the S0378–S0402 consolidation. *Split as C107 S0383–S0391, C108 S0392, C109 S0393–S0396, C110 S0397, C111 S0398–S0402 (applied); the S0403–S0427 clause (up to ten within the cap) **sent** (reported by the Professor, 2026-11-03)* | 2026-11-03; 2026-11-11 | 2026-11-03T04:10:18Z; 04:11:03Z; 2026-11-11T15:45:26Z |
 | W4 | **Section numbers:** Ch. 8 continues §8.100 onward (08.100-…); 08.99 stays the change log; tools parse 2–3 digits, sort numerically; test `tmp/tools/test_section_numbers.py` | 2026-11-03 | 2026-11-03T03:58:14Z |
 | W5 | **Changed sources:** source closing checks the allowed list's disk status; S0386 used as on disk; **S2444 needs a ruling before it is opened** (access record) | 2026-11-03 | 2026-11-03T05:40:25Z |
 | W6 | **Time records:** Reading · Drafting · Waiting · Settlement · Rework, non-overlapping | 2026-11-01 | 2026-11-01T17:32:50Z |
 | W7 | **Implementation ideas** may be noted in `07-implementation-ideas/IDEAS-LOG.md` (outside the book; never cited; not reviewed) | 2026-11-03 | 2026-11-03T02:57:42Z; 03:38:47Z |
-| W8 | **Role classification:** approved 2026-11-11 as in `ROLE-CLASSIFICATION-PROPOSAL.md` (not yet reported sent): items tagged by role from the next window; supporting devices and estate records one line with their home; themes and summaries mark roles; register role column filled on next review; reviewers check tags (a wrong tag is a miss); effect reported at S0403–S0427 | 2026-11-03 (sent, reported by the Professor) | 2026-11-03T06:53:59Z |
+| W8 | **Role classification:** approved 2026-11-11 as in `ROLE-CLASSIFICATION-PROPOSAL.md` (sent 2026-11-11; applies when reading resumes at S0403): items tagged by role from the next window; supporting devices and estate records one line with their home; themes and summaries mark roles; register role column filled on next review; reviewers check tags (a wrong tag is a miss); effect reported at S0403–S0427 | 2026-11-03 (sent, reported by the Professor) | 2026-11-03T06:53:59Z |
 
 ## Review and access
 
@@ -47,7 +47,7 @@
 | # | Instruction | In force since | Record |
 |---|---|---|---|
 | T1 | **Ch. 10:** consequences 1–6 and plan steps 1–2 applied, reviewed at S0378–S0402; T10-15 prepared, not run; **stage 1 not prepared** | 2026-11-03 | 2026-11-03T03:54:51Z; 2026-10-31T15:16:17Z |
-| T2 | **Chain after the S0378–S0402 consolidation:** turn 1 (A and output forms, T9-22), then turn 2 (derivation chain); reading pauses; commissions `COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md` (prepared, not issued). **Turn 1 approved for dispatch 2026-11-11, three Claude reviewers, none on an outside service; not yet reported sent** | after S0402 | 2026-11-03T04:02:46Z |
+| T2 | **Chain after the S0378–S0402 consolidation:** turn 1 (A and output forms, T9-22), then turn 2 (derivation chain); reading pauses; commissions `COMMISSIONS-CHAIN-R2-R1-THEORY-TURNS-20261103.md` (prepared, not issued). **Turn 1 issued 2026-11-11 (sent), three Claude reviewers, none on an outside service; turn 2 prepared, not issued** | after S0402 | 2026-11-03T04:02:46Z |
 
 ## Change log of this index
 
@@ -58,3 +58,4 @@
 | 2026-11-11 | W3: window size after the trial approved (record 2026-11-11T15:45:26Z) |
 | 2026-11-11 | W8: role classification approved |
 | 2026-11-11 | T2: turn 1 approved for dispatch |
+| 2026-11-11 | W3, W8, T2 marked sent (the Principal: "sent") |
