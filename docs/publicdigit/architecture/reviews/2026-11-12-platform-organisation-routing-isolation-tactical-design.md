@@ -66,7 +66,7 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 | # | Channel | Mechanism | Fail-closed behaviour |
 |---|---|---|---|
 | **E-1** | **HTTP (member and workspace requests)**: **one shared hostname** (D-219 (2)) | **Selection:** after login, the person chooses from the organisations their account is currently bound to; the choice is kept in the session as a **request to work in** an organisation, never as proof.<br><br>**One entry middleware, on every request:**<br>- re-checks the selection against Identity's **current** bindings (ISO-3);<br>- resolves it through the registry;<br>- builds the `OrganisationContext`;<br>- binds it **for this request only** (request-scoped container binding, never a static or global). | unknown, not operational, wrong schema, **binding revoked since selection**, or a conflicting id in route/body/header → **refused**, and the selection is cleared (no page from any database) |
-| **E-2** | **Queue jobs and retries**: **a separate queue connection, §3.10** | **Every organisation job extends one base class** that carries `organisationId` in its envelope and **fixes its queue connection to `organisation`**. **One job middleware** checks the connection, resolves the context at each attempt (through the registry again, never from a cached connection) and purges the connection at job end, success or failure. **A retry resolves again**, so a suspended organisation's retry is refused | no organisation id, or the wrong connection → refused and failed, never run "centrally" or inline (ISO-6). Architecture tests: §3.10 |
+| **E-2** | **Queue jobs and retries**: **a separate queue connection, §3.10** | **Every organisation job extends one base class** that carries `organisationId` in its envelope and **fixes its queue connection to `organisation`**. **One job middleware** checks the connection, resolves the context at each attempt (through the registry again, never from a cached connection) and purges the connection at job end, success or failure. **A retry resolves again**, so a retry for an organisation that is no longer routable (e.g. schema `migration-failed`) is refused | no organisation id, or the wrong connection → refused and failed, never run "centrally" or inline (ISO-6). Architecture tests: §3.10 |
 | **E-3** | **Scheduled tasks** | **No scheduled task touches an organisation database directly.** A scheduled task is either central, or a **fan-out**: one central command reads the registry's `operational` organisations and dispatches **one E-2 job per organisation** | an organisation that is not operational is skipped and logged; one organisation's failure never stops the others |
 | **E-4** | **CLI and operator operations** | Operator commands take an explicit organisation id, resolve through the registry, and go through the operator channel: the joining grant for technical operations, a case grant for content (ISO-8, ISO-11) | no id, no grant → refused. **No command iterates organisations "for convenience" outside E-3** |
 | **E-5** | **Outbox relay and inbox** | §3.4 | event in database A naming organisation B → rejected and alerted (ISO-9) |
@@ -123,10 +123,10 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 
 | Step | Where | What | Resumable by |
 |---|---|---|---|
-| 1 | central | registry entry `provisioning`, with the counterparty evidence (D-193 R-C, D-175) | registry status |
-| 2 | central | **service-operation grant recorded before provisioning** (D-166, D-193 §3.3) | the grant record |
+| 1 | central | registry entry **`pending`** (D-185): the application with the founding evidence, which names the registrar **and the initial platform contacts** (D-148, D-174). **No technical operation** *(corrected 2026-11-12, F-T1-2: revision 3 wrongly began at `provisioning`)* | registry status |
+| 2 | central | counterparty verified (D-175, D-193 R-C); **service-operation grant recorded** (D-166, D-193 §3.3); **only then `provisioning`** (D-185, F-02) | the verification and grant records; status |
 | 3 | organisation | database created; **organisation migrations** applied; `organisation_identity` row; the ledger clock row ensured (slice 1 `LedgerClockRow::ensure`) | `schemaState` |
-| 4 | organisation | **founding decision recorded from evidence** (asserted, D-148), and the registrar's claim issued **before** `operational` (D-193 F-03) | the founding record |
+| 4 | organisation | **founding decision recorded from evidence** (asserted, D-148); **the registrar's and initial contacts' local person entries and `PersonRef`s** (D-193 F-02 step 6); the registrar's claim issued **before** `operational` (D-193 F-03). **A platform contact receives no membership, workspace access or authority** (D-193 R-B) *(added 2026-11-12, F-T1-1)* | the founding record |
 | 5 | central | registry `operational`, **only if the §3.7 preconditions hold** (checked in the organisation database at this step, never assumed from earlier steps) | status |
 
 **Membership is on the ledger from step 3** (D-160: new organisations start on the ledger, no data migration).
@@ -141,7 +141,7 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 
 | # | Point | Guard |
 |---|---|---|
-| **L-1** | **`operational` transition** (§3.6 step 5) | refused unless, in that organisation's database:<br>- the organisation migration set is at the current version, **including the Membership ledger tables**;<br>- the `organisation_identity` row equals the registry id;<br>- the ledger clock row exists. |
+| **L-1** | **`operational` transition** (§3.6 step 5) | refused unless, in that organisation's database:<br>- the organisation migration set is at the current version, **including the Membership ledger tables**;<br>- the `organisation_identity` row equals the registry id;<br>- the ledger clock row exists;<br>- **at least one platform contact with an active account** (D-193 F-07; *added 2026-11-12, F-T1-1*). |
 | **L-2** | **Registry entry creation** (§3.6 step 1) | refused if the id is a **legacy organisation** (present in the legacy `organisations` table). **Legacy organisations cannot enter the registry in release 1;** their cutover (C-1 … C-10) is a later, separate plan |
 | **L-3** | **Every C2 call** | M-2 answers true only for the current registry-resolved context. Without one, or for a different organisation, **`SOURCE_NOT_LEDGER`**. **Fail closed** whenever L-1 or L-2 cannot be shown |
 
@@ -194,7 +194,7 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 | **Q-2** | **A second, separate connection `organisation`:**<br>- driver `database` on the **central** database connection;<br>- its own table `organisation_jobs` (central migration), its own `retry_after`, `after_commit = false` (see Q-7).<br>**Failures: the standard `failed_jobs` table, not a separate one (§3.10.1).**<br>Only a dedicated worker processes it: `php artisan queue:work organisation` | new entry in `config/queue.php`; **one** central migration (`organisation_jobs`); `failed_jobs` already exists (`2026_03_05_000014_…:43`) |
 | **Q-3** | **Dispatch selects the connection explicitly, never by default.** `OrganisationJob` (abstract base class) sets `$this->connection = 'organisation'` in its constructor and requires an `OrganisationId`. **Organisation code dispatches only through `OrganisationJobDispatcher`**, which: <br>- refuses a job that isn't an `OrganisationJob`;<br>- refuses one whose organisation differs from the current `OrganisationContext`;<br>- refuses any connection override. | Infrastructure class; architecture tests T-20 |
 | **Q-4** | **Context per attempt:** the job middleware `EstablishOrganisationContext`:<br>1. refuses unless the job arrived on connection `organisation` (so a misrouted or inline run of an organisation job is refused);<br>2. resolves the organisation through `ResolutionService` **on every attempt**;<br>3. binds the context as a scoped instance;<br>4. in `finally`: forgets the context and `DB::purge`s the organisation connection. | Laravel job middleware |
-| **Q-5** | **Retries re-resolve.** No routing fact is serialised into the payload. The registry is read again at each attempt, so a suspended or `migration-failed` organisation's retry is refused and released to the failed table with its reason | Q-4 step 2 |
+| **Q-5** | **Retries re-resolve.** No routing fact is serialised into the payload. The registry is read again at each attempt, so a `migration-failed` (or otherwise unroutable) organisation's retry is refused and released to the failed table with its reason | Q-4 step 2 |
 | **Q-6** | **Payloads carry identifiers only:** organisation id, operation key, aggregate ids. **No Eloquent models** (`SerializesModels` would restore a model with its *stored connection name*, a leak path), no business content, no personal data | architecture test: `OrganisationJob` subclasses neither use `SerializesModels` nor hold `Model` properties |
 | **Q-7** | **Work that must follow an organisation commit goes through that organisation's outbox, never a direct dispatch.** Laravel's `afterCommit` follows the default connection's transactions, not the organisation connection's, and the central jobs table is a different database (no atomic dispatch, C-3). **Enforced, not just documented: §3.10.2** | dispatcher refusal + architecture test + T-24, T-25 |
 | **Q-8** | **Isolation of failure:** one job per organisation and operation (E-3 fan-out). A failing organisation's jobs fail, retry or land in the failed table **without blocking the worker or other organisations' jobs** | standard worker behaviour; tested (T-23) |
@@ -226,6 +226,7 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 | Layer | Rule | Proof |
 |---|---|---|
 | **Dispatcher** | `OrganisationJobDispatcher` refuses while the organisation connection is inside a transaction (`transactionLevel() > 0`) | T-25 |
+| T-26 | **Held connection (D-222):** a `Connection` object obtained from organisation A's `OrganisationContext`, used after organisation B's context has been established (and A's purged), reaches A's database only, never B's | D-222; C-1, C-2 |
 | **Single path** | organisation jobs are dispatched only by the dispatcher; architecture test forbids direct dispatch elsewhere; Domain and Application cannot dispatch at all (no Laravel) | T-25 |
 | **Outbox** | work that must follow a commit is an outbox row written **in** the organisation transaction (as slice 1's C1). A rollback removes it | T-24 |
 | **Relay** | reads only committed rows; commits its claim, **then** dispatches through the dispatcher (outside any transaction), then marks the row. A crash between dispatch and mark re-dispatches. The job is idempotent by the event id (at least once, Q-8 / §3.4) | T-24, T-6 |
@@ -299,7 +300,7 @@ Slice 1 built the Membership ledger so that it already works this way: every ope
 **Of D-193's 53 proof obligations,** slice 2 executes those for routing, the locator, provisioning resume and isolation. **The contact, case-grant and emergency-route obligations stay NOT EXECUTED** until those features are scheduled. The slice 2 plan will list each obligation by number with its status.
 
 **Acceptance criteria for slice 2:**
-- **T-1 … T-25** green on the isolated cluster, with raw output and checksums (**T-19 run twice**, before and after the queue change);
+- **T-1 … T-26** green on the isolated cluster, with raw output and checksums (**T-19 run twice**, before and after the queue change);
 - the in-scope D-193 obligations listed and passed;
 - the legacy path unchanged (its suites no worse than the slice 1 baseline);
 - developer guides per step;
@@ -366,6 +367,15 @@ The table below is kept as the record of the options.
 9. Outage behaviour (T-11), architecture tests (T-10), the D-193 obligation list, evidence and developer guides.
 
 **Each step: RED → GREEN → guide, one story ID** (to be created on approval of the plan).
+
+## Corrections after task 1 (2026-11-12, Principal's task 1 review; consistency only, no new decision)
+
+| # | Correction |
+|---|---|
+| **F-T1-1** | **The `operational` step needs at least one platform contact with an active account** (D-193 F-07). This is part of L-1 and of founding step 4, which records the initial contacts named in the founding evidence. Implemented in `OperationalReadiness`. A contact has no constitutional or governance authority (D-193 R-B) |
+| **F-T1-2** | **Founding begins at `pending`, not `provisioning`** (D-185). §3.6 steps 1–2 corrected |
+| **F-T1-3** | **`suspended` and `closed` are deferred** to a later release; their business triggers are undecided (D-193 §3.2). **A failed migration is schema state, not a status.** E-2 and Q-5 no longer use `suspended` as an example; tests use `migration-failed` |
+| **F-T1-4** | **An absent schema state** (no migration result recorded yet) **is not evidence of a current schema and never permits routing.** Fail closed (`ServedOrganisation::isRoutable()`) |
 
 ## Traceability
 

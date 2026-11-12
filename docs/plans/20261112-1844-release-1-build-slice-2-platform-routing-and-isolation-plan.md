@@ -74,9 +74,9 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 - [x] **0. Test harness.** *(Done 2026-11-12, TDD: two cycles plus one default-suite fix; final isolated run 144 tests, slice 1 135 unchanged; architecture failures identical. Evidence `docs/publicdigit/platform/evidence/2026-11-12-pbdigit345-task0/`; guide `developer_guide/testing/07_multi_database_harness.md`. **Awaiting the Principal's review before task 1.**)* Planned: Extend `scripts/testing/membership-pg.sh` (or a sibling `platform-pg.sh`) to create **a central database and organisation databases A, B, C** on the isolated cluster. No production configuration. *Gate: the slice 1 suite still passes (T-12).*
 - [x] **1. Platform domain.** *(Done 2026-11-12, TDD; 21 unit + 5 purity tests; guide `developer_guide/platform/01_served_organisation_domain.md`; evidence `docs/publicdigit/platform/evidence/2026-11-12-pbdigit345-task1/`. **Awaiting the Principal's review before task 2.**)* Planned: `ServedOrganisation` lifecycle: transitions, routable only if `operational` and `schemaState = current`, grant before provisioning. Unit tests, no framework.
 - [ ] **2. Registry persistence + `ResolutionService`** (central migration): unknown, not operational or wrong schema → refused (**T-2**).
-- [ ] **3. `OrganisationContext` + `OrganisationConnectionFactory`:** a named connection from the locator; the default connection untouched; credentials by reference (**T-10** part 1).
+- [ ] **3. `OrganisationContext` + `OrganisationConnectionFactory` (custom, D-222; one connection name per organisation, never a re-pointed shared name; add **T-26**, the held-connection proof):** a named connection from the locator; the default connection untouched; credentials by reference (**T-10** part 1).
 - [ ] **4. Organisation migration set:** a separate path; `organisation_identity`; F-13 re-pointed for the organisation schema; architecture test that organisation migrations reference no central table (**T-8**, **T-10** part 2).
-- [ ] **5. Founding sequence F-1 with L-1 and L-2:** resumable after a crash at each step; `MarkOperational` refused for each missing precondition; legacy id refused (**T-9**, **T-13**, **T-14** part 1).
+- [ ] **5. Founding sequence F-1 with L-1 and L-2,** **including the initial platform contacts from the founding evidence** (F-T1-1; at least one with an active account before `operational`): resumable after a crash at each step; `MarkOperational` refused for each missing precondition; legacy id refused (**T-9**, **T-13**, **T-14** part 1).
 - [ ] **6. HTTP entry (E-1):** selection after login; ISO-3 on every request; revoked binding and forged session refused; legacy and registry paths disjoint (**T-1**, **T-15**, **T-10** part 3).
 - [ ] **7. Queue (E-2, delta §3.10).**
   - **Step 1, characterisation before change:** write **T-19** and run it against the **untouched** queue configuration. It covers inline legacy mail and job execution, and a failing legacy job rethrowing with no `failed_jobs` row. **It must be green before anything below.** Record its output as evidence.
@@ -99,7 +99,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 
 ## 7. Acceptance criteria
 
-- **T-1 … T-25** green on the isolated cluster, with raw output and checksums (**T-19 run before and after the queue change**);
+- **T-1 … T-26** green on the isolated cluster, with raw output and checksums (**T-19 run before and after the queue change**);
 - D-193 obligations listed by number;
 - legacy suites no worse than the slice 1 baseline;
 - Domain and Application free of Laravel (architecture tests);
@@ -111,6 +111,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 - 2026-11-12: plan drafted after D-219. Nothing implemented.
 - 2026-11-12: task 7 rewritten for two separate queue connections (delta revision 3, §3.10); T-19 … T-24 added; Q-S2-5 opened.
 - 2026-11-12: **approved**; PBDIGIT-345 created; D-221 ratified.
+- 2026-11-12: **D-222:** custom multi-database integration (no Spatie); T-26 added to task 3. Task 1 findings F-T1-1 … F-T1-4 closed in the design.
 - 2026-11-12: **task 1 done** (pure domain).
   - **Deviation:** shared `TenantId` reused instead of a new `OrganisationId` (canonical discovery).
   - **Deferred to task 2:** domain events.

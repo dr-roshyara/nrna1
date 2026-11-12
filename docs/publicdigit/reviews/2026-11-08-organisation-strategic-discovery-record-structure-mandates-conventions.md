@@ -1529,3 +1529,11 @@ Source: slice 2 delta revision 3, §3.10 … §3.10.2 (`docs/publicdigit/archite
 - The principles document is now **revision 3**, applying D-220 (2) and (3).
 - **Fingerprint:** revision 2 `19f387681c415891e9625111bdd9663d6e8a40f16a080009aa369a044cf9a2f4` → revision 3 `0465df57ec3680adca886295e73c3f586782d88fb7cfa01498c9ce0542ed507d`.
 - D-218's text is unchanged; this note records the only later change.
+
+### 11.122 Decision D-222 (slice 2: the Laravel multi-database mechanism is custom)
+
+Source: evaluation `docs/publicdigit/architecture/reviews/2026-11-12-platform-laravel-multi-database-mechanism-evaluation.md` and its probe evidence; the Principal DDD review of 2026-11-12, recommendations accepted by the Principal.
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-222 | **Option B is chosen: a small custom Laravel integration.**<br>- `ServedOrganisationRepository`, `ResolutionService`, an immutable `OrganisationContext`, and an `OrganisationConnectionFactory` that creates **one connection name per organisation** and **never re-points a shared name**;<br>- request and job middleware establish and clear the context.<br><br>**Spatie Laravel Multitenancy is not installed for this purpose.**<br><br>**Preserved:**<br>- the explicit connection per organisation;<br>- Laravel's default connection stays central;<br>- every accepted isolation rule (ISO-1 … ISO-11, D-219, D-221).<br><br>**T-26 is added as an executable proof obligation:** a connection object held from organisation A's context, used after organisation B's work starts, still reaches A only (the probe of the evaluation, §2).<br><br>**Technical choice only:** no ownership, topology or accepted rule changes. | direct, 2026-11-12: Principal accepted the review's recommendations ("I approve option B …") |
