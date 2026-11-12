@@ -1,5 +1,7 @@
 # 14: Correction slice C-4, persisting Annul, Void and Correct
 
+> **Superseded in one point (2026-11-12, PBDIGIT-343, D-209 / D-215 K-C1):** `recorded_at = max(clock, last + 1 µs)` below no longer holds. The record time is the database clock reading, **never adjusted**; a reading that does not advance is refused and retried. **V-5 (strictly increasing per Member) still holds, by refusal.** See guides 18 and 19. Everything else here is unchanged.
+
 **Story:** `PBDIGIT-329` · **Plan:** `docs/plans/20261103-0440-membership-cor4-correction-persistence-tdd-plan.md` (approved 2026-11-03 with Q-1…Q-7) · **Contract:** correction contract §8; Slice 1b contract, "Amendment (2026-11-03)" · **Namespaces:** `…\Domain\Organisational`, `…\Application\Organisational\Ports`, `…\Infrastructure\Organisational`
 
 ## Purpose

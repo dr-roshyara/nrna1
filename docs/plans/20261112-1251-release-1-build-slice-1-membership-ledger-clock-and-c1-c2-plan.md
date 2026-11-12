@@ -226,12 +226,13 @@ closeOrRead(tenant):
 - [x] 2. Test 17 → migration and backfill.
 - [x] 3. Tests 2, 5, 19 → `LedgerClockReader`; swap the clock in the repository and the seven test classes.
 - [x] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
-- [ ] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
+- [x] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
 - [ ] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
 - [ ] 7. Test 14 → hydrator and registration (D-6).
 - [ ] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [ ] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
-- [ ] 10. Developer guide; evidence to the Principal; **acceptance by the Principal.**
+- [ ] 10. Developer-guide index final check; evidence to the Principal; **acceptance by the Principal.**
+- **Every task ships its developer guide in the same step** (Principal, 2026-11-12; CLAUDE.md Definition of Done): guides 15–19 cover tasks 1–5.
 
 ## 8. Progress
 
@@ -260,6 +261,11 @@ closeOrRead(tenant):
   - **RED:** 9 of the 10 new PostgreSQL tests fail on the old code (KC1-2 passes there, correctly).
   - **GREEN:** PostgreSQL suite 112; kernel 204; C1 unit 4; Membership architecture 105.
   - **Known RED for task 5:** `AppendOutcomeMappingTest` (2) requires the new outcome's mapping in `DecideAndAppend`.
+- 2026-11-12: **task 5 done** (`ad4d5275b`):
+  - a `RecordTimeRefused` is a fresh attempt (re-load, re-decide, fresh reading); exhaustion → `RecordTimeUnavailable`; otherwise the last attempt's reason.
+  - **RED:** the existing mapping guard, 4 unit and 3 PostgreSQL tests.
+  - **GREEN:** application 80; kernel 204; infrastructure 65; Membership architecture 105; PostgreSQL suite 115.
+- 2026-11-12, **deviation 3 (Principal instruction):** developer guides are written **per step**, not only at task 10. Guides 15–19 written for tasks 1–5. Guide 14 carries a pointer note: its `max(clock, last + 1 µs)` is superseded.
 
 ## 9. Risks
 
