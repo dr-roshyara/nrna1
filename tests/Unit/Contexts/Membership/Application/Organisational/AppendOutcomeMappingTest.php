@@ -29,8 +29,9 @@ use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthor
 
 /**
  * E9 (Option E): every AppendOutcome has an explicit application result, and only a
- * concurrency conflict is re-decided (R-1a-2). Rows come from the enum's actual cases;
- * the expected table is keyed by value, so a missing or an unexpected case fails an assertion.
+ * concurrency conflict (R-1a-2) or a record-time refusal (D-209, PBDIGIT-343 G-1d) is re-decided.
+ * Rows come from the enum's actual cases; the expected table is keyed by value, so a missing or an
+ * unexpected case fails an assertion.
  */
 final class AppendOutcomeMappingTest extends TestCase
 {
@@ -42,6 +43,7 @@ final class AppendOutcomeMappingTest extends TestCase
         'member_not_found' => ['member_not_found', 1],
         'valid_time_not_storable' => ['valid_time_not_storable', 1],
         'concurrency_conflict' => ['concurrent_modification', DecideAndAppend::MAX_ATTEMPTS],
+        'record_time_refused' => ['record_time_unavailable', DecideAndAppend::MAX_ATTEMPTS],   // D-209: re-decided, then fail closed
     ];
 
     public function test_every_append_outcome_has_an_expected_application_result(): void
@@ -54,7 +56,7 @@ final class AppendOutcomeMappingTest extends TestCase
         $this->assertSame($expected, $actual, 'AppendOutcome cases and the expected mapping table differ');
     }
 
-    public function test_each_append_outcome_maps_to_its_result_and_only_a_conflict_is_retried(): void
+    public function test_each_append_outcome_maps_to_its_result_and_only_a_conflict_or_a_clock_refusal_is_retried(): void
     {
         foreach (AppendOutcome::cases() as $case) {
             $this->assertArrayHasKey($case->value, self::EXPECTED, "no expected mapping for {$case->value}");

@@ -20,7 +20,9 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  *   have been applied meanwhile; found by the PostgreSQL race test, PBDIGIT-260)
  *   repeat ≤ MAX_ATTEMPTS:  load → authorise → decide (guards + G*) → append(expected version)
  *     on ConcurrencyConflict: discard the decision and start again from load (R-1a-2: never reuse)
+ *     on RecordTimeRefused: the same, a fresh attempt with a fresh clock reading (D-209; PBDIGIT-343 G-1d)
  *     on ValidTimeNotStorable: refuse at once; the valid times come from the command (R-1a-6)
+ *   attempts exhausted: refused with the last attempt's reason (ConcurrentModification or RecordTimeUnavailable)
  */
 final class DecideAndAppend
 {
@@ -43,6 +45,7 @@ final class DecideAndAppend
             return $seen;
         }
 
+        $exhausted = ApplicationRefusal::ConcurrentModification;
         for ($attempt = 1; $attempt <= self::MAX_ATTEMPTS; $attempt++) {
             $authorisation = $this->authority->check($tenant, $actor, $act);
             if (!$authorisation->isGranted()) {
@@ -61,20 +64,23 @@ final class DecideAndAppend
             }
             $result = $this->repository->append($tenant, $member->id(), $decision, $key, $fingerprint);
             // Exhaustive, no default: an unmapped outcome fails loudly (UnhandledMatchError) instead of
-            // being retried into ConcurrentModification. Only a concurrency conflict is re-decided (null).
+            // being retried. Only a concurrency conflict or a record-time refusal is re-decided (null).
             $outcome = match ($result->outcome()) {
                 AppendOutcome::Appended, AppendOutcome::AlreadyApplied => CommandOutcome::ofAppended($result->appended()),
                 AppendOutcome::IdempotencyKeyConflict => CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict),
                 AppendOutcome::MemberNotFound => CommandOutcome::refused(ApplicationRefusal::MemberNotFound),
                 AppendOutcome::ValidTimeNotStorable => CommandOutcome::refused(ApplicationRefusal::ValidTimeNotStorable),
-                AppendOutcome::ConcurrencyConflict => null,
+                AppendOutcome::ConcurrencyConflict, AppendOutcome::RecordTimeRefused => null,
             };
             if ($outcome !== null) {
                 return $outcome;
             }
+            $exhausted = $result->outcome() === AppendOutcome::RecordTimeRefused
+                ? ApplicationRefusal::RecordTimeUnavailable
+                : ApplicationRefusal::ConcurrentModification;
         }
 
-        return CommandOutcome::refused(ApplicationRefusal::ConcurrentModification);
+        return CommandOutcome::refused($exhausted);
     }
 
     /** The original outcome of an already-applied key, or null if the key is unused. */

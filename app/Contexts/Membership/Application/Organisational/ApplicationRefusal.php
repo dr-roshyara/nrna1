@@ -15,4 +15,9 @@ enum ApplicationRefusal: string
     case IdempotencyKeyConflict = 'idempotency_key_conflict';
     /** R-1a-6: a finite valid time cannot be stored (a technical limit, not a domain rule); never retried. */
     case ValidTimeNotStorable = 'valid_time_not_storable';
+    /**
+     * D-209 (PBDIGIT-343): the ledger clock still did not advance after the bounded number of re-decisions.
+     * Fail closed: nothing was recorded and no time was adjusted; the command may be sent again later.
+     */
+    case RecordTimeUnavailable = 'record_time_unavailable';
 }
