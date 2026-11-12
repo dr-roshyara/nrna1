@@ -162,6 +162,9 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         if ($this->db->transactionLevel() > 0) {
             throw AppendInsideTransactionRefused::atLevel($this->db->transactionLevel());
         }
+        // Deviation 4 (PBDIGIT-343): the clock row is created by its own committed statement, BEFORE the append
+        // transaction, so an append in flight never holds an uncommitted new row that a closer would wait for.
+        LedgerClockRow::ensure($this->db, $tenant);
 
         try {
             return $this->db->transaction(function () use ($tenant, $id, $accepted, $key, $fingerprint): AppendResult {
@@ -194,16 +197,13 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         }
 
         // D-209 (PBDIGIT-343 plan D-2): the organisation's clock row first, then the version (spec §11 correction note).
-        $this->db->statement(
-            'INSERT INTO org_membership_ledger_clocks (organisation_id) VALUES (?) ON CONFLICT (organisation_id) DO NOTHING',
-            [$tenant->value()],
-        );
+        // The row already exists and is committed (created before this transaction by LedgerClockRow::ensure).
         $clock = $this->db->selectOne(
             'SELECT ' . InstantMicros::selectExpression('last_recorded_at') . ' AS last_us, '
             . InstantMicros::selectExpression('closed_through') . ' AS closed_us
              FROM org_membership_ledger_clocks WHERE organisation_id = ? FOR UPDATE',
             [$tenant->value()],
-        );
+        ) ?? throw new \RuntimeException("Ledger clock row missing for organisation {$tenant->value()} (fail closed).");
         $t = $this->clock->now($this->db)->ordinal();
         $organisationLast = $clock->last_us === null ? null : (int) $clock->last_us;
         $closedThrough = $clock->closed_us === null ? null : (int) $clock->closed_us;

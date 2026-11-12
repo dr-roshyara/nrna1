@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Log;
 final class LedgerClockCloser
 {
     private const LOCK_NOT_AVAILABLE = '55P03';
+    /** Bounds the closer's wait while another session creates the clock row; then it fails closed. */
+    private const CREATE_LOCK_TIMEOUT_MS = 200;
 
     private readonly DueScheduledResignations $due;
 
@@ -43,14 +45,9 @@ final class LedgerClockCloser
         if ($this->db->transactionLevel() > 0) {
             throw LedgerCloseInsideTransactionRefused::atLevel($this->db->transactionLevel());
         }
-        // Ensure the row without ever waiting on a writer: INSERT … ON CONFLICT waits while another transaction has an
-        // uncommitted update of the existing row, so it runs only when a plain (non-blocking) read finds no row.
-        $exists = $this->db->selectOne('SELECT 1 AS one FROM org_membership_ledger_clocks WHERE organisation_id = ?', [$organisation->value()]);
-        if ($exists === null) {
-            $this->db->statement(
-                'INSERT INTO org_membership_ledger_clocks (organisation_id) VALUES (?) ON CONFLICT (organisation_id) DO NOTHING',
-                [$organisation->value()],
-            );
+        // Never wait on the row (deviation 4): a plain read first; a creation in flight elsewhere → fail closed.
+        if (!LedgerClockRow::ensure($this->db, $organisation, self::CREATE_LOCK_TIMEOUT_MS)) {
+            return $this->committedClosedThrough($organisation);
         }
 
         try {
@@ -89,11 +86,16 @@ final class LedgerClockCloser
             Log::error('membership.ledger_clock.scheduled_execution_failed', ['organisation_id' => $organisation->value(), 'error' => $e->getPrevious()?->getMessage()]);
         }
 
-        // A new statement, outside any transaction: the last committed value (READ COMMITTED; A3).
+        return $this->committedClosedThrough($organisation);
+    }
+
+    /** A new statement, outside any transaction: the last committed value (READ COMMITTED; A3). No row → null. */
+    private function committedClosedThrough(TenantId $organisation): ?Instant
+    {
         $closed = $this->db->selectOne(
             'SELECT ' . InstantMicros::selectExpression('closed_through') . ' AS closed_us FROM org_membership_ledger_clocks WHERE organisation_id = ?',
             [$organisation->value()],
-        )->closed_us;
+        )?->closed_us;
 
         return $closed === null ? null : Instant::of((int) $closed);
     }

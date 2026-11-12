@@ -238,10 +238,19 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
     {
         [$repo, $t, $m, $d] = $this->freshAdmission();
         $statements = [];
-        DB::listen(function ($query) use (&$statements): void { $statements[] = $query->sql; });
+        DB::listen(function ($query) use (&$statements): void { $statements[] = [$query->sql, $query->connection->transactionLevel()]; });
 
         $this->assertSame(AppendOutcome::Appended, $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k-rc'), 'fp')->outcome());
-        $this->assertSame('SET TRANSACTION ISOLATION LEVEL READ COMMITTED', $statements[0] ?? null, 'the adapter enforces its isolation assumption');
+        // PBDIGIT-343 deviation 4: the clock row is ensured by its own statements before the transaction, so the
+        // invariant is stated precisely: the FIRST statement INSIDE the append transaction enforces READ COMMITTED,
+        // and the only statements before it are the clock-row read / insert, outside any transaction.
+        $inside = array_values(array_filter($statements, static fn (array $s): bool => $s[1] > 0));
+        $before = array_slice($statements, 0, (int) array_search($inside[0] ?? null, $statements, true));
+        $this->assertSame('SET TRANSACTION ISOLATION LEVEL READ COMMITTED', $inside[0][0] ?? null, 'the adapter enforces its isolation assumption');
+        foreach ($before as [$sql, $level]) {
+            $this->assertSame(0, $level, "outside any transaction: $sql");
+            $this->assertStringContainsString('org_membership_ledger_clocks', $sql, 'only the clock-row ensure precedes the transaction');
+        }
     }
 
     // ── PBDIGIT-264 step 4b: E4-L on PostgreSQL (Option E R3 / P2-4, 2026-10-10; Part 2 plan revision R2) ──
