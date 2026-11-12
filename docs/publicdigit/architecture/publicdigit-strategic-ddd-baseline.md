@@ -380,3 +380,9 @@ Until both exist, **such exclusions wait (D-167).**
 - **The PublicDigit Product Principles are adopted** (`publicdigit-product-principles.md`) as product-design criteria beside this baseline, including the guarantees note: PublicDigit never breaches vote secrecy, isolation, append-only history or refusal-when-unestablished, even at an organisation's request; it declines that function instead.
 - **They add no rule to this baseline,** change no ownership and add no release-1 scope.
 - **Fingerprint re-recorded at the next acceptance act** (D-173 change control).
+
+**Change-control note (2026-11-12, D-220):**
+- **§2 / D-217 classify business capabilities, not bounded contexts.** A core capability may involve several contexts, each keeping its ownership.
+- **Dues and standing follows D-132's two arrangements** (A or B, as the written rules choose).
+- **Product principles revision 3** (principle 0 levels; principle 8 resignation).
+- **No boundary or ownership changes.** Fingerprint re-recorded at the next acceptance act (D-173).

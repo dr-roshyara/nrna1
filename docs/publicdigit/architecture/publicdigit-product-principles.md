@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **ADOPTED — RATIFIED by the Principal as D-218 (2026-11-12), including the guarantees note in principle 0.** Revision 2 applies the Principal DDD review's five refinements |
+| **Status** | **ADOPTED — RATIFIED by the Principal as D-218 (2026-11-12), including the guarantees note in principle 0.** Revision 2 applies the Principal DDD review's five refinements. **Revision 3 applies D-220 (ratified 2026-11-12):** the levels in principle 0, and resignation in principle 8 |
 | **What it is** | **A guide for designing features**: what PublicDigit offers, makes easy and makes visible. **Not a source of authority, and not a rule PublicDigit enforces on any organisation** (see principle 0) |
 | **Inspiration** | Antonio Gramsci, as the Principal reads him:<br>- **The party as a catalyst of society** (the Principal's image; Gramsci's own terms are the "Modern Prince" and the party as a *collective intellectual*). It educates, forms *organic intellectuals*, raises ideas from below, and builds **hegemony through consent**, not domination.<br>- **The danger:** a party that believes history **guarantees** its success, and that it holds that guarantee, slides into **bureaucratic centralism**: a closed leadership and decisions handed down (our gloss: dissent treated as disloyalty).<br>- **Gramsci's answer: democratic centralism** as a centralism "in movement", continually adapting to real life and renewing its leadership from, and answerable to, the membership. *(Not Bordiga's "organic centralism", which Gramsci opposed.)* |
 | **Relationship to decisions** | It sits beside the Strategic DDD Baseline v1.1 (D-214) and the core-domain refinement (D-217). **The decision record governs where they differ** |
@@ -24,15 +24,17 @@
 3. Accepted architecture and domain decisions governing the platform's implementation.
 4. These product principles, as design guidance.
 
-**How levels 2 and 3 meet (ratified with D-218):**
-- **The organisation's rules decide the organisation's affairs:** who is competent, what is decided, which defaults are displaced (D-167, D-168).
-- **The platform's protective invariants decide how PublicDigit itself behaves**, for example:
+**How the levels relate (D-220, clarifying D-218):**
+- **Organisational rules govern organisational affairs:** who has authority, what may be decided, and how the organisation operates (D-1a, D-97, D-167, D-168).
+- **Platform guarantees limit which functions PublicDigit provides:**
   - vote secrecy;
   - isolation between organisations;
   - append-only history;
   - refusal when an answer cannot be established.
-- **Where an organisation's rule would require PublicDigit to breach one of those invariants, PublicDigit does not provide that function. It never breaches the invariant.** For example, a rule demanding a voter-to-ballot list is not served.
-- This does not let PublicDigit decide the organisation's affairs: the organisation remains free to act outside the platform.
+- **Architecture implements those guarantees. It gives PublicDigit no authority over the organisation's affairs.**
+- **Product principles guide design within those boundaries.**
+
+This is **not** a rule that PublicDigit's architecture outranks an organisation's constitution. It states the limits of the service PublicDigit is willing and able to provide. Where a rule asks for a function outside them (for example a voter-to-ballot list), PublicDigit does not offer it, and the organisation remains free to act outside the platform.
 
 **The platform must not become the autocrat it warns against.**
 
@@ -83,7 +85,10 @@
 
 - **Organisational belonging and placement arise from the organisation's authorised acts,** as its rules provide. By default these are individual acts: an allocation, a transfer decision, or an admission naming the unit (D-79).
 - **An address never establishes belonging;** it may at most produce a suggestion (D-79, D-80). **A person cannot change their own placement unilaterally.**
-- **Resignation is the member's own act**, needing no body's decision. It follows the accepted effective-date and recording rules (D-194 where the rules are silent; D-203 for the self-service authority). The ratified Membership architecture is unchanged.
+- **Where the organisation's rules are silent, resignation is the member's own act:** it takes effect on the member's declaration, without any body's decision (D-194 (1)).
+- It is recorded by the member (self-service, the `ownAct` competence of D-203) or by an empowered recording office (D-194 (1)).
+- **Where the rules provide for resignation, they govern** (D-203 `ruleRef`), subject to applicable law. [LQ] counsel to confirm the statutory right to leave and its effective time (D-194).
+- The ratified Membership architecture is unchanged (D-220).
 - Each organisation's data is its own, and PublicDigit staff see it only with that organisation's permission for that case (D-164, D-166).
 - **Design test:** does this feature move a person, or expose an organisation's data, without that person's or that organisation's act?
 
