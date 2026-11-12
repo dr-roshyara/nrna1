@@ -35,7 +35,10 @@ final class PostgresClosedThroughRaceTest extends MembershipPostgresTestCase
     private const WRITERS = 3;
     private const ADMITS_PER_WRITER = 6;
     private const READERS = 2;
-    private const CLOSES_PER_READER = 25;
+    /** closes per reader AFTER every writer has finished; before that, readers close continuously */
+    private const CLOSES_PER_READER = 5;
+    /** safety bound on a reader's loop */
+    private const MAX_CLOSES_PER_READER = 2_000;
 
     protected function setUp(): void
     {
@@ -96,11 +99,19 @@ final class PostgresClosedThroughRaceTest extends MembershipPostgresTestCase
                             $o = $handler->handle(new AdmitMember($org, "P-$p-$i", "M-$p-$i", "A-$p-$i", 20_000, 20_000, null, true, 'registrar', 'decl-fixture', null, "k-$p-$i"));
                             $lines[] = ['admit', $o->isAppended() ? 'appended' : ($o->domainRefusal() ?? $o->applicationRefusal())->value];
                         }
+                        touch("$dir/writer-$p.done");
                     } else {
-                        for ($i = 0; $i < self::CLOSES_PER_READER; $i++) {
+                        // Close until every writer has finished, then a few more times, so boundaries are reported
+                        // DURING the writes, not only before or after them (the interleaving under test).
+                        $writersDone = static fn (): bool => count(glob("$dir/writer-*.done") ?: []) === self::WRITERS;
+                        $after = 0;
+                        for ($i = 0; $i < self::MAX_CLOSES_PER_READER && $after < self::CLOSES_PER_READER; $i++) {
                             $b = self::closer()->closeOrRead(TenantId::fromString($org));
                             if ($b !== null) {
                                 $lines[] = ['close', $b->ordinal(), self::visibleAtOrBefore($org, $b->ordinal())];
+                            }
+                            if ($writersDone()) {
+                                ++$after;
                             }
                             usleep(random_int(0, 3000));
                         }
@@ -144,9 +155,13 @@ final class PostgresClosedThroughRaceTest extends MembershipPostgresTestCase
         array_map('unlink', glob("$dir/*") ?: []);
         rmdir($dir);
 
-        $this->assertSame(self::WRITERS * self::ADMITS_PER_WRITER, DB::table('org_membership_facts')->where('organisation_id', $org)->count());
+        $total = DB::table('org_membership_facts')->where('organisation_id', $org)->count();
+        $this->assertSame(self::WRITERS * self::ADMITS_PER_WRITER, $total);
         $this->assertGreaterThan(0, $closes, 'the readers reported boundaries');
         $this->assertGreaterThan(1, count(array_unique($boundaries)), 'the boundary advanced during the run');
+        // Non-vacuity: at least one boundary was reported while writes were still in flight (facts committed after it).
+        $midRun = array_filter($boundaries, static fn (int $b): bool => count(self::visibleAtOrBefore($org, $b)) < $total);
+        $this->assertNotEmpty($midRun, 'the run interleaved: some boundary was reported before the last write committed');
     }
 
     public function test_a_reader_between_a_writers_lock_and_its_commit_gets_a_boundary_the_writer_then_records_after(): void
