@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **APPROVED for implementation by the Principal, 2026-11-12 (EP-01): "Approve, start TDD". Revision 2.** Revision 2 applies the Principal DDD review of 2026-11-12 (refinements A, B, C). Revision 1: `…-rev1.md` (`719ea775…`). **No code until approved; strict TDD (RED before GREEN) once approved** |
+| **Status** | **COMPLETED and ACCEPTED by the Principal, 2026-11-12 (task 10).** Earlier: **APPROVED for implementation by the Principal, 2026-11-12 (EP-01): "Approve, start TDD". Revision 2.** Revision 2 applies the Principal DDD review of 2026-11-12 (refinements A, B, C). Revision 1: `…-rev1.md` (`719ea775…`). **No code until approved; strict TDD (RED before GREEN) once approved** |
 | **Build order** | **approved by the Principal** (2026-11-12, accepting the review's recommendation). It supersedes §3 of the unapproved `docs/plans/20261110-1751-minimum-package-build-and-organisation-structure-slice-1-plan.md`; see §13 |
 | **Story** | **PBDIGIT-343** (to be created on approval). *(PBDIGIT-342 is reserved by the 2026-11-10 plan.)* |
 | **Authority** | **D-162** (C1/C2 spec) as amended by **D-209**; **D-215** (K-C1); **D-161**; **D-160**; D-73; D-210 §4 (K-1, K-2), §11; RA. **Unchanged:** the C1/C2 Published Language, the meaning of `closedThrough` ("every fact with `recordedAt ≤ closedThrough` is committed and visible, and none can still be committed later", CR-01 :28), D-147 |
@@ -231,7 +231,14 @@ closeOrRead(tenant):
 - [x] 7. Test 14 → hydrator and registration (D-6).
 - [x] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [x] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
-- [ ] 10. **AWAITING PRINCIPAL ACCEPTANCE.**
+- [x] 10. **ACCEPTED by the Principal, 2026-11-12** (Principal DDD review "Slice 1 closure and Slice 2 decision": "accept Membership Slice 1"). **Qualifications, recorded with the acceptance:**
+  - the 135 PostgreSQL tests and the other slice 1 groups (kernel 204, application 92, infrastructure 65, outbox 9, Membership architecture 106) passed;
+  - **the 4 full architecture-suite failures are pre-existing:** the same names on baseline `a53ba8ea8` and HEAD `58e8bb26d`;
+  - **the 57 failing legacy Membership unit tests at HEAD also fail on the baseline.** The whole suite is **not** green;
+  - **no claim that slice 1 is production-ready.** Production routing, the source-of-truth binding, the per-organisation relay and production migrations are slice 2 responsibilities.
+  
+  Evidence: `docs/publicdigit/membership/evidence/2026-11-12-pbdigit343-slice1-acceptance/` (unchanged; `5596e3eb9`).
+  - *(was: AWAITING PRINCIPAL ACCEPTANCE)*
   - Done by engineering: the guide index final check (guides 15–22 and `database/01` indexed); the acceptance evidence `docs/publicdigit/membership/evidence/2026-11-12-pbdigit343-slice1-acceptance/`.
   - **Engineering does not accept its own work.**
 - **Every task ships its developer guide in the same step** (Principal, 2026-11-12; CLAUDE.md Definition of Done): guides 15–19 cover tasks 1–5.
