@@ -115,6 +115,10 @@ final class PostgresLedgerClockRowInitialisationTest extends MembershipPostgresT
 
         try {
             [$b, $ms] = self::elapsedMs(fn () => (new LedgerClockCloser(DB::connection(), new PostgresLedgerClockReader()))->closeOrRead($t));
+            // Gate 1 (Principal review of task 6): after the lock timeout the connection is clean and usable.
+            $this->assertSame(0, DB::connection()->transactionLevel(), 'the timed-out mini-transaction was rolled back');
+            $this->assertSame(1, (int) DB::selectOne('SELECT 1 AS one')->one, 'the next statement succeeds');
+            $this->assertSame('0', (string) DB::selectOne('SHOW lock_timeout')->lock_timeout, 'SET LOCAL did not leak into the session');
         } finally {
             $holder->rollBack();
         }
