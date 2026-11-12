@@ -315,3 +315,6 @@ None.
 ```
 
 Do you want me to also generate the code comment template for the Committee context classes?
+---
+
+**Status annotation (2026-11-10, append-only):** the **location clause** of this ADR (committee write model in `app/Contexts/Membership`) is **superseded by D-144** (DR-07a: Governance owns committees, their positions, appointments and terms). **The CQRS principle stands** (one write model as the source of truth; read models never write). Record: `docs/publicdigit/reviews/2026-11-08-organisation-strategic-discovery-record-structure-mandates-conventions.md` §11.53.

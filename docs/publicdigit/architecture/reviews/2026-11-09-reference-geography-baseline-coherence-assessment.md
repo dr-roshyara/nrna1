@@ -1,69 +1,144 @@
-# Reference Geography: strategic-to-tactical coherence assessment
+# Reference Geography: strategic-to-tactical coherence assessment (fourth revision)
 
 | | |
 |---|---|
-| **Status** | PROPOSED. Not ratified. Not committed |
-| **Assesses** | Strategic baseline §C (`2026-11-09-reference-geography-strategic-baseline.md`) against tactical baseline v3.8 (`2026-11-09-reference-geography-tactical-design-baseline-v3.8.md`) |
-| **Supersedes** | The v3.7 assessment (kept as evidence; its §3 line "Membership owns belonging" was wrong) |
-| **Binding** | D-3, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81 to D-89, D-84a |
-| **Labels** | [AD] accepted · [BF] fact · [AC] architectural conclusion · [TD] tactical · [TU] technical assumption · [OQ] Principal decision |
+| **Status** | **RATIFIED** 2026-11-10 by the Principal/ARB (D-93; act `docs/publicdigit/reviews/2026-11-10-reference-geography-baseline-ratification-act.md`). Accepts the domain design only; PO-1 to PO-8 and the Identity contract remain open. No code, schemas or tickets |
+| **Assesses** | Strategic baseline §C (`2026-11-09-reference-geography-strategic-baseline.md`) against tactical baseline **v3.11** (`2026-11-09-reference-geography-tactical-design-baseline-v3.11.md`) |
+| **Revises** | The third revision (against v3.10) |
+| **Binding** | D-3, D-4, D-5, D-22, D-31, D-73 / CR-01, D-75 (with the XD-3 act), D-79, D-80, D-81 to D-92, D-84a |
+| **Labels** | [AD] accepted · [BF] fact · [AC] architectural conclusion · [TD] tactical · [TU] technical uncertainty / proof obligation · [OQ] Principal decision |
 
-## 1. Disagreements and precisions (first)
+## Disagreements (first)
 
-1. **The ownership error was in my v3.7 assessment, not in the strategic baseline.** The strategic baseline already assigned belonging to Organisation (§2, citing D-3 "in every capacity"). **No strategic correction was needed;** the assessment line is withdrawn and v3.8 §10 now states the owner explicitly.
-2. **D-88 can require three people, and that follows from its text, not from a new rule** [AC]. D-88 says the second person is "other than the steward who prepared and assessed" and "the preparer can never approve their own structural change; two persons suffice". "Two persons suffice" covers the usual case where one steward prepares and assesses. **When a conflicted person prepares and another steward assesses, both are excluded, so the approver is a third person.**
-3. **A matter reviewer never sets the D-89 flag** [AC]. D-84a: the reviewer "has authority for that matter only, holds no standing publication authority". That is not "the appointment of a second steward" (D-84). This is a reading of the text, not new policy; it is flagged here so you can see it.
+**None with the review.** **I withdraw my own earlier claim** (third revision) that keeping the facts in force after a defective approval "follows from D-84". It does not: D-84 governs how facts change, not what a defective approval does to them. It is an **[OQ]** (§3).
 
-## 2. Corrections made
+## 1. Business explanation
 
-| # | Correction | Where |
-|---|---|---|
-| 1 | **Belonging owned by Organisation** (D-3, D-22); Membership owns membership facts; Election derives the electorate at one τ | v3.8 §10; strategic §C.2 |
-| 2 | **D-84 rule by era:** era A (no second steward ever) the sole steward publishes everything; era B (flag set, permanently) structural changes need a second person, **even with one steward left**; non-structural changes always publishable by the assessing steward | v3.8 §8 role table and era table |
-| 3 | **Permitted combinations of people** (five cases); the approver is checked against **every** person who prepared or assessed | v3.8 §8 |
-| 4 | **Temporal proof no longer depends on a short gap** between the clock reading and the commit; five conditions stated; seven protocol tests | v3.8 §6 |
-| 5 | **D-89 and D-3 in every binding list** | v3.8 header; strategic header and §C.6 |
-| 6 | **Strategic baseline consolidated** in business language (§C: purpose, context responsibilities, context map, language, lifecycle, invariants, deferred items); "official place" widened to "official geographical reference" because regions and countries-or-areas are not territorial divisions | Strategic §C |
+Reference Geography guarantees:
+- **one permanent identity per official reference**, whatever happens to its names, codes or parents;
+- **every fact with its evidence and valid dates**; nothing overwritten;
+- **historical answers that are complete or refused**, and identical every time;
+- **every structural change, once two stewards have ever existed, approved by an independent person on exactly the content and evidence published;**
+- **no decisions about belonging, membership, coverage, electorates or sovereignty**, and no lookup of anyone's affiliations.
 
-## 3. Accepted decisions → tactical representation
+## 2. Independent verdict
 
-| Decision | Business rule | Tactical mechanism (v3.8) | Status |
+**v3.10 was coherent except for three points, all corrected in v3.11:**
+
+| # | Finding | Kind | Correction |
 |---|---|---|---|
-| D-31 | Geography is platform-level; only it publishes | Single write path; consumers read published entries only | **Conditional [TU]:** single write path enforced structurally |
-| D-73 / CR-01 | Complete or refused answers at one shared τ | `closedThroughTime`, close waits for writers, refuse-not-bump, snapshot reads | **Proved by transaction ordering, given** lock to commit, one database clock |
-| D-79, D-80, D-82 | No belonging, coverage or areas in Geography | No such concepts in the model | **Holds** (absence by design) |
-| D-81 | Dated country profiles; positions strictly increase | Profile claims; G-6 derived | Holds, given dependency reads [TU] |
-| D-83 | Streets are address components | Address-component tiers hold no identities | Holds |
-| D-84, D-84a, D-88, D-89 | Governed publication; conflicts; second person; latching | Roster under the publication lock with versions; flag never unset; approver ∉ {preparers, assessors}; classification computed from claim kinds | Holds for the mechanism; **whether a conflict exists is human judgement** |
-| D-85 | Five M49 regions | GROUPING claims (non-structural by analogy) | Holds |
-| D-86 | Neutral entries; ISO admitted by default; others by Principal decision | ADMISSION claims (structural by analogy); no sovereignty claim kind exists | Holds |
-| D-87 | CLDR display names; sources attributed | Display-name history by CLDR release; attributed names as claims | Holds |
+| H-1 | The content digest covered **evidence references**, not evidence content, assessments or the derived classification [BF: v3.10 §5.3] | Defect [AC] | Digest covers claims with intervals, evidence versions with fingerprints, assessments and outcomes, predicates and p₀, classification, preparers and assessor; **evidence immutable** (a change is a new evidence version) |
+| H-2 | The after-publication merge consequence was presented as derived | Overstatement | Five cases analysed; case B effectiveness put to you as **[OQ]** |
+| H-3 | GROUPING justified by "no use in coverage (§10)"; §10 says no such thing, and D-80 lets coverage reference official references, including a level-1 region [BF] | Unfounded reasoning | Reasoning corrected; consequence stated (§5) |
 
-## 4. Proven versus conditional
+**No further substantive defect found.**
 
-| Proven in the model | Conditional on |
+## 3. Identity merge ruling
+
+| Case | Outcome | Basis |
+|---|---|---|
+| A Before publication | Refused at the re-check under the lock | [AC] follows from D-88 |
+| B After publication, second person required, approver now in `excluded(r)` | Approval **valid when given, substantively defective**; a governance finding is recorded; **effectiveness meanwhile: [OQ]** | D-88 + a governance choice |
+| C After publication, no second person required | No D-88 finding; merge notice recorded only | [AC] D-84, D-89 |
+| D Merge among people other than approver vs `excluded(r)` | No defect | [AC] D-88 |
+| E Merge later reversed | Finding closed as unfounded; confirmations or corrections already published stand | [AC] |
+
+**The [OQ] (case B):**
+- **K: keep the facts in force, visibly flagged, until a valid second person confirms them or a correction replaces them.** Consumers see the flag and apply their own rules. **Recommended.**
+- **S: suspend the facts by a new publication until approved again.**
+- **Why K:**
+  - the facts rest on the official instrument, not on PublicDigit's approval;
+  - suspension disrupts organisations and elections for an internal defect;
+  - **a suspension is itself a structural change needing an independent approver**, which in case B may be the very thing that is missing.
+- Retroactive voiding is excluded by strategic invariant 2.
+
+## 4. Content-version verification
+
+| Must be protected | Protected by | Status |
+|---|---|---|
+| Claims, slots, values, valid intervals | Digest | ✅ |
+| Evidence content | Immutable evidence versions + fingerprint in the digest | ✅ (v3.11) |
+| Assessments and outcomes | Digest | ✅ (v3.11) |
+| Dependency predicates, p₀ | Digest | ✅ |
+| Derived classification | Digest; computed, not chosen | ✅ |
+| Preparers and assessors, all versions | Recorded per version; `excluded(r)` = union | ✅ |
+| Published authority records | Dependency predicates (staleness) | ✅ |
+| Identity information | Re-check at publication at the current roster version | ✅ |
+| Old approvals | Count only for the version they name | ✅ |
+| Splitting or relabelling | Classification per claim kind, per revision | ✅ |
+
+## 5. ADMISSION and GROUPING
+
+- **ADMISSION = structural (recommended: confirm).**
+  - It decides what exists in the register.
+  - **Practical meaning:** once D-89 is active, routine ISO additions also wait for a second person.
+  - For a non-ISO entry, your explicit decision (D-86 (4)) authorises it, and the second person checks that the revision implements it faithfully. **Not redundant.**
+  - No counterexample found.
+- **GROUPING = non-structural (recommended: confirm, with the consequence stated).**
+  - It is statistical, not territorial (D-85), and it follows UNSD's own publication.
+  - **Counterexample examined:** an organisation that references a level-1 region in a unit's coverage would see that coverage change, with only one steward having checked it.
+  - **Why the recommendation stands:** the change copies an uncontested official instrument, and D-85 directs organisations to their own international regions for organisational purposes.
+  - **If you consider that consequence unacceptable, choose "structural".**
+
+## 6. Strategic-to-tactical coherence
+
+**Re-checked, no defect:**
+- identity and reconciliation (one level, atomic, multi-country through the single sequencer);
+- identifier uniqueness;
+- withdrawals carry the target's kind;
+- valid-time shortening is a claim with a before-image;
+- profiles;
+- dependencies for gains and losses;
+- stale revisions and content versions;
+- both boundaries;
+- D-84, D-84a, D-88, D-89;
+- context ownership: Geography knowledge; Organisation belonging, areas, coverage; Membership facts; Election electorate; Identity persons; Governance organs;
+- address ownership still a recommendation.
+
+## 7. Technical proof boundary
+
+| Logically established (given the obligations) | Requires implementation evidence |
 |---|---|
-| Atomic publication and reconciliation; reversal keeps history; history explainable by position and roster version; no answer at τ before the close; stable answers; refusal under clock regression; D-89 cannot be evaded by splitting or relabelling | **Database:** lock held to commit or rollback; `FOR UPDATE` under `READ COMMITTED`; one database clock; host time slewed · **Platform:** each D-73 participant meets the knowledge-time contract; **Membership's §38.2 barrier still moves timestamps** (external dependency for the Membership tactical work, not changed here) · **Architecture:** dependency-only validation reads; single write path |
+| Completeness at τ and at p; stable answers; no timestamp moved; ties ordered by position; atomic publication; approvals bound to content; governance ordering | **PO-1 to PO-7** (lock to commit, single write path, dependency-only reads, gap-free positions, one snapshot, refusal, one clock) on PostgreSQL · **PO-8** platform: Membership's §38.2 barrier, a separate platform dependency not changed here · **Identity contract** (four items) |
 
-**Human judgement remains for:** authenticity and competence of evidence; identity in a reconciliation; existence of a material conflict; appointments.
+**No cross-context causal consistency is claimed.**
 
-## 5. Independent challenge (the eight questions)
+## 8. Principal decision register
 
-| Question | Answer |
-|---|---|
-| 1 Is Geography sufficiently bounded? | **Yes.** It owns references, evidence, publication and history only |
-| 2 Does another context own a fact Geography publishes? | **No.** Region and country-or-area facts come from external instruments; Geography owns their *publication*, not their truth |
-| 3 Does Geography decide an Organisation or Election outcome? | **No.** Resolution returns places only; suggestions and belonging are Organisation's |
-| 4 Is every accepted decision represented consistently? | **Yes, after the corrections in §2** |
-| 5 Is the language consistent? | **Yes, after "official geographical reference"**; v3.8 uses ReferenceUnitId throughout |
-| 6 Is the context map defensible? | **Yes:** one publisher, read-only consumers, one τ per operation |
-| 7 Does the tactical model add business policy? | **Two readings, flagged in §1.2 and §1.3**, both derived from accepted text; ADMISSION and GROUPING are classifications by analogy |
-| 8 Are decisions hidden in technical recommendations? | **One, already visible:** address ownership (recommendation only) |
+| # | Decision | Recommended | Consequence |
+|---|---|---|---|
+| 1 | **Case B effectiveness** | **Ruled: K ([AD] D-90)** | Facts stay usable and flagged; consumers decide reliance |
+| 2 | ADMISSION structural | **Ruled: structural ([AD] D-91)** | Admissions wait for a second person in era B |
+| 3 | GROUPING non-structural | **Ruled: non-structural ([AD] D-92)** | One steward may publish an M49 regrouping; organisations decide coverage consequences; platform-policy assignments stay with L-4c |
 
-## 6. Principal decisions
+**Deferred (not blockers):** Q-2, L-4c, Japanese classification, naming policies, address ownership.
 
-**No new business decision is required.** Deferred, not blocking: Q-2, L-4c, Japanese classification, names below level 2, level-1 region names, address ownership.
+## 9. Readiness
 
-## 7. Readiness
+**No Principal decision remains open in the baseline** (D-90, D-91, D-92 ruled). **Ready for your Principal/ARB ratification.** **Not implementation-ready** until PO-1 to PO-8 and the Identity contract are discharged.
 
-**The strategic baseline (§C) and tactical baseline v3.8 are ready for independent Principal/ARB ratification review.** Not ratified. **Not implementation-ready** until the implementation architecture shows how the conditions in §4 are met.
+## 10. Final coherence check after D-92 (2026-11-10)
+
+**One finding, corrected:** PO-2 (single write path) did not list the D-90 governance notices, which also take positions in the publication stream. **Added.** No other contradiction found.
+
+**Complete classification model** (tactical §14):
+
+| Kind | What changes | Existence / containment / structure / authority? | Source | Second person in era B (D-89) | D-84a |
+|---|---|---|---|---|---|
+| EXISTENCE, SUCCESSION | An entry begins, ends or succeeds another | Existence | Instrument | **Yes** | If contested |
+| CONTAINMENT, BOUNDARY | Parent; boundary description | Containment | Instrument | **Yes** | If contested |
+| CLASSIFICATION, PROFILE_SCHEME / TIER / CLASS | A unit's class; a country profile (D-81) | Structure | Instrument | **Yes** | If contested |
+| ISSUER, MANDATE, COMPETENCE, PRECEDENCE | Who may assert what; conflict rules | Authority | Legal basis | **Yes** | If contested |
+| RECONCILIATION | Two identities are one entity | Identity | Assessment with evidence | **Yes** | If contested (D-84a lists competing positions, not every identity judgement) |
+| ADMISSION | A country-or-area enters the register | Existence | D-86 policy or Principal decision | **Yes ([AD] D-91)** | If contested |
+| GROUPING | M49 region of an entry | Statistical grouping only | M49 row or verified code | **No ([AD] D-92)**; platform-policy route: L-4c | If contested |
+| IDENTIFIER, SOURCE_NAME | Codes, attributed names | Attribute | Issuing body | No | If contested |
+| CLDR_NAME, CLDR_INHERITANCE | Display names | Presentation (D-87) | CLDR release | No | If contested |
+| DISPUTE | Marker or clearance | None (§4) | Assessment | No | **Yes** (judgement) |
+| PLATFORM_DEFAULT_LOCALE | Default locale | Presentation | Platform | No | — |
+
+**Rules preserved:** a withdrawal carries the target's kind; any structural claim makes the revision structural; classification is computed, never chosen; downstream use never decides classification.
+
+**Deferred, not blockers:** L-4c, Q-2, Japanese classification, names below level 2, level-1 region names, address ownership.
+
+**Proof obligations:** PO-1, PO-4, PO-5, PO-7 need PostgreSQL evidence; PO-2, PO-3, PO-6 need architectural enforcement; PO-8 is cross-context (Membership §38.2); the Identity contract (four items) depends on Identity's tactical design.

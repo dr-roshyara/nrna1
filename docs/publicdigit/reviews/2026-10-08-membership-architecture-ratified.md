@@ -199,3 +199,5 @@ All other parameters (BD-REV-ER, BD-1, BD-2, BD-NU, BD-REC0, BD-CONSENT, BD-TYPE
 - **Election (C4):** the predicate queries above accept the knowledge boundary `τ` in addition to `asOf`.
 - **Time:** `asOf` = business date; `τ` = knowledge boundary (`recordedAt ≤ τ`); every answer is `KnownAt(φ, asOf, τ)` as defined in this architecture. Queries with `τ` beyond `closedThrough` are refused, never answered partially.
 - **Note (D-77, 2026-11-09), addition to the Organisation line above:** `CoverageKnownAt` also accepts `personRefs[]` in place of `membershipIds[]` (one Membership per (Person, Organisation)); meaning unchanged.
+
+- **Note (CR-02, D-161, 2026-11-10), addition to the Organisation line (C1/C2):** C1 and C2 also carry **`inForce`** intervals (`InForce`, §101; where `IsMember` holds) and **`suspended`** intervals (`Suspended`, §103), full state, as known at τ for C2; C1 is published when coverage or either of these changes (`schemaVersion` 2). Membership still returns facts only; belonging stays on coverage. `docs/publicdigit/reviews/2026-11-10-membership-change-request-cr-02-standing-in-c1-c2.md`.

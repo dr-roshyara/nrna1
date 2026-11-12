@@ -1,5 +1,8 @@
 # PublicDigit strategic context map: consolidation draft
 
+> **⚠ SUPERSEDED (2026-11-12, D-214).** This draft is **no longer the current context map**. The current map is the ratified **`docs/publicdigit/architecture/publicdigit-strategic-ddd-baseline.md`** (Strategic DDD Baseline v1.1). This file is kept unchanged below as historical evidence.
+
+
 **Status:** **PROPOSED.** Its **location and role as the consolidation point were approved by the PO on 2026-11-02**. Not ratified, not authoritative, and it replaces no existing map. It consolidates evidence from existing records and decides nothing.
 - The relationships in it carry their own statuses; the approval of the document is not a ratification of any of them.
 - It **supersedes governance map §5** as the place where these relationships are maintained (PO, 2026-11-02; §14). This changes the place of maintenance, not any status.
@@ -91,7 +94,7 @@
 | | OrganisationAffiliation storage and ownership | UNRESOLVED | BR-9 (open); OQ-C-5 (ARB); INV-AFF-1 (PROPOSED, referred) |
 | | OrganisationalUnit | UNRESOLVED | O-16 / DR-07b |
 | | access roles | **not established in the reviewed authoritative sources** | O-14, XD-4 pending |
-| **Geography** | GeoUnits, hierarchy, revisions | PROPOSED | governance map §4; XD-5 / O-11 open |
+| **Reference Geography** | official geographical references: identity, claims, evidence, publication, history, country profiles (platform-level, D-31) | **RATIFIED 2026-11-10 (D-93)**, an intentional roadmap exception (D-95); domain design only, proof obligations PO-1 … PO-8 open | `docs/publicdigit/reviews/2026-11-10-reference-geography-baseline-ratification-act.md`; strategic baseline §C; tactical v3.11. *(Row updated 2026-11-10; was: "GeoUnits, hierarchy, revisions · PROPOSED · governance map §4; XD-5 / O-11 open")* |
 | **Communication** | forum | PROPOSED; product choice open | governance map §4; O-15 |
 | **Evidence and integrity contexts** (Collection & Aggregation, Contemporaneous Record-Fixing, Custodial Integrity, Self-Verifying Integrity, Adjudication) | see that map | ACCEPTED map; contexts ratified for its scope | EPIC-002 canonical map §2. **Referenced, not reproduced** |
 | **Programme contexts** (Evidence, Voting, Contestation, Adjudication) | see BDR | FROZEN | BDR-01, 02, 04, 05 |
@@ -336,3 +339,107 @@ Independent review at HEAD `0985739fc`. Changes made to this draft, each traced 
 - §12–§14: deptrac coverage stated; register state kept separate from this draft's observations; C4 options A–C.
 
 No question was resolved, no other file was changed, and nothing was committed.
+
+## 16. Strategic baseline coherence and gap-closure review (2026-11-10; PROPOSED)
+
+*Added under §14 ("each decision recorded in a source record updates the matching row here"). **§4 and §5 above are not rewritten;** where they differ, this section records the current position with its source. Status labels: RAT ratified · ARB act (D-94) · ACC accepted baseline · RUL Principal ruling · WD working direction or decision · FRZ frozen programme record · P proposal · OPEN.*
+
+### 16.1 Context catalogue, current position
+
+| Context | Owns (decides) | Does not own | Boundary status | Source |
+|---|---|---|---|---|
+| **Identity** | Canonical Person (bare `PersonId`); organisation-scoped `PersonRef` issuance and resolution; Account; login-address verification; authentication; sessions; claims; the discovery mechanism | Affiliations, profiles, membership, belonging, entitlement, permissions | **ARB** (D-75); responsibility list **WD** (D-102, D-111) | XD-3 act; D-102; D-111 |
+| **Organisation** | Registry; structure (units, wings) over time; unit belonging; affiliation records; person profile incl. address as supplied; workspace-access decisions; organisation areas and coverage | Membership truth; authority; entitlement; persons; official geography | **ACC** (D-106, eight conclusions; note A-1, D-112); rulings D-97 … D-101, D-103, D-104, D-107 … D-109 | Organisation baseline v1.0 rev. 2c |
+| **Membership** | Membership truth: periods, facts, lifecycle, types, standing | Belonging; entitlement; affiliation | **RAT** (D-96; CR-01 = D-73, D-77) | Membership act |
+| **Governance** | Rules (versions), organs, positions, tenures, decisions, competence, delegations; **Appointment (Authority) as an internal capability** publishing `MandateGranted` / `MandateRevoked` | Structure facts (Organisation's); membership; entitlement | Ownership **WD** (D-4, D-5, D-10); Appointment consolidation **ARB** (D-72); committee ownership **OPEN** (DR-07a) | D-72 ADR; DR-07 paper |
+| **Reference Geography** | Official geographical references, publication, history | Organisation areas; belonging; sovereignty | **RAT** (D-93) | Geography baseline |
+| **Election** | Electorate, eligibility, entitlement, exercisability; election lifecycle | Membership; belonging; geography | Boundary **RAT** (Membership act `:47`, `:110`); contracts **WD** (D-32, D-41 … D-49); Election-only ADR decided for its scope | Membership act; ADR_20261004_1549 |
+| **Voting** | Ballot casting and secrecy (VO-1), within Election's entitlement | Entitlement | **FRZ** (BDR programme context) | BDR; D-102 ("ballots are Voting's") |
+| **Contestation / Adjudication** | Challenges; determinations (one Adjudication context) | Authority (Governance's) | **ACC** for EPIC-002 scope; **ARB** D-67; RUL D-71 | EPIC-002 map; D-67 |
+| **Deliberation** | Drafting, discussion, co-signatures before submission | Motions after submission (Governance's, D-51) | **WD** (D-50, D-51) | decision record §11 |
+| **Communication** | Newsletters, messaging (as organisations' rules allow) | — | **WD** (D-57 … D-64); context **P** | decision record §11 |
+| **Finance** | Payment, settlement, refunds, credits, accounting | Membership standing | **RAT** (Membership act §11) | Membership act |
+| **Authorization** | Technical permission policy and enforcement; **no business-domain truth** (consumes mandates and access grants) | Organisational, constitutional, membership or electoral facts | **FRZ** (BDR-07) + **ACC** conclusion E-12 (D-106); scope **OPEN** (XD-4) | BDR-07; D-104 |
+| **Platform / tenancy** | Working Organisation; data scoping; demo mode | Organisational authority | **ACC** conclusion E-11 (a platform capability, not Organisation); owner **OPEN** (HD-8); INV-ORG-SCOPE-1 approved principle, ARB pending | D-106; PBDIGIT-30 |
+| **Evidence and integrity** (Collection & Aggregation, Record-Fixing, Custodial and Self-Verifying Integrity) | Evidence capture and integrity | — | **ACC** (EPIC-002, ARB 2026-07-25) | EPIC-002 map |
+| **Audit** | Consumes published facts; audit projections | Business truth | **FRZ**: infrastructure capability, **not a bounded context** (BDR-09) | BDR-09 |
+
+**[AC] No business fact has two owners** in this catalogue. The remaining gaps are **owners not yet named** (tenancy), **scopes not yet fixed** (Authorization, committees) and **contracts still provisional**, not overlaps.
+
+### 16.2 Relationships
+
+| Relationship | Content | Status |
+|---|---|---|
+| Identity → all | `PersonRef` (opaque, per organisation); only Identity resolves | **ARB** |
+| Membership → Organisation | C1 `MembershipCoverageResolved`; C2 `CoverageKnownAt(…, τ)` | **RAT** (CR-01) |
+| Membership → Governance | C3 `MembershipFactsAsAt`; Governance decides qualification | **RAT** (CR-01) |
+| Membership → Election | C4 predicates at τ | **RAT** (CR-01) |
+| Governance → Authorization | `MandateGranted` / `MandateRevoked` | **ARB** (D-72) |
+| Organisation ↔ Governance | Decided change sets in; structure and belonging as at τ out | **WD** (D-29); D-106 excludes the exchange |
+| Organisation → Election | Belonging as at τ (R-5); voter relationship (D-109) | **WD** (D-32, D-109); mechanism **UNKNOWN** |
+| Reference Geography → Organisation | Published references by position; `resolve`; `RevisionPublished` | **RAT** contract (D-93); Organisation's use **P** (§49 of the model document) |
+| Organisation → Authorization | Workspace access grants | **RUL** (D-104); contract **UNKNOWN** |
+| Contestation → Adjudication → Election / Contestation | `ChallengeRouted`, `DeterminationIssued`, `ElectionCorrectionApplied` | **FRZ** (Push B) |
+| Finance ↔ Membership | Fee facts; direction **OPEN** (N-5 is a reading) | **OPEN** |
+| Every context | One shared τ per multi-context operation; complete or refused | **ARB** (D-73) |
+
+### 16.3 Contradictions and corrections found
+
+| # | Finding | Evidence | Resolution |
+|---|---|---|---|
+| K-1 | **§4 above is behind the decisions:** it shows Appointment's relation to Governance as UNRESOLVED (settled by D-72), Identity's `PersonRef` as PROPOSED (D-75), Organisation as a candidate (D-106), Geography updated | §4 rows; D-72, D-75, D-106 | §16.1 records the current position; §4 kept as history |
+| K-2 | **"The Vote" is placed under Election** in the ratified Membership text ("ElectionRegistration / VotingEntitlement / Exercisability / Vote", `:47`), while the BDR and D-102 place ballots in **Voting** | Membership act `:47`; BDR; D-102 | **[AC]** Read `:47` as "the election chain" (Election and Voting), consistent with the BDR. **No ratified text changes;** no Principal decision needed |
+| K-3 | **D-98's wording misstates D-32.** D-98 says "D-32's 'one ballot per person' … not reopened"; **D-32 itself says one ballot per person "is current software, not a platform rule (weighting [OQ])"** | D-98; D-32 | **An error by the recorder of D-98 (Claude).** D-98's scope ruling stands on its other ground (membership-based bodies; companies' shareholder model is a separate capability). **Weighting stays an open question under D-32.** Reported to the Principal; the decision record is not rewritten |
+| K-4 | Name overlap: EPIC-002 vs BDR vs C4 (C-4 of §11) | §11 | Unchanged; D-67 settled Adjudication as one context |
+
+### 16.4 Strategic gaps (what still needs discovery or a decision)
+
+| Gap | Kind | Blocks |
+|---|---|---|
+| P1 / P-I1: when a canonical Person is created | **Principal decision** (brief: `docs/publicdigit/architecture/reviews/2026-11-10-p1-identity-scope-decision-brief.md`) | Identity I-TDD-02; the people register |
+| Admission without a unit (§50.12 of the model document) | **Principal decision** | Organisation belonging presentation |
+| People register P2 … P7 (IR-OPR-01) | Principal decisions after P1 | People register tactical revision |
+| Committee ownership (DR-07a) and classification of legacy records (O-16) | Principal decision + evidence | Governance tactical design |
+| O-8 … O-10, structural authority per organisation, NRNA sections | **Evidence (statutes)**, UNKNOWN until on file | Organisation and Governance rules content (not structure) |
+| Tenancy owner (HD-8); INV-ORG-SCOPE-1 ARB act | Architectural acceptance | Implementation architecture |
+| Authorization scope (XD-4) | Architectural reasoning, then acceptance | Workspace-access enforcement |
+| Electorate fixation act for a specific election (IR-OPR-01 F-11); O-7 | Architectural reasoning (standing relationship + Election's electorate at cut-off) | Election tactical design |
+| Vote weighting (D-32 [OQ]) | Principal decision, **deferrable** | Nothing now |
+| FeePaid direction | Architectural, with Finance and Membership | Nothing in Organisation |
+
+### 16.5 Tactical readiness
+
+| Context | Ready? | Next tactical subject or blocker |
+|---|---|---|
+| Reference Geography | Domain design **ratified** | Implementation architecture (PO-1 … PO-8), not DDD |
+| Membership | **Ratified**; conformance work | Membership's knowledge-time alignment (PO-8) |
+| Organisation | **In progress** (model document §49 structure, §50 belonging, people register) | Blocked in part by P1 and §50.12 |
+| Identity | Scope written (I-TDD-02, other session) | **Blocked by P1** |
+| Governance | Tactical baseline WD (D-10) | Blocked by DR-07a and statutes |
+| Election | Working contracts | O-7 and the electorate act |
+| Voting, Adjudication | Frozen / accepted | No new subject now |
+| Authorization, tenancy | Not ready | XD-4, HD-8 |
+
+**This section is a proposal under §14. It ratifies nothing.**
+
+### 16.6 Reference Geography relationships after the Organisation tactical design (2026-11-10; PROPOSED)
+
+*Builds on `docs/publicdigit/architecture/reviews/2026-11-10-strategic-baseline-consolidation-review.md` (§3, §4), which lists Geography's ownership but no Geography relationship. Ratifies nothing.*
+
+| Consumer | Business fact crossing | Form | Time | Who interprets / decides | Unavailable, stale or corrected | Status |
+|---|---|---|---|---|---|---|
+| **Organisation** (unit coverage, allocation rules) | official references, containment `(CONTAINMENT, unit, scheme)`, `resolve(B, p)`, `RevisionPublished` | read at a **position**: `Belief(slot, t, p)` (Geography v3.11) | **Coverage:** at `positionAt(τ)` (D-73). **Allocation:** at the scheme's **confirmed position**, a recorded organisational fact, ≤ `positionAt(τ)` (A-8) | Organisation records; **Governance (the scheme's competent authority) decides** whether a newer map applies (ConfirmScheme) | beyond `closedThrough`: refused (D-73); a new publication: `CoverageReviewNeeded` / `AllocationReviewNeeded`, **no change to belonging** (D-106 §6) | **RAT** contract (D-93); use **P** (§49–§51, under IR-OTD-04) |
+| **Organisation** (person profile addresses) | `PlaceLookup` match of a name, alias or code to places | stateless query | at entry | Organisation stores the result as supplied | no match: the address stays unresolved; **never places anyone** (D-79, D-80) | **RAT** service; use **ACC** (D-101, D-83) |
+| **Election** | **none directly.** Regional rights come from Organisation's belonging and electoral divisions as at T | via Organisation (R-5; divisions D-125/D-126) | τ = T | Election decides entitlement | Election never reads the map itself | **[AC]** follows from D-106 §6, D-125/D-126 |
+| **Governance** | **none established.** §5 R-11 (`contains(org, id, revision)`) predates D-106; Governance's area competence is expressed through Organisation's units and allocation schemes | — | — | — | — | **[AC]** R-11 not supported by a current need; **not withdrawn** here (owner: the Principal at baseline acceptance) |
+
+**Findings (no Principal decision needed):**
+
+- **G-1:** the consolidation review's §4 has **no Reference Geography → Organisation row**. That is an omission; this table supplies it.
+- **G-2:** **A-8 needs no new Geography capability.** `Belief(slot, t, p)` already answers at any past position. The only new obligation is on Organisation, which must record each scheme's confirmed position.
+- **G-3:** the consolidation review's §9 cites "the IR-OTD-01-C confirmation" for Organisation. That is stale: §49–§51 are now under **IR-OTD-04** (independent validation).
+
+**Implementation consequence (for the later implementation architecture, PO-1 … PO-8):**
+- Organisation stores **positions, never copies of geography**.
+- Every map read names its position.
+- **No job or listener may change belonging on `RevisionPublished`. It may only raise review signals.**

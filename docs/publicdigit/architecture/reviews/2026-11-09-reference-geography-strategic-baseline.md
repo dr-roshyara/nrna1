@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| **Status** | PROPOSED baseline for Principal/ARB review. Not ratified. No code, migrations, schemas or APIs |
+| **Status** | §C **RATIFIED** 2026-11-10 by the Principal/ARB (D-93; act `docs/publicdigit/reviews/2026-11-10-reference-geography-baseline-ratification-act.md`). Accepts the domain design only; PO-1 to PO-8 and the Identity contract remain open. No code, schemas or tickets |
 | **Purpose of this document** | **One consolidated reference** that a domain expert can read and a solo developer can implement from, without the revision history. It **supersedes as working text** the proposals in `2026-11-09-reference-geography-strategic-discovery.md`, `…-level-framework-strategic-discovery.md` and `…-baseline-closure-and-tactical-design.md`, which stay as the record of how it was reached |
 | **Commission** | "Reference Geography: Revision 3 Review, Strategic Baseline Completion and Tactical DDD Validation" (Principal, 2026-11-09); updated for "D-83 Integration, Strategic Baseline Completion and Tactical DDD Validation" (Principal, 2026-11-09) |
-| **Accepted decisions integrated** | D-3, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81, D-82, D-83, **D-84, D-84a, D-85, D-86, D-87, D-88, D-89** (consolidated in §C below) |
+| **Accepted decisions integrated** | D-3, D-4, D-5, D-22, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81, D-82, D-83, **D-84, D-84a, D-85, D-86, D-87, D-88, D-89, D-90, D-91, D-92** (consolidated in §C below) |
 | **Read first** | **§C, the consolidated strategic baseline (2026-11-09).** Where §C differs from a later section or dossier, **§C governs**; the sections after it are kept as the record of how it was reached |
 | **Labels** | **[AD]** accepted decision · **[BF]** established fact (cited) · **[E]** implementation fact · **[SI]** strategic interpretation · **[R]** recommendation · **[TD]** proposed tactical design · **[OQ]** open Principal decision · **[TU]** unresolved technical uncertainty |
 
@@ -13,7 +13,7 @@
 
 ## C. Consolidated strategic baseline (2026-11-09) — read this first
 
-*Business language. No knowledge of Laravel, PostgreSQL or aggregates needed. Tactical expression: `2026-11-09-reference-geography-tactical-design-baseline-v3.8.md`. Coherence check: `2026-11-09-reference-geography-baseline-coherence-assessment.md`.*
+*Business language. No knowledge of Laravel, PostgreSQL or aggregates needed. Tactical expression: `2026-11-09-reference-geography-tactical-design-baseline-v3.11.md`. Coherence check: `2026-11-09-reference-geography-baseline-coherence-assessment.md`.*
 
 ### C.1 Business purpose
 
@@ -36,11 +36,11 @@ Reference Geography is **PublicDigit's register of official geographical referen
 
 | Context | Decides and owns | Consumes | Never decides |
 |---|---|---|---|
-| **Reference Geography** | Official geographical references: identity, claims, evidence, assessment, publication, history, country profiles, reconciliation, objections and disputes about its facts; the steward roster | Nothing from other contexts (platform-level, D-31) | Sovereignty; organisation areas; coverage; belonging; membership; electorates |
+| **Reference Geography** | Official geographical references: identity, claims, evidence, assessment, publication, history, country profiles, reconciliation, objections and disputes about its facts; the steward roster | **No business facts from any context** (platform-level, D-31). **Only person references issued by Identity** for stewards, preparers, approvers and matter reviewers, used for accountability and the independence check (D-75, XD-3); conflicts of interest are **declared**, never read from Organisation or Membership | Sovereignty; organisation areas; coverage; belonging; membership; electorates |
 | **Organisation** | **Belonging** to units and wing branches, in every capacity (D-3, D-22); organisation-defined areas (D-82); unit coverage (D-80); address-to-area suggestions | Published Geography | Official geography; anything for another organisation |
 | **Membership** | Membership facts and their processes (ratified architecture) | Person references (D-75); Organisation's facts where its rules require | Belonging (Organisation's); official geography |
 | **Election** | The **electorate** under its rules | Organisation's belonging and Membership's facts **at one shared τ** (D-73); Geography only through those | Belonging; geography |
-| **Governance** | Organs, positions, tenures (D-4, D-5) | Organisation's units | Territory |
+| **Governance** | Organs, positions, tenures (D-4, D-5); **not the Geography steward roster**, which is a platform role appointed by the platform owner (D-84) | Organisation's units | Territory |
 | **Address / person-profile** | Address as supplied, components (streets, D-83) and their resolution | Geography's resolution | Belonging; official identities. **Owner is a recommendation (Organisation's person-profile capability, §2a), not a ratified decision** |
 
 **Context map (direction of flow):**
@@ -77,6 +77,7 @@ Reference Geography is **PublicDigit's register of official geographical referen
 | **Publication** | The governed step that makes a revision part of PublicDigit's record | Official status |
 | **Valid time** | When a fact holds in the world | Knowledge time |
 | **Knowledge time** | When PublicDigit recorded it | Valid time |
+| **Level** | **0–2 are global and fixed:** 0 the World, 1 the five M49 regions (D-85), 2 countries or areas (D-86). **3–10 are positions in a country's own dated profile** (D-81), so level 4 in Nepal and level 4 in Germany need not mean the same thing | A count of parents |
 | **Country profile** | A dated mapping of a country's classes to positions 3–10 (D-81) | Tree depth |
 | **Territorial tier** | A position that holds official units | An address-component tier |
 | **Address component** | Street, house number, postal code: describes address precision; **no identity** (D-83) | An official unit |
@@ -93,13 +94,14 @@ Reference Geography is **PublicDigit's register of official geographical referen
 1. **Prepare:** evidence is collected and the proposed facts are drafted. **Anyone preparing decides nothing.**
 2. **Assess:** a non-conflicted steward judges the evidence (D-84a) and **submits** the revision.
 3. **Check consequences:** the register refuses a revision that would create contradictions (two parents in one scheme, one code for two live entries, a parent ending under live children, a classification out of order).
-4. **Second person, if required:** for a **structural** change, **once a second steward has ever been appointed** (D-89), a second, independent natural person approves: not the preparer and not the assessor (D-88). If none is available, **the change waits.**
+4. **Second person, if required:** for a **structural** change, **once a second steward has ever been appointed** (D-89), a second, independent natural person approves **exactly the content to be published**: not anyone who prepared or assessed it (D-88). If the content changes, the approval must be given again. If none is available, **the change waits.**
 5. **Publish:** the revision becomes part of PublicDigit's record, **all of it at once.**
 
 **Afterwards:**
 - **Correction:** a new revision; history is kept.
 - **Objection:** an organisation challenges a fact with counter-evidence; the fact changes **only** by a correction or a recorded dispute (D-84).
 - **Reconciliation:** two identities found to be one entity; both remain explainable; reversible by a later publication.
+- **Defective approval found later (D-90):** the facts stay in force, visibly flagged, until a valid second person confirms them or a correction replaces them; history is not rewritten.
 
 ### C.5 Strategic invariants
 
@@ -110,14 +112,16 @@ Reference Geography is **PublicDigit's register of official geographical referen
 5. **Dated, country-specific classification** (D-81); streets are address components (D-83).
 6. **Official and organisation geography stay separate** (D-82).
 7. **No belonging, membership, coverage or entitlement is inferred from geography** (D-79, D-80).
-8. **Governance:** D-84, D-84a, D-88, **D-89** (the second-person threshold, once active, stays active).
+8. **Governance:** D-84, D-84a, D-88, **D-89** (the second-person threshold, once active, stays active), **D-90** (facts with a later-discovered defective approval stay in force, flagged, until confirmed or corrected).
 9. **Historical queries are complete or refused** (D-73 / CR-01).
 10. **Neutrality:** no sovereignty asserted (D-86); CLDR display names, sources attributed (D-87); M49 regions only (D-85).
 
 ### C.6 Accepted decisions and deferred discovery
 
-- **Accepted, integrated, not reopened:** D-3, D-31, D-73 / CR-01, D-75, D-79, D-80, D-81 to D-89, D-84a.
-- **Architectural classifications by analogy (not Principal decisions):** ADMISSION of a country-or-area is **structural**; GROUPING into an M49 region is **non-structural**.
+- **Accepted, integrated, not reopened:** D-3, D-4, D-5, D-22, D-31, D-73 / CR-01, D-75 (with the XD-3 act), D-79, D-80, D-81 to D-92, D-84a. *(D-90 was an open question, K or S, in the fourth coherence revision; the Principal ruled K on 2026-11-09.)*
+- **[AD] D-91: ADMISSION of a country-or-area is structural** (ruled 2026-11-10; until then an interpretation by analogy).
+- **[AD] D-92: GROUPING into an M49 region is non-structural** (ruled 2026-11-10), for assignments on an M49 row or a verified code; platform-policy assignments stay with L-4c.
+- **[AD] D-90:** if Identity later finds that a structural change's second approver was the same person as its preparer or assessor, **the published facts stay in force, visibly flagged, until a valid second person confirms them or a correction replaces them.** History is never rewritten (tactical v3.11 §8).
 - **Deferred, not blocking the baseline:**
 
   | Item | Business question |
@@ -1032,3 +1036,53 @@ A CLDR disclaimer on political status is **not verified**; the claim is not reli
 ---
 
 **Ruling recorded (2026-11-09): L-4b option C as D-87** (direct; discovery record §11.22). Country and area display names come from Unicode CLDR in the user's language (standard form; short form only where space is tight). Source names stay as attributed alternatives. **L-4b is no longer a blocker for importing real data.**
+
+---
+
+## GROUPING dossier (2026-11-10): is assigning a country or area to an M49 region structural? **Ruled: non-structural ([AD] D-92, 2026-11-10)**
+
+**Binding:** D-73 / CR-01, D-79, D-80, D-81, D-84, D-84a, D-85, D-86, D-88, D-89, D-90, **D-91**.
+
+### G.1 What GROUPING means
+
+- **[AD] D-85:** level 1 holds the five UN M49 regions (Africa, Americas, Asia, Europe, Oceania): **statistical groupings**, implying no political affiliation, sovereignty or legal boundary.
+- **[AD] D-86 (5):** an entry's region comes **only** from allowed evidence: a published M49 row, a verified special-purpose code recorded as such, or an explicit platform-policy assignment. **Assignment where no M49 row exists is L-4c, still deferred.**
+- **A GROUPING change** moves an entry from one region to another, with valid dates and evidence. **It creates nothing, ends nothing, and changes no territorial containment or country profile (D-81).** [AC]
+
+### G.2 The coverage consequence, tested
+
+- **[AD] D-80:** a unit's coverage is 0..n references to official places and/or own areas. **Nothing forbids referencing a level-1 region** [BF].
+- **Example (hypothetical):** a diaspora organisation's "Europe chapter" covers the M49 region Europe. If a later UNSD publication moved an entry from Asia to Europe, the chapter's coverage would reach it from the new valid date.
+- **Who decides what that means [AD D-79, D-80, D-82]:** **Organisation**, under its own rules: whether its coverage follows the grouping or is fixed by its own decision. **Geography only publishes the change, with its evidence and dates.**
+- **Real-world note [AC]:** diaspora and international party structures typically define their own regions, which do not match M49 (for example a "Middle East" region, which is not an M49 level-1 region). **This is why D-85 directs organisations to their own international regions (D-82)**; referencing M49 regions is possible but not the expected pattern.
+
+### G.3 Strongest arguments
+
+| For **structural** | For **non-structural** |
+|---|---|
+| A grouping change can change what a coverage reaches (G.2) | **The nature of the fact:** statistical, explicitly not containment (D-85); existence, containment and profiles are untouched |
+| Users may read level 1 as a hierarchy, like containment | **No PublicDigit judgement:** the steward copies an uncontested UNSD row; the second person would re-check a copy |
+| Changes are rare, so the second person costs little | **Precedent:** if downstream use decided classification, an **IDENTIFIER** change (codes used for imports) would be structural by the same logic, and the claim-kind rule (§14) would erode |
+| | **Contested cases are already protected:** an objection or a competing source makes it a judgment matter, so **D-84a applies whatever the classification** |
+| | **Organisations stay protected by their own rules:** they see `RevisionPublished` with kind GROUPING and can decide what follows |
+
+**Counterexample checked:** an **explicit platform-policy assignment** (D-86 (5)) is PublicDigit's own judgement, not a copy. **That route belongs to L-4c (deferred)**, whose ruling can set its own governance. **The classification here covers GROUPING from M49 or verified special-purpose evidence.**
+
+### G.4 Architectural conclusion [AC]
+
+**Non-structural.** Classification follows the **nature of the fact and the judgement it involves**, not the uses consumers make of it. The coverage consequence is real, but it belongs to Organisation's rules, and D-84a covers contested cases.
+
+### G.5 Tactical consequences [TD]
+
+| | If non-structural (recommended) | If structural |
+|---|---|---|
+| Revision classification (§14) | GROUPING alone → non-structural; **with any structural claim → structural as a whole** (unchanged rule) | GROUPING alone → structural |
+| D-89 second person | Not required; one eligible steward publishes; D-84a still applies if contested | Required in era B |
+| History | Insert-only GROUPING claims with valid intervals; corrections as revisions; the earlier region stays visible "as at" | Same |
+| Consumers at τ (D-73) | Organisation reads the grouping at the shared τ, complete or refused | Same |
+
+**Change to the tactical baseline if ruled as recommended:** only the §14 row's label from "by analogy" to the ruling. **No mechanism changes.**
+
+### G.6 Proof obligations
+
+None new. **PO-1 to PO-8 and the Identity contract are unchanged.**

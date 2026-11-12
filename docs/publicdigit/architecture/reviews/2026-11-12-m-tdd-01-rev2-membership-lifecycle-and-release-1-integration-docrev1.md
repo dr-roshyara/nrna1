@@ -1,0 +1,288 @@
+# M-TDD-01 revision 2: Membership lifecycle and its release-1 integration (Organisation, Newsletter, Forum, Reference Geography)
+
+| | |
+|---|---|
+| **Status** | **PROPOSED integrated tactical design, revision 1. For independent review.** It decides nothing, ratifies nothing and authorises no implementation. Written by Claude, not independent |
+| **Supersedes** | `docs/publicdigit/membership/architecture/2026-11-09-m-tdd-01-membership-participant-operations-tactical-design.md` (M-TDD-01 rev 1, proposed) **where they differ**. Rev 1 predates D-160 … D-205 |
+| **Commission** | Principal, 2026-11-12: "Integrated tactical design for Membership, Newsletter, Membership Forum and Reference Geography" |
+| **Binding** | **RA** (ratified Membership architecture); Membership register **D-1 … D-5(b)** (D-5(b) as clarified by **D-205**); **D-114**, **D-146 … D-169**, **D-93**, D-164, D-166, **D-194, D-200 … D-205**; C1 / C2 specification (accepted D-162) + CR-02 (D-161); renew / suspend / restore design (accepted D-177); Organisation §49–§50 (accepted D-156); Newsletter and Forum design (accepted D-158); Governance thin slice (D-157 + notes); Identity I-TDD-02 rev 12 (D-200); Platform rev 11 (D-193); Reference Geography §C + v3.11 (D-93) |
+| **Depends on (proposed)** | Governance completion rev 3 (`2026-11-12-governance-completion-tactical-design.md`, `fa5b38a8…`) |
+
+**Labels:** [RAT] ratified · [ACC] accepted tactical design · [AD] accepted decision · [P] proposed · [AC] conclusion · [TD] tactical choice made here · [TU] proof · [LQ] legal · [OQ] Principal question · [EXT] owned elsewhere.
+
+## 1. In business language
+
+**One person, one membership record per organisation, one place of belonging, one source of authority:**
+
+| Context | Answers |
+|---|---|
+| **Membership** | **is this person a member, in force or suspended, from when to when?** It is the only source of that truth |
+| **Organisation** | **where does this person belong** (ward, district, top unit)? It counts a member's belonging only while Membership says the membership covers the date |
+| **Governance** | **who may admit, renew, suspend, end, edit or moderate?** |
+| **Identity** | **who is acting?** |
+| **Newsletter** (Communication) | asks Organisation **once per send** for the members of a unit and its sub-units, with their standing; removes those who opted out of that series; sends; **keeps no member list** |
+| **Forum** (Deliberation) | asks Organisation at **each read or post** where the person belongs and their standing; a ward forum is read by that ward's members, a district forum by everyone in the district, the top forum by all; **posting needs good standing and a moderator in office** |
+| **Reference Geography** | **the official map.** **Not used in release 1.** Later, an organisation's units may refer to map entries; a change on the map flags units for review and **never moves a member** |
+
+## 2. Responsibility map and databases (D-164)
+
+| Database | Contexts |
+|---|---|
+| **Central** | Identity (Person, Account, bindings), Platform (registry, routing, grants), **Reference Geography** (shared reference data) |
+| **Each organisation's own** | **Membership, Organisation, Governance, Communication, Deliberation**, person records and contacts (D-101), outbox / inbox, audit |
+
+**The central Account-to-organisation association never establishes membership, office or authority** (D-164; ISO-7). **Staff see content only by case grant** (D-166, D-193).
+
+## 3. Ubiquitous language and ownership
+
+| Term | Meaning | Owner | Source |
+|---|---|---|---|
+| **Period** (q) | one membership episode, admission to ending | Membership | [RAT] |
+| **Coverage** | `[from, to)` intervals of a person's lifetimes | Membership | [ACC] CR-01 |
+| **`inForce`** | `InLifetime ∧ TermCovered` (= `IsMember`) | Membership | [RAT] §4; CR-02 |
+| **`suspended`** | `InLifetime ∧` a restriction interval | Membership | [RAT]; CR-02 |
+| **Lapsed** | in lifetime, term not covered; **not an ending** | Membership | [RAT] INV-3 |
+| **`InForceUnrestricted`** | `inForce ∧ ¬suspended`. **Derived by each consuming context; not a Membership fact or field** | consumer | D-161 terminology note; CR-02 :37 |
+| **Scheduled resignation declaration** | a resignation with a later effective date, **held outside the ledger** until that date | Membership | **D-204, D-205** |
+| **Belonging** | person · unit · capacity · valid period · basis · anchor | Organisation | [ACC] §50.3 |
+| **Effective belonging** | valid on the date ∧ (if membership-dependent) within its anchored coverage ∧ latest record ∧ resolved through unit successors | Organisation | [ACC] §50.3 |
+| **Series, issue, opt-out** | newsletter series, an edition, a per-series opt-out | Communication | D-57 … D-61, D-151 |
+| **Forum, post, moderation act** | | Deliberation | D-50 … D-56, D-150 … D-153 |
+| **Official reference unit** (`ReferenceUnitId`) | an official map entry; identity minted once, never reused | Reference Geography | [RAT] v3.11:43 |
+
+## 4. Context map and exact contracts
+
+| # | Contract | Producer → consumer | Shape | Failure |
+|---|---|---|---|---|
+| K-1 | **C2 `CoverageKnownAt`** | Membership → Organisation | `(organisationId, membershipIds[] \| personRefs[], τ) → {closedThrough, items: [{membershipId \| personRef, seq, coverage, inForce, suspended}]}` (spec :104; CR-02 :30) | `BOUNDARY_NOT_CLOSED` if τ > `closedThrough`; `SOURCE_NOT_LEDGER`; cross-tenant refused; **never partial; a refusal is never "not a member"** (spec :108–109, K-5) |
+| K-2 | **C1** events | Membership → Organisation | full state per membership: `seq`, coverage, `inForce`, `suspended`, `recordedAt`, `schemaVersion` 2 (CR-01 :41–47; CR-02 :26–28) | equal `seq` with different content → integrity error. **C1 serves current views only; historical answers use C2** (§50.8:1245) |
+| K-3 | **`EffectiveMembersAsAt(scopeUnit, asOf, τ)`** (R-5) | Organisation → internal | `PersonRef`s + τ + both sources' `closedThrough` + tree version (§38.5:548–553) | refused, never partial |
+| K-4 | **`MembersOfScopeAsAt(unit, τ)`**, **`BelongingWithAncestorsAsAt(person, τ)`** | Organisation → Communication, Deliberation | per person: belonging (from coverage) and `inForce` / `suspended` at the same τ (spec :185). **Organisation decides no right** (:187) | send refused, or read / write denied (NFD :70, :130, :145) |
+| K-5 | **AuthorityCheck** | Governance → Membership, Organisation, Communication, Deliberation | six fields + basis; act kinds below | refused; **Undetermined ≠ No** |
+| K-6 | **Exclusion push** | Governance → Membership | the Resolution part, outbox → inbox, idempotent per part (Governance completion C-1b) | applied / inapplicable, reported back |
+| K-7 | **`ParticipationRuleAsAt`** | Governance → Communication, Deliberation | the organisation's written rule, else **D-161 labelled "platform default (D-161)"** (D-168) | no answer → refused |
+| K-8 | **R-1 `ActingRef`** | Identity → every context | the actor's `PersonRef` in this organisation | refused |
+| K-9 | **Reference Geography** (later) | Geography → Organisation | `resolve(ref, p)`; coverage references `(ReferenceUnitId, knownAtPosition, valid period, basis)` (§49.6:966–973) | **not in release 1** |
+
+**Act kinds used** (Governance thin slice and additions):
+- `admit-member` / `decide-application` **with `place-member(unit)` in one request** (note 3);
+- `renew-membership`, `suspend-membership`, `restore-membership` (D-163);
+- **`record-resignation`** (D-203 `ownAct`), **`exclude-member`** (push), **`record-death`** (Governance completion);
+- `send-newsletter(series)`, `moderate(forum)`;
+- `manage-claims` (D-196).
+
+**Direction rules [ACC]:**
+- **Membership never reads Organisation.**
+- **Communication and Deliberation never read Membership:** they receive standing through Organisation (CR-02 :37).
+- **Governance never reads the map.**
+
+## 5. Membership lifecycle (M-TDD-01 rev 2)
+
+### 5.1 Commands
+
+| Command | Authority (K-5) | Fact (RA) | Guards |
+|---|---|---|---|
+| **Admit** (decision on an application, with explicit term and optional unit) | `admit-member` + `place-member(unit)`, one request | `Admit` (decision provenance: actor + six fields + **declaration ref**, RA line 72) | D-1 basis; **explicit term** (D-163; open-ended allowed); D-5(b) as D-205 (3); not inside an existing lifetime |
+| **Renew** | `renew-membership` | `Renew` (term segment) | [ACC] D-177: late renewal keeps the gap; after End refused |
+| **Suspend** / **Restore** | `suspend-membership` / `restore-membership` | restriction interval | [ACC] D-177: only while in force |
+| **Resign now** | `record-resignation` (self-service `ownAct`, or recorder) | `End(resignation)`, effective = declaration date | D-3 kinds; open period |
+| **Schedule a resignation** (later date, D-201) | `record-resignation` | **no ledger fact:** a `ScheduledResignation` record | effective date > declaration date; **one scheduled declaration per period**; period open |
+| **Withdraw a scheduled resignation** | `record-resignation` (withdraw shape) | **none:** the declaration → `withdrawn` | only while `scheduled` and before its effective date |
+| **Execute a scheduled resignation** (system, on the effective date) | the answer stored with the declaration | `End(resignation)`: `effectiveAt` = the scheduled date, **`decidedAt` = the declaration date**, recorded on or after that date | **D-205 (2): the only fact allowed to take effect after its decision date; never after its recording date** |
+| **Apply an exclusion** | pushed Resolution part (K-6) | `End(exclusion)` with the part as authority evidence | open period, else `Inapplicable` |
+| **Record a death** | `record-death` | `End(death)` with evidence | open period |
+| **Annul / Void / Correct** | **see §5.4 [EXT]** | RA correction algebra | RA §9 (unchanged) |
+
+### 5.2 Scheduled resignation (D-204, D-205)
+
+**States:**
+- `scheduled` → `executed` (End recorded);
+- `scheduled` → `withdrawn`;
+- `scheduled` → `superseded`: **the period ended earlier** (another End, or an Annul / Void of the period), recorded with the reason.
+
+**Rules:**
+- **Held per period, outside the Member aggregate's facts** (like an application, D-2). It is visible to the member and to officers; **C1 / C2 do not show it** (D-204).
+- **Execution and withdrawal serialise** under the existing order: **authority answer → ledger-clock lock → the membership's version compare-and-set** (spec correction note :190). The declaration's state is checked and changed in the same transaction.
+- **Late execution** (the job runs after the date):
+  - effective date = the scheduled date; recording = later;
+  - the ending is **backdated within the existing invariants** (D-5(b) allows backdating);
+  - **withdrawal is refused once the date has passed**, even if not yet executed (D-201: "before its effective date").
+
+### 5.3 What the feeds show (K-1, K-2)
+
+**No ledger fact is future-dated (D-205 (1)).** So coverage, `inForce` and `suspended` never contain a planned future change.
+- **A scheduled resignation is invisible to C1 / C2 until executed.** Forum and newsletter rights continue until the date, as D-201 intends.
+- **A backdated fact** (late execution, late exclusion) changes coverage **from its effective date, as known from its recording time**.
+  - **Historical answers at an earlier τ do not change** (C2 at τ).
+  - Organisation and its consumers read the new state at τ after recording.
+
+### 5.4 Corrections (Annul / Void / Correct): authority [EXT]
+
+- **The ratified algebra is unchanged** (RA §9).
+- **Gap:** **no AuthorityCheck act kinds exist for setting aside or correcting membership facts.** The thin slice has none; interim GOV-END B1 covered only resignation and death.
+- **[AC] derivable, to confirm in review:**
+  - **Correct** (a real fact recorded wrongly) and **Void** (the record never reflected reality) → **recording authority with evidence**, as for Governance record corrections (D-202 item 8; V-59);
+  - **Annul** (a valid decision set aside) → **the body competent for the original act**, or a **tribunal determination remedy** (Adjudication, D-67; applied as a fact).
+- **These need act kinds in a Governance addition. Until then: refused.**
+
+### 5.5 Open gate: Membership's ledger clock (PO-8)
+
+- **Membership's accepted ledger clock** takes `recordedAt = max(appClock, last + 1 µs, closedThrough + 1 µs)` (spec :74).
+- **Reference Geography's ratified contract** requires every D-73 participant to **refuse on clock regression and never adjust** (v3.11 PO-6, PO-8). D-93 records this as **a known non-conformance:** "until it is resolved, cross-context historical queries involving Membership are not fully guaranteed".
+- **[EXT] implementation gate. Not changed here.** It must be resolved before cross-context historical guarantees are claimed. Governance completion rev 3 follows the refuse-on-regression contract.
+
+## 6. Organisation integration (§49–§50, D-114, D-147)
+
+| Rule | Source |
+|---|---|
+| **every effective member has at least one effective geographic belonging; by default the root unit**, unless the admission names a lower unit | [ACC] §50.15:1337–1342; D-114 |
+| **placement only by an act** (admission naming the unit, transfer, exception); **never by address or map** | [ACC] B-1 :1211; D-79, D-80 |
+| **a membership-dependent belonging counts only within Membership's coverage, as Membership states it** | [ACC] B-2 :1212 |
+| **transfer = end one belonging and start another, same date, one write;** membership identity unchanged | [ACC] :1168, B-4 :1214 |
+| **membership ended → belonging kept; stops counting after the coverage end; history not deleted** | [ACC] §50.5:1201, scenario 8 :1275 |
+| **suspension → belonging unchanged** | [ACC] §50.5:1200 |
+| **coverage read from C2 at τ, never from the C1 projection, for historical answers** | [ACC] §50.8:1243–1245 |
+| **one knowledge boundary for structure, belonging and schemes; refused beyond it; no timestamp adjusted** | [ACC] §49.8:1018–1022 |
+| **area rules (§51) and Reference Geography: not in release 1**; §51 needs independent review first | D-147, D-156 |
+
+**Organisation's model document fingerprint drift:**
+- D-156 cites `2bc6b65c…`; the file now hashes to `1e9eaf31…` (recorded in IR-R1-02 :43, :282).
+- The quotations above are from the current file.
+- **[EXT] a re-fingerprint belongs to the next acceptance act** (D-173 change-control rule).
+
+## 7. Newsletter (Communication, D-158, D-161, D-168)
+
+**One send = one τ (D-73):**
+1. **`send-newsletter(series)`** Authorised for the actor at send time. **No designated editor → no send in the organisation's name.**
+2. **Audience = `MembersOfScopeAsAt(scope unit, τ)`** (the unit and every unit below it).
+3. **Filter by the participation rule** (K-7): the organisation's written rule, else **"platform default (D-161)": `InForceUnrestricted`**, derived from `inForce` and `suspended`.
+4. **Remove those who opted out of this series** (D-151). **Re-subscribing removes the opt-out.**
+5. **Contact = the organisation's person profile (D-101), never the login address** (INV-ID-3). **No contact → excluded, reason recorded.**
+6. **Any source incomplete → no send** (never partial).
+7. **Snapshot** of the audience with the basis of each inclusion; delivery records (attempt / accepted, never "read").
+
+**Privacy:** editors see **counts** of opt-outs, never identities (D-151).
+
+**Formal notices** (convocations): a separate capability, **not suppressed by opt-out**, later release.
+
+**Communication keeps no member list:** only opt-outs, snapshots and delivery records.
+
+**[LQ]:** counsel confirms the legal basis before launch (D-151).
+
+## 8. Forum (Deliberation, D-150 … D-153, D-161, D-168)
+
+**Every read and post is evaluated at its own τ, from Organisation's and Governance's answers:**
+
+| Check | Rule | Source |
+|---|---|---|
+| **read** | the person's effective belonging is the forum's unit **or a unit below it** (`BelongingWithAncestorsAsAt`) | D-152 |
+| **read, other capacities** | pending applicants, workers and guests read where they belong | D-153 |
+| **read, lapsed or suspended members** | still read where they belong (belonging counts while covered; lapse and suspension are inside coverage) | [RAT] INV-3; D-161 |
+| **post** | read ∧ **participation rule** (K-7: the organisation's rule, else "platform default (D-161)": `InForceUnrestricted`) ∧ **forum open** | D-161, D-168 |
+| **forum open** | a moderator tenure covers it (`moderate(forum)`), else **read-only** | D-150 |
+| **moderation** | an act with reason; `moderate(forum)`; challengeable; a challenge waits for the reviewing body the rules name (D-167) | D-53 as D-167 |
+| **committee forums** | for office holders, by Governance: **later release** (IRD §9) | — |
+
+- **Deliberation keeps no member status and no hierarchy.**
+- **Any answer unavailable → deny.**
+
+## 9. Reference Geography: the later-release boundary (D-93, D-147)
+
+- **Not a dependency of release 1.** Membership, Organisation, Newsletter and Forum run without it.
+- **Later integration (as ratified and accepted):**
+  - **stable identity** `ReferenceUnitId`, never reused (v3.11:43, I-1 … I-3);
+  - **valid time vs knowledge time** (§C:26, :78–79); `positionAt(τ)`, defined only within `closedThroughTime` (v3.11:304);
+  - Organisation stores **`(ReferenceUnitId as relied on, knownAtPosition p₀, valid period, basis)`**, never rewritten (§49.6:966–967). *(Older forms `(officialUnitRef, revision)` and `OfficialUnitRevised` are superseded by §49.6 and `RevisionPublished`.)*
+  - **a revision (ended, divided, merged, re-parented)** → `CoverageReviewNeeded` (and `AllocationReviewNeeded` for rule-derived belonging). **Coverage, allocations and belonging stay as recorded until the organisation decides** (:980, :985).
+  - **No belonging, membership, coverage or entitlement is inferred from geography** (§C:114).
+  - **Unavailable** → Organisation acts on a complete copy and **refuses beyond it** (strategic baseline §8:399).
+- **Open, unchanged:**
+  - **PO-1 … PO-8** (v3.11 §6:399–406);
+  - **the four-point Identity contract** (v3.11 §8:560–566): one platform-level person reference per canonical person, equality, merge notices, merge reversals.
+  - **[EXT] note:** I-TDD-02 (D-200) does **not** provide that platform-level reference. Which reference platform-level contexts receive is still open (v3.11:765).
+  - Deferred items L-4c, Q-2, Japanese classification, naming, address ownership (§C.6).
+
+## 10. Temporal and consistency rules
+
+| # | Rule | Source |
+|---|---|---|
+| T-1 | business date (`effectiveAt` / `asOf`) ≠ knowledge time (`recordedAt` / τ) everywhere | [RAT]; D-73 |
+| T-2 | **one τ per cross-context operation; complete or refused** | D-73 |
+| T-3 | **no Membership fact takes effect after its recording; only a scheduled resignation's End takes effect after its decision date** | **D-205** |
+| T-4 | backdating allowed within the existing invariants; earlier τ answers never change | D-5(b); C2 |
+| T-5 | append-only everywhere; corrections are new facts | [RAT]; D-202 |
+| T-6 | Membership append order: authority → ledger-clock lock → version compare-and-set | spec :190 |
+| T-7 | **Membership ledger clock: PO-8 non-conformance open** (§5.5) | D-93 |
+
+## 11. Failure and refusal
+
+| Situation | Result |
+|---|---|
+| Governance cannot answer, or `Undetermined` | no fact recorded; the act waits |
+| C2 refuses (`BOUNDARY_NOT_CLOSED`, `SOURCE_NOT_LEDGER`) | Organisation refuses; **never "not a member"** |
+| Organisation cannot answer | newsletter send refused; forum read / post denied |
+| Identity cannot answer | request refused |
+| scheduled-resignation job fails | retried; idempotent per declaration; the effective date unchanged |
+| exclusion push for an already-ended period | `Inapplicable`, reported |
+| Geography unavailable | no effect in release 1 |
+
+## 12. Security and privacy
+
+- Per-organisation isolation: ISO-1 … ISO-11; no cross-organisation query.
+- Contacts are organisation-local (D-101). Login addresses are used only for D-179 notices.
+- **Opt-out identities are hidden from editors.**
+- **No context copies another's truth:** Communication keeps no member list; Deliberation no status; Organisation no membership facts.
+- Staff access only by case grant (D-166).
+
+## 13. Integrated scenarios
+
+| # | Scenario | Owner of the fact | Command / query | Contract | Time | Result | Failure |
+|---|---|---|---|---|---|---|---|
+| 1 | registers and joins | Identity (Account); Organisation (person record) | register; application (declaration, outside the aggregate, D-2) | I-TDD-02 | now | Account; application pending | — |
+| 2 | admitted with term, unit named | Membership (`Admit`); Organisation (belonging) | Admit; `admit-member` + `place-member` | K-5, K-2 | effective ≤ decision | period with term; belonging in the unit | `Undetermined` → waits |
+| 3 | receives newsletters | Communication | send | K-4, K-7, K-5 | one τ | included if in scope ∧ rule ∧ not opted out ∧ contact | incomplete → no send |
+| 4 | opts out, later re-subscribes | Communication | opt-out / re-subscribe | — | from the act | excluded, then included | — |
+| 5 | reads ward and district forums | Deliberation | read | K-4 | per read | allowed (ward ⊂ district) | deny |
+| 6 | writes in force, not suspended | Deliberation | post | K-4, K-7, K-5 | per post | allowed if the forum is open | deny |
+| 7 | suspended | Membership | Suspend | K-5, K-2 | effective date | reads; **no posting, no newsletters** (D-161 default) | — |
+| 8 | restored | Membership | Restore | K-5 | effective date | rights return | — |
+| 9 | expires or renews | Membership | (lapse derived) / Renew | K-5 | term | lapsed: reads, no posting or newsletters; renewal keeps the gap | — |
+| 10 | resigns now | Membership | `record-resignation` (`ownAct`) | K-8, K-5 | effective = declaration | belonging stops counting; rights end | — |
+| 11 | future-dated resignation, withdrawn | Membership (declaration) | schedule; withdraw | K-5 | before the date | **no ledger fact; rights unchanged throughout** | withdrawal after the date → refused |
+| 12 | excluded by a competent organ | Governance (Resolution); Membership (`End`) | push (K-6) | K-6 | the part's effective date | ended; challenge changes nothing (D-71) | no competent organ → `Undetermined`, nothing ends |
+| 13 | death recorded | Membership | `record-death` | K-5 | date of death (backdated) | ended | no recorder → waits |
+| 14 | moves to another unit | Organisation | transfer (`place-member`) | K-5 | same date, one write | new belonging; membership identity unchanged | — |
+| 15 | official unit renamed or divided (later release) | Reference Geography | `RevisionPublished` | K-9 | positions | `CoverageReviewNeeded`; **nobody moved** | — |
+| 16 | Geography unavailable | — | — | — | — | **release 1 unaffected**; later: Organisation refuses beyond its complete copy | — |
+
+## 14. Proof obligations (all NOT EXECUTED)
+
+| # | Property |
+|---|---|
+| **A1–A3** | C1 / C2 ledger-clock proofs (spec §11 K-2): **build gate** |
+| MI-1 | **D-205 guard:** an End with effective date after its decision date is accepted **only** when executed from a scheduled resignation on its date; refused for every other fact; no fact takes effect after its recording |
+| MI-2 | scheduled resignation: execute vs withdraw, both orders, under the existing append order; never two Ends; withdrawal after the date refused |
+| MI-3 | a scheduled declaration is superseded when the period ends earlier |
+| MI-4 | C1 / C2 show no planned change before execution; a backdated End changes coverage only as known from its recording |
+| MI-5 | Organisation: a belonging stops counting after the coverage end; history kept; transfer is one write |
+| MI-6 | newsletter: one τ; the participation rule, else the labelled D-161 default; opt-outs; never partial; no login address |
+| MI-7 | forum: read by unit containment; post needs the rule and an open forum; deny when any source is unavailable |
+| MI-8 | no consumer converts a refusal into "not a member" |
+| MI-9 | architecture tests: Communication and Deliberation do not import Membership; no cross-context table access |
+
+## 15. Open business decisions, legal questions and gates
+
+| Item | Class |
+|---|---|
+| **authority for Annul / Void / Correct of membership facts** (§5.4): derivable reading proposed, needs Governance act kinds | **[EXT]; reviewer to confirm whether a Principal decision is needed** |
+| Membership ledger clock vs the D-73 contract (PO-8) | [EXT] gate |
+| Reference Geography PO-1 … PO-8 and the Identity contract (platform-level person reference not provided by I-TDD-02) | [EXT] later release |
+| Organisation model fingerprint drift (D-156) | [EXT] next acceptance act |
+| newsletter legal basis; resignation effective time; retention | [LQ] |
+| Governance completion rev 3 acceptance (D-203 `ownAct` ratification) | Principal, after review |
+| **no new Principal decision is required by this design** | — |
+
+**Author's statement:**
+- **Proposed; for independent review; not accepted.**
+- **No ratified invariant is changed.** D-205 adds one narrowly decided guard exception.
+- **No implementation authorised.**

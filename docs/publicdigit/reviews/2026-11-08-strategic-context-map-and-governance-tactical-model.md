@@ -878,3 +878,797 @@ Sufficiently defined for Principal/ARB review as a tactical design. Not proven a
 
 - **D-80** (direct): address and committee structure are separate; an address in District X never associates a person with District X's unit or committee (discovery record §11.14). Applies to §42–§45: an address is never a belonging, basis or composition rule; at most a suggestion (D-79).
 - Geography strategic discovery revision 2 appended (`docs/publicdigit/architecture/reviews/2026-11-09-reference-geography-strategic-discovery.md`): Nepal example corrected from the constitution's text; statuses split into five dimensions; schemes instead of one tree; five dates; Question 1 dossier.
+
+## 49. Organisation tactical design, step 2: Structure (PROPOSED, 2026-11-10; revises §9, §11, §38.2 and §45 for Organisation's structure)
+
+**Status:** architect's proposal under the **accepted** Organisation strategic baseline (D-106) and the **ratified** Reference Geography (D-93) and Membership (D-96; CR-01 = D-73, D-77). **Not accepted; no implementation.** Earlier sections are not edited; where this section differs, **§49 governs for Structure.** Entry assessment: `docs/publicdigit/architecture/reviews/2026-11-10-organisation-tactical-design-entry-assessment.md` (T-1 … T-8, each re-verified here against the source text).
+
+**Labels:** [AD] (RAT · ARB · D ruling · WD working decision) · [BF] · [AC] · [TD] · [TU] · [OQ] · [PK] practical knowledge.
+
+### 49.1 Business explanation
+
+A party's structure is **its own**:
+- for example a central, provincial, district, municipal and ward committee;
+- or zones that cut across districts;
+- or a diaspora network of country chapters.
+
+**The party's written rules decide it, and its competent bodies change it.** Geography is the **atlas the party may point to**, never the template it must copy.
+
+**Organisation's job:**
+- record each structure faithfully, **on every date and as known at every moment;**
+- **never let a map change, an address or the software alter it.**
+
+### 49.2 Corrections to the earlier text (verified against the sources)
+
+| # | Earlier text | Source check | Correction |
+|---|---|---|---|
+| C-1 | §11 step 2 and §45.4: "**A Highest Committee** resolution's structural content becomes … change sets" | D-21 is **[PK]** ("Describes the organisations under discovery, not a platform rule (D-1)"); D-106 conclusion 5 | "**A decision of the body competent under the organisation's written rules**" (recorded by Governance, D-12). No organ is named by the platform |
+| C-2 | §45.3 level link `(countryCode, adminLevel)` | D-81: positions 3–10 are positions in a **dated country profile**; the same number means different things in different countries | Replaced by a **level correspondence** (§49.5) to a global level (0–2) or a **country's class**, never to a bare number |
+| C-3 | §45.6 coverage `(officialUnitRef, knownRevision, …)`; "R-10 copy"; `OfficialUnitRevised` | D-93: identity `ReferenceUnitId`; knowledge by **publication position**; `RevisionPublished`; reconciliation `resolve(B, p)` → canonical A with `knownAtPosition` | §49.6 |
+| C-4 | §38.2 rule 1, applied to Organisation: `recordedAt = max(clock_timestamp(), closedThrough + 1 µs, last + 1 µs)` | D-73: "proved by transaction ordering, not by moving timestamp generation" | **Refuse, don't bump** (§49.8). §38.2 rules 2 to 5 (shared lock for writers, exclusive close, on-demand close, refusal) are kept |
+| C-5 | My entry assessment's "exactly one active parent" (§3) | §9 S-1 already says "(the top unit has none)" | **Roots are explicit** (§49.4 S-1) |
+| C-6 | §45.4 "At most one active geographic member belonging per date (V-24)" | V-24 is a direct answer; D-30 and D-22 are **WD** | Belonging is step 3. **Not carried forward as accepted here** |
+
+### 49.3 Ubiquitous language (Structure)
+
+| Term | Meaning | Not to be confused with |
+|---|---|---|
+| **Tree** | One structure of the organisation: the main (often geographic) structure, or a wing's own structure where the rules give it one (S-5, V-21) | Geography's hierarchy |
+| **Root** | The one unit of a tree that has no parent on a date (the national unit; a wing's top unit) | A unit with a missing parent |
+| **Level** | An ordered rank in one tree, with a label history, defined by the organisation | A Geography level or profile position |
+| **Level correspondence** | An optional statement that units at this level **usually serve** official references of a stated kind (§49.5) | A rule that units must copy Geography |
+| **OrganisationalUnit** | A place in a tree where people may belong: periods, parent over time, successors | An organ (Governance); an official reference |
+| **Structural change set** | All structural operations of one decision with one effective date, applied whole or not at all (D-30, WD) | A database batch |
+| **Record correction** | Fixing PublicDigit's representation of an act that was recorded wrongly | A new act (a new decision) |
+| **Coverage reference** | A unit's pointer to an official reference **as Geography knew it at a stated position** | Belonging |
+
+### 49.4 Structural invariants
+
+| # | Invariant | Business problem prevented | Source and status | Boundary |
+|---|---|---|---|---|
+| **S-0** | Every tree has **exactly one root** on any date it is in use | Two "national committees", or none, on the same day | [TD], from §9 "the top unit"; **provisional** until a written rule shows otherwise | Tree |
+| **S-1** | On any date, **every active unit except the root has exactly one active parent in its tree**; the root has none | A district under two provinces at once; an orphaned district | §9 S-1 [P], refined; WD D-22 | Tree |
+| **S-2** | **No cycles** on any date | A ward made the parent of its own district | §9 S-2 [P] | Tree |
+| **S-3** | A child's level is **lower than** its parent's, except recorded exceptions (V-17, **[PK]** "rule log") and the temporary fallback (D-19, WD) | A district placed under a ward | §9 S-3 [P] | Tree |
+| **S-4** | A level **in use** on any date cannot be retired | Units left without a rank | §9 S-4 [P] | Tree |
+| **S-5** | A wing has its own tree **only where the written rules give it one**; otherwise its units sit in the main tree (V-21, D-99) | Forcing one shape on every party | §9 S-5 [P], qualified by D-99 | Organisation |
+| **S-9** | **The geographic tree's original root unit exists from before the first admission** (a later root may be inserted above it, D-122), **and the root cannot be closed while any membership coverage exists**; inserting a new root above it moves no member without a decision (D-122). **Not a unit closure: dissolving the whole organisation is a separate act** (D-120). **The coverage condition is read from Membership's C2 at the change set's τ** (CR-01) | Members with no unit (D-114) | **D-120, D-122** | Tree (with a C2 read) |
+| ~~**S-6**~~ | ~~A unit stays in its tree for life.~~ **Withdrawn (§50.1 R-1): the deciding act states continuity or succession.** | | | |
+| **S-7** | **Every structural record has a basis:** a recorded decision (Governance) or a record correction referring to one | Structure appearing without authority | D-106 conclusions 4 and 5 [AC accepted] | Unit and change set |
+| **S-8** | **Nothing from Geography, an address or a residence change creates, moves, ends or merges a unit** | The map rewriting the party | D-80, D-82 [D]; D-106 | All |
+
+**Checked on every date from the effective date onwards** (§11 step 4, kept), because later-dated changes may already be recorded. A change set that would break any invariant on any such date is **inapplicable**: nothing is written; the fact is recorded and reported (§11, kept).
+
+### 49.5 Organisational levels and Geography: independent, optionally corresponding [AC]
+
+- **The organisation's hierarchy is its own** [§42; D-106]. It need not mirror Geography:
+  - its units need not exist for every official unit;
+  - **its parents are set by the organisation, independently of official parents.**
+- **A level may carry a correspondence**, which has three forms:
+  - **(a)** none (zones, chapters, non-geographic wings);
+  - **(b)** a **global level** (0 World, 1 M49 region, 2 country or area), e.g. a diaspora organisation's country chapters;
+  - **(c)** a **country's class** in that country's dated profile (e.g. Nepal's *district* class), **per country and dated**.
+
+  **Not a bare position number** (C-2). A class is used rather than a position because a profile may re-number positions over time while the class stays.
+- **What the correspondence is for:**
+  - **checking coverage plausibility** (a warning when a district-level unit's coverage points at a ward);
+  - **suggesting coverage;**
+  - **presentation.**
+- **What it never does:**
+  - **impose units or parents;**
+  - **block a change set:** it is a check that warns, not an invariant;
+  - **change with Geography by itself.**
+
+  If a country's profile changes (D-81), the correspondence is **flagged for review**; the organisation decides.
+
+### 49.6 Geography reference contract (corrects §45.6) [TD]
+
+**What Organisation stores per coverage reference:** `(ReferenceUnitId as relied on, knownAtPosition p₀, valid period [from, to), basis)`.
+- **The original identity and position are never rewritten:** they show what the organisation relied on (D-93).
+- **The valid period is the organisation's** (when the unit serves the place), not Geography's.
+
+**What Organisation asks Geography:**
+- **resolve(ref, p)** → canonical identity, with `knownAtPosition`;
+- the reference's facts "as at (t, p)";
+- **one shared τ** in cross-context operations (D-73), mapped by Geography to `positionAt(τ)`, **which must be within Geography's `closedThroughTime`** (otherwise refused or closed first). **This applies to coverage and current reads; allocation schemes read Geography at their confirmed position (A-8, §51 governs)** (IR-OTD-04 L-11).
+
+**When Geography publishes** (`RevisionPublished`):
+
+| Geography publication | Organisation's response |
+|---|---|
+| A reconciliation B → A | **No write to the structure or the coverage.** Reading coverage at a later position resolves B to A automatically (allocation schemes: only after confirmation, A-8). **CoverageReviewNeeded** only if the unit now covers the same entity twice, or A's facts differ materially (e.g. a different parent) |
+| A reference ended, divided, merged or re-parented | **CoverageReviewNeeded** for each affected unit; **and AllocationReviewNeeded where the change could alter a rule-derived belonging** (§51.5). **Coverage, allocations and belonging stay as recorded until the organisation decides** (S-8; A-8: allocation schemes read Geography at their confirmed position) |
+| A name, code or GROUPING change (non-structural, D-92) | Nothing; a display update when read |
+| A country profile change (D-81) | Correspondence review flag (§49.5) |
+
+- **A reversal of a reconciliation** (B independent again from position q): reading at q or later resolves B to itself. **CoverageReviewNeeded** if the organisation had relied on the merged meaning.
+- **[AC] Reconciliation by itself never changes committee structure, coverage decisions or belonging.** It changes only how an identity is read. **For allocation schemes, a newer reading applies only after the scheme is confirmed at that position (A-8)**, which can move members.
+
+### 49.7 Structural change sets (revises §11)
+
+1. **Input:** a recorded decision of the competent body (C-1), the rule version, the effective date and the operations. **Idempotency key:** decision + change-set number.
+2. **Basis check:** the decision is recorded by Governance. **Competence is Governance's (D-12); Organisation does not re-decide it.**
+3. **Load** the affected units, their ancestors, and later-dated changes touching them.
+4. **Check S-0 … S-5, S-7 and S-9 for every date from the effective date onwards** (S-6 withdrawn; S-8 holds by construction). S-9 reads Membership's coverage (C2 at τ) when the change set would close the root. *(Corrected per IR-OTD-01-C item 4.)*
+5. **Write new records only**, and advance the **tree version**.
+6. **If another change set advanced the tree version meanwhile, retry from step 3.**
+
+**Why the tree is the consistency boundary [AC]:**
+- **S-0 … S-3 span many units:** a cycle or a second root can only be seen across the tree.
+- **Structural changes are rare** (decided at sittings), so serialising them per tree costs nothing in practice.
+- **Non-structural edits** (a unit's display name, its coverage) **do not take the tree version**, so they never conflict with structure.
+
+**This is D-22 option C (WD), justified here rather than assumed.**
+
+- **Effective dates:**
+  - ordinary decisions take effect **no earlier than their decision date**;
+  - **retrospective effect only by ratification** (D-6, WD);
+  - **a technical delay changes knowledge time only** (D-40).
+- **The Governance–Organisation exchange is the provisional D-29 model:** decided change sets in; "inapplicable" and structure as at τ out. **Not a fixed contract** (D-106).
+
+### 49.8 Temporal behaviour (replaces §38.2 rule 1 for Organisation)
+
+**Two axes:**
+- **effective date** ("what was the structure on 1 March?");
+- **knowledge time τ** ("what had PublicDigit recorded by τ?").
+
+**Every answer is "as at (date, τ)"** (CR-01 time line).
+
+**Knowledge-time contract (the platform contract of D-93 §6, applied to Organisation's stream):**
+- **(0) One boundary [IR-OTD-01 M-3]:** Organisation has **one** knowledge boundary (`closedThroughTime`) covering **structure, belonging and allocation schemes**; one close covers all three, so no answer mixes knowledge times.
+- **(1) `recordedAt`** is the database clock reading taken inside the writing transaction, under the **shared** writer lock (§38.2 rule 1 without the bump).
+- **(2) Refusal:** the write is **refused (and retried) if the reading is ≤ `closedThroughTime`, or ≤ the stream's last `recordedAt`**. No timestamp is ever adjusted.
+- **(3) Closing to τ** takes the **exclusive** lock, waits for in-flight writers, checks clock ≥ τ, records the boundary (§38.2 rules 2 to 4, kept).
+- **(4) Queries beyond the boundary** are refused, never answered partially.
+
+**The proof** follows by transaction ordering, as in D-93 §6.
+
+**What D-73 requires and what it does not [AC]:**
+- **It requires:**
+  - facts **recorded once and never changed in place;**
+  - corrections as new records;
+  - **"what was known at τ" reproducible.**
+- **It does not require event sourcing or any particular storage mechanism.** Append-only storage of facts plus projections is **one** way to meet it [TU, for the implementation architecture].
+
+**Record correction versus new act [TD]:**
+- **A new act** changes what is true **from its effective date:** a new decision, by its basis.
+- **A record correction** changes **what PublicDigit had recorded.** It must refer to the original act's evidence; it is made by the organisation's authorised recorder, and **administrative responsibility is not decision authority** (Decision A).
+- **If a "correction" would change the meaning of the decision, it is not a correction; it needs a new act.**
+
+### 49.9 Lifecycle, operations and events
+
+| Unit lifecycle | Operation (through a change set unless noted) | Event candidate (fact · owner · consumers) |
+|---|---|---|
+| — → Active | EstablishUnit | **UnitEstablished**: a unit exists from date d (Organisation) · Governance, Election, Communication |
+| Active → Active | MoveUnit (new parent; keeps identity, V-49) | **UnitMoved** (Organisation) · same |
+| Active → Active | RenameUnit (**not** structural; own version) | **UnitRenamed** (Organisation) · display only |
+| Active → Ended(kind: dissolved · divided · merged · absorbed) | EndUnit | **UnitEnded** (Organisation) · Governance (its organs' fate is Governance's, V-3, V-4, V-48), Election |
+| Ended → Active (same unit) | BringBack, with continuation declaration (D-14) | **UnitBroughtBack** (Organisation) |
+| — | DeclareSuccessor (D-15) | **SuccessorDeclared** (Organisation) |
+| Levels | DefineLevel, RenameLevel, ReorderLevels, RetireLevel, SetLevelCorrespondence (outside change sets when not structural) | **LevelDefined**, **LevelRenamed**, **LevelsReordered**, **LevelRetired**, **LevelCorrespondenceSet** |
+| Records | CorrectStructureRecord (§49.8) | **StructureRecordCorrected** (Organisation) · all consumers of the corrected record |
+| Integration | — | **StructuralChangeSetApplied** / **StructuralChangeSetInapplicable** (to Governance) |
+| From Geography | — | **CoverageReviewNeeded** (Organisation, internal) |
+
+**Every event carries:** the effective date, `recordedAt`, the basis, and the tree version where structural.
+
+### 49.10 Scenarios
+
+| # | Scenario | Outcome |
+|---|---|---|
+| 1 | New party with only a national unit | One tree, one root, no parent; S-0 … S-2 hold |
+| 2 | Party with zones spanning several districts | Zone level without correspondence; coverage lists several districts; no Geography rule involved |
+| 3 | Diaspora association with country chapters | Chapter level corresponds to level 2 (country or area); coverage = one country each |
+| 4 | Nepal-style national restructuring published in Geography | **CoverageReviewNeeded** for affected units; **no unit created, ended or moved** until the party decides (S-8) |
+| 5 | Geography reconciles B → A | No structural write; coverage reads as A; review only if duplicated |
+| 6 | Reconciliation reversed | Reads as B again from the reversal position; review if relied upon |
+| 7 | Change set would make a ward the parent of its district | **Inapplicable** (S-2, S-3); nothing written; reported |
+| 8 | Two change sets in one tree at once | The second retries after the tree version advanced; re-checked |
+| 9 | Change dated next month already recorded; an earlier change set today | Checked on every date from today, **including** next month's state |
+| 10 | Ratification of an act from three months ago (D-6) | Effective from the act date; checks from that date; knowledge time is today |
+| 11 | Unit renamed | No tree version; history keeps both names |
+| 12 | Wing with its own structure under the rules | Separate tree with its own root (S-5) |
+| 13 | Wing unit moved into the main tree | Continuity or succession, **as the deciding act states** (§50.1 R-1; S-6 withdrawn) |
+| 14 | Wrong effective date entered for a recorded decision | Record correction referring to the decision; knowledge history shows both |
+| 15 | "Correction" that would change which districts merge | Refused as a correction; needs a new act |
+| 16 | Clock steps back on the database server | Writes refused until the clock passes the last `recordedAt`; nothing adjusted |
+| 17 | Election asks for the structure at cut-off τ | Answered "as at (cut-off, τ)" after closing to τ, or refused |
+
+### 49.11 Cross-context responsibilities (Structure only)
+
+| With | Organisation needs | Organisation provides | Never |
+|---|---|---|---|
+| Governance | The recorded decision and rule version (basis) | Applied or inapplicable; structure as at (date, τ) | Organisation deciding competence |
+| Reference Geography | resolve(ref, p); facts as at (t, p); `RevisionPublished` | — | Geography changing structure |
+| Election | — | Structure as at (cut-off, τ) | Organisation deciding who counts |
+| Membership | — (belonging is step 3) | — | — |
+
+### 49.12 Open and proof obligations
+
+- **[OQ] None.** No genuine Principal question arises in Structure.
+- **Provisional, depending on written rules:**
+  - S-0 (one root per tree);
+  - V-17 exceptions (**[PK]**);
+  - whether a wing is a tree (S-5);
+  - who may make record corrections in a given organisation (the recorder's designation).
+- **[TU] for the implementation architecture:**
+  - the knowledge-time contract's proof obligations (as PO-1, PO-5, PO-6, PO-7 of D-93) for Organisation's stream;
+  - tree-version retry under contention;
+  - **a single write path for structural records.**
+- **Platform:** **Membership's §38.2 bump remains PO-8**; this section changes only Organisation's application.
+
+### 49.13 Consistency assessment
+
+| Against | Result |
+|---|---|
+| D-81 | Correspondence by class or global level, dated, optional; **no imposed hierarchy** |
+| D-82, D-83 | Organisation areas are step 4; no unit is an official reference |
+| D-84 … D-92 | Only Geography publishes; Organisation reads by position; GROUPING changes nothing (D-92) |
+| D-93 | `ReferenceUnitId`, positions, `resolve`, reconciliation and reversal followed; original references kept |
+| D-73, D-77 | One τ; refuse, don't bump; complete or refused |
+| D-79, D-80 | No structure or belonging from an address or Geography (S-8) |
+| D-97 … D-106 | Authority from written rules; Governance records; Organisation holds; no organ named by the platform; WD kept provisional |
+| §45 | Kept: vocabulary, aggregates (Tree, Unit), change sets, scenarios. Revised: C-1 … C-6 |
+
+**Readiness:** the Structure design is ready for independent review. **Next step: belonging (step 3).**
+
+## 50. Organisation tactical design, step 3: Person belonging (PROPOSED, 2026-11-10; revises §45 PersonBelonging, §12.2 and §38.5 for belonging; amends §49 after its review)
+
+**Status:** architect's proposal under D-106 (accepted), D-93 and D-96 (ratified), CR-01 (D-73, D-77). **Not accepted; no implementation.** Where this section differs from earlier ones, **§50 governs for belonging, and §50.1 governs for the four §49 points.**
+
+**Labels:** [AD] (RAT · ARB · D ruling · WD working decision) · [BF] · [AC] · [TD] · [TU] · [OQ] · **[PK]** practical knowledge. **The V-series answers are [PK]:** "the Principal's experience of how organisations of this kind usually operate … none is [F] for any particular organisation until its actual constitution … is read" (discovery record §0).
+
+### 50.1 Review of §49 (R-1 … R-4)
+
+| # | Finding | Revision |
+|---|---|---|
+| **R-1** | S-6 ("a unit stays in its tree for life") is a hypothesis, not a rule | **S-6 withdrawn.** **Whether a unit keeps its identity when it changes tree is stated by the deciding act**, as for merger and bringing back (V-50, V-51 [PK]; D-14 WD). Two outcomes are supported: **(a) continuity**, the same unit with a dated tree assignment, applied as **one change set across both trees** (both tree versions advanced together; S-0 … S-3 checked in both); **(b) succession**, the unit ends and a new unit is declared its successor (D-15, WD), so belongings follow the successor by resolution (§10). **A change set moving a unit across trees without stating (a) or (b) is inapplicable** (reported for clarification). [TD] **No Principal question:** the identity outcome is the organisation's decision, recorded with its act **Continuity (a) is one change set over both trees, applied in one transaction, S-0 … S-3 checked in both; the unit's allocation scheme moves with it only if its destinations remain its descendants, otherwise it lapses and is reported** (IR-OTD-01 M-2; [TU] proof obligation) |
+| **R-2** | S-4 confuses losing historical meaning with retiring a level | **S-4 restated:** a level keeps its identity for ever, and **historical assignments keep their meaning**. **Retiring a level from date d** is allowed when **no unit is at that level on any date ≥ d**; units at it must be re-levelled by the same or an earlier change set |
+| **R-3** | §49.7 presented D-6 (WD) as a platform rule | **Platform requirement:** every structural record carries **decision date** and **effective date**, and checks run from the effective date. **Whether an earlier effective date is valid** (retrospective effect) **is assessed under the organisation's written rules by Governance** (D-12). **D-6 is the provisional default where the rules are silent** (WD), not a universal rule |
+| **R-4** | Level operations not classified | See the table below |
+
+| Level operation | Effect on tree invariants | Path |
+|---|---|---|
+| RenameLevel | **None:** label history only | Own version; no change set |
+| SetLevelCorrespondence | **None** (§49.5: warnings and suggestions only) | Own version; no change set |
+| DefineLevel **at the bottom** | **None:** no existing unit's order changes | Own version |
+| DefineLevel **between** existing levels, **ReorderLevels** | **S-3** for every unit on every date ≥ effective date | **Structural change set**, with basis and tree version |
+| **RetireLevel** | **S-4** (R-2) | **Structural change set** |
+
+### 50.2 Business explanation
+
+**A person's belonging is the organisation's decision about where, in its own structure, that person has a place**, and in what capacity:
+- as a member of the Ward 5 unit;
+- as staff of the district office;
+- as a guest of the youth wing.
+
+It is **not**:
+- **membership:** whether the person was admitted, which Membership alone states;
+- **an address:** where they live (D-80);
+- **an office:** a seat on a committee (Governance);
+- **a vote:** Election.
+
+**The protections this step adds:**
+- **a belonging exists only because an act of the organisation created it;**
+- **it is never invented from a map or an address;**
+- its history stays exact both by date and by what was known when;
+- **membership's ups and downs change whether a member belonging counts, never the belonging record itself.**
+
+### 50.3 Ubiquitous language
+
+| Term | Meaning | Not to be confused with |
+|---|---|---|
+| **Belonging** | One placement: person (`PersonRef`) · unit · capacity · valid period · basis · anchor | Membership; affiliation (organisation-level, D-101) |
+| **PersonBelonging** | All belongings of one person in one organisation | A person profile |
+| **Capacity** | The kind of place a person has in a unit, **as the organisation's rules recognise it** | An affiliation capacity (User, Member, Worker, Guest, voter: D-101); a membership type |
+| **Membership-dependent capacity** | A capacity whose belonging **counts only while Membership's coverage includes the date** (D-103: "Member" reflects Membership) | A belonging that Membership owns |
+| **BelongingBasis** | The act or rule that created or changed the belonging: a **placement** (an individual act: in D-79's words an allocation, a transfer decision, or an admission naming the unit), a **change-set placement** (D-16 … D-18), an **exception** (D-116), a **ratification**, an **allocation-rule effect** (§51; a residence or area rule only where the written rules adopt one, D-79), or a **record correction** *(terms aligned per IR-OTD-01 M-7)* | An address; a suggestion |
+| **Anchor** | The membership coverage interval in which a membership-dependent belonging started (§12.2) | A unit period |
+| **Effective belonging** | Derived: valid on the date ∧ (if membership-dependent) within its anchored coverage ∧ the latest valid record ∧ resolved through unit successors and fallbacks (§10) | The stored record |
+| **Transfer** | Ending one belonging and starting another **on one basis, same effective date** | A residence move |
+| **PlacementSuggestion** | A unit proposed from an address via coverage, **for a person to confirm** | A belonging (D-79, D-80) |
+| **Record correction** | Fixing a wrongly recorded belonging, with reference to its act | A new act |
+
+**Vocabulary note:** the unit-level capacity list (§45.3: member, staff, guest, observer) and the affiliation list (D-101) **are different levels and stay different. Their naming is O-14 (open); nothing here settles it.**
+
+### 50.4 Capacities
+
+| Capacity (as §45 found it) | Business meaning | Needs Membership? | Needs a decision? | Governed by | Limits | Coexistence |
+|---|---|---|---|---|---|---|
+| **member** | The member's place in a unit | **Yes:** membership-dependent (D-103; §12.2) | A placement (D-79) or an allocation-rule effect (§51) | Organisation's rules | Organisation's rules; **[PK] V-24 "one geographic unit only; wings in addition"** | With wing and staff belongings, as the rules say (V-53, V-54 [PK]) |
+| **staff / worker** | Works for the unit | No | An act | Rules | Rules (V-54 [PK]) | Rules |
+| **guest / observer** | Admitted to a unit's activities without membership | No | An act | Rules | Rules (V-54 [PK]) | Rules |
+| **others** | Only where the organisation's rules define them | As the rules say | As the rules say | Rules | Rules | Rules |
+
+**[AC] The platform defines no capacity list and no limits.**
+- **Capacities, which of them require membership, and their limits come from the organisation's registered rules** (RuleCopy, R-15, WD).
+- **The only platform semantics is "membership-dependent".**
+- **Where the rules state no limit, none is enforced; nothing is invented** (D-97, D-106).
+
+### 50.5 Establishing, changing and ending (lifecycle)
+
+| Transition | Basis | Old record | New record | Effective date · knowledge time |
+|---|---|---|---|---|
+| **Establish** | A placement (an individual act, D-79) or a rule effect (§51) | — | Belonging | The act's effective date · `recordedAt` |
+| **Transfer** | One transfer act | Ended at d | Started at d | Same d; one write |
+| **End** | An act, or the end of the unit (derived) | Ended at d (explicit) **or** kept, with effective belonging derived through successors and fallback (§10) | — | d |
+| **Change-set placement** after a structural change | The change set's placements (D-16 … D-18, WD) | Kept | New belonging keyed by placement | Change-set effective date |
+| **Fallback** (unit dissolved, no placement or rule places the member) | Derived (V-5, V-6 [PK]; D-17 … D-19, WD); **flagged "awaiting placement"** (D-121) | Kept | **None written** | Derived "as at" |
+| **Restoration** after an annulled exclusion | Derived from Membership's corrected coverage (D-27, WD) | Kept; counts again for the regained coverage | None | From Membership's correction |
+| **Capacity change** | An act | Ended | New belonging in the new capacity | d |
+| **Record correction** | Reference to the original act's evidence (§49.8) | Kept; superseded in knowledge | Corrected record | Knowledge changes, truth does not |
+| **Membership suspended** | — | **Unchanged** (§38.6 scenario 2) | — | Election decides entitlement (C4) |
+| **Membership ended** | Membership's coverage | Kept; **stops counting** after the coverage end | — | Coverage end |
+
+**[AC]:**
+- **Ending a unit never rewrites belongings.** Effective belonging follows successors and fallbacks by resolution, so **a dissolution touches no person's record.**
+- **Restructuring scales without mass writes**, and history stays exact.
+
+### 50.6 Invariants
+
+| # | Invariant | Problem prevented | Source · status | Boundary |
+|---|---|---|---|---|
+| **B-1** | **Every belonging has a basis act** (or a rule effect, §51.3). An address, a coverage change or a Geography publication is never a basis; **a residence move is never a basis, but a residence or area rule the written rules expressly adopt may be, recorded as the basis** (D-79, D-114; corrected per IR-OTD-01 L-8) | Automatic placement; the map deciding | D-79, D-80 **[D]**; D-3 (WD) | PersonBelonging |
+| **B-2** | **A membership-dependent belonging counts only within Membership's coverage**, as Membership states it | Organisation asserting membership | **D-103 [D]**; CR-01 C1/C2 **[RAT]** | Derived (no write) |
+| **B-3** | **Limits per capacity**, as the organisation's rules state them. **Default where the rules are silent: one geographic member belonging per member per date** (D-118, confirmed D-122); a second is refused unless the rules allow it; where they allow more, each counts for its unit. Wing and non-member capacities are additional | Contradictory placements | **D-118, D-122**; rules; V-24, V-53, V-54 **[PK]**; R-15 (WD) | PersonBelonging |
+| **B-4** | A **transfer** ends and starts **in one write** | A person belonging nowhere, or twice, between the two steps | [TD] | PersonBelonging |
+| **B-5** | **Record-time assertion** (not a cross-aggregate invariant): a belonging is recorded against the structure **as known at its recording**; if the unit is later closed, C-2 resolves it and **the record is never rewritten** (corrected per IR-OTD-01 M-8) | Belonging to a unit that does not exist | [TD]; §10 | PersonBelonging |
+| **B-6** | **Records are never changed in place**: new acts and corrections are new records | Lost history | D-73 **[ARB]** | All |
+| **B-8** | **At most one placement-relevant recorded association per member per date** (the one the organisation's rules use). Others are profile information (D-101). **A second is refused unless it replaces the first from a date** (IR-OTD-01 L-9; §51.11 R-5; normative home added per IR-OTD-02 C-2) | Ambiguous placement: which recorded association the rules use | [TD]; §51.3, §51.11 R-5 | PersonBelonging |
+
+**The former "at most one active geographic member belonging per person per date" is B-3 with a rule-supplied limit, not a platform invariant** (C-6 of §49).
+
+**B-7** (the root requirement, D-114) is stated in §50.15.
+
+### 50.7 Aggregate assessment
+
+- **PersonBelonging per (organisation, `PersonRef`) is kept [AC]:**
+  - **B-3, B-4 and B-8 are per person** (limits, transfers and the one placement-relevant association concern one person's records);
+  - the aggregate is small;
+  - it never needs another person's data.
+- **What it does not hold:**
+  - membership coverage (Membership's; read at τ);
+  - the structure (§49; read as known at write time for B-5);
+  - suggestions (a read model).
+- **Concurrency:**
+  - **two acts on one person conflict on the aggregate version; the second is re-evaluated** (§45.8 scenario 17);
+  - acts on different people never conflict;
+  - structural change sets and belongings are **not** in one transaction. **Change-set placements** (D-16 … D-18) are applied **afterwards, keyed by placement**, idempotently. Until then the derived fallback answers.
+- **Membership changes need no coordination:** they change only what counts (B-2), derived at read time from Membership's coverage.
+
+### 50.8 Temporal behaviour
+
+- **Every answer is "as at (date, τ)":**
+  - belongings as recorded by τ;
+  - **Membership's coverage from C2 at τ** (`CoverageKnownAt(organisationId, membershipIds[] or personRefs[], τ)`, D-77), **never from the projection** (§38.5);
+  - structure as known at τ (§49.8).
+- **The C1 projection** (`MembershipCoverageResolved`, highest `seq` per membership, §38.4) **serves current views only.**
+- **Knowledge-time contract:** as §49.8 (refuse, don't bump), under **Organisation's single knowledge boundary** covering structure, belonging and allocation schemes (§49.8 (0)).
+- **A new act changes what is true; a correction changes what was recorded** (§49.8). An annulment in Membership is Membership's correction; Organisation only re-derives (D-27).
+
+### 50.9 Membership integration: conformance with CR-01 (verified source text)
+
+- **C1** `MembershipCoverageResolved(eventId, organisationId, membershipId, personRef, seq, coverage, recordedAt, schemaVersion)` carries "the **complete** coverage as Membership resolves it (INV-COV), `seq` strictly increasing per membership" (ratified record, CR-01 addition). **Used for the current projection.**
+- **C2** `CoverageKnownAt(organisationId, membershipIds[], τ)` "over `Res(F_τ)` with `closedThrough`" (`personRefs[]` accepted, D-77). **Used for every τ answer.**
+- **"Organisation never interprets Membership facts"** (same text). **Organisation uses the coverage intervals only; types, suspension and tenure stay Membership's** (consumed by Election through C4).
+- **Gap [TU, contract]:**
+  - D-79 lists "**an admission naming the unit**" as a basis act.
+  - **C1 and C2 carry coverage, not the unit an admission names.**
+  - **Proposal:** the admitting act's unit part is recorded in Organisation **with the same act reference** as basis. **The act is the shared basis, and neither context copies the other's fact.** How the act reaches Organisation (a Governance act record, or a Membership notice) is for the cross-context step. **No new Membership contract is created here.**
+
+### 50.10 Governance and Election
+
+- **Governance:** placements, exceptions and allocation rules rest on decisions recorded by Governance under the written rules (D-106; D-12 competence on the decision date), **with the authority order of D-119**. **No organ is named by the platform.** The D-29 exchange stays provisional.
+- **Election:** `EffectiveMembersAsAt(scope, asOf, τ)` (§38.5; R-5, WD) returns `PersonRef`s with τ, both sources' boundaries and the tree version. **Election combines it with C4 and decides entitlement itself.** Organisation never decides who may vote.
+
+### 50.11 Scenarios
+
+| # | Scenario | Outcome |
+|---|---|---|
+| 1 | Admission naming Ward 5 | Belonging (member, Ward 5) on the admission act's basis; counts from Membership's coverage start |
+| 2 | Belonging recorded before the admission is recorded in Membership | Stored; **does not count** until coverage includes the date. Shown as **pending membership** (§50.12) |
+| 3 | Moves to another district | At most a **suggestion**; nothing changes (D-79, D-80) |
+| 4 | Authorised transfer to Ward 7 | One write: ends Ward 5 at d, starts Ward 7 at d |
+| 5 | Ward 5 dissolved; no placement or rule places its members | Records unchanged; effective belonging resolves to the higher unit (fallback), **flagged "awaiting placement"** (D-121) until placed |
+| 6 | Division with change-set placements | New belonging keyed by placement; until applied, the fallback answers |
+| 7 | Membership suspended | Belonging unchanged; Election decides via C4 |
+| 8 | Membership ends | Belonging kept; stops counting after the coverage end |
+| 9 | Exclusion annulled | Coverage merges; earlier belonging counts again for the regained coverage; a later explicit belonging takes precedence (D-27) |
+| 10 | Re-admission after a real end | New coverage interval; **explicit placements and exceptions do not revive; rule-derived belonging re-applies from re-admission** (corrected per §51.11 R-6, IR-OTD-01 H-5) |
+| 11 | Staff in two units | Allowed **iff** the rules allow (B-3) |
+| 12 | Member of main unit and youth wing | Two belongings in two trees, as the rules allow (V-24, V-53 [PK]) |
+| 13 | Two acts on one person at once | Second re-evaluated (aggregate version) |
+| 14 | Wrong unit entered for an act | Record correction with the act reference |
+| 15 | Geography reconciles the district's reference | **The reconciliation by itself** changes nothing for belonging (§49.6); **a later confirmation of an allocation scheme can** (A-8, §51.6 scenario 12) |
+| 16 | Unit moves tree with continuity (R-1 a) | Belongings unchanged; they follow the unit |
+| 17 | Unit moves tree by succession (R-1 b) | Belongings follow the successor by resolution |
+| 18 | Election asks for members of District X at cut-off τ | §38.5 answer at τ; Election decides |
+
+### 50.12 The one Principal question: admission without a unit
+
+**Situation:**
+- **[PK] V-23:** "Admitted into a specific unit; never without a unit."
+- §47 turned this into a **platform** invariant: "the platform never presents an effective admission without a unit belonging".
+- **But D-97 and D-106 make each organisation's written rules the source of such rules.** Some associations admit members to the organisation directly, for example diaspora bodies with central membership.
+
+**What is settled either way:**
+- **Membership states admission; Organisation states belonging** (ownership unchanged).
+- **The platform never invents a belonging.**
+
+**The choice:**
+
+| Option | Rule | Consequence |
+|---|---|---|
+| **A. Platform-wide** | Every effective admission is shown as **incomplete until a unit belonging exists** | Simple and protective for parties like those under discovery; **wrong for organisations whose rules admit without a unit** (they would show permanent "incomplete" members) |
+| **B. The organisation's rules decide (recommended)** | Where the rules require a unit at admission, an admission without one is shown as **incomplete: awaiting unit belonging** and no unit-scoped list counts the person. Where the rules do not, organisation-level membership is complete | Consistent with D-97 and D-106; the protection applies exactly where the rules require it |
+
+**[AC] recommendation: B.**
+
+### 50.13 Open items and proof obligations
+
+- **[OQ]:** §50.12 only.
+- **Provisional, from rules or WD:**
+  - capacity lists and limits (B-3);
+  - fallback behaviour (D-17 … D-19);
+  - D-6 as the default for retrospective effect;
+  - S-0.
+- **[TU]:**
+  - how the unit part of an admission reaches Organisation (§50.9 gap);
+  - idempotent allocation application;
+  - the knowledge-time proof obligations for the belonging stream;
+  - a single write path.
+- **O-14:** capacity vocabulary.
+
+### 50.14 Consistency assessment
+
+| Against | Result |
+|---|---|
+| D-79, D-80 | Every belonging has an act; addresses only suggest (B-1) |
+| D-101, D-103, D-104 | Affiliation is not designed here; "member" counts only through Membership (B-2); workspace access is untouched |
+| CR-01 (D-73, D-77) | C1 for current views, C2 for τ answers; Organisation never interprets Membership facts |
+| D-93 | Geography never changes belonging |
+| D-106 | Authority from the written rules; Governance records; Organisation holds; **no platform capacity list or limits** |
+| WD (D-3, D-22, D-27, D-29, D-30) | Used as provisional, labelled; none promoted |
+| §45, §12.2, §38.5 | Kept: the PersonBelonging aggregate, anchoring, R-5. Revised: V-24 as a rule-supplied limit; capacities from rules; the admission gap identified |
+| §49 | Amended by §50.1 (R-1 … R-4) |
+
+### 50.15 Principal ruling D-114 applied (2026-11-10)
+
+**§50.12 is answered by D-114:** every effective member belongs to a geographic unit on every date, **by default the root unit.** Consequences for §50:
+
+- **New invariant B-7 [AD D-114]:** while a person's membership coverage includes a date, they have **at least one effective geographic member belonging** on that date. **It rests on S-9 (D-120): the root always exists while coverage does** (IR-OTD-01 L-6).
+  - **Default basis:** the **admission act**, placing them in the root unit unless the admission names a lower unit (D-79).
+  - **Problem prevented:** a member counted nowhere (no unit-scoped list, no electorate scope).
+  - **Enforcement:** derived, not written. If no recorded geographic belonging is effective on a date, **the effective belonging is the root unit as at the member's admission, carried forward by unit identity** (D-122; corrected per IR-OTD-01-C C-1). This is the §10 resolution extended to "no recorded belonging yet". **No mass write is needed when the organisation has only its root unit.**
+- **"Incomplete: awaiting unit belonging" (§50.12 option B) is not needed:** the root unit is always a valid answer.
+- **Moving down** when a lower unit is created: only by a change-set placement, a placement act, or an allocation rule (§51; a residence rule only where the written rules adopt it, D-79), **never by address** (D-80). **Members not moved stay at the higher unit.**
+- **How many** geographic belongings a member may hold remains the organisation's rule (B-3).
+
+**Scenarios added:**
+
+| # | Scenario | Outcome |
+|---|---|---|
+| 19 | Organisation with only its root unit; 1,000 members admitted | All belong to the root unit (derived; nothing written per person) |
+| 20 | Month 2: province X created; its creating decision allocates 300 members | 300 belong to X from the effective date; 700 stay in the root unit |
+| 21 | Month 3: province Y created; 200 allocated | X 300, Y 200, root 500 |
+| 22 | Month 4: Y creates districts D1 and D2; 80 allocated to D1, 70 to D2 | D1 80, D2 70, **Y keeps 50**; X 300; root 500 |
+| 23 | A member's address is in X but no act placed them | **Stays in the root unit**; at most a suggestion (D-79, D-80) |
+| 24 | The organisation's rules adopt a residence rule for placement | Placement follows the rule version in force, **recorded as the basis**; no retroactive move |
+| 25 | D1 is dissolved later | D1's members' effective belonging falls back to Y (§10, D-17), not to the root |
+| 26 | Election asks for "members of Y" at cut-off τ | **Y's own members, plus those of D1 and D2** (units at or below the scope, §38.5); Election decides entitlement |
+| 27 | A new top unit N is inserted above the root R; 500 members sit in R with no recorded placement | **They stay in R** (now a child of N) unless the restructuring decision moves them (D-122; B-7 default "root as at admission") |
+| 28 | A member admitted after N's insertion, with no placement | Belongs to N (the root at their admission) |
+
+## 51. Organisation tactical design, step 3b: rule-based geographical allocation and unit closure (PROPOSED, 2026-11-10; extends §49 and §50)
+
+**Status:** architect's proposal. **Not accepted; no implementation.**
+- **Binding:**
+  - D-79, D-80, D-114, D-116 … D-122, D-136, D-140, D-155 (rulings);
+  - D-106 (accepted);
+  - D-93, D-96, D-73 (ratified / ARB);
+  - working decisions D-13 … D-19, D-27, D-29, D-30 (provisional).
+- **Not binding:** D-115 is a **working direction (WD)**, applied as the default where the written rules are silent, and open to challenge (corrected per IR-OTD-01 L-3 and -C2).
+- **Where this differs from §49 or §50, §51 governs for allocation and closure.**
+
+### 51.1 Business explanation
+
+**An organisation does not have to copy the map.** Province Y can run three districts (D1, D2, D3) although Geography lists four (D1 … D4). D4 has few members, so **Province Y's committee adopts a rule: "geographical D4 is looked after by our district D3."**
+
+From then on, **every member whose recorded area is D4 belongs to organisational D3**, with no separate decision for each member. **Province X is untouched**; members with no area recorded, or in an area no rule covers, **stay where they are**: in Y if Y has placed them by area, otherwise in the root unit (D-114).
+
+**Closing works the other way:**
+- If D3 is closed, D3 stops existing from that date, and **its rule for D4 lapses.**
+- The closing decision says where D3 and D4 now go. **If it says nothing, members whom the remaining rules place (for example in Province Y) get a `PlacementReviewNeeded` notice; only members whom no rule or act places are shown as "awaiting placement"**, counted meanwhile in the nearest active higher unit, until the competent body decides *(corrected per D-121)*.
+- **Nothing is deleted:** history still shows that D3 existed, what it covered, and who was in it.
+
+### 51.2 Four facts kept apart
+
+| Fact | Meaning | Owner | Source of authority |
+|---|---|---|---|
+| **Geographical reference** | An official district (e.g. geographical D4) | Reference Geography (D-93) | Competent public authority |
+| **Organisational unit** | A unit the organisation established (e.g. organisational D3) | Organisation (§49) | Decision under the written rules (D-106) |
+| **Area allocation** | "Within scope S, members associated with area A belong to unit U" (e.g. scope Y: D4 → D3) | **Organisation holds it; the rule and the competence are Governance's** (rule recorded with its decision; R-15 rule copy) | Province committee by default **(D-115 WD)**, unless the highest committee decides otherwise; **the written rules prevail** |
+| **Recorded geographical association** | The area the organisation records for a member, by an act: registrar's entry, member's declaration accepted, admission naming it. **An address may suggest it, never set it** (D-79, D-80) | Organisation (belonging) | The organisation's rules define what counts (**UNKNOWN per organisation**) |
+| **Belonging** | The resulting place of the member | Organisation | **Derived** from allocations and association, **or** an individual act |
+
+**Not to be confused with electoral division assignment (D-125, D-126):** an organisation's assignment of people to **electoral divisions** grants **no organisational belonging** and is read by Election only; it is **not designed here** and shares nothing with allocation rules except the D-79/D-80/D-82 discipline (**no address and no organisation area alone**).
+
+**Coverage (D-80) versus allocation [AC]: related, but distinct facts.**
+- **Allocation places members.** **Coverage says which areas a unit serves** (organising, campaigning, communication).
+- **An allocation of A to U makes U cover A** (coverage is derived from allocations), but **a unit may also declare coverage it does not allocate members by** (e.g. a diaspora unit serving a country for outreach).
+- **The two are not collapsed:** allocation changes belonging, while coverage alone never does (D-80).
+
+### 51.3 How belonging is derived (descent rule) [TD]
+
+For a member on date d, as known at τ:
+
+1. **Start at the root of the geographic tree, or at the member's effective placement floor where one exists (step 4)** (IR-OTD-04 L-6; D-114; wing belongings are additional, IR-OTD-01 L-4). For a member without a recorded placement, the root **as at their admission**, carried forward by unit identity (D-122).
+2. At the current unit S, if S has an **effective allocation** for the member's recorded area (or an enclosing area, per Geography's containment **valid at d, as known at the scheme's confirmed Geography position**, A-8, in the designated administrative scheme) to an **active** child unit U, **descend to U**; repeat. *(Organisation's own records are read as known at τ; Geography is read at the confirmed position recorded in those records, so one τ still fixes the whole answer.)*
+3. **Stop** when no allocation applies. **The member's rule-derived belonging is the unit reached.**
+4. *(Corrected 2026-11-10, IR-OTD-01 H-6; D-116, D-119.)* **An ordinary placement** (a placement act, which D-79 calls an "allocation act"; a transfer; an admission naming a unit) **is a floor**: descent continues from it. **Only an exception** (an act that expressly places the member notwithstanding the rules, granted by the authority of the overridden rule or higher, D-119) **fixes the unit** while it stands (D-116). **An exception ends only by** (a) an act ending it, or a later decision for that member (D-116: a later exception, placement, change-set placement or ratification), **made by an authority at least equal to the one that granted the exception**; (b) a later decision of an authority **equal to or higher than the one that granted the exception, expressly addressing it**; **a later general rule does not end it unless it says so**; or (c) the closure of its destination (then the member re-derives by the rules and gets `PlacementReviewNeeded`, or is flagged "awaiting placement" if nothing places them). **A lower body's later act never ends it** (D-116 read with D-119), **unless the organisation's written rules provide otherwise** (D-119).
+
+**Properties:**
+- **A rule in Y's scope never affects X** (scoping).
+- **Units need not exist for every area.**
+- **Members with no recorded area, or an uncovered area, stay at the deepest unit that placed them**: progressive growth needs no mass writes.
+- **The result is a pure function of dated, recorded facts**, so it is reproducible at any (d, τ) (D-73).
+
+### 51.4 Invariants
+
+| # | Invariant | Problem prevented | Status | Boundary |
+|---|---|---|---|---|
+| **A-1** | **Within one scope, at most one *effective* destination per area per date** (an overridden allocation may still be recorded, D-140)**, the area taken as its canonical identity resolved at the scheme's confirmed Geography position (A-8)** (IR-OTD-01 H-3); within one scope **A-7 governs which matching allocation wins: authority first (D-136), then the most specific area among allocations of equal authority (or a lower allocation expressly authorised under A-7)** (by containment in the designated administrative scheme, valid at d, **as known at the scheme's confirmed Geography position**, A-8; corrected per IR-OTD-01-C3 C-1). A Geography publication that merges two allocated areas, or divides, ends or re-parents an allocated area **in a way that could alter a rule-derived result**, raises **AllocationReviewNeeded** (A-8) **Allocation areas are official references in the designated administrative scheme; allocating by an organisation's own area (D-82) is not supported, because Geography provides no containment for it** (IR-OTD-04 L-12; to be revisited with the area-rules release, D-147) | Ambiguous placement | [TD] | Allocation scheme of the scope unit |
+| **A-2** | **A destination is an active direct child of the scope unit (A-3; corrected per IR-OTD-01-C C-7) on every date the allocation is effective**; an allocation whose destination is closed is **ineffective from the closure date (lapses)**; **a lapsed allocation never resumes under D-140** (IR-OTD-04 L-2) | Pointing to a non-existent unit | [TD] | Derived (no write) |
+| **A-7** | **Choosing among matching allocations in one scope** ([AD] **D-136**; IR-OTD-01-C2 items 2 and 17): **(1) authority first:** an allocation made by a **higher** body governs every area its allocated area contains, **whatever their order**; a lower body's allocation for a contained area **does not take effect**, unless the organisation's written rules **expressly give the lower body that competence (an identifiable provision, recorded as the basis)**; **where that competence is unknown or not established, the lower allocation is refused and reported**. **A lower allocation adopted before the higher one is not ended: it has no effect while the higher stands and applies again when the higher ends, with `PlacementReviewNeeded` for members whose unit changes (D-140)**. **(2) Then specificity:** among allocations of **equal** authority (or a lower body's allocation expressly authorised under (1)), the **most specific** matching area wins, i.e. the smallest by containment in the **designated administrative scheme**, **valid at d, as known at the scheme's confirmed Geography position (A-8)**. **Single-parent containment comes from Geography's containment slot `(CONTAINMENT, unit, scheme)`** (not G-4), so the matching areas form a chain and the result is unique. **No authority is inferred from committee names, levels or containment** | A lower body narrowing a higher body's rule; ambiguous placement | **D-119, D-136**; Geography containment slot | Allocation scheme |
+| **A-8** | **Geography never changes belonging by itself** (accepted baseline D-106 §6; S-8). **Each allocation scheme records the Geography position at which the organisation last confirmed it** (`confirmedAtPosition`). **The scheme's competent authority is the body or bodies of highest authority that have an effective allocation in the scheme, or the body the written rules designate as the scheme's competent authority; only that authority moves the position** — by adopting or changing an allocation, or by an explicit **ConfirmScheme** act, effective from its date. **Except for a body the written rules expressly designate as the scheme's competent authority (a competence for a contained area under D-136 does not by itself suffice; IR-OTD-04 L-4), an act of a lower body does not move the scheme's position while a higher body's allocation stands in the scheme** (D-119, D-136); **where several bodies share the highest authority, a move that affects their allocations needs their concurrence or the written-rules designee (D-155, binding default).** **Members whose unit changes as a result of a confirmation receive `PlacementReviewNeeded`** (IR-OTD-04 L-8). **A confirmation is effective from its date and never earlier; a back-dated effect needs the retroactive route of §49.7.** **A confirmation names a position already published when the act is recorded; a query at τ uses a confirmed position only if that confirmation is known at τ, so the position is always ≤ `positionAt(τ)`** (the position selects a map version inside the τ snapshot; it is not a second knowledge time). **Dependency:** A-8 relies on published content at a position never changing (Geography v3.11); **if Geography decides that a defective publication can be voided ([OQ] in Geography v3.11), that ruling must say what happens to schemes confirmed at that position **and to coverage references recorded at it (§49.6)** (IR-OTD-04 L-3).** **Descent reads containment and identity resolution for that scheme at its confirmed position, never at a later one.** A later Geography publication that could alter a rule-derived result raises **AllocationReviewNeeded** and **has no effect on belonging until the scheme's competent authority confirms the scheme at a newer position** (a recorded organisational act, effective from its date). Members recorded against a reference unknown at the confirmed position match no allocation and stay at their floor. *(Corrected 2026-11-10 after the consistency review: §51 read Geography "as known at τ", which let a Geography re-parenting or reconciliation change belonging without an organisational act, contrary to D-106 §6)* | The map changing people's units | **D-106 §6**, S-8, D-80 | Allocation scheme |
+| **A-3** | **An allocation targets only a direct child of its scope** (D-119); a deeper scope's rules are therefore always reached, and a higher body overrides them only by deciding within that scope. **Unless the organisation's written rules provide otherwise** (D-119; corrected per IR-OTD-01-C item 7) | Rules bypassing each other | **D-119** | Allocation scheme |
+| **A-4** | **An allocation never creates or ends membership**; it places only effective members (B-2) | Rules making members | D-103, D-114 | — |
+| **A-5** | **An address or residence change never changes a recorded association by itself**; only an act does | Map or address deciding | **D-79, D-80** | PersonBelonging |
+| **A-6** | **Every allocation has a basis:** the decision adopting it, its authority, the rule version | Unauthorised rules | D-106; D-115 | Allocation scheme |
+| **C-1** | **Closing a unit with active children is inapplicable** unless the same change set moves, ends or re-parents each child | Orphaned units | **§49 S-1** (already) | Tree |
+| **C-2** | **After closure, no effective belonging is the closed unit.** Rule-derived belongings re-derive by descent and get a **`PlacementReviewNeeded`** notice; members whom **no rule or act places** fall back to the nearest active higher unit (D-17) and are flagged **"awaiting placement"** (D-121). Always with an effective unit (D-114) | Members in a dead unit; silent reassignment | D-17 (WD), D-114, D-121 | Derived + read model |
+| **C-3** | **Closure never deletes:** the unit, its periods, coverage, allocations and belongings stay queryable as at any earlier (d, τ) | Lost history | D-73; §49.8 | All |
+| **C-4** | **Closure never ends membership and never creates belonging elsewhere by itself** | Side effects on Membership | D-103 | — |
+
+### 51.5 Lifecycle
+
+| Event | What happens | Decision needed | Owner |
+|---|---|---|---|
+| **Establish unit U** | Change set (§49.7) | Competent body | Governance decides; Organisation applies |
+| **Adopt allocation** (scope S: A → U) | New allocation, effective from its date. **Refused (and reported) where a higher body's allocation stands in the same scope for the same area or for an area containing it** (D-119, D-136), **unless an identifiable provision of the written rules gives the lower body that competence**, recorded as the basis | Province committee by default (D-115), else per rules | Governance (rule); Organisation (allocation fact) |
+| **Change allocation** (D4: D3 → D2) | **New allocation from date d**; the old one ends at d; history kept. **Refused if the deciding body is lower than the body whose allocation it would change** (D-119, whatever the order; corrected per IR-OTD-01-C item 2), **unless an identifiable provision of the written rules gives the lower body that competence** (D-119, D-136) (corrected per IR-OTD-04 M-1). **If a higher body's allocation is changed so that it no longer covers an area a lower allocation it overrode covers, that lower allocation applies again from d, with `PlacementReviewNeeded`** (D-140) | Same | Same |
+| **Remove allocation** | Ends at d; members re-derive (stop at S). **Refused if the deciding body is lower than the body that made the allocation** (D-119), **unless an identifiable provision of the written rules gives the lower body that competence** (D-119, D-136) (corrected per IR-OTD-04 M-1). **If it was a higher body's allocation, any lower allocation it overrode applies again from d, with `PlacementReviewNeeded` (D-140)** | Same | Same |
+| **Change effective date** | If a new decision: a new allocation. **If the date was entered wrongly: a record correction** (§49.8) | — | — |
+| **Higher body overrides** (e.g. the highest committee in Y's scope) | Its decision on S's scope prevails from its date (D-119; D-115 only supplies the default allocation authority) **and continues to prevail over any later decision of a lower body on the same scope** (D-119), **except where an identifiable provision of the written rules gives the lower body that competence** (D-119, D-136; A-7; scenario 29). **Unless so authorised, Y's allocation has no effect where they conflict; if it was adopted before the higher allocation, it applies again when the higher ends, with `PlacementReviewNeeded` (D-140). An allocation refused at adoption never applies** (corrected per IR-OTD-03 R-1) | The higher body | Governance |
+| **Geography supersedes or corrects a reference** | **No allocation and no belonging changes** (A-8). **A division, an end, a reconciliation merging two allocated areas, or a re-parenting that could alter a rule-derived result raises AllocationReviewNeeded** (IR-OTD-01 M-4, -C item 10) | The scheme's competent authority (A-8) decides; it may confirm the scheme at the newer Geography position (**ConfirmScheme**, effective from its date); **members who move as a result receive `PlacementReviewNeeded`** (A-8) | Organisation (signal); Governance (decision) |
+| **Member's recorded association changes** | Re-derived from the new association's effective date | The act recording it | Organisation |
+| **Close unit U** | Change set ends U (C-1 children handled); **allocations pointing to U lapse (A-2)**; the decision **may redirect** them (new allocations) and **may place** U's members; **otherwise rule-derived members re-derive and get `PlacementReviewNeeded`, and only members whom no rule or act places are flagged "awaiting placement"**, with interim effective belonging at the nearest active higher unit (C-2, D-121) | Competent body | Governance decides; Organisation applies and produces the closure impact report |
+| **Correct a wrongly recorded closure** | Record correction; derived belongings for affected dates recomputed **as known after the correction**; earlier τ answers unchanged | — | Organisation |
+
+**Closure is not the mechanical inverse of establishment:**
+- establishment needs only the new unit;
+- **closure needs the destination of everything that pointed to the unit**, which may require new decisions.
+
+### 51.6 Scenarios
+
+| # | Scenario | Outcome |
+|---|---|---|
+| 1 | Only the root unit; 1,000 members | All in root (D-114) |
+| 2 | Province X established; root-scope allocations: X's areas → X | Members recorded in X's areas → X; others root |
+| 3 | Province Y established; root-scope allocations: Y's areas → Y | Y's area members → Y; X unchanged; rest root |
+| 4 | Y establishes D1, D2, D3; Y-scope allocations geo D1 → D1, D2 → D2, D3 → D3 | Those members descend; **members in geo D4 stay in Y** |
+| 5 | **Y's committee adopts geo D4 → D3** | D4 members → D3, **no individual decisions**; **D3 now covers D3 and D4**; X untouched |
+| 6 | A member's address is in D4, but no association is recorded | **Stays where the recorded facts place them** (A-5); at most a suggestion |
+| 7 | The registrar records a member's association as D4 | From that date: D3 |
+| 8 | Member moves; the association is changed to D1 by an act | From that date: D1 |
+| 9 | Membership ends | Not counted (B-2); allocation irrelevant (A-4) |
+| 10 | An individual act places a D4 member in D2 | **D2 while it stands** (Q-1 default) |
+| 11 | The highest committee decides geo D4 → D2 | From its date: D4 members → D2; Y's D4 → D3 ends there |
+| 12 | Geography reconciles two D4 references | **No change to belonging** (A-8: the scheme still reads identity at its confirmed position). If at most one carries an allocation in the scope, confirming the scheme at the new position raises **no allocation conflict**, **but members recorded against the reference without the allocation now resolve to the allocated one and may move from the confirmation's date, with `PlacementReviewNeeded`** (A-8, as scenario 32); **if both do, AllocationReviewNeeded**, and the scope decides before confirming (corrected per IR-OTD-04 M-2) |
+| 13 | Geography divides D4 into D4a and D4b | **AllocationReviewNeeded; no change to belonging** (A-8). Members recorded against D4 keep matching the D4 allocation; members recorded against D4a or D4b (unknown at the confirmed position) stay at their floor until the scope allocates them and confirms the scheme |
+| 14 | **D3 closed; the decision redirects geo D3 and D4 → D2** | D3 ends; its allocations lapse; new allocations → D2; members re-derive to D2 |
+| 15 | **D3 closed; the decision says nothing about destinations** | Rule-derived D3/D4 members stop at Y and get **`PlacementReviewNeeded`**; members placed in D3 whom no remaining rule places are flagged **"awaiting placement"**, counted in Y meanwhile (D-121) |
+| 16 | D3 closed; a new unit D3′ is established in the same change set with geo D3 and D4 | Members descend to D3′ |
+| 17 | **Province Y closed while D1 … D3 are active** | **Inapplicable** unless the change set re-parents or ends each district (C-1) |
+| 18 | Y closed; districts re-parented under the root | Root-scope allocations to Y lapse; the decision may allocate Y's areas directly to D1 … D3 at root scope |
+| 19 | Allocation D4 → D3 future-dated to next month; D3 closed this month | The allocation **lapses at closure by derivation (A-2)** and appears in the **closure impact report** produced when the change set is applied; **there is no write-time check** (corrected per IR-OTD-01 M-6) |
+| 20 | Closure recorded with the wrong date | Record correction; earlier τ answers unchanged |
+| 21 | Historical query: "members of D3 on 1 March" before and after closure | Same answer for the same (d, τ); **D3 and its allocations still visible** |
+| 22 | Wing unit closed | Same rules within the wing's tree |
+| 23 | Member with two recorded associations (**only historical or imported data**: B-8 refuses a second) | **Flagged for an act**; meanwhile they stay at the deepest unit both areas agree on (corrected per IR-OTD-01 L-9) |
+| 24 | Member with no recorded association | Stays at the unit an act placed them in, else root |
+| 25 | Province Y's committee tries to remove a highest-committee allocation in Y's scope | **Refused** (D-119, whatever the order); reported. **Unless an identifiable provision of the written rules gives Y's committee that competence** (D-119, D-136): then it takes effect, the provision recorded as its basis |
+| 26 | A district committee issues a later placement for a member excepted by the province committee | **Does not end the exception** (lower body, D-119); reported. **Unless the written rules provide otherwise** (step 4, D-119) |
+| 27 | Highest committee: geo D4 → D2 in Y's scope; later Y's committee: geo D4 → D3 (same area) | **Refused** (D-119); reported. **Unless an identifiable provision of the written rules gives Y's committee that competence** (D-119, D-136; as scenario 29) |
+| 28 | Highest committee: geo D4 → D2; later Y's committee: ward W (inside D4) → D3 | **Refused** (D-136, competence not established); W members stay in D2; reported |
+| 29 | Same as 28, but the written rules expressly let province committees allocate wards within districts | **Takes effect**, the provision recorded as its basis; W members → D3 (specificity among authorised allocations) |
+| 30 | Same as 28; the organisation's rules are not on file | **Refused** (competence unknown, D-136); reported |
+| 31 | Y's committee: W → D3 first; later the highest committee: D4 → D2 | From the later date W members → D2 (higher body prevails whatever the order); **Y's W allocation is not ended but has no effect while the higher allocation stands** (D-140), reported. **When the higher allocation ends (removed, superseded by an allocation that no longer covers W, or lapsed by closure of D2), Y's allocation applies again from that date and the W members who move receive `PlacementReviewNeeded`** (D-140). **An allocation refused at adoption never applies**; **nor does one that has itself lapsed (A-2)** |
+| 32 | Geography re-parents ward W from D4 to D5; Y's scheme allocates D4 → D2 and D5 → D3 | **No change** (A-8): W members stay in D2; AllocationReviewNeeded. **If Y's committee confirms the scheme at the newer position, W members move to D3 from that act's date**, with PlacementReviewNeeded |
+| 33 | Highest committee allocates geo D4 → D2 in Y's scope; Geography re-parents W from D4 to D5; **Y's committee then adopts an unrelated geo D6 → D3 at the newer position** | Y's act is a valid allocation (D6 is not covered by the higher allocation) but **does not move the scheme's confirmed position while the higher allocation stands** (A-8, D-119/D-136): the higher allocation still covers W, and Y's allocation is read at the confirmed position — if D6 is unknown there, it matches no member (A-8). **Only the highest committee, as the scheme's competent authority, may confirm the scheme at the newer position**; reported |
+
+### 51.7 Cross-context
+
+| Context | Provides to Organisation | Consumes from Organisation | Never |
+|---|---|---|---|
+| Governance | **Decisions and rules:** establishment, closure, allocation adoption, competence under the written rules (D-12); the default authority (D-115) | Structure and belonging as at τ (D-29, provisional) | Organisation deciding competence |
+| Membership | Coverage C1/C2 (who is a member, when) | — | Allocation affecting membership |
+| Reference Geography | References, containment, `resolve`, `RevisionPublished` | — | Geography changing allocation or belonging |
+| Election | — | Belonging as at (cut-off, τ) | Organisation deciding entitlement |
+
+### 51.8 Where it sits
+
+- **Allocation scheme per scope unit:** its own consistency boundary (A-1, A-6). It is **not inside the Tree aggregate**, because allocations change more often than structure and must not take the tree version.
+- **Destination validity (A-2) is derived**, so closure needs no cross-aggregate write.
+- **Recorded geographical association** belongs to **PersonBelonging** (§50).
+- **The descent rule is a domain service** over the scheme, the association, the tree and Membership's coverage.
+
+### 51.9 Open questions for the Principal
+
+**Q-1. Individual act versus rule: which prevails?** *(Decided: D-116; refined by §51.3 step 4: a placement is a floor, only an exception fixes the unit.)*
+- **Situation:** a rule places D4 members in D3, but the committee individually places one D4 member in D2.
+- **Alternatives:**
+  - (a) **the individual act prevails while it stands** (the specific over the general);
+  - (b) the rule prevails;
+  - (c) each organisation's rules decide, with no platform default.
+- **Recommended: (a), as the default where the rules are silent.**
+- **If left open:** each conflict needs a decision, and the derivation cannot run unattended.
+
+*(Decided: D-117, option (a).)* **Q-2. Does an allocation apply to existing members from its effective date, or only to new placements?**
+- **Situation:** D4 → D3 is adopted while D4 members already sit in Y.
+- **Alternatives:**
+  - (a) **from its effective date to all qualifying members** (what the commission describes: "no individual decision for each member");
+  - (b) to new members only.
+- **Recommended: (a).** It matches the commission. **No retroactive effect:** only from the date.
+
+### 51.10 Readiness
+
+**Ready for independent tactical review once Q-1 and Q-2 are answered.**
+- **[TU]:** Geography containment for divided areas (scenario 13); the closure impact report as a read model.
+- **Not implementation-ready.**
+
+### 51.11 Adversarial review of §51 (2026-11-10; by its author, therefore **not independent**)
+
+**Assumptions:** Q-1 (a) and Q-2 (a) **[P], pending the Principal**. **§51.12 states what changes if either is rejected.**
+
+**Confirmed sound [AC]:**
+- the five facts kept apart (§51.2);
+- scoping: a rule in Y never touches X;
+- the descent rule as a pure function of dated, recorded facts;
+- allocation lapse by derivation (A-2), with no cross-aggregate write;
+- children handled explicitly on closure (C-1, from S-1);
+- closure never deletes (C-3);
+- allocation and closure never touch membership (A-4, C-4).
+
+**Findings:**
+
+| # | Finding | Kind | Correction |
+|---|---|---|---|
+| **R-1** *(superseded by A-7 in §51.4: authority first, D-136)* | **Nested areas within one scope are not deterministic.** In scope Y, geo D2 → D2 and ward W (inside geo D2) → D3 both match a member in W. A-1 covers only the *same* area | Defect [AC] | **A-7: within one scope, the most specific matching area wins**, i.e. the smallest area, by Geography's containment as known at τ. Containment is single-parent per scheme (the containment slot `(CONTAINMENT, unit, scheme)`; corrected per IR-OTD-01 L-1, not G-4), so the result is unique. **Geographical specificity decides inside a scope; organisational descent decides between scopes**, so the two are never confused |
+| **R-2** | **"Individual act" covers two different things.** An admission naming Y (D-79) would, under Q-1 (a), be read as an exception that blocks every later allocation, **contradicting Q-2 (a)** (existing members in Y move to D3) | **Contradiction** [AC] | **Two kinds of individual act:** **(i) placement** (D-79: allocation, transfer, admission naming a unit) sets a **floor**: the member is in that unit **or below it by its rules**; descent continues from it. **(ii) exception**: an act that **states** it places the member **notwithstanding the allocation rules** sets a **fixed unit**. **Only exceptions take Q-1 precedence** |
+| **R-3** *(superseded in part by D-121: the flag applies only where no rule or act places the member; others get a `PlacementReviewNeeded` notice)* | **C-2 flags only explicit belongings.** Closing Y with its districts re-parented under the root makes Y's allocation scheme lapse. **Thousands of rule-derived members would silently stop at the root** | Defect [AC] | **C-2 revised:** every member whose effective belonging changes **because of a closure** is **reported and flagged "awaiting placement"**, unless the closing decision itself states their destination. The decision may do so by new allocations, by transferring the closed scope's allocations to the new parent, or by placements |
+| **R-4** | **The exception lifecycle is undefined** | Gap | **Exception:** basis act and authority; effective from; **ends by** (1) an act ending it, (2) a later exception or placement for the same member, (3) **a later decision by an equal or higher authority that expressly addresses it**, (4) the destination's closure (then the member **re-derives by the rules** and is flagged, R-3). **A later general rule does not end it unless it says so** |
+| **R-5** | **Several recorded associations make placement ambiguous** (scenario 23) | Gap | **B-8: at most one placement-relevant recorded association per member per date** (the one the organisation's rules use). Others are profile information (D-101). **A second is refused unless it replaces the first from a date** |
+| **R-6** | **Re-admission after a real end** | Clarification | **Rule-derived belonging re-applies from re-admission** (it is derived from current facts). **Explicit placements and exceptions do not revive** (§12.2, V-36) |
+| **R-7**  *(superseded for allocation by A-8: schemes read Geography at their confirmed position)* | **Scenario 13 [TU] resolved** | Clarification | Matching is by **reference identity or containment as known at τ**. A member associated with the ended reference D4 keeps matching the D4 allocation. Members associated with D4a or D4b match only if allocated, so until then they stop at Y, with **AllocationReviewNeeded** |
+| **R-8**  *(superseded for allocation by A-8: schemes read Geography at their confirmed position)* | **Which Geography time** | Clarification | **Geography is read at the operation's shared τ** (`positionAt(τ)`, D-93 §6); allocations keep their original references (§49.6) |
+
+**Aggregate boundaries:**
+- **Allocation scheme per scope unit:** holds A-1 and A-7 internally.
+- **PersonBelonging:** holds placements, exceptions, the placement-relevant association (B-8) and transfers.
+- **Tree:** unchanged.
+- **Belonging is derived** by the descent service.
+- **No new aggregate and no new transaction.**
+
+**Fallback at every level:**
+- **the nearest active ancestor at d**, even when several ancestors close in one change set;
+- **for a closed wing, the wing tree's nearest active ancestor**;
+- **never across trees.**
+
+### 51.12 If Q-1 or Q-2 is rejected
+
+| Answer | Consequence |
+|---|---|
+| **Q-1 (b): the rule prevails** | Exceptions cannot exist; only placements (floors). Every special case needs a rule change |
+| **Q-1 (c): no default** | Every conflict between an exception and a rule is **unresolved until the organisation's rules say**: the member is flagged, with interim belonging = the rule result |
+| **Q-2 (b): new members only** | **Each existing member's placement must be frozen at adoption** (written per person); the derivation is no longer a pure function of current rules; mass writes return |
+
+### 51.13 Readiness
+
+**Tactical design needs further work only in the sense of recording R-1 … R-8**, which are now written above. **With Q-1 and Q-2 decided, §51 is ready for Principal tactical-design acceptance**, preferably after an independent (non-Claude) check. **Not implementation-ready.**
+
+**Update (2026-11-10): Q-1 and Q-2 decided, as D-116 (exception wins; placements are floors) and D-117 (rules apply to all qualifying members from their date).** §51.12 is now history. With R-1 … R-8, **§51 is ready for the Principal's tactical-design acceptance**, preferably after an independent (non-Claude) check. Not implementation-ready.
+
+### 51.14 Corrections after the independent review IR-OTD-01 (2026-11-10)
+
+**Review:** `docs/publicdigit/architecture/reviews/2026-11-10-ir-otd-01-independent-review.md` (deepseek-chat, not Claude; it disclosed that it had reviewed the people register earlier the same day). **Verdict: READY AFTER CORRECTIONS.**
+
+**Decided by the Principal:** D-118 (H-1), D-119 (H-2, M-1), D-120 (H-4), D-121 (M-5).
+
+**Applied in place:**
+- §51.3 step 4 (H-6);
+- S-6 marked withdrawn;
+- A-1 over canonical identities with A-7 (H-3, M-4);
+- A-3 (D-119);
+- C-2 (D-121);
+- §50.11 scenario 10 (H-5).
+
+**Further corrections:**
+
+| # | Correction |
+|---|---|
+| H-1 | **B-3 default limit = one geographic member belonging per date (D-118)**; a second is refused unless the rules allow it. Where the rules allow more, every such belonging counts for its unit (no tie-break needed) |
+| H-3 | **Interim rule:** while an AllocationReviewNeeded from a reconciliation is open, **each member keeps the destination of the reference they were recorded against**; scenario 12 corrected |
+| H-2 | Lifecycle checks authority (D-119): **a change, end or exception made by a lower body than the decision it would affect is refused** and reported |
+| H-4 | **S-9 (D-120):** the root unit exists from before the first admission; **a change set closing the root while membership coverage exists is inapplicable**. B-7 therefore always has a root |
+| M-2 | A cross-tree move with continuity is **one change set over both trees, applied in one transaction, both tree versions checked** (as rare as any structural change); the unit's allocation scheme moves with it only if its destinations remain its descendants, otherwise it lapses (reported). **[TU]** proof obligation for the implementation |
+| M-3 | **Organisation has one knowledge boundary** (`closedThroughTime`) **covering structure, belonging and allocation schemes**; one close covers all three |
+| M-4 | **The containment used is the designated administrative scheme's** (Geography §13); a containment change that alters a rule-derived result raises **AllocationReviewNeeded** |
+| M-6 | A-2 is derived; **the closure impact is a report**, produced when the closure change set is applied, to the deciding body (Governance) and the organisation's registrars, not a write-time check |
+| M-7 | **Vocabulary:** **"allocation rule"** = an area rule (§51); **"placement"** = an individual act (D-79). D-114's "an allocation in the creating decision" means **either** an allocation rule adopted with the change set **or** placements listed in it; the decision states which |
+| M-8 | B-5 restated as a **record-time assertion**; later invalidity is handled by C-2, never by rewriting |
+| L-1 | Single-parent containment comes from the containment slot `(CONTAINMENT, unit, scheme)`, **not G-4** |
+| L-2 | Containment is the one **valid at d, as known at τ** |
+| L-3 | D-115 is a **working direction (WD)**, not binding |
+| L-4 | Descent starts at **the geographic tree's root**; wing belongings are additional |
+| L-5 | **Placed members** resolve by **unit identity**, so a new root above the old one does not move them. **Members with no recorded placement also stay with the old root (now a child) unless the restructuring decision moves them (D-122): no silent displacement.** Implementation consequence [TD]: the default derivation uses **the root as at the member's admission**, carried forward by unit identity |
+| L-6 | B-7 now rests on **S-9 (D-120)**, not on the provisional S-0 |
+| L-7 | Label collisions: this section's corrections are cited as **IR-OTD-01 H-n / M-n / L-n**; §51.4's A-1 is not D-112's note A-1 |
+| L-8 | B-1: "a residence move is never a basis; **a residence rule the written rules adopt may be** (D-79, D-114)" |
+| L-9 | Scenario 23 (two associations) arises only from records predating B-8 or from imports; such records are flagged for an act |
+
+**Review of the review (2026-11-10):** the author re-read IR-OTD-01 §4 and §5 in full and found that several corrections had again reached only this table, not the text. **§51.1, R-3, scenarios 12, 19 and 23 are now corrected in place**; the H-3 interim rule and the L-5 rule for unplaced members are added. **Disagreement with the review:** M-1's proposal (the highest committee may allocate past a province) is **not adopted**; D-119 (override within the scope) governs.
+
+**Readiness:** **with these corrections, §49 … §51 are ready for the Principal's tactical-design acceptance.** Not implementation-ready.
+
+**Update (2026-11-10, D-122):** D-118 confirmed (one geographic member unit by default); no silent displacement by a new root (L-5 corrected); the closure notice is named `PlacementReviewNeeded`. The Principal DDD Architect's five positions are thus all reflected: B, D, E as D-119 and D-121, C as D-120 + D-122, A as D-118 (kept by explicit ruling).
+
+**Update (2026-11-10): IR-OTD-01-C (confirmation review, NOT CONFIRMED: 10 confirmed, 5 partial, 0 missing; contradictions C-1 … C-8) addressed in place:** items 2, 4, 7, 10, 15 and C-1 … C-8, each marked "corrected per IR-OTD-01-C" at its line. Report: `docs/publicdigit/architecture/reviews/2026-11-10-ir-otd-01c-confirmation-review.md`.
+
+**Update (2026-11-10, full consistency pass after IR-OTD-01-C):** further residues corrected in place: "allocation" in the individual sense in §50.3, §50.4, §50.5, §50.10, §50.11 and §50.15 (now "placement" or "change-set placement"); the exception lifecycle with the D-119 authority check (§51.3 step 4); the authority check on "Adopt allocation"; the D-121 flag in the fallback rows and scenarios 5 and 15; new scenarios §50.15 27–28 (new root) and §51.6 25–26 (authority).
+
+**Update (2026-11-10): IR-OTD-01-C2 (second confirmation, NOT CONFIRMED: 15 of 17; reviewer deepseek-chat again, independence limit disclosed) addressed in place:** A-7 added to §51.4 (authority first, then specificity; containment-slot citation); the Adopt row refuses a lower body's allocation inside a higher body's allocated area; step 4 names the granting authority, uses D-116's "later decision for that member", states that a later general rule does not end an exception, and carries D-119's written-rules clause; Q-2 marked decided; D-115 moved out of the Binding list. Report: `docs/publicdigit/architecture/reviews/2026-11-10-ir-otd-01c2-confirmation-review.md`.
+
+**Update (2026-11-10, D-136):** nested areas decided: authority before specificity, with the written-rules competence exception and refusal where competence is unknown. Applied in A-7, the Adopt row and scenarios 27–31 (§51.6).
+
+**Update (2026-11-10): IR-OTD-01-C3 (narrow confirmation: 6 confirmed, 1 partial) addressed:** A-1 now defers to A-7 (authority first); scenario 31 states that a lower allocation adopted before a higher one has no effect while the higher stands and applies again if it ends, while a refused allocation never applies; the §51.2 note adds "no organisation area alone"; R-1 marked superseded. Report: `docs/publicdigit/architecture/reviews/2026-11-10-ir-otd-01c3-confirmation-review.md`.
+
+**Update (2026-11-10, D-140):** an overridden lower allocation resumes when the higher one ends, with `PlacementReviewNeeded`; applied in A-7, the Remove row and scenario 31.
+
+**Update (2026-11-10, consistency review):** **A-8 added.** §51 read Geography "as known at τ", so a Geography re-parenting or reconciliation would have changed rule-derived belonging without any organisational act, **contrary to the accepted baseline D-106 §6** ("A change in published Geography never changes belonging by itself"). Each allocation scheme now reads Geography at its **confirmed position**, changed only by an organisational act (ConfirmScheme or an allocation change). A-1, step 2, the Geography rows in §49.6 and §51.5, and scenarios 12, 13 and new 32 corrected. **This supersedes the part of IR-OTD-01 M-4 that accepted an immediate effect with a signal.**
+
+**Update (2026-11-10, IR-OTD-02 C-1 and C-2):** the Higher-body row now states D-140's rule — the lower allocation **has no effect** where it conflicts and **applies again when the higher ends**, with `PlacementReviewNeeded`; an allocation refused at adoption never applies. **B-8** (at most one placement-relevant recorded association per member per date) added to §50.6, with its §50.7 boundary. Report: `docs/publicdigit/architecture/reviews/2026-11-10-ir-otd-02-fresh-confirmation.md` (NOT CONFIRMED at the time; C-1 and C-2 applied here).
+
+**Update (2026-11-10, IR-OTD-02 C-3):** A-8 now names the scheme's competent authority — the body or bodies of highest authority with an effective allocation in the scheme, or the written-rules designee — and only that authority moves `confirmedAtPosition`. A lower body's act does not move it while a higher allocation stands (D-119, D-136); where several bodies share the highest authority, a move that affects their allocations needs their concurrence or the designee. This closes the path by which an unrelated lower-body adoption at a newer Geography position could narrow a higher allocation's coverage. The §51.5 Geography row points to A-8 for the confirming authority; scenario 33 added in §51.6.
+
+### 51.15 Consistency demonstration (2026-11-10; author's analysis, not normative)
+
+*For each case: the answer given by the invariants, the lifecycle tables and the descent algorithm. "=" means all three agree.*
+
+| # | Case | Invariants | Lifecycle (§51.5) | Algorithm (§51.3) | Agree |
+|---|---|---|---|---|---|
+| 1 | Higher allocation, then lower for the same area | A-1, A-7: lower without effect | Adopt: refused | Only the higher is effective | = |
+| 2 | Lower, then higher (same or contained area) | A-7, D-140: lower without effect while higher stands | Higher-body row: prevails whatever the order | Higher chosen by A-7 step (1) | = (scenario 31) |
+| 3 | Same-area conflict, equal authority | A-1: one destination per area per date | Change: the new ends the old at d | One allocation effective | = |
+| 4 | Nested areas, higher above lower | A-7, D-136: refused unless a written-rules provision | Adopt: refused | Higher's destination | = (28) |
+| 5 | Nested areas, equal authority | A-7 (2): most specific | — | Smallest matching area | = |
+| 6 | Written-rules exception | A-7 with a recorded provision | Adopt: accepted, provision as basis | Lower's destination | = (29) |
+| 7 | Competence unknown | A-7: refused, reported | Adopt: refused | Higher's destination | = (30) |
+| 8 | Higher allocation removed or lapses | D-140: lower resumes, `PlacementReviewNeeded` | Remove row: lower applies again; closure row: re-derive | A-7 sees only the lower | = (31) |
+| 9 | Destination unit closes | A-2: allocation lapses; C-2 | Close row: re-derive or "awaiting placement" | Descent stops above | = |
+| 10 | Earlier lower allocation overridden | D-140: not ended | Higher-body row | Ignored while higher stands | = |
+| 11 | Membership coverage changes | B-2: counts only within coverage; B-7 while covered; S-9 root guard | Membership facts never written by Organisation | Effective belonging filters by C2 at τ | = |
+| 12 | Geography containment changes | **A-8: no effect until ConfirmScheme**; AllocationReviewNeeded | Geography row: no change | Reads the confirmed position | = (32) |
+| 13 | Unit re-parented or closed | S-1 … S-5, S-9; C-1, C-2 | Change set; close row | Descent through the tree as known at τ | = |
+| 14 | Exception versus general allocation | D-116, D-119: exception fixes the unit; general rule does not end it | — | Step 4: exception overrides | = |
+| 15 | Historical query at τ₁ vs τ₂ | One knowledge boundary (§49.8 (0)); A-8 positions are recorded facts | Records never rewritten | Pure function of records as known at τ | = |
+
+**No case gives different answers across the three.** **The one contradiction found in this pass, Geography read at τ against D-106 §6, is corrected by A-8.**
+
+**Update (2026-11-10, IR-OTD-03):** R-1 fixed (the Higher-body row now carries the D-119/D-136 written-rules exception, agreeing with A-7, the Adopt row and scenario 29). Low notes: A-1 says *effective* destination and uses A-8's "could alter" trigger; the Change row states D-140 resumption; the §51 Binding list names D-116 … D-122, D-136, D-140.
+
+**Update (2026-11-10, deepseek-chat check of A-8 vs one shared τ):** A-8 now states that a confirmation names an already-published position and is used only when known at τ, and records the dependency on Geography's open question about defective publications.
+
+**Update (2026-11-10, IR-OTD-04, seventh deepseek-chat review, not independent; NOT VALIDATED: M-1, M-2 + L-1 … L-12):** M-1 (written-rules exception in the Change and Remove rows and scenarios 25–27) and M-2 (scenario 12, §50.11 scenario 15 and §49.6 [AC]: a later confirmation can move members) fixed. L-1, L-2, L-3, L-4, L-6, L-7, L-8, L-9, L-10, L-11, L-12 fixed in place; A-8 states that a confirmation is not retroactive except by the §49.7 route; §51.11 R-7 and R-8 marked superseded. **L-5 decided: D-155** (binding default; cited in A-8).
+
+**Status note (2026-11-10, after acceptance):** **§49–§51 ACCEPTED as the Organisation tactical baseline (D-156**; act `docs/publicdigit/reviews/2026-11-10-minimum-package-tactical-designs-acceptance-act.md`), resting on self-review by one model, not independent validation. **Building §51's area rules requires an independent review first.** The "proposal" status lines in §49–§51 are superseded by this note.

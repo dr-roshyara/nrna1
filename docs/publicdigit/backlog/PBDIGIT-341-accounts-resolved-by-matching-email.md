@@ -26,3 +26,11 @@ No code change before the design.
 
 ## Related
 D-75; `PBDIGIT-340`; M-TDD-01 (J-1); mobile baseline G-2.
+
+## Voter-import remediation plan (2026-11-10)
+`docs/publicdigit/architecture/reviews/2026-11-10-pbdigit-341-voter-import-privacy-remediation-plan.md` (assessment and proposed plan; nothing authorised). New FACT findings there:
+- election-only import silently gives an existing account the importing organisation's `member` role and workspace access, and makes it an active voter, without notice (F-5, F-6);
+- the voter list sends every voter's central `current_ip` (last sign-in anywhere) and `updated_at` to the browser (F-8, F-9);
+- result counts and preview statuses reveal whether an account exists (F-3, F-4).
+
+Principal decisions PR-1…PR-5.

@@ -103,3 +103,15 @@ BR-3 refines B1.1's informal word "membership" ("that membership is infrastructu
 
 - Strategic discovery conversation, 2026-11-01 (PO's consolidated business rules).
 - `docs/publicdigit/business_rules/20260806_0818_how_many_organisation.md`; `docs/publicdigit/backlog/PBDIGIT-30-…` (approved B1, B10).
+
+## Amendment note (2026-11-10, append-only): D-107, D-108, D-110
+- **BR-2, BR-8:** the "User affiliation with PublicDigit" created at registration is **superseded by D-107**. Registration creates an **Account only**; it creates no affiliation of any kind. Read BR-2/BR-8 as "becomes a registered user (holds an Account)". BR-8's second sentence (the person keeps their voter relationship with the other organisation) stands.
+- **BR-12:** "registrants are **not** affiliated with the operator organisation by registering" **stands**; "holding the User affiliation created at registration" is **superseded by D-107** (the bootstrap record holds no affiliations).
+- **"User" capacity:** not a standard organisational capacity (**D-108**).
+- **One registration, one Account, many organisations:** **D-110**.
+- **BR-10** (PO direction, eager Person creation at import) is **not changed**; it is part of the open Identity decision P-I1. Note for that decision: "resolves" cannot be done without the matching that D-75 forbids, so in practice BR-10 means "creates".
+The rule texts above are not rewritten; their provenance stands.
+
+## Amendment note (2026-11-10, append-only): D-113
+
+- **BR-10** is **superseded as to Person creation at import** (D-113): Identity issues the organisation's `PersonRef` at import **without creating a Person**; the Person exists from registration, and a valid claim binds the reference to it. "No User affiliation with PublicDigit is created at import" stands (and D-107 removed the User affiliation altogether). The text of BR-10 above is unchanged.

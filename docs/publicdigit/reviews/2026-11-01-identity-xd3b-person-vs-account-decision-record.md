@@ -128,3 +128,5 @@
 ---
 
 **Accepted (append-only note, 2026-11-09):** accepted by the Principal as human ARB Chief through the XD-3 Identity ARB act (`2026-11-09-identity-xd3-arb-act.md`, D-75), with its eight conditions. The text above is unchanged. Still open as stated in the act: the reference mechanism (L1 / L2), K4, the legal basis, separate identity domains, retention and erasure, the account-security policy, and INV-AFF-1.
+
+**Clarification (append-only note, 2026-11-10, D-113):** K4 is answered by D-113 (R2b). §1's import clarification is clarified: **no Person is created at import**; the organisation's `PersonRef` is still issued then. §2a is clarified: the one-time claim code is **tied to the organisation's `PersonRef`**, not to a `PersonId`; redeeming it binds that reference to the claimant's Person, and **binding is not a merge**. The text above is unchanged.

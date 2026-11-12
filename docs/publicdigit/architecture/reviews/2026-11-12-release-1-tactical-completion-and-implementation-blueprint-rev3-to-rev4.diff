@@ -1,0 +1,143 @@
+--- docs/publicdigit/architecture/reviews/2026-11-12-release-1-tactical-completion-and-implementation-blueprint-rev3.md	2026-11-12 12:30:56.888173710 +0100
++++ docs/publicdigit/architecture/reviews/2026-11-12-release-1-tactical-completion-and-implementation-blueprint.md	2026-11-12 12:30:56.937429425 +0100
+@@ -2,7 +2,7 @@
+ 
+ | | |
+ |---|---|
+-| **Status** | **PROPOSED, revision 3** (applies IR-R1C-01, GPT-6: A-01 … A-06; revision 2 `…-rev2.md`, `ca5fad2b…`; revision 1 `…-rev1.md`, `6076153c…`).<br>- **T-1, T-2, T-4 and K-C1 need ARB acceptance.**<br>- **It changes no accepted decision or design and authorises no implementation;** each slice needs an EP-01-approved plan.<br>- Written by Claude, not independent |
++| **Status** | **PROPOSED, revision 4** (applies IR-R1C-01-R1, GPT-6: T-1 §3.4, T-4 §6.3, T-2 wording, G-1d, B-05). **Revision history:**<br>- rev 1 `6076153c…`: first blueprint;<br>- rev 2 `ca5fad2b…`: T-1, T-2, T-4, flows, conformance;<br>- rev 3 `983d9cfe…`: IR-R1C-01 A-01 … A-06;<br>- **rev 4: IR-R1C-01-R1.** Earlier texts kept as `…-revN.md`.<br>**IR-R1C-01-R1 verdicts: T-2 and K-C1 READY FOR ARB ACCEPTANCE (unchanged in substance here); T-1 and T-4 NOT READY (corrected here).**<br>- **T-1, T-2, T-4 and K-C1 need ARB acceptance.**<br>- **It changes no accepted decision or design and authorises no implementation;** each slice needs an EP-01-approved plan.<br>- Written by Claude, not independent |
+ | **A delta on (accepted)** | **M-TDD-01 rev 4 (D-210):** contracts K-1 … K-9, scenarios 1–22, MI-1 … MI-14. Also Governance completion rev 5 (D-208), ledger clock rev 2 (D-209), D-213, Organisation §49–§51 (D-156), Newsletter and Forum design (D-158). Strategic baseline v1.1 rev 4 (proposed) |
+ | **Code inspected** | `app/Contexts/Membership/{Domain,Application,Infrastructure}/Organisational/*` (incl. `Member.php`, `PostgresMemberRepository.php`, `InterimRoleAuthority.php`, `Ports/AuthorityCheckPort.php`); `app/Services/NewsletterService.php`; `app/Http/Controllers/Membership/OrganisationNewsletterController.php`; `config/database.php`; `app/Contexts` folder list; COR-4 plan `docs/plans/20261103-0440-membership-cor4-correction-persistence-tdd-plan.md` |
+ 
+@@ -94,7 +94,21 @@
+ | query at τ | **τ > `closedThrough` after a closing attempt → `Refused(BOUNDARY_NOT_CLOSED)`**, never `NotCovered`. Within it, only records with record time ≤ τ count |
+ 
+ - **Why it is sound:** every recording holds the head lock. After a close at `t`, no recording can still take a time ≤ `t`, so "nothing more will appear at or before τ" (the CR-01 :28 meaning).
+-- **Wider consequence (not raised by the reviewer):** **AuthorityCheck and K-7 are already defined "as known at τ"** (thin slice §6.2) **and need the same boundary.** One Governance boundary serves T-1, AuthorityCheck and K-7.
++**G-Q1: the common Governance query rule** [P] (IR-R1C-01-R1 §3.4). **It changes no business meaning:**
++- **(a) One boundary.** Every Governance query evaluated "as known at τ" uses **the same per-organisation `governanceClosedThrough`**:
++  - `OfficeCoverageAsAt` (T-1);
++  - **`AuthorityCheck`** (thin slice §6.2);
++  - **`ParticipationRuleAsAt`** (K-7).
++- **(b) Close, then read.** The query first runs the closing step. **The answer is read only after that boundary commit, in a new statement** (as A3 for C2).
++- **(c) Beyond the boundary, each query returns its own accepted indeterminate result:**
++
++  | Query | Result | Source |
++  |---|---|---|
++  | T-1 | `Refused(BOUNDARY_NOT_CLOSED)` | §4 T-1 |
++  | **AuthorityCheck** | **`Unknown(BOUNDARY_NOT_CLOSED)`**. The consumer proceeds no further, **and records no `NotAuthorised`.** D-167 / D-181: `Undetermined` ≠ No; the act waits | thin slice §6.2 |
++  | **K-7** | **refused** | D-210 §4 K-7: "no answer → refused" |
++
++- **(d) Never a negative business answer from incomplete knowledge:** not "not authorised", not "no rule", not "no moderator".
+ 
+ **A-02: only valid tenures are returned** (`validTenures`).
+ 
+@@ -125,35 +139,39 @@
+ | 1 | **`Member` cannot be requested** (refused). **Never consults Membership.** **K-4 unchanged** | [AD] §50.3, §50.6 B-2; MI-14 |
+ | 2 | **An empty answer means "no such non-member belonging", never "not a member"** | [AD] D-210 §11 |
+ | 3 | **A person found by both routes appears once.** The snapshot records every *qualifying* basis.<br>**D-213 (confirmed by IR-R1C-01 E-03):** a suspended member who is also staff, where the series names staff, receives it **as staff only** | [AD] D-213 (2) |
+-| 4 | **A-03: one time for combined answers.** Whenever T-2 is combined with K-4 (a newsletter audience; a forum check), **T-2's `d` is the business date K-4 uses for the same τ** (for current operations, the organisation-local date of τ), and **both use the same τ.** Complete or refused at Organisation's own §49.8 boundary. **K-4 unchanged** | [AD] D-73; §49.8; K-4 |
++| 4 | **A-03: one time for combined answers.** **K-4 has no separate date parameter** (`MembersOfScopeAsAt(unit, τ)`, `BelongingWithAncestorsAsAt(person, τ)`); **it is not changed and gains none.** Whenever T-2 is combined with K-4 (a newsletter audience; a forum check), **T-2's `d` is derived as the organisation-local date of the shared τ**, and both use the same τ. Complete or refused at Organisation's own §49.8 boundary | [AD] D-73; §49.8; K-4 (D-210 §4) |
+ | 5 | **Forum reading as a worker or guest** uses T-2 when K-4 is refused (U-9) | [AD] D-153, D-207; [P] |
+ | 6 | **Posting is not implied by reading:** **default (D-161, D-153): only a member in good standing (K-4).** A non-member posts **only** where the organisation's written rule names that capacity (D-168); T-2 then establishes the capacity | [AD] D-153, D-161, D-168; MI-14 |
+ 
+-### T-4: contact for delivery (Organisation → Communication) — revision 3
++### T-4: contact for delivery (Organisation → Communication) — revision 4
++
++**D-210 §7 items 3 and 9 are binding** [AD]:
++- the snapshot stores a **contact reference**;
++- **the contact is read at delivery** from the person profile.
+ 
+-**A-04: two moments, as D-210 §7 items 3 and 9 already require** [AD]:
+-- the **snapshot** stores a **contact reference**;
+-- the **contact is read at delivery** from the person profile.
++**Revision 3 still decided contact existence at the snapshot; revision 4 moves every contact check to delivery** (IR-R1C-01-R1 §6.3).
+ 
+ ```
+-// at the snapshot (send τ), inside the audience step:
+-DeliveryContactRefsAsAt(organisationId, personRefs[], channel: email, asKnownAt τ)
+-  → { items: [{ personRef, contactRef | NoContact { reason } }], organisationClosedThrough } | Refused
+-
+-// at each delivery attempt (now):
+-ResolveDeliveryContact(organisationId, contactRef)
+-  → { endpoint, contactRef } | NoContact { reason } | Unavailable
++// snapshot: NO Organisation contact call. The snapshot stores, per recipient:
++contactSlot = (personRef, channel: email)          // a stable reference to the profile's contact slot
++
++// each delivery attempt:
++ResolveDeliveryContact(organisationId, contactSlot)
++  → Endpoint { address, contactRecordRef }       // the profile's current contact for that slot
++  | NoContact { reason: NO_CURRENT_CONTACT }      // the profile has no current contact on that channel
++  | Unavailable                                   // Organisation cannot answer now
+ ```
+ 
+-| Point | Rule | Source |
++| Point | Rule | Class |
+ |---|---|---|
+-| owner | Organisation (the person profile, D-101) | [AD] |
++| **stable reference** | **the contact slot = (person, channel)**, not a particular contact record. It always means "this person's current contact on this channel in the organisation's profile". **So:** replaced after the snapshot → the replacement; added after the snapshot (none at snapshot) → the added one; removed → `NoContact` | [P]; [AD] D-101, D-210 §7 item 9 |
++| **snapshot** | **stores the slot; no endpoint; no exclusion for missing contact.** Eligibility (belonging, rule, opt-out) is fixed at τ as before (item 8) | [AD] D-210 §7 items 3, 8 |
++| **delivery** | resolves the slot **at each attempt**; uses the endpoint for that attempt only; the delivery record keeps `contactRecordRef` (which record was used), **not the address** | [AD] item 9; [P] |
++| **`NoContact { reason }`** | **only at delivery.** Reason `NO_CURRENT_CONTACT` (a profile state). The recipient is excluded from that issue; the reason is recorded on the delivery record | [AD] item 9 ("missing → excluded, reason recorded") |
++| **`Unavailable`** | **not an exclusion:** the record stays `queued` and is retried; **never marked excluded** | [AD] items 5–6 |
++| **several current contacts on one channel** | the profile's own designation decides. **If the Organisation profile defines no designation, that is an Organisation tactical gap [UNR], not decided here** | [UNR] |
+ | never | Identity's login address | [AD] INV-ID-3 |
+-| **snapshot** | stores `contactRef`, **never the endpoint**. Communication keeps **no contact register** | [AD] D-210 §7 item 3 |
+-| **delivery** | resolves `contactRef` to the **current** endpoint, used for this attempt only. **A contact changed after the snapshot is delivered to its current value** | [AD] D-210 §7 item 9 |
+-| **A-05: `NoContact { reason }`** | **only reasons the profile actually records:** `NONE_RECORDED` (no contact of that channel), `CONTACT_ENDED` (the referenced contact was ended or replaced and none is current). **No legal or policy reasons are invented.** The reason is stored on the delivery record and the recipient is excluded | [AD] D-210 §7 step 5, item 9; [P] codes |
+-| **`Unavailable`** | Organisation cannot answer now → **not an exclusion:** the record stays `queued` and is retried (item 5) | [AD] D-210 §7 items 5–6 |
+-| eligibility | **not recalculated at delivery** (the snapshot governs, item 8); **opt-outs after the snapshot still exclude** (item 7) | [AD] |
++| no contact register | Communication stores slots and `contactRecordRef`s only | [AD] D-210 §7 |
+ 
+ ## 5. Business flows
+ 
+@@ -169,9 +187,9 @@
+ | 6 | the participation rule for members | Governance | **K-7 `ParticipationRuleAsAt(τ)`**: the written rule, else "platform default (D-161)" | refused → no send |
+ | 7 | union, de-duplicated by `personRef`; members filtered by step 6; named capacities unfiltered (D-213) | Communication | — | — |
+ | 8 | per-series opt-outs removed, for every capacity | Communication | — | — |
+-| 9 | **contact references** for the remaining recipients | Organisation | **T-4 `DeliveryContactRefsAsAt` (τ)** | refused → no send; `NoContact{reason}` → excluded, reason recorded |
+-| 10 | **one transaction:** the audience snapshot (per recipient: basis, `ruleSource`, **`contactRef`**) + the Dispatch + outbox rows | Communication | — | rollback → nothing sent |
+-| 11 | **delivery, per recipient:** re-check opt-out (D-210 item 7) → **`ResolveDeliveryContact(contactRef)` now** → mail adapter; idempotency key = (issueId, recipient); records `queued → handed-to-provider → accepted \| rejected \| failed`, never "read" | Communication (ACL to the provider); Organisation (contact) | T-4 `ResolveDeliveryContact`; provider [EXT] | `NoContact{reason}` → excluded, reason recorded; `Unavailable` → stays queued, retried; only non-accepted records retried |
++| 9 | **contact slot** `(personRef, email)` per remaining recipient. **No Organisation call; no contact check here** | Communication | — | — |
++| 10 | **one transaction:** the audience snapshot (per recipient: basis, `ruleSource`, **`contactSlot`**) + the Dispatch + outbox rows | Communication | — | rollback → nothing sent |
++| 11 | **delivery, per recipient:** re-check opt-out (D-210 item 7) → **`ResolveDeliveryContact(contactSlot)` now** → mail adapter; idempotency key = (issueId, recipient); records `queued → handed-to-provider → accepted \| rejected \| failed`, never "read" | Communication (ACL to the provider); Organisation (contact) | T-4 `ResolveDeliveryContact`; provider [EXT] | `NoContact{reason}` → excluded, reason recorded; `Unavailable` → stays queued, retried; only non-accepted records retried |
+ 
+ - **Formal notices** (e.g. convocations) are **not** newsletters and are unaffected by opt-outs (D-151).
+ - **Legacy newsletter:** never for ledger organisations (D-160; G-6).
+@@ -198,11 +216,11 @@
+ |---|---|---|---|
+ | G-1a | `recordedAt = max(($this->clock)(), last + 1)` per membership | `t = clock_timestamp()`, read in the database inside the transaction; **no adjustment;** the application clock is removed from record time | [F] `PostgresMemberRepository.php:220`, `:51`; [AD] D-209 |
+ | G-1b | append order: key check → valid time → **version compare-and-set** → insert | **lock the organisation's clock row `FOR UPDATE` first**, then the version compare-and-set | [F] same file lines 41–43; [AD] D-162 correction note, D-209 |
+-| G-1c | **no clock state anywhere** [F]: a full search of `app/`, `database/`, `tests/`, `routes/`, `config/` finds no `closed_through`, `last_recorded_at` or ledger-clock table (IR-R1C-01 B-05) | a per-organisation row holding `last_recorded_at` and `closed_through` (organisation database) | [AD] D-209 |
+-| G-1d | the repository "never retries"; **the application already has a bounded retry loop** [F] (`DecideAndAppend`, `MAX_ATTEMPTS = 3`, restarts from load on `ConcurrencyConflict`) | **refuse when `t ≤ closed_through` or `t < last_recorded_at`** (a new append outcome). **It joins the same bounded loop; when attempts run out, the command is refused (fail closed), never recorded with an adjusted time** | [F] repository lines 41–43; `DecideAndAppend.php` lines 15–27, 46; [AD] D-209 |
++| G-1c | **no clock state** [F, evidenced]: `git grep` over `app database tests routes config bootstrap` finds no `closed_through`, `last_recorded_at`, `ledger_clock` or `closedThrough`; the Membership migrations create only `org_memberships`, `org_membership_facts`, `org_membership_commands`. **Raw output: `2026-11-12-release-1-blueprint-b05-repository-evidence.md` (`a1189ab0…`)** | a per-organisation row holding `last_recorded_at` and `closed_through` (organisation database) | [AD] D-209 |
++| G-1d | the repository "never retries". **A bounded loop exists** (`DecideAndAppend`, `MAX_ATTEMPTS = 3`) **but retries only `ConcurrencyConflict`; `AppendOutcome` has no clock or boundary refusal** [F, evidenced in the B-05 file]. **Clock refusals do not enter the loop today** | **Implementation requirement:**<br>- **(1)** add an explicit retryable append outcome for clock or boundary refusal (`t ≤ closed_through`, `t < last_recorded_at`, K-C1 equality);<br>- **(2)** map it to a **fresh attempt** in the same bounded loop: **re-load and re-decide**, never reuse a stale decision (R-1a-2);<br>- **(3)** on exhaustion, **refuse the command (fail closed)**;<br>- **(4)** never adjust a timestamp;<br>- **(5)** idempotency unchanged (IDEM-1), so no duplicate acceptance | [F] repository lines 41–43; `DecideAndAppend.php` lines 15–27, 46; [AD] D-209 |
+ | **K-C1 [P]** | **V-5 (COR-4 Q-2): strictly increasing `recordedAt` per membership, achieved by +1 µs** | **keep V-5 without adjustment: also refuse and retry when `t` equals that membership's last `recordedAt`.** D-209 allows equal times across the organisation; this is stricter and adds no adjustment | [F] COR-4 plan line 37, `developer_guide/membership/14_cor4_correction_persistence.md:38`; domain only needs non-decreasing (INV-14, `Member.php:30`); **needs ARB acceptance with the S1 plan** |
+ | G-2 | no `closedThrough` step, C1 outbox or C2 | D-162 §4–§6 as amended by D-209. **Accepted requirement:** due scheduled resignations are executed in that step before the boundary passes their date (D-209, D-210 §5.2), and the step must also run **independently of reads**. **A-06: the cadence is an implementation choice, not part of D-162 / D-209 / D-210** [P]: e.g. the Laravel scheduler calling the same step per organisation (proposed: every minute; an operational parameter) | [AD] D-162, D-209, D-210 §5.2; [P] cadence |
+-| G-3 | `InterimRoleAuthority` mirrors owner / admin. **Verified unbound** [F]: referenced only by its unit test; `AuthorityCheckPort` is bound in no provider (IR-R1C-01 B-05) | **keep it unbound for every release-1 organisation;** Governance AuthorityCheck behind `AuthorityCheckPort`; an architecture test that fails if it is ever bound | [F]; [AD] D-1a, D-167, PO-ORG-MEM-01 A |
++| G-3 | `InterimRoleAuthority` mirrors owner / admin. **Unbound** [F, evidenced]: `git grep` finds it only in its own file and its unit test; no `bind` / `singleton` / `scoped` mentioning Authority in `app/Providers`, `bootstrap` or the Membership context (B-05 file). **An architecture test must keep it so** | **keep it unbound for every release-1 organisation;** Governance AuthorityCheck behind `AuthorityCheckPort`; an architecture test that fails if it is ever bound | [F]; [AD] D-1a, D-167, PO-ORG-MEM-01 A |
+ | G-4 | no Renew / Suspend / Restore, scheduled resignation, `ownAct` path; the D-205 guard exception absent | add per D-163, D-177, D-203 … D-205. **The guard exception is limited to `End(resignation)` executed from a scheduled declaration on its effective date** | [AD] |
+ 
+ ## 7. Membership, Organisation and Governance tactical checks (verified against accepted texts)
+@@ -289,12 +307,18 @@
+ | T4-1 | delivery never uses the login address; `NoContact` is excluded with a reason |
+ | KC1-1 | equal clock reading for the same membership → refused and retried, never adjusted |
+ | KC1-2 | **equal readings for different memberships remain allowed** (no global strict increase; IR-R1C-01 B-04) |
+-| T1-5 | τ beyond `governanceClosedThrough` → `Refused`, never `NotCovered`; a concurrent recording cannot produce a false `NotCovered` |
++| T1-5 | τ beyond `governanceClosedThrough` → `Refused`, never `NotCovered`. **(i) NOWAIT busy:** the stored boundary is used, so a τ beyond it is refused. **(ii) Clock regression:** no advance, so refused. **(iii) Concurrent recording:** never a false `NotCovered` |
++| GQ-1 | **AuthorityCheck** with τ beyond the boundary → `Unknown(BOUNDARY_NOT_CLOSED)`, never `NotAuthorised`; within it, the answer reads the same boundary |
++| GQ-2 | **K-7** with τ beyond the boundary → refused, never "no rule" / default applied; within it, same boundary |
++| GQ-3 | **T-1, AuthorityCheck and K-7 at one τ read one and the same `governanceClosedThrough`** |
+ | T1-6 | an annulled or voided basis stops covering from the τ at which that is known; earlier τ answers unchanged; a pending challenge changes nothing |
+ | T1-7 | containing-forum coverage only where the rules allow; no holder identity returned |
+ | T2-5 | T-2 and K-4 combined at the same τ and the same business date |
+-| T4-2 | a contact changed after the snapshot is delivered to its current value; the snapshot holds a reference, never an endpoint |
+-| T4-3 | `NoContact{reason}` excludes with the reason recorded; `Unavailable` keeps the record queued |
++| T4-2 | **(i)** no contact at the snapshot, one added before delivery → the added contact is used;<br>**(ii)** replaced after the snapshot → the replacement is used;<br>**(iii)** removed after the snapshot → delivery-time `NoContact{NO_CURRENT_CONTACT}`, reason recorded |
++| T4-3 | `Unavailable` → stays `queued`, retried, **never marked excluded** |
++| T4-4 | **no endpoint is ever persisted** in the snapshot or the delivery record (only slot and `contactRecordRef`) |
++| T4-5 | accepted deliveries are never resent (item 5; provider key (issueId, recipient)) |
++| G1d-1 | a clock or boundary refusal enters the bounded loop, re-loads and re-decides; **exhaustion → refused**; no adjusted time; no duplicate acceptance (integration test) |
+ 
+ **None has been executed.**
+ 

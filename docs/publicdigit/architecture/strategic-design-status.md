@@ -1,12 +1,18 @@
 # PublicDigit strategic DDD: progress and resumption record (organisation and governance)
 
+> **⚠ HISTORICAL (2026-11-12, D-214).**
+> - **The strategic baseline was accepted by D-173 (2026-11-11) and consolidated and ratified as Strategic DDD Baseline v1.1 by D-214:** `docs/publicdigit/architecture/publicdigit-strategic-ddd-baseline.md`.
+> - Statements below that the domain is "IN PROGRESS. Not complete", and the §4 open list, are **superseded**; the decision record governs.
+> - The text below is kept unchanged as history.
+
+
 **The single entry point for resuming strategic DDD work on the organisation and governance domain.** It points to the authoritative records; it does not replace or restate them.
 
 **Governing rule:** discover once, record the evidence, consolidate the decision, and resume from the recorded state. Reopen completed work only when new evidence justifies it.
 
 | | |
 |---|---|
-| **Status date** | 2026-11-08 (Organisation-baseline update, §9a). Previous: 2026-11-02 |
+| **Status date** | 2026-11-10 (Geography ratification and ARB authority, §9b). Previous: 2026-11-08 (§9a), 2026-11-02 |
 | **Verified at** | branch `election-flow-updated`, HEAD `6052206be` (2026-11-08, before the commit that adds §9a; not pushed). Earlier: HEAD `532b598cd` (2026-11-02 review). `8dd493d31` and `17ef51c5e` are on `origin`. `a6b3f6ab8` (this record and the register) and three other sessions' KnowledgeOS commits are **not pushed**. The review commit follows (see the session log). |
 | **Full register** | `docs/publicdigit/reviews/2026-11-02-organisation-governance-strategic-design-status-assessment.md` (T-10: every item classified and cited) |
 | **Maintained by** | each strategic-design session, at session close (§8) |
@@ -228,3 +234,63 @@ Update this record (and the session log) with:
 - repeat the ratified Membership design;
 - use historical percentages;
 - implement S2–S4 without their approvals.
+
+## 9b. Reference Geography ratified; ARB authority settled (2026-11-09 to 2026-11-10)
+
+**Completed:**
+- Reference Geography strategic and tactical design: D-81 … D-92; **ratified as D-93** (act `docs/publicdigit/reviews/2026-11-10-reference-geography-baseline-ratification-act.md`). Domain design only; PO-1 … PO-8 and the Identity contract are open; no implementation authorised.
+- **D-94:** the Principal, as Human ARB Chief, is the ARB; no separate ARB body is constituted. **Closes the §9a open item "whether the ARB and the Human ARB are the same authority".**
+- **D-95:** the Geography ratification is an intentional exception to the roadmap phase order; the roadmap is otherwise unchanged (D-2).
+- Organisation strategic discovery, round 1: `docs/publicdigit/architecture/reviews/2026-11-10-organisation-strategic-ddd-discovery-findings.md` (PROPOSED).
+
+**Correction to §9a:** "Strategic DDD discovery has not started" is no longer accurate. Discovery has run since 2026-11-08 (decision record D-1 … D-95), and Geography is ratified. **The other §9a open items stand:** Gate F, ODA-M-2, B-4 / ODA-M-19, DS-4 and B-8.
+
+**Settled the same day:** **D-96**, D-94 also confirms the 2026-10-08 Membership ratification. **Still open:** statutes are not on file.
+
+**Repository:** uncommitted; not pushed.
+
+**Next action:** Organisation discovery continues (definition ODA-M-2 / M-20, sections ODA-E-1, O-16), with the NRNA statute as the key evidence.
+
+**Note (2026-11-10, append-only):** **DR-07a decided: D-144, option A** (Governance owns committees, positions, appointments and terms; ADR-0001 location clause superseded, annotated). With D-142 (DR-07b closed), **O-6 / DR-07 is resolved for ownership**. Remaining: migration (separately authorised; M-1 … M-5 independent review first), O-8 … O-10 (statutes), O-16 (row classification). **Next: Governance tactical design for committees.**
+
+**Note (2026-11-10, append-only):** **Minimum package (D-146; release 1 D-147) tactical designs ACCEPTED:**
+- **D-156:** Organisation §49–§51. Self-review only; **§51 area-rules build gated on an independent review**.
+- **D-157:** Governance thin slice. Round 7 stays a proposal.
+- **D-158:** Newsletter and Forum. Newsletter launch needs counsel's confirmation of the legal basis.
+
+Act: `docs/publicdigit/reviews/2026-11-10-minimum-package-tactical-designs-acceptance-act.md`. **No implementation authorised.**
+
+**Next:** plan the first implementation slice under EP-01 (Organisation units and placement, tests first), alongside Identity participant access.
+
+**Note (2026-11-11, append-only): STRATEGIC BASELINE ACCEPTED (D-173)** through D-172, with a Platform (tenancy) context (HD-8 owner part closed). Act: `docs/publicdigit/reviews/2026-11-11-strategic-baseline-acceptance-act.md`.
+- **Open:**
+  - acceptance of S1 (Membership renew / suspend / restore, rev 6) and S2 (multi-database, rev 5);
+  - Identity I-TDD-02;
+  - legal questions;
+  - context-map update.
+- **Next tactical subject: the Platform (tenancy) context.**
+
+**Note (2026-11-11, append-only): PLATFORM (TENANCY) TACTICAL DESIGN ACCEPTED WITH CONDITIONS (D-193).**
+- **Accepted:** revision 11 (`e3772d2e…`), after the independent reviews IR-P-01 and IR-P-02 … R7 (GPT-6).
+- **D-190's Governance AuthorityCheck addition is ratified** into the thin slice.
+- **Open conditions:** X-2 (Identity `PersonRef` → Account operation, I-TDD-02) and X-3 (Governance decision-log and per-part evidence persistence). Both fail closed until met.
+- **Build gates:** 53 proof obligations.
+- **Still open:**
+  - whether the emergency route ships in release 1 (a Product Owner decision);
+  - implementation authorisation.
+- **Next:**
+  - return to the whole baseline;
+  - continue tactical work for the minimum package (Membership, Newsletter, Forum) and its open dependencies (Identity I-TDD-02; Governance tactical model).
+
+**Note (2026-11-12, append-only): IDENTITY TACTICAL DESIGN I-TDD-02 ACCEPTED WITH CONDITIONS (D-200).**
+- **Accepted:** revision 12 (`b6d54798…`), after 12 revisions and GPT-6 reviews.
+- **Principal decisions:** D-196 (`manage-claims`), D-197 (no automatic lock), D-198 (B2), D-199 (14 / 30 days).
+- **The `manage-claims` Governance note is ratified.** Platform's X-2 is met at design level.
+- **Open:**
+  - B-T1 / B-T2 after Platform D-7;
+  - `end-membership` act kinds (D-194);
+  - Governance X-3;
+  - P-I2;
+  - legal questions.
+- **Build gates:** PI-1 … PI-48; security assessment PI-17b.
+- **No implementation authorised.**
