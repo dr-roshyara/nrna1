@@ -12,6 +12,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\Support\ScriptedLedgerClockReader;
 
 /**
  * COR-4 step 4 (PBDIGIT-329; Q-1, Q-4, Q-5; contract §8): the schema of org_membership_facts for the five fact kinds,
@@ -27,7 +28,7 @@ final class PostgresCorrectionSchemaTest extends MembershipPostgresTestCase
         $id = (string) Str::uuid();
         DB::table('organisations')->insert(['id' => $id, 'name' => 'cor4', 'slug' => 'cor4-' . $id, 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
         $t = TenantId::fromString($id);
-        (new PostgresMemberRepository(DB::connection(), fn (): int => 1_760_000_000_000_000))->create($t, MemberId::fromString($member), PersonRef::fromString("person-$member"));
+        (new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => 1_760_000_000_000_000)))->create($t, MemberId::fromString($member), PersonRef::fromString("person-$member"));
         $this->insert($t, ['seq' => 1, 'fact_id' => 'A1', 'kind' => 'admit', 'effective_at' => '2026-01-01', 'initial_term' => 'none'], $member);
 
         return $t;
@@ -117,7 +118,7 @@ final class PostgresCorrectionSchemaTest extends MembershipPostgresTestCase
     public function test_a_target_of_another_member_is_refused_by_the_same_member_fk(): void
     {
         $t = $this->organisationWithMember('M1');
-        (new PostgresMemberRepository(DB::connection(), fn (): int => 1_760_000_000_000_000))->create($t, MemberId::fromString('M2'), PersonRef::fromString('person-M2'));
+        (new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => 1_760_000_000_000_000)))->create($t, MemberId::fromString('M2'), PersonRef::fromString('person-M2'));
 
         try {
             $this->insert($t, ['seq' => 1, 'fact_id' => 'X1', 'kind' => 'annul', 'effective_at' => null, 'target_fact_id' => 'A1'], 'M2');

@@ -12,6 +12,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\Support\ScriptedLedgerClockReader;
 
 /**
  * COR-4 step 5 (PBDIGIT-329; Q-6, AC-2): stored rows that pass the database's CHECKs but are not a history the kernel
@@ -22,7 +23,7 @@ final class PostgresCorrectionDecodeTest extends MembershipPostgresTestCase
 {
     private function repo(): PostgresMemberRepository
     {
-        return new PostgresMemberRepository(DB::connection(), fn (): int => 1_760_000_000_000_000);
+        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => 1_760_000_000_000_000));
     }
 
     /** @param list<array<string, mixed>> $rows inserted in the given order (seq may be out of order) */

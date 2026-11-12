@@ -16,6 +16,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Tests\Support\ScriptedLedgerClockReader;
 
 /**
  * PBDIGIT-343 task 2 (plan 20261112-1251 §6 test 17, D-10): the per-organisation ledger clock table.
@@ -47,7 +48,7 @@ final class PostgresLedgerClockMigrationTest extends MembershipPostgresTestCase
     /** Admits one member of $tenant at application-clock instant $micros (the pre-D-209 adapter). */
     private function admitAt(TenantId $tenant, string $member, int $micros): void
     {
-        $repo = new PostgresMemberRepository(DB::connection(), fn (): int => $micros);
+        $repo = new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $micros));
         $repo->create($tenant, MemberId::fromString($member), PersonRef::fromString("P-$member"));
         $loaded = $repo->load($tenant, MemberId::fromString($member));
         $decision = $loaded->decideAdmit(FactId::fromString("A-$member"), TimePoint::of(1), TimePoint::of(1), TimePoint::infinity(), Provenance::decision('registrar', null, 'decl-fixture'));

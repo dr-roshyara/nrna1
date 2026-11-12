@@ -18,12 +18,14 @@ final class MembershipLedgerIsolationTest extends TestCase
     private const EXCLUDED = ['app/Contexts/Membership/'];
     /**
      * The ledger's own migrations: creation (Slice 1b), the F-4b normalisation (PBDIGIT-264, 2026-11-02) and the
-     * correction fact kinds (COR-4, PBDIGIT-329, 2026-11-03).
+     * correction fact kinds (COR-4, PBDIGIT-329, 2026-11-03) and the per-organisation ledger clock (D-209,
+     * PBDIGIT-343, 2026-11-12).
      */
     private const ALLOWLIST = [
         'database/migrations/2026_10_09_100000_create_org_membership_tables.php',
         'database/migrations/2026_11_02_180000_normalise_org_membership_commands.php',
         'database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php',
+        'database/migrations/2026_11_12_130000_create_org_membership_ledger_clocks_table.php',
     ];
     private const FORBIDDEN = [
         'App\\Contexts\\Membership\\Domain\\Organisational',
@@ -32,6 +34,7 @@ final class MembershipLedgerIsolationTest extends TestCase
         'org_memberships',
         'org_membership_facts',
         'org_membership_commands',
+        'org_membership_ledger_clocks',
     ];
 
     public function test_the_scanner_detects_a_planted_dependency_and_respects_the_allowlist(): void

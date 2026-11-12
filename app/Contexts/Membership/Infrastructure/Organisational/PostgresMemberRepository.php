@@ -47,8 +47,8 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 {
     private const COMMANDS_PKEY = 'org_membership_commands_pkey';
 
-    /** @param \Closure(): int $clock the current instant as epoch microseconds (UTC) */
-    public function __construct(private readonly Connection $db, private readonly \Closure $clock)
+    /** $clock: the ledger's one clock, the database's (D-209; PBDIGIT-343). */
+    public function __construct(private readonly Connection $db, private readonly LedgerClockReader $clock)
     {
         if ($db->getDriverName() !== 'pgsql') {
             throw UnsupportedMembershipDatabaseDriver::for($db->getName() ?? '?', $db->getDriverName());
@@ -217,7 +217,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             ->where('organisation_id', $tenant->value())->where('membership_id', $id->value())
             ->max($this->db->raw(InstantMicros::selectExpression('recorded_at')));
         // COR-4 Q-2 (V-5): strictly increasing per Member (1 µs after the last), so no two facts share a recordedAt.
-        $recordedAt = Instant::of(max(($this->clock)(), $last === null ? PHP_INT_MIN : (int) $last + 1));
+        $recordedAt = Instant::of(max($this->clock->now($this->db)->ordinal(), $last === null ? PHP_INT_MIN : (int) $last + 1));
 
         $fact = $accepted->fact();
         $this->db->table('org_membership_facts')->insert([

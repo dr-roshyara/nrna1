@@ -9,6 +9,7 @@ use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberReposito
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Tests\Support\ScriptedLedgerClockReader;
 use Tests\Unit\Contexts\Membership\Application\Organisational\MemberRepositoryContract;
 
 /**
@@ -27,7 +28,7 @@ final class PostgresMemberRepositoryTest extends MembershipPostgresTestCase
 
     protected function repository(\Closure $clock): MemberRepositoryPort
     {
-        return new PostgresMemberRepository(DB::connection(), $clock);
+        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader($clock));
     }
 
     /**

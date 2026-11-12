@@ -11,6 +11,7 @@ use App\Contexts\Membership\Application\Organisational\EndMembership;
 use App\Contexts\Membership\Application\Organisational\EndMembershipHandler;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
 use App\Contexts\Membership\Domain\Organisational\PersonRef;
+use App\Contexts\Membership\Infrastructure\Organisational\PostgresLedgerClockReader;
 use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Facades\DB;
@@ -48,7 +49,7 @@ final class PostgresConcurrencyRaceTest extends MembershipPostgresTestCase
 
     private static function repository(): PostgresMemberRepository
     {
-        return new PostgresMemberRepository(DB::connection(), static fn (): int => (int) (microtime(true) * 1_000_000));
+        return new PostgresMemberRepository(DB::connection(), new PostgresLedgerClockReader());
     }
 
     /**

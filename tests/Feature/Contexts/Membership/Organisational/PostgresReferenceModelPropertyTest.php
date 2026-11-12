@@ -7,6 +7,7 @@ namespace Tests\Feature\Contexts\Membership\Organisational;
 use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Tests\Support\ScriptedLedgerClockReader;
 use Tests\Unit\Contexts\Membership\Application\Organisational\Support\ReferencePropertyRun;
 
 /**
@@ -29,9 +30,9 @@ final class PostgresReferenceModelPropertyTest extends MembershipPostgresTestCas
 
         $failures = $run->run(
             static function () use (&$clock) {
-                return new PostgresMemberRepository(DB::connection(), static function () use (&$clock): int {
+                return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(static function () use (&$clock): int {
                     return $clock += 1_000;
-                });
+                }));
             },
             static fn (int $seed): array => [$organisation(), $organisation()],
             25,

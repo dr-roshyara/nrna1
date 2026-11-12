@@ -23,6 +23,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Tests\Support\ScriptedLedgerClockReader;
 
 /**
  * Database-specific invariants of the PostgreSQL adapter (Slice 1b contract §8, T2–T10).
@@ -34,7 +35,7 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
 
     private function repo(): PostgresMemberRepository
     {
-        return new PostgresMemberRepository(DB::connection(), fn (): int => $this->now);
+        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $this->now));
     }
 
     private function organisation(): TenantId
@@ -188,7 +189,7 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
 
         $this->expectException(UnsupportedMembershipDatabaseDriver::class);
         $this->expectExceptionMessage("requires PostgreSQL (DB-1); connection 'membership_sqlite_probe' uses 'sqlite'");
-        new PostgresMemberRepository(DB::connection('membership_sqlite_probe'), fn (): int => 0);
+        new PostgresMemberRepository(DB::connection('membership_sqlite_probe'), new ScriptedLedgerClockReader(fn (): int => 0));
     }
 
     // ── PBDIGIT-264 F-5 (Part 2 plan step 2; PR disposition N1, 2026-10-09) ──
