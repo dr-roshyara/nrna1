@@ -227,7 +227,7 @@ closeOrRead(tenant):
 - [x] 3. Tests 2, 5, 19 → `LedgerClockReader`; swap the clock in the repository and the seven test classes.
 - [x] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
 - [x] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
-- [ ] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
+- [x] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
 - [ ] 7. Test 14 → hydrator and registration (D-6).
 - [ ] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [ ] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
@@ -266,6 +266,11 @@ closeOrRead(tenant):
   - **RED:** the existing mapping guard, 4 unit and 3 PostgreSQL tests.
   - **GREEN:** application 80; kernel 204; infrastructure 65; Membership architecture 105; PostgreSQL suite 115.
 - 2026-11-12, **deviation 3 (Principal instruction):** developer guides are written **per step**, not only at task 10. Guides 15–19 written for tasks 1–5. Guide 14 carries a pointer note: its `max(clock, last + 1 µs)` is superseded.
+- 2026-11-12: **task 6 done** (`afad064ec`, guide 20):
+  - `LedgerClockCloser::closeOrRead`: free / busy (55P03, no reuse, committed value) / regression / hook rollback; refused in a transaction.
+  - **Found and fixed during GREEN:** the unconditional `INSERT … ON CONFLICT` made the closer wait behind a writer's uncommitted update; it now ensures the row only after a non-blocking read.
+  - **RED 9/9; GREEN:** PostgreSQL suite 124 (race test 4 of 4 runs); application 80; infrastructure 65; Membership architecture 105.
+  - **Test 11's C2 half** (τ beyond a stale boundary → `BOUNDARY_NOT_CLOSED`) belongs to task 8.
 
 ## 9. Risks
 
