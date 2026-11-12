@@ -17,7 +17,7 @@ Application     Organisational\CoverageKnownAt                the query service 
                 Organisational\Ports\MembershipSourceOfTruthPort   gate C-1 (D-160)
                 Organisational\Ports\WorkingOrganisationPort   the trusted working organisation (INV-ORG-SCOPE-1)
                 Organisational\UnknownMembershipId             caller error
-                PublishedLanguage\CoverageKnownAtAnswer / …Item / …Refusal / CoverageInterval
+                Organisational\PublishedLanguage\CoverageKnownAtAnswer / …Item / …Refusal / CoverageInterval
 Infrastructure  LedgerClockCloserBoundary                      adapter: the port is LedgerClockCloser (guide 20)
                 FailClosedMembershipSourceOfTruth              default: no organisation is a ledger organisation yet
 ```
@@ -68,6 +68,7 @@ foreach ($answer->items() as $item) { /* $item->coverage, ->inForce, ->suspended
 - **Never treat a refusal as empty coverage.**
 - **Never read Membership tables from another context.** Consume C2 through your own port and adapter.
 - **Never call C2 inside your own transaction:** its closing step refuses nesting (guide 20).
-- `CoverageInterval::listFrom` duplicates `DateOrdinal::toDate`'s rule (days since 1970-01-01, UTC), so Application needs no Infrastructure. A unit test keeps the two in agreement.
+- `CoverageInterval::listFrom` computes calendar dates by **pure integer arithmetic** (civil-from-days), because Application may use neither Infrastructure (`DateOrdinal`) nor `DateTime` (no clock, `MembershipSlice1aBoundaryTest`). A unit test checks it against `DateOrdinal` over the whole range, 0001-01-01 … 9999-12-31.
+- **The Published Language lives in `Application\Organisational\PublishedLanguage`.** The Slice 1a boundary allows Application to depend only on `Application\Organisational`, the kernel and the shared `TenantId` (task 9 fix).
 
 **Traceability:** CR-01 C2 and §7, D-77, D-160, D-161, D-162, spec §6 / §11 · plan task 8 · PBDIGIT-343.

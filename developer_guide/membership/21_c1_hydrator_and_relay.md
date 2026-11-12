@@ -9,8 +9,8 @@ Step 4 (guide 18) writes the C1 row into `outbox_events`. **The existing relay (
 ## Where it fits
 
 ```text
-Application     PublishedLanguage\MembershipCoverageResolved   the C1 event (pure PHP, readonly)
-                PublishedLanguage\CoverageInterval              [from, to) calendar dates; to = null if open
+Application     Organisational\PublishedLanguage\MembershipCoverageResolved   the C1 event (pure PHP, readonly)
+                Organisational\PublishedLanguage\CoverageInterval              [from, to) calendar dates; to = null if open
 Infrastructure  Outbox\MembershipCoverageResolvedHydrator      payload → event; fails loudly outside the contract
                 Providers\MembershipServiceProvider::boot()     registers it beside FeePaidHydrator
 Shared          Outbox\EventHydratorRegistry, OutboxEventProcessor   unchanged

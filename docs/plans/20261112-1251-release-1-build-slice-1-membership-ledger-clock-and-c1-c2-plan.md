@@ -230,7 +230,7 @@ closeOrRead(tenant):
 - [x] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
 - [x] 7. Test 14 → hydrator and registration (D-6).
 - [x] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
-- [ ] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
+- [x] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
 - [ ] 10. Developer-guide index final check; evidence to the Principal; **acceptance by the Principal.**
 - **Every task ships its developer guide in the same step** (Principal, 2026-11-12; CLAUDE.md Definition of Done): guides 15–19 cover tasks 1–5.
 
@@ -294,6 +294,16 @@ closeOrRead(tenant):
   - Ports: `LedgerBoundaryPort`, `MembershipSourceOfTruthPort` (fail-closed default), `WorkingOrganisationPort`.
   - **Test 11's C2 half done:** a stale boundary only refuses.
   - **RED:** 12 unit errors. **GREEN:** 12 unit, 4 PostgreSQL, purity guard; PostgreSQL suite 135 (97 s).
+- 2026-11-12: **task 9 done:**
+  - **Diff review** (`a53ba8ea8..HEAD`): 19 commits, 61 files; no debugging leftovers or TODOs. No production code outside Membership changed; outside Membership only three architecture tests.
+  - **Two defects found by the full architecture suite, both mine (tasks 7–8), fixed with the guard unchanged:**
+    1. the Published Language namespace broke `MembershipSlice1aBoundaryTest`'s dependency rule;
+    2. `CoverageInterval` used `DateTime`, which Application forbids.
+
+    The Published Language moved under `Application\Organisational`; dates are now pure integer arithmetic, checked against `DateOrdinal` over the whole range.
+  - **Lesson:** the `--filter Membership` architecture run was not repeated after task 8; **every task must end with the full architecture suite.**
+  - **Final evidence:** PostgreSQL suite 135 (94 s); Membership architecture 106; full architecture = the 4 pre-existing failures only; kernel 204; application 92; infrastructure 65 + outbox 9.
+  - **Legacy Membership unit failures:** the failing set varies between runs inside `CommitteeSlugAvailabilityServiceTest` (flaky legacy test; 55–56 errors + 1 failure); none in slice code; no slice file touches that code.
 - **Pre-existing, outside the story** (verified on a clean checkout of `a53ba8ea8`): 4 failures in the full `tests/Architecture` suite (Election ×2, GovernanceRuntime, Phase_C25). Also the 55 errors and 1 failure in legacy Membership unit tests.
 
 ## 9. Risks
