@@ -10,8 +10,8 @@ use App\Contexts\Membership\Application\Organisational\Ports\LedgerBoundaryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipSourceOfTruthPort;
 use App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisationPort;
 use App\Contexts\Membership\Application\Organisational\UnknownMembershipId;
-use App\Contexts\Membership\Application\PublishedLanguage\CoverageInterval;
-use App\Contexts\Membership\Application\PublishedLanguage\CoverageKnownAtRefusal;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageInterval;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
@@ -235,7 +235,9 @@ final class CoverageKnownAtTest extends TestCase
 
     public function test_published_language_dates_agree_with_the_ledger_date_ordinal(): void
     {
-        foreach ([-719_162, -1, 0, 1, 19_782, 20_000, 20_403, 2_932_896] as $day) {
+        // The whole DateOrdinal range (0001-01-01 … 9999-12-31): every 97th day, plus the edges and leap days.
+        $days = [...range(-719_162, 2_932_896, 97), -719_162, -1, 0, 1, 59, 60, 19_782, 20_000, 20_403, 2_932_895, 2_932_896];
+        foreach ($days as $day) {
             $set = \App\Contexts\Membership\Domain\Organisational\IntervalSet::of(\App\Contexts\Membership\Domain\Organisational\Interval::of(TimePoint::of($day), TimePoint::of($day + 1)));
             $this->assertSame(DateOrdinal::toDate(TimePoint::of($day)), CoverageInterval::listFrom($set)[0]->from, "day $day");
         }

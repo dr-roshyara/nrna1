@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Contexts\Membership\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
-use App\Contexts\Membership\Application\PublishedLanguage\MembershipCoverageResolved;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\MembershipCoverageResolved;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
 use App\Contexts\Membership\Domain\Organisational\PersonRef;

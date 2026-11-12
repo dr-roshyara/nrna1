@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Membership\Infrastructure\Outbox;
 
-use App\Contexts\Membership\Application\PublishedLanguage\CoverageInterval;
-use App\Contexts\Membership\Application\PublishedLanguage\MembershipCoverageResolved;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageInterval;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\MembershipCoverageResolved;
 use App\Contexts\Membership\Infrastructure\Outbox\MembershipCoverageResolvedHydrator;
 use PHPUnit\Framework\TestCase;
 

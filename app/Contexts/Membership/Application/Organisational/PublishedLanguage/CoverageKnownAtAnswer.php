@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Contexts\Membership\Application\PublishedLanguage;
+namespace App\Contexts\Membership\Application\Organisational\PublishedLanguage;
 
 /** C2's answer: complete (every key answered at τ ≤ closedThrough) or refused. Never partial. */
 final readonly class CoverageKnownAtAnswer

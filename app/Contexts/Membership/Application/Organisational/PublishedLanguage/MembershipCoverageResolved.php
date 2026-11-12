@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Contexts\Membership\Application\PublishedLanguage;
+namespace App\Contexts\Membership\Application\Organisational\PublishedLanguage;
 
 /**
  * Published Language event C1 MembershipCoverageResolved (CR-01 C1; CR-02 schemaVersion 2; PBDIGIT-343).

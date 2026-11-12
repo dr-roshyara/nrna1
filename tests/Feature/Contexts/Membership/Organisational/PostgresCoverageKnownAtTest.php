@@ -8,7 +8,7 @@ use App\Contexts\Membership\Application\Organisational\CoverageKnownAt;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipSourceOfTruthPort;
 use App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisationPort;
-use App\Contexts\Membership\Application\PublishedLanguage\CoverageKnownAtRefusal;
+use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
