@@ -1,0 +1,76 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EFFFFEEFFFEF                                                      12 / 12 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_service_operation_grant_keeps_the_evidence_of_section_3_3
+Error: Class "App\Contexts\Platform\Domain\ServiceOperationGrant" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:23
+
+2) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_counterparty_verification_needs_its_evidence
+Error: Class "App\Contexts\Platform\Domain\CounterpartyVerification" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:51
+
+3) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_locator_names_cluster_and_database_and_holds_only_a_credential_reference
+Error: Class "App\Contexts\Platform\Domain\DatabaseLocator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:59
+
+4) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_readiness_is_complete_only_when_every_l1_fact_holds_and_a_contact_exists
+Error: Class "App\Contexts\Platform\Domain\OperationalReadiness" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:84
+
+--
+
+There were 8 failures:
+
+1) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_an_incomplete_grant_is_refused with data set "no terms version" ('', 'account:a', ['a3fe00f28f8fe70c388891cbf3604...29fb18'])
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\ServiceOperationGrant" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:46
+.
+
+2) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_an_incomplete_grant_is_refused with data set "no accepting person" ('t1', ' ', ['a3fe00f28f8fe70c388891cbf3604...29fb18'])
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\ServiceOperationGrant" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:46
+.
+
+3) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_an_incomplete_grant_is_refused with data set "no founding document" ('t1', 'account:a', [])
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\ServiceOperationGrant" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:46
+.
+
+4) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_an_incomplete_grant_is_refused with data set "a fingerprint that is not SHA-256" ('t1', 'account:a', ['abc'])
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\ServiceOperationGrant" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:46
+.
+
+5) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_malformed_locator_is_refused with data set "no cluster" ('', 'org_a', 'ref:a')
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\DatabaseLocator" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:79
+.
+
+6) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_malformed_locator_is_refused with data set "database not a plain identifier" ('c1', 'org-a; DROP', 'ref:a')
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\DatabaseLocator" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:79
+.
+
+7) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_a_malformed_locator_is_refused with data set "no credential reference" ('c1', 'org_a', '')
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\DatabaseLocator" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:79
+.
+
+8) Tests\Unit\Contexts\Platform\Domain\PlatformValueObjectsTest::test_readiness_refuses_a_negative_contact_count
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Platform\Domain\OperationalReadiness" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/PlatformValueObjectsTest.php:95
+.
+
+ERRORS!
+Tests: 12, Assertions: 8, Errors: 4, Failures: 8.

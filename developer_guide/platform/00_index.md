@@ -9,3 +9,4 @@
 | 00 | Test harness: one central + three organisation databases → [`../testing/07_multi_database_harness.md`](../testing/07_multi_database_harness.md) (test infrastructure lives with the test-database safety guides) | task 0 | implemented 2026-11-12; awaiting review |
 
 *(Not to be confused with `developer_guide/platform_context/`, an older, unrelated area.)*
+| 01 | [The `ServedOrganisation` domain model](01_served_organisation_domain.md) | task 1 | implemented 2026-11-12; awaiting review |

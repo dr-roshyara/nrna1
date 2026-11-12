@@ -1,0 +1,63 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+............EEEEEEEEE                                             21 / 21 (100%)
+
+Time: 00:00.014, Memory: 12.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_a_registered_organisation_is_pending_and_not_routable
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:76
+
+2) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_provisioning_needs_both_a_verified_counterparty_and_a_recorded_grant
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:88
+
+3) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_no_technical_operation_while_pending
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:105
+
+4) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_the_grant_and_the_counterparty_verification_are_recorded_once_and_only_before_provisioning
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:116
+
+5) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_the_locator_is_assigned_once_during_provisioning
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:127
+
+6) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_operational_needs_a_locator_a_current_schema_and_complete_readiness
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:137
+
+7) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_operational_is_reached_only_from_provisioning
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:161
+
+8) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_an_operational_organisation_with_a_current_schema_is_routable
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:56
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:169
+
+9) Tests\Unit\Contexts\Platform\Domain\ServedOrganisationTest::test_a_failed_migration_blocks_routing_without_changing_status_and_a_repair_restores_it
+Error: Class "App\Contexts\Platform\Domain\ServedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:56
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/ServedOrganisationTest.php:179
+
+ERRORS!
+Tests: 21, Assertions: 21, Errors: 9.

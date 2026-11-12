@@ -72,7 +72,7 @@
 Every task: **RED test(s) first → minimal GREEN → developer guide** under `developer_guide/platform/` (new area; `00_index.md` first).
 
 - [x] **0. Test harness.** *(Done 2026-11-12, TDD: two cycles plus one default-suite fix; final isolated run 144 tests, slice 1 135 unchanged; architecture failures identical. Evidence `docs/publicdigit/platform/evidence/2026-11-12-pbdigit345-task0/`; guide `developer_guide/testing/07_multi_database_harness.md`. **Awaiting the Principal's review before task 1.**)* Planned: Extend `scripts/testing/membership-pg.sh` (or a sibling `platform-pg.sh`) to create **a central database and organisation databases A, B, C** on the isolated cluster. No production configuration. *Gate: the slice 1 suite still passes (T-12).*
-- [ ] **1. Platform domain.** `ServedOrganisation` lifecycle: transitions, routable only if `operational` and `schemaState = current`, grant before provisioning. Unit tests, no framework.
+- [x] **1. Platform domain.** *(Done 2026-11-12, TDD; 21 unit + 5 purity tests; guide `developer_guide/platform/01_served_organisation_domain.md`; evidence `docs/publicdigit/platform/evidence/2026-11-12-pbdigit345-task1/`. **Awaiting the Principal's review before task 2.**)* Planned: `ServedOrganisation` lifecycle: transitions, routable only if `operational` and `schemaState = current`, grant before provisioning. Unit tests, no framework.
 - [ ] **2. Registry persistence + `ResolutionService`** (central migration): unknown, not operational or wrong schema → refused (**T-2**).
 - [ ] **3. `OrganisationContext` + `OrganisationConnectionFactory`:** a named connection from the locator; the default connection untouched; credentials by reference (**T-10** part 1).
 - [ ] **4. Organisation migration set:** a separate path; `organisation_identity`; F-13 re-pointed for the organisation schema; architecture test that organisation migrations reference no central table (**T-8**, **T-10** part 2).
@@ -111,6 +111,14 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 - 2026-11-12: plan drafted after D-219. Nothing implemented.
 - 2026-11-12: task 7 rewritten for two separate queue connections (delta revision 3, §3.10); T-19 … T-24 added; Q-S2-5 opened.
 - 2026-11-12: **approved**; PBDIGIT-345 created; D-221 ratified.
+- 2026-11-12: **task 1 done** (pure domain).
+  - **Deviation:** shared `TenantId` reused instead of a new `OrganisationId` (canonical discovery).
+  - **Deferred to task 2:** domain events.
+  - **Findings for the Principal:**
+    - **F-T1-1:** D-193 F-07 requires ≥ 1 active-account contact for `operational`, but this plan puts contacts out of scope. Implemented per F-07; task 5 must supply at least the initial contact.
+    - **F-T1-2:** delta §3.6 step 1 says "registry entry `provisioning`", but D-185 puts `pending` first. Implemented per D-185; the delta's wording needs a correction note.
+    - **F-T1-3:** delta E-2, Q-5 and T-23 mention `suspended`, a later status with undecided triggers. Not modelled; tests use `migration-failed`.
+    - **F-T1-4:** schema state is null before the first migration result (interpretation).
 - 2026-11-12: **task 0 done** (test-only).
   - **Deviation 1:** `PlatformPostgres` added as a second suite in `phpunit.membership-pg.xml`, inside the existing script rather than a sibling script; allowed by task 0's text.
   - **Deviation 2:** the harness tests skip outside the isolated cluster, found by running the default suite: without it, `php artisan test` would fail 9 tests.
