@@ -32,3 +32,15 @@
 |---|---|---|---|
 | `tests/Architecture` | 4 failing | 4 failing | **identical by name** (`architecture-full.failures`): Election ×2, GovernanceRuntime, Phase_C25. **Pre-existing; none introduced by slice 1** |
 | `tests/Unit/Contexts/Membership` | 58 failing | 57 failing | **every HEAD failure also fails on the baseline**; the one baseline-only case is `CommitteeSlugAvailabilityServiceTest::test_check_returns_exists_for_taken_slug`, a class whose failing cases vary between runs (flaky legacy test). **None introduced by slice 1;** none in the ledger (`…\Organisational`) |
+
+## Reconciliation note (2026-11-12, after the Principal's review)
+
+**`LaravelBootIsGuardedTest`:**
+- It appeared, as a fifth "baseline-only" failure, **only in the earlier, unsound comparison** (symlinked `vendor/`), which I reported in the session before this evidence was gathered.
+- **In the corrected comparison above it does not fail** on either side. The committed lists hold exactly the same 4 names at `a53ba8ea8` and `58e8bb26d`.
+- No file in this folder contains the earlier 5-name list.
+
+**Developer guide for the `database` area:**
+- It exists and is indexed: `developer_guide/database/00_index.md` → `01_postgresql_lock_waits.md` (commit `ba4c1f5c9`).
+- The slice's migration is documented in `developer_guide/membership/16_ledger_clock_table_and_backfill.md`.
+- **The reminder's warning was a false positive:** it reads only files changed with the Write/Edit tools (`.claude/runtime/<date>-files.log`), and the database guides were written another way, so it never saw them. Recorded as `PBDIGIT-344`; no guide change needed.
