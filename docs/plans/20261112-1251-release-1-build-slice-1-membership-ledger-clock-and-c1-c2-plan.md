@@ -387,3 +387,8 @@ closeOrRead(tenant):
 - B-05 evidence;
 - Principal DDD review of slice 1 (2026-11-12);
 - supersedes §3 of `20261110-1751-minimum-package-build-and-organisation-structure-slice-1-plan.md`.
+
+**Appended note (2026-11-12, slice 2 approval):**
+- §12's row "source flag: set 'ledger' at joining (D-160); bind the real adapter" is realised **without a stored flag:** the derived ledger rule (D-219 (1)) with its L-1 / L-2 / L-3 enforcement, in delta §3.7 (`docs/publicdigit/architecture/reviews/2026-11-12-platform-organisation-routing-isolation-tactical-design.md`).
+- "Bind the real adapter" is slice 2 task 10.
+- §12's text stays as approved.
