@@ -225,7 +225,7 @@ closeOrRead(tenant):
 - [x] 1. Test 1 → kernel functions.
 - [x] 2. Test 17 → migration and backfill.
 - [x] 3. Tests 2, 5, 19 → `LedgerClockReader`; swap the clock in the repository and the seven test classes.
-- [ ] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
+- [x] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
 - [ ] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
 - [ ] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
 - [ ] 7. Test 14 → hydrator and registration (D-6).
@@ -245,6 +245,21 @@ closeOrRead(tenant):
   - `78af8627a` `LedgerClockReader` (Infrastructure only; Domain and Application Laravel-free, hexagonal);
   - PostgreSQL suite 102 green; Membership architecture 105 green.
 - **Note:** the wider `tests/Unit/Contexts/Membership` run shows 55 errors and 1 failure, **all in legacy Committee / Fee / Member code, none in the ledger.** They are pre-existing and outside this slice (first: an `AssignMemberToCommitteeHandler` constructor mismatch). Recommended as a separate backlog item.
+- 2026-11-12, **deviation 2 (Principal decision, option B):** test 19 assumed "assertions unchanged". **Three approved tests assert the COR-4 Q-2 +1 µs bump that D-209 forbids and D-215 (K-C1) replaces with refusal:**
+  - `MemberRepositoryContract` (2 tests, shared by the PostgreSQL adapter and the in-memory double);
+  - `PostgresMemberRepositoryInvariantsTest` T6.
+
+  **Decided (B):**
+  - the in-memory double (`tests/Doubles/InMemoryMemberRepository.php`) follows the same rule as the database: refuse a non-advancing reading, never bump;
+  - the three assertions become "refused, nothing stored, a later reading is stored exactly";
+  - the four application test files with a frozen clock get an advancing one.
+
+  **V-5 (strictly increasing per membership) stays asserted.** Port docblock updated (R-1a-3 unchanged; refusal added).
+- 2026-11-12: **task 4 done** (`79252d9ac`):
+  - the D-209 append; the atomic C1 row on the repository's connection; the lock order proved with forked processes.
+  - **RED:** 9 of the 10 new PostgreSQL tests fail on the old code (KC1-2 passes there, correctly).
+  - **GREEN:** PostgreSQL suite 112; kernel 204; C1 unit 4; Membership architecture 105.
+  - **Known RED for task 5:** `AppendOutcomeMappingTest` (2) requires the new outcome's mapping in `DecideAndAppend`.
 
 ## 9. Risks
 
