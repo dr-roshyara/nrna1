@@ -41,7 +41,9 @@ trait MemberRepositoryContract
 
     private function repo(): MemberRepositoryPort
     {
-        return $this->repository(fn (): int => $this->now);
+        // PBDIGIT-343 (D-209, D-215 K-C1): a reading that does not advance is refused, never bumped, so the default
+        // test clock advances by 1 µs per reading. A test that sets $this->now controls the next reading exactly.
+        return $this->repository(fn (): int => $this->now++);
     }
 
     private function tenant(string $t = 'O1'): TenantId
@@ -224,40 +226,48 @@ trait MemberRepositoryContract
         $this->assertSame(AppendOutcome::Appended, $repo->append($this->tenant('O2'), $b->id(), self::admit($b, 'A1', 1), self::key('k1'), 'fp1')->outcome());
     }
 
-    public function test_recorded_at_never_decreases_even_if_the_clock_goes_back(): void
+    // R-1a-3 with D-209 (PBDIGIT-343): a reading behind the organisation's last record time is refused, nothing is
+    // stored, and a later reading is stored exactly. (Was, before D-209: the time was moved forward.)
+    public function test_a_backward_clock_reading_is_refused_and_a_later_one_is_stored_exactly(): void
     {
-        // R-1a-3
         $repo = $this->repo();
         $member = $this->created($repo);
         $this->now = 500;
         $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
         $member = $repo->load($this->tenant(), $member->id());
-        $this->now = 300;
         $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
-        $second = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
 
-        $this->assertGreaterThanOrEqual(500, $second->appended()->recordedAt()->ordinal());
+        $this->now = 300;
+        $refused = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
+
+        $this->assertSame(AppendOutcome::RecordTimeRefused, $refused->outcome());
+        $this->assertCount(1, $repo->load($this->tenant(), $member->id())->log());
+
+        $this->now = 700;
+        $stored = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
+
+        $this->assertSame(700, $stored->appended()->recordedAt()->ordinal());
     }
 
-    // COR-4 step 3 (PBDIGIT-329, Q-2, V-5): recordedAt strictly increases per Member, even with a frozen or backward
-    // clock, so KnownAt can observe the state between any two facts.
-    public function test_recorded_at_strictly_increases_even_with_a_frozen_or_backward_clock(): void
+    // COR-4 Q-2 (V-5) with D-215 K-C1 (PBDIGIT-343): recordedAt still strictly increases per Member, so KnownAt can
+    // observe the state between any two facts, but by refusal and retry, never by adjustment. (Was: 500, 501, 502.)
+    public function test_recorded_at_strictly_increases_by_refusal_never_by_adjustment(): void
     {
         $repo = $this->repo();
         $member = $this->created($repo);
-        $this->now = 500;
-        $instants = [];
-        foreach ([500, 500, 300] as $k => $clock) {
+        $outcomes = [];
+        foreach ([500, 500, 300, 501] as $k => $clock) {
             $this->now = $clock;
             $decision = $k === 0
                 ? self::admit($member, 'A1', 1)
-                : $member->decideCorrect(FactId::fromString("C$k"), FactId::fromString('A1'), TimePoint::of(1 + $k), TimePoint::of(10), Provenance::decision('registrar'));
-            $instants[] = $repo->append($this->tenant(), $member->id(), $decision, self::key("k$k"), "fp$k")->appended()->recordedAt()->ordinal();
+                : $member->decideCorrect(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::of(2), TimePoint::of(10), Provenance::decision('registrar'));
+            $result = $repo->append($this->tenant(), $member->id(), $decision, self::key($k === 0 ? 'k0' : 'k1'), $k === 0 ? 'fp0' : 'fp1');
+            $outcomes[] = $result->outcome() === AppendOutcome::Appended ? $result->appended()->recordedAt()->ordinal() : $result->outcome()->name;
             $member = $repo->load($this->tenant(), $member->id());
         }
 
-        $this->assertSame([500, 501, 502], $instants);
-        $this->assertSame([500, 501, 502], array_map(static fn ($r): int => $r->recordedAt()->ordinal(), $member->log()));
+        $this->assertSame([500, 'RecordTimeRefused', 'RecordTimeRefused', 501], $outcomes);
+        $this->assertSame([500, 501], array_map(static fn ($r): int => $r->recordedAt()->ordinal(), $member->log()));
     }
 
     /**

@@ -20,7 +20,12 @@ final class ReferenceModelPropertyTest extends TestCase
         $run = new ReferencePropertyRun();
 
         $failures = $run->run(
-            static fn () => new InMemoryMemberRepository(static fn (): int => 1000),
+            static function () {
+                $clock = 1000;   // PBDIGIT-343 (D-209, K-C1): advancing, as the PostgreSQL run's clock
+                return new InMemoryMemberRepository(static function () use (&$clock): int {
+                    return $clock += 1_000;
+                });
+            },
             static fn (int $seed): array => ['O1', 'O2'],
             200,
             40,

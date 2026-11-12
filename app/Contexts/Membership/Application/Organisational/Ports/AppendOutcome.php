@@ -17,4 +17,10 @@ enum AppendOutcome: string
     case MemberNotFound = 'member_not_found';
     /** R-1a-6: a finite valid time of the fact is outside StorableValidTime; nothing was written. */
     case ValidTimeNotStorable = 'valid_time_not_storable';
+    /**
+     * D-209 / D-215 K-C1 (PBDIGIT-343): the ledger clock reading did not advance (at or before the organisation's
+     * closedThrough, before its last record time, or equal to this Member's last record time). Nothing was written;
+     * no time is ever adjusted. Retryable: decide again and append with a fresh reading.
+     */
+    case RecordTimeRefused = 'record_time_refused';
 }

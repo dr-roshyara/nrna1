@@ -39,7 +39,10 @@ final class ConcurrencyAndRaceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->store = new InMemoryMemberRepository(static fn (): int => 100);
+        $clock = 100;   // PBDIGIT-343 (D-209, K-C1): advancing, since a non-advancing reading is refused
+        $this->store = new InMemoryMemberRepository(static function () use (&$clock): int {
+            return $clock++;
+        });
         $this->repo = new InterleavingRepository($this->store);
     }
 

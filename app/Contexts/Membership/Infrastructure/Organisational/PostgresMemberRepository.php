@@ -31,6 +31,7 @@ use App\Contexts\Membership\Domain\Organisational\VoidFact;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\Connection;
 use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Support\Facades\Log;
 
 /**
  * PostgreSQL adapter for MemberRepositoryPort (Slice 1b contract §5–§6; PBDIGIT-260).
@@ -192,6 +193,33 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);
         }
 
+        // D-209 (PBDIGIT-343 plan D-2): the organisation's clock row first, then the version (spec §11 correction note).
+        $this->db->statement(
+            'INSERT INTO org_membership_ledger_clocks (organisation_id) VALUES (?) ON CONFLICT (organisation_id) DO NOTHING',
+            [$tenant->value()],
+        );
+        $clock = $this->db->selectOne(
+            'SELECT ' . InstantMicros::selectExpression('last_recorded_at') . ' AS last_us, '
+            . InstantMicros::selectExpression('closed_through') . ' AS closed_us
+             FROM org_membership_ledger_clocks WHERE organisation_id = ? FOR UPDATE',
+            [$tenant->value()],
+        );
+        $t = $this->clock->now($this->db)->ordinal();
+        $organisationLast = $clock->last_us === null ? null : (int) $clock->last_us;
+        $closedThrough = $clock->closed_us === null ? null : (int) $clock->closed_us;
+        $memberLast = $this->db->table('org_membership_facts')
+            ->where('organisation_id', $tenant->value())->where('membership_id', $id->value())
+            ->max($this->db->raw(InstantMicros::selectExpression('recorded_at')));
+        $regressed = ($organisationLast !== null && $t < $organisationLast) || ($closedThrough !== null && $t < $closedThrough);
+        if ($regressed || ($closedThrough !== null && $t === $closedThrough) || ($memberLast !== null && $t === (int) $memberLast)) {
+            if ($regressed) {
+                Log::warning('membership.ledger_clock.regression', ['organisation_id' => $tenant->value(), 'reading_us' => $t, 'last_recorded_at_us' => $organisationLast, 'closed_through_us' => $closedThrough]);
+            }
+
+            // D-209 / D-215 K-C1: refused, never adjusted. Nothing but the (idempotent) clock row has been written.
+            return AppendResult::failed(AppendOutcome::RecordTimeRefused);
+        }
+
         $version = $this->db->selectOne(
             'UPDATE org_memberships SET version = version + 1
              WHERE organisation_id = ? AND id = ? AND version = ?
@@ -213,11 +241,9 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         }
         $seq = (int) $version->version;
 
-        $last = $this->db->table('org_membership_facts')
-            ->where('organisation_id', $tenant->value())->where('membership_id', $id->value())
-            ->max($this->db->raw(InstantMicros::selectExpression('recorded_at')));
-        // COR-4 Q-2 (V-5): strictly increasing per Member (1 µs after the last), so no two facts share a recordedAt.
-        $recordedAt = Instant::of(max($this->clock->now($this->db)->ordinal(), $last === null ? PHP_INT_MIN : (int) $last + 1));
+        // D-209: recordedAt is the reading, never adjusted. V-5 (strictly increasing per Member) holds by the refusal above.
+        $recordedAt = Instant::of($t);
+        $before = $this->load($tenant, $id);
 
         $fact = $accepted->fact();
         $this->db->table('org_membership_facts')->insert([
@@ -234,6 +260,17 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             'membership_id' => $id->value(),
             'seq' => $seq,   // F-4b: references the fact just inserted (composite FK); no copied fact_id / recorded_at
         ]);
+
+        $this->db->update(
+            'UPDATE org_membership_ledger_clocks SET last_recorded_at = ? WHERE organisation_id = ?',
+            [InstantMicros::toTimestamp($recordedAt), $tenant->value()],
+        );
+
+        // C1 (plan D-5): only on a change of coverage, inForce or suspended; on this connection, in this transaction.
+        $after = Member::fromLog($before->id(), $before->holder(), $before->organisation(), ...[...$before->log(), RecordedFact::of($seq, $recordedAt, $fact)]);
+        if (MembershipCoverageResolvedOutbox::stateChanged($before->resolve(), $after->resolve())) {
+            MembershipCoverageResolvedOutbox::write($this->db, $tenant->value(), $id->value(), $before->holder()->value(), $seq, $after->resolve(), $recordedAt);
+        }
 
         return AppendResult::success(new Appended($id, $fact->id(), $seq, $recordedAt));
     }

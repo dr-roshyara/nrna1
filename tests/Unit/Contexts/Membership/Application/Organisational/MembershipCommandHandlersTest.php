@@ -28,7 +28,10 @@ final class MembershipCommandHandlersTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->repo = new InMemoryMemberRepository(static fn (): int => 100);
+        $clock = 100;   // PBDIGIT-343 (D-209, K-C1): advancing, since a non-advancing reading is refused
+        $this->repo = new InMemoryMemberRepository(static function () use (&$clock): int {
+            return $clock++;
+        });
         $this->authority = new FakeAuthority();
     }
 

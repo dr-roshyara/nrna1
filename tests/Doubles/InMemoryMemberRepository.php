@@ -119,13 +119,24 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
     private function record(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint): AppendResult
     {
         $log = $this->members[$tenant->value()][$id->value()]['log'];
+        // D-209 / D-215 K-C1 (PBDIGIT-343), as the PostgreSQL adapter, clock before version: a reading behind the
+        // organisation's last record time, or equal to this Member's last, is refused, never adjusted (V-5 by refusal).
+        // This double has no closedThrough step.
+        $now = ($this->clock)();
+        $memberLast = $log === [] ? null : end($log)->recordedAt()->ordinal();
+        $organisationLast = null;
+        foreach ($this->members[$tenant->value()] as $member) {
+            if ($member['log'] !== []) {
+                $organisationLast = max($organisationLast ?? PHP_INT_MIN, end($member['log'])->recordedAt()->ordinal());
+            }
+        }
+        if (($organisationLast !== null && $now < $organisationLast) || $now === $memberLast) {
+            return AppendResult::failed(AppendOutcome::RecordTimeRefused);
+        }
         if ($accepted->basedOnVersion() !== count($log)) {
             return AppendResult::failed(AppendOutcome::ConcurrencyConflict);
         }
-        $now = ($this->clock)();
-        $last = $log === [] ? null : end($log)->recordedAt()->ordinal();
-        // COR-4 Q-2 (V-5): strictly increasing per Member (1 µs after the last), so no two facts share a recordedAt.
-        $recordedAt = Instant::of($last === null ? $now : max($now, $last + 1));
+        $recordedAt = Instant::of($now);
         $seq = count($log) + 1;
         $this->members[$tenant->value()][$id->value()]['log'][] = RecordedFact::of($seq, $recordedAt, $accepted->fact());
         $appended = new Appended($id, $accepted->fact()->id(), $seq, $recordedAt);

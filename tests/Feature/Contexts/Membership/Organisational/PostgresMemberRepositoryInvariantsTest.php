@@ -35,7 +35,9 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
 
     private function repo(): PostgresMemberRepository
     {
-        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $this->now));
+        // PBDIGIT-343 (D-209, K-C1): a non-advancing reading is refused, so the scripted clock advances 1 µs per
+        // reading; a test that sets $this->now controls the next reading exactly.
+        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $this->now++));
     }
 
     private function organisation(): TenantId
@@ -133,11 +135,15 @@ final class PostgresMemberRepositoryInvariantsTest extends MembershipPostgresTes
         $this->now = 1_000_000_000_000_000;
         $end = $m->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A-M1'), TimePoint::of(20_100), TimePoint::of(20_100), EndKind::fromString('resignation'), Provenance::decision('registrar'));
 
-        $appended = $repo->append($t, $m->id(), $end, IdempotencyKey::fromString('k2'), 'fp2')->appended();
+        $refused = $repo->append($t, $m->id(), $end, IdempotencyKey::fromString('k2'), 'fp2');
 
-        // COR-4 Q-2 (V-5, PO 2026-11-03): recordedAt now strictly increases, 1 µs after the last fact.
-        // (Was: equal to the last fact's instant, 2_000_000_000_000_000.)
-        $this->assertSame(2_000_000_000_000_001, $appended->recordedAt()->ordinal());
+        // D-209 (PBDIGIT-343): a backward reading is refused, never adjusted; nothing is stored.
+        // (Was, COR-4 Q-2, PO 2026-11-03: 1 µs after the last fact, 2_000_000_000_000_001.)
+        $this->assertSame(AppendOutcome::RecordTimeRefused, $refused->outcome());
+        $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $t->value())->count());
+
+        $this->now = 2_000_000_000_000_005;
+        $this->assertSame(2_000_000_000_000_005, $repo->append($t, $m->id(), $end, IdempotencyKey::fromString('k2'), 'fp2')->appended()->recordedAt()->ordinal());
     }
 
     public function test_t7_a_failure_inside_append_rolls_everything_back(): void
