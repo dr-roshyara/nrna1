@@ -579,8 +579,10 @@ class MembershipServiceProvider extends ServiceProvider
 
         // Event Registry (Blueprint Push B §6, §16 step 5): Membership owns
         // the hydrators for the events it produces.
-        $this->app->make(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class)
-            ->register(new \App\Contexts\Membership\Infrastructure\Outbox\FeePaidHydrator());
+        $hydrators = $this->app->make(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class);
+        $hydrators->register(new \App\Contexts\Membership\Infrastructure\Outbox\FeePaidHydrator());
+        // C1 MembershipCoverageResolved, written by the ledger's append (PBDIGIT-343 plan D-6).
+        $hydrators->register(new \App\Contexts\Membership\Infrastructure\Outbox\MembershipCoverageResolvedHydrator());
 
         // Register routes (if needed in future)
         // $this->loadRoutesFrom(__DIR__ . '/../Http/Routes/membership.php');

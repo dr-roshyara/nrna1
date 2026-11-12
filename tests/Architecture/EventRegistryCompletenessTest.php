@@ -29,6 +29,7 @@ final class EventRegistryCompletenessTest extends TestCase
         'FeePaid',              // Membership (OutboxWriter / OutboxService)
         'DeterminationIssued',  // Adjudication (OutboxEventAdapter)
         'AdjudicationExpired',  // Adjudication (OutboxEventAdapter) -- WP-6
+        'MembershipCoverageResolved',   // Membership ledger C1 (MembershipCoverageResolvedOutbox) -- PBDIGIT-343
     ];
 
     public function test_every_produced_event_type_has_exactly_one_hydrator(): void
