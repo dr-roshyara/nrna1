@@ -231,7 +231,9 @@ closeOrRead(tenant):
 - [x] 7. Test 14 → hydrator and registration (D-6).
 - [x] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [x] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
-- [ ] 10. Developer-guide index final check; evidence to the Principal; **acceptance by the Principal.**
+- [ ] 10. **AWAITING PRINCIPAL ACCEPTANCE.**
+  - Done by engineering: the guide index final check (guides 15–22 and `database/01` indexed); the acceptance evidence `docs/publicdigit/membership/evidence/2026-11-12-pbdigit343-slice1-acceptance/`.
+  - **Engineering does not accept its own work.**
 - **Every task ships its developer guide in the same step** (Principal, 2026-11-12; CLAUDE.md Definition of Done): guides 15–19 cover tasks 1–5.
 
 ## 8. Progress
@@ -303,6 +305,11 @@ closeOrRead(tenant):
     The Published Language moved under `Application\Organisational`; dates are now pure integer arithmetic, checked against `DateOrdinal` over the whole range.
   - **Lesson:** the `--filter Membership` architecture run was not repeated after task 8; **every task must end with the full architecture suite.**
   - **Final evidence:** PostgreSQL suite 135 (94 s); Membership architecture 106; full architecture = the 4 pre-existing failures only; kernel 204; application 92; infrastructure 65 + outbox 9.
+  - **Correction (acceptance handover):** the baseline comparisons reported in task 7 and task 9 used a worktree whose `vendor/` was a symlink, so baseline tests ran against HEAD's classes; **that evidence was unsound.** Redone with the worktree's own `vendor/` and autoloader:
+    - the 4 architecture failures are **identical by name** on `a53ba8ea8`;
+    - every legacy Membership unit failure at HEAD also fails on the baseline.
+
+    See the evidence `README.md`.
   - **Legacy Membership unit failures:** the failing set varies between runs inside `CommitteeSlugAvailabilityServiceTest` (flaky legacy test; 55–56 errors + 1 failure); none in slice code; no slice file touches that code.
 - **Pre-existing, outside the story** (verified on a clean checkout of `a53ba8ea8`): 4 failures in the full `tests/Architecture` suite (Election ×2, GovernanceRuntime, Phase_C25). Also the 55 errors and 1 failure in legacy Membership unit tests.
 
