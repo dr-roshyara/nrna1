@@ -221,10 +221,10 @@ closeOrRead(tenant):
 
 ## 7. Task checklist (each RED → GREEN → refactor; one commit per group, `(PBDIGIT-343)`)
 
-- [ ] 0. Create PBDIGIT-343; open the developer-guide step file.
-- [ ] 1. Test 1 → kernel functions.
-- [ ] 2. Test 17 → migration and backfill.
-- [ ] 3. Tests 2, 5, 19 → `LedgerClockReader`; swap the clock in the repository and the seven test classes.
+- [x] 0. Create PBDIGIT-343; open the developer-guide step file.
+- [x] 1. Test 1 → kernel functions.
+- [x] 2. Test 17 → migration and backfill.
+- [x] 3. Tests 2, 5, 19 → `LedgerClockReader`; swap the clock in the repository and the seven test classes.
 - [ ] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
 - [ ] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
 - [ ] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
@@ -238,6 +238,13 @@ closeOrRead(tenant):
 - 2026-11-12: revision 1; Principal DDD review.
 - 2026-11-12: revision 2 (refinements A, B, C). **Approved; PBDIGIT-343 created; implementation started (task 0 done).**
 - 2026-11-12, **deviation noted (no change of direction):** revision 2 gave the C1 payload a single unit "µs". **Verified in code:** valid time is a calendar date (EP-Q6 = T1, `DateOrdinal.php`). D-5 and D-8 now state both units. Applies spec K-6 as written.
+- 2026-11-12: **tasks 0–3 done**:
+  - `2bbd9b1b9` docs;
+  - `36f8304a6` kernel functions (unit suite 204 green);
+  - `2b6302e3b` clock table and backfill;
+  - `78af8627a` `LedgerClockReader` (Infrastructure only; Domain and Application Laravel-free, hexagonal);
+  - PostgreSQL suite 102 green; Membership architecture 105 green.
+- **Note:** the wider `tests/Unit/Contexts/Membership` run shows 55 errors and 1 failure, **all in legacy Committee / Fee / Member code, none in the ledger.** They are pre-existing and outside this slice (first: an `AssignMemberToCommitteeHandler` constructor mismatch). Recommended as a separate backlog item.
 
 ## 9. Risks
 
