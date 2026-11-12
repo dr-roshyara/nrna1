@@ -362,3 +362,21 @@ Until both exist, **such exclusions wait (D-167).**
   - U-5 and U-9, until T-1 and T-2 are accepted;
   - U-1, U-2, U-3, U-4, U-6, U-8, U-10, as listed in §9.
 - **No implementation authorised.**
+
+**Change-control note (2026-11-12, D-217):**
+- **§2's classification is refined by D-217.** Core is now legitimate, participatory self-governance:
+  - Governance;
+  - Voting;
+  - Contestation and Adjudication;
+  - participatory motion-making;
+  - financial transparency;
+  - dues and standing.
+- Payment processing is **generic**; the Finance ledger of obligations and payments is **supporting**.
+- **No boundary or ownership changes.** §2 above is left as ratified.
+- **New open question** for the Finance slice: striking off for non-payment (D-217).
+- **Fingerprint re-recorded at the next acceptance act** (D-173 change control).
+
+**Change-control note (2026-11-12, D-218):**
+- **The PublicDigit Product Principles are adopted** (`publicdigit-product-principles.md`) as product-design criteria beside this baseline, including the guarantees note: PublicDigit never breaches vote secrecy, isolation, append-only history or refusal-when-unestablished, even at an organisation's request; it declines that function instead.
+- **They add no rule to this baseline,** change no ownership and add no release-1 scope.
+- **Fingerprint re-recorded at the next acceptance act** (D-173 change control).
