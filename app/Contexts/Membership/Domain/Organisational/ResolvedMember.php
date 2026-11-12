@@ -92,6 +92,35 @@ final readonly class ResolvedMember
         return $this->inForce()->truncatedAt($t->successor());
     }
 
+    /**
+     * INV-COV: the union of period lifetimes (C1/C2 spec §3). A lapsed period is inside coverage.
+     * Empty when there is no membership ("not a member", not an error).
+     */
+    public function coverage(): IntervalSet
+    {
+        $all = IntervalSet::empty();
+        foreach ($this->periods as $period) {
+            $all = $all->union($period->lifetime());
+        }
+
+        return $all;
+    }
+
+    /** IsMember as intervals: the terms, each already clipped to its lifetime (CR-02, D-161). */
+    public function inForceIntervals(): IntervalSet
+    {
+        return $this->inForce();
+    }
+
+    /**
+     * The restriction intervals within lifetimes (CR-02, D-161). Always empty for now: no Suspend fact
+     * exists yet (release-1 build slice 5). Stated as an empty set, never omitted, so C1 / C2 carry it.
+     */
+    public function suspendedIntervals(): IntervalSet
+    {
+        return IntervalSet::empty();
+    }
+
     private function inForce(): IntervalSet
     {
         $all = IntervalSet::empty();
