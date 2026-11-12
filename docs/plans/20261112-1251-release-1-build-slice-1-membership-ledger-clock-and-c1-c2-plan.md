@@ -228,7 +228,7 @@ closeOrRead(tenant):
 - [x] 4. Tests 3, 7, 8, 12, 13, 15, 16 → append rewrite (D-2), C1 writer (D-5).
 - [x] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
 - [x] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
-- [ ] 7. Test 14 → hydrator and registration (D-6).
+- [x] 7. Test 14 → hydrator and registration (D-6).
 - [ ] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [ ] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
 - [ ] 10. Developer-guide index final check; evidence to the Principal; **acceptance by the Principal.**
@@ -278,6 +278,17 @@ closeOrRead(tenant):
   - **RED:** the closer hit the 3 s guard; the append created at level 1.
   - **GREEN:** PostgreSQL 130 (97 s); race group 13 tests, 3 of 3 runs (27–31 s); application 80; infrastructure 65; kernel 204; architecture 105.
   - **Guides:** 20 and 18 updated; new `developer_guide/database/01_postgresql_lock_waits.md`.
+- 2026-11-12, **task 6 gate 1 (Principal review):**
+  - the committed code was re-read and matches the handover;
+  - added the assertion that the connection is usable after the lock timeout, and that `SET LOCAL` does not leak (`d9b2b33b1`);
+  - **task 6 recorded complete.**
+- 2026-11-12: **the race test's non-vacuity was not guaranteed:** one run failed "the boundary advanced"; the safety property held. Readers now close until the writers finish, and a mid-run boundary is required (`6305f4366`); 5 of 5 runs green.
+- 2026-11-12: **task 7 done** (`6fd1128c5`, guide 21):
+  - the Published Language event `MembershipCoverageResolved` and `CoverageInterval` (Application, pure);
+  - `MembershipCoverageResolvedHydrator` (Infrastructure), registered in `MembershipServiceProvider`;
+  - the event type added to `EventRegistryCompletenessTest`; the relay unchanged.
+  - **RED:** guard, unit, round trip. **GREEN:** PostgreSQL 131 (86 s); hydrator 9; architecture as before.
+- **Pre-existing, outside the story** (verified on a clean checkout of `a53ba8ea8`): 4 failures in the full `tests/Architecture` suite (Election ×2, GovernanceRuntime, Phase_C25). Also the 55 errors and 1 failure in legacy Membership unit tests.
 
 ## 9. Risks
 
