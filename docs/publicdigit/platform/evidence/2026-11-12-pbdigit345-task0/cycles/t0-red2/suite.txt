@@ -1,0 +1,49 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEED.                                                           9 / 9 (100%)
+
+Time: 00:08.283, Memory: 22.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_each_platform_connection_reaches_its_own_database_on_the_captured_cluster
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+2) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_a_table_created_in_organisation_a_is_invisible_in_b_c_and_central
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+3) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_reset_empties_every_platform_database_and_can_run_twice
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+4) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_the_default_connection_still_targets_the_slice_1_database
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+5) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_without_the_database_list_and_registers_nothing
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+6) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_database_outside_the_approved_four
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+7) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_different_cluster_identity
+Error: Class "Tests\Support\PlatformPgIsolatedDatabases" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+ERRORS!
+Tests: 9, Assertions: 10, Errors: 7, Deprecations: 1.

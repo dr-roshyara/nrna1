@@ -82,6 +82,13 @@ if [ "$PG_HOST" != "127.0.0.1" ]; then
 fi
 
 SYSTEM_ID="$(podman exec "$NAME" psql -U "$PG_ROLE" -d "$PG_DBNAME" -Atc 'SELECT system_identifier FROM pg_control_system()')"
+
+# PBDIGIT-345 task 0 (slice 2): one central and three organisation databases in the same throwaway cluster, for
+# the multi-database tests. Fixed names; the PHP side accepts only these (Tests\Support\PlatformPgIsolatedDatabases).
+PLATFORM_PG_DATABASES="platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c"
+for db in ${PLATFORM_PG_DATABASES//,/ }; do
+    podman exec "$NAME" psql -v ON_ERROR_STOP=1 -U "$PG_ROLE" -d "$PG_DBNAME" -qc "CREATE DATABASE $db" >/dev/null
+done
 SERVER_VERSION="$(podman exec "$NAME" psql -U "$PG_ROLE" -d "$PG_DBNAME" -Atc 'SHOW server_version')"
 IMAGE_DIGEST="$(podman image inspect --format '{{.Digest}}' "$IMAGE")"
 
@@ -91,6 +98,7 @@ IMAGE_DIGEST="$(podman image inspect --format '{{.Digest}}' "$IMAGE")"
     echo "image_digest: $IMAGE_DIGEST"
     echo "server_version: $SERVER_VERSION"
     echo "system_identifier: $SYSTEM_ID"
+    echo "platform_databases: $PLATFORM_PG_DATABASES"
     echo "host: $PG_HOST (port published at random)"
     echo "started: $(date -Iseconds)"
 } > "$EVIDENCE/run.txt"
@@ -101,6 +109,7 @@ export MEMBERSHIP_PG_DB_PORT="$PG_PORT"
 export MEMBERSHIP_PG_DB_USERNAME="$PG_ROLE"
 export MEMBERSHIP_PG_DB_PASSWORD="$SECRET"
 export MEMBERSHIP_PG_SYSTEM_ID="$SYSTEM_ID"
+export PLATFORM_PG_DATABASES
 
 set +e
 vendor/bin/phpunit -c phpunit.membership-pg.xml --do-not-cache-result "$@" > "$EVIDENCE/suite.txt" 2>&1

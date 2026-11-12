@@ -1,0 +1,40 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..                                                           9 / 9 (100%)
+
+Time: 00:07.932, Memory: 22.00 MB
+
+7 tests triggered 1 PHP deprecation:
+
+1) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/database.php:66
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_a_table_created_in_organisation_a_is_invisible_in_b_c_and_central
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:40
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_each_platform_connection_reaches_its_own_database_on_the_captured_cluster
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:30
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_database_outside_the_approved_four
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:82
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_different_cluster_identity
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:91
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_without_the_database_list_and_registers_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:73
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_reset_empties_every_platform_database_and_can_run_twice
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:51
+
+* Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_the_default_connection_still_targets_the_slice_1_database
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:65
+
+OK, but there were issues!
+Tests: 9, Assertions: 40, Deprecations: 1.

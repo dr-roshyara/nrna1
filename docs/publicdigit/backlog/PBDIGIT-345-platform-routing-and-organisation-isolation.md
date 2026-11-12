@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `APPROVED` — plan approved by the Principal 2026-11-12 (EP-01); strict TDD; not started |
+| **Status** | `IN PROGRESS` — task 0 done 2026-11-12 (test harness), awaiting the Principal's review; plan approved 2026-11-12 (EP-01); strict TDD |
 | **Plan** | `docs/plans/20261112-1844-release-1-build-slice-2-platform-routing-and-isolation-plan.md` |
 | **Design** | `docs/publicdigit/architecture/reviews/2026-11-12-platform-organisation-routing-isolation-tactical-design.md` (delta, revision 3, accepted), consuming D-178 and D-193 |
 | **Decisions** | D-160, D-164, D-166, D-178, D-193, **D-219**, **D-221**; D-147 unchanged |

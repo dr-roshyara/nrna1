@@ -21,6 +21,10 @@
         <testsuite name="MembershipPostgres">
             <directory suffix="Test.php">./tests/Feature/Contexts/Membership/Organisational</directory>
         </testsuite>
+        <!-- PBDIGIT-345 (slice 2): the multi-database harness and, later, Platform routing, on the same throwaway cluster. -->
+        <testsuite name="PlatformPostgres">
+            <directory suffix="Test.php">./tests/Feature/Contexts/Platform</directory>
+        </testsuite>
     </testsuites>
     <php>
         <server name="APP_ENV" value="testing"/>

@@ -1,0 +1,71 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+EEEEEEEFE                                                           9 / 9 (100%)
+
+Time: 00:03.681, Memory: 22.00 MB
+
+There were 8 errors:
+
+1) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_each_platform_connection_reaches_its_own_database_on_the_captured_cluster
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+2) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_a_table_created_in_organisation_a_is_invisible_in_b_c_and_central
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+3) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_reset_empties_every_platform_database_and_can_run_twice
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+4) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_the_default_connection_still_targets_the_slice_1_database
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+5) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_without_the_database_list_and_registers_nothing
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+6) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_database_outside_the_approved_four
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+7) Tests\Feature\Contexts\Platform\Harness\PlatformPgConnectionsTest::test_registration_refuses_a_different_cluster_identity
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [platform_databases] PLATFORM_PG_DATABASES must list exactly platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/PlatformPgIsolatedDatabases.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgConnectionsTest.php:26
+
+8) Tests\Feature\Contexts\Platform\Harness\PlatformPgProvisioningTest::test_each_platform_database_exists_on_the_captured_throwaway_cluster
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [credentials_missing] MEMBERSHIP_PG_DB_HOST and MEMBERSHIP_PG_DB_USERNAME are required; MEMBERSHIP_PG_DB_PORT must be numeric.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgProvisioningTest.php:30
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\Harness\PlatformPgProvisioningTest::test_the_harness_provides_exactly_the_four_platform_databases
+the harness must export PLATFORM_PG_DATABASES
+Failed asserting that false is not false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgProvisioningTest.php:24
+
+ERRORS!
+Tests: 9, Assertions: 1, Errors: 8, Failures: 1, Deprecations: 1.

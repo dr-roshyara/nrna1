@@ -71,7 +71,7 @@
 
 Every task: **RED test(s) first → minimal GREEN → developer guide** under `developer_guide/platform/` (new area; `00_index.md` first).
 
-- [ ] **0. Test harness.** Extend `scripts/testing/membership-pg.sh` (or a sibling `platform-pg.sh`) to create **a central database and organisation databases A, B, C** on the isolated cluster. No production configuration. *Gate: the slice 1 suite still passes (T-12).*
+- [x] **0. Test harness.** *(Done 2026-11-12, TDD: two cycles plus one default-suite fix; final isolated run 144 tests, slice 1 135 unchanged; architecture failures identical. Evidence `docs/publicdigit/platform/evidence/2026-11-12-pbdigit345-task0/`; guide `developer_guide/testing/07_multi_database_harness.md`. **Awaiting the Principal's review before task 1.**)* Planned: Extend `scripts/testing/membership-pg.sh` (or a sibling `platform-pg.sh`) to create **a central database and organisation databases A, B, C** on the isolated cluster. No production configuration. *Gate: the slice 1 suite still passes (T-12).*
 - [ ] **1. Platform domain.** `ServedOrganisation` lifecycle: transitions, routable only if `operational` and `schemaState = current`, grant before provisioning. Unit tests, no framework.
 - [ ] **2. Registry persistence + `ResolutionService`** (central migration): unknown, not operational or wrong schema → refused (**T-2**).
 - [ ] **3. `OrganisationContext` + `OrganisationConnectionFactory`:** a named connection from the locator; the default connection untouched; credentials by reference (**T-10** part 1).
@@ -111,6 +111,10 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 - 2026-11-12: plan drafted after D-219. Nothing implemented.
 - 2026-11-12: task 7 rewritten for two separate queue connections (delta revision 3, §3.10); T-19 … T-24 added; Q-S2-5 opened.
 - 2026-11-12: **approved**; PBDIGIT-345 created; D-221 ratified.
+- 2026-11-12: **task 0 done** (test-only).
+  - **Deviation 1:** `PlatformPostgres` added as a second suite in `phpunit.membership-pg.xml`, inside the existing script rather than a sibling script; allowed by task 0's text.
+  - **Deviation 2:** the harness tests skip outside the isolated cluster, found by running the default suite: without it, `php artisan test` would fail 9 tests.
+  - **Deviation 3:** the guide lives in `developer_guide/testing/07`, the test-safety area, with `developer_guide/platform/00_index.md` pointing to it.
 - 2026-11-12: reconciliation after the Principal's review:
   - T-19 re-sequenced (before and after the change);
   - `organisation_failed_jobs` withdrawn after verifying Laravel 12.71.0 (standard `failed_jobs`);

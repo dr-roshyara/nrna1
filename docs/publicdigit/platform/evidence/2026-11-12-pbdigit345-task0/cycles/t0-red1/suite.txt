@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FF                                                                  2 / 2 (100%)
+
+Time: 00:00.020, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\Harness\PlatformPgProvisioningTest::test_the_harness_provides_exactly_the_four_platform_databases
+the harness must export PLATFORM_PG_DATABASES
+Failed asserting that false is not false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgProvisioningTest.php:24
+
+2) Tests\Feature\Contexts\Platform\Harness\PlatformPgProvisioningTest::test_each_platform_database_exists_on_the_captured_throwaway_cluster
+database 'platform_pg_central' is not reachable on the isolated cluster
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/Harness/PlatformPgProvisioningTest.php:39
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 2.
