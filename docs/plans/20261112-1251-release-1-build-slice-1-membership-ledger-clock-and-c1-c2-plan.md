@@ -271,6 +271,13 @@ closeOrRead(tenant):
   - **Found and fixed during GREEN:** the unconditional `INSERT … ON CONFLICT` made the closer wait behind a writer's uncommitted update; it now ensures the row only after a non-blocking read.
   - **RED 9/9; GREEN:** PostgreSQL suite 124 (race test 4 of 4 runs); application 80; infrastructure 65; Membership architecture 105.
   - **Test 11's C2 half** (τ beyond a stale boundary → `BOUNDARY_NOT_CLOSED`) belongs to task 8.
+- 2026-11-12, **deviation 4 (Principal review of task 6):**
+  - **The defect:** the append created the clock row inside its transaction; on a first append, a closer's `INSERT … ON CONFLICT` waited as long as that append. The closer also never bounded its insert.
+  - **The fix** (`9477113e1`): `LedgerClockRow::ensure` (plain read first; insert in its own committed statement; the closer bounded by `lock_timeout` 200 ms, fail closed). The append ensures before its transaction (D-2 step 3 moved out; meaning unchanged: the row is empty and idempotent).
+  - **The F-5 test** states its invariant precisely (first statement inside the transaction).
+  - **RED:** the closer hit the 3 s guard; the append created at level 1.
+  - **GREEN:** PostgreSQL 130 (97 s); race group 13 tests, 3 of 3 runs (27–31 s); application 80; infrastructure 65; kernel 204; architecture 105.
+  - **Guides:** 20 and 18 updated; new `developer_guide/database/01_postgresql_lock_waits.md`.
 
 ## 9. Risks
 

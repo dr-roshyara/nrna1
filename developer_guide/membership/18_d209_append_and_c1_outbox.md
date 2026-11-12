@@ -24,7 +24,7 @@ Test double     tests/Doubles/InMemoryMemberRepository        the same refusal r
 |---|---|
 | 1 | idempotency answer (a replay writes nothing) |
 | 2 | storable valid time (R-1a-6) |
-| 3 | ensure the clock row (`INSERT … ON CONFLICT DO NOTHING`) |
+| 3 | the clock row already exists: **`LedgerClockRow::ensure()` ran before the transaction** (deviation 4, guide 20). Inside the transaction it is only locked, never created |
 | 4 | **lock the clock row `FOR UPDATE`**, before the version |
 | 5 | `t` = `LedgerClockReader::now()` (guide 17) |
 | 6 | **refuse `RecordTimeRefused`** if `t ≤ closed_through`, `t < last_recorded_at`, or `t` = this membership's last `recordedAt`. **A regression is logged** as `membership.ledger_clock.regression` |
