@@ -71,4 +71,15 @@ final class MembershipLedgerClockArchitectureTest extends TestCase
         $this->assertStringNotContainsString('getDriverName', $code);
         $this->assertStringNotContainsString('sqlite', strtolower($code));
     }
+
+    /** PBDIGIT-343 task 8: C2 and the Published Language stay framework-free and never reach Infrastructure. */
+    public function test_c2_and_the_published_language_are_pure(): void
+    {
+        $root = dirname(__DIR__, 2);
+        foreach ([...glob("$root/app/Contexts/Membership/Application/PublishedLanguage/*.php") ?: [], "$root/app/Contexts/Membership/Application/Organisational/CoverageKnownAt.php"] as $file) {
+            $code = self::codeWithoutComments($file);
+            $this->assertStringNotContainsString('Illuminate\\', $code, basename($file));
+            $this->assertStringNotContainsString('\\Infrastructure\\', $code, basename($file));
+        }
+    }
 }
