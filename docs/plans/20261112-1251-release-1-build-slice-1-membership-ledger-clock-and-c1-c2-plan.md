@@ -229,7 +229,7 @@ closeOrRead(tenant):
 - [x] 5. Test 9 → `RecordTimeRefused`, loop mapping, `RecordTimeUnavailable` (D-3).
 - [x] 6. Tests 4, 6, 10, 11 → `LedgerClockCloser` (D-4).
 - [x] 7. Test 14 → hydrator and registration (D-6).
-- [ ] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
+- [x] 8. Test 18 → C2 service, DTOs, source port (D-7, D-8).
 - [ ] 9. Architecture tests; full Membership PostgreSQL and unit suites; diff review.
 - [ ] 10. Developer-guide index final check; evidence to the Principal; **acceptance by the Principal.**
 - **Every task ships its developer guide in the same step** (Principal, 2026-11-12; CLAUDE.md Definition of Done): guides 15–19 cover tasks 1–5.
@@ -288,6 +288,12 @@ closeOrRead(tenant):
   - `MembershipCoverageResolvedHydrator` (Infrastructure), registered in `MembershipServiceProvider`;
   - the event type added to `EventRegistryCompletenessTest`; the relay unchanged.
   - **RED:** guard, unit, round trip. **GREEN:** PostgreSQL 131 (86 s); hydrator 9; architecture as before.
+- 2026-11-12: **task 8 done** (`e3f1f8b5f`, guide 22):
+  - C2 `CoverageKnownAt` (Application, pure), by membership ids or person refs. Order: working organisation → source of truth → committed close → boundary → read and `knownAt(τ)`.
+  - Refusals exactly the accepted three. An unknown membership id and more than 1 000 keys are caller errors (no partial answer).
+  - Ports: `LedgerBoundaryPort`, `MembershipSourceOfTruthPort` (fail-closed default), `WorkingOrganisationPort`.
+  - **Test 11's C2 half done:** a stale boundary only refuses.
+  - **RED:** 12 unit errors. **GREEN:** 12 unit, 4 PostgreSQL, purity guard; PostgreSQL suite 135 (97 s).
 - **Pre-existing, outside the story** (verified on a clean checkout of `a53ba8ea8`): 4 failures in the full `tests/Architecture` suite (Election ×2, GovernanceRuntime, Phase_C25). Also the 55 errors and 1 failure in legacy Membership unit tests.
 
 ## 9. Risks
