@@ -92,7 +92,18 @@
    - prove: no query exposes an unpublished claim; an answer at p never changes; successive merges are visible only from their own positions; an ending keeps earlier knowledge; τ → position; a future τ or a forged position is refused by every query.
 7. **PO-5 is met by immutability** (positions ≤ the committed one never change), not by a held `REPEATABLE READ` snapshot. The design §2.1 records this.
 
-**G-5b: `PlaceLookup`.** A name, alias or code → places, with match quality. The legacy fuzzy matcher is **copied, never imported**. No address parsing (D-83).
+**G-5b: `PlaceLookup` (implemented; guide 21).**
+1. **Domain first:** `PlaceMatcher`.
+   - **Test the `pg_trgm` value against a known PostgreSQL result** before trusting the reimplementation.
+   - **Copy the legacy algorithm, not its data:** no hard-coded variants, no designation stripping. Variants are published names (G-8).
+2. **Contract:** `GeographyReadModel::lookup` and `Published\LookupMatch`. Add the DTO to `published-language.json`; the contract guard fails until you do.
+3. **Application:**
+   - candidates = names and codes believed at (t, p) of places existing at t;
+   - optional transitive scope (place and scheme together);
+   - limit 1 to 50;
+   - results ordered by score, then whole before partial, then id.
+4. **Adapter:** `slotsOfKind`, each history through `PostgresPublishedAtlas`.
+5. **Isolated-cluster tests:** use a unique word per test, because the cluster is shared.
 
 **G-5c: the publication feed.** A **pull** feed over `refgeo_publications`: one entry per position, giving revision, kinds, subjects and merges. **Not the shared outbox, which is organisation-scoped** (design §3.4). A push is added only when the first consumer exists (D-147).
 

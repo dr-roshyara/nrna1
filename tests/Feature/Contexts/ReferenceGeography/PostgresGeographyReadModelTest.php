@@ -227,6 +227,41 @@ final class PostgresGeographyReadModelTest extends RefgeoPostgresTestCase
         }
     }
 
+    public function test_lookup_finds_published_names_and_codes_only_and_reports_a_merge(): void
+    {
+        $tag = substr(str_replace('-', '', (string) Str::uuid()), 0, 10);   // a unique word: the cluster is shared
+        [$country, $district, $old, $hidden] = [self::unit(), self::unit(), self::unit(), self::unit()];
+        $p = self::publishDirect(
+            self::c(SlotKey::existence($country), 'exists', '1768-01-01'),
+            self::c(SlotKey::existence($district), 'exists'),
+            self::c(SlotKey::containment($district, 'admin'), $country->value()),
+            self::c(SlotKey::sourceName($district, 'gazette', 'en', 'official'), "Zz{$tag} District"),
+            self::c(SlotKey::sourceNameValue($district, 'gazette', 'en', 'former', "Old{$tag}"), "Old{$tag}"),
+            self::c(SlotKey::identifier($district, 'test-ns'), "C-{$tag}"),
+            self::c(SlotKey::existence($old), 'exists'),
+            self::c(SlotKey::sourceName($old, 'gazette', 'en', 'official'), "Zz{$tag}"),
+        );
+        $merge = self::publishDirect(self::c(SlotKey::reconciliation($old), $district->value(), '1000-01-01'));
+        self::freezeUnpublished(self::c(SlotKey::existence($hidden), 'exists'), self::c(SlotKey::sourceName($hidden, 'gazette', 'en', 'official'), "Zz{$tag}"));
+        $g = self::geography();
+        $k = $g->knowledgeAt($merge);
+
+        $found = $g->lookup("Zz{$tag}", '2020-01-01', $k);
+        $ids = array_map(static fn ($m) => $m->unitId, $found);
+        $this->assertSame([$old->value(), $district->value()], $ids, 'whole exact first, then the partial one; the unpublished place never');
+        $this->assertSame($district->value(), $found[0]->mergedInto, 'the merged identity says where it resolves');
+        $this->assertTrue($found[1]->partial);
+
+        $former = $g->lookup("Old{$tag}", '2020-01-01', $k);
+        $this->assertSame([$district->value(), 'en/former'], [$former[0]->unitId, $former[0]->detail], 'a published former name is a published fact');
+
+        $code = $g->lookup("c-{$tag}", '2020-01-01', $k);
+        $this->assertSame(['identifier', 'test-ns'], [$code[0]->matchedOn, $code[0]->detail]);
+
+        $this->assertSame([$district->value()], array_map(static fn ($m) => $m->unitId, $g->lookup("Zz{$tag}", '2020-01-01', $k, $country->value(), 'admin')), 'scoped below the country');
+        $this->assertNull($g->lookup("Zz{$tag}", '2020-01-01', $g->knowledgeAt($p))[0]->mergedInto, 'not merged at the earlier position');
+    }
+
     public function test_an_answer_at_a_position_never_changes_after_later_publications(): void
     {
         [$country, $other, $province] = [self::unit(), self::unit(), self::unit()];

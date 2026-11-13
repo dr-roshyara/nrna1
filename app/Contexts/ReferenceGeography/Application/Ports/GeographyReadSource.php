@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\ReferenceGeography\Application\Ports;
 
+use App\Contexts\ReferenceGeography\Domain\ClaimKind;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
@@ -31,6 +32,9 @@ interface GeographyReadSource
 
     /** @return array<string, SlotHistory> DISPUTE histories on the unit's claims, keyed by target claim id */
     public function disputesForSubject(ReferenceUnitId $unit, int $p): array;
+
+    /** @return list<SlotHistory> every published slot of the kind, at positions ≤ p (G-5b: names and codes) */
+    public function slotsOfKind(ClaimKind $kind, int $p): array;
 
     /** @return list<ReferenceUnitId> units whose containment in the scheme ever named the parent, at positions ≤ p */
     public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array;

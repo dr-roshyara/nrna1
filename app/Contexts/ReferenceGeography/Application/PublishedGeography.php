@@ -9,9 +9,13 @@ use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
 use App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel;
 use App\Contexts\ReferenceGeography\Application\Published\Knowledge;
 use App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable;
+use App\Contexts\ReferenceGeography\Application\Published\LookupMatch;
 use App\Contexts\ReferenceGeography\Application\Published\Place;
 use App\Contexts\ReferenceGeography\Application\Published\Resolution;
+use App\Contexts\ReferenceGeography\Domain\ClaimKind;
+use App\Contexts\ReferenceGeography\Domain\LookupCandidate;
 use App\Contexts\ReferenceGeography\Domain\PlaceBelief;
+use App\Contexts\ReferenceGeography\Domain\PlaceMatcher;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
@@ -97,6 +101,61 @@ final class PublishedGeography implements GeographyReadModel
         $publication = $this->source->publication($merge->knownAtPosition);
 
         return new Resolution($unitId, $merge->canonical->value(), true, $merge->knownAtPosition, $publication?->recordedAt, $publication?->revisionId);
+    }
+
+    public function lookup(string $text, string $validDate, Knowledge $knowledge, ?string $withinUnitId = null, ?string $scheme = null, int $limit = 10): array
+    {
+        $p = $this->checked($knowledge->position);
+        if (($withinUnitId === null) !== ($scheme === null)) {
+            throw new \InvalidArgumentException('A lookup scope needs both a place and a scheme, or neither.');
+        }
+        if ($limit < 1 || $limit > 50) {
+            throw new \InvalidArgumentException("A lookup limit is 1 to 50, not {$limit}.");
+        }
+        $t = ValidDate::fromString($validDate);
+        $eligible = array_flip($this->placesAt($validDate, $knowledge));
+        if ($withinUnitId !== null) {
+            $eligible = array_intersect_key($eligible, array_flip($this->descendants($withinUnitId, (string) $scheme, $validDate, $knowledge)));
+        }
+        $candidates = [];
+        foreach ([ClaimKind::SourceName, ClaimKind::Identifier] as $kind) {
+            foreach ($this->source->slotsOfKind($kind, $p) as $history) {
+                $unit = $history->slot()->subject();
+                $value = $history->resolve($t, $p);
+                if ($unit === null || $value === null || !isset($eligible[$unit->value()])) {
+                    continue;
+                }
+                $slot = $history->slot();
+                $candidates[] = $kind === ClaimKind::Identifier
+                    ? new LookupCandidate($unit, LookupCandidate::IDENTIFIER, $value->value(), (string) $slot->component('namespace'))
+                    : new LookupCandidate($unit, LookupCandidate::NAME, $value->value(), $slot->component('language') . '/' . $slot->component('name_type'));
+            }
+        }
+        $matches = [];
+        foreach (array_slice(PlaceMatcher::best($text, $candidates), 0, $limit) as $m) {
+            $merged = PlaceBelief::resolve($m->unit, $this->source->slotHistory(SlotKey::reconciliation($m->unit), $p), $p);
+            $matches[] = new LookupMatch($m->unit->value(), $m->quality->value, $m->score, $m->candidate->kind, $m->candidate->value,
+                $m->candidate->detail, $m->partial, $merged?->canonical->value());
+        }
+
+        return $matches;
+    }
+
+    /** @return list<string> every place below the given one in the scheme at t (transitive), as known at the knowledge */
+    private function descendants(string $unitId, string $scheme, string $validDate, Knowledge $knowledge): array
+    {
+        $seen = [];
+        $queue = [$unitId];
+        while ($queue !== []) {
+            foreach ($this->childrenOf(array_shift($queue), $scheme, $validDate, $knowledge) as $child) {
+                if (!isset($seen[$child]) && $child !== $unitId) {
+                    $seen[$child] = true;
+                    $queue[] = $child;
+                }
+            }
+        }
+
+        return array_keys($seen);
     }
 
     private function checked(int $position): int

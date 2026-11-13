@@ -136,3 +136,97 @@ Reference Geography is PublicDigit's official record of places. Until now, it co
 **Partitions are not in the event yet:** the kernel has no partition model (v3.11 §7 partitions are validation scopes). Stated, not invented.
 
 **Traceability:** v3.11 §4, §6, §10, §12 · completion §3, §8 · D-73, D-87, D-93, D-147, D-225 · baseline (accepted) §4 published language · PBDIGIT-346.
+
+## 4. G-5b `PlaceLookup`: strategic discovery and tactical design
+
+### 4.1 Settled
+
+**A stateless match of a place name, alias or code to published places, with match quality.**
+- **No address parsing, street matching or validation** (v3.11 §10; D-83).
+- **Its consumer stores the result as supplied.** No match means the address stays unresolved; **it never places anyone** (context map; D-79, D-80, D-101).
+- **The legacy fuzzy matcher is kept by copy, never by import** (completion §2; closure §C.2).
+
+### 4.2 Discovery findings, and the engineering decision derived from them
+
+**What is copied:** the matcher's *algorithm*.
+- normalisation: case, spacing, punctuation, Unicode compatibility form;
+- trigram similarity, as PostgreSQL `pg_trgm` defines it, reimplemented in pure PHP so the Domain decides the quality;
+- the legacy quality bands: exact = 1.0; very high ≥ 0.95; high ≥ 0.85; medium ≥ 0.70; low ≥ 0.50. Below 0.50 is no match.
+
+**What is not copied: its *data*.**
+- The legacy `NEPAL_VARIATIONS` map is unevidenced and hand-written: a personal-name spelling, a duplicated key, identity entries.
+- So is its English designation-suffix stripping ("municipality", "nagar", …).
+- **In Reference Geography, variants are published facts:** `SOURCE_NAME` *alternative* and *former*, each with evidence (D-227, D-229; the G-8 rule "the legacy seeder is input, not evidence").
+- **Variants enter as G-8 data, not as code.** This follows accepted rules; it is not a new policy.
+
+**Partial names:** "Kathmandu" must find "Kathmandu Metropolitan City" without stripping designations. **Quality = the best of** whole-name similarity and the similarity to any contiguous run of the name's words, which is the idea behind `pg_trgm` `word_similarity`. The match says whether it was whole or partial.
+
+**Codes match only exactly** (ignoring case and surrounding spaces). A code is an identifier (I-1): "NP-P3" must never fuzzily match "NP-P2".
+
+### 4.3 Contract (published language)
+
+`GeographyReadModel::lookup(string $text, string $validDate, Knowledge $k, ?string $withinUnitId = null, ?string $scheme = null, int $limit = 10): list<LookupMatch>`
+
+| Rule | Behaviour |
+|---|---|
+| Candidates | places **existing at t, as known at p**, with their source names (every language and type, as believed at t) and their identifiers |
+| Scope | optional: only places below `withinUnitId` in `scheme` at t (transitive). Both or neither |
+| Result | `LookupMatch`: unit id, quality, score, matched on (name or identifier), the matched value, its language and type (or namespace), whole or partial, merged into (if any). Best first: score, then id. **One entry per place:** its best match |
+| Blank text | `[]` |
+| Limit | 1 to 50 |
+| Boundary | as for every query: refused beyond the committed position |
+
+### 4.4 Elements
+
+| Element | Layer |
+|---|---|
+| `Domain\PlaceMatcher` (normalise, similarity, best match per place), `Domain\MatchQuality`, `Domain\LookupCandidate`, `Domain\PlaceMatch` | Domain (pure) |
+| `PublishedGeography::lookup` | Application: candidates at (t, p), the scope, the DTOs |
+| `GeographyReadSource::slotsOfKind(kind, p)` | port: published slot histories of one kind in one query |
+| `PostgresGeographyReadSource::slotsOfKind` | one query for the kind's slot keys, then **each history through the accepted `PostgresPublishedAtlas`.** The planned bulk method on the atlas was not needed, so accepted G-4 code is untouched (one query per slot; adequate before G-8) |
+| `Published\LookupMatch` | published DTO |
+
+**Known cost:** candidates are every published name and code at p, matched in PHP. That's adequate before G-8; a `pg_trgm` prefilter is the remedy when measured.
+
+## 5. G-5c: the publication feed (strategic discovery and tactical design)
+
+### 5.1 In business terms
+
+Other parts of PublicDigit need to learn **that** official geography changed, and **what** changed, so they can raise review signals; for example, Organisation reviewing a unit whose parent changed. **They must not act on it automatically** (context map: "No job or listener may change belonging on `RevisionPublished`; it may only raise review signals").
+
+### 5.2 Settled
+
+| Requirement | Source | Realisation |
+|---|---|---|
+| One entry per publication position, in order | v3.11 §10 (`RevisionPublished` / `GovernanceNoticePublished`, one per position) | each `refgeo_publications` row, ascending by position |
+| Content: position, revision, kinds, subjects, merges | v3.11 §10, §12 | derived from the publication's published claims |
+| Historical reproducibility | v3.11 §6 | entries are immutable (G-4a); reading the same range twice gives the same entries |
+| Idempotent consumption | ordering + immutability | **the consumer keeps its last position and asks `since(last)`.** It can neither miss an entry (gap-free) nor need deduplication (positions are unique) |
+| Provenance | G-4 | position, `recordedAt`, revision id and content version, the governance rule, the kind (revision or notice). **Never the persons:** stewards' references stay internal |
+| No organisation outbox; no messaging framework | design §3.4 | a **pull** feed on the published contract |
+| No automatic action by consumers | context map | stated in the contract's documentation; no consumer exists yet (D-147) |
+
+**Decisions for the Principal: none.**
+
+### 5.3 Contract
+
+`GeographyReadModel::publicationsSince(int $afterPosition, Knowledge $k, int $limit = 100): list<PublicationEntry>`
+- **Returns** entries with `afterPosition < position ≤ k.position`, ascending, at most `limit` (1 to 500). The consumer pages by asking again from the last position it received.
+- **Refuses** `afterPosition < 0` (`\InvalidArgumentException`), or a knowledge beyond the boundary (`KnowledgeNotAvailable`).
+- `afterPosition ≥ k.position` gives `[]`.
+- **`PublicationEntry`** (published language):
+  - `position`, `recordedAt`, `kind` (`revision` | `notice`), `revisionId`, `contentVersion`, `governanceRule`;
+  - `claimKinds` (sorted, distinct), `subjects` (sorted unit ids);
+  - `merges` (sorted `{identity, canonical}` pairs; `canonical` is null for a reversal).
+- **A notice** (D-90, G-6) has no claims, so its lists are empty.
+
+### 5.4 Elements
+
+| Element | Layer |
+|---|---|
+| `Domain\PublicationSummary::of(list<SlotKey, ?value>)` → kinds, subjects, merges | Domain (pure): what a publication *concerns* |
+| `Ports\PublicationChanges` (one row's provenance + its claims' slot keys and values) | Application port DTO |
+| `GeographyReadSource::publicationsBetween(after, upTo, limit)` | port |
+| `PublishedGeography::publicationsSince` | Application: the boundary, limits, the DTOs |
+| `PostgresGeographyReadSource::publicationsBetween` | adapter: rows ⋈ their (revision, content version) claims; **slot keys and values only.** No claim mapping is needed |
+| `Published\PublicationEntry` | published DTO |

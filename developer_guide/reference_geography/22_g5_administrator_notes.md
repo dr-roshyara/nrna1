@@ -1,0 +1,19 @@
+# 22: Administrator notes for G-5 (the read side), 2026-11-13
+
+**For whoever operates PublicDigit.** G-5a (the published read model) and G-5b (PlaceLookup) are read-only code.
+
+| Question | Answer |
+|---|---|
+| New database migration? | **No.** G-5 adds no table, column, index or trigger |
+| New configuration or environment variable? | **No** |
+| New queue, scheduler or cron job? | **No.** The G-5c feed (planned) is pulled by its consumers; nothing is scheduled |
+| New screen or HTTP route? | **No.** The contract is in code only; no consumer is wired (D-147) |
+| New permission or role? | **No** |
+| Can it change official geography? | **No.** It only reads published facts and holds no publication lock (`TimeBoundary` only) |
+| Anything to do at deployment? | **Nothing beyond the normal deployment.** The service provider is already registered |
+
+**The G-4 production restrictions still apply, and G-5 changes neither:**
+1. **No production steward appointment or Geography publication** until the Platform Owner authority is formally established.
+2. **No production database migration** of the Reference Geography tables until an explicit, technically enforced migration-approval control exists. **Until then, there is no official geography in production, and every read answers "nothing published yet" (position 0): empty, not an error.**
+
+**When G-8 data exists (later),** watch PlaceLookup's response time: it matches every published name in PHP. The remedy is an index or a `pg_trgm` prefilter, added by a developer when measured. There's no setting to change.

@@ -1,0 +1,28 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 276 ( 22%)
+............................................................... 126 / 276 ( 45%)
+............................................................... 189 / 276 ( 68%)
+......................................................F........ 252 / 276 ( 91%)
+........................                                        276 / 276 (100%)
+
+Time: 00:02.336, Memory: 18.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ReferenceGeographyDomainPurityTest::test_the_domain_holds_no_personal_data
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'PlaceMatcher.php: $name',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ReferenceGeographyDomainPurityTest.php:106
+
+FAILURES!
+Tests: 276, Assertions: 2798, Failures: 1.

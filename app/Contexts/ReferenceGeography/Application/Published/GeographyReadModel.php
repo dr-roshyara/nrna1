@@ -31,4 +31,14 @@ interface GeographyReadModel
 
     /** Which identity this one resolves to (a merge, v3.11 §12); itself if never merged or reversed. */
     public function resolve(string $unitId, Knowledge $knowledge): Resolution;
+
+    /**
+     * PlaceLookup (G-5b): which places, existing at the valid date, a name, alias or code may mean, with match quality.
+     * Optionally only places below $withinUnitId in $scheme (both or neither). No address parsing (D-83).
+     *
+     * @param int $limit 1 to 50
+     * @return list<LookupMatch> one per place, best first
+     * @throws \InvalidArgumentException for half a scope or a limit outside 1..50
+     */
+    public function lookup(string $text, string $validDate, Knowledge $knowledge, ?string $withinUnitId = null, ?string $scheme = null, int $limit = 10): array;
 }

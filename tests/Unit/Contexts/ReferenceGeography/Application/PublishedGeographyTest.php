@@ -15,6 +15,7 @@ use App\Contexts\ReferenceGeography\Domain\Basis;
 use App\Contexts\ReferenceGeography\Domain\BasisKind;
 use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
+use App\Contexts\ReferenceGeography\Domain\ClaimKind;
 use App\Contexts\ReferenceGeography\Domain\ClaimValue;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
@@ -62,6 +63,11 @@ final class PublishedGeographyTest extends TestCase
         $add(SlotKey::existence($u(self::KOSHI)), self::claim(SlotKey::existence($u(self::KOSHI)), 'exists'), 3);
         $add(SlotKey::containment($u(self::KOSHI), 'admin'), self::claim(SlotKey::containment($u(self::KOSHI), 'admin'), self::NEPAL), 3);
         $add(SlotKey::reconciliation($u(self::OLD_ID)), self::claim(SlotKey::reconciliation($u(self::OLD_ID)), self::BAGMATI, '1900-01-01'), 4);
+        // G-5b: names and a code
+        $add(SlotKey::sourceName($u(self::NEPAL), 'cia', 'en', 'official'), self::claim(SlotKey::sourceName($u(self::NEPAL), 'cia', 'en', 'official'), 'Nepal', '1768-01-01'), 1);
+        $add(SlotKey::sourceName($u(self::BAGMATI), 'gazette', 'en', 'official'), self::claim(SlotKey::sourceName($u(self::BAGMATI), 'gazette', 'en', 'official'), 'Bagmati Province'), 2);
+        $add(SlotKey::identifier($u(self::BAGMATI), 'iso3166-2'), self::claim(SlotKey::identifier($u(self::BAGMATI), 'iso3166-2'), 'NP-P3'), 2);
+        $add(SlotKey::sourceName($u(self::KOSHI), 'gazette', 'en', 'official'), self::claim(SlotKey::sourceName($u(self::KOSHI), 'gazette', 'en', 'official'), 'Koshi Province'), 3);
 
         return new class ($slots, $committed) implements GeographyReadSource {
             /** @param array<string, SlotHistory> $slots */
@@ -109,6 +115,11 @@ final class PublishedGeographyTest extends TestCase
             public function disputesForSubject(ReferenceUnitId $unit, int $p): array
             {
                 return [];
+            }
+
+            public function slotsOfKind(ClaimKind $kind, int $p): array
+            {
+                return array_values(array_filter($this->slots, static fn (SlotHistory $h): bool => $h->slot()->kind() === $kind && $h->latest($p) !== null));
             }
 
             public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array
@@ -187,6 +198,7 @@ final class PublishedGeographyTest extends TestCase
             static fn (PublishedGeography $g) => $g->place(self::NEPAL, '2020-01-01', $forged),
             static fn (PublishedGeography $g) => $g->childrenOf(self::NEPAL, 'admin', '2020-01-01', $forged),
             static fn (PublishedGeography $g) => $g->resolve(self::OLD_ID, $forged),
+            static fn (PublishedGeography $g) => $g->lookup('Nepal', '2020-01-01', $forged),
         ] as $i => $query) {
             try {
                 $query(self::geography());
@@ -228,6 +240,59 @@ final class PublishedGeographyTest extends TestCase
         $this->assertSame([self::KOSHI, self::BAGMATI], $g->childrenOf(self::NEPAL, 'admin', '2020-01-01', $g->knowledgeAt(4)));
         $this->assertSame([], $g->childrenOf(self::NEPAL, 'admin', '2000-01-01', $g->knowledgeAt(4)), 'no containment claim covers 2000');
         $this->assertSame([], $g->childrenOf(self::NEPAL, 'electoral', '2020-01-01', $g->knowledgeAt(4)));
+    }
+
+    public function test_lookup_matches_names_and_codes_of_places_existing_at_t_as_known_at_p(): void
+    {
+        $g = self::geography();
+        $k = $g->knowledgeAt(4);
+
+        $byName = $g->lookup('Bagmati', '2020-01-01', $k);
+        $this->assertSame(self::BAGMATI, $byName[0]->unitId);
+        $this->assertSame('exact', $byName[0]->quality);
+        $this->assertTrue($byName[0]->partial, '"Bagmati" in "Bagmati Province"');
+        $this->assertSame('name', $byName[0]->matchedOn);
+        $this->assertSame('Bagmati Province', $byName[0]->matchedValue);
+        $this->assertSame('en/official', $byName[0]->detail);
+        $this->assertNull($byName[0]->mergedInto);
+
+        $byCode = $g->lookup('np-p3', '2020-01-01', $k);
+        $this->assertCount(1, $byCode);
+        $this->assertSame(['identifier', 'NP-P3', 'iso3166-2'], [$byCode[0]->matchedOn, $byCode[0]->matchedValue, $byCode[0]->detail]);
+
+        $this->assertSame([], $g->lookup('Bagmati', '2000-01-01', $k), 'the province did not exist in 2000');
+        $this->assertSame([], $g->lookup('Koshi', '2020-01-01', $g->knowledgeAt(2)), 'not yet published at p = 2');
+        $this->assertSame([], $g->lookup('   ', '2020-01-01', $k));
+    }
+
+    public function test_lookup_can_be_scoped_below_a_place_in_a_scheme(): void
+    {
+        $g = self::geography();
+        $k = $g->knowledgeAt(4);
+
+        $within = $g->lookup('Province', '2020-01-01', $k, self::NEPAL, 'admin');
+        $this->assertSame([self::KOSHI, self::BAGMATI], array_map(static fn ($m) => $m->unitId, $within), 'both partial exact; then by id');
+        $this->assertSame([], $g->lookup('Nepal', '2020-01-01', $k, self::NEPAL, 'admin'), 'only places BELOW the scope');
+        $this->assertSame([], $g->lookup('Province', '2020-01-01', $k, self::NEPAL, 'electoral'));
+    }
+
+    public function test_lookup_refuses_half_a_scope_and_an_unreasonable_limit(): void
+    {
+        $g = self::geography();
+        foreach ([
+            static fn () => $g->lookup('Nepal', '2020-01-01', $g->knowledgeAt(4), self::NEPAL),
+            static fn () => $g->lookup('Nepal', '2020-01-01', $g->knowledgeAt(4), null, 'admin'),
+            static fn () => $g->lookup('Nepal', '2020-01-01', $g->knowledgeAt(4), limit: 0),
+            static fn () => $g->lookup('Nepal', '2020-01-01', $g->knowledgeAt(4), limit: 51),
+        ] as $i => $call) {
+            try {
+                $call();
+                $this->fail("call {$i} was accepted");
+            } catch (\InvalidArgumentException) {
+                $this->addToAssertionCount(1);
+            }
+        }
+        $this->assertCount(1, $g->lookup('Province', '2020-01-01', $g->knowledgeAt(4), limit: 1));
     }
 
     public function test_resolve_follows_one_merge_and_says_when_it_became_known(): void

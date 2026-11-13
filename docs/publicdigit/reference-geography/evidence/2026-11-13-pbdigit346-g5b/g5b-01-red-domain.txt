@@ -1,0 +1,59 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.020, Memory: 10.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_normalisation_ignores_case_spacing_punctuation_and_compatibility_forms
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:39
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_similarity_is_pg_trgm_trigram_similarity
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:47
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_quality_bands_are_the_legacy_ones
+Error: Class "App\Contexts\ReferenceGeography\Domain\MatchQuality" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:55
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_a_whole_name_matches_exactly_and_a_misspelling_with_lower_quality
+Error: Class "App\Contexts\ReferenceGeography\Domain\LookupCandidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:29
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:65
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_a_partial_name_is_found_through_its_best_run_of_words_and_said_to_be_partial
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:81
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_codes_match_only_exactly
+Error: Class "App\Contexts\ReferenceGeography\Domain\LookupCandidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:90
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_no_hard_coded_variant_is_applied
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:98
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_one_result_per_place_its_best_and_best_first_then_by_id
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:105
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_blank_text_matches_nothing
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceMatcher" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:119
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

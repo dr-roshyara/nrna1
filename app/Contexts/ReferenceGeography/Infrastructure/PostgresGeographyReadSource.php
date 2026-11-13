@@ -7,6 +7,7 @@ namespace App\Contexts\ReferenceGeography\Infrastructure;
 use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationRecord;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
+use App\Contexts\ReferenceGeography\Domain\ClaimKind;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
@@ -93,6 +94,17 @@ final class PostgresGeographyReadSource implements GeographyReadSource
         }
 
         return $disputes;
+    }
+
+    /** G-5b: every published slot of the kind (names, codes), each history through the accepted atlas mapping. */
+    public function slotsOfKind(ClaimKind $kind, int $p): array
+    {
+        $atlas = PostgresPublishedAtlas::at($this->db, $p);
+
+        return array_map(
+            static fn (object $row): SlotHistory => $atlas->history(SlotKey::decode($row->slot_key)),
+            $this->db->select('SELECT DISTINCT c.slot_key ' . self::PUBLISHED . ' WHERE c.kind = ? AND p.position <= ? ORDER BY c.slot_key', [$kind->value, $p]),
+        );
     }
 
     public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array

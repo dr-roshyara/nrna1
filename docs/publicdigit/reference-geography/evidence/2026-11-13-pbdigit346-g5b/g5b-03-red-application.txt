@@ -1,0 +1,34 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....E...EEE.                                                      12 / 12 (100%)
+
+Time: 00:00.030, Memory: 12.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_fabricated_position_beyond_the_boundary_is_refused_by_every_query
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::lookup()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:201
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:204
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_lookup_matches_names_and_codes_of_places_existing_at_t_as_known_at_p
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::lookup()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:250
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_lookup_can_be_scoped_below_a_place_in_a_scheme
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::lookup()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:273
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_lookup_refuses_half_a_scope_and_an_unreasonable_limit
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::lookup()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:283
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:289
+
+ERRORS!
+Tests: 12, Assertions: 34, Errors: 4.
