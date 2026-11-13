@@ -1,0 +1,100 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.FFFFFFF..                                                        10 / 10 (100%)
+
+Time: 00:00.043, Memory: 12.00 MB
+
+There were 7 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_the_nepal_to_france_move_breaks_g4_for_the_descendant_edge
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-4',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:137
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_a_descendant_whose_class_the_destination_profile_lacks_is_refused_by_d83
+W (ward): India has no ward position
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-83',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:142
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_ending_a_containment_leaves_the_whole_subtree_without_a_country
+P, X and W are classified with no country
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-83',
+-    1 => 'D-83',
+-    2 => 'D-83',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:147
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_ending_an_admission_leaves_its_classified_units_without_a_country
+P, P2, X and W
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-83',
+-    1 => 'D-83',
+-    2 => 'D-83',
+-    3 => 'D-83',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:152
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_an_admission_starting_inside_a_tree_is_checked_with_the_proposed_profile_in_the_same_revision
+without a profile for P: X and W have no position
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-83',
+-    1 => 'D-83',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:161
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_every_period_of_the_interval_is_checked
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-4',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:174
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\CountryChangeSubtreeTest::test_a_later_change_to_a_descendant_makes_the_validation_stale
+a grandchild's classification was read
+Failed asserting that null is not null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CountryChangeSubtreeTest.php:182
+
+FAILURES!
+Tests: 10, Assertions: 12, Failures: 7.

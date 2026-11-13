@@ -56,4 +56,4 @@ Each country publishes a **profile**: which position means what (for example 3 =
 
 This is pinned by `UndeterminedPositionTest` (it also covers scheme isolation).
 
-**Open finding F-1:** a change of `country(u)` (a cross-country move, a containment ending, admission) re-derives the whole subtree's positions, and nothing re-checks them yet. It awaits the Principal's decision (see the G-2 acceptance review).
+**Finding F-1 (closed):** a change of `country(u)` re-derives the whole subtree's positions. It is now re-checked by `countryChanges()`; see guide 09.

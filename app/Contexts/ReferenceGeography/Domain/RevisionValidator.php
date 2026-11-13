@@ -51,7 +51,7 @@ final class RevisionValidator
             }];
         }
 
-        $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader), ...$this->profileChanges($claims, $reader)];
+        $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader), ...$this->profileChanges($claims, $reader), ...$this->countryChanges($claims, $reader)];
 
         return new ValidationResult([...$authority, ...$violations], $reader->dependencies(), $images, StructuralClassification::ofClaims($claims), array_values($disputed));
     }
@@ -275,6 +275,170 @@ final class RevisionValidator
         return null;
     }
 
+    /**
+     * F-1, option (a) (Principal 2026-11-13; v3.11 §13): a CONTAINMENT or ADMISSION claim (a value or an end) that
+     * changes country(u) at some date re-derives every descendant's position from another profile. At each such date
+     * D-83 is re-checked for u and its affected descendants, and G-4 for each descendant's edge to its parent.
+     * Descendants are found through recorded family reads (CONTAINMENT, scheme) = node, bounded by the profile depth,
+     * and only when the country changes, so a move within one country reads no descendants. A descendant that is
+     * itself admitted (its own country), or whose classification this revision also changes (checked by G-4/D-83 on
+     * that claim), is skipped. Each (rule, unit) is reported once per revision.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function countryChanges(array $claims, DependencyRecordingReader $reader): array
+    {
+        $violations = [];
+        $reported = [];
+        foreach ($claims as $claim) {
+            $kind = $claim->slot->kind();
+            $root = $claim->slot->subject();
+            if ($root === null || !in_array($kind, [ClaimKind::Containment, ClaimKind::Admission], true)) {
+                continue;
+            }
+            $window = $claim->interval;
+            $after = new ProfilePositions(fn (SlotKey $slot): SlotHistory => $this->withRevision($slot, $window, $claims, $reader));
+            $before = new ProfilePositions(fn (SlotKey $slot): SlotHistory => $reader->history($slot, $window));
+            $schemes = $kind === ClaimKind::Containment ? [(string) $claim->slot->component('scheme')] : $this->childSchemes($root, $window, $claims, $reader);
+            foreach ($schemes as $scheme) {
+                $descendants = null;
+                $checked = [];
+                do {
+                    $new = false;
+                    $points = [];
+                    foreach ([...$after->checkpoints($window), ...$before->checkpoints($window)] as $d) {
+                        $points[$d->value()] = $d;
+                    }
+                    ksort($points);
+                    foreach ($points as $t) {
+                        if (isset($checked[$t->value()])) {
+                            continue;
+                        }
+                        $checked[$t->value()] = $new = true;
+                        $was = $before->countryOf($root, $scheme, $t);
+                        $is = $after->countryOf($root, $scheme, $t);
+                        $sameCountry = ($was === null && $is === null) || ($was !== null && $is !== null && $was->equals($is));
+                        if ($sameCountry) {
+                            continue;
+                        }
+                        $descendants ??= $this->descendants($root, $scheme, $window, $claims, $reader);
+                        foreach ([$root, ...$descendants] as $unit) {
+                            $isRoot = $unit->equals($root);
+                            if ((!$isRoot && !$this->inSubtreeAt($after, $unit, $root, $scheme, $t)) || $after->isAdmitted($unit, $t) || $this->revisionClassifies($claims, $unit, $scheme)) {
+                                continue;
+                            }
+                            $class = $after->classOf($unit, $scheme, $t);
+                            if ($class === null) {
+                                continue;
+                            }
+                            $key = 'D-83|' . $unit->value() . '|' . $scheme;
+                            if (!isset($reported[$key]) && !$this->classIsTerritorial($after, $unit, $scheme, $class, $t)) {
+                                $reported[$key] = true;
+                                $violations[] = new Violation('D-83', $claim->id, "After the country change, unit {$unit->value()} ('{$class}') has no territorial position on {$t->value()}.");
+                            }
+                            $parent = $isRoot ? null : $after->parentOf($unit, $scheme, $t);
+                            $key = 'G-4|' . $unit->value() . '|' . $scheme;
+                            if ($parent === null || isset($reported[$key])) {
+                                continue;
+                            }
+                            $pc = $after->positionOf($unit, $scheme, $t);
+                            $pp = $after->positionOf($parent, $scheme, $t);
+                            if ($pc !== null && $pp !== null && $pp >= $pc) {
+                                $reported[$key] = true;
+                                $violations[] = new Violation('G-4', $claim->id, "After the country change, position {$pp} of {$parent->value()} is not above position {$pc} of {$unit->value()} on {$t->value()}.");
+                            }
+                        }
+                    }
+                } while ($new);
+            }
+        }
+
+        return $violations;
+    }
+
+    /**
+     * @param list<Claim> $claims
+     * @return list<string> the schemes in which $unit has children over the window (recorded family read, all schemes)
+     */
+    private function childSchemes(ReferenceUnitId $unit, ValidInterval $window, array $claims, DependencyRecordingReader $reader): array
+    {
+        $schemes = [];
+        foreach ($reader->family(ClaimKind::Containment, [], $unit->value(), $window) as $slot) {
+            $schemes[(string) $slot->component('scheme')] = true;
+        }
+        foreach ($claims as $other) {
+            if ($other->slot->kind() === ClaimKind::Containment && !$other->value->isNone() && $other->value->value() === $unit->value()) {
+                $schemes[(string) $other->slot->component('scheme')] = true;
+            }
+        }
+
+        return array_map('strval', array_keys($schemes));
+    }
+
+    /**
+     * Candidate descendants of $root in $scheme at any time of the window: breadth-first over recorded family reads,
+     * plus this revision's containment claims, bounded by the profile depth.
+     *
+     * @param list<Claim> $claims
+     * @return list<ReferenceUnitId>
+     */
+    private function descendants(ReferenceUnitId $root, string $scheme, ValidInterval $window, array $claims, DependencyRecordingReader $reader): array
+    {
+        $seen = [$root->value() => true];
+        $found = [];
+        $level = [$root];
+        for ($depth = 0; $depth < 10 && $level !== []; $depth++) {
+            $next = [];
+            foreach ($level as $node) {
+                $children = array_map(static fn (SlotKey $s): ?ReferenceUnitId => $s->subject(), $reader->family(ClaimKind::Containment, ['scheme' => $scheme], $node->value(), $window));
+                foreach ($claims as $other) {
+                    if ($other->slot->kind() === ClaimKind::Containment && $other->slot->component('scheme') === $scheme && !$other->value->isNone() && $other->value->value() === $node->value()) {
+                        $children[] = $other->slot->subject();
+                    }
+                }
+                foreach ($children as $child) {
+                    if ($child !== null && !isset($seen[$child->value()])) {
+                        $seen[$child->value()] = true;
+                        $found[] = $next[] = $child;
+                    }
+                }
+            }
+            $level = $next;
+        }
+
+        return $found;
+    }
+
+    /** At t, does $unit's containment chain reach $root before any other admitted entry (its own country)? */
+    private function inSubtreeAt(ProfilePositions $positions, ReferenceUnitId $unit, ReferenceUnitId $root, string $scheme, ValidDate $t): bool
+    {
+        $current = $positions->parentOf($unit, $scheme, $t);
+        for ($depth = 0; $current !== null && $depth < 10; $depth++) {
+            if ($current->equals($root)) {
+                return true;
+            }
+            if ($positions->isAdmitted($current, $t)) {
+                return false;
+            }
+            $current = $positions->parentOf($current, $scheme, $t);
+        }
+
+        return false;
+    }
+
+    /** @param list<Claim> $claims */
+    private function revisionClassifies(array $claims, ReferenceUnitId $unit, string $scheme): bool
+    {
+        foreach ($claims as $other) {
+            if ($other->slot->kind() === ClaimKind::Classification && $other->slot->component('scheme') === $scheme && $other->slot->subject()?->equals($unit)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function classIsTerritorial(ProfilePositions $positions, ReferenceUnitId $unit, string $scheme, string $class, ValidDate $t): bool
     {
         $country = $positions->countryOf($unit, $scheme, $t);
@@ -303,9 +467,10 @@ final class RevisionValidator
             if ($claim->basis->kind !== BasisKind::Instrument) {
                 // D-82: a territorial claim needs an issuer whose competence can be checked, so it rests on an
                 // instrument. The exceptions are those v3.11 names: a BOUNDARY from a cartographic source attributed as
-                // such (§3), EXISTENCE established by a duplicate-search assessment (I-4), and withdrawals on a correction.
+                // such (§3; only that basis kind, F-2), EXISTENCE established by a duplicate-search assessment (I-4; its
+                // relation to D-82 is PENDING a Principal decision, see the G-2 acceptance review), and withdrawals.
                 $exempt = $claim->value->isNone()
-                    || ($claim->slot->kind() === ClaimKind::Boundary && $claim->basis->kind === BasisKind::Other)
+                    || ($claim->slot->kind() === ClaimKind::Boundary && $claim->basis->kind === BasisKind::AttributedCartographicSource)
                     || ($claim->slot->kind() === ClaimKind::Existence && $claim->basis->kind === BasisKind::DuplicateSearchAssessment);
                 if (in_array($claim->slot->kind(), self::TERRITORIAL_KINDS, true) && !$exempt) {
                     $violations[] = new Violation('D-82_BASIS', $claim->id, 'A territorial claim rests on an instrument of a competent issuer.');

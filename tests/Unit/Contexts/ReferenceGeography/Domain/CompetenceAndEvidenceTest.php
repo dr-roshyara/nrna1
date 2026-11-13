@@ -163,7 +163,7 @@ final class CompetenceAndEvidenceTest extends TestCase
     {
         $unit = ReferenceUnitId::fromString(self::UNIT);
         $onOther = self::claim(SlotKey::containment($unit, 'admin'), self::PARENT, self::iv('1990-06-01'), 'note', BasisKind::Other);
-        $cartographic = self::claim(SlotKey::boundary($unit, 'survey-dept'), 'polygon-ref', self::iv('1990-06-01'), 'map', BasisKind::Other);
+        $cartographic = self::claim(SlotKey::boundary($unit, 'survey-dept'), 'polygon-ref', self::iv('1990-06-01'), 'map', BasisKind::AttributedCartographicSource);   // F-2: was Other
         $duplicateSearch = self::claim(SlotKey::existence($unit), 'exists', self::iv('1990-06-01'), 'dup-1', BasisKind::DuplicateSearchAssessment);
 
         $this->assertSame(['D-82_BASIS'], self::rules(self::validate([$onOther], [])), 'no instrument, no issuer, no competence');

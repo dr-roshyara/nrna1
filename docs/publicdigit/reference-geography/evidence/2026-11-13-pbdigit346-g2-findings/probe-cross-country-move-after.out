@@ -1,0 +1,2 @@
+Move P (province) from Nepal to Germany, from 2016: violations = [G-4]
+After the move, by §13: position(P) = 6 (Germany's province), position(X) = 4 (Germany's district): the edge X -> P breaks G-4.

@@ -15,5 +15,10 @@ enum BasisKind: string
     case DuplicateSearchAssessment = 'duplicate-search-assessment';
     /** A correction of an erroneous earlier assertion (v3.11 §3 withdrawal row "instrument or correction"; D-228). */
     case Correction = 'correction';
+    /**
+     * A cartographic source, explicitly identified (the basis reference) and attributed as cartographic evidence:
+     * a basis for a BOUNDARY only (v3.11 §3 Boundary row; Principal F-2, 2026-11-13).
+     */
+    case AttributedCartographicSource = 'attributed-cartographic-source';
     case Other = 'other';
 }

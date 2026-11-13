@@ -29,8 +29,7 @@ use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
  *   classification change reads the parent AND the children (v3.11 §5.2 G-4 rows);
  * - a classified unit with no reachable country is refused by D-83 (no territorial position without a country);
  * - scheme isolation: a profile change in one scheme does not reach units classified in another.
- * NOT covered here (open finding F-1 of the review): a containment or admission change that changes country(u) for a
- * whole subtree; see evidence probe-cross-country-move.php.
+ * A containment or admission change that changes country(u) for a whole subtree: CountryChangeSubtreeTest (F-1).
  */
 final class UndeterminedPositionTest extends TestCase
 {

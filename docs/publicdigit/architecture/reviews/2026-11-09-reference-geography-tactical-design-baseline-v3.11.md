@@ -255,6 +255,16 @@ v3.2 marked a revision stale only when a **new** claim matched a predicate. **Th
 | Reconciliation of A, B | `allSlots(A)`, `allSlots(B)` | Subject families for A and B over all time |
 | Multi-country | The union of the above for every claim, in every partition touched | — |
 
+**Implementation annotation (2026-11-13, Principal decision on G-2 finding F-1, option (a)).** These queries date from v3.4, before §13 derived positions from `country(u)`, so they lag §13's G-4 ("for every containment u → P"). Added rows:
+
+| Invariant | Query | Dependency recorded |
+|---|---|---|
+| G-4 and D-83 (a CONTAINMENT or ADMISSION claim of u over V that changes `country(u)` at some date) | `countryOf(u)` before and after, through the ancestors' containment and admission; when they differ: `descendantsOf(u, S, V)` (breadth-first, bounded by the profile depth) and each one's class, parent and country; the profile slots read | Slots: the ancestors' containment and admission, each descendant's classification and containment, the profile slots. Family: (CONTAINMENT, S) = each subtree node over V (for an admission: (CONTAINMENT, *) = u, every scheme) |
+
+- **A change that leaves `country(u)` unchanged reads no descendants,** so it creates no false staleness.
+- **A descendant that is itself admitted** (its own country) is outside the affected subtree.
+- **Cross-country moves remain permitted.**
+
 **A phantom insertion is a gain and a phantom removal is a loss of a family result. Both are caught by the family rule.**
 
 **Where the proof stops [TU]:** completeness holds **if** every invariant check is implemented exactly through the dependencies in this matrix. **Implementation must enforce it structurally**: the validator may read published state only through a dependency-recording query interface, and tests assert that no other read path exists.

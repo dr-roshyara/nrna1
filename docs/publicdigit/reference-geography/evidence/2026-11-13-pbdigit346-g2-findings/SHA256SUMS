@@ -1,0 +1,13 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+ddea352332c693fef16748905cdda0aeaa4940195f45c8560785cee60833e5b3  ./architecture-full.txt
+211f9ca6b882255ce1858a41a555193d723671e762d6ed752a2d9124c1b5f5b8  ./db-free-all.txt
+35fbaf64e3054ba1201e46ae3defa6de217c0d8efd0fc46d4bc577eccb234b08  ./green-first-run-fixture-defect.txt
+d820075350e4c5434d32a4abf38c718488c54aff179aba16e918e1608a8fcaa0  ./green.txt
+b831e5774e75c0a1f5e9d15ecf400151ecb1b8374faec2b94ab4e83e1e144d75  ./isolated-cluster/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster/suite.exit
+fec4155f403348595b67399396673b7e6826ff69de67343c9d4e35d46e2fb176  ./isolated-cluster/suite.txt
+2786edd6446327255223d23f779189d8e9423ef397402955c6a335da435257b2  ./probe-cross-country-move-after.out
+7312349bf973ea606874114b07faafb31c7a21ee2f9008ccac3de9fdeb0ec65e  ./README.md
+49c1d933cc8dd19348ef366e53d5763d03cba4cb7ef481ddcad19d010fee9ddb  ./reasons.txt
+4ac62874c5043f85b6b85cd87bf6e1f395f08e9e72f7d81be6c10606c9dae670  ./red-BoundaryBasisTest.txt
+6b776bf773909f562f0e83a55b4ad3fba4c454f7aff8c7999a9d86c5747f72ce  ./red-CountryChangeSubtreeTest.txt
