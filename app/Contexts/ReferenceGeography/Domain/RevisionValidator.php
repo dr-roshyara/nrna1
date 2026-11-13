@@ -51,7 +51,7 @@ final class RevisionValidator
             }];
         }
 
-        $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader)];
+        $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader), ...$this->profileChanges($claims, $reader)];
 
         return new ValidationResult([...$authority, ...$violations], $reader->dependencies(), $images, StructuralClassification::ofClaims($claims), array_values($disputed));
     }
@@ -169,6 +169,110 @@ final class RevisionValidator
         }
 
         return $violations;
+    }
+
+    /**
+     * G-6 (v3.11 §13 "G-6 (derived)", §5.2): a PROFILE_CLASS or PROFILE_TIER claim (a new value or an end) may not
+     * leave a unit of that country, classified into an affected class, without a position, at a non-territorial
+     * position, or breaking G-4 with its parent or children. Affected classes: the class itself, or (for a tier) the
+     * classes at that position, a recorded family read (PROFILE_CLASS, country, scheme, *) = position. Units: the
+     * recorded family (CLASSIFICATION, *, scheme) = class, plus this revision. Each unit is reported once per claim.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function profileChanges(array $claims, DependencyRecordingReader $reader): array
+    {
+        $violations = [];
+        foreach ($claims as $claim) {
+            $kind = $claim->slot->kind();
+            $country = $claim->slot->subject();
+            $scheme = $claim->slot->component('scheme');
+            if (!in_array($kind, [ClaimKind::ProfileClass, ClaimKind::ProfileTier], true) || $country === null || $scheme === null) {
+                continue;
+            }
+            $window = $claim->interval;
+            $positions = new ProfilePositions(fn (SlotKey $slot): SlotHistory => $this->withRevision($slot, $window, $claims, $reader));
+            $classes = [];
+            if ($kind === ClaimKind::ProfileClass) {
+                $classes[(string) $claim->slot->component('class')] = true;
+            } else {
+                $at = (string) $claim->slot->component('position');
+                foreach ($reader->family(ClaimKind::ProfileClass, ['country_entry' => $country->value(), 'scheme' => $scheme], $at, $window) as $slot) {
+                    $classes[(string) $slot->component('class')] = true;
+                }
+                foreach ($claims as $other) {
+                    if ($other->slot->kind() === ClaimKind::ProfileClass && $other->slot->subject()?->equals($country)
+                        && $other->slot->component('scheme') === $scheme && !$other->value->isNone() && $other->value->value() === $at) {
+                        $classes[(string) $other->slot->component('class')] = true;
+                    }
+                }
+            }
+            foreach (array_keys($classes) as $class) {
+                $class = (string) $class;
+                $units = [];
+                foreach ($reader->family(ClaimKind::Classification, ['scheme' => $scheme], $class, $window) as $slot) {
+                    $units[$slot->encoded()] = $slot->subject();
+                }
+                foreach ($claims as $other) {
+                    if ($other->slot->kind() === ClaimKind::Classification && $other->slot->component('scheme') === $scheme
+                        && !$other->value->isNone() && $other->value->value() === $class) {
+                        $units[$other->slot->encoded()] = $other->slot->subject();
+                    }
+                }
+                foreach ($units as $unit) {
+                    if ($unit !== null && ($problem = $this->unitBrokenByProfile($positions, $reader, $claims, $unit, $country, $scheme, $class, $window)) !== null) {
+                        $violations[] = new Violation('G-6', $claim->id, $problem);
+                    }
+                }
+            }
+        }
+
+        return $violations;
+    }
+
+    /** @param list<Claim> $claims */
+    private function unitBrokenByProfile(ProfilePositions $positions, DependencyRecordingReader $reader, array $claims, ReferenceUnitId $unit, ReferenceUnitId $country, string $scheme, string $class, ValidInterval $window): ?string
+    {
+        $children = [];
+        foreach ($reader->family(ClaimKind::Containment, ['scheme' => $scheme], $unit->value(), $window) as $slot) {
+            $children[$slot->encoded()] = $slot->subject();
+        }
+        $checked = [];
+        do {
+            $new = false;
+            foreach ($positions->checkpoints($window) as $t) {
+                if (isset($checked[$t->value()])) {
+                    continue;
+                }
+                $checked[$t->value()] = $new = true;
+                if ($positions->classOf($unit, $scheme, $t) !== $class || !$positions->countryOf($unit, $scheme, $t)?->equals($country)) {
+                    continue;
+                }
+                $position = $positions->positionOfClass($country, $scheme, $class, $t);
+                if ($position === null) {
+                    return "Unit {$unit->value()} would be classified '{$class}' with no position on {$t->value()}.";
+                }
+                if ($positions->tierAt($country, $scheme, $position, $t)?->kind !== TierKind::Territorial) {
+                    return "Unit {$unit->value()} would sit at a non-territorial position {$position} on {$t->value()} (D-83).";
+                }
+                $parent = $positions->parentOf($unit, $scheme, $t);
+                $parentPosition = $parent === null ? null : $positions->positionOf($parent, $scheme, $t);
+                if ($parentPosition !== null && $parentPosition >= $position) {
+                    return "Unit {$unit->value()} at {$position} would not sit below its parent at {$parentPosition} on {$t->value()} (G-4).";
+                }
+                foreach ($children as $child) {
+                    if ($child !== null && $positions->parentOf($child, $scheme, $t)?->equals($unit)) {
+                        $childPosition = $positions->positionOf($child, $scheme, $t);
+                        if ($childPosition !== null && $position >= $childPosition) {
+                            return "Unit {$unit->value()} at {$position} would not sit above its child at {$childPosition} on {$t->value()} (G-4).";
+                        }
+                    }
+                }
+            }
+        } while ($new);
+
+        return null;
     }
 
     private function classIsTerritorial(ProfilePositions $positions, ReferenceUnitId $unit, string $scheme, string $class, ValidDate $t): bool

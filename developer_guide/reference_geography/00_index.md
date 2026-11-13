@@ -12,4 +12,6 @@
 | G-2d-1 | [Endings, corrections and succession (G-5, D-228)](05_g2d1_endings_and_succession.md) | implemented 2026-11-13 |
 | G-2d-2 | [Territorial competence and the evidence basis (D-82, D-227)](06_g2d2_competence_and_evidence.md) | implemented 2026-11-13 |
 | G-2d-3 | [Tiers, classification and positions (D-83, G-4)](07_g2d3_tiers_classification_positions.md) | implemented 2026-11-13; G-2d-4 (G-6) next |
+| G-2d-4 | [Profile changes (G-6)](08_g2d4_profile_changes.md) | implemented 2026-11-13; **G-2 complete, at the Principal's acceptance boundary** |
+| — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |

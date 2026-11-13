@@ -1,0 +1,8 @@
+Lifecycle engine computes voting_active when voting window is currently open
+Failed asserting that two strings are equal.
+Engine should use ElectionClockService logic and derive VotingActive state
+Failed asserting that two values of enumeration App\Domain\Election\Enum\ElectionLifecycleState are equal, ReadyForVoting does not match expected VotingActive.
+Code creation should not redirect — it is a preparatory operation
+Failed asserting that 302 is not equal to 302.
+Hardcoded denial reason in app/Http/Controllers/ElectionController.php: 'not eligible'
+Governance vocabulary: Should use resolver denial_reason

@@ -1,0 +1,70 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F.FFF.F                                                             7 / 7 (100%)
+
+Time: 00:00.034, Memory: 12.00 MB
+
+There were 5 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\ProfileChangeTest::test_a_class_may_not_end_while_units_carry_it
+DIST would be classified into a class without a position
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-6',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ProfileChangeTest.php:114
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\ProfileChangeTest::test_moving_a_class_must_keep_parent_above_child
+district at 3 = its parent province at 3
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-6',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ProfileChangeTest.php:125
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\ProfileChangeTest::test_moving_a_class_to_a_position_that_is_not_territorial_is_refused
+position 9 is an address component (D-83)
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-6',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ProfileChangeTest.php:131
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\ProfileChangeTest::test_a_tier_may_not_end_or_change_kind_while_units_sit_at_it
+districts would sit at an address component
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-6',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ProfileChangeTest.php:137
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\ProfileChangeTest::test_a_later_unit_classified_into_the_moved_class_makes_the_validation_stale
+a gain in the class family
+Failed asserting that null is identical to an object of class "App\Contexts\ReferenceGeography\Domain\PublishedClaim".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ProfileChangeTest.php:154
+
+FAILURES!
+Tests: 7, Assertions: 7, Failures: 5.
