@@ -164,11 +164,10 @@ final class CompetenceAndEvidenceTest extends TestCase
         $unit = ReferenceUnitId::fromString(self::UNIT);
         $onOther = self::claim(SlotKey::containment($unit, 'admin'), self::PARENT, self::iv('1990-06-01'), 'note', BasisKind::Other);
         $cartographic = self::claim(SlotKey::boundary($unit, 'survey-dept'), 'polygon-ref', self::iv('1990-06-01'), 'map', BasisKind::AttributedCartographicSource);   // F-2: was Other
-        $duplicateSearch = self::claim(SlotKey::existence($unit), 'exists', self::iv('1990-06-01'), 'dup-1', BasisKind::DuplicateSearchAssessment);
 
         $this->assertSame(['D-82_BASIS'], self::rules(self::validate([$onOther], [])), 'no instrument, no issuer, no competence');
         $this->assertTrue(self::validate([$cartographic], [])->isValid(), 'v3.11 §3: a boundary may rest on a cartographic source attributed as such');
-        $this->assertTrue(self::validate([$duplicateSearch], [])->isValid(), 'I-4: existence may be established by a duplicate-search assessment');
+        // D-229: the former duplicate-search exception for EXISTENCE is gone; see DuplicateSearchEvidenceTest
     }
 
     public function test_the_next_day_of_a_valid_date(): void

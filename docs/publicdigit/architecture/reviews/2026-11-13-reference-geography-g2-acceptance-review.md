@@ -1,133 +1,125 @@
-# Reference Geography G-2: acceptance review for the Principal (PBDIGIT-346), revision 2
+# Reference Geography G-2: acceptance review for the Principal (PBDIGIT-346), revision 3
 
-**Date:** 2026-11-13 · **Author:** Session A (engineering supplies evidence; it does not accept its own work) · **Status:** for the Principal's decision.
+**Date:** 2026-11-13 · **Author:** Session A (engineering supplies evidence; it does not accept its own work) · **Status:** **ready for final Principal acceptance.**
 
-**Revision 2** follows the Principal's decisions on revision 1:
-- F-1: option (a);
-- F-2: narrowed to an attributed cartographic source;
-- the duplicate search: no new exception; trace the sources.
-
-**Sources:**
-- v3.11 (D-93): §1 (I-4), §3, §5, §5.2 (with the 2026-11-13 implementation annotation), §13;
-- D-82, D-83, D-91, D-227, D-228.
+**History:**
+- **revision 1:** found F-1 and F-2;
+- **revision 2:** closed F-1 and F-2; raised Q-DS;
+- **revision 3:** implements the Principal's D-229 (Q-DS option A).
 
 **Evidence:**
-- review: `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g2-review/`;
-- fixes: `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g2-findings/`.
+- `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g2-review/` (review);
+- `…-g2-findings/` (F-1, F-2);
+- `…-g2-qds/` (D-229).
 
-## 1. Verdict
+## 1. Verdict and status
 
-**ACCEPT WITH ONE CONDITION.**
-- **F-1 and F-2 are closed,** test-first.
-- **One question stays open,** because the sources genuinely conflict: Q-DS, how I-4's duplicate-search assessment relates to D-82 (§4).
-- **Until you decide Q-DS,** the code keeps its G-2d-2 behaviour, unchanged and marked PENDING in the code.
+**Recommended verdict: ACCEPT G-2** as the Reference Geography **domain-validation** baseline, with the G-4 obligations in §7 carried forward.
 
-## 2. What changed, in business terms
-
-- **A place moved to another country is re-checked with everything under it.** The move is allowed, but it is refused if:
-  - any child would end up above its parent;
-  - any place under it has a class the new country doesn't have.
-
-  The same applies when a place's containment ends, or when a country's admission starts or ends.
-- **A boundary may rest on a map only if the map is named and attributed as cartographic evidence.** A vague "other" source no longer counts, and a map is no basis for anything except a boundary.
-
-## 3. F-1: root cause, fix and evidence
-
-**Root cause:**
-- §13 derives every position from `country(u)`, and G-4 holds for every edge.
-- But the §5.2 query for a containment change (written in v3.4, before §13) reads only the unit and its parent.
-- So a change of country re-derived the positions of the whole subtree, and nothing re-checked them.
-
-**Fix:** `RevisionValidator::countryChanges()`.
-- **For each containment or admission claim,** it compares the unit's country before and after, at every change date in the claim's interval.
-- **Where the country changes,** it re-checks D-83 for the unit and its descendants, and G-4 for each descendant's edge to its parent.
-- **Descendants come from recorded family reads,** at most 10 levels deep.
-- **Within one country, no descendant is read,** so there is no false staleness.
-- **The §5.2 matrix now carries an implementation annotation** with the added query row, so it no longer lags §13.
-
-**Evidence:** `CountryChangeSubtreeTest`, 10 tests.
-- **RED:** 7 failures for the missing behaviour. The 3 guards against over-reach passed already: a compatible destination, a move within one country, and another scheme.
-- **GREEN:** all pass.
-- **The revision 1 probe** (Nepal → Germany) now reports `[G-4]` (`probe-cross-country-move-after.out`).
-
-| Required case | Test |
+| Item | Status |
 |---|---|
-| move to another country | `…compatible_profile_is_accepted`, `…nepal_to_france_move_breaks_g4…` |
-| containment ending | `test_ending_a_containment_leaves_the_whole_subtree_without_a_country` |
-| admission starting and ending | `test_ending_an_admission…`, `test_an_admission_starting_inside_a_tree…` |
-| a class missing in the destination (D-83) | `test_a_descendant_whose_class_the_destination_profile_lacks…` |
-| G-4 after the change | `…nepal_to_france_move_breaks_g4…` |
-| a multi-claim revision | `test_an_admission_starting_inside_a_tree…` (detach, admit and profile together) |
-| every period of the interval | `test_every_period_of_the_interval_is_checked` (France changes in 2020) |
-| staleness from descendant facts | `test_a_later_change_to_a_descendant_makes_the_validation_stale` |
-| scheme isolation | `test_a_country_change_in_another_scheme…` |
-| no false staleness | `test_a_move_within_one_country_reads_no_descendants` |
+| F-1: a country change re-checks the subtree (option (a)) | **accepted and implemented** (`b90500b4c`) |
+| F-2: a boundary rests on an attributed cartographic source only | **accepted and implemented** (`b90500b4c`) |
+| Q-DS: the duplicate search is supplementary (option A) | **approved as D-229 and implemented** (this revision's commit) |
 
-## 4. F-2, and the duplicate-search question (Q-DS)
+## 2. What G-2 guarantees, in business terms
 
-**F-2 (closed).**
-- **The change:** `BasisKind::AttributedCartographicSource` is the only non-instrument basis a BOUNDARY accepts, and only a BOUNDARY.
-- **Tests:** `BoundaryBasisTest` (3). RED was 2 errors and 1 failure.
-- **One earlier assertion changed** (`CompetenceAndEvidenceTest`, the boundary example), because the approved narrowing invalidated it.
+- **A change to the official atlas is a numbered, frozen revision,** validated against the atlas at one moment, and approved exactly as it stands.
+- **Every fact it read is recorded,** so a relevant later publication makes it stale.
+- **History is never rewritten.** Endings, corrections and successions are new facts (D-228).
+- **Every official fact rests on evidence from an issuer competent at the instrument's issue date** (D-82, D-227).
+  - **A place exists in the atlas only on a competent establishing instrument,** which may be a later official instrument, not only the founding document.
+  - **A search showing the place isn't already present is recorded as extra evidence,** never as a substitute (D-229).
+  - **A boundary may rest on a named, attributed map.** Nothing else rests on a map.
+- **Each country's profile governs its places:**
+  - an address component is never an official unit;
+  - a parent always sits above its child;
+  - a profile change can't break existing places;
+  - **moving a place to another country re-checks everything under it.**
 
-**Q-DS: the exact texts.**
-- **D-82:** "Reference Geography publishes only geographical facts supported by **competent official sources**."
-- **v3.11 §1, Identity, I-4:** "every *establish* claim cites an establishing instrument, **or a recorded duplicate-search assessment**."
-- **v3.11 §3:** "A claim is an insert-only assertion about one slot, with a value, a valid interval … and **a basis**." The Existence row's basis is "**Territorial**".
-- **v3.11 §5:** "D-82: territorial claims need territorial competence."
-- **D-227:** competence is assessed at the **instrument's** issue or adoption date, which presupposes an instrument with an issuer.
+## 3. D-229: implementation and evidence
 
-**Analysis:**
-- **The two rules protect different things.** I-4 sits in §1 (Identity) and protects against minting a second identity for a place that already has one: the duplicate search is the proof of that. D-82, §3 and §5 protect the evidence for the fact that the place exists.
-- **The model gives each claim one basis.** An existence claim whose basis is a duplicate-search assessment satisfies I-4 but has no issuer, so D-82 can't be satisfied for it.
-- **So the texts can't all apply literally to the same claim.** It's neither an "alternative expressly permitted" (D-82 names no exception) nor cleanly "alongside" (there's only one basis). **It's a genuine conflict that needs your decision.**
+**Mechanism.** The existing Revision-assessment mechanism, so no second mechanism:
+- `AssessmentKind::DuplicateSearch` is recorded with `recordAssessment()` and frozen in the content-version digest.
+- **It is not mandatory.** v3.11 does not define when a duplicate search is "applicable", so it's recorded, not demanded. Making it mandatory would be a further decision for the Principal.
+- **`BasisKind::DuplicateSearchAssessment` is removed,** and `Claim` (I-4) requires an instrument for every establish claim.
+- **The validator's former exemption is removed.**
 
-**Options:**
+| Required proof | Test (`DuplicateSearchEvidenceTest`) |
+|---|---|
+| a duplicate search alone is refused; no non-instrument basis establishes existence | `test_a_duplicate_search_is_not_a_basis_and_existence_needs_an_instrument` |
+| recorded as a supplementary assessment, never the basis, inside the approved version | `test_a_duplicate_search_is_recorded_as_a_supplementary_assessment_and_frozen_with_the_version` |
+| it doesn't bypass issuer competence (D-82, D-227) | `test_a_duplicate_search_does_not_bypass_issuer_competence` |
+| a later competent instrument is accepted | `test_a_later_competent_instrument_establishes_a_long_existing_place` |
+| a competent instrument is accepted | the same test, and every existing Existence fixture |
+| the Boundary (F-2) and Withdrawal (D-228) rules are preserved | BoundaryBasisTest (3), SuccessionValidationTest (8): unchanged and passing |
 
-| Option | Rule | Business consequence |
-|---|---|---|
-| **A, cumulative (recommended)** | Existence always rests on a competent instrument; D-82 holds with no exception. The duplicate search is recorded **in addition**, as a Revision assessment, not as the claim's basis. I-4 reads: "an establishing instrument, with a recorded duplicate search where the place is not newly created" | **Strongest evidence:** every place in the atlas traces to a competent source. A place whose founding instrument can't be found can't be entered until a competent source is found. G-8 must then cite competent sources for countries and areas (under D-227) |
-| B, alternative (current code) | A duplicate-search assessment may be the basis of an existence claim: an exception to D-82 | Long-existing places can be entered without a founding instrument. Their containment and classification still need instruments. **A weaker D-82** |
-| C, model change | A claim carries an instrument basis **and** an optional duplicate-search reference | The same policy as A, with a richer model and more change |
+- **RED:** 3 errors (the missing assessment kind) and 1 failure (the basis kind still existed).
+- **GREEN:** 140 domain tests.
+- **Two earlier assertions encoded the old I-4 reading.** D-229 made them invalid, so they were updated deliberately, by manual edits:
+  - `SupersessionTest` (a duplicate-search existence claim was constructible; the test is renamed);
+  - `CompetenceAndEvidenceTest` (the duplicate-search exemption assertion).
 
-**If you choose A, it's one small test-first step:**
-- an existence claim on a duplicate-search basis is refused;
-- the duplicate search is recorded as an assessment.
+  The first-GREEN output showing exactly these two failures is kept (`green-before-old-tests.txt`).
 
-## 5. Traceability, updated (changes from revision 1)
+**Normative documents reconciled:**
+- **the decision record** (`…/2026-11-08-organisation-strategic-discovery-record-structure-mandates-conventions.md`): §11.129 holds **D-229**, explicitly a new Principal decision amending I-4;
+- **v3.11:** I-4 (in §1 and in the §5.2 row) and the §3 Existence and Boundary rows carry dated "amended by D-229 / F-2" annotations. **The original I-4 wording remains visible, so nothing presents Option A as original text.**
 
-| Invariant | Source | Code | Test |
+## 4. Traceability
+
+| Invariant | Source | Code | Tests |
 |---|---|---|---|
-| G-4 and D-83 after a change of country | §13; §5.2 annotation; Principal F-1 (a) | `countryChanges`, `descendants`, `inSubtreeAt`, `childSchemes` | CountryChangeSubtreeTest (10) |
-| Boundary basis | §3 Boundary row; Principal F-2 | `BasisKind::AttributedCartographicSource`; D-82_BASIS | BoundaryBasisTest (3); CompetenceAndEvidenceTest |
-| Duplicate-search existence | I-4 vs D-82 / §3 | unchanged, **PENDING Q-DS** | CompetenceAndEvidenceTest (current behaviour) |
+| Revision lifecycle; frozen content version; approval of that version | v3.11 §7; D-89 | `Revision` | RevisionTest (11), RevisionValidationTest (7) |
+| Insert-only slots; supersession within a slot; withdrawal = "none" | §3, §4 | `SlotKey`, `SlotHistory` | SupersessionTest (9), SlotKeyCollisionTest (9) |
+| Before-images (VALUE / NONE / ABSENT) | §5.1 | `BeforeImage` | BeforeImageTest (7) |
+| Staleness from gains and losses | §5.1, §5.2 | `DependencySet`, the three dependency kinds | DependencyTest (11), DependencyRecordingReaderTest (4) |
+| Reads only through the recording reader | §5.2 [TU] | `DependencyRecordingReader`, purity guard | ReferenceGeographyDomainPurityTest |
+| Parents exist; admission before grouping | §5.2; D-86 | PARENT_EXISTS, ADMISSION_BEFORE_GROUPING | RevisionValidatorTest (7) |
+| I-1, I-2 | §5 | I-1 rule, `IdentifierInvariants` | RevisionValidatorIdentifierTest (7), IdentityInvariantsTest (7) |
+| I-4 as amended: existence on an instrument; duplicate search supplementary | **D-229**; §1; D-82; D-227 | `Claim`, `AssessmentKind::DuplicateSearch` | DuplicateSearchEvidenceTest (4), SupersessionTest |
+| Structural classification | §14 | `StructuralClassification` | StructuralClassificationTest (2) |
+| G-5 endings, successors, no live child; endings versus corrections | §5.2; D-228 | G-5_*, WITHDRAWAL_BASIS | SuccessionValidationTest (8) |
+| D-82 competence at the issue date; mandates, precedence, disputes | D-82; D-227 | D-82, D-82_ISSUER_UNKNOWN, EVIDENCE_* | CompetenceAndEvidenceTest (10) |
+| D-82_BASIS: territorial claims on an instrument; boundary on an attributed map; withdrawals | D-82; §3; F-2; D-229 (5) | `authorityBasis`, `BasisKind::AttributedCartographicSource` | BoundaryBasisTest (3), CompetenceAndEvidenceTest |
+| Profile form | §13; D-81 | PROFILE_FORM | TierAndPositionTest (7) |
+| D-83 territorial positions only | D-83; §13 | D-83 | TierAndPositionTest, UndeterminedPositionTest (4) |
+| G-4 on containment and on classification changes, at every change date | §5.2; §13 | G-4, `ProfilePositions::checkpoints` | TierAndPositionTest, UndeterminedPositionTest |
+| G-4 and D-83 after a change of country | §13; the §5.2 annotation; F-1 (a) | `countryChanges` | CountryChangeSubtreeTest (10) |
+| G-6 profile changes | §13; §5.2 | G-6 | ProfileChangeTest (7) |
 
-**All other rows of revision 1's table are unchanged:** the revision lifecycle, supersession, before-images, staleness, the recording reader, parents, admission, I-1 and I-2, the structural classification, G-5 and D-228, D-82 and D-227, the profile form, G-4 on classification, and G-6.
-
-## 6. Regression
+## 5. Regression (final)
 
 | Group | Result | What it proves |
 |---|---|---|
-| Geography domain | 136 tests pass | the G-2 domain rules |
-| Database-free (Geography, Identity, purity and architecture guards) | 161 tests pass | no regression, domain stays pure |
-| Isolated PostgreSQL (Membership, Platform, Identity) | 154 tests pass | no regression **in other contexts**. Geography has no database code yet |
-| Full architecture suite | 316 tests, 4 failures | **names identical to the pre-Geography slice 1 baseline; messages identical to the G-2d-2 run** |
+| Geography domain | **140 tests pass** | the G-2 domain rules |
+| Database-free (Geography, Identity, purity and architecture guards) | **165 tests pass** | no regression; the domain stays pure |
+| Isolated PostgreSQL (Membership, Platform, Identity) | **154 tests pass** | no regression **in other contexts**. **It proves nothing about Geography persistence,** which has no database code yet |
+| Full architecture suite | 316 tests, 4 failures | **names identical to the pre-Geography slice 1 baseline; messages identical to the earlier Geography runs.** So the four are pre-existing: election lifecycle voting-active state; ElectionClockService use; code creation redirect; the hard-coded "not eligible" denial reason |
 
-- **Assertion counts vary between runs** (randomised property tests and race tests). Test counts don't.
-- **No test was deleted or weakened.**
-- **One earlier assertion changed under F-2** (§4).
-- **One new test's fixture was corrected after its first GREEN run** (also triggering D-83). Its first-run output is kept: `green-first-run-fixture-defect.txt`.
+**No test was deleted or weakened to obtain GREEN.** Every changed earlier assertion was invalidated by a Principal decision (F-2, D-229) and is listed.
 
-## 7. Remaining G-2 risks and proof obligations
+**Assertion counts vary between runs** (randomised property tests and race tests). Test counts don't.
 
-- **Q-DS** (§4).
-- **The complete-dependency claim (§5.2 [TU]) is only as strong as the matrix.** Any future derived rule must annotate the matrix first; F-1 shows what happens otherwise.
-- **The obligations that belong to G-4, not G-2:** atomic publication, concurrent publishers, the stored before-image, and indexed family reads (a country change in a large country reads a large subtree).
+**Process deviation, accounted for:** in `b90500b4c`, one comment block in `UndeterminedPositionTest` was changed by a small script, contrary to the repository's manual-edit rule.
+- It was one hunk: a two-line note about "open finding F-1" was replaced by a pointer to `CountryChangeSubtreeTest`.
+- It was inspected and is correct, so nothing needs reverting.
+- Every edit in this revision was manual.
+
+## 6. Remaining G-2 limitations
+
+- **When a duplicate search is "applicable"** is undefined in v3.11, so it is recorded but not required. This needs a Principal decision only if it should become mandatory.
+- **The complete-dependency claim is only as strong as the §5.2 matrix.** Every future derived rule must annotate the matrix first (the F-1 lesson).
+
+## 7. Carried to G-4 (not G-2 obligations)
+
+- **The publication ledger:** atomic publication; serialised concurrent publishers; the stored before-image equal to the belief just before publication; W-closing.
+- **Persistence** of revisions, assessments (including the duplicate search) and approvals.
+- **Indexed family reads,** since a country change in a large country reads a large subtree.
 - **G-0's race test is still not mutation-proved.**
 
-## 8. Your decisions
+## 8. Your decision
 
-1. **Q-DS:** A (recommended), B, or C.
-2. **G-2 acceptance:** accept on Q-DS.
+**Accept G-2, or don't.** Nothing else is open.
 
-Not asked again: D-227, D-228, D-83, D-91, G-4, Q2, F-1 (a), F-2.
+Not asked again: D-227, D-228, D-229, D-83, D-91, G-4, Q2, F-1, F-2.

@@ -1,0 +1,11 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+5fbf39c1d2faa23539782a6057f5d1653c071fdaff4f1d286e2cbb7e1119cbde  ./architecture-full.txt
+c91d768c988f23f84861cb590e6d7cde52204bd84dfbc0f1dc3ec549af251e51  ./db-free-all.txt
+cfb63a90a11bab4d0e1e938a2725b5740e3c885d263549f2c79b00ec7cde28b6  ./green-before-old-tests.txt
+be0ff5182b5b63a1f70b88092917d78518a8cf27d44d222c9228d3e3fd4cb7d1  ./green.txt
+cf5637b46ef85e6ff6b582816184d34e92699423be4c00279f196f59ab91d3c1  ./isolated-cluster/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster/suite.exit
+6819fc88e17343061c9a51156cd405789312cd1d5c00e36c5599aed166f1a98f  ./isolated-cluster/suite.txt
+a7f5cfcd327bfefc13cb0773a9ceea62debf544e655ceb07e94a2bb3a25b8d33  ./README.md
+49c1d933cc8dd19348ef366e53d5763d03cba4cb7ef481ddcad19d010fee9ddb  ./reasons.txt
+33e759a023b5fcf59dde5e97a5fc94fc9d566ef81b52583782859ce9310e3678  ./red.txt

@@ -1,0 +1,39 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FEEE                                                                4 / 4 (100%)
+
+Time: 00:00.024, Memory: 12.00 MB
+
+There were 3 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\DuplicateSearchEvidenceTest::test_a_duplicate_search_is_recorded_as_a_supplementary_assessment_and_frozen_with_the_version
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\AssessmentKind::DuplicateSearch
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:102
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\DuplicateSearchEvidenceTest::test_a_duplicate_search_does_not_bypass_issuer_competence
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\AssessmentKind::DuplicateSearch
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:70
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:109
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\DuplicateSearchEvidenceTest::test_a_later_competent_instrument_establishes_a_long_existing_place
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\AssessmentKind::DuplicateSearch
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:70
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:119
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\DuplicateSearchEvidenceTest::test_a_duplicate_search_is_not_a_basis_and_existence_needs_an_instrument
+the duplicate search is no longer a basis kind
+Failed asserting that App\Contexts\ReferenceGeography\Domain\BasisKind Enum #73 (DuplicateSearchAssessment, 'duplicate-search-assessment') is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DuplicateSearchEvidenceTest.php:78
+
+ERRORS!
+Tests: 4, Assertions: 1, Errors: 3, Failures: 1.

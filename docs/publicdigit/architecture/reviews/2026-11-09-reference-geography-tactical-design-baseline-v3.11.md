@@ -52,6 +52,7 @@ Reference Geography is PublicDigit's governed record of official geographical kn
 - **I-2:** a subject holds at most one value per namespace at any valid instant.
 - **I-3:** an identity is never deleted or reused.
 - **I-4:** every *establish* claim cites an establishing instrument, or a recorded duplicate-search assessment.
+  - **[Amended by D-229, 2026-11-13]:** every *establish* claim cites a **competent establishing instrument** (not necessarily the founding document). A duplicate-search assessment is **supplementary** identity evidence, recorded as a Revision assessment where applicable. **It is never the basis**, and it never establishes a unit alone.
 
 **Code reuse** (ISO "CS": Czechoslovakia to 1993, then Serbia and Montenegro about 2003 to 2006 [BF, secondary sources; primary: ISO newsletters]) means two subjects with disjoint intervals; I-1 holds.
 
@@ -70,10 +71,10 @@ A claim is an insert-only assertion about one **slot**, with a value, a valid in
 
 | Kind | Slot key = (kind, …) | Basis (competence kind) |
 |---|---|---|
-| Existence | (EXISTENCE, unit) | Territorial |
+| Existence | (EXISTENCE, unit) | Territorial (a competent establishing instrument, D-229; a duplicate search is supplementary, never the basis) |
 | Containment | (CONTAINMENT, unit, scheme) | Territorial |
 | Classification (territorial tiers only, D-83) | (CLASSIFICATION, unit, scheme) | Territorial |
-| Boundary description | (BOUNDARY, unit, source) | Territorial, or a cartographic source attributed as such |
+| Boundary description | (BOUNDARY, unit, source) | Territorial, or a cartographic source attributed as such *(explicitly identified and attributed as cartographic evidence; a generic "other" source does not qualify; Principal F-2, D-229 (5))* |
 | Succession | (SUCCESSION, predecessor, succession event) | Territorial |
 | Identifier | (IDENTIFIER, subject, namespace) | Identifier assignment by the namespace's issuer |
 | Statistical grouping | (GROUPING, entry, grouping scheme) | Statistical (D-85), D-86 evidence types |
@@ -92,7 +93,7 @@ A claim is an insert-only assertion about one **slot**, with a value, a valid in
 | **Profile: tier meaning** [v3.5] | (PROFILE_TIER, country entry, scheme, position) | Territorial |
 | **Profile: class position** [v3.5] | (PROFILE_CLASS, country entry, scheme, class) | Territorial |
 | **Platform default locale** [v3.5, §9] | (PLATFORM_DEFAULT_LOCALE) | Platform configuration, published |
-| Withdrawal | **The target's slot, with the target's kind** (a withdrawal of a name is a SOURCE_NAME claim with value "none") | Instrument or correction |
+| Withdrawal | **The target's slot, with the target's kind** (a withdrawal of a name is a SOURCE_NAME claim with value "none") | Instrument or correction (D-228) |
 
 **Collision proof** [extended in v3.3]:
 - **Between kinds:** every key starts with its kind, so containment cannot supersede classification, and source names cannot supersede CLDR names.
@@ -234,7 +235,7 @@ v3.2 marked a revision stale only when a **new** claim matched a predicate. **Th
 | **G-6** one meaning per tier; no class ends while units carry it | Profile slots; units with class c over V | Slots: profile. Family: (CLASSIFICATION, *, S) with value = c | Family |
 | **I-1** one holder per (namespace, value) | Holders of X in N over V | Family: (IDENTIFIER, *, N) with value = X | Family |
 | **I-2** one value per (subject, namespace) | (IDENTIFIER, subject, N) | Slot | Slot |
-| **I-4** establish needs an instrument or a duplicate search | Recorded in the revision | None (internal to the revision) | — |
+| **I-4** establish needs an instrument or a duplicate search *(amended by D-229: a competent instrument; the duplicate search is a supplementary assessment)* | Recorded in the revision | None (internal to the revision) | — |
 | **Existence of parents and successors** | (EXISTENCE, P) | Slot | Slot |
 | **Admission before grouping** (D-86) | (ADMISSION, entry) | Slot | Slot |
 | **Evidence basis** | (MANDATE, m), (PRECEDENCE, r), (COMPETENCE, issuer, kind), (DISPUTE, relied-upon claim) | Slots | Slots |

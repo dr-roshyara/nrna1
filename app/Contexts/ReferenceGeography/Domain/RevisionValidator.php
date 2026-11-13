@@ -467,11 +467,10 @@ final class RevisionValidator
             if ($claim->basis->kind !== BasisKind::Instrument) {
                 // D-82: a territorial claim needs an issuer whose competence can be checked, so it rests on an
                 // instrument. The exceptions are those v3.11 names: a BOUNDARY from a cartographic source attributed as
-                // such (§3; only that basis kind, F-2), EXISTENCE established by a duplicate-search assessment (I-4; its
-                // relation to D-82 is PENDING a Principal decision, see the G-2 acceptance review), and withdrawals.
+                // such (§3; only that basis kind, F-2) and withdrawals. No duplicate-search exception: an EXISTENCE
+                // claim always rests on an instrument (I-4 as amended by D-229, enforced by Claim).
                 $exempt = $claim->value->isNone()
-                    || ($claim->slot->kind() === ClaimKind::Boundary && $claim->basis->kind === BasisKind::AttributedCartographicSource)
-                    || ($claim->slot->kind() === ClaimKind::Existence && $claim->basis->kind === BasisKind::DuplicateSearchAssessment);
+                    || ($claim->slot->kind() === ClaimKind::Boundary && $claim->basis->kind === BasisKind::AttributedCartographicSource);
                 if (in_array($claim->slot->kind(), self::TERRITORIAL_KINDS, true) && !$exempt) {
                     $violations[] = new Violation('D-82_BASIS', $claim->id, 'A territorial claim rests on an instrument of a competent issuer.');
                 }

@@ -65,7 +65,7 @@
     - cases 1–5.
   - **Wire `ActingPerson`** → `IdentityActingPerson`, and bind the Identity ports in a service provider (G-0 deferred this to here).
 - **Tests first:** era A / B; each permitted-combination case; merge, duplicate, reversal-first, overlap and partial-reversal fixtures (IG-P7); the approval record says "independent as known to Identity at roster version v".
-- **Stop for:** acceptance of G-3 and **D-82_BASIS** (still open from G-2).
+- **Stop for:** acceptance of G-3.
 
 ### G-4: the publication ledger (PostgreSQL)
 
@@ -95,6 +95,7 @@
 
 - **Load:** World; the five M49 regions (UNSD names); ISO 3166-1 countries and areas; Nepal's scheme.
 - **Rule:** every claim cites evidence competent for **that** fact and level (a competent issuer on the issue date, D-227). The legacy seeder is input, not evidence.
+- **Existence (D-229):** every place rests on a competent establishing instrument, not necessarily the founding document. Record the duplicate search as an `AssessmentKind::DuplicateSearch` assessment, never as the basis. A boundary from a map uses `AttributedCartographicSource` (F-2).
 - **How:** as revisions through the same validator and publication, never by inserting rows directly.
 
 ## Part D: where things are

@@ -12,7 +12,6 @@ namespace App\Contexts\ReferenceGeography\Domain;
 enum BasisKind: string
 {
     case Instrument = 'instrument';
-    case DuplicateSearchAssessment = 'duplicate-search-assessment';
     /** A correction of an erroneous earlier assertion (v3.11 §3 withdrawal row "instrument or correction"; D-228). */
     case Correction = 'correction';
     /**

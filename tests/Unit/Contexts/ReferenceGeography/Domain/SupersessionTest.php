@@ -127,13 +127,13 @@ final class SupersessionTest extends TestCase
         }
     }
 
-    public function test_an_establish_claim_needs_an_instrument_or_a_duplicate_search_assessment(): void
+    /** I-4 as amended by D-229 (Q-DS option A): the duplicate search is a supplementary assessment (DuplicateSearchEvidenceTest). */
+    public function test_an_establish_claim_needs_an_establishing_instrument(): void
     {
         $unit = SlotKey::existence(ReferenceUnitId::fromString(self::UNIT));
         $since = new ValidInterval(self::d('2015-09-20'));
 
         $this->assertSame('exists', (new Claim(self::id(), $unit, ClaimValue::of('exists'), $since, new Basis(BasisKind::Instrument, 'constitution-2015-schedule-4')))->value->value());
-        $this->assertSame('exists', (new Claim(self::id(), $unit, ClaimValue::of('exists'), $since, new Basis(BasisKind::DuplicateSearchAssessment, 'dup-search-12')))->value->value());
         $this->assertTrue((new Claim(self::id(), $unit, ClaimValue::none(), $since, new Basis(BasisKind::Other, 'correction')))->value->isNone(), 'a withdrawal of existence is not an establish claim');
 
         $this->expectException(\InvalidArgumentException::class);

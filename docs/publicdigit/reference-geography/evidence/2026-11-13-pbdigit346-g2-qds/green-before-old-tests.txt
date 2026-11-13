@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..................E............................................  63 / 140 ( 45%)
+............................................................... 126 / 140 ( 90%)
+.E............                                                  140 / 140 (100%)
+
+Time: 00:00.153, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_a_territorial_claim_must_rest_on_an_instrument_so_its_competence_can_be_checked
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\BasisKind::DuplicateSearchAssessment
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:167
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_an_establish_claim_needs_an_instrument_or_a_duplicate_search_assessment
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\BasisKind::DuplicateSearchAssessment
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:136
+
+ERRORS!
+Tests: 140, Assertions: 1043, Errors: 2.
