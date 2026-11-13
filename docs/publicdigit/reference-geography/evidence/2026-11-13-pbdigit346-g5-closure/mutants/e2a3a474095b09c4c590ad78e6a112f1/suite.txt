@@ -1,0 +1,47 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDFFDDDDDDDD                                                      12 / 12 (100%)
+
+Time: 00:12.015, Memory: 24.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_a_frozen_but_unpublished_revision_is_invisible
+Failed asserting that App\Contexts\ReferenceGeography\Application\Published\Place Object #5985 (
+    'unitId' => '01af75c5-1c2b-47c2-9b33-9fd881e9d6a6',
+    'validAt' => '2020-01-01',
+    'position' => 3,
+    'exists' => false,
+    'parents' => Array &0 [],
+    'classifications' => Array &1 [],
+    'identifiers' => Array &2 [],
+    'names' => Array &3 [],
+    'disputedKinds' => Array &4 [],
+    'mergedInto' => null,
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:139
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_no_query_exposes_an_unpublished_claim_of_any_kind
+unpublished place
+Failed asserting that App\Contexts\ReferenceGeography\Application\Published\Place Object #6149 (
+    'unitId' => '6813ff27-09a8-4dee-b0eb-8395a434da9a',
+    'validAt' => '2020-01-01',
+    'position' => 4,
+    'exists' => false,
+    'parents' => Array &0 [],
+    'classifications' => Array &1 [],
+    'identifiers' => Array &2 [],
+    'names' => Array &3 [],
+    'disputedKinds' => Array &4 [],
+    'mergedInto' => null,
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:174
+
+FAILURES!
+Tests: 12, Assertions: 68, Failures: 2, Deprecations: 1.

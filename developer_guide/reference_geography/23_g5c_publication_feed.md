@@ -26,6 +26,8 @@ do {
 } while ($page !== []);
 ```
 
+**These consumer obligations are also written in the contract** (`GeographyReadModel::publicationsSince` docblock). The contract can't enforce them, so a consumer's own tests must: an atomic last-position store, and review signals only.
+
 **Idempotency comes from the stream itself.** Positions are gap-free, unique and immutable (G-4a), so storing the last position processed is enough. Store it in the same transaction as the work it caused.
 
 ## Where it fits

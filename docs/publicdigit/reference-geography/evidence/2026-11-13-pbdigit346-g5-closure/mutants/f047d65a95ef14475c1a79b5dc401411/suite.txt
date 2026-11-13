@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+............F..................................................  63 / 238 ( 26%)
+............................................................... 126 / 238 ( 52%)
+............................................................... 189 / 238 ( 79%)
+.................................................               238 / 238 (100%)
+
+Time: 00:00.203, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_the_feed_pages_from_the_last_position_received_and_stops_at_the_knowledge
+never beyond the knowledge
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 1,
+     1 => 2,
++    2 => 3,
++    3 => 4,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:341
+
+FAILURES!
+Tests: 238, Assertions: 1504, Failures: 1.

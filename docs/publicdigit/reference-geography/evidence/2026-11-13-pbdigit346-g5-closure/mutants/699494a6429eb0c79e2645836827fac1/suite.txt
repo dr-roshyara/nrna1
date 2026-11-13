@@ -1,0 +1,41 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 238 ( 26%)
+.......................................................F....... 126 / 238 ( 52%)
+............................................................... 189 / 238 ( 79%)
+.................................................               238 / 238 (100%)
+
+Time: 00:00.199, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceMatcherTest::test_codes_match_only_exactly
+never fuzzy: NP-P2 is another place
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => App\Contexts\ReferenceGeography\Domain\PlaceMatch Object #1181 (
++        'unit' => App\Contexts\ReferenceGeography\Domain\ReferenceUnitId Object #1456 (
++            'value' => '6c5d4e3f-2a1b-4c9d-8e7f-6a5b4c3d2e1f',
++        ),
++        'quality' => App\Contexts\ReferenceGeography\Domain\MatchQuality Enum #2633 (Low, 'low'),
++        'score' => 0.5,
++        'candidate' => App\Contexts\ReferenceGeography\Domain\LookupCandidate Object #1451 (
++            'unit' => App\Contexts\ReferenceGeography\Domain\ReferenceUnitId Object #1456,
++            'kind' => 'identifier',
++            'value' => 'NP-P3',
++            'detail' => 'iso3166-2',
++        ),
++        'partial' => false,
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceMatcherTest.php:93
+
+FAILURES!
+Tests: 238, Assertions: 1532, Failures: 1.

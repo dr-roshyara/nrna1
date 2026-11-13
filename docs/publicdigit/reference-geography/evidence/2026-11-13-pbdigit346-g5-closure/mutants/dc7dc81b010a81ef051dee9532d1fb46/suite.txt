@@ -1,0 +1,26 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FF..F..........................................................  63 / 238 ( 26%)
+............................................................... 126 / 238 ( 52%)
+............................................................... 189 / 238 ( 79%)
+.................................................               238 / 238 (100%)
+
+Time: 00:00.198, Memory: 12.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_knowledge_at_a_committed_position_is_given_and_beyond_it_refused
+Failed asserting that exception of type "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" is thrown.
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_negative_position_is_refused
+Failed asserting that exception of type "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" is thrown.
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_fabricated_position_beyond_the_boundary_is_refused_by_every_query
+query 0 answered beyond the boundary
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:224
+
+FAILURES!
+Tests: 238, Assertions: 1544, Failures: 3.

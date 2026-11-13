@@ -163,6 +163,14 @@ Reference Geography is PublicDigit's official record of places. Until now, it co
 
 **Codes match only exactly** (ignoring case and surrounding spaces). A code is an identifier (I-1): "NP-P3" must never fuzzily match "NP-P2".
 
+**Verified compatibility (closure, 2026-11-13):**
+- **`PlaceMatcher::similarity` equals PostgreSQL `pg_trgm` `similarity()`** on 20 representative pairs (within 1e-6): ASCII, case, punctuation, spacing, one- and two-letter strings, digits, repeated trigrams, ties, the 0.5 and 0.7 band edges, Latin diacritics, Devanagari (`PlaceMatcherPgTrgmDifferentialTest`, isolated cluster). Both sides receive PlaceMatcher's normalised text, so the comparison isolates the trigram algorithm.
+- **Normalisation (NFKC, punctuation as space) is PlaceLookup's own documented semantics, not pg_trgm's.**
+- **Intentional difference from `word_similarity`:**
+  - PlaceMatcher's partial score is the best `similarity()` against a run of **whole words** of the name;
+  - pg_trgm `word_similarity` compares against any continuous extent of the target's trigrams, which can begin or end inside a word.
+  - **Word-aligned runs are chosen deliberately:** a partial match always corresponds to whole words a person could have typed, and the match reports `partial: true`.
+
 ### 4.3 Contract (published language)
 
 `GeographyReadModel::lookup(string $text, string $validDate, Knowledge $k, ?string $withinUnitId = null, ?string $scheme = null, int $limit = 10): list<LookupMatch>`

@@ -46,6 +46,12 @@ interface GeographyReadModel
      * The publication feed (G-5c): every publication after the consumer's last position, up to the knowledge, in order.
      * Keep the last position received and ask again from it: nothing is missed and nothing repeats.
      *
+     * CONSUMER OBLIGATIONS (this contract cannot enforce them; the consumer's own tests must):
+     * - store the last position processed IN THE SAME TRANSACTION as the work it caused (review signals); otherwise a
+     *   crash between the two loses or repeats work;
+     * - raise review signals only: never change membership, voter lists, committee assignments or belonging
+     *   automatically from an entry (context map).
+     *
      * @param int $limit 1 to 500
      * @return list<PublicationEntry>
      * @throws \InvalidArgumentException for a negative position or a limit outside 1..500

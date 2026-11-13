@@ -1,0 +1,40 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 238 ( 26%)
+............................................F.F................ 126 / 238 ( 52%)
+............................................................... 189 / 238 ( 79%)
+.................................................               238 / 238 (100%)
+
+Time: 00:00.202, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_cleared_dispute_no_longer_flags
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'IDENTIFIER',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:161
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_withdrawn_dispute_no_longer_flags_but_still_did_at_earlier_positions
+withdrawn (a NONE claim in the dispute slot)
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'IDENTIFIER',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:189
+
+FAILURES!
+Tests: 238, Assertions: 1510, Failures: 2.

@@ -46,6 +46,12 @@ $within  = $geo->lookup('Kathmandu', '2026-01-01', $k, $nepalId, 'admin', 5);  /
 - `tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php`: valid time, knowledge, scope, refusals, forged position.
 - `tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php` (`test_lookup_…`): unpublished never found; former name; code; scope; merge.
 
+## Closure verification (2026-11-13)
+
+- **`pg_trgm` compatibility, proven against PostgreSQL:** `tests/Feature/Contexts/ReferenceGeography/PlaceMatcherPgTrgmDifferentialTest.php`, 20 pairs equal to 1e-6 (including Unicode and band edges). The intentional difference from `word_similarity` is in design §4.2.
+- **Mutation:** R4 (codes matched fuzzily), R5 (lookup ignoring existence at t) and R9 (ordering by text) are each killed by their intended test (evidence `…-g5-closure/`).
+- **When you change `similarity` or `normalise`:** add pairs to the differential test first, then run it on the isolated cluster.
+
 ## Pitfalls
 
 - **The Domain's purity guard forbids a `$name` variable,** as a personal-data safeguard. Use another word (`$placeText`); don't weaken the guard.

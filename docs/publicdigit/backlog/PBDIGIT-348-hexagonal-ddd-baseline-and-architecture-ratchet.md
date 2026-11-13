@@ -1,6 +1,6 @@
 # PBDIGIT-348: PublicDigit Hexagonal DDD baseline and architecture ratchet
 
-**Status:** ACCEPTED 2026-11-13 (Principal: Shared is a technical library; MemberId is published language; A-4 allows query ports); revision 2.1 safeguards delivered (A-6, published-language list, chained writes, metadata, ceiling, inventory consistency, a separate CI job) · **Context:** cross-cutting (all contexts) · **Kind:** architecture supplement and architecture tests (no production code)
+**Status:** **DONE 2026-11-13.** The baseline was accepted by the Principal (Shared is a technical library; MemberId is published language; A-4 allows query ports). Revision 2.1 safeguards and the occurrence ceiling are delivered (`edd666525`, `674168f40`). **Open, outside this story (repository administration, the Principal's action):** push, confirm the `architecture-ratchet.yml` job passes, and mark it a required check on `main`. Not verifiable from the repository · **Context:** cross-cutting (all contexts) · **Kind:** architecture supplement and architecture tests (no production code)
 
 ## Why
 

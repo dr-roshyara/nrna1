@@ -1,0 +1,10 @@
+R1 the knowledge boundary is not checked                   KILLED   [unit] errors:0  a_fabricated_position_beyond_the_boundary_is_refused_by_every_query;a_negative_position_is_refused;knowledge_at_a_committed_position_is_given_and_beyond_it_refused;
+R2 a merge is read without the knowledge position          KILLED   [unit] errors:0  a_merge_holds_for_all_time_changes_only_by_knowledge_and_can_be_reversed;resolve_follows_one_merge_and_says_when_it_became_known;successive_merges_follow_r2_one_level_and_each_position_keeps_its_answer;
+R3 a cleared or withdrawn dispute still flags              KILLED   [unit] errors:0  a_cleared_dispute_no_longer_flags;a_withdrawn_dispute_no_longer_flags_but_still_did_at_earlier_positions;
+R4 codes are matched fuzzily                               KILLED   [unit] errors:0  codes_match_only_exactly;
+R5 lookup ignores whether a place exists at t              KILLED   [unit] errors:0  lookup_can_be_scoped_below_a_place_in_a_scheme;
+R6 the feed reads beyond the knowledge                     KILLED   [unit] errors:0  the_feed_pages_from_the_last_position_received_and_stops_at_the_knowledge;
+R7 a subject's slots are found among unpublished claims    KILLED   [pg] errors:0  a_frozen_but_unpublished_revision_is_invisible;no_query_exposes_an_unpublished_claim_of_any_kind;
+R8 a publication recorded exactly at τ is excluded        KILLED   [pg] errors:0  a_time_is_closed_through_then_mapped_to_the_highest_position_recorded_by_it;
+R9 lookup orders places by the matched text                KILLED   [unit] errors:0  lookup_can_be_scoped_below_a_place_in_a_scheme;
+All mutants killed.

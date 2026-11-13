@@ -1,0 +1,19 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDFD                                                      12 / 12 (100%)
+
+Time: 00:15.246, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_a_time_is_closed_through_then_mapped_to_the_highest_position_recorded_by_it
+Failed asserting that 15 is equal to 16 or is greater than 16.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:321
+
+FAILURES!
+Tests: 12, Assertions: 68, Failures: 1, Deprecations: 1.

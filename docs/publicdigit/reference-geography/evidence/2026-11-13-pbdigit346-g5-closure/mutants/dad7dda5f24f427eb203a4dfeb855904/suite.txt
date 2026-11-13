@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........F.....................................................  63 / 238 ( 26%)
+............................................................... 126 / 238 ( 52%)
+............................................................... 189 / 238 ( 79%)
+.................................................               238 / 238 (100%)
+
+Time: 00:00.200, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_lookup_can_be_scoped_below_a_place_in_a_scheme
+both partial exact; then by id
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => '6c5d4e3f-2a1b-4c9d-8e7f-6a5b4c3d2e1f',
+-    1 => '8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d',
++    0 => '8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d',
++    1 => '6c5d4e3f-2a1b-4c9d-8e7f-6a5b4c3d2e1f',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:293
+
+FAILURES!
+Tests: 238, Assertions: 1533, Failures: 1.
