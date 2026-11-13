@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 65 / 66 ( 98%)
+D                                                                 66 / 66 (100%)
+
+Time: 00:49.567, Memory: 26.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresConcurrencyMatrixTest::test_concurrent_publications_get_consecutive_positions_and_none_is_visible_early
+Error: Call to undefined method Tests\Feature\Contexts\ReferenceGeography\PostgresConcurrencyMatrixTest::assertNotIsString()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresConcurrencyMatrixTest.php:214
+
+ERRORS!
+Tests: 66, Assertions: 341, Errors: 1, Deprecations: 1.

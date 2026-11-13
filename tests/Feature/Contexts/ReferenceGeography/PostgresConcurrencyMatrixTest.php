@@ -200,8 +200,18 @@ final class PostgresConcurrencyMatrixTest extends RefgeoPostgresTestCase
         $second = self::revision("q-$t", "y-$t");
         $before = self::lastPosition();
 
-        [[$observed, $out], $waited] = self::whileHeld(self::holdingPublication($first, "p-$t"), static fn (): array => [self::lastPosition(), self::publisher("q-$t")->publish($second)]);
+        [[$observed, $out], $waited] = self::whileHeld(self::holdingPublication($first, "p-$t"), static function () use ($t, $second): array {
+            $observed = self::lastPosition();
+            try {
+                return [$observed, self::publisher("q-$t")->publish($second)];
+            } catch (\Illuminate\Database\QueryException $e) {
+                // the G-4a append trigger refused a colliding position: the database protected the stream, but the
+                // lock did not serialise the two publications (recorded separately from the assertion below)
+                return [$observed, 'refused by the database: ' . $e->errorInfo[2]];
+            }
+        });
 
+        $this->assertIsNotString($out, 'the second publication must WAIT for the first, not collide with it: ' . (is_string($out) ? $out : ''));
         $this->assertSame($before, $observed, 'while the first was uncommitted, no new position was visible');
         $this->assertGreaterThan(400, $waited, 'the second publication waited');
         $this->assertSame($before + 2, $out->position);

@@ -1,0 +1,4 @@
+G1 publication takes no lock                         KILLED  a_mixed_c
+G4 governance judged at the previous roster version  KILLED  a_close_n
+   G1 publication takes no lock :: Tests: 22, Assertions: 50, Failures: 12, Deprecations: 1. :: errors-listed: 0 :: P1: must WAIT for the first, not collide with it
+   G4 governance judged at the previous roster version :: Tests: 22, Assertions: 70, Failures: 15, Deprecations: 1. :: errors-listed: 0 :: P1: 

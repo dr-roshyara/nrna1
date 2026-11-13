@@ -93,16 +93,7 @@ final class PostgresPublishedRevisionClosureTest extends RefgeoPostgresTestCase
             $r->declareConflict(self::p("p-$t"), $id, false);
             $r->declareConflict(self::p("x-$t"), $id, false);
         });
-        $competence = CompetentInstrument::competenceClaim();
-        if (PostgresPublishedAtlas::at(DB::connection())->history($competence->slot)->priorAt(ValidDate::fromString('1960-01-01'))->isAbsent()) {
-            $boot = RevisionId::fromString((string) Str::uuid());
-            self::store()->writeUnderLock(static function (StewardRoster $r) use ($boot): void {
-                $r->declareConflict(self::p('boot-s'), $boot, false);
-                $r->declareConflict(self::p('boot-x'), $boot, false);
-            });
-            self::submit(Revision::prepare($boot, self::p('boot-s')), $competence, new EvidenceVersion('gazette', str_repeat('c', 64)), 'boot-s', 'boot-x');
-            self::publisher('boot-s')->publish($boot);
-        }
+        CompetenceBootstrap::ensure();   // the competence claim (D-82), published directly, never through the code under test
         $claim = new Claim(ClaimId::fromString((string) Str::uuid()), SlotKey::existence(ReferenceUnitId::fromString((string) Str::uuid())), ClaimValue::of('exists'),
             new ValidInterval(ValidDate::fromString('2016-01-01')), new Basis(BasisKind::Instrument, 'act'));
         self::submit(Revision::prepare($id, self::p("p-$t")), $claim, CompetentInstrument::evidence('act'), "p-$t", "x-$t");

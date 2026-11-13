@@ -120,21 +120,10 @@ final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
     }
 
     /** The competence claim every territorial fixture relies on (D-82), published once per run through the real path. */
+    /** The competence claim (D-82), published directly, never through the code under test (CompetenceBootstrap). */
     private static function ensureCompetence(): void
     {
-        $c = CompetentInstrument::competenceClaim();
-        if (!PostgresPublishedAtlas::at(DB::connection())->history($c->slot)->priorAt(ValidDate::fromString('1960-01-01'))->isAbsent()) {
-            return;
-        }
-        $id = RevisionId::fromString((string) Str::uuid());
-        self::appoint('boot-s', 'boot-x');
-        self::declare('boot-s', $id);
-        self::declare('boot-x', $id);
-        $r = Revision::prepare($id, self::p('boot-s'));
-        $r->addClaim($c, self::p('boot-s'));
-        $r->attachEvidence(new \App\Contexts\ReferenceGeography\Domain\EvidenceVersion('gazette', str_repeat('c', 64)), self::p('boot-s'));
-        self::submitAndApprove($r, 'boot-s', 'boot-x');
-        self::service('boot-s')->publish($id);
+        CompetenceBootstrap::ensure();
     }
 
     private static function submitAndApprove(Revision $r, string $assessor, ?string $approver): void

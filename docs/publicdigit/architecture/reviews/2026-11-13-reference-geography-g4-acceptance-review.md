@@ -71,8 +71,17 @@
 | **G-4g concurrency** | **8 / 8 genuine** | the locks (publication, roster, revision row, close); governance at a stale roster version; the timestamp adjusted; notice idempotency; the roster read before the lock |
 
 **Two runs that were not valid kills, found and corrected:**
-1. **G4 (governance at the previous roster version) was first "killed" by a fixture setup failure** (`Revision: invalid`, 20 errors): the matrix fixture bootstrapped through the very code under mutation. **The fixture now publishes its bootstrap claim directly** (SQL, under the same lock and guards). G4 was re-run: **15 assertion failures, no setup error.** Genuine.
+1. **G4 (governance at the previous roster version) was first "killed" by a fixture setup failure** (`Revision: invalid`, 20 errors): the matrix fixture bootstrapped through the very code under mutation.
+   - **All three Geography fixtures now share `CompetenceBootstrap`,** which publishes the bootstrap claim directly (SQL, under the same lock and guards).
+   - The ledger and closure tests had still bootstrapped through `PublishRevision`. They were protected only by test order (the matrix ran first); that dependency is gone.
+   - **G4 re-run: 15 assertion failures, 0 errors.** Genuine.
 2. **The first G-4d to G-4f re-run hung for 22 minutes on D5:** two older test helpers waited forever for a background process that had failed. The helpers were fixed: a failed holder now signals and reports, and the wait has a 60-second deadline. The re-run completed, and D5 is a genuine kill. Evidence kept.
+
+**Assertion kills and database protection are recorded separately.**
+- G1 (no publication lock) first showed 1 *uncaught* error: the G-4a trigger refusing a colliding position in test P1.
+- **P1 now asserts the requirement explicitly:** "the second publication must WAIT for the first, not collide with it". The database's refusal is reported in that message as separate evidence.
+- **G1 re-run: 12 assertion failures, 0 errors.**
+- Database-level protection shown by mutants: G1 (append trigger), L5 (clock trigger), P2 (closed-revision trigger), G7 (unique notice). **In each of these, an assertion-level kill also exists.**
 
 **G7, notice idempotency, at three independent layers:**
 - **domain:** `MergeNoticeTest::…replay_writes_nothing`;
@@ -83,8 +92,8 @@
 
 | Run | Result |
 |---|---|
-| **Full isolated cluster** (Membership, Platform, Identity, Reference Geography) | **220 tests, 16,541 assertions, exit 0, none skipped;** 1 deprecation (pre-existing, in every earlier run) |
-| Database-free (Geography and Identity, with the purity, Identity-import and no-bypass guards) | **221 tests, exit 0** |
+| **Full isolated cluster** (Membership, Platform, Identity, Reference Geography), on the final code | **220 tests, 16,516 assertions, exit 0, none skipped;** 1 deprecation (pre-existing, in every earlier run). Evidence: `isolated-cluster-all/` (the run at `225e2ecf8` is kept as `isolated-cluster-all-at-225e2ecf8/`: 220 tests) |
+| Database-free (Geography and Identity, with the purity, Identity-import and no-bypass guards), on the final code | **221 tests, 1,420 assertions, exit 0** (`db-free-all.txt`). **The test count is fixed. The assertion count varies by run** (1,389 to 1,420 seen), because randomised property tests (e.g. SlotKeyCollisionTest) make a varying number of assertions; `db-free-two-runs.txt` shows two consecutive runs |
 | Architecture suite | 318 tests, **4 failures, identical by name to the pre-Geography slice 1 baseline and by message to the earlier runs;** 1 skipped (pre-existing) |
 
 **The four known failures,** all outside Geography and not touched:
@@ -104,6 +113,7 @@
   4. G-4f: the connection-exhaustion harness defect.
   5. **G-4g:** the test-helper hang.
   6. **G-4g:** G4's first run was killed by fixture setup.
+  7. **Evidence clarification:** a wrong assertion name in the P1 change (`assertNotIsString`) errored in the first run (kept as `*-1-assertion-name-defect*`), then was corrected.
 
   Each was found, kept as evidence and corrected.
 - **No test was weakened or deleted.** Changed earlier assertions follow Principal decisions (F-2, D-229), or make a test stronger (G-4g C1: a missing row is now an assertion, not a PHP error).

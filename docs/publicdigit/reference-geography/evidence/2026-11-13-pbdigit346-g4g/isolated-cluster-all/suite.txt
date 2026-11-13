@@ -10,7 +10,7 @@ DDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_n
 DDDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 189 / 220 ( 85%)
 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                                 220 / 220 (100%)
 
-Time: 04:06.092, Memory: 42.00 MB
+Time: 04:15.484, Memory: 42.00 MB
 
 OK, but there were issues!
-Tests: 220, Assertions: 16541, Deprecations: 1.
+Tests: 220, Assertions: 16516, Deprecations: 1.

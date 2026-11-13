@@ -16,3 +16,14 @@
 | `isolated-cluster-all/` | **the full cluster: 220 tests, exit 0, none skipped** |
 | `db-free-all.txt` | 221 database-free tests |
 | `architecture-full.txt` / `.failures` / `reasons.txt` | 318 tests; the same 4 pre-Geography failures by name and message |
+
+## Evidence clarifications (after `225e2ecf8`, on the Principal reviewer's three checks)
+
+| File | Shows |
+|---|---|
+| — | **A:** the committed matrix fixture never published through `PublishRevision` (the excerpt in question was the deleted side of a diff). But the ledger and closure tests still did, protected only by test order. All three now share `CompetenceBootstrap` (direct SQL) |
+| `mutation-check-pg-closure.out` | **B:** G1 and G4 re-run with zero errors. P1 now ASSERTS that the second publication waits ("must WAIT … not collide"); the database's refusal is recorded in the message as separate evidence |
+| `mutation-check-pg-closure-1-assertion-name-defect.out`, `closure-geography-suite-1-assertion-name-defect/` | the first attempt: a wrong assertion name (`assertNotIsString`) errored. Corrected |
+| `closure-geography-suite/` | the unmutated Geography suite after the changes: 66 tests pass |
+| `db-free-all.txt`, `db-free-two-runs.txt` | **C:** final 221 tests, 1,420 assertions. Two consecutive runs gave 1,395 and 1,389: the test count is fixed, while the assertion count varies (randomised property tests) |
+| `isolated-cluster-all/` (final), `isolated-cluster-all-at-225e2ecf8/` | the full cluster: 220 tests, exit 0, both at `225e2ecf8` and after these changes |
