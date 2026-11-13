@@ -386,3 +386,9 @@ Until both exist, **such exclusions wait (D-167).**
 - **Dues and standing follows D-132's two arrangements** (A or B, as the written rules choose).
 - **Product principles revision 3** (principle 0 levels; principle 8 resignation).
 - **No boundary or ownership changes.** Fingerprint re-recorded at the next acceptance act (D-173).
+
+**Change-control note (2026-11-13, D-223 … D-225):**
+- **D-223:** a scheduled resignation is recorded on or after its effective date, never before.
+- **D-224:** Reference Geography is prioritised as a standalone central context. D-147 (no Organisation integration in release 1) is unchanged.
+- **D-225: U-2 (§9) is closed.** Geography's stewards are referenced by an Identity `ContextPersonRef` (one per Person and context) and act through their own Identity Account.
+- **No boundary or ownership changes.** Fingerprint re-recorded at the next acceptance act (D-173).
