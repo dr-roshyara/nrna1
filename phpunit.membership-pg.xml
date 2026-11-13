@@ -25,6 +25,10 @@
         <testsuite name="PlatformPostgres">
             <directory suffix="Test.php">./tests/Feature/Contexts/Platform</directory>
         </testsuite>
+        <!-- PBDIGIT-346 G-0: Identity's minimal Person and ContextPersonRef (D-225, D-226), on the same throwaway cluster. -->
+        <testsuite name="IdentityPostgres">
+            <directory suffix="Test.php">./tests/Feature/Contexts/Identity</directory>
+        </testsuite>
     </testsuites>
     <php>
         <server name="APP_ENV" value="testing"/>

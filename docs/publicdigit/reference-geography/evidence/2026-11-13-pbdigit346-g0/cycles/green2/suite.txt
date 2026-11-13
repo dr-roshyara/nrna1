@@ -1,0 +1,40 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDFFDDDFDF                                                        10 / 10 (100%)
+
+Time: 00:13.536, Memory: 22.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_an_unverified_or_soft_deleted_users_row_is_not_active_and_gets_no_person
+Failed asserting that 3 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:78
+
+2) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_once_mapped_account_that_is_later_deleted_is_no_longer_active
+the Person stays for accountability
+Failed asserting that 4 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:88
+
+3) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_reference_can_never_be_changed_or_deleted
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'d912242142127b54134d796757e3d1e0'
++'2b5a9580643debe089fbb9a5cd2ab948'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:143
+
+4) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_concurrent_first_requests_create_one_person_and_one_reference
+Failed asserting that 13 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:198
+
+FAILURES!
+Tests: 10, Assertions: 27, Failures: 4, Deprecations: 1.

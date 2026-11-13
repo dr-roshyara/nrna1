@@ -1,0 +1,53 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEE                                                            8 / 8 (100%)
+
+Time: 00:00.024, Memory: 10.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_an_active_signed_in_account_gets_its_persons_reference_for_the_context
+Error: Interface "App\Contexts\Identity\Application\Ports\ContextPersonRefs" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:74
+
+2) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_nobody_signed_in_is_refused
+Error: Class "App\Contexts\Identity\Application\ActingContextRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:84
+
+3) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_an_account_that_is_not_active_is_refused
+Error: Class "App\Contexts\Identity\Application\ActingContextRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:91
+
+4) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_identity_unavailable_is_refused_never_guessed
+Error: Class "App\Contexts\Identity\Application\ActingContextRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:98
+
+5) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_a_refused_answer_has_no_reference_to_read
+Error: Class "App\Contexts\Identity\Application\ActingContextRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:107
+
+6) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_a_context_person_ref_is_32_lower_case_hex_and_nothing_else
+Error: Class "App\Contexts\Identity\Domain\ContextPersonRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:116
+
+7) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_the_only_platform_context_is_reference_geography
+Error: Class "App\Contexts\Identity\Domain\PlatformContext" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:130
+
+8) Tests\Unit\Contexts\Identity\ActingContextRefTest::test_ids_are_uuids
+Error: Class "App\Contexts\Identity\Domain\PersonId" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Identity/ActingContextRefTest.php:135
+
+ERRORS!
+Tests: 8, Assertions: 0, Errors: 8.

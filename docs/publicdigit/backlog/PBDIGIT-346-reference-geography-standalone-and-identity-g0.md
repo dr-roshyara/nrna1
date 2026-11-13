@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS` — G-0 started 2026-11-13; strict TDD |
+| **Status** | `IN PROGRESS` — **G-0 done 2026-11-13** (TDD; evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g0/`; guide `developer_guide/identity/01_g0_…`), **awaiting the Principal's review before G-1** |
 | **Design (approved sequence §8)** | `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-standalone-tactical-completion.md` (D-226), consuming v3.11 (D-93) and D-225 |
 | **Decisions** | D-93, D-147, D-224, D-225, D-226 |
 

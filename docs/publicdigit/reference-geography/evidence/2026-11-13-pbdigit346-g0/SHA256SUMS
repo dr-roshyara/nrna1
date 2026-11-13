@@ -1,0 +1,17 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+e14444bfd120770ee82dcc1bce88201c25e9ec2a8b508a614775eea61b73fb00  ./architecture-full.txt
+af5726dd1616e332add634d2dd2b03b47687dfef27e8b5f56826e6a893f45881  ./cycles/green1.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./cycles/green2b/suite.exit
+fc1edeeff9147747ac3c34ddbb223becd0bce7c9ed17bf57e2de73d42c11bfbf  ./cycles/green2b/suite.txt
+4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865  ./cycles/green2/suite.exit
+278d3537e792ac6eed32e9fac6e530082c959ddc5385b4738425f76a07781c4f  ./cycles/green2/suite.txt
+631ec6c5b5627d6eb6b5fb239f18eb47cebdcfdef575f2e40fc3c70a9e438613  ./cycles/green3.txt
+fffe03f8efa64ebe9dd4727abd6848fe2ec07089565e833a3f270a9b1f8979c1  ./cycles/red1.txt
+53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3  ./cycles/red2/suite.exit
+02faf1c2f8b7fed45c8e4e3a166c6379c7233d8b9062861530d364b9e2a0372e  ./cycles/red2/suite.txt
+65b93ce57bf3b3905465469c8cde713b5cb43be1694a5f2c8ac86ce0a070776b  ./cycles/red3.txt
+b5d9409e043301f933da8e89f33cc386a9c4cc323c608843c646c7d83d51f306  ./final-unit-and-architecture.txt
+eadcb24cd44dcafc354ea0979bbbf0d7025d618779858933a1cf43b15dbf2b6f  ./full-run/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./full-run/suite.exit
+3ffbf8323019628e52062d0733ab9ac0745daf1d716c8fd38ac4afac3ee703b2  ./full-run/suite.txt
+88f3cb30a1029ef8a143c77f7af49e5a12e50c0f10e01285d6cdc198e625a62e  ./README.md

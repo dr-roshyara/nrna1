@@ -1,0 +1,128 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEEE                                                        10 / 10 (100%)
+
+Time: 00:13.031, Memory: 22.00 MB
+
+There were 10 errors:
+
+1) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_an_active_users_row_gets_one_person_lazily_and_the_same_one_again
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_persons" does not exist
+LINE 1: select count(*) as aggregate from "identity_persons"
+                                          ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43237, Database: membership_pg_isolated, SQL: select count(*) as aggregate from "identity_persons")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3494
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4084
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3493
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4008
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3936
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:54
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_persons" does not exist
+LINE 1: select count(*) as aggregate from "identity_persons"
+                                          ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3494
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4084
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3493
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4008
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3936
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:54
+
+2) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_two_users_rows_get_two_persons
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:67
+
+3) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_an_unverified_or_soft_deleted_users_row_is_not_active_and_gets_no_person
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:75
+
+4) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_once_mapped_account_that_is_later_deleted_is_no_longer_active
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:84
+
+5) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_one_reference_per_person_and_context_issued_once_and_stable
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:93
+
+6) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_two_persons_get_different_references_and_a_reference_is_opaque
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:105
+
+7) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_generated_collision_is_retried_never_reused
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:119
+
+8) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_reference_can_never_be_changed_or_deleted
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresContextPersonRefs" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:133
+
+9) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_a_merged_person_answers_with_its_survivor_and_the_survivors_reference
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresAccountDirectory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:149
+
+10) Tests\Feature\Contexts\Identity\PostgresContextPersonRefsTest::test_concurrent_first_requests_create_one_person_and_one_reference
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_persons" does not exist
+LINE 1: select count(*) as aggregate from "identity_persons"
+                                          ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43237, Database: membership_pg_isolated, SQL: select count(*) as aggregate from "identity_persons")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3494
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4084
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3493
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4008
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3936
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:198
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_persons" does not exist
+LINE 1: select count(*) as aggregate from "identity_persons"
+                                          ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3494
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4084
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3493
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4008
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:3936
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Identity/PostgresContextPersonRefsTest.php:198
+
+ERRORS!
+Tests: 10, Assertions: 2, Errors: 10, Deprecations: 1.

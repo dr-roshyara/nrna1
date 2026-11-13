@@ -1,0 +1,64 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE.FF..                                                       11 / 11 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_the_acting_steward_is_geographys_own_person_reference
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\IdentityActingPerson" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:62
+
+2) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_every_identity_refusal_refuses_the_act with data set "nobody signed in" (null, null, false, 'not-signed-in')
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\IdentityActingPerson" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:81
+
+3) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_every_identity_refusal_refuses_the_act with data set "account not active" ('5f0c3a9e-1d2b-4c6e-8a7f-9b1e2d3c4a5b', null, false, 'account-not-active')
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\IdentityActingPerson" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:81
+
+4) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_every_identity_refusal_refuses_the_act with data set "identity unavailable" ('5f0c3a9e-1d2b-4c6e-8a7f-9b1e2d3c4a5b', null, true, 'identity-unavailable')
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\IdentityActingPerson" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:81
+
+5) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_a_person_reference_is_opaque_32_hex
+Error: Class "App\Contexts\ReferenceGeography\Domain\PersonReference" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:90
+
+6) Tests\Unit\Contexts\ReferenceGeography\IdentityActingPersonTest::test_the_current_account_is_the_guards_user_id_or_nobody
+Error: Class "App\Contexts\Identity\Infrastructure\LaravelCurrentAccount" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/IdentityActingPersonTest.php:109
+
+--
+
+There were 2 failures:
+
+1) Tests\Architecture\IdentityG0ArchitectureTest::test_no_identity_port_or_service_accepts_a_context_person_ref
+IG-3: no reverse lookup
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'App\Contexts\Identity\Application\ActingContextRefAnswer::granted',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/IdentityG0ArchitectureTest.php:108
+
+2) Tests\Architecture\IdentityG0ArchitectureTest::test_reference_geography_domain_and_application_import_nothing_from_identity
+Failed asserting that an array is not empty.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/IdentityG0ArchitectureTest.php:115
+
+ERRORS!
+Tests: 11, Assertions: 8, Errors: 6, Failures: 2.
