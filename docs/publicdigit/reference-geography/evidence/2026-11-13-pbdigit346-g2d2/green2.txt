@@ -1,0 +1,177 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............F................................EE.EEE....E.EEE.  63 / 104 ( 60%)
+........FF...............FFFFFF..........                       104 / 104 (100%)
+
+Time: 00:00.076, Memory: 12.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_submission_freezes_version_1_and_nothing_can_change_until_re_preparation
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:151
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_the_digest_covers_everything_judged_and_is_deterministic
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:165
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_an_approval_counts_only_for_the_current_version
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:196
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_approval_only_of_a_submitted_revision
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:222
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_excluded_accumulates_everyone_who_prepared_assessed_or_submitted_any_version
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:230
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_a_valid_validation_allows_submission_and_is_kept_with_the_version
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:106
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_re_preparation_voids_the_validation
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:130
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_the_digest_covers_p0_and_the_validation
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:144
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:147
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_validation_is_only_allowed_in_a_draft
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: invalid
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:250
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:155
+
+--
+
+There were 9 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_a_dispute_on_relied_upon_authority_is_visible_but_does_not_refuse
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => '00000000-0000-4000-8000-000000000927',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:157
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_a_parent_must_exist_over_the_whole_interval
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:111
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_a_parent_ending_mid_interval_violates_and_one_created_in_this_revision_satisfies
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'PARENT_EXISTS',
++    0 => 'D-82_ISSUER_UNKNOWN',
++    1 => 'PARENT_EXISTS',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:121
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_division_with_its_ending_and_existing_successors_is_valid
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:122
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_succession_value_that_is_not_an_event_is_refused
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'G-5_SUCCESSION_FORM',
++    0 => 'D-82_ISSUER_UNKNOWN',
++    1 => 'D-82_ISSUER_UNKNOWN',
++    2 => 'G-5_SUCCESSION_FORM',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:129
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_successors_must_exist_on_the_event_date
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'G-5_SUCCESSOR_EXISTS',
++    0 => 'D-82_ISSUER_UNKNOWN',
++    1 => 'D-82_ISSUER_UNKNOWN',
++    2 => 'G-5_SUCCESSOR_EXISTS',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:136
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_division_merger_and_absorption_end_the_predecessor_a_partial_split_does_not
+the predecessor still exists
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'G-5_PREDECESSOR_ENDS',
++    0 => 'D-82_ISSUER_UNKNOWN',
++    1 => 'G-5_PREDECESSOR_ENDS',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:142
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_no_live_child_under_an_ended_unit
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'G-5_LIVE_CHILD',
++    0 => 'D-82_ISSUER_UNKNOWN',
++    1 => 'G-5_LIVE_CHILD',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:152
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_withdrawal_rests_on_an_instrument_or_a_correction
+a real ending on its instrument
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:161
+
+ERRORS!
+Tests: 104, Assertions: 993, Errors: 9, Failures: 9.

@@ -19,6 +19,8 @@ final readonly class ValidationResult
         public DependencySet $dependencies,
         public array $beforeImages,
         public bool $structural,
+        /** @var list<ClaimId> relied-upon authority claims whose dispute state is "disputed": visible, never a refusal (D-227) */
+        public array $disputedReliances = [],
     ) {
     }
 
@@ -41,6 +43,9 @@ final readonly class ValidationResult
         }
         ksort($images);
 
-        return ['p0' => $this->dependencies->p0, 'dependencies' => $this->dependencies->describe(), 'before_images' => $images, 'structural' => $this->structural];
+        $disputed = array_map(static fn (ClaimId $c): string => $c->value(), $this->disputedReliances);
+        sort($disputed);
+
+        return ['p0' => $this->dependencies->p0, 'dependencies' => $this->dependencies->describe(), 'before_images' => $images, 'structural' => $this->structural, 'disputed_reliances' => $disputed];
     }
 }

@@ -33,6 +33,16 @@ final readonly class ValidDate
         return $this->value < $other->value;
     }
 
+    /** The following calendar day (pure arithmetic; no clock). */
+    public function nextDay(): self
+    {
+        [$y, $m, $d] = array_map('intval', explode('-', $this->value));
+        $last = [31, ($y % 4 === 0 && ($y % 100 !== 0 || $y % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][$m - 1];
+        [$y, $m, $d] = $d < $last ? [$y, $m, $d + 1] : ($m < 12 ? [$y, $m + 1, 1] : [$y + 1, 1, 1]);
+
+        return new self(sprintf('%04d-%02d-%02d', $y, $m, $d));
+    }
+
     public function equals(self $other): bool
     {
         return $this->value === $other->value;

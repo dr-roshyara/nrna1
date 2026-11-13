@@ -1,0 +1,26 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 130 ( 48%)
+..........................................................F.... 126 / 130 ( 96%)
+....                                                            130 / 130 (100%)
+
+Time: 00:00.121, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ReferenceGeographyDomainPurityTest::test_the_domain_has_no_framework_io_clock_or_randomness
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'RevisionValidator.php: date (',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ReferenceGeographyDomainPurityTest.php:101
+
+FAILURES!
+Tests: 130, Assertions: 1066, Failures: 1.

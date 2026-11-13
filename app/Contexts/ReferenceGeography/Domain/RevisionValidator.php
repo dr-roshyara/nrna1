@@ -14,9 +14,20 @@ namespace App\Contexts\ReferenceGeography\Domain;
  */
 final class RevisionValidator
 {
-    /** @param list<Claim> $claims */
-    public function validate(array $claims, DependencyRecordingReader $reader): ValidationResult
+    /** Claim kinds whose basis column in v3.11 §3 is "Territorial" (D-82 applies when they rest on an instrument). */
+    private const TERRITORIAL_KINDS = [
+        ClaimKind::Existence, ClaimKind::Containment, ClaimKind::Classification, ClaimKind::Boundary, ClaimKind::Succession,
+        ClaimKind::ProfileScheme, ClaimKind::ProfileTier, ClaimKind::ProfileClass,
+    ];
+
+    /**
+     * @param list<Claim> $claims
+     * @param array<string, EvidenceVersion> $evidence the revision's evidence versions, by id
+     */
+    public function validate(array $claims, DependencyRecordingReader $reader, array $evidence = []): ValidationResult
     {
+        $disputed = [];
+        $authority = $this->authorityBasis($claims, $evidence, $reader, $disputed);
         $p0 = $reader->p0();
         $images = [];
         foreach ($claims as $claim) {
@@ -40,7 +51,86 @@ final class RevisionValidator
             }];
         }
 
-        return new ValidationResult($violations, $reader->dependencies(), $images, StructuralClassification::ofClaims($claims));
+        return new ValidationResult([...$authority, ...$violations], $reader->dependencies(), $images, StructuralClassification::ofClaims($claims), array_values($disputed));
+    }
+
+    /**
+     * D-82 and the evidence basis, under D-227: for each claim resting on an instrument, the issuer's territorial
+     * competence (territorial kinds only), and every cited mandate and precedence rule, must be in force ON THE
+     * INSTRUMENT'S ISSUE/ADOPTION DATE. A relied-upon authority claim whose dispute state is "disputed" is recorded
+     * as visible; it never refuses by itself. All reads are recorded over [issue date, next day).
+     *
+     * @param list<Claim> $claims
+     * @param array<string, EvidenceVersion> $evidence
+     * @param array<string, ClaimId> $disputed out: relied-upon claims under dispute
+     * @return list<Violation>
+     */
+    private function authorityBasis(array $claims, array $evidence, DependencyRecordingReader $reader, array &$disputed): array
+    {
+        $violations = [];
+        $checkedEvidence = [];
+        foreach ($claims as $claim) {
+            if ($claim->basis->kind !== BasisKind::Instrument) {
+                // D-82: a territorial claim needs an issuer whose competence can be checked, so it rests on an
+                // instrument. The exceptions are those v3.11 names: a BOUNDARY from a cartographic source attributed as
+                // such (§3), EXISTENCE established by a duplicate-search assessment (I-4), and withdrawals on a correction.
+                $exempt = $claim->value->isNone()
+                    || ($claim->slot->kind() === ClaimKind::Boundary && $claim->basis->kind === BasisKind::Other)
+                    || ($claim->slot->kind() === ClaimKind::Existence && $claim->basis->kind === BasisKind::DuplicateSearchAssessment);
+                if (in_array($claim->slot->kind(), self::TERRITORIAL_KINDS, true) && !$exempt) {
+                    $violations[] = new Violation('D-82_BASIS', $claim->id, 'A territorial claim rests on an instrument of a competent issuer.');
+                }
+                continue;
+            }
+            $instrument = $evidence[$claim->basis->reference] ?? null;
+            if (in_array($claim->slot->kind(), self::TERRITORIAL_KINDS, true)) {
+                if ($instrument?->issuer === null || $instrument->issuedOn === null) {
+                    $violations[] = new Violation('D-82_ISSUER_UNKNOWN', $claim->id, 'A territorial claim on an instrument needs the instrument\'s issuer and its issue/adoption day, per D-227.');
+                    continue;
+                }
+                if (!$this->inForceOn(SlotKey::competence($instrument->issuer, 'territorial'), $instrument->issuedOn, $claims, $reader, $disputed)) {
+                    $violations[] = new Violation('D-82', $claim->id, "Issuer {$instrument->issuer} had no territorial competence on {$instrument->issuedOn->value()}.");
+                }
+            }
+            if ($instrument === null || $instrument->issuedOn === null || isset($checkedEvidence[$instrument->id])) {
+                continue;
+            }
+            $checkedEvidence[$instrument->id] = true;
+            foreach ($instrument->mandates as $mandate) {
+                if (!$this->inForceOn(SlotKey::mandate($mandate), $instrument->issuedOn, $claims, $reader, $disputed)) {
+                    $violations[] = new Violation('EVIDENCE_MANDATE', $claim->id, "Mandate {$mandate} was not in force on {$instrument->issuedOn->value()}.");
+                }
+            }
+            foreach ($instrument->precedenceRules as $rule) {
+                if (!$this->inForceOn(SlotKey::precedence($rule), $instrument->issuedOn, $claims, $reader, $disputed)) {
+                    $violations[] = new Violation('EVIDENCE_PRECEDENCE', $claim->id, "Precedence rule {$rule} was not in force on {$instrument->issuedOn->value()}.");
+                }
+            }
+        }
+
+        return $violations;
+    }
+
+    /**
+     * Is the registry slot in force on the date (published, with this revision on top)? If so, its dispute state on
+     * that date is also read (recorded) and a "disputed" state is noted as visible.
+     *
+     * @param list<Claim> $claims
+     * @param array<string, ClaimId> $disputed
+     */
+    private function inForceOn(SlotKey $slot, ValidDate $date, array $claims, DependencyRecordingReader $reader, array &$disputed): bool
+    {
+        $day = new ValidInterval($date, $date->nextDay());
+        $relied = $this->withRevision($slot, $day, $claims, $reader)->claimAt($date);
+        if ($relied === null || $relied->value->isNone()) {
+            return false;
+        }
+        $state = $this->withRevision(SlotKey::dispute($relied->id), $day, $claims, $reader)->resolve($date);
+        if ($state !== null && $state->value() === 'disputed') {
+            $disputed[$relied->id->value()] = $relied->id;
+        }
+
+        return true;
     }
 
     /** @param list<Claim> $claims @return list<Violation> */

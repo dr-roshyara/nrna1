@@ -1,0 +1,83 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FF.FF.FEE                                                           9 / 9 (100%)
+
+Time: 00:00.032, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_a_dispute_on_relied_upon_authority_is_visible_but_does_not_refuse
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\SlotHistory::claimAt()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:150
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_the_next_day_of_a_valid_date
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\ValidDate::nextDay()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:163
+
+--
+
+There were 5 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_an_instrument_records_issuer_and_issue_date_together
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'npl-govt',
+-    1 => '1990-05-01',
++    0 => null,
++    1 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:98
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_a_territorial_claim_by_a_competent_issuer_on_the_issue_date_is_valid_and_the_read_is_recorded
+Failed asserting that an array contains 'slot|COMPETENCE|issuer=8:npl-govt|competence_kind=11:territorial||1990-05-01|1990-05-02'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:109
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_no_competence_on_the_issue_date_is_refused
+issued after competence ended
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-82',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:120
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_a_territorial_claim_on_an_instrument_without_issuer_is_refused
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-82_ISSUER_UNKNOWN',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:126
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\CompetenceAndEvidenceTest::test_cited_mandates_and_precedence_rules_must_be_in_force_on_the_issue_date
+the mandate starts after the issue date
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'EVIDENCE_MANDATE',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CompetenceAndEvidenceTest.php:142
+
+ERRORS!
+Tests: 9, Assertions: 8, Errors: 2, Failures: 5, Warnings: 2.

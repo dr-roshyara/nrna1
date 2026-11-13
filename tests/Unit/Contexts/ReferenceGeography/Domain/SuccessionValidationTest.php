@@ -23,6 +23,7 @@ use App\Contexts\ReferenceGeography\Domain\SuccessionKind;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
 use App\Contexts\ReferenceGeography\Domain\ValidInterval;
 use PHPUnit\Framework\TestCase;
+use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 
 /**
@@ -82,7 +83,7 @@ final class SuccessionValidationTest extends TestCase
     {
         $position = 0;
         $published = array_map(static function (Claim $c) use (&$position): PublishedClaim { $position++; return new PublishedClaim($c, BeforeImage::of(SlotHistory::for($c->slot), $c->interval, $position - 1), $position); }, [
-            self::exists(self::OLD), self::exists(self::S1), self::exists(self::S2), ...$claims,
+            CompetentInstrument::competenceClaim(), self::exists(self::OLD), self::exists(self::S1), self::exists(self::S2), ...$claims,
         ]);
 
         return new InMemoryPublishedAtlas(count($published), $published);
@@ -90,7 +91,7 @@ final class SuccessionValidationTest extends TestCase
 
     private static function validate(array $claims, ?InMemoryPublishedAtlas $atlas = null)
     {
-        return (new RevisionValidator())->validate($claims, new DependencyRecordingReader($atlas ?? self::atlas()));
+        return (new RevisionValidator())->validate($claims, new DependencyRecordingReader($atlas ?? self::atlas()), CompetentInstrument::byId(['act-2015']));
     }
 
     private static function rules($result): array

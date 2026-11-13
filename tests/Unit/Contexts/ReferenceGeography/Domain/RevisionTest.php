@@ -14,6 +14,7 @@ use App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader;
 use App\Contexts\ReferenceGeography\Domain\PublishedClaim;
 use App\Contexts\ReferenceGeography\Domain\RevisionValidator;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
+use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
@@ -71,7 +72,7 @@ final class RevisionTest extends TestCase
     {
         $r = Revision::prepare(RevisionId::fromString('11111111-1111-4111-8111-111111111111'), self::p('a'));
         $r->addClaim($claim ?? self::claim(), self::p('a'));
-        $r->attachEvidence(new EvidenceVersion('ev-1', self::FP), self::p('a'));
+        $r->attachEvidence(CompetentInstrument::evidence('ev-1'), self::p('a'));
         foreach ([AssessmentKind::Authenticity, AssessmentKind::Competence, AssessmentKind::Applicability] as $kind) {
             $r->recordAssessment(new Assessment($kind, 'satisfied', self::p('b')));
         }
@@ -86,7 +87,11 @@ final class RevisionTest extends TestCase
     private static function validated(Revision $r): Revision
     {
         $parent = new Claim(ClaimId::fromString('00000000-0000-4000-8000-000000000999'), SlotKey::existence(ReferenceUnitId::fromString('8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d')), ClaimValue::of('exists'), new ValidInterval(ValidDate::fromString('2000-01-01')), new Basis(BasisKind::Instrument, 'act'));
-        $atlas = new InMemoryPublishedAtlas(1, [new PublishedClaim($parent, BeforeImage::of(SlotHistory::for($parent->slot), $parent->interval, 0), 1)]);
+        $competence = CompetentInstrument::competenceClaim();   // D-82: the evidence's issuer is competent
+        $atlas = new InMemoryPublishedAtlas(1, [
+            new PublishedClaim($parent, BeforeImage::of(SlotHistory::for($parent->slot), $parent->interval, 0), 1),
+            new PublishedClaim($competence, BeforeImage::of(SlotHistory::for($competence->slot), $competence->interval, 0), 1),
+        ]);
         $r->validateWith(new RevisionValidator(), new DependencyRecordingReader($atlas));
 
         return $r;
@@ -168,7 +173,7 @@ final class RevisionTest extends TestCase
 
         $otherInterval = Revision::prepare(RevisionId::fromString('11111111-1111-4111-8111-111111111111'), self::p('a'));
         $otherInterval->addClaim(self::claim(from: '2015-09-21'), self::p('a'));
-        $otherInterval->attachEvidence(new EvidenceVersion('ev-1', self::FP), self::p('a'));
+        $otherInterval->attachEvidence(CompetentInstrument::evidence('ev-1'), self::p('a'));
         foreach ([AssessmentKind::Authenticity, AssessmentKind::Competence, AssessmentKind::Applicability] as $kind) {
             $otherInterval->recordAssessment(new Assessment($kind, 'satisfied', self::p('b')));
         }

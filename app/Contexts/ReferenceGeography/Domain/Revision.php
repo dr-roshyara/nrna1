@@ -86,7 +86,7 @@ final class Revision
     public function validateWith(RevisionValidator $validator, DependencyRecordingReader $reader): ValidationResult
     {
         $this->requireDraft();
-        $this->validation = $validator->validate(array_values($this->claims), $reader);
+        $this->validation = $validator->validate(array_values($this->claims), $reader, $this->evidence);
 
         return $this->validation;
     }

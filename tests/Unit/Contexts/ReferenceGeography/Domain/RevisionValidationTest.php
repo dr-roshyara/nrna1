@@ -27,6 +27,7 @@ use App\Contexts\ReferenceGeography\Domain\SlotKey;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
 use App\Contexts\ReferenceGeography\Domain\ValidInterval;
 use PHPUnit\Framework\TestCase;
+use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 
 /**
@@ -57,14 +58,19 @@ final class RevisionValidationTest extends TestCase
     {
         $exists = new Claim(ClaimId::fromString('00000000-0000-4000-8000-000000000900'), SlotKey::existence(ReferenceUnitId::fromString(self::P)), ClaimValue::of('exists'), new ValidInterval(ValidDate::fromString('2010-01-01')), new Basis(BasisKind::Instrument, 'act'));
 
-        return new DependencyRecordingReader(new InMemoryPublishedAtlas($p0, [new PublishedClaim($exists, BeforeImage::of(SlotHistory::for($exists->slot), $exists->interval, 0), 1)]));
+        $competence = CompetentInstrument::competenceClaim();   // D-82: the evidence's issuer is competent
+
+        return new DependencyRecordingReader(new InMemoryPublishedAtlas($p0, [
+            new PublishedClaim($exists, BeforeImage::of(SlotHistory::for($exists->slot), $exists->interval, 0), 1),
+            new PublishedClaim($competence, BeforeImage::of(SlotHistory::for($competence->slot), $competence->interval, 0), 2),
+        ]));
     }
 
     private static function prepared(Claim $claim): Revision
     {
         $r = Revision::prepare(RevisionId::fromString('11111111-1111-4111-8111-111111111111'), self::p('a'));
         $r->addClaim($claim, self::p('a'));
-        $r->attachEvidence(new EvidenceVersion('ev-1', self::FP), self::p('a'));
+        $r->attachEvidence(CompetentInstrument::evidence('ev-1'), self::p('a'));
         foreach (AssessmentKind::required() as $kind) {
             $r->recordAssessment(new Assessment($kind, 'satisfied', self::p('b')));
         }

@@ -10,4 +10,5 @@
 | G-2b | [Before-images and dependency predicates (gains and losses)](03_g2b_before_images_and_dependencies.md) | implemented 2026-11-13; G-2c follows |
 | G-2c | [The Revision validator (recorded reads; parents, admission, I-1; structural)](04_g2c_validator.md) | implemented 2026-11-13; **G-2 at its review boundary; open questions Q1–Q4** |
 | G-2d-1 | [Endings, corrections and succession (G-5, D-228)](05_g2d1_endings_and_succession.md) | implemented 2026-11-13 |
+| G-2d-2 | [Territorial competence and the evidence basis (D-82, D-227)](06_g2d2_competence_and_evidence.md) | implemented 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |

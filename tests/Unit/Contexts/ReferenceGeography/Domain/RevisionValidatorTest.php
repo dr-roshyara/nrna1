@@ -21,6 +21,7 @@ use App\Contexts\ReferenceGeography\Domain\SlotKey;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
 use App\Contexts\ReferenceGeography\Domain\ValidInterval;
 use PHPUnit\Framework\TestCase;
+use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 
 /**
@@ -66,6 +67,7 @@ final class RevisionValidatorTest extends TestCase
     private static function atlas(array $more = []): InMemoryPublishedAtlas
     {
         return new InMemoryPublishedAtlas(self::P0, [
+            self::pub(CompetentInstrument::competenceClaim(), 1),   // D-82: the instruments' issuer is competent
             self::pub(self::claim(SlotKey::existence(self::u(self::P)), 'exists', self::iv('2010-01-01')), 1),
             self::pub(self::claim(SlotKey::containment(self::u(self::C), 'admin'), self::P, self::iv('2012-01-01')), 2),
             ...$more,
@@ -74,7 +76,7 @@ final class RevisionValidatorTest extends TestCase
 
     private static function validate(array $claims, ?InMemoryPublishedAtlas $atlas = null)
     {
-        return (new RevisionValidator())->validate($claims, new DependencyRecordingReader($atlas ?? self::atlas()));
+        return (new RevisionValidator())->validate($claims, new DependencyRecordingReader($atlas ?? self::atlas()), CompetentInstrument::byId(['act']));
     }
 
     /** @return list<string> */

@@ -46,6 +46,12 @@ final class SlotHistory
         return ($top === null || $top->value->isNone()) ? null : $top->value;
     }
 
+    /** The claim in force at t (a value or a withdrawal), as known at the position. */
+    public function claimAt(ValidDate $t, ?int $upToPosition = null): ?Claim
+    {
+        return $this->topCovering($t, $upToPosition);
+    }
+
     public function isWithdrawnAt(ValidDate $t, ?int $upToPosition = null): bool
     {
         return $this->topCovering($t, $upToPosition)?->value->isNone() ?? false;
