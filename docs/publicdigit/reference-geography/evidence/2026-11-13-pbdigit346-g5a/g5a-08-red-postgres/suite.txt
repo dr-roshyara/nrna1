@@ -1,0 +1,56 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:12.463, Memory: 22.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_production_wiring_binds_the_published_contract
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:82
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_published_places_hierarchy_profile_and_merge_are_answered
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:100
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_a_frozen_but_unpublished_revision_is_invisible
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:135
+
+4) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_an_answer_at_a_position_never_changes_after_later_publications
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:151
+
+5) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_a_time_is_closed_through_then_mapped_to_the_highest_position_recorded_by_it
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:169
+
+6) Tests\Feature\Contexts\ReferenceGeography\PostgresGeographyReadModelTest::test_a_future_time_is_refused_and_a_position_beyond_the_committed_one_too
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php:182
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6, Deprecations: 1.

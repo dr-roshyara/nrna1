@@ -99,6 +99,40 @@ final class SlotHistory
         return array_values($points);
     }
 
+    public function slot(): SlotKey
+    {
+        return $this->slot;
+    }
+
+    /**
+     * The claim with the highest position ≤ the given one, whatever its valid time (G-5a): for facts that hold for all
+     * time or are keyed by knowledge only, a dispute state and a reconciliation (v3.11 §4, §12).
+     */
+    public function latest(?int $upToPosition = null): ?Claim
+    {
+        foreach ($this->byPosition as $position => $claims) {
+            if ($upToPosition === null || $position <= $upToPosition) {
+                return $claims[count($claims) - 1];
+            }
+        }
+
+        return null;
+    }
+
+    /** The publication position of one of this slot's claims, or null if it is not here. */
+    public function positionOf(ClaimId $id): ?int
+    {
+        foreach ($this->byPosition as $position => $claims) {
+            foreach ($claims as $claim) {
+                if ($claim->id->equals($id)) {
+                    return $position;
+                }
+            }
+        }
+
+        return null;
+    }
+
     private function topCovering(ValidDate $t, ?int $upToPosition): ?Claim
     {
         foreach ($this->byPosition as $position => $claims) {

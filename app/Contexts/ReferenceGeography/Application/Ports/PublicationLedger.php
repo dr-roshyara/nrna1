@@ -8,9 +8,10 @@ use App\Contexts\ReferenceGeography\Application\BoundaryNotClosed;
 
 /**
  * The Geography knowledge stream (v3.11 §6). ONE lock for publication and every roster write (the same lock the
- * roster store takes), held from the governance re-check to commit.
+ * roster store takes), held from the governance re-check to commit. closeThrough is also offered alone, as
+ * TimeBoundary (G-5a), so the read side never holds this interface.
  */
-interface PublicationLedger
+interface PublicationLedger extends TimeBoundary
 {
     /**
      * Runs $work under the publication lock in one transaction; commits if it returns, rolls back if it throws.

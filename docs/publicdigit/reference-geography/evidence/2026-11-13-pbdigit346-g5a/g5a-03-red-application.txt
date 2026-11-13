@@ -1,0 +1,65 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.020, Memory: 10.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_knowledge_at_a_committed_position_is_given_and_beyond_it_refused
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:158
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_negative_position_is_refused
+PHPUnit\Framework\Exception: Class "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" does not exist
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_knowledge_at_a_time_closes_through_it_then_maps_it_to_a_position
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:173
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_time_that_cannot_be_closed_is_refused_not_answered
+PHPUnit\Framework\Exception: Class "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable" does not exist
+
+5) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_fabricated_position_beyond_the_boundary_is_refused_by_every_query
+Error: Class "App\Contexts\ReferenceGeography\Application\Published\Knowledge" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:188
+
+6) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_places_at_t_are_those_believed_to_exist_as_known_at_p
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:206
+
+7) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_place_profile_is_published_language_only
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:215
+
+8) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_children_are_the_places_whose_parent_in_the_scheme_is_believed_to_be_the_place
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:230
+
+9) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_resolve_follows_one_merge_and_says_when_it_became_known
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishedGeography" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:239
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

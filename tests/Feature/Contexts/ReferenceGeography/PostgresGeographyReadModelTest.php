@@ -1,0 +1,193 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tests\Feature\Contexts\ReferenceGeography;
+
+use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
+use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
+use App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel;
+use App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable;
+use App\Contexts\ReferenceGeography\Application\PublishedGeography;
+use App\Contexts\ReferenceGeography\Domain\Basis;
+use App\Contexts\ReferenceGeography\Domain\BasisKind;
+use App\Contexts\ReferenceGeography\Domain\BeforeImage;
+use App\Contexts\ReferenceGeography\Domain\Claim;
+use App\Contexts\ReferenceGeography\Domain\ClaimId;
+use App\Contexts\ReferenceGeography\Domain\ClaimValue;
+use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
+use App\Contexts\ReferenceGeography\Domain\SlotKey;
+use App\Contexts\ReferenceGeography\Domain\ValidDate;
+use App\Contexts\ReferenceGeography\Domain\ValidInterval;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+/**
+ * PBDIGIT-346 G-5a on the isolated PostgreSQL cluster (design §2.1, §2.2):
+ * - only PUBLISHED claims are answered; a frozen-but-unpublished revision is invisible;
+ * - an answer at a position never changes after later publications (PO-5 by immutability);
+ * - a time τ is closed through, then mapped to the highest position recorded at or before it; a future τ is refused;
+ * - production wiring binds the published contract.
+ * The cluster is shared across tests, so every test uses fresh units and asserts relative to its own publications.
+ * Fixture claims are published DIRECTLY (under the lock, through the G-4a guards), never through PublishRevision.
+ */
+final class PostgresGeographyReadModelTest extends RefgeoPostgresTestCase
+{
+    use PublishingFixtures;
+
+    private static function unit(): ReferenceUnitId
+    {
+        return ReferenceUnitId::fromString((string) Str::uuid());
+    }
+
+    private static function c(SlotKey $slot, ?string $value, string $from = '2015-09-20', ?string $to = null): Claim
+    {
+        return new Claim(ClaimId::fromString((string) Str::uuid()), $slot, $value === null ? ClaimValue::none() : ClaimValue::of($value),
+            new ValidInterval(ValidDate::fromString($from), $to === null ? null : ValidDate::fromString($to)), new Basis(BasisKind::Instrument, 'act'));
+    }
+
+    /** Publishes the claims as ONE publication, directly; returns its position. */
+    private static function publishDirect(Claim ...$claims): int
+    {
+        return DB::transaction(static function () use ($claims): int {
+            $position = (int) DB::selectOne('SELECT last_position FROM refgeo_sequence WHERE id = 1 FOR UPDATE')->last_position + 1;
+            $revision = (string) Str::uuid();
+            $atlas = PostgresPublishedAtlas::at(DB::connection());
+            foreach ($claims as $c) {
+                DB::table('refgeo_claims')->insert([
+                    'claim_id' => $c->id->value(), 'revision_id' => $revision, 'content_version' => 1, 'kind' => $c->slot->kind()->value, 'slot_key' => $c->slot->encoded(),
+                    'value' => $c->value->isNone() ? null : $c->value->value(), 'valid_from' => $c->interval->from->value(), 'valid_to' => $c->interval->to?->value(),
+                    'basis_kind' => $c->basis->kind->value, 'basis_reference' => $c->basis->reference,
+                    'before_image' => PostgresRevisionRepository::beforeImageJson(BeforeImage::of($atlas->history($c->slot), $c->interval, $atlas->p0())),
+                ]);
+            }
+            DB::insert("INSERT INTO refgeo_publications (position, kind, revision_id, content_version, roster_version, governance_rule, recorded_at)
+                VALUES (?, 'revision', ?, 1, (SELECT last_roster_version FROM refgeo_sequence WHERE id = 1), 'test-fixture-direct', clock_timestamp())", [$position, $revision]);
+
+            return $position;
+        });
+    }
+
+    private static function geography(): GeographyReadModel
+    {
+        return new PublishedGeography(new PostgresGeographyReadSource(DB::connection()), new PostgresPublicationLedger(DB::connection()));
+    }
+
+    public function test_production_wiring_binds_the_published_contract(): void
+    {
+        $this->assertInstanceOf(PublishedGeography::class, app(GeographyReadModel::class));
+        $this->assertInstanceOf(PostgresGeographyReadSource::class, app(GeographyReadSource::class));
+        $this->assertInstanceOf(PostgresPublicationLedger::class, app(TimeBoundary::class));
+    }
+
+    public function test_published_places_hierarchy_profile_and_merge_are_answered(): void
+    {
+        [$country, $province, $old] = [self::unit(), self::unit(), self::unit()];
+        $identifier = self::c(SlotKey::identifier($province, 'iso3166-2'), 'NP-P3');
+        $p = self::publishDirect(
+            self::c(SlotKey::existence($country), 'exists', '1768-01-01'),
+            self::c(SlotKey::existence($province), 'exists'),
+            self::c(SlotKey::containment($province, 'admin'), $country->value()),
+            self::c(SlotKey::classification($province, 'admin'), 'province'),
+            $identifier,
+            self::c(SlotKey::sourceName($province, 'gazette', 'ne', 'official'), 'बागमती'),
+        );
+        $merge = self::publishDirect(self::c(SlotKey::reconciliation($old), $province->value(), '1000-01-01'), self::c(SlotKey::dispute($identifier->id), 'disputed'));
+        $g = self::geography();
+        $k = $g->knowledgeAt($merge);
+
+        $places = $g->placesAt('2020-01-01', $k);
+        $this->assertContains($country->value(), $places);
+        $this->assertContains($province->value(), $places);
+        $this->assertNotContains($province->value(), $g->placesAt('2000-01-01', $k), 'the province did not exist in 2000');
+
+        $place = $g->place($province->value(), '2020-01-01', $k);
+        $this->assertNotNull($place);
+        $this->assertTrue($place->exists);
+        $this->assertSame(['admin' => $country->value()], $place->parents);
+        $this->assertSame(['admin' => 'province'], $place->classifications);
+        $this->assertSame(['iso3166-2' => 'NP-P3'], $place->identifiers);
+        $this->assertSame([['source' => 'gazette', 'language' => 'ne', 'type' => 'official', 'value' => 'बागमती']], $place->names);
+        $this->assertSame(['IDENTIFIER'], $place->disputedKinds);
+        $this->assertSame([], $g->place($province->value(), '2020-01-01', $g->knowledgeAt($p))->disputedKinds, 'not yet disputed at the first position');
+
+        $this->assertSame([$province->value()], $g->childrenOf($country->value(), 'admin', '2020-01-01', $k));
+
+        $resolution = $g->resolve($old->value(), $k);
+        $this->assertTrue($resolution->merged);
+        $this->assertSame($province->value(), $resolution->canonical);
+        $this->assertSame($merge, $resolution->knownAtPosition);
+        $row = DB::selectOne('SELECT recorded_at::text AS r, revision_id::text AS v FROM refgeo_publications WHERE position = ?', [$merge]);
+        $this->assertSame($row->r, $resolution->recordedAt);
+        $this->assertSame($row->v, $resolution->revisionId);
+        $this->assertFalse($g->resolve($old->value(), $g->knowledgeAt($p))->merged, 'not merged before its position');
+    }
+
+    public function test_a_frozen_but_unpublished_revision_is_invisible(): void
+    {
+        $id = self::revision('g5-assessor', 'g5-approver');   // submitted, approved, frozen in refgeo_claims: NOT published
+        $unit = DB::selectOne("SELECT slot_key FROM refgeo_claims WHERE revision_id = ? AND kind = 'EXISTENCE'", [$id->value()])->slot_key;
+        $unitId = SlotKey::decode($unit)->subject()->value();
+        $g = self::geography();
+        $k = $g->knowledgeAt((int) DB::selectOne('SELECT last_position FROM refgeo_sequence')->last_position);
+
+        $this->assertNotContains($unitId, $g->placesAt('2020-01-01', $k));
+        $this->assertNull($g->place($unitId, '2020-01-01', $k));
+    }
+
+    public function test_an_answer_at_a_position_never_changes_after_later_publications(): void
+    {
+        [$country, $other, $province] = [self::unit(), self::unit(), self::unit()];
+        $before = self::publishDirect(
+            self::c(SlotKey::existence($country), 'exists', '1768-01-01'),
+            self::c(SlotKey::existence($other), 'exists', '1768-01-01'),
+            self::c(SlotKey::existence($province), 'exists'),
+            self::c(SlotKey::containment($province, 'admin'), $country->value()),
+        );
+        $g = self::geography();
+        $k = $g->knowledgeAt($before);
+        $then = $g->place($province->value(), '2020-01-01', $k);
+
+        $after = self::publishDirect(self::c(SlotKey::containment($province, 'admin'), $other->value()));
+
+        $this->assertEquals($then, $g->place($province->value(), '2020-01-01', $k), 'the same knowledge, the same answer');
+        $this->assertSame(['admin' => $other->value()], $g->place($province->value(), '2020-01-01', $g->knowledgeAt($after))->parents);
+        $this->assertSame([$province->value()], $g->childrenOf($country->value(), 'admin', '2020-01-01', $k));
+        $this->assertSame([], $g->childrenOf($country->value(), 'admin', '2020-01-01', $g->knowledgeAt($after)));
+    }
+
+    public function test_a_time_is_closed_through_then_mapped_to_the_highest_position_recorded_by_it(): void
+    {
+        $unit = self::unit();
+        $p = self::publishDirect(self::c(SlotKey::existence($unit), 'exists'));
+        $recorded = DB::selectOne('SELECT recorded_at::text AS r FROM refgeo_publications WHERE position = ?', [$p])->r;
+        $justBefore = DB::selectOne("SELECT (?::timestamptz - interval '1 microsecond')::text AS t", [$recorded])->t;
+        $g = self::geography();
+
+        $at = $g->knowledgeAtTime($recorded);
+        $this->assertGreaterThanOrEqual($p, $at->position);
+        $this->assertSame($recorded, $at->asOfTime);
+        $this->assertContains($unit->value(), $g->placesAt('2020-01-01', $at));
+
+        $this->assertLessThan($p, $g->knowledgeAtTime($justBefore)->position, 'a publication recorded after τ is not known at τ');
+        $this->assertNotContains($unit->value(), $g->placesAt('2020-01-01', $g->knowledgeAtTime($justBefore)));
+    }
+
+    public function test_a_future_time_is_refused_and_a_position_beyond_the_committed_one_too(): void
+    {
+        $g = self::geography();
+
+        try {
+            $g->knowledgeAtTime('2999-01-01 00:00:00+00');
+            $this->fail('a future τ was answered');
+        } catch (KnowledgeNotAvailable $e) {
+            $this->assertStringContainsString('future', $e->getMessage());
+        }
+        $this->expectException(KnowledgeNotAvailable::class);
+        $g->knowledgeAt((int) DB::selectOne('SELECT last_position FROM refgeo_sequence')->last_position + 1);
+    }
+}

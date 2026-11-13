@@ -1,3 +1,8 @@
 [
-    "App\\Contexts\\Membership\\Domain\\Member\\MemberId"
+    "App\\Contexts\\Membership\\Domain\\Member\\MemberId",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\GeographyReadModel",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\Knowledge",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\KnowledgeNotAvailable",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\Place",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\Resolution"
 ]

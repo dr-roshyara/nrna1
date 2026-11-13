@@ -23,6 +23,7 @@
 | G-4d | [Revision repository and PostgreSQL atlas reader](16_g4d_revision_repository_and_atlas_reader.md) | implemented 2026-11-13 |
 | G-4e | [Publication ledger under one lock](17_g4e_publication_ledger.md) | implemented 2026-11-13 |
 | G-4f | [Use cases, production wiring and the no-bypass guard](18_g4f_application_wiring_and_no_bypass.md) | implemented 2026-11-13 |
-| G-4g | [Concurrency matrix and consolidated mutation evidence](19_g4g_concurrency_matrix.md) | implemented 2026-11-13; **G-4 at the Principal's acceptance boundary** |
+| G-4g | [Concurrency matrix and consolidated mutation evidence](19_g4g_concurrency_matrix.md) | implemented 2026-11-13; **G-4 accepted with conditions 2026-11-13** |
+| G-5a | [The published read model](20_g5a_published_read_model.md) | implemented 2026-11-13 |
 | — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |

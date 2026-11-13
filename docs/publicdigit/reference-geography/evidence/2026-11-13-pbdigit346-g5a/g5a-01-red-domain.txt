@@ -1,0 +1,56 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEF                                                            8 / 8 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_slot_history_gives_the_latest_claim_known_at_a_position_and_a_claim_position
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\SlotHistory::latest()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:79
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_place_exists_while_its_existence_claim_covers_t_as_known_at_p
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:92
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_withdrawal_means_the_place_does_not_exist
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:103
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_the_profile_reads_parent_classification_identifiers_and_names_at_t_and_p
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:122
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_dispute_flags_only_the_claim_in_force_and_never_changes_its_value
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:144
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_cleared_dispute_no_longer_flags
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:160
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_a_merge_holds_for_all_time_changes_only_by_knowledge_and_can_be_reversed
+Error: Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:169
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PlaceBeliefTest::test_slots_of_another_subject_are_refused
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\ReferenceGeography\Domain\PlaceBelief" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PlaceBeliefTest.php:184
+.
+
+ERRORS!
+Tests: 8, Assertions: 1, Errors: 7, Failures: 1.

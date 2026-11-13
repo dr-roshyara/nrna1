@@ -5,12 +5,17 @@ declare(strict_types=1);
 namespace App\Contexts\ReferenceGeography\Infrastructure\Providers;
 
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
+use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
 use App\Contexts\ReferenceGeography\Application\Ports\PlatformOwnerAuthority;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationLedger;
 use App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource;
 use App\Contexts\ReferenceGeography\Application\Ports\RevisionRepository;
 use App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore;
+use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
+use App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel;
+use App\Contexts\ReferenceGeography\Application\PublishedGeography;
 use App\Contexts\ReferenceGeography\Infrastructure\IdentityActingPerson;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresGeographyReadSource;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlasSource;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository;
@@ -38,5 +43,9 @@ final class ReferenceGeographyServiceProvider extends ServiceProvider
         $this->app->bind(StewardRosterStore::class, static fn (): PostgresStewardRosterStore => new PostgresStewardRosterStore(DB::connection()));
         $this->app->bind(PublicationLedger::class, static fn (): PostgresPublicationLedger => new PostgresPublicationLedger(DB::connection()));
         $this->app->bind(PublishedAtlasSource::class, static fn (): PostgresPublishedAtlasSource => new PostgresPublishedAtlasSource(DB::connection()));
+        // G-5a: the published read contract; the read side gets only the time boundary, never the publication lock
+        $this->app->bind(TimeBoundary::class, static fn (): PostgresPublicationLedger => new PostgresPublicationLedger(DB::connection()));
+        $this->app->bind(GeographyReadSource::class, static fn (): PostgresGeographyReadSource => new PostgresGeographyReadSource(DB::connection()));
+        $this->app->bind(GeographyReadModel::class, PublishedGeography::class);
     }
 }
