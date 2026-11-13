@@ -1,0 +1,3 @@
+<?php
+// A-6: a LISTED technical type in Shared
+final class TenantId {}

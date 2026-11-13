@@ -615,26 +615,12 @@
         "remediation": "inject Psr\\Log\\LoggerInterface when touched",
         "decision": "none"
     },
-    "A-3|app/Contexts/Committee/Application/ReadModel/CommitteeMembershipReadModelAdapter.php|App\\Contexts\\Membership\\Domain\\Member\\MemberId": {
-        "count": 1,
-        "class": "published language (proposed)",
-        "reason": "Membership's member identifier",
-        "remediation": "none; add to the published-language list once accepted",
-        "decision": "none"
-    },
     "A-3|app/Contexts/Committee/Application/ReadModel/CommitteeMembershipReadModelAdapter.php|App\\Contexts\\Membership\\Domain\\ValueObjects\\CommitteeId": {
         "count": 1,
         "class": "misplaced ownership",
         "reason": "a committee (organ) concept Governance owns (strategic baseline rev3) but stored under Membership",
         "remediation": "new organ code goes to Governance; relocation is its own ticket (R-2)",
         "decision": "Membership change request for the relocation"
-    },
-    "A-3|app/Contexts/Committee/Infrastructure/Persistence/EloquentCommitteeMembershipReadModelAdapter.php|App\\Contexts\\Membership\\Domain\\Member\\MemberId": {
-        "count": 1,
-        "class": "published language (proposed)",
-        "reason": "Membership's member identifier",
-        "remediation": "none; add to the published-language list once accepted",
-        "decision": "none"
     },
     "A-3|app/Contexts/Committee/Infrastructure/Persistence/EloquentCommitteeMembershipReadModelAdapter.php|App\\Contexts\\Membership\\Domain\\ValueObjects\\CommitteeId": {
         "count": 1,
@@ -839,33 +825,12 @@
         "remediation": "new organ code goes to Governance; relocation is its own ticket (R-2)",
         "decision": "Membership change request for the relocation"
     },
-    "A-3|app/Contexts/Governance/Domain/Committee/Committee.php|App\\Contexts\\Membership\\Domain\\Member\\MemberId": {
-        "count": 1,
-        "class": "published language (proposed)",
-        "reason": "Membership's member identifier",
-        "remediation": "none; add to the published-language list once accepted",
-        "decision": "none"
-    },
     "A-3|app/Contexts/Governance/Domain/Committee/CommitteeGovernanceInterpreter.php|App\\Contexts\\Membership\\Domain\\Committee\\ValueObjects\\CommitteeFacts": {
         "count": 1,
         "class": "misplaced ownership",
         "reason": "a committee (organ) concept Governance owns (strategic baseline rev3) but stored under Membership",
         "remediation": "new organ code goes to Governance; relocation is its own ticket (R-2)",
         "decision": "Membership change request for the relocation"
-    },
-    "A-3|app/Contexts/Governance/Domain/Committee/Events/MemberAssignedToCommittee.php|App\\Contexts\\Membership\\Domain\\Member\\MemberId": {
-        "count": 1,
-        "class": "published language (proposed)",
-        "reason": "Membership's member identifier",
-        "remediation": "none; add to the published-language list once accepted",
-        "decision": "none"
-    },
-    "A-3|app/Contexts/Governance/Domain/Committee/Events/MemberRemovedFromCommittee.php|App\\Contexts\\Membership\\Domain\\Member\\MemberId": {
-        "count": 1,
-        "class": "published language (proposed)",
-        "reason": "Membership's member identifier",
-        "remediation": "none; add to the published-language list once accepted",
-        "decision": "none"
     },
     "A-3|app/Contexts/Governance/Domain/Committee/Policies/ConstitutionalLegitimacyPolicy.php|App\\Contexts\\Membership\\Domain\\Committee\\ValueObjects\\CommitteeFacts": {
         "count": 1,
@@ -1273,6 +1238,20 @@
         "remediation": "none",
         "decision": "none"
     },
+    "A-4|app/Console/Commands/ResetElection.php|DB::table->delete": {
+        "count": 1,
+        "class": "acceptable exception",
+        "reason": "operational admin command: clears sessions (found 2026-11-13)",
+        "remediation": "none; re-check if it becomes a user path",
+        "decision": "none"
+    },
+    "A-4|app/Console/Commands/ResetElection.php|DB::table->update": {
+        "count": 1,
+        "class": "acceptable exception",
+        "reason": "operational admin command: bulk reset of users can_vote (found 2026-11-13)",
+        "remediation": "none; re-check if it becomes a user path",
+        "decision": "none"
+    },
     "A-4|app/Http/Controllers/CodeController.php|App\\Contexts\\Elections\\Infrastructure\\Queries\\EloquentVotingEntitlementQuery": {
         "count": 1,
         "class": "genuine (minor)",
@@ -1320,6 +1299,20 @@
         "class": "genuine (minor)",
         "reason": "controller depends on the concrete adapter while its port VotingEntitlementQuery exists",
         "remediation": "type-hint the port",
+        "decision": "none"
+    },
+    "A-4|app/Http/Controllers/VoteController.php|DB::table->update": {
+        "count": 1,
+        "class": "genuine",
+        "reason": "legacy voting path: the voting code is consumed by a raw compare-and-set (has_voted false to true) inside the controller; atomic, but vote-casting integrity lives in delivery. Found when A-4 learned chained DB::table writes (2026-11-13)",
+        "remediation": "move code consumption into an Elections use case behind a port, only in an authorised voting slice; never opportunistically",
+        "decision": "none"
+    },
+    "A-4|app/Listeners/CreateUserOrganisationRole.php|DB::table->insert": {
+        "count": 1,
+        "class": "genuine (minor)",
+        "reason": "a listener inserts platform organisation roles directly instead of through a use case (found 2026-11-13)",
+        "remediation": "a Platform use case when touched",
         "decision": "none"
     },
     "A-4|routes/committee/committeeRoutes.php|App\\Contexts\\Membership\\Infrastructure\\Http\\Controllers\\Desktop\\CommitteeMembershipApplicationController": {

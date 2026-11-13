@@ -1,6 +1,11 @@
 # PublicDigit Hexagonal DDD baseline (architecture supplement)
 
-**Status:** PROPOSED, revision 2, for Principal review. **Date:** 2026-11-13. **Author:** Session A (authority: generated until accepted).
+**Status:** **ACCEPTED by the Principal DDD review of 2026-11-13** (revision 2), with the safeguards of revision 2.1 (§14). **Date:** 2026-11-13. **Author:** Session A.
+
+**Rulings (Principal, 2026-11-13; architecture, not product):**
+1. `Shared` is a technical library, never a shared domain kernel (§6, enforced by A-6).
+2. `Membership\Domain\Member\MemberId` is the first, and so far only, published-language entry, narrowly: it grants nothing else of Membership (§4, `tests/Architecture/baselines/published-language.json`).
+3. A-4 allows read-only query interfaces and Eloquent reads in delivery (CLAUDE.md Rule 5).
 **Revision 2:** corrections from the Principal DDD review of revision 1 (`f62d9faa7`), points 2.1 to 2.7. Revision 1 overstated four things, corrected here:
 - that `Shared` is a shared kernel;
 - that the outbox is planned for Reference Geography;
@@ -240,6 +245,42 @@ Remediation R-3: when a use case is touched, take whichever pattern fits.
   - confirm `Member\MemberId` as the first published-language entry;
   - confirm the A-4 refinement (query ports allowed).
 - **Needing a Membership change request later:** R-2's relocation and R-4.
+
+## 14. Revision 2.1: safeguards verified (2026-11-13, after acceptance)
+
+The figures in §7 above are revision 2's. **The current figures are these, and the generated inventory is authoritative:**
+
+| | Revision 2 | Revision 2.1 | Why |
+|---|---|---|---|
+| A-3 | 88 | **83** | the 5 imports of `Member\MemberId` are now published language, so not violations |
+| A-4 | 18 | **22** | A-4 now also sees chained `DB::table(...)->insert/update/delete/…`. That revealed **4 pre-existing writes:** `VoteController` (the legacy voting path consumes the voting code by a raw compare-and-set in the controller; recorded, deliberately untouched), `ResetElection` ×2 (admin command), `CreateUserOrganisationRole` (listener) |
+| **Total** | 198 | **197** | the test's ceiling is 197; growing the baseline means changing that number too, in a visible diff |
+| A-6 Shared closed list | — | **30 technical classes** (`tests/Architecture/baselines/shared-contents.json`) | any new class in `Shared` fails until consciously listed |
+
+**What the tests now prove (fixtures, test-first):**
+- a listed violation is tolerated;
+- a new one is detected, including inside a listed file and as a second occurrence;
+- a fixed one must leave the baseline;
+- only the *named* published identifier crosses a boundary (another type of the same context is reported);
+- aliased imports and inline fully-qualified names are detected;
+- a new class in `Shared` is detected;
+- every entry carries a classification from a closed vocabulary, plus a reason, a remediation and a decision;
+- the baseline doesn't exceed its ceiling;
+- **the inventory equals what the baseline generates.**
+
+**Known blind spots: not enforced, and asserted by a test so they stay documented:**
+- **class names inside strings** (`app('App\…\Infrastructure\X')`);
+- **Eloquent writes in delivery** (`$model->save()`, `Model::create()` on an application model).
+
+**A-4 does not prevent Eloquent writes.** Code review is the control for those.
+
+**Growing the baseline is an architecture change, not a way to turn a test green.** In a one-person repository no test can stop the author from editing the file. The tests make growth deliberate and visible: metadata, the ceiling, and inventory consistency.
+
+**CI:**
+- The full Architecture suite is wired into `greenfield-merge-gate.yml` (pull requests; pushes to `main` and `postgressql`).
+- **No run of this commit is verified:** the branch is not pushed, and `gh` isn't authenticated here.
+- **That gate fails fast on the 4 pre-existing architecture failures,** which would mask a new violation.
+- **So the ratchet also runs in its own database-free job:** `.github/workflows/architecture-ratchet.yml` (pull requests and every push). It takes effect when pushed; that's unverified until then.
 
 **Traceability:**
 - CLAUDE.md Rules 1 to 10;

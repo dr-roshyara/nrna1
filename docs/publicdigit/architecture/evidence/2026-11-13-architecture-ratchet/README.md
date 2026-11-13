@@ -12,3 +12,12 @@
 | `inventory.php` | generates `publicdigit-architecture-deviation-inventory.md` from the baseline |
 
 **Not done, by instruction:** no mutation of the real application. The ratchet's behaviour is proven on isolated fixtures only.
+
+## Revision 2.1: safeguards after the Principal's acceptance (2026-11-13)
+
+| File | Shows |
+|---|---|
+| `07-red-safeguards.txt` | RED: the new methods are missing (published-language list, Shared closed list, inventory). The baseline still had the 5 now-published `MemberId` entries (wrong classification, above the ceiling) |
+| `08-green-safeguards.txt` | the fixture proofs pass. The real tree fails A-4: 4 PRE-EXISTING chained `DB::table` writes, newly visible |
+| `09-green-complete.txt` | complete, with the 4 recorded (classified; ceiling 197): 18 tests pass |
+| `10-architecture-suite-full.txt`, `.failures` | 336 tests, the same 4 pre-existing failures |

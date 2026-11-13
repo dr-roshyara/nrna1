@@ -22,8 +22,11 @@ final class ArchitectureRatchet
 
     private const DELIVERY_ROOTS = ['app/Http/', 'app/Console/', 'app/Jobs/', 'app/Listeners/', 'routes/'];
 
-    /** @return array<string, int> */
-    public static function scan(string $root, string $extension): array
+    /**
+     * @param list<string> $publishedLanguage types other contexts may import (A-3), each named explicitly
+     * @return array<string, int>
+     */
+    public static function scan(string $root, string $extension, array $publishedLanguage = []): array
     {
         $found = [];
         foreach (['app', 'routes'] as $top) {
@@ -37,7 +40,7 @@ final class ArchitectureRatchet
                     continue;
                 }
                 $relative = substr($path, strlen($root) + 1);
-                foreach (self::violations($relative, self::code((string) file_get_contents($path))) as $key => $n) {
+                foreach (self::violations($relative, self::code((string) file_get_contents($path)), $publishedLanguage) as $key => $n) {
                     $found[$key] = ($found[$key] ?? 0) + $n;
                 }
             }
@@ -45,6 +48,69 @@ final class ArchitectureRatchet
         ksort($found);
 
         return $found;
+    }
+
+    /** @return list<string> */
+    public static function loadList(string $path): array
+    {
+        return is_file($path) ? json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR) : [];
+    }
+
+    /** A-6: every class file in app/Contexts/Shared, relative to $root. @return list<string> */
+    public static function sharedContents(string $root, string $extension): array
+    {
+        $dir = "$root/app/Contexts/Shared";
+        $out = [];
+        if (is_dir($dir)) {
+            foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS)) as $file) {
+                if (str_ends_with($file->getPathname(), $extension)) {
+                    $out[] = substr($file->getPathname(), strlen($root) + 1);
+                }
+            }
+        }
+        sort($out);
+
+        return $out;
+    }
+
+    /**
+     * @param list<string> $found
+     * @param list<string> $listed
+     * @return array{new: list<string>, stale: list<string>}
+     */
+    public static function compareShared(array $found, array $listed): array
+    {
+        return ['new' => array_values(array_diff($found, $listed)), 'stale' => array_values(array_diff($listed, $found))];
+    }
+
+    /** The human-readable inventory, generated from the baseline (never edited by hand). */
+    public static function inventory(array $baseline): string
+    {
+        $titles = ['A-1' => 'A-1 Domain purity', 'A-2' => 'A-2 Application layer', 'A-3' => 'A-3 Cross-context imports', 'A-4' => 'A-4 Delivery boundary', 'A-5' => "A-5 Shared 'tenant' connection (D-222)"];
+        $md = "# PublicDigit architecture deviation inventory\n\n"
+            . "**Generated** from `tests/Architecture/baselines/architecture-ratchet.json` (the ratchet baseline) by `ArchitectureRatchet::inventory()`; `ArchitectureRatchetTest` fails if this file and the baseline differ. **Do not edit by hand:** fix the code, shrink the baseline, regenerate.\n\n"
+            . "Each row is one violation: rule, file, exact dependency, number of occurrences. Only `.php` files are scanned, with comments stripped, so a backup file or a class named in a comment is never counted. Allowed and therefore absent: the published language (`tests/Architecture/baselines/published-language.json`) and Shared, whose contents are a closed list (A-6, `shared-contents.json`).\n\n"
+            . "**Separately recorded artefact:** `app/Contexts/Membership/Domain/Models/Member.legacy.php.backup` (not executable; outside the scan). Recommendation: delete it with R-4.\n\n"
+            . "| Rule | Violations | Files |\n|---|---|---|\n";
+        $by = [];
+        $files = [];
+        foreach ($baseline as $k => $e) {
+            [$r, $f] = explode('|', $k);
+            $by[$r][$k] = $e;
+            $files[$r][$f] = true;
+        }
+        foreach ($titles as $r => $t) {
+            $md .= "| $t | " . count($by[$r] ?? []) . ' | ' . count($files[$r] ?? []) . " |\n";
+        }
+        foreach ($titles as $r => $t) {
+            $md .= "\n## $t\n\n| File | Dependency | n | Classification | Reason | Remediation | Decision needed |\n|---|---|---|---|---|---|---|\n";
+            foreach ($by[$r] ?? [] as $k => $e) {
+                [, $f, $d] = explode('|', $k);
+                $md .= '| `' . $f . '` | `' . $d . '` | ' . $e['count'] . ' | ' . $e['class'] . ' | ' . $e['reason'] . ' | ' . $e['remediation'] . ' | ' . $e['decision'] . " |\n";
+            }
+        }
+
+        return $md;
     }
 
     /** @return array<string, array{count: int, reason: string}> */
@@ -87,7 +153,7 @@ final class ArchitectureRatchet
     }
 
     /** @return array<string, int> */
-    private static function violations(string $file, string $code): array
+    private static function violations(string $file, string $code, array $publishedLanguage): array
     {
         $v = [];
         $add = static function (string $rule, string $dep, int $n = 1) use (&$v, $file): void {
@@ -122,7 +188,7 @@ final class ArchitectureRatchet
                 if ($layer === 'Application' && (str_starts_with($ref, 'Illuminate\\Support\\Facades\\') || str_starts_with($ref, 'Illuminate\\Database\\Eloquent\\') || str_starts_with($ref, 'App\\Models\\'))) {
                     $add('A-2', $ref);
                 }
-                if (preg_match('#^App\\\\Contexts\\\\(\w+)\\\\(\w+)\\\\#', $ref, $other) && $other[1] !== $context && $other[1] !== 'Shared') {
+                if (preg_match('#^App\\\\Contexts\\\\(\w+)\\\\(\w+)\\\\#', $ref, $other) && $other[1] !== $context && $other[1] !== 'Shared' && !in_array($ref, $publishedLanguage, true)) {
                     $add('A-3', $ref);
                 }
             }
@@ -151,6 +217,11 @@ final class ArchitectureRatchet
             preg_match_all('/(?<![\w\\\\$>:])\\\\?DB::(insert|update|delete|statement|unprepared|affectingStatement)\s*\(/', $code, $writes);
             foreach ($writes[1] as $write) {
                 $add('A-4', "DB::$write");
+            }
+            // a query-builder write chained within one statement: DB::table('x')->where(...)->delete()
+            preg_match_all('/(?<![\w\\\\$>:])\\\\?DB::table\s*\([^;]*?->(insert|insertGetId|insertOrIgnore|insertUsing|update|updateOrInsert|upsert|delete|truncate|increment|decrement)\s*\(/', $code, $chained);
+            foreach ($chained[1] as $write) {
+                $add('A-4', "DB::table->$write");
             }
             preg_match_all("/['\"]((?:" . implode('|', array_map('preg_quote', self::CONTEXT_TABLE_PREFIXES)) . ")\\w+)['\"]/", $code, $tables);
             foreach ($tables[1] as $table) {

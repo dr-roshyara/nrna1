@@ -1,0 +1,32 @@
+name: Architecture Ratchet
+
+# PBDIGIT-348. The Hexagonal DDD ratchet (A-1 to A-6) runs on its own, without a database, so a NEW architectural
+# violation is never hidden behind the four pre-existing failures of the full Architecture suite (which the
+# Greenfield Merge Gate runs fail-fast). The rules: docs/publicdigit/architecture/publicdigit-hexagonal-ddd-baseline.md §7.
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ratchet:
+    name: architecture ratchet (blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl
+          tools: composer
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts
+
+      - name: Architecture ratchet
+        run: vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Architecture/ArchitectureRatchetTest.php

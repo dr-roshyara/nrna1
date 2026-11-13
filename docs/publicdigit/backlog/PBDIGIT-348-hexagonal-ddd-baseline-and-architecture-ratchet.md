@@ -1,6 +1,6 @@
 # PBDIGIT-348: PublicDigit Hexagonal DDD baseline and architecture ratchet
 
-**Status:** IN REVIEW (revision 2 and ratchet A-1 to A-5 delivered 2026-11-13) · **Context:** cross-cutting (all contexts) · **Kind:** architecture supplement and architecture tests (no production code)
+**Status:** ACCEPTED 2026-11-13 (Principal: Shared is a technical library; MemberId is published language; A-4 allows query ports); revision 2.1 safeguards delivered (A-6, published-language list, chained writes, metadata, ceiling, inventory consistency, a separate CI job) · **Context:** cross-cutting (all contexts) · **Kind:** architecture supplement and architecture tests (no production code)
 
 ## Why
 

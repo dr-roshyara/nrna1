@@ -1,0 +1,15 @@
+<?php
+// A-4: an aliased import, an inline fully qualified name, and a chained query-builder write are detected.
+// KNOWN BLIND SPOTS (asserted as NOT detected): a class name inside a string, and an Eloquent ->save().
+use App\Contexts\Beta\Infrastructure\BetaModel as Innocent;
+final class AliasController
+{
+    public function __invoke()
+    {
+        $x = \App\Contexts\Beta\Infrastructure\BetaCache::class;
+        \DB::table('beta_items')->where('id', 1)->delete();
+        $hidden = app('App\Contexts\Beta\Infrastructure\HiddenService');
+        $model = new \stdClass();
+        $model->save();
+    }
+}

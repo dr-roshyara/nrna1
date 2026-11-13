@@ -1,0 +1,5 @@
+<?php
+// A-3: a published identifier is allowed; an internal type of the same context is not
+use App\Contexts\Beta\Domain\BetaId;
+use App\Contexts\Beta\Domain\BetaAggregate;
+final class Consumer {}

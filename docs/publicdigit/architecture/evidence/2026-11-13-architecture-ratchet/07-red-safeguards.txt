@@ -1,0 +1,103 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEE.E.EEEEEEEEFFE                                                18 / 18 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There were 14 errors:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_a_listed_legacy_violation_is_tolerated
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:65
+
+2) Tests\Architecture\ArchitectureRatchetTest::test_a_new_violation_is_detected_for_every_rule
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:86
+
+3) Tests\Architecture\ArchitectureRatchetTest::test_a_violation_hidden_in_an_already_listed_file_is_detected
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:91
+
+4) Tests\Architecture\ArchitectureRatchetTest::test_a_fixed_violation_still_listed_is_reported_so_the_baseline_shrinks
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:96
+
+5) Tests\Architecture\ArchitectureRatchetTest::test_only_the_named_published_identifier_crosses_the_boundary
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:109
+
+6) Tests\Architecture\ArchitectureRatchetTest::test_an_unlisted_class_in_shared_is_detected_and_a_removed_one_is_stale
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::compareShared()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:126
+
+7) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-1 Domain purity" ('A-1')
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:143
+
+8) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-2 Application layer" ('A-2')
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:143
+
+9) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-3 cross-context" ('A-3')
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:143
+
+10) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-4 delivery boundary" ('A-4')
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:143
+
+11) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-5 organisation connection" ('A-5')
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:143
+
+12) Tests\Architecture\ArchitectureRatchetTest::test_shared_contains_only_its_listed_technical_classes
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::compareShared()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:155
+
+13) Tests\Architecture\ArchitectureRatchetTest::test_every_published_language_entry_names_an_existing_type
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::loadList()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:163
+
+14) Tests\Architecture\ArchitectureRatchetTest::test_the_generated_inventory_matches_the_baseline
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::inventory()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:188
+
+--
+
+There were 2 failures:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_every_baseline_entry_carries_complete_metadata
+A-3|app/Contexts/Committee/Application/ReadModel/CommitteeMembershipReadModelAdapter.php|App\Contexts\Membership\Domain\Member\MemberId: classification outside the closed vocabulary
+Failed asserting that an array contains 'published language (proposed)'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:173
+
+2) Tests\Architecture\ArchitectureRatchetTest::test_the_baseline_does_not_grow_beyond_its_recorded_ceiling
+the baseline grew: an exception is an architecture change, not a way to turn a test green
+Failed asserting that 198 is equal to 193 or is less than 193.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:182
+
+ERRORS!
+Tests: 18, Assertions: 536, Errors: 14, Failures: 2.

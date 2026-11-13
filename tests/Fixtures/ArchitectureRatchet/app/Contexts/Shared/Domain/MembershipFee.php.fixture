@@ -1,0 +1,4 @@
+<?php
+// A-6: a NEW, unlisted class in Shared (a business concept with no owner), which also imports a context
+use App\Contexts\Alpha\Domain\Legacy;
+final class MembershipFee {}

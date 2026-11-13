@@ -1,0 +1,28 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...........F......                                                18 / 18 (100%)
+
+Time: 00:01.937, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-4 delivery boundary" ('A-4')
+A-4: new violation(s). Fix them; do not add them to the baseline without a recorded reason.
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'A-4|app/Console/Commands/ResetElection.php|DB::table->delete',
++    1 => 'A-4|app/Console/Commands/ResetElection.php|DB::table->update',
++    2 => 'A-4|app/Http/Controllers/VoteController.php|DB::table->update',
++    3 => 'A-4|app/Listeners/CreateUserOrganisationRole.php|DB::table->insert',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:148
+
+FAILURES!
+Tests: 18, Assertions: 1184, Failures: 1.
