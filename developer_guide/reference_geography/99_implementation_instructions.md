@@ -136,7 +136,22 @@
 3. **Storage:** `refgeo_objections` (CHECKs, recorder ≠ assessor or decider, one objection per revision).
 4. **Mutation:** M1 to M8. **When a mutant "survives", check the run executed tests** (see the G-6b evidence: a driver defect once ran none).
 
-**G-6c: D-90 governance notices.** Finding, confirmation and closure as **their own publication entries, without claims, under the publication lock.** The approval status is in the read model. **This touches the accepted G-4 write path: design it first, and keep PO-2 (single write path).**
+**G-6c: D-90 governance notices (DESIGN revision 2; awaiting the Principal's final acceptance, NOT implemented).**
+- **Design:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g6c-d90-notices-design.md` §13 gives the six implementation steps.
+- **Before writing any code:** confirm the Principal accepted revision 2.
+- **Then, per step,** RED → GREEN → guide → commit, in this order:
+  1. schema (columns, CHECKs, triggers, `refgeo_publication_persons`);
+  2. domain (`ApprovalDefects`, `GovernanceNotice`, `ApprovalStatus`);
+  3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`);
+  4. `ConfirmPublication`;
+  5. the correction link;
+  6. the read model, feed fields, no-bypass rule and mutation run.
+- **Invariants that must hold at every step:**
+  - one lock and one transaction for a merge and its findings;
+  - the checkpoint is the roster entry;
+  - closure by re-evaluation at the new roster version;
+  - confirmation names an OPEN finding and its digest;
+  - status reads only entries ≤ the knowledge position.
 
 ### G-7: CLDR display names (D-87)
 
