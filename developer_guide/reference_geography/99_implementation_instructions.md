@@ -136,12 +136,12 @@
 3. **Storage:** `refgeo_objections` (CHECKs, recorder ≠ assessor or decider, one objection per revision).
 4. **Mutation:** M1 to M8. **When a mutant "survives", check the run executed tests** (see the G-6b evidence: a driver defect once ran none).
 
-**G-6c: D-90 governance notices (DESIGN revision 2; awaiting the Principal's final acceptance, NOT implemented).**
+**G-6c: D-90 governance notices (DESIGN revision 3; awaiting the Principal's final acceptance and two decisions, §8.4 and §9; NOT implemented).**
 - **Design:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g6c-d90-notices-design.md` §13 gives the six implementation steps.
 - **Before writing any code:** confirm the Principal accepted revision 2.
 - **Then, per step,** RED → GREEN → guide → commit, in this order:
   1. schema (columns, CHECKs, triggers, `refgeo_publication_persons`);
-  2. domain (`ApprovalDefects`, `GovernanceNotice`, `ApprovalStatus`);
+  2. domain (`componentAt`, `ApprovalDefects`, `FindingLifecycle`, `GovernanceNotice`, `ApprovalStatus`);
   3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`);
   4. `ConfirmPublication`;
   5. the correction link;
@@ -150,6 +150,8 @@
   - one lock and one transaction for a merge and its findings;
   - the checkpoint is the roster entry;
   - closure by re-evaluation at the new roster version;
+  - **the affected persons = the components of the merge's persons BEFORE and AFTER the change** (design §5.1);
+  - **one definition of an "open" finding** (design §8.1), used by the ledger, the confirmation, duplicate prevention and the read model; a PUBLISHED correction resolves it, a draft never does;
   - confirmation names an OPEN finding and its digest;
   - status reads only entries ≤ the knowledge position.
 
