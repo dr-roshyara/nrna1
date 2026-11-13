@@ -214,6 +214,8 @@ return [
         // PBDIGIT-346 G-4f: Identity's ports (D-225) and Reference Geography (platform-owner boundary bound CLOSED)
         App\Contexts\Identity\Infrastructure\Providers\IdentityServiceProvider::class,
         App\Contexts\ReferenceGeography\Infrastructure\Providers\ReferenceGeographyServiceProvider::class,
+        // PBDIGIT-345 task 2: the Platform registry (central database) for organisation routing
+        App\Contexts\Platform\Infrastructure\Providers\PlatformServiceProvider::class,
 
     ],
 

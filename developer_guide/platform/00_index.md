@@ -10,3 +10,5 @@
 
 *(Not to be confused with `developer_guide/platform_context/`, an older, unrelated area.)*
 | 01 | [The `ServedOrganisation` domain model](01_served_organisation_domain.md) | task 1 | implemented 2026-11-12; awaiting review |
+| 02 | [The registry and `ResolutionService`](02_registry_and_resolution.md) | task 2 | implemented 2026-11-13 |
+| 90 | [Administrator notes](90_administrator_notes.md) (living page) | from task 2 | 2026-11-13 |

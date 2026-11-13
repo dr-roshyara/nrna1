@@ -104,6 +104,39 @@ final class ServedOrganisation
         $this->status = PlatformStatus::Operational;
     }
 
+    public function snapshot(): ServedOrganisationSnapshot
+    {
+        return new ServedOrganisationSnapshot($this->id, $this->status, $this->schemaState, $this->locator, $this->grant, $this->counterparty);
+    }
+
+    /**
+     * The only way back from storage (task 2; baseline §5). Re-checks the invariants above, so a stored state the
+     * lifecycle could never have produced is refused here and never routed.
+     *
+     * @throws \UnexpectedValueException for an impossible stored state
+     */
+    public static function fromSnapshot(ServedOrganisationSnapshot $s): self
+    {
+        $refuse = static fn (string $why) => throw new \UnexpectedValueException("Stored registry entry {$s->id->value()} is impossible: {$why}.");
+        if ($s->status === PlatformStatus::Pending && ($s->locator !== null || $s->schemaState !== null)) {
+            $refuse('no technical operation while pending (D-185)');
+        }
+        if ($s->status !== PlatformStatus::Pending && ($s->counterparty === null || $s->grant === null)) {
+            $refuse('provisioning needs a verified counterparty and a grant (D-175, D-166)');
+        }
+        if ($s->status === PlatformStatus::Operational && ($s->locator === null || $s->schemaState === null)) {
+            $refuse('operational needs a locator and a schema state (L-1)');
+        }
+        $o = new self($s->id);
+        $o->status = $s->status;
+        $o->schemaState = $s->schemaState;
+        $o->locator = $s->locator;
+        $o->grant = $s->grant;
+        $o->counterparty = $s->counterparty;
+
+        return $o;
+    }
+
     public function isRoutable(): bool
     {
         return $this->status === PlatformStatus::Operational && $this->schemaState === SchemaState::Current;
