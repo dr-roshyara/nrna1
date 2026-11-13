@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.F                                                                  2 / 2 (100%)
+
+Time: 00:00.107, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ReferenceGeographyNoBypassTest::test_the_guard_finds_a_deliberate_bypass_of_every_rule
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     5 => '5 aggregate: app/Services/RogueSqlService.php.fixture',
+     6 => '6 delivery: app/Console/Commands/RogueRepreparesCommand.php.fixture',
+     7 => '6 delivery: app/Http/Controllers/RoguePublishController.php.fixture',
+-    8 => '6 delivery: routes/rogue.php.fixture',
++    8 => '6 delivery: app/Jobs/RogueAppointJob.php.fixture',
++    9 => '6 delivery: routes/rogue.php.fixture',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ReferenceGeographyNoBypassTest.php:103
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 1.

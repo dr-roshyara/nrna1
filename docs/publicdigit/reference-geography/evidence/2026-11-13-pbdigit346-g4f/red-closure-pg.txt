@@ -1,0 +1,30 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDFFFDDDDDDDDDDDDDDDDDDDD                         41 / 41 (100%)
+
+Time: 00:25.457, Memory: 24.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedRevisionClosureTest::test_the_repository_reports_a_published_revision_and_refuses_to_save_it
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedRevisionClosureTest.php:135
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedRevisionClosureTest::test_the_database_refuses_any_update_of_a_published_revisions_row
+must be refused
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedRevisionClosureTest.php:151
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedRevisionClosureTest::test_a_save_racing_a_publication_waits_for_it_and_is_then_refused
+the save waited for the publication
+Failed asserting that 72 is greater than 400.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedRevisionClosureTest.php:200
+
+FAILURES!
+Tests: 41, Assertions: 192, Failures: 3, Deprecations: 1.

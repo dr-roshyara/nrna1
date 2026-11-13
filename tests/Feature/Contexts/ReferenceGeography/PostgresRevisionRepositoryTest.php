@@ -41,7 +41,6 @@ use App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository;
 use App\Contexts\ReferenceGeography\Infrastructure\StoredRevisionCorrupt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
 use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 
@@ -55,7 +54,7 @@ use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
  *   and invalid dependency records are refused as StoredRevisionCorrupt, never repaired;
  * - a save is one transaction: a failure part-way leaves the previous state; a concurrent change is refused.
  */
-final class PostgresRevisionRepositoryTest extends MembershipPostgresTestCase
+final class PostgresRevisionRepositoryTest extends RefgeoPostgresTestCase
 {
     private static function p(string $label): PersonReference
     {

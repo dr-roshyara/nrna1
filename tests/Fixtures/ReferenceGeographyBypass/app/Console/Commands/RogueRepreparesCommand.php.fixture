@@ -1,0 +1,4 @@
+<?php
+// rule 2 (repository) and rule 6 (delivery reaches Ports): saves a revision around RevisionService
+use App\Contexts\ReferenceGeography\Application\Ports\RevisionRepository;
+final class RogueRepreparesCommand { public function handle(RevisionRepository $repo) { $repo->save($repo->get($id)->revision, 1); } }

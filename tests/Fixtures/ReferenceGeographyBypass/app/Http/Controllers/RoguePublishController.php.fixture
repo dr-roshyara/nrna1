@@ -1,0 +1,4 @@
+<?php
+// rule 1 (ledger) and rule 6 (delivery reaches Infrastructure): publishes around PublishRevision
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger;
+final class RoguePublishController { public function __invoke() { (new PostgresPublicationLedger(\DB::connection()))->withLock(fn ($l) => $l->append(...)); } }

@@ -40,7 +40,6 @@ use App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Group;
-use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
 use Tests\Support\ReferenceGeography\CompetentInstrument;
 
 /**
@@ -57,7 +56,7 @@ use Tests\Support\ReferenceGeography\CompetentInstrument;
  * The harness keeps data between tests: every person and unit is fresh; assertions are relative to the state before.
  */
 #[Group('refgeo-race')]
-final class PostgresPublicationLedgerTest extends MembershipPostgresTestCase
+final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
 {
     private static function p(string $label): PersonReference
     {

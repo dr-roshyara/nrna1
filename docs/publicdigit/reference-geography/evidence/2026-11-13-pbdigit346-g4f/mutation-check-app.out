@@ -1,0 +1,5 @@
+U1 a published revision is not closed    KILLED  a_published_revision_is_closed_to_every_act
+U2 the actor need not be appointed       KILLED  every_act_needs_an_actor_appointed_for_the_matter
+U3 submission skips maySubmit            KILLED  submission_and_approval_go_through_governance
+U4 approval skips mayApprove             KILLED  submission_and_approval_go_through_governance
+All mutants killed.

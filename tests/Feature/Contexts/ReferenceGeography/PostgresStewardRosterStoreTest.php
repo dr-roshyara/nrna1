@@ -13,7 +13,6 @@ use App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Group;
-use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
 
 /**
  * PBDIGIT-346 G-4c on PostgreSQL (v3.11 §8 "Roster and publication ordering"; G-4 interpretation §2, B-6):
@@ -26,7 +25,7 @@ use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
  * The harness keeps data between tests: persons are unique per test; assertions are relative to the state before.
  */
 #[Group('refgeo-race')]
-final class PostgresStewardRosterStoreTest extends MembershipPostgresTestCase
+final class PostgresStewardRosterStoreTest extends RefgeoPostgresTestCase
 {
     private static function p(string $label): PersonReference
     {

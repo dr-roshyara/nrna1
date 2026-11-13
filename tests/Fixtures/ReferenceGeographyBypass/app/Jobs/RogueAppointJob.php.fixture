@@ -1,0 +1,4 @@
+<?php
+// rule 3 (roster store): writes the roster around the platform-owner boundary
+use App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore;
+final class RogueAppointJob { public function handle(StewardRosterStore $store) { $store->writeUnderLock(fn ($r) => $r->appointSteward($a, $b)); } }

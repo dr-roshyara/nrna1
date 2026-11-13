@@ -24,7 +24,6 @@ use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
 use Tests\Support\ReferenceGeography\CompetentInstrument;
 use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 
@@ -38,7 +37,7 @@ use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
  *   validator was proven against; so validating through it gives the same result.
  * The harness keeps data between tests: every unit id here is fresh, so other tests' publications never match.
  */
-final class PostgresPublishedAtlasTest extends MembershipPostgresTestCase
+final class PostgresPublishedAtlasTest extends RefgeoPostgresTestCase
 {
     /** @var list<PublishedClaim> what this test published, with positions, for the in-memory reference */
     private array $published = [];

@@ -1,0 +1,3 @@
+P1 publication does not lock the revision row    KILLED  a_save_racing_a_publication_waits_for_it_and_is_then_refused;
+P2 the trigger refusal is not mapped             KILLED  a_save_racing_a_publication_waits_for_it_and_is_then_refused;
+All mutants killed.

@@ -1,0 +1,4 @@
+<?php
+// rule 4 (tables) and rule 5 (the aggregate): writes the stream directly, re-prepares a revision itself
+use App\Contexts\ReferenceGeography\Domain\Revision;
+final class RogueSqlService { public function run() { \DB::table('refgeo_publications')->insert([]); Revision::fromSnapshot($s)->reprepare($p); } }

@@ -1,0 +1,38 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  63 / 198 ( 31%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 126 / 198 ( 63%)
+DDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
+DDDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 189 / 198 ( 95%)
+DDDDDDDEE                                                       198 / 198 (100%)
+
+Time: 03:13.842, Memory: 40.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\RefgeoSchemaGuardsTest::test_claims_are_immutable_and_a_published_versions_claims_cannot_be_added_to
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [connection_failed] Could not read system_identifier (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:144
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/MembershipPgIsolatedDatabase.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+2) Tests\Feature\Contexts\ReferenceGeography\RefgeoSchemaGuardsTest::test_roster_entries_are_appended_at_the_next_version_never_changed_and_notices_are_recorded_once
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [connection_failed] Could not read system_identifier (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:144
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/MembershipPgIsolatedDatabase.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/MembershipPostgresTestCase.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/TestCase.php:73
+
+ERRORS!
+Tests: 198, Assertions: 16409, Errors: 2, Deprecations: 1.

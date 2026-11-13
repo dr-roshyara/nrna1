@@ -211,6 +211,9 @@ return [
         App\Contexts\Adjudication\Infrastructure\Providers\AdjudicationServiceProvider::class,
         App\Contexts\Election\Infrastructure\Providers\ElectionServiceProvider::class,
         App\Contexts\Contestation\Infrastructure\Providers\ContestationServiceProvider::class,
+        // PBDIGIT-346 G-4f: Identity's ports (D-225) and Reference Geography (platform-owner boundary bound CLOSED)
+        App\Contexts\Identity\Infrastructure\Providers\IdentityServiceProvider::class,
+        App\Contexts\ReferenceGeography\Infrastructure\Providers\ReferenceGeographyServiceProvider::class,
 
     ],
 

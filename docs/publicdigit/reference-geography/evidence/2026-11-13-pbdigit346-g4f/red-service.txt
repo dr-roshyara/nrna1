@@ -1,0 +1,65 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEFEEE                                                             7 / 7 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_the_lifecycle_runs_with_the_acting_person_as_actor_throughout
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:93
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:133
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:148
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_no_act_accepts_a_person_as_its_actor
+ReflectionException: Class "App\Contexts\ReferenceGeography\Application\RevisionService" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:160
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_every_act_needs_an_actor_appointed_for_the_matter
+PHPUnit\Framework\Exception: Class "App\Contexts\ReferenceGeography\Application\GeographyActRefused" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\ReferenceGeography\Application\GeographyActRefused" does not exist
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_submission_and_approval_go_through_governance
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:93
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:196
+
+5) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_a_published_revision_is_closed_to_every_act
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:93
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:133
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:225
+
+6) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_a_correction_is_a_new_revision_forward_only
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:93
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:133
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:250
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\RevisionServiceTest::test_without_an_established_acting_person_nothing_happens
+Failed asserting that exception of type "Error" matches expected exception "App\Contexts\ReferenceGeography\Application\ActingPersonRefused". Message was: "Interface "App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:93
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RevisionServiceTest.php:190
+.
+
+ERRORS!
+Tests: 7, Assertions: 1, Errors: 6, Failures: 1.

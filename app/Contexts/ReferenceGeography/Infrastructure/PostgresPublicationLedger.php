@@ -107,6 +107,10 @@ final class PostgresPublicationLedger implements PublicationLedger
 
             public function revision(RevisionId $id): StoredRevision
             {
+                // lock order: refgeo_sequence (taken in withLock), then this revision's row; a save takes only the
+                // revision row, so a save racing this publication waits for it and is then refused (G-4f)
+                $this->db->selectOne('SELECT id FROM refgeo_revisions WHERE id = ? FOR UPDATE', [$id->value()]);
+
                 return $this->revisions->get($id);
             }
 

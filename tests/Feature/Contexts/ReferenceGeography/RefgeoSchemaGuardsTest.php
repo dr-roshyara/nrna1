@@ -7,7 +7,6 @@ namespace Tests\Feature\Contexts\ReferenceGeography;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
 
 /**
  * PBDIGIT-346 G-4a (v3.11 §6, §8, §15; completion §4; G-4 interpretation B-2, B-3, B-4, B-8): database guards of the
@@ -23,7 +22,7 @@ use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
  * The harness keeps data between tests, so every write here appends to the stream exactly as the ledger will, and
  * every write that must not survive happens inside a refused (rolled back) transaction.
  */
-final class RefgeoSchemaGuardsTest extends MembershipPostgresTestCase
+final class RefgeoSchemaGuardsTest extends RefgeoPostgresTestCase
 {
     /**
      * Refused BY A GUARD: a raised exception (P0001) or an integrity violation (class 23). Any other database error,

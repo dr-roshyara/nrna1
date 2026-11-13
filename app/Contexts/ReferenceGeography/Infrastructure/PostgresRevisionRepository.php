@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\ReferenceGeography\Infrastructure;
 
 use App\Contexts\ReferenceGeography\Application\Ports\RevisionRepository;
+use App\Contexts\ReferenceGeography\Application\RevisionAlreadyPublished;
 use App\Contexts\ReferenceGeography\Application\RevisionChangedConcurrently;
 use App\Contexts\ReferenceGeography\Application\StoredRevision;
 use App\Contexts\ReferenceGeography\Domain\Approval;
@@ -76,10 +77,21 @@ final class PostgresRevisionRepository implements RevisionRepository
         $s = $revision->snapshot();
 
         return $this->db->transaction(function () use ($s, $expectedRowVersion): int {
-            $updated = $this->db->update(
-                'UPDATE refgeo_revisions SET state = ?, row_version = row_version + 1, updated_at = clock_timestamp() WHERE id = ? AND row_version = ?',
-                [$s->state->value, $s->id->value(), $expectedRowVersion],
-            );
+            if ($this->isPublished($s->id->value())) {
+                throw new RevisionAlreadyPublished($s->id->value());
+            }
+            try {
+                $updated = $this->db->update(
+                    'UPDATE refgeo_revisions SET state = ?, row_version = row_version + 1, updated_at = clock_timestamp() WHERE id = ? AND row_version = ?',
+                    [$s->state->value, $s->id->value(), $expectedRowVersion],
+                );
+            } catch (QueryException $e) {
+                // a publication committed while this save waited for the revision row (the G-4f trigger)
+                if (str_contains($e->getMessage(), 'REVISION_ALREADY_PUBLISHED')) {
+                    throw new RevisionAlreadyPublished($s->id->value());
+                }
+                throw $e;
+            }
             if ($updated !== 1) {
                 throw new RevisionChangedConcurrently($s->id->value());
             }
@@ -96,10 +108,17 @@ final class PostgresRevisionRepository implements RevisionRepository
             throw new \OutOfBoundsException("No revision {$id->value()}.");
         }
         try {
-            return new StoredRevision(Revision::fromSnapshot($this->snapshotOf($id, $row->state)), (int) $row->row_version);
+            $revision = Revision::fromSnapshot($this->snapshotOf($id, $row->state));
         } catch (\Throwable $e) {
             throw new StoredRevisionCorrupt($id->value(), $e);
         }
+
+        return new StoredRevision($revision, (int) $row->row_version, $this->isPublished($id->value()));
+    }
+
+    private function isPublished(string $id): bool
+    {
+        return $this->db->table('refgeo_publications')->where('revision_id', $id)->exists();
     }
 
     // --- writing ---------------------------------------------------------------------------------------------
