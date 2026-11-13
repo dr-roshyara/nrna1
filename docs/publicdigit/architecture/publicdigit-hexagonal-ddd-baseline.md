@@ -1,142 +1,250 @@
-# PublicDigit Hexagonal DDD baseline (architecture standard)
+# PublicDigit Hexagonal DDD baseline (architecture supplement)
 
-**Status:** PROPOSED, for Principal review · **Date:** 2026-11-13 · **Author:** Session A (authority: generated until accepted)
-**Measured at:** branch `election-flow-updated`, after `f2ea45974` (static scan of `app/Contexts`, `app/Http`, `routes`, `tests/Architecture`).
+**Status:** PROPOSED, revision 2, for Principal review. **Date:** 2026-11-13. **Author:** Session A (authority: generated until accepted).
+**Revision 2:** corrections from the Principal DDD review of revision 1 (`f62d9faa7`), points 2.1 to 2.7. Revision 1 overstated four things, corrected here:
+- that `Shared` is a shared kernel;
+- that the outbox is planned for Reference Geography;
+- that there were 8 identifier VOs (there are 9);
+- that A-4 should ban all Ports.
 
-**Builds on, never restates (ES-005.4):**
-- the layer rules **"Backend Architecture: Laravel with Discipline"** in `.claude/CLAUDE.md` (Rules 1 to 10: Domain pure PHP; Application without facades or Eloquent; Infrastructure free to use Laravel; DTOs; repositories for aggregates only);
+**Measured at:** branch `election-flow-updated`. The measurement is the test `tests/Architecture/ArchitectureRatchetTest.php`, not a one-off grep, so it can be re-run.
+
+**This is a supplement, not a second standard (ES-005.4).** It builds on, and never restates:
+- the layer rules **"Backend Architecture: Laravel with Discipline"** in `.claude/CLAUDE.md`, Rules 1 to 10;
 - the ratified strategic baseline `publicdigit-strategic-ddd-baseline-rev3.md` (contexts, ownership, contracts K-1 to K-7);
-- D-222 (one connection per organisation).
+- D-222 (one connection per organisation) and D-225 (Identity references).
 
-**What this document adds:**
-- the data-ownership rules across the two kinds of context;
-- the cross-context rules;
-- **the enforcement map** (what is enforced versus only written);
-- **the measured deviations;**
-- **a ratchet**, so that new code conforms without a big refactor.
+**It adds only:**
+- data ownership across central and organisation-owned contexts;
+- cross-context rules;
+- the delivery rule;
+- **the enforcement map;**
+- **the measured inventory;**
+- **the ratchet.**
 
-## 1. Purpose, in business terms
+## 1. In business terms
 
-**Every PublicDigit context** (Geography, Membership, Forum, Newsletter, …) **keeps its business rules in one place that doesn't depend on Laravel, the database or the screens.** Any change to the official record goes through one controlled use case, and no context reaches into another context's data.
+Every PublicDigit area (Geography, Membership, Forum, Newsletter, …) keeps its business rules in one place that doesn't depend on Laravel, the database or the screens. Changes to an official record go through one controlled path. One area never reaches into another area's internals: it asks through an agreed interface.
 
-For a solo developer this means two things:
-- a rule is found in one place, and is tested without a database;
-- tests, not memory, stop shortcuts from creeping back in.
+**The point for a solo developer:** **tests, not memory, keep these boundaries.** Today, a new shortcut anywhere in `app/` fails the build, including in old files that already have known problems. The known problems are listed one by one, each with a reason and a fix. The list can only shrink.
+
+**What this does not mean:** that PublicDigit conforms. It means the non-conformance is now **measured and frozen**: 198 known violations (§7), none of them in Reference Geography or the ratified Membership ledger.
 
 ## 2. Layers and dependency direction
 
 ```
-   Delivery  (HTTP / Inertia controllers, routes, console commands, jobs, listeners)
-      │ calls only
-      ▼
-   Application  (use cases; ports; acting person; transaction boundary)
-      │ uses                     ▲ implemented by
-      ▼                          │
-   Domain  (aggregates, value objects,        Infrastructure  (PostgreSQL adapters, Laravel bindings,
-            domain services, events;           Identity adapter, mail and queue adapters)
-            pure PHP)                                │ depends on Application ports and Domain types
-                                                     └── never the reverse
+          Delivery: controllers, Inertia endpoints, routes, console commands, jobs, listeners
+          │  calls use cases; may read through QUERY ports (CLAUDE.md Rule 5)
+          ▼
+          Application: use cases · ports · acting person · "this must be atomic"
+          │ uses                                ▲ implements the ports
+          ▼                                     │
+          Domain: aggregates, value objects,    Infrastructure: PostgreSQL adapters, transactions,
+          domain services, domain events;       Identity adapter, outbox, mail and queue adapters
+          pure PHP                              (depends on Application ports and Domain types;
+                                                 never the other way round)
+
+   Across contexts:  consumer Application ──port──▶ adapter ──▶ provider's published contract
+                     never: consumer ──▶ provider's Infrastructure, tables, or internal Domain types
 ```
 
-| Layer | Owns | Must not | Rule source |
-|---|---|---|---|
-| Domain | invariants, business meaning | depend on Laravel, Eloquent, HTTP, the DB, queues, clock or randomness | CLAUDE.md Rule 1 |
-| Application | use cases; **actor from the trusted Identity port**; the transaction boundary **through a port**; calls to other contexts **through their published contracts** | use facades or Eloquent; duplicate domain rules | CLAUDE.md Rules 2, 4, 5 |
-| Infrastructure | adapters for the ports; Laravel and PostgreSQL | make business decisions | CLAUDE.md Rule 1 |
-| Delivery | translating input and output | touch Infrastructure, Ports or tables; decide authority | **new: rule D-1 below** |
+## 3. Data ownership: two kinds of context, one set of principles
 
-## 3. Two kinds of context, one set of principles
-
-| | Central contexts (Identity, Platform, Reference Geography) | Organisation-owned contexts (Membership, Deliberation, Communication, Governance, Finance) |
+| | Central contexts (Identity, Platform, Reference Geography) | Organisation-owned contexts (Membership, Governance, Deliberation, Communication, Finance, Election, …) |
 |---|---|---|
-| Database | the central (default) connection | **the organisation's own database**, through D-222's per-organisation connection; never a re-pointed shared name, never a shared database filtered by `organisation_id` |
-| Example in code | Reference Geography: `refgeo_*`, `PostgresPublicationLedger` | Membership's ratified ledger: `org_membership_facts`, `PostgresMemberRepository` |
-| People | Identity owns persons and accounts; contexts receive **opaque per-context references** (D-225) | the organisation's own person profile and affiliations (D-101) |
-| Shared facts | Reference Geography is read **through its published read models (G-5)**, never copied into an organisation database | consumed through contracts: belonging (K-4), authority (K-5), participation rule (K-7) |
+| Database | the central (default) connection | **the organisation's own database**, through the per-organisation connection (D-222). Never a shared, re-pointed `tenant` name; never a shared database filtered by `organisation_id` |
+| Reference code | Reference Geography: `refgeo_*` tables | Membership's ratified ledger: `org_membership_*` tables |
+| People | Identity owns persons and accounts; other contexts get **opaque per-context references** (D-225) | the organisation's own person records and affiliations (D-101) |
+| Shared facts | Reference Geography is read **through its read models (G-5, not yet built)**; **never copied into organisation databases** | consumed through contracts: belonging (K-4), authority (K-5), participation rule (K-7) |
 
-## 4. Cross-context rules (new; currently written down only, not enforced)
+**Measured breach of this rule:**
+- **legacy Geography still copies geography into the shared `tenant` connection** (`GeographyMirrorService`, `GeographyLookupService`). That breaches both D-222 and "never copy Reference Geography";
+- Membership has 2 further `tenant` uses.
 
-- **X-1:** a context imports another context's **Infrastructure: never.** Its **Domain types: only those named as the other context's published language** (identifiers, contract DTOs). Anything else goes through an Application-level contract (port plus adapter), as Reference Geography does with Identity (`IdentityActingPerson`, the only Identity import, guarded by `IdentityG0ArchitectureTest`).
-- **X-2:** a context reads or writes **only its own tables.**
-- **X-3:** `Shared` is a **shared kernel** (value types and support only). **Is it ratified as such? Confirm (open, §8).**
-- **X-4: no messaging framework yet.** Cross-context calls are synchronous application contracts. Asynchronous ones use the existing outbox pattern (`RevisionPublished` comes at G-5).
+All four are enforced by A-5 (§7).
 
-## 5. Transactions, persistence, actor
+## 4. What may cross a context boundary (correction 2.3)
 
-- **One aggregate per transaction by default.**
-  - A transaction that spans aggregates must be justified by an invariant; Geography's publication lock is the worked example.
-  - The transaction boundary belongs to the **Infrastructure adapter behind a port** (as in `PostgresStewardRosterStore::writeUnderLock`, `PostgresPublicationLedger::withLock`), **not to `DB::transaction` in the Application layer.**
-- **Aggregates are rebuilt only through the domain's own rebuild path.** Never by setting private state from rows (Reference Geography G-4b).
-- **Insert-only history and immutability are guarded in the database as well,** where the record is official: triggers (`developer_guide/database/02`).
-- **The acting person always comes from the Identity port. No use case accepts a person as its actor** (proven in Reference Geography by reflection).
-
-## 6. Testing standard
-
-| Level | What | Database | Example |
-|---|---|---|---|
-| 1 Domain | invariants | none | `tests/Unit/Contexts/ReferenceGeography/Domain` |
-| 2 Application | use cases with fakes for ports | none | `RevisionServiceTest`, `RosterServicesTest` |
-| 3 Adapters | repository and ledger round trips, refusals | isolated PostgreSQL (`scripts/testing/membership-pg.sh`) | `PostgresRevisionRepositoryTest` |
-| 4 Concurrency | deterministic lock-held races | isolated PostgreSQL | `PostgresConcurrencyMatrixTest` |
-| 5 Architecture | dependency direction, no bypass | none | `ReferenceGeographyNoBypassTest`, `MembershipSemanticKernelPurityTest` |
-| 6 Delivery | only where a controller has logic | test DB | — |
-
-**Safeguards are proven by mutation** (a loaded copy, never a source edit), each kill **classified by reason** (Reference Geography G-4g).
-
-## 7. Enforcement map, and what was measured
-
-| Rule | Reference Geography | Membership (ratified slice-1 ledger) | Membership (older areas) | Others |
-|---|---|---|---|---|
-| Domain pure | **enforced** (`ReferenceGeographyDomainPurityTest`): 0 deviations | **enforced** (`MembershipSemanticKernelPurityTest`, slice 1a/1b boundary tests): 0 deviations | **11 files:** 8 identifier VOs use `Illuminate\Support\Str`; **an Eloquent model in `Domain/Models/Member.php`**; a stray `Domain/Models/Member.legacy.php.backup` | legacy Geography 4; Elections 1 |
-| Application without facades or Eloquent | 0 (not test-enforced) | 0 | **14 files:** `DB::transaction` in 10 use cases (Application/UseCases, Committee, Fee); `App\Models\Tenant`, `Organisation`, `UserOrganisationRole` in 3; **`DB::connection('tenant')`** in `TenantUserProvisioningService` | Election 2, Elections 2, Geography 6, Governance 2 |
-| One write path, no bypass | **enforced** (`ReferenceGeographyNoBypassTest`) | ledger isolation tests | not enforced | not enforced |
-| Cross-context (X-1) | only the Identity adapter (enforced) | — | **Membership → Committee Infrastructure (1); → legacy Geography Domain (14)** | **Governance → Membership Domain 47, Infrastructure 3;** Committee → Membership Domain 4, Infrastructure 1 |
-| Delivery never imports Infrastructure (D-1) | none exist | — | — | **9 files in `app/Http` or `routes`** import a context's Infrastructure |
-| Per-organisation connection (D-222) | n/a (central) | ratified code uses its connection | **`DB::connection('tenant')`**: a shared, re-pointed name, contrary to D-222 | — |
-
-**Reading the table:** the two reference implementations conform. **The deviations are in older code that predates the current rules.** They are listed so they are known, not so they are rewritten now.
-
-## 8. The minimal architecture-test set (proposed; to build test-first after this review)
-
-**A ratchet, not a refactor:** each test fails on any deviation **not already listed** in its baseline file. The baseline files hold today's measured deviations and may only shrink. **New code must conform; old code is fixed when touched.**
-
-| Test | Rule | Today's baseline |
+| Kind | May a consumer depend on it? | Example in the code |
 |---|---|---|
-| A-1 `ContextDomainPurityTest` | every `app/Contexts/*/Domain` is free of Laravel, Eloquent, facades, `App\Models`, DB | 16 files (Membership 11, Geography 4, Elections 1) |
-| A-2 `ApplicationLayerTest` | no facades or `App\Models` in any `Application` | 26 files |
-| A-3 `CrossContextImportTest` | no import of another context's Infrastructure; Domain only from a published-language list | the current couplings (§7) |
-| A-4 `DeliveryBoundaryTest` | `app/Http`, `app/Console`, `app/Jobs`, `app/Listeners`, `routes` never import `*\Infrastructure\` or `*\Application\Ports\` | 9 files |
-| A-5 `OrganisationConnectionTest` | organisation-owned contexts never name the shared `tenant` connection | 1 file |
+| **Identifier** (a value type naming the provider's thing) | **yes, if listed as published language** | `Membership\Domain\Member\MemberId` (proposed) |
+| **Published contract DTO** (a read-only fact shape the provider promises) | yes, if listed | none named yet; to be defined with R-2 |
+| **Query contract** (a provider-owned read interface) | yes, through an adapter in the consumer's Infrastructure | Reference Geography's `PublishedAtlasSource` (internal today; published at G-5) |
+| **Consumer-owned port** (the consumer defines what it needs; the provider's adapter implements it) | **yes: the preferred direction** | `Membership\Domain\Services\GeographyLookupInterface`, implemented by Geography; Reference Geography's `ActingPerson`, implemented over Identity |
+| **Provider's Application port used directly** | only when that port is listed as published | `Platform\Application\Services\ContextInstaller` (unclassified) |
+| **Infrastructure adapter, Eloquent model, table** | **never** | 5 breaches (`CommitteeModel` ×3, `MemberContextModel`, …) |
+| **Internal domain entity, aggregate, state enum** | **never** | committee organ types, see §5 |
 
-**Not proposed:** a generic architecture framework, or fragile naming rules.
+**The published-language list** will be an explicit allow-list in the ratchet once this revision is accepted. Until then, every cross-context import is recorded individually in the baseline, legitimate or not, so none can be added silently. **`Shared` is provisionally exempt** from A-3 (see §6).
 
-## 9. Remediation priorities (each a separate, authorised ticket; none started)
+## 5. Governance → Membership: the 50 imports classified (correction 2.3, priority 2)
 
-1. **`DB::connection('tenant')` in Membership** contradicts D-222. **Fold it into PBDIGIT-345,** the per-organisation routing that is next for Membership anyway.
-2. **Governance → Membership Domain (47 imports):** find which are published language (identifiers) and which are reach-ins. **It decides how Governance reads Membership facts**, so it needs investigating before the Forum and Newsletter designs consume Governance contracts.
-3. **`DB::transaction` in 10 Membership use cases:** a transaction port, as the ratified ledger code already does through its repository. Fix them when the use cases are touched.
-4. **The Eloquent `Member` model in Membership's Domain** (and the `.backup` file): move it to Infrastructure. **It needs a Membership change request** (frozen architecture), because it may be read elsewhere.
-5. **8 identifier VOs using `Str`:** use pure-PHP UUID generation. Trivial, when touched.
-6. **The legacy Geography context:** will be replaced by Reference Geography read models (G-5; Organisation integration deferred, D-147). No change now.
-7. **9 delivery files importing Infrastructure:** fix when each controller is touched.
+Revision 1 said "47 Domain imports". The ratchet counts **50 imports (47 Domain, 3 Infrastructure) of 10 distinct classes:**
 
-## 10. Context-specific, justified exceptions
+| Classification | Imports | Classes |
+|---|---|---|
+| 1. Legitimate published language | 3 | `Member\MemberId` |
+| 2. Internal domain dependency, **owned by Governance but stored in Membership** | 44 | `Committee\ValueObjects\CommitteeId` (20), `ValueObjects\CommitteeId` (2), `Committee\ValueObjects\MemberId` (7), `CommitteeFacts` (5), `TermPeriod` (1), `ConstitutionalLegitimacy`, `StructuralOperationalState`, `TemporalGovernanceState` (3 each) |
+| 3. Persistence leakage | 3 | `Infrastructure\Models\CommitteeModel` |
+| 4. Unclear ownership | 0 | none |
 
-- **Reference Geography:** publication and roster share one lock (v3.11 §6, §8). A cross-aggregate transaction, justified by the governance invariant.
-- **Identity:** the only context others may call **from Infrastructure** for the acting person (D-225 port). The opposite direction is never allowed.
-- **Membership ledger:** its own clock and closed-through rules (ratified). **PO-8, timestamp adjustment versus Geography's refusal, is to be resolved in Membership's tactical work.**
+**What this means.** Governance isn't reaching into Membership's business. **Governance's own concept, the committee as an organ, was built inside Membership's folder** (`Membership/Domain/Committee`, 188 files, May 2026). That predates the ratified strategic baseline rev3, which assigns organs, positions and terms of office to **Governance**. The coupling is a misplaced aggregate, not a missing interface.
 
-## 11. Open points
+**Smallest correct response (R-2). No move now:**
+1. **New organ and committee code goes into Governance.** The ratchet blocks any *new* Governance import of these types.
+2. **Governance consumes membership facts** (in force, suspended) **only through a Membership query contract**, for example `MembershipStanding`, defined with PBDIGIT-345 or the lifecycle work. It never uses Membership's internal types.
+3. **The 3 `CommitteeModel` imports** are replaced by a Governance query port when touched.
+4. **Relocating the 188 files** is its own ticket, under a **Membership change request**. The code predates the ratified 2026-10-08 architecture, but it lives in Membership's folder, so moving it is a change there.
 
-- **X-3:** is `Shared` ratified as a shared kernel, and what may it contain?
-- **Which Membership Domain types are published language** for Governance and Committee (A-3's allow-list)?
-- **Elections versus Election, and Committee versus Membership's committee areas:** two pairs of overlapping folders. Their ownership is in the strategic baseline, but the code split isn't reconciled. Record it, don't fix it now.
+**Two `MemberId` classes exist** (`Member\MemberId` and `Committee\ValueObjects\MemberId`). That's a duplicate identity concept. Record it and resolve it with step 4.
 
-## 12. Recommendation
+**Why this matters for the Forum and Newsletter:**
+- Deliberation (forum access) and Communication (audiences, D-213) will need *belonging*, *membership standing* and *authority*.
+- **They must consume Governance and Membership contracts, never committee internals.** Steps 1 and 2 give them something stable to consume.
 
-1. **Accept this baseline** (it adds no new business rule).
-2. **Build A-1 to A-5 test-first, as a ratchet,** in one small slice: the tests fail on a newly introduced deviation, and the baselines hold today's state.
-3. **Then G-5.**
-4. **Fold remediation 1 into PBDIGIT-345.** Investigate remediation 2 before the Forum and Newsletter tactical designs.
+## 6. `Shared`: classified, not ratified (correction 2.2)
 
-**Traceability:** CLAUDE.md layer rules · strategic baseline rev3 · D-101, D-147, D-222, D-225 · Reference Geography G-4 (accepted with conditions) · Membership slice 1 (accepted).
+| Contents | Classification | Users |
+|---|---|---|
+| `Infrastructure/Outbox` (9), `Infrastructure/Inbox` (6), `Infrastructure/Messaging` (3) | **generic technical infrastructure** (outbox, inbox, dispatch) | Membership, Adjudication, Contestation, Election |
+| `Application/Inbox` (6), `Application/Messaging/EventProvenance` | **generic technical application contracts** (handler interface, outcomes, provenance) | Adjudication, Contestation, Election |
+| `Domain/DomainEvent`, `Domain/Events/IntegrationEvent`, `Domain/TenantAggregateRoot` | **generic technical base types** | Membership |
+| `Domain/ValueObjects/TenantId`, `ActorId` | **generic value types** (identifiers) | Membership, Governance, Platform |
+| genuine shared business concepts | **none found** | |
+| context-specific concepts misplaced in Shared | **none found** | |
+
+**Options:**
+- **(a) Shared technical library, recommended.** The rule is "no business concepts, ever". The consequence: contexts may depend on it freely, and a business concept appearing in `Shared` is a defect. Cheap to enforce (a follow-up A-6).
+- **(b) A shared domain kernel.** This would mean joint ownership of business concepts by several contexts. **Not warranted: there are none,** and it would invite shared models that blur ownership.
+- **(c) Dissolve into the contexts.** This duplicates the outbox and inbox four times, for no gain.
+
+**Recommendation: (a).** It's an architecture ruling within the ratified ownership, so no product decision is needed. The Principal reviewer may confirm it.
+
+## 7. Enforcement map, and the inventory (corrections 2.6 and 2.7)
+
+**The ratchet** is `tests/Architecture/ArchitectureRatchetTest.php`, with its scanner in `tests/Architecture/Support/ArchitectureRatchet.php`.
+
+**What it scans:**
+- every `.php` file in `app/` and `routes/`, with comments stripped;
+- each violation is one entry: `rule | file | exact dependency`, with an occurrence count.
+
+**The baseline** is `tests/Architecture/baselines/architecture-ratchet.json`. Each entry carries:
+- the count;
+- a **classification;**
+- a **reason;**
+- a **remediation;**
+- whether a decision or change request is needed.
+
+**The generated inventory, one row per violation:** `publicdigit-architecture-deviation-inventory.md`.
+
+| Rule | What it forbids | Today (violations / files) | Status |
+|---|---|---|---|
+| A-1 Domain purity | Laravel, Eloquent, `App\Models`, facade calls in any `Domain` | **21 / 15** | **enforced** (ratchet) |
+| A-2 Application layer | facades (imported, or called as a global alias), Eloquent, `App\Models` in any `Application` | **67 / 27** | **enforced** |
+| A-3 Cross-context | any import of another context's Domain, Application or Infrastructure (`Shared` exempt) | **88 / 58** | **enforced** (all recorded; allow-list pending) |
+| A-4 Delivery boundary | in `app/Http`, `app/Console`, `app/Jobs`, `app/Listeners`, `routes`, `Contexts/*/Http`: another context's Infrastructure, **write-side ports** (`…Repository`, `…Store`, `…Ledger`), **context tables** (`refgeo_*`, `org_membership_*`), **raw SQL writes** (`DB::insert/update/delete/statement/unprepared`) | **18 / 14** | **enforced** |
+| A-5 Shared `tenant` connection | `connection('tenant')`, `$connection = 'tenant'` anywhere | **4 / 4** | **enforced** |
+| No bypass of one write path | Reference Geography | — | **enforced** (`ReferenceGeographyNoBypassTest`) |
+| Domain purity, ratified Membership ledger | | 0 | **enforced** (`MembershipSemanticKernelPurityTest`, slice 1a/1b) |
+| **Trusted acting person** | | — | **enforced in Reference Geography** (reflection test). **A gap in Membership:** see §9 |
+| Eloquent writes in controllers (`$model->save()`) | | — | **documented only.** Not reliably detectable statically without false alarms |
+| Published-language allow-list | | — | **proposed** (§4) |
+
+**Classified totals** (from the baseline file):
+- genuine: 55;
+- genuine, legacy Geography or Membership-to-Geography: 46;
+- minor: 13;
+- misplaced ownership (committee): 49;
+- persistence leakage: 5;
+- placement: 6;
+- acceptable exception: 6;
+- published language, approved or proposed: 7;
+- consumer-owned port: 2;
+- unclear: 3;
+- artefacts: 6 (5 dangling imports of the non-existent `TenantAuth` and `Subscription` contexts, 1 unused import).
+
+**Resolved counts:**
+- **Membership Domain:** "11 files" in revision 1 = 9 identifier VOs using `Str` + the Eloquent `Member` model + `Member.legacy.php.backup`. The backup isn't executable: the ratchet doesn't scan it, and the inventory records it separately.
+- **"14 Membership Application files" became 15:** adds `CreateMemberRequest`, which calls `Log::` as a global alias without an import, which the first grep missed.
+- **"9 delivery files" became 14,** now that console commands, `routes/console.php` and context controllers are included. Six are acceptable exceptions (the outbox and inbox drivers, backfills, a projection rebuild).
+
+**A-4 corrects my own first proposal:** read-only **query ports in controllers are allowed.** They are the hexagonal way to read, and they match CLAUDE.md Rule 5. **Write-side ports are not.**
+
+## 8. Transactions (correction 2.1)
+
+**The use case decides what must be atomic. Infrastructure decides how.** The Application expresses the requirement through a port; it never calls `DB::transaction`. Business orchestration doesn't move into Infrastructure.
+
+| Pattern | The Application says | Infrastructure does | Example |
+|---|---|---|---|
+| **Unit of work under a lock** | "run this orchestration atomically": `$ledger->withLock(fn (LockedLedger $l) => …)`; `$store->writeUnderLock(fn (StewardRoster $r) => …)`. The closure holds the use case's own logic | opens the transaction, takes `FOR UPDATE`, commits or rolls back | Reference Geography `PublishRevision`, `StewardRosterService` |
+| **Optimistic append** | load → authorise → decide → `append(expected version)`; on conflict, discard and retry (at most 3) | makes one `append` atomic and version-checked | Membership ledger `DecideAndAppend` |
+
+**The legacy code doesn't follow this:**
+- 10 Membership use cases call `DB::transaction`;
+- one controller owns the transaction itself (the comment in `ApproveMembershipApplication`).
+
+Remediation R-3: when a use case is touched, take whichever pattern fits.
+
+## 9. The acting person (correction 2.4)
+
+- **The rule:** a caller never chooses who the acting person is. It is resolved **from the authenticated session, by a trusted resolver**, and checked by the owning context's authority rules.
+- **How each context gets it** (no direct dependency on Identity internals):
+  - **Through its own consumer-owned port** (Reference Geography: `Application\Ports\ActingPerson`). Only an Infrastructure adapter (`IdentityActingPerson`) touches Identity's published application API. That's 2 approved imports (§7, A-3), guarded by `IdentityG0ArchitectureTest`.
+  - **Or by delivery filling a command field from the same trusted resolver,** never from request input.
+- **The ratified Membership ledger takes the second form:**
+  - `AdmitMember::$actor` is a command field, checked by `AuthorityCheckPort`;
+  - **no delivery path calls it yet.**
+  - **Gap:** when PBDIGIT-345 wires its controllers, they must fill `actor` from the trusted resolver, **with a delivery test proving that a request value is ignored.**
+  - The ratified design isn't changed.
+
+## 10. Messaging and the outbox (correction 2.5)
+
+| | Status |
+|---|---|
+| Outbox (`outbox_events`, 2026-05), inbox (`inbox_events`, 2026-07), provenance, `ProcessOutboxEvents` and `RedriveInboxEvents` commands | **implemented** (Shared technical infrastructure) |
+| Writers | **Membership** (5 files) |
+| Consumers (inbox handlers, hydrators) | Adjudication, Contestation, Election |
+| Reference Geography | **does not use the outbox.** The event `RevisionPublished` is **planned for G-5, not implemented.** |
+| A messaging framework (a broker, …) | **none, and none proposed** (X-4) |
+
+**The convention:**
+- cross-context calls are synchronous **query contracts;**
+- facts other contexts react to are published through **the existing outbox,** in the writing transaction;
+- consumers are **idempotent inbox handlers.**
+
+## 11. Overlapping folders (point 6)
+
+- **`Election` (100 files) and `Elections` (82 files): two modules of one bounded context** (rev3 has a single Election context, deferred by D-146). They don't import each other.
+  - `Election` is the operating core: lifecycle, determinations, evidence windows (EM-ARCH-001, Aug 2026).
+  - `Elections` is the electorate and ballot side: voter assignment, admission, ballots (Oct 2026).
+  - **A naming issue, not an ownership overlap. Recommendation: don't rename.** Reconcile when Election's tactical design resumes after D-146.
+- **`Committee` (4 files, a read model) and `Membership/Domain/Committee` (188 files): an ownership finding.** Both hold a Governance concept (organs, rev3). See §5, R-2.
+
+## 12. Remediation priorities (none started; each in its own authorised slice)
+
+1. **R-1:** Membership's `tenant` connection (2 files) → per-organisation connection **in PBDIGIT-345**, with no workaround. Legacy Geography's 2 files go with R-6.
+2. **R-2:** Governance–Membership.
+   - **Next for Membership:** define the **`MembershipStanding` query contract;** new organ code goes to Governance.
+   - **Separately:** the committee relocation (a Membership change request). **This precedes the Forum and Newsletter tactical designs.**
+3. **R-3:** a transaction port in the 10 legacy use cases, when touched.
+4. **R-4:** the Eloquent `Member` model out of Domain (Membership change request); delete the `.backup` file.
+5. **R-5:** 9 identifier VOs from `Str` to pure-PHP UUIDs, when touched.
+6. **R-6:** retire legacy Geography (Domain models, facades, the tenant mirror) through G-5 and the D-147 integration decision.
+7. **R-7:** the delivery deviations, when each file is touched. The quick one: two controllers type-hint the concrete `EloquentVotingEntitlementQuery` instead of its existing port.
+
+## 13. Decisions
+
+- **For the Principal (product, constitution): none.**
+- **For the Principal reviewer (architecture):**
+  - confirm `Shared` as a technical library (option a);
+  - confirm `Member\MemberId` as the first published-language entry;
+  - confirm the A-4 refinement (query ports allowed).
+- **Needing a Membership change request later:** R-2's relocation and R-4.
+
+**Traceability:**
+- CLAUDE.md Rules 1 to 10;
+- strategic baseline rev3;
+- D-101, D-146, D-147, D-213, D-222, D-225;
+- Reference Geography G-4 (accepted with conditions, 2026-11-13);
+- Membership slice 1 (accepted);
+- evidence: `docs/publicdigit/architecture/evidence/2026-11-13-architecture-ratchet/`.

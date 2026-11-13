@@ -1,0 +1,15 @@
+<?php
+// A-4: delivery reaching a context's Infrastructure, a write-side port, a bounded context's own table, and a raw write.
+// A read-only QUERY port is allowed (CLAUDE.md Rule 5: reads may bypass the write model), so it must NOT be reported.
+use App\Contexts\Beta\Infrastructure\BetaRepository;
+use App\Contexts\Beta\Application\Ports\BetaRepository as BetaRepositoryPort;
+use App\Contexts\Beta\Application\Ports\BetaSummaryQuery;
+final class RogueController
+{
+    public function __invoke()
+    {
+        \DB::update('update beta set x = 1');
+
+        return \DB::table('refgeo_publications')->count();
+    }
+}

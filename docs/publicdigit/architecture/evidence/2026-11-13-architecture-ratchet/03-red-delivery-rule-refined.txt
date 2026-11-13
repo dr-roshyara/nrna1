@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_a_new_violation_is_detected_for_every_rule
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     3 => 'A-2|app/Contexts/Alpha/Application/UseCase.php.fixture|Log::',
+     4 => 'A-3|app/Contexts/Alpha/Application/UseCase.php.fixture|App\Contexts\Beta\Infrastructure\BetaRepository',
+     5 => 'A-4|app/Http/Controllers/RogueController.php.fixture|App\Contexts\Beta\Application\Ports\BetaRepository',
+-    6 => 'A-4|app/Http/Controllers/RogueController.php.fixture|App\Contexts\Beta\Infrastructure\BetaRepository',
+-    7 => 'A-4|app/Http/Controllers/RogueController.php.fixture|DB::update',
++    6 => 'A-4|app/Http/Controllers/RogueController.php.fixture|App\Contexts\Beta\Application\Ports\BetaSummaryQuery',
++    7 => 'A-4|app/Http/Controllers/RogueController.php.fixture|App\Contexts\Beta\Infrastructure\BetaRepository',
+     8 => 'A-4|app/Http/Controllers/RogueController.php.fixture|table:refgeo_publications',
+     9 => 'A-5|app/Contexts/Beta/Infrastructure/BetaRepository.php.fixture|connection('tenant')',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:50
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.

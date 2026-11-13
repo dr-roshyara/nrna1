@@ -1,0 +1,4 @@
+<?php
+// A-1: a NEW file with a violation
+use Illuminate\Database\Eloquent\Model;
+final class Fresh extends Model {}

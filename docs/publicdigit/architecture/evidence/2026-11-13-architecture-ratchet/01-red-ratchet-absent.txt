@@ -1,0 +1,71 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEE                                                       11 / 11 (100%)
+
+Time: 00:00.019, Memory: 12.00 MB
+
+There were 11 errors:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_a_listed_legacy_violation_is_tolerated
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:42
+
+2) Tests\Architecture\ArchitectureRatchetTest::test_a_new_violation_is_detected_for_every_rule
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:58
+
+3) Tests\Architecture\ArchitectureRatchetTest::test_a_violation_hidden_in_an_already_listed_file_is_detected
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:63
+
+4) Tests\Architecture\ArchitectureRatchetTest::test_a_fixed_violation_still_listed_is_reported_so_the_baseline_shrinks
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:68
+
+5) Tests\Architecture\ArchitectureRatchetTest::test_a_second_occurrence_of_a_listed_dependency_in_the_same_file_is_detected
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:76
+
+6) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-1 Domain purity" ('A-1')
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:89
+
+7) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-2 Application layer" ('A-2')
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:89
+
+8) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-3 cross-context" ('A-3')
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:89
+
+9) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-4 delivery boundary" ('A-4')
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:89
+
+10) Tests\Architecture\ArchitectureRatchetTest::test_the_source_tree_has_no_violation_outside_the_baseline_and_no_stale_entry with data set "A-5 organisation connection" ('A-5')
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:89
+
+11) Tests\Architecture\ArchitectureRatchetTest::test_every_baseline_entry_has_a_reason
+Error: Class "Tests\Architecture\Support\ArchitectureRatchet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:101
+
+ERRORS!
+Tests: 11, Assertions: 0, Errors: 11.

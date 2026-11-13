@@ -1,0 +1,4 @@
+{
+  "A-1|app/Contexts/Alpha/Domain/Legacy.php.fixture|Illuminate\\Support\\Str": {"count": 1, "reason": "fixture: listed legacy violation"},
+  "A-1|app/Contexts/Alpha/Domain/Fixed.php.fixture|Illuminate\\Support\\Str": {"count": 1, "reason": "fixture: fixed since; must be removed"}
+}

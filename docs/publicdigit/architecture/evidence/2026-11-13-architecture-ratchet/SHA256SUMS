@@ -1,0 +1,10 @@
+b8fee0404c7328d2751878adef43c0d53f6cfe8849ba493ee7104c09f68156be  ./01-red-ratchet-absent.txt
+79b8a17bf73d3c2880b662bca184e835f67da10b715bb766cd89cef3fd7a14cc  ./02-green-fixtures-real-tree-without-baseline.txt
+2012fc01dabd38fd7875b6ee20dba662fd8ecd596240ab2c8331bfc48ce3cabd  ./03-red-delivery-rule-refined.txt
+69d2b4687d1e727fcec52e0a2ced91b6d65e68ba93be5b1442321a41acb7f7ea  ./04-green-delivery-rule.txt
+1ca3263ed714e193d1e6cd995ddae21bec32f775464a52735b357f5b7879fb0a  ./05-green-complete.txt
+582c9e6ed66cd68606567012d0c2cd6851a0b7f9615db314d4583d545f3a2390  ./06-architecture-suite-full.failures
+88336b7190c174b0e13203cf06e49d931bbfad55b5450b7749c03144f1b46e2c  ./06-architecture-suite-full.txt
+e27f6b07c6077d9995ec381f84a80447bfd77e91c25fc95313e72813d86be534  ./classify.php
+a80d6b4c63c0de2646d3d6d6adbfa880d66be04cba807232822b9a18af9ad536  ./inventory.php
+100457820c34d894856ccfc94c43e764d96a727ad509e60e01da109d31ab9363  ./README.md

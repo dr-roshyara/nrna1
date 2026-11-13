@@ -1,0 +1,3 @@
+<?php
+// A-1: this file USED to import Illuminate\Support\Str (listed in the baseline); it no longer does: the entry is stale
+final class Fixed {}

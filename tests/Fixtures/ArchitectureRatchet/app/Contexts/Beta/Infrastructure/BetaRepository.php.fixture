@@ -1,0 +1,3 @@
+<?php
+// A-5: a shared, re-pointed connection name (contrary to D-222)
+final class BetaRepository { public function q() { return \DB::connection('tenant')->table('t')->get(); } }

@@ -1,0 +1,4 @@
+<?php
+// A-1: one LISTED legacy violation (Str), plus a NEW one hidden in the same file (DB::)
+use Illuminate\Support\Str;
+final class Legacy { public function f() { return DB::table('x')->get(); } }

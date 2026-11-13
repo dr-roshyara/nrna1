@@ -21,7 +21,8 @@ Log new PublicDigit-specific engineering entries here going forward. -->
   - who D-84's platform owner is (production appointment stays closed);
   - the migration rollout control (the "test databases only" gate is a convention, not code).
 - **PBDIGIT-347 (Deliberation):** discovery brief `docs/publicdigit/architecture/reviews/2026-11-13-deliberation-discovery-brief.md`; questions Q-D1 to Q-D5 open (Q-D1, public reading, is a GDPR Art. 9 [LQ]).
-- **Next:** the G-4 acceptance → G-5 read models, with the Deliberation discovery alongside → Membership (PBDIGIT-345 routing, then the lifecycle).
+- **G-4 ACCEPTED with conditions (2026-11-13).** Architecture baseline revision 2 and ratchet A-1 to A-5 (PBDIGIT-348) are in Principal review: 198 known violations frozen; new ones fail `tests/Architecture/ArchitectureRatchetTest.php`.
+- **Next:** baseline review → G-5 read models, with the Deliberation discovery alongside → Membership (PBDIGIT-345: per-organisation connection replaces the `tenant` uses; trusted actor in delivery; then `MembershipStanding` and the lifecycle).
 
 ## 📍 UPDATE (2026-11-09): **Mobile channel: staged direction; PBDIGIT-338 and 339 verified (339 RED→GREEN; signed-in journey on a throwaway DB), uncommitted; Identity discovery done; PBDIGIT-340/341 raised**
 

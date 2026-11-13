@@ -1,0 +1,5 @@
+<?php
+// A-2: a facade in the Application layer; A-3: another context's Infrastructure
+use Illuminate\Support\Facades\Log;
+use App\Contexts\Beta\Infrastructure\BetaRepository;
+final class UseCase { public function run() { Log::info('x'); } }
