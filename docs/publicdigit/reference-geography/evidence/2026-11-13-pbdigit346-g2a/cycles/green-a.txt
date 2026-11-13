@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....F......                                                       11 / 11 (100%)
+
+Time: 00:00.030, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_the_digest_covers_everything_judged_and_is_deterministic
+same content, same digest
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'78323a044ca1c3be2975cc4036312c1864766110c3e143ba43f8a803d4e7f95a'
++'47bef7a0cb1b4cfb5927475e4a77b5bf777cc0fb69b817bba63a486712739fd7'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:147
+
+FAILURES!
+Tests: 11, Assertions: 35, Failures: 1.

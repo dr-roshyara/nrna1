@@ -1,0 +1,7 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+c0a954e14cfe87b2e8c5409155f0eb9fbf7f5de6cd77a012d3a0e145d0cad3b9  ./architecture-full.txt
+5731a3858791cc66dbd8b0f4cb5f5bc974e7acc0af46fb75883d62c9309fb435  ./cycles/green-a2.txt
+0e6a71e0bc64ff1e764b1bcf54ee78bca235def0a73f1f1b77fb6ba45f0e6506  ./cycles/green-a.txt
+ee223e750559b77ddf76e87e5a5fc796afd096f0808a414526820f5369a06bef  ./cycles/red-a.txt
+63d3e2b283e738e65cee11fabdc5c9b58be453b0344620fd25b2c1364d81d124  ./db-free-all.txt
+fed3c158d0cd8a189c026268e894791c4fc763e5faa0afbba3040137d74888e1  ./README.md

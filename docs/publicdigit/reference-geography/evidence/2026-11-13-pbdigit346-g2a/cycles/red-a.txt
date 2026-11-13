@@ -1,0 +1,76 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEE                                                       11 / 11 (100%)
+
+Time: 00:00.022, Memory: 12.00 MB
+
+There were 11 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_a_revision_starts_as_a_draft_with_no_version
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:88
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_r1_no_two_claims_for_one_slot_with_overlapping_intervals
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:96
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_submission_needs_claims_their_evidence_and_the_three_assessments
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:106
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_submission_freezes_version_1_and_nothing_can_change_until_re_preparation
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:124
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_the_digest_covers_everything_judged_and_is_deterministic
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:138
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_an_evidence_version_is_immutable_one_fingerprint_per_identifier
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:161
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_an_approval_counts_only_for_the_current_version
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:168
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_approval_only_of_a_submitted_revision
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:189
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_excluded_accumulates_everyone_who_prepared_assessed_or_submitted_any_version
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:200
+
+10) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_lifecycle_transitions_are_refused_out_of_order
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:214
+
+11) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_a_claim_can_be_removed_in_a_draft_only
+Error: Class "App\Contexts\ReferenceGeography\Domain\Revision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:66
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:228
+
+ERRORS!
+Tests: 11, Assertions: 0, Errors: 11.

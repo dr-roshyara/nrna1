@@ -204,3 +204,9 @@ Reference Geography is PublicDigit's **trusted atlas**: which official places ex
 - **The count "23 kinds" in §3 and §8 is wrong.** v3.11 §3 defines **21 claim kinds** with **22 slot-key shapes** (`SOURCE_NAME` has a single-valued and a set-valued shape).
 - **"Withdrawal" is not a kind:** it is a claim with value "none" in the target's own slot.
 - G-1 implements exactly that.
+
+**Correction note 2 (2026-11-13, G-2a; consistency only, v3.11 governs):**
+- **§3's `Revision` lifecycle "draft → submitted → approved → published / stale / withdrawn" names an "approved" state that v3.11 does not have.**
+- **v3.11:** submission freezes a content version; **approvals are records naming that version, counted at publication** (§5.3, §8).
+- **Implemented as:** draft → submitted → stale / withdrawn, with publication added by G-4. **Assessments, like approvals, are per version.**
+- **G-2 is built in three steps** (G-2a aggregate, G-2b before-images and dependencies, G-2c validator), with the review boundary at the end of G-2.
