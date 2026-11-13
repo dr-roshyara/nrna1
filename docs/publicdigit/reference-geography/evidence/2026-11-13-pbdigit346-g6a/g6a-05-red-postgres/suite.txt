@@ -1,0 +1,72 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEDE                                                              6 / 6 (100%)
+
+Time: 00:12.302, Memory: 22.00 MB
+
+There were 5 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresCandidateRepositoryTest::test_production_wiring_binds_the_repository_and_the_service
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:46
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresCandidateRepositoryTest::test_every_state_round_trips_through_the_aggregate
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresCandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:62
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresCandidateRepositoryTest::test_a_stale_save_is_refused_and_nothing_changes
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresCandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:70
+
+4) Tests\Feature\Contexts\ReferenceGeography\PostgresCandidateRepositoryTest::test_add_never_overwrites_and_a_missing_candidate_is_not_found
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresCandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:88
+
+5) Tests\Feature\Contexts\ReferenceGeography\PostgresCandidateRepositoryTest::test_a_corrupt_row_is_refused_on_reading
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "refgeo_candidates" does not exist
+LINE 1: INSERT INTO refgeo_candidates (id, state, submitter_kind, su...
+                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 45505, Database: membership_pg_isolated, SQL: INSERT INTO refgeo_candidates (id, state, submitter_kind, submitter_ref, summary, evidence, recorded_by)
+            VALUES (17249037-96e0-4668-9833-6d2b6879c487, 'submitted', 'organisation', 'not-an-id', 's', '[]', 0cc175b9c0f1b6a831c399e269772661))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:109
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "refgeo_candidates" does not exist
+LINE 1: INSERT INTO refgeo_candidates (id, state, submitter_kind, su...
+                    ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresCandidateRepositoryTest.php:109
+
+ERRORS!
+Tests: 6, Assertions: 1, Errors: 5, Deprecations: 1.

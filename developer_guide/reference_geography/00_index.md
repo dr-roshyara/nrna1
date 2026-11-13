@@ -27,6 +27,7 @@
 | G-5a | [The published read model](20_g5a_published_read_model.md) | implemented 2026-11-13 |
 | G-5b | [PlaceLookup](21_g5b_place_lookup.md) | implemented 2026-11-13 |
 | G-5c | [The publication feed](23_g5c_publication_feed.md) | implemented 2026-11-13; **G-5 accepted 2026-11-13** |
-| Admin | [Administrator notes for G-5](22_g5_administrator_notes.md) | 2026-11-13 |
+| Admin | [Administrator notes for G-5 and G-6](22_g5_administrator_notes.md) | 2026-11-13 |
 | — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |
+| G-6a | [Candidates](24_g6a_candidates.md) | implemented 2026-11-13 |

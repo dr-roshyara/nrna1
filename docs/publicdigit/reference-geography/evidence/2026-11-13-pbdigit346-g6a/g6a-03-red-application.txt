@@ -1,0 +1,42 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:00.025, Memory: 12.00 MB
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_a_steward_records_an_import_then_verifies_and_accepts_it_with_a_revision
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:98
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_acceptance_names_an_existing_revision_only
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:111
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_a_duplicate_is_linked_to_an_existing_primary
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:121
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_someone_not_appointed_cannot_act_and_nobody_signed_in_is_refused
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:131
+
+5) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_a_rejection_records_its_reason_and_reviewer
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:149
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 5.

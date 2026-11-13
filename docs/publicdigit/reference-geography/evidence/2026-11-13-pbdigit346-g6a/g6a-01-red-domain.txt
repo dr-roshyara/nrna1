@@ -1,0 +1,59 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEE                                                            8 / 8 (100%)
+
+Time: 00:00.020, Memory: 10.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_submission_is_recorded_and_creates_nothing_else
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:51
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_verification_then_acceptance_names_the_revision_and_who_decided
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:61
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_acceptance_without_verification_is_refused
+PHPUnit\Framework\Exception: Class "App\Contexts\ReferenceGeography\Domain\CandidateRefused" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\ReferenceGeography\Domain\CandidateRefused" does not exist
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_rejection_needs_a_reason
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:79
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_duplicate_is_linked_to_its_primary_never_to_itself_or_to_another_link
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:90
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_decided_candidate_is_final
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:108
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_submitter_is_an_organisation_or_a_steward
+Error: Class "App\Contexts\ReferenceGeography\Domain\CandidateSubmitter" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:127
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\CandidateTest::test_a_candidate_survives_storage_only_through_its_own_rebuild_path
+Error: Class "App\Contexts\ReferenceGeography\Domain\Candidate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CandidateTest.php:136
+
+ERRORS!
+Tests: 8, Assertions: 0, Errors: 8.

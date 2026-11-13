@@ -13,7 +13,7 @@ use App\Contexts\ReferenceGeography\Domain\RevisionId;
  * Where revisions are kept (completion §4; G-4 interpretation §2): the aggregate is saved whole, in one transaction,
  * with optimistic concurrency by row version; it is rebuilt only through Revision::fromSnapshot.
  */
-interface RevisionRepository
+interface RevisionRepository extends RevisionCatalogue
 {
     /** @throws RevisionChangedConcurrently if a revision with this id already exists */
     public function add(Revision $revision): void;

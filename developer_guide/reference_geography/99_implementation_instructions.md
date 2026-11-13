@@ -115,8 +115,19 @@
 
 ### G-6: candidates, objections and notices
 
-- **Reads:** v3.11 §8 D-90, §16.
-- **Build:** `Candidate` and `Objection` aggregates and their lifecycles; D-90 governance notices as their own publication entries.
+**Reads:** v3.11 §8 D-90, §15, §16. **Slices:** G-6a candidates · G-6b objections · G-6c D-90 governance notices.
+
+**G-6a: candidates (implemented; guide 24).**
+1. **Domain:** `Candidate` lifecycle (submitted → under verification → accepted · linked · rejected); `fromSnapshot` refuses impossible states.
+2. **Application:** `CandidateService`.
+   - Actor from `ActingPerson`; a steward at the current roster version.
+   - **Depend on the read-only ports `RosterReader` and `RevisionCatalogue`, never the write-side ones:** the no-bypass guard refuses them.
+3. **Storage:** `refgeo_candidates` (CHECKs mirror the lifecycle), `PostgresCandidateRepository`, optimistic `row_version`.
+4. **Not yet:** organisation submissions (D-147).
+
+**G-6b: objections (next).** `Objection`: submitted → assessed → corrected · disputed · rejected. **Reconsideration only by a new objection with new evidence.** It owns the objection record, never the target claim. Its effect on knowledge is only through a correcting revision, or a DISPUTE claim published as a revision.
+
+**G-6c: D-90 governance notices.** Finding, confirmation and closure as **their own publication entries, without claims, under the publication lock.** The approval status is in the read model. **This touches the accepted G-4 write path: design it first, and keep PO-2 (single write path).**
 
 ### G-7: CLDR display names (D-87)
 

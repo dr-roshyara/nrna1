@@ -33,6 +33,11 @@ final class InMemoryRevisionRepository implements RevisionRepository
         $this->rows[$id] = [$revision->snapshot(), 1];
     }
 
+    public function exists(RevisionId $id): bool
+    {
+        return isset($this->rows[$id->value()]);
+    }
+
     public function get(RevisionId $id): StoredRevision
     {
         [$snapshot, $version] = $this->rows[$id->value()] ?? throw new \OutOfBoundsException("No revision {$id->value()}.");

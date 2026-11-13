@@ -17,3 +17,12 @@
 2. **No production database migration** of the Reference Geography tables until an explicit, technically enforced migration-approval control exists. **Until then, there is no official geography in production, and every read answers "nothing published yet" (position 0): empty, not an error.**
 
 **When G-8 data exists (later),** watch PlaceLookup's response time: it matches every published name in PHP. The remedy is an index or a `pg_trgm` prefilter, added by a developer when measured. There's no setting to change.
+
+## G-6a: candidates (2026-11-13)
+
+| Question | Answer |
+|---|---|
+| New database migration? | **Yes, a Reference Geography one:** `database/migrations/2026_11_13_180000_create_refgeo_candidates.php` (an empty table `refgeo_candidates`) |
+| May it run in production? | **No, not yet. The G-4 condition applies:** no production Reference Geography migration until a technically enforced migration-approval control exists. Development and test databases only |
+| Configuration, queues, routes, permissions? | **None.** Use cases only; there's no screen. Stewards act through code that has `ActingPerson` |
+| Data | none is created; candidates are recorded only by appointed stewards |
