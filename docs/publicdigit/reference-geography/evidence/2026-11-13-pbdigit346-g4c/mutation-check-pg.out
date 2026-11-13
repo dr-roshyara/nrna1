@@ -1,0 +1,3 @@
+S1 the publication lock is not taken          KILLED  (Tests: 11, Assertions: 43, Failures: 1, Deprecations: 1.)
+S2 the write is not one transaction           KILLED  (Tests: 11, Assertions: 43, Failures: 1, Deprecations: 1.)
+All mutants killed.

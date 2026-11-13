@@ -1,0 +1,15 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+fac1453d87af12f30c1b473a3603746da20f068eba820f91577781039917e0e9  ./architecture-full.txt
+bf5c78f7c4d99b4be66798f2d012687e485f01109bfa233246903d7f30d467a6  ./db-free-all.txt
+ecf18c08d717c936a267d6ea58a6eabd96fd4fc2ed42f450efe8b357c3ee2815  ./green-app.txt
+689c2d98e3bfa60af1910f4cebedc17e39fb0884034c5c3e72782cbd4b5d5516  ./green-pg.txt
+7795f89116e654d51d47521a99d9c06c33a1a3667a156e23cba5657ce6b02dba  ./isolated-cluster-all/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster-all/suite.exit
+bd151a9d4e5f0aacae0355b05876bc0a6e603d71cb02c743cce3700ef4606d02  ./isolated-cluster-all/suite.txt
+e00f45eabedf6e04a1f62609a449e87750a28204e75aa70d308f49bb06ea91cf  ./mutant-128decbe-suite.txt
+bb67af0a43d955d296f85f2d20c8ea4bfb4c44b94b6a19fc8ce5dd7506ea82a2  ./mutant-bb50288c-suite.txt
+4eb7f47e80f5b2de90be7ab4236615c303e184e958724fb55d4a0ea1e6e23415  ./mutation-check-pg.out
+516656a7f5ccfa8f4d7b773660d4732bcaedad3489166a7c3c4bd76f71e8bc2b  ./mutation-check-pg.php
+5675f842fc6fef0e0b6e72d4527445bc4528beded284a8e6da735b3c52cbca7a  ./README.md
+ecb89faa95a531f8afe32d30e4810c8b68eff5be569e664fbafb443426ac695d  ./red-app.txt
+f5b7ee9747980ccbc01b40a37c3b5dabcbb00e97122b046f45ba8df0e231080c  ./red-pg.txt

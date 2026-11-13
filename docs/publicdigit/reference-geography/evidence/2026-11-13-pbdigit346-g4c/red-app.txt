@@ -1,0 +1,48 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.019, Memory: 10.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_the_platform_owner_appoints_and_ends_stewards_and_appoints_matter_reviewers
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:70
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_anyone_else_is_refused_and_nothing_is_written
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:81
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_the_production_authority_refuses_everyone_until_the_platform_owner_is_established
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:97
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_without_an_acting_person_nothing_is_written
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:110
+
+5) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_a_conflict_declaration_is_made_by_the_acting_person_for_themselves
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:123
+
+6) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_identity_notices_are_consumed_once
+Error: Interface "App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryStewardRosterStore.php:14
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/RosterServicesTest.php:137
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.

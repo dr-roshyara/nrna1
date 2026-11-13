@@ -1,0 +1,22 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDFDDDDDD                                                       11 / 11 (100%)
+
+Time: 00:14.003, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_concurrent_writers_in_separate_processes_are_serialised_without_a_lost_write_or_a_gap
+error: Illuminate\Database\QueryException: SQLSTATE[P0001]: Raise exception: 7 ERROR:  refgeo_roster_entries: version 5 is not the next version 6
+CONTEXT:  PL/pgSQL function refgeo_roster_append() line 6 at RAISE (Connection: pgsql, Host: 127.0.0.1, Port: 35335, Database: membership_pg_isolated, SQL: insert into "refgeo_roster_entries" ("roster_version", "kind", "subject", "by_person", "matter", "merge_id", "merged", "interest") values (5, steward-appointed, ac4b61b34ec7d48dbc018cb39c88d26e, 233d33476ba5da145d200ec30ad6767c, ?, ?, ?, ?))
+Failed asserting that 'error: Illuminate\Database\QueryException: SQLSTATE[P0001]: Raise exception: 7 ERROR:  refgeo_roster_entries: version 5 is not the next version 6\n
+CONTEXT:  PL/pgSQL function refgeo_roster_append() line 6 at RAISE (Connection: pgsql, Host: 127.0.0.1, Port: 35335, Database: membership_pg_isolated, SQL: insert into "refgeo_roster_entries" ("roster_version", "kind", "subject", "by_person", "matter", "merge_id", "merged", "interest") values (5, steward-appointed, ac4b61b34ec7d48dbc018cb39c88d26e, 233d33476ba5da145d200ec30ad6767c, ?, ?, ?, ?))' is of type int.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:156
+
+FAILURES!
+Tests: 11, Assertions: 43, Failures: 1, Deprecations: 1.

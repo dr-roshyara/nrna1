@@ -1,0 +1,48 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEFDDDDDD                                                       11 / 11 (100%)
+
+Time: 00:13.337, Memory: 22.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_a_write_is_appended_at_the_next_versions_and_reloads_exactly
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:52
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_a_refused_write_writes_nothing
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:75
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_an_identity_notice_is_applied_once
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:90
+
+4) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_a_write_must_start_its_own_transaction
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:102
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_concurrent_writers_in_separate_processes_are_serialised_without_a_lost_write_or_a_gap
+error: Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found
+Failed asserting that 'error: Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresStewardRosterStore" not found' is of type int.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:156
+
+ERRORS!
+Tests: 11, Assertions: 29, Errors: 4, Failures: 1, Deprecations: 1.
