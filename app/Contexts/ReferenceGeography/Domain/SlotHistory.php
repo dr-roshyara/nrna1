@@ -9,11 +9,12 @@ namespace App\Contexts\ReferenceGeography\Domain;
  * - Claims in this slot supersede each other, only for the valid time they cover: at date t, the claim with the
  *   highest position (≤ the knowledge position asked) whose interval covers t is the answer.
  * - A claim of another slot is refused: claims in different slots never interact.
- * - A position is used once and is positive.
+ * - A position is positive. It belongs to one publication (one revision, v3.11 §6), which may hold several claims of
+ *   this slot provided their intervals do not overlap (R-1); overlapping claims at one position are refused.
  */
 final class SlotHistory
 {
-    /** @param array<int, Claim> $byPosition */
+    /** @param array<int, list<Claim>> $byPosition highest position first */
     private function __construct(private readonly SlotKey $slot, private readonly array $byPosition)
     {
     }
@@ -28,11 +29,16 @@ final class SlotHistory
         if (!$claim->slot->equals($this->slot)) {
             throw new \InvalidArgumentException('Claims in different slots never interact.');
         }
-        if ($position < 1 || isset($this->byPosition[$position])) {
-            throw new \InvalidArgumentException('A publication position is positive and used once.');
+        if ($position < 1) {
+            throw new \InvalidArgumentException('A publication position is positive.');
+        }
+        foreach ($this->byPosition[$position] ?? [] as $samePublication) {
+            if ($samePublication->interval->overlaps($claim->interval)) {
+                throw new \InvalidArgumentException('One publication holds no two overlapping claims of a slot (R-1).');
+            }
         }
         $next = $this->byPosition;
-        $next[$position] = $claim;
+        $next[$position] = [...($next[$position] ?? []), $claim];
         krsort($next);
 
         return new self($this->slot, $next);
@@ -76,13 +82,15 @@ final class SlotHistory
     public function boundariesWithin(ValidInterval $interval, ?int $upToPosition = null): array
     {
         $points = [];
-        foreach ($this->byPosition as $position => $claim) {
+        foreach ($this->byPosition as $position => $claims) {
             if ($upToPosition !== null && $position > $upToPosition) {
                 continue;
             }
-            foreach ([$claim->interval->from, $claim->interval->to] as $d) {
-                if ($d !== null && $interval->from->isBefore($d) && ($interval->to === null || $d->isBefore($interval->to))) {
-                    $points[$d->value()] = $d;
+            foreach ($claims as $claim) {
+                foreach ([$claim->interval->from, $claim->interval->to] as $d) {
+                    if ($d !== null && $interval->from->isBefore($d) && ($interval->to === null || $d->isBefore($interval->to))) {
+                        $points[$d->value()] = $d;
+                    }
                 }
             }
         }
@@ -93,9 +101,14 @@ final class SlotHistory
 
     private function topCovering(ValidDate $t, ?int $upToPosition): ?Claim
     {
-        foreach ($this->byPosition as $position => $claim) {
-            if (($upToPosition === null || $position <= $upToPosition) && $claim->interval->covers($t)) {
-                return $claim;
+        foreach ($this->byPosition as $position => $claims) {
+            if ($upToPosition !== null && $position > $upToPosition) {
+                continue;
+            }
+            foreach ($claims as $claim) {   // at most one covers t: claims of one publication do not overlap
+                if ($claim->interval->covers($t)) {
+                    return $claim;
+                }
             }
         }
 

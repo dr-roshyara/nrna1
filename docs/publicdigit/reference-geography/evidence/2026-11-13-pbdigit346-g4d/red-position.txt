@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+E.E                                                                 3 / 3 (100%)
+
+Time: 00:00.024, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationPositionTest::test_one_publication_may_hold_several_non_overlapping_claims_of_a_slot
+InvalidArgumentException: A publication position is positive and used once.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/SlotHistory.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationPositionTest.php:40
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationPositionTest::test_a_later_position_still_supersedes_both
+InvalidArgumentException: A publication position is positive and used once.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/SlotHistory.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationPositionTest.php:58
+
+ERRORS!
+Tests: 3, Assertions: 1, Errors: 2.
