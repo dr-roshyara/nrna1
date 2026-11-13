@@ -141,7 +141,8 @@ final class PostgresRevisionRepository implements RevisionRepository
         if ($s->current !== null && in_array($s->state, [RevisionState::Submitted, RevisionState::Stale], true)
             && !$this->db->table('refgeo_claims')->where('revision_id', $id)->where('content_version', $s->current->number)->exists()) {
             foreach ($s->claims as $c) {
-                $this->db->table('refgeo_claims')->insert(['claim_id' => $c->id->value(), 'revision_id' => $id, 'content_version' => $s->current->number, 'kind' => $c->slot->kind()->value, ...self::claimColumns($c)]);
+                $this->db->table('refgeo_claims')->insert(['claim_id' => $c->id->value(), 'revision_id' => $id, 'content_version' => $s->current->number, 'kind' => $c->slot->kind()->value,
+                    ...self::claimColumns($c), 'before_image' => self::beforeImageJson($s->validation?->beforeImageOf($c->id) ?? throw new \LogicException('A submitted version is validated.'))]);
             }
         }
     }
@@ -169,11 +170,7 @@ final class PostgresRevisionRepository implements RevisionRepository
     {
         $images = [];
         foreach ($v->beforeImages as $claimId => $image) {
-            $images[$claimId] = array_map(static fn (array $seg): array => [
-                $seg[0]->from->value(), $seg[0]->to?->value(),
-                $seg[1]->isAbsent() ? 'absent' : ($seg[1]->isNone() ? 'none' : 'value'),
-                $seg[1]->isSomeValue() ? $seg[1]->describe() : null,
-            ], $image->segments());
+            $images[$claimId] = self::segmentsOut($image);
         }
         $this->db->table('refgeo_revision_validations')->insert([
             'revision_id' => $id, 'p0' => $v->dependencies->p0, 'structural' => $v->structural,
@@ -239,14 +236,7 @@ final class PostgresRevisionRepository implements RevisionRepository
     {
         $images = [];
         foreach (json_decode($row->before_images, true, 8, JSON_THROW_ON_ERROR) as $claimId => $segments) {
-            $images[(string) $claimId] = BeforeImage::fromSegments(array_map(static fn (array $s): array => [
-                self::interval($s[0], $s[1]),
-                match ($s[2]) {
-                    'absent' => PriorValue::absent(),
-                    'none' => PriorValue::none(),
-                    'value' => PriorValue::of((string) ($s[3] ?? throw new \InvalidArgumentException('A value segment names its value.'))),
-                },
-            ], $segments));
+            $images[(string) $claimId] = self::segmentsIn($segments);
         }
 
         return new ValidationResult(
@@ -276,6 +266,39 @@ final class PostgresRevisionRepository implements RevisionRepository
     {
         return new Claim(ClaimId::fromString($r->claim_id), SlotKey::decode($r->slot_key), $r->value === null ? ClaimValue::none() : ClaimValue::of($r->value),
             self::interval($r->valid_from, $r->valid_to), new Basis(BasisKind::from($r->basis_kind), $r->basis_reference));
+    }
+
+    /** A before-image as stored (refgeo_claims.before_image; the validation's before_images): [[from, to, kind, value], …]. */
+    public static function beforeImageJson(BeforeImage $image): string
+    {
+        return json_encode(self::segmentsOut($image), JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    }
+
+    public static function beforeImageFromJson(string $json): BeforeImage
+    {
+        return self::segmentsIn(json_decode($json, true, 4, JSON_THROW_ON_ERROR));
+    }
+
+    /** @return list<array{string, ?string, string, ?string}> */
+    private static function segmentsOut(BeforeImage $image): array
+    {
+        return array_map(static fn (array $seg): array => [
+            $seg[0]->from->value(), $seg[0]->to?->value(),
+            $seg[1]->isAbsent() ? 'absent' : ($seg[1]->isNone() ? 'none' : 'value'),
+            $seg[1]->isSomeValue() ? $seg[1]->describe() : null,
+        ], $image->segments());
+    }
+
+    private static function segmentsIn(array $segments): BeforeImage
+    {
+        return BeforeImage::fromSegments(array_map(static fn (array $s): array => [
+            self::interval($s[0], $s[1]),
+            match ($s[2]) {
+                'absent' => PriorValue::absent(),
+                'none' => PriorValue::none(),
+                'value' => PriorValue::of((string) ($s[3] ?? throw new \InvalidArgumentException('A value segment names its value.'))),
+            },
+        ], $segments));
     }
 
     private static function interval(string $from, ?string $to): ValidInterval

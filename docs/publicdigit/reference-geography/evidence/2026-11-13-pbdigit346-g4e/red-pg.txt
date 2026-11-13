@@ -1,0 +1,107 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEEEEEDDDDDDDDDDDDDDDDDDDDDDDD                              36 / 36 (100%)
+
+Time: 00:19.719, Memory: 24.00 MB
+
+There were 12 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_a_valid_revision_is_published_once_and_recorded_exactly
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:179
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_governance_is_re_evaluated_under_the_lock_at_the_current_roster_version
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:203
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_an_approval_of_an_earlier_version_does_not_authorise_a_later_one
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:218
+
+4) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_only_a_person_appointed_for_the_matter_may_publish
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:238
+
+5) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_a_stale_revision_is_refused_and_marked_stale
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:251
+
+6) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_a_clock_reading_below_the_previous_one_is_refused_never_adjusted
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:266
+
+7) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_a_failure_before_commit_leaves_nothing_and_the_position_is_reused
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:283
+
+8) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_a_publication_is_invisible_until_it_commits
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:304
+
+9) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_close_through_tau_never_confirms_a_future_tau_and_later_readings_are_after_it
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:323
+
+10) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_each_published_claim_is_frozen_with_its_before_image_which_equals_the_belief_just_before_publication
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:343
+
+11) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_publication_and_concurrent_governance_writes_are_serialised
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:369
+
+12) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_concurrent_publishers_of_one_revision_publish_it_exactly_once
+Error: Class "App\Contexts\ReferenceGeography\Application\PublishRevision" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:103
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:160
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:445
+
+ERRORS!
+Tests: 36, Assertions: 121, Errors: 12, Deprecations: 1.

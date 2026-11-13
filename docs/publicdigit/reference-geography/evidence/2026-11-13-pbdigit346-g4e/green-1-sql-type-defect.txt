@@ -1,0 +1,39 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDEDDDDDDDDDDDDDDDDDDDDDDDDDDD                              36 / 36 (100%)
+
+Time: 00:22.226, Memory: 24.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresPublicationLedgerTest::test_close_through_tau_never_confirms_a_future_tau_and_later_readings_are_after_it
+Illuminate\Database\QueryException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $3 (Connection: pgsql, Host: 127.0.0.1, Port: 40311, Database: membership_pg_isolated, SQL: SELECT 2026-11-13 13:29:36.901892+00::timestamptz <= 2026-11-13 12:29:36.907413+00::timestamptz AS reached, (? IS NOT NULL AND 2026-11-13 13:29:36.901892+00::timestamptz <= ?::timestamptz) AS covered, 2026-11-13 13:29:36.901892+00::timestamptz::text AS target)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:326
+
+Caused by
+PDOException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $3
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublicationLedgerTest.php:326
+
+ERRORS!
+Tests: 36, Assertions: 177, Errors: 1, Deprecations: 1.

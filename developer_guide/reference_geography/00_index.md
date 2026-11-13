@@ -21,5 +21,6 @@
 | G-4b | [Rebuild paths for persistence](14_g4b_rebuild_paths.md) | implemented 2026-11-13 |
 | G-4c | [The roster in PostgreSQL and the roster services](15_g4c_roster_store_and_services.md) | implemented 2026-11-13 |
 | G-4d | [Revision repository and PostgreSQL atlas reader](16_g4d_revision_repository_and_atlas_reader.md) | implemented 2026-11-13 |
+| G-4e | [Publication ledger under one lock](17_g4e_publication_ledger.md) | implemented 2026-11-13 |
 | — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |

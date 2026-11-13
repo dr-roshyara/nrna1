@@ -1,0 +1,4 @@
+L4 no already-published check                    KILLED  a_valid_revision_is_published_once_and_recorded_exactly;concurrent_publishers_of_one_revision_publish_it_exactly_onc;
+L5 clock rule removed (trigger is the backstop)  KILLED  a_clock_reading_below_the_previous_one_is_refused_never_adju;
+L6 the actor is not checked                      KILLED  only_a_person_appointed_for_the_matter_may_publish;
+L7 publication is not one transaction            KILLED  a_failure_before_commit_leaves_nothing_and_the_position_is_r;a_publication_is_invisible_until_it_commits;a_roster_write_waits_for_a_publication_in_progress_and_comes;concurrent_publishers_of_one_revision_publish_it_exactly_onc;

@@ -75,7 +75,8 @@ final class RefgeoSchemaGuardsTest extends MembershipPostgresTestCase
     private static function claim(string $revision, int $version, string $id): array
     {
         return ['claim_id' => $id, 'revision_id' => $revision, 'content_version' => $version, 'kind' => 'EXISTENCE', 'slot_key' => 'EXISTENCE|unit=36:' . $revision . '|',
-            'value' => 'exists', 'valid_from' => '2016-01-01', 'valid_to' => null, 'basis_kind' => 'instrument', 'basis_reference' => 'ev-1'];
+            'value' => 'exists', 'valid_from' => '2016-01-01', 'valid_to' => null, 'basis_kind' => 'instrument', 'basis_reference' => 'ev-1',
+            'before_image' => '[["2016-01-01",null,"absent",null]]'];   // G-4e: every frozen claim carries its before-image
     }
 
     public function test_there_is_exactly_one_sequence_row_and_nobody_moves_its_counters_directly(): void

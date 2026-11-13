@@ -21,6 +21,7 @@ use App\Contexts\ReferenceGeography\Domain\SlotKey;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
 use App\Contexts\ReferenceGeography\Domain\ValidInterval;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
@@ -59,11 +60,14 @@ final class PostgresPublishedAtlasTest extends MembershipPostgresTestCase
 
     private static function freeze(string $revision, Claim ...$claims): void
     {
+        $atlas = PostgresPublishedAtlas::at(DB::connection());
         foreach ($claims as $c) {
             DB::table('refgeo_claims')->insert([
                 'claim_id' => $c->id->value(), 'revision_id' => $revision, 'content_version' => 1, 'kind' => $c->slot->kind()->value, 'slot_key' => $c->slot->encoded(),
                 'value' => $c->value->isNone() ? null : $c->value->value(), 'valid_from' => $c->interval->from->value(), 'valid_to' => $c->interval->to?->value(),
                 'basis_kind' => $c->basis->kind->value, 'basis_reference' => $c->basis->reference,
+                // G-4e: frozen with its before-image: the belief at the committed position
+                'before_image' => PostgresRevisionRepository::beforeImageJson(BeforeImage::of($atlas->history($c->slot), $c->interval, $atlas->p0())),
             ]);
         }
     }
