@@ -139,6 +139,94 @@ final class PostgresGeographyReadModelTest extends RefgeoPostgresTestCase
         $this->assertNull($g->place($unitId, '2020-01-01', $k));
     }
 
+    /** Frozen claims of a revision that NO publication names (as after submission, before publication). */
+    private static function freezeUnpublished(Claim ...$claims): void
+    {
+        $revision = (string) Str::uuid();
+        $atlas = PostgresPublishedAtlas::at(DB::connection());
+        foreach ($claims as $c) {
+            DB::table('refgeo_claims')->insert([
+                'claim_id' => $c->id->value(), 'revision_id' => $revision, 'content_version' => 1, 'kind' => $c->slot->kind()->value, 'slot_key' => $c->slot->encoded(),
+                'value' => $c->value->isNone() ? null : $c->value->value(), 'valid_from' => $c->interval->from->value(), 'valid_to' => $c->interval->to?->value(),
+                'basis_kind' => $c->basis->kind->value, 'basis_reference' => $c->basis->reference,
+                'before_image' => PostgresRevisionRepository::beforeImageJson(BeforeImage::of($atlas->history($c->slot), $c->interval, $atlas->p0())),
+            ]);
+        }
+    }
+
+    public function test_no_query_exposes_an_unpublished_claim_of_any_kind(): void
+    {
+        [$country, $province, $hidden, $old] = [self::unit(), self::unit(), self::unit(), self::unit()];
+        $identifier = self::c(SlotKey::identifier($province, 'iso3166-2'), 'NP-P3');
+        $p = self::publishDirect(self::c(SlotKey::existence($country), 'exists', '1768-01-01'), self::c(SlotKey::existence($province), 'exists'), $identifier);
+        self::freezeUnpublished(
+            self::c(SlotKey::existence($hidden), 'exists'),
+            self::c(SlotKey::containment($hidden, 'admin'), $country->value()),
+            self::c(SlotKey::containment($province, 'admin'), $country->value()),
+            self::c(SlotKey::reconciliation($old), $province->value(), '1000-01-01'),
+            self::c(SlotKey::dispute($identifier->id), 'disputed'),
+        );
+        $g = self::geography();
+        $k = $g->knowledgeAt((int) DB::selectOne('SELECT last_position FROM refgeo_sequence')->last_position);
+
+        $this->assertGreaterThanOrEqual($p, $k->position);
+        $this->assertNotContains($hidden->value(), $g->placesAt('2020-01-01', $k), 'unpublished existence');
+        $this->assertNull($g->place($hidden->value(), '2020-01-01', $k), 'unpublished place');
+        $this->assertSame([], $g->childrenOf($country->value(), 'admin', '2020-01-01', $k), 'unpublished containment');
+        $this->assertSame([], $g->place($province->value(), '2020-01-01', $k)->parents, 'unpublished parent');
+        $this->assertSame([], $g->place($province->value(), '2020-01-01', $k)->disputedKinds, 'unpublished dispute');
+        $this->assertFalse($g->resolve($old->value(), $k)->merged, 'unpublished merge');
+    }
+
+    public function test_successive_merges_are_visible_only_from_their_own_positions(): void
+    {
+        [$a, $b, $c] = [self::unit(), self::unit(), self::unit()];
+        $first = self::publishDirect(self::c(SlotKey::existence($a), 'exists'), self::c(SlotKey::existence($c), 'exists'), self::c(SlotKey::reconciliation($b), $a->value(), '1000-01-01'));
+        // v3.11 §12 R-2: A into C re-maps B to C in the same revision
+        $second = self::publishDirect(self::c(SlotKey::reconciliation($a), $c->value(), '1000-01-01'), self::c(SlotKey::reconciliation($b), $c->value(), '1000-01-01'));
+        $g = self::geography();
+
+        $this->assertSame($a->value(), $g->resolve($b->value(), $g->knowledgeAt($first))->canonical);
+        $this->assertFalse($g->resolve($a->value(), $g->knowledgeAt($first))->merged, 'the later merge is not visible earlier');
+        $this->assertSame($c->value(), $g->resolve($b->value(), $g->knowledgeAt($second))->canonical);
+        $this->assertSame($second, $g->resolve($b->value(), $g->knowledgeAt($second))->knownAtPosition);
+        $this->assertSame($c->value(), $g->resolve($a->value(), $g->knowledgeAt($second))->canonical);
+        $this->assertSame($a->value(), $g->resolve($b->value(), $g->knowledgeAt($first))->canonical, 'asked again at the first position: unchanged');
+    }
+
+    public function test_a_place_ending_published_later_keeps_earlier_knowledge(): void
+    {
+        $unit = self::unit();
+        $existed = self::publishDirect(self::c(SlotKey::existence($unit), 'exists', '2016-01-01'));
+        $ended = self::publishDirect(self::c(SlotKey::existence($unit), null, '2020-01-01'));
+        $g = self::geography();
+
+        $this->assertContains($unit->value(), $g->placesAt('2021-01-01', $g->knowledgeAt($existed)));
+        $this->assertNotContains($unit->value(), $g->placesAt('2021-01-01', $g->knowledgeAt($ended)));
+        $this->assertContains($unit->value(), $g->placesAt('2019-01-01', $g->knowledgeAt($ended)));
+        $this->assertFalse($g->place($unit->value(), '2021-01-01', $g->knowledgeAt($ended))->exists);
+    }
+
+    public function test_a_forged_knowledge_beyond_the_committed_position_is_refused_by_every_query(): void
+    {
+        $forged = new \App\Contexts\ReferenceGeography\Application\Published\Knowledge((int) DB::selectOne('SELECT last_position FROM refgeo_sequence')->last_position + 1);
+        $unit = self::unit()->value();
+        $g = self::geography();
+        foreach ([
+            'placesAt' => static fn () => $g->placesAt('2020-01-01', $forged),
+            'place' => static fn () => $g->place($unit, '2020-01-01', $forged),
+            'childrenOf' => static fn () => $g->childrenOf($unit, 'admin', '2020-01-01', $forged),
+            'resolve' => static fn () => $g->resolve($unit, $forged),
+        ] as $name => $query) {
+            try {
+                $query();
+                $this->fail("{$name} answered beyond the boundary");
+            } catch (KnowledgeNotAvailable) {
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
     public function test_an_answer_at_a_position_never_changes_after_later_publications(): void
     {
         [$country, $other, $province] = [self::unit(), self::unit(), self::unit()];

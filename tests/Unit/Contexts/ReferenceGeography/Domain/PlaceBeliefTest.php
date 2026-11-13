@@ -177,6 +177,47 @@ final class PlaceBeliefTest extends TestCase
         $this->assertSame(self::CANONICAL, $facts->mergedInto?->value(), 'valid for all time: even a date before the claim interval');
     }
 
+    public function test_a_withdrawn_dispute_no_longer_flags_but_still_did_at_earlier_positions(): void
+    {
+        $identifier = SlotKey::identifier(self::u(), 'iso3166-2');
+        $claim = self::claim($identifier, 'NP-P3', '2016-01-01');
+        $dispute = SlotKey::dispute($claim->id);
+        $disputes = [$claim->id->value() => self::history($dispute, [[self::claim($dispute, 'disputed', '2016-01-01'), 2], [self::claim($dispute, null, '2016-01-01'), 6]])];
+        $slots = [self::history($identifier, [[$claim, 1]])];
+
+        $this->assertSame(['IDENTIFIER'], PlaceBelief::of(self::u(), $slots, $disputes, self::t('2020-01-01'), 5)->disputedKinds);
+        $this->assertSame([], PlaceBelief::of(self::u(), $slots, $disputes, self::t('2020-01-01'), 6)->disputedKinds, 'withdrawn (a NONE claim in the dispute slot)');
+    }
+
+    public function test_successive_merges_follow_r2_one_level_and_each_position_keeps_its_answer(): void
+    {
+        $b = self::u(self::PARENT_A);
+        $a = self::u(self::CANONICAL);
+        $c = self::u(self::PARENT_B);
+        $slotB = SlotKey::reconciliation($b);
+        $slotA = SlotKey::reconciliation($a);
+        // p2: B → A. p5: A → C, and (R-2) B re-mapped to C in the same revision.
+        $historyB = self::history($slotB, [[self::claim($slotB, $a->value(), '1900-01-01'), 2], [self::claim($slotB, $c->value(), '1900-01-01'), 5]]);
+        $historyA = self::history($slotA, [[self::claim($slotA, $c->value(), '1900-01-01'), 5]]);
+
+        $this->assertSame($a->value(), PlaceBelief::resolve($b, $historyB, 4)?->canonical->value(), 'before the second merge: B → A');
+        $this->assertSame(2, PlaceBelief::resolve($b, $historyB, 4)?->knownAtPosition);
+        $this->assertSame($c->value(), PlaceBelief::resolve($b, $historyB, 5)?->canonical->value(), 'after it: B → C, one step, no chain');
+        $this->assertSame(5, PlaceBelief::resolve($b, $historyB, 5)?->knownAtPosition);
+        $this->assertNull(PlaceBelief::resolve($a, $historyA, 4), 'A was not yet merged at p = 4');
+        $this->assertSame($c->value(), PlaceBelief::resolve($a, $historyA, 5)?->canonical->value());
+    }
+
+    public function test_an_ending_published_later_does_not_rewrite_what_was_known_before_it(): void
+    {
+        $existence = SlotKey::existence(self::u());
+        $slots = [self::history($existence, [[self::claim($existence, 'exists', '2016-01-01'), 2], [self::claim($existence, null, '2020-01-01'), 5]])];
+
+        $this->assertTrue(PlaceBelief::of(self::u(), $slots, [], self::t('2021-01-01'), 4)->exists, 'at p = 4 the ending was not yet known');
+        $this->assertFalse(PlaceBelief::of(self::u(), $slots, [], self::t('2021-01-01'), 5)->exists, 'ended from 2020, known at p = 5');
+        $this->assertTrue(PlaceBelief::of(self::u(), $slots, [], self::t('2019-06-01'), 5)->exists, 'before its ending it still existed');
+    }
+
     public function test_slots_of_another_subject_are_refused(): void
     {
         $this->expectException(\InvalidArgumentException::class);

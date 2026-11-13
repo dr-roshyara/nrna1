@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.EE                                                                 3 / 3 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_raising_an_entry_count_is_caught_by_the_occurrence_total
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::totals()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:200
+
+2) Tests\Architecture\ArchitectureRatchetTest::test_the_baseline_occurrences_do_not_grow_beyond_their_recorded_ceiling
+Error: Call to undefined method Tests\Architecture\Support\ArchitectureRatchet::totals()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:206
+
+ERRORS!
+Tests: 3, Assertions: 1, Errors: 2.

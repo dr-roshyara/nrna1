@@ -35,7 +35,8 @@ vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Arch
 
 - **"new violation(s)":** fix the code. A port, an injected logger, a query contract: the inventory's remediation column says which.
   - **Adding a baseline entry is an architecture change, never a shortcut.** It needs a classification from the closed vocabulary, a reason, a remediation and a decision.
-  - It also means raising `BASELINE_CEILING` in the test, with its history comment.
+  - It also means raising `BASELINE_CEILING` (entries) and `OCCURRENCE_CEILING` (the total of `count`s) in the test, with their history comments.
+  - **Raising an existing entry's `count` is growth too.** The occurrence ceiling catches it (`test_raising_an_entry_count_is_caught_by_the_occurrence_total`).
 - **"fixed violation(s) still listed":** you removed a violation. Delete its entry, or lower its `count`. Then regenerate the inventory (the test fails while they differ):
 
 ```bash

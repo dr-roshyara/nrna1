@@ -54,6 +54,14 @@ $canonical = $geo->resolve($oldUnitId, $k)->canonical;
 | PostgreSQL | `tests/Feature/Contexts/ReferenceGeography/PostgresGeographyReadModelTest.php` (isolated cluster, `--filter PostgresGeographyReadModelTest`) |
 | Architecture | `tests/Architecture/ReferenceGeographyPublishedContractTest.php`; the ratchet's published-language list |
 
+## Verification (after the Principal review of 2026-11-13)
+
+**The historical edge cases are now tested, and none revealed a defect:**
+- **domain:** a dispute withdrawn (a NONE claim in its slot); R-2 successive merges (B → A, then A → C with B re-mapped to C); an ending published later, which leaves earlier knowledge intact;
+- **PostgreSQL:** no query exposes an unpublished claim of any kind (existence, containment, merge, dispute); successive merges are visible only from their own positions; an ending keeps earlier knowledge; a forged position is refused by every query.
+
+**They passed on their first run.** They verify rules the code already had, so they are verification tests, not RED-then-GREEN. **No mutation evidence was produced for G-5a.** Evidence: `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g5a-verification/`.
+
 ## Pitfalls
 
 - **Answers are sorted lists of unit ids;** names come back in a fixed order. Don't rely on insertion order.

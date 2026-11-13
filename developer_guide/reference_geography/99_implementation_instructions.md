@@ -76,11 +76,25 @@
   - **`PublishedAtlas`** PostgreSQL adapter.
 - **Tests first (isolated cluster):** PO-1 … PO-7, with forked publishers and closers (the slice 1 race-test method); a stored before-image equals the belief just before publication.
 
-### G-5: read models and the outbox
+### G-5: read models and the publication feed
 
-- **Reads:** v3.11 §6 (one snapshot), §10.
-- **Build:** `PlacesAt`, `PlaceLookup` (match quality; no address parsing), hierarchy, belief, `PositionAt(τ)`, each refusing beyond the boundary; `RevisionPublished` to the central outbox.
-- **Tests first:** one `REPEATABLE READ` snapshot per reader (PO-5); refusal beyond `closedThroughTime`.
+**Design:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g5-read-models-design.md`. **Reads:** v3.11 §4, §6, §10, §12.
+
+**G-5a: the published read model (implemented; guide 20).**
+1. **Domain first (no database):** `PlaceBelief::of(unit, subjectSlots, disputes, t, p)` and `PlaceBelief::resolve(unit, reconciliation, p)`, plus additive `SlotHistory::latest/positionOf/slot`.
+   - **Test these:** belief at (t, p); a withdrawal; an ending recorded later; a dispute only on the claim in force; a dispute cleared or withdrawn; a merge, its reversal, and R-2 successive merges.
+2. **The published contract** in `Application\Published` uses strings, ints and its own DTOs only. Put every type on `tests/Architecture/baselines/published-language.json`. `ReferenceGeographyPublishedContractTest` must pass.
+3. **`PublishedGeography`** (application): **re-check the position on every call;** τ → `TimeBoundary::closeThrough(τ)` → `positionAtTime(τ)`. **Depend on `TimeBoundary`, never `PublicationLedger`:** the no-bypass guard refuses it.
+4. **`PostgresGeographyReadSource`:** published claims only (`refgeo_claims ⋈ refgeo_publications`, position ≤ p). **Build slot histories through `PostgresPublishedAtlas`.** Don't map rows yourself (the guard refuses `PostgresRevisionRepository` here).
+5. **Bind** `GeographyReadModel`, `GeographyReadSource` and `TimeBoundary` in the provider.
+6. **Isolated-cluster tests:**
+   - publish fixture claims **directly** (`publishDirect`), freeze unpublished ones directly (`freezeUnpublished`);
+   - prove: no query exposes an unpublished claim; an answer at p never changes; successive merges are visible only from their own positions; an ending keeps earlier knowledge; τ → position; a future τ or a forged position is refused by every query.
+7. **PO-5 is met by immutability** (positions ≤ the committed one never change), not by a held `REPEATABLE READ` snapshot. The design §2.1 records this.
+
+**G-5b: `PlaceLookup`.** A name, alias or code → places, with match quality. The legacy fuzzy matcher is **copied, never imported**. No address parsing (D-83).
+
+**G-5c: the publication feed.** A **pull** feed over `refgeo_publications`: one entry per position, giving revision, kinds, subjects and merges. **Not the shared outbox, which is organisation-scoped** (design §3.4). A push is added only when the first consumer exists (D-147).
 
 ### G-6: candidates, objections and notices
 
@@ -102,7 +116,7 @@
 
 - **Code:** `app/Contexts/ReferenceGeography/Domain`, `app/Contexts/Identity`.
 - **Tests:** `tests/Unit/Contexts/ReferenceGeography/Domain`, `tests/Feature/Contexts/Identity`, `tests/Support/ReferenceGeography`.
-- **Guides:** `developer_guide/reference_geography/00_index.md` (01 … 08), `developer_guide/identity/`.
+- **Guides:** `developer_guide/reference_geography/00_index.md` (01 … 20), `developer_guide/identity/`, `developer_guide/architecture/` (the ratchet).
 - **Evidence:** `docs/publicdigit/reference-geography/evidence/`.
 - **Decisions:** `docs/publicdigit/reviews/2026-11-08-organisation-strategic-discovery-record-structure-mandates-conventions.md` (D-224 … D-228).
 - **Story:** `docs/publicdigit/backlog/PBDIGIT-346-reference-geography-standalone-and-identity-g0.md`.

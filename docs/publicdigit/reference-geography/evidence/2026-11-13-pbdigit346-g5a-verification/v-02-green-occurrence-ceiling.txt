@@ -1,0 +1,9 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....................                                              20 / 20 (100%)
+
+Time: 00:01.980, Memory: 16.00 MB
+
+OK (20 tests, 1218 assertions)

@@ -50,6 +50,16 @@ final class ArchitectureRatchet
         return $found;
     }
 
+    /**
+     * Both sizes of a baseline: its entries, and the occurrences they tolerate (a raised count is growth too).
+     *
+     * @return array{entries: int, occurrences: int}
+     */
+    public static function totals(array $baseline): array
+    {
+        return ['entries' => count($baseline), 'occurrences' => array_sum(array_map(static fn (array $e): int => (int) $e['count'], $baseline))];
+    }
+
     /** @return list<string> */
     public static function loadList(string $path): array
     {

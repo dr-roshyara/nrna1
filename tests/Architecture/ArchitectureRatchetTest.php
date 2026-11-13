@@ -38,6 +38,12 @@ final class ArchitectureRatchetTest extends TestCase
      */
     private const BASELINE_CEILING = 197;
 
+    /**
+     * The same for the total of occurrences: without it, raising an existing entry's count would let a new occurrence
+     * in silently (found 2026-11-13, Principal verification request). History: 264 at introduction.
+     */
+    private const OCCURRENCE_CEILING = 264;
+
     private const CLASSES = [
         'genuine', 'genuine (legacy)', 'genuine (minor)', 'genuine (placement)', 'misplaced ownership',
         'persistence or infrastructure leakage', 'placement', 'acceptable exception', 'published language (approved)',
@@ -184,6 +190,21 @@ final class ArchitectureRatchetTest extends TestCase
     public function test_the_baseline_does_not_grow_beyond_its_recorded_ceiling(): void
     {
         $this->assertLessThanOrEqual(self::BASELINE_CEILING, count(ArchitectureRatchet::loadBaseline(self::baselinePath())), 'the baseline grew: an exception is an architecture change, not a way to turn a test green');
+    }
+
+    public function test_raising_an_entry_count_is_caught_by_the_occurrence_total(): void
+    {
+        $baseline = ['A-1|f.php|DB::' => ['count' => 1], 'A-2|g.php|Log::' => ['count' => 2]];
+        $raised = ['A-1|f.php|DB::' => ['count' => 2], 'A-2|g.php|Log::' => ['count' => 2]];
+
+        $this->assertSame(['entries' => 2, 'occurrences' => 3], ArchitectureRatchet::totals($baseline));
+        $this->assertSame(['entries' => 2, 'occurrences' => 4], ArchitectureRatchet::totals($raised), 'same entries, more occurrences: visible');
+    }
+
+    public function test_the_baseline_occurrences_do_not_grow_beyond_their_recorded_ceiling(): void
+    {
+        $this->assertLessThanOrEqual(self::OCCURRENCE_CEILING, ArchitectureRatchet::totals(ArchitectureRatchet::loadBaseline(self::baselinePath()))['occurrences'],
+            'an entry count was raised: a tolerated violation grew. That is an architecture change, not a way to turn a test green');
     }
 
     public function test_the_generated_inventory_matches_the_baseline(): void
