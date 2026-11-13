@@ -53,7 +53,9 @@
 **Tests:**
 - `StewardRosterTest` (6);
 - `MergeNoticeTest` (5);
-- `PublicationGovernanceTest` (12): eras A and B, the latch, matter reviewers, every row of the §8 combination table, merge cases A and D, submission and approval authority.
+- `PublicationGovernanceTest` (12): eras A and B, the latch, matter reviewers, merge cases A and D, submission and approval authority. **It covers 9 of the 10 rows of the §8 combination table;** the tenth ("merge recorded after publication → governance finding") belongs to G-6.
+
+**Not yet safe to wire:** era A sole publication doesn't yet require the conflict declaration that D-84 demands. That's G-3d, so `mayPublish` must not be called from an application service before G-3d lands.
 
 **RED:**
 - G-3a: 6 errors (missing types).
