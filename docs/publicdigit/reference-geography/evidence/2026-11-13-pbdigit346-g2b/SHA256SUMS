@@ -1,0 +1,10 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+73732f19681821947f3454e1dfd30e50794c7202c752b5904bcd7cefad081cb8  ./architecture-full-RED-purity-finding.txt
+2b75c4cbb3bd31f56858abeb489a87a91381fe3b79cc6c09c7b0aed39b82b39e  ./architecture-full.txt
+337b244e2e9603a0c1cde63b081b32eeb55c22e79e8e41c0875fdc54eab8a0bc  ./cycles/green1.txt
+4edef56fc932a75c5498bc4c34a48aaf93450ed63c81e741b7da59c1476f313c  ./cycles/green2.txt
+1ab8673dedc6807707c400fefb054b77fcb85965f33aa3009cb95775ea8887e8  ./cycles/red1.txt
+6cc70a4b6dd59c928d28f7662db1b86d7a46f0d610a378c40cd6346fd408cd9e  ./cycles/red2.txt
+14faed63991ef75ac6f8d0688231d44f76e792bed5dd76d9f9f8b39cc6c555a7  ./db-free-all-RED-purity-finding.txt
+2a5649ae31611f728aeedcb3afab5ffe7cd94dc395ebd0f66e7cbd886a9055be  ./db-free-all.txt
+311faa43be09b1cb9bee80926ec65011a5e352a53ee1750b23b0d34e76d69f8f  ./README.md

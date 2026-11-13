@@ -27,6 +27,22 @@ final readonly class ValidInterval
         return !$t->isBefore($this->from) && ($this->to === null || $t->isBefore($this->to));
     }
 
+    /** The common part, or null if they share no day. */
+    public function intersect(self $other): ?self
+    {
+        if (!$this->overlaps($other)) {
+            return null;
+        }
+        $from = $this->from->isBefore($other->from) ? $other->from : $this->from;
+        $to = match (true) {
+            $this->to === null => $other->to,
+            $other->to === null => $this->to,
+            default => $this->to->isBefore($other->to) ? $this->to : $other->to,
+        };
+
+        return new self($from, $to);
+    }
+
     public function overlaps(self $other): bool
     {
         $startsBeforeOtherEnds = $other->to === null || $this->from->isBefore($other->to);

@@ -157,6 +157,31 @@ final readonly class SlotKey
         return $this->kind;
     }
 
+    /** The value of a named component, or null if this shape has no such component (for family matching, §5.1). */
+    public function component(string $label): ?string
+    {
+        foreach ($this->components as [$componentLabel, $value]) {
+            if ($componentLabel === $label) {
+                return $value;
+            }
+        }
+
+        return null;
+    }
+
+    /** The geographical unit the slot is about, if any (for the subject family of reconciliation, §5.2). */
+    public function subject(): ?ReferenceUnitId
+    {
+        foreach (['unit', 'subject', 'entry', 'predecessor', 'identity', 'country_entry'] as $label) {
+            $value = $this->component($label);
+            if ($value !== null) {
+                return ReferenceUnitId::fromString($value);
+            }
+        }
+
+        return null;
+    }
+
     /** Injective: "KIND|", then each component as "name=length:value|". Every part is terminated, even with none. */
     public function encoded(): string
     {

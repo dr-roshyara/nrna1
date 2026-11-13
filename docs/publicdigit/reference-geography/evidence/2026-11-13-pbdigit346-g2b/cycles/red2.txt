@@ -1,0 +1,71 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEE                                                       11 / 11 (100%)
+
+Time: 00:00.022, Memory: 10.00 MB
+
+There were 11 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_slot_dependency_any_claim_in_the_slot_overlapping_whatever_its_value
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:79
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_a_dispute_state_change_on_relied_upon_evidence_is_a_slot_dependency
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:90
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_family_loss_c_moves_from_a_to_b
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:61
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:98
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_family_gain_a_new_child_of_a
+Error: Class "App\Contexts\ReferenceGeography\Domain\FamilyDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:105
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_family_loss_a_shortened_valid_time_is_a_withdrawal_whose_before_image_matches
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:61
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:111
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_family_not_stale_other_scheme_outside_interval_or_another_kind
+Error: Class "App\Contexts\ReferenceGeography\Domain\FamilyDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:118
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_identifier_holders_gain_and_loss
+Error: Class "App\Contexts\ReferenceGeography\Domain\FamilyDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:126
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_class_family_a_unit_leaves_the_class
+Error: Class "App\Contexts\ReferenceGeography\Domain\FamilyDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:136
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_subject_family_every_slot_about_the_unit_all_time
+Error: Class "App\Contexts\ReferenceGeography\Domain\SubjectFamilyDependency" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:144
+
+10) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_a_dependency_set_ignores_claims_at_or_before_p0_and_reports_the_first_invalidating_one
+Error: Class "App\Contexts\ReferenceGeography\Domain\DependencySet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:154
+
+11) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyTest::test_slot_keys_expose_their_components_and_subject
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\SlotKey::component()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyTest.php:169
+
+ERRORS!
+Tests: 11, Assertions: 0, Errors: 11.

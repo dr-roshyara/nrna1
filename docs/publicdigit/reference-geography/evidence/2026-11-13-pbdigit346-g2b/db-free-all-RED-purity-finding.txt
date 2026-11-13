@@ -1,0 +1,25 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................................................................. 65 / 85 ( 76%)
+............F.......                                              85 / 85 (100%)
+
+Time: 00:00.091, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ReferenceGeographyDomainPurityTest::test_the_domain_holds_no_personal_data
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'SlotKey.php: $name',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ReferenceGeographyDomainPurityTest.php:106
+
+FAILURES!
+Tests: 85, Assertions: 920, Failures: 1.

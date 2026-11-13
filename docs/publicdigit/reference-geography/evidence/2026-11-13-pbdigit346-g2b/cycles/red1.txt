@@ -1,0 +1,47 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.021, Memory: 10.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_the_v3_11_example_a_correction_over_two_prior_parents
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:65
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_absent_where_no_claim_ever_covered_none_where_a_withdrawal_was_in_force
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:76
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_it_is_computed_against_p0_never_against_later_claims
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:92
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_an_open_interval_and_adjacent_equal_values_merge_into_one_segment
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:101
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_an_empty_history_gives_one_absent_segment
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:106
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_the_segments_partition_the_interval_exactly
+Error: Class "App\Contexts\ReferenceGeography\Domain\BeforeImage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:114
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\BeforeImageTest::test_intervals_intersect_or_not
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\ValidInterval::intersect()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/BeforeImageTest.php:129
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.
