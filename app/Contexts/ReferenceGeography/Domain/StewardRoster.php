@@ -31,6 +31,42 @@ final class StewardRoster
         return new self();
     }
 
+    /**
+     * Rebuilds a stored roster (G-4b) by replaying its entries through the domain's own writes. Refused unless the
+     * versions run 1..n without a gap and every write is one the domain accepts at that point (no impossible end,
+     * no notice twice), so a stored roster can never hold a history the domain could not have produced.
+     *
+     * @param list<RosterEntry> $entries
+     */
+    public static function fromEntries(array $entries): self
+    {
+        $roster = new self();
+        foreach (array_values($entries) as $i => $e) {
+            try {
+                $version = match ($e->kind) {
+                    RosterEntryKind::StewardAppointed => $roster->appointSteward(self::required($e->subject), self::required($e->by)),
+                    RosterEntryKind::StewardEnded => $roster->endSteward(self::required($e->subject), self::required($e->by)),
+                    RosterEntryKind::MatterReviewerAppointed => $roster->appointMatterReviewer(self::required($e->subject), $e->matter ?? throw new \InvalidArgumentException('A reviewer has a matter.'), self::required($e->by)),
+                    RosterEntryKind::PersonsMerged => $roster->recordMerge((string) $e->mergeId, $e->merged),
+                    RosterEntryKind::PersonMergeReversed => $roster->recordReversal((string) $e->mergeId),
+                    RosterEntryKind::ConflictDeclared => $roster->declareConflict(self::required($e->subject), $e->matter ?? throw new \InvalidArgumentException('A declaration has a matter.'), $e->interest ?? throw new \InvalidArgumentException('A declaration states the interest.')),
+                };
+            } catch (RosterRefused $refused) {
+                throw new \InvalidArgumentException("Roster history refused at entry {$e->version}: {$refused->reason->value}.", 0, $refused);
+            }
+            if ($version !== $i + 1 || $e->version !== $i + 1) {
+                throw new \InvalidArgumentException("Roster history has a gap or a repeated notice at entry {$e->version}.");
+            }
+        }
+
+        return $roster;
+    }
+
+    private static function required(?PersonReference $person): PersonReference
+    {
+        return $person ?? throw new \InvalidArgumentException('This roster entry names a person.');
+    }
+
     public function version(): int
     {
         return count($this->entries);

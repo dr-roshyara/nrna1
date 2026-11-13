@@ -1,0 +1,49 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.025, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_every_slot_key_shape_round_trips_through_decode
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\SlotKey::decode()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:77
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_tampered_or_impossible_encoding_is_refused
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\SlotKey::decode()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:95
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_before_image_round_trips_and_only_contiguous_segments_are_accepted
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\BeforeImage::fromSegments()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:107
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_roster_rebuilt_from_its_entries_answers_exactly_as_the_original
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::fromEntries()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:133
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_roster_history_with_a_gap_or_an_impossible_write_is_refused
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::fromEntries()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:152
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_revision_round_trips_through_its_snapshot_in_every_state
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::snapshot()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:187
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RebuildPathsTest::test_a_submitted_revision_whose_stored_content_does_not_match_its_digest_is_refused
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::snapshot()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RebuildPathsTest.php:201
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

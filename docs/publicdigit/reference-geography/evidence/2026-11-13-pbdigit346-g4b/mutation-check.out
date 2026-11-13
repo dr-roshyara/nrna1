@@ -1,0 +1,6 @@
+R1 decode accepts a non-canonical encoding                   KILLED  (Tests: 8, Assertions: 65, Failures: 1.)
+R2 before-image segments need not be contiguous              KILLED  (Tests: 8, Assertions: 64, Failures: 1.)
+R3 roster history gaps accepted                              KILLED  (Tests: 8, Assertions: 64, Failures: 1.)
+R4 frozen digest not checked on rebuild                      KILLED  (Tests: 8, Assertions: 66, Failures: 1.)
+R5 overlapping claims accepted on rebuild                    KILLED  (Tests: 8, Assertions: 66, Failures: 1.)
+All mutants killed.

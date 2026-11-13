@@ -34,6 +34,29 @@ final readonly class BeforeImage
         return new self($segments);
     }
 
+    /**
+     * Rebuilds a stored before-image (G-4b). Only what `of()` can produce: at least one segment, contiguous and
+     * ascending (each starts where the previous ended), only the last one open.
+     *
+     * @param list<array{ValidInterval, PriorValue}> $segments
+     */
+    public static function fromSegments(array $segments): self
+    {
+        if ($segments === []) {
+            throw new \InvalidArgumentException('A before-image has at least one segment.');
+        }
+        $previous = null;
+        foreach (array_values($segments) as [$interval, $prior]) {
+            if (!$interval instanceof ValidInterval || !$prior instanceof PriorValue
+                || ($previous !== null && ($previous->to === null || !$previous->to->equals($interval->from)))) {
+                throw new \InvalidArgumentException('Before-image segments are contiguous and ascending.');
+            }
+            $previous = $interval;
+        }
+
+        return new self(array_values($segments));
+    }
+
     /** @return list<array{ValidInterval, PriorValue}> */
     public function segments(): array
     {

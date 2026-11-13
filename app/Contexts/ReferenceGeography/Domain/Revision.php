@@ -215,6 +215,74 @@ final class Revision
         return $this->current === null ? null : $this->assessor;
     }
 
+    /** The complete state, for persistence (G-4b). */
+    public function snapshot(): RevisionSnapshot
+    {
+        return new RevisionSnapshot(
+            $this->id, $this->state, array_values($this->claims), array_values($this->evidence), $this->assessments,
+            $this->approvals, array_values($this->preparers), array_values($this->excluded), $this->current,
+            $this->assessor, $this->judgmentFlags, $this->validation,
+        );
+    }
+
+    /**
+     * Rebuilds a stored revision (G-4b). Refused unless the state is one the aggregate could have reached:
+     * - unique claim ids, no two claims for one slot with overlapping intervals (R-1), unique evidence ids;
+     * - every preparer in excluded(r); approvals only for versions up to the current one;
+     * - submitted or stale: a current version, its assessor, a valid validation, and the stored content reproduces
+     *   the frozen digest exactly (so stored content cannot have been altered after submission).
+     */
+    public static function fromSnapshot(RevisionSnapshot $s): self
+    {
+        $r = new self($s->id);
+        foreach ($s->claims as $claim) {
+            foreach ($r->claims as $existing) {
+                if ($existing->slot->equals($claim->slot) && $existing->interval->overlaps($claim->interval)) {
+                    throw new \InvalidArgumentException('Stored revision: two claims for one slot overlap (R-1).');
+                }
+            }
+            if (isset($r->claims[$claim->id->value()])) {
+                throw new \InvalidArgumentException('Stored revision: a claim id appears twice.');
+            }
+            $r->claims[$claim->id->value()] = $claim;
+        }
+        foreach ($s->evidence as $evidence) {
+            if (isset($r->evidence[$evidence->id])) {
+                throw new \InvalidArgumentException('Stored revision: an evidence id appears twice.');
+            }
+            $r->evidence[$evidence->id] = $evidence;
+        }
+        foreach ($s->excluded as $person) {
+            $r->excluded[$person->value()] = $person;
+        }
+        foreach ($s->preparers as $person) {
+            if (!isset($r->excluded[$person->value()])) {
+                throw new \InvalidArgumentException('Stored revision: a preparer is missing from excluded(r).');
+            }
+            $r->preparers[$person->value()] = $person;
+        }
+        foreach ($s->approvals as [$version, $approval]) {
+            if ($s->current === null || $version > $s->current->number || $version !== $approval->contentVersion) {
+                throw new \InvalidArgumentException('Stored revision: an approval names a version that does not exist.');
+            }
+        }
+        $r->state = $s->state;
+        $r->assessments = array_values($s->assessments);
+        $r->approvals = array_values($s->approvals);
+        $r->current = $s->current;
+        $r->assessor = $s->assessor;
+        $r->judgmentFlags = array_values($s->judgmentFlags);
+        $r->validation = $s->validation;
+        if (in_array($s->state, [RevisionState::Submitted, RevisionState::Stale], true)) {
+            if ($s->current === null || $s->assessor === null || $s->validation === null || !$s->validation->isValid()
+                || !hash_equals($s->current->digest, $r->digest($s->current->number, $s->assessor))) {
+                throw new \InvalidArgumentException('Stored revision: the submitted content does not match its frozen digest.');
+            }
+        }
+
+        return $r;
+    }
+
     public function id(): RevisionId
     {
         return $this->id;

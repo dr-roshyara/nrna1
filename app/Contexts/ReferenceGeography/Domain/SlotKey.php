@@ -198,6 +198,83 @@ final readonly class SlotKey
         return $this->encoded() === $other->encoded();
     }
 
+    /**
+     * Rebuilds a key from its canonical encoding (G-4b, persistence). The key is rebuilt through its shape's own
+     * factory, so every factory rule applies again, and refused unless it re-encodes to exactly the input: a stored
+     * key can never be one the domain could not have built.
+     */
+    public static function decode(string $encoded): self
+    {
+        $bar = strpos($encoded, '|');
+        $kind = $bar === false ? null : ClaimKind::tryFrom(substr($encoded, 0, $bar));
+        if ($kind === null) {
+            throw new \InvalidArgumentException('Not a slot key: unknown kind.');
+        }
+        $parts = [];
+        $i = $bar + 1;
+        while ($i < strlen($encoded)) {
+            $eq = strpos($encoded, '=', $i);
+            $colon = $eq === false ? false : strpos($encoded, ':', $eq);
+            $length = $colon === false ? '' : substr($encoded, $eq + 1, $colon - $eq - 1);
+            if ($colon === false || preg_match('/^(0|[1-9][0-9]*)$/', $length) !== 1) {
+                throw new \InvalidArgumentException('Not a slot key: malformed component.');
+            }
+            $label = substr($encoded, $i, $eq - $i);
+            $value = substr($encoded, $colon + 1, (int) $length);
+            $end = $colon + 1 + (int) $length;
+            if (strlen($value) !== (int) $length || ($encoded[$end] ?? '') !== '|' || array_key_exists($label, $parts)) {
+                throw new \InvalidArgumentException('Not a slot key: malformed component.');
+            }
+            $parts[$label] = $value;
+            $i = $end + 1;
+        }
+        $key = self::fromParts($kind, $parts);
+        if ($key->encoded() !== $encoded) {
+            throw new \InvalidArgumentException('Not a slot key: not canonical.');
+        }
+
+        return $key;
+    }
+
+    /** @param array<string, string> $parts */
+    private static function fromParts(ClaimKind $kind, array $parts): self
+    {
+        $take = static function (string ...$labels) use ($parts): array {
+            if (array_keys($parts) !== $labels) {
+                throw new \InvalidArgumentException('Not a slot key: the components do not match the shape.');
+            }
+
+            return array_values($parts);
+        };
+        $u = static fn (string $v): ReferenceUnitId => ReferenceUnitId::fromString($v);
+
+        return match ($kind) {
+            ClaimKind::Existence => self::existence($u(...$take('unit'))),
+            ClaimKind::Containment => (static fn (array $v) => self::containment($u($v[0]), $v[1]))($take('unit', 'scheme')),
+            ClaimKind::Classification => (static fn (array $v) => self::classification($u($v[0]), $v[1]))($take('unit', 'scheme')),
+            ClaimKind::Boundary => (static fn (array $v) => self::boundary($u($v[0]), $v[1]))($take('unit', 'source')),
+            ClaimKind::Succession => (static fn (array $v) => self::succession($u($v[0]), $v[1]))($take('predecessor', 'succession_event')),
+            ClaimKind::Identifier => (static fn (array $v) => self::identifier($u($v[0]), $v[1]))($take('subject', 'namespace')),
+            ClaimKind::Grouping => (static fn (array $v) => self::grouping($u($v[0]), $v[1]))($take('entry', 'grouping_scheme')),
+            ClaimKind::Admission => self::admission($u(...$take('entry'))),
+            ClaimKind::SourceName => count($parts) === 5
+                ? (static fn (array $v) => self::sourceNameValue($u($v[0]), $v[1], $v[2], $v[3], $v[4]))($take('subject', 'source', 'language', 'name_type', 'value'))
+                : (static fn (array $v) => self::sourceName($u($v[0]), $v[1], $v[2], $v[3]))($take('subject', 'source', 'language', 'name_type')),
+            ClaimKind::CldrName => (static fn (array $v) => self::cldrName($u($v[0]), $v[1], $v[2]))($take('entry', 'locale', 'form')),
+            ClaimKind::CldrInheritance => self::cldrInheritance(...$take('release')),
+            ClaimKind::Issuer => self::issuer(...$take('issuer')),
+            ClaimKind::Mandate => self::mandate(...$take('mandate')),
+            ClaimKind::Competence => self::competence(...$take('issuer', 'competence_kind')),
+            ClaimKind::Precedence => self::precedence(...$take('rule')),
+            ClaimKind::Dispute => self::dispute(ClaimId::fromString(...$take('target_claim'))),
+            ClaimKind::Reconciliation => self::reconciliation($u(...$take('identity'))),
+            ClaimKind::ProfileScheme => self::profileScheme($u(...$take('country_entry'))),
+            ClaimKind::ProfileTier => (static fn (array $v) => self::profileTier($u($v[0]), $v[1], (int) $v[2]))($take('country_entry', 'scheme', 'position')),
+            ClaimKind::ProfileClass => (static fn (array $v) => self::profileClass($u($v[0]), $v[1], $v[2]))($take('country_entry', 'scheme', 'class')),
+            ClaimKind::PlatformDefaultLocale => (static fn (array $v) => self::platformDefaultLocale())($take()),
+        };
+    }
+
     /** @param list<string> $allowed */
     private static function requireOneOf(string $value, array $allowed, string $what): void
     {
