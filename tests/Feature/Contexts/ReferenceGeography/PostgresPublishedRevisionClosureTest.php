@@ -176,13 +176,22 @@ final class PostgresPublishedRevisionClosureTest extends RefgeoPostgresTestCase
                     touch("$dir/holding");
                     usleep(800_000);
                 }))->publish($id);
+            } catch (\Throwable $e) {
+                file_put_contents("$dir/holder-error", $e::class . ': ' . $e->getMessage());
             } finally {
+                touch("$dir/holding");   // always signal: a failed holder must fail the test, not hang it (G-4g)
                 DB::disconnect();
                 posix_kill(posix_getpid(), SIGKILL);
             }
         }
         DB::reconnect();
+        $deadline = hrtime(true) + 60_000_000_000;
         while (!file_exists("$dir/holding")) {
+            if (hrtime(true) > $deadline) {
+                posix_kill($pid, SIGKILL);
+                pcntl_waitpid($pid, $status);
+                $this->fail('the publishing holder never took the lock within 60 s');
+            }
             usleep(1000);
         }
         usleep(200_000);
@@ -195,6 +204,7 @@ final class PostgresPublishedRevisionClosureTest extends RefgeoPostgresTestCase
         }
         $waited = (int) ((hrtime(true) - $start) / 1_000_000);
         pcntl_waitpid($pid, $status);
+        $this->assertFileDoesNotExist("$dir/holder-error", 'the publishing holder failed: ' . @file_get_contents("$dir/holder-error"));
 
         $this->assertGreaterThan(400, $waited, 'the save waited for the publication');
         $this->assertSame('refused', $outcome, 'and was then refused');

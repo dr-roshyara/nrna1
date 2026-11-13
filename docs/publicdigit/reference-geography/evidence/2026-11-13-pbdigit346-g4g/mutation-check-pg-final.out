@@ -1,0 +1,9 @@
+G1 publication takes no lock                         KILLED  a_mixed_concurrent_load_keeps_every_invariant;a_publication_holding_the_lock_comes_before_the_roster_write_that_wait;a_roster_write_holding_the_lock_is_seen_by_the_publication_that_waits_;concurrent_publications_get_consecutive_positions_and_none_is_visible_;
+G2 a roster write takes no lock                      KILLED  a_mixed_concurrent_load_keeps_every_invariant;a_notice_delivered_concurrently_is_recorded_exactly_once;a_roster_write_holding_the_lock_is_seen_by_the_publication_that_waits_;
+G3 publication does not lock the revision row        KILLED  a_lifecycle_save_in_progress_is_seen_by_the_publication_that_waits_for;
+G4 governance judged at the previous roster version  KILLED  a_close_never_confirms_past_an_uncommitted_publication;a_mixed_concurrent_load_keeps_every_invariant;an_equal_clock_reading_is_allowed_ordered_by_position_and_never_adjust;a_publication_holding_the_lock_comes_before_the_roster_write_that_wait;a_roster_write_holding_the_lock_is_seen_by_the_publication_that_waits_;concurrent_publications_get_consecutive_positions_and_none_is_visible_;
+G5 a close takes no lock                             KILLED  a_close_never_confirms_past_an_uncommitted_publication;
+G6 the timestamp is adjusted, not refused            KILLED  an_equal_clock_reading_is_allowed_ordered_by_position_and_never_adjust;
+G7 notice idempotency removed in the domain          KILLED  a_notice_delivered_concurrently_is_recorded_exactly_once;
+G8 the roster is read before the lock                KILLED  a_notice_delivered_concurrently_is_recorded_exactly_once;
+All mutants killed.

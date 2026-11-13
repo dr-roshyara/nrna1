@@ -1,0 +1,29 @@
+== G-3 (governance domain)
+M1 independence check removed                                          KILLED  (Tests: 30, Assertions: 111, Failures: 4.)
+M2 merges ignored by E(v)                                              KILLED  (Tests: 30, Assertions: 111, Failures: 4.)
+M3 approver judged at publication version, not approval version        KILLED  (Tests: 30, Assertions: 116, Failures: 1.)
+M4 threshold not latched                                               KILLED  (Tests: 30, Assertions: 114, Failures: 2.)
+M5 approvals of any version count                                      KILLED  (Tests: 30, Assertions: 115, Failures: 1.)
+M6 structural changes treated as non-structural                        KILLED  (Tests: 30, Assertions: 105, Failures: 10.)
+M7 reversals ignored                                                   KILLED  (Tests: 30, Assertions: 113, Failures: 2.)
+M8 a DISPUTE claim is no judgment trigger                              KILLED  (Tests: 30, Assertions: 112, Failures: 4.)
+M9 judgment flags ignored                                              KILLED  (Tests: 30, Assertions: 92, Failures: 2.)
+M10 a missing conflict declaration accepted                            KILLED  (Tests: 30, Assertions: 114, Failures: 1.)
+M11 declared interest never conflicts                                  KILLED  (Tests: 30, Assertions: 114, Failures: 3.)
+M12 assessor not re-checked at publication                             KILLED  (Tests: 30, Assertions: 113, Failures: 3.)
+M13 second person conflict not checked                                 KILLED  (Tests: 30, Assertions: 116, Failures: 1.)
+M14 a later declaration does not supersede                             KILLED  (Tests: 30, Assertions: 116, Failures: 1.)
+All mutants killed.
+== G-4b (rebuild paths)
+R1 decode accepts a non-canonical encoding                   KILLED  (Tests: 8, Assertions: 65, Failures: 1.)
+R2 before-image segments need not be contiguous              KILLED  (Tests: 8, Assertions: 64, Failures: 1.)
+R3 roster history gaps accepted                              KILLED  (Tests: 8, Assertions: 64, Failures: 1.)
+R4 frozen digest not checked on rebuild                      KILLED  (Tests: 8, Assertions: 66, Failures: 1.)
+R5 overlapping claims accepted on rebuild                    KILLED  (Tests: 8, Assertions: 66, Failures: 1.)
+All mutants killed.
+== G-4f (application)
+U1 a published revision is not closed    KILLED  a_published_revision_is_closed_to_every_act
+U2 the actor need not be appointed       KILLED  every_act_needs_an_actor_appointed_for_the_matter
+U3 submission skips maySubmit            KILLED  submission_and_approval_go_through_governance
+U4 approval skips mayApprove             KILLED  submission_and_approval_go_through_governance
+All mutants killed.

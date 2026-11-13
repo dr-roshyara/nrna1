@@ -9,6 +9,20 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-11-13): **Reference Geography G-4 at the Principal's acceptance boundary; G-2 and G-3 accepted; Deliberation discovery brief written**
+*Written by Claude (Session A). State only; it creates no authority. Additive.*
+- **PBDIGIT-346 (Reference Geography):**
+  - G-2 accepted (F-1, F-2, D-229); G-3 accepted (D-230);
+  - G-4a to G-4g implemented test-first: persistence, the publication ledger under one lock with the roster, use cases, trusted actor, production wiring, the no-bypass guard, the concurrency matrix;
+  - all mutation sets verified by reason;
+  - full cluster 220, database-free 221, architecture 318 with the same 4 baseline failures.
+  - **Package:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g4-acceptance-review.md`.
+- **Principal decisions pending (before production):**
+  - who D-84's platform owner is (production appointment stays closed);
+  - the migration rollout control (the "test databases only" gate is a convention, not code).
+- **PBDIGIT-347 (Deliberation):** discovery brief `docs/publicdigit/architecture/reviews/2026-11-13-deliberation-discovery-brief.md`; questions Q-D1 to Q-D5 open (Q-D1, public reading, is a GDPR Art. 9 [LQ]).
+- **Next:** the G-4 acceptance → G-5 read models, with the Deliberation discovery alongside → Membership (PBDIGIT-345 routing, then the lifecycle).
+
 ## 📍 UPDATE (2026-11-09): **Mobile channel: staged direction; PBDIGIT-338 and 339 verified (339 RED→GREEN; signed-in journey on a throwaway DB), uncommitted; Identity discovery done; PBDIGIT-340/341 raised**
 
 | | |

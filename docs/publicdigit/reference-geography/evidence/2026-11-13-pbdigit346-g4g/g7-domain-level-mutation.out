@@ -1,0 +1,4 @@
+G7 without a database: the domain's merge-notice idempotency removed (StewardRoster::recordMerge)
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_a_merge_is_a_versioned_roster_write_and_a_replay_writes_nothing
+2) Tests\Unit\Contexts\ReferenceGeography\Application\RosterServicesTest::test_identity_notices_are_consumed_once
+Tests: 11, Assertions: 30, Failures: 2.

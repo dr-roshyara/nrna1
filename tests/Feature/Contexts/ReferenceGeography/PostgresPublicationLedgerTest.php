@@ -449,13 +449,22 @@ final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
             DB::purge();
             try {
                 $holder($dir);
+            } catch (\Throwable $e) {
+                file_put_contents("$dir/holder-error", $e::class . ': ' . $e->getMessage());
             } finally {
+                touch("$dir/holding");   // always signal: a failed holder must fail the test, not hang it (G-4g)
                 DB::disconnect();
                 posix_kill(posix_getpid(), SIGKILL);
             }
         }
         DB::reconnect();
+        $deadline = hrtime(true) + 60_000_000_000;
         while (!file_exists("$dir/holding")) {
+            if (hrtime(true) > $deadline) {
+                posix_kill($pid, SIGKILL);
+                pcntl_waitpid($pid, $status);
+                throw new \RuntimeException('the holder never took the lock within 60 s');
+            }
             usleep(1000);
         }
         usleep(200_000);
@@ -463,6 +472,9 @@ final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
         $result = $contender();
         $waited = (int) ((hrtime(true) - $start) / 1_000_000);
         pcntl_waitpid($pid, $status);
+        if (file_exists("$dir/holder-error")) {
+            throw new \RuntimeException('the holder failed: ' . file_get_contents("$dir/holder-error"));
+        }
 
         return [$result, $waited];
     }

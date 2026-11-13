@@ -1,0 +1,4 @@
+G5 a close takes no lock                             KILLED  a_close_never_confirms_past_an_uncommitted_publication;
+G6 the timestamp is adjusted, not refused            KILLED  an_equal_clock_reading_is_allowed_ordered_by_position_and_never_adjust;
+G7 notice idempotency removed in the domain          KILLED  a_notice_delivered_concurrently_is_recorded_exactly_once;
+G8 the roster is read before the lock                KILLED  a_notice_delivered_concurrently_is_recorded_exactly_once;

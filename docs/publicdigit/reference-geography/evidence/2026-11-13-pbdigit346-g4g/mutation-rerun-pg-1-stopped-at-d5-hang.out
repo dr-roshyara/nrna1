@@ -1,0 +1,9 @@
+== G-4c
+S1 the publication lock is not taken          KILLED  (Tests: 66, Assertions: 249, Failures: 12, Deprecations: 1.)
+S2 the write is not one transaction           KILLED  (Tests: 66, Assertions: 246, Failures: 13, Deprecations: 1.)
+All mutants killed.
+== G-4d
+D1 unpublished claims visible in the atlas     KILLED  a_publication_is_invisible_until_it_commits;unpublished_claims_never_enter_the_atlas;
+D2 the atlas ignores p0                        KILLED  the_reader_is_fixed_at_its_p0;
+D3 no optimistic concurrency check             KILLED  a_concurrent_change_is_refused_and_writes_nothing;
+D4 a save is not one transaction               KILLED  a_save_failing_part_way_leaves_the_previous_state;

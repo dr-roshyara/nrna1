@@ -1,0 +1,8 @@
+G1 publication takes no lock :: Tests: 22, Assertions: 49, Errors: 1, Failures: 11, Deprecations: 1. :: setup-failures=0
+G2 a roster write takes no lock :: Tests: 22, Assertions: 70, Failures: 9, Deprecations: 1. :: setup-failures=0
+G3 publication does not lock the revision row :: Tests: 22, Assertions: 91, Failures: 2, Deprecations: 1. :: setup-failures=0
+G4 governance judged at the previous roster version :: Tests: 22, Assertions: 69, Failures: 15, Deprecations: 1. :: setup-failures=0
+G5 a close takes no lock :: Tests: 22, Assertions: 95, Failures: 1, Deprecations: 1. :: setup-failures=0
+G6 the timestamp is adjusted, not refused :: Tests: 22, Assertions: 96, Failures: 1, Deprecations: 1. :: setup-failures=0
+G7 notice idempotency removed in the domain :: Tests: 22, Assertions: 96, Failures: 1, Deprecations: 1. :: setup-failures=0
+G8 the roster is read before the lock :: Tests: 22, Assertions: 96, Failures: 1, Deprecations: 1. :: setup-failures=0

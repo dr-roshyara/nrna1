@@ -37,6 +37,8 @@ php -r '
       // engineering observation tooling (2026-08-04): both script areas share one guide area
       "metrics"      => "engineering_observations",
       "observations" => "engineering_observations",
+      // PBDIGIT-346 (2026-11-13): app/Contexts/ReferenceGeography is documented in developer_guide/reference_geography/
+      "referencegeography" => "reference_geography",
   ];
 
   $codeAreas  = [];   // expected guide-area => true (from code changes)
