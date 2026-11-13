@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS` — **G-0 done 2026-11-13** (migration fix `67425de0e`); **G-1 done 2026-11-13** (evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g1/`; guide `developer_guide/reference_geography/01_g1_domain_kernel.md`) (TDD; evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g0/`; guide `developer_guide/identity/01_g0_…`), **G-2a done 2026-11-13** (Revision aggregate); **G-2b done 2026-11-13** (before-images, dependencies); **G-2c next**; review boundary at the end of G-2 |
+| **Status** | `IN PROGRESS` — **G-0 done 2026-11-13** (migration fix `67425de0e`); **G-1 done 2026-11-13** (evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g1/`; guide `developer_guide/reference_geography/01_g1_domain_kernel.md`) (TDD; evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g0/`; guide `developer_guide/identity/01_g0_…`), **G-2a done 2026-11-13** (Revision aggregate); **G-2b done 2026-11-13** (before-images, dependencies); **G-2c done 2026-11-13** (validator), **with four open questions Q1–Q4** (G-5; G-4/G-6/D-83; D-82; evidence basis); **G-2 at the Principal's review boundary**; review boundary at the end of G-2 |
 | **Design (approved sequence §8)** | `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-standalone-tactical-completion.md` (D-226), consuming v3.11 (D-93) and D-225 |
 | **Decisions** | D-93, D-147, D-224, D-225, D-226 |
 

@@ -1,0 +1,32 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:00.019, Memory: 10.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyRecordingReaderTest::test_a_slot_read_returns_history_known_at_p0_and_is_recorded
+Error: Class "App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyRecordingReaderTest.php:61
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyRecordingReaderTest::test_a_family_read_returns_matching_slots_and_records_a_family_dependency
+Error: Class "App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyRecordingReaderTest.php:74
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyRecordingReaderTest::test_a_family_read_respects_the_interval
+Error: Class "App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyRecordingReaderTest.php:84
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\DependencyRecordingReaderTest::test_the_same_read_is_recorded_once_and_nothing_is_recorded_without_a_read
+Error: Class "App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/DependencyRecordingReaderTest.php:93
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4.

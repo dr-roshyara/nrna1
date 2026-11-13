@@ -15,4 +15,6 @@ enum RevisionRefusal: string
     case EvidenceChangedUnderSameIdentifier = 'evidence-changed-under-same-identifier';
     case Incomplete = 'incomplete';
     case ApprovalNamesAnotherVersion = 'approval-names-another-version';
+    case NotValidated = 'not-validated';
+    case Invalid = 'invalid';
 }

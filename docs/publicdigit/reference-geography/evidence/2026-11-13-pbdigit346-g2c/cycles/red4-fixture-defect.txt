@@ -1,0 +1,68 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.021, Memory: 10.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_taking_a_value_another_live_subject_holds_violates_i1
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:81
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_code_reuse_after_the_earlier_holders_tenure_is_allowed
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:88
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_a_holder_that_no_longer_exists_is_not_live
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:95
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_the_holder_relinquishing_in_the_same_revision_frees_the_value
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:102
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_two_subjects_taking_one_value_in_the_same_revision_violate_i1
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:110
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_another_namespace_is_no_conflict
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:117
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_a_later_new_holder_or_relinquishment_makes_the_validation_stale
+InvalidArgumentException: I-4: an establish claim cites an establishing instrument or a duplicate-search assessment.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Claim.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:124
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

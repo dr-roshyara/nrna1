@@ -1,0 +1,53 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_before_images_are_computed_at_p0_and_protected_by_slot_dependencies_on_the_target_slots
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:91
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_the_structural_classification_is_derived
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:100
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_a_parent_must_exist_over_the_whole_interval
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:106
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_a_parent_ending_mid_interval_violates_and_one_created_in_this_revision_satisfies
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:121
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_grouping_needs_the_entrys_admission_over_its_interval
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:136
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_a_later_relevant_publication_invalidates_and_an_unrelated_one_does_not
+Error: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:77
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:147
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorTest::test_the_validator_accepts_only_the_recording_reader
+ReflectionException: Class "App\Contexts\ReferenceGeography\Domain\RevisionValidator" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorTest.php:157
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

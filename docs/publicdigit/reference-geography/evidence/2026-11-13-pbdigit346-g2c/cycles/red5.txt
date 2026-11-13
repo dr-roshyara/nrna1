@@ -1,0 +1,48 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_submission_needs_a_validation
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\RevisionRefusal::NotValidated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:89
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_an_invalid_revision_cannot_be_submitted
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:95
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_a_valid_validation_allows_submission_and_is_kept_with_the_version
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:104
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_changing_a_claim_voids_the_validation_but_evidence_and_assessments_do_not
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:115
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_re_preparation_voids_the_validation
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:129
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_the_digest_covers_p0_and_the_validation
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:142
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:147
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidationTest::test_validation_is_only_allowed_in_a_draft
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::validateWith()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidationTest.php:154
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

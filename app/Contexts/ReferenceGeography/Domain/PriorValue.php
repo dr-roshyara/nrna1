@@ -37,6 +37,12 @@ final readonly class PriorValue
         return $this->kind === 'VALUE' && $this->value === $value;
     }
 
+    /** Any value (neither NONE nor ABSENT). */
+    public function isSomeValue(): bool
+    {
+        return $this->kind === 'VALUE';
+    }
+
     public function isNone(): bool
     {
         return $this->kind === self::NONE;

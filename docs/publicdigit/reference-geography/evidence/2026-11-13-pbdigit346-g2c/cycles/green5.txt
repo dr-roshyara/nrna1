@@ -1,0 +1,48 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......................................EE.EEE..................... 65 / 87 ( 74%)
+......................                                            87 / 87 (100%)
+
+Time: 00:00.066, Memory: 12.00 MB
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_submission_freezes_version_1_and_nothing_can_change_until_re_preparation
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: not-validated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:247
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:132
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_the_digest_covers_everything_judged_and_is_deterministic
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: not-validated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:247
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:146
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_an_approval_counts_only_for_the_current_version
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: not-validated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:247
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:177
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_approval_only_of_a_submitted_revision
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: not-validated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:247
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:203
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionTest::test_excluded_accumulates_everyone_who_prepared_assessed_or_submitted_any_version
+App\Contexts\ReferenceGeography\Domain\RevisionRefused: Revision: not-validated
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:247
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/Revision.php:121
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionTest.php:211
+
+ERRORS!
+Tests: 87, Assertions: 965, Errors: 5.

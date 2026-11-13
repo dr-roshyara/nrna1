@@ -43,6 +43,9 @@ final class Revision
 
     private ?ContentVersion $current = null;
 
+    /** The validation of exactly the current claims (G-2c); voided by any claim change and by re-preparation. */
+    private ?ValidationResult $validation = null;
+
     private function __construct(private readonly RevisionId $id)
     {
     }
@@ -64,6 +67,7 @@ final class Revision
             }
         }
         $this->claims[$claim->id->value()] = $claim;
+        $this->validation = null;
         $this->notePreparer($by);
     }
 
@@ -74,7 +78,22 @@ final class Revision
             throw new RevisionRefused(RevisionRefusal::UnknownClaim);
         }
         unset($this->claims[$id->value()]);
+        $this->validation = null;
         $this->notePreparer($by);
+    }
+
+    /** Validates exactly the current claims at the reader's p₀ (v3.11 §5) and keeps the result for submission. */
+    public function validateWith(RevisionValidator $validator, DependencyRecordingReader $reader): ValidationResult
+    {
+        $this->requireDraft();
+        $this->validation = $validator->validate(array_values($this->claims), $reader);
+
+        return $this->validation;
+    }
+
+    public function validation(): ?ValidationResult
+    {
+        return $this->validation;
     }
 
     public function attachEvidence(EvidenceVersion $evidence, PersonReference $by): void
@@ -139,6 +158,7 @@ final class Revision
         }
         $this->state = RevisionState::Draft;
         $this->assessments = [];   // assessments name the version they judged; the next version is assessed afresh
+        $this->validation = null;  // the next version is validated at its own p₀ (§5.1: before-images recomputed)
         $this->notePreparer($by);
     }
 
@@ -223,6 +243,12 @@ final class Revision
                 throw new RevisionRefused(RevisionRefusal::Incomplete);
             }
         }
+        if ($this->validation === null) {
+            throw new RevisionRefused(RevisionRefusal::NotValidated);
+        }
+        if (!$this->validation->isValid()) {
+            throw new RevisionRefused(RevisionRefusal::Invalid);
+        }
     }
 
     /** SHA-256 over a canonical form of everything judged (§5.3), deterministic for equal content. */
@@ -248,6 +274,7 @@ final class Revision
             'assessments' => $assessments,
             'preparers' => $preparers,
             'assessor' => $assessor->value(),
+            'validation' => $this->validation?->describe(),   // p₀, dependency predicates, before-images, structural
         ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     }
 }

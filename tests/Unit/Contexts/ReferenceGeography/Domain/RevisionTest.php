@@ -9,6 +9,12 @@ use App\Contexts\ReferenceGeography\Domain\Assessment;
 use App\Contexts\ReferenceGeography\Domain\AssessmentKind;
 use App\Contexts\ReferenceGeography\Domain\Basis;
 use App\Contexts\ReferenceGeography\Domain\BasisKind;
+use App\Contexts\ReferenceGeography\Domain\BeforeImage;
+use App\Contexts\ReferenceGeography\Domain\DependencyRecordingReader;
+use App\Contexts\ReferenceGeography\Domain\PublishedClaim;
+use App\Contexts\ReferenceGeography\Domain\RevisionValidator;
+use App\Contexts\ReferenceGeography\Domain\SlotHistory;
+use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
 use App\Contexts\ReferenceGeography\Domain\ClaimValue;
@@ -69,6 +75,19 @@ final class RevisionTest extends TestCase
         foreach ([AssessmentKind::Authenticity, AssessmentKind::Competence, AssessmentKind::Applicability] as $kind) {
             $r->recordAssessment(new Assessment($kind, 'satisfied', self::p('b')));
         }
+
+        return self::validated($r);
+    }
+
+    /**
+     * Since G-2c, submission needs a valid validation of the current claims. The test atlas holds the claims' parent
+     * (existing from 2000), so the containment claims here are valid.
+     */
+    private static function validated(Revision $r): Revision
+    {
+        $parent = new Claim(ClaimId::fromString('00000000-0000-4000-8000-000000000999'), SlotKey::existence(ReferenceUnitId::fromString('8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d')), ClaimValue::of('exists'), new ValidInterval(ValidDate::fromString('2000-01-01')), new Basis(BasisKind::Instrument, 'act'));
+        $atlas = new InMemoryPublishedAtlas(1, [new PublishedClaim($parent, BeforeImage::of(SlotHistory::for($parent->slot), $parent->interval, 0), 1)]);
+        $r->validateWith(new RevisionValidator(), new DependencyRecordingReader($atlas));
 
         return $r;
     }
@@ -158,7 +177,7 @@ final class RevisionTest extends TestCase
         $otherOutcome = self::ready($claim);
         $otherOutcome->recordAssessment(new Assessment(AssessmentKind::Precedence, 'applied', self::p('b')));
 
-        $this->assertNotSame($base, $otherInterval->submit(self::p('b'))->digest, 'a valid interval is judged');
+        $this->assertNotSame($base, self::validated($otherInterval)->submit(self::p('b'))->digest, 'a valid interval is judged');
         $this->assertNotSame($base, $otherFingerprint->submit(self::p('b'))->digest, 'evidence versions are judged');
         $this->assertNotSame($base, $otherOutcome->submit(self::p('b'))->digest, 'assessments are judged');
         $this->assertNotSame($base, self::ready($claim)->submit(self::p('c'))->digest, 'the assessor is recorded with the version');
@@ -185,7 +204,7 @@ final class RevisionTest extends TestCase
         $r->addClaim(self::claim(from: '2010-01-01', to: '2015-09-20'), self::p('a'));
         $this->assertRefused(RevisionRefusal::Incomplete, fn () => $r->submit(self::p('b')), 'version-1 assessments do not count for version 2');
         self::assessAll($r, 'b');
-        $v2 = $r->submit(self::p('b'));
+        $v2 = self::validated($r)->submit(self::p('b'));
 
         $this->assertSame(2, $v2->number);
         $this->assertNotSame($v1->digest, $v2->digest);
@@ -211,7 +230,7 @@ final class RevisionTest extends TestCase
         $r->submit(self::p('b'));
         $r->reprepare(self::p('d'));                     // d re-prepares
         self::assessAll($r, 'e');                        // e assesses version 2
-        $r->submit(self::p('e'));                         // e submits version 2
+        self::validated($r)->submit(self::p('e'));        // e submits version 2 (validated afresh)
 
         $refs = array_map(static fn (PersonReference $p): string => $p->value()[0], $r->excludedPersons());
         sort($refs);

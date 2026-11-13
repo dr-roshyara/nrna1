@@ -1,0 +1,34 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F...F.F                                                             7 / 7 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_taking_a_value_another_live_subject_holds_violates_i1
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'I-1',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:83
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_two_subjects_taking_one_value_in_the_same_revision_violate_i1
+Failed asserting that an array contains 'I-1'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:112
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_a_later_new_holder_or_relinquishment_makes_the_validation_stale
+Failed asserting that an array contains 'family|IDENTIFIER|namespace=16:iso3166-1-alpha2|2:XK|2008-01-01|'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:127
+
+FAILURES!
+Tests: 7, Assertions: 7, Failures: 3.

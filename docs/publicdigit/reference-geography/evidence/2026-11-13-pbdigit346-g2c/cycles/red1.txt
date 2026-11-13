@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EE                                                                  2 / 2 (100%)
+
+Time: 00:00.020, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\StructuralClassificationTest::test_every_kind_is_classified_exactly_as_section_14
+Error: Class "App\Contexts\ReferenceGeography\Domain\StructuralClassification" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StructuralClassificationTest.php:32
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\StructuralClassificationTest::test_a_revision_is_structural_if_any_claim_is_and_a_withdrawal_of_a_structural_slot_counts
+Error: Class "App\Contexts\ReferenceGeography\Domain\StructuralClassification" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StructuralClassificationTest.php:44
+
+ERRORS!
+Tests: 2, Assertions: 0, Errors: 2.
