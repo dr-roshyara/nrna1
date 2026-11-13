@@ -157,3 +157,13 @@
 This is not a claim of operational readiness: no screens, no read models (G-5) and no data (G-8) yet.
 
 **Your decision:** accept G-4 (with or without these conditions), or ask for a revision.
+
+## 10. Principal decision (recorded 2026-11-13)
+
+> **G-4 accepted with conditions, for continued development.** The G-4 implementation and evidence are accepted as the current development baseline of Reference Geography's persistence, publication, application and concurrency.
+> - **No production steward appointment or Geography publication** until the Platform Owner authority is formally established.
+> - **No production database migration** until an explicit, technically enforced migration-approval control is established.
+>
+> This is not acceptance of the whole Reference Geography context: G-5 to G-8, D-230 automatic detection and the G-0 race mutation proof remain outstanding.
+
+The Principal's words: "I accept the recommendations written in the document". The decision text is from the Principal DDD review of 2026-11-13, which recommends this conditional acceptance.
