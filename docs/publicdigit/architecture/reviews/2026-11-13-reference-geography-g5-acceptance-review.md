@@ -48,3 +48,12 @@
 ## 5. Recommendation
 
 **ACCEPT G-5 (a, b, c)** as the Reference Geography read side, with the limitations in §4 recorded. **A Principal decision is needed only for acceptance itself;** no business or constitutional question arose.
+
+## 6. Principal decision (recorded 2026-11-13)
+
+> **G-5 (a, b, c) accepted, with the limitations in §4,** as the Reference Geography read side: PublicDigit may read, search and track changes to official geography, without automatically changing organisational or membership records.
+> **This is not acceptance of all of Reference Geography:** G-6 to G-8 remain, and the G-4 production restrictions stay in force (no production steward appointment or publication until the Platform Owner authority is formally established; no production Geography migration until a technically enforced migration-approval control exists).
+
+**The Principal's words:** "I accept the recommendations written in the document". The Principal DDD review of 2026-11-13 recommended: "formally accept G-5 with its recorded limitations".
+
+**Verified before recording:** the commits `a7ac6c779`, `674168f40`, `975e77cb0`, `d1d62e3a4`, `c9cbfc682` exist, and the five G-5 evidence folders match their sealed checksums.
