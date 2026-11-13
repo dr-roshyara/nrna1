@@ -6,7 +6,6 @@ namespace App\Contexts\ReferenceGeography\Application;
 
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository;
-use App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue;
 use App\Contexts\ReferenceGeography\Application\Ports\RosterReader;
 use App\Contexts\ReferenceGeography\Domain\Candidate;
 use App\Contexts\ReferenceGeography\Domain\CandidateId;
@@ -22,16 +21,16 @@ use App\Contexts\ReferenceGeography\Domain\RevisionId;
  * - needs a steward appointed at the roster's current version (stewards decide candidates, D-31; stewards submit
  *   imports). Organisation submissions arrive with the Organisation integration (D-147), not here;
  * - is saved against the row version it was loaded at.
- * Acceptance names an existing revision: the candidate never becomes a fact by itself; the revision is governed and
- * published on its own path. It holds READ-ONLY ports (RosterReader, RevisionCatalogue), so it cannot write the roster
- * or a revision (the accepted no-bypass guard, rules 2 and 3).
+ * Acceptance PROPOSES a new revision through RevisionService (see accept): the candidate never becomes a fact by
+ * itself; the revision is governed and published on its own path. It reads the roster through the READ-ONLY
+ * RosterReader and touches revisions only through the authorised RevisionService (no-bypass guard, rules 2 and 3).
  */
 final class CandidateService
 {
     public function __construct(
         private readonly CandidateRepository $candidates,
         private readonly RosterReader $roster,
-        private readonly RevisionCatalogue $revisions,
+        private readonly RevisionService $revisions,
         private readonly ActingPerson $acting,
     ) {
     }
@@ -48,12 +47,20 @@ final class CandidateService
         $this->act($id, static fn (Candidate $c, PersonReference $actor) => $c->startVerification($actor));
     }
 
-    public function accept(CandidateId $id, RevisionId $revision): void
+    /**
+     * Accept → ProposeRevision (closure design §Candidate): acceptance PREPARES a new draft revision with the given id,
+     * through the one authorised path (RevisionService::prepare), so the revision provably originates from this
+     * candidate and belongs to no other. An existing revision id is refused (never attached). Order: the lifecycle is
+     * checked first (nothing is prepared if acceptance is refused); then the revision is prepared; then the candidate
+     * is saved. If that last save loses a race, the draft remains as an unpublished, withdrawable draft (no fact).
+     */
+    public function accept(CandidateId $id, RevisionId $proposedRevision): void
     {
-        if (!$this->revisions->exists($revision)) {
-            throw new \OutOfBoundsException("No revision {$revision->value()}.");
-        }
-        $this->act($id, static fn (Candidate $c, PersonReference $actor) => $c->accept($revision, $actor));
+        $actor = $this->steward();
+        $stored = $this->candidates->get($id);
+        $stored->candidate->accept($proposedRevision, $actor);
+        $this->revisions->prepare($proposedRevision);
+        $this->candidates->save($stored->candidate, $stored->rowVersion);
     }
 
     public function linkTo(CandidateId $duplicate, CandidateId $primary): void

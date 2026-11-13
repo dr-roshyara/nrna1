@@ -103,6 +103,21 @@ final class PostgresCandidateRepositoryTest extends RefgeoPostgresTestCase
             VALUES (?, 'accepted', 'steward', ?, 's', '[]', ?, ?, ?)", [(string) Str::uuid(), md5('a'), md5('a'), md5('a'), md5('a')]);
     }
 
+    public function test_one_revision_belongs_to_at_most_one_candidate(): void
+    {
+        $revision = RevisionId::fromString((string) Str::uuid());
+        foreach ([self::fresh(), self::fresh()] as $i => $c) {
+            $c->startVerification(self::p('steward'));
+            $c->accept($revision, self::p('steward'));
+            if ($i === 0) {
+                self::repo()->add($c);
+                continue;
+            }
+            $this->expectException(QueryException::class);   // Accept → ProposeRevision: a proposal belongs to one candidate
+            self::repo()->add($c);
+        }
+    }
+
     public function test_a_corrupt_row_is_refused_on_reading(): void
     {
         $id = (string) Str::uuid();

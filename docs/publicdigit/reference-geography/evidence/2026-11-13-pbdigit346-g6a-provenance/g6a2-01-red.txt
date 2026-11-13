@@ -1,0 +1,54 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_acceptance_proposes_a_new_revision_prepared_by_the_acting_steward
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:113
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_acceptance_cannot_attach_an_existing_unrelated_revision
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:130
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_an_acceptance_the_lifecycle_refuses_prepares_no_revision
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:144
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_a_duplicate_is_linked_to_an_existing_primary
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:158
+
+5) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_someone_not_appointed_cannot_act_and_nobody_signed_in_is_refused
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:168
+
+6) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_a_rejection_records_its_reason_and_reviewer
+TypeError: App\Contexts\ReferenceGeography\Application\CandidateService::__construct(): Argument #3 ($revisions) must be of type App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue, App\Contexts\ReferenceGeography\Application\RevisionService given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php on line 108
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/CandidateService.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:186
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.

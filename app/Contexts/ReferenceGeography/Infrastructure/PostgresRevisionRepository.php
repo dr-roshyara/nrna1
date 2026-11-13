@@ -101,11 +101,6 @@ final class PostgresRevisionRepository implements RevisionRepository
         });
     }
 
-    public function exists(RevisionId $id): bool
-    {
-        return $this->db->selectOne('SELECT 1 AS x FROM refgeo_revisions WHERE id = ?', [$id->value()]) !== null;
-    }
-
     public function get(RevisionId $id): StoredRevision
     {
         $row = $this->db->selectOne('SELECT state, row_version FROM refgeo_revisions WHERE id = ?', [$id->value()]);

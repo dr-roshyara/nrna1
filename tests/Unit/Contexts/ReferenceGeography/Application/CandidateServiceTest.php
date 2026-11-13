@@ -10,6 +10,12 @@ use App\Contexts\ReferenceGeography\Application\CandidateService;
 use App\Contexts\ReferenceGeography\Application\GeographyActRefused;
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository;
+use App\Contexts\ReferenceGeography\Application\Ports\PublishedAtlasSource;
+use App\Contexts\ReferenceGeography\Application\RevisionService;
+use App\Contexts\ReferenceGeography\Domain\PublicationGovernance;
+use App\Contexts\ReferenceGeography\Domain\PublishedAtlas;
+use App\Contexts\ReferenceGeography\Domain\RevisionValidator;
+use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
 use App\Contexts\ReferenceGeography\Application\StoredCandidate;
 use App\Contexts\ReferenceGeography\Domain\Candidate;
 use App\Contexts\ReferenceGeography\Domain\CandidateId;
@@ -90,30 +96,61 @@ final class CandidateServiceTest extends TestCase
             }
         };
 
-        return [new CandidateService($candidates, $roster, $revisions, self::acting($actor)), $candidates, $revisions];
+        $acting = self::acting($actor);
+        $atlas = new class implements PublishedAtlasSource {
+            public function current(): PublishedAtlas
+            {
+                return new InMemoryPublishedAtlas(0, []);
+            }
+        };
+        $revisionService = new RevisionService($revisions, $roster, $atlas, $acting, new PublicationGovernance(), new RevisionValidator());
+
+        return [new CandidateService($candidates, $roster, $revisionService, $acting), $candidates, $revisions];
     }
 
-    public function test_a_steward_records_an_import_then_verifies_and_accepts_it_with_a_revision(): void
+    public function test_acceptance_proposes_a_new_revision_prepared_by_the_acting_steward(): void
     {
-        [$service, $candidates] = self::world();
+        [$service, $candidates, $revisions] = self::world();
         $service->submitImport(CandidateId::fromString(self::C1), 'Ward 33 created by the 2026 act', null, ['sha256:' . str_repeat('a', 64)]);
         $service->startVerification(CandidateId::fromString(self::C1));
-        $service->accept(CandidateId::fromString(self::C1), RevisionId::fromString(self::REV));
+        $proposed = RevisionId::fromString('5e5e5e5e-5e5e-4e5e-8e5e-5e5e5e5e5e5e');
+        $service->accept(CandidateId::fromString(self::C1), $proposed);
 
         $stored = $candidates->get(CandidateId::fromString(self::C1));
         $this->assertSame(CandidateState::Accepted, $stored->candidate->state());
-        $this->assertSame('steward', $stored->candidate->snapshot()->submitter->kind);
+        $this->assertTrue($stored->candidate->revision()?->equals($proposed));
         $this->assertTrue($stored->candidate->decidedBy()?->equals(self::p('steward')), 'the actor, from ActingPerson');
+        $draft = $revisions->get($proposed);
+        $this->assertFalse($draft->published, 'a proposal (closure design: Accept → ProposeRevision), never a fact');
+        $this->assertEquals([self::p('steward')], $draft->revision->snapshot()->preparers, 'prepared by the accepting steward');
     }
 
-    public function test_acceptance_names_an_existing_revision_only(): void
+    public function test_acceptance_cannot_attach_an_existing_unrelated_revision(): void
     {
-        [$service] = self::world();
+        [$service, $candidates] = self::world();
         $service->submitImport(CandidateId::fromString(self::C1), 'x', null, []);
         $service->startVerification(CandidateId::fromString(self::C1));
 
-        $this->expectException(\OutOfBoundsException::class);
-        $service->accept(CandidateId::fromString(self::C1), RevisionId::fromString('9f9f9f9f-9f9f-4f9f-8f9f-9f9f9f9f9f9f'));
+        try {
+            $service->accept(CandidateId::fromString(self::C1), RevisionId::fromString(self::REV));   // REV already exists
+            $this->fail('accepted by attaching an existing revision');
+        } catch (\RuntimeException) {
+            $this->assertSame(CandidateState::UnderVerification, $candidates->get(CandidateId::fromString(self::C1))->candidate->state(), 'nothing decided');
+        }
+    }
+
+    public function test_an_acceptance_the_lifecycle_refuses_prepares_no_revision(): void
+    {
+        [$service, , $revisions] = self::world();
+        $service->submitImport(CandidateId::fromString(self::C1), 'x', null, []);   // not under verification
+        $proposed = RevisionId::fromString('5e5e5e5e-5e5e-4e5e-8e5e-5e5e5e5e5e5e');
+
+        try {
+            $service->accept(CandidateId::fromString(self::C1), $proposed);
+            $this->fail('accepted before verification');
+        } catch (\App\Contexts\ReferenceGeography\Domain\CandidateRefused) {
+            $this->assertFalse($revisions->exists($proposed), 'no orphan draft');
+        }
     }
 
     public function test_a_duplicate_is_linked_to_an_existing_primary(): void

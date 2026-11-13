@@ -22,7 +22,7 @@
 
 | Question | Answer |
 |---|---|
-| New database migration? | **Yes, a Reference Geography one:** `database/migrations/2026_11_13_180000_create_refgeo_candidates.php` (an empty table `refgeo_candidates`) |
+| New database migration? | **Yes, two Reference Geography ones, in this order:** `2026_11_13_180000_create_refgeo_candidates.php` (an empty table `refgeo_candidates`), then `2026_11_13_181000_one_candidate_per_proposed_revision.php` (a unique index) |
 | May it run in production? | **No, not yet. The G-4 condition applies:** no production Reference Geography migration until a technically enforced migration-approval control exists. Development and test databases only |
 | Configuration, queues, routes, permissions? | **None.** Use cases only; there's no screen. Stewards act through code that has `ActingPerson` |
 | Data | none is created; candidates are recorded only by appointed stewards |

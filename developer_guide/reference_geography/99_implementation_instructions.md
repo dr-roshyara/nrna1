@@ -121,7 +121,8 @@
 1. **Domain:** `Candidate` lifecycle (submitted → under verification → accepted · linked · rejected); `fromSnapshot` refuses impossible states.
 2. **Application:** `CandidateService`.
    - Actor from `ActingPerson`; a steward at the current roster version.
-   - **Depend on the read-only ports `RosterReader` and `RevisionCatalogue`, never the write-side ones:** the no-bypass guard refuses them.
+   - **Read the roster through `RosterReader`; reach revisions only through `RevisionService`** (the no-bypass guard refuses the write-side ports).
+   - **Accept → ProposeRevision:** acceptance *prepares* a new revision; it never attaches an existing one. A unique index allows one candidate per revision.
 3. **Storage:** `refgeo_candidates` (CHECKs mirror the lifecycle), `PostgresCandidateRepository`, optimistic `row_version`.
 4. **Not yet:** organisation submissions (D-147).
 

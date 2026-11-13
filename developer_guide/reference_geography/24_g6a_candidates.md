@@ -6,7 +6,7 @@
 
 **A candidate is a request: "this place is missing, or has changed; here is the evidence."**
 - **A steward checks it, then either:**
-  - accepts it, by preparing a revision that goes through normal governance and publication;
+  - accepts it, which **creates a new draft revision** ("Accept → ProposeRevision"). That revision goes through normal governance and publication, and belongs to this candidate only;
   - links it to an earlier candidate that asks the same thing;
   - or rejects it, with a reason.
 - **A candidate never becomes official geography by itself.**
@@ -18,9 +18,9 @@
 | Class | Layer | Role |
 |---|---|---|
 | `Candidate` (+ `CandidateId`, `CandidateState`, `CandidateSubmitter`, `CandidateSnapshot`, `CandidateRefused`) | Domain | lifecycle submitted → under verification → accepted · linked · rejected; final once decided |
-| `CandidateService` | Application | `submitImport`, `startVerification`, `accept(revision)`, `linkTo(primary)`, `reject(reason)`. Actor from `ActingPerson`; a steward at the current roster version |
+| `CandidateService` | Application | `submitImport`, `startVerification`, **`accept(proposedRevisionId)`: prepares that new revision through `RevisionService`**, `linkTo(primary)`, `reject(reason)`. Actor from `ActingPerson`; a steward at the current roster version |
 | `Ports\CandidateRepository`, `StoredCandidate`, `CandidateChangedConcurrently` | Application | storage with optimistic concurrency |
-| **`Ports\RosterReader`, `Ports\RevisionCatalogue`** | Application | **read-only** views of the roster and of revisions. `StewardRosterStore` and `RevisionRepository` extend them |
+| **`Ports\RosterReader`** | Application | a **read-only** view of the roster; `StewardRosterStore` extends it |
 | `PostgresCandidateRepository`, `refgeo_candidates` (central migration) | Infrastructure | rows → aggregate only via `fromSnapshot`; the table's CHECKs mirror the lifecycle |
 
 ## How to use it
@@ -29,15 +29,19 @@
 $candidates = app(CandidateService::class);                    // the actor is the signed-in steward
 $candidates->submitImport($id, 'Ward 33 created by the 2026 act', null, ['sha256:…']);
 $candidates->startVerification($id);
-$candidates->accept($id, $revisionId);                         // the revision must exist; publish it on its own path
+$candidates->accept($id, $newRevisionId);                      // PREPARES this new draft revision; fill, approve and publish it on its own path
 // or $candidates->linkTo($duplicateId, $primaryId); or $candidates->reject($id, 'No competent instrument');
 ```
 
 ## Design decisions
 
-- **A request, not a fact** (Q-1 (a)+(c)): acceptance only names a revision. That revision is validated, approved and published under G-2 to G-4.
+- **A request, not a fact** (Q-1 (a)+(c)): acceptance **proposes a new revision** (closure design: "Accept (→ ProposeRevision)"). That revision is validated, approved and published under G-2 to G-4.
+- **Provenance (fixed after the Principal review of 2026-11-13):** the first version accepted by naming any *existing* revision, so an unrelated one could be attached. Now:
+  - acceptance prepares the revision itself (an existing id is refused);
+  - **a unique index** (`2026_11_13_181000`) ensures one revision belongs to at most one candidate;
+  - the order is: check the lifecycle (nothing is prepared if acceptance is refused) → prepare → save the candidate. If the final save loses a race, an unpublished draft remains, which is not a fact.
 - **Links point at a primary, never at another link:** no duplicate chains.
-- **Read-only ports.** The accepted no-bypass guard refused `CandidateService` holding `RevisionRepository` and `StewardRosterStore`, the write-side ports. **Interface segregation fixed it; the guard was not widened.** Use `RosterReader` and `RevisionCatalogue` whenever a use case only *checks*.
+- **No write-side ports.** The accepted no-bypass guard refused `CandidateService` holding `RevisionRepository` and `StewardRosterStore`. It now reads the roster through `RosterReader` and touches revisions only through the authorised `RevisionService`. **The guard was not widened.** (A read-only `RevisionCatalogue` existed briefly and was removed once unused.)
 - **No organisation submissions yet** (D-147). `CandidateSubmitter::organisation(id)` exists for the domain and storage.
 
 ## Testing

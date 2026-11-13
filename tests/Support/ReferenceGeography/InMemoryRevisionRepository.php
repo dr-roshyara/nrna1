@@ -33,6 +33,7 @@ final class InMemoryRevisionRepository implements RevisionRepository
         $this->rows[$id] = [$revision->snapshot(), 1];
     }
 
+    /** Test helper (not part of the port). */
     public function exists(RevisionId $id): bool
     {
         return isset($this->rows[$id->value()]);

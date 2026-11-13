@@ -6,7 +6,6 @@ namespace App\Contexts\ReferenceGeography\Infrastructure\Providers;
 
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\CandidateRepository;
-use App\Contexts\ReferenceGeography\Application\Ports\RevisionCatalogue;
 use App\Contexts\ReferenceGeography\Application\Ports\RosterReader;
 use App\Contexts\ReferenceGeography\Infrastructure\PostgresCandidateRepository;
 use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
@@ -53,7 +52,5 @@ final class ReferenceGeographyServiceProvider extends ServiceProvider
         $this->app->bind(GeographyReadModel::class, PublishedGeography::class);
         // G-6a: candidates (operational, outside the knowledge stream)
         $this->app->bind(CandidateRepository::class, static fn (): PostgresCandidateRepository => new PostgresCandidateRepository(DB::connection()));
-        $this->app->bind(RosterReader::class, static fn (): PostgresStewardRosterStore => new PostgresStewardRosterStore(DB::connection()));
-        $this->app->bind(RevisionCatalogue::class, static fn (): PostgresRevisionRepository => new PostgresRevisionRepository(DB::connection()));
-    }
+        $this->app->bind(RosterReader::class, static fn (): PostgresStewardRosterStore => new PostgresStewardRosterStore(DB::connection()));    }
 }
