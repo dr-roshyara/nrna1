@@ -1,0 +1,58 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_a_tier_meaning_is_a_kind_and_a_label_canonically_encoded
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:111
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_profile_slots_exist_only_at_positions_3_to_10_with_well_formed_values
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:130
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_d83_a_class_must_sit_at_a_territorial_position
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:138
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_g4_a_parent_sits_above_its_child_and_positions_may_be_skipped
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:145
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_g4_on_a_classification_change_reads_the_parent_and_the_children
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:154
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_g4_is_checked_wherever_a_read_fact_changes_inside_the_interval
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:163
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\TierAndPositionTest::test_a_later_reclassification_of_the_parent_makes_the_validation_stale
+Error: Class "App\Contexts\ReferenceGeography\Domain\TierMeaning" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:92
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/TierAndPositionTest.php:171
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

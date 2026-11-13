@@ -51,7 +51,133 @@ final class RevisionValidator
             }];
         }
 
+        $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader)];
+
         return new ValidationResult([...$authority, ...$violations], $reader->dependencies(), $images, StructuralClassification::ofClaims($claims), array_values($disputed));
+    }
+
+    /**
+     * v3.11 §13: profile slots exist for positions 3–10 only (0–2 are fixed); a PROFILE_TIER value is a tier meaning
+     * (kind + label); a PROFILE_CLASS value is a position.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function profileForm(array $claims): array
+    {
+        $violations = [];
+        foreach ($claims as $claim) {
+            if ($claim->value->isNone()) {
+                continue;
+            }
+            $kind = $claim->slot->kind();
+            $ok = match ($kind) {
+                ClaimKind::ProfileTier => ProfilePositions::isProfilePosition((string) $claim->slot->component('position')) && $this->isTierMeaning($claim->value->value()),
+                ClaimKind::ProfileClass => ProfilePositions::isProfilePosition($claim->value->value()),
+                default => true,
+            };
+            if (!$ok) {
+                $violations[] = new Violation('PROFILE_FORM', $claim->id, 'Profile positions are 3–10; a tier value is KIND:label; a class value is its position.');
+            }
+        }
+
+        return $violations;
+    }
+
+    private function isTierMeaning(string $value): bool
+    {
+        try {
+            TierMeaning::parse($value);
+
+            return true;
+        } catch (\InvalidArgumentException) {
+            return false;
+        }
+    }
+
+    /**
+     * D-83 and G-4 (v3.11 §5.2, §13): for each classification claim, the class sits at a TERRITORIAL position of the
+     * unit's country; for each containment claim and each classification change, position(parent) < position(child)
+     * for every edge involved (the unit's parent and, for a classification change, its children: a recorded family
+     * read). Checked at every date of the claim's interval where a read fact changes. A broken edge is reported once.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function tiersAndPositions(array $claims, DependencyRecordingReader $reader): array
+    {
+        $violations = [];
+        $brokenEdges = [];
+        foreach ($claims as $claim) {
+            $kind = $claim->slot->kind();
+            $unit = $claim->slot->subject();
+            $scheme = $claim->slot->component('scheme');
+            if ($claim->value->isNone() || $unit === null || $scheme === null || !in_array($kind, [ClaimKind::Classification, ClaimKind::Containment], true)) {
+                continue;
+            }
+            $window = $claim->interval;
+            $positions = new ProfilePositions(fn (SlotKey $slot): SlotHistory => $this->withRevision($slot, $window, $claims, $reader));
+            $children = [];
+            if ($kind === ClaimKind::Classification) {
+                foreach ($reader->family(ClaimKind::Containment, ['scheme' => $scheme], $unit->value(), $window) as $slot) {
+                    $children[$slot->encoded()] = $slot->subject();
+                }
+                foreach ($claims as $other) {
+                    if ($other->slot->kind() === ClaimKind::Containment && $other->slot->component('scheme') === $scheme
+                        && !$other->value->isNone() && $other->value->value() === $unit->value()) {
+                        $children[$other->slot->encoded()] = $other->slot->subject();
+                    }
+                }
+            }
+            $d83 = false;
+            $checked = [];
+            do {
+                $new = false;
+                foreach ($positions->checkpoints($window) as $t) {
+                    if (isset($checked[$t->value()])) {
+                        continue;
+                    }
+                    $checked[$t->value()] = $new = true;
+                    if ($kind === ClaimKind::Classification && !$d83 && !$this->classIsTerritorial($positions, $unit, $scheme, $claim->value->value(), $t)) {
+                        $d83 = true;
+                        $violations[] = new Violation('D-83', $claim->id, "Class '{$claim->value->value()}' does not sit at a territorial position on {$t->value()}.");
+                    }
+                    $edges = [];
+                    $parent = $positions->parentOf($unit, $scheme, $t);
+                    if ($parent !== null) {
+                        $edges[] = [$unit, $parent];
+                    }
+                    foreach ($children as $child) {
+                        if ($child !== null && $positions->parentOf($child, $scheme, $t)?->equals($unit)) {
+                            $edges[] = [$child, $unit];
+                        }
+                    }
+                    foreach ($edges as [$child, $parentUnit]) {
+                        $key = $child->value() . '>' . $parentUnit->value() . '@' . $scheme;
+                        if (isset($brokenEdges[$key])) {
+                            continue;
+                        }
+                        $pc = $positions->positionOf($child, $scheme, $t);
+                        $pp = $positions->positionOf($parentUnit, $scheme, $t);
+                        if ($pc !== null && $pp !== null && $pp >= $pc) {
+                            $brokenEdges[$key] = true;
+                            $violations[] = new Violation('G-4', $claim->id, "Position {$pp} of {$parentUnit->value()} is not above position {$pc} of {$child->value()} on {$t->value()}.");
+                        }
+                    }
+                }
+            } while ($new);
+        }
+
+        return $violations;
+    }
+
+    private function classIsTerritorial(ProfilePositions $positions, ReferenceUnitId $unit, string $scheme, string $class, ValidDate $t): bool
+    {
+        $country = $positions->countryOf($unit, $scheme, $t);
+        $position = $country === null ? null : $positions->positionOfClass($country, $scheme, $class, $t);
+        $tier = $position === null ? null : $positions->tierAt($country, $scheme, $position, $t);
+
+        return $tier?->kind === TierKind::Territorial;
     }
 
     /**
