@@ -9,13 +9,16 @@ use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
 use App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel;
 use App\Contexts\ReferenceGeography\Application\Published\Knowledge;
 use App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable;
+use App\Contexts\ReferenceGeography\Application\Ports\PublicationChanges;
 use App\Contexts\ReferenceGeography\Application\Published\LookupMatch;
+use App\Contexts\ReferenceGeography\Application\Published\PublicationEntry;
 use App\Contexts\ReferenceGeography\Application\Published\Place;
 use App\Contexts\ReferenceGeography\Application\Published\Resolution;
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
 use App\Contexts\ReferenceGeography\Domain\LookupCandidate;
 use App\Contexts\ReferenceGeography\Domain\PlaceBelief;
 use App\Contexts\ReferenceGeography\Domain\PlaceMatcher;
+use App\Contexts\ReferenceGeography\Domain\PublicationSummary;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
 use App\Contexts\ReferenceGeography\Domain\ValidDate;
@@ -139,6 +142,27 @@ final class PublishedGeography implements GeographyReadModel
         }
 
         return $matches;
+    }
+
+    public function publicationsSince(int $afterPosition, Knowledge $knowledge, int $limit = 100): array
+    {
+        $p = $this->checked($knowledge->position);
+        if ($afterPosition < 0) {
+            throw new \InvalidArgumentException("A feed position is never negative, not {$afterPosition}.");
+        }
+        if ($limit < 1 || $limit > 500) {
+            throw new \InvalidArgumentException("A feed limit is 1 to 500, not {$limit}.");
+        }
+        if ($afterPosition >= $p) {
+            return [];
+        }
+
+        return array_map(static function (PublicationChanges $c): PublicationEntry {
+            $summary = PublicationSummary::of($c->changes);
+
+            return new PublicationEntry($c->position, $c->recordedAt, $c->kind, $c->revisionId, $c->contentVersion, $c->governanceRule,
+                $summary->kinds, $summary->subjects, $summary->merges);
+        }, $this->source->publicationsBetween($afterPosition, $p, $limit));
     }
 
     /** @return list<string> every place below the given one in the scheme at t (transitive), as known at the knowledge */

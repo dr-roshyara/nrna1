@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEE                                                                 3 / 3 (100%)
+
+Time: 00:00.018, Memory: 10.00 MB
+
+There were 3 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationSummaryTest::test_kinds_and_subjects_are_distinct_and_sorted
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationSummary" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationSummaryTest.php:31
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationSummaryTest::test_merges_and_their_reversals_are_reported
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationSummary" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationSummaryTest.php:45
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationSummaryTest::test_a_slot_without_a_subject_adds_its_kind_only_and_a_notice_concerns_nothing
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationSummary" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationSummaryTest.php:57
+
+ERRORS!
+Tests: 3, Assertions: 0, Errors: 3.

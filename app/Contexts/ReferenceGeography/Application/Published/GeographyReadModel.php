@@ -41,4 +41,14 @@ interface GeographyReadModel
      * @throws \InvalidArgumentException for half a scope or a limit outside 1..50
      */
     public function lookup(string $text, string $validDate, Knowledge $knowledge, ?string $withinUnitId = null, ?string $scheme = null, int $limit = 10): array;
+
+    /**
+     * The publication feed (G-5c): every publication after the consumer's last position, up to the knowledge, in order.
+     * Keep the last position received and ask again from it: nothing is missed and nothing repeats.
+     *
+     * @param int $limit 1 to 500
+     * @return list<PublicationEntry>
+     * @throws \InvalidArgumentException for a negative position or a limit outside 1..500
+     */
+    public function publicationsSince(int $afterPosition, Knowledge $knowledge, int $limit = 100): array;
 }

@@ -262,6 +262,32 @@ final class PostgresGeographyReadModelTest extends RefgeoPostgresTestCase
         $this->assertNull($g->lookup("Zz{$tag}", '2020-01-01', $g->knowledgeAt($p))[0]->mergedInto, 'not merged at the earlier position');
     }
 
+    public function test_the_feed_gives_every_publication_once_in_order_with_provenance_and_never_unpublished_work(): void
+    {
+        [$a, $b] = [self::unit(), self::unit()];
+        $start = (int) DB::selectOne('SELECT last_position FROM refgeo_sequence')->last_position;
+        $first = self::publishDirect(self::c(SlotKey::existence($a), 'exists'), self::c(SlotKey::containment($a, 'admin'), $b->value()));
+        self::freezeUnpublished(self::c(SlotKey::existence(self::unit()), 'exists'));
+        $second = self::publishDirect(self::c(SlotKey::reconciliation($b), $a->value(), '1000-01-01'));
+        $g = self::geography();
+        $k = $g->knowledgeAt($second);
+
+        $feed = $g->publicationsSince($start, $k);
+        $this->assertSame(range($start + 1, $second), array_map(static fn ($e) => $e->position, $feed), 'gap-free, ascending, nothing unpublished');
+        $mine = array_values(array_filter($feed, static fn ($e) => in_array($e->position, [$first, $second], true)));
+        $this->assertSame(['CONTAINMENT', 'EXISTENCE'], $mine[0]->claimKinds);
+        $this->assertSame([$a->value()], $mine[0]->subjects);
+        $this->assertSame([['identity' => $b->value(), 'canonical' => $a->value()]], $mine[1]->merges);
+        $row = DB::selectOne('SELECT recorded_at::text AS r, revision_id::text AS v, governance_rule AS g FROM refgeo_publications WHERE position = ?', [$first]);
+        $this->assertSame([$row->r, $row->v, 1, $row->g, 'revision'], [$mine[0]->recordedAt, $mine[0]->revisionId, $mine[0]->contentVersion, $mine[0]->governanceRule, $mine[0]->kind]);
+
+        $this->assertEquals($feed, $g->publicationsSince($start, $k), 'the same range reads the same');
+        $paged = array_merge($g->publicationsSince($start, $k, 1), $g->publicationsSince($start + 1, $k, 500));
+        $this->assertEquals($feed, $paged, 'paging from the last position received loses and repeats nothing');
+        self::publishDirect(self::c(SlotKey::existence(self::unit()), 'exists'));
+        $this->assertEquals($feed, $g->publicationsSince($start, $k), 'a later publication does not change a feed read at the same knowledge');
+    }
+
     public function test_an_answer_at_a_position_never_changes_after_later_publications(): void
     {
         [$country, $other, $province] = [self::unit(), self::unit(), self::unit()];

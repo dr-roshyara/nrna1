@@ -33,6 +33,9 @@ interface GeographyReadSource
     /** @return array<string, SlotHistory> DISPUTE histories on the unit's claims, keyed by target claim id */
     public function disputesForSubject(ReferenceUnitId $unit, int $p): array;
 
+    /** @return list<PublicationChanges> publications with after < position ≤ upTo, ascending, at most $limit (G-5c) */
+    public function publicationsBetween(int $after, int $upTo, int $limit): array;
+
     /** @return list<SlotHistory> every published slot of the kind, at positions ≤ p (G-5b: names and codes) */
     public function slotsOfKind(ClaimKind $kind, int $p): array;
 

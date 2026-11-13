@@ -1,12 +1,12 @@
 # 22: Administrator notes for G-5 (the read side), 2026-11-13
 
-**For whoever operates PublicDigit.** G-5a (the published read model) and G-5b (PlaceLookup) are read-only code.
+**For whoever operates PublicDigit.** G-5a (the published read model), G-5b (PlaceLookup) and G-5c (the publication feed) are read-only code.
 
 | Question | Answer |
 |---|---|
 | New database migration? | **No.** G-5 adds no table, column, index or trigger |
 | New configuration or environment variable? | **No** |
-| New queue, scheduler or cron job? | **No.** The G-5c feed (planned) is pulled by its consumers; nothing is scheduled |
+| New queue, scheduler or cron job? | **No.** The G-5c feed is pulled by its consumers; nothing is scheduled and no outbox is used |
 | New screen or HTTP route? | **No.** The contract is in code only; no consumer is wired (D-147) |
 | New permission or role? | **No** |
 | Can it change official geography? | **No.** It only reads published facts and holds no publication lock (`TimeBoundary` only) |

@@ -7,6 +7,7 @@ namespace Tests\Unit\Contexts\ReferenceGeography\Application;
 use App\Contexts\ReferenceGeography\Application\BoundaryNotClosed;
 use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
 use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
+use App\Contexts\ReferenceGeography\Application\Ports\PublicationChanges;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationRecord;
 use App\Contexts\ReferenceGeography\Application\Published\Knowledge;
 use App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable;
@@ -117,6 +118,23 @@ final class PublishedGeographyTest extends TestCase
                 return [];
             }
 
+            public function publicationsBetween(int $after, int $upTo, int $limit): array
+            {
+                $out = [];
+                for ($p = $after + 1; $p <= min($upTo, $this->committed) && count($out) < $limit; $p++) {
+                    $changes = [];
+                    foreach ($this->slots as $h) {
+                        $claim = $h->latest($p);
+                        if ($claim !== null && $h->positionOf($claim->id) === $p) {
+                            $changes[] = [$h->slot(), $claim->value->isNone() ? null : $claim->value->value()];
+                        }
+                    }
+                    $out[] = new PublicationChanges($p, "2026-02-0{$p} 10:00:00+00", 'revision', "revision-{$p}", 1, 'era-A', $changes);
+                }
+
+                return $out;
+            }
+
             public function slotsOfKind(ClaimKind $kind, int $p): array
             {
                 return array_values(array_filter($this->slots, static fn (SlotHistory $h): bool => $h->slot()->kind() === $kind && $h->latest($p) !== null));
@@ -199,6 +217,7 @@ final class PublishedGeographyTest extends TestCase
             static fn (PublishedGeography $g) => $g->childrenOf(self::NEPAL, 'admin', '2020-01-01', $forged),
             static fn (PublishedGeography $g) => $g->resolve(self::OLD_ID, $forged),
             static fn (PublishedGeography $g) => $g->lookup('Nepal', '2020-01-01', $forged),
+            static fn (PublishedGeography $g) => $g->publicationsSince(0, $forged),
         ] as $i => $query) {
             try {
                 $query(self::geography());
@@ -293,6 +312,48 @@ final class PublishedGeographyTest extends TestCase
             }
         }
         $this->assertCount(1, $g->lookup('Province', '2020-01-01', $g->knowledgeAt(4), limit: 1));
+    }
+
+    public function test_the_feed_gives_each_publication_once_in_order_with_what_it_concerns(): void
+    {
+        $g = self::geography();
+        $k = $g->knowledgeAt(4);
+
+        $all = $g->publicationsSince(0, $k);
+        $this->assertSame([1, 2, 3, 4], array_map(static fn ($e) => $e->position, $all));
+        $this->assertSame(['revision', 'revision-2', 1, 'era-A', '2026-02-02 10:00:00+00'], [$all[1]->kind, $all[1]->revisionId, $all[1]->contentVersion, $all[1]->governanceRule, $all[1]->recordedAt]);
+        $this->assertSame(['CONTAINMENT', 'EXISTENCE', 'IDENTIFIER', 'SOURCE_NAME'], $all[1]->claimKinds);
+        $this->assertSame([self::BAGMATI], $all[1]->subjects);
+        $this->assertSame([['identity' => self::OLD_ID, 'canonical' => self::BAGMATI]], $all[3]->merges);
+        $this->assertSame([], $all[1]->merges);
+
+        $this->assertEquals($all, $g->publicationsSince(0, $k), 'the same range reads the same');
+    }
+
+    public function test_the_feed_pages_from_the_last_position_received_and_stops_at_the_knowledge(): void
+    {
+        $g = self::geography();
+        $k = $g->knowledgeAt(4);
+
+        $this->assertSame([3, 4], array_map(static fn ($e) => $e->position, $g->publicationsSince(2, $k)));
+        $this->assertSame([1], array_map(static fn ($e) => $e->position, $g->publicationsSince(0, $k, 1)));
+        $this->assertSame([2], array_map(static fn ($e) => $e->position, $g->publicationsSince(1, $k, 1)), 'the next page');
+        $this->assertSame([1, 2], array_map(static fn ($e) => $e->position, $g->publicationsSince(0, $g->knowledgeAt(2))), 'never beyond the knowledge');
+        $this->assertSame([], $g->publicationsSince(4, $k));
+        $this->assertSame([], $g->publicationsSince(9, $k), 'past the knowledge: nothing, not an error');
+    }
+
+    public function test_the_feed_refuses_a_negative_position_and_an_unreasonable_limit(): void
+    {
+        $g = self::geography();
+        foreach ([[-1, 100], [0, 0], [0, 501]] as [$after, $limit]) {
+            try {
+                $g->publicationsSince($after, $g->knowledgeAt(4), $limit);
+                $this->fail("({$after}, {$limit}) was accepted");
+            } catch (\InvalidArgumentException) {
+                $this->addToAssertionCount(1);
+            }
+        }
     }
 
     public function test_resolve_follows_one_merge_and_says_when_it_became_known(): void

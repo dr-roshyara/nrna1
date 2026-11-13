@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\ReferenceGeography\Infrastructure;
 
 use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
+use App\Contexts\ReferenceGeography\Application\Ports\PublicationChanges;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationRecord;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
@@ -94,6 +95,24 @@ final class PostgresGeographyReadSource implements GeographyReadSource
         }
 
         return $disputes;
+    }
+
+    /** G-5c: the publication rows in (after, upTo], ascending, with their claims' slot keys and values (no mapping). */
+    public function publicationsBetween(int $after, int $upTo, int $limit): array
+    {
+        $rows = $this->db->select('SELECT position, recorded_at::text AS recorded_at, kind, revision_id::text AS revision_id, content_version, governance_rule
+            FROM refgeo_publications WHERE position > ? AND position <= ? ORDER BY position LIMIT ?', [$after, $upTo, $limit]);
+        if ($rows === []) {
+            return [];
+        }
+        $changes = [];
+        $last = (int) $rows[count($rows) - 1]->position;
+        foreach ($this->db->select('SELECT p.position, c.slot_key, c.value ' . self::PUBLISHED . ' WHERE p.position > ? AND p.position <= ? ORDER BY p.position, c.slot_key, c.claim_id', [$after, $last]) as $c) {
+            $changes[(int) $c->position][] = [SlotKey::decode($c->slot_key), $c->value];
+        }
+
+        return array_map(static fn (object $r): PublicationChanges => new PublicationChanges((int) $r->position, $r->recorded_at, $r->kind, $r->revision_id,
+            $r->content_version === null ? null : (int) $r->content_version, $r->governance_rule, $changes[(int) $r->position] ?? []), $rows);
     }
 
     /** G-5b: every published slot of the kind (names, codes), each history through the accepted atlas mapping. */

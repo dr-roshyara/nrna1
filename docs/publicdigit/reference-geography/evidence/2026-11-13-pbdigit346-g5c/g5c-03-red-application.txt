@@ -1,0 +1,33 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....E......EEE.                                                   15 / 15 (100%)
+
+Time: 00:00.035, Memory: 12.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_a_fabricated_position_beyond_the_boundary_is_refused_by_every_query
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::publicationsSince()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:220
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:223
+
+2) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_the_feed_gives_each_publication_once_in_order_with_what_it_concerns
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::publicationsSince()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:322
+
+3) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_the_feed_pages_from_the_last_position_received_and_stops_at_the_knowledge
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::publicationsSince()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:338
+
+4) Tests\Unit\Contexts\ReferenceGeography\Application\PublishedGeographyTest::test_the_feed_refuses_a_negative_position_and_an_unreasonable_limit
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::publicationsSince()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/PublishedGeographyTest.php:351
+
+ERRORS!
+Tests: 15, Assertions: 55, Errors: 4.

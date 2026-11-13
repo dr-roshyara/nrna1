@@ -105,7 +105,13 @@
 4. **Adapter:** `slotsOfKind`, each history through `PostgresPublishedAtlas`.
 5. **Isolated-cluster tests:** use a unique word per test, because the cluster is shared.
 
-**G-5c: the publication feed.** A **pull** feed over `refgeo_publications`: one entry per position, giving revision, kinds, subjects and merges. **Not the shared outbox, which is organisation-scoped** (design §3.4). A push is added only when the first consumer exists (D-147).
+**G-5c: the publication feed (implemented; guide 23).**
+1. **Domain:** `PublicationSummary::of(changes)` gives kinds, subjects and merges, sorted and distinct (test the sort by id, not by label).
+2. **Contract:** `publicationsSince(after, k, limit)` and `Published\PublicationEntry`. Add it to `published-language.json`.
+3. **Application:** refuse a negative position and a limit outside 1..500; return empty at or past the knowledge; re-check the knowledge.
+4. **Adapter:** `publicationsBetween` uses the rows, then their claims' slot keys and values. **No claim mapping** (so the no-bypass guard is satisfied).
+5. **Cluster tests:** gap-free; never unpublished work; provenance equals the row; paging loses and repeats nothing; reproducible at the same knowledge.
+6. **Never** route it through the organisation-scoped outbox. Add a push only for a real consumer (D-147).
 
 ### G-6: candidates, objections and notices
 
