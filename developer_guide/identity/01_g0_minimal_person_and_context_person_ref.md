@@ -64,6 +64,10 @@ MEMBERSHIP_PG_IMAGE=docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6
 - **The cluster suite keeps data between tests** (migrated once per run). Scope every count to the test's own ids. The first GREEN attempt failed on exactly this, a test defect.
 - **Never add a method that maps a `ContextPersonRef` back to a Person or Account.** The architecture test will fail, and it would break D-225.
 - **Never present two references as "two verified people"** in any record or screen (D-226 §5a).
+- **Create database functions with `CREATE OR REPLACE`.** Laravel's `migrate:fresh` drops tables but **not functions**. A plain `CREATE FUNCTION` therefore breaks the second rebuild of a shared test database.
+  - **Found 2026-11-13** by G-1's architecture regression: 72 errors on `nrna_test`.
+  - **Fixed** in the G-0 migration.
+  - The cluster suites never showed it, because each run starts on a fresh cluster.
 - **Don't add a context value** without a decision. The table's CHECK and the enum both list `reference-geography` only.
 
 **Traceability:** PBDIGIT-346 G-0 · D-75, D-88, D-200 (I-TDD-02 §18), D-225 (IG-1 … IG-3, IG-P1 … IG-P4, IG-P8), D-226 (Q-G-2, §5a).

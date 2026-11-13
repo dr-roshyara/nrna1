@@ -46,8 +46,9 @@ return new class extends Migration
               UNIQUE (person_id, context)
             )
             SQL);
+        // OR REPLACE: migrate:fresh drops tables but not functions, so a rebuilt test database still has this one.
         DB::statement(<<<'SQL'
-            CREATE FUNCTION identity_context_person_refs_immutable() RETURNS trigger LANGUAGE plpgsql AS $$
+            CREATE OR REPLACE FUNCTION identity_context_person_refs_immutable() RETURNS trigger LANGUAGE plpgsql AS $$
             BEGIN
               RAISE EXCEPTION 'identity_context_person_refs: a reference is never changed or deleted (D-225 IG-1)';
             END
