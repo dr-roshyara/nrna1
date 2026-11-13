@@ -17,5 +17,6 @@
 | Q-DS | [The duplicate search is supplementary (D-229)](10_qds_duplicate_search_is_supplementary.md) | implemented 2026-11-13 |
 | G-3a … G-3c | [Steward roster, Identity merges, publication governance](11_g3abc_roster_merges_governance.md) | implemented 2026-11-13 |
 | G-3d | [Conflict declarations and judgment matters (D-230)](12_g3d_conflicts_and_judgment_matters.md) | implemented 2026-11-13; **G-3 at the Principal's acceptance boundary** |
+| G-4a | [Publication stream schema and database guards](13_g4a_stream_schema_and_guards.md) | implemented 2026-11-13 |
 | — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |

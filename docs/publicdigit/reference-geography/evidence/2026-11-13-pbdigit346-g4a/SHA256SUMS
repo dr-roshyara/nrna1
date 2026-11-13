@@ -1,0 +1,12 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+c8f394e541293d65c563a7220ef18cc6af5e969cd1f7feaa4a98742fa0871e3a  ./architecture-full.txt
+a7e94be648b02cbd0aba60307a85e990ad432c6d9f1835bdf59f99429c335fba  ./green-1-test-defect-w-unset.txt
+56ea1f3c627a061e4b7ea58c07f4747d13bd090b2c55545b7f55b2be128c69e5  ./green.txt
+075d3d01d96f006dc208cfdddefb0116a7fa13096e02c6aa3a979803631c2985  ./isolated-cluster-all/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster-all/suite.exit
+20c6a1ae61dfb46de90183c280a818a933cc61325706fcb2b8a87b2a8dbbdaff  ./isolated-cluster-all/suite.txt
+8e97f510001717637edfacad41a3bcc2c681dcd1bfdd74c5265e7b70d79a0735  ./README.md
+a568cdb454a470746c844a53b82b2b8ff4851bd3c39c64e2e0156be20bf678ed  ./red-1-vacuous-refusal-helper.txt
+39979dea6575a7d360c9042206bc9e913486077c8120277e641225e73bcec577  ./red-2-valid.txt
+18c5fdcb83bbe1db478d8e7c4295d951dc1713b6a5cf070a50d223544d798d8b  ./red-3-revised-design.txt
+adabe521e6f034dc1ba60e35ce96cd474a295ac67540a6b4e605cf3d47f2202e  ./red-4-future-w.txt

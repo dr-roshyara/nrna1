@@ -69,3 +69,20 @@
 ## 6. Your decision
 
 **Accept G-3, or ask for a revision.** No other decision is open.
+
+## 7. Principal decision (recorded 2026-11-13)
+
+> **Accept Reference Geography G-3 and authorise G-4.**
+>
+> I accept G-3 (G-3a, G-3b, G-3c and G-3d) as the **governance domain baseline**, including D-230 and its conservative judgment-matter and conflict-of-interest policy.
+>
+> **Limitations and obligations carried forward:**
+> 1. This acceptance does not establish Geography persistence, atomic publication, concurrency safety or operational readiness.
+> 2. The automatic judgment classification must be traced against every condition of D-230. The manual flag mechanism and the existing automatic triggers must not be represented as proof that every reasonable-doubt case is detected automatically.
+> 3. The operational identity and authority of the D-84/D-84a Platform Owner remains unresolved. **No production roster-writing authority may be enabled until that authority is explicitly established.**
+> 4. The remaining combination-table case assigned to G-6 stays tracked.
+> 5. PostgreSQL tests of other contexts are not evidence of Geography persistence.
+>
+> **G-4 is authorised, with strict TDD.** It must return for review and acceptance on its actual evidence.
+
+The Principal's words: "accept G-3 and start G-4 with strict TDD". The decision text above is from the Principal DDD review of 2026-11-13.

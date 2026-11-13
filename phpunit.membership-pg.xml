@@ -29,6 +29,10 @@
         <testsuite name="IdentityPostgres">
             <directory suffix="Test.php">./tests/Feature/Contexts/Identity</directory>
         </testsuite>
+        <!-- PBDIGIT-346 G-4: Reference Geography persistence and publication (v3.11 §6, §8; completion §4), on the same throwaway cluster. -->
+        <testsuite name="ReferenceGeographyPostgres">
+            <directory suffix="Test.php">./tests/Feature/Contexts/ReferenceGeography</directory>
+        </testsuite>
     </testsuites>
     <php>
         <server name="APP_ENV" value="testing"/>
