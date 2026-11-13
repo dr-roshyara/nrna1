@@ -1,0 +1,51 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.025, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_a_matter_is_a_judgment_matter_from_visible_triggers_or_a_flag
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::isJudgmentMatter()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:121
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_a_flag_is_permanent_across_versions_and_cannot_be_removed
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\Revision::flagJudgmentMatter()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:133
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_every_decider_needs_a_conflict_declaration_for_the_matter
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::ConflictDeclarationMissing
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:149
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_a_declared_interest_bars_deciding_only_a_judgment_matter
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::declareConflict()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:156
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_with_no_eligible_independent_decider_the_matter_waits_until_a_matter_reviewer_decides_it
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::declareConflict()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:166
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_the_second_persons_conflict_is_re_checked_at_publication
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::declareConflict()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:177
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\JudgmentMatterConflictTest::test_the_conflict_test_runs_for_the_assessor_of_the_current_version
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::declareConflict()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:108
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php:188
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

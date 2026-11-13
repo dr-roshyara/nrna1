@@ -9,7 +9,7 @@ DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 126 / 154 ( 81%)
 DDDDDDDDoutcomes: {"appended:":247,"refused:duplicate_fact_id":17,"refused:end_not_after_period_start":79,"refused:idempotency_key_conflict":33,"refused:member_not_found":131,"refused:overlapping_membership_periods":192,"refused:period_already_ended":35,"refused:period_not_found":16}
 DDDDDDDD..DDDDDDDDDD                                    154 / 154 (100%)
 
-Time: 03:30.891, Memory: 38.00 MB
+Time: 03:25.619, Memory: 38.00 MB
 
 OK, but there were issues!
-Tests: 154, Assertions: 16185, Deprecations: 1.
+Tests: 154, Assertions: 16205, Deprecations: 1.

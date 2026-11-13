@@ -41,6 +41,9 @@ use Tests\Support\ReferenceGeography\InMemoryPublishedAtlas;
  *   NOT known-same under E(v) as anyone in excluded(r), re-evaluated at the publication's roster version v;
  * - a non-structural revision never needs a second person;
  * - the decision records the roster version and "independent as known to Identity at roster version v".
+ *
+ * Fixture note (G-3d): every decider records a conflict declaration (D-84; v3.11 §8 Checks). Declarations are roster
+ * writes, so versions are taken from the roster, not hard-coded. Conflicts themselves: JudgmentMatterConflictTest.
  */
 final class PublicationGovernanceTest extends TestCase
 {
@@ -58,14 +61,23 @@ final class PublicationGovernanceTest extends TestCase
         return RevisionId::fromString('9d9d9d9d-9d9d-4d9d-8d9d-9d9d9d9d9d9d');
     }
 
+    /** Appoints the stewards, then each declares no interest in the matter. */
     private static function roster(string ...$stewards): StewardRoster
     {
         $roster = StewardRoster::empty();
         foreach ($stewards as $s) {
             $roster->appointSteward(self::p($s), self::p(self::OWNER));
         }
+        self::declare($roster, ...$stewards);
 
         return $roster;
+    }
+
+    private static function declare(StewardRoster $roster, string ...$people): void
+    {
+        foreach ($people as $person) {
+            $roster->declareConflict(self::p($person), self::rid(), false);
+        }
     }
 
     private static function reader(): DependencyRecordingReader
@@ -118,11 +130,12 @@ final class PublicationGovernanceTest extends TestCase
 
     public function test_era_a_the_sole_steward_publishes_a_structural_change_alone(): void
     {
-        $d = self::publish(self::submitted('a'), self::roster('a'));
+        $roster = self::roster('a');
+        $d = self::publish(self::submitted('a'), $roster);
 
         $this->assertTrue($d->allowed);
         $this->assertSame(GovernanceRule::EraASolePublication, $d->rule);
-        $this->assertSame(1, $d->rosterVersion);
+        $this->assertSame($roster->version(), $d->rosterVersion);
     }
 
     public function test_era_b_a_structural_change_needs_an_independent_second_person(): void
@@ -132,12 +145,12 @@ final class PublicationGovernanceTest extends TestCase
 
         $this->assertSame([GovernanceRefusal::SecondPersonRequired], self::publish($r, $roster)->refusals);
 
-        self::approve($r, 'b', 2);
+        self::approve($r, 'b', $roster->version());
         $d = self::publish($r, $roster);
         $this->assertTrue($d->allowed);
         $this->assertSame(GovernanceRule::SecondPersonApproved, $d->rule);
         $this->assertTrue($d->secondPerson?->equals(self::p('b')));
-        $this->assertSame('independent as known to Identity at roster version 2', $d->independence);
+        $this->assertSame("independent as known to Identity at roster version {$roster->version()}", $d->independence);
     }
 
     public function test_a_non_structural_change_never_needs_a_second_person(): void
@@ -151,13 +164,14 @@ final class PublicationGovernanceTest extends TestCase
     public function test_the_threshold_stays_after_the_second_steward_leaves_and_a_matter_reviewer_may_approve(): void
     {
         $roster = self::roster('a', 'b');
-        $roster->endSteward(self::p('b'), self::p(self::OWNER));   // v3
+        $roster->endSteward(self::p('b'), self::p(self::OWNER));
         $r = self::submitted('a');
 
         $this->assertSame([GovernanceRefusal::SecondPersonRequired], self::publish($r, $roster)->refusals, 'D-89: the sole remaining steward waits');
 
-        $roster->appointMatterReviewer(self::p('r'), self::rid(), self::p(self::OWNER));   // v4
-        self::approve($r, 'r', 4);
+        $roster->appointMatterReviewer(self::p('r'), self::rid(), self::p(self::OWNER));
+        self::declare($roster, 'r');
+        self::approve($r, 'r', $roster->version());
         $this->assertTrue(self::publish($r, $roster)->allowed, 'case 4: a matter reviewer approves');
     }
 
@@ -165,10 +179,11 @@ final class PublicationGovernanceTest extends TestCase
     {
         $roster = self::roster('a');
         $r = self::submitted('a');
-        $roster->appointSteward(self::p('b'), self::p(self::OWNER));   // v2
+        $before = $roster->version();
+        $roster->appointSteward(self::p('b'), self::p(self::OWNER));
 
-        $this->assertTrue(self::publish($r, $roster, 1)->allowed, 'at v1: era A');
-        $this->assertSame([GovernanceRefusal::SecondPersonRequired], self::publish($r, $roster, 2)->refusals, 'at v2: era B');
+        $this->assertTrue(self::publish($r, $roster, $before)->allowed, 'before: era A');
+        $this->assertSame([GovernanceRefusal::SecondPersonRequired], self::publish($r, $roster)->refusals, 'after: era B');
     }
 
     public function test_the_full_combination_check(): void
@@ -177,36 +192,37 @@ final class PublicationGovernanceTest extends TestCase
         $roster = self::roster('p', 's', 'x');
         foreach (['p' => false, 's' => false, 'x' => true] as $approver => $ok) {
             $r = self::submitted('s', true, 'p');
-            self::approve($r, $approver, 3);
+            self::approve($r, $approver, $roster->version());
             $this->assertSame($ok, self::publish($r, $roster)->allowed, "approver {$approver}");
         }
 
         // two preparers P1 = S, P2: X = P2 is a preparer
         $roster = self::roster('1', '2');
         $r = self::submitted('1', true, '1', '2');
-        self::approve($r, '2', 2);
+        self::approve($r, '2', $roster->version());
         $this->assertSame([GovernanceRefusal::ApproverNotIndependent], self::publish($r, $roster)->refusals);
 
         // case 3: a matter reviewer R assesses; R cannot also approve
         $roster = self::roster('p', 'q');
         $roster->appointMatterReviewer(self::p('r'), self::rid(), self::p(self::OWNER));
+        self::declare($roster, 'r');
         $r = self::submitted('r', true, 'p');
-        self::approve($r, 'r', 3);
+        self::approve($r, 'r', $roster->version());
         $this->assertSame([GovernanceRefusal::ApproverNotIndependent], self::publish($r, $roster)->refusals);
     }
 
     public function test_assessors_of_earlier_versions_stay_excluded_and_an_approval_binds_to_its_version(): void
     {
         $roster = self::roster('p', 's', 't', 'x');
-        $r = self::submitted('s', true, 'p');   // version 1 assessed by S
-        self::approve($r, 'x', 4);              // approval of version 1
+        $r = self::submitted('s', true, 'p');           // version 1 assessed by S
+        self::approve($r, 'x', $roster->version());     // approval of version 1
         $r->markStale();
         $r->reprepare(self::p('p'));
-        self::assessAndSubmit($r, 't');         // version 2 assessed by T
+        self::assessAndSubmit($r, 't');                 // version 2 assessed by T
 
         $this->assertSame([GovernanceRefusal::SecondPersonRequired], self::publish($r, $roster)->refusals, 'the approval named version 1');
 
-        self::approve($r, 's', 4);
+        self::approve($r, 's', $roster->version());
         $this->assertSame([GovernanceRefusal::ApproverNotIndependent], self::publish($r, $roster)->refusals, 'S assessed version 1 of r');
     }
 
@@ -214,8 +230,9 @@ final class PublicationGovernanceTest extends TestCase
     {
         $roster = self::roster('a', 'b');
         $r = self::submitted('a');
-        self::approve($r, 'x', 2);                                   // x not appointed at v2
-        $roster->appointSteward(self::p('x'), self::p(self::OWNER)); // v3
+        self::approve($r, 'x', $roster->version());                  // x not appointed then
+        $roster->appointSteward(self::p('x'), self::p(self::OWNER));
+        self::declare($roster, 'x');
 
         $this->assertSame([GovernanceRefusal::ApproverNotAppointedWhenApproving], self::publish($r, $roster)->refusals);
     }
@@ -224,18 +241,19 @@ final class PublicationGovernanceTest extends TestCase
     {
         $roster = self::roster('a', 'b');
         $r = self::submitted('a');
-        self::approve($r, 'b', 2);
-        $roster->recordMerge('m-1', [self::p('a'), self::p('b')]);   // v3
+        self::approve($r, 'b', $roster->version());
+        $before = $roster->version();
+        $roster->recordMerge('m-1', [self::p('a'), self::p('b')]);
 
-        $this->assertTrue(self::publish($r, $roster, 2)->allowed, 'as known at v2');
-        $this->assertSame([GovernanceRefusal::ApproverNotIndependent], self::publish($r, $roster, 3)->refusals, 'at v3 the approver is known-same as the assessor');
+        $this->assertTrue(self::publish($r, $roster, $before)->allowed, 'as known before the notice');
+        $this->assertSame([GovernanceRefusal::ApproverNotIndependent], self::publish($r, $roster)->refusals, 'after it, the approver is known-same as the assessor');
     }
 
     public function test_merge_case_d_a_merge_not_involving_the_approver_changes_nothing(): void
     {
         $roster = self::roster('1', '2', 'x');
         $r = self::submitted('1', true, '1', '2');
-        self::approve($r, 'x', 3);
+        self::approve($r, 'x', $roster->version());
         $roster->recordMerge('m-1', [self::p('1'), self::p('2')]);   // the two preparers are one person
 
         $this->assertTrue(self::publish($r, $roster)->allowed);
@@ -244,16 +262,18 @@ final class PublicationGovernanceTest extends TestCase
     public function test_submission_and_approval_need_authority_at_that_roster_version(): void
     {
         $roster = self::roster('a', 'b');
+        self::declare($roster, 'z');   // z declares, but is not appointed
         $g = new PublicationGovernance();
+        $v = $roster->version();
         $draft = Revision::prepare(self::rid(), self::p('a'));
 
-        $this->assertTrue($g->maySubmit(self::p('a'), $draft, $roster, 2)->allowed);
-        $this->assertSame([GovernanceRefusal::NotAppointed], $g->maySubmit(self::p('z'), $draft, $roster, 2)->refusals);
+        $this->assertTrue($g->maySubmit(self::p('a'), $draft, $roster, $v)->allowed);
+        $this->assertSame([GovernanceRefusal::NotAppointed], $g->maySubmit(self::p('z'), $draft, $roster, $v)->refusals);
 
         $r = self::submitted('a');
-        $this->assertTrue($g->mayApprove(self::p('b'), $r, $roster, 2)->allowed);
-        $this->assertSame([GovernanceRefusal::ApproverNotIndependent], $g->mayApprove(self::p('a'), $r, $roster, 2)->refusals);
-        $this->assertSame([GovernanceRefusal::NotAppointed], $g->mayApprove(self::p('z'), $r, $roster, 2)->refusals);
+        $this->assertTrue($g->mayApprove(self::p('b'), $r, $roster, $v)->allowed);
+        $this->assertSame([GovernanceRefusal::ApproverNotIndependent], $g->mayApprove(self::p('a'), $r, $roster, $v)->refusals);
+        $this->assertSame([GovernanceRefusal::NotAppointed], $g->mayApprove(self::p('z'), $r, $roster, $v)->refusals);
     }
 
     public function test_only_a_submitted_revision_can_be_published(): void

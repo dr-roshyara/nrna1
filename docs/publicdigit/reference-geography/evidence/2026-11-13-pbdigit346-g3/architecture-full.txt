@@ -10,7 +10,7 @@ Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna
 ...................................DDDFD...............S....... 315 / 316 ( 99%)
 .                                                               316 / 316 (100%)
 
-Time: 00:25.280, Memory: 62.00 MB
+Time: 00:24.966, Memory: 62.00 MB
 
 There were 4 failures:
 

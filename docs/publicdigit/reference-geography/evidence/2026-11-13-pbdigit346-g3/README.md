@@ -15,3 +15,13 @@
 | `architecture-full.txt` / `.failures` / `reasons.txt` | 316 tests, 4 failures: names = the pre-Geography baseline; messages = the earlier runs |
 
 **Also recorded:** a PHP 8.4 property hook, used in the first GREEN attempt, failed with a fatal error. The project supports PHP 8.3, so it was replaced with a plain property.
+
+## G-3d (added)
+
+| File | Shows |
+|---|---|
+| `red-g3d.txt` | RED: 7 errors (missing behaviour) |
+| `green-g3d-first-run-old-fixtures.txt` | 11 G-3c tests failed: their fixtures had no conflict declarations (the D-84 / §8 invariant now enforced). The fixtures were updated; the expected outcomes are identical (12 tests, 29 assertions) |
+| `green-g3d.txt` | GREEN: 170 domain tests |
+| `mutation-check.php` / `.out` | **re-run: 14 of 14 mutants killed** (M8 to M14 are the G-3d safeguards) |
+| `domain.txt`, `db-free-all.txt`, `architecture-full.*`, `isolated-cluster/` | **re-run after G-3d:** 170 domain, 195 database-free, 316 architecture (4 pre-Geography failures by name and message), 154 cluster (other contexts) |

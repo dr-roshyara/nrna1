@@ -21,7 +21,7 @@ final class PublicationGovernance
     {
         $refusals = $roster->mayActForAt($assessor, $revision->id(), $version) ? [] : [GovernanceRefusal::NotAppointed];
 
-        return new GovernanceDecision($version, GovernanceRule::Act, $refusals);
+        return new GovernanceDecision($version, GovernanceRule::Act, [...$refusals, ...$this->conflict($assessor, $revision, $roster, $version)]);
     }
 
     public function mayApprove(PersonReference $approver, Revision $revision, StewardRoster $roster, int $version): GovernanceDecision
@@ -34,7 +34,7 @@ final class PublicationGovernance
             $refusals[] = GovernanceRefusal::ApproverNotIndependent;
         }
 
-        return new GovernanceDecision($version, GovernanceRule::Act, $refusals);
+        return new GovernanceDecision($version, GovernanceRule::Act, [...$refusals, ...$this->conflict($approver, $revision, $roster, $version)]);
     }
 
     public function mayPublish(Revision $revision, StewardRoster $roster, int $version): GovernanceDecision
@@ -42,15 +42,20 @@ final class PublicationGovernance
         if ($revision->state() !== RevisionState::Submitted || $revision->validation() === null) {
             return new GovernanceDecision($version, GovernanceRule::Act, [GovernanceRefusal::NotSubmitted]);
         }
+        // the assessing steward of the current version: the conflict declaration is re-checked at v (v3.11 §8 Checks)
+        $assessorProblems = $revision->assessor() === null ? [GovernanceRefusal::NotSubmitted] : $this->conflict($revision->assessor(), $revision, $roster, $version);
         if (!$revision->validation()->structural) {
-            return new GovernanceDecision($version, GovernanceRule::NonStructural);
+            return new GovernanceDecision($version, GovernanceRule::NonStructural, $assessorProblems);
         }
         if (!$roster->secondStewardEverAppointedAt($version)) {
-            return new GovernanceDecision($version, GovernanceRule::EraASolePublication);
+            return new GovernanceDecision($version, GovernanceRule::EraASolePublication, $assessorProblems);
+        }
+        if ($assessorProblems !== []) {
+            return new GovernanceDecision($version, GovernanceRule::SecondPersonApproved, $assessorProblems);
         }
         $refusals = [];
         foreach ($revision->countingApprovals() as $approval) {
-            $problems = [];
+            $problems = $this->conflict($approval->by, $revision, $roster, $version);
             if ($approval->rosterVersion > $version || !$roster->mayActForAt($approval->by, $revision->id(), $approval->rosterVersion)) {
                 $problems[] = GovernanceRefusal::ApproverNotAppointedWhenApproving;
             }
@@ -64,6 +69,23 @@ final class PublicationGovernance
         }
 
         return new GovernanceDecision($version, GovernanceRule::SecondPersonApproved, $refusals === [] ? [GovernanceRefusal::SecondPersonRequired] : array_values(array_unique($refusals, SORT_REGULAR)));
+    }
+
+    /**
+     * D-84, D-84a: a decider needs a declaration for the matter; a declared interest in a judgment matter is a material
+     * conflict, and the matter waits (an eligible independent decider: a non-conflicted steward, or a matter reviewer
+     * appointed by the platform owner for that matter). Nothing here lets a decider declare the matter routine.
+     *
+     * @return list<GovernanceRefusal>
+     */
+    private function conflict(PersonReference $person, Revision $revision, StewardRoster $roster, int $version): array
+    {
+        $interest = $roster->declaredInterestAt($person, $revision->id(), $version);
+        if ($interest === null) {
+            return [GovernanceRefusal::ConflictDeclarationMissing];
+        }
+
+        return $interest && $revision->isJudgmentMatter() ? [GovernanceRefusal::MateriallyConflicted] : [];
     }
 
     private function isExcluded(PersonReference $person, Revision $revision, StewardRoster $roster, int $version): bool

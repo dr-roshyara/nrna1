@@ -60,3 +60,27 @@
 | **G-3d** | Conflict declarations (required for every decider) and the D-84a material-conflict test | **yes:** the declaration requirement can be built; the judgment-matter test waits for Q-G3-1 |
 
 **Traceability:** PBDIGIT-346 G-3 · v3.11 §8, §14, §15 · D-84, D-84a, D-88, D-89, D-90, D-225 · completion §5, §5a.
+
+## 5. Q-G3-1 resolved (D-230), and the authority check
+
+**The Principal adopted the conservative policy (D-230).**
+
+**Authority, from D-84a's exact wording:**
+- **the fallback route already exists:** "waits for a non-conflicted steward or for an independent reviewer appointed by the platform owner for that matter alone … who declares independence";
+- **the platform owner appoints and doesn't decide;** the reviewer decides that matter only;
+- **no decision creates an authority to remove a judgment classification.** So the code has no removal operation, and the independent decider decides the matter as a judgment matter.
+
+No new role and no new authority are introduced.
+
+**The G-3d contract:**
+- **every decider** (assessing steward, second person, matter reviewer) records a **conflict declaration** for the matter, as a roster write;
+- **at publication,** the declarations of the current assessor and the second person are re-checked at the roster version;
+- **a material conflict** is a declared interest in a judgment matter, and the matter then waits;
+- **a judgment matter is** a DISPUTE claim, a precedence assessment, or any flag ever raised. Objections and missing-unit submissions (G-6) arrive as flags;
+- **flags are permanent across versions.**
+
+## 6. G-4 obligations recorded from G-3 (not proven by domain tests)
+
+- **Atomicity:** `mayPublish` at the current roster version, and the publication append, run **inside one Geography publication lock**. Every roster write (appointments, ends, reviewers, declarations, merge notices) takes the same lock and the next roster version (v3.11 §8). So no roster change or merge notice can fall between the final check and the publication.
+- **Wiring:** an application service calls `maySubmit` / `mayApprove` before `Revision::submit` / `approve`, because the `Revision` aggregate doesn't call governance itself.
+- **The other wiring:** binding `ActingPerson`, and the `PlatformOwnerAuthority` port for who may make roster writes (D-84 "the platform owner"; still undefined).

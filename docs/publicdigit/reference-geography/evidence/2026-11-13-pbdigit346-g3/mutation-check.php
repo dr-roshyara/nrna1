@@ -12,8 +12,15 @@ $mutants = [
     'M5 approvals of any version count' => ['PublicationGovernance.php', 'foreach ($revision->countingApprovals() as $approval) {', 'foreach ($revision->approvals() as $approval) {'],
     'M6 structural changes treated as non-structural' => ['PublicationGovernance.php', 'if (!$revision->validation()->structural) {', 'if (true) {'],
     'M7 reversals ignored' => ['StewardRoster.php', '$reversed[$entry->mergeId] = true;', '// reversal ignored'],
+    'M8 a DISPUTE claim is no judgment trigger' => ['Revision.php', 'if ($claim->slot->kind() === ClaimKind::Dispute) {', 'if (false) {'],
+    'M9 judgment flags ignored' => ['Revision.php', 'if ($this->judgmentFlags !== []) {', 'if (false) {'],
+    'M10 a missing conflict declaration accepted' => ['PublicationGovernance.php', 'return [GovernanceRefusal::ConflictDeclarationMissing];', 'return [];'],
+    'M11 declared interest never conflicts' => ['PublicationGovernance.php', 'return $interest && $revision->isJudgmentMatter() ? [GovernanceRefusal::MateriallyConflicted] : [];', 'return [];'],
+    'M12 assessor not re-checked at publication' => ['PublicationGovernance.php', ': $this->conflict($revision->assessor(), $revision, $roster, $version);', ': [];'],
+    'M13 second person conflict not checked' => ['PublicationGovernance.php', '$problems = $this->conflict($approval->by, $revision, $roster, $version);', '$problems = [];'],
+    'M14 a later declaration does not supersede' => ['StewardRoster.php', '$interest = $entry->interest;', '$interest ??= $entry->interest;'],
 ];
-$tests = "$root/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php $root/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php $root/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php";
+$tests = "$root/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php $root/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php $root/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php $root/tests/Unit/Contexts/ReferenceGeography/Domain/JudgmentMatterConflictTest.php";
 $survivors = 0;
 foreach ($mutants as $label => [$file, $from, $to]) {
     $src = file_get_contents("$d/$file");

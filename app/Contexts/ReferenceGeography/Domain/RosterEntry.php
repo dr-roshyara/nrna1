@@ -19,6 +19,8 @@ final readonly class RosterEntry
         public ?RevisionId $matter = null,
         public ?string $mergeId = null,
         public array $merged = [],
+        /** For a conflict declaration: whether the declarer has a direct organisational interest in the matter. */
+        public ?bool $interest = null,
     ) {
     }
 }

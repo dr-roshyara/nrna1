@@ -136,6 +136,31 @@ final class StewardRoster
         return $find($a->value()) === $find($b->value());
     }
 
+    /**
+     * A person's declaration for one matter (D-84; D-84a: for a matter reviewer, the declaration of independence):
+     * whether they have a direct organisational interest in it. Made by the declarer; the latest one ≤ v counts.
+     */
+    public function declareConflict(PersonReference $person, RevisionId $matter, bool $interest): int
+    {
+        $version = $this->version() + 1;
+        $this->entries[] = new RosterEntry($version, RosterEntryKind::ConflictDeclared, $person, $person, $matter, interest: $interest);
+
+        return $version;
+    }
+
+    /** @return bool|null the declared interest at version v, or null when nothing is declared */
+    public function declaredInterestAt(PersonReference $person, RevisionId $matter, int $version): ?bool
+    {
+        $interest = null;
+        foreach ($this->entriesUpTo($version) as $entry) {
+            if ($entry->kind === RosterEntryKind::ConflictDeclared && $entry->subject?->equals($person) && $entry->matter?->equals($matter)) {
+                $interest = $entry->interest;
+            }
+        }
+
+        return $interest;
+    }
+
     public function isStewardAt(PersonReference $person, int $version): bool
     {
         return isset($this->stewardsAt($version)[$person->value()]);

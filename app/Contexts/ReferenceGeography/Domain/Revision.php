@@ -42,6 +42,10 @@ final class Revision
     private array $excluded = [];
 
     private ?ContentVersion $current = null;
+    /** The assessing steward who submitted the current content version (G-3d: the conflict test re-runs for them). */
+    private ?PersonReference $assessor = null;
+    /** @var list<array{PersonReference, JudgmentReason}> judgment flags: permanent, across all versions (D-230) */
+    private array $judgmentFlags = [];
 
     /** The validation of exactly the current claims (G-2c); voided by any claim change and by re-preparation. */
     private ?ValidationResult $validation = null;
@@ -120,6 +124,7 @@ final class Revision
         $this->requireDraft();
         $this->requireComplete();
         $this->excluded[$assessor->value()] = $assessor;
+        $this->assessor = $assessor;
         $number = ($this->current?->number ?? 0) + 1;
         $this->current = new ContentVersion($number, $this->digest($number, $assessor));
         $this->state = RevisionState::Submitted;
@@ -168,6 +173,46 @@ final class Revision
             throw new RevisionRefused(RevisionRefusal::Withdrawn);
         }
         $this->state = RevisionState::Withdrawn;
+    }
+
+    /**
+     * Anyone involved may flag the matter as involving competing positions (D-84a; Principal Q-G3-1, D-230), in any
+     * state but withdrawn. A flag is permanent: it survives re-preparation, and no operation removes it.
+     */
+    public function flagJudgmentMatter(PersonReference $by, JudgmentReason $reason): void
+    {
+        if ($this->state === RevisionState::Withdrawn) {
+            throw new RevisionRefused(RevisionRefusal::Withdrawn);
+        }
+        $this->judgmentFlags[] = [$by, $reason];
+    }
+
+    /**
+     * A judgment matter (D-84a, D-230): a visible trigger in the current content (a DISPUTE claim, a precedence
+     * assessment), or any flag ever raised. Objections and missing-unit submissions (G-6) arrive as flags.
+     */
+    public function isJudgmentMatter(): bool
+    {
+        if ($this->judgmentFlags !== []) {
+            return true;
+        }
+        foreach ($this->claims as $claim) {
+            if ($claim->slot->kind() === ClaimKind::Dispute) {
+                return true;
+            }
+        }
+        foreach ($this->assessments as $assessment) {
+            if ($assessment->kind === AssessmentKind::Precedence) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function assessor(): ?PersonReference
+    {
+        return $this->current === null ? null : $this->assessor;
     }
 
     public function id(): RevisionId

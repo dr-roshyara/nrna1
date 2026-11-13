@@ -15,6 +15,7 @@
 | G-2d-4 | [Profile changes (G-6)](08_g2d4_profile_changes.md) | implemented 2026-11-13; **G-2 complete, at the Principal's acceptance boundary** |
 | G-2 findings | [Country changes (F-1) and the boundary basis (F-2)](09_g2_findings_country_change_and_boundary_basis.md) | implemented 2026-11-13 |
 | Q-DS | [The duplicate search is supplementary (D-229)](10_qds_duplicate_search_is_supplementary.md) | implemented 2026-11-13 |
-| G-3a … G-3c | [Steward roster, Identity merges, publication governance](11_g3abc_roster_merges_governance.md) | implemented 2026-11-13; G-3d waits for Q-G3-1 |
+| G-3a … G-3c | [Steward roster, Identity merges, publication governance](11_g3abc_roster_merges_governance.md) | implemented 2026-11-13 |
+| G-3d | [Conflict declarations and judgment matters (D-230)](12_g3d_conflicts_and_judgment_matters.md) | implemented 2026-11-13; **G-3 at the Principal's acceptance boundary** |
 | — | [**Step-by-step implementation instructions** (routine, rules, G-3 … G-8)](99_implementation_instructions.md) | written 2026-11-13 |
 | G-3 … G-8 | one guide per step, added as they land | — |
