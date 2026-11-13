@@ -1,0 +1,12 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+61bed8c8d8f7de96c7490d3d7ab25dc511aab268bbe46018d7948b666ea0c3af  ./architecture-full.txt
+1e06e4b1c9a102f40494603cfdfcdfba150a15cba4df2ae28f537c606bd80e6c  ./db-free-all.txt
+d77d81e3c2ce43a5ddeca8abe5df7f344f4bfe1489f8cff8f32897261eaf0e2a  ./g2-domain.txt
+0f49144c02699068e239d5924f93f60565d4736b1b9daefc7bbb470f18d93c23  ./isolated-cluster/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster/suite.exit
+389d2623f60bba74845e437bc110935d1392c2246511f1587f3fc1d43032c1dc  ./isolated-cluster/suite.txt
+07a24860223ef6ab61d061ab086ee9befd446b8b1cb0185e3e084066603415c6  ./probe-cross-country-move.out
+d654314298078ba5de75e701cc635c674ae37a2b9e4461e59756dee248f11e4a  ./probe-cross-country-move.php
+67984478f0afb45340033f5f964343c5eb247e9aadc463ea09f70021e3c1b55c  ./README.md
+49c1d933cc8dd19348ef366e53d5763d03cba4cb7ef481ddcad19d010fee9ddb  ./reasons.txt
+279c37d81670cb92d9be2796a2e09ea65cf2c433c295431d0ac55e1c2f05800f  ./verification-tests.txt

@@ -47,3 +47,13 @@ Each country publishes a **profile**: which position means what (for example 3 =
 **D-82_BASIS** (guide 06) is untouched, neither broadened nor narrowed. It stays an item for your review in the G-2 package.
 
 **Traceability:** PBDIGIT-346 G-2d-3 · v3.11 §5.2, §13, §14 · D-81, D-83, D-91.
+
+## Undetermined positions (G-2 acceptance review)
+
+**An unclassified unit, or one with no reachable country, has no position.** This never lets an edge escape in the cases v3.11 §5.2 lists, because:
+- the edge is checked when the unit, or its parent, is classified (a classification change reads the children);
+- a classified unit without a country is refused by D-83.
+
+This is pinned by `UndeterminedPositionTest` (it also covers scheme isolation).
+
+**Open finding F-1:** a change of `country(u)` (a cross-country move, a containment ending, admission) re-derives the whole subtree's positions, and nothing re-checks them yet. It awaits the Principal's decision (see the G-2 acceptance review).
