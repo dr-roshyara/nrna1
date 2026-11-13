@@ -335,3 +335,19 @@
 - **Build gates:** MI-1 … MI-14 and A1 … A3 (not executed).
 - **Before launch:** newsletter legal basis, resignation effective time, retention [LQ]; mail-provider idempotency; monitoring [EXT].
 - **No implementation authorised;** that needs an EP-01-approved implementation plan.
+
+---
+
+**Status note (2026-11-13, append-only; approved by the Principal with the reconciliation `2026-11-12-integrated-tactical-baseline-reconciliation.md`):**
+- **§5.5 and the open-items rows on the ledger clock are superseded by D-209:** one database clock (`clock_timestamp()`), refusal and retry on regression, no timestamp adjusted. **Implemented and accepted in slice 1** (PBDIGIT-343). The formula `max(appClock, last + 1 µs, closedThrough + 1 µs)` in §5.5 is historical.
+- **The open-items rows for D-208 and D-209 are closed:** both were accepted on 2026-11-12. The row "no new Principal decision is required" is superseded; **D-223 was required and is decided.**
+- **D-223 (late execution of a scheduled resignation):** an `End(resignation)` from a scheduled declaration may be recorded **on or after** its effective date, never before. A later recording is backdating under D-5(b): `decidedAt` = the declaration date, `effectiveAt` = the scheduled date, `recordedAt` = the actual recording time.
+  - **MI-1 is read with "on or after its date".**
+  - **Added proof obligations (slice 5, test-first):**
+    - **MI-15a** normal execution on the date;
+    - **MI-15b** late execution: recorded later, effective on the scheduled date, `decidedAt` unchanged;
+    - **MI-15c** execution before the effective date: refused;
+    - **MI-15d** withdrawal before the date wins; after the date has started, refused;
+    - **MI-15e** knowledge boundary: no C2 answer at τ ≥ the effective date until the End is recorded (with MI-10);
+    - **MI-15f** the exception applies to no other fact.
+- **Platform mechanism:** D-222.

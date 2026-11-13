@@ -1537,3 +1537,19 @@ Source: evaluation `docs/publicdigit/architecture/reviews/2026-11-12-platform-la
 | # | Decision | Provenance |
 |---|---|---|
 | D-222 | **Option B is chosen: a small custom Laravel integration.**<br>- `ServedOrganisationRepository`, `ResolutionService`, an immutable `OrganisationContext`, and an `OrganisationConnectionFactory` that creates **one connection name per organisation** and **never re-points a shared name**;<br>- request and job middleware establish and clear the context.<br><br>**Spatie Laravel Multitenancy is not installed for this purpose.**<br><br>**Preserved:**<br>- the explicit connection per organisation;<br>- Laravel's default connection stays central;<br>- every accepted isolation rule (ISO-1 … ISO-11, D-219, D-221).<br><br>**T-26 is added as an executable proof obligation:** a connection object held from organisation A's context, used after organisation B's work starts, still reaches A only (the probe of the evaluation, §2).<br><br>**Technical choice only:** no ownership, topology or accepted rule changes. | direct, 2026-11-12: Principal accepted the review's recommendations ("I approve option B …") |
+
+### 11.123 Decision D-223 (late recording of a scheduled resignation; clarifies D-205 (2))
+
+Source: reconciliation `docs/publicdigit/architecture/reviews/2026-11-12-integrated-tactical-baseline-reconciliation.md` §3; the Principal DDD review of 2026-11-13 (option 1 recommended), accepted by the Principal.
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-223 | **D-205 (2) reads: `End(resignation)` from a scheduled resignation declaration (D-204), recorded on or after its effective date, never before.**<br><br>**A recording after the effective date is backdating under D-5(b):**<br>- `decidedAt` = the declaration date;<br>- `effectiveAt` = the scheduled date;<br>- `recordedAt` = the actual recording time.<br><br>**Not broadened:**<br>- scheduled resignation only;<br>- D-205 (1) unchanged (nothing future-dated);<br>- every other fact keeps the existing guard.<br><br>**The knowledge boundary keeps the answers truthful:** `closedThrough` cannot pass the effective date until the End is recorded (D-209, MI-10), so no answer "as known at τ" ignores it.<br><br>**Proof:** MI-1 (read with "on or after") and MI-15a … f, appended to M-TDD-01 by a status note (fingerprint `56c7840923531ca5…` → `8863c22a87d9cf7f…`). | direct, 2026-11-13: Principal accepted the review's recommendations (option 1) |
+
+### 11.124 Decision D-224 (Decision G: Reference Geography is prioritised; D-147 unchanged)
+
+Source: the Principal DDD review of 2026-11-13, accepted by the Principal. Settles Decision G and finding G-1 of the reconciliation.
+
+| # | Decision | Provenance |
+|---|---|---|
+| D-224 | **Reference Geography is prioritised as a standalone central context.** Order of design work:<br>**(1)** the **minimum Identity person-reference contract** that Geography's approval roster needs (G-1, U-2). **Not an Identity redesign;**<br>**(2)** Reference Geography's standalone tactical completion against D-93 / v3.11, with its own proofs (PO-1 … PO-7);<br>**(3)** its implementation, test-first.<br><br>**Then** Membership (after Platform, Organisation and Governance dependencies), the Forum and the Newsletter, as before.<br><br>**Platform slice 2 (PBDIGIT-345) continues in parallel.**<br><br>**D-147 unchanged:** Geography–Organisation integration (K-9, coverage, allocation rules) stays a later release. **Geography never decides belonging** (D-79, D-80). | direct, 2026-11-13: Principal accepted the review's recommendations ("prioritise Geography") |
