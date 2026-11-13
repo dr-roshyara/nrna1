@@ -23,7 +23,8 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 - **PBDIGIT-347 (Deliberation):** discovery brief `docs/publicdigit/architecture/reviews/2026-11-13-deliberation-discovery-brief.md`; questions Q-D1 to Q-D5 open (Q-D1, public reading, is a GDPR Art. 9 [LQ]).
 - **G-4 ACCEPTED with conditions (2026-11-13).** Architecture baseline revision 2 and ratchet A-1 to A-5 (PBDIGIT-348) are in Principal review: 198 known violations frozen; new ones fail `tests/Architecture/ArchitectureRatchetTest.php`.
 - **Baseline ACCEPTED (2026-11-13). G-5 implemented: G-5a read model (verified), G-5b PlaceLookup, G-5c publication feed; in Principal review.**
-- **Next:** Membership PBDIGIT-345 (per-organisation connection; trusted actor), then `MembershipStanding`; Forum and Newsletter discovery alongside, with the Deliberation discovery alongside → Membership (PBDIGIT-345: per-organisation connection replaces the `tenant` uses; trusted actor in delivery; then `MembershipStanding` and the lifecycle).
+- **G-5 closed (`c9cbfc682`), acceptance recommended.** PBDIGIT-348 DONE. **PBDIGIT-345 tasks 2 and 3 done** (registry and ResolutionService; per-organisation connection, T-26).
+- **Next:** PBDIGIT-345 task 4 (organisation migration set, T-8) → 5 (founding) → 6 (HTTP entry, trusted actor) → …; then `MembershipStanding`; Forum and Newsletter discovery alongside, with the Deliberation discovery alongside → Membership (PBDIGIT-345: per-organisation connection replaces the `tenant` uses; trusted actor in delivery; then `MembershipStanding` and the lifecycle).
 
 ## 📍 UPDATE (2026-11-09): **Mobile channel: staged direction; PBDIGIT-338 and 339 verified (339 RED→GREEN; signed-in journey on a throwaway DB), uncommitted; Identity discovery done; PBDIGIT-340/341 raised**
 
