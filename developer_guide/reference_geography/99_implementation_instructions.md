@@ -126,7 +126,15 @@
 3. **Storage:** `refgeo_candidates` (CHECKs mirror the lifecycle), `PostgresCandidateRepository`, optimistic `row_version`.
 4. **Not yet:** organisation submissions (D-147).
 
-**G-6b: objections (next).** `Objection`: submitted → assessed → corrected · disputed · rejected. **Reconsideration only by a new objection with new evidence.** It owns the objection record, never the target claim. Its effect on knowledge is only through a correcting revision, or a DISPUTE claim published as a revision.
+**G-6b: objections (implemented; guide 25).**
+1. **Domain:**
+   - `Objection`: submitted (cites ≥ 1 instrument) → assessed (authentic, mandate, applicable) → corrected or disputed (all positive) · rejected (≥ 1 negative, with a reason);
+   - **D-84a: the recorder never assesses or decides.**
+2. **Application:** `ObjectionService`.
+   - The target must be **published** (`PublishedClaims`); reconsideration needs **new** evidence.
+   - Outcomes **propose** a revision through `RevisionService` (lifecycle first, so there's no orphan).
+3. **Storage:** `refgeo_objections` (CHECKs, recorder ≠ assessor or decider, one objection per revision).
+4. **Mutation:** M1 to M8. **When a mutant "survives", check the run executed tests** (see the G-6b evidence: a driver defect once ran none).
 
 **G-6c: D-90 governance notices.** Finding, confirmation and closure as **their own publication entries, without claims, under the publication lock.** The approval status is in the read model. **This touches the accepted G-4 write path: design it first, and keep PO-2 (single write path).**
 

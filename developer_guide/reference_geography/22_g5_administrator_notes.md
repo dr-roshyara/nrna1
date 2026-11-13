@@ -26,3 +26,11 @@
 | May it run in production? | **No, not yet. The G-4 condition applies:** no production Reference Geography migration until a technically enforced migration-approval control exists. Development and test databases only |
 | Configuration, queues, routes, permissions? | **None.** Use cases only; there's no screen. Stewards act through code that has `ActingPerson` |
 | Data | none is created; candidates are recorded only by appointed stewards |
+
+## G-6b: objections (2026-11-13)
+
+| Question | Answer |
+|---|---|
+| New database migration? | **Yes, a Reference Geography one:** `database/migrations/2026_11_13_190000_create_refgeo_objections.php` (an empty table `refgeo_objections`), after the two G-6a migrations |
+| May it run in production? | **No, not yet:** the G-4 migration-approval condition applies |
+| Configuration, queues, routes, permissions? | **None** |

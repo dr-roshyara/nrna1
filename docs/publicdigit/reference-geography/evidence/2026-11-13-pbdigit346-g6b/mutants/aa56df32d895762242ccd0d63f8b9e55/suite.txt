@@ -1,0 +1,37 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EF.............................................................  63 / 263 ( 23%)
+............................................................... 126 / 263 ( 47%)
+............................................................... 189 / 263 ( 71%)
+............................................................... 252 / 263 ( 95%)
+...........                                                     263 / 263 (100%)
+
+Time: 00:00.211, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_acceptance_proposes_a_new_revision_prepared_by_the_acting_steward
+OutOfBoundsException: No revision 5e5e5e5e-5e5e-4e5e-8e5e-5e5e5e5e5e5e.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Support/ReferenceGeography/InMemoryRevisionRepository.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:123
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\CandidateServiceTest::test_acceptance_cannot_attach_an_existing_unrelated_revision
+nothing decided
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\ReferenceGeography\Domain\CandidateState Enum #2957 (UnderVerification, 'under-verification')
++App\Contexts\ReferenceGeography\Domain\CandidateState Enum #2956 (Accepted, 'accepted')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/CandidateServiceTest.php:138
+
+ERRORS!
+Tests: 263, Assertions: 1575, Errors: 1, Failures: 1.

@@ -1,0 +1,19 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F.......................................................  63 / 263 ( 23%)
+............................................................... 126 / 263 ( 47%)
+............................................................... 189 / 263 ( 71%)
+............................................................... 252 / 263 ( 95%)
+...........                                                     263 / 263 (100%)
+
+Time: 00:00.207, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\ObjectionServiceTest::test_only_a_published_claim_can_be_objected_to
+Failed asserting that exception of type "OutOfBoundsException" is thrown.
+
+FAILURES!
+Tests: 263, Assertions: 1561, Failures: 1.

@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........F....................................................  63 / 263 ( 23%)
+............................................................... 126 / 263 ( 47%)
+............................................................... 189 / 263 ( 71%)
+............................................................... 252 / 263 ( 95%)
+...........                                                     263 / 263 (100%)
+
+Time: 00:00.210, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\ObjectionServiceTest::test_an_outcome_the_lifecycle_refuses_prepares_no_revision
+no orphan draft
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/ObjectionServiceTest.php:197
+
+FAILURES!
+Tests: 263, Assertions: 1490, Failures: 1.

@@ -1,0 +1,9 @@
+M1 the recording steward may decide (D-84a)                KILLED   [unit] errors:0  d84a_the_recording_steward_may_neither_assess_nor_decide;someone_not_appointed_cannot_act_and_the_recorder_cannot_decide;
+M2 reconsideration without new evidence                    KILLED   [unit] errors:0  reconsideration_needs_new_evidence;
+M3 a positive objection may be rejected                    KILLED   [unit] errors:0  a_rejection_needs_a_negative_finding_and_a_reason;
+M4 correction without every finding positive               KILLED   [unit] errors:0  correction_and_dispute_need_every_finding_positive_and_propose_a_revision;
+M5 an unpublished claim may be objected to                 KILLED   [unit] errors:0  only_a_published_claim_can_be_objected_to;
+M6 acceptance attaches instead of proposing                KILLED   [unit] errors:0  acceptance_cannot_attach_an_existing_unrelated_revision;acceptance_proposes_a_new_revision_prepared_by_the_acting_steward;
+M7 the revision is prepared before the lifecycle check     KILLED   [unit] errors:0  an_outcome_the_lifecycle_refuses_prepares_no_revision;
+M8 published means merely frozen                           SURVIVED [pg-objection] errors:0  
+1 mutant(s) survived.

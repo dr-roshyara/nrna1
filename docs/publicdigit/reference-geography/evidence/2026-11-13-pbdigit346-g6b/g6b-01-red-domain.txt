@@ -1,0 +1,52 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.019, Memory: 10.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_a_submission_cites_an_instrument_and_changes_no_fact
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:53
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_correction_and_dispute_need_every_finding_positive_and_propose_a_revision
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:64
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_a_rejection_needs_a_negative_finding_and_a_reason
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:84
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_no_outcome_before_assessment_and_a_decided_objection_is_final
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:105
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_d84a_the_recording_steward_may_neither_assess_nor_decide
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:120
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\ObjectionTest::test_it_survives_storage_only_through_its_own_rebuild_path
+Error: Class "App\Contexts\ReferenceGeography\Domain\Objection" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:39
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ObjectionTest.php:131
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.
