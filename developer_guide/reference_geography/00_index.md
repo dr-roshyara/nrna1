@@ -5,4 +5,5 @@
 | Slice | Guide | Status |
 |---|---|---|
 | G-0 | Identity part and Geography's `ActingPerson` port → [`../identity/01_g0_minimal_person_and_context_person_ref.md`](../identity/01_g0_minimal_person_and_context_person_ref.md) | implemented 2026-11-13; awaiting review |
-| G-1 … G-8 | one guide per slice, added as they land | — |
+| G-1 | [The domain kernel: identities, claims, 21 kinds / 22 slot-key shapes, intervals, supersession, I-1 … I-4](01_g1_domain_kernel.md) | implemented 2026-11-13; awaiting review |
+| G-2 … G-8 | one guide per slice, added as they land | — |

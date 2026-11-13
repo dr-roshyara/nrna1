@@ -1,0 +1,62 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......EEEEEEEEF                                                   15 / 15 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_exactly_the_21_claim_kinds_of_v3_11
+Error: Class "App\Contexts\ReferenceGeography\Domain\ClaimKind" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:68
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_22_shapes_give_22_distinct_keys_each_beginning_with_its_kind
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:74
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_containment_and_classification_with_the_same_unit_and_scheme_never_share_a_slot
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:87
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_within_a_kind_the_key_names_exactly_what_holds_one_value
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:94
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_single_and_set_valued_source_names_cannot_collide
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:107
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_a_dispute_is_keyed_by_the_target_claim_never_by_the_targets_slot
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:121
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_separator_characters_inside_components_cannot_forge_another_key
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:135
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_randomised_keys_never_share_an_encoding_unless_they_are_the_same_key
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:164
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_an_empty_component_is_refused
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\ReferenceGeography\Domain\SlotKey" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:185
+.
+
+ERRORS!
+Tests: 15, Assertions: 28, Errors: 8, Failures: 1.

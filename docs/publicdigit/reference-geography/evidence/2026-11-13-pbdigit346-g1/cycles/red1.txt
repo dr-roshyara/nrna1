@@ -1,0 +1,46 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.019, Memory: 10.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_identities_are_opaque_lower_case_uuids_and_compare_by_value
+Error: Class "App\Contexts\ReferenceGeography\Domain\ReferenceUnitId" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:31
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_a_valid_date_is_a_real_calendar_date
+Error: Class "App\Contexts\ReferenceGeography\Domain\ValidDate" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:45
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_from_is_inclusive_and_to_is_exclusive
+Error: Class "App\Contexts\ReferenceGeography\Domain\ValidInterval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:60
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_an_open_interval_lasts_until_further_notice
+Error: Class "App\Contexts\ReferenceGeography\Domain\ValidInterval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:70
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_an_empty_or_reversed_interval_is_refused
+Error: Class "App\Contexts\ReferenceGeography\Domain\ValidInterval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:80
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentifiersAndIntervalsTest::test_adjacent_intervals_do_not_overlap_but_shared_days_do
+Error: Class "App\Contexts\ReferenceGeography\Domain\ValidInterval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentifiersAndIntervalsTest.php:90
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.

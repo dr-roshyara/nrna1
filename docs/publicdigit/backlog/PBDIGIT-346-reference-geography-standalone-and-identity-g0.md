@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS` — **G-0 done 2026-11-13** (TDD; evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g0/`; guide `developer_guide/identity/01_g0_…`), **awaiting the Principal's review before G-1** |
+| **Status** | `IN PROGRESS` — **G-0 done 2026-11-13** (migration fix `67425de0e`); **G-1 done 2026-11-13** (evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g1/`; guide `developer_guide/reference_geography/01_g1_domain_kernel.md`) (TDD; evidence `docs/publicdigit/reference-geography/evidence/2026-11-13-pbdigit346-g0/`; guide `developer_guide/identity/01_g0_…`), **both awaiting the Principal's review; G-2 not started** |
 | **Design (approved sequence §8)** | `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-standalone-tactical-completion.md` (D-226), consuming v3.11 (D-93) and D-225 |
 | **Decisions** | D-93, D-147, D-224, D-225, D-226 |
 
@@ -20,3 +20,14 @@ Each slice: RED → GREEN → guide; review at each boundary.
 - the full Identity migration;
 - addresses (D-83);
 - the legacy `App\Contexts\Geography`.
+
+## Review notes
+
+**G-0 verification points (2026-11-13):**
+- **"Active account" matches the application's real login rules:**
+  - `App\Models\User` implements `MustVerifyEmail`;
+  - `LoginController` (line 72) and `LoginResponse` (line 102) refuse unverified e-mails;
+  - soft-deleted users are excluded by `SoftDeletes`.
+
+  **Closed.**
+- **The race test's non-vacuity (no mutation run) stays open** as a known limit.

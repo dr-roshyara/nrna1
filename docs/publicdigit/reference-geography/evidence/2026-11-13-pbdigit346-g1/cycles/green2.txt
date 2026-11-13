@@ -1,0 +1,29 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F.....E.                                                   15 / 15 (100%)
+
+Time: 00:00.025, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_randomised_keys_never_share_an_encoding_unless_they_are_the_same_key
+InvalidArgumentException: Slot key component 'scheme' cannot be empty.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/SlotKey.php:26
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/SlotKey.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:163
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SlotKeyCollisionTest::test_22_shapes_give_22_distinct_keys_each_beginning_with_its_kind
+platform default locale: the key begins with its kind
+Failed asserting that 'PLATFORM_DEFAULT_LOCALE' starts with "PLATFORM_DEFAULT_LOCALE|".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SlotKeyCollisionTest.php:80
+
+ERRORS!
+Tests: 15, Assertions: 94, Errors: 1, Failures: 1.

@@ -1,0 +1,46 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEE.EF                                                             7 / 7 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_code_reuse_with_disjoint_intervals_satisfies_i1
+Error: Class "App\Contexts\ReferenceGeography\Domain\IdentifierInvariants" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:45
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_one_value_on_two_live_subjects_at_once_violates_i1
+Error: Class "App\Contexts\ReferenceGeography\Domain\IdentifierInvariants" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:53
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_i1_is_per_namespace_and_per_value
+Error: Class "App\Contexts\ReferenceGeography\Domain\IdentifierInvariants" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:63
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_a_subject_repeating_its_own_value_is_not_a_violation
+Error: Class "App\Contexts\ReferenceGeography\Domain\IdentifierInvariants" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:72
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_i3_an_identity_is_minted_once_and_never_reused_even_after_retirement
+Error: Class "App\Contexts\ReferenceGeography\Domain\IdentityLedger" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:94
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\IdentityInvariantsTest::test_only_a_minted_identity_can_be_retired
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\ReferenceGeography\Domain\IdentityLedger" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/IdentityInvariantsTest.php:113
+.
+
+ERRORS!
+Tests: 7, Assertions: 3, Errors: 5, Failures: 1.

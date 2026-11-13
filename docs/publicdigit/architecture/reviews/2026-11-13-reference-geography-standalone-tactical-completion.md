@@ -199,3 +199,8 @@ Reference Geography is PublicDigit's **trusted atlas**: which official places ex
 - **Geography–Organisation integration stays later** (D-147).
 
 **Traceability:** D-31, D-73, D-75, D-79 … D-92, D-93, D-147, D-164, D-209, D-222, D-224, D-225 · v3.11 §1–§17 · closure §0, §C.2, §C.3 · slice 1 (PBDIGIT-343) lock and clock patterns.
+
+**Correction note (2026-11-13, G-1 start; consistency only, v3.11 governs):**
+- **The count "23 kinds" in §3 and §8 is wrong.** v3.11 §3 defines **21 claim kinds** with **22 slot-key shapes** (`SOURCE_NAME` has a single-valued and a set-valued shape).
+- **"Withdrawal" is not a kind:** it is a claim with value "none" in the target's own slot.
+- G-1 implements exactly that.

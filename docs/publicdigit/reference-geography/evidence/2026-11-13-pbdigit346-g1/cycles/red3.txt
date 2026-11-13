@@ -1,0 +1,59 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.028, Memory: 10.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_a_later_claim_supersedes_only_for_the_valid_time_it_covers
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotHistory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:61
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_the_later_position_wins_not_the_later_date
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotHistory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:72
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_a_withdrawal_is_value_none_in_the_targets_slot
+Error: Class "App\Contexts\ReferenceGeography\Domain\Claim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:81
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_knowledge_as_at_a_position_is_never_rewritten
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotHistory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:92
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_claims_in_different_slots_never_interact
+Error: Class "App\Contexts\ReferenceGeography\Domain\Claim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:102
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_a_dispute_cannot_enter_the_disputed_claims_slot
+Error: Class "App\Contexts\ReferenceGeography\Domain\Claim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:56
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:110
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_a_position_is_used_once_and_must_be_positive
+Error: Class "App\Contexts\ReferenceGeography\Domain\SlotHistory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:119
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_an_establish_claim_needs_an_instrument_or_a_duplicate_search_assessment
+Error: Class "App\Contexts\ReferenceGeography\Domain\Claim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:135
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\SupersessionTest::test_a_basis_needs_its_reference_and_a_value_is_never_blank
+Error: Class "App\Contexts\ReferenceGeography\Domain\Basis" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:145
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SupersessionTest.php:147
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.
