@@ -100,7 +100,8 @@ final class RevisionValidatorIdentifierTest extends TestCase
     public function test_the_holder_relinquishing_in_the_same_revision_frees_the_value(): void
     {
         $atlas = self::atlas([self::exists(self::OLD, '1974-01-01'), self::id(self::OLD, 'CS', '1974-01-01')]);
-        $relinquish = self::claim(SlotKey::identifier(ReferenceUnitId::fromString(self::OLD), self::N), null, self::iv('2003-07-23'));
+        // A withdrawal rests on an instrument or a correction (D-228): the ISO change announcement is the instrument.
+        $relinquish = self::claim(SlotKey::identifier(ReferenceUnitId::fromString(self::OLD), self::N), null, self::iv('2003-07-23'), BasisKind::Instrument);
 
         $this->assertSame([], self::rules([$relinquish, self::id(self::NEW, 'CS', '2003-07-23')], $atlas));
     }

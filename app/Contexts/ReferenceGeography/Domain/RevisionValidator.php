@@ -25,9 +25,14 @@ final class RevisionValidator
         $violations = [];
         foreach ($claims as $claim) {
             if ($claim->value->isNone()) {
+                $violations = [...$violations, ...$this->withdrawalBasis($claim)];
+                if ($claim->slot->kind() === ClaimKind::Existence) {
+                    $violations = [...$violations, ...$this->noLiveChildUnderEnded($claim, $claims, $reader)];
+                }
                 continue;
             }
             $violations = [...$violations, ...match ($claim->slot->kind()) {
+                ClaimKind::Succession => $this->succession($claim, $claims, $reader),
                 ClaimKind::Containment => $this->parentExists($claim, $claims, $reader),
                 ClaimKind::Grouping => $this->admittedBeforeGrouping($claim, $claims, $reader),
                 ClaimKind::Identifier => $this->identifierUnique($claim, $claims, $reader),
@@ -65,6 +70,85 @@ final class RevisionValidator
         return $this->holdsThroughout($admission, $claim->interval)
             ? []
             : [new Violation('ADMISSION_BEFORE_GROUPING', $claim->id, 'The entry is not admitted over the whole grouping interval (D-86).')];
+    }
+
+    /** v3.11 §3 withdrawal row; D-228: a withdrawal rests on an instrument (a real ending) or a correction. @return list<Violation> */
+    private function withdrawalBasis(Claim $claim): array
+    {
+        return in_array($claim->basis->kind, [BasisKind::Instrument, BasisKind::Correction], true)
+            ? []
+            : [new Violation('WITHDRAWAL_BASIS', $claim->id, 'A withdrawal rests on an instrument or a correction.')];
+    }
+
+    /**
+     * G-5 (v3.11 §5.2; D-228): an event of a known kind with ≥ 1 successor; successors exist on the event date;
+     * division, merger and absorption end the predecessor by then.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function succession(Claim $claim, array $claims, DependencyRecordingReader $reader): array
+    {
+        try {
+            $event = SuccessionEvent::parse($claim->value->value());
+        } catch (\InvalidArgumentException) {
+            return [new Violation('G-5_SUCCESSION_FORM', $claim->id, 'A succession names its kind and successor identities.')];
+        }
+        $date = $claim->interval->from;
+        $violations = [];
+        foreach ($event->successors as $successor) {
+            if (!$this->withRevision(SlotKey::existence($successor), $claim->interval, $claims, $reader)->priorAt($date)->isSomeValue()) {
+                $violations[] = new Violation('G-5_SUCCESSOR_EXISTS', $claim->id, "Successor {$successor->value()} does not exist on {$date->value()}.");
+            }
+        }
+        $predecessor = $claim->slot->subject();
+        if ($event->kind->endsPredecessor() && $predecessor !== null
+            && $this->withRevision(SlotKey::existence($predecessor), $claim->interval, $claims, $reader)->priorAt($date)->isSomeValue()) {
+            $violations[] = new Violation('G-5_PREDECESSOR_ENDS', $claim->id, "A {$event->kind->value} ends the predecessor by {$date->value()}.");
+        }
+
+        return $violations;
+    }
+
+    /**
+     * G-5 (v3.11 §5.2 "no live child under an ended parent"): the children of u, in ANY scheme, over the ended range
+     * (a recorded family read), with this revision on top, must not still have u as parent while they exist.
+     *
+     * @param list<Claim> $claims
+     * @return list<Violation>
+     */
+    private function noLiveChildUnderEnded(Claim $claim, array $claims, DependencyRecordingReader $reader): array
+    {
+        $ended = $claim->slot->subject();
+        if ($ended === null) {
+            return [];
+        }
+        $childSlots = [];
+        foreach ($reader->family(ClaimKind::Containment, [], $ended->value(), $claim->interval) as $slot) {
+            $childSlots[$slot->encoded()] = $slot;
+        }
+        foreach ($claims as $other) {
+            if ($other->slot->kind() === ClaimKind::Containment && !$other->value->isNone() && $other->value->value() === $ended->value()) {
+                $childSlots[$other->slot->encoded()] = $other->slot;
+            }
+        }
+        foreach ($childSlots as $slot) {
+            $child = $slot->subject();
+            if ($child === null) {
+                continue;
+            }
+            $underEnded = $this->segmentsWhere($this->withRevision($slot, $claim->interval, $claims, $reader), $claim->interval, $ended->value());
+            $live = $this->segmentsWhere($this->withRevision(SlotKey::existence($child), $claim->interval, $claims, $reader), $claim->interval, null);
+            foreach ($underEnded as $a) {
+                foreach ($live as $b) {
+                    if ($a->overlaps($b)) {
+                        return [new Violation('G-5_LIVE_CHILD', $claim->id, "Unit {$child->value()} is still a live child of the ended unit.")];
+                    }
+                }
+            }
+        }
+
+        return [];
     }
 
     /**

@@ -1,0 +1,36 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+........................................................F........ 65 / 95 ( 68%)
+.............F................                                    95 / 95 (100%)
+
+Time: 00:00.073, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\RevisionValidatorIdentifierTest::test_the_holder_relinquishing_in_the_same_revision_frees_the_value
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'WITHDRAWAL_BASIS',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/RevisionValidatorIdentifierTest.php:105
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_succession_event_has_a_canonical_encoding_and_needs_a_successor
+sorted, de-duplicated
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'division:8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d,6c5d4e3f-2a1b-4c9d-8e7f-6a5b4c3d2e1f'
++'division:6c5d4e3f-2a1b-4c9d-8e7f-6a5b4c3d2e1f,8a7b6c5d-4e3f-4a1b-9c8d-7e6f5a4b3c2d'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:105
+
+FAILURES!
+Tests: 95, Assertions: 978, Failures: 2.

@@ -1,0 +1,71 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEFEEFEF                                                            8 / 8 (100%)
+
+Time: 00:00.030, Memory: 12.00 MB
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_succession_event_has_a_canonical_encoding_and_needs_a_successor
+Error: Class "App\Contexts\ReferenceGeography\Domain\SuccessionEvent" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:103
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_division_with_its_ending_and_existing_successors_is_valid
+Error: Class "App\Contexts\ReferenceGeography\Domain\SuccessionKind" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:122
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_successors_must_exist_on_the_event_date
+Error: Class "App\Contexts\ReferenceGeography\Domain\SuccessionKind" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:136
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_division_merger_and_absorption_end_the_predecessor_a_partial_split_does_not
+Error: Class "App\Contexts\ReferenceGeography\Domain\SuccessionKind" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:142
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_withdrawal_rests_on_an_instrument_or_a_correction
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\BasisKind::Correction
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:160
+
+--
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_succession_value_that_is_not_an_event_is_refused
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-5_SUCCESSION_FORM',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:129
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_no_live_child_under_an_ended_unit
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'G-5_LIVE_CHILD',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:152
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\SuccessionValidationTest::test_a_later_new_child_of_the_ended_unit_makes_the_validation_stale
+any scheme: the family has no fixed scheme
+Failed asserting that null is identical to an object of class "App\Contexts\ReferenceGeography\Domain\PublishedClaim".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/SuccessionValidationTest.php:171
+
+ERRORS!
+Tests: 8, Assertions: 3, Errors: 5, Failures: 3.
