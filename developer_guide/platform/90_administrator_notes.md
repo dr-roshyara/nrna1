@@ -18,3 +18,19 @@
 3. **Rollback:** the migration's `down()` drops the table. It holds no data until organisations are founded (task 5).
 
 **The G-4 production restrictions (Reference Geography) are unrelated to this table, and still apply.**
+
+## Task 3: organisation database connections (2026-11-13)
+
+**Nothing routes to an organisation until an administrator configures its cluster and its database login.** This is deliberate: fail closed.
+
+| What | Where | Example |
+|---|---|---|
+| **Clusters** (host, port, SSL) | environment variable `ORGANISATION_DB_CLUSTERS` (JSON), read by `config/organisation_routing.php` | `ORGANISATION_DB_CLUSTERS='{"cluster-1":{"host":"db.internal","port":5432,"sslmode":"require"}}'` |
+| **One login per organisation** | **real** environment variables (process or container secrets), named by the locator's reference `env:NAME` | reference `env:ORG_0B9E7A52_DB` → `ORG_0B9E7A52_DB_USERNAME`, `ORG_0B9E7A52_DB_PASSWORD` |
+
+**Rules:**
+1. **Use a separate PostgreSQL role per organisation,** with rights on that organisation's database only. A wrong locator then fails instead of reading another organisation.
+2. **Put logins in real environment variables or the secret store, not only in `.env`.** With `php artisan config:cache`, values that exist only in `.env` are invisible to the application, and the organisation would be refused.
+3. **After changing `ORGANISATION_DB_CLUSTERS`, re-run `php artisan config:cache`** (it's read through configuration).
+4. **Never point two organisations' locators at one database.** The registry refuses it (unique index), and the roles above make it fail as well.
+5. **Nothing to do in production before PBDIGIT-345 is accepted.** No organisation is in the registry yet (founding is task 5).

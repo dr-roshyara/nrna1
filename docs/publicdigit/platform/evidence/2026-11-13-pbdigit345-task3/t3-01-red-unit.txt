@@ -1,0 +1,42 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.018, Memory: 12.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_the_connection_name_is_derived_from_the_organisation_id_only
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationConnectionFactory" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:24
+
+2) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_an_environment_reference_resolves_to_its_username_and_password
+Error: Class "App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:33
+
+3) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_an_unusable_reference_is_refused_without_revealing_a_secret with data set "unknown scheme" ('vault:org/a', ['u', 's3cret'])
+Error: Class "App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:54
+
+4) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_an_unusable_reference_is_refused_without_revealing_a_secret with data set "missing username" ('env:ORG_A_DB', ['s3cret'])
+Error: Class "App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:54
+
+5) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_an_unusable_reference_is_refused_without_revealing_a_secret with data set "missing password" ('env:ORG_A_DB', ['u'])
+Error: Class "App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:54
+
+6) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationConnectionNamingTest::test_an_unusable_reference_is_refused_without_revealing_a_secret with data set "malformed name" ('env:org a; rm', ['u', 's3cret'])
+Error: Class "App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationConnectionNamingTest.php:54
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.
