@@ -1,0 +1,102 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEEEEEDDDDDDDDDDDD                                          24 / 24 (100%)
+
+Time: 00:14.773, Memory: 22.00 MB
+
+There were 12 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedAtlasTest::test_it_answers_exactly_as_the_reference_atlas_for_the_same_published_claims
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:125
+
+2) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedAtlasTest::test_unpublished_claims_never_enter_the_atlas
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "refgeo_revisions" does not exist
+LINE 1: insert into "refgeo_revisions" ("id", "state", "row_version"...
+                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 42567, Database: membership_pg_isolated, SQL: insert into "refgeo_revisions" ("id", "state", "row_version") values (81205b88-5ac4-46cc-9c70-57990b3e139f, draft, 1))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:143
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "refgeo_revisions" does not exist
+LINE 1: insert into "refgeo_revisions" ("id", "state", "row_version"...
+                    ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:143
+
+3) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedAtlasTest::test_the_reader_is_fixed_at_its_p0
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:160
+
+4) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedAtlasTest::test_validating_through_it_gives_the_same_result_as_through_the_reference_atlas
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresPublishedAtlas" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:173
+
+5) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_every_state_and_every_part_survives_a_reload
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:118
+
+6) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_a_validation_with_every_dependency_form_violations_before_images_and_disputes_survives
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:161
+
+7) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_the_reloaded_aggregate_behaves_identically
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:169
+
+8) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_a_submitted_versions_claims_are_frozen_in_refgeo_claims
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:182
+
+9) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_tampered_stored_content_is_refused_never_repaired
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:205
+
+10) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_a_save_failing_part_way_leaves_the_previous_state
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:219
+
+11) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_a_concurrent_change_is_refused_and_writes_nothing
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:245
+
+12) Tests\Feature\Contexts\ReferenceGeography\PostgresRevisionRepositoryTest::test_a_revision_is_added_once
+Error: Class "App\Contexts\ReferenceGeography\Infrastructure\PostgresRevisionRepository" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:67
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresRevisionRepositoryTest.php:264
+
+ERRORS!
+Tests: 24, Assertions: 86, Errors: 12, Deprecations: 1.

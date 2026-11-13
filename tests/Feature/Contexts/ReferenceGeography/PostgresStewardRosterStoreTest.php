@@ -84,6 +84,34 @@ final class PostgresStewardRosterStoreTest extends MembershipPostgresTestCase
         $this->assertFalse(self::store()->current()->isStewardAt(self::p("a-$t"), $before));
     }
 
+    /** G-4c open obligation, closed in G-4d: a multi-entry write whose database insert fails part-way commits nothing. */
+    public function test_a_multi_entry_write_failing_part_way_through_its_inserts_commits_nothing(): void
+    {
+        $t = Str::random(8);
+        $before = self::lastRosterVersion();
+        $poison = self::p("poison-$t")->value();
+        DB::unprepared(<<<SQL
+            CREATE OR REPLACE FUNCTION refgeo_test_fail_roster() RETURNS trigger LANGUAGE plpgsql AS \$\$
+            BEGIN IF NEW.subject = '{$poison}' THEN RAISE EXCEPTION 'test: failure injected at the second insert'; END IF; RETURN NEW; END \$\$;
+            CREATE TRIGGER refgeo_test_fail_roster BEFORE INSERT ON refgeo_roster_entries FOR EACH ROW EXECUTE FUNCTION refgeo_test_fail_roster();
+            SQL);
+        try {
+            self::store()->writeUnderLock(static function (StewardRoster $r) use ($t): void {
+                $r->appointSteward(self::p("first-$t"), self::p("owner-$t"));    // inserted first
+                $r->appointSteward(self::p("poison-$t"), self::p("owner-$t"));   // its insert fails
+                $r->appointSteward(self::p("third-$t"), self::p("owner-$t"));
+            });
+            $this->fail('the injected failure must surface');
+        } catch (\Illuminate\Database\QueryException) {
+            $this->addToAssertionCount(1);
+        } finally {
+            DB::unprepared('DROP TRIGGER refgeo_test_fail_roster ON refgeo_roster_entries; DROP FUNCTION refgeo_test_fail_roster();');
+        }
+
+        $this->assertSame($before, self::lastRosterVersion());
+        $this->assertFalse(self::store()->current()->isStewardAt(self::p("first-$t"), $before), 'the first insert did not survive alone');
+    }
+
     public function test_an_identity_notice_is_applied_once(): void
     {
         $t = Str::random(8);

@@ -1,0 +1,14 @@
+a8f235dc06943d551e0a9767fcd9b284b7a3d198768758650df8cc271394c052  ./architecture-full.failures
+32529215211a3ca892eedb06f830b644d99c07af6937960725a8c8f325577cfd  ./architecture-full.txt
+70305b0f9d97770c5df8a84bf89086b04d03baf0b245148e923db6129697195b  ./db-free-all.txt
+82425cc8473eee0f6f24d7d0f73b48a1574f6da58ca4edfab7d27453866c1e07  ./green-1-test-expectation-defect.txt
+7efee134fe6eeea7089cf3fc5a1ad2d3f9f87fb15288839e08331dadd864f77a  ./green-pg.txt
+ba219f2f10fcaf7bdab1d57a48157b0b9e205766d86e615554fe9f71b3c4530d  ./green-position.txt
+bf07cac955b4d4f20d7ea081b759659b7a136514c85825bef0b852f672208310  ./isolated-cluster-all/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./isolated-cluster-all/suite.exit
+1cbde8d3c9415d8ab8e39df405b26e87e673ce3f158f9fec5fc7f7ccb0cde487  ./isolated-cluster-all/suite.txt
+51db2360fbeb083c67c5bf9af7ba156c21b0ec17731275cf947dab02f205ec47  ./mutation-check-pg.out
+9bfdde7ae9b81f343c9adb911c88ab7b255a7ede1ebfcd84571e9e86c5c342c9  ./mutation-check-pg.php
+7ca485cb61adecca53a36aa5991a5281f892be2fb9da404586bca030926644f9  ./README.md
+6daecf59213f47e66d3d72ba4bfb19e049930caf64db3962d156eb10954b5acf  ./red-pg.txt
+b61dfef91940dfdad2051e05931c87e9d071e8afe4ba57c475e80644261dc20d  ./red-position.txt

@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDDDDDDDDDDDDDDDDDDDDDD                                          24 / 24 (100%)
+
+Time: 00:15.968, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PostgresPublishedAtlasTest::test_it_answers_exactly_as_the_reference_atlas_for_the_same_published_claims
+a withdrawal is read as such
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'none'
++'NONE'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresPublishedAtlasTest.php:136
+
+FAILURES!
+Tests: 24, Assertions: 121, Failures: 1, Deprecations: 1.
