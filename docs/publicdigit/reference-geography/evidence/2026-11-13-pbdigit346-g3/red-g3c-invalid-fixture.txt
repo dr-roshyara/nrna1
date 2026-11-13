@@ -1,0 +1,92 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEE                                                      12 / 12 (100%)
+
+Time: 00:00.033, Memory: 12.00 MB
+
+There were 12 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_era_a_the_sole_steward_publishes_a_structural_change_alone
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationGovernance" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:120
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_era_b_a_structural_change_needs_an_independent_second_person
+Error: Class "App\Contexts\ReferenceGeography\Domain\GovernanceRefusal" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:132
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_a_non_structural_change_never_needs_a_second_person
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationGovernance" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:144
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_the_threshold_stays_after_the_second_steward_leaves_and_a_matter_reviewer_may_approve
+Error: Class "App\Contexts\ReferenceGeography\Domain\GovernanceRefusal" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:156
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_a_second_steward_appointed_after_submission_activates_the_threshold
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationGovernance" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:169
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_the_full_combination_check
+InvalidArgumentException: A person reference is 32 lower-case hex characters.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:17
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:64
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:176
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_assessors_of_earlier_versions_stay_excluded_and_an_approval_binds_to_its_version
+InvalidArgumentException: A person reference is 32 lower-case hex characters.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:17
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:64
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:199
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_the_approver_must_have_been_appointed_when_approving
+InvalidArgumentException: A person reference is 32 lower-case hex characters.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:17
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:110
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:216
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_merge_case_a_a_merge_recorded_before_publication_is_re_checked
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationGovernance" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:229
+
+10) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_merge_case_d_a_merge_not_involving_the_approver_changes_nothing
+InvalidArgumentException: A person reference is 32 lower-case hex characters.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:17
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/PersonReference.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:64
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:235
+
+11) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_submission_and_approval_need_authority_at_that_roster_version
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublicationGovernance" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:246
+
+12) Tests\Unit\Contexts\ReferenceGeography\Domain\PublicationGovernanceTest::test_only_a_submitted_revision_can_be_published
+Error: Class "App\Contexts\ReferenceGeography\Domain\GovernanceRefusal" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/PublicationGovernanceTest.php:260
+
+ERRORS!
+Tests: 12, Assertions: 0, Errors: 12.

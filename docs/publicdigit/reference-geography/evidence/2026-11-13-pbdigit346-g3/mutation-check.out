@@ -1,0 +1,8 @@
+M1 independence check removed                                          KILLED  (Tests: 23, Assertions: 70, Failures: 4.)
+M2 merges ignored by E(v)                                              KILLED  (Tests: 23, Assertions: 70, Failures: 4.)
+M3 approver judged at publication version, not approval version        KILLED  (Tests: 23, Assertions: 75, Failures: 1.)
+M4 threshold not latched                                               KILLED  (Tests: 23, Assertions: 73, Failures: 2.)
+M5 approvals of any version count                                      KILLED  (Tests: 23, Assertions: 74, Failures: 1.)
+M6 structural changes treated as non-structural                        KILLED  (Tests: 23, Assertions: 64, Failures: 8.)
+M7 reversals ignored                                                   KILLED  (Tests: 23, Assertions: 72, Failures: 2.)
+All mutants killed.

@@ -123,3 +123,12 @@
 **Accept G-2, or don't.** Nothing else is open.
 
 Not asked again: D-227, D-228, D-229, D-83, D-91, G-4, Q2, F-1, F-2.
+
+## 9. Principal decision (recorded 2026-11-13)
+
+> **G-2 accepted.** I accept Reference Geography G-2 as the domain-validation baseline, including F-1, F-2 and D-229.
+> - The G-4 obligations remain open and must be implemented and proven in G-4.
+> - This acceptance does not certify Geography persistence, atomic publication or operational readiness.
+> - Session A is authorised to proceed to G-3.
+
+The Principal's words: "accept G-2 and start G-3 with strict TDD". The decision text above is from the Principal DDD review of 2026-11-13.

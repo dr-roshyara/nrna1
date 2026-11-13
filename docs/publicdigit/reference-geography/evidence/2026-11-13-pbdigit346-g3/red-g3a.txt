@@ -1,0 +1,42 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:00.019, Memory: 10.00 MB
+
+There were 6 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_every_write_takes_the_next_gap_free_version_and_records_who_made_it
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:47
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_authority_is_judged_at_a_roster_version
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:61
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_a_matter_reviewer_has_authority_for_that_revision_only_and_is_no_steward
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:76
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_the_threshold_latches_at_the_second_concurrent_appointment_and_never_unsets
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:89
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_a_replaced_sole_steward_is_not_a_second_steward
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:102
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\StewardRosterTest::test_impossible_writes_are_refused_and_write_nothing
+Error: Class "App\Contexts\ReferenceGeography\Domain\StewardRoster" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/StewardRosterTest.php:113
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6.

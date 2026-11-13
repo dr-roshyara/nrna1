@@ -1,0 +1,41 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEF                                                               5 / 5 (100%)
+
+Time: 00:00.021, Memory: 10.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_a_merge_is_a_versioned_roster_write_and_a_replay_writes_nothing
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::recordMerge()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php:32
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_equivalence_is_transitive_across_overlapping_merges_and_a_reversal_drops_only_its_merge
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::recordMerge()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php:43
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_a_reversal_arriving_before_its_merge_neutralises_it
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::recordReversal()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php:57
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_unknown_references_are_recorded_and_a_merge_never_widens_authority
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::recordMerge()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php:67
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\MergeNoticeTest::test_a_merge_needs_two_distinct_references
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Call to undefined method App\Contexts\ReferenceGeography\Domain\StewardRoster::recordMerge()" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/MergeNoticeTest.php:76
+.
+
+ERRORS!
+Tests: 5, Assertions: 1, Errors: 4, Failures: 1.
