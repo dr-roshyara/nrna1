@@ -1,0 +1,63 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEE                                                            8 / 8 (100%)
+
+Time: 00:07.618, Memory: 22.00 MB
+
+There were 8 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_an_independent_steward_confirms_an_open_finding_as_an_appended_notice
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:96
+
+2) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_ineligible_or_dependent_confirmers_and_a_wrong_digest_are_refused_and_write_nothing
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:120
+
+3) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_materially_conflicted_steward_is_refused
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:137
+
+4) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_finding_resolved_by_confirmation_closure_or_published_correction_cannot_be_confirmed
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmationStatus" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:146
+
+5) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_status_before_the_confirmation_is_unchanged_and_after_it_is_confirmed
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:174
+
+6) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_merge_showing_the_confirmer_is_an_excluded_person_raises_a_new_finding_and_its_reversal_closes_it
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:187
+
+7) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_failure_before_commit_leaves_no_confirmation_and_no_index_row
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:207
+
+8) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_concurrent_confirmations_resolve_a_finding_once
+Error: Class "App\Contexts\ReferenceGeography\Application\ConfirmPublication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:236
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:176
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:229
+
+ERRORS!
+Tests: 8, Assertions: 0, Errors: 8, Deprecations: 1.

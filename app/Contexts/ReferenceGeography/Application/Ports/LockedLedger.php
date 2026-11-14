@@ -65,7 +65,13 @@ interface LockedLedger
     public function lifecycleFor(array $positions): array;
 
     /**
+     * G-6c-4: the second-person publication that the FINDING at $finding concerns; null if no finding is stored there.
+     */
+    public function findingConcerning(int $finding): ?PublicationOfRevision;
+
+    /**
      * G-6c-3: appends a governance notice at the next position, at the notice's roster version, with the G-4 clock rule.
+     * G-6c-4: a confirmation also indexes the confirmer with the publication its finding concerns (role confirmer).
      *
      * @throws ClockNotPastBoundary
      */

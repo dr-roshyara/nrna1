@@ -46,3 +46,7 @@
 ## G-6c-3 (2026-11-14)
 
 **No administrator action.** No migration, configuration, queue worker or schedule. The Identity notice consumer now writes D-90 notices in the same transaction as the roster entry; a failed delivery is simply redelivered by Identity.
+
+## G-6c-4 (2026-11-14)
+
+**No administrator action required.** No migration, configuration, queue or schedule. No HTTP route: production steward acts stay closed until Platform Owner authority exists.

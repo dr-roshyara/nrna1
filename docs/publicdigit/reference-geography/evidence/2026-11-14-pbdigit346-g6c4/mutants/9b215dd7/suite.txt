@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDDDDDD                                                            8 / 8 (100%)
+
+Time: 00:15.759, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_an_independent_steward_confirms_an_open_finding_as_an_appended_notice
+the confirmer is indexed with the publication, so later merges re-evaluate it (§8.4 (a))
+Failed asserting that null is not null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:104
+
+FAILURES!
+Tests: 8, Assertions: 38, Failures: 1, Deprecations: 1.

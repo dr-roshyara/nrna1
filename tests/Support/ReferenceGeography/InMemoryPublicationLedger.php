@@ -6,6 +6,7 @@ namespace Tests\Support\ReferenceGeography;
 
 use App\Contexts\ReferenceGeography\Application\Ports\LockedLedger;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationLedger;
+use App\Contexts\ReferenceGeography\Application\PublicationOfRevision;
 use App\Contexts\ReferenceGeography\Application\StoredRevision;
 use App\Contexts\ReferenceGeography\Domain\GovernanceDecision;
 use App\Contexts\ReferenceGeography\Domain\GovernanceNotice;
@@ -55,6 +56,11 @@ final class InMemoryPublicationLedger implements PublicationLedger
             public function lifecycleFor(array $positions): array
             {
                 return [];
+            }
+
+            public function findingConcerning(int $finding): ?PublicationOfRevision
+            {
+                return null;
             }
 
             public function appendNotice(GovernanceNotice $notice): int

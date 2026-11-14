@@ -16,4 +16,10 @@ enum GovernanceRefusal: string
     case ConflictDeclarationMissing = 'conflict-declaration-missing';
     /** A decider declared an organisational interest in a judgment matter (D-84a): the matter waits. */
     case MateriallyConflicted = 'materially-conflicted';
+    /** G-6c-4 (D-90, design revision 3 §7): the finding to confirm is not open (closed, confirmed, corrected, or no finding of this publication) */
+    case FindingNotOpen = 'finding-not-open';
+    /** G-6c-4: the confirmer did not name the published content version's digest */
+    case DigestMismatch = 'digest-mismatch';
+    /** G-6c-4: the confirmer is known-same as an excluded person or as the counted approver whose defect the finding records */
+    case ConfirmerNotIndependent = 'confirmer-not-independent';
 }

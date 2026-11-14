@@ -1,0 +1,60 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.038, Memory: 12.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_the_counted_approver_is_replayed_at_the_publication_roster_version
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\PublicationGovernance::publishedApproval()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:125
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_an_independent_eligible_steward_confirms_an_open_finding
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\PublicationGovernance::publishedApproval()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:136
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_the_defective_approver_and_anyone_known_same_as_them_are_refused
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::ConfirmerNotIndependent
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:145
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_the_defective_approver_alone_is_refused_even_when_not_excluded
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::ConfirmerNotIndependent
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:157
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_an_excluded_person_is_refused
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::ConfirmerNotIndependent
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:163
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_a_person_not_appointed_for_the_matter_is_refused
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\PublicationGovernance::publishedApproval()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:170
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_a_missing_declaration_and_a_material_conflict_are_refused
+Error: Call to undefined method App\Contexts\ReferenceGeography\Domain\PublicationGovernance::publishedApproval()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:176
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_a_digest_other_than_the_published_content_is_refused
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::DigestMismatch
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:186
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_only_an_open_finding_can_be_confirmed
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::FindingNotOpen
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:199
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

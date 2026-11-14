@@ -11,6 +11,7 @@ use App\Contexts\Identity\Infrastructure\LaravelCurrentAccount;
 use App\Contexts\Identity\Infrastructure\PostgresAccountDirectory;
 use App\Contexts\Identity\Infrastructure\PostgresContextPersonRefs;
 use App\Contexts\ReferenceGeography\Application\ActingPersonRefused;
+use App\Contexts\ReferenceGeography\Application\ConfirmPublication;
 use App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer;
 use App\Contexts\ReferenceGeography\Application\PlatformOwnerRequired;
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
@@ -59,7 +60,7 @@ final class ProductionWiringTest extends RefgeoPostgresTestCase
         ] as $port => $adapter) {
             $this->assertInstanceOf($adapter, app($port), $port);
         }
-        foreach ([PublishRevision::class, RevisionService::class, StewardRosterService::class, IdentityNoticeConsumer::class] as $service) {
+        foreach ([PublishRevision::class, RevisionService::class, StewardRosterService::class, IdentityNoticeConsumer::class, ConfirmPublication::class] as $service) {
             $this->assertInstanceOf($service, app($service));
         }
     }

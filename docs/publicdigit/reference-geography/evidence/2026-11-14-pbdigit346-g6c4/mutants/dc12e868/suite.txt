@@ -1,0 +1,61 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDFFFDF                                                            8 / 8 (100%)
+
+Time: 00:17.798, Memory: 24.00 MB
+
+There were 5 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_an_independent_steward_confirms_an_open_finding_as_an_appended_notice
+the next gap-free position
+Failed asserting that 9 is identical to 4.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:99
+
+2) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_finding_resolved_by_confirmation_closure_or_published_correction_cannot_be_confirmed
+confirmed already
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6603 (FindingNotOpen, 'finding-not-open'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:148
+
+3) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_status_before_the_confirmation_is_unchanged_and_after_it_is_confirmed
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\ReferenceGeography\Domain\ApprovalStatusKind Enum #6931 (Confirmed, 'confirmed')
++App\Contexts\ReferenceGeography\Domain\ApprovalStatusKind Enum #6982 (ApprovalDefective, 'approval-defective')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:180
+
+4) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_merge_showing_the_confirmer_is_an_excluded_person_raises_a_new_finding_and_its_reversal_closes_it
+a new episode: the confirmer is the counted approver (§8.4 (a))
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:191
+
+5) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_concurrent_confirmations_resolve_a_finding_once
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6603 (FindingNotOpen, 'finding-not-open'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:240
+
+FAILURES!
+Tests: 8, Assertions: 25, Failures: 5, Deprecations: 1.

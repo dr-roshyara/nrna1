@@ -1,0 +1,10 @@
+K1 a finding that is not open may be confirmed       KILLED   [unit] Tests: 289 Errors: 0  only_an_open_finding_can_be_confirmed;
+K2 the digest is not checked                         KILLED   [unit] Tests: 289 Errors: 0  a_digest_other_than_the_published_content_is_refused;
+K3 the defective approver is not checked             KILLED   [unit] Tests: 289 Errors: 0  the_defective_approver_alone_is_refused_even_when_not_e;
+K4 excluded(r) is not checked for a confirmer        KILLED   [unit] Tests: 289 Errors: 0  an_excluded_person_unrelated_to_the_defective_approver_;
+K5 the defective approver is always the original     KILLED   [unit] Tests: 289 Errors: 0  the_defective_approver_alone_is_refused_even_when_not_e;
+K6 appointment is not checked                        KILLED   [unit] Tests: 289 Errors: 0  a_person_not_appointed_for_the_matter_is_refused;
+K7 the declaration and conflict are not checked      KILLED   [unit] Tests: 289 Errors: 0  a_missing_declaration_and_a_material_conflict_are_refus;
+K8 the confirmer is not indexed                      KILLED   [pg] Tests: 8 Errors: 0  an_independent_steward_confirms_an_open_finding_as_an_a;
+K9 the confirmation is not appended (outcome only)   KILLED   [pg] Tests: 8 Errors: 0  a_finding_resolved_by_confirmation_closure_or_published;a_merge_showing_the_confirmer_is_an_excluded_person_rai;an_independent_steward_confirms_an_open_finding_as_an_a;concurrent_confirmations_resolve_a_finding_once;status_before_the_confirmation_is_unchanged_and_after_i;
+All mutants killed.

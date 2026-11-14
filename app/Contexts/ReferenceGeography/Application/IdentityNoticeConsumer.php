@@ -63,7 +63,7 @@ final class IdentityNoticeConsumer
             $ledger->recordRoster($roster);
 
             $affected = ApprovalDefects::affectedPersons($roster, $before, $w, $named($roster));
-            $candidates = array_map(fn (PublicationOfRevision $p): PublishedApproval => $this->publishedApproval($p, $roster), $ledger->publicationsInvolving($affected));
+            $candidates = array_map(fn (PublicationOfRevision $p): PublishedApproval => $this->governance->publishedApproval($p->position, $p->revision, $roster, $p->rosterVersion), $ledger->publicationsInvolving($affected));
             $lifecycles = $ledger->lifecycleFor(array_map(static fn (PublishedApproval $a): int => $a->position, $candidates));
             foreach (ApprovalDefects::evaluate($roster, $w, $candidates, $lifecycles, $change) as $notice) {
                 $ledger->appendNotice($notice);
@@ -73,15 +73,4 @@ final class IdentityNoticeConsumer
         });
     }
 
-    private function publishedApproval(PublicationOfRevision $p, StewardRoster $roster): PublishedApproval
-    {
-        $decision = $this->governance->mayPublish($p->revision, $roster, $p->rosterVersion);
-        $version = $p->revision->currentVersion();
-        if ($decision->secondPerson === null || $version === null) {
-            // an indexed publication must replay to its second person; anything else is an integrity fault: refuse the act
-            throw new \RuntimeException("Publication {$p->position}: replaying its governance at roster version {$p->rosterVersion} gives no counted approver.");
-        }
-
-        return new PublishedApproval($p->position, $p->revision->id(), $version->number, $version->digest, $decision->secondPerson, $p->revision->excludedPersons());
-    }
 }

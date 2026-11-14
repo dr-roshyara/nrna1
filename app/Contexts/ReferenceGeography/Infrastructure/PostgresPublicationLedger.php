@@ -230,8 +230,22 @@ final class PostgresPublicationLedger implements PublicationLedger
                 return $lifecycles;
             }
 
+            public function findingConcerning(int $finding): ?PublicationOfRevision
+            {
+                $row = $this->db->selectOne("SELECT p.position, p.revision_id, p.roster_version FROM refgeo_publications f
+                    JOIN refgeo_publications p ON p.position = f.concerns_position WHERE f.position = ? AND f.notice_kind = 'finding'", [$finding]);
+
+                return $row === null ? null : new PublicationOfRevision((int) $row->position, $this->revisions->get(RevisionId::fromString($row->revision_id))->revision, (int) $row->roster_version);
+            }
+
             public function appendNotice(GovernanceNotice $notice): int
             {
+                if ($notice->kind === NoticeKind::Confirmation) {
+                    // §8.4 (a): the confirmer becomes the counted approver, so later merges must find this publication
+                    // through them. Idempotent: the same person may confirm a later episode of the same publication.
+                    $publication = (int) $this->db->selectOne('SELECT concerns_position AS p FROM refgeo_publications WHERE position = ?', [$notice->concerns])->p;
+                    $this->db->table('refgeo_publication_persons')->insertOrIgnore(['position' => $publication, 'person' => $notice->confirmedBy?->value(), 'role' => 'confirmer']);
+                }
                 [$position, $recordedAt] = $this->next();
                 $this->db->insert("INSERT INTO refgeo_publications (position, kind, notice_kind, concerns_position, merge_basis, ended_by, confirmed_by, confirmed_digest, roster_version, governance_rule, recorded_at)
                     VALUES (?, 'notice', ?, ?, ?::jsonb, ?, ?, ?, ?, ?, ?::timestamptz)", [

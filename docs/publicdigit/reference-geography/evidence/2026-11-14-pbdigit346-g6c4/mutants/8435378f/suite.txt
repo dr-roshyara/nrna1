@@ -1,0 +1,29 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 289 ( 21%)
+.....................................................F......... 126 / 289 ( 43%)
+............................................................... 189 / 289 ( 65%)
+............................................................... 252 / 289 ( 87%)
+.....................................                           289 / 289 (100%)
+
+Time: 00:00.274, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_only_an_open_finding_can_be_confirmed
+closed
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #3161 (FindingNotOpen, 'finding-not-open'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:216
+
+FAILURES!
+Tests: 289, Assertions: 5096, Failures: 1.

@@ -1,0 +1,28 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 289 ( 21%)
+...............................................F............... 126 / 289 ( 43%)
+............................................................... 189 / 289 ( 65%)
+............................................................... 252 / 289 ( 87%)
+.....................................                           289 / 289 (100%)
+
+Time: 00:00.270, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_the_defective_approver_alone_is_refused_even_when_not_excluded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #3159 (ConfirmerNotIndependent, 'confirmer-not-independent'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:160
+
+FAILURES!
+Tests: 289, Assertions: 5155, Failures: 1.
