@@ -9,6 +9,7 @@ use App\Contexts\ReferenceGeography\Application\Ports\PublicationChanges;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationRecord;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
+use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
@@ -100,7 +101,8 @@ final class PostgresGeographyReadSource implements GeographyReadSource
     /** G-5c: the publication rows in (after, upTo], ascending, with their claims' slot keys and values (no mapping). */
     public function publicationsBetween(int $after, int $upTo, int $limit): array
     {
-        $rows = $this->db->select('SELECT position, recorded_at::text AS recorded_at, kind, revision_id::text AS revision_id, content_version, governance_rule
+        $rows = $this->db->select('SELECT position, recorded_at::text AS recorded_at, kind, revision_id::text AS revision_id, content_version, governance_rule,
+                notice_kind, concerns_position, corrects_position
             FROM refgeo_publications WHERE position > ? AND position <= ? ORDER BY position LIMIT ?', [$after, $upTo, $limit]);
         if ($rows === []) {
             return [];
@@ -112,7 +114,17 @@ final class PostgresGeographyReadSource implements GeographyReadSource
         }
 
         return array_map(static fn (object $r): PublicationChanges => new PublicationChanges((int) $r->position, $r->recorded_at, $r->kind, $r->revision_id,
-            $r->content_version === null ? null : (int) $r->content_version, $r->governance_rule, $changes[(int) $r->position] ?? []), $rows);
+            $r->content_version === null ? null : (int) $r->content_version, $r->governance_rule, $changes[(int) $r->position] ?? [],
+            $r->notice_kind, $r->concerns_position === null ? null : (int) $r->concerns_position, $r->corrects_position === null ? null : (int) $r->corrects_position), $rows);
+    }
+
+    public function findingLifecycle(int $publication, int $p): ?FindingLifecycle
+    {
+        if ($publication > $p || $this->db->selectOne("SELECT 1 AS x FROM refgeo_publications WHERE position = ? AND kind = 'revision'", [$publication]) === null) {
+            return null;
+        }
+
+        return PostgresFindingLifecycles::read($this->db, [$publication], $p)[$publication];
     }
 
     /** G-5b: every published slot of the kind (names, codes), each history through the accepted atlas mapping. */

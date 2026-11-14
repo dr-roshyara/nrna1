@@ -6,6 +6,7 @@ namespace App\Contexts\ReferenceGeography\Application;
 
 use App\Contexts\ReferenceGeography\Application\Ports\GeographyReadSource;
 use App\Contexts\ReferenceGeography\Application\Ports\TimeBoundary;
+use App\Contexts\ReferenceGeography\Application\Published\ApprovalHistory;
 use App\Contexts\ReferenceGeography\Application\Published\GeographyReadModel;
 use App\Contexts\ReferenceGeography\Application\Published\Knowledge;
 use App\Contexts\ReferenceGeography\Application\Published\KnowledgeNotAvailable;
@@ -161,8 +162,21 @@ final class PublishedGeography implements GeographyReadModel
             $summary = PublicationSummary::of($c->changes);
 
             return new PublicationEntry($c->position, $c->recordedAt, $c->kind, $c->revisionId, $c->contentVersion, $c->governanceRule,
-                $summary->kinds, $summary->subjects, $summary->merges);
+                $summary->kinds, $summary->subjects, $summary->merges, $c->noticeKind, $c->concernsPosition, $c->correctsPosition);
         }, $this->source->publicationsBetween($afterPosition, $p, $limit));
+    }
+
+    public function approvalStatus(int $position, Knowledge $knowledge): ?ApprovalHistory
+    {
+        $p = $this->checked($knowledge->position);
+        $lifecycle = $this->source->findingLifecycle($position, $p);
+        if ($lifecycle === null) {
+            return null;
+        }
+        $status = $lifecycle->statusAt($p);   // FindingLifecycle: the one definition (design §8.1, §10)
+
+        return new ApprovalHistory($position, $p, $status->kind->value, $status->correctedAt,
+            array_map(static fn (array $e): array => ['position' => $e['position'], 'event' => $e['event']], $status->history));
     }
 
     /** @return list<string> every place below the given one in the scheme at t (transitive), as known at the knowledge */

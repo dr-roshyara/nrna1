@@ -1,0 +1,43 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:14.582, Memory: 22.00 MB
+
+There were 5 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_status_at_each_knowledge_position_through_finding_and_confirmation
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::approvalStatus()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:118
+
+2) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_closure_correction_and_a_new_episode_never_rewrite_an_earlier_answer
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::approvalStatus()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:137
+
+3) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_only_revision_publications_known_at_the_knowledge_have_a_status
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::approvalStatus()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:105
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:155
+
+4) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_the_feed_carries_the_governance_relations_and_no_persons
+ErrorException: Undefined property: App\Contexts\ReferenceGeography\Application\Published\PublicationEntry::$noticeKind
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:173
+
+5) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_reading_never_writes
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::approvalStatus()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:195
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 5, Deprecations: 1.

@@ -18,6 +18,7 @@ use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\ClaimId;
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
 use App\Contexts\ReferenceGeography\Domain\ClaimValue;
+use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
@@ -140,6 +141,12 @@ final class PublishedGeographyTest extends TestCase
                 return array_values(array_filter($this->slots, static fn (SlotHistory $h): bool => $h->slot()->kind() === $kind && $h->latest($p) !== null));
             }
 
+            public function findingLifecycle(int $publication, int $p): ?FindingLifecycle
+            {
+                // G-6c-6: no D-90 notices in this fixture; every revision publication ≤ p is plainly approved
+                return $publication >= 1 && $publication <= min($p, $this->committed) ? FindingLifecycle::of($publication, [], []) : null;
+            }
+
             public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array
             {
                 $out = [];
@@ -218,6 +225,7 @@ final class PublishedGeographyTest extends TestCase
             static fn (PublishedGeography $g) => $g->resolve(self::OLD_ID, $forged),
             static fn (PublishedGeography $g) => $g->lookup('Nepal', '2020-01-01', $forged),
             static fn (PublishedGeography $g) => $g->publicationsSince(0, $forged),
+            static fn (PublishedGeography $g) => $g->approvalStatus(1, $forged),   // G-6c-6
         ] as $i => $query) {
             try {
                 $query(self::geography());

@@ -57,4 +57,13 @@ interface GeographyReadModel
      * @throws \InvalidArgumentException for a negative position or a limit outside 1..500
      */
     public function publicationsSince(int $afterPosition, Knowledge $knowledge, int $limit = 100): array;
+
+    /**
+     * D-90 (G-6c-6): the approval status and history of the revision publication at $position, as known at the
+     * knowledge (entries at positions ≤ it only). Null if no revision publication at that position is known then (not
+     * yet published, or a notice).
+     *
+     * @throws KnowledgeNotAvailable beyond the committed position
+     */
+    public function approvalStatus(int $position, Knowledge $knowledge): ?ApprovalHistory;
 }

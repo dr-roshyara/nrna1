@@ -1,0 +1,17 @@
+<?php
+
+// FIXTURE (never loaded): an infrastructure class (rule 4 lets it touch refgeo_ tables) that writes a D-90 notice and a
+// person-index row directly, around the one locked write path. Rule 7 must catch it.
+
+namespace App\Contexts\ReferenceGeography\Infrastructure;
+
+use Illuminate\Support\Facades\DB;
+
+final class RogueNoticeWriter
+{
+    public function confirmQuietly(int $finding, string $person): void
+    {
+        DB::table('refgeo_publications')->insert(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $finding, 'confirmed_by' => $person]);
+        DB::insert("INSERT INTO refgeo_publication_persons (position, person, role) VALUES (?, ?, 'confirmer')", [$finding, $person]);
+    }
+}

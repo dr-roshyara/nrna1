@@ -1,0 +1,4 @@
+R1 the history reads entries beyond the knowledge              [pg:GovernanceHistoryReadTest] tests:5    SURVIVED (equivalent: the status is also bounded by statusAt(k) (two defences; R12 removes both))  
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 0
+R2 the status is taken as of everything known                  [pg:GovernanceHistoryReadTest] tests:5    SURVIVED (equivalent: the SQL also reads only entries <= k (two defences; R12 removes both))  
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 0

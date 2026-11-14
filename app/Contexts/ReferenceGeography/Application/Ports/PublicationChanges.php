@@ -18,6 +18,9 @@ final readonly class PublicationChanges
         public ?int $contentVersion,
         public string $governanceRule,
         public array $changes,
+        public ?string $noticeKind = null,
+        public ?int $concernsPosition = null,
+        public ?int $correctsPosition = null,
     ) {
     }
 }

@@ -54,3 +54,7 @@
 ## G-6c-5 (2026-11-14)
 
 **No administrator action required.** No migration: `corrects_position` and its guards exist since G-6c-1. No configuration, queue, schedule or HTTP route.
+
+## G-6c-6 (2026-11-14)
+
+**No administrator action required.** No migration, configuration or schedule. The feed gains three optional fields; existing consumers need no change.

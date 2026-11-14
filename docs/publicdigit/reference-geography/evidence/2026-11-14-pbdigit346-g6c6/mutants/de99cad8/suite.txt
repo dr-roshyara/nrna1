@@ -1,0 +1,56 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............................................F................  63 / 299 ( 21%)
+.......................................................F....... 126 / 299 ( 42%)
+....F.......................................................... 189 / 299 ( 63%)
+............................................................... 252 / 299 ( 84%)
+...............................................                 299 / 299 (100%)
+
+Time: 00:00.367, Memory: 16.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_b9_after_a_confirmation_the_confirmer_is_the_counted_approver
+X's defect is resolved; Y is independent
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => App\Contexts\ReferenceGeography\Domain\GovernanceNotice Object #629 (
++        'kind' => App\Contexts\ReferenceGeography\Domain\NoticeKind Enum #717 (Finding, 'finding'),
++        'concerns' => 5,
++        'rosterVersion' => 1,
++        'mergeBasis' => Array &1 [
++            0 => 'm1',
++        ],
++        'endedBy' => null,
++        'confirmedBy' => null,
++        'digest' => null,
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:132
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_the_defective_approver_alone_is_refused_even_when_not_excluded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #3253 (ConfirmerNotIndependent, 'confirmer-not-independent'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:160
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_the_counted_approver_is_the_original_before_and_the_confirmer_after_a_confirmation
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:71
+
+FAILURES!
+Tests: 299, Assertions: 5128, Failures: 3.

@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFDDDDDDD                                                           9 / 9 (100%)
+
+Time: 00:17.341, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_ineligible_or_dependent_confirmers_and_a_wrong_digest_are_refused_and_write_nothing
+a person not appointed
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #2733 (NotAppointed, 'not-appointed'),
+-    1 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6673 (ConflictDeclarationMissing, 'conflict-declaration-missing'),
++    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6673 (ConflictDeclarationMissing, 'conflict-declaration-missing'),
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:133
+
+FAILURES!
+Tests: 9, Assertions: 37, Failures: 1, Deprecations: 1.

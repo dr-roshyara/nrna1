@@ -16,6 +16,12 @@ final readonly class PublicationEntry
      * @param list<string> $claimKinds the kinds of fact it published (sorted)
      * @param list<string> $subjects the places it concerns (sorted unit ids)
      * @param list<array{identity: string, canonical: ?string}> $merges identities merged (canonical null: a reversal)
+     * @param string|null $noticeKind G-6c-6 (D-90): finding | confirmation | closure for a notice; null for a revision
+     * @param int|null $concernsPosition a notice's referent: the publication a finding flags, the finding a
+     *   confirmation or closure resolves
+     * @param int|null $correctsPosition a revision published as a full-coverage correction of that publication
+     *   (it resolves that publication's open finding)
+     * The three are additive and optional, so existing consumers are unaffected; never persons, never merge bases.
      */
     public function __construct(
         public int $position,
@@ -27,6 +33,9 @@ final readonly class PublicationEntry
         public array $claimKinds,
         public array $subjects,
         public array $merges,
+        public ?string $noticeKind = null,
+        public ?int $concernsPosition = null,
+        public ?int $correctsPosition = null,
     ) {
     }
 }

@@ -1,0 +1,4 @@
+C3 the lifecycles are ignored                                  [pg:IdentityNoticeImpactTest] tests:10   KILLED  a1_a_merge_after_publication_writes_its_findi;a2_a_chain_reversal_in_the_middle_closes_t
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0
+R12 both bounds removed (SQL and statusAt)                     [pg:GovernanceHistoryReadTest] tests:5    KILLED  closure_correction_and_a_new_episode_never_re;status_at_each_knowledge_position_through
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

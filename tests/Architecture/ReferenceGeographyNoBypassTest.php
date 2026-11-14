@@ -49,6 +49,15 @@ final class ReferenceGeographyNoBypassTest extends TestCase
         '5 aggregate' => ['/ReferenceGeography\\\\Domain\\\\Revision\b|\bRevision::(prepare|fromSnapshot)\(/', [
             self::CTX . 'Domain/', self::CTX . 'Application/', self::CTX . 'Infrastructure/PostgresRevisionRepository.php', self::CTX . 'Infrastructure/PostgresPublicationLedger.php',
         ]],
+        // G-6c-6 (design revision 3 §11): D-90 notices and the publication-person index are written ONLY through the
+        // locked ledger: a WRITE of refgeo_publications or refgeo_publication_persons (SQL or query builder), or an
+        // appendNotice call, anywhere else. Rule 4 lets every Infrastructure class touch refgeo_ tables, so without this
+        // rule an adapter could write a confirmation around the lock and the governance checks. Reads stay free.
+        '7 notice writes' => ['/INSERT\s+INTO\s+refgeo_publication(s|_persons)\b|[\'"]refgeo_publication(s|_persons)[\'"]\s*\)\s*->\s*(insert\w*|upsert|update\w*|delete)\s*\(|\bappendNotice\b/i', [
+            self::CTX . 'Application/Ports/LockedLedger.php', self::CTX . 'Application/IdentityNoticeConsumer.php', self::CTX . 'Application/ConfirmPublication.php',
+            self::CTX . 'Infrastructure/PostgresPublicationLedger.php',
+            'database/migrations/',   // the schema and the idempotent person-index backfill (G-6c-1); not seeders or factories
+        ]],
     ];
 
     private const DELIVERY = ['app/Http/', 'app/Console/', 'app/Jobs/', 'app/Listeners/', 'routes/'];
@@ -115,8 +124,11 @@ final class ReferenceGeographyNoBypassTest extends TestCase
             '6 delivery: app/Http/Controllers/RoguePublishController.php.fixture',
             '6 delivery: app/Jobs/RogueAppointJob.php.fixture',
             '6 delivery: routes/rogue.php.fixture',
+            '7 notice writes: app/Contexts/ReferenceGeography/Application/RogueFindingService.php.fixture',
+            '7 notice writes: app/Contexts/ReferenceGeography/Infrastructure/RogueNoticeWriter.php.fixture',
+            '7 notice writes: app/Services/RogueSqlService.php.fixture',   // it inserts into refgeo_publications directly
         ], $found);
-        foreach (['1 ledger', '2 revision repository', '3 roster store', '4 tables', '5 aggregate', '6 delivery'] as $rule) {
+        foreach (['1 ledger', '2 revision repository', '3 roster store', '4 tables', '5 aggregate', '6 delivery', '7 notice writes'] as $rule) {
             $this->assertNotEmpty(array_filter($found, static fn (string $f): bool => str_starts_with($f, $rule . ':')), "rule {$rule} must detect its bypass");
         }
     }

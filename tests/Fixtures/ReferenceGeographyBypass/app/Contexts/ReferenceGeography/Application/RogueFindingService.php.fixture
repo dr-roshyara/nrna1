@@ -1,0 +1,14 @@
+<?php
+
+// FIXTURE (never loaded): an application service, not one of the authorised notice writers, that appends a notice
+// through a ledger handle it was given. Rule 7 must catch it.
+
+namespace App\Contexts\ReferenceGeography\Application;
+
+final class RogueFindingService
+{
+    public function close(object $ledger, object $notice): int
+    {
+        return $ledger->appendNotice($notice);
+    }
+}

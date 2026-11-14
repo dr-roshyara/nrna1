@@ -136,7 +136,7 @@
 3. **Storage:** `refgeo_objections` (CHECKs, recorder ≠ assessor or decider, one objection per revision).
 4. **Mutation:** M1 to M8. **When a mutant "survives", check the run executed tests** (see the G-6b evidence: a driver defect once ran none).
 
-**G-6c: D-90 governance notices (design revision 3 ACCEPTED 2026-11-14: full coverage; re-evaluate confirmers). Steps 1 to 5 done (guides 26 to 30); step 6 follows.**
+**G-6c: D-90 governance notices (design revision 3 ACCEPTED 2026-11-14: full coverage; re-evaluate confirmers). All six steps done (guides 26 to 31); awaiting the Principal's acceptance of G-6c.**
 - **Design:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g6c-d90-notices-design.md` §13 gives the six implementation steps.
 - **Before writing any code:** confirm the Principal accepted revision 2.
 - **Then, per step,** RED → GREEN → guide → commit, in this order:
@@ -145,7 +145,7 @@
   3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`): **done** (guide 28). The roster entry is the checkpoint; the counted approver is replayed (§17); no administrator action;
   4. `ConfirmPublication`; **Done** (guide 29); no administrator action.
   5. the correction link; **Done** (guide 30); no administrator action.
-  6. the read model, feed fields, no-bypass rule and mutation run.
+  6. the read model, feed fields, no-bypass rule and mutation run. **Done** (guide 31); no administrator action.
 - **Invariants that must hold at every step:**
   - one lock and one transaction for a merge and its findings;
   - the checkpoint is the roster entry;

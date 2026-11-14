@@ -1,0 +1,40 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 299 ( 21%)
+..........................................................F...F 126 / 299 ( 42%)
+............................................................... 189 / 299 ( 63%)
+............................................................... 252 / 299 ( 84%)
+...............................................                 299 / 299 (100%)
+
+Time: 00:00.272, Memory: 16.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_a_person_not_appointed_for_the_matter_is_refused
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #3261 (NotAppointed, 'not-appointed'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:187
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingConfirmationTest::test_a_matter_reviewer_for_this_matter_may_confirm_and_one_for_another_matter_may_not
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #3261 (NotAppointed, 'not-appointed'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingConfirmationTest.php:247
+
+FAILURES!
+Tests: 299, Assertions: 5150, Failures: 2.

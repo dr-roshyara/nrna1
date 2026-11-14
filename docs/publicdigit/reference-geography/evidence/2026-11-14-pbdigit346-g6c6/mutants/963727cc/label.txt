@@ -1,0 +1,1 @@
+R3 approvalStatus does not check the knowledge

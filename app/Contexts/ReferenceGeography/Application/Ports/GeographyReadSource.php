@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\ReferenceGeography\Application\Ports;
 
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
+use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
 use App\Contexts\ReferenceGeography\Domain\SlotHistory;
 use App\Contexts\ReferenceGeography\Domain\SlotKey;
@@ -41,4 +42,10 @@ interface GeographyReadSource
 
     /** @return list<ReferenceUnitId> units whose containment in the scheme ever named the parent, at positions ≤ p */
     public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array;
+
+    /**
+     * G-6c-6 (D-90): the lifecycle of the revision publication at $publication, from entries at positions ≤ p only;
+     * null if there is no revision publication at that position ≤ p.
+     */
+    public function findingLifecycle(int $publication, int $p): ?FindingLifecycle;
 }

@@ -201,35 +201,7 @@ final class PostgresPublicationLedger implements PublicationLedger
 
             public function lifecycleFor(array $positions): array
             {
-                if ($positions === []) {
-                    return [];
-                }
-                $notices = $corrections = [];
-                $findings = $this->db->table('refgeo_publications')->where('notice_kind', 'finding')->whereIn('concerns_position', $positions)
-                    ->orderBy('position')->get(['position', 'concerns_position', 'roster_version', $this->db->raw('merge_basis::text AS merge_basis')]);
-                $publicationOf = [];
-                foreach ($findings as $f) {
-                    $publicationOf[(int) $f->position] = (int) $f->concerns_position;
-                    $notices[(int) $f->concerns_position][] = [(int) $f->position, GovernanceNotice::finding((int) $f->concerns_position, json_decode($f->merge_basis, true, 4, JSON_THROW_ON_ERROR), (int) $f->roster_version)];
-                }
-                if ($publicationOf !== []) {
-                    foreach ($this->db->table('refgeo_publications')->whereIn('notice_kind', ['confirmation', 'closure'])->whereIn('concerns_position', array_keys($publicationOf))
-                        ->orderBy('position')->get(['position', 'notice_kind', 'concerns_position', 'roster_version', 'ended_by', 'confirmed_by', 'confirmed_digest']) as $r) {
-                        $finding = (int) $r->concerns_position;
-                        $notices[$publicationOf[$finding]][] = [(int) $r->position, $r->notice_kind === 'closure'
-                            ? GovernanceNotice::closure($finding, $r->ended_by, (int) $r->roster_version)
-                            : GovernanceNotice::confirmation($finding, PersonReference::fromString(trim($r->confirmed_by)), $r->confirmed_digest, (int) $r->roster_version)];
-                    }
-                }
-                foreach ($this->db->table('refgeo_publications')->where('kind', 'revision')->whereIn('corrects_position', $positions)->get(['position', 'corrects_position']) as $c) {
-                    $corrections[(int) $c->corrects_position][] = (int) $c->position;
-                }
-                $lifecycles = [];
-                foreach ($positions as $p) {
-                    $lifecycles[$p] = FindingLifecycle::of($p, $notices[$p] ?? [], $corrections[$p] ?? []);
-                }
-
-                return $lifecycles;
+                return PostgresFindingLifecycles::read($this->db, $positions);   // everything committed (under the lock)
             }
 
             public function claimsPublishedAt(int $position): array

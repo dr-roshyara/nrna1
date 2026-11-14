@@ -1,0 +1,46 @@
+D1 affected persons from AFTER components only                 [unit]     tests:299  SURVIVED (equivalent: before ⊆ after components of the named persons (design §18; A8b))  
+D2 a published correction does not resolve a finding           [unit]     tests:299  KILLED  a_correction_needs_an_open_finding_and_full_c;each_resolution_closes_the_finding_from_its_p;only_an_open_finding_can_be_confirmed;
+D3 the confirmer never becomes the counted approver            [unit]     tests:299  KILLED  b9_after_a_confirmation_the_confirmer_is_the_;the_counted_approver_is_the_original_before_a;the_defective_approver_alone_is_refused_even_;
+D4 a corrected publication is still evaluated                  [unit]     tests:299  KILLED  a_corrected_publication_is_no_longer_evaluate;
+D5 any open finding is closed (another path ignored)           [unit]     tests:299  KILLED  a3_a4_two_paths_one_reversed_keeps_the_findin;b7_no_second_finding_while_one_is_open_and_b8;
+D6 the status reads corrections beyond k                       [unit]     tests:299  KILLED  status_at_each_knowledge_position_is_reproduc;
+D7 a duplicate finding while one is open                       [unit]     tests:299  KILLED  a3_a4_two_paths_one_reversed_keeps_the_findin;b7_no_second_finding_while_one_is_open_and_b8;
+C1 the person index is not written at publication              [pg:IdentityNoticeImpactTest] tests:10   KILLED  a10_a_failure_anywhere_in_the_act_leaves_neit;a1_a_merge_after_publication_writes_its_findi;a2_a_chain_reversal_in_the_middle_closes_the_;a3_a4_a_reversal_of_one_path_keeps_the_findin;a6_a7_the_index_holds_every_approver_and_excl;a8_the_bounded_impact_agrees_with_a_full_scan;a9_a_merge_waits_for_a_publication_in_progres;
+C2 the counted approver is the last approval, not the replay   [pg:IdentityNoticeImpactTest] tests:10   KILLED  a6_a7_the_index_holds_every_approver_and_excl;
+sh: line 1: cd: /home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1: No such file or directory
+grep: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/g6c6/mutants/0e6b11cd/suite.txt: No such file or directory
+C3 the lifecycles are ignored                                  [pg:IdentityNoticeImpactTest] tests:?    KILLED  
+C4 a reversal names no persons                                 [pg:IdentityNoticeImpactTest] tests:10   KILLED  a1_a_merge_after_publication_writes_its_findi;a2_a_chain_reversal_in_the_middle_closes_the_;a3_a4_a_reversal_of_one_path_keeps_the_findin;a8_the_bounded_impact_agrees_with_a_full_scan;
+C5 the roster entry (checkpoint) is not recorded               [pg:IdentityNoticeImpactTest] tests:10   KILLED  a10_a_failure_anywhere_in_the_act_leaves_neit;a1_a_merge_after_publication_writes_its_findi;a2_a_chain_reversal_in_the_middle_closes_the_;a3_a4_a_reversal_of_one_path_keeps_the_findin;a5_redelivery_writes_nothing_and_a_reversal_b;a8_the_bounded_impact_agrees_with_a_full_scan;a9_a_publication_waits_for_a_merge_in_progres;
+C6 resolutions are not read into the lifecycle                 [pg:IdentityNoticeImpactTest] tests:10   KILLED  a8_the_bounded_impact_agrees_with_a_full_scan;
+K1 a finding that is not open may be confirmed                 [unit]     tests:299  KILLED  only_an_open_finding_can_be_confirmed;
+K2 the digest is not checked                                   [unit]     tests:299  KILLED  a_digest_other_than_the_published_content_is_;the_digest_of_an_earlier_submitted_content_ve;
+K3 the defective approver is not checked                       [unit]     tests:299  KILLED  the_defective_approver_alone_is_refused_even_;
+K4 excluded(r) is not checked for a confirmer                  [unit]     tests:299  KILLED  an_excluded_person_unrelated_to_the_defective;
+K5 the defective approver is always the original               [unit]     tests:299  KILLED  the_defective_approver_alone_is_refused_even_;
+K6 appointment is not checked                                  [unit]     tests:299  KILLED  a_matter_reviewer_for_this_matter_may_confirm;a_person_not_appointed_for_the_matter_is_refu;
+K7 the declaration and conflict are not checked                [unit]     tests:299  KILLED  a_missing_declaration_and_a_material_conflict;
+K8 the confirmer is not indexed                                [pg:ConfirmPublicationTest] tests:9    KILLED  an_independent_steward_confirms_an_open_findi;
+K9 the confirmation is not appended (outcome only)             [pg:ConfirmPublicationTest] tests:9    KILLED  a_finding_resolved_by_confirmation_closure_or;a_merge_showing_the_confirmer_is_an_excluded_;an_independent_steward_confirms_an_open_findi;concurrent_confirmations_resolve_a_finding_on;status_before_the_confirmation_is_unchanged_a;
+L1 coverage checks the first flagged claim only                [unit]     tests:299  KILLED  every_flagged_claim_must_be_covered_in_its_ow;
+L2 the slot is ignored                                         [unit]     tests:299  KILLED  every_flagged_claim_must_be_covered_in_its_ow;
+L3 an open-ended fact is covered by a finite replacement       [unit]     tests:299  KILLED  an_open_ended_fact_needs_an_open_ended_replac;
+L4 a gap is tolerated                                          [unit]     tests:299  KILLED  a_correction_needs_an_open_finding_and_full_c;a_gap_of_one_day_is_not_coverage;starting_too_late_or_ending_too_early_is_not_;
+L5 the exclusive end is treated as inclusive                   [unit]     tests:299  KILLED  one_replacement_covering_the_whole_interval;several_adjacent_replacements_cover_jointly;starting_too_late_or_ending_too_early_is_not_;
+L6 no open finding is needed                                   [pg:CorrectionLinkTest] tests:7    KILLED  a_correction_link_needs_an_open_finding_on_a_;concurrent_resolutions_resolve_the_finding_on;
+L7 coverage is not consulted at publication                    [pg:CorrectionLinkTest] tests:7    KILLED  a_correction_link_needs_an_open_finding_on_a_;a_partial_correction_is_refused_as_a_whole_an;concurrent_resolutions_resolve_the_finding_on;
+L8 the link is not written                                     [pg:CorrectionLinkTest] tests:7    KILLED  a_correction_link_needs_an_open_finding_on_a_;a_fully_covering_published_correction_resolve;concurrent_resolutions_resolve_the_finding_on;several_adjacent_claims_may_cover_jointly;with_several_findings_the_open_one_is_resolve;
+R1 the history reads entries beyond the knowledge              [pg:GovernanceHistoryReadTest] tests:5    SURVIVED  
+R2 the status is taken as of everything known                  [pg:GovernanceHistoryReadTest] tests:5    SURVIVED  
+R3 approvalStatus does not check the knowledge                 [unit]     tests:299  KILLED  a_fabricated_position_beyond_the_boundary_is_;
+R4 a notice position gets an approval status                   [pg:GovernanceHistoryReadTest] tests:5    KILLED  only_revision_publications_known_at_the_knowl;
+R5 the feed drops the governance relations                     [pg:GovernanceHistoryReadTest] tests:5    KILLED  the_feed_carries_the_governance_relations_and;
+K1 (db) a finding that is not open may be confirmed            [pg:ConfirmPublicationTest] tests:9    KILLED+ERRORS (2: Illuminate\Database\UniqueConstraintViolationException)  a_finding_resolved_by_confirmation_closure_or;concurrent_confirmations_resolve_a_finding_on;
+K2 (db) the digest is not checked                              [pg:ConfirmPublicationTest] tests:9    KILLED  ineligible_or_dependent_confirmers_and_a_wron;
+K3 (db) the defective approver is not checked                  [pg:ConfirmPublicationTest] tests:9    SURVIVED (equivalent: G-6c-3 invariant: an open finding's defective approver is known-same as an excluded person now)  
+K4 (db) excluded(r) is not checked for a confirmer             [pg:ConfirmPublicationTest] tests:9    KILLED  a_second_preparer_unrelated_to_the_approver_i;
+K5 (db) the defective approver is always the original          [pg:ConfirmPublicationTest] tests:9    SURVIVED (equivalent: same invariant)  
+K6 (db) appointment is not checked                             [pg:ConfirmPublicationTest] tests:9    KILLED  ineligible_or_dependent_confirmers_and_a_wron;
+K7 (db) the declaration and conflict are not checked           [pg:ConfirmPublicationTest] tests:9    KILLED  a_materially_conflicted_steward_is_refused;ineligible_or_dependent_confirmers_and_a_wron;
+survivors: 5; unexpected (not argued equivalent, site missing or unparsable): 2
+driver exit 1

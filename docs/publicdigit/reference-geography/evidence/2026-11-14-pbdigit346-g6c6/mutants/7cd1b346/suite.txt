@@ -1,0 +1,52 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFDDD                                                               5 / 5 (100%)
+
+Time: 00:15.568, Memory: 24.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_status_at_each_knowledge_position_through_finding_and_confirmation
+before the finding
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'approved',
+-    1 => Array &1 [],
++    0 => 'confirmed',
++    1 => Array &1 [
++        0 => Array &2 [
++            'position' => 3,
++            'event' => 'finding',
++        ],
++        1 => Array &3 [
++            'position' => 4,
++            'event' => 'confirmation',
++        ],
++    ],
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:118
+
+2) Tests\Feature\Contexts\ReferenceGeography\GovernanceHistoryReadTest::test_closure_correction_and_a_new_episode_never_rewrite_an_earlier_answer
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'approval-defective',
+-    1 => 'finding-closed',
++    1 => 'approval-defective',
+     2 => 'approval-defective',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceHistoryReadTest.php:140
+
+FAILURES!
+Tests: 5, Assertions: 13, Failures: 2, Deprecations: 1.

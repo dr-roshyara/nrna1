@@ -1,0 +1,40 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFDDF                                                             7 / 7 (100%)
+
+Time: 00:16.922, Memory: 24.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_correction_link_needs_an_open_finding_on_a_revision_publication
+never flagged
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6061 (CorrectionWithoutOpenFinding, 'correction-without-open-finding'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:172
+
+2) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_concurrent_resolutions_resolve_the_finding_once
+the later correction finds the finding resolved
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6061 (CorrectionWithoutOpenFinding, 'correction-without-open-finding'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:246
+
+FAILURES!
+Tests: 7, Assertions: 30, Failures: 2, Deprecations: 1.

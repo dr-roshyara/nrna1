@@ -1,0 +1,1 @@
+C2 the counted approver is the last approval, not the replay
