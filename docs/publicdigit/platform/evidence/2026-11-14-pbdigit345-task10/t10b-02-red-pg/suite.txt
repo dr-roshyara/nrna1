@@ -1,0 +1,115 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:14.009, Memory: 26.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_production_wiring_binds_the_four_ports_to_the_routed_adapters
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisationPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:171
+
+2) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_c2_is_complete_for_the_routed_organisation_inside_a_real_e2_job
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:154
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:183
+
+3) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_cross_organisation_while_routed_to_a_and_outside_any_routed_operation
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:154
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:197
+
+4) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_source_not_ledger_once_the_routed_organisation_stops_being_registry_routable
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:154
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:207
+
+5) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_consistency_a_flip_after_m2_and_before_m3_affects_the_next_call_never_another_database
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:154
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:223
+
+6) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_a_registry_that_cannot_answer_raises_and_is_never_a_refusal
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:154
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:261
+
+7) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t12_the_bound_slice1_behaviours_on_a_real_organisation_database
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:277
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:275
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7, Deprecations: 1.

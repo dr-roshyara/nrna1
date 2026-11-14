@@ -1,0 +1,32 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:00.017, Memory: 14.02 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_outside_a_routed_operation_nothing_is_current_routed_or_connectable
+Error: Class "App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:47
+
+2) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_inside_a_routed_operation_only_its_organisation_is_current_routed_and_connectable
+Error: Class "App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:47
+
+3) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_the_registry_is_re_asked_on_every_call
+Error: Class "App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:47
+
+4) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_a_registry_that_cannot_answer_fails_closed_by_an_exception
+Error: Class "App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:47
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4.

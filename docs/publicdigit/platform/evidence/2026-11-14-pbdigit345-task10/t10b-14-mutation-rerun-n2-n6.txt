@@ -1,0 +1,4 @@
+N2 the registry is not re-asked (db)                           [pg-platform:MembershipThroughRoutingTest] tests:7    KILLED  a_registry_that_cannot_answer_raises_and_is_n;consistency_a_flip_after_m2_and_before_m3_aff;t7_source_not_ledger_once_the_routed_organisa;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0
+N6 M-2 always answers ledger                                   [pg-platform:MembershipThroughRoutingTest] tests:7    KILLED  a_registry_that_cannot_answer_raises_and_is_n;consistency_a_flip_after_m2_and_before_m3_aff;t7_source_not_ledger_once_the_routed_organisa;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

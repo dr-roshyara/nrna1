@@ -109,6 +109,20 @@ class MembershipServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // PBDIGIT-345 task 10 (routing design §3.5 M-1 … M-3; D-233): the ledger's C2 ports in production, over
+        // Platform's PUBLISHED routing contract only. Outside a routed operation: no working organisation, never a
+        // ledger, no connection (fail closed); nothing central or legacy.
+        $this->app->bind(\App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisationPort::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\RoutedWorkingOrganisation::class);
+        $this->app->bind(\App\Contexts\Membership\Application\Organisational\Ports\MembershipSourceOfTruthPort::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\RegistryRoutedLedgerSource::class);
+        $this->app->bind(\App\Contexts\Membership\Application\Organisational\Ports\LedgerBoundaryPort::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\RoutedLedgerBoundary::class);
+        $this->app->bind(\App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\RoutedMemberRepository::class);
+        $this->app->bind(\App\Contexts\Membership\Infrastructure\Organisational\LedgerClockReader::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\PostgresLedgerClockReader::class);
+
         // Read model adapters
         $this->app->bind(
             CommitteeMembershipReadModelAdapter::class,

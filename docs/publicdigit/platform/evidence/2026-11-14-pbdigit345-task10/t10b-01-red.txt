@@ -1,0 +1,56 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEFFF.                                                              6 / 6 (100%)
+
+Time: 00:00.234, Memory: 20.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\RoutedMembershipAdaptersTest::test_m1_the_working_organisation_is_the_routed_one_or_none
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\RoutedWorkingOrganisation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/RoutedMembershipAdaptersTest.php:52
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\RoutedMembershipAdaptersTest::test_m2_a_ledger_only_when_the_registry_routes_it_now
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\RegistryRoutedLedgerSource" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/RoutedMembershipAdaptersTest.php:59
+
+--
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\RoutedMembershipAdaptersTest::test_m2_a_registry_that_cannot_answer_is_never_read_as_not_a_ledger
+Failed asserting that exception of type "Error" matches expected exception "RuntimeException". Message was: "Class "App\Contexts\Membership\Infrastructure\Organisational\RegistryRoutedLedgerSource" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/RoutedMembershipAdaptersTest.php:67
+.
+
+2) Tests\Architecture\MembershipPlatformBoundaryTest::test_membership_uses_only_platforms_published_routing_types_and_only_from_its_infrastructure
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Contexts/Membership/Application/Jobs/InstallMembershipModule.php: App\Contexts\Platform\Application\Services\ContextInstaller',
++    1 => 'app/Contexts/Membership/Infrastructure/Http/Controllers/Desktop/MemberImportController.php: App\Contexts\Platform\Domain\Ports\InstallationTrackerInterface',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipPlatformBoundaryTest.php:66
+
+3) Tests\Architecture\MembershipPlatformBoundaryTest::test_t14_part2_m2_has_no_other_true_path
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     'FailClosedMembershipSourceOfTruth' => 'return false;',
+-    'RegistryRoutedLedgerSource' => 'return $this->routed->isRegistryRouted($organisation);',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipPlatformBoundaryTest.php:80
+
+ERRORS!
+Tests: 6, Assertions: 4, Errors: 2, Failures: 3.

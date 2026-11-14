@@ -1,0 +1,16 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................................................................. 65 / 93 ( 69%)
+..............F.............                                      93 / 93 (100%)
+
+Time: 00:00.038, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_a_registry_that_cannot_answer_fails_closed_by_an_exception
+Failed asserting that exception of type "RuntimeException" is thrown.
+
+FAILURES!
+Tests: 93, Assertions: 238, Failures: 1.

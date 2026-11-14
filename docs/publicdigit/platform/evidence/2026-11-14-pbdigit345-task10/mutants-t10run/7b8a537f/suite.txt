@@ -1,0 +1,216 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:15.524, Memory: 26.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_c2_is_complete_for_the_routed_organisation_inside_a_real_e2_job
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:180
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:180
+
+2) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_cross_organisation_while_routed_to_a_and_outside_any_routed_operation
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:194
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:194
+
+3) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_source_not_ledger_once_the_routed_organisation_stops_being_registry_routable
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:204
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:204
+
+4) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_consistency_a_flip_after_m2_and_before_m3_affects_the_next_call_never_another_database
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:220
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:220
+
+5) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_a_registry_that_cannot_answer_raises_and_is_never_a_refusal
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:258
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:150
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:258
+
+6) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t12_the_bound_slice1_behaviours_on_a_real_organisation_database
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 33619, Database: membership_pg_isolated, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at)
+             VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, M1, P1, 0, now())
+             ON CONFLICT DO NOTHING
+             RETURNING id)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:275
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:272
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "org_memberships" violates foreign key constraint "org_memberships_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:112
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t10/t10run/mutants/7b8a537f/mutant0.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:275
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:272
+
+ERRORS!
+Tests: 7, Assertions: 7, Errors: 6, Deprecations: 1.

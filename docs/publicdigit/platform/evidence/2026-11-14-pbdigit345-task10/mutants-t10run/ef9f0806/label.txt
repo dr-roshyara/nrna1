@@ -1,0 +1,1 @@
+N1 isRegistryRouted ignores which organisation is current (unit)

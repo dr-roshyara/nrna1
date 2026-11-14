@@ -1,5 +1,8 @@
 [
     "App\\Contexts\\Membership\\Domain\\Member\\MemberId",
+    "App\\Contexts\\Platform\\Application\\Published\\RoutedOrganisation",
+    "App\\Contexts\\Platform\\Infrastructure\\Published\\NotTheRoutedOrganisation",
+    "App\\Contexts\\Platform\\Infrastructure\\Published\\RoutedOrganisationConnection",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\ApprovalHistory",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\DisplayName",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\GeographyReadModel",

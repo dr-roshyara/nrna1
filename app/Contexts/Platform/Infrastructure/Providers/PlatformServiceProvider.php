@@ -6,6 +6,9 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ContactAccounts;
+use App\Contexts\Platform\Application\Published\RoutedOrganisation;
+use App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation;
+use App\Contexts\Platform\Infrastructure\Published\RoutedOrganisationConnection;
 use App\Contexts\Platform\Application\Ports\RegisteredOrganisations;
 use App\Contexts\Platform\Infrastructure\Console\FanOutCommand;
 use App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations;
@@ -60,6 +63,9 @@ final class PlatformServiceProvider extends ServiceProvider
             array_values((array) config('organisation_routing.migration_paths', [])),
         ));
         $this->app->bind(ContactAccounts::class, IdentityContactAccounts::class);
+        // task 10a (D-233): the published routing contract, one adapter for both interfaces
+        $this->app->bind(RoutedOrganisation::class, ContainerRoutedOrganisation::class);
+        $this->app->bind(RoutedOrganisationConnection::class, ContainerRoutedOrganisation::class);
         // task 8 (E-3): the registry listing the fan-out walks (central database)
         $this->app->bind(RegisteredOrganisations::class, static fn (): PostgresRegisteredOrganisations => new PostgresRegisteredOrganisations(DB::connection()));
         // task 6 (E-1): who is signed in (Identity), and Identity's bindings: NONE until its store exists (PBDIGIT-349)

@@ -1,0 +1,19 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................................................................. 65 / 93 ( 69%)
+............F...............                                      93 / 93 (100%)
+
+Time: 00:00.036, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\ContainerRoutedOrganisationTest::test_inside_a_routed_operation_only_its_organisation_is_current_routed_and_connectable
+a connection was handed out for 1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:75
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/ContainerRoutedOrganisationTest.php:96
+
+FAILURES!
+Tests: 93, Assertions: 238, Failures: 1.

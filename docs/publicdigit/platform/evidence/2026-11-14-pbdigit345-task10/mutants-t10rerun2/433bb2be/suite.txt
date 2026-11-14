@@ -1,0 +1,33 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFFFD                                                             7 / 7 (100%)
+
+Time: 00:15.637, Memory: 28.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_t7_source_not_ledger_once_the_routed_organisation_stops_being_registry_routable
+re-checked: no longer a registry-routed ledger
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:234
+
+2) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_consistency_a_flip_after_m2_and_before_m3_affects_the_next_call_never_another_database
+the next call sees the change
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:272
+
+3) Tests\Feature\Contexts\Platform\MembershipThroughRoutingTest::test_a_registry_that_cannot_answer_raises_and_is_never_a_refusal
+answered while the registry could not be read
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:283
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:140
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php:278
+
+FAILURES!
+Tests: 7, Assertions: 36, Failures: 3, Deprecations: 1.
