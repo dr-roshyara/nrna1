@@ -32,3 +32,4 @@
 | G-3 … G-8 | one guide per step, added as they land | — |
 | G-6a | [Candidates](24_g6a_candidates.md) | implemented 2026-11-13 |
 | G-6b | [Objections](25_g6b_objections.md) | implemented 2026-11-13 |
+| G-6c-1 | [D-90 notice schema and person index](26_g6c1_notice_schema.md) | implemented 2026-11-14 |

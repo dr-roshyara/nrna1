@@ -1,0 +1,22 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFDDDD                                                              6 / 6 (100%)
+
+Time: 00:08.408, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\GovernanceNoticeSchemaTest::test_row_shapes_the_design_forbids_are_refused
+refused, but not for the intended reason: a revision row with a notice kind
+Failed asserting that 'SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "refgeo_publications" violates check constraint "refgeo_publications_finding_shape"\n
+DETAIL:  Failing row contains (9, revision, 175525f1-4213-49fb-952d-d149414a6989, 1, 0, test-fixture, null, 2026-11-14 00:29:58.162693+00, finding, null, null, null, null, null, null). (Connection: pgsql, Host: 127.0.0.1, Port: 46459, Database: membership_pg_isolated, SQL: insert into "refgeo_publications" ("kind", "revision_id", "content_version", "notice_kind", "position", "roster_version", "governance_rule", "recorded_at") values (revision, 175525f1-4213-49fb-952d-d149414a6989, 1, finding, 9, 0, test-fixture, clock_timestamp()))' [ASCII](length: 686) contains "refgeo_publications_notice_iff_kind" [ASCII](length: 35).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:80
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:102
+
+FAILURES!
+Tests: 6, Assertions: 17, Failures: 1, Deprecations: 1.

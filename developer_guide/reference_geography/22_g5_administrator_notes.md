@@ -34,3 +34,11 @@
 | New database migration? | **Yes, a Reference Geography one:** `database/migrations/2026_11_13_190000_create_refgeo_objections.php` (an empty table `refgeo_objections`), after the two G-6a migrations |
 | May it run in production? | **No, not yet:** the G-4 migration-approval condition applies |
 | Configuration, queues, routes, permissions? | **None** |
+
+## G-6c-1: governance notices schema (2026-11-14)
+
+| Question | Answer |
+|---|---|
+| New database migration? | **Yes, a Reference Geography one:** `database/migrations/2026_11_14_100000_add_refgeo_governance_notices.php` (additive columns, CHECKs and a trigger on `refgeo_publications`; a new table `refgeo_publication_persons`, backfilled) |
+| May it run in production? | **No, not yet:** the G-4 migration-approval condition applies |
+| Configuration, queues, routes, permissions? | **None** |
