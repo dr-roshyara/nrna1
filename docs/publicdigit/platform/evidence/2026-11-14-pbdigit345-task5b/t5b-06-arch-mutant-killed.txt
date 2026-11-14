@@ -1,0 +1,49 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FFF.                                                                4 / 4 (100%)
+
+Time: 00:01.105, Memory: 20.00 MB
+
+There were 3 failures:
+
+1) Tests\Architecture\OrganisationProvisioningProcessTest::test_only_the_provisioning_command_enters_the_dedicated_process
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'app/Contexts/Platform/Infrastructure/Console/PrepareOrganisationDatabaseCommand.php',
++    1 => 'app/Contexts/Platform/Infrastructure/ZzMutantInProcessMigrate.php',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationProvisioningProcessTest.php:59
+
+2) Tests\Architecture\OrganisationProvisioningProcessTest::test_only_the_preparer_and_the_wiring_use_the_organisation_migration_set
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'app/Contexts/Platform/Infrastructure/OrganisationDatabasePreparer.php',
+     1 => 'app/Contexts/Platform/Infrastructure/Providers/PlatformServiceProvider.php',
++    2 => 'app/Contexts/Platform/Infrastructure/ZzMutantInProcessMigrate.php',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationProvisioningProcessTest.php:64
+
+3) Tests\Architecture\OrganisationProvisioningProcessTest::test_only_the_provisioning_command_uses_the_preparer
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'app/Contexts/Platform/Infrastructure/Console/PrepareOrganisationDatabaseCommand.php',
++    1 => 'app/Contexts/Platform/Infrastructure/ZzMutantInProcessMigrate.php',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationProvisioningProcessTest.php:70
+
+FAILURES!
+Tests: 4, Assertions: 4, Failures: 3.

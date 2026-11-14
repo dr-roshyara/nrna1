@@ -1,0 +1,44 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:14.643, Memory: 22.00 MB
+
+There were 5 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_step_three_runs_in_a_child_process_and_prepares_only_that_database
+Error: Class "App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:129
+
+2) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_repeating_step_three_changes_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:157
+
+3) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_the_preparer_refuses_to_run_outside_its_dedicated_process
+Error: Class "App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:170
+
+4) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_a_database_bound_to_another_organisation_is_refused_and_recorded_as_failed
+Error: Class "App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:191
+
+5) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_a_failing_child_fails_closed_and_never_reports_a_password
+Error: Class "App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:206
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 5, Deprecations: 1.

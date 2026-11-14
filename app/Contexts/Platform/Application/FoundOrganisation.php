@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Contexts\Platform\Application;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
+use App\Contexts\Platform\Domain\DatabaseLocator;
+use App\Contexts\Platform\Domain\SchemaState;
 use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\PlatformStatus;
 use App\Contexts\Platform\Domain\ServedOrganisation;
@@ -26,6 +29,7 @@ final class FoundOrganisation
     public function __construct(
         private readonly ServedOrganisationRepository $registry,
         private readonly LegacyOrganisationRegister $legacy,
+        private readonly OrganisationProvisioner $provisioner,
     ) {
     }
 
@@ -77,6 +81,36 @@ final class FoundOrganisation
         }
         $o->startProvisioning();
         $this->registry->save($o);
+    }
+
+    /**
+     * Step 3 (task 5b): bind the organisation's database locator (recorded BEFORE anything is prepared), prepare the
+     * database through the provisioner (its own process), then record the schema as current. A failed preparation is
+     * recorded as a failed migration and reported; repeating the step resumes it. Never makes it operational.
+     */
+    public function provision(TenantId $id, DatabaseLocator $locator): void
+    {
+        $o = $this->entry($id);
+        if ($o->locator() === null) {
+            $o->assignLocator($locator);   // refuses unless provisioning
+            $this->registry->save($o);
+        } elseif (!$o->locator()->equals($locator)) {
+            throw new FoundingRefused("Organisation {$id->value()} is already bound to another database.");
+        }
+        if ($o->status() !== PlatformStatus::Provisioning) {
+            return;   // resumed after step 5: nothing to prepare here
+        }
+        try {
+            $this->provisioner->prepare($id);
+        } catch (ProvisioningFailed $e) {
+            $o->markMigrationFailed();
+            $this->registry->save($o);
+            throw $e;
+        }
+        if ($o->schemaState() !== SchemaState::Current) {
+            $o->markSchemaCurrent();
+            $this->registry->save($o);
+        }
     }
 
     private function entry(TenantId $id): ServedOrganisation

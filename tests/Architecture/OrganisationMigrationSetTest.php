@@ -69,8 +69,9 @@ final class OrganisationMigrationSetTest extends TestCase
             preg_match_all($p, $source, $m);
             $found = [...$found, ...$m[1]];
         }
-        // SQL keywords the patterns can meet in place of a table name (e.g. "BEFORE UPDATE OR DELETE ON t", "UPDATE OF col")
-        $ignore = ['select', 'public', 'only', 'each', 'row', 'set', 'where', 'not', 'exists', 'or', 'of'];
+        // SQL keywords the patterns can meet in place of a table name (e.g. "BEFORE UPDATE OR DELETE ON t", "UPDATE OF col",
+        // task 5b: "INSERT ... ON CONFLICT (col) DO NOTHING"; the INSERT INTO pattern still sees the inserted table)
+        $ignore = ['select', 'public', 'only', 'each', 'row', 'set', 'where', 'not', 'exists', 'or', 'of', 'conflict'];
 
         return array_values(array_unique(array_filter(array_map('strtolower', $found), static fn (string $t) => !in_array($t, $ignore, true))));
     }

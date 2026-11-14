@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Infrastructure\Console\PrepareOrganisationDatabaseCommand;
+use App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Infrastructure\PostgresLegacyOrganisationRegister;
 use App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin;
@@ -35,5 +38,14 @@ final class PlatformServiceProvider extends ServiceProvider
             $app->make('migrator'),
             array_values((array) config('organisation_routing.migration_paths', [])),
         ));
+        // task 5b: founding step 3 runs in its own process (the child inherits this process's environment)
+        $this->app->bind(OrganisationProvisioner::class, static fn ($app): ProcessOrganisationProvisioner => new ProcessOrganisationProvisioner($app->basePath()));
+    }
+
+    public function boot(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([PrepareOrganisationDatabaseCommand::class]);   // task 5b: the dedicated provisioning process
+        }
     }
 }

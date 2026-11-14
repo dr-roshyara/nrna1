@@ -1,0 +1,57 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.021, Memory: 14.02 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_step_three_binds_the_locator_prepares_the_database_and_marks_the_schema_current
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+2) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_t9_no_request_is_routed_before_step_five
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+3) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_t9_a_crash_in_step_three_is_resumed_by_repeating_it
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+4) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_another_locator_for_a_bound_organisation_is_refused_and_nothing_is_prepared_before_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+5) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t14_a_legacy_organisation_id_never_enters_the_registry
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+6) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_steps_one_and_two_reach_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+7) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t9_a_crash_at_each_step_resumes_to_the_same_state_by_repeating_the_step
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+8) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_repeated_with_different_input_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+9) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_for_an_unknown_organisation_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationProvisioner" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:56
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 419 ( 15%)
+............................................................... 126 / 419 ( 30%)
+............................................................... 189 / 419 ( 45%)
+............................................................... 252 / 419 ( 60%)
+............................................................... 315 / 419 ( 75%)
+............................................................... 378 / 419 ( 90%)
+..............................F..........                       419 / 419 (100%)
+
+Time: 00:03.919, Memory: 28.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\OrganisationMigrationSetTest::test_t10_organisation_migrations_reference_only_organisation_tables_and_no_connection
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => '2026_11_14_300200_create_ledger_clock_on_organisation_identity.php: references 'conflict', which the organisation set does not create',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:140
+
+FAILURES!
+Tests: 419, Assertions: 6637, Failures: 1.

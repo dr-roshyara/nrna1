@@ -42,3 +42,12 @@
 ## Task 5a (2026-11-14)
 
 **A new central migration:** `database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php` (founding evidence, registrar and initial contacts, all required). **Not for production before the migration-approval control.** If it stops because entries already exist, do not fill the columns by hand: report the entries.
+
+## Task 5b (2026-11-14)
+
+- **Organisation migration set:** a new **organisation** migration, `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_14_300200_create_ledger_clock_on_organisation_identity.php` (a trigger). It reaches organisation databases only through provisioning, never `php artisan migrate`.
+- **Command `platform:prepare-organisation-database {organisation}`:** the dedicated provisioning process, started by founding step 3.
+  - **Do not run it by hand, and never from a web request.**
+  - It needs, in the real process environment: `ORGANISATION_DB_CLUSTERS`, and for each cluster's login reference `env:NAME` the variables `NAME_USERNAME` and `NAME_PASSWORD`.
+  - It writes nothing to the registry.
+- **If founding step 3 reports "bound to another organisation":** the locator points at a database that already belongs to another organisation. Do not change `organisation_identity` (it is immutable). Correct the locator decision instead.

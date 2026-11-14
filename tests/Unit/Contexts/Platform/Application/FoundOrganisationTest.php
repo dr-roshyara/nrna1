@@ -6,7 +6,14 @@ namespace Tests\Unit\Contexts\Platform\Application;
 
 use App\Contexts\Platform\Application\FoundingRefused;
 use App\Contexts\Platform\Application\FoundOrganisation;
+use App\Contexts\Platform\Application\OrganisationNotRoutable;
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Application\ProvisioningFailed;
+use App\Contexts\Platform\Application\ResolutionService;
+use App\Contexts\Platform\Application\RoutingRefusal;
+use App\Contexts\Platform\Domain\DatabaseLocator;
+use App\Contexts\Platform\Domain\SchemaState;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
 use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\PlatformStatus;
@@ -46,7 +53,117 @@ final class FoundOrganisationTest extends TestCase
                 return in_array($id->value(), $this->ids, true);
             }
         };
-        $this->founding = new FoundOrganisation($this->registry, $legacy);
+        $this->provisioner = new class implements OrganisationProvisioner {
+            /** @var list<string> */
+            public array $calls = [];
+            public bool $failNext = false;
+
+            public function prepare(TenantId $id): void
+            {
+                $this->calls[] = $id->value();
+                if ($this->failNext) {
+                    $this->failNext = false;
+                    throw new ProvisioningFailed('simulated: the organisation database could not be prepared');
+                }
+            }
+        };
+        $this->founding = new FoundOrganisation($this->registry, $legacy, $this->provisioner);
+    }
+
+    private OrganisationProvisioner $provisioner;
+
+    private static function locator(string $database = 'org_0b9e7a526c1d4f7e9a3b2d5c8e1f4a60'): DatabaseLocator
+    {
+        return new DatabaseLocator('cluster-1', $database, 'env:ORG_CLUSTER_1');
+    }
+
+    private function upToProvisioning(): void
+    {
+        $this->founding->register(self::id(), self::application());
+        $this->founding->verifyCounterparty(self::id(), new CounterpartyVerification('agreement:1'));
+        $this->founding->recordServiceOperationGrant(self::id(), self::grant());
+        $this->founding->startProvisioning(self::id());
+    }
+
+    public function test_5b_step_three_binds_the_locator_prepares_the_database_and_marks_the_schema_current(): void
+    {
+        $this->upToProvisioning();
+
+        $this->founding->provision(self::id(), self::locator());
+
+        $o = $this->registry->find(self::id());
+        $this->assertTrue(self::locator()->equals($o->locator()));
+        $this->assertSame(SchemaState::Current, $o->schemaState());
+        $this->assertSame([self::ID], $this->provisioner->calls, 'prepared once, in its own process (the port)');
+        $this->assertSame(PlatformStatus::Provisioning, $o->status(), 'step 3 never makes it operational');
+    }
+
+    public function test_5b_t9_no_request_is_routed_before_step_five(): void
+    {
+        $this->upToProvisioning();
+        $this->founding->provision(self::id(), self::locator());
+
+        try {
+            (new ResolutionService($this->registry))->resolve(self::ID);
+            $this->fail('a provisioning organisation was routed');
+        } catch (OrganisationNotRoutable $e) {
+            $this->assertSame(RoutingRefusal::NotOperational, $e->reason);
+        }
+    }
+
+    public function test_5b_t9_a_crash_in_step_three_is_resumed_by_repeating_it(): void
+    {
+        $this->upToProvisioning();
+
+        // a lost save of the locator: nothing was prepared, nothing recorded
+        $this->registry->failNextSave = true;
+        try {
+            $this->founding->provision(self::id(), self::locator());
+            $this->fail('the simulated crash did not happen');
+        } catch (\RuntimeException $e) {
+            $this->assertSame('simulated crash before commit', $e->getMessage());
+        }
+        $this->assertNull($this->registry->find(self::id())->locator());
+        $this->assertSame([], $this->provisioner->calls, 'nothing is prepared before the locator is recorded');
+
+        // the preparation fails: recorded as a failed migration, and the failure is reported
+        $this->provisioner->failNext = true;
+        try {
+            $this->founding->provision(self::id(), self::locator());
+            $this->fail('a failed preparation was not reported');
+        } catch (ProvisioningFailed) {
+            $this->assertSame(SchemaState::MigrationFailed, $this->registry->find(self::id())->schemaState());
+        }
+
+        // a lost save after a successful preparation: the preparation is repeated (it is idempotent)
+        $this->registry->failNextSave = true;
+        try {
+            $this->founding->provision(self::id(), self::locator());
+        } catch (\RuntimeException) {
+        }
+        $this->founding->provision(self::id(), self::locator());
+        $this->founding->provision(self::id(), self::locator());
+
+        $this->assertSame(SchemaState::Current, $this->registry->find(self::id())->schemaState());
+        $this->assertTrue(self::locator()->equals($this->registry->find(self::id())->locator()));
+    }
+
+    public function test_5b_another_locator_for_a_bound_organisation_is_refused_and_nothing_is_prepared_before_provisioning(): void
+    {
+        $this->founding->register(self::id(), self::application());
+        try {
+            $this->founding->provision(self::id(), self::locator());
+            $this->fail('a pending organisation was given a database');
+        } catch (ServedOrganisationRefused) {
+            $this->assertSame([], $this->provisioner->calls);
+        }
+
+        $this->founding->verifyCounterparty(self::id(), new CounterpartyVerification('agreement:1'));
+        $this->founding->recordServiceOperationGrant(self::id(), self::grant());
+        $this->founding->startProvisioning(self::id());
+        $this->founding->provision(self::id(), self::locator());
+        $this->expectException(FoundingRefused::class);
+        $this->founding->provision(self::id(), self::locator('org_other'));
     }
 
     private static function application(string $evidence = 'founding-evidence:minutes'): FoundingApplication
