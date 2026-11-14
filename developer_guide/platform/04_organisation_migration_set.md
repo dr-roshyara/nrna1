@@ -82,3 +82,12 @@ MEMBERSHIP_PG_IMAGE=<pinned> MEMBERSHIP_PG_EVIDENCE_DIR=<dir> bash scripts/testi
 **Administrator: no action now.** Nothing runs this set except tests. When provisioning exists (task 5), organisation databases get their schema there. **Never run `php artisan migrate --path=…/organisation` by hand against a production database;** the migration-approval control and the founding sequence come first.
 
 **Traceability:** PBDIGIT-345 task 4 · tactical design §3.5, M-5 · T-8, T-10 · D-178 §3, D-222.
+
+## Task 9a (2026-11-14): the organisation outbox
+
+**`database/migrations/organisation/2026_11_14_300400_create_outbox_events.php`** adds the transactional outbox to every organisation database (tactical design §3.4).
+- **Why:** a business change and its event must commit or roll back **together**, in the organisation's database. Membership's C1 (`MembershipCoverageResolvedOutbox::write`) already writes into `outbox_events` through the connection it is given.
+- **Shape:** the central shape (`2026_05_04_000001` plus `2026_07_10_000001`, including the indexes).
+- **The one difference:** `organisation_id` references `organisation_identity` (`outbox_events_organisation_identity_fk`), so **an event of another organisation cannot be written into this database** (defence in depth under ISO-9).
+- **Parity rule:** a change to the central outbox needs the same change here. `OrganisationMigrationsTest::test_9a_…` compares columns, constraints and indexes.
+- **The relay that reads it** is task 9b (guide 09).

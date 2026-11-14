@@ -1,0 +1,8 @@
+c1c7af59cccbd0bfdff9cbc78b02be0895ff8a78974789177f959592c63ccc64  ./README-9a.md
+b6a31ba9861ed6fba2c7a4d7c8b0bea98d76a7ed3d77a1ba0e6f4353c57869c8  ./t9a-01-red-pg/run.txt
+53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3  ./t9a-01-red-pg/suite.exit
+4f71d38b40b9126f0d612fb42ad799489423a098d4860b38c944c93973a08c5b  ./t9a-01-red-pg/suite.txt
+a8a2b2e5c7e7ea29d2975de411321a9a035fe7824591b9fd7aa47b87819998eb  ./t9a-02-green-pg/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./t9a-02-green-pg/suite.exit
+c30400c5fd6538cc0050b195c5a467509e12d95025818f8d7d0a186d5ad7850e  ./t9a-02-green-pg/suite.txt
+02e3c80d8daf40f8b849e949fac24b34309b4ef6ec43ae84fe80edc62c59a40e  ./t9a-03-db-free.txt

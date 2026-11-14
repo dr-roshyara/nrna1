@@ -95,3 +95,7 @@
   `withoutOverlapping` keeps one run of an operation at a time. A second run would dispatch again: the jobs are idempotent, but a duplicate is still avoidable work.
 - **The scheduler needs `php artisan schedule:run` every minute** (cron or `schedule:work`), as usual. **The jobs need the `organisation` worker** from task 7.
 - **Exit code 1 means an operation was unknown or refused, or a dispatch failed.** Organisations that aren't operational are listed as skipped; that is normal and exits 0.
+
+## Task 9a (2026-11-14)
+
+**A new ORGANISATION migration:** `database/migrations/organisation/2026_11_14_300400_create_outbox_events.php`. It reaches organisation databases only through provisioning (founding step 3). The central database is not changed.

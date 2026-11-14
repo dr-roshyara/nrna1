@@ -186,4 +186,38 @@ final class OrganisationMigrationsTest extends MembershipPostgresTestCase
 
         $this->assertSame($shape(DB::connection()), $shape($a->connection));
     }
+
+    /**
+     * PBDIGIT-345 task 9a (§3.4): C1 is written to `outbox_events` IN the organisation's database, so the organisation
+     * set has it, at the central shape (columns, constraints, indexes), except its target: organisation_id references
+     * organisation_identity, so an event of ANOTHER organisation cannot be written into this database at all.
+     */
+    public function test_9a_the_organisation_outbox_matches_the_central_one_and_refuses_another_organisation(): void
+    {
+        $a = $this->context(self::A, 'platform_pg_org_a');
+        self::migrations()->apply($a);
+        $shape = static fn ($connection): array => [
+            'columns' => array_map(static fn ($r) => (array) $r, $connection->select("SELECT column_name, data_type, is_nullable, datetime_precision, column_default
+                FROM information_schema.columns WHERE table_schema = current_schema() AND table_name = 'outbox_events' ORDER BY ordinal_position")),
+            'constraints' => array_map(static fn ($r) => (array) $r, $connection->select("SELECT conname, pg_get_constraintdef(oid) AS def FROM pg_constraint
+                WHERE conrelid = 'outbox_events'::regclass AND contype <> 'f' ORDER BY conname")),
+            'indexes' => array_map(static fn ($r) => (array) $r, $connection->select("SELECT indexname, indexdef FROM pg_indexes
+                WHERE schemaname = current_schema() AND tablename = 'outbox_events' ORDER BY indexname")),
+        ];
+        $this->assertSame($shape(DB::connection()), $shape($a->connection), 'the central outbox shape');
+        $this->assertSame(['organisation_identity'], array_map(static fn ($r) => $r->target, $a->connection->select(
+            "SELECT confrelid::regclass::text AS target FROM pg_constraint WHERE conrelid = 'outbox_events'::regclass AND contype = 'f'")), 'its one foreign key: this organisation');
+
+        $a->connection->insert('INSERT INTO organisation_identity (id) VALUES (?)', [self::A]);
+        $row = static fn (string $org): array => ['id' => (string) \Illuminate\Support\Str::uuid(), 'event_id' => (string) \Illuminate\Support\Str::uuid(), 'organisation_id' => $org,
+            'aggregate_type' => 'T', 'aggregate_id' => (string) \Illuminate\Support\Str::uuid(), 'event_type' => 'T9a', 'payload' => '{}', 'status' => 'pending'];
+        $a->connection->table('outbox_events')->insert($row(self::A));
+        try {
+            $a->connection->table('outbox_events')->insert($row(self::B));
+            $this->fail('an event of another organisation was written into A');
+        } catch (QueryException $e) {
+            $this->assertStringContainsString('outbox_events_organisation_identity_fk', $e->getMessage());
+        }
+        $this->assertFalse(self::hasTable('platform_central', 'outbox_events'), 'the central platform database is untouched');
+    }
 }

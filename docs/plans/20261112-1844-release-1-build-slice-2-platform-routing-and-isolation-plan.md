@@ -88,7 +88,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
   - **Step 4:** re-run **T-19 unchanged**; it must still pass.
   - Tests: **T-3**, **T-4**, **T-19** (twice), **T-20 … T-25**. T-23 uses a real `queue:work organisation --once` worker.
 - [x] **8. (DONE 2026-11-14; guide 08; evidence `docs/publicdigit/platform/evidence/2026-11-14-pbdigit345-task8/`; T-5 proven with a real worker. Delivery is at least once across runs: fanned-out jobs must be idempotent, §3.4; no central dedupe store, none in the design)** Fan-out (E-3): dispatcher over operational organisations; one failing or non-operational organisation doesn't stop the others (**T-5**).
-- [ ] **9. Per-organisation relay (E-5)** (also runs **T-24**, carried from task 7; **task 9 is not done until T-24 passes**): the processor on a given connection; ISO-9 dead-letter; the central relay kept for central events (**T-6**).
+- [ ] **9. Per-organisation relay (E-5)** (also runs **T-24**, carried from task 7; **task 9 is not done until T-24 passes**): *(9a done 2026-11-14: the organisation outbox `outbox_events` in the organisation migration set, central shape, foreign key to `organisation_identity`; 9b the relay, next)* the processor on a given connection; ISO-9 dead-letter; the central relay kept for central events (**T-6**).
 - [ ] **10. Membership adapters M-1 … M-3:** C2 end to end through routing; `SOURCE_NOT_LEDGER` outside a registry context; `CROSS_ORGANISATION` (**T-7**, **T-14** part 2, **T-12**).
 - [ ] **11. Operator channel (E-4), technical only:** migration repair without business reads; content read refused (**T-16**).
 - [ ] **12. Outage and restore:** cluster or registry down → refused, then resumes; scripted restore drill (**T-11**, **T-17**, **T-18**).
