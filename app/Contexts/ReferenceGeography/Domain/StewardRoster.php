@@ -250,6 +250,82 @@ final class StewardRoster
         return $stewards;
     }
 
+    /**
+     * G-6c (design §5.1): everyone known to be the same person as $person at version $version, sorted: the connected
+     * component of the effective merges (merges ≤ v not reversed ≤ v), the same relation as knownSameAt.
+     *
+     * @return list<PersonReference>
+     */
+    public function componentAt(PersonReference $person, int $version): array
+    {
+        $merges = $this->effectiveMergesUpTo($version);
+        $members = [$person->value() => $person];
+        do {
+            $grown = false;
+            foreach ($merges as $merge) {
+                $touches = array_filter($merge->merged, static fn (PersonReference $p): bool => isset($members[$p->value()]));
+                if ($touches !== []) {
+                    foreach ($merge->merged as $p) {
+                        if (!isset($members[$p->value()])) {
+                            $members[$p->value()] = $p;
+                            $grown = true;
+                        }
+                    }
+                }
+            }
+        } while ($grown);
+        ksort($members);
+
+        return array_values($members);
+    }
+
+    /** @return list<PersonReference> the persons a merge notice named ([] if it was never recorded) */
+    public function mergedPersonsOf(string $mergeId): array
+    {
+        foreach ($this->entries as $entry) {
+            if ($entry->kind === RosterEntryKind::PersonsMerged && $entry->mergeId === $mergeId) {
+                return $entry->merged;
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * @param list<PersonReference> $persons
+     * @return list<string> the ids of the effective merges at $version that involve any of the persons, sorted
+     */
+    public function effectiveMergesWithin(array $persons, int $version): array
+    {
+        $wanted = array_flip(array_map(static fn (PersonReference $p): string => $p->value(), $persons));
+        $ids = [];
+        foreach ($this->effectiveMergesUpTo($version) as $merge) {
+            foreach ($merge->merged as $p) {
+                if (isset($wanted[$p->value()])) {
+                    $ids[] = (string) $merge->mergeId;
+                    break;
+                }
+            }
+        }
+        sort($ids);
+
+        return $ids;
+    }
+
+    /** @return list<RosterEntry> merges recorded ≤ $version and not reversed ≤ $version */
+    private function effectiveMergesUpTo(int $version): array
+    {
+        $entries = $this->entriesUpTo($version);
+        $reversed = [];
+        foreach ($entries as $entry) {
+            if ($entry->kind === RosterEntryKind::PersonMergeReversed) {
+                $reversed[$entry->mergeId] = true;
+            }
+        }
+
+        return array_values(array_filter($entries, static fn (RosterEntry $e): bool => $e->kind === RosterEntryKind::PersonsMerged && !isset($reversed[$e->mergeId])));
+    }
+
     /** @return list<RosterEntry> */
     private function entriesUpTo(int $version): array
     {

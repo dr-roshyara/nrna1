@@ -1,0 +1,8 @@
+D1 affected persons from AFTER components only             SURVIVED [unit] errors:0  
+D2 a published correction does not resolve a finding       KILLED   [unit] errors:0  each_resolution_closes_the_finding_from_its_position_on;
+D3 the confirmer never becomes the counted approver        KILLED   [unit] errors:0  b9_after_a_confirmation_the_confirmer_is_the_counted_approver;the_counted_approver_is_the_original_before_and_the_confirmer_after_a_confirmati;
+D4 a corrected publication is still evaluated              KILLED   [unit] errors:0  a_corrected_publication_is_no_longer_evaluated;
+D5 any open finding is closed (another path ignored)       KILLED   [unit] errors:0  a3_a4_two_paths_one_reversed_keeps_the_finding_the_other_closes_it;b7_no_second_finding_while_one_is_open_and_b8_a_new_episode_after_closure;
+D6 the status reads corrections beyond k                   KILLED   [unit] errors:0  status_at_each_knowledge_position_is_reproducible;
+D7 a duplicate finding while one is open                   KILLED   [unit] errors:0  a3_a4_two_paths_one_reversed_keeps_the_finding_the_other_closes_it;b7_no_second_finding_while_one_is_open_and_b8_a_new_episode_after_closure;
+1 mutant(s) survived.

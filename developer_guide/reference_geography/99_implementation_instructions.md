@@ -141,7 +141,7 @@
 - **Before writing any code:** confirm the Principal accepted revision 2.
 - **Then, per step,** RED → GREEN → guide → commit, in this order:
   1. schema (columns, CHECKs, triggers, `refgeo_publication_persons`): **done.** Assert each refusal's REASON (guide 26, database guide 03);
-  2. domain (`componentAt`, `ApprovalDefects`, `FindingLifecycle`, `GovernanceNotice`, `ApprovalStatus`);
+  2. domain (`componentAt`, `ApprovalDefects`, `FindingLifecycle`, `GovernanceNotice`, `ApprovalStatus`): **done** (guide 27). The before ∪ after union equals the after-union (design §18);
   3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`);
   4. `ConfirmPublication`;
   5. the correction link;

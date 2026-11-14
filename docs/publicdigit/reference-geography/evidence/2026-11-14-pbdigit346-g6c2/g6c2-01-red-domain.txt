@@ -1,0 +1,99 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEF                                                   15 / 15 (100%)
+
+Time: 00:00.024, Memory: 12.00 MB
+
+There were 14 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a1_a_merge_after_publication_raises_a_finding_and_its_reversal_closes_it
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:51
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a2_a_chain_reversal_in_the_middle_reaches_both_ends
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:67
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a3_a4_two_paths_one_reversed_keeps_the_finding_the_other_closes_it
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:84
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a5_a_reversal_before_its_merge_means_the_merge_never_counts
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:96
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a6_one_change_affecting_several_publications_gives_one_notice_each_in_position_order
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:105
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_cases_c_and_d_raise_nothing
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:114
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_b7_no_second_finding_while_one_is_open_and_b8_a_new_episode_after_closure
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:121
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_b9_after_a_confirmation_the_confirmer_is_the_counted_approver
+Error: Class "App\Contexts\ReferenceGeography\Domain\GovernanceNotice" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:131
+
+9) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a_corrected_publication_is_no_longer_evaluated
+Error: Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:143
+
+10) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a8_affected_persons_cover_every_flip_against_a_full_scan_oracle
+Error: Class "App\Contexts\ReferenceGeography\Domain\PublishedApproval" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:166
+
+11) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_b1_a_finding_is_open_until_resolved_and_only_from_its_own_position
+Error: Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:28
+
+12) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_each_resolution_closes_the_finding_from_its_position_on
+Error: Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:37
+
+13) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_status_at_each_knowledge_position_is_reproducible
+Error: Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:49
+
+14) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_the_counted_approver_is_the_original_before_and_the_confirmer_after_a_confirmation
+Error: Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:68
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\FindingLifecycleTest::test_entries_of_another_publication_are_refused
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\ReferenceGeography\Domain\FindingLifecycle" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/FindingLifecycleTest.php:77
+.
+
+ERRORS!
+Tests: 15, Assertions: 1, Errors: 14, Failures: 1.

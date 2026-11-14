@@ -1,0 +1,38 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................F...............  63 / 278 ( 22%)
+............................................................... 126 / 278 ( 45%)
+............................................................... 189 / 278 ( 67%)
+............................................................... 252 / 278 ( 90%)
+..........................                                      278 / 278 (100%)
+
+Time: 00:00.250, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\ApprovalDefectsTest::test_a_corrected_publication_is_no_longer_evaluated
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => App\Contexts\ReferenceGeography\Domain\GovernanceNotice Object #710 (
++        'kind' => App\Contexts\ReferenceGeography\Domain\NoticeKind Enum #642 (Finding, 'finding'),
++        'concerns' => 5,
++        'rosterVersion' => 1,
++        'mergeBasis' => Array &1 [
++            0 => 'm1',
++        ],
++        'endedBy' => null,
++        'confirmedBy' => null,
++        'digest' => null,
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/ApprovalDefectsTest.php:145
+
+FAILURES!
+Tests: 278, Assertions: 1756, Failures: 1.

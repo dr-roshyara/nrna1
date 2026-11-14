@@ -1,0 +1,4 @@
+Tests\Architecture\Election\ElectionLifecycleStateConsistencyTest
+Tests\Architecture\ElectionStateMachineConsistencyTest
+Tests\Architecture\GovernanceRuntime\ConstitutionalBoundaryTest
+Tests\Architecture\Phase_C25_SovereigntyLeakagePreventionTest

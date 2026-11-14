@@ -319,3 +319,10 @@
   - the counted approver X of a publication is **derived deterministically** by replaying `PublicationGovernance::mayPublish(revision, roster, v0)` at the stored roster version v0. Published revisions are closed (G-4f), and the roster is versioned, so the replay always yields the same X;
   - **`refgeo_publication_persons` records every approver** of the published content version (role `approver`), the excluded persons (role `excluded`) and, later, confirmers (role `confirmer`). **That's a superset of the persons §5.1 needs, which is sufficient: candidate selection may over-select; `ApprovalDefects` decides exactly;**
   - **no column `counted_approver` is added;** §11's other columns stand.
+
+## 18. Implementation finding (G-6c-2, 2026-11-14): the before-components are redundant, not wrong
+
+**The mutation run made "affected persons from the AFTER components only" (D1); every test still passed.**
+- **Analysis:** take a reversal of merge m with named persons S. Any person x formerly connected through m reached m at some s ∈ S along a prefix that doesn't use m, so x lies in componentAt(s, after). Hence ⋃ before ⊆ ⋃ after, **provided all of S is used**, as §5 does. For a merge, the after-components contain the before-components trivially.
+- **Consequence:** §5.1's before ∪ after is exact and equals the after-union. **The accepted form is kept;** D1 is classified as an *equivalent* mutant, and a property test (A8b) pins the equality.
+- **The A–B–C–D concern of the revision-2 review is covered either way,** because B and C are both named by the reversed merge.
