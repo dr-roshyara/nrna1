@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **PROPOSED. Awaiting the Human Arb Chief's decision (D-1 … D-4 below).** It decides nothing. No implementation of M-1 … M-3 until approved. Written by Claude (Session A), not independent |
+| **Status** | **ACCEPTED by the Human Arb Chief on 2026-11-14 as D-233** (D-1 A, D-2 re-check, D-3 as read, D-4 two suites), with the consistency condition answered in §8. The PROPOSED text above §8 is kept as written, except the D-3 example corrected in §8.1. Written by Claude (Session A), not independent |
 | **Commission** | Principal authorisation 2026-11-14, "PBDIGIT-345 Task 10", Stage A |
 | **Consumes (does not change)** | routing tactical design §3.5 (M-1 … M-3), §3.7 (L-1 … L-3), T-7, T-12, T-14; slice 1 C2 (`CoverageKnownAt`); the Hexagonal DDD baseline and the ratchet (A-3; baseline §9); D-160, D-219 (1) |
 
@@ -145,3 +145,38 @@ interface RoutedOrganisationConnection
 - **Infrastructure-level published interface (`RoutedOrganisationConnection`):** it must stay small. It is the only door to an organisation's database for other contexts' adapters.
 - **D-2 (a) adds one central read per C2 call.** C2 is not yet called in production; revisit if it becomes hot.
 - **Production stays blocked by PBDIGIT-349 (Identity bindings) and the migration-approval control.** Task 10 does not change that.
+
+## 8. After the decision (2026-11-14): the D-3 correction and the consistency guarantee
+
+### 8.1 Correction to D-3's example
+
+**"A provisioning process's context" (§3.3 row 6, §5 D-3) is WRONG** in the existing design:
+- the provisioning preparer (task 5b) uses its organisation context locally and **never binds it** as the operation's context;
+- so M-1 returns `null` there, and C2 answers `CROSS_ORGANISATION`.
+
+**The case that the existing Platform design represents, with no invented context:**
+1. a request (E-1) or job attempt (E-2) is routed to A while A is operational;
+2. during that operation the registry marks A not routable (e.g. `migration-failed`);
+3. the next C2 call re-checks the registry (D-2) and answers **`SOURCE_NOT_LEDGER`**.
+
+That is what T-7 tests.
+
+### 8.2 The consistency guarantee (registry check versus connection)
+
+1. **Isolation never depends on timing.**
+   - An organisation's locator is immutable once assigned (`LocatorAlreadyAssigned`, task 1);
+   - its database is bound to its one `organisation_identity` row (F-13, task 4);
+   - `connectionFor` returns only the current routed organisation's own connection.
+   - **So a stale eligibility answer can never reach another organisation's database.**
+2. **Eligibility is a check before use, at two points:**
+   - when the operation is routed (E-1 per request, E-2 per job attempt);
+   - at **each C2 call** (M-2, D-2), immediately before the boundary is closed and the ledger read.
+
+   **A registry change committed after that check takes effect at the next check** (the next C2 call, request or attempt), **not inside the C2 call already in flight.**
+   - Closing that window entirely would need one transaction across the central and the organisation database. The accepted design rules that out (C-3: no cross-database atomicity), so no lock or new mechanism is introduced.
+   - `connectionFor` checks identity (the current routed organisation), not the registry: one registry read per C2 call, as D-2 decided.
+3. **A registry or database that cannot be reached raises an error** (503 for a request, a retry for a job). It is never answered as "ledger" or "not a ledger".
+
+**Test (T-7):** A is flipped to `migration-failed` after M-2's check and before M-3 obtains the connection.
+- **The in-flight call** completes reading **A's own database only**.
+- **The next call** answers `SOURCE_NOT_LEDGER`.
