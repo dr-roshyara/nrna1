@@ -346,3 +346,15 @@
 - **The link needs an open finding** on the corrected publication. A partial correction, or a link without an open finding, is refused **as a whole** (nothing is written); the same revision may then be published without the link, as an ordinary revision that resolves nothing.
 
 This is a refinement of §9, not a change of decision: a single covering claim remains the common case.
+
+## 21. Principal acceptance of G-6c (recorded 2026-11-14)
+
+**The Human Arb Chief accepted the G-6c implementation (G-6c-1 to G-6c-6, commits `bd98f3e5a` to `1e3d9a001`): ACCEPT WITH CONDITIONS C1, C2 and C3**, on the independent acceptance audit (reproduced: database-free 343, cluster 320; architecture 343 with 4 unrelated pre-existing failures; evidence seals intact).
+
+| Condition | Content | Status |
+|---|---|---|
+| C1 | Developer guide 31 overstated rule 7 ("impossible to write around the controls") | **done 2026-11-14:** the measured reach, the database's own guarantees, the application-only guarantees, and why this is no authorisation boundary |
+| C2 | Rule 7 missed a builder write split over lines | **done 2026-11-14, test-first:** planted `RogueChainedWriter`, RED, then `[^;]*?` between the table and the write; the remaining uncaught shapes are documented, not hidden |
+| C3 | The first real feed consumer must prove that it stores its last position in the same transaction as the work it caused | **open** until that consumer is built (no fake consumer) |
+
+The design above is unchanged.

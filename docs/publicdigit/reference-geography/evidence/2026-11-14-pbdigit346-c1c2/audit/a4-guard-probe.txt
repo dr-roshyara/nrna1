@@ -1,0 +1,9 @@
+query builder insert           DETECTED
+raw SQL insert                 DETECTED
+appendNotice call              DETECTED
+dynamic table name             NOT DETECTED
+table name from a constant     NOT DETECTED
+builder call split over lines  NOT DETECTED
+COPY / unprepared SQL          NOT DETECTED
+variable SQL string            NOT DETECTED
+Eloquent model on the table    NOT DETECTED

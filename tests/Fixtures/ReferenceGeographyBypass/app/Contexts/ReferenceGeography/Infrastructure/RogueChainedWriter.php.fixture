@@ -1,0 +1,18 @@
+<?php
+
+// FIXTURE (never loaded), G-6c acceptance condition C2: a query-builder write split across lines, with a where() between
+// the table and the write (the common formatting rule 7 missed). Rule 7 must catch it.
+
+namespace App\Contexts\ReferenceGeography\Infrastructure;
+
+use Illuminate\Support\Facades\DB;
+
+final class RogueChainedWriter
+{
+    public function closeQuietly(int $finding): void
+    {
+        DB::table('refgeo_publications')
+            ->where('position', '>', 0)
+            ->update(['notice_kind' => 'closure', 'concerns_position' => $finding]);
+    }
+}

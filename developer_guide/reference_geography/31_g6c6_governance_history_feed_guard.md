@@ -4,10 +4,10 @@
 
 ## Business purpose
 
-The governance consequences of D-90 (findings, confirmations, closures, corrections) are part of Geography's official history. G-6c-6 makes that history **readable and consumable** through the published contract, and makes it **impossible to write around the controls.**
+The governance consequences of D-90 (findings, confirmations, closures, corrections) are part of Geography's official history. G-6c-6 makes that history **readable and consumable** through the published contract, and **makes the common ways of writing around the controls fail the build** (corrected 2026-11-14, G-6c acceptance condition C1: the earlier wording, "impossible to write around the controls", overstated it; §3 states the measured reach).
 - **Any context can ask:** "what was the approval status of publication p, as officially known at position k?" The answer for (p, k) **never changes**, whatever happens later.
 - **The feed tells consumers** which entries are governance notices, what each concerns, and which revision corrected which publication. Provenance only, **never persons.**
-- **An architecture guard fails the build** if anything but the locked ledger writes a notice or the publication-person index.
+- **An architecture guard (rule 7) fails the build on the direct ways of writing a notice or the person index** outside the locked ledger. It's a source-pattern check, not an authorisation boundary; what it doesn't catch is listed in §3.
 
 ## 1. The history (`GeographyReadModel::approvalStatus`)
 
@@ -59,7 +59,51 @@ Geography can't enforce or test these; **the first real consumer must** (backlog
 - **Proven by planted bypasses** in `tests/Fixtures/ReferenceGeographyBypass/`:
   - an infrastructure writer (`RogueNoticeWriter`);
   - an unauthorised application service calling `appendNotice` (`RogueFindingService`);
+  - **a builder chain split over lines** (`RogueChainedWriter`; C2, 2026-11-14);
   - the existing `RogueSqlService`, which inserts into `refgeo_publications` and is now caught by rule 7 as well.
+
+### What the guard does not catch (measured, G-6c acceptance audit and C2, 2026-11-14)
+
+**The real rule-7 pattern**, read by reflection from the test class, **was run against nine bypass shapes**. Evidence: `docs/publicdigit/reference-geography/evidence/2026-11-14-pbdigit346-c1c2/`.
+
+| Shape | Rule 7 | Rule 4 (`refgeo_` outside Geography Infrastructure and migrations) |
+|---|---|---|
+| `DB::table('refgeo_publications')->insert(…)` | caught | caught outside Geography Infrastructure |
+| raw `INSERT INTO refgeo_publications` (or `refgeo_publication_persons`) | caught | idem |
+| any `appendNotice(` call | caught | n/a |
+| builder chain split over lines (`table(…)` … `->where(…)` … `->update(`) | **caught since C2** | idem |
+| table name in a variable (`'refgeo_' . 'publications'`) | **not caught** | caught outside Geography Infrastructure |
+| table name from a class constant | **not caught** | caught outside, if the literal appears there |
+| `DB::unprepared('COPY refgeo_publications …')` | **not caught** | idem |
+| SQL assembled in a variable, then `DB::statement($sql)` | **not caught** | idem |
+| an Eloquent model whose `$table` is `refgeo_publications` | **not caught** | caught outside Geography Infrastructure |
+| a name built without the literal `refgeo_` | not caught | **not caught** |
+
+- **Also missed:** a `;` inside the builder chain (for example in a string argument) ends the match early.
+
+**The residual gap** is code **inside** `app/Contexts/ReferenceGeography/Infrastructure/` (where rule 4 allows `refgeo_`) written in one of the uncaught forms, or a name built without the literal. Review is the control there.
+
+**What the database enforces whoever writes** (G-4, G-6c-1):
+- row shapes and the notice discriminator;
+- the referenced row's kind;
+- backwards references and their existence;
+- gap-free positions and the clock (`refgeo_publication_append`);
+- immutability (`refgeo_refuse_change`);
+- **a finding is resolved once** (`refgeo_publications_one_resolution`).
+
+**What only the authorised application path enforces:**
+- **who** may confirm (appointment, independence, declaration);
+- the digest;
+- "the finding is open";
+- full coverage of a correction;
+- the use of the publication lock and the atomicity of an Identity notice with its consequences.
+
+**Why this is not an authorisation boundary:**
+- every adapter connects with the same database role;
+- the database can't tell which code is writing;
+- the guard inspects source text, not behaviour.
+
+**A database-level boundary** (separate roles, or writes only through security-definer functions) would be a separate, deliberate decision.
 
 ## Components and wiring
 

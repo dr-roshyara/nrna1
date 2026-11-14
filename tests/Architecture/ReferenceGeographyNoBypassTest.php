@@ -53,7 +53,10 @@ final class ReferenceGeographyNoBypassTest extends TestCase
         // locked ledger: a WRITE of refgeo_publications or refgeo_publication_persons (SQL or query builder), or an
         // appendNotice call, anywhere else. Rule 4 lets every Infrastructure class touch refgeo_ tables, so without this
         // rule an adapter could write a confirmation around the lock and the governance checks. Reads stay free.
-        '7 notice writes' => ['/INSERT\s+INTO\s+refgeo_publication(s|_persons)\b|[\'"]refgeo_publication(s|_persons)[\'"]\s*\)\s*->\s*(insert\w*|upsert|update\w*|delete)\s*\(|\bappendNotice\b/i', [
+        // C2 (G-6c acceptance, 2026-11-14): `[^;]*?` lets the builder chain run over several lines and calls (where(),
+        // orderBy(), …) up to the end of the statement, so `table('refgeo_publications')\n->where(…)\n->update(…)` is caught.
+        // A source-pattern rule, not an authorisation boundary: see developer guide 31, "What the guard does not catch".
+        '7 notice writes' => ['/INSERT\s+INTO\s+refgeo_publication(s|_persons)\b|[\'"]refgeo_publication(s|_persons)[\'"]\s*\)[^;]*?->\s*(insert\w*|upsert|update\w*|delete)\s*\(|\bappendNotice\b/i', [
             self::CTX . 'Application/Ports/LockedLedger.php', self::CTX . 'Application/IdentityNoticeConsumer.php', self::CTX . 'Application/ConfirmPublication.php',
             self::CTX . 'Infrastructure/PostgresPublicationLedger.php',
             'database/migrations/',   // the schema and the idempotent person-index backfill (G-6c-1); not seeders or factories
@@ -125,6 +128,7 @@ final class ReferenceGeographyNoBypassTest extends TestCase
             '6 delivery: app/Jobs/RogueAppointJob.php.fixture',
             '6 delivery: routes/rogue.php.fixture',
             '7 notice writes: app/Contexts/ReferenceGeography/Application/RogueFindingService.php.fixture',
+            '7 notice writes: app/Contexts/ReferenceGeography/Infrastructure/RogueChainedWriter.php.fixture',   // C2: split across lines
             '7 notice writes: app/Contexts/ReferenceGeography/Infrastructure/RogueNoticeWriter.php.fixture',
             '7 notice writes: app/Services/RogueSqlService.php.fixture',   // it inserts into refgeo_publications directly
         ], $found);
