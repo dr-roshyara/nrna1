@@ -24,12 +24,17 @@ cd "$(dirname "$0")/../.." || exit 0
 today=$(date +%F)
 log=".claude/runtime/$today-files.log"
 
-# No file-log today -> nothing changed -> silence.
-[ -f "$log" ] || exit 0
+# Files changed today = the Write/Edit hook log PLUS git (fixed 2026-11-14): files committed since midnight and
+# uncommitted changes. The hook log alone misses anything written by shell (heredocs, scripts): guides written that
+# way were invisible, so the reminder fired falsely; code written that way was invisible too (a real blind spot).
+gitfiles=$( { git log --since=midnight --name-only --pretty=format: 2>/dev/null; git diff --name-only HEAD 2>/dev/null; } | sort -u)
+
+# Nothing changed today by either source -> silence.
+[ -f "$log" ] || [ -n "$gitfiles" ] || exit 0
 
 php -r '
   $log   = $argv[1];
-  $lines = array_filter(array_map("trim", file($log) ?: []));
+  $lines = array_filter(array_map("trim", array_merge(is_file($log) ? (file($log) ?: []) : [], explode("\n", $argv[2]))));
 
   // Known non-obvious code-area -> guide-folder aliases.
   $alias = [
@@ -75,5 +80,5 @@ php -r '
            . "Non-blocking; see .claude/CLAUDE.md · modified files: $log)";
       echo json_encode(["systemMessage" => $msg]);
   }
-' "$log" 2>/dev/null
+' "$log" "$gitfiles" 2>/dev/null
 exit 0
