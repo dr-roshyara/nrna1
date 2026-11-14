@@ -62,3 +62,7 @@
 ## G-7 (2026-11-14)
 
 **No administrator action required.** No migration (the CLDR slot kinds exist since G-1), configuration or schedule. **Do not publish a `PLATFORM_DEFAULT_LOCALE` in production:** its value is a pending Principal decision (G-8), and production publication waits for Platform Owner authority anyway.
+
+## G-8 importer (2026-11-14)
+
+**No administrator action required.** The importer is not wired to any route or command. **Do not run it against production:** the initial dataset awaits the Principal's acceptance, and production publication awaits Platform Owner authority.

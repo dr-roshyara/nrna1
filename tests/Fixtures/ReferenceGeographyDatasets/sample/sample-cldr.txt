@@ -1,0 +1,3 @@
+SYNTHETIC TEST FIXTURE standing in for a CLDR release export (PBDIGIT-346 G-8 importer tests). Not CLDR data.
+XA en standard Sampleland
+XA de standard Probeland

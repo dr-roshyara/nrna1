@@ -1,0 +1,1 @@
+I7 entry references are not resolved

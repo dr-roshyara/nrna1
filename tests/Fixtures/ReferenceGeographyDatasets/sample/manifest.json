@@ -1,0 +1,21 @@
+{
+  "dataset": "pbdigit346-synthetic-sample",
+  "version": "1",
+  "note": "SYNTHETIC TEST FIXTURE for the G-8 importer. Not real geography; never load outside tests.",
+  "evidence": [
+    {"id": "sample-registry-1", "authority": "test-authority", "issued_on": "1960-01-01", "url": "https://example.invalid/sample-registry",
+     "publication": "Sample registry, edition 1 (synthetic)", "retrieved_at": "2026-11-14T00:00:00Z", "file": "sample-registry.csv",
+     "sha256": "9afeb389b6b0e7af4452ba61bea59ef67265ec25cf11f68b22dc37fb6b5eb886", "reuse_terms": "synthetic test fixture"},
+    {"id": "cldr:47", "authority": "Unicode CLDR", "issued_on": "2025-03-13", "url": "https://example.invalid/cldr-47-sample",
+     "publication": "stands in for a CLDR 47 export (synthetic)", "retrieved_at": "2026-11-14T00:00:00Z", "file": "sample-cldr.txt",
+     "sha256": "8d6733f6bbf72692c74061c24fdd0b4398ba221770d7f789ded410be030b1671", "reuse_terms": "synthetic test fixture"}
+  ],
+  "claims": [
+    {"slot": {"kind": "EXISTENCE", "unit": "@sample:XA"}, "value": "exists", "from": "2000-01-01", "basis": "instrument", "evidence": "sample-registry-1"},
+    {"slot": {"kind": "IDENTIFIER", "subject": "@sample:XA", "namespace": "iso3166-1-alpha2"}, "value": "XA", "from": "2000-01-01", "basis": "instrument", "evidence": "sample-registry-1"},
+    {"slot": {"kind": "SOURCE_NAME", "subject": "@sample:XA", "source": "Sample Registry", "language": "en", "name_type": "official"}, "value": "Sampleland", "from": "2000-01-01", "basis": "instrument", "evidence": "sample-registry-1"},
+    {"slot": {"kind": "EXISTENCE", "unit": "@sample:XB"}, "value": "exists", "from": "2000-01-01", "basis": "instrument", "evidence": "sample-registry-1"},
+    {"slot": {"kind": "CLDR_NAME", "entry": "@sample:XA", "locale": "en", "form": "standard"}, "value": "Sampleland", "from": "2000-01-01", "basis": "other", "evidence": "cldr:47"},
+    {"slot": {"kind": "CLDR_NAME", "entry": "@sample:XA", "locale": "de", "form": "standard"}, "value": "Probeland", "from": "2000-01-01", "basis": "other", "evidence": "cldr:47"}
+  ]
+}

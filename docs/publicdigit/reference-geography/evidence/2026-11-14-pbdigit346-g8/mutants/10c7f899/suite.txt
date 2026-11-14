@@ -1,0 +1,21 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+........F......................................................  63 / 313 ( 20%)
+............................................................... 126 / 313 ( 40%)
+............................................................... 189 / 313 ( 60%)
+............................................................... 252 / 313 ( 80%)
+.............................................................   313 / 313 (100%)
+
+Time: 00:00.274, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\EvidencedDatasetTest::test_a_malformed_manifest_is_refused_with_its_reason
+accepted: a claim citing undeclared evidence
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/EvidencedDatasetTest.php:76
+
+FAILURES!
+Tests: 313, Assertions: 5158, Failures: 1.

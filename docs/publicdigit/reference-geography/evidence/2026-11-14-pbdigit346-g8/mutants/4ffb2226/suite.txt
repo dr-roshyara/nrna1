@@ -1,0 +1,22 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDFD                                                                4 / 4 (100%)
+
+Time: 00:14.117, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_one_dataset_version_is_imported_once_and_only_by_an_appointed_steward
+refused before anything is written
+Failed asserting that stdClass Object #6692 (
+    'x' => 1,
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:147
+
+FAILURES!
+Tests: 4, Assertions: 14, Failures: 1, Deprecations: 1.

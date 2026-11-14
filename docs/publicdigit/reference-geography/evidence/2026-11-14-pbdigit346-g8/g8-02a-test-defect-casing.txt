@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..F                                                                 3 / 3 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\EvidencedDatasetTest::test_a_malformed_manifest_is_refused_with_its_reason
+an unknown claim kind
+Failed asserting that 'Claim 1: Not a slot key: unknown kind.' [ASCII](length: 38) contains "claim 1" [ASCII](length: 7).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/EvidencedDatasetTest.php:78
+
+FAILURES!
+Tests: 3, Assertions: 17, Failures: 1.

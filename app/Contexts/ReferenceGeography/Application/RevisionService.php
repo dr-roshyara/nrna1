@@ -56,6 +56,28 @@ final class RevisionService
         $this->revisions->add(Revision::prepare($id, $actor));
     }
 
+    /**
+     * G-8 (the evidenced-dataset import): prepares a draft holding all the evidence and claims at once, in ONE save, so
+     * an import is all or nothing. The same authority as prepare (the actor appointed for the matter); the aggregate's
+     * own rules apply to every claim (slot overlap, evidence identity). Still only a draft.
+     *
+     * @param list<EvidenceVersion> $evidence
+     * @param list<Claim> $claims
+     */
+    public function prepareWithContent(RevisionId $id, array $evidence, array $claims): void
+    {
+        $actor = $this->acting->current();
+        $this->requireAppointed($this->roster->current(), $actor, $id);
+        $revision = Revision::prepare($id, $actor);
+        foreach ($evidence as $e) {
+            $revision->attachEvidence($e, $actor);
+        }
+        foreach ($claims as $claim) {
+            $revision->addClaim($claim, $actor);
+        }
+        $this->revisions->add($revision);
+    }
+
     public function addClaim(RevisionId $id, Claim $claim): void
     {
         $this->act($id, static fn (Revision $r, PersonReference $actor) => $r->addClaim($claim, $actor));

@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F.......................................................  63 / 313 ( 20%)
+............................................................... 126 / 313 ( 40%)
+............................................................... 189 / 313 ( 60%)
+............................................................... 252 / 313 ( 80%)
+.............................................................   313 / 313 (100%)
+
+Time: 00:00.278, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Application\EvidencedDatasetTest::test_entry_keys_and_the_revision_id_are_deterministic
+a version-5 UUID
+Failed asserting that '0933f5b8-2bc7-473a-8bc7-08549018c811' matches PCRE pattern "/^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Application/EvidencedDatasetTest.php:54
+
+FAILURES!
+Tests: 313, Assertions: 5163, Failures: 1.

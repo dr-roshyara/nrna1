@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DEDD                                                                4 / 4 (100%)
+
+Time: 00:14.776, Memory: 24.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_a_file_that_does_not_match_its_checksum_or_is_missing_is_refused_and_nothing_is_written
+TypeError: hash_equals(): Argument #2 ($user_string) must be of type string, null given
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/g8/mutants/75e7580e/mutant0.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:114
+
+ERRORS!
+Tests: 4, Assertions: 11, Errors: 1, Deprecations: 1.

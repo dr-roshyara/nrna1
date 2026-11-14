@@ -1,0 +1,38 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:13.797, Memory: 22.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_a_dataset_becomes_one_draft_revision_with_its_evidence_and_nothing_is_published
+Error: Class "App\Contexts\ReferenceGeography\Application\ImportEvidencedDataset" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:91
+
+2) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_a_file_that_does_not_match_its_checksum_or_is_missing_is_refused_and_nothing_is_written
+Error: Class "App\Contexts\ReferenceGeography\Application\ImportEvidencedDataset" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:113
+
+3) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_one_dataset_version_is_imported_once_and_only_by_an_appointed_steward
+Error: Class "App\Contexts\ReferenceGeography\Application\ImportEvidencedDataset" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:129
+
+4) Tests\Feature\Contexts\ReferenceGeography\ImportEvidencedDatasetTest::test_the_imported_draft_goes_through_the_ordinary_governed_path_to_publication
+Error: Class "App\Contexts\ReferenceGeography\Application\ImportEvidencedDataset" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ImportEvidencedDatasetTest.php:147
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4, Deprecations: 1.

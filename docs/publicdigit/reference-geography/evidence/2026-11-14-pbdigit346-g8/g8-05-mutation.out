@@ -1,0 +1,10 @@
+I1 the checksum is not compared                                [pg:ImportEvidencedDatasetTest] tests:4    KILLED  a_file_that_does_not_match_its_checksum_or_is;
+I2 a missing file is accepted                                  [pg:ImportEvidencedDatasetTest] tests:4    KILLED+ERRORS (1: TypeError)  a_file_that_does_not_match_its_checksum_or_is;
+I3 a second import is not refused                              [pg:ImportEvidencedDatasetTest] tests:4    KILLED  one_dataset_version_is_imported_once_and_only;
+I4 the import needs no appointment                             [pg:ImportEvidencedDatasetTest] tests:4    SURVIVED  
+I5 only the first claim is kept                                [pg:ImportEvidencedDatasetTest] tests:4    KILLED  a_dataset_becomes_one_draft_revision_with_its;the_imported_draft_goes_through_the_ordinary_;
+I6 undeclared evidence is accepted                             [unit]     tests:313  KILLED  a_malformed_manifest_is_refused_with_its_reas;
+I7 entry references are not resolved                           [unit]     tests:313  KILLED+ERRORS (2: App\Contexts\ReferenceGeography\Application\Import\DatasetRefused)  a_malformed_manifest_is_refused_with_its_reas;a_m
+I8 the reuse terms may be missing                              [unit]     tests:313  KILLED  a_malformed_manifest_is_refused_with_its_reas;
+I9 identities are not version-5 UUIDs                          [unit]     tests:313  KILLED  entry_keys_and_the_revision_id_are_determinis;
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 1

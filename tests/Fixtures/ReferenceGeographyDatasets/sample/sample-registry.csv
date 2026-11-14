@@ -1,0 +1,4 @@
+# SYNTHETIC TEST FIXTURE (PBDIGIT-346 G-8 importer). NOT real geography: XA and XB are ISO 3166-1 user-assigned codes.
+code,name
+XA,Sampleland
+XB,Testonia

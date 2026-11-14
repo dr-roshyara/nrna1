@@ -1,0 +1,782 @@
+code,locale,form,name
+001,en,standard,world
+002,en,standard,Africa
+009,en,standard,Oceania
+019,en,standard,Americas
+142,en,standard,Asia
+150,en,standard,Europe
+DZ,en,standard,Algeria
+EG,en,standard,Egypt
+LY,en,standard,Libya
+MA,en,standard,Morocco
+SD,en,standard,Sudan
+TN,en,standard,Tunisia
+EH,en,standard,"Western Sahara"
+IO,en,standard,"British Indian Ocean Territory"
+BI,en,standard,Burundi
+KM,en,standard,Comoros
+DJ,en,standard,Djibouti
+ER,en,standard,Eritrea
+ET,en,standard,Ethiopia
+TF,en,standard,"French Southern Territories"
+KE,en,standard,Kenya
+MG,en,standard,Madagascar
+MW,en,standard,Malawi
+MU,en,standard,Mauritius
+YT,en,standard,Mayotte
+MZ,en,standard,Mozambique
+RE,en,standard,Réunion
+RW,en,standard,Rwanda
+SC,en,standard,Seychelles
+SO,en,standard,Somalia
+SS,en,standard,"South Sudan"
+UG,en,standard,Uganda
+TZ,en,standard,Tanzania
+ZM,en,standard,Zambia
+ZW,en,standard,Zimbabwe
+AO,en,standard,Angola
+CM,en,standard,Cameroon
+CF,en,standard,"Central African Republic"
+TD,en,standard,Chad
+CG,en,standard,"Congo - Brazzaville"
+CD,en,standard,"Congo - Kinshasa"
+GQ,en,standard,"Equatorial Guinea"
+GA,en,standard,Gabon
+ST,en,standard,"São Tomé & Príncipe"
+BW,en,standard,Botswana
+SZ,en,standard,Eswatini
+LS,en,standard,Lesotho
+NA,en,standard,Namibia
+ZA,en,standard,"South Africa"
+BJ,en,standard,Benin
+BF,en,standard,"Burkina Faso"
+CV,en,standard,"Cape Verde"
+CI,en,standard,"Côte d’Ivoire"
+GM,en,standard,Gambia
+GH,en,standard,Ghana
+GN,en,standard,Guinea
+GW,en,standard,Guinea-Bissau
+LR,en,standard,Liberia
+ML,en,standard,Mali
+MR,en,standard,Mauritania
+NE,en,standard,Niger
+NG,en,standard,Nigeria
+SH,en,standard,"St. Helena"
+SN,en,standard,Senegal
+SL,en,standard,"Sierra Leone"
+TG,en,standard,Togo
+AI,en,standard,Anguilla
+AG,en,standard,"Antigua & Barbuda"
+AW,en,standard,Aruba
+BS,en,standard,Bahamas
+BB,en,standard,Barbados
+BQ,en,standard,"Caribbean Netherlands"
+VG,en,standard,"British Virgin Islands"
+KY,en,standard,"Cayman Islands"
+CU,en,standard,Cuba
+CW,en,standard,Curaçao
+DM,en,standard,Dominica
+DO,en,standard,"Dominican Republic"
+GD,en,standard,Grenada
+GP,en,standard,Guadeloupe
+HT,en,standard,Haiti
+JM,en,standard,Jamaica
+MQ,en,standard,Martinique
+MS,en,standard,Montserrat
+PR,en,standard,"Puerto Rico"
+BL,en,standard,"St. Barthélemy"
+KN,en,standard,"St. Kitts & Nevis"
+LC,en,standard,"St. Lucia"
+MF,en,standard,"St. Martin"
+VC,en,standard,"St. Vincent & Grenadines"
+SX,en,standard,"Sint Maarten"
+TT,en,standard,"Trinidad & Tobago"
+TC,en,standard,"Turks & Caicos Islands"
+VI,en,standard,"U.S. Virgin Islands"
+BZ,en,standard,Belize
+CR,en,standard,"Costa Rica"
+SV,en,standard,"El Salvador"
+GT,en,standard,Guatemala
+HN,en,standard,Honduras
+MX,en,standard,Mexico
+NI,en,standard,Nicaragua
+PA,en,standard,Panama
+AR,en,standard,Argentina
+BO,en,standard,Bolivia
+BV,en,standard,"Bouvet Island"
+BR,en,standard,Brazil
+CL,en,standard,Chile
+CO,en,standard,Colombia
+EC,en,standard,Ecuador
+FK,en,standard,"Falkland Islands"
+GF,en,standard,"French Guiana"
+GY,en,standard,Guyana
+PY,en,standard,Paraguay
+PE,en,standard,Peru
+GS,en,standard,"South Georgia & South Sandwich Islands"
+SR,en,standard,Suriname
+UY,en,standard,Uruguay
+VE,en,standard,Venezuela
+BM,en,standard,Bermuda
+CA,en,standard,Canada
+GL,en,standard,Greenland
+PM,en,standard,"St. Pierre & Miquelon"
+US,en,standard,"United States"
+US,en,short,US
+AQ,en,standard,Antarctica
+KZ,en,standard,Kazakhstan
+KG,en,standard,Kyrgyzstan
+TJ,en,standard,Tajikistan
+TM,en,standard,Turkmenistan
+UZ,en,standard,Uzbekistan
+CN,en,standard,China
+HK,en,standard,"Hong Kong SAR China"
+HK,en,short,"Hong Kong"
+MO,en,standard,"Macao SAR China"
+MO,en,short,Macao
+KP,en,standard,"North Korea"
+JP,en,standard,Japan
+MN,en,standard,Mongolia
+KR,en,standard,"South Korea"
+BN,en,standard,Brunei
+KH,en,standard,Cambodia
+ID,en,standard,Indonesia
+LA,en,standard,Laos
+MY,en,standard,Malaysia
+MM,en,standard,"Myanmar (Burma)"
+MM,en,short,Myanmar
+PH,en,standard,Philippines
+SG,en,standard,Singapore
+TH,en,standard,Thailand
+TL,en,standard,Timor-Leste
+VN,en,standard,Vietnam
+AF,en,standard,Afghanistan
+BD,en,standard,Bangladesh
+BT,en,standard,Bhutan
+IN,en,standard,India
+IR,en,standard,Iran
+MV,en,standard,Maldives
+NP,en,standard,Nepal
+PK,en,standard,Pakistan
+LK,en,standard,"Sri Lanka"
+AM,en,standard,Armenia
+AZ,en,standard,Azerbaijan
+BH,en,standard,Bahrain
+CY,en,standard,Cyprus
+GE,en,standard,Georgia
+IQ,en,standard,Iraq
+IL,en,standard,Israel
+JO,en,standard,Jordan
+KW,en,standard,Kuwait
+LB,en,standard,Lebanon
+OM,en,standard,Oman
+QA,en,standard,Qatar
+SA,en,standard,"Saudi Arabia"
+PS,en,standard,"Palestinian Territories"
+PS,en,short,Palestine
+SY,en,standard,Syria
+TR,en,standard,Türkiye
+AE,en,standard,"United Arab Emirates"
+YE,en,standard,Yemen
+BY,en,standard,Belarus
+BG,en,standard,Bulgaria
+CZ,en,standard,Czechia
+HU,en,standard,Hungary
+PL,en,standard,Poland
+MD,en,standard,Moldova
+RO,en,standard,Romania
+RU,en,standard,Russia
+SK,en,standard,Slovakia
+UA,en,standard,Ukraine
+AX,en,standard,"Åland Islands"
+DK,en,standard,Denmark
+EE,en,standard,Estonia
+FO,en,standard,"Faroe Islands"
+FI,en,standard,Finland
+GG,en,standard,Guernsey
+IS,en,standard,Iceland
+IE,en,standard,Ireland
+IM,en,standard,"Isle of Man"
+JE,en,standard,Jersey
+LV,en,standard,Latvia
+LT,en,standard,Lithuania
+NO,en,standard,Norway
+SJ,en,standard,"Svalbard & Jan Mayen"
+SE,en,standard,Sweden
+GB,en,standard,"United Kingdom"
+GB,en,short,UK
+AL,en,standard,Albania
+AD,en,standard,Andorra
+BA,en,standard,"Bosnia & Herzegovina"
+BA,en,short,Bosnia
+HR,en,standard,Croatia
+GI,en,standard,Gibraltar
+GR,en,standard,Greece
+VA,en,standard,"Vatican City"
+IT,en,standard,Italy
+MT,en,standard,Malta
+ME,en,standard,Montenegro
+MK,en,standard,"North Macedonia"
+PT,en,standard,Portugal
+SM,en,standard,"San Marino"
+RS,en,standard,Serbia
+SI,en,standard,Slovenia
+ES,en,standard,Spain
+AT,en,standard,Austria
+BE,en,standard,Belgium
+FR,en,standard,France
+DE,en,standard,Germany
+LI,en,standard,Liechtenstein
+LU,en,standard,Luxembourg
+MC,en,standard,Monaco
+NL,en,standard,Netherlands
+CH,en,standard,Switzerland
+AU,en,standard,Australia
+CX,en,standard,"Christmas Island"
+CC,en,standard,"Cocos (Keeling) Islands"
+CC,en,short,"Cocos Islands"
+HM,en,standard,"Heard & McDonald Islands"
+NZ,en,standard,"New Zealand"
+NF,en,standard,"Norfolk Island"
+FJ,en,standard,Fiji
+NC,en,standard,"New Caledonia"
+PG,en,standard,"Papua New Guinea"
+SB,en,standard,"Solomon Islands"
+VU,en,standard,Vanuatu
+GU,en,standard,Guam
+KI,en,standard,Kiribati
+MH,en,standard,"Marshall Islands"
+FM,en,standard,Micronesia
+NR,en,standard,Nauru
+MP,en,standard,"Northern Mariana Islands"
+PW,en,standard,Palau
+UM,en,standard,"U.S. Outlying Islands"
+AS,en,standard,"American Samoa"
+CK,en,standard,"Cook Islands"
+PF,en,standard,"French Polynesia"
+NU,en,standard,Niue
+PN,en,standard,"Pitcairn Islands"
+PN,en,short,Pitcairn
+WS,en,standard,Samoa
+TK,en,standard,Tokelau
+TO,en,standard,Tonga
+TV,en,standard,Tuvalu
+WF,en,standard,"Wallis & Futuna"
+001,de,standard,Welt
+002,de,standard,Afrika
+009,de,standard,Ozeanien
+019,de,standard,Amerika
+142,de,standard,Asien
+150,de,standard,Europa
+DZ,de,standard,Algerien
+EG,de,standard,Ägypten
+LY,de,standard,Libyen
+MA,de,standard,Marokko
+SD,de,standard,Sudan
+TN,de,standard,Tunesien
+EH,de,standard,Westsahara
+IO,de,standard,"Britisches Territorium im Indischen Ozean"
+BI,de,standard,Burundi
+KM,de,standard,Komoren
+DJ,de,standard,Dschibuti
+ER,de,standard,Eritrea
+ET,de,standard,Äthiopien
+TF,de,standard,"Französische Süd- und Antarktisgebiete"
+KE,de,standard,Kenia
+MG,de,standard,Madagaskar
+MW,de,standard,Malawi
+MU,de,standard,Mauritius
+YT,de,standard,Mayotte
+MZ,de,standard,Mosambik
+RE,de,standard,Réunion
+RW,de,standard,Ruanda
+SC,de,standard,Seychellen
+SO,de,standard,Somalia
+SS,de,standard,Südsudan
+UG,de,standard,Uganda
+TZ,de,standard,Tansania
+ZM,de,standard,Sambia
+ZW,de,standard,Simbabwe
+AO,de,standard,Angola
+CM,de,standard,Kamerun
+CF,de,standard,"Zentralafrikanische Republik"
+TD,de,standard,Tschad
+CG,de,standard,Kongo-Brazzaville
+CD,de,standard,Kongo-Kinshasa
+GQ,de,standard,Äquatorialguinea
+GA,de,standard,Gabun
+ST,de,standard,"São Tomé und Príncipe"
+BW,de,standard,Botsuana
+SZ,de,standard,Eswatini
+LS,de,standard,Lesotho
+NA,de,standard,Namibia
+ZA,de,standard,Südafrika
+BJ,de,standard,Benin
+BF,de,standard,"Burkina Faso"
+CV,de,standard,"Cabo Verde"
+CI,de,standard,"Côte d’Ivoire"
+GM,de,standard,Gambia
+GH,de,standard,Ghana
+GN,de,standard,Guinea
+GW,de,standard,Guinea-Bissau
+LR,de,standard,Liberia
+ML,de,standard,Mali
+MR,de,standard,Mauretanien
+NE,de,standard,Niger
+NG,de,standard,Nigeria
+SH,de,standard,"St. Helena"
+SN,de,standard,Senegal
+SL,de,standard,"Sierra Leone"
+TG,de,standard,Togo
+AI,de,standard,Anguilla
+AG,de,standard,"Antigua und Barbuda"
+AW,de,standard,Aruba
+BS,de,standard,Bahamas
+BB,de,standard,Barbados
+BQ,de,standard,"Karibische Niederlande"
+VG,de,standard,"Britische Jungferninseln"
+KY,de,standard,Kaimaninseln
+CU,de,standard,Kuba
+CW,de,standard,Curaçao
+DM,de,standard,Dominica
+DO,de,standard,"Dominikanische Republik"
+GD,de,standard,Grenada
+GP,de,standard,Guadeloupe
+HT,de,standard,Haiti
+JM,de,standard,Jamaika
+MQ,de,standard,Martinique
+MS,de,standard,Montserrat
+PR,de,standard,"Puerto Rico"
+BL,de,standard,"St. Barthélemy"
+KN,de,standard,"St. Kitts und Nevis"
+LC,de,standard,"St. Lucia"
+MF,de,standard,"St. Martin"
+VC,de,standard,"St. Vincent und die Grenadinen"
+SX,de,standard,"Sint Maarten"
+TT,de,standard,"Trinidad und Tobago"
+TC,de,standard,"Turks- und Caicosinseln"
+VI,de,standard,"Amerikanische Jungferninseln"
+BZ,de,standard,Belize
+CR,de,standard,"Costa Rica"
+SV,de,standard,"El Salvador"
+GT,de,standard,Guatemala
+HN,de,standard,Honduras
+MX,de,standard,Mexiko
+NI,de,standard,Nicaragua
+PA,de,standard,Panama
+AR,de,standard,Argentinien
+BO,de,standard,Bolivien
+BV,de,standard,Bouvetinsel
+BR,de,standard,Brasilien
+CL,de,standard,Chile
+CO,de,standard,Kolumbien
+EC,de,standard,Ecuador
+FK,de,standard,Falklandinseln
+GF,de,standard,Französisch-Guayana
+GY,de,standard,Guyana
+PY,de,standard,Paraguay
+PE,de,standard,Peru
+GS,de,standard,"Südgeorgien und die Südlichen Sandwichinseln"
+SR,de,standard,Suriname
+UY,de,standard,Uruguay
+VE,de,standard,Venezuela
+BM,de,standard,Bermuda
+CA,de,standard,Kanada
+GL,de,standard,Grönland
+PM,de,standard,"St. Pierre und Miquelon"
+US,de,standard,"Vereinigte Staaten"
+US,de,short,USA
+AQ,de,standard,Antarktis
+KZ,de,standard,Kasachstan
+KG,de,standard,Kirgisistan
+TJ,de,standard,Tadschikistan
+TM,de,standard,Turkmenistan
+UZ,de,standard,Usbekistan
+CN,de,standard,China
+HK,de,standard,"Sonderverwaltungsregion Hongkong"
+HK,de,short,Hongkong
+MO,de,standard,"Sonderverwaltungsregion Macau"
+MO,de,short,Macau
+KP,de,standard,Nordkorea
+JP,de,standard,Japan
+MN,de,standard,Mongolei
+KR,de,standard,Südkorea
+BN,de,standard,"Brunei Darussalam"
+KH,de,standard,Kambodscha
+ID,de,standard,Indonesien
+LA,de,standard,Laos
+MY,de,standard,Malaysia
+MM,de,standard,Myanmar
+PH,de,standard,Philippinen
+SG,de,standard,Singapur
+TH,de,standard,Thailand
+TL,de,standard,Timor-Leste
+VN,de,standard,Vietnam
+AF,de,standard,Afghanistan
+BD,de,standard,Bangladesch
+BT,de,standard,Bhutan
+IN,de,standard,Indien
+IR,de,standard,Iran
+MV,de,standard,Malediven
+NP,de,standard,Nepal
+PK,de,standard,Pakistan
+LK,de,standard,"Sri Lanka"
+AM,de,standard,Armenien
+AZ,de,standard,Aserbaidschan
+BH,de,standard,Bahrain
+CY,de,standard,Zypern
+GE,de,standard,Georgien
+IQ,de,standard,Irak
+IL,de,standard,Israel
+JO,de,standard,Jordanien
+KW,de,standard,Kuwait
+LB,de,standard,Libanon
+OM,de,standard,Oman
+QA,de,standard,Katar
+SA,de,standard,Saudi-Arabien
+PS,de,standard,"Palästinensische Autonomiegebiete"
+PS,de,short,Palästina
+SY,de,standard,Syrien
+TR,de,standard,Türkei
+AE,de,standard,"Vereinigte Arabische Emirate"
+YE,de,standard,Jemen
+BY,de,standard,Belarus
+BG,de,standard,Bulgarien
+CZ,de,standard,Tschechien
+HU,de,standard,Ungarn
+PL,de,standard,Polen
+MD,de,standard,"Republik Moldau"
+RO,de,standard,Rumänien
+RU,de,standard,Russland
+SK,de,standard,Slowakei
+UA,de,standard,Ukraine
+AX,de,standard,Ålandinseln
+DK,de,standard,Dänemark
+EE,de,standard,Estland
+FO,de,standard,Färöer
+FI,de,standard,Finnland
+GG,de,standard,Guernsey
+IS,de,standard,Island
+IE,de,standard,Irland
+IM,de,standard,"Isle of Man"
+JE,de,standard,Jersey
+LV,de,standard,Lettland
+LT,de,standard,Litauen
+NO,de,standard,Norwegen
+SJ,de,standard,"Spitzbergen und Jan Mayen"
+SE,de,standard,Schweden
+GB,de,standard,"Vereinigtes Königreich"
+GB,de,short,UK
+AL,de,standard,Albanien
+AD,de,standard,Andorra
+BA,de,standard,"Bosnien und Herzegowina"
+HR,de,standard,Kroatien
+GI,de,standard,Gibraltar
+GR,de,standard,Griechenland
+VA,de,standard,Vatikanstadt
+IT,de,standard,Italien
+MT,de,standard,Malta
+ME,de,standard,Montenegro
+MK,de,standard,Nordmazedonien
+PT,de,standard,Portugal
+SM,de,standard,"San Marino"
+RS,de,standard,Serbien
+SI,de,standard,Slowenien
+ES,de,standard,Spanien
+AT,de,standard,Österreich
+BE,de,standard,Belgien
+FR,de,standard,Frankreich
+DE,de,standard,Deutschland
+LI,de,standard,Liechtenstein
+LU,de,standard,Luxemburg
+MC,de,standard,Monaco
+NL,de,standard,Niederlande
+CH,de,standard,Schweiz
+AU,de,standard,Australien
+CX,de,standard,Weihnachtsinsel
+CC,de,standard,Kokosinseln
+HM,de,standard,"Heard und McDonaldinseln"
+NZ,de,standard,Neuseeland
+NF,de,standard,Norfolkinsel
+FJ,de,standard,Fidschi
+NC,de,standard,Neukaledonien
+PG,de,standard,Papua-Neuguinea
+SB,de,standard,Salomonen
+VU,de,standard,Vanuatu
+GU,de,standard,Guam
+KI,de,standard,Kiribati
+MH,de,standard,Marshallinseln
+FM,de,standard,Mikronesien
+NR,de,standard,Nauru
+MP,de,standard,"Nördliche Marianen"
+PW,de,standard,Palau
+UM,de,standard,"Amerikanische Überseeinseln"
+AS,de,standard,Amerikanisch-Samoa
+CK,de,standard,Cookinseln
+PF,de,standard,Französisch-Polynesien
+NU,de,standard,Niue
+PN,de,standard,Pitcairninseln
+WS,de,standard,Samoa
+TK,de,standard,Tokelau
+TO,de,standard,Tonga
+TV,de,standard,Tuvalu
+WF,de,standard,"Wallis und Futuna"
+001,ne,standard,विश्व
+002,ne,standard,अफ्रिका
+009,ne,standard,ओसनिया
+019,ne,standard,अमेरिकास
+142,ne,standard,एशिया
+150,ne,standard,युरोप
+DZ,ne,standard,अल्जेरिया
+EG,ne,standard,इजिप्ट
+LY,ne,standard,लिबिया
+MA,ne,standard,मोरोक्को
+SD,ne,standard,सुडान
+TN,ne,standard,ट्युनिसिया
+EH,ne,standard,"पश्चिमी साहारा"
+IO,ne,standard,"बेलायती हिन्द महासागर क्षेत्र"
+BI,ne,standard,बुरूण्डी
+KM,ne,standard,कोमोरोस
+DJ,ne,standard,डिजिबुटी
+ER,ne,standard,एरिट्रीया
+ET,ne,standard,इथियोपिया
+TF,ne,standard,"फ्रेन्च दक्षिणी राज्यहरू"
+KE,ne,standard,केन्या
+MG,ne,standard,माडागास्कर
+MW,ne,standard,मालावी
+MU,ne,standard,मौरिसियस
+YT,ne,standard,मायोट्ट
+MZ,ne,standard,मोजाम्बिक
+RE,ne,standard,रियुनियन
+RW,ne,standard,रवाण्डा
+SC,ne,standard,सेचेलेस
+SO,ne,standard,सोमालिया
+SS,ne,standard,"दक्षिण सुडान"
+UG,ne,standard,युगाण्डा
+TZ,ne,standard,तान्जानिया
+ZM,ne,standard,जाम्बिया
+ZW,ne,standard,जिम्बाबवे
+AO,ne,standard,अङ्गोला
+CM,ne,standard,क्यामरून
+CF,ne,standard,"मध्य अफ्रिकी गणतन्त्र"
+TD,ne,standard,चाड
+CG,ne,standard,"कङ्गो ब्राजाभिल"
+CD,ne,standard,"कङ्गो - किन्शासा"
+GQ,ne,standard,"भू-मध्यीय गिनी"
+GA,ne,standard,गावोन
+ST,ne,standard,"साओ टोमे र प्रिन्सिप"
+BW,ne,standard,बोट्स्वाना
+SZ,ne,standard,स्वाजिल्याण्ड
+LS,ne,standard,लेसोथो
+NA,ne,standard,नामिबिया
+ZA,ne,standard,"दक्षिण अफ्रिका"
+BJ,ne,standard,बेनिन
+BF,ne,standard,"बुर्किना फासो"
+CV,ne,standard,"केप भर्डे"
+CI,ne,standard,"कोट दिभोर"
+GM,ne,standard,गाम्विया
+GH,ne,standard,घाना
+GN,ne,standard,गिनी
+GW,ne,standard,गिनी-बिसाउ
+LR,ne,standard,लाइबेरिया
+ML,ne,standard,माली
+MR,ne,standard,माउरिटानिया
+NE,ne,standard,नाइजर
+NG,ne,standard,नाइजेरिया
+SH,ne,standard,"सेन्ट हेलेना"
+SN,ne,standard,सेनेगल
+SL,ne,standard,"सिएर्रा लिओन"
+TG,ne,standard,टोगो
+AI,ne,standard,आङ्गुइला
+AG,ne,standard,"एन्टिगुआ र बारबुडा"
+AW,ne,standard,अरुबा
+BS,ne,standard,बहामास
+BB,ne,standard,बार्बाडोस
+BQ,ne,standard,"क्यारिवियन नेदरल्याण्ड्स"
+VG,ne,standard,"बेलायती भर्जिन टापुहरू"
+KY,ne,standard,"केयमान टापु"
+CU,ne,standard,क्युबा
+CW,ne,standard,कुराकाओ
+DM,ne,standard,डोमिनिका
+DO,ne,standard,"डोमिनिकन गणतन्त्र"
+GD,ne,standard,ग्रेनाडा
+GP,ne,standard,ग्वाडेलुप
+HT,ne,standard,हैटी
+JM,ne,standard,जमैका
+MQ,ne,standard,मार्टिनिक
+MS,ne,standard,मोन्टसेर्राट
+PR,ne,standard,"पुएर्टो रिको"
+BL,ne,standard,"सेन्ट बार्थेलेमी"
+KN,ne,standard,"सेन्ट किट्स र नेभिस"
+LC,ne,standard,"सेन्ट लुसिया"
+MF,ne,standard,"सेन्ट मार्टिन"
+VC,ne,standard,"सेन्ट भिन्सेन्ट र ग्रेनाडिन्स"
+SX,ne,standard,"सिन्ट मार्टेन"
+TT,ne,standard,"त्रिनिडाड एण्ड टोबागो"
+TC,ne,standard,"तुर्क र काइकोस टापु"
+VI,ne,standard,"संयुक्त राज्य भर्जिन टापुहरु"
+BZ,ne,standard,बेलिज
+CR,ne,standard,कोष्टारिका
+SV,ne,standard,"एल् साल्भाडोर"
+GT,ne,standard,ग्वाटेमाला
+HN,ne,standard,हन्डुरास
+MX,ne,standard,मेक्सिको
+NI,ne,standard,निकारागुवा
+PA,ne,standard,प्यानामा
+AR,ne,standard,अर्जेन्टिना
+BO,ne,standard,बोलिभिया
+BV,ne,standard,"बुभेट टापु"
+BR,ne,standard,ब्राजिल
+CL,ne,standard,चिली
+CO,ne,standard,कोलोम्बिया
+EC,ne,standard,इक्वेडोर
+FK,ne,standard,"फकल्याण्ड टापुहरु"
+GF,ne,standard,"फ्रान्सेली गायना"
+GY,ne,standard,गुयाना
+PY,ne,standard,प्याराग्वे
+PE,ne,standard,पेरू
+GS,ne,standard,"दक्षिण जर्जिया र दक्षिण स्यान्डवीच टापुहरू"
+SR,ne,standard,सुरिनेम
+UY,ne,standard,उरूग्वे
+VE,ne,standard,भेनेजुएला
+BM,ne,standard,बर्मुडा
+CA,ne,standard,क्यानाडा
+GL,ne,standard,ग्रिनल्याण्ड
+PM,ne,standard,"सेन्ट पिर्रे र मिक्केलोन"
+US,ne,standard,"संयुक्त राज्य"
+US,ne,short,अमेरिका
+AQ,ne,standard,अन्टारटिका
+KZ,ne,standard,काजाकस्तान
+KG,ne,standard,किर्गिस्तान
+TJ,ne,standard,ताजिकिस्तान
+TM,ne,standard,तुर्कमेनिस्तान
+UZ,ne,standard,उज्बेकिस्तान
+CN,ne,standard,चीन
+HK,ne,standard,"हङकङ चिनियाँ विशेष प्रशासनिक क्षेत्र"
+HK,ne,short,हङकङ
+MO,ne,standard,"मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र"
+MO,ne,short,मकाउ
+KP,ne,standard,"उत्तर कोरिया"
+JP,ne,standard,जापान
+MN,ne,standard,मङ्गोलिया
+KR,ne,standard,"दक्षिण कोरिया"
+BN,ne,standard,ब्रुनाइ
+KH,ne,standard,कम्बोडिया
+ID,ne,standard,इन्डोनेशिया
+LA,ne,standard,लाओस
+MY,ne,standard,मलेसिया
+MM,ne,standard,"म्यान्मार (बर्मा)"
+PH,ne,standard,फिलिपिन्स
+SG,ne,standard,सिङ्गापुर
+TH,ne,standard,थाइल्याण्ड
+TL,ne,standard,टिमोर-लेस्टे
+VN,ne,standard,भिएतनाम
+AF,ne,standard,अफगानिस्तान
+BD,ne,standard,बङ्गलादेश
+BT,ne,standard,भुटान
+IN,ne,standard,भारत
+IR,ne,standard,इरान
+MV,ne,standard,माल्दिभ्स
+NP,ne,standard,नेपाल
+PK,ne,standard,पाकिस्तान
+LK,ne,standard,श्रीलङ्का
+AM,ne,standard,आर्मेनिया
+AZ,ne,standard,अजरबैजान
+BH,ne,standard,बहराइन
+CY,ne,standard,साइप्रस
+GE,ne,standard,जर्जिया
+IQ,ne,standard,इराक
+IL,ne,standard,इजरायल
+JO,ne,standard,जोर्डन
+KW,ne,standard,कुवेत
+LB,ne,standard,लेबनन
+OM,ne,standard,ओमन
+QA,ne,standard,कतार
+SA,ne,standard,"साउदी अरब"
+PS,ne,standard,"प्यालेस्टिनी भू-भागहरू"
+PS,ne,short,प्‍यालेस्टाइन
+SY,ne,standard,सिरिया
+TR,ne,standard,तुर्किये
+AE,ne,standard,"संयुक्त अरब इमिराट्स"
+YE,ne,standard,येमेन
+BY,ne,standard,बेलारूस
+BG,ne,standard,बुल्गेरिया
+CZ,ne,standard,चेकिया
+HU,ne,standard,हङ्गेरी
+PL,ne,standard,पोल्याण्ड
+MD,ne,standard,माल्डोभा
+RO,ne,standard,रोमेनिया
+RU,ne,standard,रूस
+SK,ne,standard,स्लोभाकिया
+UA,ne,standard,युक्रेन
+AX,ne,standard,"अलान्ड टापुहरु"
+DK,ne,standard,डेनमार्क
+EE,ne,standard,इस्टोनिया
+FO,ne,standard,"फारो टापुहरू"
+FI,ne,standard,फिनल्याण्ड
+GG,ne,standard,ग्यूर्न्सी
+IS,ne,standard,आइस्ल्याण्ड
+IE,ne,standard,आयरल्याण्ड
+IM,ne,standard,"आइल अफ म्यान"
+JE,ne,standard,जर्सी
+LV,ne,standard,लाट्भिया
+LT,ne,standard,लिथुएनिया
+NO,ne,standard,नर्वे
+SJ,ne,standard,"सभाल्बार्ड र जान मायेन"
+SE,ne,standard,स्विडेन
+GB,ne,standard,"संयुक्त अधिराज्य"
+GB,ne,short,युके
+AL,ne,standard,अल्बेनिया
+AD,ne,standard,अन्डोर्रा
+BA,ne,standard,"बोस्निया एण्ड हर्जगोभिनिया"
+HR,ne,standard,क्रोएशिया
+GI,ne,standard,जिब्राल्टार
+GR,ne,standard,ग्रीस
+VA,ne,standard,"भेटिकन सिटी"
+IT,ne,standard,इटली
+MT,ne,standard,माल्टा
+ME,ne,standard,मोन्टेनिग्रो
+MK,ne,standard,"उत्तर म्यासेडोनिया"
+PT,ne,standard,पोर्चुगल
+SM,ne,standard,"सान् मारिनो"
+RS,ne,standard,सर्बिया
+SI,ne,standard,स्लोभेनिया
+ES,ne,standard,स्पेन
+AT,ne,standard,अष्ट्रिया
+BE,ne,standard,बेल्जियम
+FR,ne,standard,फ्रान्स
+DE,ne,standard,जर्मनी
+LI,ne,standard,लिकटेन्सटाइन
+LU,ne,standard,लक्जेमबर्ग
+MC,ne,standard,मोनाको
+NL,ne,standard,नेदरल्याण्ड
+CH,ne,standard,स्विजरल्याण्ड
+AU,ne,standard,अस्ट्रेलिया
+CX,ne,standard,"क्रिष्टमस टापु"
+CC,ne,standard,"कोकोस (किलिंग) टापुहरु"
+HM,ne,standard,"हर्ड टापु र म्याकडोनाल्ड टापुहरु"
+NZ,ne,standard,न्युजिल्याण्ड
+NF,ne,standard,"नोरफोल्क टापु"
+FJ,ne,standard,फिजी
+NC,ne,standard,"न्यु क्यालेडोनिया"
+PG,ne,standard,"पपुआ न्यू गाइनिया"
+SB,ne,standard,"सोलोमन टापुहरू"
+VU,ne,standard,भानुआतु
+GU,ne,standard,गुवाम
+KI,ne,standard,किरिबाटी
+MH,ne,standard,"मार्शल टापुहरु"
+FM,ne,standard,माइक्रोनेसिया
+NR,ne,standard,नाउरू
+MP,ne,standard,"उत्तरी मारिआना टापु"
+PW,ne,standard,पलाउ
+UM,ne,standard,"संयुक्त राज्यका बाह्य टापुहरु"
+AS,ne,standard,"अमेरिकी समोआ"
+CK,ne,standard,"कुक टापुहरु"
+PF,ne,standard,"फ्रान्सेली पोलिनेसिया"
+NU,ne,standard,नियुइ
+PN,ne,standard,"पिटकाइर्न टापुहरु"
+WS,ne,standard,सामोआ
+TK,ne,standard,तोकेलाउ
+TO,ne,standard,टोंगा
+TV,ne,standard,तुभालु
+WF,ne,standard,"वालिस र फुटुना"
