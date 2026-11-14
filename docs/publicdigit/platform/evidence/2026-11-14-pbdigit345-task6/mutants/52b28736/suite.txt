@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDFDDD                                                              6 / 6 (100%)
+
+Time: 00:19.576, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t1_each_request_sees_only_the_selected_organisation_and_switching_the_id_is_refused
+the context lives for one request only
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:163
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:172
+
+2) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t15_a_binding_revoked_after_selection_refuses_the_next_request_and_clears_the_selection
+the context lives for one request only
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:163
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:213
+
+FAILURES!
+Tests: 6, Assertions: 43, Failures: 2, Deprecations: 1.

@@ -60,3 +60,11 @@
   - the named facts are read from the organisation's own database;
   - "ledger schema" usually means the organisation set was extended after step 3: repeat step 3 first (only while the organisation is still provisioning);
   - "a platform contact with an active account": one of the founding application's contacts must activate their account. Contacts are never edited by hand.
+
+## Task 6 (2026-11-14)
+
+- **No migration and no new environment variable.** One new route, `POST /platform/organisations/select`, loaded by `PlatformServiceProvider`.
+- **Route cache:** after deploying, rebuild it (`php artisan route:cache`) or clear it (`php artisan route:clear`). A stale cache hides new routes.
+  - **On the development machine, `bootstrap/cache/routes-v7.php` dates from 19 October 2026 and is stale.** It still names `SocialController`, which no route file uses any more, and `php artisan route:list` fails on it.
+  - Clearing it is the developer's call (`php artisan route:clear`). The isolated test harness ignores it.
+- **Production effect today: no registry organisation is reachable over HTTP.** Identity's bindings are not built (PBDIGIT-349), and `NoIdentityBindingsYet` refuses everyone. Never "fix" this by pointing it at the legacy user-organisation tables.

@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+
+
+An error occurred inside PHPUnit.
+
+Message:  Class "App\Contexts\Platform\Infrastructure\Http\OrganisationEntry" not found
+Location: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:51
+
+#0 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestBuilder.php(63): [constant expression]()
+#1 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestSuite.php(508): PHPUnit\Framework\TestBuilder->build()
+#2 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestSuite.php(109): PHPUnit\Framework\TestSuite->addTestMethod()
+#3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestSuite.php(209): PHPUnit\Framework\TestSuite::fromClassReflector()
+#4 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestSuite.php(230): PHPUnit\Framework\TestSuite->addTestSuite()
+#5 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/Configuration/Xml/TestSuiteMapper.php(105): PHPUnit\Framework\TestSuite->addTestFile()
+#6 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/Configuration/TestSuiteBuilder.php(75): PHPUnit\TextUI\XmlConfiguration\TestSuiteMapper->map()
+#7 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/Application.php(412): PHPUnit\TextUI\Configuration\TestSuiteBuilder->build()
+#8 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/Application.php(182): PHPUnit\TextUI\Application->buildTestSuite()
+#9 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run()
+#10 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/bin/phpunit(122): include('...')
+#11 {main}

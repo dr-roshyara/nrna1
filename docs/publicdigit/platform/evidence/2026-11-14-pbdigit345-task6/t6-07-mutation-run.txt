@@ -1,0 +1,10 @@
+E1 a conflicting carried id is not refused                     [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  t1_each_request_sees_only_the_selected_organi;
+E2 the current binding is not checked                          [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  identity_unavailable_refuses_with_service_una;t15_a_binding_revoked_after_selection_refuses;t15_a_forged_session_value_is_refused;t15_a_selection_of_an_organisation_not_bound_;
+E3 a legacy organisation is not refused (unit)                 [unit]     tests:84   KILLED  a_request_is_refused with data set "a legacy ;a_selection_is_refused with data set "a legac;
+E4 a refused request keeps the selection                       [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  t10_part3_the_legacy_and_registry_paths_never;t15_a_binding_revoked_after_selection_refuses;t15_a_forged_session_value_is_refused;t1_each_request_sees_only_the_selected_organi;
+E5 the context outlives the request                            [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  t15_a_binding_revoked_after_selection_refuses;t1_each_request_sees_only_the_selected_organi;
+E6 a refused selection keeps the earlier one                   [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  t15_a_selection_of_an_organisation_not_bound_;
+E7 the signed-in account is not required on entry (unit)       [unit]     tests:84   KILLED  the_signed_in_account_is_checked_on_every_req;
+E8 the legacy header is not a carried id                       [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  t1_each_request_sees_only_the_selected_organi;
+E9 Identity unavailable is not answered 503                    [pg-platform:OrganisationEntryHttpTest] tests:6    KILLED  identity_unavailable_refuses_with_service_una;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

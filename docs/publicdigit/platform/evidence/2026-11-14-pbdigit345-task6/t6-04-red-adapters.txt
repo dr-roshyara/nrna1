@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EE                                                                  2 / 2 (100%)
+
+Time: 00:00.020, Memory: 10.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\EntryAdaptersTest::test_the_signed_in_account_is_identitys_current_account
+Error: Class "App\Contexts\Platform\Infrastructure\IdentitySignedInAccount" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/EntryAdaptersTest.php:35
+
+2) Tests\Unit\Contexts\Platform\Infrastructure\EntryAdaptersTest::test_until_identity_holds_bindings_nobody_is_bound
+Error: Class "App\Contexts\Platform\Infrastructure\NoIdentityBindingsYet" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/EntryAdaptersTest.php:41
+
+ERRORS!
+Tests: 2, Assertions: 0, Errors: 2.

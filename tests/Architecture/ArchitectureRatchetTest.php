@@ -35,16 +35,17 @@ final class ArchitectureRatchetTest extends TestCase
      * The baseline may only shrink: growing it means changing this number too, visibly, in a reviewed diff.
      * History: 198 measured (f5b80720d) → 193 (MemberId published, Principal 2026-11-13) → 197 (+4 pre-existing chained
      * DB::table writes in delivery that the scanner could not see before; a measurement correction, not new code)
-     * → 200 (+3 PBDIGIT-345 task 5c: the Platform-to-Identity ContactAccounts adapter, consumer-owned port, D-193 F-07).
+     * → 200 (+3 PBDIGIT-345 task 5c: the Platform-to-Identity ContactAccounts adapter, consumer-owned port, D-193 F-07)
+     * → 201 (+1 PBDIGIT-345 task 6: the SignedInAccount adapter over Identity's CurrentAccount, E-1).
      */
-    private const BASELINE_CEILING = 200;
+    private const BASELINE_CEILING = 201;
 
     /**
      * The same for the total of occurrences: without it, raising an existing entry's count would let a new occurrence
      * in silently (found 2026-11-13, Principal verification request). History: 264 at introduction → 267 (PBDIGIT-345
-     * task 5c, the same 3 entries, 1 occurrence each).
+     * task 5c, the same 3 entries, 1 occurrence each) → 268 (task 6, the same 1 entry).
      */
-    private const OCCURRENCE_CEILING = 267;
+    private const OCCURRENCE_CEILING = 268;
 
     private const CLASSES = [
         'genuine', 'genuine (legacy)', 'genuine (minor)', 'genuine (placement)', 'misplaced ownership',

@@ -23,6 +23,8 @@ final class OrganisationRoutingDefaultConnectionTest extends TestCase
         // connection only (the registry is read through its port, never through DB::)
         'app/Contexts/Platform/Infrastructure/OrganisationDatabasePreparer.php',
         'app/Contexts/Platform/Infrastructure/PostgresOrganisationReadinessProbe.php',
+        // task 6: the HTTP entry E-1 (it binds the organisation's own connection for one request)
+        'app/Contexts/Platform/Infrastructure/Http/OrganisationEntry.php',
     ];
 
     /** @return list<string> what in $source would use or change the default connection */

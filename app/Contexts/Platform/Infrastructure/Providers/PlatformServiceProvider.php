@@ -6,6 +6,12 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ContactAccounts;
+use App\Contexts\Platform\Application\Ports\IdentityBindings;
+use App\Contexts\Platform\Application\Ports\SignedInAccount;
+use App\Contexts\Platform\Infrastructure\Http\OrganisationEntry;
+use App\Contexts\Platform\Infrastructure\IdentitySignedInAccount;
+use App\Contexts\Platform\Infrastructure\NoIdentityBindingsYet;
+use Illuminate\Routing\Router;
 use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
 use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
 use App\Contexts\Platform\Infrastructure\IdentityContactAccounts;
@@ -51,10 +57,18 @@ final class PlatformServiceProvider extends ServiceProvider
             array_values((array) config('organisation_routing.migration_paths', [])),
         ));
         $this->app->bind(ContactAccounts::class, IdentityContactAccounts::class);
+        // task 6 (E-1): who is signed in (Identity), and Identity's bindings: NONE until its store exists (PBDIGIT-349)
+        $this->app->bind(SignedInAccount::class, IdentitySignedInAccount::class);
+        $this->app->bind(IdentityBindings::class, NoIdentityBindingsYet::class);
     }
 
     public function boot(): void
     {
+        // task 6 (E-1): the registry entry middleware and the selection after login (shared hostname, D-219 (2))
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('organisation.entry', OrganisationEntry::class);
+        $this->loadRoutesFrom(dirname(__DIR__) . '/Http/routes.php');   // route:cache compatible
+
         if ($this->app->runningInConsole()) {
             $this->commands([PrepareOrganisationDatabaseCommand::class]);   // task 5b: the dedicated provisioning process
         }

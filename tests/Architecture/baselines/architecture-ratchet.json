@@ -1203,6 +1203,13 @@
         "remediation": "none; if Identity publishes an account-status query, re-point the adapter to it",
         "decision": "none"
     },
+    "A-3|app/Contexts/Platform/Infrastructure/IdentitySignedInAccount.php|App\\Contexts\\Identity\\Application\\Ports\\CurrentAccount": {
+        "count": 1,
+        "class": "legitimate (consumer-owned port)",
+        "reason": "PBDIGIT-345 task 6 (E-1): Platform's SignedInAccount port answered by Identity's CurrentAccount (D-226 §5a); guarded by PlatformIdentityBoundaryTest",
+        "remediation": "none",
+        "decision": "none"
+    },
     "A-3|app/Contexts/ReferenceGeography/Infrastructure/IdentityActingPerson.php|App\\Contexts\\Identity\\Application\\ActingContextRef": {
         "count": 1,
         "class": "published language (approved)",

@@ -1,0 +1,62 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDEEEEEEDDDDDDDDDDDDDDDDDDDDDDDDDDDD                 49 / 49 (100%)
+
+Time: 00:45.217, Memory: 26.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t1_each_request_sees_only_the_selected_organisation_and_switching_the_id_is_refused
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:169
+
+2) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t15_a_selection_of_an_organisation_not_bound_to_the_account_is_refused
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:195
+
+3) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t15_a_binding_revoked_after_selection_refuses_the_next_request_and_clears_the_selection
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:205
+
+4) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t15_a_forged_session_value_is_refused
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:223
+
+5) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t10_part3_the_legacy_and_registry_paths_never_share_an_organisation
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:237
+
+6) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_identity_unavailable_refuses_with_service_unavailable_and_keeps_the_selection
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [platform.organisations.select] not defined.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:536
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:870
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:258
+
+ERRORS!
+Tests: 49, Assertions: 163, Errors: 6, Deprecations: 1.

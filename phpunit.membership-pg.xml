@@ -44,5 +44,8 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
+        <!-- PBDIGIT-345 task 6: routes always from the route files, never from a developer's local route cache
+             (bootstrap/cache/routes-v7.php is gitignored and may be stale). This file must never exist. -->
+        <server name="APP_ROUTES_CACHE" value="bootstrap/cache/membership-pg-never-a-route-cache.php"/>
     </php>
 </phpunit>

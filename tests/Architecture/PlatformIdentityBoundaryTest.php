@@ -8,7 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * PBDIGIT-345 task 5c (baseline §9 pattern: consumer-owned port + one adapter): Platform reaches Identity ONLY
- * through IdentityContactAccounts (Infrastructure), behind Platform's own ContactAccounts port. Platform's Domain and
+ * through IdentityContactAccounts (Infrastructure), behind Platform's own ContactAccounts port, and (task 6) through
+ * IdentitySignedInAccount, behind its SignedInAccount port (CurrentAccount only). Platform's Domain and
  * Application import nothing of Identity; the adapter imports only AccountDirectory, AccountId and IdentityUnavailable. The same imports are recorded one by one in the architecture-ratchet baseline.
  */
 final class PlatformIdentityBoundaryTest extends TestCase
@@ -44,8 +45,16 @@ final class PlatformIdentityBoundaryTest extends TestCase
         return $out;
     }
 
-    public function test_platform_reaches_identity_only_through_its_one_adapter(): void
+    /** task 6 (E-1): the second adapter, Platform's SignedInAccount port answered by Identity's CurrentAccount */
+    private const SIGNED_IN_ADAPTER = 'app/Contexts/Platform/Infrastructure/IdentitySignedInAccount.php';
+
+    public function test_platform_reaches_identity_only_through_its_adapters(): void
     {
-        $this->assertSame(array_map(static fn (string $c): string => self::ADAPTER . ': ' . $c, self::ALLOWED), self::identityReferences());
+        $expected = [
+            ...array_map(static fn (string $c): string => self::ADAPTER . ': ' . $c, self::ALLOWED),
+            self::SIGNED_IN_ADAPTER . ': App\\Contexts\\Identity\\Application\\Ports\\CurrentAccount',
+        ];
+        sort($expected);
+        $this->assertSame($expected, self::identityReferences());
     }
 }

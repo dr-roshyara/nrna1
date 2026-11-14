@@ -1,0 +1,23 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDDDD                                                              6 / 6 (100%)
+
+Time: 00:18.522, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationEntryHttpTest::test_t1_each_request_sees_only_the_selected_organisation_and_switching_the_id_is_refused
+Expected response status code [403] but received 200.
+Failed asserting that 200 is identical to 403.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:141
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationEntryHttpTest.php:185
+
+FAILURES!
+Tests: 6, Assertions: 69, Failures: 1, Deprecations: 1.

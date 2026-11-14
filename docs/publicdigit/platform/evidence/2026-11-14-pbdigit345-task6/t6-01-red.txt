@@ -1,0 +1,53 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:00.013, Memory: 14.02 MB
+
+There were 2 PHPUnit errors:
+
+1) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_a_selection_is_refused
+The data provider specified for Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_a_selection_is_refused is invalid
+Class "App\Contexts\Platform\Application\EntryRefusal" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:131
+
+2) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_a_request_is_refused
+The data provider specified for Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_a_request_is_refused is invalid
+Class "App\Contexts\Platform\Application\EntryRefusal" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:157
+
+--
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_a_bound_operational_organisation_is_selected_and_entered_with_its_registry_locator
+Error: Interface "App\Contexts\Platform\Application\Ports\IdentityBindings" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:53
+
+2) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_an_unknown_registry_id_is_refused_as_unknown_once_bound
+Error: Interface "App\Contexts\Platform\Application\Ports\IdentityBindings" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:53
+
+3) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_t15_a_binding_revoked_after_selection_refuses_the_next_request
+Error: Interface "App\Contexts\Platform\Application\Ports\IdentityBindings" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:53
+
+4) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_the_signed_in_account_is_checked_on_every_request
+Error: Interface "App\Contexts\Platform\Application\Ports\IdentityBindings" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:53
+
+5) Tests\Unit\Contexts\Platform\Application\EnterOrganisationTest::test_identity_unavailable_fails_closed
+Error: Interface "App\Contexts\Platform\Application\Ports\IdentityBindings" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/EnterOrganisationTest.php:53
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 7.
