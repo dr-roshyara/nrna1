@@ -29,6 +29,7 @@ The ratified Membership architecture is implemented slice by slice under
 | 20 | [Ledger slice 1, step 6: the completeness point (`LedgerClockCloser`)](20_ledger_closed_through_step.md) | `PBDIGIT-343` | implemented 2026-11-12; **corrected** after the Principal's review (first-time clock-row race, deviation 4); concurrency evidence on the throwaway cluster |
 | 21 | [Ledger slice 1, step 7: the C1 hydrator, so the relay delivers `MembershipCoverageResolved`](21_c1_hydrator_and_relay.md) | `PBDIGIT-343` | implemented 2026-11-12 |
 | 22 | [Ledger slice 1, step 8: C2 `CoverageKnownAt`, complete or refused](22_c2_coverage_known_at.md) | `PBDIGIT-343` | implemented 2026-11-12; no production binding until slice 2 |
+| 23 | [The Membership ledger in an organisation's own database](23_organisation_schema_ledger.md) | `PBDIGIT-345` | organisation migrations 300100–300300 (tasks 4–5); written 2026-11-14 to close the guide gap |
 
 **Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 first **deferred** for V-2 (guide 09), then **accepted with explicit residual risks** the same day, after the V-2 fix and the W0 clean-copy run (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`). Slice 2a (`PBDIGIT-271`) **accepted with explicit residual risks** on 2026-11-02, after an independent review of the committed hardening.
 
