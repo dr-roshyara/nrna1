@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\DB;
 return new class extends Migration {
     public function up(): void
     {
+        // Migration safety (Principal review 2026-11-14): the earlier separate indexes allowed one confirmation AND one
+        // closure for the same finding. Such history is never rewritten: stop, name the findings, change nothing.
+        $twice = array_map(static fn ($r): int => (int) $r->concerns_position, DB::select(
+            "SELECT concerns_position FROM refgeo_publications WHERE notice_kind IN ('confirmation', 'closure')
+             GROUP BY concerns_position HAVING count(*) > 1 ORDER BY concerns_position"));
+        if ($twice !== []) {
+            throw new \RuntimeException('Reference Geography: finding(s) resolved more than once: ' . implode(', ', $twice)
+                . '. A finding is resolved once (design revision 3 §8.1). Governance history is not rewritten: report these '
+                . 'positions to the Principal for a business resolution before migrating.');
+        }
+
         DB::statement('DROP INDEX IF EXISTS refgeo_publications_one_confirmation');
         DB::statement('DROP INDEX IF EXISTS refgeo_publications_one_closure');
         DB::statement("CREATE UNIQUE INDEX refgeo_publications_one_resolution ON refgeo_publications (concerns_position) WHERE notice_kind IN ('confirmation', 'closure')");

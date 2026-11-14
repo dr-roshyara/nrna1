@@ -157,6 +157,34 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
         $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $g, 'confirmed_by' => md5('c'), 'confirmed_digest' => 'd'], 'a confirmation after a closure');
     }
 
+    /**
+     * Migration safety (the Principal review, 2026-11-14): if a database already holds a finding resolved twice (one
+     * confirmation and one closure, which the earlier separate indexes allowed), the one-resolution migration must STOP
+     * and name the finding, changing nothing; governance history is never rewritten. Simulated inside a transaction that
+     * is rolled back (PostgreSQL DDL is transactional), so the cluster is left as it was.
+     */
+    public function test_the_one_resolution_migration_stops_and_names_findings_already_resolved_twice(): void
+    {
+        $migration = require base_path('database/migrations/2026_11_14_110000_refgeo_findings_resolved_once.php');
+        DB::beginTransaction();
+        try {
+            $migration->down();   // the earlier state: separate indexes
+            $f = self::finding(self::revisionRow());
+            self::insertRow(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $f, 'confirmed_by' => md5('c'), 'confirmed_digest' => 'd']);
+            self::insertRow(['kind' => 'notice', 'notice_kind' => 'closure', 'concerns_position' => $f, 'ended_by' => 'reversal:m1']);
+            try {
+                $migration->up();
+                $this->fail('the migration accepted a finding resolved twice');
+            } catch (\RuntimeException $e) {
+                $this->assertStringContainsString("finding(s) resolved more than once: {$f}", $e->getMessage());
+                $this->assertSame(2, (int) DB::selectOne("SELECT count(*) AS n FROM refgeo_publications WHERE concerns_position = ? AND notice_kind IN ('confirmation', 'closure')", [$f])->n, 'nothing rewritten');
+            }
+        } finally {
+            DB::rollBack();
+        }
+        $this->assertNotNull(DB::selectOne("SELECT 1 AS x FROM pg_indexes WHERE indexname = 'refgeo_publications_one_resolution'"), 'the real schema is untouched');
+    }
+
     public function test_a_person_association_is_recorded_once(): void
     {
         $p = self::revisionRow();

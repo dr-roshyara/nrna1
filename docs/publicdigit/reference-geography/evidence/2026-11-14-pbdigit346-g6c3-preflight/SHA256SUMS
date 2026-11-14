@@ -1,0 +1,10 @@
+bf27a48fde238b3a3cb51d3665830ab85757e60d351f26ddad9b0cd9287b5e75  ./c3-00-guide-check-before.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./c3-01-guide-check-after.txt
+51e8b87599d8bbc7c0558c7fe8c36ea7324083c2416297760dc943491f008775  ./c3-02-guide-check-real-gap.txt
+7d706efe8b439759b878a5416afa4f905328b4119319e6c262b61ffdb74d5e90  ./c3-03-red-migration-safety/run.txt
+4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865  ./c3-03-red-migration-safety/suite.exit
+9f16c5e631c20312729a3f94c80b99abb4fac86888235d75a627fad7cfae80a0  ./c3-03-red-migration-safety/suite.txt
+9c9910f215d1c1a86963038d85384f0e8f26eba04bb1cad8cd200d2986d42d0d  ./c3-04-green-migration-safety/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./c3-04-green-migration-safety/suite.exit
+c4050b774e3ea0af74bfe619f209141bdc876bb1c60508bb2a0caf1125c77671  ./c3-04-green-migration-safety/suite.txt
+f1fc75512ead6a4eee4e0974e58005be4bb09e5adf5ebe8c5a2a249e0db24f85  ./README.md

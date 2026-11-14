@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:12.323, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\GovernanceNoticeSchemaTest::test_the_one_resolution_migration_stops_and_names_findings_already_resolved_twice
+Failed asserting that 'SQLSTATE[23505]: Unique violation: 7 ERROR:  could not create unique index "refgeo_publications_one_resolution"\n
+DETAIL:  Key (concerns_position)=(2) is duplicated. (Connection: pgsql, Host: 127.0.0.1, Port: 41041, Database: membership_pg_isolated, SQL: CREATE UNIQUE INDEX refgeo_publications_one_resolution ON refgeo_publications (concerns_position) WHERE notice_kind IN ('confirmation', 'closure'))' [ASCII](length: 400) contains "finding(s) resolved more than once: 2" [ASCII](length: 37).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:179
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1, Deprecations: 1.

@@ -42,6 +42,7 @@
   - an auto-named CHECK (now explicit).
 - **The one jointly guarded case:** a revision row carrying a notice kind breaks both `notice_iff_kind` and `revision_shape`, because every notice kind needs `concerns_position`, which a revision row may not have. Its test accepts **exactly one of those two names.** Every other case is pinned to a single constraint or trigger.
 - **Order of refusal:** PostgreSQL runs BEFORE triggers before CHECKs. A test of a CHECK must therefore give a reference the trigger accepts.
+- **Migration safety of `2026_11_14_110000`:** the earlier separate indexes allowed a finding to be confirmed **and** closed. Before changing any index, the migration looks for such findings; if any exist it **stops with `finding(s) resolved more than once: <positions>`** and changes nothing. History is never rewritten; the positions go to the Principal for a business resolution. Test: `test_the_one_resolution_migration_stops_and_names_findings_already_resolved_twice` (simulated in a rolled-back transaction).
 - **Existing data:** `ALTER TABLE … ADD CONSTRAINT` validates existing rows. A violating row makes the migration **fail loudly**; nothing is rewritten or deleted. Revision rows written before G-6c have all new columns NULL and pass. No notice row existed before G-6c.
 
 ## The counted approver is not stored (design §17)

@@ -1,0 +1,8 @@
+commit: cf2e81d32e97d5517f5f14c2f0d487a2b4be8d23
+image: docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6e466a7a29ff89eefd611c7b50c4d69aa77fd4a822
+image_digest: sha256:7da5d534f1ffcdb2f69efa6e466a7a29ff89eefd611c7b50c4d69aa77fd4a822
+server_version: 15.19 (Debian 15.19-1.pgdg13+2)
+system_identifier: 7707830525483585570
+platform_databases: platform_pg_central,platform_pg_org_a,platform_pg_org_b,platform_pg_org_c
+host: 127.0.0.1 (port published at random)
+started: 2026-11-14T02:19:11+01:00
