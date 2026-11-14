@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDDDFDD                                                            8 / 8 (100%)
+
+Time: 00:29.686, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationQueueTest::test_t20_dispatched_jobs_go_to_organisation_jobs_never_jobs_and_a_worker_runs_them
+no context outlives a job
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationQueueTest.php:164
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationQueueTest.php:185
+
+2) Tests\Feature\Contexts\Platform\OrganisationQueueTest::test_t3_t22_one_real_worker_runs_a_b_a_b_and_nothing_crosses_or_survives
+no context outlives a job
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationQueueTest.php:164
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationQueueTest.php:292
+
+FAILURES!
+Tests: 8, Assertions: 55, Failures: 2, Deprecations: 1.

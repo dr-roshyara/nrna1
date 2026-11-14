@@ -42,6 +42,23 @@ return [
             'after_commit' => false,
         ],
 
+        /*
+         * PBDIGIT-345 task 7 (E-2; tactical design §3.10 Q-2): the SEPARATE connection for organisation jobs. Only
+         * App\Contexts\Platform\Infrastructure\Queue\OrganisationJob uses it, dispatched through OrganisationJobDispatcher,
+         * processed by a dedicated worker (`php artisan queue:work organisation`). Its own table on the CENTRAL database
+         * (null = the default connection); failures in the standard failed_jobs with connection = 'organisation'
+         * (§3.10.1). after_commit stays false: work that must follow an organisation commit goes through that
+         * organisation's outbox (Q-7). The default connection above is NOT changed (Q-1).
+         */
+        'organisation' => [
+            'driver' => 'database',
+            'connection' => env('ORGANISATION_QUEUE_DB_CONNECTION'),
+            'table' => 'organisation_jobs',
+            'queue' => 'default',
+            'retry_after' => (int) env('ORGANISATION_QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
+        ],
+
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host' => 'localhost',

@@ -68,3 +68,16 @@
   - **On the development machine, `bootstrap/cache/routes-v7.php` dates from 19 October 2026 and is stale.** It still names `SocialController`, which no route file uses any more, and `php artisan route:list` fails on it.
   - Clearing it is the developer's call (`php artisan route:clear`). The isolated test harness ignores it.
 - **Production effect today: no registry organisation is reachable over HTTP.** Identity's bindings are not built (PBDIGIT-349), and `NoIdentityBindingsYet` refuses everyone. Never "fix" this by pointing it at the legacy user-organisation tables.
+
+## Task 7: the organisation queue (2026-11-14)
+
+**Development and test only for now.** No production organisation exists, and the production migration-approval control is still required.
+
+1. **Central migration** `database/migrations/2026_11_14_320000_create_organisation_jobs_table.php` (table `organisation_jobs`). `failed_jobs` already exists.
+2. **`config/queue.php` has a new connection, `organisation`.** The default `QUEUE_CONNECTION` must stay `sync`: do not change it, or every legacy job would stop running inline.
+3. **Optional environment variables:**
+   - `ORGANISATION_QUEUE_DB_CONNECTION`: the central database connection name for `organisation_jobs`; empty means the default (central) connection;
+   - `ORGANISATION_QUEUE_RETRY_AFTER`: seconds, default 90.
+4. **A dedicated worker:** `php artisan queue:work organisation` under a process supervisor (e.g. one `systemd` service or `supervisor` program). It needs **the same real environment as provisioning:** `ORGANISATION_DB_CLUSTERS` and each cluster's `<NAME>_USERNAME`/`<NAME>_PASSWORD`.
+5. **After every deploy:** `php artisan queue:restart`. Workers keep old code in memory until they restart.
+6. **Failures:** `php artisan queue:failed` lists them (connection `organisation`); `php artisan queue:retry <id>` re-runs one. **A retry resolves the organisation again**, so it stays refused while the organisation is not routable.

@@ -1,0 +1,1 @@
+Q5 the connection is not purged after the job

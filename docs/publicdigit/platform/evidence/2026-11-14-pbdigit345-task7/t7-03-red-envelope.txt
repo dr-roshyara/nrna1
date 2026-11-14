@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EE                                                                  2 / 2 (100%)
+
+Time: 00:00.020, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationJobEnvelopeTest::test_the_envelope_carries_the_organisation_id_and_fixes_the_connection_and_middleware
+Error: Class "App\Contexts\Platform\Infrastructure\Queue\OrganisationJob" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Fixtures/Platform/Queue/RecordVisitJob.php:16
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationJobEnvelopeTest.php:25
+
+2) Tests\Unit\Contexts\Platform\Infrastructure\OrganisationJobEnvelopeTest::test_t21_an_organisation_job_cannot_be_constructed_without_a_valid_organisation_id
+ReflectionException: Class "App\Contexts\Platform\Infrastructure\Queue\OrganisationJob" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/OrganisationJobEnvelopeTest.php:37
+
+ERRORS!
+Tests: 2, Assertions: 0, Errors: 2.

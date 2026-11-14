@@ -1,0 +1,1 @@
+Q6 dispatch inside an open transaction is allowed

@@ -25,6 +25,10 @@ final class OrganisationRoutingDefaultConnectionTest extends TestCase
         'app/Contexts/Platform/Infrastructure/PostgresOrganisationReadinessProbe.php',
         // task 6: the HTTP entry E-1 (it binds the organisation's own connection for one request)
         'app/Contexts/Platform/Infrastructure/Http/OrganisationEntry.php',
+        // task 7: the queue entry E-2 (job middleware, dispatcher, base class)
+        'app/Contexts/Platform/Infrastructure/Queue/EstablishOrganisationContext.php',
+        'app/Contexts/Platform/Infrastructure/Queue/OrganisationJobDispatcher.php',
+        'app/Contexts/Platform/Infrastructure/Queue/OrganisationJob.php',
     ];
 
     /** @return list<string> what in $source would use or change the default connection */

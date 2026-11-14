@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDFD                                                           9 / 9 (100%)
+
+Time: 00:37.583, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationQueueTest::test_q5_an_unroutable_organisation_job_is_failed_with_its_reason_and_never_runs
+failed at once, not left for retries
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationQueueTest.php:342
+
+FAILURES!
+Tests: 9, Assertions: 60, Failures: 1, Deprecations: 1.

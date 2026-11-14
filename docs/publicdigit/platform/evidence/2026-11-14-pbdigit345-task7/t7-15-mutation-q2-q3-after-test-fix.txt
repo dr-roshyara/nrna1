@@ -1,0 +1,4 @@
+Q2 an unroutable organisation runs without a context           [pg-platform:OrganisationQueueTest] tests:9    KILLED  q5_an_unroutable_organisation_job_is_failed_w;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0
+Q3 a missing organisation id is not refused as such            [pg-platform:OrganisationQueueTest] tests:9    KILLED  t4_a_job_without_an_organisation_id_is_refuse;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

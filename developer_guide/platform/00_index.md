@@ -1,2 +1,2 @@
 
-| 6 | [HTTP entry E-1](06_http_entry.md) | selection after login, ISO-3 on every request, legacy and registry paths disjoint (T-1, T-15, T-10 part 3) |
+| 7 | [The organisation queue E-2](07_organisation_queue.md) | the separate `organisation` connection, `OrganisationJob`, the dispatcher, per-attempt context (T-3, T-4, T-19 … T-23, T-25; T-24 in task 9) |

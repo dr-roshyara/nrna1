@@ -1,0 +1,1 @@
+Q9 the type check is removed (argued equivalent)

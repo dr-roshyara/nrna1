@@ -1,0 +1,11 @@
+Q1 the connection check is removed                             [pg-platform:OrganisationQueueTest] tests:8    KILLED  t21_an_organisation_job_run_inline_or_on_anot;
+Q2 an unroutable organisation runs without a context           [pg-platform:OrganisationQueueTest] tests:8    SURVIVED  
+Q3 a missing organisation id is not refused as such            [pg-platform:OrganisationQueueTest] tests:8    KILLED  t4_a_job_without_an_organisation_id_is_refuse;
+Q4 the context outlives the job                                [pg-platform:OrganisationQueueTest] tests:8    KILLED  t20_dispatched_jobs_go_to_organisation_jobs_n;t3_t22_one_real_worker_runs_a_b_a_b_and_nothi;
+Q5 the connection is not purged after the job                  [pg-platform:OrganisationQueueTest] tests:8    KILLED  t20_dispatched_jobs_go_to_organisation_jobs_n;t3_t22_one_real_worker_runs_a_b_a_b_and_nothi;
+Q6 dispatch inside an open transaction is allowed              [pg-platform:OrganisationQueueTest] tests:8    KILLED  t25_dispatch_inside_an_open_organisation_tran;
+Q7 another organisation than the context is allowed            [pg-platform:OrganisationQueueTest] tests:8    KILLED  t20_the_dispatcher_refuses_other_jobs_other_o;
+Q8 a connection override is allowed                            [pg-platform:OrganisationQueueTest] tests:8    KILLED+ERRORS (1: Illuminate\Database\QueryException)  t20_the_dispatcher_refuses_other_jobs_other_o;
+Q9 the type check is removed (argued equivalent)               [pg-platform:OrganisationQueueTest] tests:8    SURVIVED (equivalent: a non-organisation job has no organisation connection, so the next check refuses it with the same exception)  
+Q10 the connection is not fixed at construction (unit)         [unit]     tests:86   KILLED  the_envelope_carries_the_organisation_id_and_;
+survivors: 2; unexpected (not argued equivalent, site missing or unparsable): 1
