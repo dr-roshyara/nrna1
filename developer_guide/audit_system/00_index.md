@@ -45,6 +45,7 @@ It also doubles as an **audit ledger**. The `inbox_events` table is a durable, p
 | C6A | [`06_step_c6a_architecture_verification.md`](./06_step_c6a_architecture_verification.md) | The **guardrails** — 10 property-based architecture fitness tests + the strict-clock rule that keep the subsystem a reusable platform capability. |
 | 6A (PB-006) | [`07_integration_event_dispatcher.md`](./07_integration_event_dispatcher.md) | The **delivery capability** (ADR-MP-06): `IntegrationEventDispatcher` + `ConsumerResolver` — carries relay output into every consuming context's inbox (Registration ≠ Delivery; deterministic ordered routing; consumer isolation; audit continuity). |
 | 6B-1 (PB-006) | [`08_event_provenance.md`](./08_event_provenance.md) | The **constitutional audit chain** (ADR-MP-06): `EventProvenance` — one CorrelationId per conversation; CausationId = direct parent; explicit at publish time; replay-safe deterministic fallback. |
+| PBDIGIT-345 task 9b | [`09_connection_outbox_processor.md`](./09_connection_outbox_processor.md) | The outbox relay **on a given connection** (an organisation's database): claim with a lease, ISO-9 organisation check, the same hydrators and retry rules as the central relay, which stays unchanged. |
 
 ---
 

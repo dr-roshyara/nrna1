@@ -215,6 +215,8 @@ final class OrganisationFanOutTest extends MembershipPostgresTestCase
     {
         $this->app->forgetInstance(RegisteredOrganisations::class);
         $this->assertInstanceOf(PostgresRegisteredOrganisations::class, app(RegisteredOrganisations::class));
-        $this->assertSame([], (require config_path('organisation_routing.php'))['fan_out'], 'the shipped configuration fans out no operation yet');
+        // task 9b: the per-organisation outbox relay is the one shipped operation; no business operation yet
+        $this->assertSame(['outbox.relay' => \App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox::class],
+            (require config_path('organisation_routing.php'))['fan_out'], 'the shipped configuration fans out the relay only');
     }
 }

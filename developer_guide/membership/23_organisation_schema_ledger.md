@@ -25,7 +25,7 @@ Location: `app/Contexts/Membership/Infrastructure/Database/OrganisationMigration
 
 ## Not yet in the organisation database
 
-**There is no outbox in the organisation database yet.** The C1 event (guide 18) is written to the central outbox for the central ledger. The per-organisation outbox and relay are PBDIGIT-345 task 9 (E-5), and Membership's adapters are task 10. Until then nothing writes to an organisation ledger.
+**Update 2026-11-14 (PBDIGIT-345 task 9):** the organisation database now has `outbox_events` (organisation migration `300400`). `PostgresMemberRepository` on an organisation connection writes its facts and the C1 event there **in one transaction** (tested in `OrganisationOutboxRelayTest`), and the per-organisation relay delivers C1 inside that organisation's context (Platform guide 09). **Membership's production adapters (M-1 … M-3) are still task 10:** until then, nothing in production writes to an organisation ledger.
 
 ## Testing
 

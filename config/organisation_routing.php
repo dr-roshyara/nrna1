@@ -26,7 +26,10 @@ return [
     /*
      * PBDIGIT-345 task 8 (E-3): the operations `php artisan platform:fan-out <operation>` may run, as
      * operation => OrganisationJob class (constructed with the organisation id only, idempotent: delivery is at least
-     * once). Empty: no periodic organisation operation exists yet; each arrives with its owning context's slice.
+     * once). Business operations arrive with their owning context's slice.
+     * task 9b: `outbox.relay`, the per-organisation outbox relay (E-5, §3.4); schedule it every minute (admin notes).
      */
-    'fan_out' => [],
+    'fan_out' => [
+        'outbox.relay' => App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox::class,
+    ],
 ];

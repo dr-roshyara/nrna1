@@ -1,0 +1,31 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDFDD                                                      12 / 12 (100%)
+
+Time: 00:20.045, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_the_claim_lease_prevents_a_double_claim_and_re_delivers_a_crashed_claim
+a row under a live claim is not claimed again
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => Array &1 [
++        'organisation' => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
++        'membership' => 'M1',
++        'context' => null,
++    ],
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:387
+
+FAILURES!
+Tests: 12, Assertions: 53, Failures: 1, Deprecations: 1.

@@ -1,0 +1,1 @@
+R4 availability is ignored when claiming

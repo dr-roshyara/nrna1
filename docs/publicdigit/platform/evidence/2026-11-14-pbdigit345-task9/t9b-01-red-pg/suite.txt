@@ -1,0 +1,114 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDEEEEFEEEF                                                       11 / 11 (100%)
+
+Time: 00:16.328, Memory: 26.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_c1_written_in_a_is_delivered_in_a_and_never_seen_by_bs_relay
+Error: Class "App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:184
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:213
+
+2) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_iso9_an_event_naming_b_found_in_a_is_dead_lettered_and_alerted_never_dispatched
+Error: Class "App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:184
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:234
+
+3) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t24_a_rolled_back_organisation_transaction_leaves_no_event_and_so_no_job
+App\Contexts\Membership\Infrastructure\Organisational\AppendInsideTransactionRefused: Membership append refused: called inside an open transaction (level 1); the adapter commits its own top-level transaction (N1).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/AppendInsideTransactionRefused.php:21
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:163
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:251
+
+4) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t24_the_relay_sees_only_committed_events_and_dispatches_outside_any_transaction_so_a_consumer_can_queue_a_job
+App\Contexts\Membership\Infrastructure\Organisational\AppendInsideTransactionRefused: Membership append refused: called inside an open transaction (level 1); the adapter commits its own top-level transaction (N1).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/AppendInsideTransactionRefused.php:21
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:163
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:269
+
+5) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_a_failing_delivery_is_retried_five_times_then_dead_lettered_and_an_unregistered_type_at_once
+Illuminate\Contracts\Container\BindingResolutionException: Target class [App\Contexts\Shared\Infrastructure\Outbox\ConnectionOutboxProcessor] does not exist.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1124
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:318
+
+Caused by
+ReflectionException: Class "App\Contexts\Shared\Infrastructure\Outbox\ConnectionOutboxProcessor" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:318
+
+6) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_the_claim_lease_prevents_a_double_claim_and_re_delivers_a_crashed_claim
+Illuminate\Contracts\Container\BindingResolutionException: Target class [App\Contexts\Shared\Infrastructure\Outbox\ConnectionOutboxProcessor] does not exist.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1124
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:339
+
+Caused by
+ReflectionException: Class "App\Contexts\Shared\Infrastructure\Outbox\ConnectionOutboxProcessor" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:339
+
+7) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_central_and_organisation_relays_never_see_each_others_events
+Error: Class "App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:184
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:357
+
+--
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t24_the_processor_refuses_to_run_inside_an_open_transaction
+Failed asserting that exception of type "Illuminate\Contracts\Container\BindingResolutionException" matches expected exception "LogicException". Message was: "Target class [App\Contexts\Shared\Infrastructure\Outbox\ConnectionOutboxProcessor] does not exist." at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:290
+.
+
+2) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_a_real_fan_out_and_a_real_worker_deliver_each_organisations_events_in_its_own_database
+Unknown fan-out operation: outbox.relay.
+
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:371
+
+ERRORS!
+Tests: 11, Assertions: 7, Errors: 7, Failures: 2, Deprecations: 1.

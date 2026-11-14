@@ -1,0 +1,1 @@
+R9 a delivered event is never marked completed

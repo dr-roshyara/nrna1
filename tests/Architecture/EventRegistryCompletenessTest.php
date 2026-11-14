@@ -52,20 +52,22 @@ final class EventRegistryCompletenessTest extends TestCase
      */
     public function test_processor_contains_no_hardcoded_event_matching(): void
     {
-        $source = file_get_contents(
-            app_path('Contexts/Shared/Infrastructure/Outbox/OutboxEventProcessor.php')
-        );
+        // PBDIGIT-345 task 9b: the per-organisation relay's processor is held to the same rule
+        foreach (['OutboxEventProcessor.php', 'ConnectionOutboxProcessor.php'] as $file) {
+            $source = file_get_contents(app_path('Contexts/Shared/Infrastructure/Outbox/' . $file));
 
-        $this->assertIsString($source);
-        $this->assertStringNotContainsString(
-            'match($event->event_type)',
-            $source,
-            'Hardcoded event-type match must be replaced by the Event Registry'
-        );
-        $this->assertStringNotContainsString(
-            'hydrateFeePaid',
-            $source,
-            'Per-event hydrate methods must move to context-owned hydrators'
-        );
+            $this->assertIsString($source);
+            $this->assertStringNotContainsString(
+                'match($event->event_type)',
+                $source,
+                "{$file}: hardcoded event-type match must be replaced by the Event Registry"
+            );
+            $this->assertDoesNotMatchRegularExpression('/match\s*\(\s*\$\w+->event_type/', $source, "{$file}: no event-type match on any variable");
+            $this->assertStringNotContainsString(
+                'hydrateFeePaid',
+                $source,
+                "{$file}: per-event hydrate methods must move to context-owned hydrators"
+            );
+        }
     }
 }

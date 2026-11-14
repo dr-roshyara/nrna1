@@ -1,0 +1,62 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFFDFDDDDDDDDDDDDDDDDDDDDDD 65 / 80 ( 81%)
+DDDDDDDDDDDDDDD                                                   80 / 80 (100%)
+
+Time: 01:16.640, Memory: 30.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_c1_written_in_a_is_delivered_in_a_and_never_seen_by_bs_relay
+delivered once, inside A's context
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => Array &1 [
+-        'organisation' => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-        'membership' => 'M1',
+-        'context' => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-    ],
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:220
+
+2) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_iso9_an_event_naming_b_found_in_a_is_dead_lettered_and_alerted_never_dispatched
+only A's own event was dispatched
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => Array &1 [
+-        'organisation' => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-        'membership' => 'M1',
+-        'context' => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-    ],
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:238
+
+3) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t24_the_relay_sees_only_committed_events_and_dispatches_outside_any_transaction_so_a_consumer_can_queue_a_job
+the consumer's dispatch succeeded: the relay was outside any transaction
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    'completed' => 1,
++    'pending' => 1,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:298
+
+FAILURES!
+Tests: 80, Assertions: 362, Failures: 3, Deprecations: 1.

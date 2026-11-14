@@ -1,0 +1,64 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDFDDFDDDFFD                                                      12 / 12 (100%)
+
+Time: 00:23.449, Memory: 26.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_c1_written_in_a_is_delivered_in_a_and_never_seen_by_bs_relay
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    'completed' => 1,
++    'processing' => 1,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:225
+
+2) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t24_the_relay_sees_only_committed_events_and_dispatches_outside_any_transaction_so_a_consumer_can_queue_a_job
+the consumer's dispatch succeeded: the relay was outside any transaction
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    'completed' => 1,
++    'processing' => 1,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:302
+
+3) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_the_claim_lease_prevents_a_double_claim_and_re_delivers_a_crashed_claim
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    'completed' => 1,
++    'processing' => 1,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:392
+
+4) Tests\Feature\Contexts\Platform\OrganisationOutboxRelayTest::test_t6_central_and_organisation_relays_never_see_each_others_events
+and A's event was the organisation relay's only
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    'completed' => 1,
++    'processing' => 1,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationOutboxRelayTest.php:412
+
+FAILURES!
+Tests: 12, Assertions: 51, Failures: 4, Deprecations: 1.

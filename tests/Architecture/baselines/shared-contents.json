@@ -20,6 +20,7 @@
     "app/Contexts/Shared/Infrastructure/Messaging/ConsumerResolver.php",
     "app/Contexts/Shared/Infrastructure/Messaging/IntegrationEventDispatcher.php",
     "app/Contexts/Shared/Infrastructure/Messaging/RegistryConsumerResolver.php",
+    "app/Contexts/Shared/Infrastructure/Outbox/ConnectionOutboxProcessor.php",
     "app/Contexts/Shared/Infrastructure/Outbox/EventHydrator.php",
     "app/Contexts/Shared/Infrastructure/Outbox/EventHydratorRegistry.php",
     "app/Contexts/Shared/Infrastructure/Outbox/IntegrationEvent.php",

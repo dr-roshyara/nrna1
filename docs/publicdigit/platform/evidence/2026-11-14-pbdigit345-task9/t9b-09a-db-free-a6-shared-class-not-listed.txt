@@ -1,0 +1,32 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 465 ( 13%)
+............................................................... 126 / 465 ( 27%)
+............................................................... 189 / 465 ( 40%)
+............................................................... 252 / 465 ( 54%)
+............................................................... 315 / 465 ( 67%)
+............................................................... 378 / 465 ( 81%)
+..........................................................F.... 441 / 465 ( 94%)
+........................                                        465 / 465 (100%)
+
+Time: 00:03.152, Memory: 28.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\ArchitectureRatchetTest::test_shared_contains_only_its_listed_technical_classes
+A-6: a new class in Shared. Shared is a technical library: a business concept belongs to its owning context. A technical addition is listed consciously.
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Contexts/Shared/Infrastructure/Outbox/ConnectionOutboxProcessor.php',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ArchitectureRatchetTest.php:170
+
+FAILURES!
+Tests: 465, Assertions: 6768, Failures: 1.

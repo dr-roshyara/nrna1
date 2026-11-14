@@ -99,3 +99,20 @@
 ## Task 9a (2026-11-14)
 
 **A new ORGANISATION migration:** `database/migrations/organisation/2026_11_14_300400_create_outbox_events.php`. It reaches organisation databases only through provisioning (founding step 3). The central database is not changed.
+
+## Task 9b: the per-organisation relay (2026-11-14)
+
+**No new migration in 9b (9a added the organisation outbox) and no new environment variable.**
+
+1. **Schedule the relay** when registry organisations exist, in `routes/console.php`:
+
+   ```php
+   Schedule::command('platform:fan-out outbox.relay')->everyMinute()->withoutOverlapping();
+   ```
+
+   - It is not scheduled yet: no registry organisation exists, and the central tables must be migrated first.
+   - It needs the `organisation` queue worker (task 7) and `schedule:run`.
+2. **Keep `outbox:process` scheduled as it is:** it is the **central** relay for central events.
+3. **Dead-lettered organisation events stay in that organisation's `outbox_events` with `status = 'failed'`.**
+   - An ISO-9 mismatch is logged at **critical** as `outbox.iso9.organisation_mismatch`: alert on it, because it means a row of another organisation was found in this database.
+   - Do not re-drive such a row; investigate it.

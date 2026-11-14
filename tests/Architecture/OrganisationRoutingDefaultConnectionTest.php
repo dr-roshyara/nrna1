@@ -29,6 +29,9 @@ final class OrganisationRoutingDefaultConnectionTest extends TestCase
         'app/Contexts/Platform/Infrastructure/Queue/EstablishOrganisationContext.php',
         'app/Contexts/Platform/Infrastructure/Queue/OrganisationJobDispatcher.php',
         'app/Contexts/Platform/Infrastructure/Queue/OrganisationJob.php',
+        // task 9b: the per-organisation relay works on the connection it is given only (never Eloquent's default)
+        'app/Contexts/Platform/Infrastructure/Queue/RelayOrganisationOutbox.php',
+        'app/Contexts/Shared/Infrastructure/Outbox/ConnectionOutboxProcessor.php',
     ];
 
     /** @return list<string> what in $source would use or change the default connection */

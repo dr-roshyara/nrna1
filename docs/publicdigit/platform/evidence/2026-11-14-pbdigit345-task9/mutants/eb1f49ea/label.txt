@@ -1,0 +1,1 @@
+R8 an unregistered type is retried, not dead-lettered at once

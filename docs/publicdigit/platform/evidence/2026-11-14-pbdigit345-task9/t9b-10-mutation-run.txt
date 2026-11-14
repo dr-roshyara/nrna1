@@ -1,0 +1,10 @@
+R1 ISO-9 is not checked                                        [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  t6_iso9_an_event_naming_b_found_in_a_is_dead_;
+R2 the relay may run inside a transaction                      [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  t24_the_processor_refuses_to_run_inside_an_op;
+R3 a crashed claim is never reclaimed                          [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  the_claim_lease_prevents_a_double_claim_and_r;
+R4 availability is ignored when claiming                       [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  the_claim_lease_prevents_a_double_claim_and_r;
+R5 the rounding fix is reverted                                [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  an_event_committed_in_the_second_half_of_a_se;t6_c1_written_in_a_is_delivered_in_a_and_neve;t6_iso9_an_event_naming_b_found_in_a_is_dead_;
+R6 failures are never dead-lettered                            [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  a_failing_delivery_is_retried_five_times_then;
+R7 a retry has no delay                                        [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  a_failing_delivery_is_retried_five_times_then;
+R8 an unregistered type is retried, not dead-lettered at once  [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  a_failing_delivery_is_retried_five_times_then;
+R9 a delivered event is never marked completed                 [pg-platform:OrganisationOutboxRelayTest] tests:12   KILLED  t24_the_relay_sees_only_committed_events_and_;t6_c1_written_in_a_is_delivered_in_a_and_neve;t6_central_and_organisation_relays_never_see_;the_claim_lease_prevents_a_double_claim_and_r;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0
