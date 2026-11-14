@@ -1,0 +1,19 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFDDD                                                               5 / 5 (100%)
+
+Time: 00:14.435, Memory: 22.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_default_connection_and_the_central_database_are_refused
+case 1: migrated outside an organisation database
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:107
+
+FAILURES!
+Tests: 5, Assertions: 37, Failures: 1, Deprecations: 1.

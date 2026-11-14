@@ -1,0 +1,44 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:12.915, Memory: 22.00 MB
+
+There were 5 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_set_runs_on_one_organisation_database_only_and_a_repeat_applies_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationMigrations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:84
+
+2) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_default_connection_and_the_central_database_are_refused
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationMigrations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:106
+
+3) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_t8_the_database_refuses_a_membership_of_another_organisation
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationMigrations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:118
+
+4) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_a_failing_migration_rolls_back_its_own_changes_and_the_history_stays_exact
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationMigrations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:146
+
+5) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_organisation_ledger_schema_matches_the_central_one_except_f13
+Error: Class "App\Contexts\Platform\Infrastructure\OrganisationMigrations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:162
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 5, Deprecations: 1.

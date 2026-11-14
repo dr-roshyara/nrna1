@@ -34,3 +34,7 @@
 3. **After changing `ORGANISATION_DB_CLUSTERS`, re-run `php artisan config:cache`** (it's read through configuration).
 4. **Never point two organisations' locators at one database.** The registry refuses it (unique index), and the roles above make it fail as well.
 5. **Nothing to do in production before PBDIGIT-345 is accepted.** No organisation is in the registry yet (founding is task 5).
+
+## Task 4 (2026-11-14)
+
+**No administrator action.** The organisation migration set (`config/organisation_routing.php` → `migration_paths`) is run only by provisioning (task 5, not built yet) and by tests. **Do not run it by hand** against any production database.

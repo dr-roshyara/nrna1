@@ -16,6 +16,9 @@ final class OrganisationRoutingDefaultConnectionTest extends TestCase
     private const ORGANISATION_CODE = [
         'app/Contexts/Platform/Infrastructure/OrganisationConnectionFactory.php',
         'app/Contexts/Platform/Infrastructure/OrganisationContext.php',
+        // PBDIGIT-345 task 4: it names the default connection only to refuse it (its known, scoped exception: the
+        // migrator's own default switch during apply(), documented in the class and developer guide 04)
+        'app/Contexts/Platform/Infrastructure/OrganisationMigrations.php',
     ];
 
     /** @return list<string> what in $source would use or change the default connection */

@@ -1,0 +1,75 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDEFE                                                               5 / 5 (100%)
+
+Time: 00:13.762, Memory: 22.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_t8_the_database_refuses_a_membership_of_another_organisation
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "org_memberships" does not exist
+LINE 1: INSERT INTO org_memberships (organisation_id, id, person_ref...
+                    ^ (Connection: org_0b9e7a526c1d4f7e9a3b2d5c8e1f4a60, Host: 127.0.0.1, Port: 46553, Database: platform_pg_org_a, SQL: INSERT INTO org_memberships (organisation_id, id, person_ref, version, created_at) VALUES (0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60, 'm1', 'p1', 0, now()))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:121
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "org_memberships" does not exist
+LINE 1: INSERT INTO org_memberships (organisation_id, id, person_ref...
+                    ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:121
+
+2) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_organisation_ledger_schema_matches_the_central_one_except_f13
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "org_memberships" does not exist
+CONTEXT:  unnamed portal parameter $1 = '...' (Connection: org_0b9e7a526c1d4f7e9a3b2d5c8e1f4a60, Host: 127.0.0.1, Port: 46553, Database: platform_pg_org_a, SQL: SELECT conname, pg_get_constraintdef(oid) AS def FROM pg_constraint
+                    WHERE conrelid = org_memberships::regclass AND NOT (contype = 'f' AND confrelid IN (SELECT oid FROM pg_class WHERE relname IN ('organisations', 'organisation_identity')))
+                    ORDER BY conname)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:168
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:176
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "org_memberships" does not exist
+CONTEXT:  unnamed portal parameter $1 = '...'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:168
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:176
+
+--
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_set_runs_on_one_organisation_database_only_and_a_repeat_applies_nothing
+A has org_memberships
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:90
+
+2) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_a_failing_migration_rolls_back_its_own_changes_and_the_history_stays_exact
+a colliding migration succeeded
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:147
+
+ERRORS!
+Tests: 5, Assertions: 11, Errors: 2, Failures: 2, Deprecations: 1.

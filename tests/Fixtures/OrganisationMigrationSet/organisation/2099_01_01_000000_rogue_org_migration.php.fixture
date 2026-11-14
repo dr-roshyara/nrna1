@@ -1,0 +1,10 @@
+<?php
+// FIXTURE (never loaded), PBDIGIT-345 task 4: an organisation migration that reaches central data.
+return new class extends Illuminate\Database\Migrations\Migration {
+    public function up(): void
+    {
+        Schema::create('org_local_things', function ($t) { $t->uuid('id'); $t->foreign('id')->references('id')->on('organisations'); });
+        DB::statement('INSERT INTO org_local_things SELECT id FROM users');
+        DB::connection('pgsql')->statement('SELECT 1');
+    }
+};

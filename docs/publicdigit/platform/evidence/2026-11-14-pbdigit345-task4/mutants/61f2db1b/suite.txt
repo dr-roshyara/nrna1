@@ -1,0 +1,36 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDED                                                               5 / 5 (100%)
+
+Time: 00:13.885, Memory: 22.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_a_failing_migration_rolls_back_its_own_changes_and_the_history_stays_exact
+App\Contexts\Platform\Infrastructure\OrganisationMigrationRefused: The organisation migration set runs only on the organisation's own connection, not on 'org_2d7a5c304e3f4d5e9c5b4f7e0a3b6c82'.
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/p345t4/mutants/61f2db1b/mutant0.php:60
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/p345t4/mutants/61f2db1b/mutant0.php:47
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:155
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_set_runs_on_one_organisation_database_only_and_a_repeat_applies_nothing
+the default connection is restored
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'pgsql'
++'org_0b9e7a526c1d4f7e9a3b2d5c8e1f4a60'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:87
+
+ERRORS!
+Tests: 5, Assertions: 16, Errors: 1, Failures: 1, Deprecations: 1.

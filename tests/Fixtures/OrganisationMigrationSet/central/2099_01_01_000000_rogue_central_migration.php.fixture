@@ -1,0 +1,8 @@
+<?php
+// FIXTURE (never loaded), PBDIGIT-345 task 4: a central migration that reaches an organisation-only table.
+return new class extends Illuminate\Database\Migrations\Migration {
+    public function up(): void
+    {
+        DB::statement('ALTER TABLE organisation_identity ADD COLUMN x int');
+    }
+};

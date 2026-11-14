@@ -11,4 +11,15 @@
  */
 return [
     'clusters' => json_decode((string) env('ORGANISATION_DB_CLUSTERS', '{}'), true) ?: [],
+
+    /*
+     * PBDIGIT-345 task 4 (tactical design §3.5, M-5): the ORGANISATION migration set, applied to each organisation's
+     * own database through provisioning; never seen by the central `migrate` (the migrator does not recurse).
+     * Each context owns its paths: Platform the organisation_identity; Membership its ledger in the organisation
+     * schema (F-13). Plain paths (no helpers), so the architecture test can read them without booting Laravel.
+     */
+    'migration_paths' => [
+        dirname(__DIR__) . '/database/migrations/organisation',
+        dirname(__DIR__) . '/app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations',
+    ],
 ];

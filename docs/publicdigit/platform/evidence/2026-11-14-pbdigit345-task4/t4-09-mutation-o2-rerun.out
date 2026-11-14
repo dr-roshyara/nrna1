@@ -1,0 +1,2 @@
+O2 the central-database check is removed                       [pg-platform:OrganisationMigrationsTest] tests:5    KILLED+ERRORS (1: Illuminate\Database\QueryException)  the_default_connection_and_the
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

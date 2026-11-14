@@ -1,0 +1,33 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F..F                                                                4 / 4 (100%)
+
+Time: 00:00.042, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Architecture\OrganisationMigrationSetTest::test_the_organisation_set_exists_and_the_central_migrator_never_sees_it
+database/migrations/organisation/ holds the organisation set
+Failed asserting that an array is not empty.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:106
+
+2) Tests\Architecture\OrganisationMigrationSetTest::test_the_checker_catches_a_planted_rogue_migration_in_each_direction
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => '2099_01_01_000000_rogue_org_migration.php.fixture: names a connection',
+-    1 => '2099_01_01_000000_rogue_org_migration.php.fixture: references 'organisations', which the organisation set does not create',
+-    2 => '2099_01_01_000000_rogue_org_migration.php.fixture: references 'users', which the organisation set does not create',
++    0 => '2099_01_01_000000_rogue_org_migration.php.fixture: references 'organisations', which the organisation set does not create',
++    1 => '2099_01_01_000000_rogue_org_migration.php.fixture: references 'users', which the organisation set does not create',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:126
+
+FAILURES!
+Tests: 4, Assertions: 4, Failures: 2.

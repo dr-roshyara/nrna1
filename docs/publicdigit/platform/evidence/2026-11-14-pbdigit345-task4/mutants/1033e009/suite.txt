@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDFD                                                               5 / 5 (100%)
+
+Time: 00:14.155, Memory: 22.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_the_set_runs_on_one_organisation_database_only_and_a_repeat_applies_nothing
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => '2026_11_14_300000_create_organisation_identity',
++    1 => '2026_11_14_300100_create_org_membership_ledger',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:98
+
+2) Tests\Feature\Contexts\Platform\OrganisationMigrationsTest::test_a_failing_migration_rolls_back_its_own_changes_and_the_history_stays_exact
+the failing one is still pending
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => '2026_11_14_300100_create_org_membership_ledger',
++    0 => '2026_11_14_300000_create_organisation_identity',
++    1 => '2026_11_14_300100_create_org_membership_ledger',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationMigrationsTest.php:155
+
+FAILURES!
+Tests: 5, Assertions: 37, Failures: 2, Deprecations: 1.

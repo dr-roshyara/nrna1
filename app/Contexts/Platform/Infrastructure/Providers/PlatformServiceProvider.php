@@ -7,6 +7,7 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin;
 use App\Contexts\Platform\Infrastructure\OrganisationConnectionFactory;
+use App\Contexts\Platform\Infrastructure\OrganisationMigrations;
 use App\Contexts\Platform\Infrastructure\PostgresServedOrganisationRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +25,11 @@ final class PlatformServiceProvider extends ServiceProvider
         $this->app->singleton(OrganisationConnectionFactory::class, static fn (): OrganisationConnectionFactory => new OrganisationConnectionFactory(
             (array) config('organisation_routing.clusters', []),
             new EnvironmentDatabaseLogin(getenv()),
+        ));
+        // task 4: the organisation migration set (Platform's and Membership's paths), applied by provisioning only
+        $this->app->bind(OrganisationMigrations::class, static fn ($app): OrganisationMigrations => new OrganisationMigrations(
+            $app->make('migrator'),
+            array_values((array) config('organisation_routing.migration_paths', [])),
         ));
     }
 }

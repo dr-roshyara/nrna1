@@ -1,0 +1,6 @@
+O1 the connection-name check is removed                        [pg-platform:OrganisationMigrationsTest] tests:5    KILLED  the_default_connection_and_the_central_databa;
+O2 the central-database check is removed                       [pg-platform:OrganisationMigrationsTest] tests:5    SURVIVED  
+O3 only the first path of the set is applied                   [pg-platform:OrganisationMigrationsTest] tests:5    KILLED+ERRORS (2: Illuminate\Database\QueryException)  a_failing_migration_rolls_back_its_own_change;t8_t
+O4 the default connection is not restored                      [pg-platform:OrganisationMigrationsTest] tests:5    KILLED+ERRORS (1: App\Contexts\Platform\Infrastructure\OrganisationMigrationRefused)  a_failing_migration
+O5 pending ignores what already ran                            [pg-platform:OrganisationMigrationsTest] tests:5    KILLED  a_failing_migration_rolls_back_its_own_change;the_set_runs_on_one_organisation_database_onl;
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 1
