@@ -1,0 +1,36 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFDDFDFDD                                                           9 / 9 (100%)
+
+Time: 00:12.905, Memory: 24.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\GovernanceNoticeSchemaTest::test_row_shapes_the_design_forbids_are_refused
+refused, but not for the intended reason: a revision row with a notice kind: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "refgeo_publications" violates check constraint "refgeo_publications_finding_shape"
+DETAIL:  Failing row contains (9, revision, e785e1a3-d9f0-4409-aee8-0cff0f59c84e, 1, 0, test-fixture, null, 2026-11-14 00:57:48.050661+00, finding, null, null, null, null, null, null). (Connection: pgsql, Host: 127.0.0.1, Port: 43081, Database: membership_pg_isolated, SQL: insert into "refgeo_publications" ("kind", "revision_id", "content_version", "notice_kind", "position", "roster_version", "governance_rule", "recorded_at") values (revision, e785e1a3-d9f0-4409-aee8-0cff0f59c84e, 1, finding, 9, 0, test-fixture, clock_timestamp()))
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:91
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:113
+
+2) Tests\Feature\Contexts\ReferenceGeography\GovernanceNoticeSchemaTest::test_a_finding_is_resolved_once_whatever_the_resolution
+accepted: a closure after a confirmation
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:87
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:150
+
+3) Tests\Feature\Contexts\ReferenceGeography\GovernanceNoticeSchemaTest::test_one_confirmation_and_one_closure_per_finding
+refused, but not for the intended reason: a second confirmation: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "refgeo_publications_one_confirmation"
+DETAIL:  Key (concerns_position)=(18) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 43081, Database: membership_pg_isolated, SQL: insert into "refgeo_publications" ("kind", "notice_kind", "concerns_position", "confirmed_by", "confirmed_digest", "position", "roster_version", "governance_rule", "recorded_at") values (notice, confirmation, 18, e1671797c52e15f763380b45e841ec32, d, 20, 0, test-fixture, clock_timestamp()))
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:91
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/GovernanceNoticeSchemaTest.php:174
+
+FAILURES!
+Tests: 9, Assertions: 20, Failures: 3, Deprecations: 1.

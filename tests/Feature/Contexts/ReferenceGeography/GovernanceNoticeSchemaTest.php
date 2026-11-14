@@ -51,8 +51,15 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
      * value would also raise QueryException and make the test vacuous).
      */
     private const REFUSED_BY = [
-        'a revision row with a notice kind' => 'check constraint "refgeo_publications_',   // several shape checks apply
+        // The ONE case two constraints jointly guard: every notice kind needs concerns_position, which a revision row
+        // may not have. Exactly one of these two names must appear (PostgreSQL does not promise which it reports).
+        'a revision row with a notice kind' => ['refgeo_publications_notice_iff_kind', 'refgeo_publications_revision_shape'],
         'a notice without a notice kind' => 'refgeo_publications_notice_iff_kind',         // only this one applies
+        'a reference to a missing position' => 'refgeo_publications_concerns_position_fkey',
+        'a correction of a missing position' => 'refgeo_publications_corrects_position_fkey',
+        'a closure after a confirmation' => 'refgeo_publications_one_resolution',
+        'a confirmation after a closure' => 'refgeo_publications_one_resolution',
+        'a duplicate person association' => 'refgeo_publication_persons_pkey',
         'a revision row with a merge basis' => 'refgeo_publications_revision_shape',
         'a finding concerning nothing' => 'refgeo_publications_notice_shape',
         'a finding without its merge basis' => 'refgeo_publications_finding_shape',
@@ -61,14 +68,15 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
         'a closure without what ended it' => 'refgeo_publications_closure_shape',
         'a closure carrying a confirmer' => 'refgeo_publications_closure_shape',
         'a notice carrying a correction' => 'refgeo_publications_notice_shape',
-        'an unknown notice kind' => 'refgeo_publications_notice_kind_check',
+        'an unknown notice kind' => 'refgeo_publications_notice_kind_known',
         'a reference forward (or to nothing)' => 'refgeo_publications_notice_shape',
         'a finding about a notice' => 'a finding concerns a revision publication',
         'a confirmation of a revision row' => 'a confirmation concerns a finding',
         'a closure of a revision row' => 'a closure concerns a finding',
         'a correction of a notice' => 'a correction corrects a revision publication',
-        'a second confirmation' => 'refgeo_publications_one_confirmation',
-        'a second closure' => 'refgeo_publications_one_closure',
+        // a finding is resolved ONCE (design §8): one resolving notice (confirmation or closure) per finding
+        'a second confirmation' => 'refgeo_publications_one_resolution',
+        'a second closure' => 'refgeo_publications_one_resolution',
     ];
 
     /** @param array<string, mixed> $fields */
@@ -78,7 +86,9 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
             self::insertRow($fields);
             $this->fail("accepted: {$why}");
         } catch (QueryException $e) {
-            $this->assertStringContainsString(self::REFUSED_BY[$why], $e->getMessage(), "refused, but not for the intended reason: {$why}");
+            $expected = (array) self::REFUSED_BY[$why];
+            $named = array_values(array_filter($expected, static fn (string $n): bool => str_contains($e->getMessage(), $n)));
+            $this->assertCount(1, $named, "refused, but not for the intended reason: {$why}: " . $e->getMessage());
         }
     }
 
@@ -100,7 +110,10 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
         $f = self::finding($p);
         $base = ['kind' => 'notice', 'concerns_position' => $f];
 
-        $this->assertRefused(['kind' => 'revision', 'revision_id' => (string) Str::uuid(), 'content_version' => 1, 'notice_kind' => 'finding'], 'a revision row with a notice kind');
+        // a VALID closure shape pointing at a real finding (so the closure CHECK and the reference trigger pass): only the
+        // discriminator and the revision-shape rules can refuse it
+        $this->assertRefused(['kind' => 'revision', 'revision_id' => (string) Str::uuid(), 'content_version' => 1, 'notice_kind' => 'closure',
+            'concerns_position' => $f, 'ended_by' => 'x'], 'a revision row with a notice kind');
         $this->assertRefused(['kind' => 'notice'], 'a notice without a notice kind');
         $this->assertRefused(['kind' => 'revision', 'revision_id' => (string) Str::uuid(), 'content_version' => 1, 'merge_basis' => '[]'], 'a revision row with a merge basis');
         $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'finding', 'merge_basis' => '["m"]'], 'a finding concerning nothing');
@@ -123,6 +136,38 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
         $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $p, 'confirmed_by' => md5('c'), 'confirmed_digest' => 'd'], 'a confirmation of a revision row');
         $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'closure', 'concerns_position' => $p, 'ended_by' => 'x'], 'a closure of a revision row');
         $this->assertRefused(['kind' => 'revision', 'revision_id' => (string) Str::uuid(), 'content_version' => 1, 'corrects_position' => $f], 'a correction of a notice');
+    }
+
+    public function test_a_reference_to_a_missing_position_is_refused_by_the_foreign_key(): void
+    {
+        self::revisionRow();
+        // 0 < position, so the backwards CHECK passes: only the foreign key can refuse it (positions start at 1)
+        $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'finding', 'concerns_position' => 0, 'merge_basis' => '["m"]'], 'a reference to a missing position');
+        $this->assertRefused(['kind' => 'revision', 'revision_id' => (string) Str::uuid(), 'content_version' => 1, 'corrects_position' => 0], 'a correction of a missing position');
+    }
+
+    public function test_a_finding_is_resolved_once_whatever_the_resolution(): void
+    {
+        $f = self::finding(self::revisionRow());
+        self::insertRow(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $f, 'confirmed_by' => md5('c'), 'confirmed_digest' => 'd']);
+        $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'closure', 'concerns_position' => $f, 'ended_by' => 'reversal:m1'], 'a closure after a confirmation');
+
+        $g = self::finding(self::revisionRow());
+        self::insertRow(['kind' => 'notice', 'notice_kind' => 'closure', 'concerns_position' => $g, 'ended_by' => 'reversal:m1']);
+        $this->assertRefused(['kind' => 'notice', 'notice_kind' => 'confirmation', 'concerns_position' => $g, 'confirmed_by' => md5('c'), 'confirmed_digest' => 'd'], 'a confirmation after a closure');
+    }
+
+    public function test_a_person_association_is_recorded_once(): void
+    {
+        $p = self::revisionRow();
+        DB::table('refgeo_publication_persons')->insert(['position' => $p, 'person' => md5('x'), 'role' => 'excluded']);
+
+        try {
+            DB::table('refgeo_publication_persons')->insert(['position' => $p, 'person' => md5('x'), 'role' => 'excluded']);
+            $this->fail('a duplicate association was stored');
+        } catch (QueryException $e) {
+            $this->assertStringContainsString(self::REFUSED_BY['a duplicate person association'], $e->getMessage());
+        }
     }
 
     public function test_one_confirmation_and_one_closure_per_finding(): void
