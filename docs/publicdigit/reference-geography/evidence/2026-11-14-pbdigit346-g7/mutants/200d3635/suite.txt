@@ -1,0 +1,32 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 310 ( 20%)
+..........F..F................................................. 126 / 310 ( 40%)
+............................................................... 189 / 310 ( 60%)
+............................................................... 252 / 310 ( 81%)
+..........................................................      310 / 310 (100%)
+
+Time: 00:00.277, Memory: 16.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_the_chain_truncates_then_follows_the_release_parent_map_and_ends_at_root
+de_AT → de by truncation
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'de'
++'root'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:66
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_withdrawn_name_is_no_name
+Failed asserting that null is identical to 'de'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:101
+
+FAILURES!
+Tests: 310, Assertions: 5208, Failures: 2, Warnings: 1.

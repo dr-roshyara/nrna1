@@ -1,0 +1,1 @@
+N12 the default locale is not read

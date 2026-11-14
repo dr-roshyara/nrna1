@@ -47,6 +47,7 @@ final class RevisionValidator
                 ClaimKind::Containment => $this->parentExists($claim, $claims, $reader),
                 ClaimKind::Grouping => $this->admittedBeforeGrouping($claim, $claims, $reader),
                 ClaimKind::Identifier => $this->identifierUnique($claim, $claims, $reader),
+                ClaimKind::CldrName, ClaimKind::CldrInheritance, ClaimKind::PlatformDefaultLocale => $this->cldr($claim),
                 default => [],
             }];
         }
@@ -54,6 +55,45 @@ final class RevisionValidator
         $violations = [...$violations, ...$this->profileForm($claims), ...$this->tiersAndPositions($claims, $reader), ...$this->profileChanges($claims, $reader), ...$this->countryChanges($claims, $reader)];
 
         return new ValidationResult([...$authority, ...$violations], $reader->dependencies(), $images, StructuralClassification::ofClaims($claims), array_values($disputed));
+    }
+
+    /**
+     * G-7 (D-87; v3.11 §3 "Display names (CLDR release)", §9): a CLDR name or inheritance map names its release in its
+     * basis (Other, "cldr:<release>"), an inheritance map's being its slot's own; CLDR locales are CLDR identifiers; the
+     * inheritance value is a {child: parent} map; the platform default locale is a real locale (root is no language).
+     *
+     * @return list<Violation>
+     */
+    private function cldr(Claim $claim): array
+    {
+        $out = [];
+        $release = CldrRelease::fromBasis($claim->basis);
+        $value = $claim->value->value();
+        switch ($claim->slot->kind()) {
+            case ClaimKind::CldrName:
+                if ($release === null) {
+                    $out[] = new Violation('D-87_RELEASE', $claim->id, 'A CLDR display name records its CLDR release (basis "cldr:<release>").');
+                }
+                if (!CldrLocale::isValid((string) $claim->slot->component('locale'))) {
+                    $out[] = new Violation('D-87_LOCALE', $claim->id, 'A CLDR display name is keyed by a CLDR locale identifier.');
+                }
+                break;
+            case ClaimKind::CldrInheritance:
+                $slotRelease = (string) $claim->slot->component('release');
+                if ($release === null || preg_match('/^\d+(\.\d+)*$/', $slotRelease) !== 1 || !$release->equals(CldrRelease::of($slotRelease))) {
+                    $out[] = new Violation('D-87_RELEASE', $claim->id, 'A CLDR parent-locale map records its own release (basis "cldr:<the slot release>").');
+                }
+                if (CldrParentLocales::tryFromJson($value) === null) {
+                    $out[] = new Violation('D-87_INHERITANCE', $claim->id, 'A CLDR parent-locale map is a JSON object of CLDR locales.');
+                }
+                break;
+            default:   // PLATFORM_DEFAULT_LOCALE
+                if ($value === CldrLocale::ROOT || !CldrLocale::isValid($value)) {
+                    $out[] = new Violation('D-87_LOCALE', $claim->id, 'The platform default locale is a CLDR language locale (not root).');
+                }
+        }
+
+        return $out;
     }
 
     /**

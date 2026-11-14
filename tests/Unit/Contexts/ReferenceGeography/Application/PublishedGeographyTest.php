@@ -226,6 +226,7 @@ final class PublishedGeographyTest extends TestCase
             static fn (PublishedGeography $g) => $g->lookup('Nepal', '2020-01-01', $forged),
             static fn (PublishedGeography $g) => $g->publicationsSince(0, $forged),
             static fn (PublishedGeography $g) => $g->approvalStatus(1, $forged),   // G-6c-6
+            static fn (PublishedGeography $g) => $g->displayName(self::NEPAL, 'de', '2020-01-01', $forged),   // G-7
         ] as $i => $query) {
             try {
                 $query(self::geography());

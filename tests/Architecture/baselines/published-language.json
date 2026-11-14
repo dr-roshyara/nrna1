@@ -1,6 +1,7 @@
 [
     "App\\Contexts\\Membership\\Domain\\Member\\MemberId",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\ApprovalHistory",
+    "App\\Contexts\\ReferenceGeography\\Application\\Published\\DisplayName",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\GeographyReadModel",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\Knowledge",
     "App\\Contexts\\ReferenceGeography\\Application\\Published\\KnowledgeNotAvailable",

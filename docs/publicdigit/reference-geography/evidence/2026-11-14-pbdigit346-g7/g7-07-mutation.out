@@ -1,0 +1,13 @@
+N1 truncation ignored: the chain is the locale and root only   [unit]     tests:310  KILLED  a_withdrawn_name_is_no_name;the_chain_truncates_then_follows_the_release_;
+N2 the release parent map is ignored                           [unit]     tests:310  KILLED  a_cyclic_parent_map_ends_the_chain_instead_of;the_chain_truncates_then_follows_the_release_;
+N3 root is skipped (treated as the end, not a locale)          [unit]     tests:310  KILLED  the_chain_truncates_then_follows_the_release_;
+N4 a short form never falls back to standard                   [unit]     tests:310  KILLED  a_short_form_falls_back_to_the_standard_form_;
+N5 the fallback is presented as CLDR                           [unit]     tests:310  KILLED  an_empty_chain_falls_back_to_the_platform_def;
+N6 a withdrawn name counts as a name                           [unit]     tests:310  KILLED+ERRORS (1: LogicException)  a_withdrawn_name_is_no_name;
+N7 a CLDR name need not name its release                       [unit]     tests:310  KILLED  a_cldr_name_must_name_its_release;
+N8 root accepted as the platform default locale                [unit]     tests:310  KILLED  locales_are_cldr_identifiers_and_the_default_;
+N9 releases compared as text                                   [unit]     tests:310  KILLED  releases_locales_and_parent_maps_are_parsed_s;
+N10 the read ignores the knowledge position for names          [pg:CldrDisplayNameReadTest] tests:4    KILLED  a_later_cldr_release_never_changes_an_earlier;
+N11 the release map is not read (truncation only)              [pg:CldrDisplayNameReadTest] tests:4    SURVIVED  
+N12 the default locale is not read                             [pg:CldrDisplayNameReadTest] tests:4    KILLED+ERRORS (1: ErrorException)  the_release_parent_map_and_the_marked_platfor;
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 1

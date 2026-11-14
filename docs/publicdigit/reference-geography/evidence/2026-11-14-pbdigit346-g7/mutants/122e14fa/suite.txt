@@ -1,0 +1,33 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 310 ( 20%)
+...........F................................................... 126 / 310 ( 40%)
+............................................................... 189 / 310 ( 60%)
+............................................................... 252 / 310 ( 81%)
+..........................................................      310 / 310 (100%)
+
+Time: 00:00.273, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_short_form_falls_back_to_the_standard_form_and_says_so
+no short form in the chain: the standard form, marked
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'Vereinigtes Königreich',
+-    1 => 'standard',
+-    2 => true,
++    0 => null,
++    1 => null,
++    2 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:84
+
+FAILURES!
+Tests: 310, Assertions: 5199, Failures: 1, Warnings: 3.

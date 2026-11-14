@@ -1,0 +1,4 @@
+N11 the release map is not read (truncation only)              [pg:CldrDisplayNameReadTest] tests:4    KILLED  the_release_parent_map_and_the_marked_platfor;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0
+N12 the default locale is not read                             [pg:CldrDisplayNameReadTest] tests:4    KILLED  the_release_parent_map_and_the_marked_platfor;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

@@ -1,0 +1,29 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 310 ( 20%)
+........F...................................................... 126 / 310 ( 40%)
+............................................................... 189 / 310 ( 60%)
+............................................................... 252 / 310 ( 81%)
+..........................................................      310 / 310 (100%)
+
+Time: 00:00.274, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrClaimValidationTest::test_locales_are_cldr_identifiers_and_the_default_locale_is_a_language
+root is no language to fall back to
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'D-87_LOCALE',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrClaimValidationTest.php:75
+
+FAILURES!
+Tests: 310, Assertions: 5171, Failures: 1.

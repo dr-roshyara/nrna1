@@ -1,0 +1,1 @@
+N3 root is skipped (treated as the end, not a locale)

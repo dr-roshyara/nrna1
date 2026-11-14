@@ -158,6 +158,7 @@
 ### G-7: CLDR display names (D-87)
 
 - **Build:** CLDR names, locale inheritance and the platform default locale. These are non-structural.
+- **Done 2026-11-14** (guide 32): `GeographyReadModel::displayName`; region names by D-231 (Option A). The default locale's starting value and which CLDR release and locales to load are G-8 decisions.
 
 ### G-8: the initial evidenced data (D-226 Q-G-1)
 

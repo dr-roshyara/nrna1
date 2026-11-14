@@ -1,0 +1,37 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:13.330, Memory: 22.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\CldrDisplayNameReadTest::test_a_region_is_named_by_cldr_in_the_user_language_and_keeps_its_un_name_attributed
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::displayName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:85
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:98
+
+2) Tests\Feature\Contexts\ReferenceGeography\CldrDisplayNameReadTest::test_a_later_cldr_release_never_changes_an_earlier_answer
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::displayName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:85
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:112
+
+3) Tests\Feature\Contexts\ReferenceGeography\CldrDisplayNameReadTest::test_the_release_parent_map_and_the_marked_platform_fallback
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::displayName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:85
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:126
+
+4) Tests\Feature\Contexts\ReferenceGeography\CldrDisplayNameReadTest::test_refusals
+Error: Call to undefined method App\Contexts\ReferenceGeography\Application\PublishedGeography::displayName()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CldrDisplayNameReadTest.php:144
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4, Deprecations: 1.

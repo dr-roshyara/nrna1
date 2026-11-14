@@ -1,0 +1,47 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:00.024, Memory: 12.00 MB
+
+There were 7 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_the_requested_locale_gives_a_cldr_name_with_its_release
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrDisplayNames" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:57
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_the_chain_truncates_then_follows_the_release_parent_map_and_ends_at_root
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrDisplayNames" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:66
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_short_form_falls_back_to_the_standard_form_and_says_so
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrDisplayNames" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:81
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_an_empty_chain_falls_back_to_the_platform_default_locale_marked_as_such
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrDisplayNames" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:91
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_withdrawn_name_is_no_name
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrDisplayNames" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:101
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_cyclic_parent_map_ends_the_chain_instead_of_looping
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrParentLocales" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:106
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_releases_locales_and_parent_maps_are_parsed_strictly
+Error: Class "App\Contexts\ReferenceGeography\Domain\CldrRelease" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:111
+
+ERRORS!
+Tests: 7, Assertions: 0, Errors: 7.

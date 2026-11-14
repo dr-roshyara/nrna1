@@ -58,3 +58,7 @@
 ## G-6c-6 (2026-11-14)
 
 **No administrator action required.** No migration, configuration or schedule. The feed gains three optional fields; existing consumers need no change.
+
+## G-7 (2026-11-14)
+
+**No administrator action required.** No migration (the CLDR slot kinds exist since G-1), configuration or schedule. **Do not publish a `PLATFORM_DEFAULT_LOCALE` in production:** its value is a pending Principal decision (G-8), and production publication waits for Platform Owner authority anyway.

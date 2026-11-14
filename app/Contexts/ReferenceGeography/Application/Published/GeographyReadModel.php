@@ -66,4 +66,15 @@ interface GeographyReadModel
      * @throws KnowledgeNotAvailable beyond the committed position
      */
     public function approvalStatus(int $position, Knowledge $knowledge): ?ApprovalHistory;
+
+    /**
+     * D-87 (G-7): the name to show for the place in the user's locale (CLDR form: de, de_AT, en_001; a hyphen form
+     * de-AT is accepted), at the valid date, as known at the knowledge. Null if neither the user's locale chain nor the
+     * platform default locale's chain has a CLDR name (PublicDigit never invents one).
+     *
+     * @param string $form standard | short
+     * @throws \InvalidArgumentException for a malformed locale or form
+     * @throws KnowledgeNotAvailable beyond the committed position
+     */
+    public function displayName(string $unitId, string $locale, string $validDate, Knowledge $knowledge, string $form = 'standard'): ?DisplayName;
 }

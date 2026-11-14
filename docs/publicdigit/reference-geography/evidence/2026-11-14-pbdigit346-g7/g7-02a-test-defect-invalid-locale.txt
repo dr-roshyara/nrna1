@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....E.......                                                     13 / 13 (100%)
+
+Time: 00:00.098, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_cyclic_parent_map_ends_the_chain_instead_of_looping
+InvalidArgumentException: A CLDR parent-locale map is a JSON object of CLDR locales.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Domain/CldrParentLocales.php:28
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:106
+
+ERRORS!
+Tests: 13, Assertions: 42, Errors: 1.

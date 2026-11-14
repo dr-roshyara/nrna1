@@ -15,7 +15,12 @@ use App\Contexts\ReferenceGeography\Application\Published\LookupMatch;
 use App\Contexts\ReferenceGeography\Application\Published\PublicationEntry;
 use App\Contexts\ReferenceGeography\Application\Published\Place;
 use App\Contexts\ReferenceGeography\Application\Published\Resolution;
+use App\Contexts\ReferenceGeography\Application\Published\DisplayName;
 use App\Contexts\ReferenceGeography\Domain\ClaimKind;
+use App\Contexts\ReferenceGeography\Domain\CldrDisplayNames;
+use App\Contexts\ReferenceGeography\Domain\CldrLocale;
+use App\Contexts\ReferenceGeography\Domain\CldrParentLocales;
+use App\Contexts\ReferenceGeography\Domain\CldrRelease;
 use App\Contexts\ReferenceGeography\Domain\LookupCandidate;
 use App\Contexts\ReferenceGeography\Domain\PlaceBelief;
 use App\Contexts\ReferenceGeography\Domain\PlaceMatcher;
@@ -164,6 +169,46 @@ final class PublishedGeography implements GeographyReadModel
             return new PublicationEntry($c->position, $c->recordedAt, $c->kind, $c->revisionId, $c->contentVersion, $c->governanceRule,
                 $summary->kinds, $summary->subjects, $summary->merges, $c->noticeKind, $c->concernsPosition, $c->correctsPosition);
         }, $this->source->publicationsBetween($afterPosition, $p, $limit));
+    }
+
+    public function displayName(string $unitId, string $locale, string $validDate, Knowledge $knowledge, string $form = 'standard'): ?DisplayName
+    {
+        $p = $this->checked($knowledge->position);
+        $requested = CldrLocale::normalise($locale);
+        if (!CldrLocale::isValid($requested) || $requested === CldrLocale::ROOT) {
+            throw new \InvalidArgumentException("A display-name locale is a CLDR locale such as de or de_AT, not '{$locale}'.");
+        }
+        $t = ValidDate::fromString($validDate);
+        $unit = ReferenceUnitId::fromString($unitId);
+        $default = $this->source->slotHistory(SlotKey::platformDefaultLocale(), $p)->claimAt($t, $p);
+        $resolved = CldrDisplayNames::resolve($requested, $form,
+            fn (string $l, string $f) => CldrLocale::isValid($l) ? $this->source->slotHistory(SlotKey::cldrName($unit, $l, $f), $p)->claimAt($t, $p) : null,
+            $this->parentLocales($t, $p),
+            $default === null || $default->value->isNone() ? null : $default->value->value());
+        if ($resolved === null) {
+            return null;
+        }
+
+        return new DisplayName($unitId, $resolved->value, $resolved->origin->value, $resolved->requestedLocale, $resolved->resolvedLocale,
+            $resolved->release, $resolved->form, $resolved->shortFellBack, $resolved->fallbackLocale, $validDate, $p);
+    }
+
+    /** v3.11 §9: the parent-locale map of the newest CLDR release whose map is published (in force at t, known at p). */
+    private function parentLocales(ValidDate $t, int $p): CldrParentLocales
+    {
+        $newest = null;
+        foreach ($this->source->slotsOfKind(ClaimKind::CldrInheritance, $p) as $history) {
+            $claim = $history->claimAt($t, $p);
+            $release = (string) $history->slot()->component('release');
+            if ($claim === null || $claim->value->isNone() || preg_match('/^\d+(\.\d+)*$/', $release) !== 1) {
+                continue;
+            }
+            if ($newest === null || CldrRelease::of($release)->isNewerThan($newest[0])) {
+                $newest = [CldrRelease::of($release), $claim->value->value()];
+            }
+        }
+
+        return $newest === null ? CldrParentLocales::none() : (CldrParentLocales::tryFromJson($newest[1]) ?? CldrParentLocales::none());
     }
 
     public function approvalStatus(int $position, Knowledge $knowledge): ?ApprovalHistory

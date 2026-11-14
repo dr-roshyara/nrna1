@@ -38,3 +38,4 @@
 | G-6c-4 | [Confirming a D-90 finding](29_g6c4_confirm_publication.md) | implemented 2026-11-14 |
 | G-6c-5 | [The full-coverage correction link](30_g6c5_correction_link.md) | implemented 2026-11-14 |
 | G-6c-6 | [The D-90 governance history, the feed fields and the notice-write guard](31_g6c6_governance_history_feed_guard.md) | implemented 2026-11-14 |
+| G-7 | [CLDR display names (D-87, D-231)](32_g7_cldr_display_names.md) | implemented 2026-11-14 |

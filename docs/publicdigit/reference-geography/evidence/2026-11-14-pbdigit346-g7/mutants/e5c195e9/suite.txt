@@ -1,0 +1,46 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 310 ( 20%)
+..........F...F................................................ 126 / 310 ( 40%)
+............................................................... 189 / 310 ( 60%)
+............................................................... 252 / 310 ( 81%)
+..........................................................      310 / 310 (100%)
+
+Time: 00:00.277, Memory: 16.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_the_chain_truncates_then_follows_the_release_parent_map_and_ends_at_root
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'en_IN',
+-    1 => 'en_001',
+-    2 => 'en',
+-    3 => 'root',
++    1 => 'en',
++    2 => 'root',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:69
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CldrDisplayNamesTest::test_a_cyclic_parent_map_ends_the_chain_instead_of_looping
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'aa_BB',
+-    1 => 'cc_DD',
++    1 => 'aa',
+     2 => 'root',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CldrDisplayNamesTest.php:106
+
+FAILURES!
+Tests: 310, Assertions: 5196, Failures: 2.
