@@ -1,0 +1,54 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDDDDDDDDEEDDDDDDDDDDDDDDDDDDD                       43 / 43 (100%)
+
+Time: 00:49.003, Memory: 24.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "a ledger table missing" ('DROP TABLE org_membership_facts', 'ledger schema')
+Illuminate\Database\QueryException: SQLSTATE[2BP01]: Dependent objects still exist: 7 ERROR:  cannot drop table org_membership_facts because other objects depend on it
+DETAIL:  constraint org_membership_commands_fact_fk on table org_membership_commands depends on table org_membership_facts
+HINT:  Use DROP ... CASCADE to drop the dependent objects too. (Connection: platform_org_a, Host: 127.0.0.1, Port: 44737, Database: platform_pg_org_a, SQL: DROP TABLE org_membership_facts)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:627
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:168
+
+Caused by
+PDOException: SQLSTATE[2BP01]: Dependent objects still exist: 7 ERROR:  cannot drop table org_membership_facts because other objects depend on it
+DETAIL:  constraint org_membership_commands_fact_fk on table org_membership_commands depends on table org_membership_facts
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:633
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:627
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:168
+
+2) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "the identity row of another organisation" ('ALTER TABLE organisation_iden...utable', 'organisation identity')
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  update or delete on table "organisation_identity" violates foreign key constraint "org_membership_ledger_clocks_organisation_identity_fk" on table "org_membership_ledger_clocks"
+DETAIL:  Key (id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is still referenced from table "org_membership_ledger_clocks". (Connection: platform_org_a, Host: 127.0.0.1, Port: 44737, Database: platform_pg_org_a, SQL: ALTER TABLE organisation_identity DISABLE TRIGGER organisation_identity_immutable; UPDATE organisation_identity SET id = '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71'; ALTER TABLE organisation_identity ENABLE TRIGGER organisation_identity_immutable)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:627
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:168
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  update or delete on table "organisation_identity" violates foreign key constraint "org_membership_ledger_clocks_organisation_identity_fk" on table "org_membership_ledger_clocks"
+DETAIL:  Key (id)=(0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60) is still referenced from table "org_membership_ledger_clocks".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:633
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:627
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:168
+
+ERRORS!
+Tests: 43, Assertions: 155, Errors: 2, Deprecations: 1.

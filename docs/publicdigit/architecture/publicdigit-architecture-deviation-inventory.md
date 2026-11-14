@@ -10,7 +10,7 @@ Each row is one violation: rule, file, exact dependency, number of occurrences. 
 |---|---|---|
 | A-1 Domain purity | 21 | 15 |
 | A-2 Application layer | 67 | 27 |
-| A-3 Cross-context imports | 83 | 55 |
+| A-3 Cross-context imports | 86 | 56 |
 | A-4 Delivery boundary | 22 | 16 |
 | A-5 Shared 'tenant' connection (D-222) | 4 | 4 |
 
@@ -197,6 +197,9 @@ Each row is one violation: rule, file, exact dependency, number of occurrences. 
 | `app/Contexts/Membership/Infrastructure/Services/GeographicJurisdictionProviderAdapter.php` | `App\Contexts\Geography\Domain\Models\GeoAdministrativeUnit` | 1 | genuine (legacy) | Membership couples to the legacy Geography context | replace with Reference Geography read models (G-5; D-147) | none |
 | `app/Contexts/Membership/Infrastructure/Services/GeographyValidationAdapter.php` | `App\Contexts\Geography\Application\Services\GeographyService` | 1 | genuine (legacy) | Membership couples to the legacy Geography context | replace with Reference Geography read models (G-5; D-147) | none |
 | `app/Contexts/Membership/Infrastructure/Services/GeographyValidationAdapter.php` | `App\Contexts\Geography\Domain\Services\GeographyDomainService` | 1 | genuine (legacy) | Membership couples to the legacy Geography context | replace with Reference Geography read models (G-5; D-147) | none |
+| `app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php` | `App\Contexts\Identity\Application\IdentityUnavailable` | 1 | legitimate (consumer-owned port) | PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest | none; if Identity publishes an account-status query, re-point the adapter to it | none |
+| `app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php` | `App\Contexts\Identity\Application\Ports\AccountDirectory` | 1 | legitimate (consumer-owned port) | PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest | none; if Identity publishes an account-status query, re-point the adapter to it | none |
+| `app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php` | `App\Contexts\Identity\Domain\AccountId` | 1 | legitimate (consumer-owned port) | PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest | none; if Identity publishes an account-status query, re-point the adapter to it | none |
 | `app/Contexts/ReferenceGeography/Infrastructure/IdentityActingPerson.php` | `App\Contexts\Identity\Application\ActingContextRef` | 1 | published language (approved) | D-225 acting-person adapter; the only Identity import, guarded by IdentityG0ArchitectureTest | none | none |
 | `app/Contexts/ReferenceGeography/Infrastructure/IdentityActingPerson.php` | `App\Contexts\Identity\Domain\PlatformContext` | 1 | published language (approved) | D-225 acting-person adapter; the only Identity import, guarded by IdentityG0ArchitectureTest | none | none |
 

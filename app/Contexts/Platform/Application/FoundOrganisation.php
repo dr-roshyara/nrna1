@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Contexts\Platform\Application;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\ContactAccounts;
 use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Domain\OperationalReadiness;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
 use App\Contexts\Platform\Domain\DatabaseLocator;
@@ -30,6 +33,8 @@ final class FoundOrganisation
         private readonly ServedOrganisationRepository $registry,
         private readonly LegacyOrganisationRegister $legacy,
         private readonly OrganisationProvisioner $provisioner,
+        private readonly OrganisationReadinessProbe $probe,
+        private readonly ContactAccounts $contacts,
     ) {
     }
 
@@ -111,6 +116,33 @@ final class FoundOrganisation
             $o->markSchemaCurrent();
             $this->registry->save($o);
         }
+    }
+
+    /**
+     * Step 5 (task 5c; §3.7 L-1, D-193 F-07): `operational` only if, at this moment, the organisation database shows
+     * the ledger schema, the identity row equal to the registry id and the ledger clock row, AND at least one of the
+     * founding application's platform contacts has an active account. Each missing fact is named in the refusal
+     * (T-13). The aggregate re-checks everything (provisioning, locator, schema current, readiness).
+     */
+    public function markOperational(TenantId $id): void
+    {
+        $o = $this->entry($id);
+        if ($o->status() === PlatformStatus::Operational) {
+            return;   // resumed: nothing is inspected again
+        }
+        if ($o->status() !== PlatformStatus::Provisioning || $o->locator() === null || $o->schemaState() !== SchemaState::Current) {
+            // an earlier step is missing: the aggregate names which (NotProvisioning, NoLocator, SchemaNotCurrent),
+            // before any database is inspected
+            $o->markOperational(new OperationalReadiness(false, false, false, 0));
+        }
+        $facts = $this->probe->inspect($id);
+        $readiness = new OperationalReadiness($facts->ledgerSchemaPresent, $facts->identityRowMatches, $facts->ledgerClockRowPresent,
+            $this->contacts->activeCount($o->foundingApplication()->initialContactAccounts));
+        if ($readiness->missing() !== []) {
+            throw new FoundingRefused("Organisation {$id->value()} is not ready to be operational; missing: " . implode(', ', $readiness->missing()) . '.');
+        }
+        $o->markOperational($readiness);
+        $this->registry->save($o);
     }
 
     private function entry(TenantId $id): ServedOrganisation

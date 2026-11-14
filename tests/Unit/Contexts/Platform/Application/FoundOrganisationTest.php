@@ -8,7 +8,12 @@ use App\Contexts\Platform\Application\FoundingRefused;
 use App\Contexts\Platform\Application\FoundOrganisation;
 use App\Contexts\Platform\Application\OrganisationNotRoutable;
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\ContactAccounts;
+use App\Contexts\Platform\Application\Ports\ContactAccountsUnavailable;
+use App\Contexts\Platform\Application\Ports\OrganisationDatabaseFacts;
 use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Domain\LifecycleRefusal;
 use App\Contexts\Platform\Application\ProvisioningFailed;
 use App\Contexts\Platform\Application\ResolutionService;
 use App\Contexts\Platform\Application\RoutingRefusal;
@@ -67,7 +72,152 @@ final class FoundOrganisationTest extends TestCase
                 }
             }
         };
-        $this->founding = new FoundOrganisation($this->registry, $legacy, $this->provisioner);
+        $this->probe = new class implements OrganisationReadinessProbe {
+            public OrganisationDatabaseFacts $facts;
+            /** @var list<string> */
+            public array $calls = [];
+
+            public function __construct()
+            {
+                $this->facts = new OrganisationDatabaseFacts(true, true, true);
+            }
+
+            public function inspect(TenantId $id): OrganisationDatabaseFacts
+            {
+                $this->calls[] = $id->value();
+
+                return $this->facts;
+            }
+        };
+        $this->contacts = new class implements ContactAccounts {
+            public int $active = 1;
+            public bool $unavailable = false;
+            /** @var list<list<string>> */
+            public array $asked = [];
+
+            public function activeCount(array $accountIds): int
+            {
+                $this->asked[] = $accountIds;
+                if ($this->unavailable) {
+                    throw new ContactAccountsUnavailable('simulated: Identity unavailable');
+                }
+
+                return $this->active;
+            }
+        };
+        $this->founding = new FoundOrganisation($this->registry, $legacy, $this->provisioner, $this->probe, $this->contacts);
+    }
+
+    private OrganisationReadinessProbe $probe;
+    private ContactAccounts $contacts;
+
+    private function upToSchemaCurrent(): void
+    {
+        $this->upToProvisioning();
+        $this->founding->provision(self::id(), self::locator());
+    }
+
+    public function test_5c_step_five_makes_it_operational_when_every_fact_holds_and_then_it_is_routed(): void
+    {
+        $this->upToSchemaCurrent();
+
+        $this->founding->markOperational(self::id());
+
+        $this->assertSame(PlatformStatus::Operational, $this->registry->find(self::id())->status());
+        $this->assertSame([self::ID], $this->probe->calls, 'the facts are read from the organisation database at the transition');
+        $this->assertSame([['1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d']], $this->contacts->asked, 'the founding application\'s contacts, from the registry');
+        $this->assertTrue(self::locator()->equals((new ResolutionService($this->registry))->resolve(self::ID)->locator));
+    }
+
+    /** @return array<string, array{\Closure(self): void, string}> */
+    public static function missingPreconditions(): array
+    {
+        return [
+            'the ledger schema' => [static function (self $t): void { $t->probe->facts = new OrganisationDatabaseFacts(false, true, true); }, 'ledger schema'],
+            'the organisation identity' => [static function (self $t): void { $t->probe->facts = new OrganisationDatabaseFacts(true, false, true); }, 'organisation identity'],
+            'the ledger clock row' => [static function (self $t): void { $t->probe->facts = new OrganisationDatabaseFacts(true, true, false); }, 'ledger clock row'],
+            'an active contact account' => [static function (self $t): void { $t->contacts->active = 0; }, 'active account'],
+        ];
+    }
+
+    /** T-13: `operational` is refused for each missing precondition alone; nothing is recorded. */
+    #[\PHPUnit\Framework\Attributes\DataProvider('missingPreconditions')]
+    public function test_5c_t13_operational_is_refused_for_each_missing_fact(\Closure $remove, string $named): void
+    {
+        $this->upToSchemaCurrent();
+        $remove($this);
+
+        try {
+            $this->founding->markOperational(self::id());
+            $this->fail('operational without: ' . $named);
+        } catch (FoundingRefused $e) {
+            $this->assertStringContainsString($named, $e->getMessage());
+        }
+        $this->assertSame(PlatformStatus::Provisioning, $this->registry->find(self::id())->status());
+    }
+
+    public function test_5c_t13_operational_is_refused_without_a_database_or_with_a_failed_schema_or_before_provisioning(): void
+    {
+        $this->founding->register(self::id(), self::application());
+        $this->assertRefusedWith(LifecycleRefusal::NotProvisioning);
+
+        $this->founding->verifyCounterparty(self::id(), new CounterpartyVerification('agreement:1'));
+        $this->founding->recordServiceOperationGrant(self::id(), self::grant());
+        $this->founding->startProvisioning(self::id());
+        $this->assertRefusedWith(LifecycleRefusal::NoLocator);
+
+        $this->provisioner->failNext = true;
+        try {
+            $this->founding->provision(self::id(), self::locator());
+        } catch (ProvisioningFailed) {
+        }
+        $this->assertRefusedWith(LifecycleRefusal::SchemaNotCurrent);
+        $this->assertSame([], $this->probe->calls, 'nothing is inspected before the schema is current');
+    }
+
+    private function assertRefusedWith(LifecycleRefusal $reason): void
+    {
+        try {
+            $this->founding->markOperational(self::id());
+            $this->fail('operational, expected refusal: ' . $reason->name);
+        } catch (ServedOrganisationRefused $e) {
+            $this->assertSame($reason, $e->refusal);
+        }
+        $this->assertNotSame(PlatformStatus::Operational, $this->registry->find(self::id())->status());
+    }
+
+    public function test_5c_identity_unavailable_fails_closed(): void
+    {
+        $this->upToSchemaCurrent();
+        $this->contacts->unavailable = true;
+
+        try {
+            $this->founding->markOperational(self::id());
+            $this->fail('operational while Identity was unavailable');
+        } catch (ContactAccountsUnavailable) {
+            $this->assertSame(PlatformStatus::Provisioning, $this->registry->find(self::id())->status());
+        }
+    }
+
+    public function test_5c_t9_a_crash_in_step_five_is_resumed_and_a_repeat_is_a_no_op(): void
+    {
+        $this->upToSchemaCurrent();
+        $this->registry->failNextSave = true;
+        try {
+            $this->founding->markOperational(self::id());
+            $this->fail('the simulated crash did not happen');
+        } catch (\RuntimeException $e) {
+            $this->assertSame('simulated crash before commit', $e->getMessage());
+        }
+        $this->assertSame(PlatformStatus::Provisioning, $this->registry->find(self::id())->status(), 'not routed: the transition was lost');
+
+        $this->founding->markOperational(self::id());
+        $this->probe->facts = new OrganisationDatabaseFacts(false, false, false);   // a repeat inspects nothing
+        $this->founding->markOperational(self::id());
+        $this->founding->provision(self::id(), self::locator());   // and step 3 repeated after step 5 prepares nothing
+
+        $this->assertSame(PlatformStatus::Operational, $this->registry->find(self::id())->status());
+        $this->assertSame([self::ID], $this->provisioner->calls);
     }
 
     private OrganisationProvisioner $provisioner;

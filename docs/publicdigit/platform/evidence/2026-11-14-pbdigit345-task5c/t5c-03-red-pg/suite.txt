@@ -1,0 +1,92 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEEEEE                                                      12 / 12 (100%)
+
+Time: 00:17.609, Memory: 24.00 MB
+
+There were 12 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_the_whole_founding_ends_operational_and_routed_to_its_own_database
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:138
+
+2) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "a migration of the set not recorded" ('DELETE FROM migrations WHERE ...ntity'', 'ledger schema')
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:165
+
+3) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "a ledger table missing" ('DROP TABLE org_membership_facts', 'ledger schema')
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:165
+
+4) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "the identity row of another organisation" ('ALTER TABLE organisation_iden...utable', 'organisation identity')
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:165
+
+5) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_one_fact_does_not_hold_in_the_organisation_database with data set "the ledger clock row missing" ('DELETE FROM org_membership_le...clocks', 'ledger clock row')
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:165
+
+6) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_t13_operational_is_refused_without_a_contact_with_an_active_account
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:183
+
+7) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_5c_production_wiring_binds_the_probe_the_contacts_and_the_founding
+Illuminate\Contracts\Container\BindingResolutionException: Target [App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe] is not instantiable.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:1131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:193
+
+8) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_step_three_runs_in_a_child_process_and_prepares_only_that_database
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:219
+
+9) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_repeating_step_three_changes_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:247
+
+10) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_the_preparer_refuses_to_run_outside_its_dedicated_process
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:260
+
+11) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_a_database_bound_to_another_organisation_is_refused_and_recorded_as_failed
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:281
+
+12) Tests\Feature\Contexts\Platform\OrganisationProvisioningTest::test_a_failing_child_fails_closed_and_never_reports_a_password
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:115
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationProvisioningTest.php:296
+
+ERRORS!
+Tests: 12, Assertions: 0, Errors: 12, Deprecations: 1.

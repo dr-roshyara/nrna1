@@ -4,9 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Contexts\Platform;
 
+use App\Contexts\Platform\Application\FoundingRefused;
 use App\Contexts\Platform\Application\FoundOrganisation;
 use App\Contexts\Platform\Application\OrganisationNotRoutable;
+use App\Contexts\Platform\Application\Ports\ContactAccounts;
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Domain\PlatformStatus;
+use App\Contexts\Platform\Infrastructure\IdentityContactAccounts;
+use App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe;
 use App\Contexts\Platform\Application\ProvisioningFailed;
 use App\Contexts\Platform\Application\ResolutionService;
 use App\Contexts\Platform\Application\ResolvedOrganisation;
@@ -71,6 +78,7 @@ final class OrganisationProvisioningTest extends MembershipPostgresTestCase
             ['test-cluster' => ['host' => $s['host'], 'port' => $s['port'], 'sslmode' => 'prefer']],
             new EnvironmentDatabaseLogin(['ORG_TEST_USERNAME' => $s['username'], 'ORG_TEST_PASSWORD' => $s['password']]),
         );
+        $this->contactsActive(1);
         $this->childEnv = ['APP_ENV' => 'testing', 'DATABASE_URL' => '', 'DB_CONNECTION' => 'pgsql',
             'ORGANISATION_DB_CLUSTERS' => json_encode(['test-cluster' => ['host' => $s['host'], 'port' => (int) $s['port'], 'sslmode' => 'prefer']], JSON_THROW_ON_ERROR),
             'ORG_TEST_USERNAME' => (string) $s['username'], 'ORG_TEST_PASSWORD' => $this->password];
@@ -103,7 +111,94 @@ final class OrganisationProvisioningTest extends MembershipPostgresTestCase
             }
         };
 
-        return new FoundOrganisation(self::registry(), $neverLegacy, new ProcessOrganisationProvisioner(base_path(), $envChanges + $this->childEnv));
+        return new FoundOrganisation(self::registry(), $neverLegacy, new ProcessOrganisationProvisioner(base_path(), $envChanges + $this->childEnv),
+            new PostgresOrganisationReadinessProbe(self::registry(), $this->factory, array_values((array) config('organisation_routing.migration_paths'))),
+            $this->contacts);
+    }
+
+    /** 5c: Identity is outside this suite (its adapter has its own tests); the contacts' active-account count is set here */
+    private ContactAccounts $contacts;
+
+    private function contactsActive(int $n): void
+    {
+        $this->contacts = new class ($n) implements ContactAccounts {
+            public function __construct(private readonly int $n)
+            {
+            }
+
+            public function activeCount(array $accountIds): int
+            {
+                return $this->n;
+            }
+        };
+    }
+
+    public function test_5c_the_whole_founding_ends_operational_and_routed_to_its_own_database(): void
+    {
+        $founding = $this->founding();
+        $this->upToProvisioning($founding, self::A);
+        $founding->provision(TenantId::fromString(self::A), self::locator('platform_pg_org_a'));
+
+        $founding->markOperational(TenantId::fromString(self::A));
+
+        $resolved = (new ResolutionService(self::registry()))->resolve(self::A);
+        $this->assertTrue(self::locator('platform_pg_org_a')->equals($resolved->locator));
+        $this->assertSame([], array_values(array_filter(array_keys(DB::getConnections()), static fn (string $n): bool => str_starts_with($n, 'org_'))),
+            'the probe released the organisation connection');
+    }
+
+    /**
+     * T-13 at the database: each L-1 fact broken alone, as far as the database allows. An identity row of ANOTHER
+     * organisation cannot coexist with this organisation's clock row (the clock's foreign key), so that case names
+     * both; the unit tests (FoundOrganisationTest) cover each fact alone.
+     *
+     * @return array<string, array{string, string}>
+     */
+    public static function brokenFacts(): array
+    {
+        return [
+            'a migration of the set not recorded' => ["DELETE FROM migrations WHERE migration = '2026_11_14_300200_create_ledger_clock_on_organisation_identity'", 'ledger schema'],
+            'a ledger table missing' => ['DROP TABLE org_membership_commands', 'ledger schema'],
+            'the identity row of another organisation' => ['ALTER TABLE organisation_identity DISABLE TRIGGER organisation_identity_immutable; DELETE FROM org_membership_ledger_clocks;'
+                . " UPDATE organisation_identity SET id = '" . self::B . "'; ALTER TABLE organisation_identity ENABLE TRIGGER organisation_identity_immutable", 'organisation identity, ledger clock row'],
+            'the ledger clock row missing' => ['DELETE FROM org_membership_ledger_clocks', 'ledger clock row'],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('brokenFacts')]
+    public function test_5c_t13_operational_is_refused_when_a_fact_does_not_hold_in_the_organisation_database(string $break, string $missing): void
+    {
+        $founding = $this->founding();
+        $this->upToProvisioning($founding, self::A);
+        $founding->provision(TenantId::fromString(self::A), self::locator('platform_pg_org_a'));
+        DB::connection('platform_org_a')->unprepared($break);
+
+        try {
+            $founding->markOperational(TenantId::fromString(self::A));
+            $this->fail('operational although missing: ' . $missing);
+        } catch (FoundingRefused $e) {
+            $this->assertStringEndsWith("missing: {$missing}.", $e->getMessage(), 'exactly the broken facts are named');
+        }
+        $this->assertSame(PlatformStatus::Provisioning, self::registry()->find(TenantId::fromString(self::A))->status());
+    }
+
+    public function test_5c_t13_operational_is_refused_without_a_contact_with_an_active_account(): void
+    {
+        $this->contactsActive(0);
+        $founding = $this->founding();
+        $this->upToProvisioning($founding, self::A);
+        $founding->provision(TenantId::fromString(self::A), self::locator('platform_pg_org_a'));
+
+        $this->expectExceptionMessage('missing: a platform contact with an active account.');
+        $founding->markOperational(TenantId::fromString(self::A));
+    }
+
+    public function test_5c_production_wiring_binds_the_probe_the_contacts_and_the_founding(): void
+    {
+        $this->assertInstanceOf(PostgresOrganisationReadinessProbe::class, app(OrganisationReadinessProbe::class));
+        $this->assertInstanceOf(IdentityContactAccounts::class, app(ContactAccounts::class));
+        $this->assertInstanceOf(ProcessOrganisationProvisioner::class, app(OrganisationProvisioner::class));
+        $this->assertInstanceOf(FoundOrganisation::class, app(FoundOrganisation::class));
     }
 
     private static function locator(string $database): DatabaseLocator

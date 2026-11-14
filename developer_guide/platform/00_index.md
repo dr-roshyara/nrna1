@@ -14,4 +14,4 @@
 
 *(Not to be confused with `developer_guide/platform_context/`, an older, unrelated area.)*
 | 4 | [The organisation migration set](04_organisation_migration_set.md) | organisation_identity, F-13, the two sets kept apart (T-8, T-10 part 2) |
-| 5 | [Founding an organisation (F-1)](05_founding_an_organisation.md) | 5a steps 1–2 and 5b step 3 (own process) done; 5c step 5 to come |
+| 5 | [Founding an organisation (F-1)](05_founding_an_organisation.md) | done: steps 1–2 (5a), 3 in its own process (5b), 5 with L-1 (5c); step 4 outside the slice |

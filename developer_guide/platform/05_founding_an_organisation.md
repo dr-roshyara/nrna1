@@ -5,7 +5,9 @@
 **Task 5 is built in three test-first sub-steps:**
 - **5a: steps 1–2 (central). Done.**
 - **5b: step 3**, the organisation database prepared in its own process. **Done.**
-- **5c: step 5**, `operational`, with the L-1 facts gathered in the organisation database and the contacts' active accounts checked through Identity.
+- **5c: step 5**, `operational`, with the L-1 facts gathered in the organisation database and the contacts' active accounts checked through Identity. **Done.**
+
+**Task 5 is complete (2026-11-14).**
 
 ## Business purpose
 
@@ -87,6 +89,41 @@ So repeating step 3 changes nothing (tested). A crash at any point is resumed by
 
 **Pitfall:** never call `OrganisationMigrations` or the preparer from a controller, job or listener. The architecture test will fail, by design.
 
+## 5c: step 5, `markOperational(id)`
+
+The facts are read **at the transition**, never assumed from earlier steps:
+
+| Fact (L-1, D-193 F-07) | Read by | Named in a refusal as |
+|---|---|---|
+| every migration of the organisation set recorded, and the ledger tables present | `PostgresOrganisationReadinessProbe` (`migrations` history compared with the set's files) plus **Membership's** `org_membership_ledger_readiness(uuid)` | `ledger schema` |
+| the one `organisation_identity` row equals the registry id | the probe | `organisation identity` |
+| Membership's ledger clock row for the id | Membership's `org_membership_ledger_readiness(uuid)` | `ledger clock row` |
+| at least one initial contact has a known, active account | `ContactAccounts` → `IdentityContactAccounts` → Identity's `AccountDirectory` | `a platform contact with an active account` |
+
+**Order of checks:**
+1. An earlier step missing is refused by the aggregate **before** any database is inspected:
+   - `NotProvisioning`;
+   - `NoLocator`;
+   - `SchemaNotCurrent`, including after a failed preparation.
+2. Then the facts are gathered. If any is missing, `FoundingRefused` names **each** missing one (`OperationalReadiness::missing()`), and nothing is recorded (T-13).
+3. The aggregate checks everything again, then the registry saves `operational`. From that moment `ResolutionService` routes it.
+4. Repeating step 5 on an operational organisation is a no-op and inspects nothing. After a lost save, repeating it completes it (T-9).
+
+**Why Membership answers the ledger question.** R5 (`MembershipLedgerIsolationTest`, the Election-Only boundary) forbids any code outside Membership to name a ledger table. The first version of the probe did, and the guard refused it.
+- The fix is not an exception to the guard. Membership's organisation migration `2026_11_14_300300_create_ledger_readiness_function` publishes `org_membership_ledger_readiness(p_organisation uuid, OUT schema_present, OUT clock_row_present)`.
+- Two booleans and no ledger data. Platform calls it by name.
+
+**Why Identity has one adapter.** This is the baseline §9 pattern (consumer-owned port):
+- Platform owns `ContactAccounts` (and `ContactAccountsUnavailable`); `IdentityContactAccounts` is the **only** Platform file that touches Identity (`PlatformIdentityBoundaryTest`).
+- Its 3 imports are recorded one by one in the architecture-ratchet baseline. The ceilings went from 197 to **200** entries and from 264 to **267** occurrences, visibly, with history comments.
+- If Identity unavailable, or an id it cannot read: `ContactAccountsUnavailable`, and the organisation is not made operational (fail closed).
+- A contact gets nothing from being counted (D-193 R-B).
+
+**The probe:**
+- never migrates;
+- releases the organisation connection afterwards (tested);
+- is listed in `OrganisationRoutingDefaultConnectionTest`, together with the 5b preparer, as organisation code that never uses the default connection.
+
 ## Not in task 5 (approved plan scope, recorded for task 13's obligation list)
 
 | Design §3.6 step 4 item | Why not now |
@@ -116,7 +153,13 @@ MEMBERSHIP_PG_IMAGE=<pinned> MEMBERSHIP_PG_EVIDENCE_DIR=<dir> bash scripts/testi
   - the preparer refused in-process;
   - another organisation's database refused;
   - a failing child fails closed with no password.
-- **`OrganisationProvisioningProcessTest` (architecture):** the process boundary.
+- **5c, in `OrganisationProvisioningTest`:**
+  - the whole founding ends operational and routed;
+  - T-13 at the database: a set migration not recorded, a ledger table missing, the identity of another organisation (which, through the clock's foreign key, also removes the clock row, so both are named), the clock row missing;
+  - no active contact;
+  - production wiring.
+- **5c, `FoundOrganisationTest`:** T-13 for each fact **alone**, and each earlier-step refusal; Identity unavailable; T-9 at step 5. **`OperationalReadinessTest`:** `missing()`. **`IdentityContactAccountsTest`:** only known, active accounts counted; fail closed.
+- **`OrganisationProvisioningProcessTest` and `PlatformIdentityBoundaryTest` (architecture):** the process boundary; Platform reaches Identity through one adapter.
 - **`PostgresServedOrganisationRepositoryTest`:** the application stored once and never rewritten; NOT NULL and the contacts check; the migration stop; the legacy register.
 
 **Administrator:**
@@ -124,4 +167,6 @@ MEMBERSHIP_PG_IMAGE=<pinned> MEMBERSHIP_PG_EVIDENCE_DIR=<dir> bash scripts/testi
 - The provisioning process needs `ORGANISATION_DB_CLUSTERS` and the cluster's `<NAME>_USERNAME`/`<NAME>_PASSWORD` in its **real** environment (task 3).
 - **5a:** a new **central** migration (`2026_11_14_310000_…`). Not for production before the migration-approval control. If it stops with "holds N entries without a founding application", do not fill those columns by hand: report the entries.
 
-**Traceability:** PBDIGIT-345 task 5 · §3.6, §3.7 · D-148, D-166, D-174, D-175, D-185, D-193 · T-9, T-14.
+**There is no entry point yet.** `FoundOrganisation` is an application service. Its delivery (HTTP E-1) is **task 6**. Until then nothing in production calls it, and no organisation is founded in production.
+
+**Traceability:** PBDIGIT-345 task 5 (5a `43c8681ce`, 5b `45522a35a`, 5c) · §3.6, §3.7 · D-148, D-166, D-174, D-175, D-185, D-193 · L-1, L-2 · T-9, T-13, T-14 part 1 · R5.

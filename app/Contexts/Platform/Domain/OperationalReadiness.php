@@ -28,9 +28,17 @@ final readonly class OperationalReadiness
 
     public function isComplete(): bool
     {
-        return $this->ledgerSchemaPresent
-            && $this->identityRowMatches
-            && $this->ledgerClockRowPresent
-            && $this->activeAccountContacts >= 1;
+        return $this->missing() === [];
+    }
+
+    /** @return list<string> each precondition that does not hold (task 5c, T-13: a refusal names them) */
+    public function missing(): array
+    {
+        return array_keys(array_filter([
+            'ledger schema' => !$this->ledgerSchemaPresent,
+            'organisation identity' => !$this->identityRowMatches,
+            'ledger clock row' => !$this->ledgerClockRowPresent,
+            'a platform contact with an active account' => $this->activeAccountContacts < 1,
+        ]));
     }
 }

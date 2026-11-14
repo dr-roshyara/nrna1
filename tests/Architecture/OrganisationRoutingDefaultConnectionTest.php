@@ -19,6 +19,10 @@ final class OrganisationRoutingDefaultConnectionTest extends TestCase
         // PBDIGIT-345 task 4: it names the default connection only to refuse it (its known, scoped exception: the
         // migrator's own default switch during apply(), documented in the class and developer guide 04)
         'app/Contexts/Platform/Infrastructure/OrganisationMigrations.php',
+        // PBDIGIT-345 task 5: the founding preparer (its own process) and the readiness probe work on the organisation's
+        // connection only (the registry is read through its port, never through DB::)
+        'app/Contexts/Platform/Infrastructure/OrganisationDatabasePreparer.php',
+        'app/Contexts/Platform/Infrastructure/PostgresOrganisationReadinessProbe.php',
     ];
 
     /** @return list<string> what in $source would use or change the default connection */

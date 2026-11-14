@@ -1,0 +1,138 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEEEE.........E.............................EEE...... 65 / 66 ( 98%)
+F                                                                 66 / 66 (100%)
+
+Time: 00:00.049, Memory: 12.00 MB
+
+There were 21 errors:
+
+1) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_step_five_makes_it_operational_when_every_fact_holds_and_then_it_is_routed
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+2) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the ledger schema" (Closure Object (), 'ledger schema')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+3) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the organisation identity" (Closure Object (), 'organisation identity')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+4) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the ledger clock row" (Closure Object (), 'ledger clock row')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+5) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "an active contact account" (Closure Object (), 'active account')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+6) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t13_operational_is_refused_without_a_database_or_with_a_failed_schema_or_before_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+7) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_identity_unavailable_fails_closed
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+8) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5c_t9_a_crash_in_step_five_is_resumed_and_a_repeat_is_a_no_op
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+9) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_step_three_binds_the_locator_prepares_the_database_and_marks_the_schema_current
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+10) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_t9_no_request_is_routed_before_step_five
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+11) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_t9_a_crash_in_step_three_is_resumed_by_repeating_it
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+12) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_5b_another_locator_for_a_bound_organisation_is_refused_and_nothing_is_prepared_before_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+13) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t14_a_legacy_organisation_id_never_enters_the_registry
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+14) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_steps_one_and_two_reach_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+15) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t9_a_crash_at_each_step_resumes_to_the_same_state_by_repeating_the_step
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+16) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_repeated_with_different_input_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+17) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_for_an_unknown_organisation_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:75
+
+18) Tests\Unit\Contexts\Platform\Domain\OperationalReadinessTest::test_each_missing_precondition_is_named_and_a_complete_readiness_names_none
+Error: Call to undefined method App\Contexts\Platform\Domain\OperationalReadiness::missing()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/OperationalReadinessTest.php:15
+
+19) Tests\Unit\Contexts\Platform\Infrastructure\IdentityContactAccountsTest::test_only_known_active_accounts_are_counted
+Error: Class "App\Contexts\Platform\Infrastructure\IdentityContactAccounts" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Infrastructure/IdentityContactAccountsTest.php:46
+
+20) Tests\Unit\Contexts\Platform\Infrastructure\IdentityContactAccountsTest::test_identity_unavailable_fails_closed
+PHPUnit\Framework\Exception: Class "App\Contexts\Platform\Application\Ports\ContactAccountsUnavailable" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Platform\Application\Ports\ContactAccountsUnavailable" does not exist
+
+21) Tests\Unit\Contexts\Platform\Infrastructure\IdentityContactAccountsTest::test_an_id_identity_cannot_read_fails_closed
+PHPUnit\Framework\Exception: Class "App\Contexts\Platform\Application\Ports\ContactAccountsUnavailable" does not exist
+
+Caused by
+ReflectionException: Class "App\Contexts\Platform\Application\Ports\ContactAccountsUnavailable" does not exist
+
+--
+
+There was 1 failure:
+
+1) Tests\Architecture\PlatformIdentityBoundaryTest::test_platform_reaches_identity_only_through_its_one_adapter
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php: App\Contexts\Identity\Application\IdentityUnavailable',
+-    1 => 'app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php: App\Contexts\Identity\Application\Ports\AccountDirectory',
+-    2 => 'app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php: App\Contexts\Identity\Domain\AccountId',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/PlatformIdentityBoundaryTest.php:50
+
+ERRORS!
+Tests: 66, Assertions: 119, Errors: 21, Failures: 1.

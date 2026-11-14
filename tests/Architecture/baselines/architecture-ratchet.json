@@ -1182,6 +1182,27 @@
         "remediation": "replace with Reference Geography read models (G-5; D-147)",
         "decision": "none"
     },
+    "A-3|app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php|App\\Contexts\\Identity\\Application\\IdentityUnavailable": {
+        "count": 1,
+        "class": "legitimate (consumer-owned port)",
+        "reason": "PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest",
+        "remediation": "none; if Identity publishes an account-status query, re-point the adapter to it",
+        "decision": "none"
+    },
+    "A-3|app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php|App\\Contexts\\Identity\\Application\\Ports\\AccountDirectory": {
+        "count": 1,
+        "class": "legitimate (consumer-owned port)",
+        "reason": "PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest",
+        "remediation": "none; if Identity publishes an account-status query, re-point the adapter to it",
+        "decision": "none"
+    },
+    "A-3|app/Contexts/Platform/Infrastructure/IdentityContactAccounts.php|App\\Contexts\\Identity\\Domain\\AccountId": {
+        "count": 1,
+        "class": "legitimate (consumer-owned port)",
+        "reason": "PBDIGIT-345 task 5c: Platform's ContactAccounts port answered by Identity's AccountDirectory (D-193 F-07); the only Platform-to-Identity adapter, guarded by PlatformIdentityBoundaryTest",
+        "remediation": "none; if Identity publishes an account-status query, re-point the adapter to it",
+        "decision": "none"
+    },
     "A-3|app/Contexts/ReferenceGeography/Infrastructure/IdentityActingPerson.php|App\\Contexts\\Identity\\Application\\ActingContextRef": {
         "count": 1,
         "class": "published language (approved)",

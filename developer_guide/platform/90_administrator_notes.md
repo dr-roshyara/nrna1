@@ -51,3 +51,12 @@
   - It needs, in the real process environment: `ORGANISATION_DB_CLUSTERS`, and for each cluster's login reference `env:NAME` the variables `NAME_USERNAME` and `NAME_PASSWORD`.
   - It writes nothing to the registry.
 - **If founding step 3 reports "bound to another organisation":** the locator points at a database that already belongs to another organisation. Do not change `organisation_identity` (it is immutable). Correct the locator decision instead.
+
+## Task 5c (2026-11-14)
+
+- **Organisation migration set:** a new **organisation** migration, `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_14_300300_create_ledger_readiness_function.php` (a read-only function). It reaches organisation databases only through provisioning.
+- **No production founding yet.** Founding has no entry point until task 6 (HTTP E-1). Do not call `FoundOrganisation` from tinker or scripts in production.
+- **If step 5 is refused with "missing: …":**
+  - the named facts are read from the organisation's own database;
+  - "ledger schema" usually means the organisation set was extended after step 3: repeat step 3 first (only while the organisation is still provisioning);
+  - "a platform contact with an active account": one of the founding application's contacts must activate their account. Contacts are never edited by hand.

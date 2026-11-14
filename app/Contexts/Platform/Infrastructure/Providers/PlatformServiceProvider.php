@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Application\Ports\ContactAccounts;
 use App\Contexts\Platform\Application\Ports\OrganisationProvisioner;
+use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Infrastructure\IdentityContactAccounts;
+use App\Contexts\Platform\Infrastructure\PostgresOrganisationReadinessProbe;
 use App\Contexts\Platform\Infrastructure\Console\PrepareOrganisationDatabaseCommand;
 use App\Contexts\Platform\Infrastructure\ProcessOrganisationProvisioner;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
@@ -40,6 +44,13 @@ final class PlatformServiceProvider extends ServiceProvider
         ));
         // task 5b: founding step 3 runs in its own process (the child inherits this process's environment)
         $this->app->bind(OrganisationProvisioner::class, static fn ($app): ProcessOrganisationProvisioner => new ProcessOrganisationProvisioner($app->basePath()));
+        // task 5c: step 5 reads the L-1 facts (no migrator) and the contacts' accounts (through Identity, one adapter)
+        $this->app->bind(OrganisationReadinessProbe::class, static fn ($app): PostgresOrganisationReadinessProbe => new PostgresOrganisationReadinessProbe(
+            $app->make(ServedOrganisationRepository::class),
+            $app->make(OrganisationConnectionFactory::class),
+            array_values((array) config('organisation_routing.migration_paths', [])),
+        ));
+        $this->app->bind(ContactAccounts::class, IdentityContactAccounts::class);
     }
 
     public function boot(): void
