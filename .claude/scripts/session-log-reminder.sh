@@ -26,9 +26,14 @@ php -r '
   } elseif (time() - filemtime($log) > 45 * 60) {
       $issues[] = "x Session log $log not updated in 45+ min ($n files modified today)";
   }
-  if (empty($state["contextTouched"]) && is_file(".claude/CONTEXT.md")
-      && date("Y-m-d", filemtime(".claude/CONTEXT.md")) !== $today) {
-      $issues[] = "x CONTEXT.md not updated today - refresh active ticket / next action if they changed";
+  // CONTEXT routing (CLAUDE.md, fixed 2026-11-14): work under app/ is PublicDigit -> .claude/CONTEXT-publicdigit.md;
+  // everything else -> .claude/CONTEXT.md. Checking only CONTEXT.md warned falsely after PublicDigit work whose routed
+  // file was current, and missed a stale CONTEXT-publicdigit.md. Files changed today = the hook log + git (shell writes).
+  $files = array_merge(is_file(".claude/runtime/$today-files.log") ? (file(".claude/runtime/$today-files.log", FILE_IGNORE_NEW_LINES) ?: []) : [], explode("\n", $argv[2]));
+  $publicdigit = (bool) preg_grep("~^app/~", array_map("trim", $files));
+  $context = $publicdigit ? ".claude/CONTEXT-publicdigit.md" : ".claude/CONTEXT.md";
+  if (is_file($context) && date("Y-m-d", filemtime($context)) !== $today) {
+      $issues[] = "x " . basename($context) . " not updated today (routed: " . ($publicdigit ? "app/ changed" : "no app/ change") . ") - refresh active ticket / next action if they changed";
   }
 
   if ($issues) {
@@ -40,5 +45,5 @@ php -r '
            . "\n  (non-blocking; modified files: .claude/runtime/$today-files.log)";
       echo json_encode(["systemMessage" => $msg]);
   }
-' "$today" 2>/dev/null
+' "$today" "$( { git log --since=midnight --name-only --pretty=format: 2>/dev/null; git diff --name-only HEAD 2>/dev/null; } | sort -u)" 2>/dev/null
 exit 0
