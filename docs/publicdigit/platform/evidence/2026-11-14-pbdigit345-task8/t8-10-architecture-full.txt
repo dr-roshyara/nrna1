@@ -1,0 +1,48 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+........................................DFDDDDDDDDDDDDDDDDDDDDD  63 / 361 ( 17%)
+DFDDDDDDDD.....................................FDDDDDDDDDDDDDDD 126 / 361 ( 34%)
+DDDDDDDDDDDDDDDDDD.........................................D... 189 / 361 ( 52%)
+............................................................... 252 / 361 ( 69%)
+............................................................... 315 / 361 ( 87%)
+...........DDDFD.....................S........                  361 / 361 (100%)
+
+Time: 00:13.494, Memory: 72.00 MB
+
+There were 4 failures:
+
+1) Tests\Architecture\Election\ElectionLifecycleStateConsistencyTest::test_lifecycle_engine_computes_voting_active_state_when_voting_window_is_open
+Lifecycle engine computes voting_active when voting window is currently open
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'voting_active'
++'ready_for_voting'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Election/ElectionLifecycleStateConsistencyTest.php:83
+
+2) Tests\Architecture\ElectionStateMachineConsistencyTest::test_engine_uses_election_clock_service_for_voting_window
+Engine should use ElectionClockService logic and derive VotingActive state
+Failed asserting that two values of enumeration App\Domain\Election\Enum\ElectionLifecycleState are equal, ReadyForVoting does not match expected VotingActive.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/ElectionStateMachineConsistencyTest.php:175
+
+3) Tests\Architecture\GovernanceRuntime\ConstitutionalBoundaryTest::test_code_creation_is_preparatory_allowed_during_setup
+Code creation should not redirect — it is a preparatory operation
+Failed asserting that 302 is not equal to 302.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/GovernanceRuntime/ConstitutionalBoundaryTest.php:86
+
+4) Tests\Architecture\Phase_C25_SovereigntyLeakagePreventionTest::no_new_denial_reason_hardcoding
+Hardcoded denial reason in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Http/Controllers/ElectionController.php: 'not eligible'
+Governance vocabulary: Should use resolver denial_reason
+All denial reasons must come from ElectionCapabilityResolver.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Phase_C25_SovereigntyLeakagePreventionTest.php:171
+
+FAILURES!
+Tests: 361, Assertions: 2447, Failures: 4, Deprecations: 4, PHPUnit Deprecations: 5, Skipped: 1.

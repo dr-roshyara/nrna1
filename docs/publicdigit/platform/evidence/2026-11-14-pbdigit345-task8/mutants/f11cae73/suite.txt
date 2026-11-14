@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFDDD                                                             7 / 7 (100%)
+
+Time: 00:17.914, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_an_unknown_operation_or_a_class_that_is_not_an_organisation_job_queues_nothing
+t8_wrong_constructor
+Failed asserting that '3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93 skipped: not-operational\n
+0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60 failed: ArgumentCountError\n
+1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71 failed: ArgumentCountError\n
+2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82 failed: ArgumentCountError\n
+t8_wrong_constructor: dispatched: 0, skipped: 1, failed: 3\n
+' [ASCII](length: 313) contains "refused: A fanned-out job is constructed with the organisation id only." [ASCII](length: 71).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:188
+
+FAILURES!
+Tests: 7, Assertions: 27, Failures: 1, Deprecations: 1.

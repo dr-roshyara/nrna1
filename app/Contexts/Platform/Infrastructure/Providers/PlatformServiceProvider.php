@@ -6,6 +6,9 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ContactAccounts;
+use App\Contexts\Platform\Application\Ports\RegisteredOrganisations;
+use App\Contexts\Platform\Infrastructure\Console\FanOutCommand;
+use App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations;
 use App\Contexts\Platform\Application\Ports\IdentityBindings;
 use App\Contexts\Platform\Application\Ports\SignedInAccount;
 use App\Contexts\Platform\Infrastructure\Http\OrganisationEntry;
@@ -57,6 +60,8 @@ final class PlatformServiceProvider extends ServiceProvider
             array_values((array) config('organisation_routing.migration_paths', [])),
         ));
         $this->app->bind(ContactAccounts::class, IdentityContactAccounts::class);
+        // task 8 (E-3): the registry listing the fan-out walks (central database)
+        $this->app->bind(RegisteredOrganisations::class, static fn (): PostgresRegisteredOrganisations => new PostgresRegisteredOrganisations(DB::connection()));
         // task 6 (E-1): who is signed in (Identity), and Identity's bindings: NONE until its store exists (PBDIGIT-349)
         $this->app->bind(SignedInAccount::class, IdentitySignedInAccount::class);
         $this->app->bind(IdentityBindings::class, NoIdentityBindingsYet::class);
@@ -70,7 +75,10 @@ final class PlatformServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(dirname(__DIR__) . '/Http/routes.php');   // route:cache compatible
 
         if ($this->app->runningInConsole()) {
-            $this->commands([PrepareOrganisationDatabaseCommand::class]);   // task 5b: the dedicated provisioning process
+            $this->commands([
+                PrepareOrganisationDatabaseCommand::class,   // task 5b: the dedicated provisioning process
+                FanOutCommand::class,                        // task 8: E-3 fan-out
+            ]);
         }
     }
 }

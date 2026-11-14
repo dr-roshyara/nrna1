@@ -1,0 +1,65 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFFDFFD                                                             7 / 7 (100%)
+
+Time: 00:18.730, Memory: 26.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_t5_the_fan_out_queues_one_job_per_operational_organisation_and_skips_the_pending_one
+one each; never the pending organisation
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     0 => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+     1 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
+     2 => '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82',
++    3 => '3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:156
+
+2) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_t5_a_real_worker_completes_the_others_while_one_organisation_fails
+only C's job failed
+Failed asserting that actual size 2 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:173
+
+3) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_a_run_whose_dispatches_fail_reports_each_and_exits_non_zero
+Failed asserting that '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60 failed: Illuminate\Database\QueryException\n
+1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71 failed: Illuminate\Database\QueryException\n
+2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82 failed: Illuminate\Database\QueryException\n
+3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93 failed: Illuminate\Database\QueryException\n
+t8.visit: dispatched: 0, skipped: 0, failed: 4\n
+' [ASCII](length: 367) contains "dispatched: 0, skipped: 1, failed: 3" [ASCII](length: 36).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:201
+
+4) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_a_repeated_run_queues_one_job_per_organisation_again
+at least once across runs, exactly once per run: the fanned-out jobs must be idempotent (§3.4)
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     0 => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+     1 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
+     2 => '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82',
+-    3 => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-    4 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
+-    5 => '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82',
++    3 => '3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93',
++    4 => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
++    5 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
++    6 => '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82',
++    7 => '3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:210
+
+FAILURES!
+Tests: 7, Assertions: 21, Failures: 4, Deprecations: 1.

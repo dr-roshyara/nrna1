@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDFDD                                                             7 / 7 (100%)
+
+Time: 00:18.937, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_a_run_whose_dispatches_fail_reports_each_and_exits_non_zero
+a scheduler or operator sees the failure
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:200
+
+FAILURES!
+Tests: 7, Assertions: 26, Failures: 1, Deprecations: 1.

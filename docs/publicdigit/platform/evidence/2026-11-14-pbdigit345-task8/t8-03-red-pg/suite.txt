@@ -1,0 +1,44 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:10.038, Memory: 24.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_the_registry_listing_holds_every_registered_organisation_in_a_stable_order
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+2) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_t5_the_fan_out_queues_one_job_per_operational_organisation_and_skips_the_pending_one
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+3) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_t5_a_real_worker_completes_the_others_while_one_organisation_fails
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+4) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_an_unknown_operation_or_a_class_that_is_not_an_organisation_job_queues_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+5) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_a_repeated_run_queues_one_job_per_organisation_again
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+6) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_production_wiring
+Error: Class "App\Contexts\Platform\Infrastructure\PostgresRegisteredOrganisations" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:86
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6, Deprecations: 1.

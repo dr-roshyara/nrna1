@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..F..                                                               5 / 5 (100%)
+
+Time: 00:00.786, Memory: 20.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\OrganisationQueueArchitectureTest::test_t25_organisation_jobs_are_dispatched_by_the_dispatcher_only
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Contexts/Platform/Infrastructure/Queue/FanOutJobDispatch.php',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationQueueArchitectureTest.php:154
+
+FAILURES!
+Tests: 5, Assertions: 20, Failures: 1.

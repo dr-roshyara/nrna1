@@ -1,0 +1,31 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.................F............................................... 65 / 89 ( 73%)
+........................                                          89 / 89 (100%)
+
+Time: 00:00.031, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Application\FanOutToOrganisationsTest::test_t5_only_routable_organisations_get_work_one_each_the_others_are_skipped_with_their_reason
+one dispatch each, in registry order
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60',
+-    1 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
+-    2 => '4f5a6b7c-8d9e-4f0a-9b1c-2d3e4f5a6b7c',
++    1 => '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82',
++    2 => '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71',
++    3 => '3e6b4d2f-3f4a-4c4b-8d6c-5a8f1b4c7d93',
++    4 => '4f5a6b7c-8d9e-4f0a-9b1c-2d3e4f5a6b7c',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:121
+
+FAILURES!
+Tests: 89, Assertions: 222, Failures: 1.

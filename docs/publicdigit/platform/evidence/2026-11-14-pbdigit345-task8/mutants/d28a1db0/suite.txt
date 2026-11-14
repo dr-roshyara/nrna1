@@ -1,0 +1,20 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..................E.............................................. 65 / 89 ( 73%)
+........................                                          89 / 89 (100%)
+
+Time: 00:00.030, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Platform\Application\FanOutToOrganisationsTest::test_t5_one_failing_dispatch_never_stops_the_others
+LogicException: simulated dispatch failure
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:103
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/20bcd16a-d43b-4a48-beb7-39e53ed3a185/scratchpad/p345t8/t8run/mutants/d28a1db0/mutant0.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:132
+
+ERRORS!
+Tests: 89, Assertions: 222, Errors: 1.

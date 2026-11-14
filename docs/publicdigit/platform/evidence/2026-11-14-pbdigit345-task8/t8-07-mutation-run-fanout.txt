@@ -1,0 +1,8 @@
+F1 eligibility is not checked (unit)                           [unit]     tests:89   KILLED  t5_only_routable_organisations_get_work_one_e;
+F1 eligibility is not checked (db)                             [pg-platform:OrganisationFanOutTest] tests:7    KILLED  a_repeated_run_queues_one_job_per_organisatio;a_run_whose_dispatches_fail_reports_each_and_;t5_a_real_worker_completes_the_others_while_o;t5_the_fan_out_queues_one_job_per_operational;
+F2 one failing dispatch stops the run (unit)                   [unit]     tests:89   KILLED+ERRORS (1: LogicException)  t5_one_failing_dispatch_never_stops_the_other;
+F3 an organisation is dispatched twice per run (unit)          [unit]     tests:89   KILLED  t5_one_failing_dispatch_never_stops_the_other;t5_only_routable_organisations_get_work_one_e;
+F4 dispatch failures still exit 0                              [pg-platform:OrganisationFanOutTest] tests:7    KILLED  a_run_whose_dispatches_fail_reports_each_and_;
+F5 any class may be fanned out                                 [pg-platform:OrganisationFanOutTest] tests:7    KILLED  an_unknown_operation_or_a_class_that_is_not_a;
+F6 any constructor is accepted                                 [pg-platform:OrganisationFanOutTest] tests:7    KILLED  an_unknown_operation_or_a_class_that_is_not_a;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

@@ -81,3 +81,17 @@
 4. **A dedicated worker:** `php artisan queue:work organisation` under a process supervisor (e.g. one `systemd` service or `supervisor` program). It needs **the same real environment as provisioning:** `ORGANISATION_DB_CLUSTERS` and each cluster's `<NAME>_USERNAME`/`<NAME>_PASSWORD`.
 5. **After every deploy:** `php artisan queue:restart`. Workers keep old code in memory until they restart.
 6. **Failures:** `php artisan queue:failed` lists them (connection `organisation`); `php artisan queue:retry <id>` re-runs one. **A retry resolves the organisation again**, so it stays refused while the organisation is not routable.
+
+## Task 8: fan-out (2026-11-14)
+
+**No migration and no new environment variable.** One new command: `php artisan platform:fan-out <operation>`.
+
+- **No operation is configured yet** (`organisation_routing.fan_out` is empty), so nothing is scheduled. Each periodic operation arrives with its owning context's slice, together with its line in `routes/console.php`:
+
+  ```php
+  Schedule::command('platform:fan-out <operation>')->…->withoutOverlapping();
+  ```
+
+  `withoutOverlapping` keeps one run of an operation at a time. A second run would dispatch again: the jobs are idempotent, but a duplicate is still avoidable work.
+- **The scheduler needs `php artisan schedule:run` every minute** (cron or `schedule:work`), as usual. **The jobs need the `organisation` worker** from task 7.
+- **Exit code 1 means an operation was unknown or refused, or a dispatch failed.** Organisations that aren't operational are listed as skipped; that is normal and exits 0.

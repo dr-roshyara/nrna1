@@ -1,0 +1,1 @@
+F6 any constructor is accepted

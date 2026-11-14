@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEE                                                                 3 / 3 (100%)
+
+Time: 00:00.014, Memory: 12.00 MB
+
+There were 3 errors:
+
+1) Tests\Unit\Contexts\Platform\Application\FanOutToOrganisationsTest::test_t5_only_routable_organisations_get_work_one_each_the_others_are_skipped_with_their_reason
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationWorkDispatch" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:91
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:117
+
+2) Tests\Unit\Contexts\Platform\Application\FanOutToOrganisationsTest::test_t5_one_failing_dispatch_never_stops_the_others
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationWorkDispatch" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:91
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:130
+
+3) Tests\Unit\Contexts\Platform\Application\FanOutToOrganisationsTest::test_an_unreadable_registry_fails_the_whole_run
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationWorkDispatch" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:91
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FanOutToOrganisationsTest.php:142
+
+ERRORS!
+Tests: 3, Assertions: 0, Errors: 3.

@@ -1,2 +1,2 @@
 
-| 7 | [The organisation queue E-2](07_organisation_queue.md) | the separate `organisation` connection, `OrganisationJob`, the dispatcher, per-attempt context (T-3, T-4, T-19 … T-23, T-25; T-24 in task 9) |
+| 8 | [Fan-out E-3](08_organisation_fan_out.md) | `platform:fan-out <operation>`: one organisation job per operational organisation (T-5) |

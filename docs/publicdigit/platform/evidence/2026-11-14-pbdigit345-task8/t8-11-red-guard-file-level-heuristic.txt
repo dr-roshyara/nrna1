@@ -1,0 +1,26 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\OrganisationQueueArchitectureTest::test_the_checks_see_planted_violations
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     2 => 'app/Contexts/X/RawBus.php',
+     3 => 'app/Contexts/X/UnknownDispatcher.php',
+     4 => 'app/Contexts/X/Facade.php',
+-    5 => 'app/Contexts/X/NamesItButCallsAnother.php',
+-    6 => 'app/Contexts/X/OneGoodOneBad.php',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationQueueArchitectureTest.php:215
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.

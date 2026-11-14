@@ -1,0 +1,21 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFDDD                                                             7 / 7 (100%)
+
+Time: 00:16.578, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OrganisationFanOutTest::test_an_unknown_operation_or_a_class_that_is_not_an_organisation_job_queues_nothing
+t8.not-an-organisation-job
+Failed asserting that 'Fan-out operation t8.not-an-organisation-job refused: A fanned-out job is constructed with the organisation id only.\n
+' [ASCII](length: 117) contains "refused: A fanned-out operation is an OrganisationJob." [ASCII](length: 54).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OrganisationFanOutTest.php:188
+
+FAILURES!
+Tests: 7, Assertions: 24, Failures: 1, Deprecations: 1.

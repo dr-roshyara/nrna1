@@ -22,4 +22,11 @@ return [
         dirname(__DIR__) . '/database/migrations/organisation',
         dirname(__DIR__) . '/app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations',
     ],
+
+    /*
+     * PBDIGIT-345 task 8 (E-3): the operations `php artisan platform:fan-out <operation>` may run, as
+     * operation => OrganisationJob class (constructed with the organisation id only, idempotent: delivery is at least
+     * once). Empty: no periodic organisation operation exists yet; each arrives with its owning context's slice.
+     */
+    'fan_out' => [],
 ];
