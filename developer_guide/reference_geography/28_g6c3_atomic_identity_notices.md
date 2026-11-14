@@ -56,7 +56,10 @@ commit; any exception rolls back ALL of it
 
 ## Failure and recovery
 
-- **A failure anywhere** (at a notice insert, after the roster entry; or after all notices, before commit) leaves **no roster entry and no notice** (A10).
+- **A failure anywhere leaves no roster entry and no notice** (A10). It is proven at three injection points:
+  1. **immediately after the roster entry is written** (an `AFTER INSERT` trigger on `refgeo_roster_entries`; the error names the written version);
+  2. **at the first notice write;**
+  3. **after all notices, before commit.** The hook first observes the finding and the roster entry inside the transaction, then fails.
 - **Redelivery of the same Identity notice then applies it fully.** Nothing manual is needed; Identity's redelivery is the recovery.
 - **Redelivery after success returns `null`** and writes nothing (A5).
 

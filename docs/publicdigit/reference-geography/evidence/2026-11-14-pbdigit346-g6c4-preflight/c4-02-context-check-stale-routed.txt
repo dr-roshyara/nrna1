@@ -1,0 +1,1 @@
+{"systemMessage":"Project-state sync (CLAUDE.md):\n  x CONTEXT-publicdigit.md not updated today (routed: app\/ changed) - refresh active ticket \/ next action if they changed\n  o no plan file touched today (fine for small fixes; update the active pl

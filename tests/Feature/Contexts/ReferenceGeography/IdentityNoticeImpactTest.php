@@ -156,6 +156,22 @@ final class IdentityNoticeImpactTest extends RefgeoPostgresTestCase
         self::published("p-$t", "x-$t");
         [$position, $roster] = [self::lastPosition(), self::rosterVersion()];
 
+        // (1) immediately after the roster entry (the checkpoint) has been WRITTEN: an AFTER INSERT trigger on it
+        DB::unprepared(<<<'SQL'
+            CREATE FUNCTION refgeo_test_fail_after_roster() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'injected: after the roster entry %', NEW.roster_version; END $$;
+            CREATE TRIGGER refgeo_test_fail_after_roster AFTER INSERT ON refgeo_roster_entries FOR EACH ROW EXECUTE FUNCTION refgeo_test_fail_after_roster();
+            SQL);
+        try {
+            self::consumer()->merged("m-$t", [self::p("x-$t"), self::p("p-$t")]);
+            $this->fail('the injected failure was swallowed');
+        } catch (\Throwable $e) {
+            $this->assertStringContainsString('injected: after the roster entry ' . ($roster + 1), $e->getMessage(), 'the entry had been written when it failed');
+        } finally {
+            DB::unprepared('DROP TRIGGER refgeo_test_fail_after_roster ON refgeo_roster_entries; DROP FUNCTION refgeo_test_fail_after_roster();');
+        }
+        $this->assertSame([$position, $roster], [self::lastPosition(), self::rosterVersion()], 'failure right after the roster entry: nothing survived');
+
+        // (2) after the roster entry, at the first notice write
         DB::unprepared(<<<'SQL'
             CREATE FUNCTION refgeo_test_fail_notice() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'injected: notice write fails'; END $$;
             CREATE TRIGGER refgeo_test_fail_notice BEFORE INSERT ON refgeo_publications FOR EACH ROW WHEN (NEW.kind = 'notice') EXECUTE FUNCTION refgeo_test_fail_notice();
@@ -170,7 +186,11 @@ final class IdentityNoticeImpactTest extends RefgeoPostgresTestCase
         }
         $this->assertSame([$position, $roster], [self::lastPosition(), self::rosterVersion()], 'failure after the roster entry: the entry did not survive alone');
 
-        $failing = new PostgresPublicationLedger(DB::connection(), beforeCommit: static function (): void {
+        // (3) after ALL notices are written, before commit: the hook sees them inside the transaction, then fails
+        $seen = null;
+        $failing = new PostgresPublicationLedger(DB::connection(), beforeCommit: static function () use (&$seen, $position): void {
+            $seen = [(int) DB::selectOne("SELECT count(*) AS n FROM refgeo_publications WHERE kind = 'notice' AND position > ?", [$position])->n,
+                (int) DB::selectOne('SELECT last_roster_version AS v FROM refgeo_sequence')->v];
             throw new \RuntimeException('injected: before commit');
         });
         try {
@@ -179,6 +199,7 @@ final class IdentityNoticeImpactTest extends RefgeoPostgresTestCase
         } catch (\RuntimeException $e) {
             $this->assertSame('injected: before commit', $e->getMessage());
         }
+        $this->assertSame([1, $roster + 1], $seen, 'at the failure the finding and the roster entry were both written (inside the transaction)');
         $this->assertSame([$position, $roster], [self::lastPosition(), self::rosterVersion()], 'failure after the notices: nothing survived');
 
         $this->assertNotNull(self::consumer()->merged("m-$t", [self::p("x-$t"), self::p("p-$t")]), 'not consumed, so redelivery applies it');
