@@ -20,6 +20,8 @@ final readonly class ServedOrganisationSnapshot
         public ?DatabaseLocator $locator,
         public ?ServiceOperationGrant $grant,
         public ?CounterpartyVerification $counterparty,
+        // task 5a: nullable only so that a stored row without it is REFUSED by ServedOrganisation::fromSnapshot
+        public ?FoundingApplication $application = null,
     ) {
     }
 }

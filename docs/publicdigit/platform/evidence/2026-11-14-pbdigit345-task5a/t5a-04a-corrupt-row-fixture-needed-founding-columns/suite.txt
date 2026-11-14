@@ -1,0 +1,36 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDDDDDDDDDDDDDDDE                                    30 / 30 (100%)
+
+Time: 00:22.321, Memory: 24.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_a_stored_state_the_domain_never_produces_is_refused_on_reading
+Illuminate\Database\QueryException: SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "founding_evidence_ref" of relation "platform_served_organisations" violates not-null constraint
+DETAIL:  Failing row contains (4c4cf8e9-973c-4fac-af8d-091a4b55e033, provisioning, null, null, null, null, agreement:x, terms, 2026-11-14 09:02:36.082616+00, account:1, ["not-a-digest"], 1, 2026-11-14 09:02:36.082776+00, 2026-11-14 09:02:36.082776+00, null, null, null). (Connection: platform_central, Host: 127.0.0.1, Port: 46763, Database: platform_pg_central, SQL: INSERT INTO platform_served_organisations (id, status, counterparty_evidence_ref, grant_terms_version, grant_accepted_at, grant_accepted_by, grant_fingerprints)
+            VALUES (4c4cf8e9-973c-4fac-af8d-091a4b55e033, 'provisioning', 'agreement:x', 'terms', now(), 'account:1', '["not-a-digest"]'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:209
+
+Caused by
+PDOException: SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "founding_evidence_ref" of relation "platform_served_organisations" violates not-null constraint
+DETAIL:  Failing row contains (4c4cf8e9-973c-4fac-af8d-091a4b55e033, provisioning, null, null, null, null, agreement:x, terms, 2026-11-14 09:02:36.082616+00, account:1, ["not-a-digest"], 1, 2026-11-14 09:02:36.082776+00, 2026-11-14 09:02:36.082776+00, null, null, null).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:209
+
+ERRORS!
+Tests: 30, Assertions: 120, Errors: 1, Deprecations: 1.

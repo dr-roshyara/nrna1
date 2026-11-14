@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Platform\Domain;
 
 use App\Contexts\Platform\Domain\CounterpartyVerification;
+use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\DatabaseLocator;
 use App\Contexts\Platform\Domain\LifecycleRefusal;
 use App\Contexts\Platform\Domain\OperationalReadiness;
@@ -26,6 +27,12 @@ final class ServedOrganisationTest extends TestCase
 {
     private const ID = '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60';
 
+    /** task 5a: every registry entry carries its founding application */
+    private static function application(): FoundingApplication
+    {
+        return new FoundingApplication('founding-evidence:test', '7e6d5c4b-3a29-4180-9f8e-7d6c5b4a3921', ['1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d']);
+    }
+
     private static function grant(): ServiceOperationGrant
     {
         return new ServiceOperationGrant('terms-2026-11', new \DateTimeImmutable('2026-11-12T10:00:00Z'), 'account:applicant-1', [str_repeat('a', 64)]);
@@ -43,7 +50,7 @@ final class ServedOrganisationTest extends TestCase
 
     private static function provisioning(): ServedOrganisation
     {
-        $o = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $o = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $o->recordCounterpartyVerified(new CounterpartyVerification('agreement:1'));
         $o->recordServiceOperationGrant(self::grant());
         $o->startProvisioning();
@@ -73,7 +80,7 @@ final class ServedOrganisationTest extends TestCase
 
     public function test_a_registered_organisation_is_pending_and_not_routable(): void
     {
-        $o = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $o = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
 
         $this->assertSame(self::ID, $o->id()->value());
         $this->assertSame(PlatformStatus::Pending, $o->status());
@@ -85,14 +92,14 @@ final class ServedOrganisationTest extends TestCase
 
     public function test_provisioning_needs_both_a_verified_counterparty_and_a_recorded_grant(): void
     {
-        $neither = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $neither = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $this->assertRefused(LifecycleRefusal::CounterpartyNotVerified, fn () => $neither->startProvisioning());
 
-        $onlyGrant = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $onlyGrant = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $onlyGrant->recordServiceOperationGrant(self::grant());
         $this->assertRefused(LifecycleRefusal::CounterpartyNotVerified, fn () => $onlyGrant->startProvisioning());
 
-        $onlyCounterparty = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $onlyCounterparty = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $onlyCounterparty->recordCounterpartyVerified(new CounterpartyVerification('agreement:1'));
         $this->assertRefused(LifecycleRefusal::NoServiceOperationGrant, fn () => $onlyCounterparty->startProvisioning());
 
@@ -102,7 +109,7 @@ final class ServedOrganisationTest extends TestCase
 
     public function test_no_technical_operation_while_pending(): void
     {
-        $o = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $o = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
 
         $this->assertRefused(LifecycleRefusal::NoTechnicalOperationWhilePending, fn () => $o->assignLocator(self::locator()));
         $this->assertRefused(LifecycleRefusal::NoTechnicalOperationWhilePending, fn () => $o->markSchemaCurrent());
@@ -113,7 +120,7 @@ final class ServedOrganisationTest extends TestCase
 
     public function test_the_grant_and_the_counterparty_verification_are_recorded_once_and_only_before_provisioning(): void
     {
-        $o = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $o = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $o->recordCounterpartyVerified(new CounterpartyVerification('agreement:1'));
         $o->recordServiceOperationGrant(self::grant());
 
@@ -158,7 +165,7 @@ final class ServedOrganisationTest extends TestCase
 
     public function test_operational_is_reached_only_from_provisioning(): void
     {
-        $pending = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $pending = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $this->assertRefused(LifecycleRefusal::NotProvisioning, fn () => $pending->markOperational(self::ready()));
         $this->assertRefused(LifecycleRefusal::NotProvisioning, fn () => self::operational()->markOperational(self::ready()));
         $this->assertRefused(LifecycleRefusal::NotPending, fn () => self::provisioning()->startProvisioning());

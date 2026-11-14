@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Contexts\Platform\Infrastructure\Providers;
 
+use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
+use App\Contexts\Platform\Infrastructure\PostgresLegacyOrganisationRegister;
 use App\Contexts\Platform\Infrastructure\EnvironmentDatabaseLogin;
 use App\Contexts\Platform\Infrastructure\OrganisationConnectionFactory;
 use App\Contexts\Platform\Infrastructure\OrganisationMigrations;
@@ -21,6 +23,8 @@ final class PlatformServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ServedOrganisationRepository::class, static fn (): PostgresServedOrganisationRepository => new PostgresServedOrganisationRepository(DB::connection()));
+        // task 5a: L-2 reads the legacy `organisations` table on the central database
+        $this->app->bind(LegacyOrganisationRegister::class, static fn (): PostgresLegacyOrganisationRegister => new PostgresLegacyOrganisationRegister(DB::connection()));
         // task 3: one connection per organisation; logins from REAL environment variables (survive config:cache)
         $this->app->singleton(OrganisationConnectionFactory::class, static fn (): OrganisationConnectionFactory => new OrganisationConnectionFactory(
             (array) config('organisation_routing.clusters', []),

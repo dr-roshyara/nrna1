@@ -9,6 +9,7 @@ use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Application\ResolutionService;
 use App\Contexts\Platform\Application\RoutingRefusal;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
+use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\DatabaseLocator;
 use App\Contexts\Platform\Domain\OperationalReadiness;
 use App\Contexts\Platform\Domain\ServedOrganisation;
@@ -37,7 +38,7 @@ final class ResolutionServiceTest extends TestCase
 
     private static function upTo(string $id, string $stage): ServedOrganisation
     {
-        $o = ServedOrganisation::register(TenantId::fromString($id));
+        $o = ServedOrganisation::register(TenantId::fromString($id), new FoundingApplication('founding-evidence:test', '7e6d5c4b-3a29-4180-9f8e-7d6c5b4a3921', ['1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d']));
         if ($stage === 'pending') {
             return $o;
         }

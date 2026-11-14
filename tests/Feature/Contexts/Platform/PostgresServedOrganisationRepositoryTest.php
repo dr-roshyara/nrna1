@@ -9,6 +9,9 @@ use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Application\ResolutionService;
 use App\Contexts\Platform\Application\RoutingRefusal;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
+use App\Contexts\Platform\Domain\FoundingApplication;
+use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
+use App\Contexts\Platform\Infrastructure\PostgresLegacyOrganisationRegister;
 use App\Contexts\Platform\Domain\DatabaseLocator;
 use App\Contexts\Platform\Domain\OperationalReadiness;
 use App\Contexts\Platform\Domain\ServedOrganisation;
@@ -40,7 +43,71 @@ final class PostgresServedOrganisationRepositoryTest extends MembershipPostgresT
         parent::setUp();
         PlatformPgIsolatedDatabases::register(getenv());
         PlatformPgIsolatedDatabases::reset();
-        Artisan::call('migrate', ['--database' => 'platform_central', '--path' => 'database/migrations/2026_11_13_170000_create_platform_served_organisations.php', '--force' => true]);
+        Artisan::call('migrate', ['--database' => 'platform_central', '--force' => true, '--path' => [
+            'database/migrations/2026_11_13_170000_create_platform_served_organisations.php',
+            'database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php',   // task 5a
+        ]]);
+    }
+
+    /** task 5a: every registry entry carries its founding application */
+    private static function application(): FoundingApplication
+    {
+        return new FoundingApplication('founding-evidence:test', '7e6d5c4b-3a29-4180-9f8e-7d6c5b4a3921', ['1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d', '2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e']);
+    }
+
+    public function test_5a_the_founding_application_is_stored_once_and_never_rewritten(): void
+    {
+        $o = self::upTo('pending');
+        self::repo()->add($o);
+        $this->assertTrue(self::repo()->find($o->id())->foundingApplication()->equals(self::application()), 'stored and read back');
+        DB::connection('platform_central')->update("UPDATE platform_served_organisations SET founding_evidence_ref = 'tampered' WHERE id = ?::uuid", [$o->id()->value()]);
+        $found = self::repo()->find($o->id());
+        $found->recordCounterpartyVerified(new CounterpartyVerification('agreement:x'));
+        self::repo()->save($found);
+        $this->assertSame('tampered', DB::connection('platform_central')->selectOne('SELECT founding_evidence_ref AS e FROM platform_served_organisations WHERE id = ?::uuid', [$o->id()->value()])->e,
+            'save() never writes the application (it is recorded at registration only)');
+        foreach (["UPDATE platform_served_organisations SET initial_contact_accounts = '[]'::jsonb", "UPDATE platform_served_organisations SET registrar_account = NULL"] as $sql) {
+            try {
+                DB::connection('platform_central')->statement($sql . " WHERE id = ?::uuid", [$o->id()->value()]);
+                $this->fail("accepted: {$sql}");
+            } catch (\Illuminate\Database\QueryException $e) {
+                $this->assertMatchesRegularExpression('/platform_served_organisations_contacts_present|not-null|null value/', $e->getMessage());
+            }
+        }
+    }
+
+    public function test_5a_the_migration_stops_rather_than_invent_founding_evidence_for_existing_entries(): void
+    {
+        $migration = require base_path('database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php');
+        $central = DB::connection('platform_central');
+        $default = DB::getDefaultConnection();
+        DB::setDefaultConnection('platform_central');   // the migration's DB:: facade, as `migrate --database` does
+        $central->beginTransaction();
+        try {
+            $migration->down();
+            $central->insert("INSERT INTO platform_served_organisations (id, status) VALUES (?, 'pending')", [(string) Str::uuid()]);
+            try {
+                $migration->up();
+                $this->fail('founding evidence was invented for an existing entry');
+            } catch (\RuntimeException $e) {
+                $this->assertStringContainsString('without a founding application', $e->getMessage());
+            }
+        } finally {
+            $central->rollBack();
+            DB::setDefaultConnection($default);
+        }
+        $this->assertNotNull($central->selectOne("SELECT 1 AS x FROM information_schema.columns WHERE table_name = 'platform_served_organisations' AND column_name = 'founding_evidence_ref'"), 'rolled back: the real schema is untouched');
+    }
+
+    public function test_5a_the_legacy_register_finds_a_legacy_organisation_and_nothing_else(): void
+    {
+        $legacy = (string) Str::uuid();
+        DB::table('organisations')->insert(['id' => $legacy, 'name' => 'Legacy test org', 'slug' => 'legacy-' . substr($legacy, 0, 8), 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
+        $register = new PostgresLegacyOrganisationRegister(DB::connection());
+
+        $this->assertTrue($register->contains(TenantId::fromString($legacy)));
+        $this->assertFalse($register->contains(TenantId::fromString((string) Str::uuid())));
+        $this->assertInstanceOf(PostgresLegacyOrganisationRegister::class, app(LegacyOrganisationRegister::class), 'production wiring');
     }
 
     protected function tearDown(): void
@@ -59,7 +126,7 @@ final class PostgresServedOrganisationRepositoryTest extends MembershipPostgresT
     private static function upTo(string $stage, ?string $database = null): ServedOrganisation
     {
         $id = (string) Str::uuid();
-        $o = ServedOrganisation::register(TenantId::fromString($id));
+        $o = ServedOrganisation::register(TenantId::fromString($id), self::application());
         if ($stage === 'pending') {
             return $o;
         }
@@ -162,8 +229,11 @@ final class PostgresServedOrganisationRepositoryTest extends MembershipPostgresT
         $id = (string) Str::uuid();
         // A row the table's checks allow but the domain's value objects refuse (a founding-document fingerprint that is
         // not SHA-256): the adapter must refuse to rebuild it, as a corrupt registry entry, rather than route it.
-        DB::connection('platform_central')->insert("INSERT INTO platform_served_organisations (id, status, counterparty_evidence_ref, grant_terms_version, grant_accepted_at, grant_accepted_by, grant_fingerprints)
-            VALUES (?, 'provisioning', 'agreement:x', 'terms', now(), 'account:1', '[\"not-a-digest\"]')", [$id]);
+        // (task 5a: the founding columns are valid, so the grant fingerprint stays the only corrupt part)
+        DB::connection('platform_central')->insert("INSERT INTO platform_served_organisations (id, status, counterparty_evidence_ref, grant_terms_version, grant_accepted_at, grant_accepted_by, grant_fingerprints,
+                founding_evidence_ref, registrar_account, initial_contact_accounts)
+            VALUES (?, 'provisioning', 'agreement:x', 'terms', now(), 'account:1', '[\"not-a-digest\"]',
+                'founding-evidence:test', '7e6d5c4b-3a29-4180-9f8e-7d6c5b4a3921', '[\"1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d\"]')", [$id]);
 
         $this->expectException(\UnexpectedValueException::class);
         self::repo()->find(TenantId::fromString($id));

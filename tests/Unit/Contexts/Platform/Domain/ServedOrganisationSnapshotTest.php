@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Platform\Domain;
 
 use App\Contexts\Platform\Domain\CounterpartyVerification;
+use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\DatabaseLocator;
 use App\Contexts\Platform\Domain\OperationalReadiness;
 use App\Contexts\Platform\Domain\PlatformStatus;
@@ -25,6 +26,12 @@ final class ServedOrganisationSnapshotTest extends TestCase
 {
     private const ID = '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60';
 
+    /** task 5a: every registry entry carries its founding application */
+    private static function application(): FoundingApplication
+    {
+        return new FoundingApplication('founding-evidence:test', '7e6d5c4b-3a29-4180-9f8e-7d6c5b4a3921', ['1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d']);
+    }
+
     private static function grant(): ServiceOperationGrant
     {
         return new ServiceOperationGrant('terms-2026-11', new \DateTimeImmutable('2026-11-12T10:00:00Z'), 'account:applicant-1', [str_repeat('a', 64)]);
@@ -37,7 +44,7 @@ final class ServedOrganisationSnapshotTest extends TestCase
 
     private static function operational(): ServedOrganisation
     {
-        $o = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $o = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $o->recordCounterpartyVerified(new CounterpartyVerification('agreement:1'));
         $o->recordServiceOperationGrant(self::grant());
         $o->startProvisioning();
@@ -50,7 +57,7 @@ final class ServedOrganisationSnapshotTest extends TestCase
 
     public function test_every_reachable_state_survives_a_round_trip(): void
     {
-        $pending = ServedOrganisation::register(TenantId::fromString(self::ID));
+        $pending = ServedOrganisation::register(TenantId::fromString(self::ID), self::application());
         $failed = self::operational();
         $failed->markMigrationFailed();
 

@@ -38,3 +38,7 @@
 ## Task 4 (2026-11-14)
 
 **No administrator action.** The organisation migration set (`config/organisation_routing.php` → `migration_paths`) is run only by provisioning (task 5, not built yet) and by tests. **Do not run it by hand** against any production database.
+
+## Task 5a (2026-11-14)
+
+**A new central migration:** `database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php` (founding evidence, registrar and initial contacts, all required). **Not for production before the migration-approval control.** If it stops because entries already exist, do not fill the columns by hand: report the entries.

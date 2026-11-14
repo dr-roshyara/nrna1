@@ -28,13 +28,14 @@ final class ServedOrganisation
     private ?ServiceOperationGrant $grant = null;
     private ?CounterpartyVerification $counterparty = null;
 
-    private function __construct(private readonly TenantId $id)
+    private function __construct(private readonly TenantId $id, private readonly FoundingApplication $application)
     {
     }
 
-    public static function register(TenantId $id): self
+    /** Founding step 1 (§3.6): `pending`, with the founding application. No technical operation yet (D-185). */
+    public static function register(TenantId $id, FoundingApplication $application): self
     {
-        return new self($id);
+        return new self($id, $application);
     }
 
     public function recordCounterpartyVerified(CounterpartyVerification $verification): void
@@ -106,7 +107,7 @@ final class ServedOrganisation
 
     public function snapshot(): ServedOrganisationSnapshot
     {
-        return new ServedOrganisationSnapshot($this->id, $this->status, $this->schemaState, $this->locator, $this->grant, $this->counterparty);
+        return new ServedOrganisationSnapshot($this->id, $this->status, $this->schemaState, $this->locator, $this->grant, $this->counterparty, $this->application);
     }
 
     /**
@@ -127,7 +128,10 @@ final class ServedOrganisation
         if ($s->status === PlatformStatus::Operational && ($s->locator === null || $s->schemaState === null)) {
             $refuse('operational needs a locator and a schema state (L-1)');
         }
-        $o = new self($s->id);
+        if ($s->application === null) {
+            $refuse('a registry entry records its founding application (§3.6 step 1)');
+        }
+        $o = new self($s->id, $s->application);
         $o->status = $s->status;
         $o->schemaState = $s->schemaState;
         $o->locator = $s->locator;
@@ -165,6 +169,16 @@ final class ServedOrganisation
     public function serviceOperationGrant(): ?ServiceOperationGrant
     {
         return $this->grant;
+    }
+
+    public function counterpartyVerification(): ?CounterpartyVerification
+    {
+        return $this->counterparty;
+    }
+
+    public function foundingApplication(): FoundingApplication
+    {
+        return $this->application;
     }
 
     private function requireStatus(PlatformStatus $required, LifecycleRefusal $otherwise): void

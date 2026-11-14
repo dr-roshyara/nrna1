@@ -1,0 +1,274 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEEE                                                        10 / 10 (100%)
+
+Time: 00:14.991, Memory: 22.00 MB
+
+There were 10 errors:
+
+1) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_5a_the_founding_application_is_stored_once_and_never_rewritten
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+2) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_5a_the_legacy_register_finds_a_legacy_organisation_and_nothing_else
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+3) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_production_wiring_binds_the_registry_and_the_resolution_service
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+4) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_every_lifecycle_state_round_trips_through_the_aggregate
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+5) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_save_records_a_transition_and_add_never_overwrites
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+6) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_saving_an_entry_that_was_never_added_is_refused
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+7) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_t2_only_an_operational_organisation_with_a_current_schema_resolves
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+8) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_two_organisations_can_never_share_one_database
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+9) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_the_database_refuses_a_pending_entry_with_a_locator
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+10) Tests\Feature\Contexts\Platform\PostgresServedOrganisationRepositoryTest::test_a_stored_state_the_domain_never_produces_is_refused_on_reading
+Illuminate\Contracts\Filesystem\FileNotFoundException: File does not exist at path /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_14_310000_add_founding_application_to_platform_served_organisations.php.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:152
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:598
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:131
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:671
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:109
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Util.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:96
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Container/Container.php:799
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:211
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Command/Command.php:341
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Command.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:1104
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/symfony/console/Application.php:196
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Console/Application.php:165
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:447
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/PostgresServedOrganisationRepositoryTest.php:46
+
+ERRORS!
+Tests: 10, Assertions: 0, Errors: 10, Deprecations: 1.

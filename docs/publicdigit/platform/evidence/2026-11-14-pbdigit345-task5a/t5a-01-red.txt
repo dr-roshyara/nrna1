@@ -1,0 +1,52 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEE                                                            8 / 8 (100%)
+
+Time: 00:00.022, Memory: 12.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\Platform\Domain\FoundingApplicationTest::test_a_valid_application_names_the_evidence_the_registrar_and_at_least_one_contact
+Error: Class "App\Contexts\Platform\Domain\FoundingApplication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/FoundingApplicationTest.php:28
+
+2) Tests\Unit\Contexts\Platform\Domain\FoundingApplicationTest::test_an_incomplete_or_malformed_application_is_refused
+Error: Class "App\Contexts\Platform\Domain\FoundingApplication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/FoundingApplicationTest.php:46
+
+3) Tests\Unit\Contexts\Platform\Domain\FoundingApplicationTest::test_a_registry_entry_is_registered_pending_with_its_application_and_never_restored_without_one
+Error: Class "App\Contexts\Platform\Domain\FoundingApplication" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Domain/FoundingApplicationTest.php:56
+
+4) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t14_a_legacy_organisation_id_never_enters_the_registry
+Error: Interface "App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:38
+
+5) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_steps_one_and_two_reach_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:38
+
+6) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_t9_a_crash_at_each_step_resumes_to_the_same_state_by_repeating_the_step
+Error: Interface "App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:38
+
+7) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_repeated_with_different_input_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:38
+
+8) Tests\Unit\Contexts\Platform\Application\FoundOrganisationTest::test_a_step_for_an_unknown_organisation_is_refused
+Error: Interface "App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/FoundOrganisationTest.php:38
+
+ERRORS!
+Tests: 8, Assertions: 0, Errors: 8.

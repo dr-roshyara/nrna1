@@ -7,6 +7,7 @@ namespace App\Contexts\Platform\Infrastructure;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Domain\CounterpartyVerification;
 use App\Contexts\Platform\Domain\DatabaseLocator;
+use App\Contexts\Platform\Domain\FoundingApplication;
 use App\Contexts\Platform\Domain\PlatformStatus;
 use App\Contexts\Platform\Domain\SchemaState;
 use App\Contexts\Platform\Domain\ServedOrganisation;
@@ -42,6 +43,8 @@ final class PostgresServedOrganisationRepository implements ServedOrganisationRe
                 $row->grant_terms_version === null ? null : new ServiceOperationGrant($row->grant_terms_version, new \DateTimeImmutable($row->accepted_text),
                     $row->grant_accepted_by, json_decode($row->grant_fingerprints, true, 4, JSON_THROW_ON_ERROR)),
                 $row->counterparty_evidence_ref === null ? null : new CounterpartyVerification($row->counterparty_evidence_ref),
+                new FoundingApplication($row->founding_evidence_ref, $row->registrar_account,
+                    json_decode($row->initial_contact_accounts, true, 4, JSON_THROW_ON_ERROR)),   // task 5a
             );
         } catch (\InvalidArgumentException | \ValueError | \JsonException $e) {
             throw new \UnexpectedValueException("Stored registry entry {$id->value()} is corrupt.", 0, $e);
@@ -56,7 +59,12 @@ final class PostgresServedOrganisationRepository implements ServedOrganisationRe
         if ($this->db->selectOne('SELECT 1 AS x FROM platform_served_organisations WHERE id = ?::uuid', [$organisation->id()->value()]) !== null) {
             throw new \RuntimeException('The organisation is already registered.');
         }
-        $this->db->table('platform_served_organisations')->insert(['id' => $organisation->id()->value()] + $columns);
+        $application = $organisation->foundingApplication();   // task 5a: written here once; save() never rewrites it
+        $this->db->table('platform_served_organisations')->insert(['id' => $organisation->id()->value()] + $columns + [
+            'founding_evidence_ref' => $application->evidenceRef,
+            'registrar_account' => $application->registrarAccount,
+            'initial_contact_accounts' => json_encode($application->initialContactAccounts, JSON_THROW_ON_ERROR),
+        ]);
     }
 
     public function save(ServedOrganisation $organisation): void
