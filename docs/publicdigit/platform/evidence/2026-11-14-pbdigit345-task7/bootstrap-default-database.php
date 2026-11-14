@@ -1,0 +1,1 @@
+<?php require '/home/nab-raj.roshyara@dg-nexolution.de/roshyara/personal/nrna1/tests/bootstrap-membership-pg.php'; $_SERVER['QUEUE_CONNECTION'] = 'database'; $_ENV['QUEUE_CONNECTION'] = 'database'; putenv('QUEUE_CONNECTION=database');

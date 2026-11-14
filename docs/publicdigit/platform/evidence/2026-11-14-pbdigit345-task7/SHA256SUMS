@@ -1,0 +1,9 @@
+937b0dcf492996136aad1fdc57180e26395589bc054571ff849ba57650530243  ./bootstrap-default-database.php
+7b9ce89553bdbf01dde680322c4326c35bd5413c6d902190cc0a64c2b11048e4  ./README-step1.md
+aac7b83a8f64d28a463db9978f73f0999ed761176c327cfeec166aa33ef7ca77  ./t7-01-t19-step1-untouched-config/queue-config.sha256
+371067b1ce86476f2119f0a4185dfff684f262207eaee5f11be7390af7d33f09  ./t7-01-t19-step1-untouched-config/run.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./t7-01-t19-step1-untouched-config/suite.exit
+5e956d89ad73ae5aab7c9ce8b285638d5588a826729c41ee64511a37e773c34d  ./t7-01-t19-step1-untouched-config/suite.txt
+a7d8c62dbe832ab944e4cb2ad273871cff34b2d80c2b63d67d04198dc3fa82eb  ./t7-02-t19-sensitivity-default-switched/run.txt
+53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3  ./t7-02-t19-sensitivity-default-switched/suite.exit
+7a7bee7472b9c736eb4c54e48f79b8ca8278e44f26374f6a34fd7fc1f8fc1015  ./t7-02-t19-sensitivity-default-switched/suite.txt

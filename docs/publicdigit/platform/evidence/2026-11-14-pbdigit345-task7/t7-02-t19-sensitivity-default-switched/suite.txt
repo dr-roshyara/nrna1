@@ -1,0 +1,120 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEF                                                                 3 / 3 (100%)
+
+Time: 00:06.801, Memory: 24.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Platform\LegacyQueueCharacterisationTest::test_a_legacy_job_runs_inline_during_dispatch
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "jobs" does not exist
+LINE 1: insert into "jobs" ("queue", "attempts", "reserved_at", "ava...
+                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44789, Database: membership_pg_isolated, SQL: insert into "jobs" ("queue", "attempts", "reserved_at", "available_at", "created_at", "payload") values (default, 0, ?, 1794656668, 1794656668, {"uuid":"e253e740-2f50-46ae-8c90-35663d197e38","displayName":"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleJob","job":"Illuminate\\Queue\\CallQueuedHandler@call","maxTries":null,"maxExceptions":null,"failOnTimeout":false,"backoff":null,"timeout":null,"retryUntil":null,"data":{"commandName":"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleJob","command":"O:44:\"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleJob\":12:{s:5:\"label\";s:5:\"first\";s:10:\"connection\";N;s:5:\"queue\";N;s:12:\"messageGroup\";N;s:12:\"deduplicator\";N;s:5:\"delay\";N;s:11:\"afterCommit\";N;s:10:\"middleware\";a:0:{}s:7:\"chained\";a:0:{}s:15:\"chainConnection\";N;s:10:\"chainQueue\";N;s:19:\"chainCatchCallbacks\";N;}","batchId":null},"createdAt":1794656668,"delay":null}) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:248
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:379
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:246
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:230
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:80
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bus/PendingDispatch.php:252
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bus/Dispatchable.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/LegacyQueueCharacterisationTest.php:37
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "jobs" does not exist
+LINE 1: insert into "jobs" ("queue", "attempts", "reserved_at", "ava...
+                    ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:248
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:379
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:246
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:230
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:80
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bus/PendingDispatch.php:252
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bus/Dispatchable.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/LegacyQueueCharacterisationTest.php:37
+
+2) Tests\Feature\Contexts\Platform\LegacyQueueCharacterisationTest::test_a_legacy_queued_mail_is_sent_inline
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "jobs" does not exist
+LINE 1: insert into "jobs" ("queue", "attempts", "reserved_at", "ava...
+                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44789, Database: membership_pg_isolated, SQL: insert into "jobs" ("queue", "attempts", "reserved_at", "available_at", "created_at", "payload") values (default, 0, ?, 1794656668, 1794656668, {"uuid":"6a50a04b-a8db-42d6-bf6e-47c48830d9bb","displayName":"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleQueuedMail","job":"Illuminate\\Queue\\CallQueuedHandler@call","maxTries":null,"maxExceptions":null,"failOnTimeout":false,"backoff":null,"timeout":null,"retryUntil":null,"data":{"commandName":"Illuminate\\Mail\\SendQueuedMailable","command":"O:34:\"Illuminate\\Mail\\SendQueuedMailable\":17:{s:8:\"mailable\";O:51:\"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleQueuedMail\":32:{s:6:\"locale\";N;s:4:\"from\";a:0:{}s:2:\"to\";a:1:{i:0;a:2:{s:4:\"name\";N;s:7:\"address\";s:15:\"t19@example.org\";}}s:2:\"cc\";a:0:{}s:3:\"bcc\";a:0:{}s:7:\"replyTo\";a:0:{}s:7:\"subject\";N;s:8:\"markdown\";N;s:7:\"\u0000*\u0000html\";N;s:4:\"view\";N;s:8:\"textView\";N;s:8:\"viewData\";a:0:{}s:11:\"attachments\";a:0:{}s:14:\"rawAttachments\";a:0:{}s:15:\"diskAttachments\";a:0:{}s:7:\"\u0000*\u0000tags\";a:0:{}s:11:\"\u0000*\u0000metadata\";a:0:{}s:9:\"callbacks\";a:0:{}s:5:\"theme\";N;s:6:\"mailer\";s:5:\"array\";s:29:\"\u0000*\u0000assertionableRenderStrings\";N;s:10:\"connection\";N;s:5:\"queue\";N;s:12:\"messageGroup\";N;s:12:\"deduplicator\";N;s:5:\"delay\";N;s:11:\"afterCommit\";N;s:10:\"middleware\";a:0:{}s:7:\"chained\";a:0:{}s:15:\"chainConnection\";N;s:10:\"chainQueue\";N;s:19:\"chainCatchCallbacks\";N;}s:5:\"tries\";N;s:7:\"timeout\";N;s:13:\"maxExceptions\";N;s:17:\"shouldBeEncrypted\";b:0;s:10:\"connection\";N;s:5:\"queue\";N;s:12:\"messageGroup\";N;s:12:\"deduplicator\";N;s:5:\"delay\";N;s:11:\"afterCommit\";N;s:10:\"middleware\";a:0:{}s:7:\"chained\";a:0:{}s:15:\"chainConnection\";N;s:10:\"chainQueue\";N;s:19:\"chainCatchCallbacks\";N;s:3:\"job\";N;}","batchId":null},"createdAt":1794656668,"delay":null}) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:248
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:379
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailable.php:235
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:352
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:300
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/PendingMail.php:123
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/LegacyQueueCharacterisationTest.php:47
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "jobs" does not exist
+LINE 1: insert into "jobs" ("queue", "attempts", "reserved_at", "ava...
+                    ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:248
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:379
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/DatabaseQueue.php:153
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Queue/Queue.php:72
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailable.php:235
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:352
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:300
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Mail/PendingMail.php:123
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/LegacyQueueCharacterisationTest.php:47
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\LegacyQueueCharacterisationTest::test_a_failing_legacy_job_throws_to_its_caller_and_writes_no_failed_job
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'legacy-style job failed'
++'SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "jobs" does not exist
++LINE 1: insert into "jobs" ("queue", "attempts", "reserved_at", "ava...
++                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44789, Database: membership_pg_isolated, SQL: insert into "jobs" ("queue", "attempts", "reserved_at", "available_at", "created_at", "payload") values (default, 0, ?, 1794656668, 1794656668, {"uuid":"01e42a0f-91c9-4eb1-9f21-0834e75cc890","displayName":"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleFailingJob","job":"Illuminate\\Queue\\CallQueuedHandler@call","maxTries":null,"maxExceptions":null,"failOnTimeout":false,"backoff":null,"timeout":null,"retryUntil":null,"data":{"commandName":"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleFailingJob","command":"O:51:\"Tests\\Fixtures\\Platform\\Queue\\LegacyStyleFailingJob\":11:{s:10:\"connection\";N;s:5:\"queue\";N;s:12:\"messageGroup\";N;s:12:\"deduplicator\";N;s:5:\"delay\";N;s:11:\"afterCommit\";N;s:10:\"middleware\";a:0:{}s:7:\"chained\";a:0:{}s:15:\"chainConnection\";N;s:10:\"chainQueue\";N;s:19:\"chainCatchCallbacks\";N;}","batchId":null},"createdAt":1794656668,"delay":null}) returning "id")'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/LegacyQueueCharacterisationTest.php:59
+
+ERRORS!
+Tests: 3, Assertions: 1, Errors: 2, Failures: 1, Deprecations: 1.
