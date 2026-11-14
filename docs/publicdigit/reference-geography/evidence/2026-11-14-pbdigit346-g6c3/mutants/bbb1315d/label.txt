@@ -1,0 +1,1 @@
+C6 resolutions are not read into the lifecycle

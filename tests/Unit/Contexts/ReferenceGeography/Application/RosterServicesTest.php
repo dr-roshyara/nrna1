@@ -11,10 +11,12 @@ use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\PlatformOwnerAuthority;
 use App\Contexts\ReferenceGeography\Application\StewardRosterService;
 use App\Contexts\ReferenceGeography\Domain\PersonReference;
+use App\Contexts\ReferenceGeography\Domain\PublicationGovernance;
 use App\Contexts\ReferenceGeography\Domain\RevisionId;
 use App\Contexts\ReferenceGeography\Domain\RosterEntryKind;
 use App\Contexts\ReferenceGeography\Infrastructure\UnestablishedPlatformOwnerAuthority;
 use PHPUnit\Framework\TestCase;
+use Tests\Support\ReferenceGeography\InMemoryPublicationLedger;
 use Tests\Support\ReferenceGeography\InMemoryStewardRosterStore;
 
 /**
@@ -135,7 +137,7 @@ final class RosterServicesTest extends TestCase
     public function test_identity_notices_are_consumed_once(): void
     {
         $store = new InMemoryStewardRosterStore();
-        $consumer = new IdentityNoticeConsumer($store);
+        $consumer = new IdentityNoticeConsumer(new InMemoryPublicationLedger($store), new PublicationGovernance());
 
         $this->assertSame(1, $consumer->merged('m-1', [self::p('a'), self::p('b')]));
         $this->assertNull($consumer->merged('m-1', [self::p('a'), self::p('b')]), 'a replay writes nothing');

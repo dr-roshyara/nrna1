@@ -184,7 +184,7 @@ final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
     {
         $t = Str::random(8);
         $cases = [
-            'an Identity merge recorded after the approval' => [false, static fn (RevisionId $id) => (new IdentityNoticeConsumer(self::store()))->merged("m-$t", [self::p("p1-$t"), self::p("x1-$t")]), GovernanceRefusal::ApproverNotIndependent, 1],
+            'an Identity merge recorded after the approval' => [false, static fn (RevisionId $id) => (new IdentityNoticeConsumer(new PostgresPublicationLedger(DB::connection()), new PublicationGovernance()))->merged("m-$t", [self::p("p1-$t"), self::p("x1-$t")]), GovernanceRefusal::ApproverNotIndependent, 1],
             'an interest declared after the approval in a judgment matter' => [true, static fn (RevisionId $id) => self::declare("x2-$t", $id, true), GovernanceRefusal::MateriallyConflicted, 2],
         ];
         foreach ($cases as $why => [$judgment, $change, $refusal, $n]) {
@@ -375,7 +375,7 @@ final class PostgresPublicationLedgerTest extends RefgeoPostgresTestCase
                             $out = self::service("p$i-$t")->publish($ids[$i]);
                             $lines[] = [$i, $out->status->value, $out->position];
                         } elseif ($i % 2 === 0) {
-                            $lines[] = [$i, 'merge', (new IdentityNoticeConsumer(self::store()))->merged("m$i-$t", [self::p("p$i-$t"), self::p("x$i-$t")])];
+                            $lines[] = [$i, 'merge', (new IdentityNoticeConsumer(new PostgresPublicationLedger(DB::connection()), new PublicationGovernance()))->merged("m$i-$t", [self::p("p$i-$t"), self::p("x$i-$t")])];
                         } else {
                             self::declare("x$i-$t", $ids[$i], true);
                             $lines[] = [$i, 'interest', self::store()->current()->version()];

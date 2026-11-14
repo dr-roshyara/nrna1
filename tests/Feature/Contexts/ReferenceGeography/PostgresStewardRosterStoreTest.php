@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Tests\Feature\Contexts\ReferenceGeography;
 
 use App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer;
+use App\Contexts\ReferenceGeography\Domain\PublicationGovernance;
+use App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger;
 use App\Contexts\ReferenceGeography\Domain\PersonReference;
 use App\Contexts\ReferenceGeography\Domain\RevisionId;
 use App\Contexts\ReferenceGeography\Domain\RosterRefused;
@@ -114,7 +116,7 @@ final class PostgresStewardRosterStoreTest extends RefgeoPostgresTestCase
     public function test_an_identity_notice_is_applied_once(): void
     {
         $t = Str::random(8);
-        $consumer = new IdentityNoticeConsumer(self::store());
+        $consumer = new IdentityNoticeConsumer(new PostgresPublicationLedger(DB::connection()), new PublicationGovernance());
 
         $v = $consumer->merged("m-$t", [self::p("a-$t"), self::p("b-$t")]);
         $this->assertSame(self::lastRosterVersion(), $v);

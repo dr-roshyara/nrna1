@@ -25,6 +25,12 @@ final class InMemoryStewardRosterStore implements StewardRosterStore
         return StewardRoster::fromEntries($this->roster->entries());
     }
 
+    /** For InMemoryPublicationLedger (G-6c-3): the roster as recorded under the ledger's lock becomes the committed one. */
+    public function commit(StewardRoster $roster): void
+    {
+        $this->roster = StewardRoster::fromEntries($roster->entries());
+    }
+
     public function writeUnderLock(\Closure $write): mixed
     {
         $working = StewardRoster::fromEntries($this->roster->entries());

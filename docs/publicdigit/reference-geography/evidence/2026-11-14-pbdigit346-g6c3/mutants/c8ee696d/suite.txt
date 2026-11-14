@@ -1,0 +1,78 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFFDFFFDFD                                                        10 / 10 (100%)
+
+Time: 00:14.996, Memory: 24.00 MB
+
+There were 7 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a1_a_merge_after_publication_writes_its_finding_with_the_roster_entry_and_the_reversal_closes_it
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:67
+
+2) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a2_a_chain_reversal_in_the_middle_closes_the_finding_of_a_publication_on_its_ends
+joined through A-B-C-D: one finding
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:86
+
+3) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a3_a4_a_reversal_of_one_path_keeps_the_finding_while_another_path_remains
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'closure',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:109
+
+4) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a6_a7_the_index_holds_every_approver_and_excluded_person_and_the_counted_approver_decides
+every approver of the published version and every excluded person, written with the publication
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => Array &1 [
+-        0 => '7dae846b43f642f80a472a0b3c57b957',
+-        1 => 'approver',
+-    ],
+-    1 => Array &2 [
+-        0 => '9da41c8c6454f878fea69276230db38f',
+-        1 => 'approver',
+-    ],
+-    2 => Array &3 [
+-        0 => '8db443cf083135685b0eeed9810c00ef',
+-        1 => 'excluded',
+-    ],
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:144
+
+5) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a10_a_failure_anywhere_in_the_act_leaves_neither_the_roster_entry_nor_any_notice
+Failed asserting that 'the injected failure was swallowed' [ASCII](length: 34) contains "injected: notice write fails" [ASCII](length: 28).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:168
+
+6) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a9_a_merge_waits_for_a_publication_in_progress_and_then_raises_its_finding
+the merge saw the committed publication
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:206
+
+7) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a8_the_bounded_impact_agrees_with_a_full_scan_after_every_step
+step 0, publication 12
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:266
+
+FAILURES!
+Tests: 10, Assertions: 21, Failures: 7, Deprecations: 1.

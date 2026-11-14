@@ -48,21 +48,31 @@ final class PostgresStewardRosterStore implements StewardRosterStore
                 throw new \RuntimeException("Roster integrity: {$roster->version()} entries stored, the sequence row says {$locked}.");
             }
             $result = $write($roster);
-            foreach (array_slice($roster->entries(), $locked) as $entry) {
-                $this->db->table('refgeo_roster_entries')->insert([
-                    'roster_version' => $entry->version,
-                    'kind' => $entry->kind->value,
-                    'subject' => $entry->subject?->value(),
-                    'by_person' => $entry->by?->value(),
-                    'matter' => $entry->matter?->value(),
-                    'merge_id' => $entry->mergeId,
-                    'merged' => $entry->merged === [] ? null : json_encode(array_map(static fn (PersonReference $p): string => $p->value(), $entry->merged), JSON_THROW_ON_ERROR),
-                    'interest' => $entry->interest,
-                ]);
-            }
+            $this->storeEntriesAfter($roster, $locked);
 
             return $result;
         });
+    }
+
+    /**
+     * Inserts the roster's entries after version $stored. The caller holds the publication lock in its transaction
+     * (writeUnderLock here; the publication ledger's recordRoster, G-6c-3); the insert trigger requires each next
+     * roster version and advances the sequence row.
+     */
+    public function storeEntriesAfter(StewardRoster $roster, int $stored): void
+    {
+        foreach (array_slice($roster->entries(), $stored) as $entry) {
+            $this->db->table('refgeo_roster_entries')->insert([
+                'roster_version' => $entry->version,
+                'kind' => $entry->kind->value,
+                'subject' => $entry->subject?->value(),
+                'by_person' => $entry->by?->value(),
+                'matter' => $entry->matter?->value(),
+                'merge_id' => $entry->mergeId,
+                'merged' => $entry->merged === [] ? null : json_encode(array_map(static fn (PersonReference $p): string => $p->value(), $entry->merged), JSON_THROW_ON_ERROR),
+                'interest' => $entry->interest,
+            ]);
+        }
     }
 
     /** @return list<RosterEntry> */

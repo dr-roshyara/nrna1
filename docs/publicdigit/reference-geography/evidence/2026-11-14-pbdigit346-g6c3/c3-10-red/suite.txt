@@ -1,0 +1,110 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEFFEEEEE                                                       11 / 11 (100%)
+
+Time: 00:14.086, Memory: 22.00 MB
+
+There were 9 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a1_a_merge_after_publication_writes_its_finding_with_the_roster_entry_and_the_reversal_closes_it
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:63
+
+2) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a2_a_chain_reversal_in_the_middle_closes_the_finding_of_a_publication_on_its_ends
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:80
+
+3) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a3_a4_a_reversal_of_one_path_keeps_the_finding_while_another_path_remains
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:98
+
+4) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a5_redelivery_writes_nothing_and_a_reversal_before_its_merge_means_the_merge_never_counts
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:113
+
+5) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a9_a_merge_waits_for_a_publication_in_progress_and_then_raises_its_finding
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:197
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:176
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:195
+
+6) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a9_a_publication_waits_for_a_merge_in_progress_and_is_then_refused
+RuntimeException: the holder failed: TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:215
+
+7) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a8_the_bounded_impact_agrees_with_a_full_scan_after_every_step
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:254
+
+8) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_the_consumer_starts_its_own_transaction
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:270
+
+9) Tests\Feature\Contexts\ReferenceGeography\PostgresStewardRosterStoreTest::test_an_identity_notice_is_applied_once
+TypeError: App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php on line 119
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/IdentityNoticeConsumer.php:19
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PostgresStewardRosterStoreTest.php:119
+
+--
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a6_a7_the_index_holds_every_approver_and_excluded_person_and_the_counted_approver_decides
+every approver of the published version and every excluded person, written with the publication
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => Array &1 [
+-        0 => '17ef0e504de7b44b87c8766646ff879f',
+-        1 => 'approver',
+-    ],
+-    1 => Array &2 [
+-        0 => '8a11ce4d4a4c7a4c7a5fe8f74acb886e',
+-        1 => 'approver',
+-    ],
+-    2 => Array &3 [
+-        0 => '44e0bc30cc647ab4563a6d7805a5edc4',
+-        1 => 'excluded',
+-    ],
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:141
+
+2) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a10_a_failure_anywhere_in_the_act_leaves_neither_the_roster_entry_nor_any_notice
+Failed asserting that 'App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer::__construct(): Argument #1 ($store) must be of type App\Contexts\ReferenceGeography\Application\Ports\StewardRosterStore, App\Contexts\ReferenceGeography\Infrastructure\PostgresPublicationLedger given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php on line 31' [ASCII](length: 428) contains "injected: notice write fails" [ASCII](length: 28).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:165
+
+ERRORS!
+Tests: 11, Assertions: 2, Errors: 9, Failures: 2, Deprecations: 1.

@@ -1,0 +1,52 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFFDDDDDFD                                                        10 / 10 (100%)
+
+Time: 00:15.027, Memory: 24.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a1_a_merge_after_publication_writes_its_finding_with_the_roster_entry_and_the_reversal_closes_it
+the reversal closes the finding
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:72
+
+2) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a2_a_chain_reversal_in_the_middle_closes_the_finding_of_a_publication_on_its_ends
+the middle reversal closes it
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:92
+
+3) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a3_a4_a_reversal_of_one_path_keeps_the_finding_while_another_path_remains
+still A~D through A-C-D: no closure
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => stdClass Object #6532 (
++        'position' => 10,
++        'notice_kind' => 'finding',
++        'concerns_position' => 6,
++        'merge_basis' => '["ab-idJNZP8a", "ac-idJNZP8a", "cd-idJNZP8a"]',
++        'ended_by' => null,
++        'roster_version' => 23,
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:106
+
+4) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a8_the_bounded_impact_agrees_with_a_full_scan_after_every_step
+step 1, publication 22
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:266
+
+FAILURES!
+Tests: 10, Assertions: 35, Failures: 4, Deprecations: 1.

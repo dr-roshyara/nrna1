@@ -136,13 +136,13 @@
 3. **Storage:** `refgeo_objections` (CHECKs, recorder ≠ assessor or decider, one objection per revision).
 4. **Mutation:** M1 to M8. **When a mutant "survives", check the run executed tests** (see the G-6b evidence: a driver defect once ran none).
 
-**G-6c: D-90 governance notices (design revision 3 ACCEPTED 2026-11-14: full coverage; re-evaluate confirmers). Step 1 done (guide 26); steps 2 to 6 follow.**
+**G-6c: D-90 governance notices (design revision 3 ACCEPTED 2026-11-14: full coverage; re-evaluate confirmers). Steps 1 to 3 done (guides 26 to 28); steps 4 to 6 follow.**
 - **Design:** `docs/publicdigit/architecture/reviews/2026-11-13-reference-geography-g6c-d90-notices-design.md` §13 gives the six implementation steps.
 - **Before writing any code:** confirm the Principal accepted revision 2.
 - **Then, per step,** RED → GREEN → guide → commit, in this order:
   1. schema (columns, CHECKs, triggers, `refgeo_publication_persons`): **done.** Assert each refusal's REASON (guide 26, database guide 03);
   2. domain (`componentAt`, `ApprovalDefects`, `FindingLifecycle`, `GovernanceNotice`, `ApprovalStatus`): **done** (guide 27). The before ∪ after union equals the after-union (design §18);
-  3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`);
+  3. the ledger (`recordRoster`, `appendNotice`; `IdentityNoticeConsumer` under `withLock`): **done** (guide 28). The roster entry is the checkpoint; the counted approver is replayed (§17); no administrator action;
   4. `ConfirmPublication`;
   5. the correction link;
   6. the read model, feed fields, no-bypass rule and mutation run.

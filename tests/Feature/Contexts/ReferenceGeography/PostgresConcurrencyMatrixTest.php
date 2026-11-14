@@ -131,7 +131,7 @@ final class PostgresConcurrencyMatrixTest extends RefgeoPostgresTestCase
                     usleep(100);
                 }
                 try {
-                    $v = (new IdentityNoticeConsumer(self::store()))->merged("m-$t", [self::p("a-$t"), self::p("b-$t")]);
+                    $v = (new IdentityNoticeConsumer(new PostgresPublicationLedger(DB::connection()), new PublicationGovernance()))->merged("m-$t", [self::p("a-$t"), self::p("b-$t")]);
                     file_put_contents("$dir/$w", $v === null ? 'replay' : 'recorded');
                 } catch (\Throwable $e) {
                     file_put_contents("$dir/$w", 'error: ' . $e->getMessage());

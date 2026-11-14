@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDFD                                                        10 / 10 (100%)
+
+Time: 00:12.818, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\ReferenceGeography\IdentityNoticeImpactTest::test_a8_the_bounded_impact_agrees_with_a_full_scan_after_every_step
+step 2, publication 22
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/IdentityNoticeImpactTest.php:266
+
+FAILURES!
+Tests: 10, Assertions: 42, Failures: 1, Deprecations: 1.

@@ -8,8 +8,14 @@ use App\Contexts\ReferenceGeography\Application\BoundaryNotClosed;
 use App\Contexts\ReferenceGeography\Application\ClockNotPastBoundary;
 use App\Contexts\ReferenceGeography\Application\Ports\LockedLedger;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationLedger;
+use App\Contexts\ReferenceGeography\Application\PublicationOfRevision;
 use App\Contexts\ReferenceGeography\Application\StoredRevision;
+use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\GovernanceDecision;
+use App\Contexts\ReferenceGeography\Domain\GovernanceNotice;
+use App\Contexts\ReferenceGeography\Domain\GovernanceRule;
+use App\Contexts\ReferenceGeography\Domain\NoticeKind;
+use App\Contexts\ReferenceGeography\Domain\PersonReference;
 use App\Contexts\ReferenceGeography\Domain\PublishedClaim;
 use App\Contexts\ReferenceGeography\Domain\Revision;
 use App\Contexts\ReferenceGeography\Domain\RevisionId;
@@ -98,6 +104,9 @@ final class PostgresPublicationLedger implements PublicationLedger
     private function locked(): LockedLedger
     {
         return new class ($this->db, $this->clockSql) implements LockedLedger {
+            /** governance_rule of a D-90 notice row (the column is NOT NULL; a notice is no governance decision) */
+            private const NOTICE_RULE = 'd-90-notice';
+
             private readonly PostgresRevisionRepository $revisions;
 
             public function __construct(private readonly ConnectionInterface $db, private readonly string $clockSql)
@@ -147,17 +156,108 @@ final class PostgresPublicationLedger implements PublicationLedger
                 if (!$this->db->table('refgeo_claims')->where('revision_id', $id)->where('content_version', $version)->exists()) {
                     throw new \RuntimeException("Revision {$id} version {$version} has no frozen claims; it cannot be published.");
                 }
+                [$position, $recordedAt] = $this->next();
+                $this->db->insert("INSERT INTO refgeo_publications (position, kind, revision_id, content_version, roster_version, governance_rule, independence, recorded_at)
+                    VALUES (?, 'revision', ?, ?, ?, ?, ?, ?::timestamptz)",
+                    [$position, $id, $version, $decision->rosterVersion, $decision->rule->value, $decision->independence, $recordedAt]);
+                if ($decision->rule === GovernanceRule::SecondPersonApproved) {
+                    // G-6c: who took part, for the D-90 impact of later merges (a superset of the counted approver, §17)
+                    $rows = [];
+                    foreach ($revision->countingApprovals() as $approval) {
+                        $rows[$approval->by->value() . '/approver'] = ['position' => $position, 'person' => $approval->by->value(), 'role' => 'approver'];
+                    }
+                    foreach ($revision->excludedPersons() as $person) {
+                        $rows[$person->value() . '/excluded'] = ['position' => $position, 'person' => $person->value(), 'role' => 'excluded'];
+                    }
+                    $this->db->table('refgeo_publication_persons')->insert(array_values($rows));
+                }
+
+                return $position;
+            }
+
+            public function recordRoster(StewardRoster $roster): void
+            {
+                $stored = (int) $this->db->selectOne('SELECT last_roster_version AS v FROM refgeo_sequence WHERE id = 1')->v;
+                (new PostgresStewardRosterStore($this->db))->storeEntriesAfter($roster, $stored);
+            }
+
+            public function publicationsInvolving(array $persons): array
+            {
+                if ($persons === []) {
+                    return [];
+                }
+                $rows = $this->db->table('refgeo_publication_persons as pp')->join('refgeo_publications as p', 'p.position', '=', 'pp.position')
+                    ->where('p.kind', 'revision')->whereIn('pp.person', array_map(static fn (PersonReference $p): string => $p->value(), $persons))
+                    ->distinct()->orderBy('p.position')->get(['p.position', 'p.revision_id', 'p.roster_version']);
+
+                return array_values(array_map(fn (object $row): PublicationOfRevision => new PublicationOfRevision(
+                    (int) $row->position,
+                    $this->revisions->get(RevisionId::fromString($row->revision_id))->revision,
+                    (int) $row->roster_version,
+                ), $rows->all()));
+            }
+
+            public function lifecycleFor(array $positions): array
+            {
+                if ($positions === []) {
+                    return [];
+                }
+                $notices = $corrections = [];
+                $findings = $this->db->table('refgeo_publications')->where('notice_kind', 'finding')->whereIn('concerns_position', $positions)
+                    ->orderBy('position')->get(['position', 'concerns_position', 'roster_version', $this->db->raw('merge_basis::text AS merge_basis')]);
+                $publicationOf = [];
+                foreach ($findings as $f) {
+                    $publicationOf[(int) $f->position] = (int) $f->concerns_position;
+                    $notices[(int) $f->concerns_position][] = [(int) $f->position, GovernanceNotice::finding((int) $f->concerns_position, json_decode($f->merge_basis, true, 4, JSON_THROW_ON_ERROR), (int) $f->roster_version)];
+                }
+                if ($publicationOf !== []) {
+                    foreach ($this->db->table('refgeo_publications')->whereIn('notice_kind', ['confirmation', 'closure'])->whereIn('concerns_position', array_keys($publicationOf))
+                        ->orderBy('position')->get(['position', 'notice_kind', 'concerns_position', 'roster_version', 'ended_by', 'confirmed_by', 'confirmed_digest']) as $r) {
+                        $finding = (int) $r->concerns_position;
+                        $notices[$publicationOf[$finding]][] = [(int) $r->position, $r->notice_kind === 'closure'
+                            ? GovernanceNotice::closure($finding, $r->ended_by, (int) $r->roster_version)
+                            : GovernanceNotice::confirmation($finding, PersonReference::fromString(trim($r->confirmed_by)), $r->confirmed_digest, (int) $r->roster_version)];
+                    }
+                }
+                foreach ($this->db->table('refgeo_publications')->where('kind', 'revision')->whereIn('corrects_position', $positions)->get(['position', 'corrects_position']) as $c) {
+                    $corrections[(int) $c->corrects_position][] = (int) $c->position;
+                }
+                $lifecycles = [];
+                foreach ($positions as $p) {
+                    $lifecycles[$p] = FindingLifecycle::of($p, $notices[$p] ?? [], $corrections[$p] ?? []);
+                }
+
+                return $lifecycles;
+            }
+
+            public function appendNotice(GovernanceNotice $notice): int
+            {
+                [$position, $recordedAt] = $this->next();
+                $this->db->insert("INSERT INTO refgeo_publications (position, kind, notice_kind, concerns_position, merge_basis, ended_by, confirmed_by, confirmed_digest, roster_version, governance_rule, recorded_at)
+                    VALUES (?, 'notice', ?, ?, ?::jsonb, ?, ?, ?, ?, ?, ?::timestamptz)", [
+                    $position, $notice->kind->value, $notice->concerns,
+                    $notice->kind === NoticeKind::Finding ? json_encode($notice->mergeBasis, JSON_THROW_ON_ERROR) : null,
+                    $notice->endedBy, $notice->confirmedBy?->value(), $notice->digest, $notice->rosterVersion, self::NOTICE_RULE, $recordedAt,
+                ]);
+
+                return $position;
+            }
+
+            /**
+             * The next position and the clock reading for it (G-4 clock rule: refused, never adjusted).
+             *
+             * @return array{int, string}
+             * @throws ClockNotPastBoundary
+             */
+            private function next(): array
+            {
                 $clock = $this->db->selectOne("SELECT x.c::text AS c, (x.c > coalesce(s.closed_through_time, '-infinity') AND x.c >= coalesce(s.last_recorded_at, '-infinity')) AS past, s.last_position
                     FROM (SELECT {$this->clockSql} AS c) x, refgeo_sequence s WHERE s.id = 1");
                 if (!$clock->past) {
                     throw new ClockNotPastBoundary();
                 }
-                $position = (int) $clock->last_position + 1;
-                $this->db->insert("INSERT INTO refgeo_publications (position, kind, revision_id, content_version, roster_version, governance_rule, independence, recorded_at)
-                    VALUES (?, 'revision', ?, ?, ?, ?, ?, ?::timestamptz)",
-                    [$position, $id, $version, $decision->rosterVersion, $decision->rule->value, $decision->independence, $clock->c]);
 
-                return $position;
+                return [(int) $clock->last_position + 1, $clock->c];
             }
         };
     }

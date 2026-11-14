@@ -34,3 +34,4 @@
 | G-6b | [Objections](25_g6b_objections.md) | implemented 2026-11-13 |
 | G-6c-1 | [D-90 notice schema and person index](26_g6c1_notice_schema.md) | implemented 2026-11-14 |
 | G-6c-2 | [D-90 domain: approval defects and the finding lifecycle](27_g6c2_approval_defects_domain.md) | implemented 2026-11-14 |
+| G-6c-3 | [Identity merges and reversals with their D-90 notices, as one act](28_g6c3_atomic_identity_notices.md) | implemented 2026-11-14 |

@@ -29,6 +29,8 @@ final class ReferenceGeographyNoBypassTest extends TestCase
     private const RULES = [
         '1 ledger' => ['/\b(PublicationLedger|LockedLedger|PostgresPublicationLedger)\b/', [
             self::CTX . 'Application/PublishRevision.php', self::CTX . 'Application/Ports/PublicationLedger.php', self::CTX . 'Application/Ports/LockedLedger.php',
+            // G-6c-3 (design revision 3 §5, T-1, accepted 2026-11-14): an Identity merge or reversal and its D-90 notices are one act under the lock
+            self::CTX . 'Application/IdentityNoticeConsumer.php',
             self::CTX . 'Infrastructure/PostgresPublicationLedger.php', self::CTX . 'Infrastructure/Providers/ReferenceGeographyServiceProvider.php',
         ]],
         '2 revision repository' => ['/\b(RevisionRepository|PostgresRevisionRepository)\b/', [
@@ -37,7 +39,7 @@ final class ReferenceGeographyNoBypassTest extends TestCase
             self::CTX . 'Infrastructure/PostgresPublishedAtlas.php', self::CTX . 'Infrastructure/Providers/ReferenceGeographyServiceProvider.php',
         ]],
         '3 roster store' => ['/\b(StewardRosterStore|PostgresStewardRosterStore)\b/', [
-            self::CTX . 'Application/StewardRosterService.php', self::CTX . 'Application/IdentityNoticeConsumer.php', self::CTX . 'Application/RevisionService.php',
+            self::CTX . 'Application/StewardRosterService.php', self::CTX . 'Application/RevisionService.php',
             self::CTX . 'Application/Ports/StewardRosterStore.php', self::CTX . 'Infrastructure/PostgresStewardRosterStore.php',
             self::CTX . 'Infrastructure/PostgresPublicationLedger.php', self::CTX . 'Infrastructure/Providers/ReferenceGeographyServiceProvider.php',
         ]],

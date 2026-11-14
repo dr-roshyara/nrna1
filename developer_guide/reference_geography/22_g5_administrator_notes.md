@@ -42,3 +42,7 @@
 | New database migration? | **Yes, two Reference Geography ones, in order:** `database/migrations/2026_11_14_100000_add_refgeo_governance_notices.php`, then `2026_11_14_110000_refgeo_findings_resolved_once.php` (one resolution per finding; an explicit constraint name). **If it stops with "finding(s) resolved more than once: …", do not edit or delete those rows:** report the positions to the Principal. The first is (additive columns, CHECKs and a trigger on `refgeo_publications`; a new table `refgeo_publication_persons`, backfilled) |
 | May it run in production? | **No, not yet:** the G-4 migration-approval condition applies |
 | Configuration, queues, routes, permissions? | **None** |
+
+## G-6c-3 (2026-11-14)
+
+**No administrator action.** No migration, configuration, queue worker or schedule. The Identity notice consumer now writes D-90 notices in the same transaction as the roster entry; a failed delivery is simply redelivered by Identity.

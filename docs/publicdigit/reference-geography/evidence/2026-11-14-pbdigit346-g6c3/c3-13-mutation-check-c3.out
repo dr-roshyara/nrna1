@@ -1,0 +1,2 @@
+C3 the lifecycles are ignored                                  KILLED   Tests: 10 Errors: 2  a1_a_merge_after_publication_writes_its_finding_with_the_ros;a2_a_chain_reversal_in_the_middle_closes_the_finding_of_a_pu;a3_a4_a_reversal_of_one_path_keeps_the_finding_while_another;a8_the_bounded_impact_agrees_with_a_full_scan_after_every_st;
+All mutants killed.

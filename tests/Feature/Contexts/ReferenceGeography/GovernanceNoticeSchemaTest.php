@@ -231,11 +231,16 @@ final class GovernanceNoticeSchemaTest extends RefgeoPostgresTestCase
         self::publisher('g6c-approver')->publish($id);
         $p = (int) DB::selectOne('SELECT position FROM refgeo_publications WHERE revision_id = ?', [$id->value()])->position;
         $this->assertSame('second-person-approved', DB::selectOne('SELECT governance_rule AS g FROM refgeo_publications WHERE position = ?', [$p])->g);
-        $this->assertSame(0, (int) DB::selectOne('SELECT count(*) AS n FROM refgeo_publication_persons WHERE position = ?', [$p])->n, 'not yet indexed (written by the ledger from G-6c-3)');
+        // G-6c-3: the ledger indexes the publication in its own transaction; the backfill (for publications made
+        // before G-6c) then adds nothing: the two writers agree, and the backfill is idempotent
+        $indexed = static fn (): array => DB::select('SELECT trim(person) AS person, role FROM refgeo_publication_persons WHERE position = ? ORDER BY role, person', [$p]);
+        $byLedger = $indexed();
+        $this->assertCount(2, $byLedger, 'indexed by the ledger at publication: the approver and the excluded assessor');
 
         $migration = require base_path('database/migrations/2026_11_14_100000_add_refgeo_governance_notices.php');
         $migration->backfillPublicationPersons();
         $migration->backfillPublicationPersons();   // idempotent
+        $this->assertEquals($byLedger, $indexed(), 'the backfill agrees with the ledger and adds nothing');
 
         $rows = DB::select('SELECT trim(person) AS person, role FROM refgeo_publication_persons WHERE position = ? ORDER BY role, person', [$p]);
         $approvers = array_values(array_map(static fn ($r) => $r->person, array_filter($rows, static fn ($r) => $r->role === 'approver')));
