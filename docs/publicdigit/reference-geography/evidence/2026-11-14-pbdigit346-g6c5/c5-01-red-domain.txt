@@ -1,0 +1,58 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEE                                                            8 / 8 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_one_replacement_covering_the_whole_interval
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:53
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_several_adjacent_replacements_cover_jointly
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:59
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_a_gap_of_one_day_is_not_coverage
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:65
+
+4) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_starting_too_late_or_ending_too_early_is_not_coverage
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:70
+
+5) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_an_open_ended_fact_needs_an_open_ended_replacement
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:77
+
+6) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_every_flagged_claim_must_be_covered_in_its_own_slot
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:87
+
+7) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_an_empty_replacement_covers_nothing
+Error: Class "App\Contexts\ReferenceGeography\Domain\CorrectionCoverage" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:95
+
+8) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_a_correction_needs_an_open_finding_and_full_coverage
+Error: Undefined constant App\Contexts\ReferenceGeography\Domain\GovernanceRefusal::CorrectionIncomplete
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:104
+
+ERRORS!
+Tests: 8, Assertions: 0, Errors: 8.

@@ -1,0 +1,86 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDEDDDE                                                            8 / 8 (100%)
+
+Time: 00:18.189, Memory: 22.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_a_finding_resolved_by_confirmation_closure_or_published_correction_cannot_be_confirmed
+Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "refgeo_publications_one_resolution"
+DETAIL:  Key (concerns_position)=(10) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 43417, Database: membership_pg_isolated, SQL: INSERT INTO refgeo_publications (position, kind, notice_kind, concerns_position, merge_basis, ended_by, confirmed_by, confirmed_digest, roster_version, governance_rule, recorded_at)
+                    VALUES (12, 'notice', confirmation, 10, ?::jsonb, ?, 74a0ba98da68fbede7c12777f12f0724, f525680b7500418c0030ad33a96207f3e12c410fdbd5fc6e030dbaa8c2407def, 34, d-90-notice, 2026-11-14 05:36:35.653781+00::timestamptz))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:60
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:148
+
+Caused by
+PDOException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "refgeo_publications_one_resolution"
+DETAIL:  Key (concerns_position)=(10) already exists.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:60
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:148
+
+2) Tests\Feature\Contexts\ReferenceGeography\ConfirmPublicationTest::test_concurrent_confirmations_resolve_a_finding_once
+Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "refgeo_publications_one_resolution"
+DETAIL:  Key (concerns_position)=(24) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 43417, Database: membership_pg_isolated, SQL: INSERT INTO refgeo_publications (position, kind, notice_kind, concerns_position, merge_basis, ended_by, confirmed_by, confirmed_digest, roster_version, governance_rule, recorded_at)
+                    VALUES (26, 'notice', confirmation, 24, ?::jsonb, ?, f2a94a0e4d945d4b9a8cdc25fb10fe33, 9b520f381faa4758d3d3e813f8ce993f102351bf704ca7d79b790f948ed5349c, 72, d-90-notice, 2026-11-14 05:36:38.618121+00::timestamptz))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:60
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:236
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:176
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:229
+
+Caused by
+PDOException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "refgeo_publications_one_resolution"
+DETAIL:  Key (concerns_position)=(24) already exists.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:54
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:60
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Infrastructure/PostgresPublicationLedger.php:57
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/ReferenceGeography/Application/ConfirmPublication.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:236
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:176
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/ConfirmPublicationTest.php:229
+
+ERRORS!
+Tests: 8, Assertions: 29, Errors: 2, Deprecations: 1.

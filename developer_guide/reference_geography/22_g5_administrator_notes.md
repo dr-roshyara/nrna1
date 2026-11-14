@@ -50,3 +50,7 @@
 ## G-6c-4 (2026-11-14)
 
 **No administrator action required.** No migration, configuration, queue or schedule. No HTTP route: production steward acts stay closed until Platform Owner authority exists.
+
+## G-6c-5 (2026-11-14)
+
+**No administrator action required.** No migration: `corrects_position` and its guards exist since G-6c-1. No configuration, queue, schedule or HTTP route.

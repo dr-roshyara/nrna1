@@ -1,0 +1,60 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFDFFDF                                                             7 / 7 (100%)
+
+Time: 00:18.736, Memory: 24.00 MB
+
+There were 5 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_fully_covering_published_correction_resolves_the_finding_in_the_same_act
+Failed asserting that 0 is identical to 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:127
+
+2) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_several_adjacent_claims_may_cover_jointly
+Failed asserting that 6 is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:142
+
+3) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_correction_link_needs_an_open_finding_on_a_revision_publication
+already corrected: resolved once
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6779 (CorrectionWithoutOpenFinding, 'correction-without-open-finding'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:179
+
+4) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_with_several_findings_the_open_one_is_resolved_and_a_corrected_publication_leaves_evaluation
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\ReferenceGeography\Domain\ApprovalStatusKind Enum #2270 (Corrected, 'corrected')
++App\Contexts\ReferenceGeography\Domain\ApprovalStatusKind Enum #6495 (ApprovalDefective, 'approval-defective')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:196
+
+5) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_concurrent_resolutions_resolve_the_finding_once
+the later correction finds the finding resolved
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\GovernanceRefusal Enum #6779 (CorrectionWithoutOpenFinding, 'correction-without-open-finding'),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:246
+
+FAILURES!
+Tests: 7, Assertions: 27, Failures: 5, Deprecations: 1.

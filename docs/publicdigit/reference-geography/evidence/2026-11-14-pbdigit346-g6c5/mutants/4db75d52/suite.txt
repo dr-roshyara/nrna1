@@ -1,0 +1,55 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 299 ( 21%)
+....................F.......................................... 126 / 299 ( 42%)
+............................................................... 189 / 299 ( 63%)
+............................................................... 252 / 299 ( 84%)
+...............................................                 299 / 299 (100%)
+
+Time: 00:00.268, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_every_flagged_claim_must_be_covered_in_its_own_slot
+all but one covered: the one is reported
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => App\Contexts\ReferenceGeography\Domain\Claim Object #1109 (
+-        'id' => App\Contexts\ReferenceGeography\Domain\ClaimId Object #1113 (
+-            'value' => '00000000-0000-4000-8000-000000000028',
+-        ),
+-        'slot' => App\Contexts\ReferenceGeography\Domain\SlotKey Object #1118 (
+-            'kind' => App\Contexts\ReferenceGeography\Domain\ClaimKind Enum #3315 (Existence, 'EXISTENCE'),
+-            'components' => Array &1 [
+-                0 => Array &2 [
+-                    0 => 'unit',
+-                    1 => '6c5d6c5d-6c5d-4c5d-8c5d-6c5d6c5d6c5d',
+-                ],
+-            ],
+-        ),
+-        'value' => App\Contexts\ReferenceGeography\Domain\ClaimValue Object #1127 (
+-            'value' => 'exists',
+-        ),
+-        'interval' => App\Contexts\ReferenceGeography\Domain\ValidInterval Object #1131 (
+-            'from' => App\Contexts\ReferenceGeography\Domain\ValidDate Object #990 (
+-                'value' => '2016-01-01',
+-            ),
+-            'to' => null,
+-        ),
+-        'basis' => App\Contexts\ReferenceGeography\Domain\Basis Object #1122 (
+-            'kind' => App\Contexts\ReferenceGeography\Domain\BasisKind Enum #3398 (Instrument, 'instrument'),
+-            'reference' => 'ev',
+-        ),
+-    ),
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:88
+
+FAILURES!
+Tests: 299, Assertions: 5103, Failures: 1.

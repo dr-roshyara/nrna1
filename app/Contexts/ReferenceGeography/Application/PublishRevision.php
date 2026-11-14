@@ -7,6 +7,7 @@ namespace App\Contexts\ReferenceGeography\Application;
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\LockedLedger;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationLedger;
+use App\Contexts\ReferenceGeography\Domain\CorrectionCoverage;
 use App\Contexts\ReferenceGeography\Domain\GovernanceRefusal;
 use App\Contexts\ReferenceGeography\Domain\PublicationGovernance;
 use App\Contexts\ReferenceGeography\Domain\RevisionId;
@@ -33,11 +34,18 @@ final class PublishRevision
     ) {
     }
 
-    public function publish(RevisionId $id): PublicationOutcome
+    /**
+     * @param int|null $corrects G-6c-5 (D-90; design revision 3 §8, §9): the position of a publication this revision
+     *   CORRECTS. Allowed only while that publication has an open finding and only if this revision covers every one of
+     *   its claims over the whole valid interval (CorrectionCoverage); otherwise the whole publication is refused and
+     *   nothing is written (publish without the link to record a partial fix as an ordinary revision). Published with
+     *   the link, the row itself resolves the finding: same act, same lock.
+     */
+    public function publish(RevisionId $id, ?int $corrects = null): PublicationOutcome
     {
         $actor = $this->acting->current();
 
-        return $this->ledger->withLock(function (LockedLedger $ledger) use ($id, $actor): PublicationOutcome {
+        return $this->ledger->withLock(function (LockedLedger $ledger) use ($id, $actor, $corrects): PublicationOutcome {
             $stored = $ledger->revision($id);
             $revision = $stored->revision;
             $version = $revision->currentVersion()?->number;
@@ -52,6 +60,13 @@ final class PublishRevision
             if (!$decision->allowed) {
                 return PublicationOutcome::refused($decision->refusals, $decision);
             }
+            if ($corrects !== null) {
+                $lifecycle = $ledger->lifecycleFor([$corrects])[$corrects];
+                $refusals = CorrectionCoverage::refusals($lifecycle, $ledger->claimsPublishedAt($corrects), $revision->claims());
+                if ($refusals !== []) {
+                    return PublicationOutcome::refused($refusals, $decision);
+                }
+            }
             $dependencies = $revision->validation()?->dependencies ?? throw new \LogicException('A publishable revision is validated.');
             if ($dependencies->firstInvalidating($ledger->publishedAfter($dependencies->p0)) !== null) {
                 $revision->markStale();
@@ -60,7 +75,7 @@ final class PublishRevision
                 return PublicationOutcome::stale();
             }
 
-            return PublicationOutcome::published($ledger->append($revision, $decision), $decision);
+            return PublicationOutcome::published($ledger->append($revision, $decision, $corrects), $decision);
         });
     }
 }

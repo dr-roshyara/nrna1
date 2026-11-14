@@ -203,6 +203,50 @@ final class FindingConfirmationTest extends TestCase
         $this->assertSame([GovernanceRefusal::DigestMismatch], self::refusals('c', $roster, $r, $v0, digest: str_repeat('0', 64)));
     }
 
+    /**
+     * G-6c-4 follow-up (Principal review 2026-11-14): a STALE digest that genuinely belonged to this revision. A revision
+     * is published once, so its only earlier digests are those of earlier SUBMITTED content versions (submitted, then
+     * re-prepared and resubmitted before publication). Naming such a digest is refused.
+     */
+    public function test_the_digest_of_an_earlier_submitted_content_version_is_refused(): void
+    {
+        $roster = self::roster();
+        $r = self::revision($roster);
+        $stale = $r->currentVersion()->digest;                       // version 1
+        $r->reprepare(self::p('a'));
+        foreach (AssessmentKind::required() as $kind) {
+            $r->recordAssessment(new Assessment($kind, 'satisfied', self::p('a')));
+        }
+        $c = CompetentInstrument::competenceClaim();
+        $r->validateWith(new RevisionValidator(), new DependencyRecordingReader(new InMemoryPublishedAtlas(1, [new PublishedClaim($c, BeforeImage::of(SlotHistory::for($c->slot), $c->interval, 0), 1)])));
+        $r->submit(self::p('a'));                                     // version 2, published
+        $r->approve(new Approval($r->currentVersion()->number, $roster->version(), self::p('x')));
+        $v0 = $roster->version();
+        $roster->recordMerge('m1', [self::p('x'), self::p('a')]);
+
+        $this->assertSame(2, $r->currentVersion()->number);
+        $this->assertNotSame($stale, $r->currentVersion()->digest);
+        $this->assertSame([GovernanceRefusal::DigestMismatch], self::refusals('c', $roster, $r, $v0, digest: $stale));
+        $this->assertSame([], self::refusals('c', $roster, $r, $v0, digest: $r->currentVersion()->digest));
+    }
+
+    /**
+     * G-6c-4 follow-up: design §7 rule 3 is `mayActForAt(r, w)`, which admits a matter reviewer appointed for this
+     * matter (D-84a). Such a reviewer may confirm; one appointed for another matter may not.
+     */
+    public function test_a_matter_reviewer_for_this_matter_may_confirm_and_one_for_another_matter_may_not(): void
+    {
+        [$roster, $r, $v0] = self::defective();
+        $roster->appointMatterReviewer(self::p('reviewer'), self::rid(), self::p('owner'));
+        $roster->declareConflict(self::p('reviewer'), self::rid(), false);
+        $other = RevisionId::fromString('9f9f9f9f-9f9f-4f9f-8f9f-9f9f9f9f9f9f');
+        $roster->appointMatterReviewer(self::p('elsewhere'), $other, self::p('owner'));
+        $roster->declareConflict(self::p('elsewhere'), self::rid(), false);
+
+        $this->assertSame([], self::refusals('reviewer', $roster, $r, $v0));
+        $this->assertSame([GovernanceRefusal::NotAppointed], self::refusals('elsewhere', $roster, $r, $v0));
+    }
+
     public function test_only_an_open_finding_can_be_confirmed(): void
     {
         [$roster, $r, $v0] = self::defective();

@@ -1,0 +1,2 @@
+K4 (pg) excluded(r) is not checked for a confirmer       KILLED   [pg:ConfirmPublicationTest] Tests: 9 Errors: 0  a_second_preparer_unrelated_to_the_approver_is_ref;
+All mutants killed.

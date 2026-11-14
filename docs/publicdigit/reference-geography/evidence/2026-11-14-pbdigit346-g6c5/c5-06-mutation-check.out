@@ -1,0 +1,16 @@
+L1 coverage checks the first flagged claim only          KILLED   [unit] Tests: 299 Errors: 0  every_flagged_claim_must_be_covered_in_its_own_slo;
+L2 the slot is ignored                                   KILLED   [unit] Tests: 299 Errors: 0  every_flagged_claim_must_be_covered_in_its_own_slo;
+L3 an open-ended fact is covered by a finite replacement KILLED   [unit] Tests: 299 Errors: 0  an_open_ended_fact_needs_an_open_ended_replacement;
+L4 a gap is tolerated                                    KILLED   [unit] Tests: 299 Errors: 0  a_correction_needs_an_open_finding_and_full_covera;a_gap_of_one_day_is_not_coverage;starting_too_late_or_ending_too_early_is_not_cover;
+L5 the exclusive end is treated as inclusive             KILLED   [unit] Tests: 299 Errors: 0  one_replacement_covering_the_whole_interval;several_adjacent_replacements_cover_jointly;starting_too_late_or_ending_too_early_is_not_cover;
+L6 no open finding is needed                             KILLED   [pg:CorrectionLinkTest] Tests: 7 Errors: 0  a_correction_link_needs_an_open_finding_on_a_revis;concurrent_resolutions_resolve_the_finding_once;
+L7 coverage is not consulted at publication              KILLED   [pg:CorrectionLinkTest] Tests: 7 Errors: 0  a_correction_link_needs_an_open_finding_on_a_revis;a_partial_correction_is_refused_as_a_whole_and_may;concurrent_resolutions_resolve_the_finding_once;
+L8 the link is not written                               KILLED   [pg:CorrectionLinkTest] Tests: 7 Errors: 0  a_correction_link_needs_an_open_finding_on_a_revis;a_fully_covering_published_correction_resolves_the;concurrent_resolutions_resolve_the_finding_once;several_adjacent_claims_may_cover_jointly;with_several_findings_the_open_one_is_resolved_and;
+K1 (pg) a finding that is not open may be confirmed      KILLED   [pg:ConfirmPublicationTest] Tests: 8 Errors: 2  a_finding_resolved_by_confirmation_closure_or_publ;concurrent_confirmations_resolve_a_finding_once;
+K2 (pg) the digest is not checked                        KILLED   [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  ineligible_or_dependent_confirmers_and_a_wrong_dig;
+K3 (pg) the defective approver is not checked            SURVIVED [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  
+K4 (pg) excluded(r) is not checked for a confirmer       SURVIVED [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  
+K5 (pg) the defective approver is always the original    SURVIVED [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  
+K6 (pg) appointment is not checked                       KILLED   [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  ineligible_or_dependent_confirmers_and_a_wrong_dig;
+K7 (pg) the declaration and conflict are not checked     KILLED   [pg:ConfirmPublicationTest] Tests: 8 Errors: 0  a_materially_conflicted_steward_is_refused;ineligible_or_dependent_confirmers_and_a_wrong_dig;
+3 mutant(s) survived.

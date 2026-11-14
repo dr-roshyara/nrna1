@@ -326,3 +326,23 @@
 - **Analysis:** take a reversal of merge m with named persons S. Any person x formerly connected through m reached m at some s ∈ S along a prefix that doesn't use m, so x lies in componentAt(s, after). Hence ⋃ before ⊆ ⋃ after, **provided all of S is used**, as §5 does. For a merge, the after-components contain the before-components trivially.
 - **Consequence:** §5.1's before ∪ after is exact and equals the after-union. **The accepted form is kept;** D1 is classified as an *equivalent* mutant, and a property test (A8b) pins the equality.
 - **The A–B–C–D concern of the revision-2 review is covered either way,** because B and C are both named by the reversed merge.
+
+## 19. Clarification (append-only, 2026-11-14): "one confirmation per finding; one closure per finding" became "resolved once"
+
+- **The original wording, §11 (unchanged above):** "**Unique:** one confirmation per finding; one closure per finding." G-6c-1 implemented it as two partial unique indexes (`refgeo_publications_one_confirmation`, `refgeo_publications_one_closure`).
+- **The audit decision (G-6c-1 audit, `cf2e81d32`; the Principal's integrity-pattern review, 2026-11-14):** the two indexes allowed a finding to be **both** confirmed and closed, which contradicts §8.2 row 2 ("one resolution per finding, whichever comes first"). They were replaced by **one** index, `refgeo_publications_one_resolution ON (concerns_position) WHERE notice_kind IN ('confirmation', 'closure')` (migration `2026_11_14_110000`). That migration stops, naming the findings, if existing data already holds a finding resolved twice (`035682387`).
+- **The combined rule:** at most one resolving notice per finding. It is per **finding**, not per publication: a publication can have several finding episodes (§8.2 row 9; decision §8.4 (a)).
+- **Why confirmation and closure can't both resolve one finding:** each ends the finding. A closure says the defect disappeared; a confirmation says an independent steward stands behind the publication despite it. Recording both would make the status depend on which one a reader looks at, and `FindingLifecycle` (§8.1) would have two answers.
+- **The third resolution, a published correction, is a revision row, not a notice,** so the index can't see it. Under the lock, the application refuses a correction link without an open finding (G-6c-5) and refuses a confirmation of a corrected finding (G-6c-4).
+
+## 20. Clarification (append-only, 2026-11-14): the coverage definition implemented in G-6c-5
+
+**§9 option (2) reads "a claim in c's slot whose interval covers c's interval"** (one claim). The Principal's decision 1 (§16) and the G-6c-5 instruction allow **several replacement claims to cover jointly where the domain model permits.** It does: a revision holds several claims per slot when their intervals don't overlap (`Revision::addClaim`, `SlotOverlapInRevision`).
+
+**Implemented definition (`CorrectionCoverage`):** for **every** claim c of the flagged publication, the union of the correcting revision's claim intervals **in c's slot** covers every day of c's interval.
+- **Intervals are `[from, to)` days:** `from` inclusive, `to` exclusive (v3.11 §3). So `[a, b)` and `[b, c)` jointly cover `[a, c)`; a one-day gap does not.
+- **An open-ended fact (no `to`)** is covered only by an open-ended replacement. No far-future date stands in for "until further notice".
+- **A claim in another slot covers nothing.**
+- **The link needs an open finding** on the corrected publication. A partial correction, or a link without an open finding, is refused **as a whole** (nothing is written); the same revision may then be published without the link, as an ordinary revision that resolves nothing.
+
+This is a refinement of §9, not a change of decision: a single covering claim remains the common case.

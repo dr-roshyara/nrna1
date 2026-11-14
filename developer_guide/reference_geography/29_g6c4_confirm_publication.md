@@ -75,3 +75,12 @@ Design §11 requires indexing the confirmer.
 **Administrator: no administrator action required.** No migration, configuration, queue or schedule.
 
 **Traceability:** PBDIGIT-346 G-6c-4 · design revision 3 §7, §8, §8.4 (a), §11, §17 · D-84, D-84a, D-88, D-90, D-225.
+
+## Accepted, and follow-ups (2026-11-14)
+
+Accepted by the Principal. The three follow-ups of the acceptance review were closed in G-6c-5 (guide 30, "G-6c-4 follow-ups"):
+- **a real stale digest is refused;**
+- **a matter reviewer for the matter may confirm;**
+- **K1 to K7 were run against the database tests:** a new exclusion-only database test kills K4; K3 and K5 are equivalent in any consistent database.
+
+No behaviour changed.

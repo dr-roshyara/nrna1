@@ -7,6 +7,7 @@ namespace App\Contexts\ReferenceGeography\Application\Ports;
 use App\Contexts\ReferenceGeography\Application\ClockNotPastBoundary;
 use App\Contexts\ReferenceGeography\Application\PublicationOfRevision;
 use App\Contexts\ReferenceGeography\Application\StoredRevision;
+use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\GovernanceDecision;
 use App\Contexts\ReferenceGeography\Domain\GovernanceNotice;
@@ -36,9 +37,19 @@ interface LockedLedger
      * publication also indexes, in the same transaction, every approver of that version and every excluded person
      * (G-6c, the publication-person index).
      *
+     * G-6c-5: with $corrects, the row records corrects_position (the publication it corrects; the caller has checked the
+     * open finding and full coverage under this lock).
+     *
      * @throws ClockNotPastBoundary
      */
-    public function append(Revision $revision, GovernanceDecision $decision): int;
+    public function append(Revision $revision, GovernanceDecision $decision, ?int $corrects = null): int;
+
+    /**
+     * G-6c-5: the claims frozen with the revision published at $position (none if it is not a revision publication).
+     *
+     * @return list<Claim>
+     */
+    public function claimsPublishedAt(int $position): array;
 
     /**
      * G-6c-3: stores the roster entries made on $roster since it was read with roster() (an Identity merge or reversal

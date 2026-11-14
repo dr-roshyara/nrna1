@@ -1,0 +1,51 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEE                                                             7 / 7 (100%)
+
+Time: 00:16.783, Memory: 22.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_fully_covering_published_correction_resolves_the_finding_in_the_same_act
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:123
+
+2) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_several_adjacent_claims_may_cover_jointly
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:141
+
+3) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_partial_correction_is_refused_as_a_whole_and_may_be_published_only_as_an_ordinary_revision
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:153
+
+4) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_correction_link_needs_an_open_finding_on_a_revision_publication
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:171
+
+5) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_with_several_findings_the_open_one_is_resolved_and_a_corrected_publication_leaves_evaluation
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:194
+
+6) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_a_failure_before_commit_leaves_neither_the_publication_nor_the_resolution
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:214
+
+7) Tests\Feature\Contexts\ReferenceGeography\CorrectionLinkTest::test_concurrent_resolutions_resolve_the_finding_once
+Error: Unknown named parameter $corrects
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:243
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/PublishingFixtures.php:176
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/ReferenceGeography/CorrectionLinkTest.php:239
+
+ERRORS!
+Tests: 7, Assertions: 3, Errors: 7, Deprecations: 1.

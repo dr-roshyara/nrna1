@@ -90,7 +90,12 @@ final class InMemoryPublicationLedger implements PublicationLedger
                 throw new \LogicException('no publications in memory');
             }
 
-            public function append(Revision $revision, GovernanceDecision $decision): int
+            public function claimsPublishedAt(int $position): array
+            {
+                return [];
+            }
+
+            public function append(Revision $revision, GovernanceDecision $decision, ?int $corrects = null): int
             {
                 throw new \LogicException('no publications in memory');
             }

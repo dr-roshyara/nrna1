@@ -10,6 +10,17 @@ use App\Contexts\ReferenceGeography\Application\IdentityNoticeConsumer;
 use App\Contexts\ReferenceGeography\Application\Ports\ActingPerson;
 use App\Contexts\ReferenceGeography\Application\Ports\LockedLedger;
 use App\Contexts\ReferenceGeography\Domain\ApprovalStatusKind;
+use App\Contexts\ReferenceGeography\Domain\Basis;
+use App\Contexts\ReferenceGeography\Domain\BasisKind;
+use App\Contexts\ReferenceGeography\Domain\Claim;
+use App\Contexts\ReferenceGeography\Domain\ClaimId;
+use App\Contexts\ReferenceGeography\Domain\ClaimValue;
+use App\Contexts\ReferenceGeography\Domain\ReferenceUnitId;
+use App\Contexts\ReferenceGeography\Domain\Revision;
+use App\Contexts\ReferenceGeography\Domain\SlotKey;
+use App\Contexts\ReferenceGeography\Domain\ValidDate;
+use App\Contexts\ReferenceGeography\Domain\ValidInterval;
+use Tests\Support\ReferenceGeography\CompetentInstrument;
 use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\GovernanceRefusal;
 use App\Contexts\ReferenceGeography\Domain\PersonReference;
@@ -122,6 +133,36 @@ final class ConfirmPublicationTest extends RefgeoPostgresTestCase
             $this->assertSame($refusals, $out->refusals, $why);
         }
         $this->assertSame($before, self::lastPosition(), 'nothing written');
+    }
+
+    /**
+     * G-6c-5 follow-up (database mutation K4 survived the earlier fixtures: every excluded person there was also the
+     * defective approver's alias). Here e only attached evidence: e is in excluded(r) but NOT linked to the approver x,
+     * so only the exclusion rule can refuse e.
+     */
+    public function test_a_second_preparer_unrelated_to_the_approver_is_refused_by_exclusion(): void
+    {
+        $t = Str::random(8);
+        self::ensureCompetence();
+        $id = RevisionId::fromString((string) Str::uuid());
+        self::appoint("p-$t", "x-$t", "e-$t");
+        foreach (["p-$t", "x-$t", "e-$t"] as $who) {
+            self::declare($who, $id);
+        }
+        $r = Revision::prepare($id, self::p("p-$t"));
+        $r->addClaim(new Claim(ClaimId::fromString((string) Str::uuid()), SlotKey::existence(ReferenceUnitId::fromString((string) Str::uuid())), ClaimValue::of('exists'),
+            new ValidInterval(ValidDate::fromString('2016-01-01')), new Basis(BasisKind::Instrument, 'act')), self::p("p-$t"));
+        $r->attachEvidence(CompetentInstrument::evidence('act'), self::p("p-$t"));
+        $r->attachEvidence(CompetentInstrument::evidence('act'), self::p("e-$t"));   // e: a second preparer, excluded
+        self::submitAndApprove($r, "p-$t", "x-$t");
+        $pub = self::publisher("p-$t")->publish($id)->position;
+        self::consumer()->merged("m-$t", [self::p("x-$t"), self::p("p-$t")]);
+        $f = (int) DB::selectOne("SELECT position FROM refgeo_publications WHERE notice_kind = 'finding' AND concerns_position = ?", [$pub])->position;
+
+        $out = self::confirmer("e-$t")->confirm($f, self::repo()->get($id)->revision->currentVersion()->digest);
+
+        $this->assertFalse(self::store()->current()->knownSameAt(self::p("e-$t"), self::p("x-$t"), self::store()->current()->version()), 'e is not the approver');
+        $this->assertSame([GovernanceRefusal::ConfirmerNotIndependent], $out->refusals);
     }
 
     public function test_a_materially_conflicted_steward_is_refused(): void

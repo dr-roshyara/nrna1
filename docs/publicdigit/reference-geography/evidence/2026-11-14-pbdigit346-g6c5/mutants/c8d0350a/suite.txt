@@ -1,0 +1,34 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 299 ( 21%)
+...............FF.F............................................ 126 / 299 ( 42%)
+............................................................... 189 / 299 ( 63%)
+............................................................... 252 / 299 ( 84%)
+...............................................                 299 / 299 (100%)
+
+Time: 00:00.270, Memory: 16.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_one_replacement_covering_the_whole_interval
+exact
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:53
+
+2) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_several_adjacent_replacements_cover_jointly
+adjacent ([a,b) then [b,c)), any order
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:59
+
+3) Tests\Unit\Contexts\ReferenceGeography\Domain\CorrectionCoverageTest::test_starting_too_late_or_ending_too_early_is_not_coverage
+boundaries: to is exclusive on both
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/ReferenceGeography/Domain/CorrectionCoverageTest.php:72
+
+FAILURES!
+Tests: 299, Assertions: 5116, Failures: 3.

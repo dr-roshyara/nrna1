@@ -22,4 +22,8 @@ enum GovernanceRefusal: string
     case DigestMismatch = 'digest-mismatch';
     /** G-6c-4: the confirmer is known-same as an excluded person or as the counted approver whose defect the finding records */
     case ConfirmerNotIndependent = 'confirmer-not-independent';
+    /** G-6c-5 (D-90, design revision 3 §8.2 rows 5 to 7): a correction link needs an OPEN finding on the publication it corrects */
+    case CorrectionWithoutOpenFinding = 'correction-without-open-finding';
+    /** G-6c-5 (§9, full coverage): the correcting revision does not replace every flagged claim over its whole valid interval */
+    case CorrectionIncomplete = 'correction-incomplete';
 }

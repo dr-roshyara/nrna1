@@ -10,6 +10,7 @@ use App\Contexts\ReferenceGeography\Application\Ports\LockedLedger;
 use App\Contexts\ReferenceGeography\Application\Ports\PublicationLedger;
 use App\Contexts\ReferenceGeography\Application\PublicationOfRevision;
 use App\Contexts\ReferenceGeography\Application\StoredRevision;
+use App\Contexts\ReferenceGeography\Domain\Claim;
 use App\Contexts\ReferenceGeography\Domain\FindingLifecycle;
 use App\Contexts\ReferenceGeography\Domain\GovernanceDecision;
 use App\Contexts\ReferenceGeography\Domain\GovernanceNotice;
@@ -149,7 +150,7 @@ final class PostgresPublicationLedger implements PublicationLedger
                 $this->revisions->save($revision, $expectedRowVersion);
             }
 
-            public function append(Revision $revision, GovernanceDecision $decision): int
+            public function append(Revision $revision, GovernanceDecision $decision, ?int $corrects = null): int
             {
                 $id = $revision->id()->value();
                 $version = $revision->currentVersion()?->number ?? throw new \LogicException('Only a submitted content version is published.');
@@ -157,9 +158,10 @@ final class PostgresPublicationLedger implements PublicationLedger
                     throw new \RuntimeException("Revision {$id} version {$version} has no frozen claims; it cannot be published.");
                 }
                 [$position, $recordedAt] = $this->next();
-                $this->db->insert("INSERT INTO refgeo_publications (position, kind, revision_id, content_version, roster_version, governance_rule, independence, recorded_at)
-                    VALUES (?, 'revision', ?, ?, ?, ?, ?, ?::timestamptz)",
-                    [$position, $id, $version, $decision->rosterVersion, $decision->rule->value, $decision->independence, $recordedAt]);
+                // G-6c-5: corrects_position is guarded by the G-6c-1 schema (backwards CHECK, FK, revision-kind trigger)
+                $this->db->insert("INSERT INTO refgeo_publications (position, kind, revision_id, content_version, roster_version, governance_rule, independence, recorded_at, corrects_position)
+                    VALUES (?, 'revision', ?, ?, ?, ?, ?, ?::timestamptz, ?)",
+                    [$position, $id, $version, $decision->rosterVersion, $decision->rule->value, $decision->independence, $recordedAt, $corrects]);
                 if ($decision->rule === GovernanceRule::SecondPersonApproved) {
                     // G-6c: who took part, for the D-90 impact of later merges (a superset of the counted approver, §17)
                     $rows = [];
@@ -228,6 +230,13 @@ final class PostgresPublicationLedger implements PublicationLedger
                 }
 
                 return $lifecycles;
+            }
+
+            public function claimsPublishedAt(int $position): array
+            {
+                return array_map(static fn (object $row): Claim => PostgresRevisionRepository::claimOf($row), $this->db->select("SELECT c.claim_id, c.slot_key, c.value, c.valid_from, c.valid_to, c.basis_kind, c.basis_reference
+                    FROM refgeo_claims c JOIN refgeo_publications p ON p.revision_id = c.revision_id AND p.content_version = c.content_version
+                    WHERE p.position = ? AND p.kind = 'revision' ORDER BY c.claim_id", [$position]));
             }
 
             public function findingConcerning(int $finding): ?PublicationOfRevision
