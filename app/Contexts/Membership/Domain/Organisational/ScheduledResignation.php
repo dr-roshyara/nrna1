@@ -97,13 +97,18 @@ final readonly class ScheduledResignation
     /**
      * D-201: withdrawn before the effective date; once that date has started, refused (D-223). `$by` is who withdrew
      * it and with what authority (the member, or a recorder: GC-12), so the history is complete (S2-4b).
+     *
+     * `$organisationToday` (S2-4d; M-TDD-01 §5.2 "withdrawal is refused once the date has started (organisation-local),
+     * even if not yet executed"): the organisation's own date at the ledger reading taken under the ledger-clock lock.
+     * The store passes it; a stated `$on` before the date does not override it. Null only for the use case's early
+     * check, before the store decides.
      */
-    public function withdraw(TimePoint $on, Provenance $by): self|RefusalReason
+    public function withdraw(TimePoint $on, Provenance $by, ?TimePoint $organisationToday = null): self|RefusalReason
     {
         if ($this->state !== ScheduledResignationState::Scheduled) {
             return RefusalReason::DeclarationNotScheduled;
         }
-        if (!$on->isBefore($this->effectiveDate)) {
+        if (!$on->isBefore($this->effectiveDate) || ($organisationToday !== null && !$organisationToday->isBefore($this->effectiveDate))) {
             return RefusalReason::WithdrawalAfterEffectiveDate;
         }
 

@@ -249,3 +249,14 @@ Never mark an organisation operational or change `schema_state` by hand.
 - **In production, the confirming step still executes nothing** (`NoDueScheduledResignations`). That's intended (D-239): the organisation's calendar comes from Organisation (S4), and no scheduled resignation can be recorded before Governance (S3).
 - **Do not set or invent a time zone for this** (no config value, no UTC default, not the legacy `organisations.timezone` column). D-239 forbids it.
 - **When it is switched on later**, a failed execution holds the organisation's membership answers ("boundary not closed") until it is fixed. Watch for the log entry `membership.ledger_clock.scheduled_execution_failed`.
+
+## Membership lifecycle S2-4d: routing of scheduled resignations (2026-11-15, PBDIGIT-354)
+
+**Nothing to do: no migration, no configuration.**
+- `ScheduledResignationStorePort` is now bound to the routed store, **but production cannot build it**: it needs the organisation calendar, which nothing provides until Organisation (S4). That's intended (D-239).
+- **When S4 delivers the calendar, three things change together, in one authorised release** (guide 32):
+  - the calendar binding;
+  - the confirming step's executor;
+  - the wiring guard.
+
+  Never bind the calendar alone.

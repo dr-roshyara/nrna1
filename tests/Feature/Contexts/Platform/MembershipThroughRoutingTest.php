@@ -481,4 +481,89 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
             $this->assertTrue(app(MemberRepositoryPort::class)->load(TenantId::fromString(self::B), MemberId::fromString('M1'))->resolve()->isMember(TimePoint::of(20_100)), "B's M1 is still a member");
         });
     }
+
+    /** S2-4d: a TEST-ONLY calendar that answers one fixed date (D-239: no production calendar exists until S4). */
+    private static function calendarSaying(int $day): \App\Contexts\Membership\Application\Organisational\Ports\OrganisationCalendar
+    {
+        return new class ($day) implements \App\Contexts\Membership\Application\Organisational\Ports\OrganisationCalendar {
+            public function __construct(private int $day) {}
+            public function localDateAt(TenantId $organisation, Instant $t): TimePoint { return TimePoint::of($this->day); }
+        };
+    }
+
+    /** The routed declaration store, built with an explicit test calendar (production cannot build it: no calendar). */
+    private function routedStore(int $day = 20_020): \App\Contexts\Membership\Infrastructure\Organisational\RoutedScheduledResignationStore
+    {
+        return new \App\Contexts\Membership\Infrastructure\Organisational\RoutedScheduledResignationStore(app(RoutedOrganisationConnection::class), app(LedgerClockReader::class), self::calendarSaying($day));
+    }
+
+    /**
+     * PBDIGIT-354 S2-4d: scheduled resignations live in the routed organisation's OWN database. Organisation A cannot
+     * read, withdraw or execute B's declaration (same member and declaration ids in both); B is untouched by A's close.
+     */
+    public function test_s2_4d_scheduled_resignations_are_routed_to_the_organisations_own_database_and_isolated(): void
+    {
+        $this->admitM1(self::A);
+        $this->admitM1(self::B);
+        $this->routedTo(self::B, function (Connection $b): void {
+            $this->assertTrue((new \App\Contexts\Membership\Application\Organisational\ScheduleResignationHandler(app(MemberRepositoryPort::class), $this->routedStore(), new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\ScheduleResignation(self::B, 'M1', 'D1', 20_010, 20_030, 'P1', null, 'k-s'))->isRecorded());
+            $this->assertCount(1, $b->select('SELECT 1 FROM org_membership_scheduled_resignations'), "in B's own database");
+        });
+
+        $this->routedTo(self::A, function (Connection $a): void {
+            $tA = TenantId::fromString(self::A);
+            $this->assertNull($this->routedStore()->find($tA, MemberId::fromString('M1'), \App\Contexts\Membership\Domain\Organisational\DeclarationId::fromString('D1')), "A cannot read B's declaration");
+            $this->readings = [150];
+            $withdrawal = (new \App\Contexts\Membership\Application\Organisational\WithdrawScheduledResignationHandler(app(MemberRepositoryPort::class), $this->routedStore(), new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\WithdrawScheduledResignation(self::A, 'M1', 'D1', 20_020, 'P1', 'k-w'));
+            $this->assertSame(\App\Contexts\Membership\Application\Organisational\ApplicationRefusal::DeclarationNotFound, $withdrawal->applicationRefusal(), "A cannot withdraw B's declaration");
+            try {
+                $this->routedStore()->find(TenantId::fromString(self::B), MemberId::fromString('M1'), \App\Contexts\Membership\Domain\Organisational\DeclarationId::fromString('D1'));
+                $this->fail("routed to A, B's store was reached");
+            } catch (\App\Contexts\Platform\Infrastructure\Published\NotTheRoutedOrganisation) {
+                $this->addToAssertionCount(1);
+            }
+
+            // A's close, with an executor whose calendar says the date has come: executes nothing of B's
+            $this->readings = [400];
+            $closed = (new \App\Contexts\Membership\Infrastructure\Organisational\LedgerClockCloser($a, app(LedgerClockReader::class),
+                new \App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor(self::calendarSaying(20_031))))->closeOrRead($tA);
+            $this->assertSame(400, $closed?->ordinal());
+            $this->assertCount(0, $a->select("SELECT 1 FROM org_membership_facts WHERE kind = 'end'"));
+            $this->assertCount(0, $a->select('SELECT 1 FROM org_membership_scheduled_resignations'), 'A has no declaration at all');
+        });
+
+        $this->routedTo(self::B, function (Connection $b): void {
+            $this->assertSame([['scheduled']], array_map(static fn ($r) => [$r->state], $b->select('SELECT state FROM org_membership_scheduled_resignations')), "B's declaration untouched by A");
+            $this->assertCount(0, $b->select("SELECT 1 FROM org_membership_facts WHERE kind = 'end'"), "B's member not ended by A's close");
+            $this->readings = [500];
+            $closed = (new \App\Contexts\Membership\Infrastructure\Organisational\LedgerClockCloser($b, app(LedgerClockReader::class),
+                new \App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor(self::calendarSaying(20_031))))->closeOrRead(TenantId::fromString(self::B));
+            $this->assertSame(500, $closed?->ordinal());
+            $this->assertSame([['executed']], array_map(static fn ($r) => [$r->state], $b->select('SELECT state FROM org_membership_scheduled_resignations')), "B's own close executes it, in B");
+            $this->assertCount(1, $b->select("SELECT 1 FROM org_membership_facts WHERE kind = 'end' AND fact_id = 'scheduled-resignation:D1'"));
+        });
+    }
+
+    /**
+     * PBDIGIT-354 S2-4d, production stays fail closed (D-239): no OrganisationCalendar is bound, so neither the routed
+     * declaration store nor the schedule / withdraw use cases can be built; the production ledger boundary keeps
+     * NoDueScheduledResignations (guarded by MembershipScheduledResignationWiringTest).
+     */
+    public function test_s2_4d_production_cannot_build_the_scheduled_resignation_use_cases(): void
+    {
+        $this->assertFalse($this->app->bound(\App\Contexts\Membership\Application\Organisational\Ports\OrganisationCalendar::class), 'no production calendar until Organisation S4');
+        $this->assertInstanceOf(RoutedLedgerBoundary::class, app(LedgerBoundaryPort::class));
+        foreach ([\App\Contexts\Membership\Application\Organisational\Ports\ScheduledResignationStorePort::class,
+            \App\Contexts\Membership\Application\Organisational\ScheduleResignationHandler::class,
+            \App\Contexts\Membership\Application\Organisational\WithdrawScheduledResignationHandler::class] as $service) {
+            try {
+                app($service);
+                $this->fail("$service was built: production must stay fail closed until S4 (calendar) and S3 (authority)");
+            } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+                $this->assertStringContainsString('OrganisationCalendar', $e->getMessage(), "$service: refused for want of the calendar");
+            }
+        }
+    }
 }

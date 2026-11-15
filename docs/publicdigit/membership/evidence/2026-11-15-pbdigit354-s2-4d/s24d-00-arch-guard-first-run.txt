@@ -1,0 +1,24 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.F.                                                                 3 / 3 (100%)
+
+Time: 00:00.233, Memory: 20.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\MembershipScheduledResignationWiringTest::test_production_code_has_no_calendar_no_test_calendar_no_executor_wiring_and_no_time_zone
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Contexts/Membership/Infrastructure/Organisational/DateOrdinal.php: G4 reads a time zone',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipScheduledResignationWiringTest.php:99
+
+FAILURES!
+Tests: 3, Assertions: 3, Failures: 1.

@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFDDDDDDDD                                                        10 / 10 (100%)
+
+Time: 00:08.625, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_s2_4d_withdrawal_is_decided_at_the_organisations_own_date_at_the_ledger_reading
+stated 24 October, but it is already 3 November in the organisation: refused (M-TDD-01 §5.2)
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:80
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_s2_4d_the_organisations_date_not_utc_decides_a_withdrawal
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:96
+
+FAILURES!
+Tests: 10, Assertions: 63, Failures: 2, Deprecations: 1.

@@ -1,0 +1,24 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......F.......................F...                                34 / 34 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_s2_4d_withdrawal_is_refused_once_the_organisations_own_date_has_reached_the_effective_date
+D-201 / M-TDD-01 §5.2: the date has started (organisation-local), even though the stated date is earlier
+Failed asserting that two variables reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:119
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_s2_4d_the_store_decides_withdrawal_at_the_organisations_own_date_and_its_refusal_is_returned
+the stated 20th does not count: it is already the 30th there
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:230
+
+FAILURES!
+Tests: 34, Assertions: 141, Failures: 2.

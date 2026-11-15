@@ -7,6 +7,9 @@ namespace App\Contexts\Membership\Infrastructure\Organisational;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
 use App\Contexts\Membership\Application\Organisational\Ports\AppliedDeclarationRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\DeclarationWriteOutcome;
+use App\Contexts\Membership\Application\Organisational\Ports\OrganisationCalendar;
+use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Application\Organisational\Ports\ScheduledResignationStorePort;
 use App\Contexts\Membership\Domain\Organisational\DeclarationId;
 use App\Contexts\Membership\Domain\Organisational\FactId;
@@ -39,8 +42,16 @@ final class PostgresScheduledResignationStore implements ScheduledResignationSto
     private const COMMANDS = 'org_membership_declaration_commands';
     private const COMMANDS_PKEY = 'org_membership_declaration_commands_pkey';
 
-    public function __construct(private readonly Connection $db)
-    {
+    /**
+     * @param ?LedgerClockReader    $clock    S2-4d: withdraw() takes its one reading under the ledger-clock lock
+     * @param ?OrganisationCalendar $calendar S2-4d (D-239): the organisation's date of that reading. Without both,
+     *                                        withdraw() refuses to act (fail closed); the closing step needs neither
+     */
+    public function __construct(
+        private readonly Connection $db,
+        private readonly ?LedgerClockReader $clock = null,
+        private readonly ?OrganisationCalendar $calendar = null,
+    ) {
     }
 
     public function forMember(TenantId $tenant, MemberId $member): array
@@ -130,32 +141,68 @@ final class PostgresScheduledResignationStore implements ScheduledResignationSto
         }
 
         return $this->guarded($tenant, $key, $fingerprint, function () use ($tenant, $member, $changed, $key, $fingerprint): DeclarationWriteOutcome {
+            return $this->keyAnswer($tenant, $key, $fingerprint) ?? $this->transitionRow($tenant, $member, $changed, $key, $fingerprint);
+        });
+    }
+
+    /**
+     * S2-4d (M-TDD-01 §5.2; D-239): withdraw, decided at ledger time. One transaction:
+     * key check → the organisation's ledger-clock row FOR UPDATE (the lock the closing step and every append take,
+     * so withdrawal and execution serialise on it) → ONE clock reading → the organisation's date of that reading →
+     * the declaration row FOR UPDATE → `ScheduledResignation::withdraw($declaredOn, $by, $organisationToday)` →
+     * compare-and-set. A refusal is returned unchanged; nothing is written.
+     */
+    public function withdraw(TenantId $tenant, MemberId $member, DeclarationId $id, TimePoint $declaredOn, Provenance $by, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome|RefusalReason
+    {
+        if ($this->clock === null || $this->calendar === null) {
+            throw new \LogicException("No organisation calendar: a withdrawal cannot be decided at the organisation's own date (D-239). Refused; nothing written (fail closed).");
+        }
+
+        return $this->guarded($tenant, $key, $fingerprint, function () use ($tenant, $member, $id, $declaredOn, $by, $key, $fingerprint): DeclarationWriteOutcome|RefusalReason {
             $seen = $this->keyAnswer($tenant, $key, $fingerprint);
             if ($seen !== null) {
                 return $seen;
             }
-            $changedRows = $this->db->update(
-                'UPDATE ' . self::TABLE . "
-                 SET state = ?, withdrawn_on = ?, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
-                 WHERE organisation_id = ? AND membership_id = ? AND declaration_id = ? AND state = 'scheduled'",
-                [$changed->state()->value,
-                    $changed->withdrawnOn() === null ? null : DateOrdinal::toDate($changed->withdrawnOn()),
-                    $changed->withdrawnBy() === null ? null : ProvenanceJson::encode($changed->withdrawnBy()),
-                    $changed->executedAs()?->value(), $changed->supersededBecause(),
-                    $tenant->value(), $member->value(), $changed->id()->value()],
-            );
-            if ($changedRows !== 1) {
-                // Compare-and-set lost (MI-2), or no such declaration. A writer we waited for may have been this key.
-                return $this->keyAnswer($tenant, $key, $fingerprint) ?? DeclarationWriteOutcome::Conflict;
+            $this->db->selectOne('SELECT 1 AS locked FROM org_membership_ledger_clocks WHERE organisation_id = ? FOR UPDATE', [$tenant->value()])
+                ?? throw new \RuntimeException("Ledger clock row missing for organisation {$tenant->value()} (fail closed).");
+            $organisationToday = $this->calendar->localDateAt($tenant, $this->clock->now($this->db));
+            $row = $this->select($tenant, $member)->where('declaration_id', $id->value())->lockForUpdate()->first();
+            if ($row === null) {
+                return DeclarationWriteOutcome::Conflict;
             }
-            $this->registerKey($tenant, $member, $changed->id(), $key, $fingerprint);
+            $withdrawn = $this->decode($row)->withdraw($declaredOn, $by, $organisationToday);
+            if ($withdrawn instanceof RefusalReason) {
+                return $withdrawn;
+            }
 
-            return DeclarationWriteOutcome::Written;
+            return $this->transitionRow($tenant, $member, $withdrawn, $key, $fingerprint);
         });
     }
 
-    /** @param \Closure(): DeclarationWriteOutcome $write */
-    private function guarded(TenantId $tenant, IdempotencyKey $key, string $fingerprint, \Closure $write): DeclarationWriteOutcome
+    /** The compare-and-set write of a transition from `scheduled` and its key row; in the caller's transaction. */
+    private function transitionRow(TenantId $tenant, MemberId $member, ScheduledResignation $changed, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome
+    {
+        $changedRows = $this->db->update(
+            'UPDATE ' . self::TABLE . "
+             SET state = ?, withdrawn_on = ?, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
+             WHERE organisation_id = ? AND membership_id = ? AND declaration_id = ? AND state = 'scheduled'",
+            [$changed->state()->value,
+                $changed->withdrawnOn() === null ? null : DateOrdinal::toDate($changed->withdrawnOn()),
+                $changed->withdrawnBy() === null ? null : ProvenanceJson::encode($changed->withdrawnBy()),
+                $changed->executedAs()?->value(), $changed->supersededBecause(),
+                $tenant->value(), $member->value(), $changed->id()->value()],
+        );
+        if ($changedRows !== 1) {
+            // Compare-and-set lost (MI-2), or no such declaration. A writer we waited for may have been this key.
+            return $this->keyAnswer($tenant, $key, $fingerprint) ?? DeclarationWriteOutcome::Conflict;
+        }
+        $this->registerKey($tenant, $member, $changed->id(), $key, $fingerprint);
+
+        return DeclarationWriteOutcome::Written;
+    }
+
+    /** @param \Closure(): (DeclarationWriteOutcome|RefusalReason) $write */
+    private function guarded(TenantId $tenant, IdempotencyKey $key, string $fingerprint, \Closure $write): DeclarationWriteOutcome|RefusalReason
     {
         try {
             return $this->db->transaction($write);

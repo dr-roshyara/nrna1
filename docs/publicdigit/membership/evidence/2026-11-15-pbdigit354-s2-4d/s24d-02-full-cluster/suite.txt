@@ -1,0 +1,23 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  63 / 512 ( 12%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 126 / 512 ( 24%)
+DDDDDDDDDDDDoutcomes: {"appended:":192,"refused:admission_term_required":119,"refused:duplicate_fact_id":14,"refused:end_not_after_period_start":72,"refused:idempotency_key_conflict":28,"refused:member_not_found":167,"refused:overlapping_membership_periods":112,"refused:period_already_ended":32,"refused:period_not_found":14}
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+MI-2 free races, winners: {"executed":8}
+DDDDDDDDDDDDDDDDDDDDDD 189 / 512 ( 36%)
+DDDDDDDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 252 / 512 ( 49%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 315 / 512 ( 61%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 378 / 512 ( 73%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 441 / 512 ( 86%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 504 / 512 ( 98%)
+DDDDDDDD                                                        512 / 512 (100%)
+
+Time: 04:08.987, Memory: 60.00 MB
+
+OK, but there were issues!
+Tests: 512, Assertions: 18136, Deprecations: 1.

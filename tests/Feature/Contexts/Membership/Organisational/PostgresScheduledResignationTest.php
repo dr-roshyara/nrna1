@@ -24,6 +24,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Tests\Support\FixedOffsetOrganisationCalendar;
 use Tests\Support\ScriptedLedgerClockReader;
 use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthority;
 
@@ -47,9 +48,67 @@ final class PostgresScheduledResignationTest extends MembershipPostgresTestCase
         return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $this->clock += 1_000));
     }
 
-    private function store(): PostgresScheduledResignationStore
+    /**
+     * S2-4d: withdrawal is decided at ledger time, so the store has the ledger clock and a calendar. By default the
+     * reading is 2024-10-24 12:00 UTC and the calendar UTC (TEST ONLY).
+     */
+    private function store(?int $reading = null, int $offsetMinutes = 0, bool $calendar = true): PostgresScheduledResignationStore
     {
-        return new PostgresScheduledResignationStore(DB::connection());
+        $reading ??= self::at(20_020, 12);
+
+        return new PostgresScheduledResignationStore(DB::connection(), new ScriptedLedgerClockReader(static fn (): int => $reading),
+            $calendar ? new FixedOffsetOrganisationCalendar($offsetMinutes) : null);
+    }
+
+    /** µs at (day ordinal, hh:mm UTC) */
+    private static function at(int $day, int $hour = 0, int $minute = 0): int
+    {
+        return ($day * 86_400 + $hour * 3_600 + $minute * 60) * 1_000_000;
+    }
+
+    private function withdrawVia(PostgresScheduledResignationStore $store, string $org, int $on = 20_020, string $key = 'k-w1')
+    {
+        return (new WithdrawScheduledResignationHandler($this->members(), $store, new FakeAuthority()))->handle(new WithdrawScheduledResignation($org, 'M1', 'D1', $on, 'P1', $key));
+    }
+
+    public function test_s2_4d_withdrawal_is_decided_at_the_organisations_own_date_at_the_ledger_reading(): void
+    {
+        $org = $this->organisationWithMember();
+        $this->schedule($org);
+
+        $late = $this->withdrawVia($this->store(self::at(20_030, 0, 1)), $org, on: 20_020);
+        $this->assertSame(\App\Contexts\Membership\Domain\Organisational\RefusalReason::WithdrawalAfterEffectiveDate, $late->domainRefusal(),
+            'stated 24 October, but it is already 3 November in the organisation: refused (M-TDD-01 §5.2)');
+        $this->assertSame(ScheduledResignationState::Scheduled, $this->store()->find(TenantId::fromString($org), MemberId::fromString('M1'), DeclarationId::fromString('D1'))->state());
+        $this->assertSame(0, DB::table('org_membership_declaration_commands')->where('organisation_id', $org)->where('idempotency_key', 'k-w1')->count(), 'a refusal registers no key');
+
+        $this->assertTrue($this->withdrawVia($this->store(self::at(20_029, 23, 59)), $org, key: 'k-w2')->isRecorded(), 'still 2 November: withdrawn');
+    }
+
+    public function test_s2_4d_the_organisations_date_not_utc_decides_a_withdrawal(): void
+    {
+        $nepal = $this->organisationWithMember();
+        $utc = $this->organisationWithMember();
+        $this->schedule($nepal);
+        $this->schedule($utc);
+        $t = self::at(20_029, 20);   // 2024-11-02 20:00 UTC = 2024-11-03 01:45 in Nepal
+
+        $this->assertSame(\App\Contexts\Membership\Domain\Organisational\RefusalReason::WithdrawalAfterEffectiveDate, $this->withdrawVia($this->store($t, 345), $nepal)->domainRefusal());
+        $this->assertTrue($this->withdrawVia($this->store($t, 0), $utc)->isRecorded());
+    }
+
+    public function test_s2_4d_without_a_calendar_no_withdrawal_is_possible(): void
+    {
+        $org = $this->organisationWithMember();
+        $this->schedule($org);
+
+        try {
+            $this->withdrawVia($this->store(calendar: false), $org);
+            $this->fail('withdrawn without knowing the organisation\'s date');
+        } catch (\LogicException $e) {
+            $this->assertStringContainsString('D-239', $e->getMessage());
+        }
+        $this->assertSame(ScheduledResignationState::Scheduled, $this->store()->find(TenantId::fromString($org), MemberId::fromString('M1'), DeclarationId::fromString('D1'))->state(), 'fail closed');
     }
 
     private function organisationWithMember(): string

@@ -111,6 +111,16 @@ final class ScheduledResignationTest extends TestCase
         $this->assertSame(RefusalReason::DeclarationNotScheduled, $d->withdraw(self::t(20), self::by())->withdraw(self::t(21), self::by()));
     }
 
+    public function test_s2_4d_withdrawal_is_refused_once_the_organisations_own_date_has_reached_the_effective_date(): void
+    {
+        $d = self::schedule(self::admitted());
+
+        $this->assertSame(ScheduledResignationState::Withdrawn, $d->withdraw(self::t(20), self::by(), self::t(29))->state(), 'the organisation is still on the 29th');
+        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(20), self::by(), self::t(30)),
+            'D-201 / M-TDD-01 §5.2: the date has started (organisation-local), even though the stated date is earlier');
+        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(20), self::by(), self::t(31)));
+    }
+
     public function test_a_withdrawal_records_when_and_by_whom_and_keeps_the_declaration(): void
     {
         $w = self::schedule(self::admitted())->withdraw(self::t(20), Provenance::decision('registrar-1'));

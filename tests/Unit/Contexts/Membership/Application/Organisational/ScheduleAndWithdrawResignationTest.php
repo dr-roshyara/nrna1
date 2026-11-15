@@ -222,6 +222,19 @@ final class ScheduleAndWithdrawResignationTest extends TestCase
         $this->assertSame(['withdrawn', 'scheduled'], array_map(static fn ($d) => $d->state()->value, $this->store->forMember(TenantId::fromString('O1'), MemberId::fromString('M-P1'))), 'the full history');
     }
 
+    public function test_s2_4d_the_store_decides_withdrawal_at_the_organisations_own_date_and_its_refusal_is_returned(): void
+    {
+        $this->schedule();
+        $this->store->organisationToday = TimePoint::of(30);   // the organisation's date at the ledger reading
+
+        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $this->withdraw(on: 20)->domainRefusal(), 'the stated 20th does not count: it is already the 30th there');
+        $this->assertSame(ScheduledResignationState::Scheduled, $this->stored()->state());
+        $this->assertNull($this->store->appliedRequest(TenantId::fromString('O1'), \App\Contexts\Membership\Application\Organisational\IdempotencyKey::fromString('k-w1')), 'a refused withdrawal registers no key');
+
+        $this->store->organisationToday = TimePoint::of(29);
+        $this->assertTrue($this->withdraw(on: 20, key: 'k-w2')->isRecorded());
+    }
+
     public function test_a_write_conflict_is_decided_again_from_a_fresh_read(): void
     {
         $this->store->conflictNext = 1;

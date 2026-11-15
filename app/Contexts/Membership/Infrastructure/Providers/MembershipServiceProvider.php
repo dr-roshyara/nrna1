@@ -122,6 +122,12 @@ class MembershipServiceProvider extends ServiceProvider
             \App\Contexts\Membership\Infrastructure\Organisational\RoutedMemberRepository::class);
         $this->app->bind(\App\Contexts\Membership\Infrastructure\Organisational\LedgerClockReader::class,
             \App\Contexts\Membership\Infrastructure\Organisational\PostgresLedgerClockReader::class);
+        // PBDIGIT-354 S2-4d: scheduled resignation declarations on the routed organisation's own database. NOT usable in
+        // production yet, by design: it needs OrganisationCalendar, which nothing binds until Organisation S4 (D-239);
+        // the closing step keeps NoDueScheduledResignations (RoutedLedgerBoundary). Bind the calendar and switch the
+        // closer to ScheduledResignationExecutor TOGETHER, in one authorised change (guide 32).
+        $this->app->bind(\App\Contexts\Membership\Application\Organisational\Ports\ScheduledResignationStorePort::class,
+            \App\Contexts\Membership\Infrastructure\Organisational\RoutedScheduledResignationStore::class);
 
         // Read model adapters
         $this->app->bind(

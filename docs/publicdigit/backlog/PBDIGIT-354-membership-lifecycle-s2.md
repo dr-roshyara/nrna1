@@ -35,6 +35,10 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
+## Open
+
+- **Q-5 (S2-4d, plan §7d):** an ending (resign now, death, exclusion) effective on or after a due-but-unexecuted scheduled resignation's date. Recommended: A, refuse it while the declaration is pending. **S2-4 is not Done until decided and implemented.**
+
 ## Decided: Q-4 → D-239 (Option A)
 
 - *(as found)* **Q-4 (S2-4 preflight, plan §7c):** which calendar decides that a scheduled resignation's date has arrived. No accepted owner of the organisation time zone exists in the new architecture. Recommended: a consumer-owned `OrganisationCalendar` port, answered by Organisation (S4), fail-closed until then. **No S2-4 code until decided.**
@@ -52,6 +56,6 @@ Plan §4, steps S2-1 … S2-6.
 - [ ] S2-1 Renew and the admission-term rule: **implemented and proven 2026-11-15** (guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`), **except D-177 row 20** (Correct a Renew's `until`), refused in the kernel until **Q-2** is decided. The box stays open until then
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
 - [x] S2-3 resign now, death: **DONE 2026-11-15:** S2-3a (authority contract, D-238; guide 27) and S2-3b (resign now, record a death; guide 28; evidence `…/2026-11-15-pbdigit354-s2-3b/`)
-- [ ] S2-4 scheduled resignation (D-239): **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31) 2026-11-15; S2-4d to follow
+- [ ] S2-4 scheduled resignation (D-239): **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31), **S2-4d DONE** (race, visibility, routing; guide 32) 2026-11-15; **S2-4 stays open: Q-5** (plan §7d)
 - [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (Suspend / Restore dates)
 - [ ] S2-6 push shapes (Membership side)

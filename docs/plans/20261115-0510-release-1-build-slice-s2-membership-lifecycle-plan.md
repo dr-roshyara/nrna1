@@ -140,7 +140,35 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, **decided: D-239, Option A**; **S2-4a, S2-4b, S2-4c DONE 2026-11-15**; S2-4d next)
+## 7d. S2-4d finding: an ending recorded on or after a due-but-unexecuted scheduled resignation's date (Q-5, awaiting the Human Arb Chief)
+
+**The situation.**
+- A member's resignation is scheduled for 3 November.
+- On 3 November, before the confirming step has recorded it (the step is late or failing), someone records another ending for the same membership, effective on or after 3 November: the member "resigns now" on 8 November, a death is recorded as of 5 November, or an exclusion is pushed.
+
+**What the accepted texts say.**
+- M-TDD-01 §5.2 and MI-3: a declaration is *superseded* when the period ended **earlier** than its date. That case is implemented and tested (S2-4d, part D).
+- Nothing says what happens when the other ending is **on or after** the scheduled date.
+
+**What the code does today (not a decision).**
+- The later ending is recorded.
+- When the confirming step runs, the declaration is marked *superseded*, with a reason that wrongly says "ended before the scheduled date".
+- **Effect:** the membership ends on the later date, not the date the member chose. The person counts as a member, with rights, for the days in between.
+
+**Options:**
+- **A (recommended): refuse the other ending while the earlier scheduled resignation is pending.**
+  - Membership refuses any ending of that period whose effective date is on or after a still-`scheduled` declaration's date (a new refusal, e.g. "a scheduled resignation takes effect first"); the next confirming step records the resignation on its date.
+  - Then:
+    - a "resign now" is unnecessary (already leaving);
+    - a death can still be recorded later as a fact about the person, not as a membership ending;
+    - an exclusion is pushed back as inapplicable.
+  - Keeps the member's chosen date; fail-closed; no calendar needed (the check compares dates). A kernel or command-boundary rule in S2-4, test-first.
+- **B: carry out the scheduled resignation first, automatically.** Recording the other ending first records the scheduled End (on its date), then refuses the other one as "already ended". Same outcome as A, but the command path does the confirming step's work and needs the calendar.
+- **C: let the later ending stand.** Keep today's behaviour, but correct the reason to "superseded by a later ending recorded before execution". The member's date is lost and they count as a member for the extra days. Only defensible if the later ending is deliberate.
+
+**S2-4 is not marked Done until Q-5 is decided and implemented.**
+
+## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, **decided: D-239, Option A**; **S2-4a … S2-4d DONE 2026-11-15**; S2-4 waits on **Q-5** (§7d))
 
 **The accepted rules for S2-4** (M-TDD-01 §5.2, D-204, D-205, D-209, D-223; D-208 §2):
 - a resignation with a later effective date is a **declaration held outside the ledger**: `scheduled` → `executed` / `withdrawn` / `superseded` (the period ended earlier);
@@ -226,6 +254,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 - 2026-11-15: **S2-1 implemented:** Renew (D-177 rows 1–7, 17, 21–23), the admission-term rule, the `RenewMembership` use case, both migrations, C1. Proven: kernel 22, application 12, PostgreSQL 12, routing 1; full cluster 423 exit 0; database-free 942; 21 mutants, 0 survivors; architecture the same 4 pre-existing failures; no legacy regression. Guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`.
   - **Not delivered: row 20 (Correct a Renew's `until`).** No accepted text gives the dating rule for a corrected `until`. The kernel refuses such a Correct (`CorrectionOfRenewNotSupported`). **Q-2 for the Principal; proposed: deliver row 20 with S2-5 (Correct / Void) once decided.**
   - **Reading recorded:** D-177 row 1 (decided 20 Dec, effective 1 Jan) cannot be recorded as written under the later D-205 (nothing future-dated). It is realised as a renewal effective on its decision date with a later `until` (segments are a set; `inForce` is continuous).
+- 2026-11-15: **S2-4d DONE (except Q-5):** withdrawal decided at ledger time (the store, under the ledger-clock lock, one reading, the organisation's date; `ScheduledResignation::withdraw(…, $organisationToday)`); MI-2 proved with real concurrent processes (both forced orders + 8 free rounds); MI-4 C1/C2 before, during (due, unexecuted) and after (late) execution; part D settled case (an earlier ending supersedes, MI-3); routing and isolation through two real organisation databases (`RoutedScheduledResignationStore`, bound but unbuildable without the calendar); guard `MembershipScheduledResignationWiringTest`. Cluster 512, database-free 1073, architecture 4 known failures; 8 mutants (5 assertion, 2 error by design, 1 argued equivalent). Guide 32; evidence `…/2026-11-15-pbdigit354-s2-4d/`. **Q-5 found** (§7d): an ending on or after a due declaration's date has no accepted rule; S2-4 not Done.
 - 2026-11-15: **S2-4c DONE (execution in the ledger close):** the `OrganisationCalendar` port (D-239); `ScheduledResignationExecutor`, the real `DueScheduledResignations`: in the close's transaction, the local date of the close's reading, the due declarations locked, each End recorded at the close's reading (`appendWithinClose`) and the declaration marked executed; an ended period → superseded (MI-3); any failure → the close rolls back and `closedThrough` holds (MI-10, LC-4). Production unchanged (`NoDueScheduledResignations` until S4). Post-merge baseline (Identity I-1/I-2): cluster 493. After: cluster 502, database-free 1071, architecture 4 known failures; 8 mutants, all assertion kills. Guide 31; evidence `…/2026-11-15-pbdigit354-s2-4c/`. **Still open, for S2-4d:** the two-session race (MI-2); the routing proof; a withdrawal's "date has started" against the calendar under the clock lock (today: the caller-supplied date, D-5(a) Z1); resign-now while a due declaration is unexecuted.
 - 2026-11-15: **S2-4b DONE (schedule, withdraw, declaration store):** use cases `ScheduleResignation` / `WithdrawScheduledResignation` on the D-238 order (`DecideAndRecordDeclaration`; `DecideAndAppend::authorisationRefusal` shared); `AuthorityRequest.declarationRef` (withdraw shape, additive); `PostgresScheduledResignationStore` (version compare-and-set on schedule, state compare-and-set on transition); migrations central 360000 / organisation 300700 (same SQL; one pending per period, CHECKs, history trigger, no DELETE); a withdrawal records who and when. Cluster 470, database-free 1062, architecture 4 known failures; 19 mutants, 0 survivors (15 assertion, 3 database refusal, 1 fail-closed reload). **Found and fixed:** `CREATE FUNCTION` broke `migrate:fresh` (legacy suite). Guide 30; administrator notes; evidence `…/2026-11-15-pbdigit354-s2-4b/`. **Carried to S2-4c:** withdrawal's "date has started" against the organisation calendar under the ledger-clock lock (today: the caller-supplied date, D-5(a) Z1); superseding a declaration when its period ends earlier.
 - 2026-11-15: **S2-4a DONE (domain):** `ScheduledResignation` (scheduled / executed / withdrawn / superseded; one per period; withdrawal only before the date) and `Member::decideScheduledResignationEnd`, D-205's single exception (effective on the scheduled date, decided by the declaration, recorded on or after the date). Kernel 279; 15 mutants, all assertion kills; K7 proves the exception does not leak. Guide 29; evidence `…/2026-11-15-pbdigit354-s2-4a/`.
