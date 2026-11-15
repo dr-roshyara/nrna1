@@ -1,0 +1,1 @@
+A2 the withdraw shape loses the declaration reference

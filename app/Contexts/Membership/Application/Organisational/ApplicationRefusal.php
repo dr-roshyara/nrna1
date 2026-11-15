@@ -24,4 +24,6 @@ enum ApplicationRefusal: string
     case AuthorityUndetermined = 'authority_undetermined';
     /** D-203 (S2-3a): an `ownAct` answer counts only for record-resignation with actor = subject; otherwise refused. */
     case OwnActNotApplicable = 'own_act_not_applicable';
+    /** S2-4b: the member has no scheduled resignation declaration with that reference (told only after authorisation). */
+    case DeclarationNotFound = 'declaration_not_found';
 }

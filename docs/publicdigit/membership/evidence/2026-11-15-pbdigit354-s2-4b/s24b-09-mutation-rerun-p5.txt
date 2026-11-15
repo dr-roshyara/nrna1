@@ -1,0 +1,2 @@
+P5 record writes no key row                                tests:7    KILLED (assertions)  requests_are_idempotent_and_a_reused_key;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

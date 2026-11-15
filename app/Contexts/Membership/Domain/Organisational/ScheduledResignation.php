@@ -25,12 +25,37 @@ final readonly class ScheduledResignation
         private ?Instant $decidedAt,
         private ScheduledResignationState $state,
         private ?TimePoint $withdrawnOn,
+        private ?Provenance $withdrawnBy,
         private ?FactId $executedAs,
         private ?string $supersededBecause,
     ) {
         if ($declarationDate->isInfinite() || $effectiveDate->isInfinite()) {
             throw new \InvalidArgumentException('A scheduled resignation has finite dates.');
         }
+        if (!$declarationDate->isBefore($effectiveDate)) {
+            throw new \InvalidArgumentException('A scheduled resignation takes effect after its declaration.');
+        }
+        $consistent = match ($state) {
+            ScheduledResignationState::Scheduled => $withdrawnOn === null && $withdrawnBy === null && $executedAs === null && $supersededBecause === null,
+            ScheduledResignationState::Withdrawn => $withdrawnOn !== null && $withdrawnBy !== null && $withdrawnOn->isBefore($effectiveDate) && $executedAs === null && $supersededBecause === null,
+            ScheduledResignationState::Executed => $executedAs !== null && $withdrawnOn === null && $withdrawnBy === null && $supersededBecause === null,
+            ScheduledResignationState::Superseded => $supersededBecause !== null && trim($supersededBecause) !== '' && $withdrawnOn === null && $withdrawnBy === null && $executedAs === null,
+        };
+        if (!$consistent) {
+            throw new \InvalidArgumentException("An inconsistent {$state->value} scheduled resignation.");
+        }
+    }
+
+    /**
+     * Rebuild a stored declaration (S2-4b). Every state's fields are checked, so an inconsistent row cannot be read as
+     * a valid declaration.
+     *
+     * @throws \InvalidArgumentException when the stored fields do not form a valid declaration
+     */
+    public static function fromStorage(DeclarationId $id, PeriodId $period, TimePoint $declarationDate, TimePoint $effectiveDate, Provenance $provenance, ?Instant $decidedAt,
+        ScheduledResignationState $state, ?TimePoint $withdrawnOn, ?Provenance $withdrawnBy, ?FactId $executedAs, ?string $supersededBecause): self
+    {
+        return new self($id, $period, $declarationDate, $effectiveDate, $provenance, $decidedAt, $state, $withdrawnOn, $withdrawnBy, $executedAs, $supersededBecause);
     }
 
     /**
@@ -66,11 +91,14 @@ final readonly class ScheduledResignation
             }
         }
 
-        return new self($id, $periodId, $declarationDate, $effectiveDate, $provenance, $decidedAt, ScheduledResignationState::Scheduled, null, null, null);
+        return new self($id, $periodId, $declarationDate, $effectiveDate, $provenance, $decidedAt, ScheduledResignationState::Scheduled, null, null, null, null);
     }
 
-    /** D-201: the member may withdraw before the effective date; once that date has started, refused (D-223). */
-    public function withdraw(TimePoint $on): self|RefusalReason
+    /**
+     * D-201: withdrawn before the effective date; once that date has started, refused (D-223). `$by` is who withdrew
+     * it and with what authority (the member, or a recorder: GC-12), so the history is complete (S2-4b).
+     */
+    public function withdraw(TimePoint $on, Provenance $by): self|RefusalReason
     {
         if ($this->state !== ScheduledResignationState::Scheduled) {
             return RefusalReason::DeclarationNotScheduled;
@@ -79,7 +107,7 @@ final readonly class ScheduledResignation
             return RefusalReason::WithdrawalAfterEffectiveDate;
         }
 
-        return $this->with(ScheduledResignationState::Withdrawn, withdrawnOn: $on);
+        return $this->with(ScheduledResignationState::Withdrawn, withdrawnOn: $on, withdrawnBy: $by);
     }
 
     /** MI-3: the period ended earlier (another End, or an Annul / Void of the period); the reason is recorded. */
@@ -105,10 +133,10 @@ final readonly class ScheduledResignation
         return $this->with(ScheduledResignationState::Executed, executedAs: $end);
     }
 
-    private function with(ScheduledResignationState $state, ?TimePoint $withdrawnOn = null, ?FactId $executedAs = null, ?string $supersededBecause = null): self
+    private function with(ScheduledResignationState $state, ?TimePoint $withdrawnOn = null, ?Provenance $withdrawnBy = null, ?FactId $executedAs = null, ?string $supersededBecause = null): self
     {
         return new self($this->id, $this->period, $this->declarationDate, $this->effectiveDate, $this->provenance, $this->decidedAt, $state,
-            $withdrawnOn ?? $this->withdrawnOn, $executedAs ?? $this->executedAs, $supersededBecause ?? $this->supersededBecause);
+            $withdrawnOn ?? $this->withdrawnOn, $withdrawnBy ?? $this->withdrawnBy, $executedAs ?? $this->executedAs, $supersededBecause ?? $this->supersededBecause);
     }
 
     public function id(): DeclarationId
@@ -149,6 +177,11 @@ final readonly class ScheduledResignation
     public function withdrawnOn(): ?TimePoint
     {
         return $this->withdrawnOn;
+    }
+
+    public function withdrawnBy(): ?Provenance
+    {
+        return $this->withdrawnBy;
     }
 
     public function executedAs(): ?FactId

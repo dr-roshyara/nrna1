@@ -1,0 +1,68 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEF                                                             7 / 7 (100%)
+
+Time: 00:08.744, Memory: 26.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_a_scheduled_resignation_is_stored_and_reloaded_and_writes_no_ledger_fact
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:92
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_a_withdrawal_is_stored_with_who_and_when_and_the_history_is_kept
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:106
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_requests_are_idempotent_and_a_reused_key_is_refused
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:120
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_store_compares_the_membership_version_and_the_declaration_state
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:138
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_database_allows_one_scheduled_declaration_per_period
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:153
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_database_keeps_the_history
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:52
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:162
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_database_refuses_inconsistent_declarations
+Failed asserting that 'SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "org_membership_scheduled_resignations" does not exist\n
+LINE 1: INSERT INTO org_membership_scheduled_resignations (organisat...\n
+                    ^ (Connection: pgsql, Host: 127.0.0.1, Port: 39299, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_scheduled_resignations (organisation_id, membership_id, declaration_id, period_fact_id, declaration_date, effective_date, provenance, recorded_at, state, withdrawn_on, withdrawn_by, executed_fact_id, superseded_because, changed_at)\n
+            VALUES (19f7b159-eb89-45cc-9e48-10dfb2ee087b, 'M1', X1, 'A1', 2024-11-03, 2024-11-03, '{}', now(), scheduled, ?, ?, ?, ?, ?))' [ASCII](length: 687) contains "org_membership_scheduled_resignations_dates_check" [ASCII](length: 49).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:82
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:193
+
+ERRORS!
+Tests: 7, Assertions: 8, Errors: 6, Failures: 1, Deprecations: 1.

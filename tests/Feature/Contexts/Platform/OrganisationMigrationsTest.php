@@ -34,7 +34,8 @@ final class OrganisationMigrationsTest extends MembershipPostgresTestCase
     private const A = '0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60';
     private const B = '1c8f6b41-5d2e-4e6f-8b4a-3e6d9f2a5b71';
     private const C = '2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82';
-    private const LEDGER = ['org_memberships', 'org_membership_facts', 'org_membership_commands', 'org_membership_ledger_clocks'];
+    private const LEDGER = ['org_memberships', 'org_membership_facts', 'org_membership_commands', 'org_membership_ledger_clocks',
+        'org_membership_scheduled_resignations', 'org_membership_declaration_commands'];   // the last two: PBDIGIT-354 S2-4b
 
     private OrganisationConnectionFactory $factory;
 
@@ -136,6 +137,9 @@ final class OrganisationMigrationsTest extends MembershipPostgresTestCase
             'changing the identity' => ["UPDATE organisation_identity SET id = '" . self::B . "'", 'ORGANISATION_IDENTITY_IMMUTABLE'],
             'deleting the identity' => ['DELETE FROM organisation_identity', 'ORGANISATION_IDENTITY_IMMUTABLE'],
             'a ledger clock of another organisation' => ["INSERT INTO org_membership_ledger_clocks (organisation_id) VALUES ('" . self::B . "')", 'org_membership_ledger_clocks_organisation_identity_fk'],
+            // S2-4b: a declaration refers to this database's own membership rows only (its membership and period keys).
+            'a scheduled resignation of another organisation' => ["INSERT INTO org_membership_scheduled_resignations (organisation_id, membership_id, declaration_id, period_fact_id, declaration_date, effective_date, provenance, recorded_at, state)
+                VALUES ('" . self::B . "', 'm1', 'd1', 'a1', '2024-10-14', '2024-11-03', '{}', now(), 'scheduled')", 'violates foreign key constraint "org_membership_scheduled_resignations_'],
         ];
         foreach ($refusals as $why => [$sql, $reason]) {
             try {

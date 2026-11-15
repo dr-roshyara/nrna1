@@ -1,0 +1,162 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DEEEDED                                                             7 / 7 (100%)
+
+Time: 00:08.489, Memory: 26.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_a_withdrawal_is_stored_with_who_and_when_and_the_history_is_kept
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (9e36a159-7f75-466b-b3c3-ae2d9dc3fc46, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.405982+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.413036+00). (Connection: pgsql, Host: 127.0.0.1, Port: 40005, Database: membership_pg_isolated, SQL: UPDATE org_membership_scheduled_resignations
+                 SET state = withdrawn, withdrawn_on = 2024-10-24, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
+                 WHERE organisation_id = 9e36a159-7f75-466b-b3c3-ae2d9dc3fc46 AND membership_id = M1 AND declaration_id = D1 AND state = 'scheduled')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:109
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (9e36a159-7f75-466b-b3c3-ae2d9dc3fc46, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.405982+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.413036+00).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:609
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:109
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_requests_are_idempotent_and_a_reused_key_is_refused
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (ba782357-340e-4e5b-bba4-77f4fcdaacb8, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.511515+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.54067+00). (Connection: pgsql, Host: 127.0.0.1, Port: 40005, Database: membership_pg_isolated, SQL: UPDATE org_membership_scheduled_resignations
+                 SET state = withdrawn, withdrawn_on = 2024-10-24, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
+                 WHERE organisation_id = ba782357-340e-4e5b-bba4-77f4fcdaacb8 AND membership_id = M1 AND declaration_id = D1 AND state = 'scheduled')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:125
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (ba782357-340e-4e5b-bba4-77f4fcdaacb8, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.511515+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.54067+00).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:609
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:125
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_store_compares_the_membership_version_and_the_declaration_state
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (e27a166e-59d2-4bb0-9e35-14ad6a3eac42, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, 2026-11-15 14:03:02.636431+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.645835+00). (Connection: pgsql, Host: 127.0.0.1, Port: 40005, Database: membership_pg_isolated, SQL: UPDATE org_membership_scheduled_resignations
+                 SET state = withdrawn, withdrawn_on = 2024-10-24, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
+                 WHERE organisation_id = e27a166e-59d2-4bb0-9e35-14ad6a3eac42 AND membership_id = M1 AND declaration_id = D1 AND state = 'scheduled')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:149
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (e27a166e-59d2-4bb0-9e35-14ad6a3eac42, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, 2026-11-15 14:03:02.636431+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.645835+00).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:609
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:149
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationTest::test_the_database_keeps_the_history
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (bd9c446d-e20c-4669-be9d-6d5664048196, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.776556+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.787602+00). (Connection: pgsql, Host: 127.0.0.1, Port: 40005, Database: membership_pg_isolated, SQL: UPDATE org_membership_scheduled_resignations
+                 SET state = withdrawn, withdrawn_on = 2024-10-24, withdrawn_by = ?, executed_fact_id = ?, superseded_because = ?, changed_at = clock_timestamp()
+                 WHERE organisation_id = bd9c446d-e20c-4669-be9d-6d5664048196 AND membership_id = M1 AND declaration_id = D1 AND state = 'scheduled')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:172
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_scheduled_resignations" violates check constraint "org_membership_scheduled_resignations_state_check"
+DETAIL:  Failing row contains (bd9c446d-e20c-4669-be9d-6d5664048196, M1, D1, A1, 2024-10-14, 2024-11-03, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., 2024-10-04 00:00:00+00, 2026-11-15 14:03:02.776556+00, withdrawn, 2024-10-24, null, null, null, 2026-11-15 14:03:02.787602+00).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:609
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:597
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:549
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:130
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24b/run1/mutants/98f0b7d0/mutant.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndRecordDeclaration.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:73
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationTest.php:172
+
+ERRORS!
+Tests: 7, Assertions: 35, Errors: 4, Deprecations: 1.

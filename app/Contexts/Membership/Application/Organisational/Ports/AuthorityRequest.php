@@ -21,6 +21,9 @@ use App\Contexts\Membership\Domain\Organisational\TimePoint;
  * - `requestId`: identifies the request; the command's idempotency key.
  * - `evidenceRef`: for `record-death` only, and required there (D-208 §2: "evidence reference"; GC-4: refused without
  *   evidence). Added in S2-3b: S2-3a had omitted it (a gap against D-208, closed additively).
+ * - `declarationRef`: `record-resignation` in its **withdraw shape** only (D-208 §2, D-204, GC-12): the reference of the
+ *   scheduled resignation declaration being withdrawn. Never together with `declaredEffectiveAt` (that is the resign
+ *   shape). Added in S2-4b, additively.
  * Built by the use cases; never from a caller-supplied authority.
  */
 final readonly class AuthorityRequest
@@ -34,7 +37,11 @@ final readonly class AuthorityRequest
         public ?TimePoint $declaredEffectiveAt,
         public string $requestId,
         public ?string $evidenceRef = null,
+        public ?string $declarationRef = null,
     ) {
+        if ($declarationRef !== null && ($act !== MembershipAct::RecordResignation || $declaredEffectiveAt !== null || trim($declarationRef) === '')) {
+            throw new \InvalidArgumentException('Only withdrawing a scheduled resignation names a declaration, and without an effective date.');
+        }
         if (trim($actor) === '' || trim($requestId) === '') {
             throw new \InvalidArgumentException('An authority request names its actor and its request id.');
         }

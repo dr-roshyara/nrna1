@@ -34,6 +34,11 @@ final class ScheduledResignationTest extends TestCase
         return TimePoint::of($o);
     }
 
+    private static function by(): Provenance
+    {
+        return Provenance::decision('P1');
+    }
+
     private static function admitted(): MemberHistory
     {
         $h = MemberHistory::start();
@@ -92,18 +97,56 @@ final class ScheduledResignationTest extends TestCase
         $first = self::schedule($h);
 
         $this->assertSame(RefusalReason::ScheduledResignationAlreadyPending, self::schedule($h, 'D2', 11, 40, [$first]));
-        $this->assertSame(RefusalReason::DuplicateDeclarationId, self::schedule($h, 'D1', 11, 40, [$first->withdraw(self::t(12))]));
-        $this->assertInstanceOf(ScheduledResignation::class, self::schedule($h, 'D2', 13, 40, [$first->withdraw(self::t(12))]), 'after a withdrawal, a new one');
+        $this->assertSame(RefusalReason::DuplicateDeclarationId, self::schedule($h, 'D1', 11, 40, [$first->withdraw(self::t(12), self::by())]));
+        $this->assertInstanceOf(ScheduledResignation::class, self::schedule($h, 'D2', 13, 40, [$first->withdraw(self::t(12), self::by())]), 'after a withdrawal, a new one');
     }
 
     public function test_withdrawal_only_before_the_scheduled_date_starts(): void
     {
         $d = self::schedule(self::admitted());
 
-        $this->assertSame(ScheduledResignationState::Withdrawn, $d->withdraw(self::t(29))->state());
-        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(30)), 'the date has started (D-201)');
-        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(31)));
-        $this->assertSame(RefusalReason::DeclarationNotScheduled, $d->withdraw(self::t(20))->withdraw(self::t(21)));
+        $this->assertSame(ScheduledResignationState::Withdrawn, $d->withdraw(self::t(29), self::by())->state());
+        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(30), self::by()), 'the date has started (D-201)');
+        $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(31), self::by()));
+        $this->assertSame(RefusalReason::DeclarationNotScheduled, $d->withdraw(self::t(20), self::by())->withdraw(self::t(21), self::by()));
+    }
+
+    public function test_a_withdrawal_records_when_and_by_whom_and_keeps_the_declaration(): void
+    {
+        $w = self::schedule(self::admitted())->withdraw(self::t(20), Provenance::decision('registrar-1'));
+
+        $this->assertSame(20, $w->withdrawnOn()?->ordinal());
+        $this->assertSame('registrar-1', $w->withdrawnBy()?->actorOrSource(), 'a recorder may withdraw for the member (GC-12)');
+        $this->assertSame(['P1', 10, 30], [$w->provenance()->actorOrSource(), $w->declarationDate()->ordinal(), $w->effectiveDate()->ordinal()], 'the declaration itself is kept');
+    }
+
+    public function test_a_stored_declaration_reloads_in_each_state_and_an_inconsistent_one_is_rejected(): void
+    {
+        $d = self::schedule(self::admitted());
+        $reload = static fn (ScheduledResignation $x): ScheduledResignation => ScheduledResignation::fromStorage($x->id(), $x->period(), $x->declarationDate(), $x->effectiveDate(),
+            $x->provenance(), $x->decidedAt(), $x->state(), $x->withdrawnOn(), $x->withdrawnBy(), $x->executedAs(), $x->supersededBecause());
+        foreach ([$d, $d->withdraw(self::t(20), self::by()), $d->markExecuted(FactId::fromString('E1')), $d->supersede('ended: E9')] as $x) {
+            $this->assertEquals($x, $reload($x), $x->state()->value);
+        }
+
+        $bad = [
+            'scheduled with a withdrawal' => [ScheduledResignationState::Scheduled, self::t(20), self::by(), null, null],
+            'withdrawn without its actor' => [ScheduledResignationState::Withdrawn, self::t(20), null, null, null],
+            'withdrawn on its date' => [ScheduledResignationState::Withdrawn, self::t(30), self::by(), null, null],
+            'executed without its End' => [ScheduledResignationState::Executed, null, null, null, null],
+            'superseded without a reason' => [ScheduledResignationState::Superseded, null, null, null, null],
+            'executed and superseded' => [ScheduledResignationState::Executed, null, null, FactId::fromString('E1'), 'x'],
+        ];
+        foreach ($bad as $why => [$state, $on, $by, $end, $because]) {
+            try {
+                ScheduledResignation::fromStorage($d->id(), $d->period(), $d->declarationDate(), $d->effectiveDate(), $d->provenance(), $d->decidedAt(), $state, $on, $by, $end, $because);
+                $this->fail("accepted: {$why}");
+            } catch (\InvalidArgumentException) {
+                $this->addToAssertionCount(1);
+            }
+        }
+        $this->expectException(\InvalidArgumentException::class);
+        ScheduledResignation::fromStorage($d->id(), $d->period(), self::t(30), self::t(30), $d->provenance(), null, ScheduledResignationState::Scheduled, null, null, null, null);
     }
 
     public function test_mi3_a_declaration_is_superseded_when_its_period_ends_earlier(): void
@@ -114,7 +157,7 @@ final class ScheduledResignationTest extends TestCase
         $this->assertSame(ScheduledResignationState::Superseded, $superseded->state());
         $this->assertSame('the period ended earlier: E1', $superseded->supersededBecause());
         $this->assertSame(RefusalReason::DeclarationNotScheduled, $superseded->supersede('again'));
-        $this->assertSame(RefusalReason::DeclarationNotScheduled, $d->withdraw(self::t(20))->supersede('x'));
+        $this->assertSame(RefusalReason::DeclarationNotScheduled, $d->withdraw(self::t(20), self::by())->supersede('x'));
     }
 
     public function test_mi15a_execution_on_the_date_records_the_end_on_that_date_decided_by_the_declaration(): void
@@ -155,7 +198,7 @@ final class ScheduledResignationTest extends TestCase
         $h = self::admitted();
         $d = self::schedule($h);
 
-        foreach ([$d->withdraw(self::t(20)), $d->supersede('x'), $d->markExecuted(FactId::fromString('E0'))] as $other) {
+        foreach ([$d->withdraw(self::t(20), self::by()), $d->supersede('x'), $d->markExecuted(FactId::fromString('E0'))] as $other) {
             $this->assertSame(RefusalReason::DeclarationNotScheduled, $h->member->decideScheduledResignationEnd(FactId::fromString('E1'), $other, self::t(30))->refusal(), $other->state()->value);
         }
     }

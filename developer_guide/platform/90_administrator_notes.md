@@ -228,3 +228,17 @@ Never mark an organisation operational or change `schema_state` by hand.
 3. **Existing test organisation databases** need them too: re-provision, or use `platform:operate <organisation> migration-repair` while their schema state is `migration-failed` (S2-1 notes).
 4. **Rolling back** is refused while any suspend or restore row exists.
 5. **Suspensions cannot be recorded in production yet, by design:** no authority check is wired until Governance (S3).
+
+## Membership lifecycle S2-4b: scheduled resignation declarations (2026-11-15, PBDIGIT-354)
+
+**Development and test only**, exactly as for S2-1. No persistent or production database.
+1. **Two migrations, always together (parity rule):**
+   - central: `database/migrations/2026_11_15_360000_create_org_membership_scheduled_resignations.php`;
+   - organisation set: `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_15_300700_create_org_membership_scheduled_resignations.php`.
+2. **What they add:** two new tables, `org_membership_scheduled_resignations` (the declarations) and `org_membership_declaration_commands` (their idempotency keys), plus one trigger function, `org_membership_scheduled_resignation_guard()`. **No existing table changes.**
+3. **Order:** after the S2-2 migrations (`350000` central, `300600` organisation).
+4. **Existing test organisation databases** need them too: re-provision, or use `platform:operate <organisation> migration-repair` while their schema state is `migration-failed` (S2-1 notes).
+5. **The database refuses deleting or rewriting a declaration, by design.** It keeps the history of declarations, withdrawals and executions. Do not try to "clean up" a declaration by hand. A mistaken record is corrected by a recorded act, never by deleting rows.
+6. **Rolling back** (`down()`) is refused while any declaration exists.
+7. **`migrate:fresh` on a test database is safe:** the trigger function is `CREATE OR REPLACE`. (It wasn't in the first draft, and the legacy suite caught the collision.) Never run `migrate:fresh` on the development database.
+8. **Nobody can schedule a resignation in production yet, by design:** no authority check is wired until Governance (S3). **Scheduled resignations are not executed anywhere yet:** execution comes in S2-4c and needs the organisation calendar from Organisation (S4, D-239).

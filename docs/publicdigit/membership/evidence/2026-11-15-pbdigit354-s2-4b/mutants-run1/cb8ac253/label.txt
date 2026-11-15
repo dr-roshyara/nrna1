@@ -1,0 +1,1 @@
+P1 the transition has no compare-and-set

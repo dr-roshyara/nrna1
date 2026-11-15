@@ -1,0 +1,44 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....................F...........                                  32 / 32 (100%)
+
+Time: 00:00.032, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_same_day_is_refused_before_anyone_is_asked
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest Object #76 (
++        'act' => App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #808 (RecordResignation, 'record-resignation'),
++        'actor' => 'P1',
++        'subject' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #788 (
++            'value' => 'P1',
++        ),
++        'period' => App\Contexts\Membership\Domain\Organisational\PeriodId Object #161 (
++            'admit' => App\Contexts\Membership\Domain\Organisational\FactId Object #281 (
++                'value' => 'A1',
++            ),
++        ),
++        'at' => App\Contexts\Membership\Domain\Organisational\TimePoint Object #162 (
++            'ordinal' => 10,
++        ),
++        'declaredEffectiveAt' => App\Contexts\Membership\Domain\Organisational\TimePoint Object #21 (
++            'ordinal' => 10,
++        ),
++        'requestId' => 'k-s1',
++        'evidenceRef' => null,
++        'declarationRef' => null,
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:127
+
+FAILURES!
+Tests: 32, Assertions: 137, Failures: 1.

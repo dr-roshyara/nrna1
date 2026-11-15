@@ -1,0 +1,93 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......EE..........EEEEEEEEEEEEEE                                  32 / 32 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 16 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_a_withdrawal_records_when_and_by_whom_and_keeps_the_declaration
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\ScheduledResignation::withdrawnBy()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:119
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_a_stored_declaration_reloads_in_each_state_and_an_inconsistent_one_is_rejected
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\ScheduledResignation::fromStorage()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:126
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:129
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_member_schedules_their_resignation_and_nothing_changes_in_the_membership
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_recorder_schedules_with_their_own_authority_and_own_act_authorises_only_the_member
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+5) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_same_day_is_refused_before_anyone_is_asked
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+6) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_not_authorised_or_undetermined_records_nothing_and_comes_before_member_not_found
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+7) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_one_scheduled_declaration_per_period
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+8) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_repeated_request_returns_the_same_declaration_and_a_reused_key_is_refused
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+9) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_member_withdraws_before_the_date_in_the_withdraw_shape
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+10) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_recorder_may_withdraw_and_own_act_authorises_only_the_member
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+11) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_withdrawal_once_the_date_has_started_is_refused_and_a_withdrawal_is_final
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+12) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_an_unknown_declaration_is_not_revealed_to_an_unauthorised_actor
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+13) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_after_a_withdrawal_a_new_resignation_can_be_scheduled_and_a_repeated_withdrawal_is_answered_from_its_key
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+14) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_write_conflict_is_decided_again_from_a_fresh_read
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+15) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_store_outcomes_are_all_mapped
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+16) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_the_withdraw_shape_is_validated_by_the_request
+Error: Class "Tests\Doubles\InMemoryScheduledResignationStore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:61
+
+ERRORS!
+Tests: 32, Assertions: 71, Errors: 16.

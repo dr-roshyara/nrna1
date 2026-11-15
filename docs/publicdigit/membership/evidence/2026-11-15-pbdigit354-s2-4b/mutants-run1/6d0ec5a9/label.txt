@@ -1,0 +1,1 @@
+P2 record ignores the membership version

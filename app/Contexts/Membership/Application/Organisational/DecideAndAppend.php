@@ -69,11 +69,7 @@ final class DecideAndAppend
                 return CommandOutcome::refusedByDomain($asked);
             }
             $authorisation = $this->authority->check($tenant, $asked);
-            $refusal = match ($authorisation->outcome()) {
-                AuthorityOutcome::Authorised => self::ownActMisapplied($asked, $authorisation) ? ApplicationRefusal::OwnActNotApplicable : null,
-                AuthorityOutcome::NotAuthorised => ApplicationRefusal::NotAuthorised,
-                AuthorityOutcome::Undetermined => ApplicationRefusal::AuthorityUndetermined,
-            };
+            $refusal = self::authorisationRefusal($asked, $authorisation);
             if ($refusal !== null) {
                 return CommandOutcome::refused($refusal);
             }
@@ -109,6 +105,19 @@ final class DecideAndAppend
         }
 
         return CommandOutcome::refused($exhausted);
+    }
+
+    /**
+     * The one reading of an authority answer (D-238), shared with the declaration use cases (S2-4b): null = may act;
+     * not authorised and undetermined are distinct refusals (≠ No); `ownAct` is checked (D-203).
+     */
+    public static function authorisationRefusal(AuthorityRequest $asked, AuthorityDecision $authorisation): ?ApplicationRefusal
+    {
+        return match ($authorisation->outcome()) {
+            AuthorityOutcome::Authorised => self::ownActMisapplied($asked, $authorisation) ? ApplicationRefusal::OwnActNotApplicable : null,
+            AuthorityOutcome::NotAuthorised => ApplicationRefusal::NotAuthorised,
+            AuthorityOutcome::Undetermined => ApplicationRefusal::AuthorityUndetermined,
+        };
     }
 
     /** D-203: `ownAct` is the member's own right to resign; for any other act, or another actor, it authorises nothing. */

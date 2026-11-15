@@ -1,0 +1,20 @@
+W1 a stored withdrawal on its date is accepted             tests:32   KILLED (assertions)  a_stored_declaration_reloads_in_each_sta;
+W2 a stored scheduled declaration may carry a withdrawal   tests:32   KILLED (assertions)  a_stored_declaration_reloads_in_each_sta;
+A1 the same day reaches the authority                      tests:32   KILLED (assertions)  the_same_day_is_refused_before_anyone_is;
+A2 the withdraw shape loses the declaration reference      tests:32   KILLED (assertions)  the_member_withdraws_before_the_date_in_;
+A3 the answer is not checked                               tests:32   KILLED (assertions)  an_unknown_declaration_is_not_revealed_t;a_recorder_may_withdraw_and_own_act_auth;a_recorder_schedules_with_their_own_auth;not_authorised_or_undetermined_records_n;
+A4 ownAct and undetermined read as a plain yes / no        tests:32   KILLED (assertions)  a_recorder_may_withdraw_and_own_act_auth;a_recorder_schedules_with_their_own_auth;not_authorised_or_undetermined_records_n;
+A5 member not found told before the answer (leak)          tests:32   KILLED (assertions)  not_authorised_or_undetermined_records_n;
+A6 a conflict is not decided again                         tests:32   KILLED (assertions)  a_write_conflict_is_decided_again_from_a;
+A7 no idempotency pre-check                                tests:32   KILLED (assertions)  a_repeated_request_returns_the_same_decl;
+A8 the declaration is recorded on a stale version          tests:32   KILLED (assertions)  after_a_withdrawal_a_new_resignation_can;a_recorder_may_withdraw_and_own_act_auth;a_recorder_schedules_with_their_own_auth;a_repeated_request_returns_the_same_decl;a_write_conflict_is_decided_again_from_a;one_scheduled_declaration_per_period;the_member_schedules_their_resignation_a;the_member_withdraws_before_the_date_in_;withdrawal_once_the_date_has_started_is_;
+A9 the withdrawal does not record who withdrew             tests:32   KILLED (assertions)  the_member_withdraws_before_the_date_in_;
+R1 the withdraw shape accepts an effective date            tests:32   KILLED (assertions)  the_withdraw_shape_is_validated_by_the_r;
+R2 any act may name a declaration                          tests:32   KILLED (assertions)  the_withdraw_shape_is_validated_by_the_r;
+P1 the transition has no compare-and-set                   tests:7    KILLED+ERRORS (1: Illuminate\Database\QueryException: SQLSTATE[P0001]: Raise exception: 7 ERROR:  SCHEDULED_RESIGNATION_FINAL: a)  the_store_compares_the_membership_versio;
+P2 record ignores the membership version                   tests:7    KILLED (assertions)  the_store_compares_the_membership_versio;
+P3 a second pending declaration is not a conflict          tests:7    KILLED+ERRORS (1: Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate)  the_store_compares_the_membership_versio;
+P4 a withdrawal is stored without who withdrew             tests:7    KILLED+ERRORS (4: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  a_withdrawal_is_stored_with_who_and_when;requests_are_idempotent_and_a_reused_key;the_database_keeps_the_history;the_store_compares_the_membership_versio;
+P5 record writes no key row                                tests:7    KILLED+ERRORS (1: LogicException: The command was refused.)  requests_are_idempotent_and_a_reused_key;
+P6 reload drops who withdrew                               tests:7    KILLED+ERRORS (3: RuntimeException: Stored scheduled resignation D1 is invalid: An inconsistent withdrawn scheduled resignation.)  a_withdrawal_is_stored_with_who_and_when;requests_are_idempotent_and_a_reused_key;the_store_compares_the_membership_versio;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

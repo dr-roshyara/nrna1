@@ -30,6 +30,7 @@ final class MembershipLedgerIsolationTest extends TestCase
         'database/migrations/2026_11_12_130000_create_org_membership_ledger_clocks_table.php',
         'database/migrations/2026_11_15_340000_add_renew_to_org_membership_facts.php',
         'database/migrations/2026_11_15_350000_add_suspend_restore_to_org_membership_facts.php',
+        'database/migrations/2026_11_15_360000_create_org_membership_scheduled_resignations.php',
     ];
     private const FORBIDDEN = [
         'App\\Contexts\\Membership\\Domain\\Organisational',
@@ -39,6 +40,8 @@ final class MembershipLedgerIsolationTest extends TestCase
         'org_membership_facts',
         'org_membership_commands',
         'org_membership_ledger_clocks',
+        'org_membership_scheduled_resignations',
+        'org_membership_declaration_commands',
     ];
 
     public function test_the_scanner_detects_a_planted_dependency_and_respects_the_allowlist(): void

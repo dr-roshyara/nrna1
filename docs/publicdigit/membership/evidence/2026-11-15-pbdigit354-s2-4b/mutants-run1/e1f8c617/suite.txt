@@ -1,0 +1,37 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...................F.F...F.F....                                  32 / 32 (100%)
+
+Time: 00:00.032, Memory: 12.00 MB
+
+There were 4 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_recorder_schedules_with_their_own_authority_and_own_act_authorises_only_the_member
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:121
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_not_authorised_or_undetermined_records_nothing_and_comes_before_member_not_found
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:133
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_a_recorder_may_withdraw_and_own_act_authorises_only_the_member
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:187
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_an_unknown_declaration_is_not_revealed_to_an_unauthorised_actor
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Application\Organisational\ApplicationRefusal Enum #819 (NotAuthorised, 'not_authorised')
++App\Contexts\Membership\Application\Organisational\ApplicationRefusal Enum #811 (DeclarationNotFound, 'declaration_not_found')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:207
+
+FAILURES!
+Tests: 32, Assertions: 129, Failures: 4.
