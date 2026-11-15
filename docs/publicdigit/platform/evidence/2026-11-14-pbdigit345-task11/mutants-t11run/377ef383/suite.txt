@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............................................F................  63 / 104 ( 60%)
+.........................................                       104 / 104 (100%)
+
+Time: 00:00.043, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_6_the_schema_stays_failed_unless_the_readiness_facts_hold_again
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'failed',
+-    1 => 'readiness-not-restored',
++    0 => 'succeeded',
++    1 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:210
+
+FAILURES!
+Tests: 104, Assertions: 284, Failures: 1.

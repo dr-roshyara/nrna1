@@ -1,0 +1,70 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDFFFDEF                                                            8 / 8 (100%)
+
+Time: 00:20.549, Memory: 26.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_6_the_schema_stays_failed_when_readiness_is_not_restored
+ErrorException: Undefined array key 0
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:298
+
+--
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_7_the_operation_is_recorded_centrally_and_reported_in_the_organisations_own_outbox
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 => stdClass Object (...)
+ )
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:240
+
+2) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_3_without_the_joining_grant_and_for_an_unknown_organisation_it_is_refused_and_recorded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'refused',
+-    1 => 'refused',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:257
+
+3) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_5_a_content_read_is_refused_without_a_case_grant_and_reads_nothing
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 => stdClass Object (...)
+ )
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:270
+
+4) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_8_a_failing_repair_leaves_the_organisation_unroutable_recorded_and_reported
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 => stdClass Object (...)
+ )
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:312
+
+ERRORS!
+Tests: 8, Assertions: 29, Errors: 1, Failures: 4, Deprecations: 1.

@@ -1,0 +1,10 @@
+O1 the joining grant is not required (unit)                    [unit]     tests:104  KILLED  refused_operations_are_recorded_and_change_no;
+O2 a non-technical operation is not refused (unit)             [unit]     tests:104  KILLED  refused_operations_are_recorded_and_change_no;
+O2 a non-technical operation is not refused (db)               [pg-platform:OperatorChannelTest] tests:8    KILLED  t16_5_a_content_read_is_refused_without_a_cas;
+O3 the attempt is not recorded first (unit)                    [unit]     tests:104  KILLED  refused_operations_are_recorded_and_change_no;t16_1_a_migration_repair_under_the_joining_gr;t16_8_a_failed_repair_leaves_the_organisation;
+O3 the attempt is not recorded first (db)                      [pg-platform:OperatorChannelTest] tests:8    KILLED+ERRORS (1: ErrorException)  t16_3_without_the_joining_grant_and_for_an_un;t16_5_a_content_read_is_refused_without_a_cas;t16_6_the_schema_stays_failed_when_readiness_;t16_7_the_operation_is_recorded_centrally_and;t16_8_a_failing_repair_leaves_the_organisatio;
+O4 readiness is not re-verified (unit)                         [unit]     tests:104  KILLED  t16_6_the_schema_stays_failed_unless_the_read;
+O4 readiness is not re-verified (db)                           [pg-platform:OperatorChannelTest] tests:8    KILLED  t16_6_the_schema_stays_failed_when_readiness_;
+O5 a healthy schema is repaired anyway (unit)                  [unit]     tests:104  KILLED  nothing_to_repair_when_the_schema_is_current;
+O7 the organisation is never told (db)                         [pg-platform:OperatorChannelTest] tests:8    KILLED  t16_7_the_operation_is_recorded_centrally_and;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

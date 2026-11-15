@@ -1,0 +1,109 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....................................FFFFFFF...F...............  63 / 104 ( 60%)
+.........................................                       104 / 104 (100%)
+
+Time: 00:00.044, Memory: 12.00 MB
+
+There were 8 failures:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_1_a_migration_repair_under_the_joining_grant_succeeds_records_and_reports
+recorded first, then the outcome
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => Array &1 [
+-        0 => 'attempted',
+-        1 => 'migration-repair',
+-        2 => null,
+-    ],
+-    1 => Array &2 [
+         0 => 'concluded',
+         1 => 'succeeded',
+         2 => null,
+     ],
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:153
+
+2) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.5 a content read (no case grant in release 1)" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'read-members', 'ops:alice', 'case-grant-required')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+3) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.5 any other operation is not technical" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'SELECT * FROM org_memberships', 'ops:alice', 'case-grant-required')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+4) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.3 no joining grant (pending)" ('2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82', 'migration-repair', 'ops:alice', 'no-joining-grant')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+5) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "an unknown organisation" ('9f9f9f9f-9f9f-4f9f-8f9f-9f9f9f9f9f9f', 'migration-repair', 'ops:alice', 'unknown-organisation')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+6) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "a malformed organisation id" ('A', 'migration-repair', 'ops:alice', 'unknown-organisation')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+7) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "no operator named" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'migration-repair', '  ', 'operator-not-named')
+even a refusal is recorded first
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'attempted'
++'concluded'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:178
+
+8) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_8_a_failed_repair_leaves_the_organisation_unroutable_and_is_recorded_and_reported
+Failed asserting that null is identical to Array &0 [
+    0 => 'concluded',
+    1 => 'failed',
+    2 => 'repair-failed',
+].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:224
+
+FAILURES!
+Tests: 104, Assertions: 272, Failures: 8, Warnings: 1.

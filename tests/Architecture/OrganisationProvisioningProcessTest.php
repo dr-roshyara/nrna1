@@ -73,7 +73,11 @@ final class OrganisationProvisioningProcessTest extends TestCase
     public function test_the_preparer_requires_its_dedicated_process_before_anything_else(): void
     {
         $code = self::appCode()[self::PREPARER];
-        $body = substr($code, (int) strpos($code, 'function prepare('));
-        $this->assertMatchesRegularExpression('/^function prepare\([^)]*\): void\s*\{\s*DedicatedProvisioningProcess::requireFor\(\$id\);/', $body);
+        // task 11: the repair mode (E-4) is held to the same first line as founding step 3
+        foreach (['prepare', 'repair'] as $method) {
+            $this->assertNotFalse(strpos($code, "function {$method}("), "the preparer has {$method}()");
+            $body = substr($code, (int) strpos($code, "function {$method}("));
+            $this->assertMatchesRegularExpression('/^function ' . $method . '\([^)]*\): void\s*\{\s*DedicatedProvisioningProcess::requireFor\(\$id\);/', $body, $method);
+        }
     }
 }

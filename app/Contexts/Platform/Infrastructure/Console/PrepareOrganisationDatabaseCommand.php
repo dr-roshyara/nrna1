@@ -16,7 +16,8 @@ use Illuminate\Console\Command;
  */
 final class PrepareOrganisationDatabaseCommand extends Command
 {
-    protected $signature = 'platform:prepare-organisation-database {organisation : the organisation id (UUID)}';
+    protected $signature = 'platform:prepare-organisation-database {organisation : the organisation id (UUID)}
+        {--repair : task 11 (E-4): re-apply the organisation migration set to a migration-failed organisation}';
 
     protected $description = 'Founding step 3: prepare one organisation\'s own database (its dedicated process).';
 
@@ -25,7 +26,7 @@ final class PrepareOrganisationDatabaseCommand extends Command
         try {
             $id = TenantId::fromString((string) $this->argument('organisation'));
             DedicatedProvisioningProcess::enter($id);
-            $preparer->prepare($id);
+            $this->option('repair') ? $preparer->repair($id) : $preparer->prepare($id);
         } catch (\Throwable $e) {
             $this->getOutput()->getErrorStyle()->writeln(str_replace(["\r", "\n"], ' ', $e::class . ': ' . $e->getMessage()));
 

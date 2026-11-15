@@ -1,2 +1,2 @@
 
-| 10 | [Published routing contract (open host)](10_published_routing_contract.md) | `RoutedOrganisation`, `RoutedOrganisationConnection`, the consistency guarantee (D-233) |
+| 11 | [Operator channel E-4](11_operator_channel.md) | `platform:operate <organisation> migration-repair --operator=…`: technical only, recorded and reported (T-16) |

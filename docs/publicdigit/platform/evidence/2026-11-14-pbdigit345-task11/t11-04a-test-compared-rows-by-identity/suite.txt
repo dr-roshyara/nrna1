@@ -1,0 +1,49 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDDDDDDFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 65 / 96 ( 67%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                                   96 / 96 (100%)
+
+Time: 01:41.538, Memory: 30.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Platform\OperatorChannelTest::test_t16_1_and_2_a_migration_repair_restores_the_schema_without_reading_business_tables
+T-16.4: B untouched
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => Array &1 [
+-        0 => stdClass Object #4733 (
++        0 => stdClass Object #4836 (
+             'migration' => '2026_11_14_300000_create_organisation_identity',
+         ),
+-        1 => stdClass Object #4905 (
++        1 => stdClass Object #3220 (
+             'migration' => '2026_11_14_300100_create_org_membership_ledger',
+         ),
+-        2 => stdClass Object #4237 (
++        2 => stdClass Object #7802 (
+             'migration' => '2026_11_14_300200_create_ledger_clock_on_organisation_identity',
+         ),
+-        3 => stdClass Object #4747 (
++        3 => stdClass Object #4247 (
+             'migration' => '2026_11_14_300300_create_ledger_readiness_function',
+         ),
+-        4 => stdClass Object #4103 (
++        4 => stdClass Object #2249 (
+             'migration' => '2026_11_14_300400_create_outbox_events',
+         ),
+     ],
+     1 => 12,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/OperatorChannelTest.php:231
+
+FAILURES!
+Tests: 96, Assertions: 456, Failures: 1, Deprecations: 1.

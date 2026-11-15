@@ -1,0 +1,2 @@
+O3 the attempt is not recorded first (db)                      [pg-platform:OperatorChannelTest] tests:8    KILLED  t16_3_without_the_joining_grant_and_for_an_un;t16_5_a_content_read_is_refused_without_a_cas;t16_6_the_schema_stays_failed_when_readiness_;t16_7_the_operation_is_recorded_centrally_and;t16_8_a_failing_repair_leaves_the_organisatio;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

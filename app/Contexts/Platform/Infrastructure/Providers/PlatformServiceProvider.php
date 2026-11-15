@@ -6,6 +6,14 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ContactAccounts;
+use App\Contexts\Platform\Application\Ports\OrganisationOperationReport;
+use App\Contexts\Platform\Application\Ports\OrganisationSchemaRepair;
+use App\Contexts\Platform\Application\Ports\TechnicalOperationLog;
+use App\Contexts\Platform\Infrastructure\Console\OperateOnOrganisationCommand;
+use App\Contexts\Platform\Infrastructure\Outbox\TechnicalOperationPerformedHydrator;
+use App\Contexts\Platform\Infrastructure\OutboxOrganisationOperationReport;
+use App\Contexts\Platform\Infrastructure\PostgresTechnicalOperationLog;
+use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
 use App\Contexts\Platform\Application\Published\RoutedOrganisation;
 use App\Contexts\Platform\Infrastructure\ContainerRoutedOrganisation;
 use App\Contexts\Platform\Infrastructure\Published\RoutedOrganisationConnection;
@@ -56,6 +64,10 @@ final class PlatformServiceProvider extends ServiceProvider
         ));
         // task 5b: founding step 3 runs in its own process (the child inherits this process's environment)
         $this->app->bind(OrganisationProvisioner::class, static fn ($app): ProcessOrganisationProvisioner => new ProcessOrganisationProvisioner($app->basePath()));
+        // task 11 (E-4): migration repair in the same dedicated process; the central record; the report to the organisation
+        $this->app->bind(OrganisationSchemaRepair::class, static fn ($app): ProcessOrganisationProvisioner => new ProcessOrganisationProvisioner($app->basePath()));
+        $this->app->bind(TechnicalOperationLog::class, static fn (): PostgresTechnicalOperationLog => new PostgresTechnicalOperationLog(DB::connection()));
+        $this->app->bind(OrganisationOperationReport::class, OutboxOrganisationOperationReport::class);
         // task 5c: step 5 reads the L-1 facts (no migrator) and the contacts' accounts (through Identity, one adapter)
         $this->app->bind(OrganisationReadinessProbe::class, static fn ($app): PostgresOrganisationReadinessProbe => new PostgresOrganisationReadinessProbe(
             $app->make(ServedOrganisationRepository::class),
@@ -75,6 +87,8 @@ final class PlatformServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // task 11 (E-4): the organisation's operator-channel report is hydrated by Platform (it is Platform's event)
+        $this->app->make(EventHydratorRegistry::class)->register(new TechnicalOperationPerformedHydrator());
         // task 6 (E-1): the registry entry middleware and the selection after login (shared hostname, D-219 (2))
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('organisation.entry', OrganisationEntry::class);
@@ -84,6 +98,7 @@ final class PlatformServiceProvider extends ServiceProvider
             $this->commands([
                 PrepareOrganisationDatabaseCommand::class,   // task 5b: the dedicated provisioning process
                 FanOutCommand::class,                        // task 8: E-3 fan-out
+                OperateOnOrganisationCommand::class,         // task 11: E-4 operator channel (technical only)
             ]);
         }
     }

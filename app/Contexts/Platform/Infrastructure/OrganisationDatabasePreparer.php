@@ -7,6 +7,7 @@ namespace App\Contexts\Platform\Infrastructure;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Application\ResolvedOrganisation;
 use App\Contexts\Platform\Domain\PlatformStatus;
+use App\Contexts\Platform\Domain\SchemaState;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 /**
@@ -40,6 +41,29 @@ final class OrganisationDatabasePreparer
             $db->insert('INSERT INTO organisation_identity (id) VALUES (?::uuid) ON CONFLICT ON CONSTRAINT organisation_identity_one_row DO NOTHING', [$id->value()]);
             $bound = $db->selectOne('SELECT id::text AS id FROM organisation_identity');
             if ($bound?->id !== $id->value()) {
+                throw new OrganisationProvisioningRefused("The database at organisation {$id->value()}'s locator is bound to another organisation.");
+            }
+        } finally {
+            $this->factory->release($context);
+        }
+    }
+
+    /**
+     * Task 11 (E-4, §3.8 migration repair): re-apply the organisation migration set to an organisation whose schema is
+     * migration-failed, in this dedicated process; then verify (never write) its identity binding. Reads only
+     * `migrations` and `organisation_identity`: technical metadata, never a business table (T-16).
+     */
+    public function repair(TenantId $id): void
+    {
+        DedicatedProvisioningProcess::requireFor($id);
+        $o = $this->registry->find($id) ?? throw new OrganisationProvisioningRefused("Organisation {$id->value()} is not in the registry.");
+        if ($o->locator() === null || $o->schemaState() !== SchemaState::MigrationFailed) {
+            throw new OrganisationProvisioningRefused("Organisation {$id->value()} has no failed schema to repair.");
+        }
+        $context = $this->factory->establish(new ResolvedOrganisation($id, $o->locator()));
+        try {
+            $this->migrations->apply($context);
+            if ($context->connection->selectOne('SELECT id::text AS id FROM organisation_identity')?->id !== $id->value()) {
                 throw new OrganisationProvisioningRefused("The database at organisation {$id->value()}'s locator is bound to another organisation.");
             }
         } finally {

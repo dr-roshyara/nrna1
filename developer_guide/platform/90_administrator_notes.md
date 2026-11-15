@@ -116,3 +116,19 @@
 3. **Dead-lettered organisation events stay in that organisation's `outbox_events` with `status = 'failed'`.**
    - An ISO-9 mismatch is logged at **critical** as `outbox.iso9.organisation_mismatch`: alert on it, because it means a row of another organisation was found in this database.
    - Do not re-drive such a row; investigate it.
+
+## Task 11: the operator channel (2026-11-15)
+
+**Development and test only for now.**
+
+1. **Central migration** `database/migrations/2026_11_15_330000_create_platform_technical_operations.php` (the record of every operator-channel operation). Not for production before the migration-approval control.
+2. **Repairing a failed organisation migration:**
+
+   ```
+   php artisan platform:operate <organisation-id> migration-repair --operator="ops:<your name>"
+   ```
+
+   - Run it **on the application server**, with the same environment as provisioning (`ORGANISATION_DB_CLUSTERS`, cluster logins). It starts the dedicated provisioning process itself.
+   - **Outcomes:** `succeeded`; `failed: repair-failed`; `failed: readiness-not-restored`; `refused: …`. Each one is in `platform_technical_operations`, and succeeded and failed repairs are also reported in the organisation's own outbox.
+   - **It never changes an organisation's status and never reads business content.** If the readiness is not restored, investigate; do not edit the registry by hand.
+3. **There is no command to read an organisation's business data.** Requests for it are refused (`case-grant-required`): content access is not offered in release 1 (D-219 (3)).
