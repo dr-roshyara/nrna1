@@ -1,0 +1,17 @@
+091b5ed72a6e0c9feceae1ed2d2791bc5f2488f9 runs=6 ancestor docs(platform): D-234 recorded, T-17 restore in place; the drill resto
+177618dc4b482c0509e8e41ada91170b8041eb7f runs=13 ancestor feat(platform): task 9a organisation outbox: outbox_events in the orga
+2c949ee358ed43db176cbc94c3ddafa440e74a9e runs=3 ancestor feat(platform): registry persistence and ResolutionService, T-2 (PBDIG
+43c8681ce13892f5aab382b64fce4656f725bcf0 runs=3 ancestor feat(platform): task 5a founding steps 1-2: founding application, lega
+45522a35a4b7f6acec1ca31293bcdb12b33612c7 runs=7 ancestor feat(platform): task 5b founding step 3 in its own process: locator fi
+55e4452449e5ee4b41f6f4223f8435f9494d2b83 runs=5 ancestor docs(platform): task 7 evidence reconciliation, mutant Q2 rerun agains
+668469223d20d980c85e64a890c597a900a68391 runs=6 ancestor test(platform): task 7 step 1, T-19 legacy queue characterisation on t
+b00c4581486588d0ef768cb07c56e6f0dede77f0 runs=5 ancestor feat(platform): task 5c founding step 5: operational only on L-1 facts
+b5d6462783c24353aca3304c1a4808112d16a3e8 runs=2 ancestor feat(platform): task 8 organisation fan-out E-3: one organisation job 
+b6940b8f85c0191517f693ee36fe047fcbecaa28 runs=2 ancestor docs(membership): guide 23, the Membership ledger in an organisation's
+b69742e4455d59b59a801495d9674bb13e90a3db runs=7 ancestor docs(platform): D-233 recorded, Platform-Membership routing contract a
+c17f524275d08354ad864ed2f0ff15eaa5761a54 runs=6 ancestor feat(platform,membership): task 10 published routing contract and Memb
+c8a584461c1ffccac1a034497ff944f40b0eeee1 runs=10 ancestor docs(platform): slice 2 design delta rev 3 accepted and plan approved 
+c923220c18f8d6d85024b62a5c5e05b52e2b44db runs=4 ancestor docs(reference-geography): G-8 source route: permission requests to UN
+c9cbfc682732e63854dc75691f2b9db1210026b1 runs=5 ancestor test(reference-geography): G-5 closure: pg_trgm differential, 9 of 9 m
+d16a4d906033029f5dbd30aec5c0845b8c33a4ad runs=5 ancestor docs(platform,database): task 11 closure, PlatformStatus vs SchemaStat
+ea721247e3e7abc436793511eac672f586526e45 runs=5 ancestor feat(platform): task 4 organisation migration set: organisation_identi

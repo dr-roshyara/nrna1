@@ -1,0 +1,16 @@
+2026-11-12-pbdigit345-mechanism-evaluation sums=1 files=4 listed=4 : ok
+2026-11-12-pbdigit345-task0 sums=7 files=35 listed=53 : ok ok ok ok ok ok ok
+2026-11-12-pbdigit345-task1 sums=1 files=9 listed=9 : ok
+2026-11-13-pbdigit345-task2 sums=6 files=27 listed=42 : ok ok ok ok ok ok
+2026-11-13-pbdigit345-task3 sums=4 files=16 listed=25 : ok ok ok ok
+2026-11-14-pbdigit345-task10 sums=8 files=62 listed=83 : ok ok ok ok ok ok ok ok
+2026-11-14-pbdigit345-task11 sums=7 files=47 listed=65 : ok ok ok ok ok ok ok
+2026-11-14-pbdigit345-task4 sums=5 files=35 listed=47 : ok ok ok ok ok
+2026-11-14-pbdigit345-task5a sums=6 files=22 listed=37 : ok ok ok ok ok ok
+2026-11-14-pbdigit345-task5b sums=4 files=20 listed=29 : ok ok ok ok
+2026-11-14-pbdigit345-task5c sums=8 files=32 listed=53 : ok ok ok ok ok ok ok ok
+2026-11-14-pbdigit345-task6 sums=6 files=43 listed=58 : ok ok ok ok ok ok
+2026-11-14-pbdigit345-task7 sums=10 files=64 listed=88 : ok ok ok ok ok ok ok ok ok ok
+2026-11-14-pbdigit345-task8 sums=6 files=45 listed=60 : ok ok ok ok ok ok
+2026-11-14-pbdigit345-task9 sums=16 files=74 listed=119 : ok ok ok ok ok ok ok ok ok ok ok ok ok ok ok ok
+2026-11-15-pbdigit345-task12 sums=12 files=89 listed=122 : ok ok ok ok ok ok ok ok ok ok ok ok

@@ -1,0 +1,110 @@
+T-1 ... T-26 -> tests by name, with each test's result at 8b6fcd569 (JUnit logs: t13-03-db-free-junit.xml, t13-04-cluster-junit.xml).
+Matching: a test named with the token t<n>. Excluded: slice 1's PostgresMemberRepositoryInvariantsTest (its own t2.. numbering).
+
+T-1: Two organisations, one account bound to both: each request sees only its own organisation; switching the id is refused
+    PASS [cluster] OrganisationEntryHttpTest::test_t1_each_request_sees_only_the_selected_organisation_and_switching_the_id_is_refused
+T-2: A request for an organisation not `operational`, or with `schemaState ≠ current`, is refused
+    PASS [cluster] PostgresServedOrganisationRepositoryTest::test_t2_only_an_operational_organisation_with_a_current_schema_resolves
+T-3: One long-running worker processes A, B, A, B jobs: no read or write crosses; the connection is new each job
+    PASS [cluster] OrganisationQueueTest::test_t3_t22_one_real_worker_runs_a_b_a_b_and_nothing_crosses_or_survives
+T-4: A job without an organisation id is refused; an architecture test finds no organisation job without the marker
+    PASS [db-free] OrganisationQueueArchitectureTest::test_t4_every_queued_class_using_an_organisation_context_is_an_organisation_job
+    PASS [cluster] OrganisationQueueTest::test_t4_a_job_without_an_organisation_id_is_refused_and_failed
+T-5: A fan-out over three organisations, one failing: the other two complete; a non-operational one is skipped
+    PASS [db-free] FanOutToOrganisationsTest::test_t5_one_failing_dispatch_never_stops_the_others
+    PASS [db-free] FanOutToOrganisationsTest::test_t5_only_routable_organisations_get_work_one_each_the_others_are_skipped_with_their_reason
+    PASS [cluster] OrganisationFanOutTest::test_t5_a_real_worker_completes_the_others_while_one_organisation_fails
+    PASS [cluster] OrganisationFanOutTest::test_t5_the_fan_out_queues_one_job_per_operational_organisation_and_skips_the_pending_one
+T-6: Relay: C1 written in A is delivered in A and never seen by B's relay; an event naming B found in A is dead-lettered
+    PASS [cluster] OrganisationOutboxRelayTest::test_t6_c1_written_in_a_is_delivered_in_a_and_never_seen_by_bs_relay
+    PASS [cluster] OrganisationOutboxRelayTest::test_t6_central_and_organisation_relays_never_see_each_others_events
+    PASS [cluster] OrganisationOutboxRelayTest::test_t6_iso9_an_event_naming_b_found_in_a_is_dead_lettered_and_alerted_never_dispatched
+T-7: C2 end to end through routing: answered for a ledger organisation; `SOURCE_NOT_LEDGER` without the store fact; `CROSS_ORGANISATION` when the context is A and th
+    PASS [cluster] MembershipThroughRoutingTest::test_t7_c2_is_complete_for_the_routed_organisation_inside_a_real_e2_job
+    PASS [cluster] MembershipThroughRoutingTest::test_t7_cross_organisation_while_routed_to_a_and_outside_any_routed_operation
+    PASS [cluster] MembershipThroughRoutingTest::test_t7_source_not_ledger_once_the_routed_organisation_stops_being_registry_routable
+T-8: F-13: inserting an `org_memberships` row for another organisation into A's database fails at the database
+    PASS [cluster] OrganisationMigrationsTest::test_t8_the_database_refuses_a_membership_of_another_organisation
+T-9: Founding: a crash after each step of §3.6 resumes to the same end state; no request is routed before step 5
+    PASS [db-free] FoundOrganisationTest::test_5b_t9_a_crash_in_step_three_is_resumed_by_repeating_it
+    PASS [db-free] FoundOrganisationTest::test_5b_t9_no_request_is_routed_before_step_five
+    PASS [db-free] FoundOrganisationTest::test_5c_t9_a_crash_in_step_five_is_resumed_and_a_repeat_is_a_no_op
+    PASS [db-free] FoundOrganisationTest::test_t9_a_crash_at_each_step_resumes_to_the_same_state_by_repeating_the_step
+T-10: Architecture: organisation-context code never uses the default connection or `DB::transaction`; organisation migrations never reference central tables; no regis
+    PASS [cluster] OrganisationEntryHttpTest::test_t10_part3_the_legacy_and_registry_paths_never_share_an_organisation
+    PASS [db-free] OrganisationMigrationSetTest::test_t10_organisation_migrations_reference_only_organisation_tables_and_no_connection
+T-11: Registry or organisation database down: requests and jobs refused; after recovery they resume; nothing ran on stale routing
+    PASS [cluster] OutageAndRecoveryTest::test_t11_a_raw_connection_refusal_during_entry_answers_service_unavailable_and_keeps_the_selection
+    PASS [cluster] OutageAndRecoveryTest::test_t11_one_organisation_database_down_refuses_it_only_and_it_resumes
+    PASS [cluster] OutageAndRecoveryTest::test_t11_with_the_registry_down_requests_and_jobs_are_refused_then_both_resume
+T-12: The slice 1 suite (135 PostgreSQL tests) still passes, now also with the connection supplied by the factory
+    PASS [cluster] MembershipThroughRoutingTest::test_t12_the_bound_slice1_behaviours_on_a_real_organisation_database
+T-13: `operational` is refused when any L-1 precondition is missing, one at a time: migrations behind, ledger tables absent, identity row absent or different, clock r
+    PASS [db-free] FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "an active contact account"
+    PASS [db-free] FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the ledger clock row"
+    PASS [db-free] FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the ledger schema"
+    PASS [db-free] FoundOrganisationTest::test_5c_t13_operational_is_refused_for_each_missing_fact with data set "the organisation identity"
+    PASS [db-free] FoundOrganisationTest::test_5c_t13_operational_is_refused_without_a_database_or_with_a_failed_schema_or_before_provisioning
+    PASS [cluster] OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_a_fact_does_not_hold_in_the_organisation_database with data set "a ledger table missing"
+    PASS [cluster] OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_a_fact_does_not_hold_in_the_organisation_database with data set "a migration of the set not recorded"
+    PASS [cluster] OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_a_fact_does_not_hold_in_the_organisation_database with data set "the identity row of another organisation"
+    PASS [cluster] OrganisationProvisioningTest::test_5c_t13_operational_is_refused_when_a_fact_does_not_hold_in_the_organisation_database with data set "the ledger clock row missing"
+    PASS [cluster] OrganisationProvisioningTest::test_5c_t13_operational_is_refused_without_a_contact_with_an_active_account
+T-14: A registry entry for an id present in the legacy `organisations` table is refused; an architecture test asserts M-2 has no other true path
+    PASS [db-free] FoundOrganisationTest::test_t14_a_legacy_organisation_id_never_enters_the_registry
+    PASS [db-free] MembershipPlatformBoundaryTest::test_t14_part2_m2_has_no_other_true_path
+T-15: Shared hostname: a selection of an organisation the account is not bound to is refused; a binding revoked after selection refuses the next request and clears th
+    PASS [db-free] EnterOrganisationTest::test_t15_a_binding_revoked_after_selection_refuses_the_next_request
+    PASS [cluster] OrganisationEntryHttpTest::test_t15_a_binding_revoked_after_selection_refuses_the_next_request_and_clears_the_selection
+    PASS [cluster] OrganisationEntryHttpTest::test_t15_a_forged_session_value_is_refused
+    PASS [cluster] OrganisationEntryHttpTest::test_t15_a_selection_of_an_organisation_not_bound_to_the_account_is_refused
+T-16: The operator channel performs a technical operation (migration repair) without reading business tables; a content read without a case grant is refused
+    PASS [db-free] OperateTechnicallyTest::test_t16_1_a_migration_repair_under_the_joining_grant_succeeds_records_and_reports
+    PASS [db-free] OperateTechnicallyTest::test_t16_6_a_repair_never_changes_status_a_provisioning_organisation_stays_provisioning
+    PASS [db-free] OperateTechnicallyTest::test_t16_6_the_schema_stays_failed_unless_the_readiness_facts_hold_again
+    PASS [db-free] OperateTechnicallyTest::test_t16_8_a_failed_repair_leaves_the_organisation_unroutable_and_is_recorded_and_reported
+    PASS [cluster] OperatorChannelTest::test_t16_1_and_2_a_migration_repair_restores_the_schema_without_reading_business_tables
+    PASS [cluster] OperatorChannelTest::test_t16_2_the_counters_see_a_business_read_positive_control
+    PASS [cluster] OperatorChannelTest::test_t16_3_without_the_joining_grant_and_for_an_unknown_organisation_it_is_refused_and_recorded
+    PASS [cluster] OperatorChannelTest::test_t16_5_a_content_read_is_refused_without_a_case_grant_and_reads_nothing
+    PASS [cluster] OperatorChannelTest::test_t16_6_a_repaired_provisioning_organisation_stays_provisioning_and_unroutable
+    PASS [cluster] OperatorChannelTest::test_t16_6_the_schema_stays_failed_when_readiness_is_not_restored
+    PASS [cluster] OperatorChannelTest::test_t16_7_the_operation_is_recorded_centrally_and_reported_in_the_organisations_own_outbox
+    PASS [cluster] OperatorChannelTest::test_t16_8_a_failing_repair_leaves_the_organisation_unroutable_recorded_and_reported
+T-17: Restore drill (scripted): an organisation database restored to a scratch database routes only after `schemaState` and L-1 pass
+    PASS [db-free] OperateTechnicallyTest::test_t17_a_copy_that_does_not_verify_fails_the_drill_and_changes_nothing
+    PASS [db-free] OperateTechnicallyTest::test_t17_a_restore_drill_verifies_a_copy_and_changes_nothing_in_the_registry
+    PASS [db-free] OperateTechnicallyTest::test_t17_taking_an_organisation_out_for_a_restore_makes_it_unroutable_and_keeps_its_status
+    PASS [db-free] OperateTechnicallyTest::test_t17_the_restore_operations_need_the_joining_grant_and_a_database
+    PASS [cluster] RestoreDrillTest::test_t17_a_backup_that_does_not_verify_fails_the_drill_and_changes_nothing
+    PASS [cluster] RestoreDrillTest::test_t17_a_wrong_backup_restored_in_place_is_refused_and_a_stays_unroutable
+    PASS [cluster] RestoreDrillTest::test_t17_the_drill_judges_the_restored_copy_not_the_live_database
+    PASS [cluster] RestoreDrillTest::test_t17_the_drill_verifies_a_restored_copy_that_is_never_routable_and_touches_nothing
+    PASS [cluster] RestoreDrillTest::test_t17_the_in_place_recovery_procedure_returns_a_only_through_repair_and_leaves_b_untouched
+T-18: With the cluster unreachable, requests and jobs for every organisation are refused; after recovery they resume
+    PASS [cluster] OutageAndRecoveryTest::test_t18_with_the_cluster_unreachable_every_organisation_is_refused_then_all_resume_freshly
+T-19: Legacy characterisation (behaviour, not configuration):<br>- Step 1, before any queue change: written and run against the untouched configuration. A representat
+    PASS [cluster] OrganisationQueueTest::test_t19_step2_the_default_stays_sync_and_a_legacy_job_never_reaches_organisation_jobs
+T-20: Separation: an `OrganisationJob` dispatched through `OrganisationJobDispatcher` is stored in `organisation_jobs`, never in `jobs`, and processed by `queue:work 
+    PASS [db-free] OrganisationQueueArchitectureTest::test_t20_only_the_organisation_job_names_the_organisation_connection
+    PASS [cluster] OrganisationQueueTest::test_t20_dispatched_jobs_go_to_organisation_jobs_never_jobs_and_a_worker_runs_them
+    PASS [cluster] OrganisationQueueTest::test_t20_the_dispatcher_refuses_other_jobs_other_organisations_and_connection_overrides
+T-21: Envelope and connection: an organisation job with no organisation id cannot be constructed; one forced onto `sync` (run inline) or another connection is refused
+    PASS [db-free] OrganisationJobEnvelopeTest::test_t21_an_organisation_job_cannot_be_constructed_without_a_valid_organisation_id
+    PASS [cluster] OrganisationQueueTest::test_t21_an_organisation_job_run_inline_or_on_another_connection_is_refused_and_never_runs
+T-22: No leak: one worker runs A, B, A, B jobs. Each sees only its own database; after each job the organisation connection is purged and the context forgotten; the a
+    PASS [db-free] OrganisationQueueArchitectureTest::test_t22_organisation_jobs_carry_identifiers_only
+    PASS [cluster] OrganisationQueueTest::test_t3_t22_one_real_worker_runs_a_b_a_b_and_nothing_crosses_or_survives
+T-23: Retries and failure isolation: A's job fails and is retried; between attempts A is set to `migration-failed`, so the retry is refused with that reason. Run by a
+    PASS [cluster] OrganisationQueueTest::test_t23_a_retry_re_resolves_and_is_refused_once_the_organisation_is_not_routable_while_b_completes
+T-24: After-commit: a job intended to follow an organisation commit is produced through the outbox. A rolled-back organisation transaction leaves no outbox row and so
+    PASS [cluster] OrganisationOutboxRelayTest::test_t24_a_rolled_back_organisation_transaction_leaves_no_event_and_so_no_job
+    PASS [cluster] OrganisationOutboxRelayTest::test_t24_the_processor_refuses_to_run_inside_an_open_transaction
+    PASS [cluster] OrganisationOutboxRelayTest::test_t24_the_relay_sees_only_committed_events_and_dispatches_outside_any_transaction_so_a_consumer_can_queue_a_job
+T-25: Bypass refused: `OrganisationJobDispatcher::dispatch` called while the organisation connection has an open transaction (`transactionLevel() > 0`) throws `Dispat
+    PASS [db-free] OrganisationQueueArchitectureTest::test_t25_organisation_jobs_are_dispatched_by_the_dispatcher_only
+    PASS [cluster] OrganisationQueueTest::test_t25_dispatch_inside_an_open_organisation_transaction_is_refused
+T-26: Held connection (D-222): a `Connection` object obtained from organisation A's `OrganisationContext`, used after organisation B's context has been established (a
+    PASS [cluster] OrganisationConnectionFactoryTest::test_t26_a_connection_held_from_a_never_reaches_b_after_a_is_released_and_b_established
+
+SUMMARY: 79 tests cited; 0 failing; T rows without a passing test: none

@@ -155,6 +155,8 @@
 
 - `ORGANISATION_RESTORE_DRILL_DIR` (default `storage/app/restore-drill`) must exist and hold one full organisation backup. The drill deletes its file afterwards.
 
+**⚠ Do not run `restore-drill` or the in-place recovery on production data before PBDIGIT-351** (task 13 D-166 review). Their temporary copies are unencrypted and are not expired if the process is killed, and the in-place restore is manual. M-6 requires encrypted, expiring copies and automated restores.
+
 ### The restore drill (proves a backup restores; changes nothing)
 ```
 php artisan platform:operate <organisation-id> restore-drill --operator="ops:<your name>"

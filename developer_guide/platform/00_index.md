@@ -19,6 +19,7 @@
 | 10 | [Platform's published routing contract](10_published_routing_contract.md) (open host, D-233) | task 10 | implemented 2026-11-15 |
 | 11 | [The operator channel E-4](11_operator_channel.md): `platform:operate <organisation> <operation> --operator=…`, technical only, recorded and reported (T-16) | task 11 | implemented 2026-11-15 |
 | 12 | [Outage and restore](12_outage_and_restore.md): fail closed and resume (T-11, T-18); the restore drill and in-place recovery (T-17, D-234) | task 12 | implemented 2026-11-15; awaiting the Principal's review |
+| 13 | [Proof obligations and evidence](13_proof_obligations_and_evidence.md): D-193's 53 accounted for; T-1 … T-26; open parts → PBDIGIT-351, 352, 353 | task 13 | 2026-11-15; awaiting the Principal's review |
 | 90 | [Administrator notes](90_administrator_notes.md) (living page) | from task 2 | 2026-11-15 |
 
 *(Not to be confused with `developer_guide/platform_context/`, an older, unrelated area.)*

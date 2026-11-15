@@ -84,6 +84,7 @@ MEMBERSHIP_PG_IMAGE=<pinned> MEMBERSHIP_PG_EVIDENCE_DIR=<dir> bash scripts/testi
 | a wrong backup (B's) restored into A: the repair refuses; A stays unroutable | `a_wrong_backup_restored_in_place_is_refused_and_a_stays_unroutable` |
 
 ### Limitations
+- **Development and test only until PBDIGIT-351** (task 13 D-166 review): the drill's dump and scratch copy are **not encrypted** and do not expire if the process is killed; the in-place recovery's restore is a manual `pg_restore`, where M-6 requires restore only by the automated process.
 - **No backup schedule, retention or off-site storage:** operational decisions for the Principal, before production.
 - **A killed drill can leave a `scratch_restore_*` database behind.** It is never routable, but it holds a copy of the data: the administrator drops it (admin notes).
 - **The drill restores on the same cluster as the organisation:** it proves the backup, not a different host.

@@ -1,0 +1,5 @@
+adc19df1b feat(platform): task 6 HTTP entry E-1: selection after login, ISO-3 on every request, legacy and registry paths disjoint (PBDIGIT-345)
+b00c45814 feat(platform): task 5c founding step 5: operational only on L-1 facts and an active contact account; task 5 done (PBDIGIT-345)
+674168f40 test(reference-geography): G-5a verification: historical edge cases, unpublished claims of every kind, ratchet occurrence ceiling (PBDIGIT-346)
+edd666525 test(architecture): ratchet safeguards after acceptance: published language, Shared closed list, chained writes, own CI job (PBDIGIT-348)
+f5b80720d test(architecture): architecture ratchet A-1 to A-5 and Hexagonal DDD baseline revision 2 (PBDIGIT-348)

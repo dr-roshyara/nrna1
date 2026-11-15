@@ -29,6 +29,7 @@ How tests are kept away from non-test databases. **Background:** on 2026-10-13 a
 | 06 | [Negative evidence: the incident's shape is refused](06_negative_evidence.md) | `PBDIGIT-283` R6 (G-RUN-NEG) | prepared `eb18ccfa9`; run 1 aborted before the canary (merged `mariadb`); corrected `4ce631f39`; **run 2 evidence accepted 2026-10-14** |
 | — | R6 positive (G-RUN-POS) | `PBDIGIT-283` R6 | **stages 1–3 accepted 2026-10-14** (Unit, Feature with `memory_limit=1G`, Architecture: no PBDIGIT-283 refusal or misdirection; many unrelated failures, triaged in the evidence README). Evidence: `docs/publicdigit/election/evidence/2026-10-14-pbdigit283-r6-positive/` |
 | 07 | [The multi-database harness for slice 2 (one central + three organisation databases)](07_multi_database_harness.md) | `PBDIGIT-345` task 0 | implemented 2026-11-12 (TDD); awaiting the Principal's review |
+| 08 | [Isolated PostgreSQL runs, evidence folders, copy-load mutants and the baseline comparison](08_isolated_runs_evidence_mutations_and_baseline.md) | `PBDIGIT-345` tasks 0–13 | 2026-11-15 |
 
 ## Open work
 | Item | What |

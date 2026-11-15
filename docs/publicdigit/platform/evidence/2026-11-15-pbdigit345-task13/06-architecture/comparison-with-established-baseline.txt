@@ -1,0 +1,7 @@
+established list: docs/publicdigit/architecture/evidence/2026-11-13-architecture-ratchet/06-architecture-suite-full.failures (class names)
+head 8b6fcd569: 06-architecture/architecture-full.failures (class::method), reduced to classes:
+Tests\Architecture\Election\ElectionLifecycleStateConsistencyTest
+Tests\Architecture\ElectionStateMachineConsistencyTest
+Tests\Architecture\GovernanceRuntime\ConstitutionalBoundaryTest
+Tests\Architecture\Phase_C25_SovereigntyLeakagePreventionTest
+RESULT: identical by class (4). Also identical by method to the baseline 5bd25c463 run (04-baseline-comparison).

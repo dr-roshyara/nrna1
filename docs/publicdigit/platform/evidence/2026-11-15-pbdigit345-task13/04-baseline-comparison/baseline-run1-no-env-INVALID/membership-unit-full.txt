@@ -1,0 +1,1081 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/phpunit.xml
+
+EEEEEEEEEEEEEEEEEED.........EEEEEE..EEEEE..EE..................  63 / 618 ( 10%)
+............................................................... 126 / 618 ( 20%)
+.............E................................................. 189 / 618 ( 30%)
+............................................................... 252 / 618 ( 40%)
+..........................EEEEEEEEEEEEEEEEEEEEEEEEEE........... 315 / 618 ( 50%)
+............................................................... 378 / 618 ( 61%)
+............................................................... 441 / 618 ( 71%)
+............................................................... 504 / 618 ( 81%)
+............................................................... 567 / 618 ( 91%)
+..........................EEEEEEEEEEED.............             618 / 618 (100%)
+
+Time: 01:19.789, Memory: 142.00 MB
+
+There were 69 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_not_found
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+2) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_committee_not_found
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+3) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_has_no_residence_for_geographic_committee
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+4) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::assigns_member_to_central_committee_without_geo_check
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+5) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_geo_not_in_committee_area
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+6) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::assigns_member_when_residence_is_within_committee_area
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+7) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_returns_not_exists_for_available_slug
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+8) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_returns_exists_for_taken_slug
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+9) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_provides_numeric_suggestions
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+10) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_skips_taken_numeric_suggestions
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+11) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_provides_semantic_suggestions
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+12) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_returns_max_three_suggestions
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+13) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_is_tenant_scoped
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+14) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_provides_error_key_for_taken_slug
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:18
+
+15) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_returns_dashboard_view_for_existing_committee
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+16) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_throws_committee_not_found_when_id_does_not_exist
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+17) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_throws_committee_not_found_for_different_tenant
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+18) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_returns_view_with_empty_sub_committees_for_central
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:28
+
+19) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_residence_application_is_stored_and_event_is_emitted
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+20) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_exception_requires_justification
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+21) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_manual_application_skips_eligibility_check
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+22) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_ineligible_residence_application_is_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+23) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_duplicate_application_is_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+24) Tests\Unit\Contexts\Membership\Application\Membership\RestoreMembershipHandlerTest::test_restore_suspended_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/RestoreMembership/RestoreMembershipHandler.php:42
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/RestoreMembershipHandlerTest.php:69
+
+25) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_approve_creates_committee_association
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+26) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_reject_marks_application_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+27) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_cannot_approve_already_approved
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+28) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_cannot_approve_rejected_application
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+29) Tests\Unit\Contexts\Membership\Application\Membership\SuspendMembershipHandlerTest::test_suspend_active_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/SuspendMembership/SuspendMembershipHandler.php:43
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/SuspendMembershipHandlerTest.php:69
+
+30) Tests\Unit\Contexts\Membership\Application\Membership\TerminateMembershipHandlerTest::test_terminate_active_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/TerminateMembership/TerminateMembershipHandler.php:43
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/TerminateMembershipHandlerTest.php:68
+
+31) Tests\Unit\Contexts\Membership\Application\Membership\TerminateMembershipHandlerTest::test_terminate_suspended_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Application/Membership/TerminateMembership/TerminateMembershipHandler.php:43
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Application/Membership/TerminateMembershipHandlerTest.php:105
+
+32) Tests\Unit\Contexts\Membership\Domain\Committee\CommitteeAssignmentTest::reconstruct_creates_assignment_with_all_fields
+InvalidArgumentException: Invalid tenant user ID format: 01JKUSER1234567890ABCDEFGH. Expected UUID v4 (8-4-4-4-12 hex with dashes)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/ValueObjects/TenantUserId.php:40
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/ValueObjects/TenantUserId.php:25
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Committee/CommitteeAssignmentTest.php:36
+
+33) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::fee_starts_as_pending
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 38
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:38
+
+34) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_with_payment_details_transitions_status
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 52
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:52
+
+35) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_stores_payment_details_on_fee
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 75
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:75
+
+36) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_fires_fee_paid_event
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 102
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:102
+
+37) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_on_already_paid_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 127
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:127
+
+38) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_on_overdue_fee_is_allowed
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 151
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:151
+
+39) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_transitions_status_to_waived
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 180
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:180
+
+40) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_on_paid_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 196
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:196
+
+41) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_on_overdue_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 220
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:220
+
+42) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_fires_fee_waived_event_with_reason
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 240
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:240
+
+43) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::paid_fee_has_payment_details
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 260
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:260
+
+44) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::unpaid_fee_has_no_payment_details
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 285
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:285
+
+45) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_pending_fee_for_matching_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 38
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:38
+
+46) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_overdue_fee_for_matching_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 60
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:60
+
+47) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_fee_belongs_to_different_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 88
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:88
+
+48) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_fee_is_already_paid
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 110
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:110
+
+49) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_transaction_reference_already_exists
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 137
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:137
+
+50) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_null_transaction_reference_without_duplicate_check
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 175
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:175
+
+51) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_registered
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 36
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:36
+
+52) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_records_registration_event
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 49
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:49
+
+53) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_activated
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 62
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:62
+
+54) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_cannot_be_suspended_if_already_suspended
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 75
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:75
+
+55) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_suspended
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 88
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:88
+
+56) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_archived
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 100
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:100
+
+57) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_status_transitions_are_valid
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 112
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:112
+
+58) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_cannot_transition_from_archived
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 133
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/app/Contexts/Membership/Domain/Member/Member.php:50
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:133
+
+59) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::repository_persists_assignment_on_save
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+60) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::repository_loads_assignments_on_find
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+61) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::repository_syncs_removed_assignments
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+62) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::repository_updates_existing_assignment_on_save
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+63) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::round_trip_assign_save_reload_see_assignment
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+64) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\CommitteeRepositoryTest::round_trip_remove_save_reload_see_no_active_assignment
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/CommitteeRepositoryTest.php:34
+
+65) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_save_persists_committee_for_current_tenant
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+66) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_find_returns_null_for_different_tenant
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+67) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_find_by_geography_returns_only_own_tenant_committees
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+68) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_repository_prevents_cross_tenant_leak
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+69) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_raw_db_query_bypasses_tenant_isolation
+Illuminate\Database\QueryException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: SELECT current_database() AS name)
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+Caused by
+PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:44
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/PostgresConnector.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php:186
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1257
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:1295
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:525
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:420
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:36
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php:101
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:63
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/TestCase.php:73
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/t13/baseline-5bd25c463/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:27
+
+ERRORS!
+Tests: 618, Assertions: 662004, Errors: 69, Deprecations: 1, PHPUnit Deprecations: 46.
