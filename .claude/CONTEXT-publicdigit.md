@@ -9,6 +9,21 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-11-15, Session B, frontend): **PBDIGIT-355 M1, the read-only Reference Geography explorer, implemented; awaiting the Principal's acceptance**
+*Written by Claude (Session B). State only; it creates no authority. Additive.*
+- **Where:** branch `frontend/m1-geography-explorer` (worktree `../nrna1-m1-geo`), commits `f8ec41b05`, `635838a9b`, `83d3d11ca`, `cf9e69576`. **Not pushed, not merged.** Session A's working tree was not touched.
+- **Done:**
+  - read-only routes under `/geography` for signed-in users;
+  - the additive published queries `topLevelAt` and `childrenInAnySchemeOf` (Principal: "Extend the contract");
+  - the Explorer and Place pages (en/de/np);
+  - guides 34, 35 and 36 in `developer_guide/reference_geography/`.
+- **Verified:** isolated cluster 455; Geography unit 315; Vitest M1 10; 9 of 9 mutants killed; design check 91 (the baseline); the production build is fine.
+- **Open:**
+  - the Principal's acceptance;
+  - a browser check at phone and desktop widths;
+  - push and merge;
+  - the next frontend milestones (M2 waits for PBDIGIT-349; Forum, Newsletter and Membership screens wait for their backend slices).
+
 ## 📍 UPDATE (2026-11-13): **Reference Geography G-4 at the Principal's acceptance boundary; G-2 and G-3 accepted; Deliberation discovery brief written**
 *Written by Claude (Session A). State only; it creates no authority. Additive.*
 - **PBDIGIT-346 (Reference Geography):**
