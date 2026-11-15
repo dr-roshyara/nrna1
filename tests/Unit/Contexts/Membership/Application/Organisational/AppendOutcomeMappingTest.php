@@ -13,6 +13,7 @@ use App\Contexts\Membership\Application\Organisational\Ports\AppendResult;
 use App\Contexts\Membership\Application\Organisational\Ports\AppliedCommand;
 use App\Contexts\Membership\Application\Organisational\Ports\CreateResult;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
 use App\Contexts\Membership\Domain\Organisational\Decision;
@@ -79,8 +80,7 @@ final class AppendOutcomeMappingTest extends TestCase
             $tenant,
             IdempotencyKey::fromString('k1'),
             'fp1',
-            'registrar',
-            MembershipAct::Admit,
+            static fn (?Member $m): AuthorityRequest => new AuthorityRequest(MembershipAct::Admit, 'registrar', PersonRef::fromString('P1'), null, TimePoint::of(1), null, 'k1'),
             static fn (): Member => $member,
             static fn (Member $m, AuthorityEvidence $evidence): Decision => $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::of(1), TimePoint::infinity(), Provenance::decision('registrar', $evidence, 'decl-fixture')),
         );

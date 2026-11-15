@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
@@ -39,9 +40,9 @@ final class SuspendMembershipHandler
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            $command->actor,
-            MembershipAct::Suspend,
-            fn (): Member|ApplicationRefusal => $this->repository->load($tenant, $memberId) ?? ApplicationRefusal::MemberNotFound,
+            static fn (?Member $member): AuthorityRequest => new AuthorityRequest(MembershipAct::Suspend, $command->actor, $member?->holder(), null,
+                TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
+            fn (): ?Member => $this->repository->load($tenant, $memberId),
             static fn (Member $member, AuthorityEvidence $evidence) => $member->decideSuspend(
                 FactId::fromString($command->factId),
                 TimePoint::of($command->effectiveAt),

@@ -1,0 +1,20 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...................F...........................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:32.132, Memory: 62.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_own_act_is_accepted_only_for_a_resignation_by_the_member_concerned
+actor is not the subject
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:168
+
+FAILURES!
+Tests: 176, Assertions: 119276, Failures: 1.

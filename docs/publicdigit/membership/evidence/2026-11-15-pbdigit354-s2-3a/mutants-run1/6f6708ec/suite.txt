@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........F............F........................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+.....................................F............              176 / 176 (100%)
+
+Time: 00:33.257, Memory: 62.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\AuthorityBasisTest::test_evidence_carries_its_basis_and_the_result_agrees_with_the_outcome
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_an_answer_whose_result_and_outcome_disagree_cannot_be_constructed
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+3) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "outcome disagrees with result" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+FAILURES!
+Tests: 176, Assertions: 119281, Failures: 3.

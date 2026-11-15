@@ -6,11 +6,16 @@ namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome;
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
+use App\Contexts\Membership\Domain\Organisational\AuthorityOutcome;
+use App\Contexts\Membership\Domain\Organisational\CompetenceKind;
 use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\Member;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 /**
@@ -18,7 +23,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  *
  *   idempotency pre-check (IDEM-1), repeated when the domain refuses (an identical command may
  *   have been applied meanwhile; found by the PostgreSQL race test, PBDIGIT-260)
- *   repeat ≤ MAX_ATTEMPTS:  load → authorise → decide (guards + G*) → append(expected version)
+ *   repeat ≤ MAX_ATTEMPTS:  find → request → authorise → (create) → decide (guards + G*) → append(expected version)
  *     on ConcurrencyConflict: discard the decision and start again from load (R-1a-2: never reuse)
  *     on RecordTimeRefused: the same, a fresh attempt with a fresh clock reading (D-209; PBDIGIT-343 G-1d)
  *     on ValidTimeNotStorable: refuse at once; the valid times come from the command (R-1a-6)
@@ -35,10 +40,21 @@ final class DecideAndAppend
     }
 
     /**
-     * @param \Closure(): (Member|ApplicationRefusal) $load                fresh state for each attempt
-     * @param \Closure(Member, AuthorityEvidence): Decision $decide          the pure domain decision
+     * Per attempt (PBDIGIT-354 S2-3a, D-238): find (read-only) → request → authorise → create if admitting → decide.
+     * - The request names the subject, so the member is looked up first, READ-ONLY: nothing is created before the
+     *   answer (a refused admission leaves no Member record).
+     * - A refusal at the command boundary (`$request` returns a RefusalReason) comes before any authority call.
+     * - Not authorised → NotAuthorised; Undetermined → AuthorityUndetermined (≠ No). Both come BEFORE "member not
+     *   found", so an unauthorised actor cannot probe whether a member exists.
+     * - An `ownAct` answer counts only for record-resignation with actor = subject (D-203); otherwise refused.
+     *
+     * @param \Closure(?Member): (AuthorityRequest|RefusalReason) $request what to ask, from the member found (or null)
+     * @param \Closure(): ?Member $find                                       read-only lookup, fresh for each attempt
+     * @param \Closure(Member, AuthorityEvidence): Decision $decide           the pure domain decision
+     * @param (\Closure(): (Member|ApplicationRefusal))|null $create          admission only: create the Member when none
+     *                                                                        was found (after the authorisation)
      */
-    public function run(TenantId $tenant, IdempotencyKey $key, string $fingerprint, string $actor, MembershipAct $act, \Closure $load, \Closure $decide): CommandOutcome
+    public function run(TenantId $tenant, IdempotencyKey $key, string $fingerprint, \Closure $request, \Closure $find, \Closure $decide, ?\Closure $create = null): CommandOutcome
     {
         $seen = $this->answerFromKey($tenant, $key, $fingerprint);
         if ($seen !== null) {
@@ -47,11 +63,23 @@ final class DecideAndAppend
 
         $exhausted = ApplicationRefusal::ConcurrentModification;
         for ($attempt = 1; $attempt <= self::MAX_ATTEMPTS; $attempt++) {
-            $authorisation = $this->authority->check($tenant, $actor, $act);
-            if (!$authorisation->isGranted()) {
-                return CommandOutcome::refused(ApplicationRefusal::NotAuthorised);
+            $member = $find();
+            $asked = $request($member);
+            if ($asked instanceof RefusalReason) {
+                return CommandOutcome::refusedByDomain($asked);
             }
-            $member = $load();
+            $authorisation = $this->authority->check($tenant, $asked);
+            $refusal = match ($authorisation->outcome()) {
+                AuthorityOutcome::Authorised => self::ownActMisapplied($asked, $authorisation) ? ApplicationRefusal::OwnActNotApplicable : null,
+                AuthorityOutcome::NotAuthorised => ApplicationRefusal::NotAuthorised,
+                AuthorityOutcome::Undetermined => ApplicationRefusal::AuthorityUndetermined,
+            };
+            if ($refusal !== null) {
+                return CommandOutcome::refused($refusal);
+            }
+            if ($member === null) {
+                $member = $create === null ? ApplicationRefusal::MemberNotFound : $create();
+            }
             if ($member instanceof ApplicationRefusal) {
                 return CommandOutcome::refused($member);
             }
@@ -81,6 +109,18 @@ final class DecideAndAppend
         }
 
         return CommandOutcome::refused($exhausted);
+    }
+
+    /** D-203: `ownAct` is the member's own right to resign; for any other act, or another actor, it authorises nothing. */
+    private static function ownActMisapplied(AuthorityRequest $request, AuthorityDecision $authorisation): bool
+    {
+        if ($authorisation->evidence()->basis()?->competenceKind() !== CompetenceKind::OwnAct) {
+            return false;
+        }
+
+        return $request->act !== MembershipAct::RecordResignation
+            || $request->subject === null
+            || $request->subject->value() !== $request->actor;
     }
 
     /** The original outcome of an already-applied key, or null if the key is unused. */

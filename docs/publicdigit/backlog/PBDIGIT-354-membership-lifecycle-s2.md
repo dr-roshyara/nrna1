@@ -47,7 +47,7 @@ Plan §4, steps S2-1 … S2-6.
 
 - [ ] S2-1 Renew and the admission-term rule: **implemented and proven 2026-11-15** (guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`), **except D-177 row 20** (Correct a Renew's `until`), refused in the kernel until **Q-2** is decided. The box stays open until then
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
-- [ ] S2-3 resign now, death: **S2-3a** (authority contract, D-238) in progress; **S2-3b** after its review
+- [ ] S2-3 resign now, death: **S2-3a DONE 2026-11-15** (authority contract, D-238; guide 27; evidence `…/2026-11-15-pbdigit354-s2-3a/`); **S2-3b** after its review
 - [ ] S2-4 scheduled resignation
 - [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (Suspend / Restore dates)
 - [ ] S2-6 push shapes (Membership side)

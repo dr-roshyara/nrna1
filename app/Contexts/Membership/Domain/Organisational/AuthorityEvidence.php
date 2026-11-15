@@ -21,17 +21,31 @@ final readonly class AuthorityEvidence
         private bool $result,
         private Instant $checkedAt,
         private bool $competenceVerified,
+        private ?AuthorityBasis $basis = null,
     ) {
         foreach (['actor' => $actor, 'capacity' => $capacity, 'ruleRef' => $ruleRef, 'policyVersion' => $policyVersion] as $field => $value) {
             if (trim($value) === '') {
                 throw new \InvalidArgumentException("AuthorityEvidence.$field cannot be empty.");
             }
         }
+        if ($basis !== null && $result !== ($basis->outcome() === AuthorityOutcome::Authorised)) {
+            throw new \InvalidArgumentException('AuthorityEvidence.result must agree with the basis outcome.');
+        }
     }
 
-    public static function of(string $actor, string $capacity, string $ruleRef, string $policyVersion, bool $result, Instant $checkedAt, bool $competenceVerified): self
+    /**
+     * @param AuthorityBasis|null $basis PBDIGIT-354 S2-3a (D-238): the answer's basis. NULL means "not recorded": evidence
+     *                                   recorded before the basis existed is read as it was; nothing is inferred
+     */
+    public static function of(string $actor, string $capacity, string $ruleRef, string $policyVersion, bool $result, Instant $checkedAt, bool $competenceVerified, ?AuthorityBasis $basis = null): self
     {
-        return new self($actor, $capacity, $ruleRef, $policyVersion, $result, $checkedAt, $competenceVerified);
+        return new self($actor, $capacity, $ruleRef, $policyVersion, $result, $checkedAt, $competenceVerified, $basis);
+    }
+
+    /** The answer's basis, or null when it was not recorded (historical evidence). */
+    public function basis(): ?AuthorityBasis
+    {
+        return $this->basis;
     }
 
     public function actor(): string

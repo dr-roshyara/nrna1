@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Organisational;
 
+use App\Contexts\Membership\Domain\Organisational\AuthorityBasis;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
+use App\Contexts\Membership\Domain\Organisational\AuthorityOutcome;
+use App\Contexts\Membership\Domain\Organisational\CompetenceKind;
 use App\Contexts\Membership\Domain\Organisational\Instant;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Membership\Domain\Organisational\Provenance;
 use App\Contexts\Membership\Domain\Organisational\ProvenanceKind;
 
@@ -32,8 +36,50 @@ final class ProvenanceJson
                 'result' => $e->result(),
                 'checkedAt' => $e->checkedAt()->ordinal(),
                 'competenceVerified' => $e->competenceVerified(),
-            ],
+            ] + ($e->basis() === null ? [] : ['basis' => self::encodeBasis($e->basis())]),
         ], JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * S2-3a (D-238): the answer's basis, stored only when recorded. A row without the key is historical evidence and is
+     * read back with no basis ("not recorded"); the key is never added to old rows.
+     *
+     * @return array<string, mixed>
+     */
+    private static function encodeBasis(AuthorityBasis $b): array
+    {
+        return [
+            'outcome' => $b->outcome()->value,
+            'reason' => $b->reason(),
+            'evaluatedFor' => $b->evaluatedFor()->ordinal(),
+            'competenceKind' => $b->competenceKind()?->value,
+            'decisionRef' => $b->decisionRef(),
+            'evidence' => $b->evidence(),
+        ];
+    }
+
+    private static function decodeBasis(mixed $b): AuthorityBasis
+    {
+        $b = self::object($b, 'authority basis');
+        $outcome = AuthorityOutcome::tryFrom(self::string($b, 'outcome'))
+            ?? throw new \UnexpectedValueException('Stored authority basis has an unknown outcome.');
+        $kind = $b['competenceKind'] ?? null;
+        if ($kind !== null && (!is_string($kind) || CompetenceKind::tryFrom($kind) === null)) {
+            throw new \UnexpectedValueException('Stored authority basis has an unknown competence kind.');
+        }
+        if (!is_int($b['evaluatedFor'] ?? null)) {
+            throw new \UnexpectedValueException("Stored authority basis has no integer 'evaluatedFor'.");
+        }
+        $evidence = $b['evidence'] ?? null;
+        if (!is_array($evidence) || !array_is_list($evidence)) {
+            throw new \UnexpectedValueException("Stored authority basis has no list 'evidence'.");
+        }
+        try {
+            return AuthorityBasis::of($outcome, self::nullableString($b, 'reason'), TimePoint::of($b['evaluatedFor']),
+                $kind === null ? null : CompetenceKind::from($kind), self::nullableString($b, 'decisionRef'), $evidence);
+        } catch (\InvalidArgumentException $e) {
+            throw new \UnexpectedValueException('Stored authority basis is invalid: ' . $e->getMessage(), 0, $e);
+        }
     }
 
     /**
@@ -73,15 +119,21 @@ final class ProvenanceJson
             throw new \UnexpectedValueException("Stored authority evidence has no integer 'checkedAt'.");
         }
 
-        return AuthorityEvidence::of(
-            self::string($e, 'actor'),
-            self::string($e, 'capacity'),
-            self::string($e, 'ruleRef'),
-            self::string($e, 'policyVersion'),
-            $e['result'],
-            Instant::of($e['checkedAt']),
-            $e['competenceVerified'],
-        );
+        try {
+            return AuthorityEvidence::of(
+                self::string($e, 'actor'),
+                self::string($e, 'capacity'),
+                self::string($e, 'ruleRef'),
+                self::string($e, 'policyVersion'),
+                $e['result'],
+                Instant::of($e['checkedAt']),
+                $e['competenceVerified'],
+                array_key_exists('basis', $e) ? self::decodeBasis($e['basis']) : null,
+            );
+        } catch (\InvalidArgumentException $x) {
+            // e.g. a stored result that disagrees with its basis outcome
+            throw new \UnexpectedValueException('Stored authority evidence is invalid: ' . $x->getMessage(), 0, $x);
+        }
     }
 
     /** @return array<string, mixed> */

@@ -1,0 +1,22 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................F...............              176 / 176 (100%)
+
+Time: 00:34.447, Memory: 62.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "unknown competence kind" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "ValueError" matches expected exception "UnexpectedValueException". Message was: ""magic" is not a valid backing value for enum App\Contexts\Membership\Domain\Organisational\CompetenceKind" at
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s23a/run1/mutants/636d58d1/mutant.php:79
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s23a/run1/mutants/636d58d1/mutant.php:131
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s23a/run1/mutants/636d58d1/mutant.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:135
+.
+
+FAILURES!
+Tests: 176, Assertions: 119281, Failures: 1.

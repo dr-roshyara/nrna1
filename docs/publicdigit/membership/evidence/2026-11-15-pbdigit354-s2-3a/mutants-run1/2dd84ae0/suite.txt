@@ -1,0 +1,78 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+...........................FFFF...................              176 / 176 (100%)
+
+Time: 00:31.470, Memory: 62.00 MB
+
+There were 4 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips with data set "authorised, worked out, with decision and evidence" (App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...))
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+         'result' => true
+         'checkedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+         'competenceVerified' => true
+-        'basis' => App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...)
++        'basis' => null
+     )
+     'declarationRef' => null
+     'ruleRef' => null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:98
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips with data set "authorised, own act, nothing else" (App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...))
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+         'result' => true
+         'checkedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+         'competenceVerified' => true
+-        'basis' => App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...)
++        'basis' => null
+     )
+     'declarationRef' => null
+     'ruleRef' => null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:98
+
+3) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips with data set "not authorised, with a reason" (App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...))
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+         'result' => false
+         'checkedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+         'competenceVerified' => true
+-        'basis' => App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...)
++        'basis' => null
+     )
+     'declarationRef' => null
+     'ruleRef' => null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:98
+
+4) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips with data set "undetermined, with a reason" (App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...))
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+         'result' => false
+         'checkedAt' => App\Contexts\Membership\Domain\Organisational\Instant Object (...)
+         'competenceVerified' => true
+-        'basis' => App\Contexts\Membership\Domain\Organisational\AuthorityBasis Object (...)
++        'basis' => null
+     )
+     'declarationRef' => null
+     'ruleRef' => null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:98
+
+FAILURES!
+Tests: 176, Assertions: 119281, Failures: 4.

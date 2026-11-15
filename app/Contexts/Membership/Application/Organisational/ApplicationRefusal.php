@@ -20,4 +20,8 @@ enum ApplicationRefusal: string
      * Fail closed: nothing was recorded and no time was adjusted; the command may be sent again later.
      */
     case RecordTimeUnavailable = 'record_time_unavailable';
+    /** D-208 §1 (S2-3a, D-238): the rules are silent or a source is unavailable. Not "No": nothing is recorded either way. */
+    case AuthorityUndetermined = 'authority_undetermined';
+    /** D-203 (S2-3a): an `ownAct` answer counts only for record-resignation with actor = subject; otherwise refused. */
+    case OwnActNotApplicable = 'own_act_not_applicable';
 }

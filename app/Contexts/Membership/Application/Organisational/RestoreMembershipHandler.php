@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
@@ -38,9 +39,9 @@ final class RestoreMembershipHandler
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            $command->actor,
-            MembershipAct::Restore,
-            fn (): Member|ApplicationRefusal => $this->repository->load($tenant, $memberId) ?? ApplicationRefusal::MemberNotFound,
+            static fn (?Member $member): AuthorityRequest => new AuthorityRequest(MembershipAct::Restore, $command->actor, $member?->holder(), null,
+                TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
+            fn (): ?Member => $this->repository->load($tenant, $memberId),
             static fn (Member $member, AuthorityEvidence $evidence) => $member->decideRestore(
                 FactId::fromString($command->factId),
                 FactId::fromString($command->suspensionFactId),

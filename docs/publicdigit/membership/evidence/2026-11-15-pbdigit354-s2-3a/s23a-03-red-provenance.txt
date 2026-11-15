@@ -1,0 +1,43 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...................FFFFFFF                                        26 / 26 (100%)
+
+Time: 00:00.012, Memory: 12.00 MB
+
+There was 1 PHPUnit error:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips
+The data provider specified for Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_the_authority_basis_round_trips is invalid
+Class "Tests\Unit\Contexts\Membership\Infrastructure\Organisational\TimePoint" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/ProvenanceJsonTest.php:92
+
+--
+
+There were 7 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "not an object" ('{"kind":"decision","actorOrSo...sed"}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "unknown outcome" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+3) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "unknown competence kind" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+4) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "evaluatedFor not an integer" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+5) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "evidence not a list" ('{"kind":"decision","actorOrSo..."x"}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+6) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "outcome disagrees with result" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+7) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\ProvenanceJsonTest::test_a_damaged_stored_basis_fails_as_unexpected_value with data set "authorised with no competence kind" ('{"kind":"decision","actorOrSo...:[]}}}')
+Failed asserting that exception of type "UnexpectedValueException" is thrown.
+
+ERRORS!
+Tests: 26, Assertions: 28, Errors: 1, Failures: 7.

@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Membership\Infrastructure\Organisational;
 
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
+use App\Contexts\Membership\Domain\Organisational\AuthorityOutcome;
+use App\Contexts\Membership\Domain\Organisational\CompetenceKind;
+use App\Contexts\Membership\Domain\Organisational\PersonRef;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthority;
 use App\Contexts\Membership\Infrastructure\Organisational\OrganisationRoleReader;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
@@ -35,6 +41,13 @@ final class InterimRoleAuthorityTest extends TestCase
         return new InterimRoleAuthority($reader, static fn (): int => 1_760_000_000_000_000);
     }
 
+    /** S2-3a (D-238): the request shape; subject and period do not matter to this adapter */
+    private static function ask(array $roles, MembershipAct $act): AuthorityDecision
+    {
+        return self::authority($roles)->check(TenantId::fromString('O1'),
+            new AuthorityRequest($act, 'user-7', PersonRef::fromString('P1'), null, TimePoint::of(20_000), null, 'req-1'));
+    }
+
     /** @return array<string, array{string}> */
     public static function admittingRoles(): array
     {
@@ -44,10 +57,12 @@ final class InterimRoleAuthorityTest extends TestCase
     #[\PHPUnit\Framework\Attributes\DataProvider('admittingRoles')]
     public function test_owner_and_admin_may_admit_and_the_evidence_is_recorded(string $role): void
     {
-        $decision = self::authority(['O1' => ['user-7' => $role]])->check(TenantId::fromString('O1'), 'user-7', MembershipAct::Admit);
+        $decision = self::ask(['O1' => ['user-7' => $role]], MembershipAct::Admit);
 
-        $this->assertTrue($decision->isGranted());
+        $this->assertTrue($decision->isAuthorised());
         $e = $decision->evidence();
+        $this->assertSame(CompetenceKind::InterimRole, $e->basis()->competenceKind(), 'S2-3a: a technical role check, said so');
+        $this->assertSame(20_000, $e->basis()->evaluatedFor()->ordinal());
         $this->assertSame('user-7', $e->actor());
         $this->assertSame("organisation_role:$role", $e->capacity());
         $this->assertSame('interim:legacy-MembershipPolicy:approveApplication', $e->ruleRef());
@@ -71,9 +86,11 @@ final class InterimRoleAuthorityTest extends TestCase
     #[\PHPUnit\Framework\Attributes\DataProvider('nonAdmittingActors')]
     public function test_other_actors_may_not_admit(array $roles): void
     {
-        $decision = self::authority($roles)->check(TenantId::fromString('O1'), 'user-7', MembershipAct::Admit);
+        $decision = self::ask($roles, MembershipAct::Admit);
 
-        $this->assertFalse($decision->isGranted());
+        $this->assertFalse($decision->isAuthorised());
+        $this->assertSame(AuthorityOutcome::NotAuthorised, $decision->evidence()->basis()->outcome(), 'a refusal, never Undetermined');
+        $this->assertNotNull($decision->evidence()->basis()->reason());
         $this->assertFalse($decision->evidence()->result());
         $this->assertSame('interim:legacy-MembershipPolicy:approveApplication', $decision->evidence()->ruleRef());
     }
@@ -81,11 +98,13 @@ final class InterimRoleAuthorityTest extends TestCase
     #[\PHPUnit\Framework\Attributes\DataProvider('admittingRoles')]
     public function test_every_ending_is_denied_until_governance_decides_g1(string $role): void
     {
-        $decision = self::authority(['O1' => ['user-7' => $role]])->check(TenantId::fromString('O1'), 'user-7', MembershipAct::End);
+        foreach ([MembershipAct::RecordResignation, MembershipAct::RecordDeath] as $act) {   // S2-3a: End asks by kind
+            $decision = self::ask(['O1' => ['user-7' => $role]], $act);
 
-        $this->assertFalse($decision->isGranted(), 'no ending authority is inferred (G-1 open)');
-        $this->assertSame('interim:unresolved:G-1', $decision->evidence()->ruleRef());
-        $this->assertFalse($decision->evidence()->result());
+            $this->assertFalse($decision->isAuthorised(), 'no ending authority is inferred (G-1 open): ' . $act->value);
+            $this->assertSame('interim:unresolved:G-1', $decision->evidence()->ruleRef(), $act->value);
+            $this->assertFalse($decision->evidence()->result(), $act->value);
+        }
     }
 
     /**
@@ -97,9 +116,9 @@ final class InterimRoleAuthorityTest extends TestCase
     public function test_renewal_suspension_and_restoration_are_denied_until_governance_decides(string $role): void
     {
         foreach ([MembershipAct::Renew, MembershipAct::Suspend, MembershipAct::Restore] as $act) {
-            $decision = self::authority(['O1' => ['user-7' => $role]])->check(TenantId::fromString('O1'), 'user-7', $act);
+            $decision = self::ask(['O1' => ['user-7' => $role]], $act);
 
-            $this->assertFalse($decision->isGranted(), $act->value);
+            $this->assertFalse($decision->isAuthorised(), $act->value);
             $this->assertSame('interim:unresolved:authority-owner', $decision->evidence()->ruleRef(), $act->value);
             $this->assertFalse($decision->evidence()->result(), $act->value);
         }
@@ -108,8 +127,7 @@ final class InterimRoleAuthorityTest extends TestCase
     public function test_every_act_kind_has_an_answer(): void
     {
         foreach (MembershipAct::cases() as $act) {
-            $this->assertInstanceOf(\App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision::class,
-                self::authority(['O1' => ['user-7' => 'owner']])->check(TenantId::fromString('O1'), 'user-7', $act), $act->value);
+            $this->assertInstanceOf(AuthorityDecision::class, self::ask(['O1' => ['user-7' => 'owner']], $act), $act->value);
         }
     }
 }

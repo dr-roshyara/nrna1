@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
@@ -41,15 +42,13 @@ final class RenewMembershipHandler
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            $command->actor,
-            MembershipAct::Renew,
-            fn (): Member|ApplicationRefusal => $this->repository->load($tenant, $memberId) ?? ApplicationRefusal::MemberNotFound,
+            // The term must be stated: an end date, or open-ended; a missing one is never read as unlimited. Refused
+            // before anyone is asked. The subject is the member found (null when unknown: nothing is revealed).
+            static fn (?Member $member): AuthorityRequest|RefusalReason => !$command->unlimited && $command->until === null
+                ? RefusalReason::RenewalTermRequired
+                : new AuthorityRequest(MembershipAct::Renew, $command->actor, $member?->holder(), null, TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
+            fn (): ?Member => $this->repository->load($tenant, $memberId),
             static function (Member $member, AuthorityEvidence $evidence) use ($command): Decision {
-                // The term must be stated: an end date, or open-ended. A missing one is never read as unlimited.
-                if (!$command->unlimited && $command->until === null) {
-                    return Decision::refused(RefusalReason::RenewalTermRequired);
-                }
-
                 return $member->decideRenew(
                     FactId::fromString($command->factId),
                     TimePoint::of($command->effectiveAt),

@@ -1,0 +1,88 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....................F.....E...................................  63 / 176 ( 35%)
+.........................F................F..........F......... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:26.893, Memory: 62.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ConcurrencyAndRaceTest::test_creation_race_yields_one_member_and_the_loser_continues_on_it
+LogicException: No Member was created.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/Ports/CreateResult.php:34
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s23a/run1/mutants/630fc84f/mutant.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:66
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s23a/run1/mutants/630fc84f/mutant.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ConcurrencyAndRaceTest.php:111
+
+--
+
+There were 4 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_a_refused_admission_still_creates_no_member_record
+Failed asserting that App\Contexts\Membership\Domain\Organisational\Member Object #2200 (
+    'id' => App\Contexts\Membership\Domain\Organisational\MemberId Object #367 (
+        'value' => 'M-P2',
+    ),
+    'holder' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #2162 (
+        'value' => 'P2',
+    ),
+    'organisation' => App\Contexts\Shared\Domain\ValueObjects\TenantId Object #2176 (
+        'value' => 'O1',
+    ),
+    'log' => Array &0 [],
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:194
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\MembershipCommandHandlersTest::test_an_unauthorised_admission_creates_nothing
+Failed asserting that App\Contexts\Membership\Domain\Organisational\Member Object #414 (
+    'id' => App\Contexts\Membership\Domain\Organisational\MemberId Object #1207 (
+        'value' => 'M-P1',
+    ),
+    'holder' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #829 (
+        'value' => 'P1',
+    ),
+    'organisation' => App\Contexts\Shared\Domain\ValueObjects\TenantId Object #358391 (
+        'value' => 'O1',
+    ),
+    'log' => Array &0 [],
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/MembershipCommandHandlersTest.php:102
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\ReferenceModelPropertyTest::test_handlers_and_repository_agree_with_the_reference_model
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'seed 1 step 28 ["end","O2","P1","F23",13,"k28","F14"]: expected {"kind":"refused","reason":"member_not_found"} got {"kind":"refused","reason":"period_not_found"}',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ReferenceModelPropertyTest.php:34
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_d177_3_a_release_1_admission_must_state_its_term
+nothing is created, not even an empty Member record
+Failed asserting that App\Contexts\Membership\Domain\Organisational\Member Object #358754 (
+    'id' => App\Contexts\Membership\Domain\Organisational\MemberId Object #926 (
+        'value' => 'M-P2',
+    ),
+    'holder' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #998 (
+        'value' => 'P2',
+    ),
+    'organisation' => App\Contexts\Shared\Domain\ValueObjects\TenantId Object #358728 (
+        'value' => 'O1',
+    ),
+    'log' => Array &0 [],
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:170
+
+ERRORS!
+Tests: 176, Assertions: 119275, Errors: 1, Failures: 4.

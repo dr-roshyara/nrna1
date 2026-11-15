@@ -1,0 +1,17 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+PHP Fatal error:  Declaration of App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort@anonymous::check(App\Contexts\Shared\Domain\ValueObjects\TenantId $tenant, App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest $request): App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision must be compatible with App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort::check(App\Contexts\Shared\Domain\ValueObjects\TenantId $tenant, string $actor, App\Contexts\Membership\Application\Organisational\Ports\MembershipAct $act): App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php on line 63
+Stack trace:
+#0 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestCase.php(2467): Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest->setUp()
+#1 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestCase.php(2370): PHPUnit\Framework\TestCase->invokeHookMethods()
+#2 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestCase.php(511): PHPUnit\Framework\TestCase->invokeBeforeTestHookMethods()
+#3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#4 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run()
+#5 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#6 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#7 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run()
+#8 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run()
+#9 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/bin/phpunit(122): include('...')
+#10 {main}

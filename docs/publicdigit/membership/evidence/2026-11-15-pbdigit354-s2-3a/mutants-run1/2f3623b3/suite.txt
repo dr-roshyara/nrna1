@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............F....F...........................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:31.294, Memory: 62.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_end_asks_the_act_of_its_kind
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #1815 (RecordDeath, 'record-death')
++App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #1816 (RecordResignation, 'record-resignation')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:121
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_own_act_is_accepted_only_for_a_resignation_by_the_member_concerned
+ownAct is valid for record-resignation only
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:169
+
+FAILURES!
+Tests: 176, Assertions: 119276, Failures: 2.

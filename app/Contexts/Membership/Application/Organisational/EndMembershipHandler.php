@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
@@ -35,31 +36,35 @@ final class EndMembershipHandler
         $tenant = TenantId::fromString($command->tenantId);
         $memberId = MemberId::fromString($command->memberId);
 
+        $kind = EndKind::tryFromString($command->endKind);
+
         return $this->loop->run(
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            $command->actor,
-            MembershipAct::End,
-            fn (): Member|ApplicationRefusal => $this->repository->load($tenant, $memberId) ?? ApplicationRefusal::MemberNotFound,
-            static function (Member $member, AuthorityEvidence $evidence) use ($command): Decision {
-                // D-3 = E1: an unrecognised external value becomes a defined refusal (inside the standard
-                // decide loop, so IDEM-1's re-check and IDEM-4 apply), never an open string in the domain.
-                $kind = EndKind::tryFromString($command->endKind);
-                if ($kind === null) {
-                    return Decision::refused(RefusalReason::EndKindNotRecognised);
-                }
-
-                return $member->decideEnd(
-                    FactId::fromString($command->factId),
-                    PeriodId::fromString($command->periodId),
-                    TimePoint::of($command->effectiveAt),
-                    TimePoint::of($command->decisionDate),
-                    $kind,
-                    Provenance::decision($command->actor, $evidence),
-                    $command->decidedAt === null ? null : Instant::of($command->decidedAt),
-                );
+            // S2-3a (D-238; D-208 §2): the act asked depends on the kind. Refused at the boundary, before anyone is
+            // asked: an unrecognised kind (D-3 = E1); an exclusion (pushed by Governance with its Resolution part,
+            // C-1b, S2-6: no office exercises `exclude-member`); `legacy` (attested migration history only, never a
+            // decision through this command: the same refusal the kernel gives).
+            static fn (?Member $member): AuthorityRequest|RefusalReason => match (true) {
+                $kind === null => RefusalReason::EndKindNotRecognised,
+                $kind->value() === EndKind::EXCLUSION => RefusalReason::ExclusionIsPushOnly,
+                $kind->value() === EndKind::LEGACY => RefusalReason::LegacyEndRequiresAttestedHistory,
+                $kind->value() === EndKind::RESIGNATION => new AuthorityRequest(MembershipAct::RecordResignation, $command->actor, $member?->holder(),
+                    PeriodId::fromString($command->periodId), TimePoint::of($command->decisionDate), TimePoint::of($command->effectiveAt), $command->idempotencyKey),
+                $kind->value() === EndKind::DEATH => new AuthorityRequest(MembershipAct::RecordDeath, $command->actor, $member?->holder(),
+                    PeriodId::fromString($command->periodId), TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
             },
+            fn (): ?Member => $this->repository->load($tenant, $memberId),
+            static fn (Member $member, AuthorityEvidence $evidence): Decision => $member->decideEnd(
+                FactId::fromString($command->factId),
+                PeriodId::fromString($command->periodId),
+                TimePoint::of($command->effectiveAt),
+                TimePoint::of($command->decisionDate),
+                $kind,
+                Provenance::decision($command->actor, $evidence),
+                $command->decidedAt === null ? null : Instant::of($command->decidedAt),
+            ),
         );
     }
 }

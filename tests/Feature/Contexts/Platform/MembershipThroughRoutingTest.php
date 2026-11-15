@@ -402,7 +402,8 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
             $this->assertFalse(app(MemberRepositoryPort::class)->load(TenantId::fromString(self::B), MemberId::fromString('M1'))->resolve()->isSuspended(TimePoint::of(20_015)));
         });
 
-        foreach ([SuspendMembershipHandler::class, RestoreMembershipHandler::class] as $handler) {
+        foreach ([SuspendMembershipHandler::class, RestoreMembershipHandler::class, \App\Contexts\Membership\Application\Organisational\AdmitMemberHandler::class,
+            \App\Contexts\Membership\Application\Organisational\EndMembershipHandler::class, RenewMembershipHandler::class] as $handler) {
             try {
                 app($handler);
                 $this->fail("$handler: a production authority is bound; S2 must stay fail-closed until Governance S3");
@@ -410,5 +411,42 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
                 $this->assertStringContainsString('AuthorityCheckPort', $e->getMessage(), $handler);
             }
         }
+    }
+
+    /**
+     * PBDIGIT-354 S2-3a (D-238): through the PRODUCTION routed repository, a member's own resignation answered with an
+     * `ownAct` basis is recorded in A's own database with that basis; B's member with the same id is untouched.
+     */
+    public function test_s2_3a_the_answers_basis_is_recorded_in_the_routed_organisations_own_database(): void
+    {
+        $this->admitM1(self::B);
+        $this->routedTo(self::A, function (Connection $a): void {
+            $t = TenantId::fromString(self::A);
+            $repo = app(MemberRepositoryPort::class);
+            $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+            $this->readings = [200];
+            $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_365),
+                Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+            $ownAct = new class implements \App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort {
+                public function check(TenantId $tenant, \App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest $request): \App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision
+                {
+                    return \App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision::of(\App\Contexts\Membership\Domain\Organisational\AuthorityEvidence::of(
+                        $request->actor, 'the member concerned', 'D-194', 'v1', true, Instant::of(1), true,
+                        \App\Contexts\Membership\Domain\Organisational\AuthorityBasis::of(\App\Contexts\Membership\Domain\Organisational\AuthorityOutcome::Authorised, null, $request->at,
+                            \App\Contexts\Membership\Domain\Organisational\CompetenceKind::OwnAct, null, [])));
+                }
+            };
+
+            $this->readings = [300];
+            $outcome = (new \App\Contexts\Membership\Application\Organisational\EndMembershipHandler($repo, $ownAct))->handle(
+                new \App\Contexts\Membership\Application\Organisational\EndMembership(self::A, 'M1', 'E1', 'A1', 20_050, 20_050, 'resignation', 'P1', null, 'k2'),
+            );
+
+            $this->assertTrue($outcome->isAppended());
+            $stored = json_decode($a->selectOne("SELECT provenance::text AS p FROM org_membership_facts WHERE fact_id = 'E1'")->p, true);
+            $this->assertSame('own-act', $stored['authorityEvidence']['basis']['competenceKind'], "in A's own database");
+        });
+
+        $this->assertSame(['admit'], array_map(static fn ($r) => $r->kind, DB::connection('platform_org_b')->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "B's M1 untouched");
     }
 }

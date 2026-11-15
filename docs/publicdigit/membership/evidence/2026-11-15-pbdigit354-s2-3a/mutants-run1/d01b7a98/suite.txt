@@ -1,0 +1,19 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.................F.............................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:29.807, Memory: 62.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_undetermined_is_not_not_authorised_and_records_nothing
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Application\Organisational\ApplicationRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:144
+
+FAILURES!
+Tests: 176, Assertions: 119279, Failures: 1.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
@@ -45,21 +46,14 @@ final class AdmitMemberHandler
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            $command->actor,
-            MembershipAct::Admit,
-            // Without a stated term the decision below refuses. No Member record is created for that refusal: the
-            // decision runs on the existing Member, or on a transient one that is never stored.
-            fn (): Member|ApplicationRefusal => $until === null
-                ? ($this->repository->findByHolder($tenant, $person) ?? Member::fromLog(MemberId::fromString($command->memberIdIfNew), $person, $tenant))
-                : $this->memberOf($tenant, $person, MemberId::fromString($command->memberIdIfNew)),
+            // D-163, D-177 §3 (S2-1): a release-1 admission states its term, finite or open-ended; no platform
+            // default. Refused before anyone is asked and before any record exists. (The kernel keeps "no term" for
+            // attested history only, which never comes through this command.) The subject is the person admitted.
+            static fn (?Member $existing): AuthorityRequest|RefusalReason => $until === null
+                ? RefusalReason::AdmissionTermRequired
+                : new AuthorityRequest(MembershipAct::Admit, $command->actor, $person, null, TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
+            fn (): ?Member => $this->repository->findByHolder($tenant, $person),
             static function (Member $member, AuthorityEvidence $evidence) use ($command, $until): Decision {
-                // D-163, D-177 §3 (PBDIGIT-354 S2-1): a release-1 admission states its term, finite or open-ended;
-                // there is no platform default. The kernel keeps "no term" for attested history only (imports),
-                // which never comes through this command (its provenance is always a decision).
-                if ($until === null) {
-                    return Decision::refused(RefusalReason::AdmissionTermRequired);
-                }
-
                 return $member->decideAdmit(
                     FactId::fromString($command->factId),
                     TimePoint::of($command->effectiveAt),
@@ -69,15 +63,14 @@ final class AdmitMemberHandler
                     $command->decidedAt === null ? null : Instant::of($command->decidedAt),
                 );
             },
+            // only after the authorisation, and only when the person has no Member yet
+            fn (): Member|ApplicationRefusal => $this->created($tenant, $person, MemberId::fromString($command->memberIdIfNew)),
         );
     }
 
-    private function memberOf(TenantId $tenant, PersonRef $person, MemberId $idIfNew): Member|ApplicationRefusal
+    /** INV-M: creation is atomic per (tenant, person); a lost race continues with the winner's Member. */
+    private function created(TenantId $tenant, PersonRef $person, MemberId $idIfNew): Member|ApplicationRefusal
     {
-        $existing = $this->repository->findByHolder($tenant, $person);
-        if ($existing !== null) {
-            return $existing;
-        }
         $created = $this->repository->create($tenant, $idIfNew, $person);
         if ($created->isCreated()) {
             return $created->member();

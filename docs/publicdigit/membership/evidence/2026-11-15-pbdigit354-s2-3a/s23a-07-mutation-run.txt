@@ -1,0 +1,21 @@
+D1 the ownAct check is skipped                             tests:176  KILLED (assertions)  own_act_is_accepted_only_for_a_resignati;
+D2 ownAct counts for any act                               tests:176  KILLED (assertions)  own_act_is_accepted_only_for_a_resignati;
+D3 ownAct counts for any actor                             tests:176  KILLED (assertions)  own_act_is_accepted_only_for_a_resignati;
+D4 Undetermined reported as NotAuthorised                  tests:176  KILLED (assertions)  undetermined_is_not_not_authorised_and_r;
+D5 Undetermined treated as authorised                      tests:176  KILLED (assertions)  undetermined_is_not_not_authorised_and_r;
+D6 member-not-found before authority (leak)                tests:176  KILLED (assertions)  an_unauthorised_actor_learns_nothing_abo;
+D7 the member is created before authorisation              tests:176  KILLED+ERRORS (1: LogicException: No Member was created.)  an_unauthorised_admission_creates_nothin;a_refused_admission_still_creates_no_mem;creation_race_yields_one_member_and_the_;d177_3_a_release_1_admission_must_state_;handlers_and_repository_agree_with_the_r;
+E1 a pull exclusion is asked as a death                    tests:176  KILLED (assertions)  a_pull_exclusion_is_refused_without_aski;
+E2 a death asks record-resignation                         tests:176  KILLED (assertions)  end_asks_the_act_of_its_kind;own_act_is_accepted_only_for_a_resignati;
+E3 a resignation declares no effective date                tests:176  KILLED (assertions)  every_request_carries_the_act_actor_subj;
+E4 legacy is asked before refusal                          tests:176  KILLED (assertions)  legacy_and_unknown_end_kinds_are_refused;
+R1 the request names no subject                            tests:176  KILLED (assertions)  every_request_carries_the_act_actor_subj;
+R2 the request is evaluated for the effective date         tests:176  KILLED (assertions)  every_request_carries_the_act_actor_subj;
+R3 the request id is not the key                           tests:176  KILLED (assertions)  every_request_carries_the_act_actor_subj;
+V1 the outcome ignores the basis                           tests:176  KILLED (assertions)  undetermined_is_not_not_authorised_and_r;
+V2 result and basis may disagree                           tests:176  KILLED (assertions)  a_damaged_stored_basis_fails_as_unexpect;an_answer_whose_result_and_outcome_disag;evidence_carries_its_basis_and_the_resul;
+V3 an authorisation may carry a reason                     tests:176  KILLED (assertions)  a_refusal_states_its_reason_and_an_autho;
+J1 the basis is not stored                                 tests:176  KILLED (assertions)  the_authority_basis_round_trips with dat;
+J2 a damaged competence kind is tolerated                  tests:176  KILLED (assertions)  a_damaged_stored_basis_fails_as_unexpect;
+I1 the interim adapter calls its check competent           tests:176  KILLED (assertions)  owner_and_admin_may_admit_and_the_eviden;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

@@ -57,6 +57,12 @@ enum RefusalReason: string
     /** Command boundary (D-3 = E1): the requested ending act is not one of the closed set. */
     case EndKindNotRecognised = 'end_kind_not_recognised';
 
+    /**
+     * Command boundary (D-208 §2, C-1b; D-238): an exclusion is pushed by Governance with its Resolution part (S2-6);
+     * no office exercises `exclude-member`, so it is never requested by pull.
+     */
+    case ExclusionIsPushOnly = 'exclusion_is_push_only';
+
     /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
     case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';
 

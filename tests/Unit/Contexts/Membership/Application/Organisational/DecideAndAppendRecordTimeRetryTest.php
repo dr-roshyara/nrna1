@@ -13,6 +13,7 @@ use App\Contexts\Membership\Application\Organisational\Ports\AppendResult;
 use App\Contexts\Membership\Application\Organisational\Ports\AppliedCommand;
 use App\Contexts\Membership\Application\Organisational\Ports\CreateResult;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
 use App\Contexts\Membership\Domain\Organisational\Decision;
@@ -83,8 +84,8 @@ final class DecideAndAppendRecordTimeRetryTest extends TestCase
             TenantId::fromString('O1'),
             IdempotencyKey::fromString('k1'),
             'fp1',
-            'registrar',
-            MembershipAct::End,
+            // S2-3a: a mechanism test; the act asked does not matter here (FakeAuthority grants)
+            static fn (?Member $m): AuthorityRequest => new AuthorityRequest(MembershipAct::RecordResignation, 'registrar', $m?->holder(), null, TimePoint::of(5), null, 'k1'),
             $load,
             static function (Member $m, AuthorityEvidence $e) use (&$decides): Decision {
                 ++$decides;

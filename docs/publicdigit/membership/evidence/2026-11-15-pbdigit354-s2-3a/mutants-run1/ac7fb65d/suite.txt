@@ -1,0 +1,42 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................F..............................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:30.335, Memory: 62.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_legacy_and_unknown_end_kinds_are_refused_before_asking
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest Object #2133 (
++        'act' => App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #1815 (RecordDeath, 'record-death'),
++        'actor' => 'registrar-1',
++        'subject' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #2126 (
++            'value' => 'P1',
++        ),
++        'period' => App\Contexts\Membership\Domain\Organisational\PeriodId Object #2140 (
++            'admit' => App\Contexts\Membership\Domain\Organisational\FactId Object #524 (
++                'value' => 'A1',
++            ),
++        ),
++        'at' => App\Contexts\Membership\Domain\Organisational\TimePoint Object #2139 (
++            'ordinal' => 50,
++        ),
++        'declaredEffectiveAt' => null,
++        'requestId' => 'k1',
++    ),
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:138
+
+FAILURES!
+Tests: 176, Assertions: 119281, Failures: 1.

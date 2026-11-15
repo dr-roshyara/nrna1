@@ -1,0 +1,36 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+.......................................FF.........              176 / 176 (100%)
+
+Time: 00:35.397, Memory: 62.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_owner_and_admin_may_admit_and_the_evidence_is_recorded with data set "owner" ('owner')
+S2-3a: a technical role check, said so
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\CompetenceKind Enum #1223 (InterimRole, 'interim-role')
++App\Contexts\Membership\Domain\Organisational\CompetenceKind Enum #1666 (WorkedOut, 'worked-out')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:64
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_owner_and_admin_may_admit_and_the_evidence_is_recorded with data set "admin" ('admin')
+S2-3a: a technical role check, said so
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\CompetenceKind Enum #1223 (InterimRole, 'interim-role')
++App\Contexts\Membership\Domain\Organisational\CompetenceKind Enum #1666 (WorkedOut, 'worked-out')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:64
+
+FAILURES!
+Tests: 176, Assertions: 119265, Failures: 2.

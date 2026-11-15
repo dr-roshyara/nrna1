@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+............F..................................................  63 / 176 ( 35%)
+............................................................... 126 / 176 ( 71%)
+..................................................              176 / 176 (100%)
+
+Time: 00:31.051, Memory: 62.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_every_request_carries_the_act_actor_subject_period_decision_date_and_request_id
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+         1 => 'treasurer-1',
+         2 => 'P9',
+         3 => null,
+-        4 => 52,
++        4 => 50,
+         5 => null,
+         6 => 'k-r',
+     ],
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:102
+
+FAILURES!
+Tests: 176, Assertions: 119281, Failures: 1.

@@ -7,6 +7,7 @@ namespace Tests\Feature\Contexts\Membership\Organisational;
 use App\Contexts\Membership\Application\Organisational\ApplicationRefusal;
 use App\Contexts\Membership\Application\Organisational\DecideAndAppend;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
 use App\Contexts\Membership\Domain\Organisational\Decision;
@@ -54,7 +55,8 @@ final class PostgresRecordTimeRetryTest extends MembershipPostgresTestCase
 
     private function end(PostgresMemberRepository $repo, TenantId $t, int &$decides): \App\Contexts\Membership\Application\Organisational\CommandOutcome
     {
-        return (new DecideAndAppend($repo, new FakeAuthority()))->run($t, IdempotencyKey::fromString('k-end'), 'fp-end', 'registrar', MembershipAct::End,
+        return (new DecideAndAppend($repo, new FakeAuthority()))->run($t, IdempotencyKey::fromString('k-end'), 'fp-end',
+            static fn (?Member $m): AuthorityRequest => new AuthorityRequest(MembershipAct::RecordResignation, 'registrar', $m?->holder(), PeriodId::fromString('A1'), TimePoint::of(20_100), TimePoint::of(20_100), 'k-end'),
             static fn (): Member => $repo->load($t, MemberId::fromString('M1')),
             static function (Member $m, AuthorityEvidence $e) use (&$decides): Decision {
                 ++$decides;

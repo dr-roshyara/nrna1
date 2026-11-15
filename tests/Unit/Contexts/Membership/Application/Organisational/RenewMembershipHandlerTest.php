@@ -9,6 +9,7 @@ use App\Contexts\Membership\Application\Organisational\AdmitMemberHandler;
 use App\Contexts\Membership\Application\Organisational\ApplicationRefusal;
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Application\Organisational\Ports\StorableValidTime;
 use App\Contexts\Membership\Application\Organisational\RenewMembership;
@@ -49,12 +50,11 @@ final class RenewMembershipHandlerTest extends TestCase
             public array $asked = [];
             public bool $grant = true;
 
-            public function check(TenantId $tenant, string $actor, MembershipAct $act): AuthorityDecision
+            public function check(TenantId $tenant, AuthorityRequest $request): AuthorityDecision
             {
-                $this->asked[] = [$tenant->value(), $actor, $act];
-                $evidence = AuthorityEvidence::of($actor, 'test-role', 'test:renew-authority', 'v1', $this->grant, Instant::of(count($this->asked)), false);
+                $this->asked[] = [$tenant->value(), $request->actor, $request->act];
 
-                return $this->grant ? AuthorityDecision::granted($evidence) : AuthorityDecision::denied($evidence);
+                return AuthorityDecision::of(AuthorityEvidence::of($request->actor, 'test-role', 'test:renew-authority', 'v1', $this->grant, Instant::of(count($this->asked)), false));
             }
         };
         // admitted at 1 with the term [1, 10)

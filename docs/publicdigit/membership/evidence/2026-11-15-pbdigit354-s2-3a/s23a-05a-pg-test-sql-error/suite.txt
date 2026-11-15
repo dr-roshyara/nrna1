@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DED                                                                 3 / 3 (100%)
+
+Time: 00:07.072, Memory: 24.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresAuthorityEvidenceTest::test_historical_evidence_without_a_basis_still_loads_as_not_recorded
+Illuminate\Database\QueryException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "$1"
+LINE 1: SELECT provenance->'authorityEvidence' $1 'basis' AS b FROM ...
+                                               ^ (Connection: pgsql, Host: 127.0.0.1, Port: 38263, Database: membership_pg_isolated, SQL: SELECT provenance->'authorityEvidence' b1f5000b-a2c7-4b4c-9ace-ad2d91bfbf2a 'basis' AS b FROM org_membership_facts WHERE organisation_id = ? AND fact_id = 'A1')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresAuthorityEvidenceTest.php:84
+
+Caused by
+PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "$1"
+LINE 1: SELECT provenance->'authorityEvidence' $1 'basis' AS b FROM ...
+                                               ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresAuthorityEvidenceTest.php:84
+
+ERRORS!
+Tests: 3, Assertions: 9, Errors: 1, Deprecations: 1.

@@ -6,8 +6,12 @@ namespace App\Contexts\Membership\Infrastructure\Organisational;
 
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
 use App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
+use App\Contexts\Membership\Domain\Organisational\AuthorityBasis;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
+use App\Contexts\Membership\Domain\Organisational\AuthorityOutcome;
+use App\Contexts\Membership\Domain\Organisational\CompetenceKind;
 use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
@@ -37,16 +41,21 @@ final class InterimRoleAuthority implements AuthorityCheckPort
     {
     }
 
-    public function check(TenantId $tenant, string $actor, MembershipAct $act): AuthorityDecision
+    public function check(TenantId $tenant, AuthorityRequest $request): AuthorityDecision
     {
+        $actor = $request->actor;
         $role = $this->roles->roleOf($tenant, $actor);
-        [$ruleRef, $granted] = match ($act) {
+        [$ruleRef, $granted] = match ($request->act) {
             MembershipAct::Admit => [self::ADMIT_RULE, in_array($role, self::ADMITTING_ROLES, true)],
-            MembershipAct::End => [self::END_RULE, false],
+            MembershipAct::RecordResignation, MembershipAct::RecordDeath => [self::END_RULE, false],
             // PBDIGIT-354 S2-1 / S2-2: no legacy rule exists to mirror for these either; denied, nothing inferred.
             // (The vocabulary guard keeps other contexts' names out of this adapter: hence "authority owner".)
             MembershipAct::Renew, MembershipAct::Suspend, MembershipAct::Restore => [self::LIFECYCLE_RULE, false],
         };
+        // S2-3a (D-238): the basis says what this is: a technical role check (interim role), or a denial and why.
+        $basis = $granted
+            ? AuthorityBasis::of(AuthorityOutcome::Authorised, null, $request->at, CompetenceKind::InterimRole, null, [])
+            : AuthorityBasis::of(AuthorityOutcome::NotAuthorised, 'interim: no rule to mirror, or the role does not admit', $request->at, null, null, []);
         $evidence = AuthorityEvidence::of(
             $actor,
             'organisation_role:' . ($role ?? 'none'),
@@ -55,8 +64,9 @@ final class InterimRoleAuthority implements AuthorityCheckPort
             $granted,
             Instant::of(($this->clock)()),
             false,
+            $basis,
         );
 
-        return $granted ? AuthorityDecision::granted($evidence) : AuthorityDecision::denied($evidence);
+        return AuthorityDecision::of($evidence);
     }
 }

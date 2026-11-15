@@ -7,6 +7,7 @@ namespace Tests\Feature\Contexts\Membership\Organisational;
 use App\Contexts\Membership\Application\Organisational\CommandOutcome;
 use App\Contexts\Membership\Application\Organisational\DecideAndAppend;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityRequest;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\Decision;
@@ -96,7 +97,9 @@ final class PostgresCorrectionRaceTest extends MembershipPostgresTestCase
         $repo = self::repository();
 
         return (new DecideAndAppend($repo, new FakeAuthority()))->run(
-            $t, IdempotencyKey::fromString($key), "fp-$key", 'registrar', MembershipAct::End,   // placeholder act (COR-3)
+            $t, IdempotencyKey::fromString($key), "fp-$key",
+            // placeholder act (COR-3; correction act kinds are S2-5); FakeAuthority grants
+            static fn (?Member $m): AuthorityRequest => new AuthorityRequest(MembershipAct::RecordResignation, 'registrar', $m?->holder(), null, TimePoint::of(1), null, $key),
             static fn () => $repo->load($t, MemberId::fromString('M1')),
             static fn (Member $m) => $decide($m),
         );
