@@ -128,14 +128,10 @@ final class PostgresGeographyReadSource implements GeographyReadSource
     }
 
     /** G-5b: every published slot of the kind (names, codes), each history through the accepted atlas mapping. */
+    /** PBDIGIT-355: one query for the kind (was one per slot), through the atlas's published-only mapping; same histories. */
     public function slotsOfKind(ClaimKind $kind, int $p): array
     {
-        $atlas = PostgresPublishedAtlas::at($this->db, $p);
-
-        return array_map(
-            static fn (object $row): SlotHistory => $atlas->history(SlotKey::decode($row->slot_key)),
-            $this->db->select('SELECT DISTINCT c.slot_key ' . self::PUBLISHED . ' WHERE c.kind = ? AND p.position <= ? ORDER BY c.slot_key', [$kind->value, $p]),
-        );
+        return PostgresPublishedAtlas::at($this->db, $p)->historiesOfKind($kind);
     }
 
     public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array
@@ -149,5 +145,13 @@ final class PostgresGeographyReadSource implements GeographyReadSource
         }
 
         return $children;
+    }
+
+    public function containedInAnyScheme(ReferenceUnitId $parent, int $p): array
+    {
+        return array_map(
+            static fn (object $row): SlotKey => SlotKey::decode($row->slot_key),
+            $this->db->select("SELECT DISTINCT c.slot_key " . self::PUBLISHED . " WHERE c.kind = 'CONTAINMENT' AND c.value = ? AND p.position <= ? ORDER BY c.slot_key", [$parent->value(), $p]),
+        );
     }
 }

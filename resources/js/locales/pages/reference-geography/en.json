@@ -1,0 +1,33 @@
+{
+  "title": "Reference geography",
+  "subtitle": "Officially published places",
+  "knownAt": "As officially known at publication {position}",
+  "validOn": "Valid on {date}",
+  "latest": "Show the latest publication",
+  "empty": {
+    "title": "No official geography has been published yet.",
+    "description": "Places appear here once they are officially published."
+  },
+  "label": {
+    "none": "No published name",
+    "fallback": "Platform default language ({language})",
+    "source": "Source name ({language})"
+  },
+  "place": {
+    "back": "All top-level places",
+    "notExisting": "This place does not exist on the valid date.",
+    "disputed": "Disputed published facts: {kinds}",
+    "mergedInto": "Merged into another place:",
+    "displayName": "Display name",
+    "cldr": "CLDR release {release}",
+    "names": "Source names",
+    "classifications": "Classifications",
+    "identifiers": "Identifiers",
+    "parents": "Contained in",
+    "children": "Contains",
+    "noParents": "Not contained in another place.",
+    "noChildren": "No published places inside this one.",
+    "scheme": "Scheme: {scheme}",
+    "none": "None published"
+  }
+}

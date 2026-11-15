@@ -158,6 +158,18 @@ final class PublishedGeographyTest extends TestCase
 
                 return $out;
             }
+
+            public function containedInAnyScheme(ReferenceUnitId $parent, int $p): array
+            {
+                $out = [];
+                foreach ($this->slots as $h) {
+                    if ($h->slot()->kind()->value === 'CONTAINMENT' && $h->latest($p)?->value->value() === $parent->value()) {
+                        $out[] = $h->slot();
+                    }
+                }
+
+                return $out;
+            }
         };
     }
 
@@ -227,6 +239,8 @@ final class PublishedGeographyTest extends TestCase
             static fn (PublishedGeography $g) => $g->publicationsSince(0, $forged),
             static fn (PublishedGeography $g) => $g->approvalStatus(1, $forged),   // G-6c-6
             static fn (PublishedGeography $g) => $g->displayName(self::NEPAL, 'de', '2020-01-01', $forged),   // G-7
+            static fn (PublishedGeography $g) => $g->topLevelAt('2020-01-01', $forged),   // PBDIGIT-355
+            static fn (PublishedGeography $g) => $g->childrenInAnySchemeOf(self::NEPAL, '2020-01-01', $forged),   // PBDIGIT-355
         ] as $i => $query) {
             try {
                 $query(self::geography());
@@ -268,6 +282,26 @@ final class PublishedGeographyTest extends TestCase
         $this->assertSame([self::KOSHI, self::BAGMATI], $g->childrenOf(self::NEPAL, 'admin', '2020-01-01', $g->knowledgeAt(4)));
         $this->assertSame([], $g->childrenOf(self::NEPAL, 'admin', '2000-01-01', $g->knowledgeAt(4)), 'no containment claim covers 2000');
         $this->assertSame([], $g->childrenOf(self::NEPAL, 'electoral', '2020-01-01', $g->knowledgeAt(4)));
+    }
+
+    public function test_the_top_level_is_the_places_existing_at_t_with_no_parent_in_any_scheme(): void
+    {
+        $g = self::geography();
+
+        $this->assertSame([self::NEPAL], $g->topLevelAt('2020-01-01', $g->knowledgeAt(4)), 'the provinces have a parent');
+        $this->assertSame([self::NEPAL], $g->topLevelAt('2000-01-01', $g->knowledgeAt(4)), 'the provinces did not exist in 2000');
+        $this->assertSame([], $g->topLevelAt('2020-01-01', $g->knowledgeAt(0)), 'nothing published: nothing at the top');
+    }
+
+    public function test_children_in_any_scheme_name_their_scheme(): void
+    {
+        $g = self::geography();
+
+        $this->assertSame([['scheme' => 'admin', 'unitId' => self::KOSHI], ['scheme' => 'admin', 'unitId' => self::BAGMATI]],
+            $g->childrenInAnySchemeOf(self::NEPAL, '2020-01-01', $g->knowledgeAt(4)));
+        $this->assertSame([['scheme' => 'admin', 'unitId' => self::BAGMATI]], $g->childrenInAnySchemeOf(self::NEPAL, '2020-01-01', $g->knowledgeAt(2)), 'Koshi is published at 3');
+        $this->assertSame([], $g->childrenInAnySchemeOf(self::NEPAL, '2000-01-01', $g->knowledgeAt(4)), 'no containment claim covers 2000');
+        $this->assertSame([], $g->childrenInAnySchemeOf(self::BAGMATI, '2020-01-01', $g->knowledgeAt(4)));
     }
 
     public function test_lookup_matches_names_and_codes_of_places_existing_at_t_as_known_at_p(): void

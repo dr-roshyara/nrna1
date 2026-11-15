@@ -1,0 +1,33 @@
+{
+  "title": "Referenzgeografie",
+  "subtitle": "Amtlich veröffentlichte Orte",
+  "knownAt": "Amtlicher Stand: Veröffentlichung {position}",
+  "validOn": "Gültig am {date}",
+  "latest": "Neueste Veröffentlichung anzeigen",
+  "empty": {
+    "title": "Es wurde noch keine amtliche Geografie veröffentlicht.",
+    "description": "Orte erscheinen hier, sobald sie amtlich veröffentlicht sind."
+  },
+  "label": {
+    "none": "Kein veröffentlichter Name",
+    "fallback": "Standardsprache der Plattform ({language})",
+    "source": "Name laut Quelle ({language})"
+  },
+  "place": {
+    "back": "Alle Orte der obersten Ebene",
+    "notExisting": "Dieser Ort besteht am Gültigkeitsdatum nicht.",
+    "disputed": "Bestrittene veröffentlichte Angaben: {kinds}",
+    "mergedInto": "Zusammengeführt mit einem anderen Ort:",
+    "displayName": "Anzeigename",
+    "cldr": "CLDR-Version {release}",
+    "names": "Namen laut Quellen",
+    "classifications": "Einordnungen",
+    "identifiers": "Kennungen",
+    "parents": "Liegt in",
+    "children": "Umfasst",
+    "noParents": "Liegt in keinem anderen Ort.",
+    "noChildren": "Keine veröffentlichten Orte innerhalb dieses Ortes.",
+    "scheme": "Gliederung: {scheme}",
+    "none": "Nichts veröffentlicht"
+  }
+}

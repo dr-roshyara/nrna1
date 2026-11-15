@@ -99,6 +99,44 @@ final class PublishedGeography implements GeographyReadModel
         return $children;
     }
 
+    public function topLevelAt(string $validDate, Knowledge $knowledge): array
+    {
+        $p = $this->checked($knowledge->position);
+        $t = ValidDate::fromString($validDate);
+        $contained = [];
+        foreach ($this->source->slotsOfKind(ClaimKind::Containment, $p) as $history) {
+            $inForce = $history->claimAt($t, $p);   // as PlaceBelief derives Place::$parents
+            if ($inForce !== null && !$inForce->value->isNone()) {
+                $contained[$history->slot()->subject()->value()] = true;
+            }
+        }
+        $top = [];
+        foreach ($this->source->slotsOfKind(ClaimKind::Existence, $p) as $history) {
+            $unit = $history->slot()->subject()->value();
+            if ($history->resolve($t, $p) !== null && !isset($contained[$unit])) {   // as placesAt
+                $top[] = $unit;
+            }
+        }
+        sort($top);
+
+        return $top;
+    }
+
+    public function childrenInAnySchemeOf(string $unitId, string $validDate, Knowledge $knowledge): array
+    {
+        $p = $this->checked($knowledge->position);
+        $t = ValidDate::fromString($validDate);
+        $children = [];
+        foreach ($this->source->containedInAnyScheme(ReferenceUnitId::fromString($unitId), $p) as $slot) {
+            if ($this->source->slotHistory($slot, $p)->resolve($t, $p)?->value() === $unitId) {   // as childrenOf
+                $children[] = ['scheme' => (string) $slot->component('scheme'), 'unitId' => $slot->subject()->value()];
+            }
+        }
+        usort($children, static fn (array $a, array $b): int => [$a['scheme'], $a['unitId']] <=> [$b['scheme'], $b['unitId']]);
+
+        return $children;
+    }
+
     public function resolve(string $unitId, Knowledge $knowledge): Resolution
     {
         $p = $this->checked($knowledge->position);

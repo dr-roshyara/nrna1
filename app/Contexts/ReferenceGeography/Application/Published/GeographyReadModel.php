@@ -29,6 +29,21 @@ interface GeographyReadModel
     /** @return list<string> the places whose parent in the scheme is believed, at the valid date, to be this one */
     public function childrenOf(string $unitId, string $scheme, string $validDate, Knowledge $knowledge): array;
 
+    /**
+     * PBDIGIT-355: the places believed to exist at the valid date (as placesAt) with no parent in any scheme at that date
+     * (no containment in force, as Place::$parents). Sorted by id. Bounded in queries, whatever the number of places.
+     *
+     * @return list<string>
+     */
+    public function topLevelAt(string $validDate, Knowledge $knowledge): array;
+
+    /**
+     * PBDIGIT-355: childrenOf across every scheme, each child with the scheme it is contained in. Sorted by scheme, then id.
+     *
+     * @return list<array{scheme: string, unitId: string}>
+     */
+    public function childrenInAnySchemeOf(string $unitId, string $validDate, Knowledge $knowledge): array;
+
     /** Which identity this one resolves to (a merge, v3.11 §12); itself if never merged or reversed. */
     public function resolve(string $unitId, Knowledge $knowledge): Resolution;
 
