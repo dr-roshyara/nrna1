@@ -30,7 +30,8 @@ final class SelectOrganisationController
             Log::info('platform.organisation_selection.refused', ['reason' => $e->reason->value]);
 
             return response('Organisation access refused.', Response::HTTP_FORBIDDEN);
-        } catch (BindingsUnavailable) {
+        } catch (BindingsUnavailable | \Illuminate\Database\QueryException | \PDOException) {
+            // task 12 (T-11, T-18): Identity or the registry unreachable → 503, the earlier selection kept (fail closed)
             return response('Service unavailable.', Response::HTTP_SERVICE_UNAVAILABLE);
         }
         $request->session()->regenerate();

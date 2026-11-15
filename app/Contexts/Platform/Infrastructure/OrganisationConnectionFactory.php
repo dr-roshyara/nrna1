@@ -53,9 +53,16 @@ final class OrganisationConnectionFactory
             'search_path' => 'public',
             'sslmode' => $cluster['sslmode'] ?? 'prefer',
         ]]);
-        /** @var Connection $connection */
-        $connection = DB::connection($name);
-        if ($connection->selectOne('SELECT current_database() AS d')->d !== $locator->database) {
+        try {
+            /** @var Connection $connection */
+            $connection = DB::connection($name);
+            $database = $connection->selectOne('SELECT current_database() AS d')->d;
+        } catch (\Throwable $e) {
+            // task 12 (T-11, T-18): an unreachable database leaves NOTHING registered behind (no stale connection)
+            $this->forget($name);
+            throw $e;
+        }
+        if ($database !== $locator->database) {
             $this->forget($name);
             throw new OrganisationRoutingRefused('The organisation connection is not on its registry database.');
         }

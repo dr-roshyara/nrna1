@@ -1,0 +1,2 @@
+U2 the entry lets a raw PDOException through                   [pg-platform:OutageAndRecoveryTest] tests:4    KILLED  t11_a_raw_connection_refusal_during_entry_ans;
+survivors: 0; unexpected (not argued equivalent, site missing or unparsable): 0

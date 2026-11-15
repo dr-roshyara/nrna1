@@ -1,0 +1,4 @@
+U1 a failed connection stays registered                        [pg-platform:OutageAndRecoveryTest] tests:3    KILLED  t11_one_organisation_database_down_refuses_it;
+U2 the entry lets a raw PDOException through                   [pg-platform:OutageAndRecoveryTest] tests:3    SURVIVED  
+U3 the selection lets an outage through                        [pg-platform:OutageAndRecoveryTest] tests:3    KILLED  t18_with_the_cluster_unreachable_every_organi;
+survivors: 1; unexpected (not argued equivalent, site missing or unparsable): 1

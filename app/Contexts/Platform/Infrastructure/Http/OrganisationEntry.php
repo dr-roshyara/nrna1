@@ -55,7 +55,8 @@ final class OrganisationEntry
             Log::info('platform.organisation_entry.refused', ['reason' => $e->reason->value]);
 
             return response('Organisation access refused.', Response::HTTP_FORBIDDEN);
-        } catch (BindingsUnavailable | OrganisationRoutingRefused | \Illuminate\Database\QueryException $e) {
+        } catch (BindingsUnavailable | OrganisationRoutingRefused | \Illuminate\Database\QueryException | \PDOException $e) {
+            // task 12: a refused connection can surface as a raw PDOException (Laravel's lost-connection retry rethrows it)
             Log::warning('platform.organisation_entry.unavailable', ['kind' => $e::class]);
 
             return response('Service unavailable.', Response::HTTP_SERVICE_UNAVAILABLE);

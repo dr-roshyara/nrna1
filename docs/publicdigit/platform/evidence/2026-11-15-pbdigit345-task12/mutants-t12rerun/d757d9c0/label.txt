@@ -1,0 +1,1 @@
+U2 the entry lets a raw PDOException through

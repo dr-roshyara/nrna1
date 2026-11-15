@@ -1,2 +1,2 @@
 
-| 11 | [Operator channel E-4](11_operator_channel.md) | `platform:operate <organisation> migration-repair --operator=…`: technical only, recorded and reported (T-16) |
+| 12 | [Outage and restore](12_outage_and_restore.md) | fail closed and resume (T-11, T-18 proven); the restore drill T-17 pending a decision |
