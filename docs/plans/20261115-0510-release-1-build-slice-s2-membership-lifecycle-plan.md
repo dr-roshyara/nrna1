@@ -140,7 +140,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7d. S2-4d finding: an ending recorded on or after a due-but-unexecuted scheduled resignation's date (Q-5, awaiting the Human Arb Chief)
+## 7d. S2-4d finding: an ending recorded on or after a due-but-unexecuted scheduled resignation's date (Q-5, **decided: D-240, Option A**, 2026-11-15; implementation S2-4d-Q5 in progress)
 
 **The situation.**
 - A member's resignation is scheduled for 3 November.
@@ -166,7 +166,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 - **B: carry out the scheduled resignation first, automatically.** Recording the other ending first records the scheduled End (on its date), then refuses the other one as "already ended". Same outcome as A, but the command path does the confirming step's work and needs the calendar.
 - **C: let the later ending stand.** Keep today's behaviour, but correct the reason to "superseded by a later ending recorded before execution". The member's date is lost and they count as a member for the extra days. Only defensible if the later ending is deliberate.
 
-**S2-4 is not marked Done until Q-5 is decided and implemented.**
+**S2-4 is not marked Done until Q-5 is decided and implemented.** *(2026-11-15: decided as **D-240**: Option A. The rule is enforced at the ledger append (every End path, including the future S2-6 push); a person's death fact is not a Membership End and does not exist in the code yet: PBDIGIT-356.)*
 
 ## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, **decided: D-239, Option A**; **S2-4a … S2-4d DONE 2026-11-15**; S2-4 waits on **Q-5** (§7d))
 

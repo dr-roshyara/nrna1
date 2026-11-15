@@ -35,9 +35,9 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
-## Open
+## Decided: Q-5 → D-240 (Option A)
 
-- **Q-5 (S2-4d, plan §7d):** an ending (resign now, death, exclusion) effective on or after a due-but-unexecuted scheduled resignation's date. Recommended: A, refuse it while the declaration is pending. **S2-4 is not Done until decided and implemented.**
+- *(as found)* **Q-5 (S2-4d, plan §7d):** an ending (resign now, death, exclusion) effective on or after a due-but-unexecuted scheduled resignation's date. Recommended: A, refuse it while the declaration is pending. **S2-4 is not Done until decided and implemented.**
 
 ## Decided: Q-4 → D-239 (Option A)
 
