@@ -1,0 +1,34 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.xml
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:00.011, Memory: 12.00 MB
+
+There were 4 errors:
+
+1) Tests\Unit\Contexts\Identity\IssueReferenceTest::test_issuing_again_for_the_same_entry_returns_the_same_reference
+Error: Class "App\Contexts\Identity\Application\IssueReference" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/IssueReferenceTest.php:57
+
+2) Tests\Unit\Contexts\Identity\IssueReferenceTest::test_a_reference_belongs_to_exactly_one_organisation
+Error: Interface "App\Contexts\Identity\Application\Ports\IssuedReferences" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/IssueReferenceTest.php:29
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/IssueReferenceTest.php:66
+
+3) Tests\Unit\Contexts\Identity\IssueReferenceTest::test_a_person_reference_is_opaque_hex
+Error: Class "App\Contexts\Identity\Domain\OrganisationPersonRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/IssueReferenceTest.php:78
+
+4) Tests\Unit\Contexts\Identity\IssueReferenceTest::test_an_entry_reference_is_opaque_and_never_empty
+Error: Class "App\Contexts\Identity\Domain\LocalEntryRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/IssueReferenceTest.php:91
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4.

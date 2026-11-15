@@ -1,0 +1,35 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+DDDDDDDFDDDDDDDF                                                  16 / 16 (100%)
+
+Time: 00:10.444, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_replace_revokes_the_active_claim_and_issues_a_new_one_in_one_act
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'revoked'
++'issued'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:220
+
+2) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_an_issuance_that_waits_across_the_old_claims_expiry_treats_it_as_inactive
+PI-23: t_check is read after the lock, so the expired claim no longer blocks
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'issued'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:364
+
+FAILURES!
+Tests: 16, Assertions: 39, Failures: 2, Deprecations: 1.

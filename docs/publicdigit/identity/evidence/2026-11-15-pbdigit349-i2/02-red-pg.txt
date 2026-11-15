@@ -1,0 +1,136 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+EEEEEEEEEEEEFEEE                                                  16 / 16 (100%)
+
+Time: 00:06.811, Memory: 28.00 MB
+
+There were 15 errors:
+
+1) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_an_officer_issues_a_claim_whose_code_is_shown_once_and_stored_only_as_a_hash
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:124
+
+2) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_the_window_follows_the_rules_and_is_capped_at_30_days
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:138
+
+3) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_a_retry_with_the_same_issuance_id_creates_nothing_and_returns_no_code
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:146
+
+4) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_one_active_claim_per_person_and_a_new_one_once_it_expired
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:155
+
+5) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_a_bound_or_unknown_person_gets_no_claim
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:166
+
+6) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_refused_evidence_consumes_nothing_and_a_replayed_answer_is_refused
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:180
+
+7) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_another_organisations_officer_or_a_session_without_r_gets_no_claim
+Error: Interface "App\Contexts\Identity\Application\Ports\SessionActorRefs" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:59
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:196
+
+8) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_replace_revokes_the_active_claim_and_issues_a_new_one_in_one_act
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:210
+
+9) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_replace_and_revoke_need_an_active_claim_then_issue_works_again
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:224
+
+10) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_revoke_ends_an_active_claim_once_and_only_in_its_own_organisation
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:238
+
+11) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_central_storage_holds_no_governance_answer_content
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:252
+
+12) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_the_claim_sql_never_uses_the_transaction_start_time
+ErrorException: file_get_contents(/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresClaims.php): Failed to open stream: No such file or directory
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:261
+
+13) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_two_concurrent_first_issuances_give_one_active_claim
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:331
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:307
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:331
+
+14) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_a_retry_while_the_slot_is_held_creates_nothing
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:340
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:307
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:340
+
+15) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_an_issuance_that_waits_across_the_old_claims_expiry_treats_it_as_inactive
+Error: Class "App\Contexts\Identity\Application\IssueClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:99
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:348
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_production_refuses_until_r1_exists
+Failed asserting that exception of type "Illuminate\Contracts\Container\BindingResolutionException" matches expected exception "App\Contexts\Identity\Application\IdentityUnavailable". Message was: "Target class [App\Contexts\Identity\Application\IssueClaim] does not exist." at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:1122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:271
+.
+
+ERRORS!
+Tests: 16, Assertions: 1, Errors: 15, Failures: 1, Deprecations: 1.

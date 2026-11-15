@@ -1,0 +1,31 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDFDF                                                 17 / 17 (100%)
+
+Time: 00:12.653, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_two_concurrent_issuances_on_an_existing_slot_give_one_active_claim
+the contender waited for the existing slot
+Failed asserting that 68 is greater than 400.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:350
+
+2) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_an_issuance_that_waits_across_the_old_claims_expiry_treats_it_as_inactive
+PI-23: t_check is read after the lock, so the expired claim no longer blocks
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'issued'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:378
+
+FAILURES!
+Tests: 17, Assertions: 42, Failures: 2, Deprecations: 1.

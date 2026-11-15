@@ -1,6 +1,6 @@
 # PBDIGIT-349: Identity claims and bindings (I-TDD-02): implementation
 
-**Status:** OPEN (created 2026-11-14) · not authorised · needs an EP-01 plan · **Context:** Identity · **Kind:** implementation
+**Status:** IN PROGRESS (created 2026-11-14) · **I-1 … I-4 authorised by the Principal 2026-11-15** (development and test only; P-I2 = L1; Account = the legacy `users` row, transitional) · **I-1 DONE 2026-11-15** · **I-2 DONE 2026-11-15** (ordinary claims; production refuses until I-4) · I-3, I-4 not started · production readiness not established · EP-01 plan 2026-11-15 (`docs/plans/20261115-1426-identity-claims-and-bindings-pbdigit-349-plan.md`; readiness **PARTIALLY READY**; Principal questions Q-1 … Q-5) · **Context:** Identity · **Kind:** implementation
 
 ## Why (found by PBDIGIT-345 task 6)
 

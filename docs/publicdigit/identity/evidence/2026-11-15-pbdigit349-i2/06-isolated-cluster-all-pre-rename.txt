@@ -1,0 +1,20 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  63 / 486 ( 12%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 126 / 486 ( 25%)
+DDDDDDDDDDDDoutcomes: {"appended:":192,"refused:admission_term_required":119,"refused:duplicate_fact_id":14,"refused:end_not_after_period_start":72,"refused:idempotency_key_conflict":28,"refused:member_not_found":167,"refused:overlapping_membership_periods":112,"refused:period_already_ended":32,"refused:period_not_found":14}
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD..DDDDDDDDDD 189 / 486 ( 38%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 252 / 486 ( 51%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 315 / 486 ( 64%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 378 / 486 ( 77%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 441 / 486 ( 90%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                   486 / 486 (100%)
+
+Time: 03:54.894, Memory: 60.00 MB
+
+OK, but there were issues!
+Tests: 486, Assertions: 17830, Deprecations: 1.
