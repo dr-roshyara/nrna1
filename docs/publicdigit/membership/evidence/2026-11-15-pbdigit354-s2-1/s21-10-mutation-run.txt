@@ -1,0 +1,22 @@
+K1 a renewal after the period end is accepted              tests:35   KILLED (assertions)  row21_after_the_end_is_annulled_a_renewa;row5_a_renewal_after_a_formal_end_is_ref;the_renewal_belongs_to_the_period_contai;
+K2 any period is taken, even one not yet started           tests:35   KILLED (assertions)  a_domain_refusal_is_passed_through;row6_a_renewal_before_the_periods_start_;the_renewal_belongs_to_the_period_contai;
+K3 the earliest-started period is taken                    tests:35   KILLED+ERRORS (1: LogicException: A refused decision has no fact: period_ended)  the_renewal_belongs_to_the_period_contai;
+K4 a renewal may be future-dated (D-205)                   tests:35   KILLED (assertions)  a_domain_refusal_is_passed_through;d205_a_renewal_may_not_take_effect_after;
+K5 an empty segment reaches the fact                       tests:35   KILLED+ERRORS (1: InvalidArgumentException: A renewed term must end after it starts.)  an_empty_segment_is_refused;
+K6 a stored renewal need not name an admission             tests:35   SURVIVED  
+K7 correcting a renewal is not refused                     tests:35   KILLED+ERRORS (1: LogicException: Only an Admit, End or Correct has a value.)  correcting_a_renewal_is_refused_until_it;
+K8 a duplicate fact id is accepted for a renewal           tests:35   KILLED (assertions)  a_fact_id_is_used_once;
+R1 the renewed term is not clipped to the lifetime         tests:35   SURVIVED  
+R2 a renewal counts for every period                       tests:35   KILLED (assertions)  a_renewed_term_never_carries_into_a_late;
+R3 renewals are ignored                                    tests:35   KILLED (assertions)  an_open_ended_renewal_is_in_force_until_;a_period_admitted_without_a_term_becomes;a_renewal_is_recorded_and_extends_the_ti;a_renewed_term_stops_at_the_periods_end;row17_annulling_a_renewal_removes_its_se;row1_a_renewal_adjoining_the_term_gives_;row22_a_renewal_is_not_visible_before_it;row3_a_late_renewal_keeps_the_lapsed_gap;row4_an_expressly_back_dated_renewal_clo;row7_overlapping_renewals_are_a_union;
+A1 an admission without a term is accepted                 tests:35   KILLED (assertions)  d177_3_a_release_1_admission_must_state_;handlers_and_repository_agree_with_the_r;
+A2 a refused admission still creates the member record     tests:35   KILLED (assertions)  d177_3_a_release_1_admission_must_state_;handlers_and_repository_agree_with_the_r;
+A3 authority is asked for the wrong act                    tests:35   KILLED (assertions)  authority_is_asked_for_the_renew_act_and;
+A4 a renewal without a term is read as unlimited           tests:35   KILLED (assertions)  a_renewal_must_state_its_term;
+A5 the renewal end date is not range-checked               tests:35   KILLED (assertions)  a_renewal_is_storable_iff_both_its_dates;
+A6 the renewal start date is not range-checked             tests:35   KILLED (assertions)  a_renewal_is_storable_iff_both_its_dates;
+P1 (db) an open-ended renewal is stored as a dated one     tests:12   KILLED+ERRORS (1: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  an_open_ended_renewal_round_trips;
+P2 the renewal is stored against no period (db)            tests:12   KILLED+ERRORS (4: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  an_open_ended_renewal_round_trips;a_renewal_inside_the_existing_term_write;a_renewal_is_stored_reloaded_and_extends;c1_carries_the_changed_in_force_and_the_;
+P3 the stored end date is read as the start date           tests:12   KILLED (assertions)  a_renewal_is_stored_reloaded_and_extends;
+P4 an open-ended renewal is read back as dated             tests:12   KILLED (assertions)  an_open_ended_renewal_round_trips;
+survivors: 2; unexpected (survived without an argued equivalence, or not run): 2

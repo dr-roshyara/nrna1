@@ -11,6 +11,8 @@ use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPor
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipSourceOfTruthPort;
 use App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisationPort;
 use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal;
+use App\Contexts\Membership\Application\Organisational\RenewMembership;
+use App\Contexts\Membership\Application\Organisational\RenewMembershipHandler;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
@@ -46,6 +48,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Tests\Feature\Contexts\Membership\Organisational\MembershipPostgresTestCase;
+use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthority;
 use Tests\Fixtures\Platform\Queue\C2ProbeJob;
 use Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard;
 use Tests\Support\MembershipPgIsolatedDatabase;
@@ -314,5 +317,46 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
             $beyond = app(CoverageKnownAt::class)->byMembershipIds($t, [MemberId::fromString('M1')], Instant::of(9_999_999));
             $this->assertSame(CoverageKnownAtRefusal::BoundaryNotClosed, $beyond->refusal());
         });
+    }
+
+    /**
+     * PBDIGIT-354 S2-1: a Renew through the PRODUCTION repository binding lands in the routed organisation's OWN
+     * database (organisation migration 300500) and publishes C1 in its own outbox; B is untouched. The authority is
+     * a test double: no production AuthorityCheckPort exists until Governance S3 (blueprint G-3), so the container
+     * cannot build the use case at all (fail closed).
+     */
+    public function test_s2_1_a_renewal_is_recorded_and_published_in_the_routed_organisations_own_database(): void
+    {
+        $this->routedTo(self::A, function (Connection $a): void {
+            $t = TenantId::fromString(self::A);
+            $repo = app(MemberRepositoryPort::class);
+            $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+            $this->readings = [100];
+            $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_100),
+                Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+
+            $this->readings = [200];
+            $outcome = (new RenewMembershipHandler($repo, new FakeAuthority()))->handle(
+                new RenewMembership(self::A, 'M1', 'R1', 20_090, 20_090, 20_465, false, 'treasurer-1', null, 'k2'),
+            );
+
+            $this->assertTrue($outcome->isAppended());
+            $this->assertSame(['admit', 'renew'], array_map(static fn ($r) => $r->kind, $a->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "in A's own database");
+            $this->assertSame(0, (int) DB::connection('platform_org_b')->selectOne('SELECT count(*) AS n FROM org_membership_facts')->n, 'B untouched');
+            $this->assertTrue($repo->load($t, MemberId::fromString('M1'))->resolve()->isMember(TimePoint::of(20_300)));
+            // by the event's own seq: created_at has second precision and the id is random
+            $c1 = array_map(static fn ($r) => json_decode($r->payload), $a->select("SELECT payload FROM outbox_events WHERE event_type = 'MembershipCoverageResolved'"));
+            usort($c1, static fn (object $x, object $y): int => $x->seq <=> $y->seq);
+            $this->assertSame([1, 2], array_map(static fn (object $e): int => $e->seq, $c1), "both C1 events in A's own outbox");
+            $this->assertSame('2026-01-12', $c1[1]->inForce[0]->to, 'the renewed term is published');
+            $this->assertSame(0, (int) DB::connection('platform_org_b')->selectOne('SELECT count(*) AS n FROM outbox_events')->n);
+        });
+
+        try {
+            app(RenewMembershipHandler::class);
+            $this->fail('a production authority is bound: S2 must stay fail-closed until Governance S3');
+        } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+            $this->assertStringContainsString('AuthorityCheckPort', $e->getMessage());
+        }
     }
 }

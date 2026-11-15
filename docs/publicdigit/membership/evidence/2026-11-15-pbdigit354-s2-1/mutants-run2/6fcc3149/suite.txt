@@ -1,0 +1,29 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................................F.F                               35 / 35 (100%)
+
+Time: 00:00.031, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_d177_3_a_release_1_admission_must_state_its_term
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:169
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\ReferenceModelPropertyTest::test_handlers_and_repository_agree_with_the_reference_model
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'seed 1 step 11 ["admit","O2","P2","F8",8,"k11","none",10]: expected {"kind":"refused","reason":"admission_term_required"} got {"kind":"refused","reason":"member_not_found"}',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ReferenceModelPropertyTest.php:34
+
+FAILURES!
+Tests: 35, Assertions: 123, Failures: 2.

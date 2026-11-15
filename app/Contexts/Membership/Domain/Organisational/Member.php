@@ -53,7 +53,7 @@ final readonly class Member
             if (isset($earlier[$id])) {
                 throw new \InvalidArgumentException("Stored log: fact id {$id} is used twice.");
             }
-            if ($fact instanceof End) {
+            if ($fact instanceof End || $fact instanceof Renew) {
                 self::requireEarlier($earlier, $fact->period()->admitFactId(), $id, Admit::class);
             }
             if ($fact instanceof ReversalFact) {
@@ -218,6 +218,45 @@ final readonly class Member
         return $this->accept(new End($id, $period, $effectiveAt, $kind, $provenance, $decidedAt));
     }
 
+    /**
+     * S2-1 (D-163; accepted design D-177 §4): add a term segment [effectiveAt, until) to the period containing
+     * effectiveAt. The caller never names the period: it is the latest-started period that has started by
+     * effectiveAt, and it must not be formally ended at effectiveAt (lapsed is not ended, INV-3).
+     * D-205 (3): like every fact but one, it may not take effect after its decision date.
+     *
+     * @param TimePoint $until finite, or ∞ for an open-ended term
+     * @param TimePoint $decisionDate as in decideAdmit (D-5(a) Z1)
+     * @throws \InvalidArgumentException as in decideAdmit
+     */
+    public function decideRenew(FactId $id, TimePoint $effectiveAt, TimePoint $decisionDate, TimePoint $until, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    {
+        self::requireFiniteDates($effectiveAt, $decisionDate);
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        if (!$effectiveAt->isBefore($until)) {
+            return Decision::refused(RefusalReason::EmptySegment);
+        }
+        $target = null;
+        foreach ($this->resolve()->periods() as $period) {
+            $start = $period->baseClaim()->start();
+            if (!$start->isAfter($effectiveAt) && ($target === null || $start->isAfter($target->baseClaim()->start()))) {
+                $target = $period;
+            }
+        }
+        if ($target === null) {
+            return Decision::refused(RefusalReason::NoPeriodAt);
+        }
+        if (!$effectiveAt->isBefore($target->baseClaim()->until())) {
+            return Decision::refused(RefusalReason::PeriodEnded);
+        }
+        if ($effectiveAt->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
+        }
+
+        return $this->accept(new Renew($id, $target->id(), $effectiveAt, $until, $provenance, $decidedAt));
+    }
+
     /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
     public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
     {
@@ -283,6 +322,10 @@ final readonly class Member
         }
         if ($targetFact instanceof ReversalFact) {
             return Decision::refused(RefusalReason::CorrectionOfAnnulOrVoidRefused);
+        }
+        // PBDIGIT-354 Q-2 (open): D-177 row 20; no accepted dating rule for a corrected `until` yet.
+        if ($targetFact instanceof Renew) {
+            return Decision::refused(RefusalReason::CorrectionOfRenewNotSupported);
         }
         $facts = $this->facts();
         $root = Resolution::rootOf($facts, $target);

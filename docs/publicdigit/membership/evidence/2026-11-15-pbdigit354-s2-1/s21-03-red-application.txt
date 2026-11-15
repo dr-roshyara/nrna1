@@ -1,0 +1,86 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEFF                                                      12 / 12 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There were 10 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_renewal_is_recorded_and_extends_the_time_in_force
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:84
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_an_open_ended_renewal
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:97
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_renewal_must_state_its_term
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:103
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_authority_is_asked_for_the_renew_act_and_its_evidence_is_recorded
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:111
+
+5) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_without_authority_nothing_is_recorded
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:123
+
+6) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_domain_refusal_is_passed_through
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:131
+
+7) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_an_unknown_member_is_refused
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:138
+
+8) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_member_of_another_organisation_is_not_found
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:143
+
+9) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_the_same_command_twice_records_once
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:149
+
+10) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_the_same_key_with_a_different_command_is_refused
+Error: Class "App\Contexts\Membership\Application\Organisational\RenewMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:158
+
+--
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_d177_3_a_release_1_admission_must_state_its_term
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:169
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_renewal_is_storable_iff_both_its_dates_are
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:182
+
+ERRORS!
+Tests: 12, Assertions: 4, Errors: 10, Failures: 2.

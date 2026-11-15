@@ -197,3 +197,23 @@ The organisation's database name (its locator) **never changes**: restore **into
    - **`failed: repair-failed`** after a restore usually means **the wrong backup**: a database bound to another organisation is refused. The organisation stays out of routing. Restore the right backup and repeat step 4.
 
 Never mark an organisation operational or change `schema_state` by hand.
+
+## Membership lifecycle S2-1: the `renew` fact kind (2026-11-15, PBDIGIT-354)
+
+**Development and test only. Do not run these on a persistent or production database:** no operational organisation exists, and production migrations wait for the migration-approval control.
+
+1. **Two migrations, always together (parity rule):**
+   - central: `database/migrations/2026_11_15_340000_add_renew_to_org_membership_facts.php` (taken by `php artisan migrate`);
+   - organisation set: `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_15_300500_add_renew_to_org_membership_facts.php` (**never** taken by `php artisan migrate`).
+2. **A new organisation database** gets the organisation migration when it is provisioned. Nothing to do.
+3. **An existing test organisation database** now lacks one migration, so its readiness check reports the schema as not current. Bring it up to date through the operator channel:
+
+   ```
+   php artisan platform:operate <organisation-id> migration-repair --operator="ops:<your name>"
+   ```
+
+   - This works only when the organisation's schema state is `migration-failed`.
+   - **There is no command yet that migrates an organisation that is in service** (PBDIGIT-352). For a test organisation, re-provision it or use a fresh database.
+4. **Code and migration go together:** the code that records a renewal needs the new columns.
+5. **Rolling back** (`down()`) is refused while any renewal row exists, so no history is destroyed.
+6. **Renewals cannot be recorded in production yet, by design:** no authority check is wired until Governance (S3).

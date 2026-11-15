@@ -1,0 +1,136 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEEEEEEEF                                             21 / 21 (100%)
+
+Time: 00:00.020, Memory: 12.00 MB
+
+There were 20 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row1_a_renewal_adjoining_the_term_gives_continuous_in_force
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:47
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_an_open_ended_renewal_is_in_force_until_ended
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:58
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row3_a_late_renewal_keeps_the_lapsed_gap
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:66
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row4_an_expressly_back_dated_renewal_closes_the_gap
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:77
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row5_a_renewal_after_a_formal_end_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::PeriodEnded
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:87
+
+6) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row6_a_renewal_before_the_periods_start_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::NoPeriodAt
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:94
+
+7) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row7_overlapping_renewals_are_a_union
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:101
+
+8) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_an_empty_segment_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::EmptySegment
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:110
+
+9) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_d205_a_renewal_may_not_take_effect_after_its_decision_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:118
+
+10) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_fact_id_is_used_once
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:124
+
+11) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_period_admitted_without_a_term_becomes_in_force_from_its_renewal
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:130
+
+12) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_the_renewal_belongs_to_the_period_containing_its_effective_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:142
+
+13) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row23_a_renewal_never_changes_coverage
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:153
+
+14) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_renewed_term_stops_at_the_periods_end
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:161
+
+15) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row17_annulling_a_renewal_removes_its_segment_from_then_on
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:171
+
+16) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_voiding_a_renewal_removes_its_segment
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:181
+
+17) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row21_after_the_end_is_annulled_a_renewal_is_accepted_again
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::PeriodEnded
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:191
+
+18) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row22_a_renewal_is_not_visible_before_its_record_time
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:201
+
+19) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_correcting_a_renewal_is_refused_until_its_rule_is_decided
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideRenew()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:211
+
+20) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_stored_renewal_must_name_an_earlier_admission
+Error: Class "App\Contexts\Membership\Domain\Organisational\Renew" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:219
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_renewal_takes_effect_at_a_finite_time_and_ends_after_it
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Membership\Domain\Organisational\Renew" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:228
+.
+
+ERRORS!
+Tests: 21, Assertions: 23, Errors: 20, Failures: 1.

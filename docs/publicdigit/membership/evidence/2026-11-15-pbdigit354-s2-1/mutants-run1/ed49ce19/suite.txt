@@ -1,0 +1,64 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FFFF..F...F...FF..F...F............                               35 / 35 (100%)
+
+Time: 00:02.700, Memory: 12.00 MB
+
+There were 10 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row1_a_renewal_adjoining_the_term_gives_continuous_in_force
+in force at 10
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:50
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_an_open_ended_renewal_is_in_force_until_ended
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:60
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row3_a_late_renewal_keeps_the_lapsed_gap
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:70
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row4_an_expressly_back_dated_renewal_closes_the_gap
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:79
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row7_overlapping_renewals_are_a_union
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:104
+
+6) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_period_admitted_without_a_term_becomes_in_force_from_its_renewal
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:133
+
+7) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_renewed_term_stops_at_the_periods_end
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:176
+
+8) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row17_annulling_a_renewal_removes_its_segment_from_then_on
+as known before the annulment, it was in force
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:187
+
+9) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_row22_a_renewal_is_not_visible_before_its_record_time
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:216
+
+10) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_a_renewal_is_recorded_and_extends_the_time_in_force
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:91
+
+FAILURES!
+Tests: 35, Assertions: 118, Failures: 10.

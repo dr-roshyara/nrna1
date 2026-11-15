@@ -31,7 +31,7 @@ final class Resolution
             }
             $baseClaim = $claims[$fact->periodId()->value()];
             $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $facts, $active, $live, $claims));
-            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime));
+            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active));
         }
 
         return new ResolvedMember($periods);
@@ -334,17 +334,28 @@ final class Resolution
     }
 
     /**
-     * Stage 7, term segments: the initial term [start, until), clipped to the lifetime; empty without one (C-S0-2).
-     * The start is the period's resolved (possibly corrected) start; until is not correctable (D-COR-3).
+     * Stage 7, term segments (D-177 §2 `termSegs`): the union of
+     * - the initial term [start, until), empty without one (C-S0-2); the start is the period's resolved (possibly
+     *   corrected) start; until is not correctable (D-COR-3);
+     * - every active Renew of the period, [effectiveAt, until) (S2-1). An annulled or voided Renew is not live, so
+     *   its segment is gone (row 17).
+     * All clipped to the lifetime, so an ended period is never in force (INV-2).
+     *
+     * @param list<Fact> $active
      */
-    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime): IntervalSet
+    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime, array $active): IntervalSet
     {
+        $segments = IntervalSet::empty();
         $until = $admit->initialTermUntil();
-        if ($until === null) {
-            return IntervalSet::empty();
+        if ($until !== null) {
+            $segments = IntervalSet::of(Interval::of($start, TimePoint::max($start, $until)));
         }
-        $term = Interval::of($start, TimePoint::max($start, $until));
+        foreach ($active as $fact) {
+            if ($fact instanceof Renew && $fact->period()->equals($admit->periodId())) {
+                $segments = $segments->union(IntervalSet::of(Interval::of($fact->effectiveAt(), $fact->until())));
+            }
+        }
 
-        return IntervalSet::of(...array_map(static fn (Interval $l): Interval => $l->intersectedWith($term), $lifetime->intervals()));
+        return $segments->intersectedWith($lifetime);
     }
 }

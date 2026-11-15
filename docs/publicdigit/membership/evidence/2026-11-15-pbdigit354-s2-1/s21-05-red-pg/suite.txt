@@ -1,0 +1,168 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEFFDFFFFF                                                      12 / 12 (100%)
+
+Time: 00:12.738, Memory: 26.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_a_renewal_is_stored_reloaded_and_extends_the_time_in_force
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Renew
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:327
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:254
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RenewMembershipHandler.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:74
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_an_open_ended_renewal_round_trips
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Renew
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:327
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:254
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RenewMembershipHandler.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:94
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_c1_carries_the_changed_in_force_and_the_unchanged_coverage
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Renew
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:327
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:254
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RenewMembershipHandler.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:107
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_a_renewal_inside_the_existing_term_writes_no_c1
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Renew
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:327
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:254
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:170
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RenewMembershipHandler.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:55
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:121
+
+--
+
+There were 7 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "no period" ('INSERT INTO org_membership_fa...1-12')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ..._id, kind, recorded_at, provenance, effective_at, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, effective_at, renew_until_kind, renew_until)
+            VALUES (04177682-b7b7-4a13-8d15-ba6c2c91c24f, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, '2025-01-02', 'until', '2026-01-12'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "no effective date" ('INSERT INTO org_membership_fa...1-12')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...d, kind, recorded_at, provenance, target_fact_id, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, renew_until_kind, renew_until)
+            VALUES (fa9356b1-40e8-47e7-9e43-2a5157480df5, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, 'A1', 'until', '2026-01-12'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "until without a date" ('INSERT INTO org_membership_fa...ntil')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, renew_until_kind)
+            VALUES (425b3662-644f-42b8-938d-117e3765bd7d, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, 'A1', '2025-01-02', 'until'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "unlimited with a date" ('INSERT INTO org_membership_fa...1-12')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, renew_until_kind, renew_until)
+            VALUES (fe845dc1-104d-4b04-a043-291566031594, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, 'A1', '2025-01-02', 'unlimited', '2026-01-12'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "an empty segment" ('INSERT INTO org_membership_fa...1-02')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, renew_until_kind, renew_until)
+            VALUES (97a6df0e-241a-4e23-bb58-cbdd7d078800, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, 'A1', '2025-01-02', 'until', '2025-01-02'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_database_refuses_a_malformed_renew_row with data set "an end kind on a renewal" ('INSERT INTO org_membership_fa...tion')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, renew_until_kind, renew_until, end_kind)
+            VALUES (984bf9f9-af52-45a9-847c-8a8fe94664f4, 'M1', 2, 'RX', 'renew', now(), '{}'::jsonb, 'A1', '2025-01-02', 'until', '2026-01-12', 'resignation'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:149
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresRenewTest::test_the_renew_columns_are_empty_on_every_other_kind
+SQLSTATE[42703]: Undefined column: 7 ERROR:  column "renew_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...arget_fact_id, end_kind, recorded_at, provenance, renew_unti...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 43055, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, effective_at, target_fact_id, end_kind, recorded_at, provenance, renew_until_kind)
+                VALUES (e15d2845-674b-4fe9-b3ed-63f402b060b9, 'M1', 2, 'EX', 'end', '2025-01-02', 'A1', 'resignation', now(), '{}'::jsonb, 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresRenewTest.php:160
+
+ERRORS!
+Tests: 12, Assertions: 21, Errors: 4, Failures: 7, Deprecations: 1, PHPUnit Deprecations: 1.

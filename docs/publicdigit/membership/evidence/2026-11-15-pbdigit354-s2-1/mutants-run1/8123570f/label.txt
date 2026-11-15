@@ -1,0 +1,1 @@
+A2 a refused admission still creates the member record

@@ -68,6 +68,18 @@ final class MemberHistory
         return $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($period), TimePoint::of($at), self::decisionDate(), EndKind::fromString('resignation'), self::provenance());
     }
 
+    /** S2-1 (D-163, D-177 §4): Renew adds a term segment [at, until) to the period containing `at`. null until = open-ended. */
+    public function renew(string $id, int $at, ?int $until, ?int $decisionDate = null): Decision
+    {
+        return $this->member->decideRenew(
+            FactId::fromString($id),
+            TimePoint::of($at),
+            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate),
+            $until === null ? TimePoint::infinity() : TimePoint::of($until),
+            self::provenance(),
+        );
+    }
+
     /** Correction contract §3.1 (C-1): Annul sets aside a decision fact. */
     public function annul(string $id, string $target, ?int $decidedAt = 900, ?Provenance $provenance = null): Decision
     {

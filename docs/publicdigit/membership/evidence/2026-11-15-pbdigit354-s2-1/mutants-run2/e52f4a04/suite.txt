@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........................F.........                               35 / 35 (100%)
+
+Time: 00:02.640, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_authority_is_asked_for_the_renew_act_and_its_evidence_is_recorded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     0 => Array &1 [
+         0 => 'O1',
+         1 => 'treasurer-1',
+-        2 => App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #356 (Renew, 'renew'),
++        2 => App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #365 (End, 'end'),
+     ],
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:113
+
+FAILURES!
+Tests: 35, Assertions: 125, Failures: 1.

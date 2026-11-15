@@ -1,0 +1,15 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....................F..............                               35 / 35 (100%)
+
+Time: 00:02.540, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_stored_renewal_must_name_an_earlier_admission
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+FAILURES!
+Tests: 35, Assertions: 126, Failures: 1.

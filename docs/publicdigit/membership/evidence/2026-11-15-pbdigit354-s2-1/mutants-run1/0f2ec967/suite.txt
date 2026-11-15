@@ -1,0 +1,20 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......E...........................                               35 / 35 (100%)
+
+Time: 00:02.733, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_an_empty_segment_is_refused
+InvalidArgumentException: A renewed term must end after it starts.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Renew.php:30
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s21/run1/mutants/0f2ec967/mutant.php:254
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:74
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:110
+
+ERRORS!
+Tests: 35, Assertions: 121, Errors: 1.

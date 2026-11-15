@@ -28,6 +28,11 @@ final class ReferenceMembershipModel
         if ($seen = $this->applied[$tenant][$key] ?? null) {
             return $seen['fp'] === $fp ? $seen['out'] : ['kind' => 'refused', 'reason' => 'idempotency_key_conflict'];
         }
+        // D-163, D-177 §3 (PBDIGIT-354 S2-1): an admission through the command states its term; 'none' is refused
+        // before any other decision rule. (The kernel keeps 'none' for attested history, which is not a command.)
+        if ($termKind === 'none') {
+            return ['kind' => 'refused', 'reason' => 'admission_term_required'];
+        }
         $m = $this->members[$tenant][$person] ?? ['facts' => [], 'periods' => []];
         if (in_array($factId, $m['facts'], true)) {
             return ['kind' => 'refused', 'reason' => 'duplicate_fact_id'];

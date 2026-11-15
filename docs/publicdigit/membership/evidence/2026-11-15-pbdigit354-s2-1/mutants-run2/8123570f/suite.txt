@@ -1,0 +1,41 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+................................F.F                               35 / 35 (100%)
+
+Time: 00:00.037, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\RenewMembershipHandlerTest::test_d177_3_a_release_1_admission_must_state_its_term
+nothing is created, not even an empty Member record
+Failed asserting that App\Contexts\Membership\Domain\Organisational\Member Object #605 (
+    'id' => App\Contexts\Membership\Domain\Organisational\MemberId Object #591 (
+        'value' => 'M-P2',
+    ),
+    'holder' => App\Contexts\Membership\Domain\Organisational\PersonRef Object #596 (
+        'value' => 'P2',
+    ),
+    'organisation' => App\Contexts\Shared\Domain\ValueObjects\TenantId Object #650 (
+        'value' => 'O1',
+    ),
+    'log' => Array &0 [],
+) is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/RenewMembershipHandlerTest.php:170
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\ReferenceModelPropertyTest::test_handlers_and_repository_agree_with_the_reference_model
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'seed 1 step 28 ["end","O2","P1","F23",13,"k28","F14"]: expected {"kind":"refused","reason":"member_not_found"} got {"kind":"refused","reason":"period_not_found"}',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ReferenceModelPropertyTest.php:34
+
+FAILURES!
+Tests: 35, Assertions: 124, Failures: 2.

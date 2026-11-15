@@ -1,0 +1,17 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........F.........................                               35 / 35 (100%)
+
+Time: 00:02.665, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_a_fact_id_is_used_once
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:124
+
+FAILURES!
+Tests: 35, Assertions: 124, Failures: 1.

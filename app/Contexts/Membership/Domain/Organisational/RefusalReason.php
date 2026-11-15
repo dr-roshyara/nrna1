@@ -74,4 +74,28 @@ enum RefusalReason: string
 
     /** Guard (BD-REV-ER = refuse): a correction may not leave a live admission with an empty lifetime. */
     case PeriodAbsorbed = 'period_absorbed';
+
+    /** Guard (D-177 §4, row 6): no period of this Member has started by the renewal's effective date. */
+    case NoPeriodAt = 'no_period_at';
+
+    /**
+     * Guard (D-177 §4, row 5): the period that had started by the effective date is formally ended at it; a new
+     * Admit is needed. Distinct from PeriodAlreadyEnded, which refuses a second End on a period.
+     */
+    case PeriodEnded = 'period_ended';
+
+    /** Guard (D-177 §4): a renewed term must end after it starts. */
+    case EmptySegment = 'empty_segment';
+
+    /** Command boundary (D-163, D-177 §3): a release-1 admission states its term, finite or open-ended. */
+    case AdmissionTermRequired = 'admission_term_required';
+
+    /** Command boundary (D-177 §4): a renewal states its term, an end date or open-ended; never assumed unlimited. */
+    case RenewalTermRequired = 'renewal_term_required';
+
+    /**
+     * Guard (PBDIGIT-354 Q-2, open): D-177 row 20 lets a Correct change a Renew's `until`, but no accepted text gives
+     * the dating rule for a corrected `until`. Refused until decided, so the kernel stays total and fail-closed.
+     */
+    case CorrectionOfRenewNotSupported = 'correction_of_renew_not_supported';
 }

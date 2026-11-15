@@ -8,6 +8,7 @@ use App\Contexts\Membership\Domain\Organisational\Admit;
 use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\EffectiveDatedFact;
 use App\Contexts\Membership\Domain\Organisational\Fact;
+use App\Contexts\Membership\Domain\Organisational\Renew;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 
 /**
@@ -28,6 +29,11 @@ final class StorableValidTime
         $points = $fact instanceof EffectiveDatedFact ? [$fact->effectiveAt()] : [];
         if ($fact instanceof Admit && $fact->initialTermUntil() !== null) {
             $points[] = $fact->initialTermUntil();
+        }
+        // S2-1 (PBDIGIT-354): a Renew stores both ends of its segment (∞ is stored as open-ended, so it passes).
+        if ($fact instanceof Renew) {
+            $points[] = $fact->effectiveAt();
+            $points[] = $fact->until();
         }
         // COR-4 (PBDIGIT-329, Q-7, V-13): a Correct's value and every bound of its frozen consequences are stored too.
         if ($fact instanceof Correct) {
