@@ -15,7 +15,20 @@ final readonly class ResolvedPeriod
         private Interval $baseClaim,
         private IntervalSet $lifetime,
         private IntervalSet $term,
+        private ?IntervalSet $restrictions = null,
     ) {
+    }
+
+    /** S2-2 (D-177 §2): the restriction intervals of the period's live suspensions, already clipped to the lifetime. */
+    public function restrictions(): IntervalSet
+    {
+        return $this->restrictions ?? IntervalSet::empty();
+    }
+
+    /** Suspended(q, t) = t ∈ lifetime(q) ∧ t ∈ restrictions(q); no in-force condition (F-04). */
+    public function isSuspended(TimePoint $t): bool
+    {
+        return $this->restrictions()->contains($t);
     }
 
     public function id(): PeriodId

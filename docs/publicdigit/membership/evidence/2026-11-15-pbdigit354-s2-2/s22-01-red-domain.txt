@@ -1,0 +1,173 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEEEEEEEEEEEEEF                                       27 / 27 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There were 26 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row9_an_open_ended_suspension_restricts_from_its_date_and_leaves_membership_alone
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:57
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row10_a_fixed_length_suspension_ends_by_itself
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:68
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row11_a_restore_ends_the_restriction_at_its_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:77
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row12_a_restore_outside_the_restriction_is_refused
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:86
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row13_each_restore_ends_one_suspension_only
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:98
+
+6) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row14_a_suspension_has_one_live_restore
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:109
+
+7) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row15_suspending_a_lapsed_membership_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::NotInForce
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:119
+
+8) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row15b_a_restore_after_the_term_lapsed_needs_a_renewal_first
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:127
+
+9) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row16_suspending_after_the_periods_end_is_refused
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:140
+
+10) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_suspending_before_any_period_is_refused
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:146
+
+11) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_an_empty_restriction_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::EmptyRestriction
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:152
+
+12) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_d205_neither_act_may_take_effect_after_its_decision_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:160
+
+13) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_fact_id_is_used_once
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:169
+
+14) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row8_a_renewal_while_suspended_is_accepted_and_the_term_runs
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:178
+
+15) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_restore_targets_a_live_suspension
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:188
+
+16) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row18_annulling_a_suspension_removes_the_restriction_and_orphans_its_restore
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:200
+
+17) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row19_annulling_a_restore_lets_the_suspension_run_again
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:211
+
+18) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_voiding_a_suspension_removes_it
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:222
+
+19) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row22_neither_fact_is_visible_before_its_record_time
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:231
+
+20) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row23_suspension_and_restoration_change_neither_coverage_nor_the_time_in_force
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:244
+
+21) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_the_published_restriction_stops_at_the_periods_end
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:254
+
+22) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_restriction_never_carries_into_a_later_period
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:264
+
+23) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_the_suspension_belongs_to_the_period_containing_its_effective_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:278
+
+24) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_correcting_a_suspension_or_a_restore_is_refused_until_the_correction_step
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideSuspend()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:289
+
+25) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_stored_suspension_must_name_an_earlier_admission
+Error: Class "App\Contexts\Membership\Domain\Organisational\Suspend" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:299
+
+26) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_stored_restore_must_name_an_earlier_suspension
+Error: Class "App\Contexts\Membership\Domain\Organisational\Restore" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:309
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_suspension_starts_at_a_finite_time_and_ends_after_it
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Membership\Domain\Organisational\Suspend" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:319
+.
+
+ERRORS!
+Tests: 27, Assertions: 28, Errors: 26, Failures: 1.

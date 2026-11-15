@@ -80,6 +80,30 @@ final class MemberHistory
         );
     }
 
+    /** S2-2 (D-163, D-177 §4): Suspend restricts rights from `at`, until `until` or, with null, until restored. */
+    public function suspend(string $id, int $at, ?int $until = null, ?int $decisionDate = null): Decision
+    {
+        return $this->member->decideSuspend(
+            FactId::fromString($id),
+            TimePoint::of($at),
+            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate),
+            $until === null ? TimePoint::infinity() : TimePoint::of($until),
+            self::provenance(),
+        );
+    }
+
+    /** S2-2 (D-177 §4): Restore ends the restriction of one Suspend fact at `at`. */
+    public function restore(string $id, string $suspension, int $at, ?int $decisionDate = null): Decision
+    {
+        return $this->member->decideRestore(
+            FactId::fromString($id),
+            FactId::fromString($suspension),
+            TimePoint::of($at),
+            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate),
+            self::provenance(),
+        );
+    }
+
     /** Correction contract §3.1 (C-1): Annul sets aside a decision fact. */
     public function annul(string $id, string $target, ?int $decidedAt = 900, ?Provenance $provenance = null): Decision
     {

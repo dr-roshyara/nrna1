@@ -53,8 +53,11 @@ final readonly class Member
             if (isset($earlier[$id])) {
                 throw new \InvalidArgumentException("Stored log: fact id {$id} is used twice.");
             }
-            if ($fact instanceof End || $fact instanceof Renew) {
+            if ($fact instanceof End || $fact instanceof Renew || $fact instanceof Suspend) {
                 self::requireEarlier($earlier, $fact->period()->admitFactId(), $id, Admit::class);
+            }
+            if ($fact instanceof Restore) {
+                self::requireEarlier($earlier, $fact->suspension(), $id, Suspend::class);
             }
             if ($fact instanceof ReversalFact) {
                 $target = self::requireEarlier($earlier, $fact->target(), $id, Fact::class);
@@ -237,24 +240,113 @@ final readonly class Member
         if (!$effectiveAt->isBefore($until)) {
             return Decision::refused(RefusalReason::EmptySegment);
         }
-        $target = null;
-        foreach ($this->resolve()->periods() as $period) {
-            $start = $period->baseClaim()->start();
-            if (!$start->isAfter($effectiveAt) && ($target === null || $start->isAfter($target->baseClaim()->start()))) {
-                $target = $period;
-            }
-        }
-        if ($target === null) {
-            return Decision::refused(RefusalReason::NoPeriodAt);
-        }
-        if (!$effectiveAt->isBefore($target->baseClaim()->until())) {
-            return Decision::refused(RefusalReason::PeriodEnded);
+        $target = $this->openPeriodAt($effectiveAt);
+        if ($target instanceof RefusalReason) {
+            return Decision::refused($target);
         }
         if ($effectiveAt->isAfter($decisionDate)) {
             return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
         }
 
         return $this->accept(new Renew($id, $target->id(), $effectiveAt, $until, $provenance, $decidedAt));
+    }
+
+    /**
+     * S2-2 (D-163; accepted design D-177 §4, §16 C-2): restrict the member's rights from effectiveAt, until `until`
+     * or, when it is ∞, until a Restore. Targets the period containing effectiveAt, which must be IN FORCE there
+     * (ratified guard): a lapsed membership exercises no rights, so there is nothing to restrict (row 15).
+     * It changes neither coverage, the term nor IsMember. D-205 (3): not after its decision date.
+     *
+     * @param TimePoint $until finite, or ∞ when the decision names no end
+     * @param TimePoint $decisionDate as in decideAdmit (D-5(a) Z1)
+     * @throws \InvalidArgumentException as in decideAdmit
+     */
+    public function decideSuspend(FactId $id, TimePoint $effectiveAt, TimePoint $decisionDate, TimePoint $until, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    {
+        self::requireFiniteDates($effectiveAt, $decisionDate);
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        if (!$effectiveAt->isBefore($until)) {
+            return Decision::refused(RefusalReason::EmptyRestriction);
+        }
+        $target = $this->openPeriodAt($effectiveAt);
+        if ($target instanceof RefusalReason) {
+            return Decision::refused($target);
+        }
+        if (!$target->isInForce($effectiveAt)) {
+            return Decision::refused(RefusalReason::NotInForce);
+        }
+        if ($effectiveAt->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
+        }
+
+        return $this->accept(new Suspend($id, $target->id(), $effectiveAt, $until, $provenance, $decidedAt));
+    }
+
+    /**
+     * S2-2 (accepted design D-177 §4, rows 11–14, 15b): end the restriction of one live Suspend at effectiveAt.
+     * - the suspension's period must be IN FORCE at effectiveAt (ratified guard); if the term lapsed meanwhile, the
+     *   organisation renews first, then restores (row 15b);
+     * - one live Restore per Suspend (AlreadyRestored);
+     * - strictly inside the restriction: s.from < effectiveAt < s.until (OutsideRestriction). At or before its start
+     *   there is nothing to end: that would be an Annul or a Void of the suspension.
+     * D-205 (3): not after its decision date.
+     *
+     * @param TimePoint $decisionDate as in decideAdmit (D-5(a) Z1)
+     * @throws \InvalidArgumentException as in decideAdmit
+     */
+    public function decideRestore(FactId $id, FactId $suspension, TimePoint $effectiveAt, TimePoint $decisionDate, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    {
+        self::requireFiniteDates($effectiveAt, $decisionDate);
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        $target = $this->fact($suspension);
+        if ($target === null) {
+            return Decision::refused(RefusalReason::TargetNotFound);
+        }
+        $facts = $this->facts();
+        if (!$target instanceof Suspend || !Resolution::isLive($facts, $suspension)) {
+            return Decision::refused(RefusalReason::NotSuspended);
+        }
+        $period = $this->resolve()->period($target->period());
+        if ($period === null || !$period->isInForce($effectiveAt)) {
+            return Decision::refused(RefusalReason::NotInForce);
+        }
+        foreach ($facts as $fact) {
+            if ($fact instanceof Restore && $fact->suspension()->equals($suspension) && Resolution::isLive($facts, $fact->id())) {
+                return Decision::refused(RefusalReason::AlreadyRestored);
+            }
+        }
+        if (!$target->effectiveAt()->isBefore($effectiveAt) || !$effectiveAt->isBefore($target->until())) {
+            return Decision::refused(RefusalReason::OutsideRestriction);
+        }
+        if ($effectiveAt->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
+        }
+
+        return $this->accept(new Restore($id, $suspension, $effectiveAt, $provenance, $decidedAt));
+    }
+
+    /**
+     * "The period containing t" for Renew and Suspend (D-177 §4): the latest-started period that has started by t,
+     * provided it is not formally ended at t (lapsed is not ended, INV-3). The caller never names the period.
+     */
+    private function openPeriodAt(TimePoint $t): ResolvedPeriod|RefusalReason
+    {
+        $target = null;
+        foreach ($this->resolve()->periods() as $period) {
+            $start = $period->baseClaim()->start();
+            if (!$start->isAfter($t) && ($target === null || $start->isAfter($target->baseClaim()->start()))) {
+                $target = $period;
+            }
+        }
+        if ($target === null) {
+            return RefusalReason::NoPeriodAt;
+        }
+
+        return $t->isBefore($target->baseClaim()->until()) ? $target : RefusalReason::PeriodEnded;
     }
 
     /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
@@ -326,6 +418,10 @@ final readonly class Member
         // PBDIGIT-354 Q-2 (open): D-177 row 20; no accepted dating rule for a corrected `until` yet.
         if ($targetFact instanceof Renew) {
             return Decision::refused(RefusalReason::CorrectionOfRenewNotSupported);
+        }
+        // D-177 row 14: correcting a Suspend's or a Restore's date belongs to the correction step (S2-5).
+        if ($targetFact instanceof Suspend || $targetFact instanceof Restore) {
+            return Decision::refused(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported);
         }
         $facts = $this->facts();
         $root = Resolution::rootOf($facts, $target);

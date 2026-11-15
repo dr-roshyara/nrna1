@@ -118,7 +118,24 @@ final readonly class ResolvedMember
      */
     public function suspendedIntervals(): IntervalSet
     {
-        return IntervalSet::empty();
+        $all = IntervalSet::empty();
+        foreach ($this->periods as $period) {
+            $all = $all->union($period->restrictions());
+        }
+
+        return $all;
+    }
+
+    /** S2-2: some period is suspended at t. Does not change isMember (S2). */
+    public function isSuspended(TimePoint $t): bool
+    {
+        foreach ($this->periods as $period) {
+            if ($period->isSuspended($t)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function inForce(): IntervalSet

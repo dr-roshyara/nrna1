@@ -93,6 +93,24 @@ enum RefusalReason: string
     /** Command boundary (D-177 §4): a renewal states its term, an end date or open-ended; never assumed unlimited. */
     case RenewalTermRequired = 'renewal_term_required';
 
+    /** Guard (D-177 §4, §16 C-2; ratified REQ-MEM-SUSPENSION): Suspend and Restore act only while the period is in force. */
+    case NotInForce = 'not_in_force';
+
+    /** Guard (D-177 §4): a restriction must end after it starts. */
+    case EmptyRestriction = 'empty_restriction';
+
+    /** Guard (D-177 §4): a Restore names a live Suspend fact of this Member. */
+    case NotSuspended = 'not_suspended';
+
+    /** Guard (D-177 §4, row 14): a suspension has at most one live Restore. */
+    case AlreadyRestored = 'already_restored';
+
+    /** Guard (D-177 §4, row 12): a Restore takes effect strictly inside the restriction it ends. */
+    case OutsideRestriction = 'outside_restriction';
+
+    /** Guard (S2-5 not yet built): D-177 row 14 lets a Correct change a Suspend's or Restore's date; refused until then. */
+    case CorrectionOfSuspendOrRestoreNotSupported = 'correction_of_suspend_or_restore_not_supported';
+
     /**
      * Guard (PBDIGIT-354 Q-2, open): D-177 row 20 lets a Correct change a Renew's `until`, but no accepted text gives
      * the dating rule for a corrected `until`. Refused until decided, so the kernel stays total and fail-closed.

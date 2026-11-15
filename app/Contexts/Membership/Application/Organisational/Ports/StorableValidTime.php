@@ -9,6 +9,8 @@ use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\EffectiveDatedFact;
 use App\Contexts\Membership\Domain\Organisational\Fact;
 use App\Contexts\Membership\Domain\Organisational\Renew;
+use App\Contexts\Membership\Domain\Organisational\Restore;
+use App\Contexts\Membership\Domain\Organisational\Suspend;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 
 /**
@@ -34,6 +36,14 @@ final class StorableValidTime
         if ($fact instanceof Renew) {
             $points[] = $fact->effectiveAt();
             $points[] = $fact->until();
+        }
+        // S2-2: a Suspend stores its restriction's both ends (∞ passes); a Restore its effective date.
+        if ($fact instanceof Suspend) {
+            $points[] = $fact->effectiveAt();
+            $points[] = $fact->until();
+        }
+        if ($fact instanceof Restore) {
+            $points[] = $fact->effectiveAt();
         }
         // COR-4 (PBDIGIT-329, Q-7, V-13): a Correct's value and every bound of its frozen consequences are stored too.
         if ($fact instanceof Correct) {

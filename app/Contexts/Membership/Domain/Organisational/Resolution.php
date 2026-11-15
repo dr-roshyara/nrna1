@@ -31,7 +31,8 @@ final class Resolution
             }
             $baseClaim = $claims[$fact->periodId()->value()];
             $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $facts, $active, $live, $claims));
-            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active));
+            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active),
+                self::restrictions($fact->periodId(), $lifetime, $active));
         }
 
         return new ResolvedMember($periods);
@@ -331,6 +332,33 @@ final class Resolution
     private static function lifetime(Interval $baseClaim, IntervalSet $cuts): IntervalSet
     {
         return IntervalSet::of($baseClaim)->without($cuts);
+    }
+
+    /**
+     * S2-2 (D-177 §2 `restrictions`): for each active Suspend s of the period, [s.from, s.until), or
+     * [s.from, min(s.until, r.from)) when r is s's active Restore (the latest by seq, on logs decide() cannot
+     * produce). A Suspend that is not live restricts nothing, so its Restore is orphaned (row 18); a Restore that is
+     * not live ends nothing (row 19). Clipped to the lifetime.
+     *
+     * @param list<Fact> $active
+     */
+    private static function restrictions(PeriodId $period, IntervalSet $lifetime, array $active): IntervalSet
+    {
+        $all = IntervalSet::empty();
+        foreach ($active as $fact) {
+            if (!$fact instanceof Suspend || !$fact->period()->equals($period)) {
+                continue;
+            }
+            $until = $fact->until();
+            foreach ($active as $other) {
+                if ($other instanceof Restore && $other->suspension()->equals($fact->id())) {
+                    $until = TimePoint::min($fact->until(), $other->effectiveAt());
+                }
+            }
+            $all = $all->union(IntervalSet::of(Interval::of($fact->effectiveAt(), TimePoint::max($fact->effectiveAt(), $until))));
+        }
+
+        return $all->intersectedWith($lifetime);
     }
 
     /**
