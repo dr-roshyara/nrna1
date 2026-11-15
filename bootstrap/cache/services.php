@@ -50,6 +50,9 @@
     46 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
     47 => 'App\\Contexts\\Election\\Infrastructure\\Providers\\ElectionServiceProvider',
     48 => 'App\\Contexts\\Contestation\\Infrastructure\\Providers\\ContestationServiceProvider',
+    49 => 'App\\Contexts\\Identity\\Infrastructure\\Providers\\IdentityServiceProvider',
+    50 => 'App\\Contexts\\ReferenceGeography\\Infrastructure\\Providers\\ReferenceGeographyServiceProvider',
+    51 => 'App\\Contexts\\Platform\\Infrastructure\\Providers\\PlatformServiceProvider',
   ),
   'eager' => 
   array (
@@ -86,6 +89,9 @@
     30 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
     31 => 'App\\Contexts\\Election\\Infrastructure\\Providers\\ElectionServiceProvider',
     32 => 'App\\Contexts\\Contestation\\Infrastructure\\Providers\\ContestationServiceProvider',
+    33 => 'App\\Contexts\\Identity\\Infrastructure\\Providers\\IdentityServiceProvider',
+    34 => 'App\\Contexts\\ReferenceGeography\\Infrastructure\\Providers\\ReferenceGeographyServiceProvider',
+    35 => 'App\\Contexts\\Platform\\Infrastructure\\Providers\\PlatformServiceProvider',
   ),
   'deferred' => 
   array (
