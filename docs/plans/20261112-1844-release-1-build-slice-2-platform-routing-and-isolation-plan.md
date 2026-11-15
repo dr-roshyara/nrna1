@@ -93,7 +93,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 - [x] **11. (DONE 2026-11-15; guide 11; evidence `docs/publicdigit/platform/evidence/2026-11-14-pbdigit345-task11/`; **T-16** proven (T-16.1 … T-16.8); authority = the joining grant (D-166 (1)); no operator identity, no case grants, no content access (D-219 (3)))** Operator channel (E-4), technical only: migration repair without business reads; content read refused (**T-16**).
 - [x] **12. (DONE 2026-11-15: 12a **T-11 and T-18 proven** (`64ca40f40`; two fail-closed defects fixed); D-234 (Option A, restore in place; `091b5ed72`); 12b **T-17 proven** (restore drill on a never-routable scratch copy; in-place recovery only through `migration-repair`; locator unchanged); guide 12; admin notes; evidence `docs/publicdigit/platform/evidence/2026-11-15-pbdigit345-task12/`; awaiting the Principal's review)** Outage and restore: cluster or registry down → refused, then resumes; scripted restore drill (**T-11**, **T-17**, **T-18**).
 - [x] **13. (DONE 2026-11-15: all 53 D-193 obligations classified: 0 wholly proven, 3 NOT PROVEN (B-7, B-9, B-10: partly proven, open parts in PBDIGIT-351/352/353), 3 BLOCKED (E-7, E-8, F-1), 47 OUT OF SCOPE with reasons; T-1 … T-26 passed per test (JUnit) at `8b6fcd569`; every evidence checksum verified (624 files); baseline `5bd25c463` compared soundly: no legacy regression; D-166 review of the restore drill: M-6 gaps recorded, drill dev/test only; guides platform 13, testing 08; evidence `docs/publicdigit/platform/evidence/2026-11-15-pbdigit345-task13/`; awaiting the Principal's review)** Proof obligations and evidence: list each of D-193's 53 obligations as executed / passed or out of scope (with the reason); slice evidence folder with checksums; baseline comparison done soundly (own `vendor/` and autoloader).
-- [ ] **14. (index check and evidence DONE 2026-11-15: 22 verification checks on committed content, all PASS (`docs/publicdigit/platform/evidence/2026-11-15-pbdigit345-task14/`); the acceptance package presented; **acceptance by the Principal: PENDING**, so this box stays open)** Index check; evidence to the Principal; acceptance by the Principal.
+- [x] **14. (DONE 2026-11-15: 22 verification checks on committed content, all PASS (`docs/publicdigit/platform/evidence/2026-11-15-pbdigit345-task14/`, `81a8a336f`); **ACCEPTED by the Principal 2026-11-15, D-235**, with its stated limitations)** Index check; evidence to the Principal; acceptance by the Principal.
 
 **Commit groups:** 0 · 1–3 · 4–5 · 6 · 7–8 · 9–10 · 11–12 · 13–14, each `(PBDIGIT-345)`.
 
@@ -130,6 +130,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
   - Q-7 enforced (open-transaction refusal, single dispatch path, T-25);
   - revision references corrected.
 - 2026-11-12 … 2026-11-15: tasks 0–13 implemented; per-task progress, commits and evidence are recorded in the task checklist (§6), not repeated here.
+- 2026-11-15: **the slice ACCEPTED by the Principal (D-235).** It closes neither PBDIGIT-351/352/353 nor any D-193 obligation, and authorises no production use.
 - 2026-11-15: task 14: the acceptance package verified (indexes, all evidence seals over committed bytes, JUnit results, the 53-obligation account, PBDIGIT-351/352/353 links, the 4 architecture failures, recorded commits). **Awaiting the Principal's acceptance.** Acceptance of the slice does **not** accept PBDIGIT-351/352/353's risks or authorise production use.
 
 ## 9. Risks
@@ -155,7 +156,7 @@ Every task: **RED test(s) first → minimal GREEN → developer guide** under `d
 1. ~~Principal review~~ **done:** plan approved; D-221 ratified (2026-11-12).
 2. ~~Create PBDIGIT-345; append the §12 pointer~~ **done.**
 3. ~~Start task 0~~ **done;** tasks 0–14 done (§6).
-4. **The Principal's acceptance decision on the slice** (task 14). Then, only on separate authorisation: PBDIGIT-351 (go-live blocker; decisions D-a, D-b), 352, 353.
+4. ~~The Principal's acceptance decision~~ **ACCEPTED (D-235).** Then, only on separate authorisation: PBDIGIT-351 (go-live blocker; decisions D-a, D-b), 352, 353.
 
 ## Traceability
 
