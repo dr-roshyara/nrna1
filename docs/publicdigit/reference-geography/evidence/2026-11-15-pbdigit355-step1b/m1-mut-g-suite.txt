@@ -1,0 +1,26 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/phpunit.membership-pg.xml
+
+DDFF                                                                4 / 4 (100%)
+
+Time: 00:08.329, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PublishedHierarchyQueriesTest::test_slots_of_a_kind_are_loaded_in_one_query_with_the_same_histories
+one query for the kind, plus at most the committed-position check
+Failed asserting that 7 is equal to 2 or is less than 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/tests/Feature/Contexts/ReferenceGeography/PublishedHierarchyQueriesTest.php:100
+
+2) Tests\Feature\Contexts\ReferenceGeography\PublishedHierarchyQueriesTest::test_the_top_level_costs_a_bounded_number_of_queries_whatever_the_number_of_places
+topLevelAt used 435 queries for 240 places
+Failed asserting that 435 is equal to 6 or is less than 6.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/tests/Feature/Contexts/ReferenceGeography/PublishedHierarchyQueriesTest.php:129
+
+FAILURES!
+Tests: 4, Assertions: 15, Failures: 2, Deprecations: 1.

@@ -43,6 +43,9 @@ interface GeographyReadSource
     /** @return list<ReferenceUnitId> units whose containment in the scheme ever named the parent, at positions ≤ p */
     public function containedIn(ReferenceUnitId $parent, string $scheme, int $p): array;
 
+    /** @return list<SlotKey> PBDIGIT-355: containment slots, in any scheme, whose published claims ever named the parent, at positions ≤ p */
+    public function containedInAnyScheme(ReferenceUnitId $parent, int $p): array;
+
     /**
      * G-6c-6 (D-90): the lifecycle of the revision publication at $publication, from entries at positions ≤ p only;
      * null if there is no revision publication at that position ≤ p.

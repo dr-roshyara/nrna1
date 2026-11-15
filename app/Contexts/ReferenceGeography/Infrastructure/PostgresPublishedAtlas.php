@@ -57,6 +57,23 @@ final class PostgresPublishedAtlas implements PublishedAtlas
         return $history;
     }
 
+    /**
+     * PBDIGIT-355: every slot history of the kind at p₀ in ONE query: for each slot, exactly what history() gives (the
+     * same published claims, added in the same order: position, claim id); slots ordered by their encoded key.
+     *
+     * @return list<SlotHistory>
+     */
+    public function historiesOfKind(ClaimKind $kind): array
+    {
+        $histories = [];
+        foreach ($this->db->select('SELECT c.*, p.position ' . self::PUBLISHED . ' WHERE c.kind = ? AND p.position <= ? ORDER BY c.slot_key, p.position, c.claim_id', [$kind->value, $this->p0]) as $row) {
+            $histories[$row->slot_key] = ($histories[$row->slot_key] ?? SlotHistory::for(SlotKey::decode($row->slot_key)))
+                ->with(PostgresRevisionRepository::claimOf($row), (int) $row->position);
+        }
+
+        return array_values($histories);
+    }
+
     public function familySlots(ClaimKind $kind, array $fixed, string $value, ValidInterval $interval): array
     {
         $members = [];

@@ -66,7 +66,10 @@ MEMBERSHIP_PG_IMAGE=docker.io/library/postgres:15@sha256:7da5d534f1ffcdb2f69efa6
 
 **Mutants:** four, all killed: pinning replaced by "now"; every place counted as top level; no `ne` mapping; the fallback not marked. Evidence: `docs/publicdigit/reference-geography/evidence/2026-11-15-pbdigit355-step1/`.
 
-## Known limitation (the plan's stop condition was reached)
+## Known limitation (the plan's stop condition was reached), RESOLVED in step 1b
+
+**Resolved 2026-11-15** by the Principal's decision "Extend the contract": the page data now uses `topLevelAt` and `childrenInAnySchemeOf` (guide 35). The place page went from 5.96 s to 0.06 s, the explorer from 5.93 s to 1.79 s. The text below is the original finding, kept as written.
+
 - The contract has **no top-level query**, and children are known only per named scheme. So both pages read **every** place at the date (`placesAt` plus `place` for each).
 - **Measured:** 1,250 places take about 6 s per page (`timing.txt`), and the cost is linear.
 - Production holds 0 published places today, so nothing is slow now. Real volumes (thousands of municipalities) would not be usable.

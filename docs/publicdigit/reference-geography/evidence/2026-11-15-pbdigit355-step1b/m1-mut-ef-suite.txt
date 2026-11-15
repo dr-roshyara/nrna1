@@ -1,0 +1,44 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/phpunit.membership-pg.xml
+
+FFDD                                                                4 / 4 (100%)
+
+Time: 00:07.650, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\ReferenceGeography\PublishedHierarchyQueriesTest::test_the_top_level_follows_containment_in_force_at_t
+no parent in force in 2005
+Failed asserting that an array contains '4489128a-bc88-44b7-86a3-635482f4fd02'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/tests/Feature/Contexts/ReferenceGeography/PublishedHierarchyQueriesTest.php:53
+
+2) Tests\Feature\Contexts\ReferenceGeography\PublishedHierarchyQueriesTest::test_children_in_any_scheme_name_the_scheme_and_follow_time_and_publication
+both schemes; c ended in 2010; unpublished excluded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => Array &1 [
+         'scheme' => 'admin',
++        'unitId' => '21c4b1b4-b0f3-4644-a6ba-9c4f9c8541eb',
++    ],
++    1 => Array &2 [
++        'scheme' => 'admin',
+         'unitId' => '3a065ed0-eba9-4517-a042-c0fba2110226',
+     ],
+-    1 => Array &2 [
++    2 => Array &3 [
+         'scheme' => 'electoral',
+         'unitId' => 'be4086f7-2b0c-4cda-b894-7cce04e73939',
+     ],
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/tests/Feature/Contexts/ReferenceGeography/PublishedHierarchyQueriesTest.php:79
+
+FAILURES!
+Tests: 4, Assertions: 14, Failures: 2, Deprecations: 1.

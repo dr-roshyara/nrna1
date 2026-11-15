@@ -25,7 +25,8 @@ Signed-in users can browse officially published places, follow parents and child
 
 ## Task checklist
 - [x] 1. Web adapter, RED then GREEN (feature tests on the real publication path), then a commit
-- [ ] 2. Pages and component, RED then GREEN (Vitest; design check at or below 91), then a commit (**waits for the Principal's decision on the stop condition**)
+- [x] 1b. Contract extension (Principal 2026-11-15, "Extend the contract"): `topLevelAt` and `childrenInAnySchemeOf`, plus a batched `slotsOfKind`, RED then GREEN, then a commit
+- [ ] 2. Pages and component, RED then GREEN (Vitest; design check at or below 91), then a commit
 - [ ] 3. Guide, full verification, story Done, then a commit (no push)
 
 ## Progress
@@ -38,6 +39,17 @@ Signed-in users can browse officially published places, follow parents and child
   - **Guards:** the Geography no-bypass and published-contract guards and the architecture ratchet A-1 to A-5 pass.
   - **Rest of the architecture suite:** its 72 errors are only failed database connections (the worktree has no `.env`); no failures. Guide 34.
 - 2026-11-15: **STOP CONDITION REACHED (design decision 5).** 1,250 published places take about 6 s per page, growing linearly, because the contract has no top-level query and names children only per scheme. **Stopped for the Principal; the contract is unchanged.**
+
+- 2026-11-15: **The Principal decided "Extend the contract". Step 1b done.**
+  - **What was added:** the two published queries, the port method `containedInAnyScheme`, and `PostgresPublishedAtlas::historiesOfKind`, which loads a kind in one query.
+  - **Guard finding:** the first version broke no-bypass rule 2, so the load moved into the atlas; no allow-list was changed.
+  - **Tests:**
+    - Unit 315 passing; Geography PostgreSQL 174 passing; Geography guards pass.
+    - Mutants E, F and G all killed (G: 435 queries against a bound of 6).
+  - **Measured:**
+    - place page: 5.96 s → 0.06 s;
+    - explorer: 5.93 s → 1.79 s (it now costs per place shown).
+  - Guide 35.
 
 **Worktree finding:** a symlinked `vendor/` loads `App\` from the main tree, which is Session A's working copy. It was replaced by a real copy with `composer dump-autoload` before any implementation ran. The first RED run used the symlinked autoloader, but it ran no application code of mine, so its result is still valid.
 

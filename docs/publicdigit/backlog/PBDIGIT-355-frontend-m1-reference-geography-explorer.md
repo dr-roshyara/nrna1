@@ -56,7 +56,15 @@ Reference Geography's published read contract (`GeographyReadModel`, G-5a, accep
   - Geography suite 170 passing;
   - guards pass;
   - guide `developer_guide/reference_geography/34_m1_web_explorer_adapter.md`.
-- **Stop condition reached:** 1,250 places take about 6 s per page, growing linearly, because the contract has no top-level query. **Step 2 waits for the Principal's decision.**
+- **Stop condition reached:** 1,250 places took about 6 s per page, growing linearly, because the contract had no top-level query.
+- **Step 1b DONE 2026-11-15** (the Principal: "Extend the contract"):
+  - the published queries `topLevelAt` and `childrenInAnySchemeOf`, plus a batched `slotsOfKind`;
+  - place page 0.06 s, explorer 1.79 s;
+  - mutants E, F and G killed;
+  - guide 35.
+
+  **The story's scope now includes this additive contract change** (it replaces "any change to the Geography contract" under "Not in scope", by the Principal's decision).
+- **Next:** step 2 (pages).
 
 ## Plan
 
