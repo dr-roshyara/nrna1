@@ -140,7 +140,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7b. S2-3 readiness (2026-11-15): the authority contract must grow first (Q-3, awaiting the Principal)
+## 7b. S2-3 readiness (2026-11-15): the authority contract must grow first (Q-3, **decided: D-238, Option A**; S2-3a in progress)
 
 **Finding.** Governance completion rev 5 (accepted, D-208) §1–§2 and C-1a define the AuthorityCheck that S2-3 needs:
 - the **request** carries the subject for subject-specific acts (`requestRef`: the member's `PersonRef`, the period, for a resignation the declared effective date, and a request id);
@@ -166,7 +166,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 - **C: defer self-service to S3.** Build the recorder resignation and death on today's port now.
   - **Cost:** S2-3 stays partial; a member cannot resign themselves until S3; the pull-exclusion gap stays open until fixed separately.
 
-**No S2-3 code is written until Q-3 is decided.**
+**No S2-3 code was written until Q-3 was decided** (D-238, 2026-11-15: S2-3a, then S2-3b after review).
 
 ## 7a. Q-2 (decided 2026-11-15, D-237: Option A; implemented in S2-5)
 
