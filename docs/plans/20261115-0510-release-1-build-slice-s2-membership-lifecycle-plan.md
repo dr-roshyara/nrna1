@@ -140,7 +140,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, awaiting the Principal)
+## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, **decided: D-239, Option A**; S2-4a in progress)
 
 **The accepted rules for S2-4** (M-TDD-01 §5.2, D-204, D-205, D-209, D-223; D-208 §2):
 - a resignation with a later effective date is a **declaration held outside the ledger**: `scheduled` → `executed` / `withdrawn` / `superseded` (the period ended earlier);
@@ -178,7 +178,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 3. **S2-4c:** execution in the closing step (the real `DueScheduledResignations`, the calendar port); MI-10 hold on failure; LC-4; late execution (D-223).
 4. **S2-4d:** withdraw vs execute races on PostgreSQL (MI-2); C1 / C2 show nothing before execution (MI-4); routing and isolation.
 
-**No S2-4 code is written until Q-4 is decided.**
+**No S2-4 code was written until Q-4 was decided** (D-239: an `OrganisationCalendar` port; production binding by Organisation S4; fail-closed until then).
 
 ## 7b. S2-3 readiness (2026-11-15): the authority contract must grow first (Q-3, **decided: D-238, Option A**; **S2-3a DONE 2026-11-15**, reviewed; **S2-3b DONE 2026-11-15**; S2-3 complete)
 
