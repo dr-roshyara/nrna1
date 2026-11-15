@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `PROPOSED`: readiness assessment done; **plan awaiting the Principal's approval (EP-01)**. Nothing implemented |
+| **Status** | `IN PROGRESS`: plan **approved (D-236)**; S2-1 (Renew, admission-term rule) started |
 | **Plan** | `docs/plans/20261115-0510-release-1-build-slice-s2-membership-lifecycle-plan.md` |
 | **Context** | Membership (organisation database) |
 | **Authorisation** | Principal, 2026-11-15 (development and test only): "proceed with Membership lifecycle", starting with the readiness assessment |
@@ -30,7 +30,16 @@ Plan §4, steps S2-1 … S2-6.
 - a guide per step;
 - **the Principal accepts.**
 
-## Open
+## Decided
 
-- **Q-1:** the meaning of "`MembershipStanding`" (plan §3.5).
-- **EP-01:** plan approval.
+- **Q-1:** Option A (D-236).
+- **EP-01:** plan approved in full (D-236).
+
+## Progress
+
+- [ ] S2-1 Renew and the admission-term rule
+- [ ] S2-2 Suspend / Restore
+- [ ] S2-3 resign now, death
+- [ ] S2-4 scheduled resignation
+- [ ] S2-5 Correct / Void
+- [ ] S2-6 push shapes (Membership side)

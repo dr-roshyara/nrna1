@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **PROPOSED, awaiting the Principal's approval (EP-01).** Readiness assessment (EP-03) done. **No code written** |
+| **Status** | **APPROVED by the Principal 2026-11-15 (D-236): Q-1 Option A; S2-1 … S2-6 in full.** S2-1 in progress |
 | **Story** | `PBDIGIT-354` (created with this plan) |
 | **Authorisation** | the Principal, 2026-11-15: "proceed with Membership lifecycle", **beginning with a bounded readiness assessment**; development and test only |
 | **Slice in the accepted sequence** | release-1 blueprint (D-216) §10: S0 Platform routing ✔ (PBDIGIT-345, D-235) → S1 ledger clock ✔ (PBDIGIT-343) → **S2 Membership lifecycle = G-4** → S3 Governance → S4 Organisation → S5 Forum → S6 Newsletter. *(The slice-1 plan calls the same content "slice 5"; same scope, different numbering.)* |
@@ -147,7 +147,8 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 
 ## 8. Progress
 
-- 2026-11-15: readiness assessment and this plan written. **Nothing implemented; awaiting approval.**
+- 2026-11-15: readiness assessment and this plan written.
+- 2026-11-15: **approved (D-236):** Q-1 Option A (standing = the C1 / C2 `inForce` / `suspended` intervals; no `MembershipStanding` contract in S2); S2-1 … S2-6 approved in full. **S2-1 started.**
 
 ## Traceability
 
