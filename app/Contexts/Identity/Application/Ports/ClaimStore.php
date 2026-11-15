@@ -7,6 +7,8 @@ namespace App\Contexts\Identity\Application\Ports;
 use App\Contexts\Identity\Application\ClaimOutcome;
 use App\Contexts\Identity\Application\ClaimRefusal;
 use App\Contexts\Identity\Application\IdentityUnavailable;
+use App\Contexts\Identity\Application\RedemptionOutcome;
+use App\Contexts\Identity\Domain\PersonId;
 use App\Contexts\Identity\Domain\ClaimCode;
 use App\Contexts\Identity\Domain\ClaimWindow;
 use App\Contexts\Identity\Domain\OrganisationPersonRef;
@@ -28,6 +30,14 @@ interface ClaimStore
 
     /** @throws IdentityUnavailable */
     public function revoke(TenantId $organisation, string $claimId, string $authorityRequestId): ClaimOutcome;
+
+    /**
+     * I-3, the ONE redemption path (§14, INV-CLM-6): ClaimSlot (O, R) → claim row → one t_check; binds R to the
+     * Person, marks the claim redeemed and records ClaimRedeemed(O, R) in the central outbox, in one transaction.
+     *
+     * @throws IdentityUnavailable
+     */
+    public function redeem(ClaimCode $code, PersonId $person): RedemptionOutcome;
 
     /** Content-free audit of a refusal decided before the store (§15: reason only). @throws IdentityUnavailable */
     public function recordRefusal(TenantId $organisation, ?string $claimId, ClaimRefusal $reason): void;

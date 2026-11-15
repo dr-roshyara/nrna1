@@ -1,0 +1,10 @@
+622d62e02a0d7c87e32c93422b894580ed4ad05cd094e8284dffd00ad4d73069  01-red-pg.txt
+0008d40a467245365c903450f1762f21080f18ef56221f389197f79c2af14d47  02a-green-pg-outbox-fk-to-legacy-organisations.txt
+76748e1427ae9e12e7385539c19507810ba0aeb9f2fad92bc5fea827b3d97fef  02b-green-pg-jsonb-key-order-test-fix.txt
+fbef5c3c753fb35ceac4d1dec9122c891d86d428a895912553c78d73e2c4da79  02c-green-identity-pg.txt
+e94002f62179d977037fbb6c57d8b947177c2a86c5ecb5bb9f67e1e1c44ea325  03-event-registry-guard-isolated.txt
+247cdd448dbc8c2d910987908fd1c483c713a634c1a63f15f41a87416400516a  04-mutants-N1-N3-N4-N6.txt
+a822b379fd106d51fed7a7a1505794f8c7dacb30a8953b6ecf865bebb3d86c09  05-unit-identity.txt
+6e651201beaf3bf270e32fa13fb5381a4541063a076474b50acc4b81446cd557  06-architecture-guards.txt
+f649ca12d96a5b7121423b11b2804ace1bb2bcbdfbcc67eff3f4ae8f7e3b21a5  07-isolated-cluster-all.txt
+7a23ceaa58a2c6ed6872b454dcb3708c6ca773e6e1f8d603adcfe7d82fefff84  base-commit.txt

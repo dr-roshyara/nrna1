@@ -1,0 +1,55 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+FFDDDFDFFFD                                                       11 / 11 (100%)
+
+Time: 00:13.587, Memory: 28.00 MB
+
+There were 6 failures:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_redemption_binds_r_to_the_person_and_reports_only_r_to_the_organisation
+C-I3: the organisation learns R, never the PersonId
+Failed asserting that '{"boundAt": "2026-11-15 16:19:48.486782+00", "claimId": "fc5f14fc-acb7-46a1-9491-3449ab6781f3", "personId": "667c2fd1-26eb-4e66-b731-822c014fd6c9", "personRef": "4f45fc28a26bc568e9b1a46ed1a68369", "organisationId": "b9498bc0-ca62-4cb8-86c7-e2f781d8340d"}' [ASCII](length: 254) does not contain "667c2fd1-26eb-4e66-b731-822c014fd6c9" [ASCII](length: 36).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:122
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redeemed_code_never_binds_twice_and_the_same_person_gets_an_idempotent_answer
+PI-2 / case 5: anyone else → neutral
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:133
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_failed_attempts_are_throttled_per_client_and_per_code_and_the_claim_is_never_disabled
+per client (INV-ID-9)
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:199
+
+4) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_two_concurrent_redemptions_of_one_code_give_exactly_one_binding
+PI-1
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:291
+
+5) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redemption_that_waits_across_expiry_is_refused
+PI-22: t_check after the lock sees the claim expired
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:308
+
+6) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_an_issuance_waiting_behind_a_redemption_sees_r_bound
+PI-28 / PI-34: no active claim for a bound R
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'reference-bound'
++'active-claim-exists'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:322
+
+FAILURES!
+Tests: 11, Assertions: 30, Failures: 6, Deprecations: 1.

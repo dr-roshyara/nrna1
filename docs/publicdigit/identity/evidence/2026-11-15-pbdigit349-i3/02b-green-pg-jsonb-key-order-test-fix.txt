@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFDDDDDDDD                      44 / 44 (100%)
+
+Time: 00:20.310, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_person_already_bound_in_the_organisation_is_refused_and_the_organisation_told
+C-I6: O learns of the refusal only
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
++    'personRef' => '5e3e084587410d804f4aee40b2e4d979',
+     'organisationId' => 'ba0415b8-8703-4814-a731-6b0fc22fcfea',
+-    'personRef' => '5e3e084587410d804f4aee40b2e4d979',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:154
+
+FAILURES!
+Tests: 44, Assertions: 125, Failures: 1, Deprecations: 1.

@@ -1,0 +1,101 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+EEEEEEFEEEE                                                       11 / 11 (100%)
+
+Time: 00:10.880, Memory: 28.00 MB
+
+There were 10 errors:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_redemption_binds_r_to_the_person_and_reports_only_r_to_the_organisation
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:111
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redeemed_code_never_binds_twice_and_the_same_person_gets_an_idempotent_answer
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:130
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_person_already_bound_in_the_organisation_is_refused_and_the_organisation_told
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:145
+
+4) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_expired_revoked_unknown_and_malformed_codes_fail_with_one_neutral_message
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:163
+
+5) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_redemption_needs_a_signed_in_active_account
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:185
+
+6) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_failed_attempts_are_throttled_per_client_and_per_code_and_the_claim_is_never_disabled
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:196
+
+7) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_two_concurrent_redemptions_of_one_code_give_exactly_one_binding
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:284
+
+8) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redemption_that_waits_across_expiry_is_refused
+Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+
+9) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_an_issuance_waiting_behind_a_redemption_sees_r_bound
+RuntimeException: the holder failed: Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:263
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:316
+
+10) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_revocation_waiting_behind_a_redemption_finds_nothing_to_revoke
+RuntimeException: the holder failed: Error: Class "App\Contexts\Identity\Application\RedeemClaim" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:263
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:330
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_only_the_shared_redemption_service_writes_bindings_or_redeems_claims
+PI-44: no alternate path
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Contexts/Identity/Infrastructure/PostgresClaims.php',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:223
+
+ERRORS!
+Tests: 11, Assertions: 1, Errors: 10, Failures: 1, Deprecations: 1.

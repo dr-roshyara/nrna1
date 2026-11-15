@@ -1,0 +1,242 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEEEDDEDEDEE                      44 / 44 (100%)
+
+Time: 00:17.207, Memory: 26.00 MB
+
+There were 7 errors:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_redemption_binds_r_to_the_person_and_reports_only_r_to_the_organisation
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:166
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:111
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(2d1e0d7c-58bd-41e6-a54d-73ce76122fdb) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 40239, Database: membership_pg_isolated, SQL: INSERT INTO outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (62d2f588-bd6a-410a-b41a-8e887170e940, 4edb2257-b545-41fb-b9e6-69585f11cc9e, 2d1e0d7c-58bd-41e6-a54d-73ce76122fdb, 'IdentityClaim', 4ec871a5-d12c-41e7-bf71-e12eebc2a75a, ClaimRedeemed, {"organisationId":"2d1e0d7c-58bd-41e6-a54d-73ce76122fdb","personRef":"a12a5fae552ea980c612e4ef2b3ebaef","claimId":"4ec871a5-d12c-41e7-bf71-e12eebc2a75a","boundAt":"2026-11-15 16:15:41.527694+00"}, 'pending'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:111
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(2d1e0d7c-58bd-41e6-a54d-73ce76122fdb) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:111
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redeemed_code_never_binds_twice_and_the_same_person_gets_an_idempotent_answer
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:166
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:130
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(3e8354b0-e066-4238-b985-b10e147f7a58) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 40239, Database: membership_pg_isolated, SQL: INSERT INTO outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (e832708d-a464-4fcb-b263-b8f446b841a8, cc8f6e67-0b5b-4c26-a9a6-4c810d69f6e3, 3e8354b0-e066-4238-b985-b10e147f7a58, 'IdentityClaim', 44219ebb-cd72-4385-8645-c2689831f882, ClaimRedeemed, {"organisationId":"3e8354b0-e066-4238-b985-b10e147f7a58","personRef":"701010b76b4af6c276af3b045489485c","claimId":"44219ebb-cd72-4385-8645-c2689831f882","boundAt":"2026-11-15 16:15:41.596509+00"}, 'pending'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:130
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(3e8354b0-e066-4238-b985-b10e147f7a58) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:130
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_person_already_bound_in_the_organisation_is_refused_and_the_organisation_told
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:166
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:145
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(4c5005a8-e2ae-498b-96df-ac1cf946016f) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 40239, Database: membership_pg_isolated, SQL: INSERT INTO outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (98176bbf-0577-4f7c-8818-94bdde15de4a, 3d088ad1-12f7-45a4-bb5e-e700d913b0ce, 4c5005a8-e2ae-498b-96df-ac1cf946016f, 'IdentityClaim', e33fd4c1-546b-4408-8fdb-5dc4168ee5b0, ClaimRedeemed, {"organisationId":"4c5005a8-e2ae-498b-96df-ac1cf946016f","personRef":"0703f863fbd22bff3987ec408ce5b657","claimId":"e33fd4c1-546b-4408-8fdb-5dc4168ee5b0","boundAt":"2026-11-15 16:15:41.660766+00"}, 'pending'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:145
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(4c5005a8-e2ae-498b-96df-ac1cf946016f) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:145
+
+4) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_failed_attempts_are_throttled_per_client_and_per_code_and_the_claim_is_never_disabled
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:166
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:206
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(c0589914-df18-4e84-abc4-6fca490fb963) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 40239, Database: membership_pg_isolated, SQL: INSERT INTO outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (91d2f674-6708-4379-92cc-c1abe1f358f2, 4ff7a47d-2638-48f0-84cd-6b55bd585cc8, c0589914-df18-4e84-abc4-6fca490fb963, 'IdentityClaim', a14cd919-7a80-4b64-8e22-a742486e0ea0, ClaimRedeemed, {"organisationId":"c0589914-df18-4e84-abc4-6fca490fb963","personRef":"f19ecd168e69bfcaa63813a2fa528d43","claimId":"a14cd919-7a80-4b64-8e22-a742486e0ea0","boundAt":"2026-11-15 16:15:42.09482+00"}, 'pending'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:206
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(c0589914-df18-4e84-abc4-6fca490fb963) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:206
+
+5) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_two_concurrent_redemptions_of_one_code_give_exactly_one_binding
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:166
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:284
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(ded66147-87b3-463a-8ae1-69e60f77747e) is not present in table "organisations". (Connection: pgsql, Host: 127.0.0.1, Port: 40239, Database: membership_pg_isolated, SQL: INSERT INTO outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (b2a3575d-eb09-4645-ab4f-6e42deb41576, 454a988b-a45a-4bb0-9fc5-004ae8be4256, ded66147-87b3-463a-8ae1-69e60f77747e, 'IdentityClaim', 679235d6-87d2-4859-a3fc-2ec5e6456fab, ClaimRedeemed, {"organisationId":"ded66147-87b3-463a-8ae1-69e60f77747e","personRef":"0a8d689ffae3a680b8fb55bf5d0501b3","claimId":"679235d6-87d2-4859-a3fc-2ec5e6456fab","boundAt":"2026-11-15 16:15:42.567152+00"}, 'pending'))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:284
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "outbox_events" violates foreign key constraint "outbox_events_organisation_id_foreign"
+DETAIL:  Key (organisation_id)=(ded66147-87b3-463a-8ae1-69e60f77747e) is not present in table "organisations".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:159
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:120
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:98
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:286
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:259
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:284
+
+6) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_an_issuance_waiting_behind_a_redemption_sees_r_bound
+RuntimeException: the holder failed: App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:263
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:316
+
+7) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_revocation_waiting_behind_a_redemption_finds_nothing_to_revoke
+RuntimeException: the holder failed: App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:263
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:330
+
+ERRORS!
+Tests: 44, Assertions: 103, Errors: 7, Deprecations: 1.

@@ -1,0 +1,11 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.xml
+
+....................................................              52 / 52 (100%)
+
+Time: 00:01.730, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 52, Assertions: 1335, PHPUnit Deprecations: 5.

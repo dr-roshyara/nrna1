@@ -30,6 +30,8 @@ final class EventRegistryCompletenessTest extends TestCase
         'DeterminationIssued',  // Adjudication (OutboxEventAdapter)
         'AdjudicationExpired',  // Adjudication (OutboxEventAdapter) -- WP-6
         'MembershipCoverageResolved',   // Membership ledger C1 (MembershipCoverageResolvedOutbox) -- PBDIGIT-343
+        'ClaimRedeemed',        // Identity redemption C-I3 (PostgresClaims → identity_outbox_events) -- PBDIGIT-349 I-3
+        'BindingRefused',       // Identity redemption C-I6 (PostgresClaims → identity_outbox_events) -- PBDIGIT-349 I-3
     ];
 
     public function test_every_produced_event_type_has_exactly_one_hydrator(): void

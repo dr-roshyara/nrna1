@@ -139,6 +139,20 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
     - **Guard:** the purity guard flagged a port method named `now()`; it was renamed `currentInstant()`.
   - Guide `developer_guide/identity/03_…`.
   - **PI gates proven for I-2:** 7, 12, 17a, 18, 20, 21, 23, 24, 27, 32 (by the lock design plus 23 and 27), 35. **PI-15 is half done:** the replace and revoke half here; redemption in I-3.
+- 2026-11-15: **I-3 DONE** (worktree `../nrna1-349-i3`, branch `identity/pbdigit-349-i3`).
+  - **Built:** `RedeemClaim`, the one redemption path `PostgresClaims::redeem` (`ClaimSlot` → claim row → one `t_check`), the binding, `ClaimRedeemed` / `BindingRefused` with hydrators, and throttling per code and per client (`config/identity.php`; values [TU], proposals).
+  - **Two schema findings, fixed:**
+    1. I-2's foreign keys to claim rows would have blocked the §15 cleanup. They were dropped.
+    2. The shared `outbox_events` has a foreign key to the legacy `organisations` table, so it can't carry registry organisations. `identity_outbox_events` was added: "Identity's outbox" (multi-database design §13.3).
+  - **Tests:** strictly RED first (11 tests). GREEN: Identity PostgreSQL 44, unit 17, guards 52, the event-registry guard in the isolated cluster 2, full cluster 504.
+  - **Mutants:** N1, N3, N4 and N6 all killed.
+  - **Test corrections after RED, recorded:** the outbox table name; `jsonb` key order.
+  - **PI gates proven for I-3:** 1, 2, 3, 8, 9, 13, 15 (redeem half; PI-15 now complete), 22, 28, 34, 44, 48.
+  - **Open:**
+    - the relay of Identity's outbox to organisation inboxes (needs Organisation S4's consumer);
+    - confirmation of the throttling values;
+    - PI-29 (issuance first, then the waiting redemption of the expired old code) is covered by the expiry logic but has no dedicated race test.
+  - Guide `developer_guide/identity/04_…`.
 
 ## 8. Next actions
 

@@ -8,6 +8,11 @@ use App\Contexts\Identity\Application\ClaimOutcome;
 use App\Contexts\Identity\Application\ClaimRefusal;
 use App\Contexts\Identity\Application\IdentityUnavailable;
 use App\Contexts\Identity\Application\Ports\ClaimStore;
+use App\Contexts\Identity\Application\RedemptionOutcome;
+use App\Contexts\Identity\Application\RedemptionRefusal;
+use App\Contexts\Identity\Domain\PersonId;
+use App\Contexts\Identity\Infrastructure\Outbox\BindingRefusedHydrator;
+use App\Contexts\Identity\Infrastructure\Outbox\ClaimRedeemedHydrator;
 use App\Contexts\Identity\Domain\ClaimCode;
 use App\Contexts\Identity\Domain\ClaimWindow;
 use App\Contexts\Identity\Domain\OrganisationPersonRef;
@@ -104,6 +109,62 @@ final class PostgresClaims implements ClaimStore
 
             return ClaimOutcome::revoked($claimId);
         });
+    }
+
+    public function redeem(ClaimCode $code, PersonId $person): RedemptionOutcome
+    {
+        if ($this->db->transactionLevel() > 0) {
+            throw new \LogicException('A redemption starts its own transaction.');
+        }
+        try {
+            return $this->db->transaction(function () use ($code, $person): RedemptionOutcome {
+                $this->db->statement('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');
+                // 0. find the claim by its code hash: a plain read, to learn O and R. Nothing is decided on it.
+                $found = $this->db->selectOne('SELECT claim_id, organisation_id, person_ref FROM identity_claims WHERE code_hash = ?', [$code->hash()]);
+                if ($found === null) {
+                    return RedemptionOutcome::refused(RedemptionRefusal::NotRedeemable);   // unknown (or cleaned-up) code
+                }
+                [$o, $r, $claimId] = [$found->organisation_id, trim($found->person_ref), $found->claim_id];
+                // 1. ClaimSlot (O, R), 2. the claim row: the global lock order (INV-CLM-6); then ONE t_check
+                $this->lockSlot($o, $r);
+                $claim = $this->db->selectOne('SELECT claim_id, state, expires_at::text AS expires_at FROM identity_claims WHERE claim_id = ? FOR UPDATE', [$claimId]);
+                if ($claim === null) {
+                    return RedemptionOutcome::refused(RedemptionRefusal::NotRedeemable);
+                }
+                $t = $this->tCheck();
+                $binding = $this->db->selectOne('SELECT person_id, claim_id FROM identity_bindings WHERE organisation_id = ? AND person_ref = ?', [$o, $r]);
+                if ($claim->state === 'redeemed') {
+                    // §14 case 3: the same Account re-presents the code it redeemed, while the row exists
+                    return $binding !== null && $binding->person_id === $person->value() && $binding->claim_id === $claimId
+                        ? RedemptionOutcome::alreadyBound($o)
+                        : $this->redemptionRefused($o, $claimId, 'redeemed');
+                }
+                if (!$this->isActive($claim, $t)) {
+                    return $this->redemptionRefused($o, $claimId, 'not-active');                   // expired or revoked
+                }
+                if ($binding !== null) {
+                    return $this->redemptionRefused($o, $claimId, 'reference-bound');              // INV-ID-6
+                }
+                if ($this->db->selectOne('SELECT 1 FROM identity_bindings WHERE organisation_id = ? AND person_id = ?', [$o, $person->value()]) !== null) {
+                    // INV-BND-2: a second of O's references for one Person is refused and reported to O (D-113)
+                    $this->outbox(BindingRefusedHydrator::EVENT_TYPE, $o, $r, ['organisationId' => $o, 'personRef' => $r]);
+                    $this->audit('binding-refused', $o, $claimId, 'person-already-bound');
+                    $this->decided();
+
+                    return RedemptionOutcome::refused(RedemptionRefusal::PersonAlreadyBound);
+                }
+                $this->db->insert('INSERT INTO identity_bindings (organisation_id, person_ref, person_id, bound_at, claim_id) VALUES (?, ?, ?, ?::timestamptz, ?)',
+                    [$o, $r, $person->value(), $t, $claimId]);
+                $this->db->update("UPDATE identity_claims SET state = 'redeemed', ended_at = ?::timestamptz WHERE claim_id = ?", [$t, $claimId]);
+                $this->outbox(ClaimRedeemedHydrator::EVENT_TYPE, $o, $claimId, ['organisationId' => $o, 'personRef' => $r, 'claimId' => $claimId, 'boundAt' => $t]);
+                $this->audit('claim-redeemed', $o, $claimId, null);
+                $this->decided();
+
+                return RedemptionOutcome::bound($o);
+            });
+        } catch (QueryException $e) {
+            throw new IdentityUnavailable('Identity could not complete the redemption (' . $e::class . ').', previous: $e);
+        }
     }
 
     public function recordRefusal(TenantId $organisation, ?string $claimId, ClaimRefusal $reason): void
@@ -209,6 +270,26 @@ final class PostgresClaims implements ClaimStore
         $this->decided();
 
         return ClaimOutcome::refused($reason);
+    }
+
+    private function redemptionRefused(string $o, string $claimId, string $reason): RedemptionOutcome
+    {
+        $this->audit('redemption-refused', $o, $claimId, $reason);
+        $this->decided();
+
+        return RedemptionOutcome::refused(RedemptionRefusal::NotRedeemable);
+    }
+
+    /**
+     * Identity's own central outbox (multi-database boundary design §13.3 step 7), in the redemption's transaction.
+     *
+     * @param array<string, string> $payload published language only (C-I3, C-I6): never a code, PersonId or Account
+     */
+    private function outbox(string $eventType, string $o, string $aggregateId, array $payload): void
+    {
+        $this->db->insert("INSERT INTO identity_outbox_events (id, event_id, organisation_id, aggregate_type, aggregate_id, event_type, payload, status)
+            VALUES (?, ?, ?, 'IdentityClaim', ?, ?, ?, 'pending')",
+            [(string) Str::uuid(), (string) Str::uuid(), $o, $aggregateId, $eventType, json_encode($payload, JSON_THROW_ON_ERROR)]);
     }
 
     private function audit(string $event, string $o, ?string $claimId, ?string $reason): void
