@@ -64,7 +64,12 @@ Reference Geography's published read contract (`GeographyReadModel`, G-5a, accep
   - guide 35.
 
   **The story's scope now includes this additive contract change** (it replaces "any change to the Geography contract" under "Not in scope", by the Principal's decision).
-- **Next:** step 2 (pages).
+- **Step 2 (pages) DONE 2026-11-15:**
+  - Vitest 10 passing; mutants H and I killed;
+  - design check 91 (the baseline);
+  - the production build is fine;
+  - guide 36, which includes the administrator notes.
+- **Next:** step 3 (full verification and closure).
 
 ## Plan
 

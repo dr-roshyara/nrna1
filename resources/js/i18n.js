@@ -26,6 +26,11 @@ import pricingDe from './locales/pages/pricing/de.json';
 import pricingEn from './locales/pages/pricing/en.json';
 import pricingNp from './locales/pages/pricing/np.json';
 
+// PBDIGIT-355: the read-only Reference Geography explorer
+import referenceGeographyDe from './locales/pages/reference-geography/de.json';
+import referenceGeographyEn from './locales/pages/reference-geography/en.json';
+import referenceGeographyNp from './locales/pages/reference-geography/np.json';
+
 import welcomeDe from './locales/pages/Welcome/de.json';
 import welcomeEn from './locales/pages/Welcome/en.json';
 import welcomeNp from './locales/pages/Welcome/np.json';
@@ -248,6 +253,7 @@ const messages = {
       'role-selection': roleSelectionDe,
       'voting-election': votingElectionDe,
       pricing: pricingDe,
+      'reference-geography': referenceGeographyDe,
       welcome: welcomeDe,
       'demo-result': demoResultDe,
       vereinswahlen: vereinswahlenDe,
@@ -310,6 +316,7 @@ const messages = {
       'role-selection': roleSelectionEn,
       'voting-election': votingElectionEn,
       pricing: pricingEn,
+      'reference-geography': referenceGeographyEn,
       welcome: welcomeEn,
       'demo-result': demoResultEn,
       vereinswahlen: vereinswahlenEn,
@@ -372,6 +379,7 @@ const messages = {
       'role-selection': roleSelectionNp,
       'voting-election': votingElectionNp,
       pricing: pricingNp,
+      'reference-geography': referenceGeographyNp,
       welcome: welcomeNp,
       'demo-result': demoResultNp,
       vereinswahlen: vereinswahlenNp,

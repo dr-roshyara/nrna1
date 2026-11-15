@@ -1,0 +1,10 @@
+
+ RUN  v4.0.18 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo
+
+ ✓ resources/js/Pages/ReferenceGeography/ReferenceGeography.spec.js (10 tests) 117ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  09:43:03
+   Duration  848ms (transform 225ms, setup 0ms, import 306ms, tests 117ms, environment 325ms)
+

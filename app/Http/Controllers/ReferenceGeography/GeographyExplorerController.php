@@ -82,7 +82,11 @@ final class GeographyExplorerController
     private function common(int $position, string $date): array
     {
         return [
-            'knownAt' => ['position' => $position, 'latestUrl' => route('geography.entry', ['date' => $date], false)],
+            'knownAt' => [
+                'position' => $position,
+                'latestUrl' => route('geography.entry', ['date' => $date], false),
+                'explorerUrl' => route('geography.explorer', ['position' => $position, 'date' => $date], false),
+            ],
             'validDate' => $date,
             'language' => $this->language(),
         ];

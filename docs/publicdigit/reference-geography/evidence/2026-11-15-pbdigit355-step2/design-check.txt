@@ -1,0 +1,56 @@
+🎨 Design System Compliance Check v3
+======================================
+  Config:       /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/scripts/design-rules.json
+  Baseline:     613 violations
+  Threshold:    150 violations
+  Phase:        phase_4_iteration_6
+  Strict:       normal
+  Scan dir:     /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-m1-geo/resources/js/Pages
+
+📊 Rule Violations:
+────────────────────────
+  ✅ Background colors:                0 violations  (target: 0)
+  ✅ Text colors:                      0 violations  (target: 0)
+  ✅ Border colors:                    0 violations  (target: 0)
+  ✅ Ring colors:                      0 violations  (target: 0)
+  ✅ Divide colors:                    0 violations  (target: 0)
+  ✅ Placeholder colors:               0 violations  (target: 0)
+  ✅ Shadow sizes:                     0 violations  (target: 0)
+  ✅ Font weights (use CSS variables):    0 violations  (target: 0)
+  ℹ️  Responsive prefixes (consider tokenization):      (informational — no target)
+
+🔧 Component Violations:
+───────────────────────
+  Raw <button>: 91 (target: 0)
+
+📋 Approved Exceptions:
+──────────────────────
+  Total:     7
+  Active:    1
+  Permanent: 4
+
+📈 Migration Progress:
+────────────────────
+  Baseline:     613 violations
+  Current:      91 violations
+  Completed:    522 / 613 (85%)
+
+  ##########################################........ 85%
+
+🎯 Phase Targets:
+───────────────
+  ✅ PHASE 4 ITERATION 1: ON TRACK (91 ≤ 592)
+  ✅ PHASE 4 ITERATION 2: ON TRACK (91 ≤ 580)
+  ✅ PHASE 4 ITERATION 3: ON TRACK (91 ≤ 545)
+  ✅ PHASE 4 ITERATION 4: ON TRACK (91 ≤ 529)
+  ✅ PHASE 4 ITERATION 5: ON TRACK (91 ≤ 511)
+  ✅ PHASE 4 ITERATION 6: ON TRACK (91 ≤ 485)
+  ⏳ PHASE 5 COMPLETE: Need 41 fewer violations
+  ⏳ FINAL TARGET: Need 91 fewer violations
+
+🔐 Enforcement Status:
+────────────────────
+  Status:    🚀 POST-MIGRATION (91 ≤ 150)
+  Blocking:  Soft (pre-commit warnings)
+
+✅ All checks passed! (91 violations, threshold: 150)

@@ -42,3 +42,4 @@
 | G-8 | [The evidenced-dataset importer](33_g8_evidenced_dataset_importer.md) | importer implemented 2026-11-14; data pending the Principal's review |
 | M1-1 (PBDIGIT-355) | [Frontend M1, step 1: the read-only web adapter for the explorer](34_m1_web_explorer_adapter.md) | implemented 2026-11-15; stop condition resolved by M1-1b |
 | M1-1b (PBDIGIT-355) | [The published hierarchy queries `topLevelAt` and `childrenInAnySchemeOf`](35_m1_hierarchy_queries.md) | implemented 2026-11-15 (Principal: "Extend the contract") |
+| M1-2 (PBDIGIT-355) | [Frontend M1, step 2: the explorer pages (Vue, i18n, design system)](36_m1_explorer_pages.md) | implemented 2026-11-15; includes administrator deployment notes |

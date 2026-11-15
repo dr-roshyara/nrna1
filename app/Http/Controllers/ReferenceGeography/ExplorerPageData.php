@@ -76,7 +76,7 @@ final class ExplorerPageData
             'disputedKinds' => $place->disputedKinds,
             'mergedInto' => $place->mergedInto === null ? null : ['unitId' => $place->mergedInto, 'url' => $this->url($place->mergedInto)],
             'parents' => $parents,
-            'children' => self::sorted($children),
+            'children' => self::byScheme(self::sorted($children)),
         ];
     }
 
@@ -132,6 +132,20 @@ final class ExplorerPageData
     private static function sorted(array $items): array
     {
         usort($items, static fn (array $a, array $b): int => [(string) $a['label']['value'], $a['unitId']] <=> [(string) $b['label']['value'], $b['unitId']]);
+
+        return $items;
+    }
+
+    /**
+     * Children grouped by scheme, so a page can show one group per scheme. usort is stable (PHP 8), so within a
+     * scheme the label order of sorted() is kept.
+     *
+     * @param list<array<string, mixed>> $items
+     * @return list<array<string, mixed>>
+     */
+    private static function byScheme(array $items): array
+    {
+        usort($items, static fn (array $a, array $b): int => $a['scheme'] <=> $b['scheme']);
 
         return $items;
     }

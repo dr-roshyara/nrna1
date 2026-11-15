@@ -1,0 +1,3 @@
+../../../../../tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/727bcd2f-e71b-4223-81fa-f807ad45facb/scratchpad/m1-build/assets/Explorer-CwoXcjde.js                                              2.01 kB │ gzip:   0.97 kB
+../../../../../tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/727bcd2f-e71b-4223-81fa-f807ad45facb/scratchpad/m1-build/assets/Place-Dryppx5o.js                                                 6.21 kB │ gzip:   1.88 kB
+✓ built in 14.35s

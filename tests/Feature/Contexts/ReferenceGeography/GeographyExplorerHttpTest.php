@@ -65,7 +65,7 @@ final class GeographyExplorerHttpTest extends RefgeoPostgresTestCase
     {
         $this->signedIn()->get('/geography/k/0')
             ->assertOk()
-            ->assertInertia(fn (Assert $page) => $page->component('ReferenceGeography/Explorer', false)
+            ->assertInertia(fn (Assert $page) => $page->component('ReferenceGeography/Explorer')
                 ->where('knownAt.position', 0)
                 ->where('places', [])
                 ->where('empty', true));
@@ -84,7 +84,7 @@ final class GeographyExplorerHttpTest extends RefgeoPostgresTestCase
         $this->signedIn()->get("/geography/k/{$p}?date=2020-01-01")
             ->assertOk()
             ->assertInertia(function (Assert $page) use ($country, $province, $p): void {
-                $page->component('ReferenceGeography/Explorer', false)->where('knownAt.position', $p)->where('validDate', '2020-01-01')->where('empty', false);
+                $page->component('ReferenceGeography/Explorer')->where('knownAt.position', $p)->where('validDate', '2020-01-01')->where('empty', false);
                 $places = $page->toArray()['props']['places'];
                 $this->assertNotNull(self::find($places, $country), 'a place without a parent is top level');
                 $this->assertNull(self::find($places, $province), 'a contained place is not top level');
@@ -107,7 +107,8 @@ final class GeographyExplorerHttpTest extends RefgeoPostgresTestCase
         $this->signedIn()->get("/geography/k/{$p}/places/{$country->value()}?date=2020-01-01")
             ->assertOk()
             ->assertInertia(function (Assert $page) use ($country, $province): void {
-                $page->component('ReferenceGeography/Place', false)->where('place.unitId', $country->value())->where('place.parents', []);
+                $page->component('ReferenceGeography/Place')->where('place.unitId', $country->value())->where('place.parents', [])
+                    ->where('knownAt.explorerUrl', '/geography/k/' . $page->toArray()['props']['knownAt']['position'] . '?date=2020-01-01');
                 $children = $page->toArray()['props']['place']['children'];
                 $this->assertSame([[
                     'scheme' => 'admin', 'unitId' => $province->value(),
@@ -119,7 +120,7 @@ final class GeographyExplorerHttpTest extends RefgeoPostgresTestCase
 
         $this->signedIn()->get("/geography/k/{$p}/places/{$province->value()}?date=2020-01-01")
             ->assertOk()
-            ->assertInertia(fn (Assert $page) => $page->component('ReferenceGeography/Place', false)
+            ->assertInertia(fn (Assert $page) => $page->component('ReferenceGeography/Place')
                 ->where('place.exists', true)
                 ->where('place.classifications', ['admin' => 'province'])
                 ->where('place.identifiers', ['iso3166-2' => 'NP-P3'])

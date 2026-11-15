@@ -26,7 +26,7 @@ Signed-in users can browse officially published places, follow parents and child
 ## Task checklist
 - [x] 1. Web adapter, RED then GREEN (feature tests on the real publication path), then a commit
 - [x] 1b. Contract extension (Principal 2026-11-15, "Extend the contract"): `topLevelAt` and `childrenInAnySchemeOf`, plus a batched `slotsOfKind`, RED then GREEN, then a commit
-- [ ] 2. Pages and component, RED then GREEN (Vitest; design check at or below 91), then a commit
+- [x] 2. Pages and component, RED then GREEN (Vitest; design check at or below 91), then a commit
 - [ ] 3. Guide, full verification, story Done, then a commit (no push)
 
 ## Progress
@@ -50,6 +50,17 @@ Signed-in users can browse officially published places, follow parents and child
     - place page: 5.96 s → 0.06 s;
     - explorer: 5.93 s → 1.79 s (it now costs per place shown).
   - Guide 35.
+
+- 2026-11-15: **step 2 done.**
+  - **What was built:** the Explorer and Place pages, `KnownAtBanner` and `PlaceLabelText`, the typed page data, and en/de/np texts registered in `i18n.js`. The backend gained `knownAt.explorerUrl` and children ordered by scheme.
+  - **Tests:**
+    - Vitest: 10 passing; mutants H and I killed.
+    - HTTP and hierarchy tests: 14 passing, with the pages required to exist.
+    - Full Vitest suite: the 6 files and 4 tests that fail are Election tests, and they fail the same way on the baseline.
+  - **Checks:**
+    - design check 91, equal to the baseline;
+    - the production build includes both pages (built to scratch; the tracked `public/build` was not touched).
+  - **Not done:** responsiveness wasn't browser-measured. Guide 36.
 
 **Worktree finding:** a symlinked `vendor/` loads `App\` from the main tree, which is Session A's working copy. It was replaced by a real copy with `composer dump-autoload` before any implementation ran. The first RED run used the symlinked autoloader, but it ran no application code of mine, so its result is still valid.
 

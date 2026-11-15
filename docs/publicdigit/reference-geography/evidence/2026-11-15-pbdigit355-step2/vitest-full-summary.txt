@@ -1,0 +1,12 @@
+ FAIL  tests/Frontend/CreateVotingPage.spec.js [ tests/Frontend/CreateVotingPage.spec.js ]
+ FAIL  tests/Frontend/CreateVotingform.spec.js [ tests/Frontend/CreateVotingform.spec.js ]
+ FAIL  tests/js/Composables/useElectionCapabilities.spec.ts [ tests/js/Composables/useElectionCapabilities.spec.ts ]
+ FAIL  resources/js/__tests__/composables/useElectionActions.test.ts [ resources/js/__tests__/composables/useElectionActions.test.ts ]
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  tests/js/Architecture/ElectionFrontendArchitectureTest.spec.ts > Frontend Architecture — Constitutional Invariants > useElectionCapabilities.ts must use ElectionActions constants > no hardcoded action strings in canDo() or denialReason() calls
+ FAIL  tests/js/Architecture/ElectionFrontendArchitectureTest.spec.ts > Frontend Architecture — Constitutional Invariants > Frontend Constitutional Runtime Projection — C.2.4 > Constitutional authority fragmentation — no lifecycle+role combinations > no Vue page derives capability from lifecycle constant + role combination
+ FAIL  tests/js/Pages/Election/Management.spec.ts > Management.vue — Suspend UI > hides suspend button when canSuspend is false
+ FAIL  tests/js/Pages/Election/Management.spec.ts > Management.vue — Suspend UI > calls suspend route with reason from modal
+ Test Files  6 failed | 24 passed (30)
+      Tests  4 failed | 294 passed | 3 skipped (301)
+Same 6 files / 4 tests fail on the committed baseline 635838a9b without the step-2 work (stash run, 2026-11-15).
