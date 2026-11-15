@@ -1,0 +1,60 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEE.                                                           9 / 9 (100%)
+
+Time: 00:00.022, Memory: 12.00 MB
+
+There were 8 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_suspension_is_recorded_and_restricts_without_ending_membership
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:90
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_suspension_without_an_end_date_runs_until_restored
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:102
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_restore_ends_the_named_suspension
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:109
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_authority_is_asked_for_each_act_and_its_evidence_is_recorded
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:123
+
+5) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_without_authority_nothing_is_recorded
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:138
+
+6) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_domain_refusals_are_passed_through_and_nothing_is_recorded
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:150
+
+7) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_an_unknown_member_or_another_organisations_member_is_not_found
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:163
+
+8) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_the_same_command_twice_records_once_and_a_reused_key_is_refused
+Error: Class "App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:171
+
+ERRORS!
+Tests: 9, Assertions: 6, Errors: 8.

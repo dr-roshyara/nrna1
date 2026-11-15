@@ -17,6 +17,9 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  * - Admit mirrors the legacy MembershipPolicy::approveApplication rule (owner / admin).
  * - End is DENIED for every actor. No legacy ending rule exists to mirror (plan F9), and which authority
  *   may end a membership is an open decision of the authority owner (G-1). Nothing is inferred.
+ * - Renew, Suspend and Restore (PBDIGIT-354 S2) are DENIED for every actor, for the same reason: no legacy rule to
+ *   mirror; their authority belongs to the authority owner (DS-4). The match is total, so a new act kind is a
+ *   decision here, never a crash.
  *
  * Every check records AuthorityEvidence. The adapter is replaced by the owning context's implementation
  * once the agreed replacement criterion (DS-4) is met. Not bound in the container in Slice 2a (2b, held).
@@ -25,6 +28,7 @@ final class InterimRoleAuthority implements AuthorityCheckPort
 {
     private const ADMIT_RULE = 'interim:legacy-MembershipPolicy:approveApplication';
     private const END_RULE = 'interim:unresolved:G-1';
+    private const LIFECYCLE_RULE = 'interim:unresolved:authority-owner';
     private const POLICY_VERSION = 'interim-1';
     private const ADMITTING_ROLES = ['owner', 'admin'];
 
@@ -39,6 +43,9 @@ final class InterimRoleAuthority implements AuthorityCheckPort
         [$ruleRef, $granted] = match ($act) {
             MembershipAct::Admit => [self::ADMIT_RULE, in_array($role, self::ADMITTING_ROLES, true)],
             MembershipAct::End => [self::END_RULE, false],
+            // PBDIGIT-354 S2-1 / S2-2: no legacy rule exists to mirror for these either; denied, nothing inferred.
+            // (The vocabulary guard keeps other contexts' names out of this adapter: hence "authority owner".)
+            MembershipAct::Renew, MembershipAct::Suspend, MembershipAct::Restore => [self::LIFECYCLE_RULE, false],
         };
         $evidence = AuthorityEvidence::of(
             $actor,

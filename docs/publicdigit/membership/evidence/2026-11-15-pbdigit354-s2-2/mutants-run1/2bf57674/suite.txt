@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......F.........................F..............                   47 / 47 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row15_suspending_a_lapsed_membership_is_refused
+nothing to restrict: the person exercises no rights
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:119
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_domain_refusals_are_passed_through_and_nothing_is_recorded
+lapsed from 100
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:150
+
+FAILURES!
+Tests: 47, Assertions: 219, Failures: 2.

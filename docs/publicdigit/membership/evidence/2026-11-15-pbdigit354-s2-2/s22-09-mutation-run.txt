@@ -1,0 +1,23 @@
+K1 a lapsed membership can be suspended                    tests:47   KILLED (assertions)  domain_refusals_are_passed_through_and_n;row15_suspending_a_lapsed_membership_is_;
+K2 an empty restriction reaches the fact                   tests:47   KILLED+ERRORS (2: InvalidArgumentException: A restriction must end after it starts.)  an_empty_restriction_is_refused;domain_refusals_are_passed_through_and_n;
+K3 a suspension may be future-dated                        tests:47   KILLED (assertions)  d205_neither_act_may_take_effect_after_i;domain_refusals_are_passed_through_and_n;
+K4 a second live restore is accepted                       tests:47   KILLED (assertions)  domain_refusals_are_passed_through_and_n;row14_a_suspension_has_one_live_restore;
+K5 a restore at or before the start is accepted            tests:47   KILLED (assertions)  row12_a_restore_outside_the_restriction_;
+K6 a restore after the restriction is accepted             tests:47   KILLED (assertions)  domain_refusals_are_passed_through_and_n;row12_a_restore_outside_the_restriction_;
+K7 a restore while not in force is accepted                tests:47   KILLED (assertions)  a_restriction_never_carries_into_a_later;row15b_a_restore_after_the_term_lapsed_n;
+K8 an annulled suspension can be restored                  tests:47   KILLED (assertions)  a_restore_targets_a_live_suspension;
+K9 a restore may be future-dated                           tests:47   KILLED (assertions)  d205_neither_act_may_take_effect_after_i;
+K10 a stored restore need not name a suspension            tests:47   KILLED (assertions)  a_stored_restore_must_name_an_earlier_su;
+K11 correcting a suspension is not refused                 tests:47   KILLED+ERRORS (1: LogicException: Only an Admit, End or Correct has a value.)  correcting_a_suspension_or_a_restore_is_;
+R1 the restriction is not clipped to the lifetime          tests:47   KILLED (assertions)  a_restriction_never_carries_into_a_later;the_published_restriction_stops_at_the_p;
+R2 a restore is ignored by resolution                      tests:47   KILLED (assertions)  a_restore_ends_the_named_suspension;row11_a_restore_ends_the_restriction_at_;row22_neither_fact_is_visible_before_its;
+R3 a suspension counts for every period                    tests:47   KILLED (assertions)  a_restriction_never_carries_into_a_later;
+A1 suspension asks authority for the wrong act             tests:47   KILLED (assertions)  authority_is_asked_for_each_act_and_its_;
+A2 restoration asks authority for the wrong act            tests:47   KILLED (assertions)  authority_is_asked_for_each_act_and_its_;
+A3 a suspension without an end gets a one-day end          tests:47   KILLED+ERRORS (1: Error: Call to a member function fact() on null)  a_restore_ends_the_named_suspension;a_suspension_without_an_end_date_runs_un;authority_is_asked_for_each_act_and_its_;
+I1 the interim adapter grants lifecycle acts               tests:47   KILLED (assertions)  renewal_suspension_and_restoration_are_d;
+P1 (db) an open-ended suspension is stored as dated        tests:16   KILLED+ERRORS (4: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  an_open_ended_suspension_round_trips;a_restriction_that_changes_nothing_write;c1_carries_the_changed_suspended_interva;the_reloaded_member_knows_what_was_known;
+P2 (db) a restore is stored without its target             tests:16   KILLED+ERRORS (3: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  a_suspension_and_its_restore_are_stored_;c1_carries_the_changed_suspended_interva;the_reloaded_member_knows_what_was_known;
+P3 the stored restriction end is read as the start         tests:16   KILLED (assertions)  a_suspension_and_its_restore_are_stored_;
+P4 the stored restore date is read a day late              tests:16   KILLED (assertions)  a_suspension_and_its_restore_are_stored_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

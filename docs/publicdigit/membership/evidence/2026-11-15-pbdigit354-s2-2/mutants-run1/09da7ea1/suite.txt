@@ -1,0 +1,125 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EDEDEDDDDDDDDDDD                                                  16 / 16 (100%)
+
+Time: 00:07.098, Memory: 26.00 MB
+
+There were 3 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_a_suspension_and_its_restore_are_stored_and_reloaded_exactly
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (298e20d1-60e0-41db-b9fc-bc102454d65d, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null). (Connection: pgsql, Host: 127.0.0.1, Port: 41899, Database: membership_pg_isolated, SQL: insert into "org_membership_facts" ("organisation_id", "membership_id", "seq", "recorded_at", "kind", "effective_at", "fact_id", "decided_at", "provenance", "initial_term", "initial_term_until", "target_fact_id", "end_kind", "consequences", "g2_version", "renew_until_kind", "renew_until", "restriction_until_kind", "restriction_until") values (298e20d1-60e0-41db-b9fc-bc102454d65d, M1, 3, 2025-10-09 08:53:20.003000+00, restore, 2024-10-24, R1, ?, {"kind":"decision","actorOrSource":"board-secretary","declarationRef":null,"ruleRef":null,"ruleVersion":null,"importer":null,"note":null,"authorityEvidence":{"actor":"board-secretary","capacity":"test-role","ruleRef":"test:fake-authority","policyVersion":"v1","result":true,"checkedAt":1,"competenceVerified":false}}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:97
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (298e20d1-60e0-41db-b9fc-bc102454d65d, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:97
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_c1_carries_the_changed_suspended_intervals_and_nothing_else
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (9639c19f-a6d4-4502-bb60-1284219aa02d, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null). (Connection: pgsql, Host: 127.0.0.1, Port: 41899, Database: membership_pg_isolated, SQL: insert into "org_membership_facts" ("organisation_id", "membership_id", "seq", "recorded_at", "kind", "effective_at", "fact_id", "decided_at", "provenance", "initial_term", "initial_term_until", "target_fact_id", "end_kind", "consequences", "g2_version", "renew_until_kind", "renew_until", "restriction_until_kind", "restriction_until") values (9639c19f-a6d4-4502-bb60-1284219aa02d, M1, 3, 2025-10-09 08:53:20.003000+00, restore, 2024-10-24, R1, ?, {"kind":"decision","actorOrSource":"board-secretary","declarationRef":null,"ruleRef":null,"ruleVersion":null,"importer":null,"note":null,"authorityEvidence":{"actor":"board-secretary","capacity":"test-role","ruleRef":"test:fake-authority","policyVersion":"v1","result":true,"checkedAt":1,"competenceVerified":false}}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:131
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (9639c19f-a6d4-4502-bb60-1284219aa02d, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:131
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_reloaded_member_knows_what_was_known_when
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (36f5196f-2127-470e-97c7-575caa83befb, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null). (Connection: pgsql, Host: 127.0.0.1, Port: 41899, Database: membership_pg_isolated, SQL: insert into "org_membership_facts" ("organisation_id", "membership_id", "seq", "recorded_at", "kind", "effective_at", "fact_id", "decided_at", "provenance", "initial_term", "initial_term_until", "target_fact_id", "end_kind", "consequences", "g2_version", "renew_until_kind", "renew_until", "restriction_until_kind", "restriction_until") values (36f5196f-2127-470e-97c7-575caa83befb, M1, 3, 2025-10-09 08:53:20.003000+00, restore, 2024-10-24, R1, ?, {"kind":"decision","actorOrSource":"board-secretary","declarationRef":null,"ruleRef":null,"ruleVersion":null,"importer":null,"note":null,"authorityEvidence":{"actor":"board-secretary","capacity":"test-role","ruleRef":"test:fake-authority","policyVersion":"v1","result":true,"checkedAt":1,"competenceVerified":false}}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:155
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (36f5196f-2127-470e-97c7-575caa83befb, M1, 3, R1, restore, 2024-10-24, null, null, null, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., null, null, null, null, null, null).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:254
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:180
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s22/run1/mutants/09da7ea1/mutant.php:175
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RestoreMembershipHandler.php:37
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:155
+
+ERRORS!
+Tests: 16, Assertions: 33, Errors: 3, Deprecations: 1.

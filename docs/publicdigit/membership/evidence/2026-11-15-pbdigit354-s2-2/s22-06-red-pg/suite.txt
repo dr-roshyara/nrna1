@@ -1,0 +1,195 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEFFDFFFFDDFF                                                  16 / 16 (100%)
+
+Time: 00:08.949, Memory: 26.00 MB
+
+There were 5 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_a_suspension_and_its_restore_are_stored_and_reloaded_exactly
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Suspend
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:336
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:256
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:177
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:172
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/SuspendMembershipHandler.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:96
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_an_open_ended_suspension_round_trips
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Suspend
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:336
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:256
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:177
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:172
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/SuspendMembershipHandler.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:120
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_c1_carries_the_changed_suspended_intervals_and_nothing_else
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Suspend
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:336
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:256
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:177
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:172
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/SuspendMembershipHandler.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:130
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_a_restriction_that_changes_nothing_writes_no_c1
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Suspend
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:336
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:256
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:177
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:172
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/SuspendMembershipHandler.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:145
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_reloaded_member_knows_what_was_known_when
+LogicException: Unsupported fact kind: App\Contexts\Membership\Domain\Organisational\Suspend
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:336
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:256
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:177
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:172
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:65
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/SuspendMembershipHandler.php:38
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:62
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:153
+
+--
+
+There were 8 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: no period" ('INSERT INTO org_membership_fa...ited')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ..._id, kind, recorded_at, provenance, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, effective_at, restriction_until_kind)
+            VALUES (3eed7292-43b3-4152-82ee-07bf9fcb41a5, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, '2024-10-14', 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: no effective date" ('INSERT INTO org_membership_fa...ited')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...d, kind, recorded_at, provenance, target_fact_id, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, restriction_until_kind)
+            VALUES (6eeece81-5500-4144-a374-dee0655eddb0, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, 'A1', 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: until without a date" ('INSERT INTO org_membership_fa...ntil')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, restriction_until_kind)
+            VALUES (5b72ecf1-9eb0-4ca7-9b0b-dfee09d9111f, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, 'A1', '2024-10-14', 'until'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: unlimited with a date" ('INSERT INTO org_membership_fa...1-23')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, restriction_until_kind, restriction_until)
+            VALUES (65365858-f726-4d9f-b3e1-09fceb4b11fe, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, 'A1', '2024-10-14', 'unlimited', '2024-11-23'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: an empty restriction" ('INSERT INTO org_membership_fa...0-14')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, restriction_until_kind, restriction_until)
+            VALUES (cf0d26f4-0bf3-4a0a-82b5-9107810f6773, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, 'A1', '2024-10-14', 'until', '2024-10-14'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "suspend: a renewal end on it" ('INSERT INTO org_membership_fa...ited')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, restriction_until_kind, renew_until_kind)
+            VALUES (75ea6660-b1a1-4f0d-a2f5-409832dc8c0c, 'M1', 2, 'X', 'suspend', now(), '{}'::jsonb, 'A1', '2024-10-14', 'unlimited', 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "restore: a restriction end on it" ('INSERT INTO org_membership_fa...ited')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ded_at, provenance, target_fact_id, effective_at, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, restriction_until_kind)
+            VALUES (2efd072a-e014-41d9-918d-689e58bdd2fb, 'M1', 2, 'X', 'restore', now(), '{}'::jsonb, 'A1', '2024-10-24', 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+8) Tests\Feature\Contexts\Membership\Organisational\PostgresSuspendRestoreTest::test_the_database_refuses_a_malformed_row with data set "end: a restriction end on it" ('INSERT INTO org_membership_fa...ited')')
+a CHECK violation, not another error: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "restriction_until_kind" of relation "org_membership_facts" does not exist
+LINE 1: ...ovenance, target_fact_id, effective_at, end_kind, restrictio...
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44449, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, recorded_at, provenance, target_fact_id, effective_at, end_kind, restriction_until_kind)
+            VALUES (82a8f63d-05e1-4689-8457-59133e276f6d, 'M1', 2, 'X', 'end', now(), '{}'::jsonb, 'A1', '2024-10-24', 'resignation', 'unlimited'))
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'23514'
++'42703'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php:189
+
+ERRORS!
+Tests: 16, Assertions: 27, Errors: 5, Failures: 8, Deprecations: 1.

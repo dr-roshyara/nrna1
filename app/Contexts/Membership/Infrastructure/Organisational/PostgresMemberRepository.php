@@ -27,6 +27,8 @@ use App\Contexts\Membership\Domain\Organisational\PeriodId;
 use App\Contexts\Membership\Domain\Organisational\PersonRef;
 use App\Contexts\Membership\Domain\Organisational\RecordedFact;
 use App\Contexts\Membership\Domain\Organisational\Renew;
+use App\Contexts\Membership\Domain\Organisational\Restore;
+use App\Contexts\Membership\Domain\Organisational\Suspend;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Membership\Domain\Organisational\VoidFact;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
@@ -69,10 +71,11 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
         $facts = $this->db->table('org_membership_facts')
             ->select([
-                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind',
+                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind', 'restriction_until_kind',
                 $this->db->raw('effective_at::text AS effective_date'),
                 $this->db->raw('initial_term_until::text AS initial_term_until_date'),
                 $this->db->raw('renew_until::text AS renew_until_date'),
+                $this->db->raw('restriction_until::text AS restriction_until_date'),
                 $this->db->raw(InstantMicros::selectExpression('decided_at') . ' AS decided_us'),
                 $this->db->raw(InstantMicros::selectExpression('recorded_at') . ' AS recorded_us'),
             ])
@@ -303,7 +306,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             'provenance' => ProvenanceJson::encode($fact->provenance()),
         ];
         $none = ['effective_at' => null, 'initial_term' => null, 'initial_term_until' => null, 'target_fact_id' => null, 'end_kind' => null, 'consequences' => null, 'g2_version' => null,
-            'renew_until_kind' => null, 'renew_until' => null];
+            'renew_until_kind' => null, 'renew_until' => null, 'restriction_until_kind' => null, 'restriction_until' => null];
 
         if ($fact instanceof Admit) {
             $until = $fact->initialTermUntil();
@@ -322,6 +325,16 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             return ['kind' => 'renew', 'effective_at' => DateOrdinal::toDate($fact->effectiveAt()), 'target_fact_id' => $fact->period()->value(),
                 'renew_until_kind' => $fact->until()->isInfinite() ? 'unlimited' : 'until',
                 'renew_until' => $fact->until()->isInfinite() ? null : DateOrdinal::toDate($fact->until())] + $common + $none;
+        }
+        if ($fact instanceof Suspend) {
+            // S2-2: the period is the target, as for Renew and End; the restriction's end is 'unlimited' or a date.
+            return ['kind' => 'suspend', 'effective_at' => DateOrdinal::toDate($fact->effectiveAt()), 'target_fact_id' => $fact->period()->value(),
+                'restriction_until_kind' => $fact->until()->isInfinite() ? 'unlimited' : 'until',
+                'restriction_until' => $fact->until()->isInfinite() ? null : DateOrdinal::toDate($fact->until())] + $common + $none;
+        }
+        if ($fact instanceof Restore) {
+            // S2-2: the target is the Suspend it ends.
+            return ['kind' => 'restore', 'effective_at' => DateOrdinal::toDate($fact->effectiveAt()), 'target_fact_id' => $fact->suspension()->value()] + $common + $none;
         }
         if ($fact instanceof Annul || $fact instanceof VoidFact) {
             // Q-4: no valid time.
@@ -366,6 +379,18 @@ final class PostgresMemberRepository implements MemberRepositoryPort
                 $provenance,
                 $decidedAt,
             ),
+            'suspend' => new Suspend(
+                $id,
+                PeriodId::fromString($f->target_fact_id),
+                DateOrdinal::fromDate($f->effective_date),
+                match ($f->restriction_until_kind) {
+                    'unlimited' => TimePoint::infinity(),
+                    'until' => DateOrdinal::fromDate($f->restriction_until_date),
+                },
+                $provenance,
+                $decidedAt,
+            ),
+            'restore' => new Restore($id, FactId::fromString($f->target_fact_id), DateOrdinal::fromDate($f->effective_date), $provenance, $decidedAt),
             'annul' => new Annul($id, FactId::fromString($f->target_fact_id), $provenance, $decidedAt),
             'void' => new VoidFact($id, FactId::fromString($f->target_fact_id), $provenance, $decidedAt),
             'correct' => new Correct(

@@ -1,0 +1,2 @@
+I1 the interim adapter grants lifecycle acts               tests:47   KILLED (assertions)  renewal_suspension_and_restoration_are_d;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

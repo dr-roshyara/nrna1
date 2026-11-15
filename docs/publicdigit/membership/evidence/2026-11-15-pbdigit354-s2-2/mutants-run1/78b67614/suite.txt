@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F.............F.........................                   47 / 47 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row15b_a_restore_after_the_term_lapsed_needs_a_renewal_first
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:129
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_restriction_never_carries_into_a_later_period
+the suspension's own period has ended, so it is not in force (D-177 §4 gives Restore no other refusal for this)
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:269
+
+FAILURES!
+Tests: 47, Assertions: 225, Failures: 2.

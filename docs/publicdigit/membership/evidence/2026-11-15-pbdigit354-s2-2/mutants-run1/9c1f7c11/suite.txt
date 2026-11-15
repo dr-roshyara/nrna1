@@ -1,0 +1,32 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+............................FFE................                   47 / 47 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_authority_is_asked_for_each_act_and_its_evidence_is_recorded
+Error: Call to a member function fact() on null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:128
+
+--
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_suspension_without_an_end_date_runs_until_restored
+D-177 §4: `until` is optional
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:103
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_restore_ends_the_named_suspension
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:113
+
+ERRORS!
+Tests: 47, Assertions: 220, Errors: 1, Failures: 2, Warnings: 1.

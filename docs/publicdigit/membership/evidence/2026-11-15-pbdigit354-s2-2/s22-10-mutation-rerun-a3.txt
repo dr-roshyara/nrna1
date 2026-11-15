@@ -1,0 +1,2 @@
+A3 a suspension without an end gets a one-day end          tests:47   KILLED (assertions)  a_restore_ends_the_named_suspension;a_suspension_without_an_end_date_runs_un;authority_is_asked_for_each_act_and_its_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

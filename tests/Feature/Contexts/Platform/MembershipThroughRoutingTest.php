@@ -13,6 +13,10 @@ use App\Contexts\Membership\Application\Organisational\Ports\WorkingOrganisation
 use App\Contexts\Membership\Application\Organisational\PublishedLanguage\CoverageKnownAtRefusal;
 use App\Contexts\Membership\Application\Organisational\RenewMembership;
 use App\Contexts\Membership\Application\Organisational\RenewMembershipHandler;
+use App\Contexts\Membership\Application\Organisational\RestoreMembership;
+use App\Contexts\Membership\Application\Organisational\RestoreMembershipHandler;
+use App\Contexts\Membership\Application\Organisational\SuspendMembership;
+use App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
@@ -357,6 +361,54 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
             $this->fail('a production authority is bound: S2 must stay fail-closed until Governance S3');
         } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
             $this->assertStringContainsString('AuthorityCheckPort', $e->getMessage());
+        }
+    }
+
+    /**
+     * PBDIGIT-354 S2-2: a suspension and its restoration through the PRODUCTION repository binding land in the routed
+     * organisation's OWN database (organisation migration 300600) and publish C1 in its own outbox; B is untouched,
+     * and the same member id in B is a different member that knows nothing of it. Neither use case can be built in
+     * production without Governance's authority (G-3).
+     */
+    public function test_s2_2_suspension_and_restoration_are_recorded_and_published_in_the_routed_organisations_own_database(): void
+    {
+        $this->admitM1(self::B);   // the same member id, in another organisation
+        $this->routedTo(self::A, function (Connection $a): void {
+            $t = TenantId::fromString(self::A);
+            $repo = app(MemberRepositoryPort::class);
+            $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+            $this->readings = [200];
+            $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_365),
+                Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+
+            $this->readings = [300];
+            $suspended = (new SuspendMembershipHandler($repo, new FakeAuthority()))->handle(new SuspendMembership(self::A, 'M1', 'S1', 20_010, 20_010, null, 'board-secretary', null, 'k2'));
+            $this->readings = [400];
+            $restored = (new RestoreMembershipHandler($repo, new FakeAuthority()))->handle(new RestoreMembership(self::A, 'M1', 'R1', 'S1', 20_020, 20_020, 'board-secretary', null, 'k3'));
+
+            $this->assertTrue($suspended->isAppended());
+            $this->assertTrue($restored->isAppended());
+            $this->assertSame(['admit', 'suspend', 'restore'], array_map(static fn ($r) => $r->kind, $a->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "in A's own database");
+            $c1 = array_map(static fn ($r) => json_decode($r->payload), $a->select("SELECT payload FROM outbox_events WHERE event_type = 'MembershipCoverageResolved'"));
+            usort($c1, static fn (object $x, object $y): int => $x->seq <=> $y->seq);
+            $this->assertSame([1, 2, 3], array_map(static fn (object $e): int => $e->seq, $c1), "three C1 events in A's own outbox");
+            $this->assertSame([['2024-10-14', '2024-10-24']], array_map(static fn ($i) => [$i->from, $i->to], $c1[2]->suspended));
+        });
+
+        $b = DB::connection('platform_org_b');
+        $this->assertSame(['admit'], array_map(static fn ($r) => $r->kind, $b->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "B's M1 knows nothing of A's suspension");
+        $this->assertSame([], array_map(static fn ($r) => json_decode($r->payload)->suspended, $b->select("SELECT payload FROM outbox_events WHERE event_type = 'MembershipCoverageResolved'"))[0]);
+        $this->routedTo(self::B, function (): void {
+            $this->assertFalse(app(MemberRepositoryPort::class)->load(TenantId::fromString(self::B), MemberId::fromString('M1'))->resolve()->isSuspended(TimePoint::of(20_015)));
+        });
+
+        foreach ([SuspendMembershipHandler::class, RestoreMembershipHandler::class] as $handler) {
+            try {
+                app($handler);
+                $this->fail("$handler: a production authority is bound; S2 must stay fail-closed until Governance S3");
+            } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+                $this->assertStringContainsString('AuthorityCheckPort', $e->getMessage(), $handler);
+            }
         }
     }
 }

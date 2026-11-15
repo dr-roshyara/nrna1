@@ -19,8 +19,9 @@ final class MembershipLedgerIsolationTest extends TestCase
     /**
      * The ledger's own migrations: creation (Slice 1b), the F-4b normalisation (PBDIGIT-264, 2026-11-02) and the
      * correction fact kinds (COR-4, PBDIGIT-329, 2026-11-03) and the per-organisation ledger clock (D-209,
-     * PBDIGIT-343, 2026-11-12), and the `renew` fact kind (S2-1, PBDIGIT-354, 2026-11-15; the central half of the
-     * parity rule, developer_guide/membership/23). One exact file per ledger change; never a pattern.
+     * PBDIGIT-343, 2026-11-12), and the `renew` (S2-1) and `suspend` / `restore` (S2-2) fact kinds (PBDIGIT-354,
+     * 2026-11-15; the central half of the parity rule, developer_guide/membership/23). One exact file per ledger
+     * change; never a pattern.
      */
     private const ALLOWLIST = [
         'database/migrations/2026_10_09_100000_create_org_membership_tables.php',
@@ -28,6 +29,7 @@ final class MembershipLedgerIsolationTest extends TestCase
         'database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php',
         'database/migrations/2026_11_12_130000_create_org_membership_ledger_clocks_table.php',
         'database/migrations/2026_11_15_340000_add_renew_to_org_membership_facts.php',
+        'database/migrations/2026_11_15_350000_add_suspend_restore_to_org_membership_facts.php',
     ];
     private const FORBIDDEN = [
         'App\\Contexts\\Membership\\Domain\\Organisational',

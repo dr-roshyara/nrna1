@@ -87,4 +87,29 @@ final class InterimRoleAuthorityTest extends TestCase
         $this->assertSame('interim:unresolved:G-1', $decision->evidence()->ruleRef());
         $this->assertFalse($decision->evidence()->result());
     }
+
+    /**
+     * PBDIGIT-354 S2-1 / S2-2: no legacy rule exists for renewing, suspending or restoring either, so, as for End,
+     * every actor is denied with recorded evidence (never a crash, never an inferred grant). This adapter stays
+     * unbound for every release-1 organisation (blueprint G-3); Governance S3 supplies the real authority.
+     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('admittingRoles')]
+    public function test_renewal_suspension_and_restoration_are_denied_until_governance_decides(string $role): void
+    {
+        foreach ([MembershipAct::Renew, MembershipAct::Suspend, MembershipAct::Restore] as $act) {
+            $decision = self::authority(['O1' => ['user-7' => $role]])->check(TenantId::fromString('O1'), 'user-7', $act);
+
+            $this->assertFalse($decision->isGranted(), $act->value);
+            $this->assertSame('interim:unresolved:authority-owner', $decision->evidence()->ruleRef(), $act->value);
+            $this->assertFalse($decision->evidence()->result(), $act->value);
+        }
+    }
+
+    public function test_every_act_kind_has_an_answer(): void
+    {
+        foreach (MembershipAct::cases() as $act) {
+            $this->assertInstanceOf(\App\Contexts\Membership\Application\Organisational\Ports\AuthorityDecision::class,
+                self::authority(['O1' => ['user-7' => 'owner']])->check(TenantId::fromString('O1'), 'user-7', $act), $act->value);
+        }
+    }
 }

@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..F...............F..........F.................                   47 / 47 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row11_a_restore_ends_the_restriction_at_its_date
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:80
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_row22_neither_fact_is_visible_before_its_record_time
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:236
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\SuspendRestoreHandlersTest::test_a_restore_ends_the_named_suspension
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php:117
+
+FAILURES!
+Tests: 47, Assertions: 226, Failures: 3.

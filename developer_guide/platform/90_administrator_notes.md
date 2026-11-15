@@ -217,3 +217,14 @@ Never mark an organisation operational or change `schema_state` by hand.
 4. **Code and migration go together:** the code that records a renewal needs the new columns.
 5. **Rolling back** (`down()`) is refused while any renewal row exists, so no history is destroyed.
 6. **Renewals cannot be recorded in production yet, by design:** no authority check is wired until Governance (S3).
+
+## Membership lifecycle S2-2: the `suspend` and `restore` fact kinds (2026-11-15, PBDIGIT-354)
+
+**Development and test only**, exactly as for S2-1 (the section above).
+1. **Two migrations, always together (parity rule):**
+   - central: `database/migrations/2026_11_15_350000_add_suspend_restore_to_org_membership_facts.php`;
+   - organisation set: `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_15_300600_add_suspend_restore_to_org_membership_facts.php`.
+2. **Order:** after the S2-1 migrations (`340000` central, `300500` organisation). The migrator orders them by name.
+3. **Existing test organisation databases** need them too: re-provision, or use `platform:operate <organisation> migration-repair` while their schema state is `migration-failed` (S2-1 notes).
+4. **Rolling back** is refused while any suspend or restore row exists.
+5. **Suspensions cannot be recorded in production yet, by design:** no authority check is wired until Governance (S3).

@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+............................................FF.                   47 / 47 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_renewal_suspension_and_restoration_are_denied_until_governance_decides with data set "owner" ('owner')
+renew
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:102
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_renewal_suspension_and_restoration_are_denied_until_governance_decides with data set "admin" ('admin')
+renew
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:102
+
+FAILURES!
+Tests: 47, Assertions: 211, Failures: 2.

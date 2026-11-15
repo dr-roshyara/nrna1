@@ -32,6 +32,7 @@ The ratified Membership architecture is implemented slice by slice under
 | 23 | [The Membership ledger in an organisation's own database](23_organisation_schema_ledger.md) | `PBDIGIT-345` | organisation migrations 300100–300300 (tasks 4–5); written 2026-11-14 to close the guide gap |
 | 24 | [The ledger's C2 ports in production (M-1 … M-3)](24_ledger_ports_in_production.md) | `PBDIGIT-345` | task 10, 2026-11-14 (D-233) |
 | 25 | [Renew, and the rule that every admission states its term (lifecycle S2-1)](25_renew_and_the_admission_term_rule.md) | `PBDIGIT-354` | implemented 2026-11-15; fail-closed in production until Governance S3; Q-2 (correcting a Renew) open |
+| 26 | [Suspend and Restore (lifecycle S2-2)](26_suspend_and_restore.md) | `PBDIGIT-354` | implemented 2026-11-15; fail-closed in production until Governance S3; correcting their dates is S2-5 |
 
 **Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 first **deferred** for V-2 (guide 09), then **accepted with explicit residual risks** the same day, after the V-2 fix and the W0 clean-copy run (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`). Slice 2a (`PBDIGIT-271`) **accepted with explicit residual risks** on 2026-11-02, after an independent review of the committed hardening.
 

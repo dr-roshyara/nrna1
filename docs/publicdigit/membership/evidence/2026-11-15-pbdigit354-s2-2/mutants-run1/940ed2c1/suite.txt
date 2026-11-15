@@ -1,0 +1,17 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...........F...................................                   47 / 47 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_d205_neither_act_may_take_effect_after_its_decision_date
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:162
+
+FAILURES!
+Tests: 47, Assertions: 226, Failures: 1.

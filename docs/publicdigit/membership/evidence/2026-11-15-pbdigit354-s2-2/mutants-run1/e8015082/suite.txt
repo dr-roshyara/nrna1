@@ -1,0 +1,24 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....................FF.........................                   47 / 47 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_the_published_restriction_stops_at_the_periods_end
+Suspended = restrictions ∩ lifetime
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:257
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_restriction_never_carries_into_a_later_period
+a new admission starts unrestricted
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:268
+
+FAILURES!
+Tests: 47, Assertions: 225, Failures: 2.

@@ -1,0 +1,30 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+........EEE                                                       11 / 11 (100%)
+
+Time: 00:00.015, Memory: 12.00 MB
+
+There were 3 errors:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_renewal_suspension_and_restoration_are_denied_until_governance_decides with data set "owner" ('owner')
+UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Application\Organisational\Ports\MembershipAct
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthority.php:41
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:100
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_renewal_suspension_and_restoration_are_denied_until_governance_decides with data set "admin" ('admin')
+UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Application\Organisational\Ports\MembershipAct
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthority.php:41
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:100
+
+3) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_every_act_kind_has_an_answer
+UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Application\Organisational\Ports\MembershipAct
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthority.php:41
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:112
+
+ERRORS!
+Tests: 11, Assertions: 36, Errors: 3.
