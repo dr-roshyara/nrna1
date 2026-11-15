@@ -105,6 +105,45 @@ final class PostgresCoverageKnownAtTest extends MembershipPostgresTestCase
         $this->assertNull($now->items()[0]->inForce[0]->to, 'End annulled: open-ended again');
     }
 
+    /**
+     * PBDIGIT-354 S2-2 (C2 evidence, added after the review): C2 answers `suspended` as known at τ, through the real
+     * closer, with coverage and inForce unchanged. Admit at 100, Suspend (open-ended, from 2024-10-14) at 500,
+     * Restore (2024-10-24) at 1 500.
+     */
+    public function test_s2_2_c2_answers_the_suspension_as_known_at_each_tau(): void
+    {
+        $id = (string) Str::uuid();
+        DB::table('organisations')->insert(['id' => $id, 'name' => 'c2-s22', 'slug' => 'c2-s22-' . $id, 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
+        $t = TenantId::fromString($id);
+        $repo = new PostgresMemberRepository(DB::connection(), $this->reader());
+        $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+        $this->readings = [100];
+        $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_365), Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+        $m = $repo->load($t, $m->id());
+        $this->readings = [500];
+        $repo->append($t, $m->id(), $m->decideSuspend(FactId::fromString('S1'), TimePoint::of(20_010), TimePoint::of(20_010), TimePoint::infinity(), Provenance::decision('board-secretary')), IdempotencyKey::fromString('k2'), 'fp2');
+        $m = $repo->load($t, $m->id());
+        $this->readings = [1_500];
+        $repo->append($t, $m->id(), $m->decideRestore(FactId::fromString('R1'), FactId::fromString('S1'), TimePoint::of(20_020), TimePoint::of(20_020), Provenance::decision('board-secretary')), IdempotencyKey::fromString('k3'), 'fp3');
+
+        $answers = [];
+        foreach ([[2_000, 200], [2_100, 1_000], [2_200, 2_000]] as [$closerReading, $tau]) {
+            $this->readings = [$closerReading];
+            $answers[$tau] = $this->c2($t)->byMembershipIds($t, [MemberId::fromString('M1')], Instant::of($tau));
+            $this->assertTrue($answers[$tau]->isComplete(), "complete at τ = $tau");
+        }
+        $suspended = static fn ($answer): array => array_map(static fn ($i) => [$i->from, $i->to], $answer->items()[0]->suspended);
+
+        $this->assertSame([], $suspended($answers[200]), 'before the suspension was recorded');
+        $this->assertSame([['2024-10-14', null]], $suspended($answers[1_000]), 'recorded, not yet restored: open-ended');
+        $this->assertSame([['2024-10-14', '2024-10-24']], $suspended($answers[2_000]), 'ended by the restore');
+        $this->assertSame([1, 2, 3], array_map(static fn ($a) => $a->items()[0]->seq, array_values($answers)));
+        foreach ([1_000, 2_000] as $tau) {
+            $this->assertEquals($answers[200]->items()[0]->coverage, $answers[$tau]->items()[0]->coverage, "coverage unchanged at $tau");
+            $this->assertEquals($answers[200]->items()[0]->inForce, $answers[$tau]->items()[0]->inForce, "inForce unchanged at $tau");
+        }
+    }
+
     public function test_the_default_source_port_refuses_every_organisation(): void
     {
         $t = $this->scenario();

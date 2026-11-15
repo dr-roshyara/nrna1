@@ -41,3 +41,12 @@
 - **Correcting the dates of Suspend and Restore** (D-177 row 14): refused until S2-5.
 - **Suspension pushed from a resolution:** S2-6.
 - **Authority in production:** none bound until Governance S3. Proven only that neither use case can be built without one.
+
+## Supplement (after the Principal DDD review): direct C2 evidence
+
+**The review was right:** the S2-2 tests proved C1 and the resolved state, but **no test called C2 (`CoverageKnownAt`) on a suspended member.**
+
+| File | Shows |
+|---|---|
+| `s22-15-c2-suspension/` | `PostgresCoverageKnownAtTest::test_s2_2_c2_answers_the_suspension_as_known_at_each_tau`, through the real closer: at τ before the suspension was recorded, `suspended` is empty; after it, `[2024-10-14, open)`; after the restore, `[2024-10-14, 2024-10-24)`. Coverage and `inForce` are unchanged. **It passed on its first run:** the behaviour already existed, so this is evidence, not a RED / GREEN step |
+| `s22-16-c2-mutant-r2/` | to show the test can fail: mutant R2 ("a restore is ignored by resolution") copy-loaded; **this test fails by assertion** ("ended by the restore") |

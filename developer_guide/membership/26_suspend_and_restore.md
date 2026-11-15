@@ -95,6 +95,7 @@ Suspended(q, t) = t ∈ restrictions(q) ∩ lifetime(q)     no in-force conditio
 | `tests/Unit/Contexts/Membership/Application/Organisational/SuspendRestoreHandlersTest.php` (9) | the use cases, authority, idempotency, isolation by organisation, storable dates |
 | `tests/Unit/…/Infrastructure/Organisational/InterimRoleAuthorityTest.php` (+2) | the unbound interim adapter denies the new acts and answers every act kind |
 | `tests/Feature/Contexts/Membership/Organisational/PostgresSuspendRestoreTest.php` (16) | round trip, stored rows, C1, `knownAt` after reload, 11 malformed rows refused |
+| `tests/Feature/Contexts/Membership/Organisational/PostgresCoverageKnownAtTest.php::test_s2_2_…` | **C2** answers `suspended` as known at each τ, through the real closer (added after review) |
 | `tests/Feature/Contexts/Platform/MembershipThroughRoutingTest.php::test_s2_2_…` | in the organisation's own database through routing; B untouched; fail-closed wiring |
 
 ```
