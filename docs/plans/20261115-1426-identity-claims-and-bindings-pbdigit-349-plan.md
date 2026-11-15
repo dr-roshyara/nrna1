@@ -128,6 +128,17 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
   - **Mutants:** K and L killed; J equivalent (the database enforces INV-REF-2), recorded.
   - **Checks:** the architecture guards (42) and the full isolated cluster (469) pass.
   - Guide `developer_guide/identity/02_…`.
+- 2026-11-15: **I-2 DONE.**
+  - **Built:** the issue, replace and revoke use cases; the `ClaimCode` and `ClaimWindow` values (D-199); `AuthorityEvidence` with its §10.1 check; `PostgresClaims` (the `ClaimSlot` → claim-row lock order, one `clock_timestamp()` sample after the locks, idempotency after the lock, single-use authority requests, content-free audit).
+  - **Migration:** claims, slots, consumed requests, bindings (created for the unbound check; written by I-3; immutable), audit.
+  - **The R-1 seam:** `SessionActorRefs`. **Production `NoActingRefYet` refuses** until I-4.
+  - **Tests:** unit 17; Identity PostgreSQL 33 (17 new, including forked races PI-18 ×2, PI-35, PI-23); architecture guards 52; full isolated cluster 486 (run before a port-method rename that only touched Identity, after which the Identity suites and guards were rerun).
+  - **Mutants:** 8, all killed. M2 needed a new test, because PI-18 on a first issuance is also serialised by the slot insert's unique-key wait.
+  - **Deviations recorded:**
+    - **TDD order:** the value classes were written before the RED run, so the unit rules test was green at RED.
+    - **Guard:** the purity guard flagged a port method named `now()`; it was renamed `currentInstant()`.
+  - Guide `developer_guide/identity/03_…`.
+  - **PI gates proven for I-2:** 7, 12, 17a, 18, 20, 21, 23, 24, 27, 32 (by the lock design plus 23 and 27), 35. **PI-15 is half done:** the replace and revoke half here; redemption in I-3.
 
 ## 8. Next actions
 

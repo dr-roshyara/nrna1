@@ -69,6 +69,15 @@ final class PostgresIssuedReferences implements IssuedReferences
         }
     }
 
+    public function find(TenantId $organisation, LocalEntryRef $entry): ?OrganisationPersonRef
+    {
+        try {
+            return $this->existing($organisation, $entry);
+        } catch (QueryException $e) {
+            throw new IdentityUnavailable('Identity could not look up the reference (' . $e::class . ').', previous: $e);
+        }
+    }
+
     private function existing(TenantId $organisation, LocalEntryRef $entry): ?OrganisationPersonRef
     {
         $ref = $this->db->selectOne(

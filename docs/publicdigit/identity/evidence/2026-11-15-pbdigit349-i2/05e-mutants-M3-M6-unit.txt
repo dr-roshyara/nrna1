@@ -1,0 +1,35 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.xml
+
+F..F.                                                               5 / 5 (100%)
+
+Time: 00:00.016, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Identity\ClaimRulesTest::test_the_claim_window_follows_d_199
+capped at the platform maximum, and recorded
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 30,
++    0 => 45,
+     1 => 'rules',
+-    2 => true,
++    2 => false,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/ClaimRulesTest.php:36
+
+2) Tests\Unit\Contexts\Identity\ClaimRulesTest::test_evidence_that_does_not_correspond_is_refused_with_its_reason
+another officer (not the session)
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\ClaimRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Unit/Contexts/Identity/ClaimRulesTest.php:96
+
+FAILURES!
+Tests: 5, Assertions: 11, Failures: 2.

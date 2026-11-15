@@ -49,6 +49,13 @@ final class IssueReferenceTest extends TestCase
             {
                 return ($this->owner[$ref->value()] ?? null) === $organisation->value();
             }
+
+            public function find(TenantId $organisation, LocalEntryRef $entry): ?OrganisationPersonRef
+            {
+                $r = $this->byEntry[$organisation->value() . '|' . $entry->value()] ?? null;
+
+                return $r === null ? null : OrganisationPersonRef::fromString($r);
+            }
         };
     }
 

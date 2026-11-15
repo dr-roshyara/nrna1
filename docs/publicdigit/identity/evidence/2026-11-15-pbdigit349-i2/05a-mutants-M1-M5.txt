@@ -1,0 +1,289 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+DDDFDFDDFDDFDDDF                                                  16 / 16 (100%)
+
+Time: 00:08.995, Memory: 28.00 MB
+
+There were 5 failures:
+
+1) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_one_active_claim_per_person_and_a_new_one_once_it_expired
+an expired claim does not block a new one (PI-20)
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'issued'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:160
+
+2) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_refused_evidence_consumes_nothing_and_a_replayed_answer_is_refused
+one Governance answer serves one act (single use)
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Identity\Application\ClaimRefusal Enum #10328 (EvidenceReplayed, 'evidence-replayed')
++App\Contexts\Identity\Application\ClaimRefusal Enum #10335 (ActiveClaimExists, 'active-claim-exists')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:193
+
+3) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_replace_and_revoke_need_an_active_claim_then_issue_works_again
+IssueClaim succeeds instead
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'issued'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:236
+
+4) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_the_claim_sql_never_uses_the_transaction_start_time
+PI-24: t_check is clock_timestamp() after the locks
+Failed asserting that '<?php\n
+\n
+declare(strict_types=1);\n
+\n
+namespace App\Contexts\Identity\Infrastructure;\n
+\n
+use App\Contexts\Identity\Application\ClaimOutcome;\n
+use App\Contexts\Identity\Application\ClaimRefusal;\n
+use App\Contexts\Identity\Application\IdentityUnavailable;\n
+use App\Contexts\Identity\Application\Ports\ClaimStore;\n
+use App\Contexts\Identity\Domain\ClaimCode;\n
+use App\Contexts\Identity\Domain\ClaimWindow;\n
+use App\Contexts\Identity\Domain\OrganisationPersonRef;\n
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;\n
+use Illuminate\Database\Connection;\n
+use Illuminate\Database\QueryException;\n
+use Illuminate\Support\Str;\n
+\n
+/**\n
+ * PBDIGIT-349 I-2: ordinary claims in the CENTRAL database (I-TDD-02 §5, §6.2, §14). Each operation is ONE transaction:\n
+ * 1. READ COMMITTED (a FOR UPDATE that waited returns the row's latest committed version);\n
+ * 2. locks in the global order: ClaimSlot (O, R) (inserted if absent, then FOR UPDATE), then the claim row;\n
+ * 3. idempotency on (O, issuance id) — read after the lock, so a retry waiting behind its own first attempt sees it;\n
+ * 4. ONE expiry sample t_check = clock_timestamp(), read after all locks; every expiry decision and issuedAt /\n
+ *    expiresAt use it (never the transaction's start time: PI-24);\n
+ * 5. state checks, then single use of the authority request (consumed in this transaction), then the change;\n
+ * 6. a content-free audit row (§15).\n
+ * `$afterDecision` is a test seam: it runs once the outcome is decided, still holding every lock, before commit.\n
+ */\n
+final class PostgresClaims implements ClaimStore\n
+{\n
+    public function __construct(private readonly Connection $db, private readonly ?\Closure $afterDecision = null)\n
+    {\n
+    }\n
+\n
+    public function issue(TenantId $organisation, OrganisationPersonRef $ref, string $issuanceId, ClaimCode $code, ClaimWindow $window, string $authorityRequestId): ClaimOutcome\n
+    {\n
+        return $this->inTransaction(function () use ($organisation, $ref, $issuanceId, $code, $window, $authorityRequestId): ClaimOutcome {\n
+            $o = $organisation->value();\n
+            $this->lockSlot($o, $ref->value());\n
+            $existing = $this->db->selectOne('SELECT claim_id FROM identity_claims WHERE organisation_id = ? AND issuance_id = ?', [$o, $issuanceId]);\n
+            if ($existing !== null) {\n
+                return ClaimOutcome::alreadyIssued($existing->claim_id);\n
+            }\n
+            $t = $this->tCheck();\n
+            if ($this->activeClaimOf($o, $ref->value(), $t)) {\n
+                return $this->refuse($o, null, ClaimRefusal::ActiveClaimExists);\n
+            }\n
+            if ($this->isBound($o, $ref->value())) {\n
+                return $this->refuse($o, null, ClaimRefusal::ReferenceBound);\n
+            }\n
+            if ($this->isConsumed($authorityRequestId)) {\n
+                return $this->refuse($o, null, ClaimRefusal::EvidenceReplayed);\n
+            }\n
+\n
+            return $this->create($o, $ref->value(), $issuanceId, $code, $window, $authorityRequestId, $t, null, 'claim-issued');\n
+        });\n
+    }\n
+\n
+    public function replace(TenantId $organisation, string $oldClaimId, string $newIssuanceId, ClaimCode $code, ClaimWindow $window, string $authorityRequestId): ClaimOutcome\n
+    {\n
+        return $this->inTransaction(function () use ($organisation, $oldClaimId, $newIssuanceId, $code, $window, $authorityRequestId): ClaimOutcome {\n
+            $o = $organisation->value();\n
+            $old = $this->lockClaim($o, $oldClaimId);\n
+            if ($old === null) {\n
+                return $this->refuse($o, null, ClaimRefusal::UnknownClaim);\n
+            }\n
+            $existing = $this->db->selectOne('SELECT claim_id FROM identity_claims WHERE organisation_id = ? AND issuance_id = ?', [$o, $newIssuanceId]);\n
+            if ($existing !== null) {\n
+                return ClaimOutcome::alreadyIssued($existing->claim_id);\n
+            }\n
+            $t = $this->tCheck();\n
+            if (!$this->isActive($old, $t)) {\n
+                return $this->refuse($o, $oldClaimId, ClaimRefusal::NotActive);\n
+            }\n
+            if ($this->isConsumed($authorityRequestId)) {\n
+                return $this->refuse($o, $oldClaimId, ClaimRefusal::EvidenceReplayed);\n
+            }\n
+            $this->db->update("UPDATE identity_claims SET state = 'revoked', ended_at = ?::timestamptz WHERE claim_id = ?", [$t, $oldClaimId]);\n
+\n
+            return $this->create($o, trim($old->person_ref), $newIssuanceId, $code, $window, $authorityRequestId, $t, $oldClaimId, 'claim-replaced');\n
+        });\n
+    }\n
+\n
+    public function revoke(TenantId $organisation, string $claimId, string $authorityRequestId): ClaimOutcome\n
+    {\n
+        return $this->inTransaction(function () use ($organisation, $claimId, $authorityRequestId): ClaimOutcome {\n
+            $o = $organisation->value();\n
+            $claim = $this->lockClaim($o, $claimId);\n
+            if ($claim === null) {\n
+                return $this->refuse($o, null, ClaimRefusal::UnknownClaim);\n
+            }\n
+            $t = $this->tCheck();\n
+            if (!$this->isActive($claim, $t)) {\n
+                return $this->refuse($o, $claimId, ClaimRefusal::NotActive);\n
+            }\n
+            if ($this->isConsumed($authorityRequestId)) {\n
+                return $this->refuse($o, $claimId, ClaimRefusal::EvidenceReplayed);\n
+            }\n
+            $this->db->update("UPDATE identity_claims SET state = 'revoked', ended_at = ?::timestamptz WHERE claim_id = ?", [$t, $claimId]);\n
+            $this->consume($authorityRequestId, $o, $claimId);\n
+            $this->audit('claim-revoked', $o, $claimId, null);\n
+            $this->decided();\n
+\n
+            return ClaimOutcome::revoked($claimId);\n
+        });\n
+    }\n
+\n
+    public function recordRefusal(TenantId $organisation, ?string $claimId, ClaimRefusal $reason): void\n
+    {\n
+        try {\n
+            $this->audit('claim-refused', $organisation->value(), $claimId, $reason->value);\n
+        } catch (QueryException $e) {\n
+            throw new IdentityUnavailable('Identity could not record the refusal (' . $e::class . ').', previous: $e);\n
+        }\n
+    }\n
+\n
+    // ---- the protocol ----\n
+\n
+    /** @param \Closure(): ClaimOutcome $operation */\n
+    private function inTransaction(\Closure $operation): ClaimOutcome\n
+    {\n
+        if ($this->db->transactionLevel() > 0) {\n
+            throw new \LogicException('A claim operation starts its own transaction.');\n
+        }\n
+        try {\n
+            return $this->db->transaction(function () use ($operation): ClaimOutcome {\n
+                $this->db->statement('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');\n
+\n
+                return $operation();\n
+            });\n
+        } catch (QueryException $e) {\n
+            throw new IdentityUnavailable('Identity could not complete the claim operation (' . $e::class . ').', previous: $e);\n
+        }\n
+    }\n
+\n
+    private function lockSlot(string $o, string $ref): void\n
+    {\n
+        $this->db->insert('INSERT INTO identity_claim_slots (organisation_id, person_ref) VALUES (?, ?) ON CONFLICT DO NOTHING', [$o, $ref]);\n
+        $this->db->selectOne('SELECT 1 FROM identity_claim_slots WHERE organisation_id = ? AND person_ref = ? FOR UPDATE', [$o, $ref]);\n
+    }\n
+\n
+    /** Finds the claim (plain read, to learn R), locks ClaimSlot (O, R), then the claim row: the global order. */\n
+    private function lockClaim(string $o, string $claimId): ?object\n
+    {\n
+        $found = $this->db->selectOne("SELECT person_ref FROM identity_claims WHERE claim_id = ? AND organisation_id = ? AND kind = 'ordinary'", [$claimId, $o]);\n
+        if ($found === null) {\n
+            return null;\n
+        }\n
+        $this->lockSlot($o, trim($found->person_ref));\n
+\n
+        return $this->db->selectOne('SELECT claim_id, person_ref, state, expires_at::text AS expires_at FROM identity_claims WHERE claim_id = ? FOR UPDATE', [$claimId]);\n
+    }\n
+\n
+    private function tCheck(): string\n
+    {\n
+        return $this->db->selectOne('SELECT transaction_timestamp()::text AS t')->t;\n
+    }\n
+\n
+    private function isActive(object $claim, string $t): bool\n
+    {\n
+        return $claim->state === 'issued'\n
+            && $this->db->selectOne('SELECT ?::timestamptz < ?::timestamptz AS active', [$t, $claim->expires_at])->active;\n
+    }\n
+\n
+    private function activeClaimOf(string $o, string $ref, string $t): bool\n
+    {\n
+        return $this->db->selectOne(\n
+            "SELECT 1 FROM identity_claims WHERE organisation_id = ? AND person_ref = ? AND state = 'issued' AND (expires_at > ?::timestamptz OR true)",\n
+            [$o, $ref, $t],\n
+        ) !== null;\n
+    }\n
+\n
+    private function isBound(string $o, string $ref): bool\n
+    {\n
+        return $this->db->selectOne('SELECT 1 FROM identity_bindings WHERE organisation_id = ? AND person_ref = ?', [$o, $ref]) !== null;\n
+    }\n
+\n
+    private function isConsumed(string $requestId): bool\n
+    {\n
+        return $this->db->selectOne('SELECT 1 FROM identity_consumed_authority_requests WHERE request_id = ?', [$requestId]) !== null;\n
+    }\n
+\n
+    private function consume(string $requestId, string $o, string $claimId): void\n
+    {\n
+        $this->db->insert("INSERT INTO identity_consumed_authority_requests (request_id, organisation_id, act_kind, claim_id) VALUES (?, ?, 'manage-claims', ?)",\n
+            [$requestId, $o, $claimId]);\n
+    }\n
+\n
+    private function create(string $o, string $ref, string $issuanceId, ClaimCode $code, ClaimWindow $window, string $requestId, string $t, ?string $replaces, string $event): ClaimOutcome\n
+    {\n
+        $claimId = (string) Str::uuid();\n
+        $expiresAt = $this->db->selectOne('INSERT INTO identity_claims\n
+              (claim_id, organisation_id, person_ref, kind, code_hash, issued_at, expires_at, window_days, window_source, window_capped,\n
+               state, issuance_id, authority_request_id, replaces_claim_id)\n
+            VALUES (?, ?, ?, \'ordinary\', ?, ?::timestamptz, ?::timestamptz + make_interval(days => ?), ?, ?, ?, \'issued\', ?, ?, ?)\n
+            RETURNING expires_at::text AS expires_at',\n
+            [$claimId, $o, $ref, $code->hash(), $t, $t, $window->days, $window->days, $window->source, $window->capped, $issuanceId, $requestId, $replaces])->expires_at;\n
+        $this->consume($requestId, $o, $claimId);\n
+        $this->audit($event, $o, $claimId, $window->capped ? 'window-capped' : null);\n
+        $this->decided();\n
+\n
+        return ClaimOutcome::issued($claimId, $code, $expiresAt);\n
+    }\n
+\n
+    private function refuse(string $o, ?string $claimId, ClaimRefusal $reason): ClaimOutcome\n
+    {\n
+        $this->audit('claim-refused', $o, $claimId, $reason->value);\n
+        $this->decided();\n
+\n
+        return ClaimOutcome::refused($reason);\n
+    }\n
+\n
+    private function audit(string $event, string $o, ?string $claimId, ?string $reason): void\n
+    {\n
+        $this->db->insert('INSERT INTO identity_claim_audit (event, organisation_id, claim_id, reason) VALUES (?, ?, ?, ?)', [$event, $o, $claimId, $reason]);\n
+    }\n
+\n
+    private function decided(): void\n
+    {\n
+        if ($this->afterDecision !== null) {\n
+            ($this->afterDecision)();\n
+        }\n
+    }\n
+}\n
+' does not match PCRE pattern "/\bnow\(\)|CURRENT_TIMESTAMP|transaction_timestamp/i".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:266
+
+5) Tests\Feature\Contexts\Identity\OrdinaryClaimsTest::test_an_issuance_that_waits_across_the_old_claims_expiry_treats_it_as_inactive
+PI-23: t_check is read after the lock, so the expired claim no longer blocks
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'issued'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/OrdinaryClaimsTest.php:364
+
+FAILURES!
+Tests: 16, Assertions: 40, Failures: 5, Deprecations: 1.

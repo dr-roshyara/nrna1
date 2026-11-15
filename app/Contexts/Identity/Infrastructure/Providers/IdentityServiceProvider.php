@@ -7,9 +7,17 @@ namespace App\Contexts\Identity\Infrastructure\Providers;
 use App\Contexts\Identity\Application\Ports\AccountDirectory;
 use App\Contexts\Identity\Application\Ports\ContextPersonRefs;
 use App\Contexts\Identity\Application\Ports\CurrentAccount;
+use App\Contexts\Identity\Application\Ports\ClaimCodes;
+use App\Contexts\Identity\Application\Ports\ClaimStore;
 use App\Contexts\Identity\Application\Ports\IssuedReferences;
+use App\Contexts\Identity\Application\Ports\RequestTime;
+use App\Contexts\Identity\Application\Ports\SessionActorRefs;
 use App\Contexts\Identity\Infrastructure\LaravelCurrentAccount;
+use App\Contexts\Identity\Infrastructure\NoActingRefYet;
+use App\Contexts\Identity\Infrastructure\PostgresClaims;
 use App\Contexts\Identity\Infrastructure\PostgresIssuedReferences;
+use App\Contexts\Identity\Infrastructure\RandomClaimCodes;
+use App\Contexts\Identity\Infrastructure\SystemRequestTime;
 use App\Contexts\Identity\Infrastructure\PostgresAccountDirectory;
 use App\Contexts\Identity\Infrastructure\PostgresContextPersonRefs;
 use Illuminate\Support\Facades\Auth;
@@ -29,5 +37,11 @@ final class IdentityServiceProvider extends ServiceProvider
         $this->app->bind(ContextPersonRefs::class, static fn (): PostgresContextPersonRefs => new PostgresContextPersonRefs(DB::connection()));
         // PBDIGIT-349 I-1 (I-TDD-02 §4; P-I2 = L1)
         $this->app->bind(IssuedReferences::class, static fn (): PostgresIssuedReferences => new PostgresIssuedReferences(DB::connection()));
+        // PBDIGIT-349 I-2 (I-TDD-02 §6.2, §10.1). R-1 does not exist before I-4: NoActingRefYet refuses every claim
+        // operation in production (fail closed). Replace that ONE binding with Identity's R-1 adapter in I-4.
+        $this->app->bind(ClaimStore::class, static fn (): PostgresClaims => new PostgresClaims(DB::connection()));
+        $this->app->bind(ClaimCodes::class, RandomClaimCodes::class);
+        $this->app->bind(RequestTime::class, SystemRequestTime::class);
+        $this->app->bind(SessionActorRefs::class, NoActingRefYet::class);
     }
 }

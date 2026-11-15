@@ -24,4 +24,7 @@ interface IssuedReferences
 
     /** @throws IdentityUnavailable */
     public function isIssuedTo(OrganisationPersonRef $ref, TenantId $organisation): bool;
+
+    /** PBDIGIT-349 I-2: the R already issued for (O, E), or null; never issues one. @throws IdentityUnavailable */
+    public function find(TenantId $organisation, LocalEntryRef $entry): ?OrganisationPersonRef;
 }
