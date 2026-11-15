@@ -1,0 +1,62 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+EEEEEE                                                              6 / 6 (100%)
+
+Time: 00:08.395, Memory: 26.00 MB
+
+There were 6 errors:
+
+1) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_production_wiring_binds_the_postgres_adapter
+Illuminate\Contracts\Container\BindingResolutionException: Target class [App\Contexts\Identity\Application\Ports\IssuedReferences] does not exist.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:1124
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:39
+
+Caused by
+ReflectionException: Class "App\Contexts\Identity\Application\Ports\IssuedReferences" does not exist
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:1122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:933
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1078
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Container/Container.php:864
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1058
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:138
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:39
+
+2) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_one_reference_per_organisation_entry
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresIssuedReferences" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:44
+
+3) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_the_same_entry_id_in_two_organisations_gives_two_references
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresIssuedReferences" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:58
+
+4) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_a_concurrent_issuance_that_wins_the_insert_is_returned
+Error: Class "App\Contexts\Identity\Domain\LocalEntryRef" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:66
+
+5) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_a_value_collision_is_retried_with_a_fresh_value
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresIssuedReferences" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:82
+
+6) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_a_reference_is_never_changed_or_deleted
+Error: Class "App\Contexts\Identity\Infrastructure\PostgresIssuedReferences" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:96
+
+ERRORS!
+Tests: 6, Assertions: 0, Errors: 6, Deprecations: 1.

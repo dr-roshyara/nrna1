@@ -1,0 +1,77 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/phpunit.membership-pg.xml
+
+DEDDEF                                                              6 / 6 (100%)
+
+Time: 00:08.524, Memory: 28.00 MB
+
+There were 2 errors:
+
+1) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_one_reference_per_organisation_entry
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check the reference (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:51
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $2 (Connection: pgsql, Host: 127.0.0.1, Port: 38043, Database: membership_pg_isolated, SQL: SELECT 1 AS ok FROM identity_issued_references WHERE ref = a5a3c9a29037b8b0d2c744b7da7ff680 AND ef7fc7e7-10c3-47a8-912b-16d09c076cba IS NOT NULL)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:51
+
+Caused by
+PDOException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $2
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:51
+
+2) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_a_value_collision_is_retried_with_a_fresh_value
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check the reference (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:68
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:91
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $2 (Connection: pgsql, Host: 127.0.0.1, Port: 38043, Database: membership_pg_isolated, SQL: SELECT 1 AS ok FROM identity_issued_references WHERE ref = dc848ac56630d67e0e23a2f3e992d13a AND b32b7049-cfb2-4c0e-b182-b206d47b47be IS NOT NULL)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:91
+
+Caused by
+PDOException: SQLSTATE[42P18]: Indeterminate datatype: 7 ERROR:  could not determine data type of parameter $2
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/app/Contexts/Identity/Infrastructure/PostgresIssuedReferences.php:63
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:91
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\PostgresIssuedReferencesTest::test_a_reference_is_never_changed_or_deleted
+change 1 was allowed
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349/tests/Feature/Contexts/Identity/PostgresIssuedReferencesTest.php:104
+
+ERRORS!
+Tests: 6, Assertions: 9, Errors: 2, Failures: 1, Deprecations: 1.

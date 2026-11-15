@@ -7,7 +7,9 @@ namespace App\Contexts\Identity\Infrastructure\Providers;
 use App\Contexts\Identity\Application\Ports\AccountDirectory;
 use App\Contexts\Identity\Application\Ports\ContextPersonRefs;
 use App\Contexts\Identity\Application\Ports\CurrentAccount;
+use App\Contexts\Identity\Application\Ports\IssuedReferences;
 use App\Contexts\Identity\Infrastructure\LaravelCurrentAccount;
+use App\Contexts\Identity\Infrastructure\PostgresIssuedReferences;
 use App\Contexts\Identity\Infrastructure\PostgresAccountDirectory;
 use App\Contexts\Identity\Infrastructure\PostgresContextPersonRefs;
 use Illuminate\Support\Facades\Auth;
@@ -25,5 +27,7 @@ final class IdentityServiceProvider extends ServiceProvider
         $this->app->bind(CurrentAccount::class, static fn (): LaravelCurrentAccount => new LaravelCurrentAccount(Auth::guard()));
         $this->app->bind(AccountDirectory::class, static fn (): PostgresAccountDirectory => new PostgresAccountDirectory(DB::connection()));
         $this->app->bind(ContextPersonRefs::class, static fn (): PostgresContextPersonRefs => new PostgresContextPersonRefs(DB::connection()));
+        // PBDIGIT-349 I-1 (I-TDD-02 §4; P-I2 = L1)
+        $this->app->bind(IssuedReferences::class, static fn (): PostgresIssuedReferences => new PostgresIssuedReferences(DB::connection()));
     }
 }

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **PROPOSED. Not approved; no implementation authorised.** D-200 accepted the design with conditions and authorised no implementation; this plan needs the Principal's separate approval |
+| **Status** | **APPROVED for steps I-1 … I-4 by the Principal, 2026-11-15** (development and test only; strict TDD; each step on a separate branch for the Principal to merge). **Q-1 = authorise I-1 … I-4; Q-2 = L1 (a stored reference table); Q-3 = the existing `users` row is the Account (transitional).** Steps I-5 … I-8 stay proposed. Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open. *The answers are to be entered in the decision record by the recorder; this plan doesn't assign decision numbers, because a parallel session is appending to the record.* |
 | **Session** | B. Documentation-only worktree `../nrna1-349`, branch `identity/pbdigit-349-readiness`, from `d85fa0abe` |
 | **Design (binding)** | `docs/publicdigit/architecture/reviews/2026-11-11-i-tdd-02-identity-claims-and-bindings-tactical-design.md`, revision 12. **Verified on 2026-11-15:** the file's SHA-256 is `2b5f6e92…` (the accepted text `b6d54798…` plus the D-200 status note), the only change D-200 records |
 | **Decisions** | D-113, D-148, D-164, D-166, D-167, D-178, D-181, D-193 (X-2, X-3), D-194, D-195, D-196 (A1 `manage-claims`), D-197 (no lock, throttling only), D-198 (B2), D-199 (14 days, maximum 30), **D-200 (conditions)**, D-202, D-203, D-208 (Governance completion; X-3 closed at design level), D-225, D-226 |
@@ -119,6 +119,15 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
 - **The bootstrap route depends on accepting the address risk,** and wrong-registrar detection is weak until D-7.
 - **Identity becomes security-critical,** so PI-17b must be done before release.
 - **The legacy registration flow (Q-3 (a))** is reused. Its known defects (PBDIGIT-341, accounts resolved by matching e-mail) must never be used for binding, and the design forbids it (INV-ID-3).
+
+## 7a. Progress
+
+- 2026-11-15: **I-1 DONE.**
+  - **Built:** `OrganisationPersonRef`, `LocalEntryRef`, `IssueReference`, the port `IssuedReferences`, `PostgresIssuedReferences`, and the central migration `identity_issued_references` (with an immutability trigger).
+  - **Tests:** RED, then GREEN; Identity unit 12 and Identity PostgreSQL 16 passing.
+  - **Mutants:** K and L killed; J equivalent (the database enforces INV-REF-2), recorded.
+  - **Checks:** the architecture guards (42) and the full isolated cluster (469) pass.
+  - Guide `developer_guide/identity/02_…`.
 
 ## 8. Next actions
 
