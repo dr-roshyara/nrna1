@@ -46,6 +46,20 @@ attempted (central, first)
 succeeded / failed → reported to the organisation; the outcome recorded (with `reported`)
 ```
 
+**Three different things (Principal's review of task 11):**
+
+| Concept | What it is | Does a migration repair change it? |
+|---|---|---|
+| **`PlatformStatus`** (`pending` / `provisioning` / `operational`) | where the organisation is in its lifecycle (registry) | **Never.** Only the founding steps change it (guide 05). |
+| **`SchemaState`** (`current` / `migration-failed`) | whether its database schema is known to be current (registry) | **Yes, and only this:** `migration-failed` → `current` (`ServedOrganisation::markSchemaCurrent`), and only after the next row's check passes |
+| **L-1 readiness facts** | read in the organisation's own database: migrations recorded, ledger tables, identity row = registry id, ledger clock row | **Not changed; re-verified.** If they do not hold after the repair, `SchemaState` stays `migration-failed` (`failed: readiness-not-restored`) |
+
+**Routability** (`ResolutionService`) needs **both** `operational` **and** `current`. So after a successful repair:
+- an operational organisation is routable again;
+- a provisioning one is still not routable (it still needs founding step 5).
+
+**Reporting is not guaranteed:** a succeeded or failed repair is reported in the organisation's own outbox, but only if that database can be reached. `reported` in `platform_technical_operations` records whether it was. Refused operations are recorded centrally only.
+
 **Status is never changed by the channel:**
 - a provisioning organisation stays provisioning;
 - an operational one becomes routable again **only** because its schema is current **and** its readiness facts hold.
