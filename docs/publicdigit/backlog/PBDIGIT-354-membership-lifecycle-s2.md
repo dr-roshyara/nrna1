@@ -35,6 +35,10 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
+## Open
+
+- **Q-3 (S2-3 readiness, plan §7b):** the accepted Governance AuthorityCheck needs the subject and a basis (incl. `ownAct`) that Membership's port does not carry; a pull exclusion is accepted today, though it is push-only. Recommended: S2-3a (extend the port to the accepted shape) then S2-3b. **No S2-3 code until decided.**
+
 ## Decided after the plan
 
 - **Q-2: D-237 (Option A).** Its implementation is an S2-5 obligation; S2-1's box stays open until then.

@@ -140,6 +140,34 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
+## 7b. S2-3 readiness (2026-11-15): the authority contract must grow first (Q-3, awaiting the Principal)
+
+**Finding.** Governance completion rev 5 (accepted, D-208) §1–§2 and C-1a define the AuthorityCheck that S2-3 needs:
+- the **request** carries the subject for subject-specific acts (`requestRef`: the member's `PersonRef`, the period, for a resignation the declared effective date, and a request id);
+- the **answer** carries the six ratified fields **plus a basis**: `outcome` (Authorised · NotAuthorised · **Undetermined**), `evaluatedFor`, **`competenceKind`** (which gains **`ownAct`**, D-203, valid only for self-service `record-resignation` with actor = subject), `decisionRef`, `evidence`;
+- the act kinds are **`record-resignation`** (self-service or recorder) and **`record-death`** (with an evidence reference). **`exclude-member` is push-only:** no office exercises it.
+
+**The code today:**
+- `AuthorityCheckPort::check(tenant, actor, act)` carries **no subject**;
+- `AuthorityDecision` is granted / denied only (Undetermined collapses into denied, without its reason);
+- `AuthorityEvidence` and `ProvenanceJson` store the six fields and `competenceVerified`, **no basis**;
+- `EndMembership` asks one generic `MembershipAct::End` for every end kind, and **accepts `exclusion` by pull**, which the accepted design reserves for the push (S2-6).
+
+**Consequence:** self-service resignation (`ownAct`) cannot be implemented correctly on today's port. Governance needs the subject to answer "actor = subject", and Membership needs the basis to record it.
+
+**Options (Q-3):**
+- **A (recommended): S2-3 in two parts.**
+  - **S2-3a:** extend Membership's consumer-owned port to the accepted shape. That means an `AuthorityRequest` (act, actor, subject `requestRef`), an answer with `outcome` and the basis (`competenceKind` incl. `ownAct`, `evaluatedFor`, `decisionRef`), stored in `ProvenanceJson` with old rows still readable (absent basis = "not recorded"). Admit, End, Renew, Suspend and Restore are moved to it, behaviour unchanged. End asks `record-resignation` / `record-death` by kind, and a pull exclusion is refused (push only).
+  - **S2-3b:** resign now (self-service and recorder) and record a death, on that port.
+  - **Cost:** a wider change that touches stored evidence.
+  - **Gain:** the accepted contract, and S3 plugs in without a second rework.
+- **B: minimal.** Pass the subject only; keep the evidence as it is (`ownAct` written into `ruleRef`).
+  - **Cost:** it departs from the accepted answer shape; S3 must rework it; Undetermined is still not distinguishable.
+- **C: defer self-service to S3.** Build the recorder resignation and death on today's port now.
+  - **Cost:** S2-3 stays partial; a member cannot resign themselves until S3; the pull-exclusion gap stays open until fixed separately.
+
+**No S2-3 code is written until Q-3 is decided.**
+
 ## 7a. Q-2 (decided 2026-11-15, D-237: Option A; implemented in S2-5)
 
 **Q-2: the rule for correcting a Renew's `until` (D-177 row 20).** A Correct today may not set a date after its decision date; a term's end is normally in the future.
