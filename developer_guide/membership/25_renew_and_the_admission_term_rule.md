@@ -91,7 +91,7 @@ MEMBERSHIP_PG_IMAGE=<pinned> MEMBERSHIP_PG_EVIDENCE_DIR=<dir> bash scripts/testi
 
 ## Open
 
-- **Q-2 (Principal): correcting a Renew's `until`** (D-177 row 20). The accepted texts say a Correct may change it, but give no dating rule for a corrected `until`; the existing rule ("not after the decision date") fits effective dates, not a term's end, which is normally in the future. Until decided, the kernel refuses such a Correct. Annul and Void of a Renew work.
+- **Q-2, decided 2026-11-15 as D-237 (Option A); implemented in S2-5. Correcting a Renew's `until`** (D-177 row 20). The accepted texts say a Correct may change it, but give no dating rule for a corrected `until`; the existing rule ("not after the decision date") fits effective dates, not a term's end, which is normally in the future. Until decided, the kernel refuses such a Correct. Annul and Void of a Renew work.
 - **Push shape** (a committee resolution renewing many members, all or none): S2-6.
 - **Suspended members:** a renewal while suspended is allowed (D-177 row 8); suspension itself is S2-2.
 

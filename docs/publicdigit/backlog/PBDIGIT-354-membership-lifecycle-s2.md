@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS`: plan **approved (D-236)**; S2-1 implemented and proven except D-177 row 20 (Q-2 open); **S2-2 DONE 2026-11-15**; S2-3 not started |
+| **Status** | `IN PROGRESS`: plan **approved (D-236)**; S2-1 implemented and proven except D-177 row 20 (rule decided, D-237; implemented in S2-5); **S2-2 DONE 2026-11-15**; S2-3 not started |
 | **Plan** | `docs/plans/20261115-0510-release-1-build-slice-s2-membership-lifecycle-plan.md` |
 | **Context** | Membership (organisation database) |
 | **Authorisation** | Principal, 2026-11-15 (development and test only): "proceed with Membership lifecycle", starting with the readiness assessment |
@@ -35,9 +35,9 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
-## Open
+## Decided after the plan
 
-- **Q-2:** the rule for correcting a Renew's `until` (plan §7a). Recommended: any date after the renewal's start, or open-ended; delivered with S2-5.
+- **Q-2: D-237 (Option A).** Its implementation is an S2-5 obligation; S2-1's box stays open until then.
 
 ## Progress
 
@@ -45,5 +45,5 @@ Plan §4, steps S2-1 … S2-6.
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
 - [ ] S2-3 resign now, death
 - [ ] S2-4 scheduled resignation
-- [ ] S2-5 Correct / Void
+- [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (Suspend / Restore dates)
 - [ ] S2-6 push shapes (Membership side)

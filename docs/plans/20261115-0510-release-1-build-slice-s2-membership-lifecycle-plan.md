@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **APPROVED by the Principal 2026-11-15 (D-236): Q-1 Option A; S2-1 … S2-6 in full.** S2-1 implemented and proven **except D-177 row 20, which waits for Q-2**; **S2-2 DONE 2026-11-15**; S2-3 not started |
+| **Status** | **APPROVED by the Principal 2026-11-15 (D-236): Q-1 Option A; S2-1 … S2-6 in full.** S2-1 implemented and proven **except D-177 row 20 (rule decided, D-237; implemented in S2-5)**; **S2-2 DONE 2026-11-15**; S2-3 not started |
 | **Story** | `PBDIGIT-354` (created with this plan) |
 | **Authorisation** | the Principal, 2026-11-15: "proceed with Membership lifecycle", **beginning with a bounded readiness assessment**; development and test only |
 | **Slice in the accepted sequence** | release-1 blueprint (D-216) §10: S0 Platform routing ✔ (PBDIGIT-345, D-235) → S1 ledger clock ✔ (PBDIGIT-343) → **S2 Membership lifecycle = G-4** → S3 Governance → S4 Organisation → S5 Forum → S6 Newsletter. *(The slice-1 plan calls the same content "slice 5"; same scope, different numbering.)* |
@@ -140,7 +140,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7a. Decision requested after S2-1 (Q-2)
+## 7a. Q-2 (decided 2026-11-15, D-237: Option A; implemented in S2-5)
 
 **Q-2: the rule for correcting a Renew's `until` (D-177 row 20).** A Correct today may not set a date after its decision date; a term's end is normally in the future.
 - **Option A (recommended):** a corrected `until` may be any date after the renewal's start, or open-ended. The "not after the decision date" rule applies only to effective dates. Delivered with S2-5.
@@ -158,6 +158,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 - 2026-11-15: **S2-1 implemented:** Renew (D-177 rows 1–7, 17, 21–23), the admission-term rule, the `RenewMembership` use case, both migrations, C1. Proven: kernel 22, application 12, PostgreSQL 12, routing 1; full cluster 423 exit 0; database-free 942; 21 mutants, 0 survivors; architecture the same 4 pre-existing failures; no legacy regression. Guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`.
   - **Not delivered: row 20 (Correct a Renew's `until`).** No accepted text gives the dating rule for a corrected `until`. The kernel refuses such a Correct (`CorrectionOfRenewNotSupported`). **Q-2 for the Principal; proposed: deliver row 20 with S2-5 (Correct / Void) once decided.**
   - **Reading recorded:** D-177 row 1 (decided 20 Dec, effective 1 Jan) cannot be recorded as written under the later D-205 (nothing future-dated). It is realised as a renewal effective on its decision date with a later `until` (segments are a set; `inForce` is continuous).
+- 2026-11-15: **Q-2 decided, D-237 (Option A):** a corrected Renew `until` is any date after the renewal's start, or open-ended; D-205 binds effective dates only; the original stays traceable. **S2-5 implements it; until then the kernel refuses.**
 - 2026-11-15: **S2-2 DONE** (S2-2a `358e66b59`, kernel; then the use cases, persistence, both migrations, routing and C1): D-177 rows 8–16, 15b, 18–19, 22–23. Proven: kernel 27, application 9, interim adapter +2, PostgreSQL 16, routing 1; full cluster 440, 0 failing; database-free 981; 22 mutants, 0 survivors; architecture the same 4 pre-existing failures; no legacy regression. Guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`.
   - **Found and fixed:** the unbound `InterimRoleAuthority` crashed on Renew (since S2-1), Suspend and Restore; it now denies them with evidence, as it already did for End.
   - **Deferred, as planned:** correcting a Suspend's or Restore's date (row 14) → S2-5.
