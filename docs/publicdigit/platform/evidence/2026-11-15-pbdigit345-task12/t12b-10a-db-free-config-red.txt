@@ -1,0 +1,36 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...............................................................  63 / 555 ( 11%)
+............................................................... 126 / 555 ( 22%)
+............................................................... 189 / 555 ( 34%)
+............................................................... 252 / 555 ( 45%)
+............................................................... 315 / 555 ( 56%)
+............................................................... 378 / 555 ( 68%)
+............................................................... 441 / 555 ( 79%)
+............................................................... 504 / 555 ( 90%)
+..........................EE.......................             555 / 555 (100%)
+
+Time: 00:03.468, Memory: 30.00 MB
+
+There were 2 errors:
+
+1) Tests\Architecture\OrganisationMigrationSetTest::test_the_organisation_set_exists_and_the_central_migrator_never_sees_it
+Error: Call to undefined method Illuminate\Container\Container::storagePath()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:932
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/organisation_routing.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:131
+
+2) Tests\Architecture\OrganisationMigrationSetTest::test_t10_organisation_migrations_reference_only_organisation_tables_and_no_connection
+Error: Call to undefined method Illuminate\Container\Container::storagePath()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:932
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/organisation_routing.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:31
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/OrganisationMigrationSetTest.php:141
+
+ERRORS!
+Tests: 555, Assertions: 7029, Errors: 2.

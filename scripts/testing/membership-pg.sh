@@ -109,6 +109,9 @@ export MEMBERSHIP_PG_DB_PORT="$PG_PORT"
 export MEMBERSHIP_PG_DB_USERNAME="$PG_ROLE"
 export MEMBERSHIP_PG_DB_PASSWORD="$SECRET"
 export MEMBERSHIP_PG_SYSTEM_ID="$SYSTEM_ID"
+# PBDIGIT-345 task 12b (T-17): the cluster's own PostgreSQL client tools (same major version as the server) are reached
+# with `podman exec -i <container> pg_dump|pg_restore`; a newer host pg_dump writes dumps an older server cannot restore
+export MEMBERSHIP_PG_CONTAINER="$NAME"
 export PLATFORM_PG_DATABASES
 
 set +e

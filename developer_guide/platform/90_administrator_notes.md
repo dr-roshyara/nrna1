@@ -132,3 +132,66 @@
    - **Outcomes:** `succeeded`; `failed: repair-failed`; `failed: readiness-not-restored`; `refused: …`. Each one is in `platform_technical_operations`, and succeeded and failed repairs are also reported in the organisation's own outbox.
    - **It never changes an organisation's status and never reads business content.** If the readiness is not restored, investigate; do not edit the registry by hand.
 3. **There is no command to read an organisation's business data.** Requests for it are refused (`case-grant-required`): content access is not offered in release 1 (D-219 (3)).
+
+## Task 12: outages, backups and restore (2026-11-15)
+
+**Development and test only for now.** No production organisation exists yet; production backups also need the migration-approval control and an agreed backup schedule.
+
+### Outages (T-11, T-18)
+- **During an outage**, requests answer **503** and keep the person's selection, and organisation jobs are **released for a retry**. Nothing is served from another database.
+- **Recovery needs no action in PublicDigit:** once PostgreSQL is reachable again, routing resumes on fresh connections.
+- **Workers:** a long-running `queue:work` survives an outage. Make sure organisation jobs keep `$tries` > 1, so an outage does not fail them.
+- **Do not** mark anything operational or edit the registry by hand after an outage.
+
+### The PostgreSQL client tools must match the server's major version
+- **`pg_dump` and `pg_restore` must be the same major version as the cluster** (15 here). A newer `pg_dump` writes settings an older server rejects; this was seen in testing as `unrecognized configuration parameter "transaction_timeout"`.
+- If the application server's tools differ, run them through the cluster's own (for example in its container), and set:
+
+  ```
+  ORGANISATION_RESTORE_DRILL_TOOL_PREFIX=podman,exec,-i,-e,PGPASSWORD,<container>
+  ORGANISATION_RESTORE_DRILL_TOOL_HOST=127.0.0.1
+  ORGANISATION_RESTORE_DRILL_TOOL_PORT=5432
+  ```
+
+- `ORGANISATION_RESTORE_DRILL_DIR` (default `storage/app/restore-drill`) must exist and hold one full organisation backup. The drill deletes its file afterwards.
+
+### The restore drill (proves a backup restores; changes nothing)
+```
+php artisan platform:operate <organisation-id> restore-drill --operator="ops:<your name>"
+```
+- **What it does:**
+  1. backs the organisation's database up;
+  2. restores it into a temporary `scratch_restore_<random>` database, which **no registry entry points to, so it is never routable**;
+  3. checks the identity row and the readiness facts on that copy;
+  4. drops the copy and deletes the backup.
+- **Outcomes:** `succeeded`; `failed: restore-not-verified` (the restored copy is not a complete database of this organisation); `failed: restore-failed` (the dump or restore itself failed); `refused: …`. Each is recorded in `platform_technical_operations` and reported to the organisation.
+- **Suggestion:** run it regularly for every organisation, but **no schedule is set**. The schedule is an operational decision for the Principal.
+- **Leftovers:** if a `scratch_restore_*` database ever remains (for example, the process was killed), drop it. It is never routable, but it holds a copy of the organisation's data.
+
+### Recovering an organisation from a backup, in place (D-234)
+The organisation's database name (its locator) **never changes**: restore **into the same database**.
+
+1. **Keep a copy of the damaged database first**, if it must be investigated: an in-place restore overwrites it.
+2. **Take the organisation out of routing:**
+
+   ```
+   php artisan platform:operate <organisation-id> take-out-for-restore --operator="ops:<your name>"
+   ```
+
+   Requests and jobs for it are now refused. Its status does not change.
+3. **Restore the backup into its own database**, with the server-version tools:
+
+   ```
+   pg_restore --clean --if-exists --no-owner --exit-on-error -h <host> -p <port> -U <login> -d <the organisation's database> <backup.dump>
+   ```
+
+4. **Return it to routing only through repair:**
+
+   ```
+   php artisan platform:operate <organisation-id> migration-repair --operator="ops:<your name>"
+   ```
+
+   - This re-applies any missing migrations, then checks that the database is bound to **this** organisation and that the readiness facts hold.
+   - **`failed: repair-failed`** after a restore usually means **the wrong backup**: a database bound to another organisation is refused. The organisation stays out of routing. Restore the right backup and repeat step 4.
+
+Never mark an organisation operational or change `schema_state` by hand.

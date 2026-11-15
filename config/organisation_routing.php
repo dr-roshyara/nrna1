@@ -32,4 +32,19 @@ return [
     'fan_out' => [
         'outbox.relay' => App\Contexts\Platform\Infrastructure\Queue\RelayOrganisationOutbox::class,
     ],
+
+    /*
+     * PBDIGIT-345 task 12b (T-17, D-234): `php artisan platform:operate <organisation> restore-drill`.
+     * - directory: where the drill's temporary backup is written (owner-only, deleted afterwards). Must hold one full
+     *   organisation backup.
+     * - tool_prefix: how pg_dump / pg_restore are started. Empty = from PATH, which MUST be the server's major version.
+     *   Comma-separated, e.g. "podman,exec,-i,-e,PGPASSWORD,<container>"; tool_host / tool_port are then the server
+     *   as seen from where the tools run.
+     */
+    'restore_drill' => [
+        'directory' => env('ORGANISATION_RESTORE_DRILL_DIR', dirname(__DIR__) . '/storage/app/restore-drill'),   // no app helpers: read by architecture tests too
+        'tool_prefix' => array_values(array_filter(explode(',', (string) env('ORGANISATION_RESTORE_DRILL_TOOL_PREFIX', '')))),
+        'tool_host' => env('ORGANISATION_RESTORE_DRILL_TOOL_HOST'),
+        'tool_port' => env('ORGANISATION_RESTORE_DRILL_TOOL_PORT'),
+    ],
 ];

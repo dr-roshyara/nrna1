@@ -7,7 +7,9 @@ namespace App\Contexts\Platform\Infrastructure\Providers;
 use App\Contexts\Platform\Application\Ports\LegacyOrganisationRegister;
 use App\Contexts\Platform\Application\Ports\ContactAccounts;
 use App\Contexts\Platform\Application\Ports\OrganisationOperationReport;
+use App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill;
 use App\Contexts\Platform\Application\Ports\OrganisationSchemaRepair;
+use App\Contexts\Platform\Infrastructure\PgDumpRestoreDrill;
 use App\Contexts\Platform\Application\Ports\TechnicalOperationLog;
 use App\Contexts\Platform\Infrastructure\Console\OperateOnOrganisationCommand;
 use App\Contexts\Platform\Infrastructure\Outbox\TechnicalOperationPerformedHydrator;
@@ -68,6 +70,16 @@ final class PlatformServiceProvider extends ServiceProvider
         $this->app->bind(OrganisationSchemaRepair::class, static fn ($app): ProcessOrganisationProvisioner => new ProcessOrganisationProvisioner($app->basePath()));
         $this->app->bind(TechnicalOperationLog::class, static fn (): PostgresTechnicalOperationLog => new PostgresTechnicalOperationLog(DB::connection()));
         $this->app->bind(OrganisationOperationReport::class, OutboxOrganisationOperationReport::class);
+        // task 12b (T-17, D-234): the restore drill on a never-routable scratch copy
+        $this->app->bind(OrganisationRestoreDrill::class, static fn ($app): PgDumpRestoreDrill => new PgDumpRestoreDrill(
+            $app->make(ServedOrganisationRepository::class),
+            $app->make(OrganisationConnectionFactory::class),
+            $app->make(OrganisationReadinessProbe::class),
+            (string) config('organisation_routing.restore_drill.directory', sys_get_temp_dir()),
+            array_values((array) config('organisation_routing.restore_drill.tool_prefix', [])),
+            config('organisation_routing.restore_drill.tool_host'),
+            config('organisation_routing.restore_drill.tool_port'),
+        ));
         // task 5c: step 5 reads the L-1 facts (no migrator) and the contacts' accounts (through Identity, one adapter)
         $this->app->bind(OrganisationReadinessProbe::class, static fn ($app): PostgresOrganisationReadinessProbe => new PostgresOrganisationReadinessProbe(
             $app->make(ServedOrganisationRepository::class),

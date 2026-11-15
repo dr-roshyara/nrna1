@@ -1,0 +1,34 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEE                                                                4 / 4 (100%)
+
+Time: 00:11.221, Memory: 24.00 MB
+
+There were 4 errors:
+
+1) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_the_drill_verifies_a_restored_copy_that_is_never_routable_and_touches_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\PgDumpRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:115
+
+2) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_a_backup_that_does_not_verify_fails_the_drill_and_changes_nothing
+Error: Class "App\Contexts\Platform\Infrastructure\PgDumpRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:115
+
+3) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_the_in_place_recovery_procedure_returns_a_only_through_repair_and_leaves_b_untouched
+Error: Class "App\Contexts\Platform\Infrastructure\PgDumpRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:115
+
+4) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_a_wrong_backup_restored_in_place_is_refused_and_a_stays_unroutable
+Error: Class "App\Contexts\Platform\Infrastructure\PgDumpRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:115
+
+ERRORS!
+Tests: 4, Assertions: 0, Errors: 4, Deprecations: 1.

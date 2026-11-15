@@ -6,6 +6,7 @@ namespace App\Contexts\Platform\Application;
 
 use App\Contexts\Platform\Application\Ports\OrganisationOperationReport;
 use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill;
 use App\Contexts\Platform\Application\Ports\OrganisationSchemaRepair;
 use App\Contexts\Platform\Application\Ports\ServedOrganisationRepository;
 use App\Contexts\Platform\Application\Ports\TechnicalOperationLog;
@@ -30,6 +31,11 @@ final class OperateTechnically
 {
     /** The technical operations of release 1. Everything else is content access (case grant, deferred). */
     public const MIGRATION_REPAIR = 'migration-repair';
+    /** task 12b (T-17, D-234): verify a backup on a never-routable scratch copy */
+    public const RESTORE_DRILL = 'restore-drill';
+    /** task 12b (D-234): take the organisation out of routing before an in-place restore (SchemaState only) */
+    public const TAKE_OUT_FOR_RESTORE = 'take-out-for-restore';
+    private const TECHNICAL = [self::MIGRATION_REPAIR, self::RESTORE_DRILL, self::TAKE_OUT_FOR_RESTORE];
     private const UUID = '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/';
 
     public function __construct(
@@ -38,6 +44,7 @@ final class OperateTechnically
         private readonly OrganisationSchemaRepair $repair,
         private readonly OrganisationReadinessProbe $probe,
         private readonly OrganisationOperationReport $report,
+        private readonly OrganisationRestoreDrill $drill,
     ) {
     }
 
@@ -49,7 +56,7 @@ final class OperateTechnically
         if ($record->operator === '') {
             return $this->conclude($record, 'refused', 'operator-not-named');
         }
-        if ($operation !== self::MIGRATION_REPAIR) {
+        if (!in_array($operation, self::TECHNICAL, true)) {
             return $this->conclude($record, 'refused', 'case-grant-required');
         }
         $id = preg_match(self::UUID, strtolower($record->organisationId)) === 1 ? TenantId::fromString(strtolower($record->organisationId)) : null;
@@ -59,6 +66,28 @@ final class OperateTechnically
         }
         if ($organisation->serviceOperationGrant() === null) {
             return $this->conclude($record, 'refused', 'no-joining-grant');
+        }
+        if ($operation !== self::MIGRATION_REPAIR && $organisation->locator() === null) {
+            return $this->conclude($record, 'refused', 'no-database');
+        }
+        if ($operation === self::RESTORE_DRILL) {
+            // a scratch copy, never routable: the registry is not touched (D-234)
+            try {
+                $facts = $this->drill->rehearse($id);
+            } catch (ProvisioningFailed) {
+                return $this->conclude($record, 'failed', 'restore-failed', report: true);
+            }
+
+            return $facts->ledgerSchemaPresent && $facts->identityRowMatches && $facts->ledgerClockRowPresent
+                ? $this->conclude($record, 'succeeded', null, report: true)
+                : $this->conclude($record, 'failed', 'restore-not-verified', report: true);
+        }
+        if ($operation === self::TAKE_OUT_FOR_RESTORE) {
+            // SchemaState only: unroutable until migration-repair returns it (D-234); PlatformStatus never changes
+            $organisation->markMigrationFailed();
+            $this->registry->save($organisation);
+
+            return $this->conclude($record, 'succeeded', null, report: true);
         }
         if ($organisation->schemaState() !== SchemaState::MigrationFailed) {
             return $this->conclude($record, 'refused', 'nothing-to-repair');

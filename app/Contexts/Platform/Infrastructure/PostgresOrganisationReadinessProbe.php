@@ -34,22 +34,30 @@ final class PostgresOrganisationReadinessProbe implements OrganisationReadinessP
             ?? throw new OrganisationProvisioningRefused("Organisation {$id->value()} has no database locator to inspect.");
         $context = $this->factory->establish(new ResolvedOrganisation($id, $locator));
         try {
-            $db = $context->connection;
-            $recorded = self::has($db, 'migrations') ? array_map(static fn ($r): string => $r->migration, $db->select('SELECT migration FROM migrations')) : [];
-            $ledger = (bool) $db->selectOne("SELECT to_regprocedure('org_membership_ledger_readiness(uuid)') IS NOT NULL AS f")->f
-                ? $db->selectOne('SELECT schema_present, clock_row_present FROM org_membership_ledger_readiness(?::uuid)', [$id->value()])
-                : null;   // Membership's readiness function is itself part of the set: absent means not current
-            $identity = self::has($db, 'organisation_identity')
-                ? array_map(static fn ($r): string => $r->id, $db->select('SELECT id::text AS id FROM organisation_identity')) : [];
-
-            return new OrganisationDatabaseFacts(
-                array_diff($this->expectedMigrations(), $recorded) === [] && (bool) $ledger?->schema_present,
-                $identity === [$id->value()],
-                (bool) $ledger?->clock_row_present,
-            );
+            return $this->factsOn($context->connection, $id);
         } finally {
             $this->factory->release($context);
         }
+    }
+
+    /**
+     * The same L-1 facts read on ANY connection to an organisation database, e.g. a restored scratch copy
+     * (task 12b, T-17). Reads technical metadata only (migrations, organisation_identity, Membership's readiness answer).
+     */
+    public function factsOn(Connection $db, TenantId $id): OrganisationDatabaseFacts
+    {
+        $recorded = self::has($db, 'migrations') ? array_map(static fn ($r): string => $r->migration, $db->select('SELECT migration FROM migrations')) : [];
+        $ledger = (bool) $db->selectOne("SELECT to_regprocedure('org_membership_ledger_readiness(uuid)') IS NOT NULL AS f")->f
+            ? $db->selectOne('SELECT schema_present, clock_row_present FROM org_membership_ledger_readiness(?::uuid)', [$id->value()])
+            : null;   // Membership's readiness function is itself part of the set: absent means not current
+        $identity = self::has($db, 'organisation_identity')
+            ? array_map(static fn ($r): string => $r->id, $db->select('SELECT id::text AS id FROM organisation_identity')) : [];
+
+        return new OrganisationDatabaseFacts(
+            array_diff($this->expectedMigrations(), $recorded) === [] && (bool) $ledger?->schema_present,
+            $identity === [$id->value()],
+            (bool) $ledger?->clock_row_present,
+        );
     }
 
     /** @return list<string> */

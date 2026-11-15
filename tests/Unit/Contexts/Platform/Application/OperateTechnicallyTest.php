@@ -8,6 +8,7 @@ use App\Contexts\Platform\Application\OperateTechnically;
 use App\Contexts\Platform\Application\Ports\OrganisationDatabaseFacts;
 use App\Contexts\Platform\Application\Ports\OrganisationOperationReport;
 use App\Contexts\Platform\Application\Ports\OrganisationReadinessProbe;
+use App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill;
 use App\Contexts\Platform\Application\Ports\OrganisationSchemaRepair;
 use App\Contexts\Platform\Application\Ports\TechnicalOperationLog;
 use App\Contexts\Platform\Application\ProvisioningFailed;
@@ -114,7 +115,92 @@ final class OperateTechnicallyTest extends TestCase
                 return true;
             }
         };
-        $this->operate = new OperateTechnically($this->registry, $this->log, $this->repair, $this->probe, $this->report);
+        $this->drill = new class implements OrganisationRestoreDrill {
+            public ?OrganisationDatabaseFacts $facts = null;
+            public bool $fail = false;
+            /** @var list<string> */
+            public array $calls = [];
+
+            public function rehearse(TenantId $id): OrganisationDatabaseFacts
+            {
+                $this->calls[] = $id->value();
+                if ($this->fail) {
+                    throw new ProvisioningFailed('simulated: the backup could not be restored');
+                }
+
+                return $this->facts ?? new OrganisationDatabaseFacts(true, true, true);
+            }
+        };
+        $this->operate = new OperateTechnically($this->registry, $this->log, $this->repair, $this->probe, $this->report, $this->drill);
+    }
+
+    /** @var object{facts: ?OrganisationDatabaseFacts, fail: bool, calls: list<string>} */
+    private object $drill;
+
+    private function healthyA(): void
+    {
+        $this->operate->perform(self::A, 'migration-repair', 'ops:alice');   // A back to current
+        $this->log->entries = [];
+        $this->report->reports = [];
+    }
+
+    public function test_t17_a_restore_drill_verifies_a_copy_and_changes_nothing_in_the_registry(): void
+    {
+        $this->healthyA();
+        $before = $this->registry->find(TenantId::fromString(self::A))->snapshot();
+
+        $outcome = $this->operate->perform(self::A, 'restore-drill', 'ops:alice');
+
+        $this->assertSame(['succeeded', null], [$outcome->status, $outcome->reason]);
+        $this->assertSame([self::A], $this->drill->calls);
+        $this->assertEquals($before, $this->registry->find(TenantId::fromString(self::A))->snapshot(), 'the registry is untouched: the copy is never routable');
+        $this->assertSame([['attempted', 'restore-drill', null], ['concluded', 'succeeded', null]], $this->log->entries);
+        $this->assertCount(1, $this->report->reports, 'reported to the organisation');
+    }
+
+    public function test_t17_a_copy_that_does_not_verify_fails_the_drill_and_changes_nothing(): void
+    {
+        $this->healthyA();
+        $before = $this->registry->find(TenantId::fromString(self::A))->snapshot();
+        $this->drill->facts = new OrganisationDatabaseFacts(true, false, true);
+
+        $outcome = $this->operate->perform(self::A, 'restore-drill', 'ops:alice');
+
+        $this->assertSame(['failed', 'restore-not-verified'], [$outcome->status, $outcome->reason]);
+        $this->assertEquals($before, $this->registry->find(TenantId::fromString(self::A))->snapshot());
+
+        $this->drill->fail = true;
+        $this->assertSame(['failed', 'restore-failed'], [($o = $this->operate->perform(self::A, 'restore-drill', 'ops:alice'))->status, $o->reason]);
+    }
+
+    public function test_t17_taking_an_organisation_out_for_a_restore_makes_it_unroutable_and_keeps_its_status(): void
+    {
+        $this->healthyA();
+
+        $outcome = $this->operate->perform(self::A, 'take-out-for-restore', 'ops:alice');
+
+        $a = $this->registry->find(TenantId::fromString(self::A));
+        $this->assertSame('succeeded', $outcome->status);
+        $this->assertSame([PlatformStatus::Operational, SchemaState::MigrationFailed], [$a->status(), $a->schemaState()]);
+        $this->assertFalse($a->isRoutable(), 'out of routing until migration-repair restores it');
+        $this->assertSame([self::A], $this->repair->calls, 'taking out repairs nothing (the one call is healthyA\'s)');
+    }
+
+    public function test_t17_the_restore_operations_need_the_joining_grant_and_a_database(): void
+    {
+        foreach (['restore-drill', 'take-out-for-restore'] as $operation) {
+            $this->assertSame(['refused', 'no-joining-grant'], [($o = $this->operate->perform(self::PENDING, $operation, 'ops:alice'))->status, $o->reason], $operation);
+        }
+        $this->assertSame([], $this->drill->calls);
+
+        $granted = ServedOrganisation::register(TenantId::fromString('4f5a3e1d-2c3b-4a4b-9e7d-6b9c2a5d8e04'), self::application());
+        $granted->recordCounterpartyVerified(new CounterpartyVerification('agreement:granted'));
+        $granted->recordServiceOperationGrant(new ServiceOperationGrant('terms-2026-11', new \DateTimeImmutable('2026-11-14T10:00:00Z'), 'account:1', [str_repeat('a', 64)]));
+        $this->registry->add($granted);   // a joining grant, but no database yet
+        foreach (['restore-drill', 'take-out-for-restore'] as $operation) {
+            $this->assertSame(['refused', 'no-database'], [($o = $this->operate->perform($granted->id()->value(), $operation, 'ops:alice'))->status, $o->reason], $operation);
+        }
+        $this->assertSame([], $this->drill->calls, 'nothing to back up');
     }
 
     private static function application(): FoundingApplication

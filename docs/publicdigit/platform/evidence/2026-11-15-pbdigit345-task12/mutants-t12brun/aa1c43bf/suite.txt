@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+......................................F........................  63 / 108 ( 58%)
+.............................................                   108 / 108 (100%)
+
+Time: 00:00.040, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_a_copy_that_does_not_verify_fails_the_drill_and_changes_nothing
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'failed',
+-    1 => 'restore-failed',
++    0 => 'succeeded',
++    1 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:173
+
+FAILURES!
+Tests: 108, Assertions: 305, Failures: 1.

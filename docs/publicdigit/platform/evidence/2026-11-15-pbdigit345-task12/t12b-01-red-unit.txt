@@ -1,0 +1,87 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEE                                                   15 / 15 (100%)
+
+Time: 00:00.015, Memory: 14.02 MB
+
+There were 15 errors:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_a_restore_drill_verifies_a_copy_and_changes_nothing_in_the_registry
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+2) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_a_copy_that_does_not_verify_fails_the_drill_and_changes_nothing
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+3) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_taking_an_organisation_out_for_a_restore_makes_it_unroutable_and_keeps_its_status
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+4) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_the_restore_operations_need_the_joining_grant_and_a_database
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+5) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_1_a_migration_repair_under_the_joining_grant_succeeds_records_and_reports
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+6) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.5 a content read (no case grant in release 1)" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'read-members', 'ops:alice', 'case-grant-required')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+7) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.5 any other operation is not technical" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'SELECT * FROM org_memberships', 'ops:alice', 'case-grant-required')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+8) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "T-16.3 no joining grant (pending)" ('2d7a5c30-4e3f-4d5e-9c5b-4f7e0a3b6c82', 'migration-repair', 'ops:alice', 'no-joining-grant')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+9) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "an unknown organisation" ('9f9f9f9f-9f9f-4f9f-8f9f-9f9f9f9f9f9f', 'migration-repair', 'ops:alice', 'unknown-organisation')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+10) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "a malformed organisation id" ('A', 'migration-repair', 'ops:alice', 'unknown-organisation')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+11) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_refused_operations_are_recorded_and_change_nothing with data set "no operator named" ('0b9e7a52-6c1d-4f7e-9a3b-2d5c8e1f4a60', 'migration-repair', '  ', 'operator-not-named')
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+12) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_nothing_to_repair_when_the_schema_is_current
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+13) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_6_a_repair_never_changes_status_a_provisioning_organisation_stays_provisioning
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+14) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_6_the_schema_stays_failed_unless_the_readiness_facts_hold_again
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+15) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t16_8_a_failed_repair_leaves_the_organisation_unroutable_and_is_recorded_and_reported
+Error: Interface "App\Contexts\Platform\Application\Ports\OrganisationRestoreDrill" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:118
+
+ERRORS!
+Tests: 15, Assertions: 0, Errors: 15.

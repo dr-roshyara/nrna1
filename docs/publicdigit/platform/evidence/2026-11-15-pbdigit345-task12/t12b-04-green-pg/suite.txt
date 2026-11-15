@@ -1,0 +1,48 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  63 / 104 ( 60%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFFFF                       104 / 104 (100%)
+
+Time: 01:50.462, Memory: 30.00 MB
+
+There were 4 failures:
+
+1) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_the_drill_verifies_a_restored_copy_that_is_never_routable_and_touches_nothing
+4f2996fe-8551-4100-a68d-4ef9e52738ab failed: restore-failed
+
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:201
+
+2) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_a_backup_that_does_not_verify_fails_the_drill_and_changes_nothing
+Failed asserting that '666e08fe-b1e9-4b8d-8d8c-c07b84aef915 failed: restore-failed\n
+' [ASCII](length: 60) contains "failed: restore-not-verified" [ASCII](length: 28).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:221
+
+3) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_the_in_place_recovery_procedure_returns_a_only_through_repair_and_leaves_b_untouched
+pg_restore: pg_restore: error: could not execute query: ERROR:  unrecognized configuration parameter "transaction_timeout"
+Command was: SET transaction_timeout = 0;
+
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:158
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:169
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:241
+
+4) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_a_wrong_backup_restored_in_place_is_refused_and_a_stays_unroutable
+pg_restore: pg_restore: error: could not execute query: ERROR:  unrecognized configuration parameter "transaction_timeout"
+Command was: SET transaction_timeout = 0;
+
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:158
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:169
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:259
+
+FAILURES!
+Tests: 104, Assertions: 520, Failures: 4, Deprecations: 1.

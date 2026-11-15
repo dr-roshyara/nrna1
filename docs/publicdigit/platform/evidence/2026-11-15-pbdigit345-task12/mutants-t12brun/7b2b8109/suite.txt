@@ -1,0 +1,26 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......................................F.......................  63 / 108 ( 58%)
+.............................................                   108 / 108 (100%)
+
+Time: 00:00.042, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_taking_an_organisation_out_for_a_restore_makes_it_unroutable_and_keeps_its_status
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => App\Contexts\Platform\Domain\PlatformStatus Enum #508 (Operational, 'operational'),
+-    1 => App\Contexts\Platform\Domain\SchemaState Enum #1493 (MigrationFailed, 'migration-failed'),
++    1 => App\Contexts\Platform\Domain\SchemaState Enum #1494 (Current, 'current'),
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:184
+
+FAILURES!
+Tests: 108, Assertions: 303, Failures: 1.

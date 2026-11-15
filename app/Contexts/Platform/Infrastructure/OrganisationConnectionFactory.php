@@ -70,6 +70,21 @@ final class OrganisationConnectionFactory
         return new OrganisationContext($resolved->organisationId, $connection);
     }
 
+    /**
+     * Task 12b (T-17): the connection parameters behind a locator, for Platform's own Infrastructure tools that run
+     * outside PHP (pg_dump, pg_restore in the restore drill). Never logged; never handed to another context.
+     *
+     * @return array{host: string, port: string, database: string, username: string, password: string, sslmode: string}
+     */
+    public function parameters(\App\Contexts\Platform\Domain\DatabaseLocator $locator): array
+    {
+        $cluster = $this->clusters[$locator->cluster] ?? throw new OrganisationRoutingRefused("Unknown database cluster '{$locator->cluster}'.");
+        $login = $this->login->resolve($locator->credentialRef);
+
+        return ['host' => (string) $cluster['host'], 'port' => (string) $cluster['port'], 'database' => $locator->database,
+            'username' => $login['username'], 'password' => $login['password'], 'sslmode' => (string) ($cluster['sslmode'] ?? 'prefer')];
+    }
+
     public function release(OrganisationContext $context): void
     {
         $this->forget($context->connection->getName());

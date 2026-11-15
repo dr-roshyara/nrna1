@@ -1,0 +1,39 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFDDD                                                               5 / 5 (100%)
+
+Time: 00:23.739, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_the_drill_verifies_a_restored_copy_that_is_never_routable_and_touches_nothing
+the backup file is removed
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => '/tmp/t17-b9947108/drill-714d424d4acb.dump',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:227
+
+2) Tests\Feature\Contexts\Platform\RestoreDrillTest::test_t17_a_backup_that_does_not_verify_fails_the_drill_and_changes_nothing
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => '/tmp/t17-717f6cd4/drill-aead3be03f15.dump',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Platform/RestoreDrillTest.php:247
+
+FAILURES!
+Tests: 5, Assertions: 44, Failures: 2, Deprecations: 1.

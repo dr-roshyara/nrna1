@@ -1,0 +1,65 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....................................FFFF......................  63 / 108 ( 58%)
+.............................................                   108 / 108 (100%)
+
+Time: 00:00.041, Memory: 12.00 MB
+
+There were 4 failures:
+
+1) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_a_restore_drill_verifies_a_copy_and_changes_nothing_in_the_registry
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'succeeded',
+-    1 => null,
++    0 => 'refused',
++    1 => 'case-grant-required',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:154
+
+2) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_a_copy_that_does_not_verify_fails_the_drill_and_changes_nothing
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'failed',
+-    1 => 'restore-not-verified',
++    0 => 'refused',
++    1 => 'case-grant-required',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:169
+
+3) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_taking_an_organisation_out_for_a_restore_makes_it_unroutable_and_keeps_its_status
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'succeeded'
++'refused'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:183
+
+4) Tests\Unit\Contexts\Platform\Application\OperateTechnicallyTest::test_t17_the_restore_operations_need_the_joining_grant_and_a_database
+restore-drill
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'refused',
+-    1 => 'no-joining-grant',
++    1 => 'case-grant-required',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Platform/Application/OperateTechnicallyTest.php:192
+
+FAILURES!
+Tests: 108, Assertions: 291, Failures: 4.
