@@ -75,6 +75,12 @@ Reference Geography's published read contract (`GeographyReadModel`, G-5a, accep
   - full unit run: 0 failures involve Reference Geography (the run had no local test database).
   - Evidence: `…/2026-11-15-pbdigit355-step3/`.
 - **Limitation:** responsiveness wasn't measured in a browser. The branch isn't pushed or merged.
+- **2026-11-15: merged by the Principal** into `election-flow-updated` (`fa63f3ad0`). **Merging isn't acceptance.**
+- **Manual acceptance test: PREPARED, NOT RUN.**
+  - Guide: `docs/publicdigit/testing/manual/2026-11-15-m1-geography-explorer-manual-test-guide.md`.
+  - **The local database has no published geography** (position 0), so T03–T07 are BLOCKED there; the others can be run.
+  - **The stale local route cache must be cleared first** (`php artisan route:clear`).
+  - **The Principal's acceptance (EP-02) is still open.**
 
 ## Plan
 
