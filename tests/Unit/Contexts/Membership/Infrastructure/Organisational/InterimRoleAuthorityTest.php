@@ -45,7 +45,8 @@ final class InterimRoleAuthorityTest extends TestCase
     private static function ask(array $roles, MembershipAct $act): AuthorityDecision
     {
         return self::authority($roles)->check(TenantId::fromString('O1'),
-            new AuthorityRequest($act, 'user-7', PersonRef::fromString('P1'), null, TimePoint::of(20_000), null, 'req-1'));
+            new AuthorityRequest($act, 'user-7', PersonRef::fromString('P1'), null, TimePoint::of(20_000), null, 'req-1',
+                $act === MembershipAct::RecordDeath ? 'death-certificate:test' : null));   // S2-3b: a death cites its evidence
     }
 
     /** @return array<string, array{string}> */

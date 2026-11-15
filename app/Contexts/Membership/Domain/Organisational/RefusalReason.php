@@ -63,6 +63,9 @@ enum RefusalReason: string
      */
     case ExclusionIsPushOnly = 'exclusion_is_push_only';
 
+    /** Command boundary (D-208 §2, GC-4; S2-3b): a death is recorded only with a cited evidence reference. */
+    case DeathEvidenceRequired = 'death_evidence_required';
+
     /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
     case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';
 

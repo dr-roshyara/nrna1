@@ -1,0 +1,2 @@
+M3 a resignation declares no effective date                tests:25   KILLED (assertions)  a_member_resigns_by_their_own_act;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

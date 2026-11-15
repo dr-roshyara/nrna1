@@ -52,8 +52,8 @@ final class EndMembershipHandler
                 $kind->value() === EndKind::LEGACY => RefusalReason::LegacyEndRequiresAttestedHistory,
                 $kind->value() === EndKind::RESIGNATION => new AuthorityRequest(MembershipAct::RecordResignation, $command->actor, $member?->holder(),
                     PeriodId::fromString($command->periodId), TimePoint::of($command->decisionDate), TimePoint::of($command->effectiveAt), $command->idempotencyKey),
-                $kind->value() === EndKind::DEATH => new AuthorityRequest(MembershipAct::RecordDeath, $command->actor, $member?->holder(),
-                    PeriodId::fromString($command->periodId), TimePoint::of($command->decisionDate), null, $command->idempotencyKey),
+                // S2-3b (GC-4): this command carries no evidence reference, so it cannot record a death: use RecordDeath
+                $kind->value() === EndKind::DEATH => RefusalReason::DeathEvidenceRequired,
             },
             fn (): ?Member => $this->repository->load($tenant, $memberId),
             static fn (Member $member, AuthorityEvidence $evidence): Decision => $member->decideEnd(

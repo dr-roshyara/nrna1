@@ -403,7 +403,8 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
         });
 
         foreach ([SuspendMembershipHandler::class, RestoreMembershipHandler::class, \App\Contexts\Membership\Application\Organisational\AdmitMemberHandler::class,
-            \App\Contexts\Membership\Application\Organisational\EndMembershipHandler::class, RenewMembershipHandler::class] as $handler) {
+            \App\Contexts\Membership\Application\Organisational\EndMembershipHandler::class, RenewMembershipHandler::class,
+            \App\Contexts\Membership\Application\Organisational\ResignMembershipHandler::class, \App\Contexts\Membership\Application\Organisational\RecordDeathHandler::class] as $handler) {
             try {
                 app($handler);
                 $this->fail("$handler: a production authority is bound; S2 must stay fail-closed until Governance S3");
@@ -448,5 +449,36 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
         });
 
         $this->assertSame(['admit'], array_map(static fn ($r) => $r->kind, DB::connection('platform_org_b')->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "B's M1 untouched");
+    }
+
+    /**
+     * PBDIGIT-354 S2-3b: a death recorded through the PRODUCTION routed repository lands in A's own database with its
+     * evidence reference and C1; B's member with the same id stays a member.
+     */
+    public function test_s2_3b_a_death_is_recorded_in_the_routed_organisations_own_database(): void
+    {
+        $this->admitM1(self::B);
+        $this->routedTo(self::A, function (Connection $a): void {
+            $t = TenantId::fromString(self::A);
+            $repo = app(MemberRepositoryPort::class);
+            $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+            $this->readings = [200];
+            $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_365),
+                Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+
+            $this->readings = [300];
+            $outcome = (new \App\Contexts\Membership\Application\Organisational\RecordDeathHandler($repo, new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\RecordDeath(self::A, 'M1', 'E1', 20_040, 20_045, 'death-certificate:2024/77', 'registrar-1', null, 'k2'),
+            );
+
+            $this->assertTrue($outcome->isAppended());
+            $row = $a->selectOne("SELECT end_kind, provenance::text AS p FROM org_membership_facts WHERE fact_id = 'E1'");
+            $this->assertSame(['death', 'death-certificate:2024/77'], [$row->end_kind, json_decode($row->p, true)['declarationRef']], "in A's own database");
+            $this->assertCount(2, $a->select("SELECT 1 FROM outbox_events WHERE event_type = 'MembershipCoverageResolved'"));
+        });
+
+        $this->routedTo(self::B, function (): void {
+            $this->assertTrue(app(MemberRepositoryPort::class)->load(TenantId::fromString(self::B), MemberId::fromString('M1'))->resolve()->isMember(TimePoint::of(20_100)), "B's M1 is still a member");
+        });
     }
 }

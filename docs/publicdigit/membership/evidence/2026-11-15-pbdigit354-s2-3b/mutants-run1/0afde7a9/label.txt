@@ -1,0 +1,1 @@
+M2 resigning with no current period is not refused

@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F........................                                         25 / 25 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_member_resigns_by_their_own_act
+effective on its declaration date, in the current period
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'resignation',
+-    1 => 40,
++    1 => 39,
+     2 => 'A1',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:101
+
+FAILURES!
+Tests: 25, Assertions: 76, Failures: 1.

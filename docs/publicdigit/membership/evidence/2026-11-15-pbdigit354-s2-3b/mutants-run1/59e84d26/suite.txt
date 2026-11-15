@@ -1,0 +1,17 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+E........................                                         25 / 25 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_member_resigns_by_their_own_act
+Error: Call to a member function ordinal() on null
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:106
+
+ERRORS!
+Tests: 25, Assertions: 78, Errors: 1.

@@ -1,0 +1,91 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEF                                                     13 / 13 (100%)
+
+Time: 00:00.024, Memory: 12.00 MB
+
+There were 12 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_member_resigns_by_their_own_act
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:96
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_own_act_never_lets_one_person_resign_for_another
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:113
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_recorder_records_the_resignation_with_their_own_authority
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:119
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_lapsed_membership_can_be_resigned_and_an_ended_one_cannot
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:127
+
+5) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_refusals_record_nothing_and_undetermined_is_not_no
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:136
+
+6) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_an_unauthorised_actor_learns_nothing_about_whether_a_member_exists
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:150
+
+7) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_another_organisations_member_is_not_found
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:156
+
+8) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_the_same_command_twice_records_once
+Error: Class "App\Contexts\Membership\Application\Organisational\ResignMembershipHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:79
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:162
+
+9) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_death_is_recorded_with_its_evidence_under_record_death
+Error: Class "App\Contexts\Membership\Application\Organisational\RecordDeathHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:172
+
+10) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_death_without_evidence_is_refused_before_anyone_is_asked
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::DeathEvidenceRequired
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:186
+
+11) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_death_cannot_be_recorded_before_it_happened_or_by_own_act
+Error: Class "App\Contexts\Membership\Application\Organisational\RecordDeathHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:84
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:194
+
+12) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_end_membership_cannot_record_a_death_without_evidence
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::DeathEvidenceRequired
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:206
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_only_a_death_carries_an_evidence_reference_and_it_must_carry_one
+Failed asserting that null is identical to 'x'.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:213
+
+ERRORS!
+Tests: 13, Assertions: 1, Errors: 12, Failures: 1, Warnings: 1.

@@ -116,10 +116,13 @@ final class AuthorityContractTest extends TestCase
 
     public function test_end_asks_the_act_of_its_kind(): void
     {
-        $this->assertTrue($this->end('death')->isAppended());
+        $this->assertTrue($this->end('resignation')->isAppended());
+        $this->assertSame(MembershipAct::RecordResignation, $this->authority->requests[0]->act);
 
-        $this->assertSame(MembershipAct::RecordDeath, $this->authority->requests[0]->act);
-        $this->assertNull($this->authority->requests[0]->declaredEffectiveAt, 'only a resignation declares an effective date');
+        // S2-3b (GC-4): a death needs its evidence reference, which this command does not carry: refused before asking.
+        // The death path (record-death, no declared date) is RecordDeath: ResignAndRecordDeathTest.
+        $this->assertSame(RefusalReason::DeathEvidenceRequired, $this->end('death', 'k2')->domainRefusal());
+        $this->assertCount(1, $this->authority->requests);
     }
 
     public function test_a_pull_exclusion_is_refused_without_asking_anyone(): void
@@ -166,7 +169,7 @@ final class AuthorityContractTest extends TestCase
         $this->authority->kind = CompetenceKind::OwnAct;
 
         $this->assertSame(ApplicationRefusal::OwnActNotApplicable, $this->end('resignation', 'k1', 'registrar-1')->applicationRefusal(), 'actor is not the subject');
-        $this->assertSame(ApplicationRefusal::OwnActNotApplicable, $this->end('death', 'k2', 'P1')->applicationRefusal(), 'ownAct is valid for record-resignation only');
+        // (ownAct refused for record-death: ResignAndRecordDeathTest, through RecordDeath, since S2-3b)
         $this->assertSame(ApplicationRefusal::OwnActNotApplicable,
             (new RenewMembershipHandler($this->repo, $this->authority))->handle(new RenewMembership('O1', 'M-P1', 'N1', 50, 50, 200, false, 'P1', null, 'k3'))->applicationRefusal());
         $this->assertSame(1, $this->member()->version(), 'nothing recorded');

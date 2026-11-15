@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DFD                                                                 3 / 3 (100%)
+
+Time: 00:08.742, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresResignAndDeathTest::test_a_death_is_stored_with_its_evidence_reference_and_ends_the_published_coverage
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'death',
+     1 => 20040,
+-    2 => 'death-certificate:2024/77',
++    2 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresResignAndDeathTest.php:77
+
+FAILURES!
+Tests: 3, Assertions: 11, Failures: 1, Deprecations: 1.

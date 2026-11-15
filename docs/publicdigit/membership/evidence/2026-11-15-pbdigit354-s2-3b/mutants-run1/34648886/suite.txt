@@ -1,0 +1,29 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+........F................                                         25 / 25 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_a_death_is_recorded_with_its_evidence_under_record_death
+evaluated for the recording date
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     0 => App\Contexts\Membership\Application\Organisational\Ports\MembershipAct Enum #694 (RecordDeath, 'record-death'),
+     1 => 'P1',
+     2 => 'A1',
+-    3 => 45,
++    3 => 40,
+     4 => null,
+     5 => 'death-certificate:2026/481',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:179
+
+FAILURES!
+Tests: 25, Assertions: 79, Failures: 1.

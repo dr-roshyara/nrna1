@@ -1,0 +1,13 @@
+M1 a resignation is backdated a day                        tests:25   KILLED (assertions)  a_member_resigns_by_their_own_act;
+M2 resigning with no current period is not refused         tests:25   KILLED+ERRORS (1: TypeError: App\Contexts\Membership\Domain\Organisational\Member::decideEnd(): Argument #2 ($period) must be of)  a_lapsed_membership_can_be_resigned_and_;
+M3 a resignation declares no effective date                tests:25   KILLED+ERRORS (1: Error: Call to a member function ordinal() on null)  a_member_resigns_by_their_own_act;
+M4 a resignation names no subject                          tests:25   KILLED (assertions)  a_member_resigns_by_their_own_act;
+M5 a blank evidence reference passes the boundary          tests:25   KILLED+ERRORS (1: InvalidArgumentException: Recording a death cites its evidence (GC-4).)  a_death_without_evidence_is_refused_befo;
+M6 a death is evaluated for the date of death              tests:25   KILLED (assertions)  a_death_is_recorded_with_its_evidence_un;
+M7 the death evidence is not kept on the fact              tests:25   KILLED (assertions)  a_death_is_recorded_with_its_evidence_un;
+M8 a death may be recorded before it happened              tests:25   KILLED (assertions)  a_death_cannot_be_recorded_before_it_hap;
+M9 EndMembership records a death without evidence          tests:25   KILLED (assertions)  end_asks_the_act_of_its_kind;end_membership_cannot_record_a_death_wit;
+M10 any act may carry an evidence reference                tests:25   KILLED (assertions)  only_a_death_carries_an_evidence_referen;
+M11 a death request needs no evidence                      tests:25   KILLED (assertions)  only_a_death_carries_an_evidence_referen;
+P1 (db) the declaration reference is not stored            tests:3    KILLED (assertions)  a_death_is_stored_with_its_evidence_refe;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

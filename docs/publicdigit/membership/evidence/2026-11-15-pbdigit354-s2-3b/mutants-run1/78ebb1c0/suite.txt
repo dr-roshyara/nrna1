@@ -1,0 +1,27 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...........F...F.........                                         25 / 25 (100%)
+
+Time: 00:00.028, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ResignAndRecordDeathTest::test_end_membership_cannot_record_a_death_without_evidence
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ResignAndRecordDeathTest.php:206
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\AuthorityContractTest::test_end_asks_the_act_of_its_kind
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #676 (DeathEvidenceRequired, 'death_evidence_required')
++App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #384 (DuplicateFactId, 'duplicate_fact_id')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/AuthorityContractTest.php:124
+
+FAILURES!
+Tests: 25, Assertions: 77, Failures: 2.
