@@ -459,6 +459,8 @@ Route::group([], __DIR__.'/committee/committeeRoutes.php');
 Route::group([], __DIR__.'/openion/openionRoutes.php');
 //finance
 Route::group([], __DIR__.'/finance/financeRoutes.php');
+// Reference Geography explorer, read-only (PBDIGIT-355)
+Route::group([], __DIR__.'/reference-geography.php');
 //election
 
 
