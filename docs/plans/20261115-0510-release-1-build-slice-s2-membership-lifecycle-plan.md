@@ -140,6 +140,46 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
+## 7c. S2-4 preflight (2026-11-15): which calendar decides "the date has arrived" (Q-4, awaiting the Principal)
+
+**The accepted rules for S2-4** (M-TDD-01 §5.2, D-204, D-205, D-209, D-223; D-208 §2):
+- a resignation with a later effective date is a **declaration held outside the ledger**: `scheduled` → `executed` / `withdrawn` / `superseded` (the period ended earlier);
+- **one** scheduled declaration per period;
+- withdrawal only while `scheduled` and before the date has started;
+- **execution in the `closedThrough` step:** `closedThrough` may not pass the start of an **organisation-local date D** until every declaration with effective date ≤ D has its `End(resignation)` recorded, in the same step. A failed execution holds `closedThrough` (MI-10);
+- the End takes effect on the scheduled date with `decidedAt` = the declaration date: **D-205's single exception**, recorded on or after the date, never before (D-223, MI-15a … f);
+- withdrawal and execution serialise under the ledger-clock lock with a compare-and-set on the declaration (MI-2); LC-4 is proved here.
+
+**Already in place:** `DueScheduledResignations::executeDue($db, $organisation, Instant $t)`, called inside the closing transaction (`LedgerClockCloser`), bound today to `NoDueScheduledResignations`; `record-resignation` with a declared effective date (S2-3a/b).
+
+**Finding: the organisation's time zone has no accepted owner or source in the new architecture.**
+- The closing step knows only the database instant `t`. "Is the effective date reached?" needs `t` converted to the **organisation's local date**.
+- Z1 (2026-10-09) assumed the **legacy central** `organisations.timezone` (default `UTC`). The organisation-isolation rules (PBDIGIT-345, D-235) forbid Membership from reading legacy central tables.
+- No accepted Organisation, Platform or Governance design owns an organisation time zone.
+- A wrong calendar either ends a membership early, before midnight local time in Nepal (UTC+5:45), or late.
+
+**Options (Q-4):**
+- **A (recommended): a consumer-owned Membership port `OrganisationCalendar`** ("the organisation's local date at instant t").
+  - Its production answer belongs to the **Organisation context (S4)**, which owns the organisation's own settings.
+  - Until S4, **no production binding**: the closing step keeps `NoDueScheduledResignations`, which is safe, because no scheduled resignation can be recorded in production anyway (no authority before S3).
+  - Development and tests use an explicit test calendar.
+  - **Effect:** S2-4 is fully built and proven now; it goes live when S3 (authority) and S4 (calendar) exist.
+- **B: Membership stores the time zone itself,** on its ledger-clock row in the organisation's database, set at provisioning.
+  - **Effect:** usable sooner, but Membership owns an organisation-wide setting, and something must set it: founding (Platform) or an officer (needs Governance).
+- **C: UTC for release 1.**
+  - **Effect:** simplest, but wrong near midnight for every non-UTC organisation. Z2 was rejected on 2026-10-09 for this reason.
+- *(Reading the legacy `organisations.timezone` is not offered: it would break the isolation rules.)*
+
+**Also derived from the accepted texts (no decision needed):** the withdrawal request names **the scheduled declaration** (D-208 §2 "withdraw" shape), so `AuthorityRequest` gains an optional `declarationRef`, additive, like S2-3b's `evidenceRef`.
+
+**Proposed S2-4 steps once Q-4 is decided** (each RED → GREEN → mutants → evidence):
+1. **S2-4a:** the declaration (domain): states, one per period, superseded rule, the D-205 exception in the kernel (`End` from a declaration, `effectiveAt` > `decidedAt` allowed only here; never before the recording date).
+2. **S2-4b:** schedule and withdraw use cases (`record-resignation`, declared date > declaration date; withdraw shape); persistence (a declarations table, central and organisation, parity).
+3. **S2-4c:** execution in the closing step (the real `DueScheduledResignations`, the calendar port); MI-10 hold on failure; LC-4; late execution (D-223).
+4. **S2-4d:** withdraw vs execute races on PostgreSQL (MI-2); C1 / C2 show nothing before execution (MI-4); routing and isolation.
+
+**No S2-4 code is written until Q-4 is decided.**
+
 ## 7b. S2-3 readiness (2026-11-15): the authority contract must grow first (Q-3, **decided: D-238, Option A**; **S2-3a DONE 2026-11-15**, reviewed; **S2-3b DONE 2026-11-15**; S2-3 complete)
 
 **Finding.** Governance completion rev 5 (accepted, D-208) §1–§2 and C-1a define the AuthorityCheck that S2-3 needs:

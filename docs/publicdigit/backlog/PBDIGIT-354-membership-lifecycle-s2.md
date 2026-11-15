@@ -35,6 +35,10 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
+## Open
+
+- **Q-4 (S2-4 preflight, plan §7c):** which calendar decides that a scheduled resignation's date has arrived. No accepted owner of the organisation time zone exists in the new architecture. Recommended: a consumer-owned `OrganisationCalendar` port, answered by Organisation (S4), fail-closed until then. **No S2-4 code until decided.**
+
 ## Decided: Q-3 → D-238 (Option A; S2-3a, then S2-3b after review)
 
 - *(as found)* **Q-3 (S2-3 readiness, plan §7b):** the accepted Governance AuthorityCheck needs the subject and a basis (incl. `ownAct`) that Membership's port does not carry; a pull exclusion is accepted today, though it is push-only. Recommended: S2-3a (extend the port to the accepted shape) then S2-3b. **No S2-3 code until decided.**
