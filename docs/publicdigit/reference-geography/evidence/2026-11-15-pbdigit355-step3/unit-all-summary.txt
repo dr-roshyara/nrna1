@@ -1,0 +1,3 @@
+Tests: 5127, Assertions: 681171, Errors: 1208, Failures: 14, Deprecations: 1, PHPUnit Deprecations: 703, Incomplete: 12, Risky: 1183.
+Failures/errors mentioning ReferenceGeography: 0
+Context: run in the worktree without .env (no local test database); the legacy DB-dependent unit tests error on connection. Not a baseline comparison.

@@ -1,6 +1,6 @@
 # PBDIGIT-355: Frontend M1: read-only Reference Geography explorer
 
-**Status:** IN PROGRESS (created 2026-11-15; plan approved by the Principal 2026-11-15, "Approve as planned") · **Context:** Reference Geography (delivery only) · **Kind:** frontend vertical slice · **Session:** B (frontend)
+**Status:** DONE (implementation complete 2026-11-15; **the Principal's acceptance (EP-02) pending**; created 2026-11-15; plan approved by the Principal 2026-11-15, "Approve as planned") · **Context:** Reference Geography (delivery only) · **Kind:** frontend vertical slice · **Session:** B (frontend)
 
 ## Why
 
@@ -69,7 +69,12 @@ Reference Geography's published read contract (`GeographyReadModel`, G-5a, accep
   - design check 91 (the baseline);
   - the production build is fine;
   - guide 36, which includes the administrator notes.
-- **Next:** step 3 (full verification and closure).
+- **Step 3 (closure) DONE 2026-11-15:**
+  - the full isolated cluster passes (455 tests, all PostgreSQL suites);
+  - Geography unit tests: 315 passing;
+  - full unit run: 0 failures involve Reference Geography (the run had no local test database).
+  - Evidence: `…/2026-11-15-pbdigit355-step3/`.
+- **Limitation:** responsiveness wasn't measured in a browser. The branch isn't pushed or merged.
 
 ## Plan
 
