@@ -190,7 +190,27 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         }
     }
 
-    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint): AppendResult
+    /**
+     * PBDIGIT-354 S2-4c (D-209 closing step (a)): append INSIDE the ledger close, on this connection, in the close's
+     * transaction (which already holds the organisation's clock row), with recordedAt = the close's own reading
+     * $closeReading (never a second reading, never adjusted). The same checks as append(): clock regression,
+     * closedThrough, V-5, version compare-and-set, idempotency key, C1. Used only by ScheduledResignationExecutor.
+     *
+     * @throws \LogicException outside a transaction (it is never a way around append()'s rules)
+     */
+    public function appendWithinClose(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, Instant $closeReading): AppendResult
+    {
+        if (!$accepted->isAccepted()) {
+            throw new \InvalidArgumentException('Only accepted decisions can be appended.');
+        }
+        if ($this->db->transactionLevel() === 0) {
+            throw new \LogicException('appendWithinClose() runs only inside the ledger close transaction.');
+        }
+
+        return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint, $closeReading);
+    }
+
+    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null): AppendResult
     {
         $seen = $this->answerFromKey($tenant, $key, $fingerprint);
         if ($seen !== null) {
@@ -209,7 +229,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
              FROM org_membership_ledger_clocks WHERE organisation_id = ? FOR UPDATE',
             [$tenant->value()],
         ) ?? throw new \RuntimeException("Ledger clock row missing for organisation {$tenant->value()} (fail closed).");
-        $t = $this->clock->now($this->db)->ordinal();
+        $t = ($closeReading ?? $this->clock->now($this->db))->ordinal();
         $organisationLast = $clock->last_us === null ? null : (int) $clock->last_us;
         $closedThrough = $clock->closed_us === null ? null : (int) $clock->closed_us;
         $memberLast = $this->db->table('org_membership_facts')

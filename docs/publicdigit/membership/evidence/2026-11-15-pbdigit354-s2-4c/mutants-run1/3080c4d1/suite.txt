@@ -1,0 +1,26 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDFDDDDD                                                           9 / 9 (100%)
+
+Time: 00:09.237, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15a_on_its_date_the_close_records_the_end_and_marks_the_declaration_executed
+recorded by the close, at its reading
+Failed asserting that 1794762554622350 is identical to 1730595600000000.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:131
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15b_late_execution_still_takes_effect_on_the_scheduled_date
+recorded late
+Failed asserting that 1794762555034783 is identical to 1731916800000000.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:169
+
+FAILURES!
+Tests: 9, Assertions: 59, Failures: 2, Deprecations: 1.

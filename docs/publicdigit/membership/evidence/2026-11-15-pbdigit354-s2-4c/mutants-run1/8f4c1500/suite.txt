@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFDDFDD                                                           9 / 9 (100%)
+
+Time: 00:08.388, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15b_late_execution_still_takes_effect_on_the_scheduled_date
+D-223: effective on the scheduled date, decided by the declaration
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 20030,
++    0 => 20045,
+     1 => 1728900000000000,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:168
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_every_due_declaration_is_executed_in_one_close_and_later_ones_wait
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 20030,
++    0 => 20031,
+     1 => 20031,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:228
+
+FAILURES!
+Tests: 9, Assertions: 58, Failures: 2, Deprecations: 1.

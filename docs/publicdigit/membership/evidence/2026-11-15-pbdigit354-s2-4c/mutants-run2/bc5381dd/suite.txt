@@ -1,0 +1,49 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDFDFDFFD                                                           9 / 9 (100%)
+
+Time: 00:09.357, Memory: 26.00 MB
+
+There were 5 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15a_on_its_date_the_close_records_the_end_and_marks_the_declaration_executed
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:136
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_the_organisation_local_date_decides_not_utc
+member 1: exactly one End
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:166
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi10_lc4_a_failed_execution_holds_the_boundary_and_c2_refuses
+once the calendar answers, the next close executes it
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:207
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_every_due_declaration_is_executed_in_one_close_and_later_ones_wait
+member 2: exactly one End
+Failed asserting that actual size 0 matches expected size 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:237
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi3_a_declaration_whose_period_ended_earlier_is_superseded_not_executed
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\ScheduledResignationState Enum #6170 (Superseded, 'superseded')
++App\Contexts\Membership\Domain\Organisational\ScheduledResignationState Enum #6173 (Scheduled, 'scheduled')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:253
+
+FAILURES!
+Tests: 9, Assertions: 56, Failures: 5, Deprecations: 1.

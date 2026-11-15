@@ -242,3 +242,10 @@ Never mark an organisation operational or change `schema_state` by hand.
 6. **Rolling back** (`down()`) is refused while any declaration exists.
 7. **`migrate:fresh` on a test database is safe:** the trigger function is `CREATE OR REPLACE`. (It wasn't in the first draft, and the legacy suite caught the collision.) Never run `migrate:fresh` on the development database.
 8. **Nobody can schedule a resignation in production yet, by design:** no authority check is wired until Governance (S3). **Scheduled resignations are not executed anywhere yet:** execution comes in S2-4c and needs the organisation calendar from Organisation (S4, D-239).
+
+## Membership lifecycle S2-4c: executing scheduled resignations (2026-11-15, PBDIGIT-354)
+
+**Nothing to do: no migration, no configuration.**
+- **In production, the confirming step still executes nothing** (`NoDueScheduledResignations`). That's intended (D-239): the organisation's calendar comes from Organisation (S4), and no scheduled resignation can be recorded before Governance (S3).
+- **Do not set or invent a time zone for this** (no config value, no UTC default, not the legacy `organisations.timezone` column). D-239 forbids it.
+- **When it is switched on later**, a failed execution holds the organisation's membership answers ("boundary not closed") until it is fixed. Watch for the log entry `membership.ledger_clock.scheduled_execution_failed`.

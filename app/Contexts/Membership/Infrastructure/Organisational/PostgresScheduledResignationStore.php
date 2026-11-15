@@ -15,6 +15,7 @@ use App\Contexts\Membership\Domain\Organisational\MemberId;
 use App\Contexts\Membership\Domain\Organisational\PeriodId;
 use App\Contexts\Membership\Domain\Organisational\ScheduledResignation;
 use App\Contexts\Membership\Domain\Organisational\ScheduledResignationState;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\Connection;
 use Illuminate\Database\UniqueConstraintViolationException;
@@ -52,6 +53,36 @@ final class PostgresScheduledResignationStore implements ScheduledResignationSto
         $row = $this->select($tenant, $member)->where('declaration_id', $id->value())->first();
 
         return $row === null ? null : $this->decode($row);
+    }
+
+    /**
+     * S2-4c, inside the ledger close only: the `scheduled` declarations with effective date ≤ $localDate, locked
+     * (FOR UPDATE), oldest date first. A concurrent withdrawal then waits for the close and loses its compare-and-set
+     * (MI-2); one that committed first is not returned.
+     *
+     * @return list<array{0: MemberId, 1: ScheduledResignation}>
+     */
+    public function lockDue(TenantId $tenant, TimePoint $localDate): array
+    {
+        if ($this->db->transactionLevel() === 0) {
+            throw new \LogicException('lockDue() runs only inside the ledger close transaction.');
+        }
+        $rows = $this->db->table(self::TABLE)
+            ->select([
+                'membership_id', 'declaration_id', 'period_fact_id', 'provenance', 'state', 'withdrawn_by', 'executed_fact_id', 'superseded_because',
+                $this->db->raw('declaration_date::text AS declaration_day'),
+                $this->db->raw('effective_date::text AS effective_day'),
+                $this->db->raw('withdrawn_on::text AS withdrawn_day'),
+                $this->db->raw(InstantMicros::selectExpression('decided_at') . ' AS decided_us'),
+            ])
+            ->where('organisation_id', $tenant->value())
+            ->where('state', ScheduledResignationState::Scheduled->value)
+            ->where('effective_date', '<=', DateOrdinal::toDate($localDate))
+            ->orderBy('effective_date')->orderBy('membership_id')->orderBy('declaration_id')
+            ->lockForUpdate()
+            ->get();
+
+        return array_map(fn (object $r): array => [MemberId::fromString($r->membership_id), $this->decode($r)], $rows->all());
     }
 
     public function appliedRequest(TenantId $tenant, IdempotencyKey $key): ?AppliedDeclarationRequest
