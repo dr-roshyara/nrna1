@@ -1,0 +1,23 @@
+PASS index platform: 14 guides, all indexed; 15 links, none dangling
+PASS index database: 4 guides, all indexed; 4 links, none dangling
+PASS index testing: 8 guides, all indexed; 8 links, none dangling
+PASS evidence: 110 SHA256SUMS over committed bytes; 683 files; mismatched 0; uncovered 0
+PASS cluster JUnit: 410 test cases, 0 failing/erroring/skipped
+PASS database-free JUnit: 560 test cases, 0 failing/erroring/skipped
+PASS cluster JUnit run: suite.txt Tests: 410, suite.exit 0
+PASS cluster JUnit run.txt commit 8b6fcd569 = the code under account 8b6fcd569
+PASS no code change between 8b6fcd569 and HEAD (task 13 and 14 are documentation and evidence only)
+PASS T-1..T-26 re-derived from committed JUnit: every T has a passing test; 79 cited; matches 05-t-matrix.txt
+PASS register at HEAD still has the hash D-193 (4) cites (a3fe00f2…)
+PASS register rows: 53
+PASS account rows: 53, the same ids as the register
+PASS status counts {'OUT OF SCOPE': 47, 'NOT PROVEN': 3, 'BLOCKED': 3} = summary table (47/3/3; 0 PROVEN, 0 FAILED)
+PASS account cites 26 test names (incl. 9 shortened with …, each matching a real test): all exist
+PASS PBDIGIT-351: one file, OPEN, not authorised; referenced from story, plan, account, guide 13 (4/4)
+PASS PBDIGIT-352: one file, OPEN, not authorised; referenced from story, plan, account, guide 13 (4/4)
+PASS PBDIGIT-353: one file, OPEN, not authorised; referenced from story, plan, account, guide 13 (4/4)
+PASS architecture at HEAD: exactly the 4 known failures, recorded as failures (Failures: 4)
+PASS no document claims the architecture suite passes; guide 13 and the baseline README name all 4
+PASS 20261112-1844-release-1-build-slice-2-pl: 10 commit hashes, all ancestors of HEAD
+PASS PBDIGIT-345-platform-routing-and-organis: 1 commit hashes, all ancestors of HEAD
+RESULT: 0 failing checks

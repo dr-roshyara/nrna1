@@ -39,4 +39,24 @@
 - **Ratchet:** PBDIGIT-345 raised the ceilings by **4 documented entries only**: 197→201 baseline entries and 264→268 occurrences. All four are Infrastructure adapters behind Platform-owned ports onto Identity, guarded by `PlatformIdentityBoundaryTest`. **No rule or detector was removed.**
 - **Full architecture suite:** 364 tests, the same 4 failures as at the baseline `5bd25c463`.
 
-**Traceability:** D-193 (4) · delta revision 3 §T · D-166 · D-234 · PBDIGIT-345 task 13.
+## Re-verifying the package (task 14)
+
+```
+python3 -I docs/publicdigit/platform/evidence/2026-11-15-pbdigit345-task14/verify-t14.py
+```
+
+**What it checks:**
+- every guide indexed;
+- every evidence seal over committed bytes;
+- the JUnit results;
+- the T-matrix re-derived;
+- the 53-obligation account against the register;
+- the backlog links;
+- the 4 architecture failures;
+- the recorded commits.
+
+**How it reads:** committed content only (`git show HEAD:…`), so an uncommitted edit can neither pass nor fail it. Exit 0 = all PASS.
+
+**When to run it:** run it again after any change to the evidence or the records. **If a check fails, find out whether the package or the script is wrong before changing either.** Task 14's first run failed four checks, all of them script defects; both runs are kept.
+
+**Traceability:** D-193 (4) · delta revision 3 §T · D-166 · D-234 · PBDIGIT-345 tasks 13 and 14.

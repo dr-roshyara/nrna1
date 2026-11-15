@@ -1,0 +1,5 @@
+2558f6e4d6aa260a3edb64ee84067e55726eee7e6a1d12649feae9d02f69b4eb  ./README.md
+a173b9f7750c5ee502e2e1a2b5d9bfc846d0b935862d8e904c8b7ed1abf87f76  ./t14-01-verification-run1-script-defects.txt
+6808c09f7b0b22c2711a9cd2dd908a6fb0e651417df015a36a62416e4fd863c0  ./t14-02-verification.txt
+d28eaceae23733c560ea69dac61cac2e17ae82c56004cb44b16e21b70da3d92f  ./verify-t14.py
+a7f254fb99ce13aac7fd1e3fbadf428da02c1583140b948b7e3932090f61ff8a  ./verify-t14-run1.py
