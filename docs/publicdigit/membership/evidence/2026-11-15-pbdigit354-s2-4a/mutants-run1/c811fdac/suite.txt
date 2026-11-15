@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............F..........                                         25 / 25 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi1_mi15f_the_exception_applies_to_no_other_end_and_no_other_fact
+an ordinary End is still not future-dated
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:193
+
+FAILURES!
+Tests: 25, Assertions: 109, Failures: 1.

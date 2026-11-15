@@ -1,0 +1,102 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEE.F                                                  16 / 16 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There were 14 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_a_resignation_from_a_later_date_is_scheduled_for_the_current_period
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:54
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_a_scheduled_resignation_changes_nothing_in_the_membership
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:66
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_the_scheduled_date_must_be_later_than_the_declaration
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::ScheduledDateNotAfterDeclaration
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:74
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_there_must_be_a_current_period_that_has_not_ended_by_the_scheduled_date
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:80
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_one_scheduled_declaration_per_period
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:92
+
+6) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_withdrawal_only_before_the_scheduled_date_starts
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:101
+
+7) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi3_a_declaration_is_superseded_when_its_period_ends_earlier
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:111
+
+8) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi15a_execution_on_the_date_records_the_end_on_that_date_decided_by_the_declaration
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:123
+
+9) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi15b_late_execution_still_takes_effect_on_the_scheduled_date
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideScheduledResignationEnd()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:141
+
+10) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi15c_execution_before_the_scheduled_date_is_refused
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::ExecutionBeforeEffectiveDate
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:150
+
+11) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_only_a_scheduled_declaration_can_be_executed
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:156
+
+12) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_execution_is_refused_when_the_period_has_ended_meanwhile
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:166
+
+13) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_execution_uses_a_fresh_fact_id
+Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\Member::decideScheduledResignationEnd()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:176
+
+14) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_marking_executed_keeps_the_end_reference_and_the_history
+Error: Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:181
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_the_declaration_needs_finite_dates
+Failed asserting that exception of type "Error" matches expected exception "InvalidArgumentException". Message was: "Class "App\Contexts\Membership\Domain\Organisational\ScheduledResignation" not found" at
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:48
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:203
+.
+
+ERRORS!
+Tests: 16, Assertions: 18, Errors: 14, Failures: 1.

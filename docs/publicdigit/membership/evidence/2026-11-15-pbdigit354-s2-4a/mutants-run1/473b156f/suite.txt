@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+....F....................                                         25 / 25 (100%)
+
+Time: 00:00.023, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_one_scheduled_declaration_per_period
+after a withdrawal, a new one
+Failed asserting that an instance of class App\Contexts\Membership\Domain\Organisational\RefusalReason is an instance of class App\Contexts\Membership\Domain\Organisational\ScheduledResignation.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:96
+
+FAILURES!
+Tests: 25, Assertions: 111, Failures: 1.

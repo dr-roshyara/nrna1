@@ -1,0 +1,2 @@
+K6 the End is decided at execution, not at the declaration tests:25   KILLED (assertions)  mi15a_execution_on_the_date_records_the_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

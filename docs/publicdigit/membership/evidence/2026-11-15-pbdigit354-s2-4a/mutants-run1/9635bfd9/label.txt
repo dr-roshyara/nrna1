@@ -1,0 +1,1 @@
+K6 the End is decided at execution, not at the declaration

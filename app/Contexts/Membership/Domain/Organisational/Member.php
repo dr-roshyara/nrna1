@@ -349,6 +349,45 @@ final readonly class Member
         return $t->isBefore($target->baseClaim()->until()) ? $target : RefusalReason::PeriodEnded;
     }
 
+    /**
+     * S2-4a: execute a scheduled resignation. **D-205's single exception:** this is the only End that may take effect
+     * after its decision. Its decision is the declaration (`decidedAt` stays the declaration's), its effective date is
+     * the scheduled date, and it is recorded on or after that date, never before (D-205 (1), D-223; MI-1, MI-15).
+     * Every other fact keeps "effective date not after decision date" (decideEnd and the others are unchanged).
+     *
+     * @param TimePoint $recordingDate the organisation-local date on which it is recorded (S2-4c: from the calendar)
+     */
+    public function decideScheduledResignationEnd(FactId $id, ScheduledResignation $declaration, TimePoint $recordingDate, ?Instant $recordedDecidedAt = null): Decision
+    {
+        if ($recordingDate->isInfinite()) {
+            throw new \InvalidArgumentException('The recording date is finite.');
+        }
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        if ($declaration->state() !== ScheduledResignationState::Scheduled) {
+            return Decision::refused(RefusalReason::DeclarationNotScheduled);
+        }
+        if ($recordingDate->isBefore($declaration->effectiveDate())) {
+            return Decision::refused(RefusalReason::ExecutionBeforeEffectiveDate);
+        }
+        $target = $this->resolve()->period($declaration->period());
+        if ($target === null) {
+            return Decision::refused(RefusalReason::PeriodNotFound);
+        }
+        if (!$target->baseClaim()->isOpenEnded()) {
+            return Decision::refused(RefusalReason::PeriodAlreadyEnded);   // the declaration is to be superseded (MI-3)
+        }
+        if (!$target->baseClaim()->start()->isBefore($declaration->effectiveDate())) {
+            return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
+        }
+        $stored = $declaration->provenance();
+        $provenance = Provenance::decision($stored->actorOrSource(), $stored->authorityEvidence(), $declaration->id()->value());
+
+        return $this->accept(new End($id, $declaration->period(), $declaration->effectiveDate(), EndKind::fromString(EndKind::RESIGNATION),
+            $provenance, $declaration->decidedAt() ?? $recordedDecidedAt));
+    }
+
     /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
     public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
     {

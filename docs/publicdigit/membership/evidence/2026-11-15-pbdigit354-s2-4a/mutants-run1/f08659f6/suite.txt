@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....F...................                                         25 / 25 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_withdrawal_only_before_the_scheduled_date_starts
+the date has started (D-201)
+Failed asserting that two variables reference the same object.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:104
+
+FAILURES!
+Tests: 25, Assertions: 109, Failures: 1.

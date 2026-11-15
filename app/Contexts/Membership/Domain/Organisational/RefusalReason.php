@@ -66,6 +66,24 @@ enum RefusalReason: string
     /** Command boundary (D-208 §2, GC-4; S2-3b): a death is recorded only with a cited evidence reference. */
     case DeathEvidenceRequired = 'death_evidence_required';
 
+    /** Guard (D-201; S2-4a): a scheduled resignation's date is after its declaration (the same day is "resign now"). */
+    case ScheduledDateNotAfterDeclaration = 'scheduled_date_not_after_declaration';
+
+    /** Guard (M-TDD-01 §5.2; S2-4a): one scheduled resignation declaration per period. */
+    case ScheduledResignationAlreadyPending = 'scheduled_resignation_already_pending';
+
+    /** Guard (S2-4a): a declaration id is used once per member. */
+    case DuplicateDeclarationId = 'duplicate_declaration_id';
+
+    /** Guard (M-TDD-01 §5.2; S2-4a): only a `scheduled` declaration can be withdrawn, superseded or executed. */
+    case DeclarationNotScheduled = 'declaration_not_scheduled';
+
+    /** Guard (D-201, D-223; S2-4a): withdrawal is refused once the effective date has started. */
+    case WithdrawalAfterEffectiveDate = 'withdrawal_after_effective_date';
+
+    /** Guard (D-205 (1), D-223; MI-15c): a scheduled resignation is never recorded before its effective date. */
+    case ExecutionBeforeEffectiveDate = 'execution_before_effective_date';
+
     /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
     case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';
 

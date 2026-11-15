@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F.................                                         25 / 25 (100%)
+
+Time: 00:00.021, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_mi15a_execution_on_the_date_records_the_end_on_that_date_decided_by_the_declaration
+decided when the member declared, not when executed (D-205 (2))
+Failed asserting that null is identical to 5000.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:133
+
+FAILURES!
+Tests: 25, Assertions: 108, Failures: 1.

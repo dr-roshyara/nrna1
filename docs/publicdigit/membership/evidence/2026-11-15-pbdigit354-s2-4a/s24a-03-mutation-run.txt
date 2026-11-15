@@ -1,0 +1,16 @@
+S1 the scheduled date may equal the declaration            tests:25   KILLED (assertions)  the_scheduled_date_must_be_later_than_th;
+S2 two pending declarations per period                     tests:25   KILLED (assertions)  one_scheduled_declaration_per_period;
+S3 a withdrawn declaration still counts as pending         tests:25   KILLED (assertions)  one_scheduled_declaration_per_period;
+S4 a duplicate declaration id is accepted                  tests:25   KILLED (assertions)  one_scheduled_declaration_per_period;
+S5 a period ending before the date is accepted             tests:25   KILLED (assertions)  there_must_be_a_current_period_that_has_;
+S6 withdrawal on the effective date is accepted            tests:25   KILLED (assertions)  withdrawal_only_before_the_scheduled_dat;
+S7 a withdrawn declaration can be withdrawn again          tests:25   KILLED (assertions)  withdrawal_only_before_the_scheduled_dat;
+S8 a final declaration can be superseded                   tests:25   KILLED (assertions)  mi3_a_declaration_is_superseded_when_its;
+K1 execution before the date is accepted (D-223)           tests:25   KILLED (assertions)  mi15c_execution_before_the_scheduled_dat;
+K2 a non-scheduled declaration is executed                 tests:25   KILLED (assertions)  only_a_scheduled_declaration_can_be_exec;
+K3 execution ignores an ended period                       tests:25   KILLED (assertions)  execution_is_refused_when_the_period_has;
+K4 the End takes effect on the recording date              tests:25   KILLED (assertions)  mi15b_late_execution_still_takes_effect_;
+K5 the End loses its declaration reference                 tests:25   KILLED (assertions)  mi15a_execution_on_the_date_records_the_;
+K6 the End is decided at execution, not at the declaration tests:25   KILLED+ERRORS (1: Error: Call to a member function ordinal() on null)  mi15a_execution_on_the_date_records_the_;
+K7 an ordinary End may be future-dated (the exception leaks) tests:25   KILLED (assertions)  mi1_mi15f_the_exception_applies_to_no_ot;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

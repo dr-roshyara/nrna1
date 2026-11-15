@@ -1,0 +1,1 @@
+K3 execution ignores an ended period

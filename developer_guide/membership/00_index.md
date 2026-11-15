@@ -35,6 +35,7 @@ The ratified Membership architecture is implemented slice by slice under
 | 26 | [Suspend and Restore (lifecycle S2-2)](26_suspend_and_restore.md) | `PBDIGIT-354` | implemented 2026-11-15; fail-closed in production until Governance S3; correcting their dates is S2-5 |
 | 27 | [The authority contract, aligned with Governance's AuthorityCheck (lifecycle S2-3a)](27_authority_contract.md) | `PBDIGIT-354` | implemented 2026-11-15 (D-238); no migration; reviewed (report-based) |
 | 28 | [Resign now and record a death (lifecycle S2-3b)](28_resign_now_and_record_a_death.md) | `PBDIGIT-354` | implemented 2026-11-15; no migration; fail-closed in production until Governance S3 |
+| 29 | [The scheduled resignation declaration and D-205's single exception (lifecycle S2-4a)](29_scheduled_resignation_domain.md) | `PBDIGIT-354` | implemented 2026-11-15 (domain only); S2-4b … d to follow |
 
 **Acceptance (2026-11-02, PO):** Slice 0 (`PBDIGIT-258`) and Slice 1a (`PBDIGIT-259`) **accepted**. C-1 G3 first **deferred** for V-2 (guide 09), then **accepted with explicit residual risks** the same day, after the V-2 fix and the W0 clean-copy run (`docs/publicdigit/membership/evidence/2026-11-02-w0-clean-copy/`). Slice 2a (`PBDIGIT-271`) **accepted with explicit residual risks** on 2026-11-02, after an independent review of the committed hardening.
 
