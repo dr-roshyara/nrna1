@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **APPROVED for steps I-1 … I-4 by the Principal, 2026-11-15** (development and test only; strict TDD; each step on a separate branch for the Principal to merge). **Q-1 = authorise I-1 … I-4; Q-2 = L1 (a stored reference table); Q-3 = the existing `users` row is the Account (transitional).** Steps I-5 … I-8 stay proposed. Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open. *The answers are to be entered in the decision record by the recorder; this plan doesn't assign decision numbers, because a parallel session is appending to the record.* |
+| **Status** | **APPROVED for steps I-1 … I-4 by the Principal, 2026-11-15** (development and test only; strict TDD; each step on a separate branch for the Principal to merge). **Q-1 = authorise I-1 … I-4; Q-2 = L1 (a stored reference table); Q-3 = the existing `users` row is the Account (transitional).** Steps I-5 … I-8 stay proposed. Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open. *The answers are to be entered in the decision record by the recorder; this plan doesn't assign decision numbers, because a parallel session is appending to the record.*<br>**Superseded in part by D-241 (2026-11-15, R-9 Option B):** the register authorises **I-1 … I-3 only**, for development and test. **I-4 is not authorised**; it needs a separate Principal decision after I-3 is accepted. The text above is kept as the history of the original approval. |
 | **Session** | B. Documentation-only worktree `../nrna1-349`, branch `identity/pbdigit-349-readiness`, from `d85fa0abe` |
 | **Design (binding)** | `docs/publicdigit/architecture/reviews/2026-11-11-i-tdd-02-identity-claims-and-bindings-tactical-design.md`, revision 12. **Verified on 2026-11-15:** the file's SHA-256 is `2b5f6e92…` (the accepted text `b6d54798…` plus the D-200 status note), the only change D-200 records |
 | **Decisions** | D-113, D-148, D-164, D-166, D-167, D-178, D-181, D-193 (X-2, X-3), D-194, D-195, D-196 (A1 `manage-claims`), D-197 (no lock, throttling only), D-198 (B2), D-199 (14 days, maximum 30), **D-200 (conditions)**, D-202, D-203, D-208 (Governance completion; X-3 closed at design level), D-225, D-226 |
@@ -139,25 +139,59 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
     - **Guard:** the purity guard flagged a port method named `now()`; it was renamed `currentInstant()`.
   - Guide `developer_guide/identity/03_…`.
   - **PI gates proven for I-2:** 7, 12, 17a, 18, 20, 21, 23, 24, 27, 32 (by the lock design plus 23 and 27), 35. **PI-15 is half done:** the replace and revoke half here; redemption in I-3.
-- 2026-11-15: **I-3 DONE** (worktree `../nrna1-349-i3`, branch `identity/pbdigit-349-i3`).
+- 2026-11-15: **I-3 IMPLEMENTED, NOT ACCEPTED** (worktree `../nrna1-349-i3`, branch `identity/pbdigit-349-i3`, commit `fcaba62ca`; unmerged). *Corrected wording: this entry first said "DONE"; the review found claims that went beyond the evidence (see the corrections entry below).*
   - **Built:** `RedeemClaim`, the one redemption path `PostgresClaims::redeem` (`ClaimSlot` → claim row → one `t_check`), the binding, `ClaimRedeemed` / `BindingRefused` with hydrators, and throttling per code and per client (`config/identity.php`; values [TU], proposals).
   - **Two schema findings, fixed:**
     1. I-2's foreign keys to claim rows would have blocked the §15 cleanup. They were dropped.
     2. The shared `outbox_events` has a foreign key to the legacy `organisations` table, so it can't carry registry organisations. `identity_outbox_events` was added: "Identity's outbox" (multi-database design §13.3).
   - **Tests:** strictly RED first (11 tests). GREEN: Identity PostgreSQL 44, unit 17, guards 52, the event-registry guard in the isolated cluster 2, full cluster 504.
-  - **Mutants:** N1, N3, N4 and N6 all killed.
+  - **Mutants:** N1, N3, N4 and N6 were applied **together in one run**, which failed. That does not show each one is killed on its own (corrected by review R-7; individual runs are in the corrections entry).
   - **Test corrections after RED, recorded:** the outbox table name; `jsonb` key order.
-  - **PI gates proven for I-3:** 1, 2, 3, 8, 9, 13, 15 (redeem half; PI-15 now complete), 22, 28, 34, 44, 48.
+  - **PI gates with evidence for I-3 (corrected wording, R-7):** 1, 2, 3, 8, 9, 13, 22, 28, 44; **PI-15** only for the orders tested (redeem-then-revoke; after the corrections also replace-first and redeem-then-replace), not every replacement/revocation interleaving; **PI-34** one forked interleaving only, **no load test**; **PI-48** for **ordinary claims only** (bootstrap claims are I-6).
   - **Open:**
     - the relay of Identity's outbox to organisation inboxes (needs Organisation S4's consumer);
     - confirmation of the throttling values;
-    - PI-29 (issuance first, then the waiting redemption of the expired old code) is covered by the expiry logic but has no dedicated race test.
+    - PI-29 (issuance first, then the waiting redemption of the expired old code) is covered by the expiry logic but has no dedicated race test. *(Closed by the corrections below.)*
   - Guide `developer_guide/identity/04_…`.
+- 2026-11-15: **I-3 review corrections: IMPLEMENTED, AWAITING PRINCIPAL REVIEW** (same worktree and branch; not merged, not pushed; I-3 remains **not accepted**).
+  - **R-1:** a racing INV-BND-2 conflict (unique key `identity_bindings_organisation_id_person_id_key`) now ends as a reported `PersonAlreadyBound` (BindingRefused + audit). The whole transaction is rolled back and decided **once more** in a fresh transaction. Only that constraint is retried, and only once; anything else stays `IdentityUnavailable`.
+  - **R-2:** client keys are stored only as HMAC-SHA-256 under a server secret. Expired windows are deleted on every recorded failure, and the code key must be a SHA-256 hash. No secret of at least 16 characters → every redemption is refused as unavailable (fail closed).
+  - **R-3:** migration `2026_11_15_630000` is **forward-only**: `down()` throws and changes nothing.
+  - **R-4:** the database-free guard `IdentityBindingSingleWriterTest` has four rules and planted fixtures, and its limits are stated.
+  - **R-6 (Principal):** `PersonAlreadyBound` counts as a failed attempt.
+  - **F-3:** `pg_constraint` proof.
+  - **PI-29:** dedicated race test, plus two PI-15 order tests.
+  - **R-7 / R-8:** wording, comments and the `BindingRefused` aggregate (now the claim, as for `ClaimRedeemed`).
+  - **R-9:** a proposed decision entry only, not inserted. *Update 2026-11-15: the Principal approved Option B; recorded as **D-241** in the Identity worktree's register copy (see the R-9 entry below).*
+  - **TDD deviations (recorded, not strict test-first):**
+    - **R-4:** the new single-writer guard was **green on its first run**, so there was no genuine initial RED. Its ability to fail was shown only afterwards, by mutant M-R4 (evidence `01b`, `03-mutant-R4`).
+    - **R-8:** the `BindingRefused` aggregate change was made **before** its test. RED was shown afterwards by restoring the old argument (evidence `01e`).
+  - **Tests:** Identity unit 17; RedeemClaimTest 20; guard 2; event-registry guard 2; full isolated cluster **513 tests, 17,980 assertions, exit 0** (evidence `07`).
+    - *Correction 4:* this line first said 17,958 assertions. That was an **earlier** full run; **17,980** is the **final** full isolated run, after the review-driven assertions.
+    - The read-only audit of 2026-11-15 reran **targeted Identity suites only** (unit 17, guard 2, RedeemClaimTest 20). It did **not** rerun the full isolated cluster.
+    - *Correction 5 (2026-11-16; supersedes the "final 17,980" wording above):* **513 tests passed with zero failures and zero skipped tests** in every full run. **The assertion count varies between runs.**
+      - Six observed runs gave 17,953; 17,958; 17,980; 17,937; 17,920; 17,947.
+      - **Cause, established:** two runs with per-test JUnit logs differ in exactly one test, `PostgresClosedThroughRaceTest::test_a_reported_closed_through_is_never_contradicted_by_a_later_commit` (Membership, PBDIGIT-343; 280 vs 307 assertions).
+      - It is a concurrency stress test: its readers loop with random sleeps and assert once per reported boundary, so the count depends on process scheduling, by design. It keeps guards that fail if nothing really interleaved.
+      - **All 65 Identity tests made identical assertion counts** in both runs, and no test made zero assertions. Evidence: `11-assertion-count-variation-2026-11-16.txt` and `12-erratum-assertion-count-2026-11-16.md`.
+  - **Mutants, each run on its own:** M-R1, M-R2a, M-R2b, M-R3, M-R4, M-R6, N1, N3 and M-R8 were all killed. N4 and N6 were **not** re-run individually.
+  - Evidence: `docs/publicdigit/identity/evidence/2026-11-15-pbdigit349-i3-corrections/`.
+  - **Unratified:** the throttle values 5 / 10 / 900 s ([TU]).
+- 2026-11-15: **R-9 decided: Option B, recorded as D-241** (development and test only).
+  - **Authorised:** I-1, I-2 and I-3. **I-4 is NOT authorised**; it needs a separate Principal decision after I-3 is accepted.
+  - **The record says openly** that I-1 and I-2 were merged before the entry existed. It is not backdated.
+  - **Where it is recorded:** in the Identity worktree's copy of the register, which was first brought level with the canonical copy (D-240, Membership Q-5, byte-identical). It enters the canonical register only when this branch is committed and merged, so the number must be re-verified then.
+  - **Documentation:** R-9 erratum file added to the evidence (the original proposal unchanged; manifest now 26 files); guide 04 explains how the R-1 conflict is recognised (message text).
+  - **Still open:** the I-3 commit (withheld), I-3 acceptance, the merge, and I-4.
 
 ## 8. Next actions
 
-1. The Principal answers Q-1, Q-2 and Q-3 (Q-4 and Q-5 later).
-2. On approval: step I-1, RED first, in a separate worktree branch, merged by the Principal (as M1).
+*(Updated 2026-11-16. The original actions, "the Principal answers Q-1, Q-2 and Q-3" and "on approval: step I-1 …", are done: Q-1 … Q-3 answered on 2026-11-15, I-1 and I-2 merged.)*
+
+1. **Principal: the I-3 commit decision.** It is a separate decision and is currently withheld.
+2. **Then, as separate decisions:** I-3 acceptance, and I-3 merge.
+3. **At merge:** re-verify D-241's number against the canonical register and enter D-241 there, adding its canonical recording date. Its effect runs from the Principal's approval of 2026-11-15 (clause (8), Principal's choice "I").
+4. **I-4 only after a separate Principal decision following I-3 acceptance** (D-241 (2)). I-5 … I-8 stay proposed; Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open.
 
 ## Traceability
 EP-03 readiness and EP-01 plan for PBDIGIT-349 · design revision 12 (D-200) · supersedes nothing.

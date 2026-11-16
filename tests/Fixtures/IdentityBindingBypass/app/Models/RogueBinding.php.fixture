@@ -1,0 +1,6 @@
+<?php
+// PLANTED BYPASS (W3): an Eloquent model over the bindings table (RogueBinding::create([...]) would write one). Never loaded.
+final class RogueBinding extends \Illuminate\Database\Eloquent\Model
+{
+    protected $table = 'identity_bindings';
+}

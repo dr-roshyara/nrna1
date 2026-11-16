@@ -9,6 +9,28 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-11-16, Session B, Identity): **PBDIGIT-349 I-3 (claim redemption and binding) implemented and review-corrected; NOT accepted, NOT committed (commit withheld), NOT merged; D-241 recorded in this branch's register copy**
+- **Where:** worktree `nrna1-349-i3`, branch `identity/pbdigit-349-i3`, base `fcaba62ca`. The corrections are uncommitted. Evidence: `docs/publicdigit/identity/evidence/2026-11-15-pbdigit349-i3-corrections/` (26 files plus `SHA256SUMS`).
+- **What I-3 does:**
+  - A signed-in person redeems a claim code, and Identity binds the organisation's PersonRef to that Person.
+  - **It grants no membership, office, vote, Forum or Newsletter right.**
+  - Production can't issue claims before I-4. Events wait in `identity_outbox_events` until Organisation S4 provides the relay.
+- **D-241 (R-9 Option B):** I-1 … I-3 authorised for development and test only, **effective from the Principal's approval on 2026-11-15** (Principal's choice "I", 2026-11-16).
+  - **I-4 is not authorised**; it needs a separate decision after I-3 is accepted.
+  - D-241 is in this branch's copy of the register. It enters the canonical register (currently ending at D-240) only at merge, with its number re-verified then.
+- **Open (each a separate Principal decision):** the I-3 commit, I-3 acceptance, I-3 merge, I-4.
+- **Not ratified:** throttle values 5 / 10 / 900 s. **Still in force:** PI-1 … PI-48, PI-17b, B-T1 / B-T2.
+- **Residual risks:** see guide 04, `developer_guide/identity/04_i3_redemption_and_binding.md`.
+- **Next action:** the Principal's I-3 commit decision.
+
+## 📍 UPDATE (2026-11-16, Session B, frontend status): **PBDIGIT-355 M1 merged and pushed; acceptance and browser check pending**
+*Supersedes the "Where" and "Open" lines of the 2026-11-15 M1 block below; that block is kept as history.*
+- **Implementation:** complete. All five M1 commits (`f8ec41b05`, `635838a9b`, `83d3d11ca`, `cf9e69576`, `32bf02a90`) are in `election-flow-updated` through the Principal's merge `fa63f3ad0`, which is on `origin/election-flow-updated` (**pushed**). The manual test guide is merged as well (`f372518cd`). The worktree `../nrna1-m1-geo` has been removed.
+- **Open:**
+  - the Principal's acceptance (EP-02);
+  - the real-browser check at desktop and mobile widths.
+- **Not repeated:** neither the implementation nor the merge.
+
 ## 📍 UPDATE (2026-11-15, Session B, frontend): **PBDIGIT-355 M1, the read-only Reference Geography explorer, implemented; awaiting the Principal's acceptance**
 *Written by Claude (Session B). State only; it creates no authority. Additive.*
 - **Where:** branch `frontend/m1-geography-explorer` (worktree `../nrna1-m1-geo`), commits `f8ec41b05`, `635838a9b`, `83d3d11ca`, `cf9e69576`. **Not pushed, not merged.** Session A's working tree was not touched.

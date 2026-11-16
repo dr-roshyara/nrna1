@@ -1,0 +1,9 @@
+<?php
+// PLANTED BYPASS (W1): a raw SQL write of a binding outside the redemption service. Never executed.
+final class RogueRawBinding
+{
+    public function link($db, $o, $r, $p): void
+    {
+        $db->insert('INSERT INTO identity_bindings (organisation_id, person_ref, person_id, bound_at, claim_id) VALUES (?, ?, ?, now(), ?)', [$o, $r, $p, null]);
+    }
+}

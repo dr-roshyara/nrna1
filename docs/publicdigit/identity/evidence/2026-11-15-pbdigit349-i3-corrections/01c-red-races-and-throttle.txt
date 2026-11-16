@@ -1,0 +1,299 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDFFFFFDFEEEEEEEE                                              20 / 20 (100%)
+
+Time: 00:12.658, Memory: 28.00 MB
+
+There were 8 errors:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_one_person_redeeming_two_references_at_once_gets_a_reported_refusal
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: SELECT 1 FROM identity_redemption_failures
+                 WHERE window_start > clock_timestamp() - make_interval(secs => 900)
+                   AND ((scope = 'code' AND key_hash = e040bf43301c336e4c048e03b7335f646bfb21f4915cb0c9db7b66f69eae3198 AND failures >= 5) OR (scope = 'client' AND key_hash = 32e00e98e076eaa0011b1e93d848b91009ed571b7ab0c469cf6e39d5b24655fa AND failures >= 10)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_pi29_an_issuance_after_expiry_holds_the_slot_and_the_waiting_redemption_of_the_old_code_is_refused
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: SELECT 1 FROM identity_redemption_failures
+                 WHERE window_start > clock_timestamp() - make_interval(secs => 900)
+                   AND ((scope = 'code' AND key_hash = 0f4bfcb1fafce78a07211402246ec582042001fbdf1a03743a888d169a908693 AND failures >= 5) OR (scope = 'client' AND key_hash = 5704de18fc6045e4d08c3a261162795689ba6a0383964109350f8fad3c4ad972 AND failures >= 10)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:331
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_pi15_replace_first_then_the_waiting_redemption_of_the_old_code_is_refused
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: SELECT 1 FROM identity_redemption_failures
+                 WHERE window_start > clock_timestamp() - make_interval(secs => 900)
+                   AND ((scope = 'code' AND key_hash = c6510c52f8844f601feee2c1b5c89cbd6a7b327faefa3923706b0550b074ff89 AND failures >= 5) OR (scope = 'client' AND key_hash = 5704de18fc6045e4d08c3a261162795689ba6a0383964109350f8fad3c4ad972 AND failures >= 10)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:347
+
+4) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_pi15_redeem_first_then_a_waiting_replacement_is_refused
+RuntimeException: the holder failed: App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:404
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:359
+
+5) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_two_concurrent_redemptions_of_one_code_give_exactly_one_binding
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:427
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:425
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: SELECT 1 FROM identity_redemption_failures
+                 WHERE window_start > clock_timestamp() - make_interval(secs => 900)
+                   AND ((scope = 'code' AND key_hash = 12e7c4855ecf6275afb7951b5e8f0fd1d40b98c353d0fb83ee233c0a64c0ac64 AND failures >= 5) OR (scope = 'client' AND key_hash = 32e00e98e076eaa0011b1e93d848b91009ed571b7ab0c469cf6e39d5b24655fa AND failures >= 10)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:427
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:425
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:427
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:425
+
+6) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redemption_that_waits_across_expiry_is_refused
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+
+Caused by
+Illuminate\Database\QueryException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^ (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: SELECT 1 FROM identity_redemption_failures
+                 WHERE window_start > clock_timestamp() - make_interval(secs => 900)
+                   AND ((scope = 'code' AND key_hash = 287d66e5b380b5fe92f4d0e91f21cdf9d9c0dfc5f624b604e8a5c79b35c27796 AND failures >= 5) OR (scope = 'client' AND key_hash = 5704de18fc6045e4d08c3a261162795689ba6a0383964109350f8fad3c4ad972 AND failures >= 10)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+
+Caused by
+PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "identity_redemption_failures" does not exist
+LINE 1: SELECT 1 FROM identity_redemption_failures
+                      ^
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:357
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:44
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:446
+
+7) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_an_issuance_waiting_behind_a_redemption_sees_r_bound
+RuntimeException: the holder failed: App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:404
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:457
+
+8) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_revocation_waiting_behind_a_redemption_finds_nothing_to_revoke
+RuntimeException: the holder failed: App\Contexts\Identity\Application\IdentityUnavailable: Identity could not check throttling (Illuminate\Database\QueryException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:404
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:471
+
+--
+
+There were 6 failures:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_failed_attempts_are_throttled_per_client_and_per_code_and_the_claim_is_never_disabled
+no plain, enumerable hash
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:212
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_already_bound_attempts_count_towards_throttling
+R-6 (Principal): PersonAlreadyBound is a failed attempt; built up by real failures, per code
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Identity\Application\RedemptionRefusal Enum #7921 (Throttled, 'throttled')
++App\Contexts\Identity\Application\RedemptionRefusal Enum #7917 (PersonAlreadyBound, 'person-already-bound')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:232
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_expired_throttle_windows_are_purged_and_active_ones_kept
+R-2: rows whose window has ended are deleted
+Failed asserting that 20 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:245
+
+4) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_client_keys_are_always_keyed_hashes_and_the_secret_is_never_stored
+R-2: no inference from the 64-hex pattern
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:254
+
+5) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_without_a_throttle_secret_redemption_is_refused_as_unavailable
+Failed asserting that exception of type "App\Contexts\Identity\Application\IdentityUnavailable" is thrown.
+
+6) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_the_redemption_migration_is_forward_only_and_never_drops_identitys_outbox
+Failed asserting that 'SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "identity_consumed_authority_requests" violates foreign key constraint "identity_consumed_authority_requests_claim_id_fkey"\n
+DETAIL:  Key (claim_id)=(468f112e-854f-4b3d-a86a-c6df490019c0) is not present in table "identity_claims". (Connection: pgsql, Host: 127.0.0.1, Port: 44173, Database: membership_pg_isolated, SQL: ALTER TABLE identity_consumed_authority_requests ADD CONSTRAINT identity_consumed_authority_requests_claim_id_fkey FOREIGN KEY (claim_id) REFERENCES identity_claims (claim_id))' [ASCII](length: 571) contains "forward-only" [ASCII](length: 12).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:289
+
+ERRORS!
+Tests: 20, Assertions: 43, Errors: 8, Failures: 6, Deprecations: 1.

@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDFDDDDDDDDDDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:17.333, Memory: 28.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_person_already_bound_in_the_organisation_is_refused_and_the_organisation_told
+review R-8: the aggregate of BindingRefused is the claim, as for ClaimRedeemed
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     0 => 'IdentityClaim',
+-    1 => '6ad3e17d-1038-4c89-9bbf-a828b50bbc65',
++    1 => 'a8ccbb21c20d6a760c8e1eaa941e2b35',
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:159
+
+FAILURES!
+Tests: 20, Assertions: 74, Failures: 1, Deprecations: 1.

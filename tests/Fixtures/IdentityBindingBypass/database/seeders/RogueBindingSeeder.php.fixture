@@ -1,0 +1,11 @@
+<?php
+// PLANTED BYPASS (W2): a seeder writing a binding through a query-builder chain spread over several lines. Never loaded.
+final class RogueBindingSeeder
+{
+    public function run(): void
+    {
+        DB::table('identity_bindings')
+            ->where('organisation_id', 'x')
+            ->updateOrInsert(['person_ref' => 'y'], ['person_id' => 'z']);
+    }
+}

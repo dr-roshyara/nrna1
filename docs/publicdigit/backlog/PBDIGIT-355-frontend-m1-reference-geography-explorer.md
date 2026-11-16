@@ -1,6 +1,6 @@
 # PBDIGIT-355: Frontend M1: read-only Reference Geography explorer
 
-**Status:** DONE (implementation complete 2026-11-15; **the Principal's acceptance (EP-02) pending**; created 2026-11-15; plan approved by the Principal 2026-11-15, "Approve as planned") · **Context:** Reference Geography (delivery only) · **Kind:** frontend vertical slice · **Session:** B (frontend)
+**Status:** DONE (implementation complete 2026-11-15; **merged into `election-flow-updated` (`fa63f3ad0`) and pushed**, as of 2026-11-16; **the Principal's acceptance (EP-02) pending; the real-browser check at desktop and mobile widths pending**; created 2026-11-15; plan approved by the Principal 2026-11-15, "Approve as planned") · **Context:** Reference Geography (delivery only) · **Kind:** frontend vertical slice · **Session:** B (frontend)
 
 ## Why
 

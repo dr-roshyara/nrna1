@@ -1,0 +1,19 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDFDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:16.981, Memory: 28.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_the_redemption_migration_is_forward_only_and_never_drops_identitys_outbox
+Failed asserting that 'down() must refuse' [ASCII](length: 18) contains "forward-only" [ASCII](length: 12).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:289
+
+FAILURES!
+Tests: 20, Assertions: 72, Failures: 1, Deprecations: 1.

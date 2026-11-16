@@ -1,0 +1,19 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.xml
+
+.F                                                                  2 / 2 (100%)
+
+Time: 00:00.112, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\IdentityBindingSingleWriterTest::test_the_guard_finds_a_planted_bypass_of_every_rule
+no planted bypass of 'W2 query-builder write' was found
+Failed asserting that an array is not empty.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Architecture/IdentityBindingSingleWriterTest.php:78
+
+FAILURES!
+Tests: 2, Assertions: 5, Failures: 1.

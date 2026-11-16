@@ -1,0 +1,5 @@
+<?php
+// PLANTED BYPASS (W4): a route that marks a claim redeemed through the query builder. Never loaded.
+Route::post('/rogue/redeem/{claim}', function ($claim) {
+    DB::table('identity_claims')->where('claim_id', $claim)->update(['state' => 'redeemed']);
+});

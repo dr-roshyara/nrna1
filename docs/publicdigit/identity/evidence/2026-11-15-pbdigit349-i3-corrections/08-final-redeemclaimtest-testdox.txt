@@ -1,0 +1,34 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:14.982, Memory: 28.00 MB
+
+Redeem Claim (Tests\Feature\Contexts\Identity\RedeemClaim)
+ ✔ Redemption binds r to the person and reports only r to the organisation
+ ✔ A redeemed code never binds twice and the same person gets an idempotent answer
+ ✔ A person already bound in the organisation is refused and the organisation told
+ ✔ Expired revoked unknown and malformed codes fail with one neutral message
+ ✔ Redemption needs a signed in active account
+ ✔ Failed attempts are throttled per client and per code and the claim is never disabled
+ ✔ Already bound attempts count towards throttling
+ ✔ Expired throttle windows are purged and active ones kept
+ ✔ Client keys are always keyed hashes and the secret is never stored
+ ✔ Without a throttle secret redemption is refused as unavailable
+ ✔ The three claim foreign keys are absent and the binding keys remain
+ ✔ The redemption migration is forward only and never drops identitys outbox
+ ✔ One person redeeming two references at once gets a reported refusal
+ ✔ Pi29 an issuance after expiry holds the slot and the waiting redemption of the old code is refused
+ ✔ Pi15 replace first then the waiting redemption of the old code is refused
+ ✔ Pi15 redeem first then a waiting replacement is refused
+ ✔ Two concurrent redemptions of one code give exactly one binding
+ ✔ A redemption that waits across expiry is refused
+ ✔ An issuance waiting behind a redemption sees r bound
+ ✔ A revocation waiting behind a redemption finds nothing to revoke
+
+OK, but there were issues!
+Tests: 20, Assertions: 77, Deprecations: 1.

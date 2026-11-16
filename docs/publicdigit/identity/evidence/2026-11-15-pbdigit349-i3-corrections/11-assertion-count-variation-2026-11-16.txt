@@ -1,0 +1,17 @@
+PBDIGIT-349 I-3: assertion-count variation investigation, 2026-11-16 (Session B)
+Code: identity/pbdigit-349-i3 at fcaba62ca + the uncommitted I-3 corrections (unchanged between runs).
+Harness: scripts/testing/membership-pg.sh, PostgreSQL 15.19 (pinned digest), throwaway container; phpunit --log-junit.
+
+Run A: tests=513 assertions=17920 skipped/failed/errored=0
+Run B: tests=513 assertions=17947 skipped/failed/errored=0
+Same set of test cases in A and B: True
+Tests with zero assertions (A / B): 0 / 0
+Tests whose assertion count differs between A and B: 1
+  A=280 B=307  Tests\Feature\Contexts\Membership\Organisational\PostgresClosedThroughRaceTest::test_a_reported_closed_through_is_never_contradicted_by_a_later_commit
+Identity test cases: 65 ; differing: 0 ; Identity assertions A/B: 268 / 268
+RedeemClaimTest cases: 20 ; assertions A/B: 77 / 77
+
+Earlier full-run totals (same 513 tests, all passing): 17,953; 17,958; 17,980; 17,937. With A and B: six runs, 17,920 to 17,980.
+Cause: the one varying test is a concurrency stress test whose reader processes loop with random sleeps and assert once
+per reported boundary (bounded by a maximum), so its assertion count depends on process scheduling, by design; it keeps
+non-vacuity guards (boundary advanced; at least one boundary reported mid-run). It is Membership code (PBDIGIT-343), not I-3.

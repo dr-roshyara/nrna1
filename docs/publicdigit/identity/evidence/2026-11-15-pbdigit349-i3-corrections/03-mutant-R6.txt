@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDFDDDDDDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:13.931, Memory: 28.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_already_bound_attempts_count_towards_throttling
+R-6 (Principal): PersonAlreadyBound is a failed attempt; built up by real failures, per code
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Identity\Application\RedemptionRefusal Enum #7921 (Throttled, 'throttled')
++App\Contexts\Identity\Application\RedemptionRefusal Enum #7917 (PersonAlreadyBound, 'person-already-bound')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:232
+
+FAILURES!
+Tests: 20, Assertions: 72, Failures: 1, Deprecations: 1.

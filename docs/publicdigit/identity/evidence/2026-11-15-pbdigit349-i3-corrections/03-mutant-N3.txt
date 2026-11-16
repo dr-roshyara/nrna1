@@ -1,0 +1,26 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DFDDDDDDDDDDDDDDFDDD                                              20 / 20 (100%)
+
+Time: 00:16.500, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redeemed_code_never_binds_twice_and_the_same_person_gets_an_idempotent_answer
+PI-2 / case 5: anyone else → neutral
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:136
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_two_concurrent_redemptions_of_one_code_give_exactly_one_binding
+PI-1
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:431
+
+FAILURES!
+Tests: 20, Assertions: 69, Failures: 2, Deprecations: 1.

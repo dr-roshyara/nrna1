@@ -33,7 +33,9 @@ interface ClaimStore
 
     /**
      * I-3, the ONE redemption path (§14, INV-CLM-6): ClaimSlot (O, R) → claim row → one t_check; binds R to the
-     * Person, marks the claim redeemed and records ClaimRedeemed(O, R) in the central outbox, in one transaction.
+     * Person, marks the claim redeemed and records ClaimRedeemed(O, R) in Identity's own outbox (identity_outbox_events,
+     * central database), in one transaction. INV-BND-2 refusals are reported (BindingRefused), also when two
+     * redemptions by one Person race (the losing one is decided again in a fresh transaction).
      *
      * @throws IdentityUnavailable
      */

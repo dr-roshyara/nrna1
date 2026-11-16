@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDFDDFDDDDDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:15.072, Memory: 28.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_failed_attempts_are_throttled_per_client_and_per_code_and_the_claim_is_never_disabled
+no plain, enumerable hash
+Failed asserting that 1 is identical to 0.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:212
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_client_keys_are_always_keyed_hashes_and_the_secret_is_never_stored
+Failed asserting that 0 is identical to 1.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:255
+
+FAILURES!
+Tests: 20, Assertions: 68, Failures: 2, Deprecations: 1.

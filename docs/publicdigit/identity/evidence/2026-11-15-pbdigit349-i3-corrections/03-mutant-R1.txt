@@ -1,0 +1,61 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDEDDDDDDD                                              20 / 20 (100%)
+
+Time: 00:17.203, Memory: 28.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_one_person_redeeming_two_references_at_once_gets_a_reported_refusal
+App\Contexts\Identity\Application\IdentityUnavailable: Identity could not complete the redemption (Illuminate\Database\UniqueConstraintViolationException).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:127
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+Caused by
+Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "identity_bindings_organisation_id_person_id_key"
+DETAIL:  Key (organisation_id, person_id)=(1615752b-46b4-40e5-b815-63f1c2972b20, b75bf05a-afed-467e-95a9-f91eebb7f660) already exists. (Connection: pgsql, Host: 127.0.0.1, Port: 36343, Database: membership_pg_isolated, SQL: INSERT INTO identity_bindings (organisation_id, person_ref, person_id, bound_at, claim_id) VALUES (1615752b-46b4-40e5-b815-63f1c2972b20, b513cbec52bb09dcb2b9711440ab42e1, b75bf05a-afed-467e-95a9-f91eebb7f660, 2026-11-15 17:15:09.699782+00::timestamptz, 6259be1b-e880-4574-ae1a-b19e52768327))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:181
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:145
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:124
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+Caused by
+PDOException: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "identity_bindings_organisation_id_person_id_key"
+DETAIL:  Key (organisation_id, person_id)=(1615752b-46b4-40e5-b815-63f1c2972b20, b75bf05a-afed-467e-95a9-f91eebb7f660) already exists.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:181
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:145
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Infrastructure/PostgresClaims.php:124
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/app/Contexts/Identity/Application/RedeemClaim.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:101
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:305
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:400
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:303
+
+ERRORS!
+Tests: 20, Assertions: 66, Errors: 1, Deprecations: 1.

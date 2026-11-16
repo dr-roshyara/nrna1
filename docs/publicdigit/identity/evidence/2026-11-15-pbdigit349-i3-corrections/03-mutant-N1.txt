@@ -1,0 +1,37 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDFDDDFFD                                              20 / 20 (100%)
+
+Time: 00:16.506, Memory: 28.00 MB
+
+There were 3 failures:
+
+1) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_pi29_an_issuance_after_expiry_holds_the_slot_and_the_waiting_redemption_of_the_old_code_is_refused
+the redemption waited for the slot held by the issuance
+Failed asserting that 65 is greater than 400.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:333
+
+2) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_a_redemption_that_waits_across_expiry_is_refused
+PI-22: t_check after the lock sees the claim expired
+Failed asserting that null is identical to an object of class "App\Contexts\Identity\Application\RedemptionRefusal".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:448
+
+3) Tests\Feature\Contexts\Identity\RedeemClaimTest::test_an_issuance_waiting_behind_a_redemption_sees_r_bound
+PI-28 / PI-34: no active claim for a bound R
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'reference-bound'
++'active-claim-exists'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3/tests/Feature/Contexts/Identity/RedeemClaimTest.php:462
+
+FAILURES!
+Tests: 20, Assertions: 71, Failures: 3, Deprecations: 1.

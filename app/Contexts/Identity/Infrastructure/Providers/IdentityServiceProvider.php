@@ -51,12 +51,28 @@ final class IdentityServiceProvider extends ServiceProvider
         // PBDIGIT-349 I-3 (I-TDD-02 §14, INV-ID-9). Limits from config/identity.php (values [TU], to be confirmed).
         $this->app->bind(RedemptionThrottle::class, static fn (): PostgresRedemptionThrottle => new PostgresRedemptionThrottle(DB::connection(),
             (int) config('identity.redemption_throttle.per_code'), (int) config('identity.redemption_throttle.per_client'),
-            (int) config('identity.redemption_throttle.window_seconds')));
+            (int) config('identity.redemption_throttle.window_seconds'), self::throttleSecret()));
+    }
+
+    /**
+     * Review R-2: the client-key HMAC secret. The dedicated setting if present, else derived from APP_KEY (a separate,
+     * purpose-bound key: HMAC of a fixed label under APP_KEY, so APP_KEY itself is never used directly). Empty if
+     * neither exists: the throttle then refuses every redemption (fail closed).
+     */
+    private static function throttleSecret(): string
+    {
+        $dedicated = (string) config('identity.redemption_throttle.client_key_secret');
+        if ($dedicated !== '') {
+            return $dedicated;
+        }
+        $appKey = (string) config('app.key');
+
+        return $appKey === '' ? '' : hash_hmac('sha256', 'pbdigit349-identity-redemption-throttle-client-key', $appKey);
     }
 
     public function boot(): void
     {
-        // PBDIGIT-349 I-3: the published events Identity writes to the central outbox (C-I3, C-I6)
+        // PBDIGIT-349 I-3: the published events Identity writes to its own outbox, identity_outbox_events (C-I3, C-I6)
         $registry = $this->app->make(EventHydratorRegistry::class);
         $registry->register(new ClaimRedeemedHydrator());
         $registry->register(new BindingRefusedHydrator());

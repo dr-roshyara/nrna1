@@ -19,6 +19,7 @@ use App\Contexts\Identity\Domain\OrganisationPersonRef;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Database\Connection;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Str;
 
 /**
@@ -111,12 +112,36 @@ final class PostgresClaims implements ClaimStore
         });
     }
 
+    /** The unique key behind INV-BND-2 (one Person, at most one R of O); named by PostgreSQL for UNIQUE (organisation_id, person_id). */
+    private const ONE_REFERENCE_PER_PERSON = 'identity_bindings_organisation_id_person_id_key';
+
     public function redeem(ClaimCode $code, PersonId $person): RedemptionOutcome
     {
         if ($this->db->transactionLevel() > 0) {
             throw new \LogicException('A redemption starts its own transaction.');
         }
         try {
+            return $this->redeemOnce($code, $person);
+        } catch (UniqueConstraintViolationException $e) {
+            if (!str_contains($e->getMessage(), self::ONE_REFERENCE_PER_PERSON)) {
+                throw new IdentityUnavailable('Identity could not complete the redemption (' . $e::class . ').', previous: $e);
+            }
+            // Review R-1 (INV-BND-2 "refused AND reported"): a concurrent redemption bound this Person to another R of O
+            // and committed first; this transaction was rolled back whole. Decide once more, in a fresh transaction, which
+            // now reads that binding and takes the normal refusal path (BindingRefused + audit). Only this violation.
+            try {
+                return $this->redeemOnce($code, $person);
+            } catch (QueryException $again) {
+                throw new IdentityUnavailable('Identity could not complete the redemption (' . $again::class . ').', previous: $again);
+            }
+        } catch (QueryException $e) {
+            throw new IdentityUnavailable('Identity could not complete the redemption (' . $e::class . ').', previous: $e);
+        }
+    }
+
+    /** One redemption transaction (§14): the lock order and decisions below; any database error rolls all of it back. */
+    private function redeemOnce(ClaimCode $code, PersonId $person): RedemptionOutcome
+    {
             return $this->db->transaction(function () use ($code, $person): RedemptionOutcome {
                 $this->db->statement('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');
                 // 0. find the claim by its code hash: a plain read, to learn O and R. Nothing is decided on it.
@@ -147,7 +172,7 @@ final class PostgresClaims implements ClaimStore
                 }
                 if ($this->db->selectOne('SELECT 1 FROM identity_bindings WHERE organisation_id = ? AND person_id = ?', [$o, $person->value()]) !== null) {
                     // INV-BND-2: a second of O's references for one Person is refused and reported to O (D-113)
-                    $this->outbox(BindingRefusedHydrator::EVENT_TYPE, $o, $r, ['organisationId' => $o, 'personRef' => $r]);
+                    $this->outbox(BindingRefusedHydrator::EVENT_TYPE, $o, $claimId, ['organisationId' => $o, 'personRef' => $r]);
                     $this->audit('binding-refused', $o, $claimId, 'person-already-bound');
                     $this->decided();
 
@@ -162,9 +187,6 @@ final class PostgresClaims implements ClaimStore
 
                 return RedemptionOutcome::bound($o);
             });
-        } catch (QueryException $e) {
-            throw new IdentityUnavailable('Identity could not complete the redemption (' . $e::class . ').', previous: $e);
-        }
     }
 
     public function recordRefusal(TenantId $organisation, ?string $claimId, ClaimRefusal $reason): void
@@ -281,7 +303,9 @@ final class PostgresClaims implements ClaimStore
     }
 
     /**
-     * Identity's own central outbox (multi-database boundary design §13.3 step 7), in the redemption's transaction.
+     * Identity's own outbox `identity_outbox_events` on the central database (multi-database boundary design §13.3
+     * step 7), in the redemption's transaction. The aggregate of both ClaimRedeemed and BindingRefused is the CLAIM:
+     * aggregate_type 'IdentityClaim', aggregate_id = the claim id (review R-8; never R, a PersonId or a code).
      *
      * @param array<string, string> $payload published language only (C-I3, C-I6): never a code, PersonId or Account
      */

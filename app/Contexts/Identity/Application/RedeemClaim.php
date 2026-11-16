@@ -49,7 +49,9 @@ final class RedeemClaim
             return RedemptionOutcome::refused(RedemptionRefusal::NoActivePerson);
         }
         $outcome = $this->store->redeem($code, $person);
-        if ($outcome->refusal === RedemptionRefusal::NotRedeemable) {
+        // A failed attempt counts against the code and the client (INV-ID-9). PersonAlreadyBound counts too (Principal,
+        // review R-6): otherwise one person could repeat it and generate refusal events and audit rows without limit.
+        if ($outcome->refusal === RedemptionRefusal::NotRedeemable || $outcome->refusal === RedemptionRefusal::PersonAlreadyBound) {
             $this->throttle->recordFailure($code->hash(), $command->clientKey);
         }
 

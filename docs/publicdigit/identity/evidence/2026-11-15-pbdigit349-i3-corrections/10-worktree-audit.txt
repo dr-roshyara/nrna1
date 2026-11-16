@@ -1,0 +1,35 @@
+Identity worktree: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-349-i3
+identity/pbdigit-349-i3
+fcaba62cae455138ad6f8a5cd6f1313d16e00bfd
+f372518cd is an ancestor of HEAD
+-- status
+ M app/Contexts/Identity/Application/Ports/ClaimStore.php
+ M app/Contexts/Identity/Application/RedeemClaim.php
+ M app/Contexts/Identity/Infrastructure/Outbox/BindingRefusedHydrator.php
+ M app/Contexts/Identity/Infrastructure/Outbox/ClaimRedeemedHydrator.php
+ M app/Contexts/Identity/Infrastructure/PostgresClaims.php
+ M app/Contexts/Identity/Infrastructure/PostgresRedemptionThrottle.php
+ M app/Contexts/Identity/Infrastructure/Providers/IdentityServiceProvider.php
+ M config/identity.php
+ M database/migrations/2026_11_15_630000_identity_redemption_and_claim_cleanup_safety.php
+ M developer_guide/identity/04_i3_redemption_and_binding.md
+ M docs/plans/20261115-1426-identity-claims-and-bindings-pbdigit-349-plan.md
+ M docs/publicdigit/backlog/PBDIGIT-349-identity-claims-and-bindings-implementation.md
+ M tests/Feature/Contexts/Identity/RedeemClaimTest.php
+?? docs/publicdigit/identity/evidence/2026-11-15-pbdigit349-i3-corrections/
+?? tests/Architecture/IdentityBindingSingleWriterTest.php
+?? tests/Fixtures/IdentityBindingBypass/
+
+Primary: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1
+election-flow-updated
+0b25d6643691f29d761bf2a1fb2cacdf9aa9630e
+-- status (public/build entries counted, not listed)
+ M .claude/sessions/2026-11-09.md
+ M .claude/sessions/2026-11-11.md
+ M .claude/sessions/2026-11-15.md
+ M composer.lock
+ M docs/publicdigit/testing/evidence/2026-10-13-test-database-guard/README.md
+ M readme-session-id.md
+?? .claude/sessions/2026-11-10.md
+?? .claude/sessions/2026-11-12.md
+public/build entries: 333
