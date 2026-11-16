@@ -184,11 +184,19 @@ final class CorrectAndVoidMembershipRecordTest extends TestCase
         $this->assertCount(3, $this->member()->log());
     }
 
-    public function test_s2_5a_leaves_renew_suspend_and_restore_corrections_refused(): void
+    public function test_s2_5b_a_renewals_until_is_corrected_to_a_date_or_to_open_ended_d237(): void
     {
         $this->assertTrue((new RenewMembershipHandler($this->repo, $this->authority))->handle(new RenewMembership('O1', 'M-P1', 'R1', 20, 20, 150, false, 'registrar-1', null, 'k-renew'))->isAppended(), 'renewed on day 20');
 
-        $this->assertSame(RefusalReason::CorrectionOfRenewNotSupported, $this->correct(target: 'R1', to: 160, key: 'k-c-r')->domainRefusal(), 'D-237 is S2-5b');
+        $this->assertTrue($this->correct(target: 'R1', to: 160, key: 'k-c-r')->isAppended(), 'until 160, after the decision date 50: D-237 (2)');
+        $outcome = (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
+            new CorrectMembershipRecord('O1', 'M-P1', 'C-OPEN', 'R1', null, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-open', openEnded: true));
+        $this->assertTrue($outcome->isAppended(), 'open-ended');
+        $this->assertTrue(end($this->authority->requests)->correctedValue?->isInfinite(), 'the request names the corrected value: ∞');
+        $this->assertSame(RefusalReason::CorrectedValueRequired, (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
+            new CorrectMembershipRecord('O1', 'M-P1', 'C-BAD', 'R1', 170, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-bad', openEnded: true))->domainRefusal(), 'a date AND open-ended: refused at the boundary');
+        $this->assertSame(RefusalReason::CorrectedValueRequired, (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
+            new CorrectMembershipRecord('O1', 'M-P1', 'C-NONE', 'R1', null, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-none'))->domainRefusal(), 'neither');
     }
 
     public function test_the_request_shapes_are_validated(): void

@@ -1,0 +1,31 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.........E....................................................... 65 / 80 ( 81%)
+...........E...                                                   80 / 80 (100%)
+
+Time: 00:00.036, Memory: 12.00 MB
+
+There were 2 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d241_a_suspension_is_not_corrected
+LogicException: Only an Admit, End, Renew, Restore or Correct has a value.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Resolution.php:167
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Resolution.php:141
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/07cd794a/mutant.php:476
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:164
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_suspension_is_not_corrected_but_a_restores_date_is_d241_row_14
+LogicException: Only an Admit, End, Renew, Restore or Correct has a value.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Resolution.php:167
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Resolution.php:141
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/07cd794a/mutant.php:476
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:122
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:293
+
+ERRORS!
+Tests: 80, Assertions: 425, Errors: 2.

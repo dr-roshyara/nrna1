@@ -148,12 +148,15 @@ final class PostgresCorrectionSchemaTest extends MembershipPostgresTestCase
         // back: PostgreSQL DDL is transactional, so no other test sees any of it.
         DB::beginTransaction();
         try {
+            // PBDIGIT-354 S2-5b: every kind the 1b shape cannot hold goes, not only corrections. The S2 kinds (renew,
+            // suspend, restore) are committed by other tests too; once a test sorting before this one commits them
+            // (PostgresCorrectRenewAndRestoreTest), down()'s 1b CHECK would meet them. Still inside the rolled-back transaction.
             DB::statement(<<<'SQL'
                 DELETE FROM org_membership_commands c USING org_membership_facts f
                  WHERE f.organisation_id = c.organisation_id AND f.membership_id = c.membership_id AND f.seq = c.seq
-                   AND f.kind IN ('annul', 'void', 'correct')
+                   AND f.kind IN ('annul', 'void', 'correct', 'renew', 'suspend', 'restore')
                 SQL);
-            DB::table('org_membership_facts')->whereIn('kind', ['annul', 'void', 'correct'])->delete();
+            DB::table('org_membership_facts')->whereIn('kind', ['annul', 'void', 'correct', 'renew', 'suspend', 'restore'])->delete();
 
             $migration->down();
             $this->assertContains('period_fact_id', self::columns(), 'down() restores the 1b shape');

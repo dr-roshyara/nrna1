@@ -269,3 +269,19 @@ Never mark an organisation operational or change `schema_state` by hand.
   - **Do not try to work around it** (for example by withdrawing the declaration on the member's behalf, or by entering an earlier date). Withdrawal is the member's act, under authority.
 - **A person's death is a different record from a membership ending.** The refusal is about the membership ending only. Recording the death as a fact about the person is a separate matter: no such operation exists yet (PBDIGIT-356).
 - In production none of this is active yet (no calendar until Organisation S4, no authority until Governance S3).
+
+## Membership lifecycle S2-5: corrections (2026-11-16, PBDIGIT-354)
+
+**Development and test only**, exactly as for S2-1. No persistent or production database.
+1. **Two migrations, always together (parity rule):**
+   - central: `database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php`;
+   - organisation set: `app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_16_300800_add_correct_value_unlimited_to_org_membership_facts.php`.
+2. **What they add:** one column, `org_membership_facts.correct_value_unlimited` (boolean, default false), and one CHECK. Existing rows get `false`, so no data changes.
+3. **Order:** after the S2-4b migrations (`360000` central, `300700` organisation).
+4. **Existing test organisation databases** need them too: re-provision, or use `platform:operate <organisation> migration-repair` while their schema state is `migration-failed` (S2-1 notes).
+5. **Rolling back** is refused while any open-ended correction exists.
+6. **How a wrong record is fixed** (for support staff), always by an officer with recording authority and evidence:
+   - a wrong date on an admission, an ending, a renewal's end or a restore: **Correct** it;
+   - a record that never happened, a renewal with a wrong start, or a wrong suspension: **Void** it and record it again.
+   - **Never edit or delete rows by hand.** The ledger is append-only by design.
+7. **Not usable in production yet, by design:** no authority check is wired until Governance (S3).

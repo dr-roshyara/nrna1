@@ -1,0 +1,13 @@
+N1 a corrected until may equal the renewal start           tests:80   KILLED (assertions)  d237_the_corrected_until_must_be_strictl;
+N2 a corrected until is bound by the decision date (D-237 (2) ignored) tests:80   KILLED (assertions)  a_stored_log_with_corrections_of_renew_a;d237_a_renewals_until_is_corrected_even_;d237_a_renewals_until_is_corrected_to_op;d237_history_corrections_chain_a_void_re;
+N3 the term ignores a corrected until                      tests:80   KILLED (assertions)  a_stored_log_with_corrections_of_renew_a;d237_a_renewals_until_is_corrected_even_;d237_a_renewals_until_is_corrected_to_op;d237_history_corrections_chain_a_void_re;
+N4 the restriction ignores a corrected restore date        tests:80   KILLED (assertions)  row14_a_correction_of_a_corrected_restor;row14_a_restores_date_is_corrected_insid;
+N5 a Suspend may be corrected (D-241 ignored)              tests:80   KILLED+ERRORS (2: LogicException: Only an Admit, End, Renew, Restore or Correct has a value.)  a_suspension_is_not_corrected_but_a_rest;d241_a_suspension_is_not_corrected;
+N6 a corrected restore may be after the decision date      tests:80   KILLED (assertions)  row14_a_corrected_restore_keeps_the_rest;
+N7 a corrected restore may leave the restriction           tests:80   KILLED (assertions)  row14_a_corrected_restore_keeps_the_rest;
+N8 a restore of a voided suspension may be corrected       tests:80   KILLED (assertions)  row14_a_corrected_restore_keeps_the_rest;
+N9 any chain may be corrected to open-ended                tests:80   KILLED (assertions)  an_infinite_corrected_date_or_decision_d;correct_guard_order;only_a_renewal_chain_may_be_corrected_to;
+N10 a stored open-ended correction of a non-renewal loads  tests:80   KILLED (assertions)  a_stored_open_ended_correction_of_a_non_;
+P1 an open-ended value is stored without its flag          tests:4    KILLED+ERRORS (1: Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_memb)  d237_a_renewals_until_corrected_to_open_;
+P2 the flag is ignored on load                             tests:4    KILLED+ERRORS (1: TypeError: App\Contexts\Membership\Infrastructure\Organisational\DateOrdinal::fromDate(): Argument #1 ($date))  d237_a_renewals_until_corrected_to_open_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

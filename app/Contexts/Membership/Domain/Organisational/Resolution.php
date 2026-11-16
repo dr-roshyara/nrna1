@@ -31,8 +31,8 @@ final class Resolution
             }
             $baseClaim = $claims[$fact->periodId()->value()];
             $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $facts, $active, $live, $claims));
-            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active),
-                self::restrictions($fact->periodId(), $lifetime, $active));
+            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active, $live),
+                self::restrictions($fact->periodId(), $lifetime, $active, $live));
         }
 
         return new ResolvedMember($periods);
@@ -161,8 +161,10 @@ final class Resolution
 
         return match (true) {
             $fact instanceof Correct => $fact->value(),
+            $fact instanceof Renew => $fact->until(),           // S2-5b, D-237 / D-242: a Renew's correctable value is its `until`
+            $fact instanceof Restore => $fact->effectiveAt(),   // S2-5b, D-177 row 14: a Restore's is its date
             $fact instanceof EffectiveDatedFact => $fact->effectiveAt(),
-            default => throw new \LogicException('Only an Admit, End or Correct has a value.'),
+            default => throw new \LogicException('Only an Admit, End, Renew, Restore or Correct has a value.'),
         };
     }
 
@@ -340,9 +342,12 @@ final class Resolution
      * produce). A Suspend that is not live restricts nothing, so its Restore is orphaned (row 18); a Restore that is
      * not live ends nothing (row 19). Clipped to the lifetime.
      *
+     * S2-5b (D-177 row 14): the Restore's date is its current value (corrected along its chain).
+     *
      * @param list<Fact> $active
+     * @param list<Fact> $live
      */
-    private static function restrictions(PeriodId $period, IntervalSet $lifetime, array $active): IntervalSet
+    private static function restrictions(PeriodId $period, IntervalSet $lifetime, array $active, array $live): IntervalSet
     {
         $all = IntervalSet::empty();
         foreach ($active as $fact) {
@@ -352,7 +357,7 @@ final class Resolution
             $until = $fact->until();
             foreach ($active as $other) {
                 if ($other instanceof Restore && $other->suspension()->equals($fact->id())) {
-                    $until = TimePoint::min($fact->until(), $other->effectiveAt());
+                    $until = TimePoint::min($fact->until(), self::value($live, $other));
                 }
             }
             $all = $all->union(IntervalSet::of(Interval::of($fact->effectiveAt(), TimePoint::max($fact->effectiveAt(), $until))));
@@ -369,9 +374,12 @@ final class Resolution
      *   its segment is gone (row 17).
      * All clipped to the lifetime, so an ended period is never in force (INV-2).
      *
+     * S2-5b (D-237, D-242): a Renew's `until` is its current value (corrected along its chain); its start never changes.
+     *
      * @param list<Fact> $active
+     * @param list<Fact> $live
      */
-    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime, array $active): IntervalSet
+    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime, array $active, array $live): IntervalSet
     {
         $segments = IntervalSet::empty();
         $until = $admit->initialTermUntil();
@@ -380,7 +388,7 @@ final class Resolution
         }
         foreach ($active as $fact) {
             if ($fact instanceof Renew && $fact->period()->equals($admit->periodId())) {
-                $segments = $segments->union(IntervalSet::of(Interval::of($fact->effectiveAt(), $fact->until())));
+                $segments = $segments->union(IntervalSet::of(Interval::of($fact->effectiveAt(), self::value($live, $fact))));
             }
         }
 

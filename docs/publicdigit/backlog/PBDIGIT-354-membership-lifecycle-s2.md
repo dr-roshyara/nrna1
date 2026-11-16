@@ -64,9 +64,9 @@ Plan §4, steps S2-1 … S2-6.
 
 ## Progress
 
-- [ ] S2-1 Renew and the admission-term rule: **implemented and proven 2026-11-15** (guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`), **except D-177 row 20** (Correct a Renew's `until`), refused in the kernel until **Q-2** is decided. The box stays open until then
+- [x] S2-1 Renew and the admission-term rule: **DONE 2026-11-16**: implemented 2026-11-15 (guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`); D-177 row 20 (Correct a Renew's `until`) delivered under D-237 in S2-5b (guide 35)
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
 - [x] S2-3 resign now, death: **DONE 2026-11-15:** S2-3a (authority contract, D-238; guide 27) and S2-3b (resign now, record a death; guide 28; evidence `…/2026-11-15-pbdigit354-s2-3b/`)
 - [x] S2-4 scheduled resignation (D-239, D-240): **DONE 2026-11-16**. **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31), **S2-4d DONE** (race, visibility, routing; guide 32) 2026-11-15; **Q-5 decided as D-240 and implemented** (guide 33; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-4d-q5/`) 2026-11-16
-- [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (**a Restore's date**; a Suspend's: Q-6). **S2-5a DONE 2026-11-16** (Correct / Void use cases; D-240 for a corrected End; guide 34); **S2-5b** (D-237 with its migration, a Restore's date) next; **Q-6, Q-7, Q-8, Q-9 open** (plan §7e)
+- [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (**a Restore's date**; a Suspend's: Q-6). **S2-5a DONE** (Correct / Void use cases; D-240 for a corrected End; guide 34), **S2-5b DONE** (D-237, D-241, D-242, row 14; migration 370000 / 300800; guide 35) 2026-11-16. **Implemented in full; not marked Done while Q-9 is open** (plan §7e)
 - [ ] S2-6 push shapes (Membership side)

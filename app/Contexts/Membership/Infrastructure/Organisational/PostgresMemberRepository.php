@@ -74,7 +74,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
         $facts = $this->db->table('org_membership_facts')
             ->select([
-                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind', 'restriction_until_kind',
+                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind', 'restriction_until_kind', 'correct_value_unlimited',
                 $this->db->raw('effective_at::text AS effective_date'),
                 $this->db->raw('initial_term_until::text AS initial_term_until_date'),
                 $this->db->raw('renew_until::text AS renew_until_date'),
@@ -390,7 +390,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             'provenance' => ProvenanceJson::encode($fact->provenance()),
         ];
         $none = ['effective_at' => null, 'initial_term' => null, 'initial_term_until' => null, 'target_fact_id' => null, 'end_kind' => null, 'consequences' => null, 'g2_version' => null,
-            'renew_until_kind' => null, 'renew_until' => null, 'restriction_until_kind' => null, 'restriction_until' => null];
+            'renew_until_kind' => null, 'renew_until' => null, 'restriction_until_kind' => null, 'restriction_until' => null, 'correct_value_unlimited' => false];
 
         if ($fact instanceof Admit) {
             $until = $fact->initialTermUntil();
@@ -426,7 +426,11 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         }
         if ($fact instanceof Correct) {
             // Q-5: the frozen consequences are stored as decided; g2 is never recomputed here.
-            return ['kind' => 'correct', 'effective_at' => DateOrdinal::toDate($fact->value()), 'target_fact_id' => $fact->target()->value(),
+            // S2-5b (D-237): an open-ended value (a Renew's `until`) is stored as the flag, with no date.
+            $unlimited = $fact->value()->isInfinite();
+
+            return ['kind' => 'correct', 'effective_at' => $unlimited ? null : DateOrdinal::toDate($fact->value()), 'correct_value_unlimited' => $unlimited,
+                'target_fact_id' => $fact->target()->value(),
                 'consequences' => ConsequencesJson::encode($fact->consequences()), 'g2_version' => ConsequencesJson::G2_VERSION] + $common + $none;
         }
 
@@ -480,7 +484,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             'correct' => new Correct(
                 $id,
                 FactId::fromString($f->target_fact_id),
-                DateOrdinal::fromDate($f->effective_date),
+                $f->correct_value_unlimited ? TimePoint::infinity() : DateOrdinal::fromDate($f->effective_date),   // S2-5b, D-237
                 $provenance,
                 $decidedAt,
                 ConsequencesJson::decode($f->consequences, (int) $f->g2_version),

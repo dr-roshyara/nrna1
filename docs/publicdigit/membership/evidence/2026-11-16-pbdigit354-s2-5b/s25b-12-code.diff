@@ -1,0 +1,969 @@
+diff --git a/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecord.php b/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecord.php
+index 47f1d9cba..fce704e6b 100644
+--- a/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecord.php
++++ b/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecord.php
+@@ -18,8 +18,8 @@ final readonly class CorrectMembershipRecord
+         public string $factId,
+         /** The fact being corrected: an Admit, an End, or an earlier Correct of one (C-2, D-COR-3). */
+         public string $targetFactId,
+-        /** The corrected date. */
+-        public int $correctedDate,
++        /** The corrected date; null with $openEnded (S2-5b, D-237: a Renew's `until` to open-ended). Exactly one is stated. */
++        public ?int $correctedDate,
+         /** The decision date (D-5(a) Z1, caller-supplied); the authority is evaluated for it. */
+         public int $decisionDate,
+         /** The evidence the correction rests on (D-206, GC-14: required). A reference only. */
+@@ -27,6 +27,8 @@ final readonly class CorrectMembershipRecord
+         public string $actor,
+         public ?int $decidedAt,
+         public string $idempotencyKey,
++        /** S2-5b (D-237): the corrected value is open-ended (∞); only a Renew's `until` may be. */
++        public bool $openEnded = false,
+     ) {
+     }
+ 
+diff --git a/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php b/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php
+index aefeaa675..1e53389eb 100644
+--- a/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php
++++ b/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php
+@@ -40,7 +40,9 @@ final class CorrectMembershipRecordHandler
+     {
+         $tenant = TenantId::fromString($command->tenantId);
+         $memberId = MemberId::fromString($command->memberId);
+-        $value = TimePoint::of($command->correctedDate);
++        // S2-5b (D-237): the value is a date or open-ended, exactly one; otherwise refused at the boundary.
++        $stated = ($command->correctedDate !== null) !== $command->openEnded;
++        $value = $command->openEnded ? TimePoint::infinity() : TimePoint::of($command->correctedDate ?? 0);
+         $on = TimePoint::of($command->decisionDate);
+         $evidence = $command->evidenceRef === null ? '' : trim($command->evidenceRef);
+ 
+@@ -48,10 +50,12 @@ final class CorrectMembershipRecordHandler
+             $tenant,
+             IdempotencyKey::fromString($command->idempotencyKey),
+             $command->fingerprint(),
+-            static fn (?Member $member): AuthorityRequest|RefusalReason => $evidence === ''
+-                ? RefusalReason::CorrectionEvidenceRequired
+-                : new AuthorityRequest(MembershipAct::CorrectMembershipRecord, $command->actor, $member?->holder(), null, $on, null, $command->idempotencyKey,
++            static fn (?Member $member): AuthorityRequest|RefusalReason => match (true) {
++                !$stated => RefusalReason::CorrectedValueRequired,
++                $evidence === '' => RefusalReason::CorrectionEvidenceRequired,
++                default => new AuthorityRequest(MembershipAct::CorrectMembershipRecord, $command->actor, $member?->holder(), null, $on, null, $command->idempotencyKey,
+                     $evidence, null, $command->targetFactId, $value),
++            },
+             fn (): ?Member => $this->repository->load($tenant, $memberId),
+             static fn (Member $member, AuthorityEvidence $authority): Decision => $member->decideCorrect(FactId::fromString($command->factId),
+                 FactId::fromString($command->targetFactId), $value, $on, Provenance::decision($command->actor, $authority, $evidence),
+diff --git a/app/Contexts/Membership/Domain/Organisational/Correct.php b/app/Contexts/Membership/Domain/Organisational/Correct.php
+index fbdd96b79..69f57e418 100644
+--- a/app/Contexts/Membership/Domain/Organisational/Correct.php
++++ b/app/Contexts/Membership/Domain/Organisational/Correct.php
+@@ -23,9 +23,8 @@ final readonly class Correct implements Fact
+         private ?Instant $decidedAt = null,
+         private array $consequences = [],
+     ) {
+-        if ($value->isInfinite()) {
+-            throw new \InvalidArgumentException('A corrected date is a finite time.');
+-        }
++        // S2-5b (D-237): ∞ is a valid value: a Renew's `until` corrected to open-ended. That only a Renew chain may carry
++        // it is a chain rule, checked where the chain is known (Member::decideCorrect, and on load in Member::fromLog).
+         foreach ($consequences as $consequence) {
+             if (!$consequence instanceof TrimConsequence) {
+                 throw new \InvalidArgumentException('A consequence is a TrimConsequence.');
+@@ -44,13 +43,13 @@ final readonly class Correct implements Fact
+         return $this->id;
+     }
+ 
+-    /** The Admit, End or Correct whose date this fact replaces. */
++    /** The fact whose value this one replaces: an Admit, End, Renew (its `until`, D-237), Restore (row 14) or Correct. */
+     public function target(): FactId
+     {
+         return $this->target;
+     }
+ 
+-    /** The corrected valid-time date. */
++    /** The corrected value: an effective date (Admit, End, Restore chains) or a Renew's `until` (finite, or ∞). */
+     public function value(): TimePoint
+     {
+         return $this->value;
+diff --git a/app/Contexts/Membership/Domain/Organisational/Member.php b/app/Contexts/Membership/Domain/Organisational/Member.php
+index e6abc4a8a..9c02de4cd 100644
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -85,6 +85,13 @@ final readonly class Member
+                 while ($root instanceof Correct) {
+                     $root = $earlier[$root->target()->value()];
+                 }
++                // S2-5b: D-237 lets only a Renew chain carry ∞; D-241 forbids correcting a Suspend.
++                if ($fact->value()->isInfinite() && !$root instanceof Renew) {
++                    throw new \InvalidArgumentException("Stored log: Correct {$id} is open-ended but does not correct a Renew (D-237).");
++                }
++                if ($root instanceof Suspend) {
++                    throw new \InvalidArgumentException("Stored log: Correct {$id} corrects a Suspend (D-241).");
++                }
+                 $ownPeriod = $root instanceof End ? $root->period()->admitFactId() : $root->id();
+                 $trimmed = [];
+                 foreach ($fact->consequences() as $consequence) {
+@@ -443,7 +450,12 @@ final readonly class Member
+      */
+     public function decideCorrect(FactId $id, FactId $target, TimePoint $value, TimePoint $decisionDate, Provenance $provenance, ?Instant $decidedAt = null): Decision
+     {
+-        self::requireFiniteDates($value, $decisionDate);
++        // Guard 1 (C-2 order kept): invalid input first. D-237: ∞ is a valid value only for a Renew chain; the lookup is
++        // pure, so every other target (or none) still throws before any refusal, as before S2-5b.
++        $valueTarget = $value->isInfinite() ? $this->fact($target) : null;
++        if ($decisionDate->isInfinite() || ($value->isInfinite() && ($valueTarget === null || !Resolution::rootOf($this->facts(), $target) instanceof Renew))) {
++            throw new \InvalidArgumentException('The decision date is finite, and only a renewal\'s until may be corrected to open-ended (D-237).');
++        }
+         if ($this->usesFactId($id)) {
+             return Decision::refused(RefusalReason::DuplicateFactId);
+         }
+@@ -454,16 +466,12 @@ final readonly class Member
+         if ($targetFact instanceof ReversalFact) {
+             return Decision::refused(RefusalReason::CorrectionOfAnnulOrVoidRefused);
+         }
+-        // PBDIGIT-354 Q-2 (open): D-177 row 20; no accepted dating rule for a corrected `until` yet.
+-        if ($targetFact instanceof Renew) {
+-            return Decision::refused(RefusalReason::CorrectionOfRenewNotSupported);
+-        }
+-        // D-177 row 14: correcting a Suspend's or a Restore's date belongs to the correction step (S2-5).
+-        if ($targetFact instanceof Suspend || $targetFact instanceof Restore) {
+-            return Decision::refused(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported);
+-        }
+         $facts = $this->facts();
+         $root = Resolution::rootOf($facts, $target);
++        // D-241 (Q-6 A): a Suspend's dates are not correctable in release 1 (Void and record again).
++        if ($root instanceof Suspend) {
++            return Decision::refused(RefusalReason::CorrectionOfSuspendNotPermitted);
++        }
+         // §10a Correct (4) and P-1: a voided target, or a chain whose root is voided, never reflected reality.
+         if (Resolution::isVoided($facts, $target) || Resolution::isVoided($facts, $root->id())) {
+             return Decision::refused(RefusalReason::CorrectOfVoidedFact);
+@@ -471,6 +479,21 @@ final readonly class Member
+         if ($value->equals(Resolution::valueOf($facts, $target))) {
+             return Decision::refused(RefusalReason::ValueUnchanged);
+         }
++        // D-237 (D-177 row 20) and D-242: a Correct of a Renew sets its `until`, never its start. Strictly after the start
++        // (the segment not empty), or ∞; NOT bound by the decision date (a term's end is not an effective date). A term
++        // never changes coverage, so there is nothing to trim.
++        if ($root instanceof Renew) {
++            return $root->effectiveAt()->isBefore($value)
++                ? $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt))
++                : Decision::refused(RefusalReason::EmptySegment);
++        }
++        // D-177 row 14: a Correct of a Restore sets its date, under the Restore's own rules (decideRestore). A restriction
++        // never changes coverage, so there is nothing to trim.
++        if ($root instanceof Restore) {
++            $refusal = $this->correctedRestoreRefusal($facts, $root, $value, $decisionDate);
++
++            return $refusal === null ? $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt)) : Decision::refused($refusal);
++        }
+         if (!$this->keepsPeriodOrdered($facts, $root, $value)) {
+             return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
+         }
+@@ -483,6 +506,29 @@ final readonly class Member
+         return $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt, $this->trimConsequences($facts, $targetFact, $candidate)));
+     }
+ 
++    /**
++     * D-177 row 14 (S2-5b): a Restore moved to $date must still be a Restore decideRestore would accept: its Suspend
++     * live, the period in force at $date, strictly inside the restriction, not after the decision date (D-205).
++     *
++     * @param list<Fact> $facts
++     */
++    private function correctedRestoreRefusal(array $facts, Restore $restore, TimePoint $date, TimePoint $decisionDate): ?RefusalReason
++    {
++        $suspension = $this->fact($restore->suspension());
++        if (!$suspension instanceof Suspend || !Resolution::isLive($facts, $suspension->id())) {
++            return RefusalReason::NotSuspended;
++        }
++        $period = $this->resolve()->period($suspension->period());
++        if ($period === null || !$period->isInForce($date)) {
++            return RefusalReason::NotInForce;
++        }
++        if (!$suspension->effectiveAt()->isBefore($date) || !$date->isBefore($suspension->until())) {
++            return RefusalReason::OutsideRestriction;
++        }
++
++        return $date->isAfter($decisionDate) ? RefusalReason::EffectiveDateAfterDecisionDate : null;
++    }
++
+     /**
+      * g2, the trim policy (BD-REV = trim; contract §10a Correct (8)), frozen on the Correct (FP §12.4 option C):
+      * - Δ: what the correction adds to its period's BaseClaim, less the cuts already on that period, is removed from
+diff --git a/app/Contexts/Membership/Domain/Organisational/RefusalReason.php b/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
+index e4416ca28..6598620c9 100644
+--- a/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
++++ b/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
+@@ -144,12 +144,13 @@ enum RefusalReason: string
+     /** Guard (D-177 §4, row 12): a Restore takes effect strictly inside the restriction it ends. */
+     case OutsideRestriction = 'outside_restriction';
+ 
+-    /** Guard (S2-5 not yet built): D-177 row 14 lets a Correct change a Suspend's or Restore's date; refused until then. */
+-    case CorrectionOfSuspendOrRestoreNotSupported = 'correction_of_suspend_or_restore_not_supported';
+-
+     /**
+-     * Guard (PBDIGIT-354 Q-2, open): D-177 row 20 lets a Correct change a Renew's `until`, but no accepted text gives
+-     * the dating rule for a corrected `until`. Refused until decided, so the kernel stays total and fail-closed.
++     * Guard (D-241, Q-6 Option A; S2-5b): a Suspend's dates are not correctable in release 1. A wrong suspension is
++     * Voided and recorded again; a Restore ends a restriction earlier. (Replaces S2-2's "not yet supported" placeholder;
++     * a Restore's date IS correctable, D-177 row 14.)
+      */
+-    case CorrectionOfRenewNotSupported = 'correction_of_renew_not_supported';
++    case CorrectionOfSuspendNotPermitted = 'correction_of_suspend_not_permitted';
++
++    /** Command boundary (D-237, S2-5b): a Correct states its value: a date, or open-ended; exactly one. */
++    case CorrectedValueRequired = 'corrected_value_required';
+ }
+diff --git a/app/Contexts/Membership/Domain/Organisational/Resolution.php b/app/Contexts/Membership/Domain/Organisational/Resolution.php
+index adf7c6e6a..7d6333e45 100644
+--- a/app/Contexts/Membership/Domain/Organisational/Resolution.php
++++ b/app/Contexts/Membership/Domain/Organisational/Resolution.php
+@@ -31,8 +31,8 @@ final class Resolution
+             }
+             $baseClaim = $claims[$fact->periodId()->value()];
+             $lifetime = self::lifetime($baseClaim, self::liveCuts($fact->periodId(), $facts, $active, $live, $claims));
+-            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active),
+-                self::restrictions($fact->periodId(), $lifetime, $active));
++            $periods[] = new ResolvedPeriod($fact->periodId(), $baseClaim, $lifetime, self::term($fact, $baseClaim->start(), $lifetime, $active, $live),
++                self::restrictions($fact->periodId(), $lifetime, $active, $live));
+         }
+ 
+         return new ResolvedMember($periods);
+@@ -161,8 +161,10 @@ final class Resolution
+ 
+         return match (true) {
+             $fact instanceof Correct => $fact->value(),
++            $fact instanceof Renew => $fact->until(),           // S2-5b, D-237 / D-242: a Renew's correctable value is its `until`
++            $fact instanceof Restore => $fact->effectiveAt(),   // S2-5b, D-177 row 14: a Restore's is its date
+             $fact instanceof EffectiveDatedFact => $fact->effectiveAt(),
+-            default => throw new \LogicException('Only an Admit, End or Correct has a value.'),
++            default => throw new \LogicException('Only an Admit, End, Renew, Restore or Correct has a value.'),
+         };
+     }
+ 
+@@ -340,9 +342,12 @@ final class Resolution
+      * produce). A Suspend that is not live restricts nothing, so its Restore is orphaned (row 18); a Restore that is
+      * not live ends nothing (row 19). Clipped to the lifetime.
+      *
++     * S2-5b (D-177 row 14): the Restore's date is its current value (corrected along its chain).
++     *
+      * @param list<Fact> $active
++     * @param list<Fact> $live
+      */
+-    private static function restrictions(PeriodId $period, IntervalSet $lifetime, array $active): IntervalSet
++    private static function restrictions(PeriodId $period, IntervalSet $lifetime, array $active, array $live): IntervalSet
+     {
+         $all = IntervalSet::empty();
+         foreach ($active as $fact) {
+@@ -352,7 +357,7 @@ final class Resolution
+             $until = $fact->until();
+             foreach ($active as $other) {
+                 if ($other instanceof Restore && $other->suspension()->equals($fact->id())) {
+-                    $until = TimePoint::min($fact->until(), $other->effectiveAt());
++                    $until = TimePoint::min($fact->until(), self::value($live, $other));
+                 }
+             }
+             $all = $all->union(IntervalSet::of(Interval::of($fact->effectiveAt(), TimePoint::max($fact->effectiveAt(), $until))));
+@@ -369,9 +374,12 @@ final class Resolution
+      *   its segment is gone (row 17).
+      * All clipped to the lifetime, so an ended period is never in force (INV-2).
+      *
++     * S2-5b (D-237, D-242): a Renew's `until` is its current value (corrected along its chain); its start never changes.
++     *
+      * @param list<Fact> $active
++     * @param list<Fact> $live
+      */
+-    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime, array $active): IntervalSet
++    private static function term(Admit $admit, TimePoint $start, IntervalSet $lifetime, array $active, array $live): IntervalSet
+     {
+         $segments = IntervalSet::empty();
+         $until = $admit->initialTermUntil();
+@@ -380,7 +388,7 @@ final class Resolution
+         }
+         foreach ($active as $fact) {
+             if ($fact instanceof Renew && $fact->period()->equals($admit->periodId())) {
+-                $segments = $segments->union(IntervalSet::of(Interval::of($fact->effectiveAt(), $fact->until())));
++                $segments = $segments->union(IntervalSet::of(Interval::of($fact->effectiveAt(), self::value($live, $fact))));
+             }
+         }
+ 
+diff --git a/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php b/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
+index bf557fab0..4b82b92c1 100644
+--- a/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
++++ b/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
+@@ -74,7 +74,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+ 
+         $facts = $this->db->table('org_membership_facts')
+             ->select([
+-                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind', 'restriction_until_kind',
++                'seq', 'fact_id', 'kind', 'initial_term', 'target_fact_id', 'end_kind', 'provenance', 'consequences', 'g2_version', 'renew_until_kind', 'restriction_until_kind', 'correct_value_unlimited',
+                 $this->db->raw('effective_at::text AS effective_date'),
+                 $this->db->raw('initial_term_until::text AS initial_term_until_date'),
+                 $this->db->raw('renew_until::text AS renew_until_date'),
+@@ -390,7 +390,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+             'provenance' => ProvenanceJson::encode($fact->provenance()),
+         ];
+         $none = ['effective_at' => null, 'initial_term' => null, 'initial_term_until' => null, 'target_fact_id' => null, 'end_kind' => null, 'consequences' => null, 'g2_version' => null,
+-            'renew_until_kind' => null, 'renew_until' => null, 'restriction_until_kind' => null, 'restriction_until' => null];
++            'renew_until_kind' => null, 'renew_until' => null, 'restriction_until_kind' => null, 'restriction_until' => null, 'correct_value_unlimited' => false];
+ 
+         if ($fact instanceof Admit) {
+             $until = $fact->initialTermUntil();
+@@ -426,7 +426,11 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+         }
+         if ($fact instanceof Correct) {
+             // Q-5: the frozen consequences are stored as decided; g2 is never recomputed here.
+-            return ['kind' => 'correct', 'effective_at' => DateOrdinal::toDate($fact->value()), 'target_fact_id' => $fact->target()->value(),
++            // S2-5b (D-237): an open-ended value (a Renew's `until`) is stored as the flag, with no date.
++            $unlimited = $fact->value()->isInfinite();
++
++            return ['kind' => 'correct', 'effective_at' => $unlimited ? null : DateOrdinal::toDate($fact->value()), 'correct_value_unlimited' => $unlimited,
++                'target_fact_id' => $fact->target()->value(),
+                 'consequences' => ConsequencesJson::encode($fact->consequences()), 'g2_version' => ConsequencesJson::G2_VERSION] + $common + $none;
+         }
+ 
+@@ -480,7 +484,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+             'correct' => new Correct(
+                 $id,
+                 FactId::fromString($f->target_fact_id),
+-                DateOrdinal::fromDate($f->effective_date),
++                $f->correct_value_unlimited ? TimePoint::infinity() : DateOrdinal::fromDate($f->effective_date),   // S2-5b, D-237
+                 $provenance,
+                 $decidedAt,
+                 ConsequencesJson::decode($f->consequences, (int) $f->g2_version),
+diff --git a/tests/Architecture/MembershipLedgerIsolationTest.php b/tests/Architecture/MembershipLedgerIsolationTest.php
+index 3cb5d5631..0283d1d0e 100644
+--- a/tests/Architecture/MembershipLedgerIsolationTest.php
++++ b/tests/Architecture/MembershipLedgerIsolationTest.php
+@@ -31,6 +31,7 @@ final class MembershipLedgerIsolationTest extends TestCase
+         'database/migrations/2026_11_15_340000_add_renew_to_org_membership_facts.php',
+         'database/migrations/2026_11_15_350000_add_suspend_restore_to_org_membership_facts.php',
+         'database/migrations/2026_11_15_360000_create_org_membership_scheduled_resignations.php',
++        'database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php',
+     ];
+     private const FORBIDDEN = [
+         'App\\Contexts\\Membership\\Domain\\Organisational',
+diff --git a/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php b/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php
+index 0c71edfcc..47e9fca07 100644
+--- a/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php
++++ b/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php
+@@ -148,12 +148,15 @@ final class PostgresCorrectionSchemaTest extends MembershipPostgresTestCase
+         // back: PostgreSQL DDL is transactional, so no other test sees any of it.
+         DB::beginTransaction();
+         try {
++            // PBDIGIT-354 S2-5b: every kind the 1b shape cannot hold goes, not only corrections. The S2 kinds (renew,
++            // suspend, restore) are committed by other tests too; once a test sorting before this one commits them
++            // (PostgresCorrectRenewAndRestoreTest), down()'s 1b CHECK would meet them. Still inside the rolled-back transaction.
+             DB::statement(<<<'SQL'
+                 DELETE FROM org_membership_commands c USING org_membership_facts f
+                  WHERE f.organisation_id = c.organisation_id AND f.membership_id = c.membership_id AND f.seq = c.seq
+-                   AND f.kind IN ('annul', 'void', 'correct')
++                   AND f.kind IN ('annul', 'void', 'correct', 'renew', 'suspend', 'restore')
+                 SQL);
+-            DB::table('org_membership_facts')->whereIn('kind', ['annul', 'void', 'correct'])->delete();
++            DB::table('org_membership_facts')->whereIn('kind', ['annul', 'void', 'correct', 'renew', 'suspend', 'restore'])->delete();
+ 
+             $migration->down();
+             $this->assertContains('period_fact_id', self::columns(), 'down() restores the 1b shape');
+diff --git a/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php b/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php
+index d26bc786a..d140be788 100644
+--- a/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php
++++ b/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php
+@@ -184,11 +184,19 @@ final class CorrectAndVoidMembershipRecordTest extends TestCase
+         $this->assertCount(3, $this->member()->log());
+     }
+ 
+-    public function test_s2_5a_leaves_renew_suspend_and_restore_corrections_refused(): void
++    public function test_s2_5b_a_renewals_until_is_corrected_to_a_date_or_to_open_ended_d237(): void
+     {
+         $this->assertTrue((new RenewMembershipHandler($this->repo, $this->authority))->handle(new RenewMembership('O1', 'M-P1', 'R1', 20, 20, 150, false, 'registrar-1', null, 'k-renew'))->isAppended(), 'renewed on day 20');
+ 
+-        $this->assertSame(RefusalReason::CorrectionOfRenewNotSupported, $this->correct(target: 'R1', to: 160, key: 'k-c-r')->domainRefusal(), 'D-237 is S2-5b');
++        $this->assertTrue($this->correct(target: 'R1', to: 160, key: 'k-c-r')->isAppended(), 'until 160, after the decision date 50: D-237 (2)');
++        $outcome = (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
++            new CorrectMembershipRecord('O1', 'M-P1', 'C-OPEN', 'R1', null, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-open', openEnded: true));
++        $this->assertTrue($outcome->isAppended(), 'open-ended');
++        $this->assertTrue(end($this->authority->requests)->correctedValue?->isInfinite(), 'the request names the corrected value: ∞');
++        $this->assertSame(RefusalReason::CorrectedValueRequired, (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
++            new CorrectMembershipRecord('O1', 'M-P1', 'C-BAD', 'R1', 170, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-bad', openEnded: true))->domainRefusal(), 'a date AND open-ended: refused at the boundary');
++        $this->assertSame(RefusalReason::CorrectedValueRequired, (new CorrectMembershipRecordHandler($this->repo, $this->authority))->handle(
++            new CorrectMembershipRecord('O1', 'M-P1', 'C-NONE', 'R1', null, 50, 'minutes:2024/12', 'registrar-1', null, 'k-c-none'))->domainRefusal(), 'neither');
+     }
+ 
+     public function test_the_request_shapes_are_validated(): void
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php b/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php
+index 9e5399d1a..1ecd1c6c2 100644
+--- a/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php
+@@ -237,8 +237,10 @@ final class CorrectDecisionTest extends TestCase
+     // Fact invariants (COR-2 mutation findings): a Correct and a trim reject invalid parts even when built directly.
+     public function test_a_correct_and_a_trim_reject_invalid_parts_when_constructed(): void
+     {
++        // S2-5b, D-237: an infinite value is now valid ON THE FACT (a Renew's `until` corrected to open-ended); the fact
++        // cannot know its chain, so "only a Renew chain may carry ∞" is enforced where the chain is known:
++        // Member::decideCorrect (guard 1, test_correct_guard_order) and Member::fromLog (CorrectRenewAndRestoreTest).
+         $cases = [
+-            'infinite corrected date' => static fn () => new Correct(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::infinity(), MemberHistory::provenance()),
+             'a consequence that is not a trim' => static fn () => new Correct(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::of(1), MemberHistory::provenance(), null, ['not a trim']),
+             'a trim that removes nothing' => static fn () => new TrimConsequence(PeriodId::fromString('A1'), IntervalSet::empty()),
+         ];
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php b/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php
+index 58c192bea..eb9f82be8 100644
+--- a/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php
+@@ -221,13 +221,13 @@ final class RenewTest extends TestCase
+         $this->assertTrue($h->member->knownAt(Instant::of(2000))->isMember(self::t(15)));
+     }
+ 
+-    public function test_correcting_a_renewal_is_refused_until_its_rule_is_decided(): void
++    public function test_correcting_a_renewal_changes_its_until_d237(): void
+     {
+-        // D-177 row 20 (Correct a Renew's `until`) needs a decision on the dating rule for a corrected `until` (Q-2).
++        // D-177 row 20 under D-237 (S2-5b): a Correct of a Renew sets its `until`. Detailed rules: CorrectRenewAndRestoreTest.
+         $h = self::admitted();
+         $h->commit($h->renew('R1', 8, 20));
+ 
+-        $this->assertSame(RefusalReason::CorrectionOfRenewNotSupported, $h->correct('C1', 'R1', 25)->refusal());
++        $this->assertTrue($h->correct('C1', 'R1', 25)->isAccepted());
+     }
+ 
+     public function test_a_stored_renewal_must_name_an_earlier_admission(): void
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php b/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php
+index e40bb6d97..5aafcff5c 100644
+--- a/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php
+@@ -129,6 +129,13 @@ final class MemberHistory
+         );
+     }
+ 
++    /** S2-5b (D-237): Correct a Renew's `until` to open-ended (∞). */
++    public function correctToOpenEnded(string $id, string $target, ?int $decisionDate = null): Decision
++    {
++        return $this->member->decideCorrect(FactId::fromString($id), FactId::fromString($target), TimePoint::infinity(),
++            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate), self::provenance(), Instant::of(900));
++    }
++
+     /** Appends an accepted decision; fails the test if it was refused. */
+     public function commit(Decision $decision, ?int $recordedAt = null): self
+     {
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php b/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php
+index 05f97f51b..acbce683b 100644
+--- a/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php
+@@ -282,15 +282,16 @@ final class SuspendRestoreTest extends TestCase
+         $this->assertTrue(PeriodId::fromString('A2')->equals($decision->fact()->period()));
+     }
+ 
+-    public function test_correcting_a_suspension_or_a_restore_is_refused_until_the_correction_step(): void
++    public function test_a_suspension_is_not_corrected_but_a_restores_date_is_d241_row_14(): void
+     {
+-        // D-177 row 14 ("a Correct changes its date") is part of S2-5 (Correct / Void); until then the kernel refuses.
++        // D-241 (Q-6 A): a Suspend's dates are not correctable in release 1 (Void and record again). D-177 row 14: a
++        // Correct changes a Restore's date (S2-5b). Detailed rules: CorrectRenewAndRestoreTest.
+         $h = self::admitted();
+         $h->commit($h->suspend('S1', 10));
+         $h->commit($h->restore('R1', 'S1', 15));
+ 
+-        $this->assertSame(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported, $h->correct('C1', 'S1', 11)->refusal());
+-        $this->assertSame(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported, $h->correct('C2', 'R1', 16)->refusal());
++        $this->assertSame(RefusalReason::CorrectionOfSuspendNotPermitted, $h->correct('C1', 'S1', 11)->refusal());
++        $this->assertTrue($h->correct('C2', 'R1', 16)->isAccepted());
+     }
+ 
+     public function test_a_stored_suspension_must_name_an_earlier_admission(): void
+diff --git a/app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_16_300800_add_correct_value_unlimited_to_org_membership_facts.php b/app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_16_300800_add_correct_value_unlimited_to_org_membership_facts.php
+new file mode 100644
+index 000000000..fd98f31c7
+--- /dev/null
++++ b/app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_16_300800_add_correct_value_unlimited_to_org_membership_facts.php
+@@ -0,0 +1,70 @@
++<?php
++
++declare(strict_types=1);
++
++use Illuminate\Database\Migrations\Migration;
++use Illuminate\Support\Facades\DB;
++
++/**
++ * PBDIGIT-354 S2-5b (ORGANISATION migration set; D-237, D-242): `correct_value_unlimited`, so a Correct of a Renew can
++ * store its `until` as open-ended. The same SQL as the central migration
++ * database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php (parity rule,
++ * developer_guide/membership/23; compared by OrganisationMigrationsTest).
++ *
++ * Applied only by the provisioning process (PBDIGIT-345): to a new organisation database when it is prepared, and to
++ * an existing one through `platform:operate <organisation> migration-repair`. Never by the central `php artisan
++ * migrate`. No operational organisation exists yet (D-235, D-236): development and test only.
++ *
++ * down(): refuses while any open-ended correction exists.
++ */
++return new class extends Migration
++{
++    public function up(): void
++    {
++        DB::statement(<<<'SQL'
++            ALTER TABLE org_membership_facts
++              ADD COLUMN correct_value_unlimited boolean NOT NULL DEFAULT false,
++              DROP CONSTRAINT org_membership_facts_kind_check,
++              ADD CONSTRAINT org_membership_facts_kind_check CHECK (
++                (kind = 'admit' AND effective_at IS NOT NULL AND initial_term IS NOT NULL
++                    AND target_fact_id IS NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'end' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NOT NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind IN ('annul', 'void') AND effective_at IS NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'correct' AND (effective_at IS NOT NULL) <> correct_value_unlimited
++                    AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL
++                    AND consequences IS NOT NULL AND jsonb_typeof(consequences) = 'array' AND g2_version IS NOT NULL)
++                OR (kind IN ('renew', 'suspend', 'restore') AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)),
++              ADD CONSTRAINT org_membership_facts_correct_value_check CHECK (kind = 'correct' OR correct_value_unlimited = false)
++            SQL);
++    }
++
++    public function down(): void
++    {
++        $rows = (int) DB::selectOne('SELECT count(*) AS n FROM org_membership_facts WHERE correct_value_unlimited')->n;
++        if ($rows > 0) {
++            throw new RuntimeException("S2-5b down() refused: {$rows} open-ended correction(s) exist; dropping the column would destroy history. Nothing was changed.");
++        }
++        DB::statement(<<<'SQL'
++            ALTER TABLE org_membership_facts
++              DROP CONSTRAINT org_membership_facts_correct_value_check,
++              DROP CONSTRAINT org_membership_facts_kind_check,
++              DROP COLUMN correct_value_unlimited,
++              ADD CONSTRAINT org_membership_facts_kind_check CHECK (
++                (kind = 'admit' AND effective_at IS NOT NULL AND initial_term IS NOT NULL
++                    AND target_fact_id IS NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'end' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NOT NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind IN ('annul', 'void') AND effective_at IS NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'correct' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL
++                    AND consequences IS NOT NULL AND jsonb_typeof(consequences) = 'array' AND g2_version IS NOT NULL)
++                OR (kind IN ('renew', 'suspend', 'restore') AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL))
++            SQL);
++    }
++};
+diff --git a/database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php b/database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php
+new file mode 100644
+index 000000000..74004c1e7
+--- /dev/null
++++ b/database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php
+@@ -0,0 +1,77 @@
++<?php
++
++declare(strict_types=1);
++
++use Illuminate\Database\Migrations\Migration;
++use Illuminate\Support\Facades\DB;
++
++/**
++ * PBDIGIT-354 S2-5b (D-237, D-242): a Correct of a Renew may set its `until` to open-ended (∞). A `correct` row keeps
++ * its value in `effective_at` (a date), which cannot hold ∞.
++ *
++ * up():
++ *   - correct_value_unlimited boolean NOT NULL DEFAULT false: true exactly on a `correct` row whose value is ∞, and then
++ *     its effective_at is NULL. An explicit flag, never "NULL means ∞" (a CHECK that evaluates to NULL is satisfied;
++ *     guide 25 pitfall);
++ *   - the kind CHECK's `correct` branch: exactly one of a date or the flag;
++ *   - org_membership_facts_correct_value_check: the flag only on `correct` rows.
++ *   "Only a Renew chain may be open-ended" needs the chain, so it is enforced on load (Member::fromLog) and in decide.
++ * down(): refuses while any open-ended correction exists; otherwise restores the S2-2 shape.
++ *
++ * PARITY (developer_guide/membership/23): the organisation set carries the same SQL in
++ * app/Contexts/Membership/Infrastructure/Database/OrganisationMigrations/2026_11_16_300800_add_correct_value_unlimited_to_org_membership_facts.php.
++ *
++ * RELEASE GATE: as the S2-1 migration. Not on any persistent database before the migration-approval control exists;
++ * code and migration are deployed together. Until then the throwaway test cluster only.
++ */
++return new class extends Migration
++{
++    public function up(): void
++    {
++        DB::statement(<<<'SQL'
++            ALTER TABLE org_membership_facts
++              ADD COLUMN correct_value_unlimited boolean NOT NULL DEFAULT false,
++              DROP CONSTRAINT org_membership_facts_kind_check,
++              ADD CONSTRAINT org_membership_facts_kind_check CHECK (
++                (kind = 'admit' AND effective_at IS NOT NULL AND initial_term IS NOT NULL
++                    AND target_fact_id IS NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'end' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NOT NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind IN ('annul', 'void') AND effective_at IS NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'correct' AND (effective_at IS NOT NULL) <> correct_value_unlimited
++                    AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL
++                    AND consequences IS NOT NULL AND jsonb_typeof(consequences) = 'array' AND g2_version IS NOT NULL)
++                OR (kind IN ('renew', 'suspend', 'restore') AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)),
++              ADD CONSTRAINT org_membership_facts_correct_value_check CHECK (kind = 'correct' OR correct_value_unlimited = false)
++            SQL);
++    }
++
++    public function down(): void
++    {
++        $rows = (int) DB::selectOne('SELECT count(*) AS n FROM org_membership_facts WHERE correct_value_unlimited')->n;
++        if ($rows > 0) {
++            throw new RuntimeException("S2-5b down() refused: {$rows} open-ended correction(s) exist; dropping the column would destroy history. Nothing was changed.");
++        }
++        DB::statement(<<<'SQL'
++            ALTER TABLE org_membership_facts
++              DROP CONSTRAINT org_membership_facts_correct_value_check,
++              DROP CONSTRAINT org_membership_facts_kind_check,
++              DROP COLUMN correct_value_unlimited,
++              ADD CONSTRAINT org_membership_facts_kind_check CHECK (
++                (kind = 'admit' AND effective_at IS NOT NULL AND initial_term IS NOT NULL
++                    AND target_fact_id IS NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'end' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NOT NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind IN ('annul', 'void') AND effective_at IS NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL)
++                OR (kind = 'correct' AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL
++                    AND consequences IS NOT NULL AND jsonb_typeof(consequences) = 'array' AND g2_version IS NOT NULL)
++                OR (kind IN ('renew', 'suspend', 'restore') AND effective_at IS NOT NULL AND initial_term IS NULL AND initial_term_until IS NULL
++                    AND target_fact_id IS NOT NULL AND end_kind IS NULL AND consequences IS NULL AND g2_version IS NULL))
++            SQL);
++    }
++};
+diff --git a/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php b/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php
+new file mode 100644
+index 000000000..c80cdce6e
+--- /dev/null
++++ b/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php
+@@ -0,0 +1,139 @@
++<?php
++
++declare(strict_types=1);
++
++namespace Tests\Feature\Contexts\Membership\Organisational;
++
++use App\Contexts\Membership\Application\Organisational\AdmitMember;
++use App\Contexts\Membership\Application\Organisational\AdmitMemberHandler;
++use App\Contexts\Membership\Application\Organisational\CorrectMembershipRecord;
++use App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler;
++use App\Contexts\Membership\Application\Organisational\RenewMembership;
++use App\Contexts\Membership\Application\Organisational\RenewMembershipHandler;
++use App\Contexts\Membership\Application\Organisational\RestoreMembership;
++use App\Contexts\Membership\Application\Organisational\RestoreMembershipHandler;
++use App\Contexts\Membership\Application\Organisational\SuspendMembership;
++use App\Contexts\Membership\Application\Organisational\SuspendMembershipHandler;
++use App\Contexts\Membership\Domain\Organisational\Instant;
++use App\Contexts\Membership\Domain\Organisational\MemberId;
++use App\Contexts\Membership\Domain\Organisational\PeriodId;
++use App\Contexts\Membership\Domain\Organisational\RefusalReason;
++use App\Contexts\Membership\Domain\Organisational\TimePoint;
++use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
++use App\Contexts\Shared\Domain\ValueObjects\TenantId;
++use Illuminate\Database\QueryException;
++use Illuminate\Support\Facades\DB;
++use Illuminate\Support\Str;
++use Tests\Support\ScriptedLedgerClockReader;
++use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthority;
++
++/**
++ * PBDIGIT-354 S2-5b on PostgreSQL: D-237 (a Renew's `until` corrected to a later date or to open-ended) and D-177 row
++ * 14 (a Restore's date) are stored append-only, reloaded and published through C1; knownAt before the correction shows
++ * the original. Migration 370000 / 300800: `correct_value_unlimited`, so an open-ended corrected value is stored
++ * explicitly; a Correct row has exactly one of a date or that flag (CHECK).
++ * Day ordinals: 20000 = 2024-10-04, 20050 = 2024-11-23, 20150 = 2025-03-03, 20200 = 2025-04-22.
++ */
++final class PostgresCorrectRenewAndRestoreTest extends MembershipPostgresTestCase
++{
++    private int $clock = 1_760_000_000_000_000;
++
++    private function repo(): PostgresMemberRepository
++    {
++        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(fn (): int => $this->clock += 1_000));
++    }
++
++    private function organisation(): TenantId
++    {
++        $org = (string) Str::uuid();
++        DB::table('organisations')->insert(['id' => $org, 'name' => 's25b', 'slug' => 's25b-' . $org, 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
++        $this->assertTrue((new AdmitMemberHandler($this->repo(), new FakeAuthority()))->handle(
++            new AdmitMember($org, 'P1', 'M1', 'A1', 20_000, 20_000, 20_040, false, 'registrar-1', 'decl-fixture', null, 'k-admit'))->isAppended());
++
++        return TenantId::fromString($org);
++    }
++
++    private function correct(TenantId $org, string $target, ?int $to, bool $openEnded = false, string $id = 'C1', int $decision = 20_060)
++    {
++        return (new CorrectMembershipRecordHandler($this->repo(), new FakeAuthority()))->handle(
++            new CorrectMembershipRecord($org->value(), 'M1', $id, $target, $to, $decision, 'minutes:2024/12', 'registrar-1', null, "k-$id", $openEnded));
++    }
++
++    private function member(TenantId $org)
++    {
++        return $this->repo()->load($org, MemberId::fromString('M1'));
++    }
++
++    private function inForce(TenantId $org, int $at): bool
++    {
++        return $this->member($org)->resolve()->period(PeriodId::fromString('A1'))->isInForce(TimePoint::of($at));
++    }
++
++    public function test_d237_a_renewals_until_corrected_to_open_ended_is_stored_reloaded_and_published(): void
++    {
++        $org = $this->organisation();
++        $this->assertTrue((new RenewMembershipHandler($this->repo(), new FakeAuthority()))->handle(
++            new RenewMembership($org->value(), 'M1', 'R1', 20_050, 20_050, 20_150, false, 'treasurer-1', null, 'k-renew'))->isAppended());
++        $before = $this->clock;
++        $events = (int) DB::selectOne("SELECT count(*) AS n FROM outbox_events WHERE organisation_id = ? AND event_type = 'MembershipCoverageResolved'", [$org->value()])->n;
++
++        $this->assertTrue($this->correct($org, 'R1', null, openEnded: true)->isAppended());
++
++        $row = DB::table('org_membership_facts')->where('organisation_id', $org->value())->where('fact_id', 'C1')->first(['kind', 'effective_at', 'correct_value_unlimited']);
++        $this->assertSame(['correct', null, true], [$row->kind, $row->effective_at, $row->correct_value_unlimited], 'stored explicitly as open-ended');
++        $this->assertTrue($this->inForce($org, 1_000_000), 'reloaded: in force without end');
++        $this->assertFalse($this->inForce($org, 20_045), 'D-242: the start is unchanged (the gap stays)');
++        $this->assertFalse($this->member($org)->knownAt(Instant::of($before))->period(PeriodId::fromString('A1'))->isInForce(TimePoint::of(20_150)), 'as known before: until 2025-03-03');
++        $this->assertSame($events + 1, (int) DB::selectOne("SELECT count(*) AS n FROM outbox_events WHERE organisation_id = ? AND event_type = 'MembershipCoverageResolved'", [$org->value()])->n, 'C1: inForce changed');
++        $this->assertSame(['admit', 'renew', 'correct'], array_map(static fn ($r) => $r->kind, DB::select('SELECT kind FROM org_membership_facts WHERE organisation_id = ? ORDER BY seq', [$org->value()])), 'nothing rewritten');
++    }
++
++    public function test_d237_a_renewals_until_corrected_beyond_the_decision_date_and_refused_at_or_before_its_start(): void
++    {
++        $org = $this->organisation();
++        (new RenewMembershipHandler($this->repo(), new FakeAuthority()))->handle(new RenewMembership($org->value(), 'M1', 'R1', 20_050, 20_050, 20_150, false, 'treasurer-1', null, 'k-renew'));
++
++        $this->assertSame(RefusalReason::EmptySegment, $this->correct($org, 'R1', 20_050)->domainRefusal());
++        $this->assertTrue($this->correct($org, 'R1', 20_200, id: 'C2', decision: 20_060)->isAppended(), 'until 2025-04-22, decided 2024-12-03');
++        $this->assertSame('2025-04-22', DB::table('org_membership_facts')->where('organisation_id', $org->value())->where('fact_id', 'C2')->value('effective_at'));
++        $this->assertTrue($this->inForce($org, 20_199));
++        $this->assertFalse($this->inForce($org, 20_200));
++    }
++
++    public function test_row14_a_restores_date_is_corrected_and_a_suspensions_is_refused(): void
++    {
++        $org = $this->organisation();
++        $this->assertTrue((new SuspendMembershipHandler($this->repo(), new FakeAuthority()))->handle(
++            new SuspendMembership($org->value(), 'M1', 'S1', 20_010, 20_010, 20_030, 'board-1', null, 'k-s'))->isAppended());
++        $this->assertTrue((new RestoreMembershipHandler($this->repo(), new FakeAuthority()))->handle(
++            new RestoreMembership($org->value(), 'M1', 'T1', 'S1', 20_020, 20_020, 'board-1', null, 'k-t'))->isAppended());
++
++        $this->assertTrue($this->correct($org, 'T1', 20_025)->isAppended());
++        $this->assertTrue($this->member($org)->resolve()->isSuspended(TimePoint::of(20_024)));
++        $this->assertFalse($this->member($org)->resolve()->isSuspended(TimePoint::of(20_025)));
++        $this->assertSame(RefusalReason::OutsideRestriction, $this->correct($org, 'T1', 20_030, id: 'C2')->domainRefusal());
++        $this->assertSame(RefusalReason::CorrectionOfSuspendNotPermitted, $this->correct($org, 'S1', 20_012, id: 'C3')->domainRefusal(), 'D-241');
++    }
++
++    public function test_the_database_keeps_a_correct_row_to_exactly_one_value(): void
++    {
++        $org = $this->organisation();
++        $base = "INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, effective_at, target_fact_id, provenance, consequences, g2_version, recorded_at, correct_value_unlimited)
++            VALUES (?, 'M1', 9, 'CX', 'correct', %s, 'A1', '{}', '[]', 1, now(), %s)";
++        foreach (['both' => ["'2024-10-05'", 'true'], 'neither' => ['NULL', 'false']] as $why => [$date, $flag]) {
++            try {
++                DB::transaction(static fn () => DB::statement(sprintf($base, $date, $flag), [$org->value()]));
++                $this->fail("accepted: $why");
++            } catch (QueryException $e) {
++                $this->assertStringContainsString('org_membership_facts_kind_check', $e->getMessage(), $why);
++            }
++        }
++        try {
++            DB::transaction(static fn () => DB::statement("INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, effective_at, initial_term, provenance, recorded_at, correct_value_unlimited)
++                VALUES (?, 'M1', 9, 'AX', 'admit', '2024-10-05', 'unlimited', '{}', now(), true)", [$org->value()]));
++            $this->fail('accepted: the flag on a non-correct row');
++        } catch (QueryException $e) {
++            $this->assertStringContainsString('org_membership_facts_correct_value_check', $e->getMessage());
++        }
++    }
++}
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php b/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php
+new file mode 100644
+index 000000000..cc0c09175
+--- /dev/null
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php
+@@ -0,0 +1,186 @@
++<?php
++
++declare(strict_types=1);
++
++namespace Tests\Unit\Contexts\Membership\Domain\Organisational;
++
++use App\Contexts\Membership\Domain\Organisational\FactId;
++use App\Contexts\Membership\Domain\Organisational\Instant;
++use App\Contexts\Membership\Domain\Organisational\Member;
++use App\Contexts\Membership\Domain\Organisational\Provenance;
++use App\Contexts\Membership\Domain\Organisational\RefusalReason;
++use App\Contexts\Membership\Domain\Organisational\TimePoint;
++use PHPUnit\Framework\TestCase;
++use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\MemberHistory;
++
++/**
++ * PBDIGIT-354 S2-5b in the kernel:
++ * - **D-237 (D-177 row 20):** a Correct of a Renew sets its `until`: any date strictly after the Renew's start, or
++ *   open-ended (∞); NOT bound by "not after the decision date" (a term's end is not an effective date). **D-242:** the
++ *   Renew's start is never changed by it.
++ * - **D-177 row 14:** a Correct of a Restore sets its date, under the Restore's own rules: the Suspend live, the period
++ *   in force, strictly inside the restriction, not after the decision date (D-205).
++ * - **D-241:** a Suspend's dates are not correctable (Void and record again).
++ * - The originals stay; corrections chain; a Void of a Correct restores the previous value; knownAt before the Correct
++ *   shows the original.
++ * Day ordinals.
++ */
++final class CorrectRenewAndRestoreTest extends TestCase
++{
++    /** A1 admitted at 1, term [1, 40) (lapses at 40); R1: a late renewal [50, 150) decided on 50 (gap 40 … 50). */
++    private static function renewed(): MemberHistory
++    {
++        $h = MemberHistory::start();
++        $h->commit($h->admit('A1', 1, 40), 100);
++        $h->commit($h->renew('R1', 50, 150, 50), 200);
++
++        return $h;
++    }
++
++    /** A1 admitted at 1, open-ended term; S1 suspended [20, 80); T1 restores it at 50. */
++    private static function restored(): MemberHistory
++    {
++        $h = MemberHistory::start();
++        $h->commit($h->admit('A1', 1, termIsInfinite: true), 100);
++        $h->commit($h->suspend('S1', 20, 80), 200);
++        $h->commit($h->restore('T1', 'S1', 50), 300);
++
++        return $h;
++    }
++
++    private static function inForce(MemberHistory $h, int $at): bool
++    {
++        return $h->member->resolve()->period(\App\Contexts\Membership\Domain\Organisational\PeriodId::fromString('A1'))->isInForce(TimePoint::of($at));
++    }
++
++    private static function suspended(MemberHistory $h, int $at): bool
++    {
++        return $h->member->resolve()->isSuspended(TimePoint::of($at));
++    }
++
++    public function test_d237_a_renewals_until_is_corrected_even_beyond_the_decision_date(): void
++    {
++        $h = self::renewed();
++
++        $h->commit($h->correct('C1', 'R1', 200, 60), 300);   // decided on 60, until 200: D-237 (2)
++
++        $this->assertTrue(self::inForce($h, 199));
++        $this->assertFalse(self::inForce($h, 200));
++        $this->assertFalse(self::inForce($h, 45), 'D-242: the start is unchanged; the gap 40 … 50 stays');
++        $this->assertTrue(self::inForce($h, 50));
++    }
++
++    public function test_d237_a_renewals_until_is_corrected_to_open_ended(): void
++    {
++        $h = self::renewed();
++
++        $h->commit($h->correctToOpenEnded('C1', 'R1', 60), 300);
++
++        $this->assertTrue(self::inForce($h, 1_000_000));
++        $this->assertFalse(self::inForce($h, 45));
++    }
++
++    public function test_d237_the_corrected_until_must_be_strictly_after_the_renewals_start(): void
++    {
++        $h = self::renewed();
++
++        $this->assertSame(RefusalReason::EmptySegment, $h->correct('C1', 'R1', 50, 60)->refusal(), 'equal to the start');
++        $this->assertSame(RefusalReason::EmptySegment, $h->correct('C1', 'R1', 49, 60)->refusal(), 'before it');
++        $this->assertSame(RefusalReason::ValueUnchanged, $h->correct('C1', 'R1', 150, 60)->refusal());
++        $this->assertTrue($h->correct('C1', 'R1', 51, 60)->isAccepted(), 'shortened, but after the start');
++    }
++
++    public function test_d237_history_corrections_chain_a_void_restores_and_knownat_shows_the_original(): void
++    {
++        $h = self::renewed();
++        $h->commit($h->correct('C1', 'R1', 200, 60), 300);
++        $h->commit($h->correctToOpenEnded('C2', 'C1', 70), 400);
++
++        $this->assertCount(4, $h->member->log(), 'Admit, Renew, both Corrects: nothing rewritten');
++        $this->assertTrue(self::inForce($h, 1_000_000), 'the latest correction of the chain');
++        $this->assertTrue($h->member->knownAt(Instant::of(250))->period(\App\Contexts\Membership\Domain\Organisational\PeriodId::fromString('A1'))->isInForce(TimePoint::of(149)));
++        $this->assertFalse($h->member->knownAt(Instant::of(250))->period(\App\Contexts\Membership\Domain\Organisational\PeriodId::fromString('A1'))->isInForce(TimePoint::of(150)), 'as known before the Correct: the original until');
++
++        $h->commit($h->void('V1', 'C2'), 500);
++        $this->assertFalse(self::inForce($h, 200), 'C2 voided: C1 (200) applies again');
++        $this->assertTrue(self::inForce($h, 199));
++    }
++
++    public function test_d237_a_voided_renewal_is_not_corrected(): void
++    {
++        $h = self::renewed();
++        $h->commit($h->void('V1', 'R1'), 300);
++
++        $this->assertSame(RefusalReason::CorrectOfVoidedFact, $h->correct('C1', 'R1', 200, 60)->refusal());
++    }
++
++    public function test_only_a_renewal_chain_may_be_corrected_to_open_ended(): void
++    {
++        $h = self::restored();
++
++        $this->expectException(\InvalidArgumentException::class);
++        $h->correctToOpenEnded('C1', 'T1');
++    }
++
++    public function test_row14_a_restores_date_is_corrected_inside_the_restriction(): void
++    {
++        $h = self::restored();
++
++        $h->commit($h->correct('C1', 'T1', 60, 70), 400);
++
++        $this->assertTrue(self::suspended($h, 59));
++        $this->assertFalse(self::suspended($h, 60));
++        $this->assertCount(4, $h->member->log(), 'the Restore is not rewritten');
++        $this->assertFalse($h->member->knownAt(Instant::of(350))->isSuspended(TimePoint::of(55)), 'as known before the Correct: restored on 50');
++    }
++
++    public function test_row14_a_corrected_restore_keeps_the_restores_own_rules(): void
++    {
++        $h = self::restored();
++
++        $this->assertSame(RefusalReason::OutsideRestriction, $h->correct('C1', 'T1', 80)->refusal(), 'on the restriction end');
++        $this->assertSame(RefusalReason::OutsideRestriction, $h->correct('C1', 'T1', 20)->refusal(), 'on its start');
++        $this->assertSame(RefusalReason::OutsideRestriction, $h->correct('C1', 'T1', 10)->refusal());
++        $this->assertSame(RefusalReason::EffectiveDateAfterDecisionDate, $h->correct('C1', 'T1', 60, 55)->refusal(), 'D-205');
++        $this->assertSame(RefusalReason::ValueUnchanged, $h->correct('C1', 'T1', 50)->refusal());
++        $h->commit($h->void('V1', 'S1'), 400);
++        $this->assertSame(RefusalReason::NotSuspended, $h->correct('C1', 'T1', 60)->refusal(), 'its suspension voided');
++    }
++
++    public function test_row14_a_correction_of_a_corrected_restore(): void
++    {
++        $h = self::restored();
++        $h->commit($h->correct('C1', 'T1', 60, 70), 400);
++        $h->commit($h->correct('C2', 'C1', 40, 70), 500);
++
++        $this->assertFalse(self::suspended($h, 40));
++        $this->assertTrue(self::suspended($h, 39));
++    }
++
++    public function test_d241_a_suspension_is_not_corrected(): void
++    {
++        $h = self::restored();
++
++        $this->assertSame(RefusalReason::CorrectionOfSuspendNotPermitted, $h->correct('C1', 'S1', 25)->refusal());
++    }
++
++    public function test_a_stored_log_with_corrections_of_renew_and_restore_reloads(): void
++    {
++        $h = self::renewed();
++        $h->commit($h->correctToOpenEnded('C1', 'R1', 60), 300);
++
++        $reloaded = Member::fromLog($h->member->id(), $h->member->holder(), $h->member->organisation(), ...$h->member->log());
++        $this->assertTrue($reloaded->resolve()->period(\App\Contexts\Membership\Domain\Organisational\PeriodId::fromString('A1'))->isInForce(TimePoint::of(1_000_000)));
++    }
++
++    public function test_a_stored_open_ended_correction_of_a_non_renewal_is_rejected_on_load(): void
++    {
++        $h = self::restored();
++        $log = $h->member->log();
++        $bad = \App\Contexts\Membership\Domain\Organisational\RecordedFact::of(4, Instant::of(400),
++            new \App\Contexts\Membership\Domain\Organisational\Correct(FactId::fromString('C1'), FactId::fromString('T1'), TimePoint::infinity(), Provenance::decision('r'), Instant::of(900)));
++
++        $this->expectException(\InvalidArgumentException::class);
++        Member::fromLog($h->member->id(), $h->member->holder(), $h->member->organisation(), ...[...$log, $bad]);
++    }
++}

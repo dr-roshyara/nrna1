@@ -1,0 +1,46 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEDDDDDDDDDDDDDDDDDDDDDD  63 / 103 ( 61%)
+DDDDDDDDDDDD
+D-240 free races, the competing End's refusals: {"period_not_found":8}
+D
+MI-2 free races, winners: {"executed":8}
+DDDDDDDDDDDDDDDDDDDDDDDDDDD                        103 / 103 (100%)
+
+Time: 00:28.020, Memory: 28.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectionSchemaTest::test_down_refuses_to_drop_stored_corrections_and_round_trips_otherwise
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  check constraint "org_membership_facts_kind_check" of relation "org_membership_facts" is violated by some row (Connection: pgsql, Host: 127.0.0.1, Port: 38587, Database: membership_pg_isolated, SQL: ALTER TABLE org_membership_facts
+  ADD CONSTRAINT org_membership_facts_kind_check CHECK (
+    (kind = 'admit' AND initial_term IS NOT NULL AND period_fact_id IS NULL AND end_kind IS NULL)
+    OR (kind = 'end' AND initial_term IS NULL AND initial_term_until IS NULL
+        AND period_fact_id IS NOT NULL AND end_kind IS NOT NULL)))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:158
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  check constraint "org_membership_facts_kind_check" of relation "org_membership_facts" is violated by some row
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:491
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/migrations/2026_11_03_120000_extend_org_membership_facts_for_corrections.php:71
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectionSchemaTest.php:158
+
+ERRORS!
+Tests: 103, Assertions: 954, Errors: 1, Deprecations: 1.

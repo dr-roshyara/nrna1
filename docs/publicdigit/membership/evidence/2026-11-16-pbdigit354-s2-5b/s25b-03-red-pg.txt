@@ -1,0 +1,41 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EDDF                                                                4 / 4 (100%)
+
+Time: 00:08.650, Memory: 26.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectRenewAndRestoreTest::test_d237_a_renewals_until_corrected_to_open_ended_is_stored_reloaded_and_published
+InvalidArgumentException: ∞ is not a calendar date; use the explicit initial-term state.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/DateOrdinal.php:23
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:343
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:183
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php:178
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:89
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php:49
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:58
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:80
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectRenewAndRestoreTest::test_the_database_keeps_a_correct_row_to_exactly_one_value
+both
+Failed asserting that 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "correct_value_unlimited" of relation "org_membership_facts" does not exist\n
+LINE 1: ...rovenance, consequences, g2_version, recorded_at, correct_va...\n
+                                                             ^ (Connection: pgsql, Host: 127.0.0.1, Port: 41293, Database: membership_pg_isolated, SQL: INSERT INTO org_membership_facts (organisation_id, membership_id, seq, fact_id, kind, effective_at, target_fact_id, provenance, consequences, g2_version, recorded_at, correct_value_unlimited)\n
+            VALUES (d12f065a-8e76-4f2b-a7da-c18bc45ba894, 'M1', 9, 'CX', 'correct', '2024-10-05', 'A1', '{}', '[]', 1, now(), true))' [ASCII](length: 679) contains "org_membership_facts_kind_check" [ASCII](length: 31).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:128
+
+ERRORS!
+Tests: 4, Assertions: 18, Errors: 1, Failures: 1, Deprecations: 1.

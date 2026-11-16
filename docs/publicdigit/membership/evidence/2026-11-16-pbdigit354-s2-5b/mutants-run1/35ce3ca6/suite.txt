@@ -1,0 +1,51 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EDDD                                                                4 / 4 (100%)
+
+Time: 00:05.494, Memory: 26.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresCorrectRenewAndRestoreTest::test_d237_a_renewals_until_corrected_to_open_ended_is_stored_reloaded_and_published
+Illuminate\Database\QueryException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (93fef4ca-7ba5-4bc2-864d-fe16723f91e7, M1, 3, C1, correct, null, null, null, R1, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., [], 1, null, null, null, null, f). (Connection: pgsql, Host: 127.0.0.1, Port: 37331, Database: membership_pg_isolated, SQL: insert into "org_membership_facts" ("organisation_id", "membership_id", "seq", "recorded_at", "kind", "effective_at", "correct_value_unlimited", "target_fact_id", "consequences", "g2_version", "fact_id", "decided_at", "provenance", "initial_term", "initial_term_until", "end_kind", "renew_until_kind", "renew_until", "restriction_until_kind", "restriction_until") values (93fef4ca-7ba5-4bc2-864d-fe16723f91e7, M1, 3, 2025-10-09 08:53:20.003000+00, correct, ?, 0, R1, [], 1, C1, ?, {"kind":"decision","actorOrSource":"registrar-1","declarationRef":"minutes:2024\/12","ruleRef":null,"ruleVersion":null,"importer":null,"note":null,"authorityEvidence":{"actor":"registrar-1","capacity":"test-role","ruleRef":"test:fake-authority","policyVersion":"v1","result":true,"checkedAt":1,"competenceVerified":false}}, ?, ?, ?, ?, ?, ?, ?))
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:338
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:183
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:178
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:89
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php:49
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:58
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:80
+
+Caused by
+PDOException: SQLSTATE[23514]: Check violation: 7 ERROR:  new row for relation "org_membership_facts" violates check constraint "org_membership_facts_kind_check"
+DETAIL:  Failing row contains (93fef4ca-7ba5-4bc2-864d-fe16723f91e7, M1, 3, C1, correct, null, null, null, R1, null, null, 2025-10-09 08:53:20.003+00, {"kind": "decision", "note": null, "ruleRef": null, "importer": ..., [], 1, null, null, null, null, f).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:584
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:573
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:537
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4125
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:338
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:183
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:35
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25b/run1/mutants/35ce3ca6/mutant.php:178
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:89
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/CorrectMembershipRecordHandler.php:49
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:58
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresCorrectRenewAndRestoreTest.php:80
+
+ERRORS!
+Tests: 4, Assertions: 20, Errors: 1, Deprecations: 1.

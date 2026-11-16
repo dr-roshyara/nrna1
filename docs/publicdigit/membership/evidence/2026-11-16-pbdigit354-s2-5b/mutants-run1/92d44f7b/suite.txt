@@ -1,0 +1,19 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..F.............................................................. 65 / 80 ( 81%)
+...............                                                   80 / 80 (100%)
+
+Time: 00:00.036, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_the_corrected_until_must_be_strictly_after_the_renewals_start
+equal to the start
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:87
+
+FAILURES!
+Tests: 80, Assertions: 425, Failures: 1.
