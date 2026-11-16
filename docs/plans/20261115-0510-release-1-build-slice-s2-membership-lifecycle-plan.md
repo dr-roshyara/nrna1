@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **APPROVED by the Principal 2026-11-15 (D-236): Q-1 Option A; S2-1 … S2-6 in full.** S2-1 implemented and proven **except D-177 row 20 (rule decided, D-237; implemented in S2-5)**; **S2-2 DONE 2026-11-15**; S2-3 not started |
+| **Status** | **APPROVED by the Principal 2026-11-15 (D-236): Q-1 Option A; S2-1 … S2-6 in full.** S2-1 implemented and proven **except D-177 row 20 (rule decided, D-237; implemented in S2-5)**; **S2-2 DONE 2026-11-15**; **S2-3 DONE 2026-11-15**; **S2-4 DONE 2026-11-16**; **S2-5: preflight done, Q-6 / Q-7 / Q-8 open (§7e)**; S2-6 open |
 | **Story** | `PBDIGIT-354` (created with this plan) |
 | **Authorisation** | the Principal, 2026-11-15: "proceed with Membership lifecycle", **beginning with a bounded readiness assessment**; development and test only |
 | **Slice in the accepted sequence** | release-1 blueprint (D-216) §10: S0 Platform routing ✔ (PBDIGIT-345, D-235) → S1 ledger clock ✔ (PBDIGIT-343) → **S2 Membership lifecycle = G-4** → S3 Governance → S4 Organisation → S5 Forum → S6 Newsletter. *(The slice-1 plan calls the same content "slice 5"; same scope, different numbering.)* |
@@ -139,6 +139,57 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | A stuck scheduled execution blocks the organisation's membership answers (accepted fail-closed cost, D-73) | monitoring is [EXT] before launch (D-210 (4)); S2-4 proves the hold and its release |
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
+
+## 7e. S2-5 preflight and design (2026-11-16): Correct / Void; three rules to decide first (Q-6, Q-7, Q-8)
+
+**Preflight:**
+- `election-flow-updated` at `84e13998c` (S2-4 done; D-240 evidence verified, 36 files); guides 25–33 present; nothing staged; unrelated changes untouched; Session B in its own worktree.
+- **Corrected here:** this plan's status line said "S2-3 not started"; S2-3 and S2-4 are done.
+
+**What already exists (C-1, C-2, C-4: kernel and persistence, accepted):**
+- `Member::decideAnnul`, `decideVoid`, `decideCorrect`;
+- the facts `Annul`, `VoidFact`, `Correct` (one corrected **date**, with frozen trim consequences);
+- persistence of all three.
+- **D-COR-3 (2026-11-02): "dates only": Admit and End `effectiveAt`.** The kernel refuses a Correct of a Renew (`CorrectionOfRenewNotSupported`) and of a Suspend / Restore (`CorrectionOfSuspendOrRestoreNotSupported`).
+
+**What S2-5 adds (derived from D-206, D-208 §2, D-237, D-240; no decision needed):**
+
+| Piece | Design |
+|---|---|
+| Use cases | `CorrectMembershipRecord`, `VoidMembershipRecord` (application), through `DecideAndAppend` (D-238 order: boundary → authority → not found → domain → append) |
+| Authority | `MembershipAct::CorrectMembershipRecord` / `VoidMembershipRecord` (`correct-membership-record`, `void-membership-record`; D-208 §2 shapes: *fact ref, corrected value, evidence ref* / *fact ref, evidence ref*). **Evidence required** (refused at the boundary without it, as death, GC-14); `AuthorityRequest` gains `factRef` and `correctedValue` (additive) and allows `evidenceRef` for these acts. Undetermined → nothing changed (D-206) |
+| Provenance | the recorder + authority evidence + the evidence reference (the "recorded from evidence, challengeable" marking of D-148 / D-159) |
+| Annul | **not in S2-5**: push only (S2-6) |
+| Renew `until` (D-237) | a Correct of a Renew carries the **new `until`**: any date strictly after the Renew's start, **or ∞**; **not** subject to "not after the decision date" (D-237 (2)); the Renew's start and its Correct stay separately traceable; `knownAt` before the Correct shows the old `until` |
+| Restore date (D-177 row 14) | a Correct of a Restore carries its new effective date: inside the restriction (`OutsideRestriction`), not after the decision date (D-205), the Suspend live |
+| D-240 | a **Correct whose chain ends in an End** is checked at the append like an End: its corrected date may not move onto or after a pending declaration's date. The same lock path; the same refusal. A Void / Annul of an End reopens a period and is not a competing End |
+| Persistence | **a migration is needed for D-237:** a `correct` row stores its value in `effective_at` (a date, never ∞), so an open-ended corrected `until` cannot be stored. Proposed: `correct_until_kind` / `correct_until` columns, used only for a Correct of a Renew (central and organisation parity, as S2-1) |
+
+**Q-6: which date of a Suspend may a Correct change?**
+- D-177 row 14 speaks only of correcting a **Restore's** date. A Suspend has two dates: its start and its restriction end (`until`, or open-ended).
+- **A (recommended): neither, in release 1.**
+  - A wrong suspension is **Voided** (it never reflected reality) and recorded again; a restriction that should end earlier gets a **Restore**.
+  - Keeps the accepted algebra (one date per Correct) and adds no rule.
+- **B: its start date only.** Rules: not after the decision date, the period in force at the new start, the restriction not empty, a live Restore still inside it.
+- **C: start and `until`.** The Correct must then say which date it corrects (a new field on the fact and the row); the most work, the most new rules.
+
+**Q-7: may a Correct change a Renew's START date?**
+- D-237 decides only the `until`.
+- **A (recommended): no:** a wrong start is Voided and the renewal recorded again. A Correct of a Renew then means exactly one thing (its `until`).
+- **B: yes:** under the effective-date rules (not after the decision date; the segment not empty; inside the lifetime). The Correct must then say which date it corrects (as Q-6 C).
+
+**Q-8: what "a Void is reported to the organisation" (D-206) requires in S2-5.**
+- **A (recommended):**
+  - the Void is recorded with its recorder, authority evidence and evidence reference (the D-148 / D-159 "recorded from evidence, challengeable" marking);
+  - its effect reaches the organisation through C1 when coverage, inForce or suspended change;
+  - **a dedicated notice** (who receives it, how it is challenged) **is a Communication / Organisation capability, recorded as a backlog item**, not built in S2-5.
+- **B:** S2-5 adds a new published event (e.g. `MembershipRecordVoided`) to the organisation's outbox. A new Published-Language contract with no accepted consumer: needs design and ARB acceptance first.
+
+**Proposed S2-5 steps after the decisions** (each test-first; real PostgreSQL; routing; mutants; guide; evidence):
+1. **S2-5a:** the use cases (Correct / Void of Admit and End) with authority and evidence; D-240 for a corrected End, including a race.
+2. **S2-5b:** D-237 (Renew `until`, with its migration) and the Restore date (row 14), plus whatever Q-6 / Q-7 decide.
+
+**No S2-5 code is written until Q-6, Q-7 and Q-8 are decided.**
 
 ## 7d. S2-4d finding: an ending recorded on or after a due-but-unexecuted scheduled resignation's date (Q-5, **decided: D-240, Option A**, 2026-11-15; **implemented 2026-11-16**: guide 33; **S2-4 DONE**)
 
