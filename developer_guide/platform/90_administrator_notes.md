@@ -260,3 +260,12 @@ Never mark an organisation operational or change `schema_state` by hand.
   - the wiring guard.
 
   Never bind the calendar alone.
+
+## Membership lifecycle S2-4d-Q5: a pending scheduled resignation takes effect first (2026-11-16, PBDIGIT-354, D-240)
+
+**Nothing to run: no migration, no configuration.** What operators and support staff will see:
+- **The refusal.** While a member's scheduled resignation is pending, any other ending of that membership effective on or after its date is refused with `scheduled_resignation_takes_effect_first`: resign now, an ending because of death, or an exclusion.
+  - The resignation is then recorded on the member's own date by the confirming step.
+  - **Do not try to work around it** (for example by withdrawing the declaration on the member's behalf, or by entering an earlier date). Withdrawal is the member's act, under authority.
+- **A person's death is a different record from a membership ending.** The refusal is about the membership ending only. Recording the death as a fact about the person is a separate matter: no such operation exists yet (PBDIGIT-356).
+- In production none of this is active yet (no calendar until Organisation S4, no authority until Governance S3).

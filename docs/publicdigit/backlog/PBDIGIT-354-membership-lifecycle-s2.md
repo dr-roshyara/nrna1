@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS`: plan **approved (D-236)**; S2-1 implemented and proven except D-177 row 20 (rule decided, D-237; implemented in S2-5); **S2-2 DONE 2026-11-15**; S2-3 not started |
+| **Status** | `IN PROGRESS`: plan **approved (D-236)**; S2-1 implemented and proven except D-177 row 20 (rule decided, D-237; implemented in S2-5); **S2-2 DONE 2026-11-15**; **S2-3 DONE 2026-11-15**; **S2-4 DONE 2026-11-16** (D-239, D-240); S2-5, S2-6 open |
 | **Plan** | `docs/plans/20261115-0510-release-1-build-slice-s2-membership-lifecycle-plan.md` |
 | **Context** | Membership (organisation database) |
 | **Authorisation** | Principal, 2026-11-15 (development and test only): "proceed with Membership lifecycle", starting with the readiness assessment |
@@ -56,6 +56,6 @@ Plan §4, steps S2-1 … S2-6.
 - [ ] S2-1 Renew and the admission-term rule: **implemented and proven 2026-11-15** (guide 25; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-1/`), **except D-177 row 20** (Correct a Renew's `until`), refused in the kernel until **Q-2** is decided. The box stays open until then
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
 - [x] S2-3 resign now, death: **DONE 2026-11-15:** S2-3a (authority contract, D-238; guide 27) and S2-3b (resign now, record a death; guide 28; evidence `…/2026-11-15-pbdigit354-s2-3b/`)
-- [ ] S2-4 scheduled resignation (D-239): **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31), **S2-4d DONE** (race, visibility, routing; guide 32) 2026-11-15; **S2-4 stays open: Q-5** (plan §7d)
+- [x] S2-4 scheduled resignation (D-239, D-240): **DONE 2026-11-16**. **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31), **S2-4d DONE** (race, visibility, routing; guide 32) 2026-11-15; **Q-5 decided as D-240 and implemented** (guide 33; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-4d-q5/`) 2026-11-16
 - [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (Suspend / Restore dates)
 - [ ] S2-6 push shapes (Membership side)

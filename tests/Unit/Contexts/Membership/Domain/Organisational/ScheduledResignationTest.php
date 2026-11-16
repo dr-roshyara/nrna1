@@ -121,6 +121,18 @@ final class ScheduledResignationTest extends TestCase
         $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(20), self::by(), self::t(31)));
     }
 
+    public function test_d240_a_pending_declaration_refuses_a_competing_end_on_or_after_its_date(): void
+    {
+        $d = self::schedule(self::admitted());   // scheduled for 30
+
+        $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $d->refusesCompetingEndOn(self::t(30)), 'on the date');
+        $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $d->refusesCompetingEndOn(self::t(35)), 'after it');
+        $this->assertNull($d->refusesCompetingEndOn(self::t(29)), 'strictly before: the earlier-ending rule (MI-3) is unchanged');
+        foreach ([$d->withdraw(self::t(20), self::by()), $d->supersede('x'), $d->markExecuted(FactId::fromString('E0'))] as $final) {
+            $this->assertNull($final->refusesCompetingEndOn(self::t(35)), "{$final->state()->value}: not pending, refuses nothing");
+        }
+    }
+
     public function test_a_withdrawal_records_when_and_by_whom_and_keeps_the_declaration(): void
     {
         $w = self::schedule(self::admitted())->withdraw(self::t(20), Provenance::decision('registrar-1'));

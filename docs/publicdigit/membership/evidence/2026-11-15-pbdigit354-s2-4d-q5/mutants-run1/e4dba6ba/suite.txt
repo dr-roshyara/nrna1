@@ -1,0 +1,18 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.......F............                                              20 / 20 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\ScheduledResignationTest::test_d240_a_pending_declaration_refuses_a_competing_end_on_or_after_its_date
+withdrawn: not pending, refuses nothing
+Failed asserting that App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #641 (ScheduledResignationTakesEffectFirst, 'scheduled_resignation_takes_effect_first') is null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php:132
+
+FAILURES!
+Tests: 20, Assertions: 93, Failures: 1.

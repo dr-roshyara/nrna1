@@ -23,4 +23,11 @@ enum AppendOutcome: string
      * no time is ever adjusted. Retryable: decide again and append with a fresh reading.
      */
     case RecordTimeRefused = 'record_time_refused';
+    /**
+     * D-240 (PBDIGIT-354 S2-4d-Q5): a domain rule that depends on state outside the Member aggregate, checked at record
+     * time under the append's locks, refused the fact: a pending scheduled resignation of the period takes effect first
+     * (`AppendResult::refusal()` gives the reason). Nothing was written. Not retried: the same command would be refused
+     * again until the declaration is executed, withdrawn or superseded.
+     */
+    case RefusedByDomain = 'refused_by_domain';
 }

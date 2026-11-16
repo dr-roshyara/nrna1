@@ -16,7 +16,9 @@ use App\Contexts\Membership\Domain\Organisational\Admit;
 use App\Contexts\Membership\Domain\Organisational\Annul;
 use App\Contexts\Membership\Domain\Organisational\Correct;
 use App\Contexts\Membership\Domain\Organisational\Decision;
+use App\Contexts\Membership\Domain\Organisational\DeclarationId;
 use App\Contexts\Membership\Domain\Organisational\End;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\Fact;
 use App\Contexts\Membership\Domain\Organisational\FactId;
@@ -198,7 +200,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
      *
      * @throws \LogicException outside a transaction (it is never a way around append()'s rules)
      */
-    public function appendWithinClose(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, Instant $closeReading): AppendResult
+    public function appendWithinClose(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, Instant $closeReading, ?DeclarationId $executing = null): AppendResult
     {
         if (!$accepted->isAccepted()) {
             throw new \InvalidArgumentException('Only accepted decisions can be appended.');
@@ -207,10 +209,39 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             throw new \LogicException('appendWithinClose() runs only inside the ledger close transaction.');
         }
 
-        return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint, $closeReading);
+        return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint, $closeReading, $executing);
     }
 
-    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null): AppendResult
+    /**
+     * D-240: the refusal of a pending scheduled resignation of the End's period, or null. The rule is the declaration's
+     * (`ScheduledResignation::refusesCompetingEndOn`); this only supplies the declarations, under the right locks:
+     * - the membership row FOR UPDATE: the lock a new scheduling takes (PostgresScheduledResignationStore::record), so no
+     *   declaration appears between this check and the append;
+     * - the organisation's clock row, already held: the close and every withdrawal take it, so no declaration is executed
+     *   or withdrawn in between either.
+     * Lock order clock row → membership row, as the version compare-and-set below. $executing is the declaration the
+     * close is executing (its own End is not a competitor).
+     */
+    private function pendingScheduledResignationRefusal(TenantId $tenant, MemberId $id, Fact $fact, ?DeclarationId $executing): ?RefusalReason
+    {
+        if (!$fact instanceof End) {
+            return null;
+        }
+        $this->db->selectOne('SELECT 1 AS locked FROM org_memberships WHERE organisation_id = ? AND id = ? FOR UPDATE', [$tenant->value(), $id->value()]);
+        foreach ((new PostgresScheduledResignationStore($this->db))->forMember($tenant, $id) as $declaration) {
+            if (!$declaration->period()->equals($fact->period()) || ($executing !== null && $declaration->id()->equals($executing))) {
+                continue;
+            }
+            $refusal = $declaration->refusesCompetingEndOn($fact->effectiveAt());
+            if ($refusal !== null) {
+                return $refusal;
+            }
+        }
+
+        return null;
+    }
+
+    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null, ?DeclarationId $executing = null): AppendResult
     {
         $seen = $this->answerFromKey($tenant, $key, $fingerprint);
         if ($seen !== null) {
@@ -243,6 +274,13 @@ final class PostgresMemberRepository implements MemberRepositoryPort
 
             // D-209 / D-215 K-C1: refused, never adjusted. Nothing but the (idempotent) clock row has been written.
             return AppendResult::failed(AppendOutcome::RecordTimeRefused);
+        }
+
+        // D-240 (S2-4d-Q5): a pending scheduled resignation takes effect first. Checked here, at record time, so it binds
+        // every End path; nothing has been written yet (only the idempotent clock row, before this transaction).
+        $pending = $this->pendingScheduledResignationRefusal($tenant, $id, $accepted->fact(), $executing);
+        if ($pending !== null) {
+            return AppendResult::refusedByDomain($pending);
         }
 
         $version = $this->db->selectOne(

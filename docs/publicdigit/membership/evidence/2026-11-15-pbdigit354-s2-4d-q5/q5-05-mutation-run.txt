@@ -1,0 +1,8 @@
+Q1 an End ON the scheduled date is allowed                 tests:20   KILLED (assertions)  d240_a_pending_declaration_refuses_a_com;
+Q2 a final declaration still refuses                       tests:20   KILLED (assertions)  d240_a_pending_declaration_refuses_a_com;
+Q3 the append does not check (the rule unenforced)         tests:7    KILLED (assertions)  d240_a_death_related_membership_end_on_o;d240_after_the_refusal_the_confirming_st;d240_an_exclusion_end_on_or_after_the_sc;d240_resign_now_on_or_after_the_schedule;
+Q4 the executor's own End is not exempt                    tests:7    KILLED (assertions)  d240_after_the_refusal_the_confirming_st;
+Q5 another period's declaration counts                     tests:7    KILLED (assertions)  d240_applies_to_the_declarations_own_per;
+Q6 no membership row lock (a scheduling in flight is missed) tests:6    KILLED (assertions)  d240_a_competing_end_waits_for_a_schedul;
+Q7 a record-time refusal is retried as a conflict          tests:7    KILLED (assertions)  d240_a_death_related_membership_end_on_o;d240_resign_now_on_or_after_the_schedule;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

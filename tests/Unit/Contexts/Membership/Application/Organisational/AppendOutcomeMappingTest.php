@@ -45,6 +45,7 @@ final class AppendOutcomeMappingTest extends TestCase
         'valid_time_not_storable' => ['valid_time_not_storable', 1],
         'concurrency_conflict' => ['concurrent_modification', DecideAndAppend::MAX_ATTEMPTS],
         'record_time_refused' => ['record_time_unavailable', DecideAndAppend::MAX_ATTEMPTS],   // D-209: re-decided, then fail closed
+        'refused_by_domain' => ['domain:scheduled_resignation_takes_effect_first', 1],          // D-240: the reason, as given; never retried
     ];
 
     public function test_every_append_outcome_has_an_expected_application_result(): void
@@ -117,6 +118,7 @@ final class AppendOutcomeMappingTest extends TestCase
                 return match ($this->answer) {
                     AppendOutcome::Appended => AppendResult::success($appended),
                     AppendOutcome::AlreadyApplied => AppendResult::retried($appended),
+                    AppendOutcome::RefusedByDomain => AppendResult::refusedByDomain(\App\Contexts\Membership\Domain\Organisational\RefusalReason::ScheduledResignationTakesEffectFirst),
                     default => AppendResult::failed($this->answer),
                 };
             }

@@ -1,0 +1,19 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDFDDD                                                             7 / 7 (100%)
+
+Time: 00:12.027, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationPrecedenceTest::test_d240_after_the_refusal_the_confirming_step_records_the_resignation_on_the_members_date
+Failed asserting that null is identical to 1731114000000000.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php:155
+
+FAILURES!
+Tests: 7, Assertions: 40, Failures: 1, Deprecations: 1.

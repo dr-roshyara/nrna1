@@ -61,7 +61,7 @@ final class ScheduledResignationExecutor implements DueScheduledResignations
                 continue;
             }
 
-            $appended = $members->appendWithinClose($organisation, $memberId, $decision, IdempotencyKey::fromString("execute-scheduled-resignation:{$ref}"), "execute-scheduled-resignation:{$ref}", $t);
+            $appended = $members->appendWithinClose($organisation, $memberId, $decision, IdempotencyKey::fromString("execute-scheduled-resignation:{$ref}"), "execute-scheduled-resignation:{$ref}", $t, $declaration->id());
             if ($appended->outcome() !== AppendOutcome::Appended) {
                 throw new \RuntimeException("Scheduled resignation {$ref}: its End was not recorded ({$appended->outcome()->value}).");
             }

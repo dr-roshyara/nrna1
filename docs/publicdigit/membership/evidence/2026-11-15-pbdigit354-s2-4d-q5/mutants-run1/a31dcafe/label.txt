@@ -1,0 +1,1 @@
+Q7 a record-time refusal is retried as a conflict

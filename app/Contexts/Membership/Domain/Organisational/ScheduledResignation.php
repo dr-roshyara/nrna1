@@ -115,6 +115,19 @@ final readonly class ScheduledResignation
         return $this->with(ScheduledResignationState::Withdrawn, withdrawnOn: $on, withdrawnBy: $by);
     }
 
+    /**
+     * D-240 (Q-5 Option A): while this declaration is `scheduled`, another End of its period effective ON OR AFTER its
+     * date is refused: the scheduled resignation takes effect first, on the member's date. An End strictly before the
+     * date is not refused (MI-3: the period ends earlier and this declaration is superseded). A declaration that is no
+     * longer pending refuses nothing. A pure date comparison: no calendar (D-240).
+     */
+    public function refusesCompetingEndOn(TimePoint $effectiveAt): ?RefusalReason
+    {
+        return $this->state === ScheduledResignationState::Scheduled && !$effectiveAt->isBefore($this->effectiveDate)
+            ? RefusalReason::ScheduledResignationTakesEffectFirst
+            : null;
+    }
+
     /** MI-3: the period ended earlier (another End, or an Annul / Void of the period); the reason is recorded. */
     public function supersede(string $because): self|RefusalReason
     {

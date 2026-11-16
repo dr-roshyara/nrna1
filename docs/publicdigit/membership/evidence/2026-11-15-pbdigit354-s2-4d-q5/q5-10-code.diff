@@ -1,0 +1,570 @@
+diff --git a/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php b/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php
+index 340d9368c..659cb0309 100644
+--- a/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php
++++ b/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php
+@@ -94,6 +94,8 @@ final class DecideAndAppend
+                 AppendOutcome::IdempotencyKeyConflict => CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict),
+                 AppendOutcome::MemberNotFound => CommandOutcome::refused(ApplicationRefusal::MemberNotFound),
+                 AppendOutcome::ValidTimeNotStorable => CommandOutcome::refused(ApplicationRefusal::ValidTimeNotStorable),
++                AppendOutcome::RefusedByDomain => CommandOutcome::refusedByDomain($result->refusal()
++                    ?? throw new \LogicException('A domain refusal at record time names its reason.')),   // D-240
+                 AppendOutcome::ConcurrencyConflict, AppendOutcome::RecordTimeRefused => null,
+             };
+             if ($outcome !== null) {
+diff --git a/app/Contexts/Membership/Application/Organisational/Ports/AppendOutcome.php b/app/Contexts/Membership/Application/Organisational/Ports/AppendOutcome.php
+index 0c0f201b4..fb9a6914e 100644
+--- a/app/Contexts/Membership/Application/Organisational/Ports/AppendOutcome.php
++++ b/app/Contexts/Membership/Application/Organisational/Ports/AppendOutcome.php
+@@ -23,4 +23,11 @@ enum AppendOutcome: string
+      * no time is ever adjusted. Retryable: decide again and append with a fresh reading.
+      */
+     case RecordTimeRefused = 'record_time_refused';
++    /**
++     * D-240 (PBDIGIT-354 S2-4d-Q5): a domain rule that depends on state outside the Member aggregate, checked at record
++     * time under the append's locks, refused the fact: a pending scheduled resignation of the period takes effect first
++     * (`AppendResult::refusal()` gives the reason). Nothing was written. Not retried: the same command would be refused
++     * again until the declaration is executed, withdrawn or superseded.
++     */
++    case RefusedByDomain = 'refused_by_domain';
+ }
+diff --git a/app/Contexts/Membership/Application/Organisational/Ports/AppendResult.php b/app/Contexts/Membership/Application/Organisational/Ports/AppendResult.php
+index 9ff7bc333..84ffe0a6f 100644
+--- a/app/Contexts/Membership/Application/Organisational/Ports/AppendResult.php
++++ b/app/Contexts/Membership/Application/Organisational/Ports/AppendResult.php
+@@ -5,13 +5,29 @@ declare(strict_types=1);
+ namespace App\Contexts\Membership\Application\Organisational\Ports;
+ 
+ use App\Contexts\Membership\Application\Organisational\Appended;
++use App\Contexts\Membership\Domain\Organisational\RefusalReason;
+ 
+ final readonly class AppendResult
+ {
+-    private function __construct(private AppendOutcome $outcome, private ?Appended $appended)
++    private function __construct(private AppendOutcome $outcome, private ?Appended $appended, private ?RefusalReason $refusal = null)
+     {
+     }
+ 
++    /**
++     * D-240 (S2-4d-Q5): a domain rule checked at record time, under the append's locks, refused it (a pending scheduled
++     * resignation takes effect first). Nothing was written; never retried.
++     */
++    public static function refusedByDomain(RefusalReason $reason): self
++    {
++        return new self(AppendOutcome::RefusedByDomain, null, $reason);
++    }
++
++    /** The domain reason of a RefusedByDomain outcome, else null. */
++    public function refusal(): ?RefusalReason
++    {
++        return $this->refusal;
++    }
++
+     public static function success(Appended $appended): self
+     {
+         return new self(AppendOutcome::Appended, $appended);
+@@ -24,8 +40,8 @@ final readonly class AppendResult
+ 
+     public static function failed(AppendOutcome $outcome): self
+     {
+-        if (in_array($outcome, [AppendOutcome::Appended, AppendOutcome::AlreadyApplied], true)) {
+-            throw new \InvalidArgumentException('Use success() / retried().');
++        if (in_array($outcome, [AppendOutcome::Appended, AppendOutcome::AlreadyApplied, AppendOutcome::RefusedByDomain], true)) {
++            throw new \InvalidArgumentException('Use success() / retried() / refusedByDomain().');
+         }
+ 
+         return new self($outcome, null);
+diff --git a/app/Contexts/Membership/Domain/Organisational/RefusalReason.php b/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
+index bc98ad52f..43d6efd43 100644
+--- a/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
++++ b/app/Contexts/Membership/Domain/Organisational/RefusalReason.php
+@@ -84,6 +84,12 @@ enum RefusalReason: string
+     /** Guard (D-205 (1), D-223; MI-15c): a scheduled resignation is never recorded before its effective date. */
+     case ExecutionBeforeEffectiveDate = 'execution_before_effective_date';
+ 
++    /**
++     * Guard (D-240, Q-5 Option A): a pending scheduled resignation of the period takes effect first; another End of that
++     * period effective on or after its date is refused (resign now, the death-related End, an exclusion, any other).
++     */
++    case ScheduledResignationTakesEffectFirst = 'scheduled_resignation_takes_effect_first';
++
+     /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
+     case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';
+ 
+diff --git a/app/Contexts/Membership/Domain/Organisational/ScheduledResignation.php b/app/Contexts/Membership/Domain/Organisational/ScheduledResignation.php
+index c159e0e82..d6aebd58d 100644
+--- a/app/Contexts/Membership/Domain/Organisational/ScheduledResignation.php
++++ b/app/Contexts/Membership/Domain/Organisational/ScheduledResignation.php
+@@ -115,6 +115,19 @@ final readonly class ScheduledResignation
+         return $this->with(ScheduledResignationState::Withdrawn, withdrawnOn: $on, withdrawnBy: $by);
+     }
+ 
++    /**
++     * D-240 (Q-5 Option A): while this declaration is `scheduled`, another End of its period effective ON OR AFTER its
++     * date is refused: the scheduled resignation takes effect first, on the member's date. An End strictly before the
++     * date is not refused (MI-3: the period ends earlier and this declaration is superseded). A declaration that is no
++     * longer pending refuses nothing. A pure date comparison: no calendar (D-240).
++     */
++    public function refusesCompetingEndOn(TimePoint $effectiveAt): ?RefusalReason
++    {
++        return $this->state === ScheduledResignationState::Scheduled && !$effectiveAt->isBefore($this->effectiveDate)
++            ? RefusalReason::ScheduledResignationTakesEffectFirst
++            : null;
++    }
++
+     /** MI-3: the period ended earlier (another End, or an Annul / Void of the period); the reason is recorded. */
+     public function supersede(string $because): self|RefusalReason
+     {
+diff --git a/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php b/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
+index 0a890c98f..b2796919f 100644
+--- a/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
++++ b/app/Contexts/Membership/Infrastructure/Organisational/PostgresMemberRepository.php
+@@ -16,7 +16,9 @@ use App\Contexts\Membership\Domain\Organisational\Admit;
+ use App\Contexts\Membership\Domain\Organisational\Annul;
+ use App\Contexts\Membership\Domain\Organisational\Correct;
+ use App\Contexts\Membership\Domain\Organisational\Decision;
++use App\Contexts\Membership\Domain\Organisational\DeclarationId;
+ use App\Contexts\Membership\Domain\Organisational\End;
++use App\Contexts\Membership\Domain\Organisational\RefusalReason;
+ use App\Contexts\Membership\Domain\Organisational\EndKind;
+ use App\Contexts\Membership\Domain\Organisational\Fact;
+ use App\Contexts\Membership\Domain\Organisational\FactId;
+@@ -198,7 +200,7 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+      *
+      * @throws \LogicException outside a transaction (it is never a way around append()'s rules)
+      */
+-    public function appendWithinClose(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, Instant $closeReading): AppendResult
++    public function appendWithinClose(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, Instant $closeReading, ?DeclarationId $executing = null): AppendResult
+     {
+         if (!$accepted->isAccepted()) {
+             throw new \InvalidArgumentException('Only accepted decisions can be appended.');
+@@ -207,10 +209,39 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+             throw new \LogicException('appendWithinClose() runs only inside the ledger close transaction.');
+         }
+ 
+-        return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint, $closeReading);
++        return $this->appendInTransaction($tenant, $id, $accepted, $key, $fingerprint, $closeReading, $executing);
+     }
+ 
+-    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null): AppendResult
++    /**
++     * D-240: the refusal of a pending scheduled resignation of the End's period, or null. The rule is the declaration's
++     * (`ScheduledResignation::refusesCompetingEndOn`); this only supplies the declarations, under the right locks:
++     * - the membership row FOR UPDATE: the lock a new scheduling takes (PostgresScheduledResignationStore::record), so no
++     *   declaration appears between this check and the append;
++     * - the organisation's clock row, already held: the close and every withdrawal take it, so no declaration is executed
++     *   or withdrawn in between either.
++     * Lock order clock row → membership row, as the version compare-and-set below. $executing is the declaration the
++     * close is executing (its own End is not a competitor).
++     */
++    private function pendingScheduledResignationRefusal(TenantId $tenant, MemberId $id, Fact $fact, ?DeclarationId $executing): ?RefusalReason
++    {
++        if (!$fact instanceof End) {
++            return null;
++        }
++        $this->db->selectOne('SELECT 1 AS locked FROM org_memberships WHERE organisation_id = ? AND id = ? FOR UPDATE', [$tenant->value(), $id->value()]);
++        foreach ((new PostgresScheduledResignationStore($this->db))->forMember($tenant, $id) as $declaration) {
++            if (!$declaration->period()->equals($fact->period()) || ($executing !== null && $declaration->id()->equals($executing))) {
++                continue;
++            }
++            $refusal = $declaration->refusesCompetingEndOn($fact->effectiveAt());
++            if ($refusal !== null) {
++                return $refusal;
++            }
++        }
++
++        return null;
++    }
++
++    private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null, ?DeclarationId $executing = null): AppendResult
+     {
+         $seen = $this->answerFromKey($tenant, $key, $fingerprint);
+         if ($seen !== null) {
+@@ -245,6 +276,13 @@ final class PostgresMemberRepository implements MemberRepositoryPort
+             return AppendResult::failed(AppendOutcome::RecordTimeRefused);
+         }
+ 
++        // D-240 (S2-4d-Q5): a pending scheduled resignation takes effect first. Checked here, at record time, so it binds
++        // every End path; nothing has been written yet (only the idempotent clock row, before this transaction).
++        $pending = $this->pendingScheduledResignationRefusal($tenant, $id, $accepted->fact(), $executing);
++        if ($pending !== null) {
++            return AppendResult::refusedByDomain($pending);
++        }
++
+         $version = $this->db->selectOne(
+             'UPDATE org_memberships SET version = version + 1
+              WHERE organisation_id = ? AND id = ? AND version = ?
+diff --git a/app/Contexts/Membership/Infrastructure/Organisational/ScheduledResignationExecutor.php b/app/Contexts/Membership/Infrastructure/Organisational/ScheduledResignationExecutor.php
+index a9adfa421..7f8bdfa04 100644
+--- a/app/Contexts/Membership/Infrastructure/Organisational/ScheduledResignationExecutor.php
++++ b/app/Contexts/Membership/Infrastructure/Organisational/ScheduledResignationExecutor.php
+@@ -61,7 +61,7 @@ final class ScheduledResignationExecutor implements DueScheduledResignations
+                 continue;
+             }
+ 
+-            $appended = $members->appendWithinClose($organisation, $memberId, $decision, IdempotencyKey::fromString("execute-scheduled-resignation:{$ref}"), "execute-scheduled-resignation:{$ref}", $t);
++            $appended = $members->appendWithinClose($organisation, $memberId, $decision, IdempotencyKey::fromString("execute-scheduled-resignation:{$ref}"), "execute-scheduled-resignation:{$ref}", $t, $declaration->id());
+             if ($appended->outcome() !== AppendOutcome::Appended) {
+                 throw new \RuntimeException("Scheduled resignation {$ref}: its End was not recorded ({$appended->outcome()->value}).");
+             }
+diff --git a/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationRaceTest.php b/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationRaceTest.php
+index 8f64735d0..ce705f794 100644
+--- a/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationRaceTest.php
++++ b/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationRaceTest.php
+@@ -93,14 +93,16 @@ final class PostgresScheduledResignationRaceTest extends MembershipPostgresTestC
+     }
+ 
+     /** An organisation, M1 admitted (2024-10-04), D1 scheduled for 3 November, and a first close before the date. */
+-    private function organisation(): string
++    private function organisation(bool $schedule = true): string
+     {
+         $org = (string) Str::uuid();
+         DB::table('organisations')->insert(['id' => $org, 'name' => 's2-4d-race', 'slug' => 's24d-race-' . $org, 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
+         $this->assertTrue((new AdmitMemberHandler(self::members(), new FakeAuthority()))->handle(
+             new AdmitMember($org, 'P1', 'M1', 'A1', 20_000, 20_000, 20_365, false, 'registrar-1', 'decl-fixture', null, 'k-admit'))->isAppended());
+-        $this->assertTrue((new ScheduleResignationHandler(self::members(), self::store(), new FakeAuthority()))->handle(
+-            new ScheduleResignation($org, 'M1', 'D1', 20_010, self::DUE, 'P1', null, 'k-schedule'))->isRecorded());
++        if ($schedule) {
++            $this->assertTrue((new ScheduleResignationHandler(self::members(), self::store(), new FakeAuthority()))->handle(
++                new ScheduleResignation($org, 'M1', 'D1', 20_010, self::DUE, 'P1', null, 'k-schedule'))->isRecorded());
++        }
+         $this->assertNotNull(self::closer(self::executor(self::BEFORE))->closeOrRead(TenantId::fromString($org)), 'a first close, before the date');
+ 
+         return $org;
+@@ -240,6 +242,95 @@ final class PostgresScheduledResignationRaceTest extends MembershipPostgresTestC
+         $this->assertSame('withdrawn', $this->assertExactlyOne($org, $withdrawal, $after, 'after the next close'));
+     }
+ 
++    /** @return array{0: string, 1?: mixed} a competing "resign now" effective 8 November (on or after the scheduled 3 November) */
++    private static function resignNow(string $org): array
++    {
++        $o = (new \App\Contexts\Membership\Application\Organisational\ResignMembershipHandler(self::members(), new FakeAuthority()))->handle(
++            new \App\Contexts\Membership\Application\Organisational\ResignMembership($org, 'M1', 'E-now', 20_035, 'P1', null, 'k-now'));
++
++        return $o->isAppended() ? ['appended'] : ['refused', ($o->domainRefusal() ?? $o->applicationRefusal())->value];
++    }
++
++    /** D-240 under concurrency: whatever the order, the only End ever recorded is the scheduled one, on its date. */
++    private function assertOnlyTheScheduledEnd(string $org, array $competing, string $round): void
++    {
++        self::close($org, self::executor());   // a later close records it if the race left it pending
++        [$state, $ends] = self::outcome($org);
++        $context = "$round " . json_encode([$competing, $state->value, $ends]);
++        $this->assertSame(ScheduledResignationState::Executed, $state, $context);
++        $this->assertSame([['scheduled-resignation:D1', '2024-11-03']], array_map(static fn ($e) => [$e->fact_id, $e->effective_at], $ends), "$context: one End, on the member's date");
++        $this->assertSame('refused', $competing[0], "$context: the competing End never lands");
++        $this->assertContains($competing[1], ['scheduled_resignation_takes_effect_first', 'period_not_found', 'period_already_ended'], $context);
++    }
++
++    public function test_d240_an_execution_holding_the_lock_leaves_a_competing_end_nothing_to_end(): void
++    {
++        $org = $this->organisation();
++        $slowAfterExecuting = new class (self::executor()) implements DueScheduledResignations {
++            public function __construct(private DueScheduledResignations $inner) {}
++            public function executeDue(Connection $db, TenantId $organisation, Instant $t): void
++            {
++                $this->inner->executeDue($db, $organisation, $t);
++                usleep(400_000);
++            }
++        };
++
++        [$close, $competing] = $this->race([
++            fn (): array => self::close($org, $slowAfterExecuting),
++            function () use ($org): array { usleep(100_000); return self::resignNow($org); },   // waits on the clock row
++        ]);
++
++        $this->assertNotNull($close[1], json_encode($close));
++        $this->assertOnlyTheScheduledEnd($org, $competing, 'execution first');
++    }
++
++    /**
++     * D-240 atomicity against SCHEDULING: a scheduling in flight holds the membership row (as
++     * PostgresScheduledResignationStore::record does) while its declaration is inserted; a competing End starting then
++     * must wait for it and see it, never check "no pending declaration" and append behind its back. (Scheduling does
++     * not change the membership version, so the version compare-and-set alone would not catch it.)
++     */
++    public function test_d240_a_competing_end_waits_for_a_scheduling_in_flight_and_is_refused(): void
++    {
++        $org = $this->organisation(schedule: false);
++
++        [$scheduling, $competing] = $this->race([
++            function () use ($org): array {
++                DB::transaction(function () use ($org): void {
++                    DB::selectOne('SELECT version FROM org_memberships WHERE organisation_id = ? AND id = ? FOR UPDATE', [$org, 'M1']);
++                    DB::insert("INSERT INTO org_membership_scheduled_resignations (organisation_id, membership_id, declaration_id, period_fact_id, declaration_date, effective_date, provenance, recorded_at, state)
++                        VALUES (?, 'M1', 'D1', 'A1', '2024-10-14', '2024-11-03', ?, clock_timestamp(), 'scheduled')", [$org, \App\Contexts\Membership\Infrastructure\Organisational\ProvenanceJson::encode(\App\Contexts\Membership\Domain\Organisational\Provenance::decision('P1'))]);
++                    usleep(400_000);   // in flight: the membership row stays locked
++                });
++
++                return ['scheduled'];
++            },
++            function () use ($org): array { usleep(100_000); return self::resignNow($org); },
++        ]);
++
++        $this->assertSame(['scheduled'], $scheduling);
++        $this->assertSame(['refused', 'scheduled_resignation_takes_effect_first'], $competing, 'it waited for the scheduling and saw the declaration');
++        $this->assertOnlyTheScheduledEnd($org, $competing, 'scheduling in flight');
++    }
++
++    public function test_d240_free_races_between_a_competing_end_and_the_close_never_displace_the_members_date(): void
++    {
++        $outcomes = [];
++        for ($round = 0; $round < self::ROUNDS; $round++) {
++            $org = $this->organisation();
++
++            [$close, $competing] = $this->race([
++                fn (): array => self::close($org, self::executor()),
++                fn (): array => self::resignNow($org),
++            ]);
++
++            $this->assertNotSame('error', $close[0], json_encode($close));
++            $this->assertOnlyTheScheduledEnd($org, $competing, "round $round");
++            $outcomes[] = $competing[1];
++        }
++        fwrite(STDERR, "\nD-240 free races, the competing End's refusals: " . json_encode(array_count_values($outcomes)) . "\n");
++    }
++
+     public function test_mi2_free_races_always_end_with_exactly_one_success_and_never_two_ends(): void
+     {
+         $winners = [];
+diff --git a/tests/Unit/Contexts/Membership/Application/Organisational/AppendOutcomeMappingTest.php b/tests/Unit/Contexts/Membership/Application/Organisational/AppendOutcomeMappingTest.php
+index 3ca1b518a..0498d0a49 100644
+--- a/tests/Unit/Contexts/Membership/Application/Organisational/AppendOutcomeMappingTest.php
++++ b/tests/Unit/Contexts/Membership/Application/Organisational/AppendOutcomeMappingTest.php
+@@ -45,6 +45,7 @@ final class AppendOutcomeMappingTest extends TestCase
+         'valid_time_not_storable' => ['valid_time_not_storable', 1],
+         'concurrency_conflict' => ['concurrent_modification', DecideAndAppend::MAX_ATTEMPTS],
+         'record_time_refused' => ['record_time_unavailable', DecideAndAppend::MAX_ATTEMPTS],   // D-209: re-decided, then fail closed
++        'refused_by_domain' => ['domain:scheduled_resignation_takes_effect_first', 1],          // D-240: the reason, as given; never retried
+     ];
+ 
+     public function test_every_append_outcome_has_an_expected_application_result(): void
+@@ -117,6 +118,7 @@ final class AppendOutcomeMappingTest extends TestCase
+                 return match ($this->answer) {
+                     AppendOutcome::Appended => AppendResult::success($appended),
+                     AppendOutcome::AlreadyApplied => AppendResult::retried($appended),
++                    AppendOutcome::RefusedByDomain => AppendResult::refusedByDomain(\App\Contexts\Membership\Domain\Organisational\RefusalReason::ScheduledResignationTakesEffectFirst),
+                     default => AppendResult::failed($this->answer),
+                 };
+             }
+diff --git a/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php b/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php
+index ecf06ecd9..df96cc9db 100644
+--- a/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php
++++ b/tests/Unit/Contexts/Membership/Domain/Organisational/ScheduledResignationTest.php
+@@ -121,6 +121,18 @@ final class ScheduledResignationTest extends TestCase
+         $this->assertSame(RefusalReason::WithdrawalAfterEffectiveDate, $d->withdraw(self::t(20), self::by(), self::t(31)));
+     }
+ 
++    public function test_d240_a_pending_declaration_refuses_a_competing_end_on_or_after_its_date(): void
++    {
++        $d = self::schedule(self::admitted());   // scheduled for 30
++
++        $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $d->refusesCompetingEndOn(self::t(30)), 'on the date');
++        $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $d->refusesCompetingEndOn(self::t(35)), 'after it');
++        $this->assertNull($d->refusesCompetingEndOn(self::t(29)), 'strictly before: the earlier-ending rule (MI-3) is unchanged');
++        foreach ([$d->withdraw(self::t(20), self::by()), $d->supersede('x'), $d->markExecuted(FactId::fromString('E0'))] as $final) {
++            $this->assertNull($final->refusesCompetingEndOn(self::t(35)), "{$final->state()->value}: not pending, refuses nothing");
++        }
++    }
++
+     public function test_a_withdrawal_records_when_and_by_whom_and_keeps_the_declaration(): void
+     {
+         $w = self::schedule(self::admitted())->withdraw(self::t(20), Provenance::decision('registrar-1'));
+diff --git a/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php b/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php
+new file mode 100644
+index 000000000..fb560f6b4
+--- /dev/null
++++ b/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php
+@@ -0,0 +1,193 @@
++<?php
++
++declare(strict_types=1);
++
++namespace Tests\Feature\Contexts\Membership\Organisational;
++
++use App\Contexts\Membership\Application\Organisational\AdmitMember;
++use App\Contexts\Membership\Application\Organisational\AdmitMemberHandler;
++use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
++use App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome;
++use App\Contexts\Membership\Application\Organisational\RecordDeath;
++use App\Contexts\Membership\Application\Organisational\RecordDeathHandler;
++use App\Contexts\Membership\Application\Organisational\ResignMembership;
++use App\Contexts\Membership\Application\Organisational\ResignMembershipHandler;
++use App\Contexts\Membership\Application\Organisational\ScheduleResignation;
++use App\Contexts\Membership\Application\Organisational\ScheduleResignationHandler;
++use App\Contexts\Membership\Application\Organisational\WithdrawScheduledResignation;
++use App\Contexts\Membership\Application\Organisational\WithdrawScheduledResignationHandler;
++use App\Contexts\Membership\Domain\Organisational\DeclarationId;
++use App\Contexts\Membership\Domain\Organisational\EndKind;
++use App\Contexts\Membership\Domain\Organisational\FactId;
++use App\Contexts\Membership\Domain\Organisational\MemberId;
++use App\Contexts\Membership\Domain\Organisational\PeriodId;
++use App\Contexts\Membership\Domain\Organisational\Provenance;
++use App\Contexts\Membership\Domain\Organisational\RefusalReason;
++use App\Contexts\Membership\Domain\Organisational\ScheduledResignationState;
++use App\Contexts\Membership\Domain\Organisational\TimePoint;
++use App\Contexts\Membership\Infrastructure\Organisational\LedgerClockCloser;
++use App\Contexts\Membership\Infrastructure\Organisational\PostgresMemberRepository;
++use App\Contexts\Membership\Infrastructure\Organisational\PostgresScheduledResignationStore;
++use App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor;
++use App\Contexts\Shared\Domain\ValueObjects\TenantId;
++use Illuminate\Support\Facades\DB;
++use Illuminate\Support\Str;
++use Tests\Support\FixedOffsetOrganisationCalendar;
++use Tests\Support\ScriptedLedgerClockReader;
++use Tests\Unit\Contexts\Membership\Application\Organisational\Support\FakeAuthority;
++
++/**
++ * PBDIGIT-354 S2-4d-Q5, **D-240** (Q-5 Option A): while a scheduled resignation is `scheduled`, Membership refuses any
++ * other Membership End of that period effective ON OR AFTER its date: "the scheduled resignation takes effect first".
++ *
++ * - Enforced at the ledger append (PostgresMemberRepository), under the organisation's clock-row lock and the
++ *   membership row lock, so it binds EVERY End path: resign now, the death-related End (`RecordDeath`, which records
++ *   `End(death)`), an exclusion End (the S2-6 push path is not built: proved on the append itself), and anything later.
++ * - Nothing is written on a refusal: no End, no key, no version change; the declaration stays `scheduled` and the
++ *   confirming step then records it on the member's date.
++ * - An End strictly BEFORE the date keeps the MI-3 behaviour (the declaration is superseded).
++ * - A person's death as a FACT is not a Membership End; no such operation exists in Membership (PBDIGIT-356). What is
++ *   refused here is only the Membership End.
++ * Day ordinals: 20000 = 2024-10-04, 20025 = 2024-10-29, 20030 = 2024-11-03 (the scheduled date), 20035 = 2024-11-08.
++ */
++final class PostgresScheduledResignationPrecedenceTest extends MembershipPostgresTestCase
++{
++    private static function at(int $day, int $hour = 0): int
++    {
++        return ($day * 86_400 + $hour * 3_600) * 1_000_000;
++    }
++
++    private function members(int $reading): PostgresMemberRepository
++    {
++        return new PostgresMemberRepository(DB::connection(), new ScriptedLedgerClockReader(static fn (): int => $reading));
++    }
++
++    private function store(): PostgresScheduledResignationStore
++    {
++        return new PostgresScheduledResignationStore(DB::connection(), new ScriptedLedgerClockReader(static fn (): int => self::at(20_020, 12)), new FixedOffsetOrganisationCalendar(0));
++    }
++
++    /** M1 admitted (recorded 2024-10-04 09:00), D1 scheduled for 3 November. */
++    private function organisation(): TenantId
++    {
++        $org = (string) Str::uuid();
++        DB::table('organisations')->insert(['id' => $org, 'name' => 'd240', 'slug' => 'd240-' . $org, 'type' => 'tenant', 'created_at' => now(), 'updated_at' => now()]);
++        $this->assertTrue((new AdmitMemberHandler($this->members(self::at(20_000, 9)), new FakeAuthority()))->handle(
++            new AdmitMember($org, 'P1', 'M1', 'A1', 20_000, 20_000, 20_365, false, 'registrar-1', 'decl-fixture', null, 'k-admit'))->isAppended());
++        $this->assertTrue((new ScheduleResignationHandler($this->members(0), $this->store(), new FakeAuthority()))->handle(
++            new ScheduleResignation($org, 'M1', 'D1', 20_010, 20_030, 'P1', null, 'k-schedule'))->isRecorded());
++
++        return TenantId::fromString($org);
++    }
++
++    private function resignNow(TenantId $org, int $on, string $key = 'k-now')
++    {
++        return (new ResignMembershipHandler($this->members(self::at(20_035, 9)), new FakeAuthority()))->handle(new ResignMembership($org->value(), 'M1', "E-$key", $on, 'P1', null, $key));
++    }
++
++    private function deathEnd(TenantId $org, int $dateOfDeath, string $key = 'k-death')
++    {
++        return (new RecordDeathHandler($this->members(self::at(20_035, 9)), new FakeAuthority()))->handle(
++            new RecordDeath($org->value(), 'M1', "E-$key", $dateOfDeath, 20_035, 'death-certificate:2024/88', 'registrar-1', null, $key));
++    }
++
++    /** @return array{0: list<string>, 1: int, 2: string} End fact ids, the membership version, the declaration state */
++    private function ledger(TenantId $org): array
++    {
++        $ends = array_map(static fn ($r) => $r->fact_id . '@' . $r->effective_at, DB::select("SELECT fact_id, effective_at FROM org_membership_facts WHERE organisation_id = ? AND kind = 'end' ORDER BY seq", [$org->value()]));
++        $version = (int) DB::table('org_memberships')->where('organisation_id', $org->value())->value('version');
++        $state = $this->store()->find($org, MemberId::fromString('M1'), DeclarationId::fromString('D1'))->state()->value;
++
++        return [$ends, $version, $state];
++    }
++
++    private function assertRefusedAndUntouched(TenantId $org, $outcome, string $why): void
++    {
++        $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $outcome->domainRefusal(), "$why: the scheduled resignation takes effect first");
++        $this->assertSame([[], 1, 'scheduled'], $this->ledger($org), "$why: no End, no version change, the declaration still pending");
++    }
++
++    public function test_d240_resign_now_on_or_after_the_scheduled_date_is_refused(): void
++    {
++        $org = $this->organisation();
++
++        $this->assertRefusedAndUntouched($org, $this->resignNow($org, 20_030, 'k-on'), 'resign now on 3 November');
++        $this->assertRefusedAndUntouched($org, $this->resignNow($org, 20_035, 'k-after'), 'resign now on 8 November');
++        $this->assertSame(0, DB::table('org_membership_commands')->where('organisation_id', $org->value())->whereIn('idempotency_key', ['k-on', 'k-after'])->count(), 'a refusal registers no key');
++    }
++
++    public function test_d240_a_death_related_membership_end_on_or_after_the_scheduled_date_is_refused(): void
++    {
++        $org = $this->organisation();
++
++        $this->assertRefusedAndUntouched($org, $this->deathEnd($org, 20_030, 'k-d-on'), 'End(death) on 3 November');
++        $this->assertRefusedAndUntouched($org, $this->deathEnd($org, 20_032, 'k-d-after'), 'End(death) on 5 November');
++    }
++
++    public function test_d240_an_exclusion_end_on_or_after_the_scheduled_date_is_refused_at_the_append(): void
++    {
++        $org = $this->organisation();
++        $repo = $this->members(self::at(20_035, 9));
++
++        foreach ([20_030, 20_035] as $i => $effective) {
++            $member = $repo->load($org, MemberId::fromString('M1'));
++            $decision = $member->decideEnd(FactId::fromString("X$i"), PeriodId::fromString('A1'), TimePoint::of($effective), TimePoint::of(20_035),
++                EndKind::fromString(EndKind::EXCLUSION), Provenance::decision('governance:resolution-part:R7/2'));
++            $this->assertTrue($decision->isAccepted(), 'the kernel alone would accept it');
++
++            $result = $repo->append($org, MemberId::fromString('M1'), $decision, IdempotencyKey::fromString("k-x$i"), "fp-x$i");
++
++            $this->assertSame(AppendOutcome::RefusedByDomain, $result->outcome(), "exclusion effective $effective");
++            $this->assertSame(RefusalReason::ScheduledResignationTakesEffectFirst, $result->refusal());
++            $this->assertSame([[], 1, 'scheduled'], $this->ledger($org));
++        }
++    }
++
++    public function test_d240_after_the_refusal_the_confirming_step_records_the_resignation_on_the_members_date(): void
++    {
++        $org = $this->organisation();
++        $this->resignNow($org, 20_035);
++        $this->deathEnd($org, 20_032);
++
++        $closed = (new LedgerClockCloser(DB::connection(), new ScriptedLedgerClockReader(static fn (): int => self::at(20_036, 1)),
++            new ScheduledResignationExecutor(new FixedOffsetOrganisationCalendar(0))))->closeOrRead($org);
++
++        $this->assertSame(self::at(20_036, 1), $closed?->ordinal());
++        $this->assertSame([['scheduled-resignation:D1@2024-11-03'], 2, 'executed'], $this->ledger($org), 'exactly one End, on the declared date');
++        $this->assertSame(RefusalReason::PeriodNotFound, $this->deathEnd($org, 20_040, 'k-death-later')->domainRefusal(), 'afterwards there is no period to end: no second End');
++        $this->assertCount(1, $this->ledger($org)[0]);
++    }
++
++    public function test_d240_an_end_strictly_before_the_scheduled_date_keeps_the_earlier_ending_rule(): void
++    {
++        $org = $this->organisation();
++
++        $this->assertTrue($this->resignNow($org, 20_025)->isAppended(), 'effective 29 October: allowed');
++        (new LedgerClockCloser(DB::connection(), new ScriptedLedgerClockReader(static fn (): int => self::at(20_036, 1)),
++            new ScheduledResignationExecutor(new FixedOffsetOrganisationCalendar(0))))->closeOrRead($org);
++
++        $this->assertSame([['E-k-now@2024-10-29'], 2, 'superseded'], $this->ledger($org), 'MI-3 unchanged');
++    }
++
++    public function test_d240_applies_to_the_declarations_own_period_only(): void
++    {
++        $org = $this->organisation();
++        $this->assertTrue($this->resignNow($org, 20_025, 'k-a1-ends')->isAppended(), 'A1 ends on 29 October; D1 (A1) not yet superseded');
++        $this->assertTrue((new AdmitMemberHandler($this->members(self::at(20_035, 10)), new FakeAuthority()))->handle(
++            new AdmitMember($org->value(), 'P1', 'M1', 'A2', 20_026, 20_026, 20_365, false, 'registrar-1', 'decl-fixture', null, 'k-readmit'))->isAppended(), 're-admitted: period A2');
++
++        $outcome = (new ResignMembershipHandler($this->members(self::at(20_035, 11)), new FakeAuthority()))->handle(new ResignMembership($org->value(), 'M1', 'E-a2', 20_035, 'P1', null, 'k-a2-ends'));
++
++        $this->assertTrue($outcome->isAppended(), "A2's End is not A1's declaration's business: " . ($outcome->domainRefusal()?->value ?? ''));
++    }
++
++    public function test_d240_a_declaration_that_is_no_longer_pending_refuses_nothing(): void
++    {
++        $org = $this->organisation();
++        $this->assertTrue((new WithdrawScheduledResignationHandler($this->members(0), $this->store(), new FakeAuthority()))->handle(
++            new WithdrawScheduledResignation($org->value(), 'M1', 'D1', 20_020, 'P1', 'k-w'))->isRecorded());
++
++        $this->assertTrue($this->resignNow($org, 20_035)->isAppended(), 'withdrawn: a later resignation is an ordinary one');
++        $this->assertSame([['E-k-now@2024-11-08'], 2, 'withdrawn'], $this->ledger($org));
++    }
++}

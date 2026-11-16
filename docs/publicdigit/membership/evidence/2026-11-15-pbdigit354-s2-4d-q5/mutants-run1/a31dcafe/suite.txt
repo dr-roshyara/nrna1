@@ -1,0 +1,28 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FFDDDDD                                                             7 / 7 (100%)
+
+Time: 00:07.552, Memory: 26.00 MB
+
+There were 2 failures:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationPrecedenceTest::test_d240_resign_now_on_or_after_the_scheduled_date_is_refused
+resign now on 3 November: the scheduled resignation takes effect first
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php:114
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationPrecedenceTest::test_d240_a_death_related_membership_end_on_or_after_the_scheduled_date_is_refused
+End(death) on 3 November: the scheduled resignation takes effect first
+Failed asserting that null is identical to an object of class "App\Contexts\Membership\Domain\Organisational\RefusalReason".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php:106
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationPrecedenceTest.php:123
+
+FAILURES!
+Tests: 7, Assertions: 36, Failures: 2, Deprecations: 1.
