@@ -144,12 +144,13 @@ enum RefusalReason: string
     /** Guard (D-177 §4, row 12): a Restore takes effect strictly inside the restriction it ends. */
     case OutsideRestriction = 'outside_restriction';
 
-    /** Guard (S2-5 not yet built): D-177 row 14 lets a Correct change a Suspend's or Restore's date; refused until then. */
-    case CorrectionOfSuspendOrRestoreNotSupported = 'correction_of_suspend_or_restore_not_supported';
-
     /**
-     * Guard (PBDIGIT-354 Q-2, open): D-177 row 20 lets a Correct change a Renew's `until`, but no accepted text gives
-     * the dating rule for a corrected `until`. Refused until decided, so the kernel stays total and fail-closed.
+     * Guard (D-241, Q-6 Option A; S2-5b): a Suspend's dates are not correctable in release 1. A wrong suspension is
+     * Voided and recorded again; a Restore ends a restriction earlier. (Replaces S2-2's "not yet supported" placeholder;
+     * a Restore's date IS correctable, D-177 row 14.)
      */
-    case CorrectionOfRenewNotSupported = 'correction_of_renew_not_supported';
+    case CorrectionOfSuspendNotPermitted = 'correction_of_suspend_not_permitted';
+
+    /** Command boundary (D-237, S2-5b): a Correct states its value: a date, or open-ended; exactly one. */
+    case CorrectedValueRequired = 'corrected_value_required';
 }

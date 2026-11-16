@@ -1,0 +1,120 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FEFFF.FFFEEE...................F.........................E....... 65 / 70 ( 92%)
+...F.                                                             70 / 70 (100%)
+
+Time: 00:00.043, Memory: 12.00 MB
+
+There were 5 errors:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_a_renewals_until_is_corrected_to_open_ended
+InvalidArgumentException: The effective date and the decision date must be finite.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Member.php:606
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Member.php:446
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:135
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:77
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d241_a_suspension_is_not_corrected
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::CorrectionOfSuspendNotPermitted
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:164
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_a_stored_log_with_corrections_of_renew_and_restore_reloads
+InvalidArgumentException: The effective date and the decision date must be finite.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Member.php:606
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Member.php:446
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:135
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:170
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_a_stored_open_ended_correction_of_a_non_renewal_is_rejected_on_load
+InvalidArgumentException: A corrected date is a finite time.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/Correct.php:27
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:181
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\SuspendRestoreTest::test_a_suspension_is_not_corrected_but_a_restores_date_is_d241_row_14
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::CorrectionOfSuspendNotPermitted
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/SuspendRestoreTest.php:293
+
+--
+
+There were 9 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_a_renewals_until_is_corrected_even_beyond_the_decision_date
+expected acceptance, got CorrectionOfRenewNotSupported
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:142
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:65
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_the_corrected_until_must_be_strictly_after_the_renewals_start
+equal to the start
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1347 (EmptySegment, 'empty_segment')
++App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1338 (CorrectionOfRenewNotSupported, 'correction_of_renew_not_supported')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:87
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_history_corrections_chain_a_void_restores_and_knownat_shows_the_original
+expected acceptance, got CorrectionOfRenewNotSupported
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:142
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:96
+
+4) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_d237_a_voided_renewal_is_not_corrected
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1352 (CorrectOfVoidedFact, 'correct_of_voided_fact')
++App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1338 (CorrectionOfRenewNotSupported, 'correction_of_renew_not_supported')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:114
+
+5) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_row14_a_restores_date_is_corrected_inside_the_restriction
+expected acceptance, got CorrectionOfSuspendOrRestoreNotSupported
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:142
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:129
+
+6) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_row14_a_corrected_restore_keeps_the_restores_own_rules
+on the restriction end
+Failed asserting that two variables reference the same object.
+--- Expected
++++ Actual
+@@ @@
+-App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1340 (OutsideRestriction, 'outside_restriction')
++App\Contexts\Membership\Domain\Organisational\RefusalReason Enum #1339 (CorrectionOfSuspendOrRestoreNotSupported, 'correction_of_suspend_or_restore_not_supported')
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:141
+
+7) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_row14_a_correction_of_a_corrected_restore
+expected acceptance, got CorrectionOfSuspendOrRestoreNotSupported
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/Support/MemberHistory.php:142
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectRenewAndRestoreTest.php:153
+
+8) Tests\Unit\Contexts\Membership\Domain\Organisational\RenewTest::test_correcting_a_renewal_changes_its_until_d237
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/RenewTest.php:230
+
+9) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_s2_5b_a_renewals_until_is_corrected_to_a_date_or_to_open_ended_d237
+until 160, after the decision date 50: D-237 (2)
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:191
+
+ERRORS!
+Tests: 70, Assertions: 307, Errors: 5, Failures: 9.

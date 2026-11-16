@@ -18,8 +18,8 @@ final readonly class CorrectMembershipRecord
         public string $factId,
         /** The fact being corrected: an Admit, an End, or an earlier Correct of one (C-2, D-COR-3). */
         public string $targetFactId,
-        /** The corrected date. */
-        public int $correctedDate,
+        /** The corrected date; null with $openEnded (S2-5b, D-237: a Renew's `until` to open-ended). Exactly one is stated. */
+        public ?int $correctedDate,
         /** The decision date (D-5(a) Z1, caller-supplied); the authority is evaluated for it. */
         public int $decisionDate,
         /** The evidence the correction rests on (D-206, GC-14: required). A reference only. */
@@ -27,6 +27,8 @@ final readonly class CorrectMembershipRecord
         public string $actor,
         public ?int $decidedAt,
         public string $idempotencyKey,
+        /** S2-5b (D-237): the corrected value is open-ended (∞); only a Renew's `until` may be. */
+        public bool $openEnded = false,
     ) {
     }
 

@@ -31,6 +31,7 @@ final class MembershipLedgerIsolationTest extends TestCase
         'database/migrations/2026_11_15_340000_add_renew_to_org_membership_facts.php',
         'database/migrations/2026_11_15_350000_add_suspend_restore_to_org_membership_facts.php',
         'database/migrations/2026_11_15_360000_create_org_membership_scheduled_resignations.php',
+        'database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php',
     ];
     private const FORBIDDEN = [
         'App\\Contexts\\Membership\\Domain\\Organisational',

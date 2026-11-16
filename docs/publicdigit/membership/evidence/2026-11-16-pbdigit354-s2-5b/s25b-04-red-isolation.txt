@@ -1,0 +1,24 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.F                                                                  2 / 2 (100%)
+
+Time: 00:00.049, Memory: 18.00 MB
+
+There was 1 failure:
+
+1) Tests\Architecture\MembershipLedgerIsolationTest::test_no_code_outside_membership_depends_on_the_new_ledger
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'database/migrations/2026_11_16_370000_add_correct_value_unlimited_to_org_membership_facts.php: org_membership_facts',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipLedgerIsolationTest.php:71
+
+FAILURES!
+Tests: 2, Assertions: 3, Failures: 1.

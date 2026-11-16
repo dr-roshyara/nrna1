@@ -85,6 +85,13 @@ final readonly class Member
                 while ($root instanceof Correct) {
                     $root = $earlier[$root->target()->value()];
                 }
+                // S2-5b: D-237 lets only a Renew chain carry ∞; D-241 forbids correcting a Suspend.
+                if ($fact->value()->isInfinite() && !$root instanceof Renew) {
+                    throw new \InvalidArgumentException("Stored log: Correct {$id} is open-ended but does not correct a Renew (D-237).");
+                }
+                if ($root instanceof Suspend) {
+                    throw new \InvalidArgumentException("Stored log: Correct {$id} corrects a Suspend (D-241).");
+                }
                 $ownPeriod = $root instanceof End ? $root->period()->admitFactId() : $root->id();
                 $trimmed = [];
                 foreach ($fact->consequences() as $consequence) {
@@ -443,7 +450,12 @@ final readonly class Member
      */
     public function decideCorrect(FactId $id, FactId $target, TimePoint $value, TimePoint $decisionDate, Provenance $provenance, ?Instant $decidedAt = null): Decision
     {
-        self::requireFiniteDates($value, $decisionDate);
+        // Guard 1 (C-2 order kept): invalid input first. D-237: ∞ is a valid value only for a Renew chain; the lookup is
+        // pure, so every other target (or none) still throws before any refusal, as before S2-5b.
+        $valueTarget = $value->isInfinite() ? $this->fact($target) : null;
+        if ($decisionDate->isInfinite() || ($value->isInfinite() && ($valueTarget === null || !Resolution::rootOf($this->facts(), $target) instanceof Renew))) {
+            throw new \InvalidArgumentException('The decision date is finite, and only a renewal\'s until may be corrected to open-ended (D-237).');
+        }
         if ($this->usesFactId($id)) {
             return Decision::refused(RefusalReason::DuplicateFactId);
         }
@@ -454,22 +466,33 @@ final readonly class Member
         if ($targetFact instanceof ReversalFact) {
             return Decision::refused(RefusalReason::CorrectionOfAnnulOrVoidRefused);
         }
-        // PBDIGIT-354 Q-2 (open): D-177 row 20; no accepted dating rule for a corrected `until` yet.
-        if ($targetFact instanceof Renew) {
-            return Decision::refused(RefusalReason::CorrectionOfRenewNotSupported);
-        }
-        // D-177 row 14: correcting a Suspend's or a Restore's date belongs to the correction step (S2-5).
-        if ($targetFact instanceof Suspend || $targetFact instanceof Restore) {
-            return Decision::refused(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported);
-        }
         $facts = $this->facts();
         $root = Resolution::rootOf($facts, $target);
+        // D-241 (Q-6 A): a Suspend's dates are not correctable in release 1 (Void and record again).
+        if ($root instanceof Suspend) {
+            return Decision::refused(RefusalReason::CorrectionOfSuspendNotPermitted);
+        }
         // §10a Correct (4) and P-1: a voided target, or a chain whose root is voided, never reflected reality.
         if (Resolution::isVoided($facts, $target) || Resolution::isVoided($facts, $root->id())) {
             return Decision::refused(RefusalReason::CorrectOfVoidedFact);
         }
         if ($value->equals(Resolution::valueOf($facts, $target))) {
             return Decision::refused(RefusalReason::ValueUnchanged);
+        }
+        // D-237 (D-177 row 20) and D-242: a Correct of a Renew sets its `until`, never its start. Strictly after the start
+        // (the segment not empty), or ∞; NOT bound by the decision date (a term's end is not an effective date). A term
+        // never changes coverage, so there is nothing to trim.
+        if ($root instanceof Renew) {
+            return $root->effectiveAt()->isBefore($value)
+                ? $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt))
+                : Decision::refused(RefusalReason::EmptySegment);
+        }
+        // D-177 row 14: a Correct of a Restore sets its date, under the Restore's own rules (decideRestore). A restriction
+        // never changes coverage, so there is nothing to trim.
+        if ($root instanceof Restore) {
+            $refusal = $this->correctedRestoreRefusal($facts, $root, $value, $decisionDate);
+
+            return $refusal === null ? $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt)) : Decision::refused($refusal);
         }
         if (!$this->keepsPeriodOrdered($facts, $root, $value)) {
             return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
@@ -481,6 +504,29 @@ final readonly class Member
         $candidate = new Correct($id, $target, $value, $provenance, $decidedAt);
 
         return $this->accept(new Correct($id, $target, $value, $provenance, $decidedAt, $this->trimConsequences($facts, $targetFact, $candidate)));
+    }
+
+    /**
+     * D-177 row 14 (S2-5b): a Restore moved to $date must still be a Restore decideRestore would accept: its Suspend
+     * live, the period in force at $date, strictly inside the restriction, not after the decision date (D-205).
+     *
+     * @param list<Fact> $facts
+     */
+    private function correctedRestoreRefusal(array $facts, Restore $restore, TimePoint $date, TimePoint $decisionDate): ?RefusalReason
+    {
+        $suspension = $this->fact($restore->suspension());
+        if (!$suspension instanceof Suspend || !Resolution::isLive($facts, $suspension->id())) {
+            return RefusalReason::NotSuspended;
+        }
+        $period = $this->resolve()->period($suspension->period());
+        if ($period === null || !$period->isInForce($date)) {
+            return RefusalReason::NotInForce;
+        }
+        if (!$suspension->effectiveAt()->isBefore($date) || !$date->isBefore($suspension->until())) {
+            return RefusalReason::OutsideRestriction;
+        }
+
+        return $date->isAfter($decisionDate) ? RefusalReason::EffectiveDateAfterDecisionDate : null;
     }
 
     /**

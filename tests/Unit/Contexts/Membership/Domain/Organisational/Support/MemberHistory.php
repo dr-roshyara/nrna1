@@ -129,6 +129,13 @@ final class MemberHistory
         );
     }
 
+    /** S2-5b (D-237): Correct a Renew's `until` to open-ended (∞). */
+    public function correctToOpenEnded(string $id, string $target, ?int $decisionDate = null): Decision
+    {
+        return $this->member->decideCorrect(FactId::fromString($id), FactId::fromString($target), TimePoint::infinity(),
+            $decisionDate === null ? self::decisionDate() : TimePoint::of($decisionDate), self::provenance(), Instant::of(900));
+    }
+
     /** Appends an accepted decision; fails the test if it was refused. */
     public function commit(Decision $decision, ?int $recordedAt = null): self
     {

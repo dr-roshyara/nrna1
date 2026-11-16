@@ -1,0 +1,26 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+.....F.....................F..F.................................. 65 / 80 ( 81%)
+...............                                                   80 / 80 (100%)
+
+Time: 00:00.035, Memory: 12.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectRenewAndRestoreTest::test_only_a_renewal_chain_may_be_corrected_to_open_ended
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+2) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectDecisionTest::test_an_infinite_corrected_date_or_decision_date_is_invalid_input
+value: expected InvalidArgumentException
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php:230
+
+3) Tests\Unit\Contexts\Membership\Domain\Organisational\CorrectDecisionTest::test_correct_guard_order
+finite dates first
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/CorrectDecisionTest.php:277
+
+FAILURES!
+Tests: 80, Assertions: 404, Failures: 3.

@@ -221,13 +221,13 @@ final class RenewTest extends TestCase
         $this->assertTrue($h->member->knownAt(Instant::of(2000))->isMember(self::t(15)));
     }
 
-    public function test_correcting_a_renewal_is_refused_until_its_rule_is_decided(): void
+    public function test_correcting_a_renewal_changes_its_until_d237(): void
     {
-        // D-177 row 20 (Correct a Renew's `until`) needs a decision on the dating rule for a corrected `until` (Q-2).
+        // D-177 row 20 under D-237 (S2-5b): a Correct of a Renew sets its `until`. Detailed rules: CorrectRenewAndRestoreTest.
         $h = self::admitted();
         $h->commit($h->renew('R1', 8, 20));
 
-        $this->assertSame(RefusalReason::CorrectionOfRenewNotSupported, $h->correct('C1', 'R1', 25)->refusal());
+        $this->assertTrue($h->correct('C1', 'R1', 25)->isAccepted());
     }
 
     public function test_a_stored_renewal_must_name_an_earlier_admission(): void

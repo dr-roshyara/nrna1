@@ -40,7 +40,9 @@ final class CorrectMembershipRecordHandler
     {
         $tenant = TenantId::fromString($command->tenantId);
         $memberId = MemberId::fromString($command->memberId);
-        $value = TimePoint::of($command->correctedDate);
+        // S2-5b (D-237): the value is a date or open-ended, exactly one; otherwise refused at the boundary.
+        $stated = ($command->correctedDate !== null) !== $command->openEnded;
+        $value = $command->openEnded ? TimePoint::infinity() : TimePoint::of($command->correctedDate ?? 0);
         $on = TimePoint::of($command->decisionDate);
         $evidence = $command->evidenceRef === null ? '' : trim($command->evidenceRef);
 
@@ -48,10 +50,12 @@ final class CorrectMembershipRecordHandler
             $tenant,
             IdempotencyKey::fromString($command->idempotencyKey),
             $command->fingerprint(),
-            static fn (?Member $member): AuthorityRequest|RefusalReason => $evidence === ''
-                ? RefusalReason::CorrectionEvidenceRequired
-                : new AuthorityRequest(MembershipAct::CorrectMembershipRecord, $command->actor, $member?->holder(), null, $on, null, $command->idempotencyKey,
+            static fn (?Member $member): AuthorityRequest|RefusalReason => match (true) {
+                !$stated => RefusalReason::CorrectedValueRequired,
+                $evidence === '' => RefusalReason::CorrectionEvidenceRequired,
+                default => new AuthorityRequest(MembershipAct::CorrectMembershipRecord, $command->actor, $member?->holder(), null, $on, null, $command->idempotencyKey,
                     $evidence, null, $command->targetFactId, $value),
+            },
             fn (): ?Member => $this->repository->load($tenant, $memberId),
             static fn (Member $member, AuthorityEvidence $authority): Decision => $member->decideCorrect(FactId::fromString($command->factId),
                 FactId::fromString($command->targetFactId), $value, $on, Provenance::decision($command->actor, $authority, $evidence),

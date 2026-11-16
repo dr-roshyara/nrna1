@@ -23,9 +23,8 @@ final readonly class Correct implements Fact
         private ?Instant $decidedAt = null,
         private array $consequences = [],
     ) {
-        if ($value->isInfinite()) {
-            throw new \InvalidArgumentException('A corrected date is a finite time.');
-        }
+        // S2-5b (D-237): ∞ is a valid value: a Renew's `until` corrected to open-ended. That only a Renew chain may carry
+        // it is a chain rule, checked where the chain is known (Member::decideCorrect, and on load in Member::fromLog).
         foreach ($consequences as $consequence) {
             if (!$consequence instanceof TrimConsequence) {
                 throw new \InvalidArgumentException('A consequence is a TrimConsequence.');
@@ -44,13 +43,13 @@ final readonly class Correct implements Fact
         return $this->id;
     }
 
-    /** The Admit, End or Correct whose date this fact replaces. */
+    /** The fact whose value this one replaces: an Admit, End, Renew (its `until`, D-237), Restore (row 14) or Correct. */
     public function target(): FactId
     {
         return $this->target;
     }
 
-    /** The corrected valid-time date. */
+    /** The corrected value: an effective date (Admit, End, Restore chains) or a Renew's `until` (finite, or ∞). */
     public function value(): TimePoint
     {
         return $this->value;

@@ -237,8 +237,10 @@ final class CorrectDecisionTest extends TestCase
     // Fact invariants (COR-2 mutation findings): a Correct and a trim reject invalid parts even when built directly.
     public function test_a_correct_and_a_trim_reject_invalid_parts_when_constructed(): void
     {
+        // S2-5b, D-237: an infinite value is now valid ON THE FACT (a Renew's `until` corrected to open-ended); the fact
+        // cannot know its chain, so "only a Renew chain may carry ∞" is enforced where the chain is known:
+        // Member::decideCorrect (guard 1, test_correct_guard_order) and Member::fromLog (CorrectRenewAndRestoreTest).
         $cases = [
-            'infinite corrected date' => static fn () => new Correct(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::infinity(), MemberHistory::provenance()),
             'a consequence that is not a trim' => static fn () => new Correct(FactId::fromString('C1'), FactId::fromString('A1'), TimePoint::of(1), MemberHistory::provenance(), null, ['not a trim']),
             'a trim that removes nothing' => static fn () => new TrimConsequence(PeriodId::fromString('A1'), IntervalSet::empty()),
         ];

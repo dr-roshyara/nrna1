@@ -282,15 +282,16 @@ final class SuspendRestoreTest extends TestCase
         $this->assertTrue(PeriodId::fromString('A2')->equals($decision->fact()->period()));
     }
 
-    public function test_correcting_a_suspension_or_a_restore_is_refused_until_the_correction_step(): void
+    public function test_a_suspension_is_not_corrected_but_a_restores_date_is_d241_row_14(): void
     {
-        // D-177 row 14 ("a Correct changes its date") is part of S2-5 (Correct / Void); until then the kernel refuses.
+        // D-241 (Q-6 A): a Suspend's dates are not correctable in release 1 (Void and record again). D-177 row 14: a
+        // Correct changes a Restore's date (S2-5b). Detailed rules: CorrectRenewAndRestoreTest.
         $h = self::admitted();
         $h->commit($h->suspend('S1', 10));
         $h->commit($h->restore('R1', 'S1', 15));
 
-        $this->assertSame(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported, $h->correct('C1', 'S1', 11)->refusal());
-        $this->assertSame(RefusalReason::CorrectionOfSuspendOrRestoreNotSupported, $h->correct('C2', 'R1', 16)->refusal());
+        $this->assertSame(RefusalReason::CorrectionOfSuspendNotPermitted, $h->correct('C1', 'S1', 11)->refusal());
+        $this->assertTrue($h->correct('C2', 'R1', 16)->isAccepted());
     }
 
     public function test_a_stored_suspension_must_name_an_earlier_admission(): void

@@ -198,7 +198,13 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
   - the interim adapter denies both.
   - Cluster 527, database-free 1085, architecture 4 known failures; 10 mutants (9 assertion, 1 error by design).
   - Guide 34; evidence `…/2026-11-16-pbdigit354-s2-5a/`.
-- **S2-5b next:** D-237 (with its migration) and a Restore's date.
+- **S2-5b DONE 2026-11-16:**
+  - D-237 (a Renew's `until`: strictly after its start, or ∞; not bound by the decision date), D-242 (its start never corrected), D-177 row 14 (a Restore's date under its own rules), D-241 (a Suspend refused);
+  - migration 370000 / 300800 (`correct_value_unlimited`, an explicit flag).
+  - Cluster 531, database-free 1097, architecture 4 known failures; 12 mutants (9 assertion, 3 second layer).
+  - Guide 35; evidence `…/2026-11-16-pbdigit354-s2-5b/`.
+  - **S2-1 row 20 delivered → S2-1 DONE.**
+- **S2-5 implemented in full** for its decided scope; **not marked Done while Q-9 is open**, because Q-9 asks whether a correction may get around D-240 after a supersession, which the S2-5 commission forbids.
 
 **Q-9 (found in S2-5a): a correction after a declaration was superseded.**
 - An End effective **before** the scheduled date supersedes the declaration at the next confirming step (MI-3; final).
