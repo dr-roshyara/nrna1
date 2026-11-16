@@ -35,7 +35,11 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-1:** Option A (D-236).
 - **EP-01:** plan approved in full (D-236).
 
-## Open (S2-5 preflight, plan §7e)
+## Decided: Q-6 → D-241, Q-7 → D-242, Q-8 → D-243 (all Option A, 2026-11-16)
+
+- A Suspend's dates are not correctable in release 1 (Void and record again; Restore ends it earlier); a Correct of a Renew means only its `until` (D-237); a Void is recorded with its evidence and visible through C1; a dedicated notice is PBDIGIT-357.
+
+## Open (S2-5 preflight, plan §7e): as found
 
 - **Q-6:** which date of a Suspend a Correct may change. Recommended A: neither in release 1 (Void and record again; a Restore ends it earlier).
 - **Q-7:** may a Correct change a Renew's start? Recommended A: no (Void and record again); a Correct of a Renew means its `until` (D-237).

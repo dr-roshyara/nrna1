@@ -140,7 +140,7 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 | Resignation effective time, legal | [LQ] before launch (D-210 (4)); S2 implements D-201 / D-223 as decided |
 | Grouped renewals hold the organisation's membership writes for their duration | size bound: `Inapplicable(too large)`, never partial (D-177 §16 C-3) |
 
-## 7e. S2-5 preflight and design (2026-11-16): Correct / Void; three rules to decide first (Q-6, Q-7, Q-8)
+## 7e. S2-5 preflight and design (2026-11-16): Correct / Void; Q-6, Q-7, Q-8 **decided: D-241, D-242, D-243 (A / A / A)**; Q-9 open
 
 **Preflight:**
 - `election-flow-updated` at `84e13998c` (S2-4 done; D-240 evidence verified, 36 files); guides 25–33 present; nothing staged; unrelated changes untouched; Session B in its own worktree.
