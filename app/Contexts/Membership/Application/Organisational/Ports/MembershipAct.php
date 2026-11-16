@@ -21,4 +21,8 @@ enum MembershipAct: string
     case Renew = 'renew-membership';
     case Suspend = 'suspend-membership';
     case Restore = 'restore-membership';
+    /** D-206, D-208 §2 (S2-5a): correct a membership record; recording authority with evidence (pull). */
+    case CorrectMembershipRecord = 'correct-membership-record';
+    /** D-206, D-208 §2 (S2-5a): void a membership record; recording authority with evidence; reported, challengeable. */
+    case VoidMembershipRecord = 'void-membership-record';
 }

@@ -175,4 +175,4 @@ PBDIGIT-349 I-3 and its review corrections:
 - review items R-1 … R-4, R-6 … R-8, F-3, PI-29; R-9 is a proposal only.
 - design: I-TDD-02 §4, §6.2, §12 C-I3/C-I6, §14, §15; multi-database design §13.3.
 - proof items with evidence: PI-1, 2, 3, 8, 9, 13, 15 (tested orders only), 22, 28, 29, 44; PI-34 (one forked interleaving, no load test); PI-48 (ordinary claims only).
-- decisions: D-113, D-160, D-197, D-200; **D-241** (R-9 Option B: I-1 … I-3 authorised for development and test only, effective from the Principal's approval on 2026-11-15; **I-4 not authorised**; no production rollout. In the Identity branch's register copy until merge).
+- decisions: D-113, D-160, D-197, D-200; **D-244** (R-9 Option B: I-1 … I-3 authorised for development and test only, effective from the Principal's approval on 2026-11-15; **I-4 not authorised**; no production rollout. First numbered D-241 in the Identity branch and renumbered at merge, because the canonical D-241 is Membership Q-6).

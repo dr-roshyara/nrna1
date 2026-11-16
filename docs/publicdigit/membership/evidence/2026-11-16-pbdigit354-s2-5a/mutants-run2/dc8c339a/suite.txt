@@ -1,0 +1,24 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+...................FF.                                            22 / 22 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 2 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_correction_and_void_are_denied_until_governance_decides with data set "owner" ('owner')
+correct-membership-record
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:138
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_correction_and_void_are_denied_until_governance_decides with data set "admin" ('admin')
+correct-membership-record
+Failed asserting that true is false.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:138
+
+FAILURES!
+Tests: 22, Assertions: 130, Failures: 2.

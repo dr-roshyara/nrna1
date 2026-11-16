@@ -1,0 +1,68 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:08.856, Memory: 26.00 MB
+
+There were 9 errors:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15a_on_its_date_the_close_records_the_end_and_marks_the_declaration_executed
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:123
+
+2) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_before_its_date_nothing_is_executed_and_the_boundary_advances
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:142
+
+3) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_the_organisation_local_date_decides_not_utc
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:153
+
+4) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15b_late_execution_still_takes_effect_on_the_scheduled_date
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:165
+
+5) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi10_lc4_a_failed_execution_holds_the_boundary_and_c2_refuses
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:175
+
+6) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_the_execution_and_the_close_are_one_transaction
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:205
+
+7) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_every_due_declaration_is_executed_in_one_close_and_later_ones_wait
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:226
+
+8) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi3_a_declaration_whose_period_ended_earlier_is_superseded_not_executed
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:239
+
+9) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_a_withdrawn_declaration_is_never_executed
+Error: Class "App\Contexts\Membership\Infrastructure\Organisational\ScheduledResignationExecutor" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:78
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:254
+
+ERRORS!
+Tests: 9, Assertions: 29, Errors: 9, Deprecations: 1.

@@ -1,0 +1,2 @@
+I1 the interim adapter grants a correction                 tests:22   KILLED (assertions)  correction_and_void_are_denied_until_gov;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

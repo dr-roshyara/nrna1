@@ -97,17 +97,35 @@ final readonly class ScheduledResignation
     /**
      * D-201: withdrawn before the effective date; once that date has started, refused (D-223). `$by` is who withdrew
      * it and with what authority (the member, or a recorder: GC-12), so the history is complete (S2-4b).
+     *
+     * `$organisationToday` (S2-4d; M-TDD-01 §5.2 "withdrawal is refused once the date has started (organisation-local),
+     * even if not yet executed"): the organisation's own date at the ledger reading taken under the ledger-clock lock.
+     * The store passes it; a stated `$on` before the date does not override it. Null only for the use case's early
+     * check, before the store decides.
      */
-    public function withdraw(TimePoint $on, Provenance $by): self|RefusalReason
+    public function withdraw(TimePoint $on, Provenance $by, ?TimePoint $organisationToday = null): self|RefusalReason
     {
         if ($this->state !== ScheduledResignationState::Scheduled) {
             return RefusalReason::DeclarationNotScheduled;
         }
-        if (!$on->isBefore($this->effectiveDate)) {
+        if (!$on->isBefore($this->effectiveDate) || ($organisationToday !== null && !$organisationToday->isBefore($this->effectiveDate))) {
             return RefusalReason::WithdrawalAfterEffectiveDate;
         }
 
         return $this->with(ScheduledResignationState::Withdrawn, withdrawnOn: $on, withdrawnBy: $by);
+    }
+
+    /**
+     * D-240 (Q-5 Option A): while this declaration is `scheduled`, another End of its period effective ON OR AFTER its
+     * date is refused: the scheduled resignation takes effect first, on the member's date. An End strictly before the
+     * date is not refused (MI-3: the period ends earlier and this declaration is superseded). A declaration that is no
+     * longer pending refuses nothing. A pure date comparison: no calendar (D-240).
+     */
+    public function refusesCompetingEndOn(TimePoint $effectiveAt): ?RefusalReason
+    {
+        return $this->state === ScheduledResignationState::Scheduled && !$effectiveAt->isBefore($this->effectiveDate)
+            ? RefusalReason::ScheduledResignationTakesEffectFirst
+            : null;
     }
 
     /** MI-3: the period ended earlier (another End, or an Annul / Void of the period); the reason is recorded. */

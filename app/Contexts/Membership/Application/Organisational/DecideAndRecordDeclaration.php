@@ -39,7 +39,7 @@ final class DecideAndRecordDeclaration
      * @param \Closure(): array{0: ?Member, 1: ?ScheduledResignation} $find  read-only, fresh for each attempt
      * @param \Closure(?Member, ?ScheduledResignation): (AuthorityRequest|RefusalReason) $request
      * @param \Closure(Member, ?ScheduledResignation, AuthorityEvidence): (ScheduledResignation|RefusalReason|ApplicationRefusal) $decide
-     * @param \Closure(Member, ScheduledResignation): DeclarationWriteOutcome $write
+     * @param \Closure(Member, ScheduledResignation): (DeclarationWriteOutcome|RefusalReason) $write  a refusal: the store decided at ledger time
      */
     public function run(TenantId $tenant, IdempotencyKey $key, string $fingerprint, \Closure $find, \Closure $request, \Closure $decide, \Closure $write): DeclarationOutcome
     {
@@ -70,8 +70,13 @@ final class DecideAndRecordDeclaration
                 // The same command may have been applied after the pre-check (the refusal is then caused by it).
                 return $this->answerFromKey($tenant, $key, $fingerprint) ?? DeclarationOutcome::refusedByDomain($decided);
             }
+            $written = $write($member, $decided);
+            if ($written instanceof RefusalReason) {
+                // S2-4d: the store decided at ledger time (withdrawal at the organisation's own date) and refused.
+                return $this->answerFromKey($tenant, $key, $fingerprint) ?? DeclarationOutcome::refusedByDomain($written);
+            }
             // Exhaustive, no default: an unmapped outcome fails loudly. Only a conflict is decided again (null).
-            $outcome = match ($write($member, $decided)) {
+            $outcome = match ($written) {
                 DeclarationWriteOutcome::Written => DeclarationOutcome::recorded($decided),
                 DeclarationWriteOutcome::AlreadyApplied => $this->answerFromKey($tenant, $key, $fingerprint)
                     ?? throw new \LogicException('The store reported the key applied, but has no record of it.'),

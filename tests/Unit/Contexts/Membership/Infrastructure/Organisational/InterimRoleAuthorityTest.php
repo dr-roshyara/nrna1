@@ -44,9 +44,12 @@ final class InterimRoleAuthorityTest extends TestCase
     /** S2-3a (D-238): the request shape; subject and period do not matter to this adapter */
     private static function ask(array $roles, MembershipAct $act): AuthorityDecision
     {
+        $correcting = in_array($act, [MembershipAct::CorrectMembershipRecord, MembershipAct::VoidMembershipRecord], true);
+
         return self::authority($roles)->check(TenantId::fromString('O1'),
             new AuthorityRequest($act, 'user-7', PersonRef::fromString('P1'), null, TimePoint::of(20_000), null, 'req-1',
-                $act === MembershipAct::RecordDeath ? 'death-certificate:test' : null));   // S2-3b: a death cites its evidence
+                $act === MembershipAct::RecordDeath || $correcting ? 'evidence:test' : null,   // S2-3b death, S2-5a Correct / Void: evidence
+                null, $correcting ? 'E1' : null, $act === MembershipAct::CorrectMembershipRecord ? TimePoint::of(20_001) : null));
     }
 
     /** @return array<string, array{string}> */
@@ -122,6 +125,18 @@ final class InterimRoleAuthorityTest extends TestCase
             $this->assertFalse($decision->isAuthorised(), $act->value);
             $this->assertSame('interim:unresolved:authority-owner', $decision->evidence()->ruleRef(), $act->value);
             $this->assertFalse($decision->evidence()->result(), $act->value);
+        }
+    }
+
+    /** S2-5a (D-206): recording authority with evidence is the authority owner's to establish; even an owner is denied. */
+    #[\PHPUnit\Framework\Attributes\DataProvider('admittingRoles')]
+    public function test_correction_and_void_are_denied_until_governance_decides(string $role): void
+    {
+        foreach ([MembershipAct::CorrectMembershipRecord, MembershipAct::VoidMembershipRecord] as $act) {
+            $decision = self::ask(['O1' => ['user-7' => $role]], $act);
+
+            $this->assertFalse($decision->isAuthorised(), $act->value);
+            $this->assertSame('interim:unresolved:authority-owner', $decision->evidence()->ruleRef(), $act->value);
         }
     }
 

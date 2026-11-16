@@ -1,0 +1,9 @@
+D1 the organisation date is ignored (the stated date decides) tests:34   KILLED (assertions)  s2_4d_the_store_decides_withdrawal_at_th;s2_4d_withdrawal_is_refused_once_the_org;
+D2 withdrawal still allowed ON the date (organisation-local) tests:34   KILLED (assertions)  s2_4d_the_store_decides_withdrawal_at_th;s2_4d_withdrawal_is_refused_once_the_org;
+L1 a store refusal is not returned                         tests:34   KILLED+ERRORS (1: UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Domain\Organisational\RefusalReason)  s2_4d_the_store_decides_withdrawal_at_th;
+P1 the withdrawal does not take the ledger-clock lock      tests:3    KILLED (assertions)  mi2_a_withdrawal_holding_the_lock_holds_;
+P2 the store decides with the stated date, not the organisation date tests:10   KILLED (assertions)  s2_4d_the_organisations_date_not_utc_dec;s2_4d_withdrawal_is_decided_at_the_organ;
+P3 the store asks the calendar for a UTC date instead      tests:10   KILLED (assertions)  s2_4d_the_organisations_date_not_utc_dec;
+P4 no calendar: the withdrawal goes ahead                  tests:10   KILLED+ERRORS (1: Error: Call to a member function localDateAt() on null)  s2_4d_without_a_calendar_no_withdrawal_i;
+P5 the due declarations are not row-locked by the close    tests:3    SURVIVED (equivalent: every withdrawal takes the organisation ledger-clock row FOR UPDATE before it reads the declaration, and the close holds that row for its whole transaction, so the declaration row lock adds no ordering the clock lock does not already give (defence in depth))  
+survivors: 1; unexpected (survived without an argued equivalence, or not run): 0

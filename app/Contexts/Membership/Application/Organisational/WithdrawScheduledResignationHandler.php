@@ -25,8 +25,9 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  * - Asks `record-resignation` with the member (subject), the declaration's period and **the declaration's reference**
  *   (`declarationRef`), no effective date. A declaration that does not exist is asked about with no period and told
  *   only after authorisation (DeclarationNotFound), so an unauthorised actor learns nothing.
- * - Only while `scheduled` and before its date (domain); stored by compare-and-set, so withdrawal and execution cannot
- *   both succeed (MI-2; the race itself is proved on PostgreSQL in S2-4d).
+ * - Only while `scheduled` and before its date. The stated date is checked first; then the STORE decides again at
+ *   ledger time with the organisation's own date (S2-4d, D-239), and writes by compare-and-set, so withdrawal and
+ *   execution cannot both succeed (MI-2, proved on PostgreSQL with concurrent processes in S2-4d).
  */
 final class WithdrawScheduledResignationHandler
 {
@@ -59,7 +60,11 @@ final class WithdrawScheduledResignationHandler
             static fn (Member $member, ?ScheduledResignation $declaration, AuthorityEvidence $evidence): ScheduledResignation|RefusalReason|ApplicationRefusal => $declaration === null
                 ? ApplicationRefusal::DeclarationNotFound
                 : $declaration->withdraw($on, Provenance::decision($command->actor, $evidence)),
-            fn (Member $member, ScheduledResignation $withdrawn) => $this->store->transition($tenant, $memberId, $withdrawn, $key, $command->fingerprint()),
+            // S2-4d: the decision above is the early check on the stated date; the store decides again at ledger time,
+            // with the organisation's own date under the ledger-clock lock (M-TDD-01 §5.2; D-239), and writes by
+            // compare-and-set.
+            fn (Member $member, ScheduledResignation $withdrawn) => $this->store->withdraw($tenant, $memberId, $declarationId, $on, $withdrawn->withdrawnBy()
+                ?? throw new \LogicException('A withdrawal records who withdrew it.'), $key, $command->fingerprint()),
         );
     }
 }

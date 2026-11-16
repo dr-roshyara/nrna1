@@ -7,7 +7,10 @@ namespace App\Contexts\Membership\Application\Organisational\Ports;
 use App\Contexts\Membership\Application\Organisational\IdempotencyKey;
 use App\Contexts\Membership\Domain\Organisational\DeclarationId;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
+use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\ScheduledResignation;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 /**
@@ -38,8 +41,18 @@ interface ScheduledResignationStorePort
     public function record(TenantId $tenant, MemberId $member, int $basedOnVersion, ScheduledResignation $scheduled, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome;
 
     /**
-     * Store a transition FROM `scheduled` (withdrawn, superseded or executed): written only if the stored declaration
-     * is still `scheduled` (compare-and-set, MI-2), else Conflict.
+     * S2-4d (M-TDD-01 §5.2; D-239): withdraw, DECIDED AT LEDGER TIME. Under the organisation's ledger-clock lock (the
+     * same lock the closing step takes), with ONE clock reading, the store asks the OrganisationCalendar for the
+     * organisation's date at that reading and lets the declaration decide
+     * (`ScheduledResignation::withdraw($declaredOn, $by, $organisationToday)`), then writes by compare-and-set.
+     * Returns the domain's refusal unchanged (nothing written, no key). Without a calendar it cannot answer: it throws
+     * (fail closed).
+     */
+    public function withdraw(TenantId $tenant, MemberId $member, DeclarationId $id, TimePoint $declaredOn, Provenance $by, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome|RefusalReason;
+
+    /**
+     * Store a transition FROM `scheduled` (superseded or executed, by the closing step): written only if the stored
+     * declaration is still `scheduled` (compare-and-set, MI-2), else Conflict.
      */
     public function transition(TenantId $tenant, MemberId $member, ScheduledResignation $changed, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome;
 }

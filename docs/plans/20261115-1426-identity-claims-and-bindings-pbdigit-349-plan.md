@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **APPROVED for steps I-1 … I-4 by the Principal, 2026-11-15** (development and test only; strict TDD; each step on a separate branch for the Principal to merge). **Q-1 = authorise I-1 … I-4; Q-2 = L1 (a stored reference table); Q-3 = the existing `users` row is the Account (transitional).** Steps I-5 … I-8 stay proposed. Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open. *The answers are to be entered in the decision record by the recorder; this plan doesn't assign decision numbers, because a parallel session is appending to the record.*<br>**Superseded in part by D-241 (2026-11-15, R-9 Option B):** the register authorises **I-1 … I-3 only**, for development and test. **I-4 is not authorised**; it needs a separate Principal decision after I-3 is accepted. The text above is kept as the history of the original approval. |
+| **Status** | **APPROVED for steps I-1 … I-4 by the Principal, 2026-11-15** (development and test only; strict TDD; each step on a separate branch for the Principal to merge). **Q-1 = authorise I-1 … I-4; Q-2 = L1 (a stored reference table); Q-3 = the existing `users` row is the Account (transitional).** Steps I-5 … I-8 stay proposed. Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open. *The answers are to be entered in the decision record by the recorder; this plan doesn't assign decision numbers, because a parallel session is appending to the record.*<br>**Superseded in part by D-244 (approved 2026-11-15, R-9 Option B; first numbered D-241 in this branch and renumbered at merge on 2026-11-16, because Session A had recorded D-241 … D-243):** the register authorises **I-1 … I-3 only**, for development and test. **I-4 is not authorised**; it needs a separate Principal decision after I-3 is accepted. The text above is kept as the history of the original approval. |
 | **Session** | B. Documentation-only worktree `../nrna1-349`, branch `identity/pbdigit-349-readiness`, from `d85fa0abe` |
 | **Design (binding)** | `docs/publicdigit/architecture/reviews/2026-11-11-i-tdd-02-identity-claims-and-bindings-tactical-design.md`, revision 12. **Verified on 2026-11-15:** the file's SHA-256 is `2b5f6e92…` (the accepted text `b6d54798…` plus the D-200 status note), the only change D-200 records |
 | **Decisions** | D-113, D-148, D-164, D-166, D-167, D-178, D-181, D-193 (X-2, X-3), D-194, D-195, D-196 (A1 `manage-claims`), D-197 (no lock, throttling only), D-198 (B2), D-199 (14 days, maximum 30), **D-200 (conditions)**, D-202, D-203, D-208 (Governance completion; X-3 closed at design level), D-225, D-226 |
@@ -177,7 +177,7 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
   - **Mutants, each run on its own:** M-R1, M-R2a, M-R2b, M-R3, M-R4, M-R6, N1, N3 and M-R8 were all killed. N4 and N6 were **not** re-run individually.
   - Evidence: `docs/publicdigit/identity/evidence/2026-11-15-pbdigit349-i3-corrections/`.
   - **Unratified:** the throttle values 5 / 10 / 900 s ([TU]).
-- 2026-11-15: **R-9 decided: Option B, recorded as D-241** (development and test only).
+- 2026-11-15: **R-9 decided: Option B, recorded as D-241** (development and test only). *Renumbered **D-244** at merge on 2026-11-16: the canonical D-241 … D-243 are Session A's Membership Q-6 … Q-8.*
   - **Authorised:** I-1, I-2 and I-3. **I-4 is NOT authorised**; it needs a separate Principal decision after I-3 is accepted.
   - **The record says openly** that I-1 and I-2 were merged before the entry existed. It is not backdated.
   - **Where it is recorded:** in the Identity worktree's copy of the register, which was first brought level with the canonical copy (D-240, Membership Q-5, byte-identical). It enters the canonical register only when this branch is committed and merged, so the number must be re-verified then.
@@ -190,8 +190,8 @@ The legal questions (retention, `PersonRef` classification, resignation time) go
 
 1. **Principal: the I-3 commit decision.** It is a separate decision and is currently withheld.
 2. **Then, as separate decisions:** I-3 acceptance, and I-3 merge.
-3. **At merge:** re-verify D-241's number against the canonical register and enter D-241 there, adding its canonical recording date. Its effect runs from the Principal's approval of 2026-11-15 (clause (8), Principal's choice "I").
-4. **I-4 only after a separate Principal decision following I-3 acceptance** (D-241 (2)). I-5 … I-8 stay proposed; Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open.
+3. **At merge (done 2026-11-16 in the Identity branch):** the number was re-verified. D-241 was taken by Session A, so the entry is **D-244** (§11.142). Its canonical recording date is added when `election-flow-updated` takes this merge. Its effect runs from the Principal's approval of 2026-11-15 (clause (8), Principal's choice "I").
+4. **I-4 only after a separate Principal decision following I-3 acceptance** (D-244 (2)). I-5 … I-8 stay proposed; Q-4 (B-T1 / B-T2) and Q-5 (target database) remain open.
 
 ## Traceability
 EP-03 readiness and EP-01 plan for PBDIGIT-349 · design revision 12 (D-200) · supersedes nothing.

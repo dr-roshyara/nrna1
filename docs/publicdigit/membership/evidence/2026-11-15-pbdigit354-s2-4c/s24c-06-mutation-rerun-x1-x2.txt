@@ -1,0 +1,4 @@
+X1 the calendar is ignored (the UTC date)                  tests:9    KILLED (assertions)  mi10_lc4_a_failed_execution_holds_the_bo;the_organisation_local_date_decides_not_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0
+X2 due only after its date                                 tests:9    KILLED (assertions)  every_due_declaration_is_executed_in_one;mi10_lc4_a_failed_execution_holds_the_bo;mi15a_on_its_date_the_close_records_the_;mi3_a_declaration_whose_period_ended_ear;the_organisation_local_date_decides_not_;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

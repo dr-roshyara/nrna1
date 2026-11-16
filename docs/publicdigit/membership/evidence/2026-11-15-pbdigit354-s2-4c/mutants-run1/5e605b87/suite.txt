@@ -1,0 +1,29 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+FDDDDDDDD                                                           9 / 9 (100%)
+
+Time: 00:10.667, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi15a_on_its_date_the_close_records_the_end_and_marks_the_declaration_executed
+the declaration names its End
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => App\Contexts\Membership\Domain\Organisational\ScheduledResignationState Enum #6170 (Executed, 'executed'),
+-    1 => 'scheduled-resignation:D1',
++    0 => App\Contexts\Membership\Domain\Organisational\ScheduledResignationState Enum #6171 (Scheduled, 'scheduled'),
++    1 => null,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:133
+
+FAILURES!
+Tests: 9, Assertions: 60, Failures: 1, Deprecations: 1.

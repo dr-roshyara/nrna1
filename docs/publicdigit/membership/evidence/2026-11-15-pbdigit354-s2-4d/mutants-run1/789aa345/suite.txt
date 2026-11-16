@@ -1,0 +1,20 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..............................E...                                34 / 34 (100%)
+
+Time: 00:00.029, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ScheduleAndWithdrawResignationTest::test_s2_4d_the_store_decides_withdrawal_at_the_organisations_own_date_and_its_refusal_is_returned
+UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Domain\Organisational\RefusalReason
+
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s24d/run1/mutants/789aa345/mutant.php:85
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/WithdrawScheduledResignationHandler.php:49
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ScheduleAndWithdrawResignationTest.php:230
+
+ERRORS!
+Tests: 34, Assertions: 141, Errors: 1.

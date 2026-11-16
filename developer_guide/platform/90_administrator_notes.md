@@ -242,3 +242,30 @@ Never mark an organisation operational or change `schema_state` by hand.
 6. **Rolling back** (`down()`) is refused while any declaration exists.
 7. **`migrate:fresh` on a test database is safe:** the trigger function is `CREATE OR REPLACE`. (It wasn't in the first draft, and the legacy suite caught the collision.) Never run `migrate:fresh` on the development database.
 8. **Nobody can schedule a resignation in production yet, by design:** no authority check is wired until Governance (S3). **Scheduled resignations are not executed anywhere yet:** execution comes in S2-4c and needs the organisation calendar from Organisation (S4, D-239).
+
+## Membership lifecycle S2-4c: executing scheduled resignations (2026-11-15, PBDIGIT-354)
+
+**Nothing to do: no migration, no configuration.**
+- **In production, the confirming step still executes nothing** (`NoDueScheduledResignations`). That's intended (D-239): the organisation's calendar comes from Organisation (S4), and no scheduled resignation can be recorded before Governance (S3).
+- **Do not set or invent a time zone for this** (no config value, no UTC default, not the legacy `organisations.timezone` column). D-239 forbids it.
+- **When it is switched on later**, a failed execution holds the organisation's membership answers ("boundary not closed") until it is fixed. Watch for the log entry `membership.ledger_clock.scheduled_execution_failed`.
+
+## Membership lifecycle S2-4d: routing of scheduled resignations (2026-11-15, PBDIGIT-354)
+
+**Nothing to do: no migration, no configuration.**
+- `ScheduledResignationStorePort` is now bound to the routed store, **but production cannot build it**: it needs the organisation calendar, which nothing provides until Organisation (S4). That's intended (D-239).
+- **When S4 delivers the calendar, three things change together, in one authorised release** (guide 32):
+  - the calendar binding;
+  - the confirming step's executor;
+  - the wiring guard.
+
+  Never bind the calendar alone.
+
+## Membership lifecycle S2-4d-Q5: a pending scheduled resignation takes effect first (2026-11-16, PBDIGIT-354, D-240)
+
+**Nothing to run: no migration, no configuration.** What operators and support staff will see:
+- **The refusal.** While a member's scheduled resignation is pending, any other ending of that membership effective on or after its date is refused with `scheduled_resignation_takes_effect_first`: resign now, an ending because of death, or an exclusion.
+  - The resignation is then recorded on the member's own date by the confirming step.
+  - **Do not try to work around it** (for example by withdrawing the declaration on the member's behalf, or by entering an earlier date). Withdrawal is the member's act, under authority.
+- **A person's death is a different record from a membership ending.** The refusal is about the membership ending only. Recording the death as a fact about the person is a separate matter: no such operation exists yet (PBDIGIT-356).
+- In production none of this is active yet (no calendar until Organisation S4, no authority until Governance S3).

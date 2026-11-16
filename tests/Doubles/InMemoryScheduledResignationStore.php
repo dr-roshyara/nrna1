@@ -10,8 +10,11 @@ use App\Contexts\Membership\Application\Organisational\Ports\DeclarationWriteOut
 use App\Contexts\Membership\Application\Organisational\Ports\ScheduledResignationStorePort;
 use App\Contexts\Membership\Domain\Organisational\DeclarationId;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
+use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\ScheduledResignation;
 use App\Contexts\Membership\Domain\Organisational\ScheduledResignationState;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 /**
@@ -26,6 +29,8 @@ final class InMemoryScheduledResignationStore implements ScheduledResignationSto
     /** @var array<string, array<string, AppliedDeclarationRequest>> */
     private array $applied = [];
     public int $conflictNext = 0;
+    /** S2-4d: the organisation's own date at "ledger time" for withdraw(); null = the stated date. */
+    public ?TimePoint $organisationToday = null;
 
     public function __construct(private readonly InMemoryMemberRepository $members)
     {
@@ -70,6 +75,30 @@ final class InMemoryScheduledResignationStore implements ScheduledResignationSto
         }
         $this->rows[$tenant->value()][$member->value()][$scheduled->id()->value()] = $scheduled;
         $this->applied[$tenant->value()][$key->value()] = new AppliedDeclarationRequest($fingerprint, $member, $scheduled->id());
+
+        return DeclarationWriteOutcome::Written;
+    }
+
+    /** S2-4d: decided with $organisationToday (the test sets the organisation's date; null = the stated date). */
+    public function withdraw(TenantId $tenant, MemberId $member, DeclarationId $id, TimePoint $declaredOn, Provenance $by, IdempotencyKey $key, string $fingerprint): DeclarationWriteOutcome|RefusalReason
+    {
+        if ($this->injectedConflict()) {
+            return DeclarationWriteOutcome::Conflict;
+        }
+        $seen = $this->keyAnswer($tenant, $key, $fingerprint);
+        if ($seen !== null) {
+            return $seen;
+        }
+        $stored = $this->find($tenant, $member, $id);
+        if ($stored === null) {
+            return DeclarationWriteOutcome::Conflict;
+        }
+        $withdrawn = $stored->withdraw($declaredOn, $by, $this->organisationToday ?? $declaredOn);
+        if ($withdrawn instanceof RefusalReason) {
+            return $withdrawn;
+        }
+        $this->rows[$tenant->value()][$member->value()][$id->value()] = $withdrawn;
+        $this->applied[$tenant->value()][$key->value()] = new AppliedDeclarationRequest($fingerprint, $member, $id);
 
         return DeclarationWriteOutcome::Written;
     }

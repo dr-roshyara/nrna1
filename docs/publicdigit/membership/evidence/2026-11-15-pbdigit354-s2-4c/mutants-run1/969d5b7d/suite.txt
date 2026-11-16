@@ -1,0 +1,30 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDEDFDDDD                                                           9 / 9 (100%)
+
+Time: 00:09.144, Memory: 26.00 MB
+
+There was 1 error:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_the_organisation_local_date_decides_not_utc
+ErrorException: Undefined array key 0
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:262
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:157
+
+--
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationExecutionTest::test_mi10_lc4_a_failed_execution_holds_the_boundary_and_c2_refuses
+closedThrough does not pass the date with the End unrecorded (LC-4)
+Failed asserting that 1730595600000000 is identical to 1729728000000000.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationExecutionTest.php:185
+
+ERRORS!
+Tests: 9, Assertions: 56, Errors: 1, Failures: 1, Deprecations: 1.

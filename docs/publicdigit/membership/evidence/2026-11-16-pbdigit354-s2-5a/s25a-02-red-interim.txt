@@ -1,0 +1,19 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..........E                                                       11 / 11 (100%)
+
+Time: 00:00.017, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\InterimRoleAuthorityTest::test_every_act_kind_has_an_answer
+UnhandledMatchError: Unhandled match case of type App\Contexts\Membership\Application\Organisational\Ports\MembershipAct
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthority.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:49
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Organisational/InterimRoleAuthorityTest.php:134
+
+ERRORS!
+Tests: 11, Assertions: 76, Errors: 1.

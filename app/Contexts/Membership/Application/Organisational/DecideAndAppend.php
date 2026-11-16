@@ -94,6 +94,8 @@ final class DecideAndAppend
                 AppendOutcome::IdempotencyKeyConflict => CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict),
                 AppendOutcome::MemberNotFound => CommandOutcome::refused(ApplicationRefusal::MemberNotFound),
                 AppendOutcome::ValidTimeNotStorable => CommandOutcome::refused(ApplicationRefusal::ValidTimeNotStorable),
+                AppendOutcome::RefusedByDomain => CommandOutcome::refusedByDomain($result->refusal()
+                    ?? throw new \LogicException('A domain refusal at record time names its reason.')),   // D-240
                 AppendOutcome::ConcurrencyConflict, AppendOutcome::RecordTimeRefused => null,
             };
             if ($outcome !== null) {

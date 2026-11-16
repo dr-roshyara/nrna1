@@ -1,0 +1,64 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEE                                                           9 / 9 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There were 9 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_a_recorder_corrects_an_end_date_with_evidence_as_a_new_fact
+Error: Class "App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:98
+
+2) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_a_recorder_voids_a_fact_with_evidence_as_a_new_fact
+Error: Class "App\Contexts\Membership\Application\Organisational\VoidMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:88
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:119
+
+3) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_evidence_is_required_before_anyone_is_asked
+Error: Undefined constant App\Contexts\Membership\Domain\Organisational\RefusalReason::CorrectionEvidenceRequired
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:135
+
+4) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_not_authorised_and_undetermined_change_nothing_and_come_before_not_found
+Error: Class "App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:145
+
+5) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_own_act_authorises_no_correction_and_no_void
+Error: Class "App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:163
+
+6) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_a_correction_of_a_correction_resolves_to_the_latest_value_and_keeps_the_chain
+Error: Class "App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:169
+
+7) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_a_repeated_request_is_answered_from_its_key_and_a_reused_key_is_refused
+Error: Class "App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:179
+
+8) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_s2_5a_leaves_renew_suspend_and_restore_corrections_refused
+TypeError: App\Contexts\Membership\Application\Organisational\RenewMembership::__construct(): Argument #4 ($effectiveAt) must be of type int, string given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php on line 189
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/RenewMembership.php:17
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:189
+
+9) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_the_request_shapes_are_validated
+Error: Undefined constant App\Contexts\Membership\Application\Organisational\Ports\MembershipAct::CorrectMembershipRecord
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:198
+
+ERRORS!
+Tests: 9, Assertions: 0, Errors: 9.

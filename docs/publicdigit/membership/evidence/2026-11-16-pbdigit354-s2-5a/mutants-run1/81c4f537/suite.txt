@@ -1,0 +1,28 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+F...................                                              20 / 20 (100%)
+
+Time: 00:00.027, Memory: 12.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_a_recorder_corrects_an_end_date_with_evidence_as_a_new_fact
+D-208 §2: (fact ref, corrected value, evidence ref)
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+     4 => 50,
+     5 => null,
+     6 => 'minutes:2024/12',
+-    7 => 'E1',
++    7 => 'unknown',
+     8 => 45,
+ ]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:102
+
+FAILURES!
+Tests: 20, Assertions: 122, Failures: 1.

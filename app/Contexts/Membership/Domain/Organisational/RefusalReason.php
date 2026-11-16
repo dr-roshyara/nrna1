@@ -66,6 +66,9 @@ enum RefusalReason: string
     /** Command boundary (D-208 §2, GC-4; S2-3b): a death is recorded only with a cited evidence reference. */
     case DeathEvidenceRequired = 'death_evidence_required';
 
+    /** Command boundary (D-206, D-208 §2, GC-14; S2-5a): a Correct or a Void cites its evidence. */
+    case CorrectionEvidenceRequired = 'correction_evidence_required';
+
     /** Guard (D-201; S2-4a): a scheduled resignation's date is after its declaration (the same day is "resign now"). */
     case ScheduledDateNotAfterDeclaration = 'scheduled_date_not_after_declaration';
 
@@ -83,6 +86,12 @@ enum RefusalReason: string
 
     /** Guard (D-205 (1), D-223; MI-15c): a scheduled resignation is never recorded before its effective date. */
     case ExecutionBeforeEffectiveDate = 'execution_before_effective_date';
+
+    /**
+     * Guard (D-240, Q-5 Option A): a pending scheduled resignation of the period takes effect first; another End of that
+     * period effective on or after its date is refused (resign now, the death-related End, an exclusion, any other).
+     */
+    case ScheduledResignationTakesEffectFirst = 'scheduled_resignation_takes_effect_first';
 
     /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
     case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';

@@ -1,0 +1,10 @@
+M1 a correction without evidence reaches the authority     tests:20   KILLED+ERRORS (1: InvalidArgumentException: A Correct or a Void cites its evidence (D-206, GC-14).)  evidence_is_required_before_anyone_is_as;
+M2 the Correct request names no fact                       tests:20   KILLED (assertions)  a_recorder_corrects_an_end_date_with_evi;
+M3 the Void keeps no evidence reference                    tests:20   KILLED (assertions)  a_recorder_voids_a_fact_with_evidence_as;
+M4 the Correct keeps no authority answer                   tests:20   KILLED (assertions)  a_recorder_corrects_an_end_date_with_evi;
+R1 a Correct / Void request without evidence is accepted   tests:20   KILLED (assertions)  the_request_shapes_are_validated;
+R2 a fact ref is accepted on any act                       tests:20   KILLED (assertions)  the_request_shapes_are_validated;
+I1 the interim adapter grants a correction                 tests:20   SURVIVED  
+P1 a Correct is never judged by D-240                      tests:4    KILLED (assertions)  d240_a_correction_moving_an_end_onto_or_;d240_a_correction_of_a_correction_is_jud;
+P2 D-240 judges the original End date, not the corrected one tests:4    KILLED (assertions)  d240_a_correction_moving_an_end_onto_or_;d240_a_correction_of_a_correction_is_jud;
+survivors: 1; unexpected (survived without an argued equivalence, or not run): 1

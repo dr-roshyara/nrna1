@@ -1,0 +1,26 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DF
+MI-2 free races, winners: {"executed":8}
+D                                                                 3 / 3 (100%)
+
+Time: 00:11.769, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Contexts\Membership\Organisational\PostgresScheduledResignationRaceTest::test_mi2_a_withdrawal_holding_the_lock_holds_back_a_concurrent_close
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'withdrawn'
++'executed'
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Feature/Contexts/Membership/Organisational/PostgresScheduledResignationRaceTest.php:236
+
+FAILURES!
+Tests: 3, Assertions: 149, Failures: 1, Deprecations: 1.

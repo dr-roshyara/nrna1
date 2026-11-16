@@ -1,0 +1,9 @@
+X1 the calendar is ignored (the UTC date)                  tests:9    KILLED+ERRORS (1: ErrorException: Undefined array key 0)  mi10_lc4_a_failed_execution_holds_the_bo;the_organisation_local_date_decides_not_;
+X2 due only after its date                                 tests:9    KILLED+ERRORS (2: ErrorException: Undefined array key 0)  every_due_declaration_is_executed_in_one;mi10_lc4_a_failed_execution_holds_the_bo;mi15a_on_its_date_the_close_records_the_;mi3_a_declaration_whose_period_ended_ear;the_organisation_local_date_decides_not_;
+X3 every declaration is taken as due, whatever its state   tests:9    KILLED (assertions)  a_withdrawn_declaration_is_never_execute;
+X4 the End is recorded at a fresh reading, not the close's tests:9    KILLED (assertions)  mi15a_on_its_date_the_close_records_the_;mi15b_late_execution_still_takes_effect_;
+X5 an ended period fails the close instead of superseding  tests:9    KILLED (assertions)  mi3_a_declaration_whose_period_ended_ear;
+X6 the declaration is not marked executed                  tests:9    KILLED (assertions)  mi15a_on_its_date_the_close_records_the_;
+X7 the End takes effect on the recording date              tests:9    KILLED (assertions)  every_due_declaration_is_executed_in_one;mi15b_late_execution_still_takes_effect_;
+X8 a failed execution is ignored (the close advances)      tests:9    KILLED (assertions)  mi10_lc4_a_failed_execution_holds_the_bo;the_execution_and_the_close_are_one_tran;
+survivors: 0; unexpected (survived without an argued equivalence, or not run): 0

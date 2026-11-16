@@ -1,0 +1,581 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+EEEEEEDDEEEEEDEEEED.........EEEEEE..EEEEE..EE..................  63 / 775 (  8%)
+............................................................... 126 / 775 ( 16%)
+............................................................... 189 / 775 ( 24%)
+...........E................................................... 252 / 775 ( 32%)
+............................................................... 315 / 775 ( 40%)
+........................EEEEEEEEEEEEEEEEEEEEEEEEEE............. 378 / 775 ( 48%)
+............................................................... 441 / 775 ( 56%)
+............................................................... 504 / 775 ( 65%)
+............................................................... 567 / 775 ( 73%)
+............................................................... 630 / 775 ( 81%)
+............................................................... 693 / 775 ( 89%)
+.........................................................DDDDDD 756 / 775 ( 97%)
+DDDDF..............                                             775 / 775 (100%)
+
+Time: 01:19.104, Memory: 146.00 MB
+
+There were 55 errors:
+
+1) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_not_found
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+2) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_committee_not_found
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+3) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_has_no_residence_for_geographic_committee
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+4) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::assigns_member_to_central_committee_without_geo_check
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+5) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::throws_when_member_geo_not_in_committee_area
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+6) Tests\Unit\Contexts\Membership\Application\Committee\AssignMemberToCommitteeHandlerTest::assigns_member_when_residence_is_within_committee_area
+ArgumentCountError: Too few arguments to function App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler::__construct(), 5 passed in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php on line 64 and exactly 6 expected
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/Handlers/AssignMemberToCommitteeHandler.php:46
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/AssignMemberToCommitteeHandlerTest.php:64
+
+7) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_provides_numeric_suggestions
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries". (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: insert into "geo_administrative_units" ("country_code", "admin_level", "admin_type", "parent_id", "path", "code", "local_code", "name_local", "metadata", "is_active", "created_at", "updated_at") values (NP, 1, province, ?, /UT/, NP-yk, aV, {"en":"Qtb5Clv68B","np":"\u092a\u094d\u0930\u0926\u0947\u0936"}, {"total_wards":18}, 1, 2026-11-15 17:47:35, 2026-11-15 17:47:35) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:53
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:53
+
+8) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_skips_taken_numeric_suggestions
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries". (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: insert into "geo_administrative_units" ("country_code", "admin_level", "admin_type", "parent_id", "path", "code", "local_code", "name_local", "metadata", "is_active", "created_at", "updated_at") values (NP, 1, province, ?, /P5/, NP-zP, 3o, {"en":"0Jdmeueiy0","np":"\u092a\u094d\u0930\u0926\u0947\u0936"}, {"total_wards":20}, 1, 2026-11-15 17:47:35, 2026-11-15 17:47:35) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:70
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:70
+
+9) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_provides_semantic_suggestions
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries". (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: insert into "geo_administrative_units" ("country_code", "admin_level", "admin_type", "parent_id", "path", "code", "local_code", "name_local", "metadata", "is_active", "created_at", "updated_at") values (NP, 1, province, ?, /eo/, NP-SC, bc, {"en":"Wea4Gjzos5","np":"\u092a\u094d\u0930\u0926\u0947\u0936"}, {"total_wards":19}, 1, 2026-11-15 17:47:35, 2026-11-15 17:47:35) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:92
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:92
+
+10) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_returns_max_three_suggestions
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries". (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: insert into "geo_administrative_units" ("country_code", "admin_level", "admin_type", "parent_id", "path", "code", "local_code", "name_local", "metadata", "is_active", "created_at", "updated_at") values (NP, 1, province, ?, /6p/, NP-dK, KB, {"en":"Hg39Fyqf4F","np":"\u092a\u094d\u0930\u0926\u0947\u0936"}, {"total_wards":16}, 1, 2026-11-15 17:47:35, 2026-11-15 17:47:35) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:121
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:121
+
+11) Tests\Unit\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityServiceTest::test_check_is_tenant_scoped
+Illuminate\Database\QueryException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries". (Connection: pgsql, Host: 127.0.0.1, Port: 5432, Database: nrna_test, SQL: insert into "geo_administrative_units" ("country_code", "admin_level", "admin_type", "parent_id", "path", "code", "local_code", "name_local", "metadata", "is_active", "created_at", "updated_at") values (NP, 1, province, ?, /rd/, NP-vy, Dj, {"en":"4Q6Akco3Ap","np":"\u092a\u094d\u0930\u0926\u0947\u0936"}, {"total_wards":14}, 1, 2026-11-15 17:47:35, 2026-11-15 17:47:35) returning "id")
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:838
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:139
+
+Caused by
+PDOException: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "geo_administrative_units" violates foreign key constraint "geo_administrative_units_country_code_foreign"
+DETAIL:  Key (country_code)=(NP) is not present in table "countries".
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:425
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:827
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:794
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:411
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Connection.php:398
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/PostgresProcessor.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:4174
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/database/factories/CommitteeModelFactory.php:34
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:596
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:841
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:829
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:594
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:533
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:517
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php:157
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:516
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:429
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:318
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php:315
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/CommitteeSlugAvailabilityServiceTest.php:139
+
+12) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_returns_dashboard_view_for_existing_committee
+TypeError: App\Contexts\Membership\Application\Committee\GetCommitteeDashboard::__construct(): Argument #1 ($committeeRepository) must be of type App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface, App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/GetCommitteeDashboard.php:18
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:31
+
+13) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_throws_committee_not_found_when_id_does_not_exist
+TypeError: App\Contexts\Membership\Application\Committee\GetCommitteeDashboard::__construct(): Argument #1 ($committeeRepository) must be of type App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface, App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/GetCommitteeDashboard.php:18
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:31
+
+14) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_throws_committee_not_found_for_different_tenant
+TypeError: App\Contexts\Membership\Application\Committee\GetCommitteeDashboard::__construct(): Argument #1 ($committeeRepository) must be of type App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface, App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/GetCommitteeDashboard.php:18
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:31
+
+15) Tests\Unit\Contexts\Membership\Application\Committee\GetCommitteeDashboardTest::test_returns_view_with_empty_sub_committees_for_central
+TypeError: App\Contexts\Membership\Application\Committee\GetCommitteeDashboard::__construct(): Argument #1 ($committeeRepository) must be of type App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface, App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php on line 31
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Committee/GetCommitteeDashboard.php:18
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Committee/GetCommitteeDashboardTest.php:31
+
+16) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_residence_application_is_stored_and_event_is_emitted
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+17) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_exception_requires_justification
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+18) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_manual_application_skips_eligibility_check
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+19) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_ineligible_residence_application_is_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+20) Tests\Unit\Contexts\Membership\Application\Membership\ApplyForCommitteeMembershipHandlerTest::test_duplicate_application_is_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php on line 43
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ApplyForCommitteeMembershipHandlerTest.php:43
+
+21) Tests\Unit\Contexts\Membership\Application\Membership\RestoreMembershipHandlerTest::test_restore_suspended_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/RestoreMembership/RestoreMembershipHandler.php:42
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/RestoreMembershipHandlerTest.php:69
+
+22) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_approve_creates_committee_association
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+23) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_reject_marks_application_rejected
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+24) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_cannot_approve_already_approved
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+25) Tests\Unit\Contexts\Membership\Application\Membership\ReviewMembershipApplicationHandlerTest::test_cannot_approve_rejected_application
+TypeError: App\Contexts\Membership\Application\Membership\ApplyForCommitteeMembership\ApplyForCommitteeMembershipHandler::__construct(): Argument #4 ($eligibleCommitteeService) must be of type App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService, Tests\Doubles\FakeCommitteeEligibilityPolicy given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php on line 53
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/ApplyForCommitteeMembership/ApplyForCommitteeMembershipHandler.php:24
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/ReviewMembershipApplicationHandlerTest.php:53
+
+26) Tests\Unit\Contexts\Membership\Application\Membership\SuspendMembershipHandlerTest::test_suspend_active_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/SuspendMembership/SuspendMembershipHandler.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/SuspendMembershipHandlerTest.php:69
+
+27) Tests\Unit\Contexts\Membership\Application\Membership\TerminateMembershipHandlerTest::test_terminate_active_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/TerminateMembership/TerminateMembershipHandler.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/TerminateMembershipHandlerTest.php:68
+
+28) Tests\Unit\Contexts\Membership\Application\Membership\TerminateMembershipHandlerTest::test_terminate_suspended_membership
+Error: Call to undefined method Tests\Doubles\FakeEventBus::dispatchAll()
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Membership/TerminateMembership/TerminateMembershipHandler.php:43
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Membership/TerminateMembershipHandlerTest.php:105
+
+29) Tests\Unit\Contexts\Membership\Domain\Committee\CommitteeAssignmentTest::reconstruct_creates_assignment_with_all_fields
+InvalidArgumentException: Invalid tenant user ID format: 01JKUSER1234567890ABCDEFGH. Expected UUID v4 (8-4-4-4-12 hex with dashes)
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/ValueObjects/TenantUserId.php:40
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/ValueObjects/TenantUserId.php:25
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Committee/CommitteeAssignmentTest.php:36
+
+30) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::fee_starts_as_pending
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 38
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:38
+
+31) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_with_payment_details_transitions_status
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 52
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:52
+
+32) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_stores_payment_details_on_fee
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 75
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:75
+
+33) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_fires_fee_paid_event
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 102
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:102
+
+34) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_on_already_paid_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 127
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:127
+
+35) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::mark_as_paid_on_overdue_fee_is_allowed
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 151
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:151
+
+36) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_transitions_status_to_waived
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 180
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:180
+
+37) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_on_paid_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 196
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:196
+
+38) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_on_overdue_fee_throws_domain_exception
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 220
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:220
+
+39) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::waive_fires_fee_waived_event_with_reason
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 240
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:240
+
+40) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::paid_fee_has_payment_details
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 260
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:260
+
+41) Tests\Unit\Contexts\Membership\Domain\Fee\FeeTest::unpaid_fee_has_no_payment_details
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php on line 285
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/FeeTest.php:285
+
+42) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_pending_fee_for_matching_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 38
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:38
+
+43) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_overdue_fee_for_matching_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 60
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:60
+
+44) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_fee_belongs_to_different_tenant
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 88
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:88
+
+45) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_fee_is_already_paid
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 110
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:110
+
+46) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::throws_when_transaction_reference_already_exists
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 137
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:137
+
+47) Tests\Unit\Contexts\Membership\Domain\Fee\PaymentPolicyTest::allows_null_transaction_reference_without_duplicate_check
+TypeError: App\Contexts\Membership\Domain\Fee\Fee::create(): Argument #3 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php on line 175
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Fee/Fee.php:51
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Fee/PaymentPolicyTest.php:175
+
+48) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_registered
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 36
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:36
+
+49) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_records_registration_event
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 49
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:49
+
+50) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_activated
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 62
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:62
+
+51) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_cannot_be_suspended_if_already_suspended
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 75
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:75
+
+52) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_suspended
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 88
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:88
+
+53) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_can_be_archived
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 100
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:100
+
+54) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_status_transitions_are_valid
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 112
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:112
+
+55) Tests\Unit\Contexts\Membership\Domain\Member\MemberTest::test_member_cannot_transition_from_archived
+TypeError: App\Contexts\Membership\Domain\Member\Member::register(): Argument #1 ($tenantId) must be of type App\Contexts\Shared\Domain\ValueObjects\TenantId, App\Contexts\Membership\Domain\ValueObjects\TenantId given, called in /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php on line 133
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Member/Member.php:50
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Member/MemberTest.php:133
+
+--
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepositoryTest::test_raw_db_query_bypasses_tenant_isolation
+Raw DB::table() returns all tenants — known risk
+Failed asserting that actual size 4 matches expected size 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Infrastructure/Repositories/EloquentCommitteeRepositoryTest.php:167
+
+ERRORS!
+Tests: 775, Assertions: 662641, Errors: 55, Failures: 1, Deprecations: 1, PHPUnit Deprecations: 46.
