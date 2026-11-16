@@ -482,6 +482,50 @@ final class MembershipThroughRoutingTest extends MembershipPostgresTestCase
         });
     }
 
+    /**
+     * PBDIGIT-354 S2-5a: a Correct and a Void through the PRODUCTION routed repository are recorded in A's own database
+     * (append-only, with their evidence) and published in A's outbox; B's member with the same ids is untouched. The
+     * production container cannot build either use case: no authority until Governance S3 (fail closed).
+     */
+    public function test_s2_5a_corrections_and_voids_are_recorded_in_the_routed_organisations_own_database(): void
+    {
+        $this->admitM1(self::B);
+        $this->routedTo(self::A, function (Connection $a): void {
+            $t = TenantId::fromString(self::A);
+            $repo = app(MemberRepositoryPort::class);
+            $m = $repo->create($t, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
+            $this->readings = [200];
+            $repo->append($t, $m->id(), $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(20_000), TimePoint::of(20_000), TimePoint::of(20_365),
+                Provenance::decision('registrar', null, 'decl-fixture')), IdempotencyKey::fromString('k1'), 'fp1');
+            $this->readings = [300];
+            $this->assertTrue((new \App\Contexts\Membership\Application\Organisational\ResignMembershipHandler($repo, new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\ResignMembership(self::A, 'M1', 'E1', 20_040, 'P1', null, 'k2'))->isAppended());
+
+            $this->readings = [400];
+            $this->assertTrue((new \App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler($repo, new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\CorrectMembershipRecord(self::A, 'M1', 'C1', 'E1', 20_045, 20_050, 'minutes:2024/12', 'registrar-1', null, 'k3'))->isAppended());
+            $this->readings = [500];
+            $this->assertTrue((new \App\Contexts\Membership\Application\Organisational\VoidMembershipRecordHandler($repo, new FakeAuthority()))->handle(
+                new \App\Contexts\Membership\Application\Organisational\VoidMembershipRecord(self::A, 'M1', 'V1', 'C1', 20_050, 'minutes:2024/13', 'registrar-1', null, 'k4'))->isAppended());
+
+            $this->assertSame(['admit', 'end', 'correct', 'void'], array_map(static fn ($r) => $r->kind, $a->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "in A's own database, nothing rewritten");
+            $this->assertCount(4, $a->select("SELECT 1 FROM outbox_events WHERE event_type = 'MembershipCoverageResolved'"), 'admit, end, correct, void each changed coverage');
+        });
+
+        $this->routedTo(self::B, function (Connection $b): void {
+            $this->assertSame(['admit'], array_map(static fn ($r) => $r->kind, $b->select('SELECT kind FROM org_membership_facts ORDER BY seq')), "B's M1 knows nothing of A's corrections");
+        });
+
+        foreach ([\App\Contexts\Membership\Application\Organisational\CorrectMembershipRecordHandler::class, \App\Contexts\Membership\Application\Organisational\VoidMembershipRecordHandler::class] as $handler) {
+            try {
+                app($handler);
+                $this->fail("$handler: a production authority is bound; S2 must stay fail-closed until Governance S3");
+            } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+                $this->assertStringContainsString('AuthorityCheckPort', $e->getMessage(), $handler);
+            }
+        }
+    }
+
     /** S2-4d: a TEST-ONLY calendar that answers one fixed date (D-239: no production calendar exists until S4). */
     private static function calendarSaying(int $day): \App\Contexts\Membership\Application\Organisational\Ports\OrganisationCalendar
     {

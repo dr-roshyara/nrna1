@@ -40,6 +40,7 @@ Plan §4, steps S2-1 … S2-6.
 - **Q-6:** which date of a Suspend a Correct may change. Recommended A: neither in release 1 (Void and record again; a Restore ends it earlier).
 - **Q-7:** may a Correct change a Renew's start? Recommended A: no (Void and record again); a Correct of a Renew means its `until` (D-237).
 - **Q-8:** what "a Void is reported to the organisation" requires in S2-5. Recommended A: recorded with its evidence, and visible through C1; a dedicated notice becomes a backlog item.
+- **Q-9 (found in S2-5a):** a Correct moving an End onto or after the date of a declaration that End had already superseded. Recommended A: refuse it.
 
 ## Decided: Q-5 → D-240 (Option A)
 
@@ -63,5 +64,5 @@ Plan §4, steps S2-1 … S2-6.
 - [x] S2-2 Suspend / Restore: **DONE 2026-11-15** (guide 26; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-2/`); correcting their dates belongs to S2-5
 - [x] S2-3 resign now, death: **DONE 2026-11-15:** S2-3a (authority contract, D-238; guide 27) and S2-3b (resign now, record a death; guide 28; evidence `…/2026-11-15-pbdigit354-s2-3b/`)
 - [x] S2-4 scheduled resignation (D-239, D-240): **DONE 2026-11-16**. **S2-4a DONE** (domain; guide 29), **S2-4b DONE** (schedule / withdraw / store; guide 30; migrations 360000 / 300700), **S2-4c DONE** (execution in the close; guide 31), **S2-4d DONE** (race, visibility, routing; guide 32) 2026-11-15; **Q-5 decided as D-240 and implemented** (guide 33; evidence `docs/publicdigit/membership/evidence/2026-11-15-pbdigit354-s2-4d-q5/`) 2026-11-16
-- [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (**a Restore's date**; a Suspend's: Q-6). **Preflight done 2026-11-16; waiting on Q-6, Q-7, Q-8** (plan §7e)
+- [ ] S2-5 Correct / Void, **including D-177 row 20 under D-237** (closes S2-1) and row 14 (**a Restore's date**; a Suspend's: Q-6). **S2-5a DONE 2026-11-16** (Correct / Void use cases; D-240 for a corrected End; guide 34); **S2-5b** (D-237 with its migration, a Restore's date) next; **Q-6, Q-7, Q-8, Q-9 open** (plan §7e)
 - [ ] S2-6 push shapes (Membership side)

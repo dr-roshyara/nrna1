@@ -66,6 +66,9 @@ enum RefusalReason: string
     /** Command boundary (D-208 §2, GC-4; S2-3b): a death is recorded only with a cited evidence reference. */
     case DeathEvidenceRequired = 'death_evidence_required';
 
+    /** Command boundary (D-206, D-208 §2, GC-14; S2-5a): a Correct or a Void cites its evidence. */
+    case CorrectionEvidenceRequired = 'correction_evidence_required';
+
     /** Guard (D-201; S2-4a): a scheduled resignation's date is after its declaration (the same day is "resign now"). */
     case ScheduledDateNotAfterDeclaration = 'scheduled_date_not_after_declaration';
 

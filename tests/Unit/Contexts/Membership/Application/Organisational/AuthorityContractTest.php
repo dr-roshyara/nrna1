@@ -110,7 +110,8 @@ final class AuthorityContractTest extends TestCase
 
     public function test_the_act_kinds_are_governances_names(): void
     {
-        $this->assertSame(['admit-member', 'record-resignation', 'record-death', 'renew-membership', 'suspend-membership', 'restore-membership'],
+        $this->assertSame(['admit-member', 'record-resignation', 'record-death', 'renew-membership', 'suspend-membership', 'restore-membership',
+            'correct-membership-record', 'void-membership-record'],   // S2-5a: D-208 §2's names, exactly
             array_map(static fn (MembershipAct $a) => $a->value, MembershipAct::cases()));
     }
 

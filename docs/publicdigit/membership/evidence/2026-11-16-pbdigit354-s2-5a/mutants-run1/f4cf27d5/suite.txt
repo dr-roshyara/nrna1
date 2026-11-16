@@ -1,0 +1,22 @@
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..E.................                                              20 / 20 (100%)
+
+Time: 00:00.026, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\CorrectAndVoidMembershipRecordTest::test_evidence_is_required_before_anyone_is_asked
+InvalidArgumentException: A Correct or a Void cites its evidence (D-206, GC-14).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/Ports/AuthorityRequest.php:54
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25a/run1/mutants/f4cf27d5/mutant.php:53
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:67
+/tmp/claude-1891886374/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/1956815c-03b4-4dfa-880c-cf3ab6fd45f1/scratchpad/s25a/run1/mutants/f4cf27d5/mutant.php:47
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:83
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/CorrectAndVoidMembershipRecordTest.php:135
+
+ERRORS!
+Tests: 20, Assertions: 120, Errors: 1.

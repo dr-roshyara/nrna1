@@ -24,6 +24,8 @@ use App\Contexts\Membership\Domain\Organisational\TimePoint;
  * - `declarationRef`: `record-resignation` in its **withdraw shape** only (D-208 §2, D-204, GC-12): the reference of the
  *   scheduled resignation declaration being withdrawn. Never together with `declaredEffectiveAt` (that is the resign
  *   shape). Added in S2-4b, additively.
+ * - `factRef`, `correctedValue` (S2-5a, additive; D-208 §2): `correct-membership-record` = (fact ref, corrected value,
+ *   evidence ref); `void-membership-record` = (fact ref, evidence ref). Both require `evidenceRef` (D-206, GC-14).
  * Built by the use cases; never from a caller-supplied authority.
  */
 final readonly class AuthorityRequest
@@ -38,7 +40,19 @@ final readonly class AuthorityRequest
         public string $requestId,
         public ?string $evidenceRef = null,
         public ?string $declarationRef = null,
+        public ?string $factRef = null,
+        public ?TimePoint $correctedValue = null,
     ) {
+        $correcting = $act === MembershipAct::CorrectMembershipRecord || $act === MembershipAct::VoidMembershipRecord;
+        if ($correcting !== ($factRef !== null && trim($factRef) !== '')) {
+            throw new \InvalidArgumentException('A Correct or a Void names the fact it acts on; no other act does (D-208 §2).');
+        }
+        if (($act === MembershipAct::CorrectMembershipRecord) !== ($correctedValue !== null)) {
+            throw new \InvalidArgumentException('Only a Correct carries the corrected value, and it always does (D-208 §2).');
+        }
+        if ($correcting && ($evidenceRef === null || trim($evidenceRef) === '')) {
+            throw new \InvalidArgumentException('A Correct or a Void cites its evidence (D-206, GC-14).');
+        }
         if ($declarationRef !== null && ($act !== MembershipAct::RecordResignation || $declaredEffectiveAt !== null || trim($declarationRef) === '')) {
             throw new \InvalidArgumentException('Only withdrawing a scheduled resignation names a declaration, and without an effective date.');
         }
@@ -51,8 +65,8 @@ final readonly class AuthorityRequest
         if ($act === MembershipAct::RecordDeath && ($evidenceRef === null || trim($evidenceRef) === '')) {
             throw new \InvalidArgumentException('Recording a death cites its evidence (GC-4).');
         }
-        if ($act !== MembershipAct::RecordDeath && $evidenceRef !== null) {
-            throw new \InvalidArgumentException('Only recording a death carries an evidence reference.');
+        if ($act !== MembershipAct::RecordDeath && !$correcting && $evidenceRef !== null) {
+            throw new \InvalidArgumentException('Only recording a death, a Correct or a Void carries an evidence reference.');
         }
     }
 }

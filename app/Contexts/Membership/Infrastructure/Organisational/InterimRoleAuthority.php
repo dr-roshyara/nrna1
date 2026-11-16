@@ -51,6 +51,8 @@ final class InterimRoleAuthority implements AuthorityCheckPort
             // PBDIGIT-354 S2-1 / S2-2: no legacy rule exists to mirror for these either; denied, nothing inferred.
             // (The vocabulary guard keeps other contexts' names out of this adapter: hence "authority owner".)
             MembershipAct::Renew, MembershipAct::Suspend, MembershipAct::Restore => [self::LIFECYCLE_RULE, false],
+            // S2-5a (D-206): recording authority with evidence is the authority owner's to establish; denied here too.
+            MembershipAct::CorrectMembershipRecord, MembershipAct::VoidMembershipRecord => [self::LIFECYCLE_RULE, false],
         };
         // S2-3a (D-238): the basis says what this is: a technical role check (interim role), or a denial and why.
         $basis = $granted

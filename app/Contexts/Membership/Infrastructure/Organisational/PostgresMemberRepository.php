@@ -19,6 +19,7 @@ use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\DeclarationId;
 use App\Contexts\Membership\Domain\Organisational\End;
 use App\Contexts\Membership\Domain\Organisational\RefusalReason;
+use App\Contexts\Membership\Domain\Organisational\Resolution;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\Fact;
 use App\Contexts\Membership\Domain\Organisational\FactId;
@@ -224,21 +225,46 @@ final class PostgresMemberRepository implements MemberRepositoryPort
      */
     private function pendingScheduledResignationRefusal(TenantId $tenant, MemberId $id, Fact $fact, ?DeclarationId $executing): ?RefusalReason
     {
-        if (!$fact instanceof End) {
+        $competing = $this->competingEnd($tenant, $id, $fact);
+        if ($competing === null) {
             return null;
         }
+        [$period, $effectiveAt] = $competing;
         $this->db->selectOne('SELECT 1 AS locked FROM org_memberships WHERE organisation_id = ? AND id = ? FOR UPDATE', [$tenant->value(), $id->value()]);
         foreach ((new PostgresScheduledResignationStore($this->db))->forMember($tenant, $id) as $declaration) {
-            if (!$declaration->period()->equals($fact->period()) || ($executing !== null && $declaration->id()->equals($executing))) {
+            if (!$declaration->period()->equals($period) || ($executing !== null && $declaration->id()->equals($executing))) {
                 continue;
             }
-            $refusal = $declaration->refusesCompetingEndOn($fact->effectiveAt());
+            $refusal = $declaration->refusesCompetingEndOn($effectiveAt);
             if ($refusal !== null) {
                 return $refusal;
             }
         }
 
         return null;
+    }
+
+    /**
+     * What D-240 judges: the period an End would end and the date it would end it. An End: itself. A Correct (S2-5a)
+     * whose correction chain is rooted in an End: that End's period at the CORRECTED date (the D-240 instruction
+     * "assess the corrected End, not merely the original"). Anything else (an Admit or its Correct, a Void, an Annul,
+     * a Renew, a Suspend, a Restore) ends nothing: null.
+     *
+     * @return array{0: PeriodId, 1: TimePoint}|null
+     */
+    private function competingEnd(TenantId $tenant, MemberId $id, Fact $fact): ?array
+    {
+        if ($fact instanceof End) {
+            return [$fact->period(), $fact->effectiveAt()];
+        }
+        if (!$fact instanceof Correct) {
+            return null;
+        }
+        $member = $this->load($tenant, $id);
+        $facts = $member === null ? [] : array_map(static fn (RecordedFact $r): Fact => $r->fact(), $member->log());
+        $root = Resolution::rootOf($facts, $fact->target());
+
+        return $root instanceof End ? [$root->period(), $fact->value()] : null;
     }
 
     private function appendInTransaction(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint, ?Instant $closeReading = null, ?DeclarationId $executing = null): AppendResult

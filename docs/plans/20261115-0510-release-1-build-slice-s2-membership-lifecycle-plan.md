@@ -189,7 +189,25 @@ Every change keeps the history. What PublicDigit "knew" at any past moment stays
 1. **S2-5a:** the use cases (Correct / Void of Admit and End) with authority and evidence; D-240 for a corrected End, including a race.
 2. **S2-5b:** D-237 (Renew `until`, with its migration) and the Restore date (row 14), plus whatever Q-6 / Q-7 decide.
 
-**No S2-5 code is written until Q-6, Q-7 and Q-8 are decided.**
+*(2026-11-16, the commission re-issued without answers to Q-6 / Q-7 / Q-8: **S2-5a was built**, because the accepted decisions fully determine it. The undetermined parts stay refused, as before.)*
+
+**Progress:**
+- **S2-5a DONE 2026-11-16:**
+  - `CorrectMembershipRecord` / `VoidMembershipRecord` use cases (D-206, D-208 §2, D-238), evidence first, provenance "recorded from evidence";
+  - **D-240 for a corrected End** (`PostgresMemberRepository::competingEnd`: a Correct rooted in an End is judged at its corrected date);
+  - the interim adapter denies both.
+  - Cluster 527, database-free 1085, architecture 4 known failures; 10 mutants (9 assertion, 1 error by design).
+  - Guide 34; evidence `…/2026-11-16-pbdigit354-s2-5a/`.
+- **S2-5b next:** D-237 (with its migration) and a Restore's date.
+
+**Q-9 (found in S2-5a): a correction after a declaration was superseded.**
+- An End effective **before** the scheduled date supersedes the declaration at the next confirming step (MI-3; final).
+- If that End is **later corrected** onto or after the original scheduled date, D-240 no longer applies: the declaration is not pending.
+- The membership then ends **later than the date the member declared**.
+- **A (recommended): refuse such a Correct** while a declaration of the period was superseded **because of that End**. The fix is then a Void of the End, after which a new scheduling would be needed, since the declaration is final.
+- **B: allow it.** The correction states what really happened; the superseded declaration stays final, and the member's date is lost.
+- Until decided, B is what the code does (nothing in the accepted texts says otherwise).
+
 
 ## 7d. S2-4d finding: an ending recorded on or after a due-but-unexecuted scheduled resignation's date (Q-5, **decided: D-240, Option A**, 2026-11-15; **implemented 2026-11-16**: guide 33; **S2-4 DONE**)
 

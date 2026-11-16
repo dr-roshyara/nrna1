@@ -1,0 +1,25 @@
+PBDIGIT-324 Membership PostgreSQL guard: cluster system_identifier and current_database() = 'membership_pg_isolated' confirmed.
+PHPUnit 11.5.58 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.membership-pg.xml
+
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  63 / 527 ( 11%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 126 / 527 ( 23%)
+DDDDDDDDDDDDDDDDoutcomes: {"appended:":192,"refused:admission_term_required":119,"refused:duplicate_fact_id":14,"refused:end_not_after_period_start":72,"refused:idempotency_key_conflict":28,"refused:member_not_found":167,"refused:overlapping_membership_periods":112,"refused:period_already_ended":32,"refused:period_not_found":14}
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+D-240 free races, the competing End's refusals: {"period_not_found":8}
+D
+MI-2 free races, winners: {"executed":8}
+DDDDDDDD 189 / 527 ( 35%)
+DDDDDDDDDDDDDDDDDDDDDDDDDD..DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 252 / 527 ( 47%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 315 / 527 ( 59%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 378 / 527 ( 71%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 441 / 527 ( 83%)
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 504 / 527 ( 95%)
+DDDDDDDDDDDDDDDDDDDDDDD                                         527 / 527 (100%)
+
+Time: 04:34.813, Memory: 60.00 MB
+
+OK, but there were issues!
+Tests: 527, Assertions: 18295, Deprecations: 1.
