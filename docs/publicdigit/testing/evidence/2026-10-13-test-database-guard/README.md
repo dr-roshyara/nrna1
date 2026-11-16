@@ -6,7 +6,16 @@
 - **The trigger:** during `PBDIGIT-274`, Claude ran a "database-free" regression from the main checkout:
   ```
   vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Services/Voting …
+  ```  ```  ```  ``  ```  ```  ```  ``  ```  ```  ```  ``  ```  ```  ```  ``  ```
+  ```  ```  ```  ``  ```  ```  ```  ``  ```
+  ```  ```  ```  ``  ```
+  ```  
+```
+`
+
   ```
+
+
 - **The test that reset the database:** the folder contains the older `tests/Unit/Services/Voting/DeviceFingerprintServiceTest.php`, which extends **`Tests\TestCase`**. That class uses `RefreshDatabase`, and **on PostgreSQL it has no per-test transaction:** `beginDatabaseTransaction()` returns early. So `RefreshDatabase` runs **`migrate:fresh`, which drops every table.**
 - **Why it hit `publicdigit`:** `--no-configuration` skipped `phpunit.xml` and its bootstrap, which pin tests to `nrna_test`. Laravel therefore used the main `.env` database, **`publicdigit`** (the development database the local server uses; there is no database named `nrna` on this server).
 - **Two runs did it:**
